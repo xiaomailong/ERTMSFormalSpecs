@@ -16,6 +16,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {
@@ -72,6 +74,35 @@ namespace GUI.TestRunnerView
             return retVal;
         }
 
+        #region Apply translation rules
+        private class ApplyTranslationRulesHandler : Utils.ProgressHandler
+        {
+            /// <summary>
+            /// The subsequence on which the translation rules should be applied
+            /// </summary>
+            private SubSequence SubSequence { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="subSequence"></param>
+            public ApplyTranslationRulesHandler(SubSequence subSequence)
+            {
+                SubSequence = subSequence;
+            }
+
+            /// <summary>
+            /// Generates the file in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                Utils.FinderRepository.INSTANCE.ClearCache();
+                SubSequence.Translate(SubSequence.Dictionary.TranslationDictionary);
+            }
+        }
+        #endregion
+
         /// <summary>
         /// Translates the corresponding sub sequence, according to translation rules
         /// </summary>
@@ -79,19 +110,10 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void TranslateHandler(object sender, EventArgs args)
         {
-            ProgressDialog progress = new ProgressDialog("Applying translation rules", ApplyRules);
+            ApplyTranslationRulesHandler applyTranslationRulesHandler = new ApplyTranslationRulesHandler(Item);
+            ProgressDialog progress = new ProgressDialog("Applying translation rules", applyTranslationRulesHandler);
             progress.ShowDialog(MainWindow);
             MainWindow.RefreshModel();
-        }
-
-        /// <summary>
-        /// Worker task to apply the translation rules
-        /// </summary>
-        /// <param name="arg"></param>
-        private void ApplyRules(object arg)
-        {
-            Utils.FinderRepository.INSTANCE.ClearCache();
-            Item.Translate(Item.Dictionary.TranslationDictionary);
         }
 
         public void AddHandler(object sender, EventArgs args)
@@ -113,18 +135,47 @@ namespace GUI.TestRunnerView
             }
         }
 
-        /// <summary>
-        /// Executes the tests related to this frame
-        /// </summary>
-        /// <param name="args"></param>
-        private void ExecuteTests(object args)
+        #region Execute tests
+        private class ExecuteTestsHandler : Utils.ProgressHandler
         {
-            Window window = BaseForm as Window;
-            if (window != null)
+            /// <summary>
+            /// The window for which theses tests should be executed
+            /// </summary>
+            private Window Window { get; set; }
+
+            /// <summary>
+            /// The subsequence which should be executed
+            /// </summary>
+            private SubSequence SubSequence { get; set; }
+
+            /// <summary>
+            /// The EFS system 
+            /// </summary>
+            private EFSSystem EFSSystem { get { return SubSequence.EFSSystem; } }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            /// <param name="subSequence"></param>
+            public ExecuteTestsHandler(Window window, SubSequence subSequence)
             {
-                window.setSubSequence(Item);
-                EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(Item);
-                EFSSystem.Runner.RunUntilStep(null);
+                Window = window;
+                SubSequence = subSequence;
+            }
+
+            /// <summary>
+            /// Executes the tests in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                if (Window != null)
+                {
+                    Window.setSubSequence(SubSequence);
+                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence);
+                    EFSSystem.Runner.RunUntilStep(null);
+                }
             }
         }
 
@@ -136,19 +187,13 @@ namespace GUI.TestRunnerView
         public void RunHandler(object sender, EventArgs args)
         {
             ClearMessages();
-
-            if (TestTreeView.SHOW_DIALOG)
-            {
-                ProgressDialog dialog = new ProgressDialog("Executing test steps", ExecuteTests);
-                dialog.ShowDialog();
-            }
-            else
-            {
-                ExecuteTests(null);
-            }
+            ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
+            ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
+            dialog.ShowDialog();
 
             MainWindow.RefreshModel();
         }
+        #endregion
 
         /// <summary>
         /// Handles a run event on sub sequence case and creates the associated report

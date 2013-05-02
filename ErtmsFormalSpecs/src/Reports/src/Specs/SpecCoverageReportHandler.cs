@@ -13,16 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
 namespace Report.Specs
 {
-    public class SpecCoverageReportConfig : ReportConfig
+    public class SpecCoverageReportHandler : ReportHandler
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public SpecCoverageReportConfig(DataDictionary.Dictionary dictionary)
+        public SpecCoverageReportHandler(DataDictionary.Dictionary dictionary)
             : base(dictionary)
         {
             createFileName("SpecificationCoverageReport");
@@ -33,6 +32,23 @@ namespace Report.Specs
             AddNonCoveredParagraphs = false;
             AddReqRelated = false;
             ShowAssociatedParagraphs = false;
+        }
+
+        /// <summary>
+        /// Generates the file in the background thread
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            ReportBuilder builder = new ReportBuilder(EFSSystem);
+            if (!builder.BuildSpecsReport(this))
+            {
+                Log.ErrorFormat("Report creation failed");
+            }
+            else
+            {
+                displayReport();
+            }
         }
 
         public bool AddSpecification { set; get; }

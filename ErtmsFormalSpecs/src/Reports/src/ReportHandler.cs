@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System;
+using System.Diagnostics;
 using System.IO;
 using DataDictionary;
 
@@ -24,8 +25,10 @@ namespace Report
     /// (Name of the report, the path of the generated .pdf and
     /// the dictionary)
     /// </summary>
-    public class ReportConfig
+    public abstract class ReportHandler : Utils.ProgressHandler
     {
+        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Creates the full file name from a given title
         /// </summary>
@@ -44,7 +47,7 @@ namespace Report
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReportConfig(Dictionary dictionary)
+        public ReportHandler(Dictionary dictionary)
         {
             Name = "Report";
             createFileName("Report");
@@ -65,7 +68,17 @@ namespace Report
         /// The dictionary representing the model
         /// </summary>
         public Dictionary Dictionary { set; get; }
-    }
 
+        /// The system for which the report should be created
+        public virtual EFSSystem EFSSystem { get { return Dictionary.EFSSystem; } }
+
+        /// <summary>
+        /// Displays the generated report
+        /// </summary>
+        public void displayReport()
+        {
+            Process.Start(FileName);
+        }
+    }
 }
 

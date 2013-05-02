@@ -17,6 +17,7 @@ using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
+using Utils;
 
 namespace GUI
 {
@@ -28,19 +29,14 @@ namespace GUI
         /// <summary>
         /// The work to perform
         /// </summary>
-        private ParameterizedThreadStart work;
-        private ParameterizedThreadStart Work
-        {
-            get { return work; }
-            set { work = value; }
-        }
+        private ProgressHandler Work { get; set; }
 
         private void ManageCancel(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            Thread thread = new Thread(work);
-            thread.Start();
+            Thread thread = new Thread(Work.TreadStart);
+            thread.Start(Work);
 
             int percent = 0;
             while (thread.ThreadState != ThreadState.Stopped)
@@ -69,7 +65,7 @@ namespace GUI
         /// </summary>
         /// <param name="reason"></param>
         /// <param name="work"></param>
-        public ProgressDialog(string reason, ParameterizedThreadStart work)
+        public ProgressDialog(string reason, ProgressHandler work)
         {
             InitializeComponent();
 

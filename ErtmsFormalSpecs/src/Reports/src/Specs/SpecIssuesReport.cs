@@ -36,7 +36,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateSpecIssuesArticle(SpecIssuesReportConfig aReportConfig)
+        public void CreateSpecIssuesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Specification issues report");
             AddParagraph("This report describes the specification " + aReportConfig.Dictionary.Specifications.SpecIssues.Count + " issues encountered during modeling. ");
@@ -49,7 +49,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateDesignChoicesArticle(SpecIssuesReportConfig aReportConfig)
+        public void CreateDesignChoicesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Design choices report");
             AddParagraph("This report describes the " + aReportConfig.Dictionary.Specifications.SpecIssues.Count + " design choices made during modeling. ");

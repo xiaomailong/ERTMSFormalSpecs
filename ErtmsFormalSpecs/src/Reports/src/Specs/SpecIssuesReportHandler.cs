@@ -13,21 +13,39 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
 namespace Report.Specs
 {
-    public class SpecIssuesReportConfig : ReportConfig
+    using DataDictionary;
+
+    public class SpecIssuesReportHandler : ReportHandler
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public SpecIssuesReportConfig(DataDictionary.Dictionary dictionary)
+        public SpecIssuesReportHandler(DataDictionary.Dictionary dictionary)
             : base(dictionary)
         {
             createFileName("SpecificationIssuesReport");
             AddSpecIssues = false;
             AddDesignChoices = false;
+        }
+
+        /// <summary>
+        /// Generates the file in the background thread
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            ReportBuilder builder = new ReportBuilder(EFSSystem);
+            if (!builder.BuildSpecIssuesReport(this))
+            {
+                Log.ErrorFormat("Report creation failed");
+            }
+            else
+            {
+                displayReport();
+            }
         }
 
         public bool AddSpecIssues { set; get; }

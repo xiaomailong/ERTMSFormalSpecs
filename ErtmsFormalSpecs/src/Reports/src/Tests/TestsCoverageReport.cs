@@ -38,7 +38,7 @@ namespace Report.Tests
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateRequirementCoverageArticle(TestsCoverageReportConfig aReportConfig)
+        public void CreateRequirementCoverageArticle(TestsCoverageReportHandler aReportConfig)
         {
             AddSubParagraph("Test coverage");
 
@@ -149,7 +149,7 @@ namespace Report.Tests
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRules">The list that will contain the rules activated by this frame</param>
         /// <returns></returns>
-        public void CreateFrameArticle(Frame aFrame, TestsCoverageReportConfig aReportConfig, HashSet<RuleCondition> activatedRules)
+        public void CreateFrameArticle(Frame aFrame, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules)
         {
             AddSubParagraph("Frame " + aFrame.Name);
 
@@ -180,7 +180,7 @@ namespace Report.Tests
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRules">The list that will contain the rules activated by this sub sequence</param>
         /// <returns></returns>
-        public void CreateSubSequenceSection(SubSequence aSubSequence, TestsCoverageReportConfig aReportConfig, HashSet<RuleCondition> activatedRules, bool createPdf)
+        public void CreateSubSequenceSection(SubSequence aSubSequence, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules, bool createPdf)
         {
             AddSubParagraph("Sub sequence " + aSubSequence.Name);
 
@@ -213,7 +213,7 @@ namespace Report.Tests
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRuleConditions">The list that will contain the rules activated by this test case</param>
         /// <returns></returns>
-        public void CreateTestCaseSection(DataDictionary.Tests.Runner.Runner runner, TestCase aTestCase, TestsCoverageReportConfig aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
+        public void CreateTestCaseSection(DataDictionary.Tests.Runner.Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
         {
             AddSubParagraph("Test case " + aTestCase.Name);
 
@@ -278,7 +278,7 @@ namespace Report.Tests
         /// <param name="totalNumberOfRules">The total number of implemented rules in the dictionary</param>
         /// <param name="aReportConfig">The report config</param>
         /// <returns></returns>
-        private void CreateStepTable(DataDictionary.Tests.Runner.Runner runner, Step aStep, int totalNumberOfRules, List<RuleCondition> activatedRules, TestsCoverageReportConfig aReportConfig)
+        private void CreateStepTable(DataDictionary.Tests.Runner.Runner runner, Step aStep, int totalNumberOfRules, List<RuleCondition> activatedRules, TestsCoverageReportHandler aReportConfig)
         {
             AddParagraph(aStep.Name);
 

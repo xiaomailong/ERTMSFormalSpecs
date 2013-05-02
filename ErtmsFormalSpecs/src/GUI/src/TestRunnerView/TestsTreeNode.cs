@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
@@ -90,28 +91,58 @@ namespace GUI.TestRunnerView
             }
         }
 
-        /// <summary>
-        /// Interaction with the runner
-        /// </summary>
-        int failed = 0;
-
-        /// <summary>
-        /// Execution time span
-        /// </summary>
-        TimeSpan span;
-
-        /// <summary>
-        /// Executes the tests related to this frame
-        /// </summary>
-        /// <param name="args"></param>
-        private void ExecuteTests(object args)
+        #region Execute tests
+        private class ExecuteTestsHandler : Utils.ProgressHandler
         {
-            DateTime start = DateTime.Now;
+            /// <summary>
+            /// The window for which theses tests should be executed
+            /// </summary>
+            private Window Window { get; set; }
 
-            failed = Item.ExecuteAllTests();
-            Item.EFSSystem.Runner = null;
+            /// <summary>
+            /// The subsequence which should be executed
+            /// </summary>
+            private Dictionary Dictionary { get; set; }
 
-            span = DateTime.Now.Subtract(start);
+            /// <summary>
+            /// The EFS system 
+            /// </summary>
+            private EFSSystem EFSSystem { get { return Dictionary.EFSSystem; } }
+
+            /// <summary>
+            /// The number of failed tests
+            /// </summary>
+            public int Failed { get; private set; }
+
+            /// <summary>
+            /// The time span used to execute all tests
+            /// </summary>
+            public TimeSpan Span { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            /// <param name="dictionary"></param>
+            public ExecuteTestsHandler(Window window, Dictionary dictionary)
+            {
+                Window = window;
+                Dictionary = dictionary;
+            }
+
+            /// <summary>
+            /// Executes the tests in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                DateTime start = DateTime.Now;
+
+                Failed = Dictionary.ExecuteAllTests();
+                Dictionary.EFSSystem.Runner = null;
+
+                Span = DateTime.Now.Subtract(start);
+            }
         }
 
         /// <summary>
@@ -124,11 +155,13 @@ namespace GUI.TestRunnerView
             ClearAll();
             ClearMessages();
 
-            ProgressDialog dialog = new ProgressDialog("Executing test frames", ExecuteTests);
+            ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
+            ProgressDialog dialog = new ProgressDialog("Executing test frames", executeTestsHandler);
             dialog.ShowDialog();
             MainWindow.RefreshModel();
-            System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + failed + " test frame(s) failed.\nTest duration : " + Math.Round(span.TotalSeconds) + " seconds", "Execution report");
+            System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
         }
+        #endregion
 
 
         /// <summary>

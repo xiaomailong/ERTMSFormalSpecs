@@ -16,6 +16,7 @@
 namespace Importer
 {
     using System.Collections.Generic;
+    using DataDictionary.Specification;
     using Net.Sgoliver.NRtfTree.Core;
 
     /// <summary>
@@ -28,8 +29,36 @@ namespace Importer
     ///   - sets the paragraph as needing a manual review 
     ///   - invalidates the models to take this change into consideration
     /// </summary>
-    public class RtfDeltaImporter
+    public class RtfDeltaImporter : Utils.ProgressHandler
     {
+        /// <summary>
+        /// The file path of the original file
+        /// </summary>
+        private string OriginalFilePath { get; set; }
+
+        /// <summary>
+        /// The file path of the new file
+        /// </summary>
+        private string NewFilePath { get; set; }
+
+        /// <summary>
+        /// The specification to be udated
+        /// </summary>
+        private Specification Specifications { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="originalFilePath"></param>
+        /// <param name="newFilePath"></param>
+        /// <param name="specifications"></param>
+        public RtfDeltaImporter(string originalFilePath, string newFilePath, Specification specifications)
+        {
+            OriginalFilePath = originalFilePath;
+            NewFilePath = newFilePath;
+            Specifications = specifications;
+        }
+
         /// <summary>
         /// Stores data about the paragraphs found in the RTF document
         ///   - the paragraph ID
@@ -386,21 +415,6 @@ namespace Importer
         }
 
         /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="originalFilePath">The path of the original file</param>
-        /// <param name="newFilePath">The path of the new file</param>
-        public RtfDeltaImporter(string originalFilePath, string newFilePath, DataDictionary.Specification.Specification specifications)
-        {
-            Document originalDoc = new Document(originalFilePath);
-            Document newDoc = new Document(newFilePath);
-
-            newDoc.UpdateState(originalDoc);
-
-            PerformDelta(newDoc, specifications);
-        }
-
-        /// <summary>
         /// Performs the delta on the specification provided
         /// </summary>
         /// <param name="delta"></param>
@@ -450,6 +464,19 @@ namespace Importer
                     specifications.AddError("Cannot find paragraph " + p.Id + " for removal");
                 }
             }
+        }
+
+        /// <summary>
+        /// Executes the work in the background task
+        /// </summary>
+        public override void ExecuteWork()
+        {
+            Document originalDoc = new Document(OriginalFilePath);
+            Document newDoc = new Document(NewFilePath);
+
+            newDoc.UpdateState(originalDoc);
+
+            PerformDelta(newDoc, Specifications);
         }
     }
 }

@@ -17,7 +17,6 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using DataDictionary;
-using Report;
 using Report.Model;
 
 namespace GUI.Report
@@ -25,12 +24,7 @@ namespace GUI.Report
     public partial class ModelReport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ModelReportConfig reportConfig;
-
-        /// <summary>
-        /// The system for which this report is built
-        /// </summary>
-        public EFSSystem EFSSystem { get; private set; }
+        private ModelReportHandler reportHandler;
 
         /// <summary>
         /// Constructor
@@ -39,9 +33,8 @@ namespace GUI.Report
         public ModelReport(Dictionary dictionary)
         {
             InitializeComponent();
-            EFSSystem = dictionary.EFSSystem;
-            reportConfig = new ModelReportConfig(dictionary);
-            TxtB_Path.Text = reportConfig.FileName;
+            reportHandler = new ModelReportHandler(dictionary);
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -205,57 +198,38 @@ namespace GUI.Report
         /// <param name="e"></param>
         private void Btn_CreateReport_Click(object sender, EventArgs e)
         {
-            reportConfig.Name = "Model report";
+            reportHandler.Name = "Model report";
 
-            reportConfig.AddRanges = CB_AddRanges.Checked;
-            reportConfig.AddRangesDetails = CB_AddRangesDetails.Checked;
+            reportHandler.AddRanges = CB_AddRanges.Checked;
+            reportHandler.AddRangesDetails = CB_AddRangesDetails.Checked;
 
-            reportConfig.AddEnumerations = CB_AddEnumerations.Checked;
-            reportConfig.AddEnumerationsDetails = CB_AddEnumerationsDetails.Checked;
+            reportHandler.AddEnumerations = CB_AddEnumerations.Checked;
+            reportHandler.AddEnumerationsDetails = CB_AddEnumerationsDetails.Checked;
 
-            reportConfig.AddStructures = CB_AddStructures.Checked;
-            reportConfig.AddStructuresDetails = CB_AddStructuresDetails.Checked;
+            reportHandler.AddStructures = CB_AddStructures.Checked;
+            reportHandler.AddStructuresDetails = CB_AddStructuresDetails.Checked;
 
-            reportConfig.AddCollections = CB_AddCollections.Checked;
-            reportConfig.AddCollectionsDetails = CB_AddCollectionsDetails.Checked;
+            reportHandler.AddCollections = CB_AddCollections.Checked;
+            reportHandler.AddCollectionsDetails = CB_AddCollectionsDetails.Checked;
 
-            reportConfig.AddFunctions = CB_AddFunctions.Checked;
-            reportConfig.AddFunctionsDetails = CB_AddFunctionsDetails.Checked;
+            reportHandler.AddFunctions = CB_AddFunctions.Checked;
+            reportHandler.AddFunctionsDetails = CB_AddFunctionsDetails.Checked;
 
-            reportConfig.AddProcedures = CB_AddProcedures.Checked;
-            reportConfig.AddProceduresDetails = CB_AddProceduresDetails.Checked;
+            reportHandler.AddProcedures = CB_AddProcedures.Checked;
+            reportHandler.AddProceduresDetails = CB_AddProceduresDetails.Checked;
 
-            reportConfig.AddVariables = CB_AddVariables.Checked;
-            reportConfig.AddVariablesDetails = CB_AddVariablesDetails.Checked;
-            reportConfig.InOutFilter = CB_InOutFilter.Checked;
+            reportHandler.AddVariables = CB_AddVariables.Checked;
+            reportHandler.AddVariablesDetails = CB_AddVariablesDetails.Checked;
+            reportHandler.InOutFilter = CB_InOutFilter.Checked;
 
-            reportConfig.AddRules = CB_AddRules.Checked;
-            reportConfig.AddRulesDetails = CB_AddRulesDetails.Checked;
+            reportHandler.AddRules = CB_AddRules.Checked;
+            reportHandler.AddRulesDetails = CB_AddRulesDetails.Checked;
 
             Hide();
 
-            ProgressDialog dialog = new ProgressDialog("Generating report", GenerateFileHandler);
+            ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
             dialog.ShowDialog(Owner);
         }
-
-
-        /// <summary>
-        /// Generates the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void GenerateFileHandler(object arg)
-        {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildModelReport(reportConfig))
-            {
-                Log.ErrorFormat("Report creation failed");
-            }
-            else
-            {
-                ReportUtils.Utils.displayReport(reportConfig);
-            }
-        }
-
 
         /// <summary>
         /// Permits to select the name and the path of the report
@@ -268,8 +242,8 @@ namespace GUI.Report
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                reportConfig.FileName = saveFileDialog.FileName;
-                TxtB_Path.Text = reportConfig.FileName;
+                reportHandler.FileName = saveFileDialog.FileName;
+                TxtB_Path.Text = reportHandler.FileName;
             }
         }
     }

@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Utils;
 
 namespace GUI.TestRunnerView
 {
@@ -84,20 +85,39 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void TranslateHandler(object sender, EventArgs args)
         {
-            ProgressDialog progress = new ProgressDialog("Applying translation rules", ApplyRules);
+            ApplyRulesOperation applyRulesOperation = new ApplyRulesOperation(Item);
+            ProgressDialog progress = new ProgressDialog("Applying translation rules", applyRulesOperation);
             progress.ShowDialog(MainWindow);
             MainWindow.RefreshModel();
         }
 
-        /// <summary>
-        /// Worker task to apply the translation rules
-        /// </summary>
-        /// <param name="arg"></param>
-        private void ApplyRules(object arg)
+        #region Apply rules
+        private class ApplyRulesOperation : ProgressHandler
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
-            Item.Translate(Item.Dictionary.TranslationDictionary);
+            /// <summary>
+            /// The frams on which the rules should be applied
+            /// </summary>
+            private DataDictionary.Tests.Frame Frame { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="frame"></param>
+            public ApplyRulesOperation(DataDictionary.Tests.Frame frame)
+            {
+                Frame = frame;
+            }
+
+            /// <summary>
+            /// Perform the work as a background task
+            /// </summary>
+            public override void ExecuteWork()
+            {
+                Utils.FinderRepository.INSTANCE.ClearCache();
+                Frame.Translate(Frame.Dictionary.TranslationDictionary);
+            }
         }
+        #endregion
 
         public void AddHandler(object sender, EventArgs args)
         {
@@ -116,32 +136,56 @@ namespace GUI.TestRunnerView
             }
         }
 
-        /// <summary>
-        /// Interaction with the runner
-        /// </summary>
-        int failed = 0;
-
-        /// <summary>
-        /// Execution time span
-        /// </summary>
-        TimeSpan span;
-
-        /// <summary>
-        /// Executes the tests related to this frame
-        /// </summary>
-        /// <param name="args"></param>
-        private void ExecuteTests(object args)
+        #region ExecuteTests
+        private class ExecuteTestsOperation : ProgressHandler
         {
-            DateTime start = DateTime.Now;
+            /// <summary>
+            /// The number of failed tests 
+            /// </summary>
+            public int Failed { get; private set; }
 
-            Window window = BaseForm as Window;
-            if (window != null)
+            /// <summary>
+            /// Execution time span
+            /// </summary>
+            public TimeSpan Span { get; private set; }
+
+            /// <summary>
+            /// The window in which the tests are executed
+            /// </summary>
+            private Window Window { get; set; }
+
+            /// <summary>
+            /// The frame to test
+            /// </summary>
+            private DataDictionary.Tests.Frame Frame { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            /// <param name="frame"></param>
+            public ExecuteTestsOperation(Window window, DataDictionary.Tests.Frame frame)
             {
-                window.setFrame(Item);
-                failed = Item.ExecuteAllTests();
+                Window = window;
+                Frame = frame;
             }
 
-            span = DateTime.Now.Subtract(start);
+            /// <summary>
+            /// Executes the work in the background task
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                DateTime start = DateTime.Now;
+
+                if (Window != null)
+                {
+                    Window.setFrame(Frame);
+                    Failed = Frame.ExecuteAllTests();
+                }
+
+                Span = DateTime.Now.Subtract(start);
+            }
         }
 
         /// <summary>
@@ -154,15 +198,9 @@ namespace GUI.TestRunnerView
             ClearAll();
             ClearMessages();
 
-            if (TestTreeView.SHOW_DIALOG)
-            {
-                ProgressDialog dialog = new ProgressDialog("Executing test sequences", ExecuteTests);
-                dialog.ShowDialog();
-            }
-            else
-            {
-                ExecuteTests(null);
-            }
+            ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
+            ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
+            dialog.ShowDialog();
 
             MainWindow.RefreshModel();
             string runtimeErrors = "";
@@ -170,8 +208,10 @@ namespace GUI.TestRunnerView
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }
-            System.Windows.Forms.MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(span.TotalSeconds) + " seconds", "Execution report");
+            System.Windows.Forms.MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
         }
+
+        #endregion
 
         /// <summary>
         /// Handles a run event on this frame and creates the associated report

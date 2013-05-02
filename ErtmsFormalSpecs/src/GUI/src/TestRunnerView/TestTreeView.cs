@@ -1,17 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace GUI.TestRunnerView
 {
     public class TestTreeView : TypedTreeView<DataDictionary.EFSSystem>
     {
-        /// <summary>
-        /// Indicates that the 'progress' dialog should be displayed
-        /// </summary>
-        public static bool SHOW_DIALOG = true;
-
         /// <summary>
         /// The tests tree node
         /// </summary>

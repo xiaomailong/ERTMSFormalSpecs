@@ -17,14 +17,56 @@ using DataDictionary.Tests;
 
 namespace Report.Tests
 {
-    public class TestsCoverageReportConfig : ReportConfig
+    using DataDictionary;
+
+    public class TestsCoverageReportHandler : ReportHandler
     {
+        /// <summary>
+        /// The system for which this report is built
+        /// </summary>
+        private EFSSystem __efsSystem;
+        public override EFSSystem EFSSystem
+        {
+            get
+            {
+                EFSSystem retVal;
+
+                if (Dictionary == null)
+                {
+                    retVal = __efsSystem;
+                }
+                else
+                {
+                    retVal = base.EFSSystem;
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="system"></param>
+        public TestsCoverageReportHandler(EFSSystem system)
+            : base(null)
+        {
+            __efsSystem = system;
+
+            init();
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public TestsCoverageReportConfig(DataDictionary.Dictionary dictionary)
+        public TestsCoverageReportHandler(Dictionary dictionary)
             : base(dictionary)
+        {
+            init();
+        }
+
+        private void init()
         {
             createFileName("DynamicTestCoverageReport");
 
@@ -45,6 +87,23 @@ namespace Report.Tests
             AddNonCoveredRulesInSteps = false;
 
             AddLog = false;
+        }
+
+        /// <summary>
+        /// Generates the file in the background thread
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            ReportBuilder builder = new ReportBuilder(EFSSystem);
+            if (!builder.BuildTestsReport(this))
+            {
+                Log.ErrorFormat("Report creation failed");
+            }
+            else
+            {
+                displayReport();
+            }
         }
 
         public bool AddFrames { set; get; }

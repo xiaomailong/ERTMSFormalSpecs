@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DataDictionary;
+using Utils;
 
 namespace GUI
 {
@@ -342,19 +344,10 @@ namespace GUI
             base.Refresh();
         }
 
+        #region OpenFile
         /// ------------------------------------------------------
         ///    OPEN OPERATIONS
         /// ------------------------------------------------------
-
-        /// <summary>
-        /// The name of the file to open
-        /// </summary>
-        private string fileName;
-
-        /// <summary>
-        /// Provides the dictionary to be openend after the load operation
-        /// </summary>
-        private DataDictionary.Dictionary pleaseOpenDictionary;
 
         /// <summary>
         /// The efs system
@@ -364,13 +357,41 @@ namespace GUI
             get { return DataDictionary.EFSSystem.INSTANCE; }
         }
 
-        /// <summary>
-        /// Opens the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void OpenFileHandler(object arg)
+        private class OpenFileOperation : ProgressHandler
         {
-            pleaseOpenDictionary = DataDictionary.Util.load(fileName, EFSSystem);
+            /// <summary>
+            /// The name of the file to open
+            /// </summary>
+            private string FileName { get; set; }
+
+            /// <summary>
+            /// The system in which the dictionary should be loaded
+            /// </summary>
+            private DataDictionary.EFSSystem System { get; set; }
+
+            /// <summary>
+            /// The dictionary that has been opened
+            /// </summary>
+            public DataDictionary.Dictionary Dictionary { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="fileName"></param>
+            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system)
+            {
+                FileName = fileName;
+                System = system;
+            }
+
+            /// <summary>
+            /// Performs the job as a background task
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                Dictionary = DataDictionary.Util.load(FileName, System);
+            }
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -382,29 +403,30 @@ namespace GUI
             {
                 try
                 {
-                    fileName = openFileDialog.FileName;
-                    ProgressDialog dialog = new ProgressDialog("Opening file", OpenFileHandler);
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem);
+                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
                     dialog.ShowDialog();
 
                     // Open the windows
-                    if (pleaseOpenDictionary != null)
+                    if (openFileOperation.Dictionary != null)
                     {
+                        DataDictionary.Dictionary dictionary = openFileOperation.Dictionary;
                         DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
 
                         // Only open the specification window if specifications are available in the opened file
-                        if (pleaseOpenDictionary.Specifications != null && pleaseOpenDictionary.Specifications.AllParagraphs.Count > 0)
+                        if (dictionary.Specifications != null && dictionary.Specifications.AllParagraphs.Count > 0)
                         {
-                            AddChildWindow(new SpecificationView.Window(pleaseOpenDictionary));
+                            AddChildWindow(new SpecificationView.Window(dictionary));
                         }
 
                         // Only open the model view window if model elements are available in the opened file
-                        if (pleaseOpenDictionary.NameSpaces.Count > 0)
+                        if (dictionary.NameSpaces.Count > 0)
                         {
-                            AddChildWindow(new DataDictionaryView.Window(pleaseOpenDictionary));
+                            AddChildWindow(new DataDictionaryView.Window(dictionary));
                         }
 
                         // Only shold the tests window if tests are defined in the opened file
-                        if (pleaseOpenDictionary.Tests.Count > 0)
+                        if (dictionary.Tests.Count > 0)
                         {
                             IBaseForm testWindow = TestWindow;
                             if (testWindow == null)
@@ -418,12 +440,11 @@ namespace GUI
                         }
 
                         // Only open the shortcuts window if there are some shortcuts defined
-                        if (pleaseOpenDictionary.ShortcutsDictionary != null)
+                        if (dictionary.ShortcutsDictionary != null)
                         {
                             IBaseForm shortcutsWindow = ShortcutsWindow;
                             if (shortcutsWindow == null)
                             {
-                                DataDictionary.Dictionary dictionary = GetActiveDictionary();
                                 if (dictionary != null)
                                 {
                                     Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
@@ -450,50 +471,90 @@ namespace GUI
                 Refresh();
             }
         }
+        #endregion
 
+        #region SaveFile
         /// ------------------------------------------------------
         ///    SAVE OPERATIONS
         /// ------------------------------------------------------
 
         /// <summary>
-        /// Indicates the dictionary to be saved
+        /// A save file configuration
         /// </summary>
-        private DataDictionary.Dictionary pleaseSaveDictionary;
-
-        /// <summary>
-        /// Saves the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void SaveFileHandler(object arg)
+        private class SaveOperation : ProgressHandler
         {
-            DataDictionary.Util.UnlockAllFiles();
+            /// <summary>
+            /// The form that invoked this progress handler
+            /// </summary>
+            private MainWindow MainWindow { get; set; }
 
-            try
+            /// <summary>
+            /// The dictionary to save
+            /// </summary>
+            private DataDictionary.Dictionary Dictionary { get; set; }
+
+            /// <summary>
+            /// The system to save
+            /// </summary>
+            private DataDictionary.EFSSystem System { get; set; }
+
+            /// <summary>
+            /// Constructor used to save a single dictionary
+            /// </summary>
+            /// <param name="mainWindow"></param>
+            /// <param name="dictionary"></param>
+            public SaveOperation(MainWindow mainWindow, DataDictionary.Dictionary dictionary)
             {
-                if (pleaseSaveDictionary != null)
+                MainWindow = mainWindow;
+                Dictionary = dictionary;
+            }
+
+            /// <summary>
+            /// Constructor used to save to complete system
+            /// </summary>
+            /// <param name="mainWindow"></param>
+            /// <param name="system"></param>
+            public SaveOperation(MainWindow mainWindow, DataDictionary.EFSSystem system)
+            {
+                MainWindow = mainWindow;
+                System = system;
+            }
+
+            /// <summary>
+            /// Performs the job as a background task
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                DataDictionary.Util.UnlockAllFiles();
+
+                try
                 {
-                    pleaseSaveDictionary.save();
-                    pleaseSaveDictionary = null;
-                }
-                else
-                {
-                    // Save all dictionaries
-                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                    if (Dictionary != null)
                     {
-                        dictionary.save();
+                        Dictionary.save();
+                    }
+                    else
+                    {
+                        // Save all dictionaries
+                        foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
+                        {
+                            dictionary.save();
+                        }
                     }
                 }
-            }
-            finally
-            {
-                DataDictionary.Util.LockAllFiles();
-                EFSSystem.ShouldSave = false;
-                Invoke((MethodInvoker)delegate
+                finally
                 {
-                    UpdateTitle();
-                });
+                    DataDictionary.Util.LockAllFiles();
+                    System.ShouldSave = false;
+                    MainWindow.Invoke((MethodInvoker)delegate
+                    {
+                        MainWindow.UpdateTitle();
+                    });
+                }
             }
         }
+
 
         /// <summary>
         /// Provides the dictionary on which operation should be performed
@@ -536,8 +597,8 @@ namespace GUI
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     activeDictionary.FilePath = saveFileDialog.FileName;
-                    pleaseSaveDictionary = activeDictionary;
-                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, SaveFileHandler);
+                    SaveOperation saveOperation = new SaveOperation(this, activeDictionary);
+                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation);
                     dialog.ShowDialog();
                 }
             }
@@ -547,8 +608,8 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                pleaseSaveDictionary = dictionary;
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, SaveFileHandler);
+                SaveOperation saveOperation = new SaveOperation(this, dictionary);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
                 dialog.ShowDialog();
             }
         }
@@ -557,11 +618,12 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                pleaseSaveDictionary = dictionary;
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, SaveFileHandler);
+                SaveOperation saveOperation = new SaveOperation(this, dictionary);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
                 dialog.ShowDialog();
             }
         }
+        #endregion
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -571,7 +633,7 @@ namespace GUI
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:
-                        ProgressDialog dialog = new ProgressDialog("Saving files", SaveFileHandler);
+                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem));
                         dialog.ShowDialog();
                         break;
 
@@ -669,32 +731,52 @@ namespace GUI
             }
         }
 
-        /// <summary>
-        /// Checks the model in the progress dialog worker task
-        /// </summary>
-        /// <param name="arg"></param>
-        private void CheckModelHandler(object arg)
+        #region Check model
+        private class CheckModelHandler : Utils.ProgressHandler
         {
-            DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
-            try
+            /// <summary>
+            /// The system on which the check is performed
+            /// </summary>
+            private EFSSystem EFSSystem { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="system"></param>
+            public CheckModelHandler(EFSSystem system)
             {
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-                {
-                    dictionary.CheckRules();
-                }
+                EFSSystem = system;
             }
-            finally
+
+            /// <summary>
+            /// Generates the file in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                try
+                {
+                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                    {
+                        dictionary.CheckRules();
+                    }
+                }
+                finally
+                {
+                    DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                }
             }
         }
 
         private void checkModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProgressDialog dialog = new ProgressDialog("Check model", CheckModelHandler);
+            CheckModelHandler checkModelHandler = new CheckModelHandler(EFSSystem);
+            ProgressDialog dialog = new ProgressDialog("Check model", checkModelHandler);
             dialog.ShowDialog();
             Refresh();
         }
+        #endregion
 
         private void implementedToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -861,56 +943,99 @@ namespace GUI
                 openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
                 if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    string FileName = openFileDialog.FileName;
+                    string OriginalFileName = openFileDialog.FileName;
                     openFileDialog.Title = "Open new specification file";
                     openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
                     if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                     {
                         string NewFileName = openFileDialog.FileName;
-                        Importer.RtfDeltaImporter importer = new Importer.RtfDeltaImporter(FileName, NewFileName, dictionary.Specifications);
+
+                        Importer.RtfDeltaImporter importer = new Importer.RtfDeltaImporter(OriginalFileName, NewFileName, dictionary.Specifications);
+                        ProgressDialog dialog = new ProgressDialog("Opening file", importer);
+                        dialog.ShowDialog();
+
                         RefreshModel();
                     }
                 }
             }
         }
 
+        #region Import test database
         /// ------------------------------------------------------
         ///    IMPORT TEST DATABASE OPERATIONS
         /// ------------------------------------------------------
-
-        /// <summary>
-        /// The name of the frame for the subset 76
-        /// </summary>
-        private static string SUBSET_076 = "Subset-076";
-
-        /// <summary>
-        /// The password requireed to access the database
-        /// </summary>
-        private static string DB_PASSWORD = "papagayo";
-
-        /// <summary>
-        /// The dictionary in which the database should be imported
-        /// </summary>
-        private DataDictionary.Dictionary pleaseImportDatabase;
-
-        /// <summary>
-        /// Imports a database in a progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void ImportDataBase(object arg)
+        private class ImportTestDataBaseHandler : Utils.ProgressHandler
         {
-            Importers.TestImporter importer = new Importers.TestImporter(fileName, DB_PASSWORD);
+            /// <summary>
+            /// The name of the frame for the subset 76
+            /// </summary>
+            private static string SUBSET_076 = "Subset-076";
 
-            DataDictionary.Tests.Frame frame = pleaseImportDatabase.findFrame(SUBSET_076);
-            if (frame == null)
+            /// <summary>
+            /// The password requireed to access the database
+            /// </summary>
+            private static string DB_PASSWORD = "papagayo";
+
+            /// <summary>
+            /// The dictionary in which the database should be imported
+            /// </summary>
+            private DataDictionary.Dictionary Dictionary;
+
+            /// <summary>
+            /// The name of the database to import
+            /// </summary>
+            private string FileName { get; set; }
+
+            /// <summary>
+            /// Should we import a file, or a directory containing a set of files?
+            /// </summary>
+            public enum Mode { File, Directory };
+
+            /// <summary>
+            /// The import mode
+            /// </summary>
+            private Mode ImportMode { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="fileName"></param>
+            /// <param name="dictionary"></param>
+            public ImportTestDataBaseHandler(string fileName, Dictionary dictionary, Mode mode)
             {
-                frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
-                frame.Name = SUBSET_076;
-                pleaseImportDatabase.appendTests(frame);
+                FileName = fileName;
+                Dictionary = dictionary;
+                ImportMode = mode;
             }
 
-            importer.Import(frame);
-            pleaseImportDatabase = null;
+            /// <summary>
+            /// Generates the file in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                DataDictionary.Tests.Frame frame = Dictionary.findFrame(SUBSET_076);
+                if (frame == null)
+                {
+                    frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+                    frame.Name = SUBSET_076;
+                    Dictionary.appendTests(frame);
+                }
+
+                if (ImportMode == Mode.File)
+                {
+                    Importers.TestImporter importer = new Importers.TestImporter(FileName, DB_PASSWORD);
+                    importer.Import(frame);
+                }
+                else
+                {
+                    foreach (string fName in System.IO.Directory.GetFiles(FileName, "*.mdb"))
+                    {
+                        Importers.TestImporter importer = new Importers.TestImporter(fName, DB_PASSWORD);
+                        importer.Import(frame);
+                    }
+                }
+            }
         }
 
         private void importDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -923,10 +1048,10 @@ namespace GUI
                 openFileDialog.Filter = "Access Files (*.mdb)|*.mdb";
                 if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    fileName = openFileDialog.FileName;
-                    pleaseImportDatabase = dictionary;
-                    ProgressDialog dialog = new ProgressDialog("Import database", ImportDataBase);
+                    ImportTestDataBaseHandler importTestDataBaseHandler = new ImportTestDataBaseHandler(openFileDialog.FileName, dictionary, ImportTestDataBaseHandler.Mode.File);
+                    ProgressDialog dialog = new ProgressDialog("Import database", importTestDataBaseHandler);
                     dialog.ShowDialog();
+
                     // Updates the test tree view data
                     if (TestWindow != null)
                     {
@@ -934,28 +1059,6 @@ namespace GUI
                         Refresh();
                     }
                 }
-            }
-        }
-
-        /// <summary>
-        /// Imports a database directory in a progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void ImportDataBaseDirectory(object arg)
-        {
-            DataDictionary.Tests.Frame frame = pleaseImportDatabase.findFrame(SUBSET_076);
-            if (frame == null)
-            {
-                frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
-                frame.Name = SUBSET_076;
-                pleaseImportDatabase.appendTests(frame);
-            }
-
-            foreach (string fName in System.IO.Directory.GetFiles(fileName, "*.mdb"))
-            {
-                Importers.TestImporter importer = new Importers.TestImporter(fName, DB_PASSWORD);
-
-                importer.Import(frame);
             }
         }
 
@@ -967,11 +1070,10 @@ namespace GUI
                 FolderBrowserDialog selectFolderDialog = new FolderBrowserDialog();
                 if (selectFolderDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    fileName = selectFolderDialog.SelectedPath;
-
-                    pleaseImportDatabase = dictionary;
-                    ProgressDialog dialog = new ProgressDialog("Import database directory", ImportDataBaseDirectory);
+                    ImportTestDataBaseHandler importTestDataBaseHandler = new ImportTestDataBaseHandler(selectFolderDialog.SelectedPath, dictionary, ImportTestDataBaseHandler.Mode.Directory);
+                    ProgressDialog dialog = new ProgressDialog("Import database directory", importTestDataBaseHandler);
                     dialog.ShowDialog();
+
                     // Updates the test tree view data
                     if (TestWindow != null)
                     {
@@ -981,6 +1083,7 @@ namespace GUI
                 }
             }
         }
+        #endregion
 
         private void showTranslationRulesToolStripMenuItem_Click(object sender, EventArgs e)
         {

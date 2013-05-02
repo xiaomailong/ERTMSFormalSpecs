@@ -13,12 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
 namespace Report.Model
 {
-    public class ModelReportConfig : ReportConfig
+    using DataDictionary;
+
+    public class ModelReportHandler : ReportHandler
     {
-        public ModelReportConfig(DataDictionary.Dictionary aDictionary)
+        public ModelReportHandler(DataDictionary.Dictionary aDictionary)
             : base(aDictionary)
         {
             createFileName("ModelReport");
@@ -38,6 +39,23 @@ namespace Report.Model
             AddVariablesDetails = false;
             AddRules = false;
             AddRulesDetails = false;
+        }
+
+        /// <summary>
+        /// Generates the file in the background task
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            ReportBuilder builder = new ReportBuilder(EFSSystem);
+            if (!builder.BuildModelReport(this))
+            {
+                Log.ErrorFormat("Report creation failed");
+            }
+            else
+            {
+                displayReport();
+            }
         }
 
         public bool AddRanges { set; get; }

@@ -18,6 +18,7 @@ using System.Collections;
 using System.Windows.Forms;
 using Report;
 using Report.Tests;
+using DataDictionary;
 
 
 namespace GUI.Report
@@ -25,7 +26,7 @@ namespace GUI.Report
     public partial class TestReport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private TestsCoverageReportConfig reportConfig;
+        private TestsCoverageReportHandler reportHandler;
         private int currentLevel; // level in filters (frame = 1, sub sequence = 2, test case = 3)
 
         /// <summary>
@@ -40,8 +41,8 @@ namespace GUI.Report
         public TestReport(DataDictionary.EFSSystem efsSystem)
         {
             InitializeComponent();
-            reportConfig = new TestsCoverageReportConfig(null);
-            TxtB_Path.Text = reportConfig.FileName;
+            reportHandler = new TestsCoverageReportHandler((Dictionary)null);
+            TxtB_Path.Text = reportHandler.FileName;
             EFSSystem = efsSystem;
         }
 
@@ -54,10 +55,10 @@ namespace GUI.Report
         {
             InitializeComponent();
             EFSSystem = aDictionary.EFSSystem;
-            reportConfig = new TestsCoverageReportConfig(aDictionary);
-            reportConfig.Dictionary = aDictionary;
+            reportHandler = new TestsCoverageReportHandler(aDictionary);
+            reportHandler.Dictionary = aDictionary;
             InitializeCheckBoxes(1);
-            TxtB_Path.Text = reportConfig.FileName;
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -69,10 +70,10 @@ namespace GUI.Report
         {
             InitializeComponent();
             EFSSystem = aFrame.EFSSystem;
-            reportConfig = new TestsCoverageReportConfig(aFrame.Dictionary);
-            reportConfig.Frame = aFrame;
+            reportHandler = new TestsCoverageReportHandler(aFrame.Dictionary);
+            reportHandler.Frame = aFrame;
             InitializeCheckBoxes(1);
-            TxtB_Path.Text = reportConfig.FileName;
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -84,10 +85,10 @@ namespace GUI.Report
         {
             InitializeComponent();
             EFSSystem = aSubSequence.EFSSystem;
-            reportConfig = new TestsCoverageReportConfig(aSubSequence.Dictionary);
-            reportConfig.SubSequence = aSubSequence;
+            reportHandler = new TestsCoverageReportHandler(aSubSequence.Dictionary);
+            reportHandler.SubSequence = aSubSequence;
             InitializeCheckBoxes(2);
-            TxtB_Path.Text = reportConfig.FileName;
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -99,10 +100,10 @@ namespace GUI.Report
         {
             InitializeComponent();
             EFSSystem = aTestCase.EFSSystem;
-            reportConfig = new TestsCoverageReportConfig(aTestCase.Dictionary);
-            reportConfig.TestCase = aTestCase;
+            reportHandler = new TestsCoverageReportHandler(aTestCase.Dictionary);
+            reportHandler.TestCase = aTestCase;
             InitializeCheckBoxes(3);
-            TxtB_Path.Text = reportConfig.FileName;
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -244,49 +245,32 @@ namespace GUI.Report
         /// <param name="e"></param>
         private void Btn_CreateReport_Click(object sender, EventArgs e)
         {
-            reportConfig.Name = "Tests coverage report";
+            reportHandler.Name = "Tests coverage report";
 
-            reportConfig.AddFrames = CB_Frames.Checked;
-            reportConfig.AddActivatedRulesInFrames = CB_ActivatedRulesInFrames.Checked;
-            reportConfig.AddNonCoveredRulesInFrames = CB_NonCoveredRulesInFrames.Checked;
+            reportHandler.AddFrames = CB_Frames.Checked;
+            reportHandler.AddActivatedRulesInFrames = CB_ActivatedRulesInFrames.Checked;
+            reportHandler.AddNonCoveredRulesInFrames = CB_NonCoveredRulesInFrames.Checked;
 
-            reportConfig.AddSubSequences = CB_SubSequences.Checked;
-            reportConfig.AddActivatedRulesInSubSequences = CB_ActivatedRulesInSubSequences.Checked;
-            reportConfig.AddNonCoveredRulesInSubSequences = CB_NonCoveredRulesInSubSequences.Checked;
+            reportHandler.AddSubSequences = CB_SubSequences.Checked;
+            reportHandler.AddActivatedRulesInSubSequences = CB_ActivatedRulesInSubSequences.Checked;
+            reportHandler.AddNonCoveredRulesInSubSequences = CB_NonCoveredRulesInSubSequences.Checked;
 
-            reportConfig.AddTestCases = CB_TestCases.Checked;
-            reportConfig.AddActivatedRulesInTestCases = CB_ActivatedRulesInTestCases.Checked;
-            reportConfig.AddNonCoveredRulesInTestCases = CB_NonCoveredRulesInTestCases.Checked;
+            reportHandler.AddTestCases = CB_TestCases.Checked;
+            reportHandler.AddActivatedRulesInTestCases = CB_ActivatedRulesInTestCases.Checked;
+            reportHandler.AddNonCoveredRulesInTestCases = CB_NonCoveredRulesInTestCases.Checked;
 
-            reportConfig.AddSteps = CB_Steps.Checked;
-            reportConfig.AddActivatedRulesInSteps = CB_ActivatedRulesInSteps.Checked;
-            reportConfig.AddNonCoveredRulesInSteps = CB_NonCoveredRulesInSteps.Checked;
+            reportHandler.AddSteps = CB_Steps.Checked;
+            reportHandler.AddActivatedRulesInSteps = CB_ActivatedRulesInSteps.Checked;
+            reportHandler.AddNonCoveredRulesInSteps = CB_NonCoveredRulesInSteps.Checked;
 
-            reportConfig.AddLog = CB_Log.Checked;
+            reportHandler.AddLog = CB_Log.Checked;
 
             Hide();
 
-            ProgressDialog dialog = new ProgressDialog("Generating report", GenerateFileHandler);
+            ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
             dialog.ShowDialog(Owner);
         }
 
-
-        /// <summary>
-        /// Generates the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void GenerateFileHandler(object arg)
-        {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildTestsReport(reportConfig))
-            {
-                Log.ErrorFormat("Report creation failed");
-            }
-            else
-            {
-                ReportUtils.Utils.displayReport(reportConfig);
-            }
-        }
 
 
         /// <summary>
@@ -300,8 +284,8 @@ namespace GUI.Report
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                reportConfig.FileName = saveFileDialog.FileName;
-                TxtB_Path.Text = reportConfig.FileName;
+                reportHandler.FileName = saveFileDialog.FileName;
+                TxtB_Path.Text = reportHandler.FileName;
             }
         }
     }

@@ -23,7 +23,7 @@ namespace ReportUtils
 {
     public static class Utils
     {
-        public static void displayReport(ReportConfig config)
+        public static void displayReport(ReportHandler config)
         {
             try
             {

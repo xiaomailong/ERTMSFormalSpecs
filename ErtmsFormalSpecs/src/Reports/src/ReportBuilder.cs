@@ -48,7 +48,7 @@ namespace Report
         /// <param name="efsSystem">The system for which the report is created</param>
         /// <param name="aReportConfig">Report config containing user's choices</param>
         /// <returns></returns>
-        public bool BuildTestsReport(TestsCoverageReportConfig aReportConfig)
+        public bool BuildTestsReport(TestsCoverageReportHandler aReportConfig)
         {
             bool retVal = false;
 
@@ -103,7 +103,7 @@ namespace Report
         /// </summary>
         /// <param name="aReportConfig">Report config containing user's choices</param>
         /// <returns></returns>
-        public bool BuildSpecsReport(SpecCoverageReportConfig aReportConfig)
+        public bool BuildSpecsReport(SpecCoverageReportHandler aReportConfig)
         {
             bool retVal = false;
 
@@ -149,7 +149,7 @@ namespace Report
         /// </summary>
         /// <param name="aReportConfig">Report config containing user's choices</param>
         /// <returns></returns>
-        public bool BuildSpecIssuesReport(SpecIssuesReportConfig aReportConfig)
+        public bool BuildSpecIssuesReport(SpecIssuesReportHandler aReportConfig)
         {
             bool retVal = false;
 
@@ -185,7 +185,7 @@ namespace Report
         /// </summary>
         /// <param name="aReportConfig">Report config containing user's choices</param>
         /// <returns></returns>
-        public bool BuildModelReport(ModelReportConfig aReportConfig)
+        public bool BuildModelReport(ModelReportHandler aReportConfig)
         {
             bool retVal = false;
 
@@ -208,7 +208,7 @@ namespace Report
             return retVal;
         }
 
-        public void CreateNamespaceSection(ModelReport report, DataDictionary.Types.NameSpace aNameSpace, ModelReportConfig aReportConfig)
+        public void CreateNamespaceSection(ModelReport report, DataDictionary.Types.NameSpace aNameSpace, ModelReportHandler aReportConfig)
         {
             Log.Info("..generating name space " + aNameSpace.Name);
 
@@ -264,7 +264,7 @@ namespace Report
         /// <param name="aBook">The book to be created</param>
         /// <param name="aReportConfig">The report config with user's choices</param>
         /// <returns></returns>
-        private bool GenerateOutputFile(Document document, ReportConfig aReportConfig)
+        private bool GenerateOutputFile(Document document, ReportHandler aReportConfig)
         {
             bool retVal = false;
 
