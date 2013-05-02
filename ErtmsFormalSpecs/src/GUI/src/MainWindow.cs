@@ -507,6 +507,7 @@ namespace GUI
             {
                 MainWindow = mainWindow;
                 Dictionary = dictionary;
+                System = Dictionary.EFSSystem;
             }
 
             /// <summary>
