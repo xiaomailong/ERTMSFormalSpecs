@@ -247,7 +247,7 @@ namespace DataDictionary.Interpreter
             if (subDeclarator != null)
             {
                 List<Utils.INamable> tmp = new List<Utils.INamable>();
-                subDeclarator.find(Image, tmp);
+                subDeclarator.Find(Image, tmp);
                 foreach (Utils.INamable namable in tmp)
                 {
                     addReference(namable, expectation, values);

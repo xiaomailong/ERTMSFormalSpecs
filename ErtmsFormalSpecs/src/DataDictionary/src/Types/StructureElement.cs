@@ -35,6 +35,13 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+        }
+
+        /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
@@ -58,12 +65,12 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             if (Type is Structure)
             {
                 Structure structure = Type as Structure;
-                structure.find(name, retVal);
+                structure.Find(name, retVal);
             }
         }
 

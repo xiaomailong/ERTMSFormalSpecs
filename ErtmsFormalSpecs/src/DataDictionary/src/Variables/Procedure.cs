@@ -76,6 +76,13 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+        }
+
+        /// <summary>
         /// The elements declared by this variable
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
@@ -99,7 +106,7 @@ namespace DataDictionary.Variables
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             if (CurrentState != null && CurrentState.Name.CompareTo(name) == 0)
             {
@@ -107,7 +114,7 @@ namespace DataDictionary.Variables
             }
             else
             {
-                StateMachine.find(name, retVal);
+                StateMachine.Find(name, retVal);
             }
 
             foreach (Parameter item in FormalParameters)

@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Interpreter.ListOperators
 {
@@ -58,19 +59,28 @@ namespace DataDictionary.Interpreter.ListOperators
         public ListOperatorExpression(ModelElement root, Expression listExpression)
             : base(root)
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
-
             ListExpression = listExpression;
             ListExpression.Enclosing = this;
 
             IteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             IteratorVariable.Enclosing = this;
             IteratorVariable.Name = "X";
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, IteratorVariable);
 
             PreviousIteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             PreviousIteratorVariable.Enclosing = this;
             PreviousIteratorVariable.Name = "prevX";
+
+            InitDeclaredElements();
+        }
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            DeclaredElements = new Dictionary<string, List<INamable>>();
+
+            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, IteratorVariable);
             Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, PreviousIteratorVariable);
         }
 
@@ -84,7 +94,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }

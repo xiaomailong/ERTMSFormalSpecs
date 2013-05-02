@@ -205,6 +205,13 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+        }
+
+        /// <summary>
         /// The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
@@ -227,7 +234,7 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             Utils.INamable namable = null;
 

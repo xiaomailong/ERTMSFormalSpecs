@@ -233,6 +233,13 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+        }
+
+        /// <summary>
         /// Provides all the states available through this state
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
@@ -248,9 +255,9 @@ namespace DataDictionary.Constants
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
-            StateMachine.find(name, retVal);
+            StateMachine.Find(name, retVal);
         }
 
         /// <summary>

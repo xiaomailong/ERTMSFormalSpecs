@@ -26,6 +26,13 @@ namespace DataDictionary.Variables
         private bool BuildingDeclaredElements = false;
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+        }
+
+        /// <summary>
         /// The elements declared by this variable
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
@@ -85,7 +92,7 @@ namespace DataDictionary.Variables
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             if (!BuildingDeclaredElements)
             {
@@ -96,7 +103,7 @@ namespace DataDictionary.Variables
                     Values.StructureValue structureValue = Value as Values.StructureValue;
                     if (structureValue != null)
                     {
-                        structureValue.find(name, retVal);
+                        structureValue.Find(name, retVal);
                     }
 
                     // Dereference of an empty value holds the empty value

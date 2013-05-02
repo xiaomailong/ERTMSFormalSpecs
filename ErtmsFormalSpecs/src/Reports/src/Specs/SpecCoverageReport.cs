@@ -42,7 +42,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateSpecificationArticle(SpecCoverageReportConfig aReportConfig)
+        public void CreateSpecificationArticle(SpecCoverageReportHandler aReportConfig)
         {
             AddSubParagraph("Specification coverage");
             GenerateStatistics(aReportConfig.Dictionary, true, false, true, true);
@@ -61,7 +61,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateCoveredRequirementsArticle(SpecCoverageReportConfig aReportConfig)
+        public void CreateCoveredRequirementsArticle(SpecCoverageReportHandler aReportConfig)
         {
             AddSubParagraph("Covered requirements");
             GenerateStatistics(aReportConfig.Dictionary, true, false, true, false);
@@ -82,7 +82,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateNonCoveredRequirementsArticle(SpecCoverageReportConfig aReportConfig)
+        public void CreateNonCoveredRequirementsArticle(SpecCoverageReportHandler aReportConfig)
         {
             AddSubParagraph("Non covered requirements");
             GenerateStatistics(aReportConfig.Dictionary, false, true, true, false);
@@ -106,7 +106,7 @@ namespace Report.Specs
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
-        public void CreateReqRelatedArticle(SpecCoverageReportConfig aReportConfig)
+        public void CreateReqRelatedArticle(SpecCoverageReportHandler aReportConfig)
         {
             AddSubParagraph("Model coverage");
 

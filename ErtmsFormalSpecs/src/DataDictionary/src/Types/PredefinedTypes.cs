@@ -13,8 +13,8 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
 using System.Collections.Generic;
+using System;
 
 namespace DataDictionary.Types
 {
@@ -78,40 +78,29 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, True);
+            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, False);
+        }
+
+        /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> declaredElements;
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, True);
-                    Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, False);
-                }
-
-                return declaredElements;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
-            if (True.Name.CompareTo(name) == 0)
-            {
-                retVal.Add(True);
-            }
-            else if (False.Name.CompareTo(name) == 0)
-            {
-                retVal.Add(False);
-            }
+            Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }
 
         /// <summary>
@@ -123,6 +112,8 @@ namespace DataDictionary.Types
         {
             True = new Values.BoolValue(this, true);
             False = new Values.BoolValue(this, false);
+
+            InitDeclaredElements();
         }
 
         /// <summary>

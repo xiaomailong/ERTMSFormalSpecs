@@ -15,16 +15,10 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using DataDictionary.Tests;
 using System.Globalization;
+using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Tests;
 
 
 namespace GUI.ExcelImport
@@ -32,14 +26,14 @@ namespace GUI.ExcelImport
     public partial class Frm_ExcelImport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private Importers.ExcelInporterConfig importerConfig;
+        private Importers.ExcelImporter excelImporter;
 
 
         public Frm_ExcelImport(Dictionary aDictionary)
         {
             InitializeComponent();
-            importerConfig.TheDictionary = aDictionary;
-            
+            excelImporter.TheDictionary = aDictionary;
+
             TB_FrameName.Text = String.Format("Frame__{0}_{1}_{2}__{3}s_{4}m_{5}h", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Second, DateTime.Now.Minute, DateTime.Now.Hour);
 
             CBB_SpeedInterval.Items.Add("0.1");
@@ -54,7 +48,7 @@ namespace GUI.ExcelImport
         public Frm_ExcelImport(Step aStep)
         {
             InitializeComponent();
-            importerConfig.TheStep = aStep;
+            excelImporter.TheStep = aStep;
 
             CBB_SpeedInterval.Items.Add("0.1");
             CBB_SpeedInterval.Items.Add("0.2");
@@ -92,8 +86,8 @@ namespace GUI.ExcelImport
             openFileDialog.Filter = "Microsof Excel (.xlsm)|*.xlsm";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                importerConfig.FileName = openFileDialog.FileName;
-                TB_FileName.Text        = openFileDialog.FileName;
+                excelImporter.FileName = openFileDialog.FileName;
+                TB_FileName.Text = openFileDialog.FileName;
             }
         }
 
@@ -106,22 +100,21 @@ namespace GUI.ExcelImport
         private void Btn_Import_Click(object sender, EventArgs e)
         {
             Hide();
-            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out importerConfig.SpeedInterval);
+            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out excelImporter.SpeedInterval);
 
-            importerConfig.FrameName      = TB_FrameName.Text;
-            importerConfig.FileName       = TB_FileName.Text;
-            importerConfig.FillEBD        = CB_EBD.Checked;
-            importerConfig.FillSBD        = CB_SBD.Checked;
-            importerConfig.FillEBI        = CB_EBI.Checked;
-            importerConfig.FillSBI1       = CB_SBI1.Checked;
-            importerConfig.FillSBI2       = CB_SBI2.Checked;
-            importerConfig.FillFLOI       = CB_FLOI.Checked;
-            importerConfig.FillWarning    = CB_Warning.Checked;
-            importerConfig.FillPermitted  = CB_Permitted.Checked;
-            importerConfig.FillIndication = CB_Indication.Checked;
+            excelImporter.FrameName = TB_FrameName.Text;
+            excelImporter.FileName = TB_FileName.Text;
+            excelImporter.FillEBD = CB_EBD.Checked;
+            excelImporter.FillSBD = CB_SBD.Checked;
+            excelImporter.FillEBI = CB_EBI.Checked;
+            excelImporter.FillSBI1 = CB_SBI1.Checked;
+            excelImporter.FillSBI2 = CB_SBI2.Checked;
+            excelImporter.FillFLOI = CB_FLOI.Checked;
+            excelImporter.FillWarning = CB_Warning.Checked;
+            excelImporter.FillPermitted = CB_Permitted.Checked;
+            excelImporter.FillIndication = CB_Indication.Checked;
 
-            Importers.ExcelImporter.TheConfig = importerConfig;
-            ProgressDialog dialog = new ProgressDialog("Importing excel file....", Importers.ExcelImporter.ImportExcelHandler);
+            ProgressDialog dialog = new ProgressDialog("Importing excel file....", excelImporter);
             dialog.ShowDialog(Owner);
         }
 
@@ -139,7 +132,7 @@ namespace GUI.ExcelImport
                         if (control is System.Windows.Forms.CheckBox)
                         {
                             System.Windows.Forms.CheckBox checkBox = control as System.Windows.Forms.CheckBox;
-                            if(checkBox.Tag.Equals("FILTER"))
+                            if (checkBox.Tag.Equals("FILTER"))
                             {
                                 checkBox.Checked = true;
                             }
@@ -154,7 +147,7 @@ namespace GUI.ExcelImport
                         if (control is System.Windows.Forms.CheckBox)
                         {
                             System.Windows.Forms.CheckBox checkBox = control as System.Windows.Forms.CheckBox;
-                            if(checkBox.Tag.Equals("FILTER"))
+                            if (checkBox.Tag.Equals("FILTER"))
                             {
                                 checkBox.Checked = false;
                             }

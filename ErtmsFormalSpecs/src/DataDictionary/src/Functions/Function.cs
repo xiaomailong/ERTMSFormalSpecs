@@ -1070,7 +1070,15 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Caches the declared elements
         /// </summary>
-        private Dictionary<string, List<Utils.INamable>> __declaredElements = null;
+        private Dictionary<string, List<Utils.INamable>> declaredElements = null;
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            declaredElements = null;
+        }
 
         /// <summary>
         /// Provides all the parameters declared for this function
@@ -1079,16 +1087,16 @@ namespace DataDictionary.Functions
         {
             get
             {
-                if (__declaredElements == null)
+                if (declaredElements == null)
                 {
-                    __declaredElements = new Dictionary<string, List<Utils.INamable>>();
+                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
                     foreach (Parameter parameter in FormalParameters)
                     {
-                        Utils.ISubDeclaratorUtils.AppendNamable(__declaredElements, parameter);
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, parameter);
                     }
                 }
 
-                return __declaredElements;
+                return declaredElements;
             }
         }
 
@@ -1097,7 +1105,7 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }

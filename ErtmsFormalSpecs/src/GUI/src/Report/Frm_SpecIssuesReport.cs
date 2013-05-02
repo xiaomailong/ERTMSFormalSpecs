@@ -17,7 +17,6 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using DataDictionary;
-using Report;
 using Report.Specs;
 
 
@@ -26,12 +25,7 @@ namespace GUI.Report
     public partial class SpecIssuesReport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private SpecIssuesReportConfig reportConfig;
-
-        /// <summary>
-        /// The system for which this report is built
-        /// </summary>
-        public EFSSystem EFSSystem { get; private set; }
+        private SpecIssuesReportHandler reportHandler;
 
         /// <summary>
         /// Constructor
@@ -40,9 +34,8 @@ namespace GUI.Report
         public SpecIssuesReport(Dictionary dictionary)
         {
             InitializeComponent();
-            EFSSystem = dictionary.EFSSystem;
-            reportConfig = new SpecIssuesReportConfig(dictionary);
-            TxtB_Path.Text = reportConfig.FileName;
+            reportHandler = new SpecIssuesReportHandler(dictionary);
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -145,34 +138,18 @@ namespace GUI.Report
         /// <param name="e"></param>
         private void Btn_CreateReport_Click(object sender, EventArgs e)
         {
-            reportConfig.Name = "Specification issues report";
+            reportHandler.Name = "Specification issues report";
 
-            reportConfig.AddSpecIssues = CB_ShowIssues.Checked;
-            reportConfig.AddDesignChoices = CB_ShowDesignChoices.Checked;
+            reportHandler.AddSpecIssues = CB_ShowIssues.Checked;
+            reportHandler.AddDesignChoices = CB_ShowDesignChoices.Checked;
 
             Hide();
 
-            ProgressDialog dialog = new ProgressDialog("Generating report", GenerateFileHandler);
+            ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
             dialog.ShowDialog(Owner);
         }
 
 
-        /// <summary>
-        /// Generates the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void GenerateFileHandler(object arg)
-        {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildSpecIssuesReport(reportConfig))
-            {
-                Log.ErrorFormat("Report creation failed");
-            }
-            else
-            {
-                ReportUtils.Utils.displayReport(reportConfig);
-            }
-        }
 
 
         /// <summary>
@@ -186,8 +163,8 @@ namespace GUI.Report
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                reportConfig.FileName = saveFileDialog.FileName;
-                TxtB_Path.Text = reportConfig.FileName;
+                reportHandler.FileName = saveFileDialog.FileName;
+                TxtB_Path.Text = reportHandler.FileName;
             }
         }
     }

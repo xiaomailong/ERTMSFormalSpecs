@@ -15,11 +15,10 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.ComponentModel;
-using System.IO;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {
@@ -118,24 +117,6 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Executes the tests related to this frame
-        /// </summary>
-        /// <param name="args"></param>
-        private void ExecuteTests(object args)
-        {
-            Window window = BaseForm as Window;
-            if (window != null)
-            {
-                DataDictionary.Tests.SubSequence subSequence = Item.Enclosing as DataDictionary.Tests.SubSequence;
-                if (subSequence != null)
-                {
-                    DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence);
-                    runner.RunUntilStep(null);
-                }
-            }
-        }
-
-        /// <summary>
         /// Translates the corresponding test case, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
@@ -145,6 +126,53 @@ namespace GUI.TestRunnerView
             Utils.FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
             MainWindow.RefreshModel();
+        }
+
+        #region Execute tests
+        private class ExecuteTestsHandler : Utils.ProgressHandler
+        {
+            /// <summary>
+            /// The window for which theses tests should be executed
+            /// </summary>
+            private Window Window { get; set; }
+
+            /// <summary>
+            /// The subsequence which should be executed
+            /// </summary>
+            private TestCase TestCase { get; set; }
+
+            /// <summary>
+            /// The EFS system 
+            /// </summary>
+            private EFSSystem EFSSystem { get { return TestCase.EFSSystem; } }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            /// <param name="testCase"></param>
+            public ExecuteTestsHandler(Window window, TestCase testCase)
+            {
+                Window = window;
+                TestCase = testCase;
+            }
+
+            /// <summary>
+            /// Executes the tests in the background thread
+            /// </summary>
+            /// <param name="arg"></param>
+            public override void ExecuteWork()
+            {
+                if (Window != null)
+                {
+                    DataDictionary.Tests.SubSequence subSequence = TestCase.Enclosing as DataDictionary.Tests.SubSequence;
+                    if (subSequence != null)
+                    {
+                        DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence);
+                        runner.RunUntilStep(null);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -157,18 +185,13 @@ namespace GUI.TestRunnerView
             CheckRunner();
             ClearMessages();
 
-            if (TestTreeView.SHOW_DIALOG)
-            {
-                ProgressDialog dialog = new ProgressDialog("Executing test steps", ExecuteTests);
-                dialog.ShowDialog();
-            }
-            else
-            {
-                ExecuteTests(null);
-            }
+            ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
+            ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestsHandler);
+            dialog.ShowDialog();
 
             MainWindow.RefreshModel();
         }
+        #endregion
 
         /// <summary>
         /// Handles a run event on this test case and creates the associated report

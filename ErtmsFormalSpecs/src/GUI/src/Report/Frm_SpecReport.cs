@@ -17,7 +17,6 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using DataDictionary;
-using Report;
 using Report.Specs;
 
 
@@ -26,12 +25,7 @@ namespace GUI.Report
     public partial class SpecReport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private SpecCoverageReportConfig reportConfig;
-
-        /// <summary>
-        /// The system for which this report is built
-        /// </summary>
-        public EFSSystem EFSSystem { get; private set; }
+        private SpecCoverageReportHandler reportHandler;
 
         /// <summary>
         /// Constructor
@@ -40,9 +34,8 @@ namespace GUI.Report
         public SpecReport(Dictionary dictionary)
         {
             InitializeComponent();
-            EFSSystem = dictionary.EFSSystem;
-            reportConfig = new SpecCoverageReportConfig(dictionary);
-            TxtB_Path.Text = reportConfig.FileName;
+            reportHandler = new SpecCoverageReportHandler(dictionary);
+            TxtB_Path.Text = reportHandler.FileName;
         }
 
 
@@ -145,43 +138,24 @@ namespace GUI.Report
         /// <param name="e"></param>
         private void Btn_CreateReport_Click(object sender, EventArgs e)
         {
-            reportConfig.Name = "Specification coverage report";
+            reportHandler.Name = "Specification coverage report";
 
-            reportConfig.AddSpecification = CB_AddSpecification.Checked;
-            reportConfig.ShowFullSpecification = CB_ShowFullSpecification.Checked;
+            reportHandler.AddSpecification = CB_AddSpecification.Checked;
+            reportHandler.ShowFullSpecification = CB_ShowFullSpecification.Checked;
 
-            reportConfig.AddCoveredParagraphs = CB_AddCoveredParagraphs.Checked;
-            reportConfig.ShowAssociatedReqRelated = CB_ShowAssociatedReqRelated.Checked;
+            reportHandler.AddCoveredParagraphs = CB_AddCoveredParagraphs.Checked;
+            reportHandler.ShowAssociatedReqRelated = CB_ShowAssociatedReqRelated.Checked;
 
-            reportConfig.AddNonCoveredParagraphs = CB_AddNonCoveredParagraphs.Checked;
+            reportHandler.AddNonCoveredParagraphs = CB_AddNonCoveredParagraphs.Checked;
 
-            reportConfig.AddReqRelated = CB_AddReqRelated.Checked;
-            reportConfig.ShowAssociatedParagraphs = CB_ShowAssociatedParagraphs.Checked;
+            reportHandler.AddReqRelated = CB_AddReqRelated.Checked;
+            reportHandler.ShowAssociatedParagraphs = CB_ShowAssociatedParagraphs.Checked;
 
             Hide();
 
-            ProgressDialog dialog = new ProgressDialog("Generating report", GenerateFileHandler);
+            ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
             dialog.ShowDialog(Owner);
         }
-
-
-        /// <summary>
-        /// Generates the file in the progress dialog worker thread
-        /// </summary>
-        /// <param name="arg"></param>
-        private void GenerateFileHandler(object arg)
-        {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildSpecsReport(reportConfig))
-            {
-                Log.ErrorFormat("Report creation failed");
-            }
-            else
-            {
-                ReportUtils.Utils.displayReport(reportConfig);
-            }
-        }
-
 
         /// <summary>
         /// Permits to select the name and the path of the report
@@ -194,8 +168,8 @@ namespace GUI.Report
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                reportConfig.FileName = saveFileDialog.FileName;
-                TxtB_Path.Text = reportConfig.FileName;
+                reportHandler.FileName = saveFileDialog.FileName;
+                TxtB_Path.Text = reportHandler.FileName;
             }
         }
     }

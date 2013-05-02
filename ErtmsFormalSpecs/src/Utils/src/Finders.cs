@@ -96,11 +96,16 @@ namespace Utils
         Dictionary<string, List<INamable>> DeclaredElements { get; }
 
         /// <summary>
+        /// Initialises the declared elements in the dictionary
+        /// </summary>
+        void InitDeclaredElements();
+
+        /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        void find(string name, List<INamable> retVal);
+        void Find(string name, List<INamable> retVal);
     }
 
     /// <summary>
@@ -283,7 +288,7 @@ namespace Utils
                     // This is the last name to check and all names match. 
                     // Provide the first one with the correct type
                     List<INamable> values = new List<INamable>();
-                    declarator.find(names[index], values);
+                    declarator.Find(names[index], values);
                     foreach (INamable namable in values)
                     {
                         if (index == names.Length - 1)
@@ -307,7 +312,7 @@ namespace Utils
                     if (retVal == null && !skipDefault)
                     {
                         values.Clear();
-                        declarator.find("Default", values);
+                        declarator.Find("Default", values);
 
                         foreach (INamable namable in values)
                         {

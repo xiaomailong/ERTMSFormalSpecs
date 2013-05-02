@@ -64,6 +64,14 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            declaredElements = null;
+        }
+
+        /// <summary>
         /// Provides the list of declared elements in this Dictionary
         /// </summary>
         private Dictionary<string, List<Utils.INamable>> declaredElements;
@@ -90,7 +98,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             List<Utils.INamable> namables;
             if (DeclaredElements.TryGetValue(name, out namables))
