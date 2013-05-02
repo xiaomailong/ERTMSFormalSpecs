@@ -17,6 +17,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using DataDictionary;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
+using PdfSharp.Pdf;
 
 namespace Report
 {
@@ -54,6 +57,32 @@ namespace Report
             Dictionary = dictionary;
         }
 
+        public abstract Document BuildDocument();
+
+        /// <summary>
+        /// Generates the file in the background thread
+        /// </summary>
+        /// <param name="arg"></param>
+        public override void ExecuteWork()
+        {
+            Document document = BuildDocument();
+
+            if (document != null)
+            {
+                Log.Info("..generating output file");
+                if (GenerateOutputFile(document))
+                {
+                    Process.Start(FileName);
+                }
+                else
+                {
+                    Log.ErrorFormat("Report creation failed");
+
+                }
+                Log.Info("Done!");
+            }
+        }
+
         /// <summary>
         /// Name of the report
         /// </summary>
@@ -73,11 +102,35 @@ namespace Report
         public virtual EFSSystem EFSSystem { get { return Dictionary.EFSSystem; } }
 
         /// <summary>
-        /// Displays the generated report
+        /// Produces the .pdf corresponding to the book, according to user's choices
+        /// specified in the report config
         /// </summary>
-        public void displayReport()
+        /// <param name="aBook">The book to be created</param>
+        /// <returns></returns>
+        protected bool GenerateOutputFile(Document document)
         {
-            Process.Start(FileName);
+            bool retVal = false;
+
+            try
+            {
+                Log.Info("creating renderer");
+                PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(false, PdfFontEmbedding.Always);
+                pdfRenderer.Document = document;
+
+                Log.Info("rendering document");
+                pdfRenderer.RenderDocument();
+
+                Log.Info("saving document");
+                pdfRenderer.PdfDocument.Save(FileName);
+
+                retVal = true;
+            }
+            catch (Exception e)
+            {
+                Log.Error("Cannot render document. Exception message is " + e.Message);
+            }
+
+            return retVal;
         }
     }
 }

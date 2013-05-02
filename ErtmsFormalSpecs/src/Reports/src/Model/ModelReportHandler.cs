@@ -13,9 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using MigraDoc.DocumentObjectModel;
 namespace Report.Model
 {
-    using DataDictionary;
 
     public class ModelReportHandler : ReportHandler
     {
@@ -42,19 +42,73 @@ namespace Report.Model
         }
 
         /// <summary>
-        /// Generates the file in the background task
+        /// Creates a report on the model, according to user's choices
         /// </summary>
-        /// <param name="arg"></param>
-        public override void ExecuteWork()
+        /// <returns>The document created, or null</returns>
+        public override Document BuildDocument()
         {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildModelReport(this))
+            Document retVal = new Document();
+
+            Log.Info("Generating model report");
+            retVal.Info.Title = "EFS Model report";
+            retVal.Info.Author = "ERTMS Solutions";
+            retVal.Info.Subject = "Model report";
+
+            ModelReport report = new ModelReport(retVal);
+            foreach (DataDictionary.Types.NameSpace nameSpace in Dictionary.NameSpaces)
             {
-                Log.ErrorFormat("Report creation failed");
+                CreateNamespaceSection(report, nameSpace);
             }
-            else
+
+            return retVal;
+        }
+
+        public void CreateNamespaceSection(ModelReport report, DataDictionary.Types.NameSpace aNameSpace)
+        {
+            Log.Info("..generating name space " + aNameSpace.Name);
+
+            if (!aNameSpace.FullName.StartsWith("Messages"))
             {
-                displayReport();
+                report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+
+                if (AddRanges)
+                {
+                    report.CreateRangesSection(aNameSpace, AddRangesDetails);
+                }
+                if (AddEnumerations)
+                {
+                    report.CreateEnumerationsSection(aNameSpace, AddEnumerationsDetails);
+                }
+                if (AddStructures)
+                {
+                    report.CreateStructuresSection(aNameSpace, AddStructuresDetails);
+                }
+                if (AddCollections)
+                {
+                    report.CreateCollectionsSection(aNameSpace, AddCollectionsDetails);
+                }
+                if (AddFunctions)
+                {
+                    report.CreateFunctionsSection(aNameSpace, AddFunctionsDetails);
+                }
+                if (AddProcedures)
+                {
+                    report.CreateProceduresSection(aNameSpace, AddProceduresDetails);
+                }
+                if (AddVariables)
+                {
+                    report.CreateVariablesSection(aNameSpace, AddVariablesDetails, InOutFilter);
+                }
+                if (AddRules)
+                {
+                    report.CreateRulesSection(aNameSpace, AddRulesDetails);
+                }
+                report.CloseSubParagraph();
+
+                foreach (DataDictionary.Types.NameSpace nameSpace in aNameSpace.SubNameSpaces)
+                {
+                    CreateNamespaceSection(report, nameSpace);
+                }
             }
         }
 

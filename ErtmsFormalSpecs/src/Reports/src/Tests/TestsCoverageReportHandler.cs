@@ -17,7 +17,9 @@ using DataDictionary.Tests;
 
 namespace Report.Tests
 {
+    using System.Collections.Generic;
     using DataDictionary;
+    using MigraDoc.DocumentObjectModel;
 
     public class TestsCoverageReportHandler : ReportHandler
     {
@@ -90,20 +92,51 @@ namespace Report.Tests
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        /// Creates a report on tests coverage, according to user's choices
         /// </summary>
-        /// <param name="arg"></param>
-        public override void ExecuteWork()
+        /// <returns>The document created, or null</returns>
+        public override Document BuildDocument()
         {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildTestsReport(this))
+            Document retVal = new Document();
+
+            Log.Info("Creating test report");
+            retVal.Info.Title = "EFS Test report";
+            retVal.Info.Author = "ERTMS Solutions";
+            retVal.Info.Subject = "Test report";
+
+            TestsCoverageReport report = new TestsCoverageReport(retVal);
+            Log.Info("..gathering requirement coverage");
+            report.CreateRequirementCoverageArticle(this);
+            HashSet<DataDictionary.Rules.RuleCondition> activatedRules = new HashSet<DataDictionary.Rules.RuleCondition>();
+            if (TestCase != null) /* We generate a report for a selected test case */
             {
-                Log.ErrorFormat("Report creation failed");
+                Log.Info("..creating test case report " + TestCase.Name);
+                EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(TestCase.SubSequence);
+                Dictionary = TestCase.Dictionary;
+                report.CreateTestCaseSection(EFSSystem.Runner, TestCase, this, activatedRules, true);
             }
-            else
+            else if (SubSequence != null) /* We generate a report of a selected sub sequence */
             {
-                displayReport();
+                Log.Info("..creating sub sequence report " + SubSequence.Name);
+                Dictionary = SubSequence.Dictionary;
+                report.CreateSubSequenceSection(SubSequence, this, activatedRules, true);
             }
+            else if (Frame != null) /* We generate a report for a selected frame */
+            {
+                Log.Info("..creating frame report " + Frame.Name);
+                Dictionary = Frame.Dictionary;
+                report.CreateFrameArticle(Frame, this, activatedRules);
+            }
+            else if (Dictionary != null) /* We generate a full report */
+            {
+                Log.Info("..creating dictionary report ");
+                foreach (Frame frame in Dictionary.Tests)
+                {
+                    report.CreateFrameArticle(frame, this, activatedRules);
+                }
+            }
+
+            return retVal;
         }
 
         public bool AddFrames { set; get; }

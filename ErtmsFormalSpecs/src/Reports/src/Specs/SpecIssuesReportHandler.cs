@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------
 namespace Report.Specs
 {
-    using DataDictionary;
+    using MigraDoc.DocumentObjectModel;
 
     public class SpecIssuesReportHandler : ReportHandler
     {
@@ -32,20 +32,31 @@ namespace Report.Specs
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        /// Creates a report on specs issues, according to user's choices
         /// </summary>
-        /// <param name="arg"></param>
-        public override void ExecuteWork()
+        /// <returns>The document created, or null</returns>
+        public override Document BuildDocument()
         {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildSpecIssuesReport(this))
+            Document retVal = new Document();
+
+            Log.Info("Creating spec issues report");
+            retVal.Info.Title = "EFS Specification issues report";
+            retVal.Info.Author = "ERTMS Solutions";
+            retVal.Info.Subject = "Specification issues report";
+
+            SpecIssuesReport report = new SpecIssuesReport(retVal);
+            if (AddSpecIssues)
             {
-                Log.ErrorFormat("Report creation failed");
+                Log.Info("..generating spec issues");
+                report.CreateSpecIssuesArticle(this);
             }
-            else
+            if (AddDesignChoices)
             {
-                displayReport();
+                Log.Info("..generating design choices");
+                report.CreateDesignChoicesArticle(this);
             }
+
+            return retVal;
         }
 
         public bool AddSpecIssues { set; get; }

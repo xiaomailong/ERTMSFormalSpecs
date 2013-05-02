@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using MigraDoc.DocumentObjectModel;
 namespace Report.Specs
 {
     public class SpecCoverageReportHandler : ReportHandler
@@ -35,21 +36,43 @@ namespace Report.Specs
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        /// Creates a report on specs coverage, according to user's choices
         /// </summary>
-        /// <param name="arg"></param>
-        public override void ExecuteWork()
+        /// <returns>The document created, or null</returns>
+        public override Document BuildDocument()
         {
-            ReportBuilder builder = new ReportBuilder(EFSSystem);
-            if (!builder.BuildSpecsReport(this))
+            Document retVal = new Document();
+
+            Log.Info("Creating spec report");
+            retVal.Info.Title = "EFS Specification report";
+            retVal.Info.Author = "ERTMS Solutions";
+            retVal.Info.Subject = "Specification report";
+
+            SpecCoverageReport report = new SpecCoverageReport(retVal);
+            if (AddSpecification)
             {
-                Log.ErrorFormat("Report creation failed");
+                Log.Info("..generating specifications");
+                report.CreateSpecificationArticle(this);
             }
-            else
+            if (AddCoveredParagraphs)
             {
-                displayReport();
+                Log.Info("..generating covered paragraphs");
+                report.CreateCoveredRequirementsArticle(this);
             }
+            if (AddNonCoveredParagraphs)
+            {
+                Log.Info("..generating non covered paragraphs");
+                report.CreateNonCoveredRequirementsArticle(this);
+            }
+            if (AddReqRelated)
+            {
+                Log.Info("..generating req related");
+                report.CreateReqRelatedArticle(this);
+            }
+
+            return retVal;
         }
+
 
         public bool AddSpecification { set; get; }
         public bool ShowFullSpecification { set; get; }
