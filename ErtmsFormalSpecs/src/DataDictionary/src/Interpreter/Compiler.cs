@@ -20,6 +20,39 @@ namespace DataDictionary.Interpreter
     /// </summary>
     public class Compiler : Generated.Visitor
     {
+        private class InitDeclaredElements : Generated.Visitor
+        {
+            /// <summary>
+            /// Cleans up the declaraed elements dictionaries
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void dispatch(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            {
+                Utils.ISubDeclarator subDeclarator = obj as Utils.ISubDeclarator;
+                if (subDeclarator != null)
+                {
+                    subDeclarator.InitDeclaredElements();
+                }
+
+                base.dispatch(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="system"></param>
+            public InitDeclaredElements(EFSSystem system)
+            {
+                system.InitDeclaredElements();
+
+                foreach (Dictionary dictionary in system.Dictionaries)
+                {
+                    visit(dictionary, true);
+                }
+            }
+        }
+
         /// <summary>
         /// Indicates that everything should be recompiled
         /// </summary>
@@ -46,6 +79,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         public void Compile()
         {
+            // Initialises the declared eleemnts
+            InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
+
+            // Compiles each expression and each statement encountered in the nodes
             foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
             {
                 visit(dictionary, true);

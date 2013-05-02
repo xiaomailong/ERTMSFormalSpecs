@@ -701,25 +701,41 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the list of declared elements in this Dictionary
+        /// The sets of elements declared in this system
+        /// </summary>
+        private Dictionary<string, List<Utils.INamable>> declaredElements = null;
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            declaredElements = null;
+        }
+
+        /// <summary>
+        /// Provides the list of declared elements in this System
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
         {
             get
             {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
-
-                Utils.ISubDeclaratorUtils.AppendNamable(retVal, EmptyValue);
-                foreach (Types.Type type in PredefinedTypes.Values)
+                if (declaredElements == null)
                 {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, type);
-                }
-                foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, function);
+                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+                    Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EmptyValue);
+                    foreach (Types.Type type in PredefinedTypes.Values)
+                    {
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, type);
+                    }
+                    foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
+                    {
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, function);
+                    }
                 }
 
-                return retVal;
+                return declaredElements;
             }
         }
 
@@ -749,7 +765,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             if (name.CompareTo(EmptyValue.Name) == 0)
             {

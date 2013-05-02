@@ -228,42 +228,55 @@ namespace DataDictionary.Types
             }
         }
 
+
         /// <summary>
         /// Provides all the types available through this namespace
         /// </summary>
         private Dictionary<string, List<Utils.INamable>> declaredElements;
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            declaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (NameSpace nameSpace in SubNameSpaces)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, nameSpace);
+            }
+
+            foreach (Types.Type type in Types)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, type);
+            }
+
+            foreach (Variables.IVariable variable in AllVariables)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, variable);
+            }
+
+            foreach (Variables.Procedure proc in Procedures)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, proc);
+            }
+
+            foreach (Functions.Function function in Functions)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, function);
+            }
+        }
+
+        /// <summary>
+        /// The elements declared by this declarator
+        /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
         {
             get
             {
                 if (declaredElements == null)
                 {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    foreach (NameSpace nameSpace in SubNameSpaces)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, nameSpace);
-                    }
-
-                    foreach (Types.Type type in Types)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, type);
-                    }
-
-                    foreach (Variables.IVariable variable in AllVariables)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, variable);
-                    }
-
-                    foreach (Variables.Procedure proc in Procedures)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, proc);
-                    }
-
-                    foreach (Functions.Function function in Functions)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, function);
-                    }
+                    InitDeclaredElements();
                 }
 
                 return declaredElements;
@@ -275,7 +288,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             List<Utils.INamable> list;
 

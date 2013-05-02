@@ -88,24 +88,40 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// The elements declared in this enum
+        /// </summary>
+        Dictionary<string, List<Utils.INamable>> declaredElements = null;
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            declaredElements = null;
+        }
+
+        /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
         public Dictionary<string, List<Utils.INamable>> DeclaredElements
         {
             get
             {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
-
-                foreach (Constants.EnumValue value in Values)
+                if (declaredElements == null)
                 {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, value);
-                }
-                foreach (Types.Enum subEnum in SubEnums)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, subEnum);
+                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+                    foreach (Constants.EnumValue value in Values)
+                    {
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, value);
+                    }
+                    foreach (Types.Enum subEnum in SubEnums)
+                    {
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, subEnum);
+                    }
                 }
 
-                return retVal;
+                return declaredElements;
             }
         }
 
@@ -115,7 +131,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             foreach (Constants.EnumValue item in Values)
             {

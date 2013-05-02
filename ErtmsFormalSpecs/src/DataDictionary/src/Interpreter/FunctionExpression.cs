@@ -40,17 +40,26 @@ namespace DataDictionary.Interpreter
         public FunctionExpression(ModelElement root, List<Parameter> parameters, Expression expression)
             : base(root)
         {
+            Parameters = parameters;
+
+            Expression = expression;
+            Expression.Enclosing = this;
+
+            InitDeclaredElements();
+        }
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Parameters = parameters;
-            foreach (Parameter parameter in parameters)
+            foreach (Parameter parameter in Parameters)
             {
                 parameter.Enclosing = this;
                 Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, parameter);
             }
-
-            Expression = expression;
-            Expression.Enclosing = this;
         }
 
         /// <summary>
@@ -63,7 +72,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }

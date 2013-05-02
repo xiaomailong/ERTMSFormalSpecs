@@ -50,8 +50,6 @@ namespace DataDictionary.Interpreter.Statement
         public ReplaceStatement(ModelElement root, Expression value, Expression listExpression, Expression condition)
             : base(root)
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
-
             Value = value;
             Value.Enclosing = this;
 
@@ -64,6 +62,17 @@ namespace DataDictionary.Interpreter.Statement
             IteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             IteratorVariable.Enclosing = this;
             IteratorVariable.Name = "X";
+
+            InitDeclaredElements();
+        }
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
             Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, IteratorVariable);
         }
 
@@ -77,7 +86,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }

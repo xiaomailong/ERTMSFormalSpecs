@@ -54,8 +54,6 @@ namespace DataDictionary.Interpreter
         public StabilizeExpression(ModelElement root, Expression expression, Expression initialValue, Expression condition)
             : base(root)
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
-
             Expression = expression;
             Expression.Enclosing = this;
 
@@ -68,11 +66,22 @@ namespace DataDictionary.Interpreter
             LastIteration = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             LastIteration.Enclosing = this;
             LastIteration.Name = "PREVIOUS";
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, LastIteration);
 
             CurrentIteration = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             CurrentIteration.Enclosing = this;
             CurrentIteration.Name = "CURRENT";
+
+            InitDeclaredElements();
+        }
+
+        /// <summary>
+        /// Initialises the declared elements 
+        /// </summary>
+        public void InitDeclaredElements()
+        {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, LastIteration);
             Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, CurrentIteration);
         }
 
@@ -86,7 +95,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }

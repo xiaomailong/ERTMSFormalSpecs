@@ -463,29 +463,29 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the values that can be stored in this structure
+        /// Initialises the declared elements 
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        public void InitDeclaredElements()
         {
-            get
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Constants.EnumValue value in SpecialValues)
             {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
-
-                foreach (Constants.EnumValue value in SpecialValues)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, value);
-                }
-
-                return retVal;
+                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, value);
             }
         }
+
+        /// <summary>
+        /// Provides all the values that can be stored in this structure
+        /// </summary>
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<Utils.INamable> retVal)
         {
             foreach (Constants.EnumValue item in SpecialValues)
             {

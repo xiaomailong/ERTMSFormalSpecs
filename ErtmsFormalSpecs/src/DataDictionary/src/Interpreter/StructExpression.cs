@@ -188,7 +188,7 @@ namespace DataDictionary.Interpreter
                     Expression expression = pair.Value;
 
                     List<Utils.INamable> targets = new List<Utils.INamable>();
-                    structureType.find(name, targets);
+                    structureType.Find(name, targets);
                     if (targets.Count > 0)
                     {
                         expression.checkExpression();
