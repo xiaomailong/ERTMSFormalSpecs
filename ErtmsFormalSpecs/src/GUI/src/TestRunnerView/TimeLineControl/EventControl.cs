@@ -31,7 +31,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// The event which is represented by this button
         /// </summary>
-        public ModelEvent ModelEvent { get; private set; }
+        public ModelEvent ModelEvent { get; set; }
 
         /// <summary>
         /// Last time a click was performed on this

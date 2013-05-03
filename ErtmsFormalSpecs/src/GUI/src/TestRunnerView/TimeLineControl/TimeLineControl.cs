@@ -149,8 +149,12 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="control"></param>
         private void RemoveEventControl(EventControl control)
         {
+            HandledEvents.Remove(control.ModelEvent);
+            control.ModelEvent = null;
             control.Parent = null;
+
             Controls.Remove(control);
+            control.Dispose();
         }
 
         /// <summary>
@@ -269,21 +273,32 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         private void SynchronizeWithTimeLine()
         {
-            // Remove the events that no more exist in the time line
+            // Handles the existing EventControls : counts the ones that already exist 
+            // and remove the ones that should be removed
             EventsAtTime.Clear();
+            List<EventControl> toBeRemoved = new List<EventControl>();
             foreach (EventControl eventControl in HandledEvents.Values)
             {
                 if (TimeLine.Contains(eventControl.ModelEvent))
                 {
+                    // Counts the number of events at all given times
                     RegisterEventAtTime(eventControl);
                 }
                 else
                 {
-                    RemoveEventControl(eventControl);
+                    // Remove the events that no more exist in the time line
+                    toBeRemoved.Add(eventControl);
                 }
             }
 
-            // Add EventControl for each new Event in the time line
+            // Actually performs the removal
+            foreach (EventControl eventControl in toBeRemoved)
+            {
+                RemoveEventControl(eventControl);
+            }
+
+
+            // Create new EventControl for each new Event in the time line
             if (TimeLine != null)
             {
                 foreach (ModelEvent modelEvent in TimeLine.Events)

@@ -27,12 +27,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The event time line for this runner
         /// </summary>
-        private Events.EventTimeLine eventTimeLine;
-        public Events.EventTimeLine EventTimeLine
-        {
-            get { return eventTimeLine; }
-            private set { eventTimeLine = value; }
-        }
+        public Events.EventTimeLine EventTimeLine { get; private set; }
 
         /// <summary>
         /// The data dictionary
