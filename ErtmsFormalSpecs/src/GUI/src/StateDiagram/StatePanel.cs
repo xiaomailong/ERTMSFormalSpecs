@@ -317,11 +317,6 @@ namespace GUI.StateDiagram
         static int VERTICAL_SHIFT_SIZE = 20;
 
         /// <summary>
-        /// 2 * Pi
-        /// </summary>
-        static double TWO_PI = Math.PI * 2;
-
-        /// <summary>
         /// Ensures that two transitions do not overlap by computing an offset between the transitions
         /// </summary>
         private void ComputeTransitionArrowPosition()
