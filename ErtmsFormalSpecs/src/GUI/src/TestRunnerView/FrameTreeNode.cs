@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Utils;
 
@@ -33,6 +34,16 @@ namespace GUI.TestRunnerView
             public ItemEditor()
                 : base()
             {
+            }
+
+            /// <summary>
+            /// The variable that identifies the time in the current system
+            /// </summary>
+            [Category("Description")]
+            public string CycleDuration
+            {
+                get { return Item.getCycleDuration(); }
+                set { Item.setCycleDuration(value); }
             }
         }
 

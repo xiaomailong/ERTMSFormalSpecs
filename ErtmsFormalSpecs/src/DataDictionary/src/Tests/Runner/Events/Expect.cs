@@ -21,7 +21,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The time out for this expectation
         /// </summary>
-        public int TimeOut
+        public double TimeOut
         {
             get
             {

@@ -156,7 +156,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// The number of events at a given time
         /// </summary>
-        private Dictionary<int, int> EventsAtTime = new Dictionary<int, int>();
+        private Dictionary<double, int> EventsAtTime = new Dictionary<double, int>();
 
         /// <summary>
         /// The top position of the button
@@ -186,7 +186,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             int retVal = 0;
 
-            retVal = LEGEND_WIDTH + (3 * MARGIN_OFFSET) / 2 + 1 + (modelEvent.Time / 100) * (EventControl.SIZE.Width + BUTTON_MARGIN_SIZE) - HorizontalScroll.Value;
+            retVal = LEGEND_WIDTH + (3 * MARGIN_OFFSET) / 2 + 1 + (int)(modelEvent.Time / Runner.Step) * (EventControl.SIZE.Width + BUTTON_MARGIN_SIZE) - HorizontalScroll.Value;
 
             return retVal;
         }

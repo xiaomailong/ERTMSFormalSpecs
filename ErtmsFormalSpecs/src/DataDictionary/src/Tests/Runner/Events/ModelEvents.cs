@@ -36,7 +36,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The event time
         /// </summary>
-        public int Time { get; set; }
+        public double Time { get; set; }
 
         /// <summary>
         /// The time line in which the model event sits

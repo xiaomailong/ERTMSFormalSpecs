@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Tests
 {
@@ -122,5 +123,25 @@ namespace DataDictionary.Tests
             }
         }
 
+        /// <summary>
+        /// Provides the cycle time value
+        /// </summary>
+        private Expression __cycleTime = null;
+        public Expression CycleDuration
+        {
+            get
+            {
+                if (__cycleTime == null)
+                {
+                    __cycleTime = EFSSystem.Parser.Expression(this, getCycleDuration());
+                }
+
+                return __cycleTime;
+            }
+            set
+            {
+                __cycleTime = null;
+            }
+        }
     }
 }

@@ -102,7 +102,7 @@ namespace DataDictionary.Tests
         /// <summary>
         /// When blocking, this indicates the deadling before the expectation should be achieved
         /// </summary>
-        public int DeadLine
+        public double DeadLine
         {
             get { return getDeadLine(); }
             set { setDeadLine(value); }

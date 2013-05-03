@@ -104,6 +104,27 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override void visit(Generated.Frame obj, bool visitSubNodes)
+        {
+            Tests.Frame frame = (Tests.Frame)obj;
+
+            if (frame != null)
+            {
+                checkExpression(frame, frame.getCycleDuration());
+
+                Types.Type type = frame.CycleDuration.GetExpressionType();
+                if (type != null)
+                {
+                    if (!frame.EFSSystem.DoubleType.Match(type))
+                    {
+                        frame.AddError("Cycle duration should be compatible with the Time type");
+                    }
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.SubSequence obj, bool visitSubNodes)
         {
             Tests.SubSequence subSequence = (Tests.SubSequence)obj;

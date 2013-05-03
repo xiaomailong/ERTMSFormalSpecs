@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
@@ -52,8 +53,8 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The step between two activations
         /// </summary>
-        private int step = 100;
-        public int Step
+        private double step = 0.1;
+        public double Step
         {
             get { return step; }
             set { step = value; }
@@ -62,7 +63,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The current time
         /// </summary>
-        public int Time
+        public double Time
         {
             get { return EventTimeLine.CurrentTime; }
             set { EventTimeLine.CurrentTime = value; }
@@ -71,8 +72,8 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The current time
         /// </summary>
-        private int lastActivationTime;
-        public int LastActivationTime
+        private double lastActivationTime;
+        public double LastActivationTime
         {
             get { return lastActivationTime; }
             set { lastActivationTime = value; }
@@ -246,6 +247,11 @@ namespace DataDictionary.Tests.Runner
 
                 // Builds the list of functions that will require a cache for their graph 
                 FunctionCacheCleaner = new FunctionGraphCache(EFSSystem);
+
+                // Setup the step
+                Expression expression = EFSSystem.Parser.Expression(SubSequence.Frame, SubSequence.Frame.getCycleDuration());
+                Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
+                Step = Functions.Function.getDoubleValue(value);
             }
             finally
             {
@@ -964,7 +970,7 @@ namespace DataDictionary.Tests.Runner
         /// This does not execute the corresponding step. 
         /// </summary>
         /// <param name="Item"></param>
-        public void RunUntilTime(int targetTime)
+        public void RunUntilTime(double targetTime)
         {
             while (EventTimeLine.CurrentTime < targetTime)
             {
@@ -1008,7 +1014,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="ruleCondition"></param>
         /// <param name="time"></param>
         /// <returns>true if the corresponding rule condition has been activated at the time provided</returns>
-        public bool RuleActivatedAtTime(DataDictionary.Rules.RuleCondition ruleCondition, int time)
+        public bool RuleActivatedAtTime(DataDictionary.Rules.RuleCondition ruleCondition, double time)
         {
             return EventTimeLine.RuleActivatedAtTime(ruleCondition, time);
         }

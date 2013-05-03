@@ -15,11 +15,8 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
@@ -52,7 +49,7 @@ namespace GUI.TestRunnerView
             }
 
             [Category("Description")]
-            public int DeadLine
+            public double DeadLine
             {
                 get { return Item.DeadLine; }
                 set { Item.DeadLine = value; }

@@ -23,8 +23,8 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The current time
         /// </summary>
-        private int currentTime;
-        public int CurrentTime
+        private double currentTime;
+        public double CurrentTime
         {
             get { return currentTime; }
             set { currentTime = value; }
@@ -161,7 +161,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// Steps one step backward
         /// </summary>
         /// <param name="time">the time to step back</param>
-        public void StepBack(int time)
+        public void StepBack(double time)
         {
             currentTime = currentTime - time;
             if (currentTime < 0)
@@ -219,9 +219,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="subStep"></param>
         /// <returns>True if the provided rule has been activated</returns>
-        public int GetSubStepActivationTime(SubStep subStep)
+        public double GetSubStepActivationTime(SubStep subStep)
         {
-            int retVal = -1;
+            double retVal = -1;
 
             if (SubStepActivationCache.ContainsKey(subStep))
             {
@@ -241,9 +241,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="rule"></param>
         /// <param name="time"></param>
         /// <returns>True if the provided rule has been activated</returns>
-        public int GetNextSubStepActivationTime(SubStep aSubStep)
+        public double GetNextSubStepActivationTime(SubStep aSubStep)
         {
-            int retVal = -1;
+            double retVal = -1;
             bool stepFound = false;
 
             foreach (ModelEvent modelEvent in Events)
@@ -302,7 +302,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="rule"></param>
         /// <param name="time"></param>
         /// <returns></returns>
-        public List<DataDictionary.Rules.RuleCondition> GetActivatedRulesInRange(int start, int end)
+        public List<DataDictionary.Rules.RuleCondition> GetActivatedRulesInRange(double start, double end)
         {
             List<DataDictionary.Rules.RuleCondition> retVal = new List<DataDictionary.Rules.RuleCondition>();
 
@@ -324,7 +324,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="ruleCondition"></param>
         /// <param name="time"></param>
         /// <returns>True if the provided rule condition has been activated</returns>
-        public bool RuleActivatedAtTime(Rules.RuleCondition ruleCondition, int time)
+        public bool RuleActivatedAtTime(Rules.RuleCondition ruleCondition, double time)
         {
             bool retVal = false;
 

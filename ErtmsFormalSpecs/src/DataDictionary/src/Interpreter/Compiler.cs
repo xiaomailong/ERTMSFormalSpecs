@@ -134,6 +134,22 @@ namespace DataDictionary.Interpreter
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.Frame obj, bool visitSubNodes)
+        {
+            Tests.Frame frame = (Tests.Frame)obj;
+
+            if (Rebuild)
+            {
+                frame.CycleDuration = null;
+            }
+
+            // Side effect : compiles or recompiles the expression
+            DataDictionary.Interpreter.Expression expression = frame.CycleDuration;
+
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Namable obj, bool visitSubNodes)
         {
             Namable namable = (Namable)obj;

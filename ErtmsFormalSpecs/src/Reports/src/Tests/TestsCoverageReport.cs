@@ -251,8 +251,8 @@ namespace Report.Tests
 
                         DataDictionary.Tests.SubStep firstSubStep = step.SubSteps[0] as DataDictionary.Tests.SubStep;
                         DataDictionary.Tests.SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as DataDictionary.Tests.SubStep;
-                        int start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
-                        int end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
+                        double start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
+                        double end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
                         List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start, end);
 
                         CreateStepTable(runner, step, aTestCase.Dictionary.ImplementedRules.Count, activatedRules, aReportConfig);

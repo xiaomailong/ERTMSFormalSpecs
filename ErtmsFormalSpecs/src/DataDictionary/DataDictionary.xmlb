@@ -680,8 +680,12 @@
   <ELEMENT NAME="Frame" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">test</META>
     <FIELDS>
+      <FIELD NAME="CycleDuration" TYPE="PCHAR" />
       <FIELD NAME="SubSequences" REFTYPE="SubSequence" MODE="DEFAULT"/>
     </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="CycleDuration" TARGET="CycleDuration" OPTIONAL="TRUE" DEFAULT="0.1"/>
+    </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="SubSequences" OPTIONAL="TRUE" >
@@ -884,7 +888,7 @@
         <META NAME="TargetName">Expression</META>
       </FIELD>
       <FIELD NAME="Blocking" TYPE="BOOLEAN"/>
-      <FIELD NAME="DeadLine" TYPE="INTEGER">
+      <FIELD NAME="DeadLine" TYPE="REAL">
         <META NAME="TargetName">Deadline</META>
       </FIELD>
     </FIELDS>
