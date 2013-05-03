@@ -26,7 +26,7 @@ namespace GUI.ExcelImport
     public partial class Frm_ExcelImport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private Importers.ExcelImporter excelImporter;
+        private Importers.ExcelImporter excelImporter = new Importers.ExcelImporter();
 
 
         public Frm_ExcelImport(Dictionary aDictionary)
