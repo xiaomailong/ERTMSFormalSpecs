@@ -14,10 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 using System;
-
 using System.Drawing;
 using System.Windows.Forms;
-
+using DataDictionary.Tests;
 using DataDictionary.Tests.Runner.Events;
 
 namespace GUI.TestRunnerView.TimeLineControl
@@ -213,7 +212,17 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
             else if (ModelEvent is VariableUpdate)
             {
-                color = Color.BlanchedAlmond;
+                VariableUpdate update = ModelEvent as VariableUpdate;
+
+                TestCase testCase = Utils.EnclosingFinder<TestCase>.find(update.Action);
+                if (testCase != null)
+                {
+                    color = Color.LightGreen;
+                }
+                else
+                {
+                    color = Color.BlanchedAlmond;
+                }
             }
             else if (ModelEvent is Expect)
             {
