@@ -463,11 +463,16 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// The dictionary of declared elements
+        /// </summary>
+        private Dictionary<string, List<Utils.INamable>> __declaredElements;
+
+        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            __declaredElements = new Dictionary<string, List<Utils.INamable>>();
 
             foreach (Constants.EnumValue value in SpecialValues)
             {
@@ -478,7 +483,18 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        {
+            get
+            {
+                if (__declaredElements == null)
+                {
+                    InitDeclaredElements();
+                }
+
+                return __declaredElements;
+            }
+        }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
