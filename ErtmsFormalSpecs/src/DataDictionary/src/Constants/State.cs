@@ -58,9 +58,9 @@ namespace DataDictionary.Constants
                     stt = stt.EnclosingState;
                 }
 
-                if (EnclosingProcedure != null)
+                if (EnclosingStateMachine != null)
                 {
-                    retVal = EnclosingProcedure.FullName + "." + retVal;
+                    retVal = EnclosingStateMachine.FullName + "." + retVal;
                 }
 
                 return retVal;
