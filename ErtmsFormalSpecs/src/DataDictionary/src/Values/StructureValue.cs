@@ -348,15 +348,6 @@ namespace DataDictionary.Values
             }
             retVal.Enclosing = variable;
 
-            foreach (KeyValuePair<string, Utils.INamable> pair in retVal.Val)
-            {
-                Variables.Variable var = pair.Value as Variables.Variable;
-                if (var != null)
-                {
-                    var.Value = var.Value.RightSide(var, false);
-                }
-            }
-
             return retVal;
         }
     }
