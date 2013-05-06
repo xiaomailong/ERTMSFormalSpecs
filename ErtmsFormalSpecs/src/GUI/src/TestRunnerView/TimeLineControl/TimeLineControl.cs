@@ -255,7 +255,9 @@ namespace GUI.TestRunnerView.TimeLineControl
         private void Clear()
         {
             EventsAtTime.Clear();
-            foreach (EventControl eventControl in HandledEvents.Values)
+            List<EventControl> events = new List<EventControl>();
+            events.AddRange(HandledEvents.Values);
+            foreach (EventControl eventControl in events)
             {
                 RemoveEventControl(eventControl);
             }
