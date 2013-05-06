@@ -190,7 +190,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             int retVal = 0;
 
-            retVal = LEGEND_WIDTH + (3 * MARGIN_OFFSET) / 2 + 1 + (int)(modelEvent.Time / Runner.Step) * (EventControl.SIZE.Width + BUTTON_MARGIN_SIZE) - HorizontalScroll.Value;
+            retVal = LEGEND_WIDTH + (3 * MARGIN_OFFSET) / 2 + 1 + (int)Math.Round(modelEvent.Time / Runner.Step) * (EventControl.SIZE.Width + BUTTON_MARGIN_SIZE) - HorizontalScroll.Value;
 
             return retVal;
         }
