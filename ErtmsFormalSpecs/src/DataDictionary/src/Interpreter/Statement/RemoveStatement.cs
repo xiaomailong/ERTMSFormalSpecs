@@ -219,7 +219,10 @@ namespace DataDictionary.Interpreter.Statement
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
-                Values.ListValue listValue = variable.Value as Values.ListValue;
+                // HacK : ensure that the value is a correct rigth side
+                // and keep the result of the right side operation
+                Values.ListValue listValue = variable.Value.RightSide(variable, false) as Values.ListValue;
+                variable.Value = listValue;
                 if (listValue != null)
                 {
                     Values.ListValue newListValue = new Values.ListValue(listValue.CollectionType, new List<Values.IValue>());

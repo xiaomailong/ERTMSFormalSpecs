@@ -201,27 +201,38 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply)
         {
-            Values.ListValue listValues = ListExpression.GetValue(context) as Values.ListValue;
-            if (listValues != null)
+            Variables.IVariable variable = ListExpression.GetVariable(context);
+            if (variable != null)
             {
-                int token = context.LocalScope.PushContext();
-                context.LocalScope.setVariable(IteratorVariable);
-                foreach (Values.IValue value in listValues.Val)
+                // HacK : ensure that the value is a correct rigth side
+                // and keep the result of the right side operation
+                Values.ListValue listValue = variable.Value.RightSide(variable, false) as Values.ListValue;
+                variable.Value = listValue;
+                if (listValue != null)
                 {
-                    if (value != EFSSystem.EmptyValue)
+                    int token = context.LocalScope.PushContext();
+                    context.LocalScope.setVariable(IteratorVariable);
+                    foreach (Values.IValue value in listValue.Val)
                     {
-                        IteratorVariable.Value = value;
-                        if (conditionSatisfied(context))
+                        if (value != EFSSystem.EmptyValue)
                         {
-                            Call.GetChanges(context, changes, explanation, apply);
+                            IteratorVariable.Value = value;
+                            if (conditionSatisfied(context))
+                            {
+                                Call.GetChanges(context, changes, explanation, apply);
+                            }
                         }
                     }
+                    context.LocalScope.PopContext(token);
                 }
-                context.LocalScope.PopContext(token);
+                else
+                {
+                    Root.AddError("List expression does not evaluate to a list value");
+                }
             }
             else
             {
-                Root.AddError("List expression does not evaluate to a list value");
+                Root.AddError("Cannot find variable for " + ListExpression.ToString());
             }
         }
 
