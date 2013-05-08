@@ -90,6 +90,7 @@ namespace Importers
 
                     Frame newFrame = new Frame();
                     newFrame.Name = FrameName;
+                    newFrame.setCycleDuration("Kernel.CycleDuration");
                     TheDictionary.AddModelElement(newFrame);
 
                     SubSequence newSubSequence = new SubSequence();
@@ -98,12 +99,14 @@ namespace Importers
 
                     TestCase aTestCase = new TestCase();
                     aTestCase.Name = "Setup";
+                    aTestCase.NeedsRequirement = false;
                     newSubSequence.AddModelElement(aTestCase);
 
                     intializeEFS(aTestCase, workbook);
 
                     aTestCase = new TestCase();
                     aTestCase.Name = "Initialize input";
+                    aTestCase.NeedsRequirement = false;
                     newSubSequence.AddModelElement(aTestCase);
                     if (trainIsGamma)
                     {
@@ -116,6 +119,7 @@ namespace Importers
 
                     aTestCase = new TestCase();
                     aTestCase.Name = "Verify input";
+                    aTestCase.NeedsRequirement = false;
                     newSubSequence.AddModelElement(aTestCase);
                     if (trainIsGamma)
                     {
@@ -128,6 +132,7 @@ namespace Importers
 
                     aTestCase = new TestCase();
                     aTestCase.Name = "Verify output";
+                    aTestCase.NeedsRequirement = false;
                     newSubSequence.AddModelElement(aTestCase);
                     verifyOutputForTrains(trainIsGamma, aTestCase, workbook);
                 }
@@ -295,7 +300,7 @@ namespace Importers
             aStep.AddModelElement(aSubStep);
 
             /* This is a lambda train => track condition brake inhibition profile is not applicable */
-            addAction(aSubStep, String.Format("Kernel.TrackConditions.TCProfile <- EMPTY"));
+            addAction(aSubStep, String.Format("Kernel.TrackDescription.TrackConditions.TCProfile <- EMPTY"));
 
             aWorksheet = workbook.Sheets[2] as Worksheet;
             importCommonTrackDataInformation(aSubStep, aWorksheet);
@@ -537,7 +542,7 @@ namespace Importers
             TargetSpeed = (double)(aRange.Cells[2, 2] as Range).Value2;
             double releaseSpeed = (double)(aRange.Cells[2, 5] as Range).Value2;
             double distance = (double)(aRange.Cells[3, 2] as Range).Value2;
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.MA.MA <- Kernel.MA.MA\n{{\n    TargetSpeed => {0:0.0},\n    Sections => [],\n    EndSection => Kernel.MA.EndSection\n    {{\n        EndSectionTimeOut => EMPTY,\n        SectionTimeOut => EMPTY,\n        Length => {1:0.0},\n        DangerPoint => Kernel.MA.DangerPoint\n        {{\n            Distance => 0.0,\n            ReleaseSpeed => {2:0.0}\n        }},\n        Overlap => EMPTY\n    }},\n    TargetSpeedTimeOut => 0.0,\n    Available => Boolean.True,\n    LRBG => 2020,\n    LRBGLocation => 0.0\n}}", TargetSpeed, distance, releaseSpeed));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.MA.MA <- Kernel.MA.MovementAuthority\n{{\n    TargetSpeed => {0:0.0},\n    Sections => [],\n    EndSection => Kernel.MA.EndSection\n    {{\n        EndSectionTimeOut => EMPTY,\n        Length => {1:0.0},\n        DangerPoint => Kernel.MA.DangerPoint\n        {{\n            Distance => 0.0,\n            ReleaseSpeed => {2:0.0}\n        }},\n        Overlap => EMPTY\n    }},\n    TargetSpeedTimeOut => 0.0\n}}", TargetSpeed, distance, releaseSpeed));
 
 
             /* Initializing the initial speed */
@@ -548,7 +553,7 @@ namespace Importers
             /// TODO: need to find how these values are activated and deactivated
             double startLocation = (double)(aRange.Cells[9, 2] as Range).Value2;
             double endLocation = (double)(aRange.Cells[10, 2] as Range).Value2;
-            //addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.TrackConditions.AdhesionFactor\n    {{\n        Distance => {0:0.0},\n        Length => {1:0.0},\n        Value => Messages.M_ADHESION.Slippery_rail\n    }}\nIN\n    Kernel.TrackConditions.AdhFactors", startLocation, endLocation - startLocation));
+            //addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.TrackDescription.TrackConditions.AdhesionFactor\n    {{\n        Distance => {0:0.0},\n        Length => {1:0.0},\n        Value => Messages.M_ADHESION.Slippery_rail\n    }}\nIN\n    Kernel.TrackDescription.TrackConditions.AdhFactors", startLocation, endLocation - startLocation));
 
 
             /* Initializing the gradient profile */
@@ -559,7 +564,7 @@ namespace Importers
                 double temp = (double)(aRange.Cells[i, 3] as Range).Value2;
                 if (temp != gradientValue || i == 33)
                 {
-                    addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.Gradient.GradientInfo\n    {{\n        Location => {0:0.0},\n        Gradient => {1:0.0}\n    }}\nIN\n    Kernel.Gradient.Gradients", gradientDistance, gradientValue));
+                    addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "INSERT\n    Kernel.TrackDescription.Gradient.GradientInfo\n    {{\n        Location => {0:0.0},\n        Gradient => {1:0.0}\n    }}\nIN\n    Kernel.TrackDescription.Gradient.Gradients", gradientDistance, gradientValue));
                     gradientDistance = (double)(aRange.Cells[i, 1] as Range).Value2;
                     gradientValue = temp;
                 }
@@ -673,10 +678,10 @@ namespace Importers
             addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication <- {0:0.0#}", (double)(aRange.Cells[15, 2] as Range).Value2));
 
             /* Initializing M_rotating_max */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.Gradient.M_rotating_max <- {0:0.0#}", (double)(aRange.Cells[16, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.TrackDescription.Gradient.M_rotating_max <- {0:0.0#}", (double)(aRange.Cells[16, 2] as Range).Value2));
 
             /* Initializing M_rotating_min */
-            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.Gradient.M_rotating_min <- {0:0.0#}", (double)(aRange.Cells[17, 2] as Range).Value2));
+            addAction(aSubStep, String.Format(CultureInfo.InvariantCulture, "Kernel.TrackDescription.Gradient.M_rotating_min <- {0:0.0#}", (double)(aRange.Cells[17, 2] as Range).Value2));
         }
 
 
