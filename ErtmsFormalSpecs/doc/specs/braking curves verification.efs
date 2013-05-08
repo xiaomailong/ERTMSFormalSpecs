@@ -9,6 +9,7 @@
 </NameSpaces>
 <Tests>
 <Frame
+ CycleDuration="0.1"
  Name="Gamma FrInP"
 >
 <SubSequences>
@@ -119,42 +120,41 @@
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -190,8 +190,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -3390,6 +3390,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Gamma PasInP"
 >
 <SubSequences>
@@ -3500,42 +3501,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -3571,8 +3571,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -6771,6 +6771,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Gamma FrInG"
 >
 <SubSequences>
@@ -6881,42 +6882,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -6952,8 +6952,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -10152,6 +10152,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP NomMass 40% DistAntenna 10"
 >
 <SubSequences>
@@ -10245,7 +10246,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -10261,42 +10262,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -10332,8 +10332,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -13069,6 +13069,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP TractCutOff 2 + SBInterface + TCOInterface"
 >
 <SubSequences>
@@ -13162,7 +13163,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -13178,42 +13179,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -13249,8 +13249,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -16006,6 +16006,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP TractCutOff 2"
 >
 <SubSequences>
@@ -16099,7 +16100,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -16115,42 +16116,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -16186,8 +16186,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -18923,6 +18923,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP TractCutOff 2 + TCOInterface"
 >
 <SubSequences>
@@ -19016,7 +19017,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -19032,42 +19033,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -19103,8 +19103,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -21840,6 +21840,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP SBInterface"
 >
 <SubSequences>
@@ -21933,7 +21934,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -21949,42 +21950,41 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 4000.0,
         Gradient =&gt; 2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6000.0,
         Gradient =&gt; -1.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 6500.0,
         Gradient =&gt; -2.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -22020,8 +22020,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -24773,6 +24773,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP 200%"
 >
 <SubSequences>
@@ -24866,7 +24867,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -24882,18 +24883,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -24929,8 +24929,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -27642,6 +27642,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda PasInP 100%"
 >
 <SubSequences>
@@ -27735,7 +27736,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -27751,18 +27752,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -27798,8 +27798,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -30531,6 +30531,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda FrInP 100%"
 >
 <SubSequences>
@@ -30624,7 +30625,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -30640,18 +30641,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -30687,8 +30687,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -33418,6 +33418,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda FrInP 150%"
 >
 <SubSequences>
@@ -33511,7 +33512,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -33527,18 +33528,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -33574,8 +33574,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -36297,6 +36297,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda FrInG 100%"
 >
 <SubSequences>
@@ -36390,7 +36391,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -36406,18 +36407,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -36453,8 +36453,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -39176,6 +39176,7 @@ IN
 </TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame><Frame
+ CycleDuration="0.1"
  Name="Lambda FrInG 180%"
 >
 <SubSequences>
@@ -39269,7 +39270,7 @@ IN
  Name="SubStep2 - Track data"
 >
 <Actions>
-<Action>Kernel.TrackConditions.TCProfile &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action>
 <Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
@@ -39285,18 +39286,17 @@ IN
         },
         Overlap =&gt; EMPTY
     },
-    TargetSpeedTimeOut =&gt; 0.0,
-    Available =&gt; Boolean.True
+    TargetSpeedTimeOut =&gt; 0.0
 }</Action>
 <Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action>
 <Action>INSERT
-    Kernel.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientInfo
     {
         Location =&gt; 0.0,
         Gradient =&gt; 0.0
     }
 IN
-    Kernel.Gradient.Gradients</Action>
+    Kernel.TrackDescription.Gradient.Gradients</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
@@ -39332,8 +39332,8 @@ IN
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action>
 <Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action>
-<Action>Kernel.Gradient.M_rotating_max &lt;- 15.0</Action>
-<Action>Kernel.Gradient.M_rotating_min &lt;- 2.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action>
+<Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action>
 </Actions>
 </SubStep><SubStep
  SkipEngine="TRUE"
