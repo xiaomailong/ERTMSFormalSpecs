@@ -338,20 +338,51 @@ namespace Importer
             public override void RtfKeyword(string key, bool hasParameter, int parameter)
             {
                 // Try to recognise a paragraph number \listtext\... 
-                if (key.Equals("listtext")) ParagraphNumberMode = ParagraphNumberEnum.ListText;
+                if (key.Equals("listtext"))
+                {
+                    ParagraphNumberMode = ParagraphNumberEnum.ListText;
+                }
                 // Try to recognise a list number \pntext
-                else if (key.Equals("pntext")) ParagraphNumberMode = ParagraphNumberEnum.PnText;
+                else if (key.Equals("pntext"))
+                {
+                    ParagraphNumberMode = ParagraphNumberEnum.PnText;
+                }
                 // When an outline level is encountered, this starts a new paragraph
-                else if (key.Equals("outlinelevel")) CurrentParagraph = null;
+                else if (key.Equals("outlinelevel"))
+                {
+                    if (CurrentParagraph != null && (CurrentParagraph.Text == null || CurrentParagraph.Text.Length == 0))
+                    {
+                        // The current paragraph has not yet been filled, continue with it.
+                    }
+                    else
+                    {
+                        CurrentParagraph = null;
+                    }
+                }
 
                 // \bkmkstart and \bkmkend seems to be related to bookmarks. Ignore the corresponding text
-                if (key.Equals("bkmkstart")) IgnoreTextMode = IgnoreTextEnum.IgnoreText;
-                else if (key.Equals("bkmkend")) IgnoreTextMode = IgnoreTextEnum.IgnoreText;
+                if (key.Equals("bkmkstart"))
+                {
+                    IgnoreTextMode = IgnoreTextEnum.IgnoreText;
+                }
+                else if (key.Equals("bkmkend"))
+                {
+                    IgnoreTextMode = IgnoreTextEnum.IgnoreText;
+                }
 
                 // Do the paragraph modifications
-                if (key.Equals("par")) addTextToCurrentParagraph("\n");
-                else if (key.Equals("line")) addTextToCurrentParagraph("\n");
-                else if (key.Equals("cell")) addTextToCurrentParagraph(" ");
+                if (key.Equals("par"))
+                {
+                    addTextToCurrentParagraph("\n");
+                }
+                else if (key.Equals("line"))
+                {
+                    addTextToCurrentParagraph("\n");
+                }
+                else if (key.Equals("cell"))
+                {
+                    addTextToCurrentParagraph(" ");
+                }
             }
 
 
@@ -362,11 +393,12 @@ namespace Importer
             private string EnclosingParagraphId = null;
             public override void RtfText(string text)
             {
-                bool isNumberedParagraph = true;
+                bool isParagraphNumber = false;
+
                 if (ParagraphNumberMode == ParagraphNumberEnum.ListText)
                 {
-                    isNumberedParagraph = text.IndexOf(".") > 0;
-                    if (isNumberedParagraph)
+                    isParagraphNumber = text.IndexOf(".") > 0;
+                    if (isParagraphNumber)
                     {
                         CurrentParagraph = new Paragraph(text);
                         Doc.AddParagraph(CurrentParagraph);
@@ -374,7 +406,7 @@ namespace Importer
                     }
                 }
 
-                if (!isNumberedParagraph)
+                if (!isParagraphNumber)
                 {
                     if (ParagraphNumberMode == ParagraphNumberEnum.PnText)
                     {
@@ -446,7 +478,9 @@ namespace Importer
                 }
                 else
                 {
-                    specifications.AddInfo("New paragraph detected " + p.Id);
+                    par = specifications.FindParagraph(p.Id, true);
+                    par.setText(p.Text);
+                    par.AddInfo("New paragraph");
                 }
             }
 

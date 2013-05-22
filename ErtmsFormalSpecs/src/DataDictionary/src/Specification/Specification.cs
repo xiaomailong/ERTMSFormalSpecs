@@ -69,9 +69,10 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Looks for the specific paragraph in the specification
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the paragraph to find</param>
+        /// <param name="create">If true, creates the paragraph tree if needed</param>
         /// <returns></returns>
-        public Paragraph FindParagraph(String id)
+        public Paragraph FindParagraph(String id, bool create = false)
         {
             if (!TheCache.ContainsKey(id))
             {
@@ -79,10 +80,13 @@ namespace DataDictionary.Specification
 
                 foreach (Chapter chapter in Chapters)
                 {
-                    tmp = chapter.findParagraph(id);
-                    if (tmp != null)
+                    if (id.StartsWith(chapter.getId()))
                     {
-                        break;
+                        tmp = chapter.FindParagraph(id, create);
+                        if (tmp != null)
+                        {
+                            break;
+                        }
                     }
                 }
 
