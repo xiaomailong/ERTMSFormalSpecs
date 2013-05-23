@@ -14,7 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using MigraDoc.DocumentObjectModel;
-namespace Report.Specs
+namespace Reports.Specs
 {
     public class SpecCoverageReportHandler : ReportHandler
     {

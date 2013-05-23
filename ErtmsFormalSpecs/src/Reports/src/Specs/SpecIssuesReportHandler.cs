@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-namespace Report.Specs
+namespace Reports.Specs
 {
     using MigraDoc.DocumentObjectModel;
 

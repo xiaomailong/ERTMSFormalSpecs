@@ -16,7 +16,7 @@
 using DataDictionary;
 using MigraDoc.DocumentObjectModel;
 
-namespace Report.Specs
+namespace Reports.Specs
 {
     public class SpecIssuesReport : ReportTools
     {

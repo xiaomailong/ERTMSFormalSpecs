@@ -16,8 +16,8 @@
 using System;
 using System.Windows.Forms;
 
-using Report.Specs;
-using Report.Tests;
+using Reports.Specs;
+using Reports.Tests;
 
 namespace GUI.SpecificationView
 {

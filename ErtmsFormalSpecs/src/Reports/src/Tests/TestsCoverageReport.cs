@@ -20,7 +20,7 @@ using DataDictionary.Tests;
 using DataDictionary.Tests.Runner.Events;
 using MigraDoc.DocumentObjectModel;
 
-namespace Report.Tests
+namespace Reports.Tests
 {
     public class TestsCoverageReport : ReportTools
     {

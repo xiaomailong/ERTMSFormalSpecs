@@ -21,7 +21,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using PdfSharp.Pdf;
 
-namespace Report
+namespace Reports
 {
     /// <summary>
     /// Class contain the base information for report configs

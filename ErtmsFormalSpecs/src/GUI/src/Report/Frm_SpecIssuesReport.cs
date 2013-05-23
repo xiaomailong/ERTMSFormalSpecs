@@ -17,7 +17,7 @@ using System;
 using System.Collections;
 using System.Windows.Forms;
 using DataDictionary;
-using Report.Specs;
+using Reports.Specs;
 
 
 namespace GUI.Report

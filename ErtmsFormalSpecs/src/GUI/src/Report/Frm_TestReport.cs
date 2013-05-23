@@ -16,8 +16,8 @@
 using System;
 using System.Collections;
 using System.Windows.Forms;
-using Report;
-using Report.Tests;
+using Reports;
+using Reports.Tests;
 using DataDictionary;
 
 

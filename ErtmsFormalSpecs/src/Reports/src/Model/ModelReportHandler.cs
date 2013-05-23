@@ -13,9 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using MigraDoc.DocumentObjectModel;
-namespace Report.Model
+namespace Reports.Model
 {
+    using MigraDoc.DocumentObjectModel;
 
     public class ModelReportHandler : ReportHandler
     {

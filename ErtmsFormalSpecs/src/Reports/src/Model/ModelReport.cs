@@ -18,7 +18,7 @@ using DataDictionary;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
-namespace Report.Model
+namespace Reports.Model
 {
     public class ModelReport : ReportTools
     {

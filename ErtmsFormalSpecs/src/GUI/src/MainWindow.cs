@@ -951,8 +951,14 @@ namespace GUI
                     {
                         string NewFileName = openFileDialog.FileName;
 
-                        Importer.RtfDeltaImporter importer = new Importer.RtfDeltaImporter(OriginalFileName, NewFileName, dictionary.Specifications);
+                        /// Perform the importation
+                        Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, dictionary.Specifications);
                         ProgressDialog dialog = new ProgressDialog("Opening file", importer);
+                        dialog.ShowDialog();
+
+                        /// Creates the report based on the importation result
+                        Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(dictionary, importer.NewDocument);
+                        dialog = new ProgressDialog("Opening file", reportHandler);
                         dialog.ShowDialog();
 
                         RefreshModel();

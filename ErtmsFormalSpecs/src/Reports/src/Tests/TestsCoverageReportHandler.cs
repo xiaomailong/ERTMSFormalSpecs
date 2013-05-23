@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------
 using DataDictionary.Tests;
 
-namespace Report.Tests
+namespace Reports.Tests
 {
     using System.Collections.Generic;
     using DataDictionary;
