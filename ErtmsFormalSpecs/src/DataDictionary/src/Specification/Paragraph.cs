@@ -120,7 +120,7 @@ namespace DataDictionary.Specification
             {
                 string retVal = getText();
 
-                if (retVal.Length == 0)
+                if (retVal == null || retVal.Length == 0)
                 {
                     if (getMessage() != null)
                     {
@@ -207,10 +207,13 @@ namespace DataDictionary.Specification
             }
         }
 
-        /**
-         * Looks for a specific paragraph in this paragraph
-         */
-        public Paragraph FindParagraph(String id)
+        /// <summary>
+        /// Looks for a specific paragraph
+        /// </summary>
+        /// <param name="id">The id of the paragraph to find</param>
+        /// <param name="create">If true, creates the paragraph tree if needed</param>
+        /// <returns></returns>
+        public Paragraph FindParagraph(String id, bool create)
         {
             Paragraph retVal = null;
 
@@ -220,12 +223,32 @@ namespace DataDictionary.Specification
             }
             else
             {
-                foreach (Paragraph sub in this.SubParagraphs)
+                if (id.StartsWith(FullId))
                 {
-                    retVal = sub.FindParagraph(id);
-                    if (retVal != null)
+                    foreach (Paragraph sub in SubParagraphs)
                     {
-                        break;
+                        retVal = sub.FindParagraph(id, create);
+                        if (retVal != null)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (retVal == null && create)
+            {
+                retVal = (Paragraph)Generated.acceptor.getFactory().createParagraph();
+                string subId = id.Substring(FullId.Length);
+                string[] items = subId.Split('.');
+                if (items.Length > 0)
+                {
+                    retVal.setId(FullId + "." + items[0]);
+                    appendParagraphs(retVal);
+
+                    if (retVal.getId().Length < id.Length)
+                    {
+                        retVal = retVal.FindParagraph(id, create);
                     }
                 }
             }

@@ -17,7 +17,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Report;
+using Reports;
 
 namespace ReportUtils
 {

@@ -16,7 +16,7 @@
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
-namespace Report
+namespace Reports
 {
     /// <summary>
     /// Proposes the tools needed for a report creation
@@ -122,7 +122,6 @@ namespace Report
         {
             section.AddParagraph(name, "Heading" + level);
             level += 1;
-
         }
 
         /// <summary>
@@ -139,7 +138,10 @@ namespace Report
         /// <param name="text"></param>
         public void AddParagraph(string text)
         {
-            section.AddParagraph(text, "Normal");
+            if (text != null)
+            {
+                section.AddParagraph(text, "Normal");
+            }
         }
 
         /// <summary>
@@ -148,8 +150,11 @@ namespace Report
         /// <param name="text"></param>
         public void AddListItem(string text)
         {
-            Paragraph p = section.AddParagraph(text, "Normal");
-            p.Format.ListInfo.ListType = MigraDoc.DocumentObjectModel.ListType.BulletList1;
+            if (text != null)
+            {
+                Paragraph p = section.AddParagraph(text, "Normal");
+                p.Format.ListInfo.ListType = MigraDoc.DocumentObjectModel.ListType.BulletList1;
+            }
         }
 
         /// <summary>

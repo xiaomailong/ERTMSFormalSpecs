@@ -22,7 +22,7 @@ using DataDictionary.Variables;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
-namespace Report.Specs
+namespace Reports.Specs
 {
     public class SpecCoverageReport : ReportTools
     {

@@ -67,19 +67,25 @@ namespace DataDictionary.Specification
             }
         }
 
-        /**
-         * Looks for a specific paragraph in this chapter
-         */
-        public Paragraph findParagraph(String id)
+        /// <summary>
+        /// Looks for a specific paragraph in this chapter
+        /// </summary>
+        /// <param name="id">The id of the paragraph to find</param>
+        /// <param name="create">If true, creates the paragraph tree if needed</param>
+        /// <returns></returns>
+        public Paragraph FindParagraph(String id, bool create = false)
         {
             Paragraph retVal = null;
 
             foreach (Paragraph paragraph in Paragraphs)
             {
-                retVal = paragraph.FindParagraph(id);
-                if (retVal != null)
+                if (id.StartsWith(paragraph.FullId))
                 {
-                    break;
+                    retVal = paragraph.FindParagraph(id, create);
+                    if (retVal != null)
+                    {
+                        break;
+                    }
                 }
             }
 
