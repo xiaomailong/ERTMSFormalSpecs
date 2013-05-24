@@ -28,12 +28,18 @@ namespace Importers.RtfDeltaImporter
         public Dictionary<string, Paragraph> Paragraphs = new Dictionary<string, Paragraph>();
 
         /// <summary>
+        /// The list of errors encountered during importation
+        /// </summary>
+        public List<ImportationError> Errors { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="filePath"></param>
         public Document(string filePath)
         {
             Parser parser = new Parser(filePath, this);
+            Errors = new List<ImportationError>();
         }
 
         /// <summary>

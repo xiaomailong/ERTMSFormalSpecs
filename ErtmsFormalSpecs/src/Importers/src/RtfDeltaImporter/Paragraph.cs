@@ -59,4 +59,46 @@ namespace Importers.RtfDeltaImporter
             State = ParagraphState.NoChange;
         }
     }
+
+    public class TableRow : Paragraph
+    {
+        /// <summary>
+        /// The paragraph which encloses the current table row
+        /// </summary>
+        public Paragraph EnclosingParagraph { get; private set; }
+
+        /// <summary>
+        /// The base row name
+        /// </summary>
+        private string BaseName { get; set; }
+
+        /// <summary>
+        /// The row number of the table row
+        /// </summary>
+        public int RowNumber { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="previous">The paragraph before this one in the document</param>
+        public TableRow(Paragraph previous)
+            : base("")
+        {
+            TableRow previousRow = previous as TableRow;
+            if (previousRow != null)
+            {
+                EnclosingParagraph = previousRow.EnclosingParagraph;
+                BaseName = previousRow.BaseName;
+                RowNumber = previousRow.RowNumber + 1;
+            }
+            else
+            {
+                EnclosingParagraph = previous;
+                BaseName = previous.Id;
+                RowNumber = 0;
+            }
+
+            Id = BaseName + " Entry " + RowNumber;
+        }
+    }
 }

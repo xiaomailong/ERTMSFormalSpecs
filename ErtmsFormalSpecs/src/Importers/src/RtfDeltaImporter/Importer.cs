@@ -82,10 +82,20 @@ namespace Importers.RtfDeltaImporter
                 {
                     par.Text = p.Text;
                     par.AddInfo("Paragraph has been changed");
+                    par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
+                    foreach (DataDictionary.ReqRef reqRef in par.Implementations)
+                    {
+                        DataDictionary.ReqRelated reqRelated = reqRef.Model as DataDictionary.ReqRelated;
+                        if (reqRelated != null)
+                        {
+                            reqRelated.setImplemented(false);
+                            reqRelated.setVerified(false);
+                        }
+                    }
                 }
                 else
                 {
-                    specifications.AddError("Cannot find paragraph " + p.Id + " for modification");
+                    AddError(specifications, p, "Cannot find paragraph " + p.Id + " for modification");
                 }
             }
 
@@ -95,13 +105,20 @@ namespace Importers.RtfDeltaImporter
 
                 if (par != null)
                 {
-                    specifications.AddError("Paragraph " + p.Id + " already exists, whereas it has been detected as a new paragraph in the release");
+                    AddError(specifications, p, "Paragraph " + p.Id + " already exists, whereas it has been detected as a new paragraph in the release");
                 }
                 else
                 {
                     par = specifications.FindParagraph(p.Id, true);
-                    par.setText(p.Text);
-                    par.AddInfo("New paragraph");
+                    if (par != null)
+                    {
+                        par.setText(p.Text);
+                        par.AddInfo("New paragraph");
+                    }
+                    else
+                    {
+                        AddError(specifications, p, "Paragraph " + p.Id + " cannot be found in the specification");
+                    }
                 }
             }
 
@@ -116,9 +133,21 @@ namespace Importers.RtfDeltaImporter
                 }
                 else
                 {
-                    specifications.AddError("Cannot find paragraph " + p.Id + " for removal");
+                    AddError(specifications, p, "Cannot find paragraph " + p.Id + " for removal");
                 }
             }
+        }
+
+        /// <summary>
+        /// Adds an importation error
+        /// </summary>
+        /// <param name="specifications"></param>
+        /// <param name="p"></param>
+        /// <param name="error"></param>
+        private void AddError(DataDictionary.Specification.Specification specifications, Paragraph p, string error)
+        {
+            specifications.AddError(error);
+            NewDocument.Errors.Add(new ImportationError(error, p));
         }
 
         /// <summary>

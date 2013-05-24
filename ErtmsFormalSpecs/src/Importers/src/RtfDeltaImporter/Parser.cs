@@ -247,7 +247,17 @@ namespace Importers.RtfDeltaImporter
             }
             else if (key.Equals("cell"))
             {
-                addTextToCurrentParagraph(" ");
+                addTextToCurrentParagraph(",");
+            }
+
+            if (key.Equals("trowd"))
+            {
+                if (CurrentParagraph != null)
+                {
+                    CurrentParagraph = new TableRow(CurrentParagraph);
+                    Doc.AddParagraph(CurrentParagraph);
+                    EnclosingParagraphId = null;
+                }
             }
         }
 
