@@ -32,7 +32,7 @@ namespace DataDictionary.Interpreter
         ///   - an element from the model
         ///   - an element from the current instance
         /// </summary>
-        public enum LocationEnum { NotDefined, Stack, Model, Instance };
+        public enum LocationEnum { NotDefined, Stack, Model, Instance, This };
 
         /// <summary>
         /// The location referenced by this designator
@@ -45,7 +45,11 @@ namespace DataDictionary.Interpreter
 
                 if (Ref != null)
                 {
-                    if (Ref is Parameter)
+                    if (Image.CompareTo("THIS") == 0)
+                    {
+                        retVal = LocationEnum.This;
+                    }
+                    else if (Ref is Parameter)
                     {
                         retVal = LocationEnum.Stack;
                     }
@@ -115,6 +119,30 @@ namespace DataDictionary.Interpreter
 
             if (instance == null)
             {
+                // Special handling for THIS
+                if (Image.CompareTo("THIS") == 0)
+                {
+                    INamable currentElem = Root;
+                    while (currentElem != null)
+                    {
+                        Types.Type type = currentElem as Types.Type;
+                        if (type != null)
+                        {
+                            Types.StateMachine stateMachine = type as Types.StateMachine;
+                            while (stateMachine != null)
+                            {
+                                type = stateMachine;
+                                stateMachine = stateMachine.EnclosingStateMachine;
+                            }
+                            retVal.Add(type);
+                            return retVal;
+                        }
+                        currentElem = enclosing(currentElem);
+                    }
+
+                    return retVal;
+                }
+
                 // No enclosing instance. Try to first name of a . separated list of names
                 //  . First in the enclosing expression
                 InterpreterTreeNode current = this;
@@ -274,7 +302,10 @@ namespace DataDictionary.Interpreter
         public void SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation, bool lastElement)
         {
             ReturnValue tmp = getReferences(instance, expectation, lastElement);
-            tmp.filter(expectation);
+            if (Image.CompareTo("THIS") != 0)
+            {
+                tmp.filter(expectation);
+            }
             if (tmp.IsUnique)
             {
                 Ref = tmp.Values[0].Value;
@@ -303,6 +334,7 @@ namespace DataDictionary.Interpreter
 
                 case LocationEnum.Instance:
                     Utils.INamable instance = context.Instance;
+
                     while (instance != null)
                     {
                         ISubDeclarator subDeclarator = instance as ISubDeclarator;
@@ -328,6 +360,10 @@ namespace DataDictionary.Interpreter
                     }
                     break;
 
+                case LocationEnum.This:
+                    retVal = context.Instance;
+                    break;
+
                 case LocationEnum.Model:
                     retVal = Ref;
 
@@ -346,6 +382,27 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Provides the enclosing element
+        /// </summary>
+        /// <param name="retVal"></param>
+        /// <returns></returns>
+        private Utils.INamable enclosing(Utils.INamable retVal)
+        {
+            Utils.IEnclosed enclosed = retVal as Utils.IEnclosed;
+
+            if (enclosed != null)
+            {
+                retVal = enclosed.Enclosing as Utils.INamable;
+            }
+            else
+            {
+                retVal = null;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Provides the enclosing sub declarator
         /// </summary>
         /// <param name="instance"></param>
@@ -356,15 +413,7 @@ namespace DataDictionary.Interpreter
 
             do
             {
-                Utils.IEnclosed enclosed = retVal as Utils.IEnclosed;
-                if (enclosed != null)
-                {
-                    retVal = enclosed.Enclosing as Utils.INamable;
-                }
-                else
-                {
-                    retVal = null;
-                }
+                retVal = enclosing(retVal);
             } while (retVal != null && !(retVal is Utils.ISubDeclarator));
 
             return retVal;
@@ -400,22 +449,26 @@ namespace DataDictionary.Interpreter
                     {
                         tmp2.Add(namable);
 
-                        // Consistency check
-                        Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
-                        if (subDeclVar != null)
+                        // Consistency check. 
+                        // TODO : Set back when state machine migration is complete
+                        if (false)
                         {
-                            if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
+                            Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
+                            if (subDeclVar != null)
                             {
-                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
+                                {
+                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                }
                             }
-                        }
-                        else
-                        {
-                            if (((IEnclosed)namable).Enclosing != subDeclarator)
+                            else
                             {
-                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
-                            }
+                                if (((IEnclosed)namable).Enclosing != subDeclarator)
+                                {
+                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                }
 
+                            }
                         }
                     }
                 }

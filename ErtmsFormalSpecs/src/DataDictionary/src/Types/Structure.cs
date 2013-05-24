@@ -57,6 +57,21 @@ namespace DataDictionary.Types
             }
         }
 
+        /// <summary>
+        /// The state machines
+        /// </summary>
+        public System.Collections.ArrayList StateMachines
+        {
+            get
+            {
+                if (allStateMachines() == null)
+                {
+                    setAllStateMachines(new System.Collections.ArrayList());
+                }
+                return allStateMachines();
+            }
+        }
+
         public void ClearCache()
         {
             declaredElements = null;
@@ -93,6 +108,12 @@ namespace DataDictionary.Types
                     {
                         Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, procedure);
                     }
+
+                    foreach (StateMachine stateMachine in StateMachines)
+                    {
+                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, stateMachine);
+                    }
+
                 }
 
                 return declaredElements;

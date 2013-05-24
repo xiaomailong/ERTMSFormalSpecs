@@ -37,6 +37,7 @@ namespace GUI.DataDictionaryView
         EnumerationsTreeNode enumerations;
         StructuresTreeNode structures;
         CollectionsTreeNode collections;
+        StateMachinesTreeNode stateMachines;
         FunctionsTreeNode functions;
         NameSpaceProceduresTreeNode procedures;
         NameSpaceVariablesTreeNode variables;
@@ -57,6 +58,7 @@ namespace GUI.DataDictionaryView
             enumerations = new EnumerationsTreeNode(Item);
             structures = new StructuresTreeNode(Item);
             collections = new CollectionsTreeNode(Item);
+            stateMachines = new StateMachinesTreeNode(Item);
             functions = new FunctionsTreeNode(Item);
             procedures = new NameSpaceProceduresTreeNode(Item);
             variables = new NameSpaceVariablesTreeNode(Item);
@@ -67,6 +69,7 @@ namespace GUI.DataDictionaryView
             Nodes.Add(enumerations);
             Nodes.Add(structures);
             Nodes.Add(collections);
+            Nodes.Add(stateMachines);
             Nodes.Add(functions);
             Nodes.Add(procedures);
             Nodes.Add(variables);
@@ -151,6 +154,21 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Adds a new state machine
+        /// </summary>
+        /// <param name="stateMachine"></param>
+        /// <returns>the corresponding node</returns>
+        public StateMachineTreeNode AddStateMachine(DataDictionary.Types.StateMachine stateMachine)
+        {
+            return stateMachines.AddStateMachine(stateMachine);
+        }
+
+        private void AddStateMachineHandler(object sender, EventArgs args)
+        {
+            stateMachines.AddHandler(sender, args);
+        }
+
+        /// <summary>
         /// Adds a new function
         /// </summary>
         /// <param name="structure"></param>
@@ -202,6 +220,7 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Add enumeration", new EventHandler(AddEnumerationHandler)));
             retVal.Add(new MenuItem("Add collection", new EventHandler(AddCollectionHandler)));
             retVal.Add(new MenuItem("Add structure", new EventHandler(AddStructureHandler)));
+            retVal.Add(new MenuItem("Add state machine", new EventHandler(AddStateMachineHandler)));
             retVal.Add(new MenuItem("Add function", new EventHandler(AddFunctionHandler)));
             retVal.Add(new MenuItem("Add variable", new EventHandler(AddVariableHandler)));
             retVal.Add(new MenuItem("-"));

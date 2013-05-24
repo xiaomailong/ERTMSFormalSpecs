@@ -323,7 +323,7 @@ namespace GUI.DataDictionaryView
             condition.appendPreConditions(aPreCondition);
 
             DataDictionary.Rules.Action transitionAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-            transitionAction.ExpressionText = "CurrentState <- " + finalStateName;
+            transitionAction.ExpressionText = "THIS <- " + finalStateName;
             condition.appendActions(transitionAction);
 
             DataDictionary.Rules.Action updateAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
@@ -370,7 +370,7 @@ namespace GUI.DataDictionaryView
             }
 
             DataDictionary.Rules.PreCondition statePreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition(); ;
-            statePreCondition.ExpressionText = "CurrentState in " + initialStateName;
+            statePreCondition.ExpressionText = "THIS in " + initialStateName;
             condition.appendPreConditions(statePreCondition);
 
             DataDictionary.Rules.PreCondition requestPreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition(); ;
@@ -387,7 +387,7 @@ namespace GUI.DataDictionaryView
             condition.appendPreConditions(requestPreCondition);
 
             DataDictionary.Rules.Action transitionAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-            transitionAction.ExpressionText = "CurrentState <- " + finalStateName;
+            transitionAction.ExpressionText = "THIS <- " + finalStateName;
             condition.appendActions(transitionAction);
 
             DataDictionary.Rules.Action updateAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
@@ -439,7 +439,7 @@ namespace GUI.DataDictionaryView
             retVal.appendConditions(condition);
 
             DataDictionary.Rules.PreCondition statePreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
-            statePreCondition.ExpressionText = "CurrentState in " + initialStateName;
+            statePreCondition.ExpressionText = "THIS in " + initialStateName;
             condition.appendPreConditions(statePreCondition);
 
             DataDictionary.Rules.PreCondition requestPreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
@@ -456,7 +456,7 @@ namespace GUI.DataDictionaryView
             condition.appendPreConditions(requestPreCondition);
 
             DataDictionary.Rules.Action transitionAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-            transitionAction.ExpressionText = "CurrentState <-" + finalStateName;
+            transitionAction.ExpressionText = "THIS <-" + finalStateName;
             condition.appendActions(transitionAction);
 
             DataDictionary.Rules.Action updateAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
@@ -484,7 +484,7 @@ namespace GUI.DataDictionaryView
             retVal.appendConditions(condition);
 
             DataDictionary.Rules.PreCondition statePreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
-            statePreCondition.ExpressionText = "CurrentState in " + initialStateName;
+            statePreCondition.ExpressionText = "THIS in " + initialStateName;
             condition.appendPreConditions(statePreCondition);
 
             DataDictionary.Rules.PreCondition requestPreCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
@@ -501,7 +501,7 @@ namespace GUI.DataDictionaryView
             condition.appendPreConditions(requestPreCondition);
 
             DataDictionary.Rules.Action transitionAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-            transitionAction.ExpressionText = "CurrentState <- " + finalStateName;
+            transitionAction.ExpressionText = "THIS <- " + finalStateName;
             condition.appendActions(transitionAction);
 
             return retVal;

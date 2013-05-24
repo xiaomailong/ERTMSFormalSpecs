@@ -76,6 +76,28 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
+        /// Provides the type of the target variable
+        /// </summary>
+        public Types.Type TargetType
+        {
+            get
+            {
+                Types.Type retVal = null;
+
+                if (Target != null)
+                {
+                    retVal = Target.Type;
+                }
+                else
+                {
+                    retVal = VariableIdentification.Ref as Types.Type;
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
         /// Provides the statement which modifies the element
         /// </summary>
         /// <param name="variable"></param>

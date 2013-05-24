@@ -271,14 +271,14 @@ namespace GUI.StateDiagram
             {
                 DataDictionary.ObjectFactory factory = (DataDictionary.ObjectFactory)DataDictionary.Generated.acceptor.getFactory();
                 DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)factory.createRule();
-                rule.Name = "<Rule" + (stateMachine.Rules.Count + 1) + ">";
+                rule.Name = "Rule" + (stateMachine.Rules.Count + 1);
 
                 DataDictionary.Rules.RuleCondition ruleCondition = (DataDictionary.Rules.RuleCondition)factory.createRuleCondition();
-                ruleCondition.Name = "<RuleCondition" + (rule.RuleConditions.Count + 1) + ">";
+                ruleCondition.Name = "RuleCondition" + (rule.RuleConditions.Count + 1);
                 rule.appendConditions(ruleCondition);
 
                 DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)factory.createAction();
-                action.Expression = "CurrentState <- " + ((State)StateMachine.States[1]).LiteralName;
+                action.Expression = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
                 ruleCondition.appendActions(action);
 
                 if (MDIWindow.DataDictionaryWindow != null)

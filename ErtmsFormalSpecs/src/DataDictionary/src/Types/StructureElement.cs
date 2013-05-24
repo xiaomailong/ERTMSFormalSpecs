@@ -88,7 +88,30 @@ namespace DataDictionary.Types
         /// </summary>
         public Type Type
         {
-            get { return EFSSystem.findType(NameSpace, getTypeName()); }
+            get
+            {
+                Type retVal = null;
+
+                // Find the corresponding state machine in the structure's state machines
+                Structure structure = (Structure)Enclosing;
+                List<Utils.INamable> tmp = new List<Utils.INamable>();
+                structure.Find(getTypeName(), tmp);
+                foreach (Utils.INamable namable in tmp)
+                {
+                    StateMachine stateMachine = namable as StateMachine;
+                    if (stateMachine != null)
+                    {
+                        retVal = stateMachine;
+                        break;
+                    }
+                }
+
+                if (retVal == null)
+                {
+                    retVal = EFSSystem.findType(NameSpace, getTypeName());
+                }
+                return retVal;
+            }
             set
             {
                 if (value != null)

@@ -104,6 +104,21 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// The state machines types
+        /// </summary>
+        public System.Collections.ArrayList StateMachines
+        {
+            get
+            {
+                if (allStateMachines() == null)
+                {
+                    setAllStateMachines(new System.Collections.ArrayList());
+                }
+                return allStateMachines();
+            }
+        }
+
+        /// <summary>
         /// The functions declared in the namespace
         /// </summary>
         public System.Collections.ArrayList Functions
@@ -221,6 +236,10 @@ namespace DataDictionary.Types
                     foreach (Collection collection in Collections)
                     {
                         types.Add(collection);
+                    }
+                    foreach (StateMachine stateMachine in StateMachines)
+                    {
+                        types.Add(stateMachine);
                     }
                 }
 

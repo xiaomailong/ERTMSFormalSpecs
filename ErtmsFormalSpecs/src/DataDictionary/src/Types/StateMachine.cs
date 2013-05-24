@@ -53,31 +53,6 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The name of the state machine type
-        /// </summary>
-        public override string Name
-        {
-            get { return ((Utils.INamable)Enclosing).Name; }
-        }
-
-        /// <summary>
-        /// The name of the state machine type
-        /// </summary>
-        public override string FullName
-        {
-            get
-            {
-                string retVal = "";
-                Namable enclosing = Utils.EnclosingFinder<Namable>.find(this);
-                if (enclosing != null)
-                {
-                    retVal = enclosing.FullName;
-                }
-                return retVal;
-            }
-        }
-
-        /// <summary>
         /// The states 
         /// </summary>
         public System.Collections.ArrayList States
@@ -447,8 +422,8 @@ namespace DataDictionary.Types
                 {
                     foreach (Interpreter.Statement.VariableUpdateStatement update in action.UpdateStatements)
                     {
-                        ITypedElement element = update.Target;
-                        if (element != null && element.Type is StateMachine)
+                        Types.Type targetType = update.TargetType;
+                        if (targetType is StateMachine)
                         {
                             Interpreter.Expression expressionTree = update.Expression;
                             if (expressionTree != null)
@@ -473,13 +448,10 @@ namespace DataDictionary.Types
                                     {
                                         foreach (Rules.PreCondition preCondition in ruleCondition.AllPreConditions)
                                         {
-                                            if (preCondition.Reads(element))
+                                            // A transition from one state to another has been found
+                                            foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
                                             {
-                                                // A transition from one state to another has been found
-                                                foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
-                                                {
-                                                    filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
-                                                }
+                                                filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
                                             }
                                         }
                                     }

@@ -152,6 +152,9 @@
       <FIELD NAME="Collections"         REFTYPE="Collection"    MODE="DEFAULT">
         <META NAME="TargetName">Types</META>
       </FIELD>
+      <FIELD NAME="StateMachines"       REFTYPE="StateMachine"  MODE="DEFAULT">
+        <META NAME="TargetName">Types</META>
+      </FIELD>
       <FIELD NAME="Functions"           REFTYPE="Function"      MODE="DEFAULT">
         <META NAME="TargetName">Types</META>
       </FIELD>
@@ -185,6 +188,11 @@
         <ENCLOSED NAME="Collections" OPTIONAL="TRUE">
           <REPEAT TARGET="Collections">
             <ELEMENTREF NAME="Collection" />
+          </REPEAT>
+        </ENCLOSED>
+        <ENCLOSED NAME="StateMachines" OPTIONAL="TRUE">
+          <REPEAT TARGET="StateMachines">
+            <ELEMENTREF NAME="StateMachine" />
           </REPEAT>
         </ENCLOSED>
         <ENCLOSED NAME="Functions" OPTIONAL="TRUE">
@@ -327,9 +335,10 @@
   <ELEMENT NAME="Structure" BASEELEMENT="Type" MAIN="TRUE" BASECLASS="DataDictionary.Types.Type">
     <META NAME="Package">types</META>
     <FIELDS>
-      <FIELD NAME="Elements"   REFTYPE="StructureElement"/>
-      <FIELD NAME="Procedures" REFTYPE="StructureProcedure"/>
-      <FIELD NAME="Rules"      REFTYPE="Rule"/>
+      <FIELD NAME="Elements"      REFTYPE="StructureElement"/>
+      <FIELD NAME="Procedures"    REFTYPE="StructureProcedure"/>
+      <FIELD NAME="StateMachines" REFTYPE="StateMachine"/>
+      <FIELD NAME="Rules"         REFTYPE="Rule"/>
     </FIELDS>
     <FORMULA>
       <CONCAT>
@@ -346,6 +355,11 @@
         <REPEAT TARGET="Elements">
           <ELEMENTREF NAME="StructureElement" />
         </REPEAT>
+        <ENCLOSED NAME="StateMachines" OPTIONAL="TRUE">
+          <REPEAT TARGET="StateMachines">
+            <ELEMENTREF NAME="StateMachine" />
+          </REPEAT>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
   </ELEMENT>

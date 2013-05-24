@@ -1291,6 +1291,7 @@ namespace GUI
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Create new dictionary. Select dictionary file location";
             openFileDialog.Filter = "EFS Files (*.efs)|*.efs";
+            openFileDialog.CheckFileExists = false;
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;

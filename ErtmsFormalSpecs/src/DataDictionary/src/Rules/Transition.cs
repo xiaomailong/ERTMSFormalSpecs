@@ -122,7 +122,7 @@ namespace DataDictionary.Rules
                         List<State> states = DataDictionary.Types.StateMachine.GetStates(PreCondition.ExpressionTree);
                         if (states.Count == 1)
                         {
-                            PreCondition.ExpressionText = "CurrentState == " + initialState.FullName;
+                            PreCondition.ExpressionText = "THIS == " + initialState.FullName;
                             InitialState = initialState;
                         }
                         else
@@ -175,7 +175,7 @@ namespace DataDictionary.Rules
         {
             if (Action != null)
             {
-                Action.Expression = Update.Target.Name + " <- " + targetState.LiteralName;
+                Action.Expression = "THIS <- " + targetState.LiteralName;
             }
             TargetState = targetState;
         }

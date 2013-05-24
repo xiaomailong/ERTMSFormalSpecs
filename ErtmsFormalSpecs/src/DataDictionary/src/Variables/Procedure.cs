@@ -355,7 +355,7 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Provides the value of the variable
         /// </summary>
-        public Values.IValue Value { get { return this; } set { } }
+        public Values.IValue Value { get { return CurrentState.Value; } set { CurrentState.Value = value; } }
 
         /// <summary>
         /// Provides the default value to give to the variable

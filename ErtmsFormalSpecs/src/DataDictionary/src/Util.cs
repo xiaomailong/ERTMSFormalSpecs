@@ -16,6 +16,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using DataDictionary.Types;
+using DataDictionary.Variables;
 using XmlBooster;
 
 namespace DataDictionary
@@ -32,6 +34,50 @@ namespace DataDictionary
         /// </summary>
         private class Updater : Generated.Visitor
         {
+            public override void visit(Generated.Procedure obj, bool visitSubNodes)
+            {
+                Procedure procedure = (Procedure)obj;
+                StateMachine stateMachine = procedure.StateMachine;
+                if (stateMachine.States.Count > 0)
+                {
+                    stateMachine.Name = procedure.Name + "SM";
+
+                    NameSpace nameSpace = (NameSpace)procedure.Enclosing;
+                    nameSpace.appendStateMachines(stateMachine);
+
+                    Variable variable = (Variable)Generated.acceptor.getFactory().createVariable();
+                    variable.Type = stateMachine;
+                    variable.Name = procedure.Name;
+                    variable.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+                    nameSpace.appendVariables(variable);
+
+                    nameSpace.removeProcedures(procedure);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            public override void visit(Generated.StructureProcedure obj, bool visitSubNodes)
+            {
+                StructureProcedure procedure = (StructureProcedure)obj;
+                StateMachine stateMachine = procedure.StateMachine;
+                if (stateMachine.States.Count > 0)
+                {
+                    Structure structure = (Structure)procedure.Enclosing;
+                    stateMachine.Name = procedure.Name + "SM";
+                    structure.appendStateMachines(stateMachine);
+
+                    StructureElement element = (StructureElement)Generated.acceptor.getFactory().createStructureElement();
+                    element.Type = stateMachine;
+                    element.Name = procedure.Name;
+                    element.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+                    structure.appendElements(element);
+
+                    structure.removeProcedures(procedure);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>

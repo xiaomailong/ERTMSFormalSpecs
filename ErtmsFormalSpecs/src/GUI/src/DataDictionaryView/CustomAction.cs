@@ -93,7 +93,7 @@ namespace GUI.DataDictionaryView
                     if (aCheckBox.Checked == true)
                     {
                         DataDictionary.Rules.Action anAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-                        anAction.ExpressionText = aCheckBox.Text + ".CurrentState" + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
+                        anAction.ExpressionText = aCheckBox.Text + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
                         CreateCustomAction(anAction);
                     }
                 }
