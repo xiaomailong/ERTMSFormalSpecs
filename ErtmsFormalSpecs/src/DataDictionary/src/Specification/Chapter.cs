@@ -79,7 +79,7 @@ namespace DataDictionary.Specification
 
             foreach (Paragraph paragraph in Paragraphs)
             {
-                if (id.StartsWith(paragraph.FullId))
+                if (id.StartsWith(paragraph.FullId) || !create)
                 {
                     retVal = paragraph.FindParagraph(id, create);
                     if (retVal != null)
