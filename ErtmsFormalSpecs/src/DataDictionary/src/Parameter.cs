@@ -78,10 +78,8 @@ namespace DataDictionary
                 {
                     return Utils.EnclosingFinder<Variables.Procedure>.find(this).FormalParameters;
                 }
-                else
-                {
-                    return Utils.EnclosingFinder<Types.StructureProcedure>.find(this).FormalParameters;
-                }
+
+                return null;
             }
         }
 

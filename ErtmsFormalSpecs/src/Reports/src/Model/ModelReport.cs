@@ -221,7 +221,7 @@ namespace Reports.Model
                             if (countDisplayedReqRelated(structure.Procedures) > 0)
                             {
                                 AddSubParagraph("Procedures");
-                                foreach (DataDictionary.Types.StructureProcedure procedure in structure.Procedures)
+                                foreach (DataDictionary.Variables.Procedure procedure in structure.Procedures)
                                 {
                                     if (procedure.ImplementationPartiallyCompleted == true)
                                     {

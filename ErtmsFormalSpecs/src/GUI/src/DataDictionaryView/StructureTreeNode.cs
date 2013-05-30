@@ -88,7 +88,7 @@ namespace GUI.DataDictionaryView
         {
             if (procedures != null)
             {
-                procedures.AddProcedureHandler(sender, args);
+                procedures.AddHandler(sender, args);
             }
         }
 

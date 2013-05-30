@@ -126,14 +126,6 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing structure procedure (if any)
-        /// </summary>
-        public Types.StructureProcedure EnclosingStructureProcedure
-        {
-            get { return Enclosing as Types.StructureProcedure; }
-        }
-
-        /// <summary>
         /// The enclosing state machine (if any)
         /// </summary>
         public Types.StateMachine EnclosingStateMachine
@@ -160,10 +152,6 @@ namespace DataDictionary.Rules
                 if (EnclosingStructure != null)
                 {
                     return EnclosingStructure.Rules;
-                }
-                if (EnclosingStructureProcedure != null)
-                {
-                    return EnclosingStructureProcedure.Rules;
                 }
                 else
                 {

@@ -160,26 +160,11 @@ namespace DataDictionary.Types
             get { return Enclosing as Constants.State; }
         }
 
-        public Variables.Procedure EnclosingProcedure
-        {
-            get { return Utils.EnclosingFinder<Variables.Procedure>.find(this); }
-        }
-
-        public Types.StructureProcedure EnclosingStructureProcedure
-        {
-            get { return Utils.EnclosingFinder<Types.StructureProcedure>.find(this); }
-        }
-
         public override void Delete()
         {
             if (EnclosingState != null)
             {
                 EnclosingState.StateMachine = null;
-            }
-
-            if (EnclosingProcedure != null)
-            {
-                EnclosingProcedure.StateMachine = null;
             }
         }
 

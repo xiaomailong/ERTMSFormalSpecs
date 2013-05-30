@@ -145,10 +145,6 @@ namespace GUI.DataDictionaryView
                     {
                         Item.EnclosingState.StateMachine = stateMachine;
                     }
-                    else if (Item.EnclosingProcedure != null)
-                    {
-                        Item.EnclosingProcedure.StateMachine = stateMachine;
-                    }
 
                     // Update the view
                     TreeNode parent = Parent;

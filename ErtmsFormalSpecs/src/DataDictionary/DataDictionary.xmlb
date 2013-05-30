@@ -336,7 +336,7 @@
     <META NAME="Package">types</META>
     <FIELDS>
       <FIELD NAME="Elements"      REFTYPE="StructureElement"/>
-      <FIELD NAME="Procedures"    REFTYPE="StructureProcedure"/>
+      <FIELD NAME="Procedures"    REFTYPE="Procedure"/>
       <FIELD NAME="StateMachines" REFTYPE="StateMachine"/>
       <FIELD NAME="Rules"         REFTYPE="Rule"/>
     </FIELDS>
@@ -349,7 +349,7 @@
         </ENCLOSED>
         <ENCLOSED NAME="Procedures" OPTIONAL="TRUE">
           <REPEAT TARGET="Procedures">
-            <ELEMENTREF NAME="StructureProcedure" />
+            <ELEMENTREF NAME="Procedure" />
           </REPEAT>
         </ENCLOSED>
         <REPEAT TARGET="Elements">
@@ -383,33 +383,6 @@
       <ATTR NAME="Default"  TARGET="Default" OPTIONAL="TRUE" DEFAULT=""/>
       <ATTR NAME="Mode"     TARGET="Mode"    OPTIONAL="TRUE" DEFAULT="Internal"/>
     </ATTRIBUTES>
-  </ELEMENT>
-
-  <!-- ------------------- -->
-  <!-- Structure Procedure -->
-  <!-- ------------------- -->
-  <ELEMENT NAME="StructureProcedure" BASEELEMENT="ReqRelated" MAIN="TRUE" BASECLASS="DataDictionary.ReqRelated">
-    <META NAME="Class">Procedure</META>	
-    <FIELDS>
-      <FIELD NAME="StateMachine" REFTYPE="StateMachine" />
-      <FIELD NAME="Rules"        REFTYPE="Rule" />
-      <FIELD NAME="Parameters"   REFTYPE="Parameter" />
-    </FIELDS>
-    <FORMULA>
-       <CONCAT>
-         <ENCLOSED NAME="Parameters" OPTIONAL="TRUE" >
-           <REPEAT TARGET="Parameters">
-             <ELEMENTREF NAME="Parameter"/>
-           </REPEAT>
-         </ENCLOSED>
-        <ENCLOSED NAME="Rules" OPTIONAL="TRUE">
-          <REPEAT TARGET="Rules">
-            <ELEMENTREF NAME="Rule" />
-          </REPEAT>
-        </ENCLOSED>
-        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
-      </CONCAT>
-    </FORMULA>
   </ELEMENT>
 
   <!-- --------------- -->

@@ -68,8 +68,7 @@ namespace DataDictionary.Interpreter
                                     retVal = LocationEnum.Stack;
                                 }
                             }
-                            else if ((current is Types.Structure) ||
-                                (current is Types.StructureProcedure))
+                            else if (current is Types.Structure)
                             {
                                 retVal = LocationEnum.Instance;
                             }
@@ -81,7 +80,7 @@ namespace DataDictionary.Interpreter
                             current = INamableUtils.getEnclosing(current);
                         }
                     }
-                    else if (Ref is Types.StructureElement || Ref is Types.StructureProcedure)
+                    else if (Ref is Types.StructureElement)
                     {
                         retVal = LocationEnum.Instance;
                     }
