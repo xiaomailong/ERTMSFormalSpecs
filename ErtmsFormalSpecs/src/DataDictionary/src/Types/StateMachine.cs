@@ -227,14 +227,6 @@ namespace DataDictionary.Types
                         current = current.EnclosingState;
                     }
                 }
-                else
-                {
-                    // HacK : compare by name if their state machines do not correspond
-                    if (state1.StateMachine != state2.StateMachine)
-                    {
-                        retVal = state2.FullName.StartsWith(state1.FullName);
-                    }
-                }
             }
 
             return retVal;
