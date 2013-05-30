@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Variables;
 
 namespace DataDictionary.Tests.Runner.Events
 {
@@ -321,22 +322,30 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Indicates whether a rule condition has been activated at the time provided
         /// </summary>
-        /// <param name="ruleCondition"></param>
-        /// <param name="time"></param>
+        /// <param name="ruleCondition">The rule condition that should be activated</param>
+        /// <param name="time">the time when the rule condition should be activated</param>
+        /// <param name="variable">The variable impacted by this rule condition, if any</param>
         /// <returns>True if the provided rule condition has been activated</returns>
-        public bool RuleActivatedAtTime(Rules.RuleCondition ruleCondition, double time)
+        public bool RuleActivatedAtTime(Rules.RuleCondition ruleCondition, double time, IVariable variable)
         {
             bool retVal = false;
 
-            foreach (ModelEvent modelEvent in Events)
+            if (variable != null)
             {
-                if (modelEvent.Time == time && modelEvent is RuleFired)
+                foreach (ModelEvent modelEvent in Events)
                 {
                     RuleFired ruleFired = modelEvent as RuleFired;
-                    if (ruleFired.RuleCondition == ruleCondition)
+                    if (modelEvent.Time == time && ruleFired != null)
                     {
-                        retVal = true;
-                        break;
+                        if (ruleFired.RuleCondition == ruleCondition)
+                        {
+                            retVal = ruleFired.ImpactVariable(variable);
+
+                            if (retVal)
+                            {
+                                break;
+                            }
+                        }
                     }
                 }
             }

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Types;
 
 namespace GUI.DataDictionaryView
 {
@@ -172,6 +173,25 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Display the associated state diagram
+        /// </summary>
+        public void ViewDiagram()
+        {
+            if (Item.Type is StateMachine)
+            {
+                StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+                BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+                window.SetStateMachine(Item);
+                window.Text = Item.Name + " state diagram";
+            }
+        }
+
+        protected void ViewStateDiagramHandler(object sender, EventArgs args)
+        {
+            ViewDiagram();
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -204,6 +224,12 @@ namespace GUI.DataDictionaryView
                         retVal.Add(new MenuItem("Display", new EventHandler(DisplayHandler)));
                     }
                 }
+            }
+
+            if (Item.Type is StateMachine)
+            {
+                retVal.Add(new MenuItem("-"));
+                retVal.Add(new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
             }
 
             return retVal;

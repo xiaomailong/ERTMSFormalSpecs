@@ -165,6 +165,11 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
+        /// The state variable for this state machine
+        /// </summary>
+        public DataDictionary.Variables.IVariable StateMachineVariable { get; set; }
+
+        /// <summary>
         /// Indicates whether the layout should be suspended
         /// </summary>
         bool refreshingControl = false;

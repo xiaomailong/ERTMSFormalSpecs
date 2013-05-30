@@ -14,6 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using DataDictionary.Rules;
 namespace DataDictionary.Tests.Runner.Events
 {
     public class RuleFired : ModelEvent
@@ -29,6 +31,11 @@ namespace DataDictionary.Tests.Runner.Events
         public override Types.NameSpace NameSpace { get { return RuleCondition.EnclosingRule.NameSpace; } }
 
         /// <summary>
+        /// The variable updates triggered by this rule event
+        /// </summary>
+        private List<VariableUpdate> Updates { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
@@ -36,6 +43,37 @@ namespace DataDictionary.Tests.Runner.Events
             : base(ruleCondition.Name, ruleCondition)
         {
             RuleCondition = ruleCondition;
+            Updates = new List<VariableUpdate>();
+        }
+
+        /// <summary>
+        /// Adds a new variable update triggered by this rule fired event
+        /// </summary>
+        /// <param name="variableUpdate"></param>
+        public void AddVariableUpdate(VariableUpdate variableUpdate)
+        {
+            Updates.Add(variableUpdate);
+        }
+
+        /// <summary>
+        /// Indicates that the rule fired impacts the variable provided as parameter
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <returns></returns>
+        public bool ImpactVariable(Variables.IVariable variable)
+        {
+            bool retVal = false;
+
+            foreach (VariableUpdate variableUpdate in Updates)
+            {
+                retVal = variableUpdate.Changes.ImpactVariable(variable);
+                if (retVal)
+                {
+                    break;
+                }
+            }
+
+            return retVal;
         }
     }
 }

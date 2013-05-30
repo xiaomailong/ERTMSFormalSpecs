@@ -426,7 +426,7 @@ namespace GUI.StateDiagram
                         DataDictionary.Tests.Runner.Runner runner = Transition.RuleCondition.EFSSystem.Runner;
                         if (runner != null)
                         {
-                            if (runner.RuleActivatedAtTime(Transition.RuleCondition, runner.LastActivationTime))
+                            if (runner.RuleActivatedAtTime(Transition.RuleCondition, runner.LastActivationTime, Panel.StateMachineVariable))
                             {
                                 pen = ACTIVATED_PEN;
                                 SetColor(ACTIVATED_COLOR);

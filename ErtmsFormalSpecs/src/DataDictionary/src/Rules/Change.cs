@@ -149,5 +149,26 @@ namespace DataDictionary.Rules
                 Changes[i].RollBack();
             }
         }
+
+        /// <summary>
+        /// Indicates that the change list modifies the variable provided as parameter
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <returns></returns>
+        public bool ImpactVariable(Variables.IVariable variable)
+        {
+            bool retVal = false;
+
+            foreach (Change change in Changes)
+            {
+                if (change.Variable == variable)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
     }
 }
