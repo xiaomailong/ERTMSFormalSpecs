@@ -14,7 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
-using DataDictionary.Variables;
+using DataDictionary.Functions;
 using Utils;
 
 namespace DataDictionary.Types

@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using DataDictionary.Functions;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using XmlBooster;

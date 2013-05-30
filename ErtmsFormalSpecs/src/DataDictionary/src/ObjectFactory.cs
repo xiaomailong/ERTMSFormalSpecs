@@ -85,7 +85,7 @@ namespace DataDictionary
 
         public override Generated.Procedure createProcedure()
         {
-            return new Variables.Procedure();
+            return new Functions.Procedure();
         }
 
         public override Generated.StateMachine createStateMachine()

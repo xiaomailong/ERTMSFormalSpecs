@@ -14,11 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 using Utils;
 
-namespace DataDictionary.Variables
+namespace DataDictionary.Functions
 {
-    public class Procedure : Generated.Procedure, Utils.ISubDeclarator, IProcedure, TextualExplain
+    public class Procedure : Generated.Procedure, Utils.ISubDeclarator, ICallable, TextualExplain
     {
         /// <summary>
         /// Constructor

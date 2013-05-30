@@ -431,7 +431,7 @@ namespace DataDictionary.Tests.Runner
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
-            foreach (Variables.Procedure procedure in nameSpace.Procedures)
+            foreach (Functions.Procedure procedure in nameSpace.Procedures)
             {
                 rules.Clear();
                 Activation.RegisterRules(activations, rules, procedure);

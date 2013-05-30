@@ -221,7 +221,7 @@ namespace Reports.Model
                             if (countDisplayedReqRelated(structure.Procedures) > 0)
                             {
                                 AddSubParagraph("Procedures");
-                                foreach (DataDictionary.Variables.Procedure procedure in structure.Procedures)
+                                foreach (DataDictionary.Functions.Procedure procedure in structure.Procedures)
                                 {
                                     if (procedure.ImplementationPartiallyCompleted == true)
                                     {
@@ -377,7 +377,7 @@ namespace Reports.Model
             {
                 AddSubParagraph("Procedures");
 
-                foreach (DataDictionary.Variables.Procedure procedure in aNameSpace.Procedures)
+                foreach (DataDictionary.Functions.Procedure procedure in aNameSpace.Procedures)
                 {
                     if (procedure.ImplementationPartiallyCompleted == true)
                     {

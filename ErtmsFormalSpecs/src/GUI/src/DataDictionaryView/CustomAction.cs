@@ -59,7 +59,7 @@ namespace GUI.DataDictionaryView
                         Structure structure = DataDictionary.OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary, element.Type.FullName);
                         if (structure != null)
                         {
-                            foreach (DataDictionary.Variables.Procedure procedure in structure.Procedures)
+                            foreach (DataDictionary.Functions.Procedure procedure in structure.Procedures)
                             {
                                 System.Windows.Forms.CheckBox aCheckBox = new System.Windows.Forms.CheckBox();
                                 aCheckBox.AutoSize = true;

@@ -129,13 +129,13 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Variables.IProcedure getProcedure(string name)
+        public Functions.Procedure getProcedure(string name)
         {
-            Variables.IProcedure retVal = null;
+            Functions.Procedure retVal = null;
 
             if (Val.ContainsKey(name))
             {
-                retVal = Val[name] as Variables.IProcedure;
+                retVal = Val[name] as Functions.Procedure;
             }
 
             return retVal;
@@ -239,18 +239,18 @@ namespace DataDictionary.Values
         /// <summary>
         /// The sub variables of this structure
         /// </summary>
-        private Dictionary<string, Variables.IProcedure> procedures;
-        public Dictionary<string, Variables.IProcedure> Procedures
+        private Dictionary<string, Functions.Procedure> procedures;
+        public Dictionary<string, Functions.Procedure> Procedures
         {
             get
             {
                 if (procedures == null)
                 {
-                    procedures = new Dictionary<string, Variables.IProcedure>();
+                    procedures = new Dictionary<string, Functions.Procedure>();
 
                     foreach (KeyValuePair<string, Utils.INamable> kp in Val)
                     {
-                        Variables.IProcedure proc = kp.Value as Variables.IProcedure;
+                        Functions.Procedure proc = kp.Value as Functions.Procedure;
 
                         if (proc != null)
                         {

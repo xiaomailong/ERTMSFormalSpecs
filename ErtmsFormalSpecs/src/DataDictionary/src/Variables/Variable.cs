@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Functions;
 
 namespace DataDictionary.Variables
 {
@@ -229,7 +230,7 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The enclosed procedures
         /// </summary>
-        public Dictionary<string, IProcedure> SubProcedures
+        public Dictionary<string, Procedure> SubProcedures
         {
             get
             {
@@ -240,7 +241,7 @@ namespace DataDictionary.Variables
                 }
                 else
                 {
-                    return new Dictionary<string, IProcedure>();
+                    return new Dictionary<string, Procedure>();
                 }
             }
         }

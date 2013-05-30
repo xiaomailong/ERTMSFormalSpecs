@@ -275,7 +275,7 @@ namespace DataDictionary.Types
                 Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, variable);
             }
 
-            foreach (Variables.Procedure proc in Procedures)
+            foreach (Functions.Procedure proc in Procedures)
             {
                 Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, proc);
             }
@@ -458,7 +458,7 @@ namespace DataDictionary.Types
                 }
             }
             {
-                Variables.Procedure item = element as Variables.Procedure;
+                Functions.Procedure item = element as Functions.Procedure;
                 if (item != null)
                 {
                     appendProcedures(item);

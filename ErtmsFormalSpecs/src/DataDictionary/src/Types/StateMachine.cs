@@ -363,7 +363,7 @@ namespace DataDictionary.Types
                 {
                     if (stateMachineType == null)
                     {
-                        stateMachineType = Utils.EnclosingFinder<Variables.Procedure>.find(StateMachine).StateMachine;
+                        stateMachineType = Utils.EnclosingFinder<Functions.Procedure>.find(StateMachine).StateMachine;
                     }
                     return stateMachineType;
                 }

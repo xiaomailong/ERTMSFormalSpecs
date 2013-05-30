@@ -74,9 +74,9 @@ namespace DataDictionary
                 {
                     return Utils.EnclosingFinder<Functions.Function>.find(this).FormalParameters;
                 }
-                else if (this.Enclosing is DataDictionary.Variables.Procedure)
+                else if (this.Enclosing is Functions.Procedure)
                 {
-                    return Utils.EnclosingFinder<Variables.Procedure>.find(this).FormalParameters;
+                    return Utils.EnclosingFinder<Functions.Procedure>.find(this).FormalParameters;
                 }
 
                 return null;
