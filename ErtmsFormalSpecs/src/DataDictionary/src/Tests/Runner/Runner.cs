@@ -186,26 +186,6 @@ namespace DataDictionary.Tests.Runner
             }
 
             /// <summary>
-            /// Set the initial value for each procedure
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Procedure obj, bool visitSubNodes)
-            {
-                DataDictionary.Variables.Procedure procedure = obj as DataDictionary.Variables.Procedure;
-
-                if (procedure != null)
-                {
-                    if (procedure.StateMachine.States.Count > 0)
-                    {
-                        procedure.CurrentState.Value = procedure.DefaultValue;
-                    }
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
             /// Indicates which rules are not active
             /// </summary>
             /// <param name="obj"></param>
@@ -454,7 +434,6 @@ namespace DataDictionary.Tests.Runner
             foreach (Variables.Procedure procedure in nameSpace.Procedures)
             {
                 rules.Clear();
-                EvaluateStateMachine(rules, priority, procedure.CurrentState);
                 Activation.RegisterRules(activations, rules, procedure);
             }
 
@@ -490,10 +469,6 @@ namespace DataDictionary.Tests.Runner
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
                             EvaluateVariable(priority, activations, subVariable);
-                        }
-                        foreach (Variables.IProcedure procedure in value.Procedures.Values)
-                        {
-                            EvaluateVariable(priority, activations, procedure.CurrentState);
                         }
                     }
                 }

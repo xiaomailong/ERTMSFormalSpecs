@@ -42,6 +42,16 @@ namespace DataDictionary
                 {
                     stateMachine.Name = procedure.Name + "SM";
 
+                    // Duplicate the process information
+                    stateMachine.setImplemented(procedure.getImplemented());
+                    stateMachine.setVerified(procedure.getVerified());
+                    stateMachine.setNeedsRequirement(procedure.getNeedsRequirement());
+                    foreach (ReqRef reqRef in procedure.Requirements)
+                    {
+                        stateMachine.appendRequirements(reqRef);
+                    }
+                    stateMachine.setComment(procedure.getComment());
+
                     NameSpace nameSpace = (NameSpace)procedure.Enclosing;
                     nameSpace.appendStateMachines(stateMachine);
 
@@ -65,6 +75,17 @@ namespace DataDictionary
                 {
                     Structure structure = (Structure)procedure.Enclosing;
                     stateMachine.Name = procedure.Name + "SM";
+
+                    // Duplicate the process information
+                    stateMachine.setImplemented(procedure.getImplemented());
+                    stateMachine.setVerified(procedure.getVerified());
+                    stateMachine.setNeedsRequirement(procedure.getNeedsRequirement());
+                    foreach (ReqRef reqRef in procedure.Requirements)
+                    {
+                        stateMachine.appendRequirements(reqRef);
+                    }
+                    stateMachine.setComment(procedure.getComment());
+
                     structure.appendStateMachines(stateMachine);
 
                     StructureElement element = (StructureElement)Generated.acceptor.getFactory().createStructureElement();

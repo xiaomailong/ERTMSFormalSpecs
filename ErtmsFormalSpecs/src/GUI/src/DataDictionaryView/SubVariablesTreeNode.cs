@@ -62,17 +62,6 @@ namespace GUI.DataDictionaryView
                 }
             }
 
-            foreach (DataDictionary.Variables.IProcedure iprocedure in item.SubProcedures.Values)
-            {
-                DataDictionary.Variables.Procedure procedure = iprocedure as DataDictionary.Variables.Procedure;
-                if (procedure != null)
-                {
-                    if (procedure.CurrentState != null)
-                    {
-                        Nodes.Add(new VariableTreeNode(procedure.CurrentState, procedure.Name, encounteredTypes));
-                    }
-                }
-            }
             SortSubNodes();
         }
 

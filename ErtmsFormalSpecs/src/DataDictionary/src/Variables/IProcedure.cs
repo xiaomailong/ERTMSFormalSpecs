@@ -22,11 +22,5 @@ namespace DataDictionary.Variables
         /// The rules to be applied when the procedure is invoked
         /// </summary>
         System.Collections.ArrayList Rules { get; }
-
-        /// <summary>
-        /// The current state of the procedure
-        /// </summary>
-        Variables.Variable CurrentState { get; }
-
     }
 }

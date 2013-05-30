@@ -14,34 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Variables
 {
-    public class Procedure : Generated.Procedure, Utils.ISubDeclarator, IProcedure, IVariable, Values.IValue, TextualExplain
+    public class Procedure : Generated.Procedure, Utils.ISubDeclarator, IProcedure, TextualExplain
     {
-        /// <summary>
-        /// The current state of the state machine
-        /// (only used for root state machines, declared in a procedure)
-        /// </summary>
-        private Variables.Variable currentState;
-        public Variables.Variable CurrentState
-        {
-            get
-            {
-                if (currentState == null && StateMachine.States.Count > 0)
-                {
-                    currentState = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
-                    currentState.Name = "CurrentState";
-                    currentState.Type = StateMachine;
-                    currentState.Value = StateMachine.DefaultValue;
-                    currentState.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
-                    currentState.setFather(this);
-                }
-
-                return currentState;
-            }
-        }
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -50,7 +28,6 @@ namespace DataDictionary.Variables
         {
         }
 
-
         /// <summary>
         /// Indicates if this Procedure contains implemented sub-elements
         /// </summary>
@@ -58,11 +35,6 @@ namespace DataDictionary.Variables
         {
             get
             {
-                if (getImplemented() || StateMachine.ImplementationPartiallyCompleted)
-                {
-                    return true;
-                }
-
                 foreach (DataDictionary.Rules.Rule rule in Rules)
                 {
                     if (rule.ImplementationPartiallyCompleted)
@@ -80,26 +52,18 @@ namespace DataDictionary.Variables
         /// </summary>
         public void InitDeclaredElements()
         {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Parameter parameter in FormalParameters)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, parameter);
+            }
         }
 
         /// <summary>
         /// The elements declared by this variable
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                Dictionary<string, List<Utils.INamable>> retVal = StateMachine.DeclaredElements;
-
-                Utils.ISubDeclaratorUtils.AppendNamable(retVal, CurrentState);
-                foreach (Parameter parameter in FormalParameters)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, parameter);
-                }
-
-                return retVal;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -108,23 +72,7 @@ namespace DataDictionary.Variables
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            if (CurrentState != null && CurrentState.Name.CompareTo(name) == 0)
-            {
-                retVal.Add(CurrentState);
-            }
-            else
-            {
-                StateMachine.Find(name, retVal);
-            }
-
-            foreach (Parameter item in FormalParameters)
-            {
-                if (item.Name.CompareTo(name) == 0)
-                {
-                    retVal.Add(item);
-                    break;
-                }
-            }
+            ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
         }
 
         /// <summary>
@@ -228,46 +176,6 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The default value
-        /// </summary>
-        public string Default
-        {
-            get { return StateMachine.getDefault(); }
-            set { StateMachine.setDefault(value); }
-        }
-
-        /// <summary>
-        /// The complete name to access the value
-        /// </summary>
-        public string LiteralName { get { return ToString(); } }
-
-        /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
-        /// </summary>
-        /// <param name="variable">The target variable</param>
-        /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
-        /// <returns></returns>
-        public Values.IValue RightSide(Variables.IVariable variable, bool duplicate)
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// Provides the type name of the element
-        /// </summary>
-        public string TypeName { get { return ToString(); } }
-
-        /// <summary>
-        /// The type of the element
-        /// </summary>
-        public Types.Type Type { get { return EFSSystem.NoType; } set { } }
-
-        /// <summary>
-        /// Provides the mode of the typed element
-        /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode { get { return Generated.acceptor.VariableModeEnumType.aConstant; } }
-
-        /// <summary>
         /// The rules declared in this procedure
         /// </summary>
         public System.Collections.ArrayList Rules
@@ -344,23 +252,8 @@ namespace DataDictionary.Variables
                 retVal += "\\par" + rule.getExplain(indentLevel + 2, true);
             }
 
-            if (StateMachine.States.Count > 0)
-            {
-                retVal += TextualExplainUtilities.Pad("\\par{\\cf11 // The temporal behaviour of this procedure is defined by a state machine}\\cf1\\par", indentLevel + 2);
-            }
-
             return retVal;
         }
-
-        /// <summary>
-        /// Provides the value of the variable
-        /// </summary>
-        public Values.IValue Value { get { return CurrentState.Value; } set { CurrentState.Value = value; } }
-
-        /// <summary>
-        /// Provides the default value to give to the variable
-        /// </summary>
-        public Values.IValue DefaultValue { get { return StateMachine.DefaultValue; } }
 
         /// <summary>
         /// Provides an explanation of the rule's behaviour

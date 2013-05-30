@@ -51,24 +51,6 @@ namespace DataDictionary.Values
                 variable.Enclosing = this;
                 set(variable);
             }
-
-            foreach (Types.StructureProcedure procedure in Structure.Procedures)
-            {
-                Variables.Procedure proc = (Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-                proc.StateMachine = procedure.instanciateStateMachine();
-                proc.Rules = procedure.Rules;
-                proc.Name = procedure.Name;
-                proc.Default = procedure.Default;
-                foreach (Parameter parameter in procedure.FormalParameters)
-                {
-                    Parameter p2 = (Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
-                    p2.Name = parameter.Name;
-                    p2.Type = parameter.Type;
-                    proc.appendParameters(p2);
-                }
-                proc.Enclosing = this;
-                set(proc);
-            }
         }
 
         /// <summary>
@@ -101,29 +83,6 @@ namespace DataDictionary.Values
                     }
                     set(var2);
                 }
-
-                Variables.Procedure procedure = pair.Value as Variables.Procedure;
-                if (procedure != null)
-                {
-                    Variables.Procedure proc2 = (Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-                    proc2.StateMachine = procedure.StateMachine;
-                    proc2.Rules = procedure.Rules;
-                    proc2.Name = procedure.Name;
-                    proc2.Default = procedure.Default;
-                    foreach (Parameter parameter in procedure.FormalParameters)
-                    {
-                        Parameter p2 = (Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
-                        p2.Name = parameter.Name;
-                        p2.Type = parameter.Type;
-                        proc2.appendParameters(p2);
-                    }
-                    proc2.Enclosing = this;
-                    if (procedure.CurrentState != null)
-                    {
-                        proc2.CurrentState.Value = procedure.CurrentState.Value;
-                    }
-                    set(proc2);
-                }
             }
         }
 
@@ -145,28 +104,6 @@ namespace DataDictionary.Values
             else
             {
                 Val.Add(variable.Name, variable);
-            }
-        }
-
-        /// <summary>
-        /// Sets the value of a given association
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="val"></param>
-        public void set(Variables.Procedure procedure)
-        {
-            if (Val.ContainsKey(procedure.Name))
-            {
-                Variables.Procedure proc = Val[procedure.Name] as Variables.Procedure;
-
-                if (proc != null)
-                {
-                    proc.CurrentState.Value = procedure.CurrentState.Value;
-                }
-            }
-            else
-            {
-                Val.Add(procedure.Name, procedure);
             }
         }
 
@@ -261,12 +198,6 @@ namespace DataDictionary.Values
                     if (variable != null && variable.Value != null)
                     {
                         retVal += "    " + variable.Name + " => " + variable.Value.FullName;
-                    }
-
-                    Variables.Procedure procedure = tmp as Variables.Procedure;
-                    if (procedure != null && procedure.CurrentState != null && procedure.CurrentState.Value != null)
-                    {
-                        retVal += procedure.Name + " => " + procedure.CurrentState.Value.FullName;
                     }
 
                     first = false;

@@ -276,14 +276,6 @@ namespace DataDictionary.Types
                 {
                     declaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-                    if (EnclosingProcedure != null)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EnclosingProcedure.CurrentState);
-                    }
-                    else if (EnclosingStructureProcedure != null)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EnclosingStructureProcedure.CurrentState);
-                    }
                     foreach (Constants.State state in States)
                     {
                         Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, state);
