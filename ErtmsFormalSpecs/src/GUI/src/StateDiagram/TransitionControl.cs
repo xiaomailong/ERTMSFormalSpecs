@@ -138,8 +138,12 @@ namespace GUI.StateDiagram
                 Text = "Initial state";
 
             }
-            Panel.UpdateTransitionPosition();
-            Panel.Refresh();
+
+            if (Panel != null)
+            {
+                Panel.UpdateTransitionPosition();
+                Panel.Refresh();
+            }
         }
 
         /// <summary>
@@ -419,7 +423,7 @@ namespace GUI.StateDiagram
 
                 // Select the pen used to draw the arrow
                 Pen pen;
-                if (Utils.EnclosingFinder<StateMachine>.find(Transition.RuleCondition) == null)
+                if (Utils.EnclosingFinder<StateMachine>.find(Transition.RuleCondition) == null && InitialStateControl != null)
                 {
                     // A degraded case is a transition that is not defined in any state machine
                     pen = DEGRADED_CASE_PEN;
