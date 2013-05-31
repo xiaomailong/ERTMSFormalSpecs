@@ -131,7 +131,8 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        SubVariablesTreeNode subVariables;
+        private bool IsASubVariable;
+        private SubVariablesTreeNode subVariables;
 
         /// <summary>
         /// Constructor
@@ -139,10 +140,11 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, HashSet<DataDictionary.Types.Type> encounteredTypes)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
             : base(item)
         {
             encounteredTypes.Add(item.Type);
+            IsASubVariable = isASubVariable;
             subVariables = new SubVariablesTreeNode(item, encounteredTypes);
             Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
@@ -154,10 +156,11 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, string name, HashSet<DataDictionary.Types.Type> encounteredTypes)
+        public VariableTreeNode(DataDictionary.Variables.Variable item, string name, HashSet<DataDictionary.Types.Type> encounteredTypes, bool isASubVariable = false)
             : base(item, name, false)
         {
             encounteredTypes.Add(item.Type);
+            IsASubVariable = isASubVariable;
             subVariables = new SubVariablesTreeNode(item, encounteredTypes);
             Nodes.Add(subVariables);
             encounteredTypes.Remove(item.Type);
@@ -197,9 +200,18 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = base.GetMenuItems();
-            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            List<MenuItem> retVal;
 
+            if (!IsASubVariable)
+            {
+                retVal = base.GetMenuItems();
+                retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            }
+            else
+            {
+                retVal = new List<MenuItem>();
+                retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
+            }
 
             DataDictionary.Functions.Function function = Item.Value as DataDictionary.Functions.Function;
             if (function != null)

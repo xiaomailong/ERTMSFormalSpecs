@@ -48,14 +48,14 @@ namespace GUI.DataDictionaryView
                 {
                     if (variable.Type == null)
                     {
-                        Nodes.Add(new VariableTreeNode(variable, encounteredTypes));
+                        Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
                     }
                     else
                     {
                         if (!encounteredTypes.Contains(variable.Type))
                         {
                             encounteredTypes.Add(variable.Type);
-                            Nodes.Add(new VariableTreeNode(variable, encounteredTypes));
+                            Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
                             encounteredTypes.Remove(variable.Type);
                         }
                     }
