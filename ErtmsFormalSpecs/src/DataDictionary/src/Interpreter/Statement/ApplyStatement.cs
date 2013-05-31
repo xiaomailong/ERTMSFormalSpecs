@@ -74,7 +74,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public void InitDeclaredElements()
         {
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, IteratorVariable);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

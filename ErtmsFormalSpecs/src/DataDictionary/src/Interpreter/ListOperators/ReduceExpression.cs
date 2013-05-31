@@ -52,7 +52,7 @@ namespace DataDictionary.Interpreter.ListOperators
             AccumulatorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             AccumulatorVariable.Enclosing = this;
             AccumulatorVariable.Name = "RESULT";
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, AccumulatorVariable);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, AccumulatorVariable);
         }
 
         /// <summary>

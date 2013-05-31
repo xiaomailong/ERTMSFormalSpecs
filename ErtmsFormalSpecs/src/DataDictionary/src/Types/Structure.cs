@@ -87,16 +87,16 @@ namespace DataDictionary.Types
 
             foreach (StructureElement element in Elements)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, element);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, element);
             }
             foreach (Procedure procedure in Procedures)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, procedure);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, procedure);
             }
 
             foreach (StateMachine stateMachine in StateMachines)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, stateMachine);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, stateMachine);
             }
         }
 
@@ -112,12 +112,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            if (DeclaredElements == null)
-            {
-                InitDeclaredElements();
-            }
-
-            ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

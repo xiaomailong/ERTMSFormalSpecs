@@ -57,7 +57,7 @@ namespace DataDictionary.Functions
 
             foreach (Parameter parameter in FormalParameters)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, parameter);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, parameter);
             }
         }
 
@@ -73,7 +73,7 @@ namespace DataDictionary.Functions
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

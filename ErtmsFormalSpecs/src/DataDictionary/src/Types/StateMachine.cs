@@ -179,7 +179,7 @@ namespace DataDictionary.Types
         public void ClearCache()
         {
             cachedValues = null;
-            declaredElements = null;
+            DeclaredElements = null;
         }
 
         /// <summary>
@@ -233,35 +233,22 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the states available through this state machine
-        /// </summary>
-        public Dictionary<string, List<Utils.INamable>> declaredElements;
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
-        }
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
+            foreach (Constants.State state in States)
             {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    foreach (Constants.State state in States)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, state);
-                    }
-                }
-
-                return declaredElements;
+                Utils.ISubDeclaratorUtils.AppendNamable(this, state);
             }
         }
+
+        /// <summary>
+        /// Provides all the states that can be stored in this state machine
+        /// </summary>
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -270,10 +257,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            if (DeclaredElements.ContainsKey(name))
-            {
-                retVal.AddRange(DeclaredElements[name]);
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

@@ -146,25 +146,18 @@ namespace DataDictionary.Values
         /// </summary>
         public void InitDeclaredElements()
         {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Utils.INamable namable in Val.Values)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+            }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
-
-                foreach (Utils.INamable namable in Val.Values)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, namable);
-                }
-
-                return retVal;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -173,12 +166,7 @@ namespace DataDictionary.Values
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            Utils.INamable namable = null;
-
-            if (Val.TryGetValue(name, out namable))
-            {
-                retVal.Add(namable);
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         public override string Name

@@ -63,7 +63,7 @@ namespace DataDictionary.Interpreter
                                 (current is StabilizeExpression))
                             {
                                 ISubDeclarator subDeclarator = current as ISubDeclarator;
-                                if (ISubDeclaratorUtils.ContainsValue(subDeclarator.DeclaredElements, Ref))
+                                if (ISubDeclaratorUtils.ContainsValue(subDeclarator, Ref))
                                 {
                                     retVal = LocationEnum.Stack;
                                 }
@@ -427,8 +427,9 @@ namespace DataDictionary.Interpreter
         {
             INamable retVal = null;
 
-            List<INamable> tmp;
-            if (subDeclarator.DeclaredElements.TryGetValue(Image, out tmp))
+            List<INamable> tmp = new List<INamable>();
+            subDeclarator.Find(Image, tmp);
+            if (tmp.Count > 0)
             {
                 // Remove duplicates
                 List<INamable> tmp2 = new List<INamable>();

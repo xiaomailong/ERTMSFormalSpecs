@@ -463,38 +463,22 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The dictionary of declared elements
-        /// </summary>
-        private Dictionary<string, List<Utils.INamable>> __declaredElements;
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            __declaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
             foreach (Constants.EnumValue value in SpecialValues)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, value);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, value);
             }
         }
 
         /// <summary>
-        /// Provides all the values that can be stored in this structure
+        /// Provides all the values that can be stored in this range
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                if (__declaredElements == null)
-                {
-                    InitDeclaredElements();
-                }
-
-                return __declaredElements;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -503,14 +487,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            foreach (Constants.EnumValue item in SpecialValues)
-            {
-                if (item.Name.CompareTo(name) == 0)
-                {
-                    retVal.Add(item);
-                    break;
-                }
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
