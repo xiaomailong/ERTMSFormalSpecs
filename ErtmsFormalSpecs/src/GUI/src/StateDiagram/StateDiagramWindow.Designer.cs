@@ -53,6 +53,7 @@ namespace GUI.StateDiagram
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.descriptionRichTextBox = new MyRichTextBox(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,6 +61,7 @@ namespace GUI.StateDiagram
             this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,6 +143,10 @@ namespace GUI.StateDiagram
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.descriptionRichTextBox);
             this.splitContainer2.Size = new System.Drawing.Size(233, 341);
             this.splitContainer2.SplitterDistance = 170;
             this.splitContainer2.TabIndex = 1;
@@ -154,6 +160,15 @@ namespace GUI.StateDiagram
             this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
             this.propertyGrid.Size = new System.Drawing.Size(233, 170);
             this.propertyGrid.TabIndex = 0;
+            // 
+            // richTextBox1
+            // 
+            this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.descriptionRichTextBox.Name = "richTextBox1";
+            this.descriptionRichTextBox.Size = new System.Drawing.Size(233, 167);
+            this.descriptionRichTextBox.TabIndex = 0;
+            this.descriptionRichTextBox.Text = "";
             // 
             // StateDiagramWindow
             // 
@@ -171,6 +186,7 @@ namespace GUI.StateDiagram
             this.splitContainer1.ResumeLayout(false);
             this.contextMenu.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
