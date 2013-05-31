@@ -67,7 +67,7 @@ namespace GUI.RulePerformances
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 262);
             this.Controls.Add(this.dataGridView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Name = "RulesPerformances";
             this.ShowInTaskbar = false;
             this.Text = "Rules Performances";

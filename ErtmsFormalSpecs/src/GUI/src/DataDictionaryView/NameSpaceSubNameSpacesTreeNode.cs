@@ -47,7 +47,7 @@ namespace GUI.DataDictionaryView
         /// Adds a namespace in the corresponding namespace
         /// </summary>
         /// <param name="nameSpace"></param>
-        public NameSpaceTreeNode AddNameSpace(DataDictionary.Types.NameSpace nameSpace)
+        public NameSpaceTreeNode AddSubNameSpace(DataDictionary.Types.NameSpace nameSpace)
         {
             Item.appendNameSpaces(nameSpace);
             NameSpaceTreeNode retVal = new NameSpaceTreeNode(nameSpace);

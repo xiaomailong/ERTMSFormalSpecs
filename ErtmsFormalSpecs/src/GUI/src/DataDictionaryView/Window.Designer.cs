@@ -59,6 +59,10 @@ namespace GUI.DataDictionaryView
             this.dataDictPropertyGrid = new GUI.MyPropertyGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.messagesRichTextBox = new MyRichTextBox();
+            this.commentRichTextBox = new MyRichTextBox();
+            this.expressionTextBox = new MyRichTextBox();
+            this.requirementsTextBox = new MyRichTextBox();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.ruleExplainTextBox = new GUI.RuleExplainTextBox();
@@ -67,10 +71,6 @@ namespace GUI.DataDictionaryView
             this.commentTabPage = new System.Windows.Forms.TabPage();
             this.usageTabPage = new System.Windows.Forms.TabPage();
             this.usageTreeView = new GUI.DataDictionaryView.UsageTreeView.UsageTreeView();
-            this.messagesRichTextBox = new GUI.MyRichTextBox(true);
-            this.requirementsTextBox = new GUI.MyRichTextBox(false);
-            this.commentRichTextBox = new GUI.MyRichTextBox(false);
-            this.expressionTextBox = new GUI.MyRichTextBox(false);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
@@ -341,6 +341,7 @@ namespace GUI.DataDictionaryView
             this.stateDiagramPanel.Name = "stateDiagramPanel";
             this.stateDiagramPanel.Size = new System.Drawing.Size(346, 280);
             this.stateDiagramPanel.StateMachine = null;
+            this.stateDiagramPanel.StateMachineVariable = null;
             this.stateDiagramPanel.TabIndex = 0;
             this.stateDiagramPanel.Visible = false;
             // 
@@ -351,7 +352,7 @@ namespace GUI.DataDictionaryView
             this.expressionTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.expressionTabPage.Name = "expressionTabPage";
             this.expressionTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.expressionTabPage.Size = new System.Drawing.Size(694, 297);
+            this.expressionTabPage.Size = new System.Drawing.Size(694, 284);
             this.expressionTabPage.TabIndex = 0;
             this.expressionTabPage.Text = "Expression";
             this.expressionTabPage.UseVisualStyleBackColor = true;
@@ -375,7 +376,7 @@ namespace GUI.DataDictionaryView
             this.commentTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.commentTabPage.Name = "commentTabPage";
             this.commentTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.commentTabPage.Size = new System.Drawing.Size(694, 297);
+            this.commentTabPage.Size = new System.Drawing.Size(694, 284);
             this.commentTabPage.TabIndex = 2;
             this.commentTabPage.Text = "Comment";
             this.commentTabPage.UseVisualStyleBackColor = true;
@@ -399,7 +400,7 @@ namespace GUI.DataDictionaryView
             this.usageTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.usageTabPage.Name = "usageTabPage";
             this.usageTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.usageTabPage.Size = new System.Drawing.Size(694, 297);
+            this.usageTabPage.Size = new System.Drawing.Size(694, 284);
             this.usageTabPage.TabIndex = 3;
             this.usageTabPage.Text = "Usage";
             this.usageTabPage.UseVisualStyleBackColor = true;
@@ -444,7 +445,7 @@ namespace GUI.DataDictionaryView
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;

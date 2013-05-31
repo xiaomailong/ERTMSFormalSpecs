@@ -228,7 +228,6 @@ namespace GUI.GraphView
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 476);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "GraphView";
             this.ShowInTaskbar = false;
             this.Text = "Graph View";

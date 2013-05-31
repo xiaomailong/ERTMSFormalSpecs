@@ -56,7 +56,7 @@ namespace GUI.DictionarySelector
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -77,7 +77,7 @@ namespace GUI.DictionarySelector
             this.dataDictionaryListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataDictionaryListBox.FormattingEnabled = true;
             this.dataDictionaryListBox.Location = new System.Drawing.Point(0, 0);
-            this.dataDictionaryListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataDictionaryListBox.Margin = new System.Windows.Forms.Padding(2);
             this.dataDictionaryListBox.Name = "dataDictionaryListBox";
             this.dataDictionaryListBox.Size = new System.Drawing.Size(195, 125);
             this.dataDictionaryListBox.TabIndex = 0;
@@ -85,7 +85,7 @@ namespace GUI.DictionarySelector
             // selectButton
             // 
             this.selectButton.Location = new System.Drawing.Point(53, 8);
-            this.selectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectButton.Margin = new System.Windows.Forms.Padding(2);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(85, 21);
             this.selectButton.TabIndex = 0;
@@ -99,8 +99,7 @@ namespace GUI.DictionarySelector
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(195, 164);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DictionarySelector";
             this.ShowInTaskbar = false;
             this.Text = "Dictionary selector";

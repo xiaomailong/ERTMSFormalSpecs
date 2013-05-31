@@ -205,7 +205,7 @@ namespace GUI.DataDictionaryView
         /// <param name="nameSpace"></param>
         public NameSpaceTreeNode AddNameSpace(DataDictionary.Types.NameSpace nameSpace)
         {
-            return subNameSpaces.AddNameSpace(nameSpace);
+            return subNameSpaces.AddSubNameSpace(nameSpace);
         }
 
         /// <summary>

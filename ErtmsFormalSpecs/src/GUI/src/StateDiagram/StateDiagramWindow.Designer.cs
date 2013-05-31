@@ -60,7 +60,6 @@ namespace GUI.StateDiagram
             this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +92,7 @@ namespace GUI.StateDiagram
             this.StateContainerPanel.Name = "StateContainerPanel";
             this.StateContainerPanel.Size = new System.Drawing.Size(403, 341);
             this.StateContainerPanel.StateMachine = null;
+            this.StateContainerPanel.StateMachineVariable = null;
             this.StateContainerPanel.TabIndex = 0;
             // 
             // contextMenu
@@ -141,10 +141,6 @@ namespace GUI.StateDiagram
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.descriptionRichTextBox);
             this.splitContainer2.Size = new System.Drawing.Size(233, 341);
             this.splitContainer2.SplitterDistance = 170;
             this.splitContainer2.TabIndex = 1;
@@ -159,22 +155,13 @@ namespace GUI.StateDiagram
             this.propertyGrid.Size = new System.Drawing.Size(233, 170);
             this.propertyGrid.TabIndex = 0;
             // 
-            // descriptionRichTextBox
-            // 
-            this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.descriptionRichTextBox.Name = "descriptionRichTextBox";
-            this.descriptionRichTextBox.Size = new System.Drawing.Size(233, 167);
-            this.descriptionRichTextBox.TabIndex = 0;
-            this.descriptionRichTextBox.Text = "";
-            // 
             // StateDiagramWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 341);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StateDiagramWindow";
             this.Text = "StateDiagramWindow";
@@ -184,7 +171,6 @@ namespace GUI.StateDiagram
             this.splitContainer1.ResumeLayout(false);
             this.contextMenu.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
