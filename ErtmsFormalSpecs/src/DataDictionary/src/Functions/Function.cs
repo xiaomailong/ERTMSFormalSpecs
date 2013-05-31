@@ -158,9 +158,7 @@ namespace DataDictionary.Functions
         {
             get
             {
-                {
-                    return NameSpace.Functions;
-                }
+                return NameSpace.Functions;
             }
         }
 

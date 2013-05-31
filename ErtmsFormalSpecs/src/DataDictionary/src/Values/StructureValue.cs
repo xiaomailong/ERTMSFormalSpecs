@@ -125,23 +125,6 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Gets the value associated to a name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public Functions.Procedure getProcedure(string name)
-        {
-            Functions.Procedure retVal = null;
-
-            if (Val.ContainsKey(name))
-            {
-                retVal = Val[name] as Functions.Procedure;
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
@@ -221,33 +204,6 @@ namespace DataDictionary.Values
                 }
 
                 return subVariables;
-            }
-        }
-
-        /// <summary>
-        /// The sub variables of this structure
-        /// </summary>
-        private Dictionary<string, Functions.Procedure> procedures;
-        public Dictionary<string, Functions.Procedure> Procedures
-        {
-            get
-            {
-                if (procedures == null)
-                {
-                    procedures = new Dictionary<string, Functions.Procedure>();
-
-                    foreach (KeyValuePair<string, Utils.INamable> kp in Val)
-                    {
-                        Functions.Procedure proc = kp.Value as Functions.Procedure;
-
-                        if (proc != null)
-                        {
-                            procedures.Add(kp.Key, proc);
-                        }
-                    }
-                }
-
-                return procedures;
             }
         }
 

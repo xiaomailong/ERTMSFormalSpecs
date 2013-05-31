@@ -15,7 +15,6 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using DataDictionary.Functions;
 
 namespace DataDictionary.Variables
 {
@@ -223,25 +222,6 @@ namespace DataDictionary.Variables
                 else
                 {
                     return new Dictionary<string, IVariable>();
-                }
-            }
-        }
-
-        /// <summary>
-        /// The enclosed procedures
-        /// </summary>
-        public Dictionary<string, Procedure> SubProcedures
-        {
-            get
-            {
-                Values.StructureValue structureValue = Value as Values.StructureValue;
-                if (structureValue != null)
-                {
-                    return structureValue.Procedures;
-                }
-                else
-                {
-                    return new Dictionary<string, Procedure>();
                 }
             }
         }
