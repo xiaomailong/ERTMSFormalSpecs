@@ -54,8 +54,12 @@ namespace Utils
         /// <returns></returns>
         public static T find(IEnclosed el)
         {
-            object current = el.Enclosing;
+            object current = null;
 
+            if (el != null)
+            {
+                current = el.Enclosing;
+            }
             while (current != null && !(current is T))
             {
                 if (current is IEnclosed)

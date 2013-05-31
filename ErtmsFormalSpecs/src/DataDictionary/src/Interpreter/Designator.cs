@@ -450,25 +450,21 @@ namespace DataDictionary.Interpreter
                         tmp2.Add(namable);
 
                         // Consistency check. 
-                        // TODO : Set back when state machine migration is complete
-                        if (false)
+                        Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
+                        if (subDeclVar != null)
                         {
-                            Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
-                            if (subDeclVar != null)
+                            if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
                             {
-                                if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
-                                {
-                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
-                                }
+                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (((IEnclosed)namable).Enclosing != subDeclarator)
                             {
-                                if (((IEnclosed)namable).Enclosing != subDeclarator)
-                                {
-                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
-                                }
+                                AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                            }
 
-                            }
                         }
                     }
                 }
