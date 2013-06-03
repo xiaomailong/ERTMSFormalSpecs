@@ -57,9 +57,10 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The state machine tree node 
+        /// The sub state machine
         /// </summary>
-        public StateMachineTreeNode StateMachine;
+        public StateSubStatesTreeNode SubStates;
+        public StateRulesTreeNode Rules;
 
         /// <summary>
         /// Constructor
@@ -68,8 +69,10 @@ namespace GUI.DataDictionaryView
         public StateTreeNode(DataDictionary.Constants.State item)
             : base(item, null, false, true)
         {
-            StateMachine = new StateMachineTreeNode(item.StateMachine);
-            Nodes.Add(StateMachine);
+            SubStates = new StateSubStatesTreeNode(item);
+            Nodes.Add(SubStates);
+            Rules = new StateRulesTreeNode(item);
+            Nodes.Add(Rules);
         }
 
         /// <summary>
@@ -117,14 +120,25 @@ namespace GUI.DataDictionaryView
             base.AcceptDrop(SourceNode);
         }
 
+        /// <summary>
+        /// Display the associated state diagram
+        /// </summary>
+        public void ViewDiagram()
+        {
+            StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+            BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+            window.SetStateMachine(Item.StateMachine);
+            window.Text = Item.Name + " state diagram";
+        }
+
         protected void ViewStateDiagramHandler(object sender, EventArgs args)
         {
-            StateMachine.ViewDiagram();
+            ViewDiagram();
         }
 
         public override void DoubleClickHandler()
         {
-            StateMachine.ViewDiagram();
+            ViewDiagram();
         }
 
         /// <summary>

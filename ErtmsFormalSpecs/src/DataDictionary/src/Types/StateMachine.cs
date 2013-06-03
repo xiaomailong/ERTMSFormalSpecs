@@ -160,11 +160,20 @@ namespace DataDictionary.Types
             get { return Enclosing as Constants.State; }
         }
 
+        public NameSpace EnclosingNameSpace
+        {
+            get { return Enclosing as NameSpace; }
+        }
+
         public override void Delete()
         {
             if (EnclosingState != null)
             {
                 EnclosingState.StateMachine = null;
+            }
+            else if (EnclosingNameSpace != null)
+            {
+                EnclosingNameSpace.StateMachines.Remove(this); ;
             }
         }
 
