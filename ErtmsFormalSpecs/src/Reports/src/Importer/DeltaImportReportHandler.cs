@@ -31,10 +31,10 @@ namespace Reports.Importer
         /// </summary>
         /// <param name="aDictionary"></param>
         /// <param name="importResult"></param>
-        public DeltaImportReportHandler(DataDictionary.Dictionary aDictionary, Importers.RtfDeltaImporter.Document importResult)
+        public DeltaImportReportHandler(DataDictionary.Dictionary aDictionary, Importers.RtfDeltaImporter.Document importResult, string baseFileName)
             : base(aDictionary)
         {
-            createFileName("ImportReport");
+            createFileName(baseFileName);
             ImportResult = importResult;
         }
 
