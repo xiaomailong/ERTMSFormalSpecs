@@ -50,6 +50,10 @@ namespace DataDictionary.Variables
                         Values.StructureValue structureValue = Value as Values.StructureValue;
                         if (structureValue != null)
                         {
+                            if (structureValue.DeclaredElements == null)
+                            {
+                                structureValue.InitDeclaredElements();
+                            }
                             retVal = structureValue.DeclaredElements;
                         }
                     }
