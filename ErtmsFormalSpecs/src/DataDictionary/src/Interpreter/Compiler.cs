@@ -126,10 +126,12 @@ namespace DataDictionary.Interpreter
             if (Rebuild)
             {
                 expectation.ExpressionTree = null;
+                expectation.ConditionTree = null;
             }
 
-            // Side effect : compiles or recompiles the expression
+            // Side effect : compiles or recompiles the expressions
             DataDictionary.Interpreter.Expression expression = expectation.ExpressionTree;
+            DataDictionary.Interpreter.Expression condition = expectation.ConditionTree;
 
             base.visit(obj, visitSubNodes);
         }

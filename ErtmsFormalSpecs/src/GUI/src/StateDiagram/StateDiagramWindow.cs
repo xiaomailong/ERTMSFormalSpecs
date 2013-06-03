@@ -310,7 +310,7 @@ namespace GUI.StateDiagram
                 if (MDIWindow.DataDictionaryWindow != null)
                 {
                     DataDictionaryView.StateTreeNode stateNode = MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
-                    DataDictionaryView.RuleTreeNode ruleNode = stateNode.StateMachine.AddRule(rule);
+                    DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
                 }
 
                 StateContainerPanel.RefreshControl();

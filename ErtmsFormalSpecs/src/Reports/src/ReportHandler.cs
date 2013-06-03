@@ -45,6 +45,7 @@ namespace Reports
                                                     DateTime.Now.Day);
 
             FileName = Path.Combine(reportPath, dateString + "_" + title + ".pdf");
+            FileName = FileName.Replace(" ", "");
         }
 
         /// <summary>

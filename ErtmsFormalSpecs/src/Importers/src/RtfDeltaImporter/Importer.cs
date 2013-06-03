@@ -83,6 +83,7 @@ namespace Importers.RtfDeltaImporter
                     par.Text = p.Text;
                     par.AddInfo("Paragraph has been changed");
                     par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
+                    par.setReviewed(false);
                     foreach (DataDictionary.ReqRef reqRef in par.Implementations)
                     {
                         DataDictionary.ReqRelated reqRelated = reqRef.Model as DataDictionary.ReqRelated;

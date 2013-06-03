@@ -951,13 +951,15 @@ namespace GUI
                     {
                         string NewFileName = openFileDialog.FileName;
 
+                        string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
+
                         /// Perform the importation
                         Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, dictionary.Specifications);
                         ProgressDialog dialog = new ProgressDialog("Opening file", importer);
                         dialog.ShowDialog();
 
                         /// Creates the report based on the importation result
-                        Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(dictionary, importer.NewDocument);
+                        Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(dictionary, importer.NewDocument, baseFileName);
                         dialog = new ProgressDialog("Opening file", reportHandler);
                         dialog.ShowDialog();
 
@@ -965,6 +967,39 @@ namespace GUI
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates the base file name for the report
+        /// </summary>
+        /// <param name="OriginalFileName"></param>
+        /// <param name="NewFileName"></param>
+        /// <returns></returns>
+        private string createBaseFileName(string OriginalFileName, string NewFileName)
+        {
+            string baseFileName = "";
+            for (int i = 0; i < OriginalFileName.Length && i < NewFileName.Length; i++)
+            {
+                if (OriginalFileName[i] == NewFileName[i])
+                {
+                    baseFileName += OriginalFileName[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (baseFileName.IndexOf("\\") > 0)
+            {
+                baseFileName = baseFileName.Substring(baseFileName.LastIndexOf("\\") + 1);
+            }
+
+            if (baseFileName.IndexOf("v") > 0)
+            {
+                baseFileName = baseFileName.Substring(0, baseFileName.LastIndexOf("v"));
+            }
+
+            return baseFileName;
         }
 
         #region Import test database
@@ -1317,6 +1352,15 @@ namespace GUI
                 {
                     AddChildWindow(new DataDictionaryView.Window(dictionary));
                 }
+            }
+        }
+
+        private void markParagraphsFromNewRevisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                dictionary.Specifications.CheckNewRevision();
+                Refresh();
             }
         }
     }

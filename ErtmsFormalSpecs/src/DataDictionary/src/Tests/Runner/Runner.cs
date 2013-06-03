@@ -652,7 +652,7 @@ namespace DataDictionary.Tests.Runner
                             case Generated.acceptor.ExpectationKind.aContinuous:
                                 if (expectation.getCondition() != null)
                                 {
-                                    if (getBoolValue(expectation, expectation.ConditionTree))
+                                    if (!getBoolValue(expectation, expectation.ConditionTree))
                                     {
                                         // An continuous expectation who reached its satisfactory condition
                                         EventTimeLine.AddModelEvent(new ExpectationReached(expect));

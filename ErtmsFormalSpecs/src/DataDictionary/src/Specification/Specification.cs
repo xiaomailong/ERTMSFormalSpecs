@@ -315,7 +315,29 @@ namespace DataDictionary.Specification
             visitor.visit(this);
         }
 
+        private class NiewRevisionVisitor : Generated.Visitor
+        {
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
 
+                if (paragraph.getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable)
+                {
+                    paragraph.AddInfo("New revision");
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+        /// <summary>
+        /// Indicates which requirement has been not reviewed 
+        /// </summary>
+        public void CheckNewRevision()
+        {
+            Dictionary.ClearMessages();
+            NiewRevisionVisitor visitor = new NiewRevisionVisitor();
+            visitor.visit(this);
+        }
 
         /// <summary>
         /// If a chapter has a type spec, it is placed into a paragraph

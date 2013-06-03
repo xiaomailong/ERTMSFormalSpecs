@@ -422,17 +422,26 @@ namespace GUI.StateDiagram
                 Point target = TargetLocation;
 
                 // Select the pen used to draw the arrow
-                Pen pen;
-                if (Utils.EnclosingFinder<StateMachine>.find(Transition.RuleCondition) == null && InitialStateControl != null)
+                Pen pen = NORMAL_PEN;
+                SetColor(NORMAL_COLOR);
+                if (Name.CompareTo("Initial State") != 0)
                 {
-                    // A degraded case is a transition that is not defined in any state machine
-                    pen = DEGRADED_CASE_PEN;
-                    SetColor(DEGRADED_CASE_COLOR);
-                }
-                else
-                {
-                    pen = NORMAL_PEN;
-                    SetColor(NORMAL_COLOR);
+                    StateMachine transitionStateMachine = Utils.EnclosingFinder<StateMachine>.find(Transition.RuleCondition);
+                    if (transitionStateMachine == null && Name.CompareTo("Initial State") != 0)
+                    {
+                        // A degraded case is a transition that is not defined in any state machine
+                        pen = DEGRADED_CASE_PEN;
+                        SetColor(DEGRADED_CASE_COLOR);
+                    }
+                    else
+                    {
+                        if (Transition.RuleCondition != null && Panel.StateMachine.Rules.Contains(Transition.RuleCondition.EnclosingRule))
+                        {
+                            // A degraded case is a transition that is defined in the rules of the state machines (not in its states)
+                            pen = DEGRADED_CASE_PEN;
+                            SetColor(DEGRADED_CASE_COLOR);
+                        }
+                    }
                 }
 
                 if (Transition.RuleCondition != null)
