@@ -617,7 +617,19 @@ namespace DataDictionary.Tests.Runner
             {
                 if (expect.TimeOut < EventTimeLine.CurrentTime)
                 {
-                    EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                    switch (expect.Expectation.getKind())
+                    {
+                        case Generated.acceptor.ExpectationKind.aInstantaneous:
+                        case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                            // Instantaneous expectation who raised its deadling
+                            EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                            break;
+
+                        case Generated.acceptor.ExpectationKind.aContinuous:
+                            // Continuous expectation who raised its deadline
+                            EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                            break;
+                    }
                 }
                 else
                 {
@@ -628,14 +640,29 @@ namespace DataDictionary.Tests.Runner
                         BoolValue value = expression.GetValue(context) as BoolValue;
                         if (value != null)
                         {
-                            if (value.Val)
+                            switch (expect.Expectation.getKind())
                             {
-                                EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                                case Generated.acceptor.ExpectationKind.aInstantaneous:
+                                case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                                    if (value.Val)
+                                    {
+                                        // An instantaneous expectation who reached its satisfactory condition
+                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                                    }
+                                    break;
+
+                                case Generated.acceptor.ExpectationKind.aContinuous:
+                                    if (!value.Val)
+                                    {
+                                        // A continuous expectation who reached a case where it is not satisfied
+                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                                    }
+                                    break;
                             }
                         }
                         else
                         {
-                            // Error
+                            // Error : cannot evaluate the expression
                         }
                     }
                     catch (Exception e)
@@ -649,7 +676,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Runs until all expectations are reached or failed
         /// </summary>
-        public void RunForExpectations(bool performCycle)
+        public void RunForBlockingExpectations(bool performCycle)
         {
             if (performCycle)
             {
@@ -657,6 +684,22 @@ namespace DataDictionary.Tests.Runner
             }
 
             while (ActiveBlockingExpectations().Count > 0)
+            {
+                Cycle();
+            }
+        }
+
+        /// <summary>
+        /// Runs until all expectations are reached or failed
+        /// </summary>
+        public void RunForExpectations(bool performCycle)
+        {
+            if (performCycle)
+            {
+                Cycle();
+            }
+
+            while (ActiveExpectations().Count > 0)
             {
                 Cycle();
             }
@@ -907,7 +950,14 @@ namespace DataDictionary.Tests.Runner
             currentStepIndex = NO_MORE_STEP;
             currentTestCaseIndex = NO_MORE_STEP;
 
-            RunForExpectations(false);
+            if (target != null)
+            {
+                RunForBlockingExpectations(false);
+            }
+            else
+            {
+                RunForExpectations(false);
+            }
 
             // Run all following steps until the target step is encountered
             foreach (TestCase testCase in SubSequence.TestCases)
@@ -928,7 +978,14 @@ namespace DataDictionary.Tests.Runner
                             SetupSubStep(subStep);
                             if (!subStep.getSkipEngine())
                             {
-                                RunForExpectations(true);
+                                if (target != null)
+                                {
+                                    RunForBlockingExpectations(true);
+                                }
+                                else
+                                {
+                                    RunForExpectations(true);
+                                }
                             }
                         }
                     }

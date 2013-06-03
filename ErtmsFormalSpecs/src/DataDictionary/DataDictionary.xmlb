@@ -868,20 +868,18 @@
   <ELEMENT NAME="Expectation" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">test</META>
     <FIELDS>
-      <FIELD NAME="Variable" TYPE="PCHAR">
-        <META NAME="DoNotTranslate" />
-      </FIELD>
       <FIELD NAME="Value"    TYPE="PCHAR">
         <META NAME="TargetName">Expression</META>
       </FIELD>
       <FIELD NAME="Blocking" TYPE="BOOLEAN"/>
+      <FIELD NAME="Kind"     ENUMTYPE="ExpectationKind"/>
       <FIELD NAME="DeadLine" TYPE="REAL">
         <META NAME="TargetName">Deadline</META>
       </FIELD>
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Variable" TARGET="Variable"/>
-      <ATTR NAME="Blocking" TARGET="Blocking" OPTIONAL="TRUE" DEFAULT="FALSE"/>
+      <ATTR NAME="Kind"     TARGET="Kind"     OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
+      <ATTR NAME="Blocking" TARGET="Blocking" OPTIONAL="TRUE" DEFAULT="TRUE"/>
       <ATTR NAME="DeadLine" TARGET="DeadLine" OPTIONAL="TRUE" DEFAULT="0"/>
     </ATTRIBUTES>
     <FORMULA>
@@ -1952,6 +1950,14 @@
     <ENUMVALUE NAME="EUROBALISE" />
     <ENUMVALUE NAME="EUROLOOP" />
     <ENUMVALUE NAME="EURORADIO" />
+  </ENUM>
+
+  <!-- --------------------- -->
+  <!-- Enum Expectation kind -->
+  <!-- --------------------- -->
+  <ENUM NAME="ExpectationKind" >
+    <ENUMVALUE NAME="Instantaneous" />
+    <ENUMVALUE NAME="Continuous" />
   </ENUM>
 
 </SYSTEM>

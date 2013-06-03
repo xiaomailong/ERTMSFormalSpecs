@@ -65,19 +65,6 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The variable on which this expectation is applied
-        /// </summary>
-        public string Variable
-        {
-            get { return getVariable(); }
-            set
-            {
-                setVariable(value);
-                expressionTree = null;
-            }
-        }
-
-        /// <summary>
         /// The expected value
         /// </summary>
         public string Value

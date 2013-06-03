@@ -319,7 +319,7 @@ namespace GUI.TestRunnerView
                     runner.SetupSubStep(subStep);
                     if (!subStep.getSkipEngine())
                     {
-                        runner.RunForExpectations(true);
+                        runner.RunForBlockingExpectations(true);
                     }
                 }
                 window.MDIWindow.Refresh();

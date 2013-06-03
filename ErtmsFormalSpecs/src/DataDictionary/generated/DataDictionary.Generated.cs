@@ -19091,7 +19091,6 @@ public partial class Expectation
 {
 public  override  bool find(Object search){
 if (search is String ) {
-if(getVariable().CompareTo((String) search) == 0)return true;
 if(getValue().CompareTo((String) search) == 0)return true;
 }
 return false;
@@ -19101,15 +19100,6 @@ public  override  void NotifyControllers(Lock aLock){
 	base.NotifyControllers(aLock);
 	ControllersManager.ExpectationController.alertChange(aLock, this);
 }
-private   string  aVariable;
-
-public   string  getVariable() { return aVariable;}
-public  void setVariable( string  v) {
-  aVariable = v;
-  __setDirty(true);
-  NotifyControllers(null);
-}
-
 private   string  aValue;
 
 public   string  getValue() { return aValue;}
@@ -19128,6 +19118,32 @@ public  void setBlocking(bool v) {
   NotifyControllers(null);
 }
 
+private  acceptor.ExpectationKind aKind;
+
+public  acceptor.ExpectationKind getKind() { return aKind;}
+public  void setKind(acceptor.ExpectationKind v) {
+  aKind = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
+public  string   getKind_AsString()
+{
+  return acceptor.Enum_ExpectationKind_ToString (aKind);
+}
+
+public  bool setKind_AsString( string  v)
+{
+ acceptor.ExpectationKind  temp = acceptor.StringTo_Enum_ExpectationKind(v);
+if (temp >= 0){
+  aKind = temp;
+  __setDirty(true);
+  NotifyControllers(null);
+  return true;
+} // If
+return false;
+}
+
 private  double aDeadLine;
 
 public  double getDeadLine() { return aDeadLine;}
@@ -19140,18 +19156,18 @@ public  void setDeadLine(double v) {
 public Expectation()
 {
 Expectation obj = this;
-aVariable=(null);
 aValue=(null);
 aBlocking=(false);
+aKind=(0);
 aDeadLine=(0.0);
 }
 
 public void copyTo(Expectation other)
 {
 base.copyTo(other);
-other.aVariable = aVariable;
 other.aValue = aValue;
 other.aBlocking = aBlocking;
+other.aKind = aKind;
 other.aDeadLine = aDeadLine;
 }
 
@@ -19205,21 +19221,21 @@ fl994 = false ;
 fl995 = true ; 
 while (fl995) { // BeginLoop 
 switch (ctxt.current()) {
-case 'V':
-{
-ctxt.advance();
-if (ctxt.lookAheadString("ariable=")){
-indicator = 991;
-} else {
-indicator = 996;
-} // If
-break;
-} // Case
 case 'N':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("ame=")){
 indicator = 994;
+} else {
+indicator = 996;
+} // If
+break;
+} // Case
+case 'K':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ind=")){
+indicator = 991;
 } else {
 indicator = 996;
 } // If
@@ -19251,14 +19267,14 @@ break;
 } // Switch
 switch (indicator) {
 case 991: {
-// Handling attribute Variable
-// Also handles alien attributes with prefix Variable
+// Handling attribute Kind
+// Also handles alien attributes with prefix Kind
 if (fl991){
-ctxt.fail ("Duplicate attribute: Variable");
+ctxt.fail ("Duplicate attribute: Kind");
 } // If
 fl991 = true ; 
 quoteChar = ctxt.acceptQuote();
-this.setVariable((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
+this.setKind(acceptor.lAcceptEnum_ExpectationKind(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
@@ -19315,10 +19331,10 @@ ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
 if (!fl991){
-ctxt.fail ("Mandatory attribute missing: Variable in Expectation");
+this.setKind(acceptor.ExpectationKind.aInstantaneous);
 } // If
 if (!fl992){
-this.setBlocking( false);
+this.setBlocking( true);
 } // If
 if (!fl993){
 this.setDeadLine(0.0);
@@ -19358,11 +19374,14 @@ if (typeId){
 pw.Write(" xsi:type=\"Expectation\"");
 } // If
 pw.Write('\n');
-pw.Write(" Variable=\"");
-acceptor.unParsePcData(pw, this.getVariable());
+if (this.getKind() != 0){
+pw.Write(" Kind=\"");
+acceptor.unParsePcData(pw,
+  acceptor.Enum_ExpectationKind_ToString(this.getKind()));
 pw.Write('"');
 pw.Write('\n');
-if (this.getBlocking()){
+} // If
+if (!this.getBlocking()){
 pw.Write(" Blocking=\"");
 acceptor.unParsePcData(pw, this.getBlocking());
 pw.Write('"');
@@ -31526,6 +31545,12 @@ public enum DBMessageType {
      aEURORADIO
 };
 
+public enum ExpectationKind {
+     defaultExpectationKind,
+     aInstantaneous,
+     aContinuous
+};
+
 /// <remarks>This method is used by XMLBooster-generated code
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
@@ -34566,6 +34591,67 @@ return DBMessageType.defaultDBMessageType;
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
 /// or even disappear in the future.</remarks>
+public static ExpectationKind lAcceptEnum_ExpectationKind (XmlBContext ctxt)
+
+{
+#pragma warning disable 0168, 0219
+  int indicator=0;
+#pragma warning restore 0168, 0219
+  ExpectationKind res = ExpectationKind.defaultExpectationKind;
+switch (ctxt.current()) {
+case 'I':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("nstantaneous")){
+res = ExpectationKind.aInstantaneous;
+} else {
+ctxt.moveBack(1);
+res = 0;
+} // If
+break;
+} // Case
+case 'C':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ontinuous")){
+res = ExpectationKind.aContinuous;
+} else {
+ctxt.moveBack(1);
+res = 0;
+} // If
+break;
+} // Case
+default:
+res = 0;
+break;
+} // Switch
+return res;
+}
+
+public static  string  Enum_ExpectationKind_ToString (ExpectationKind v)
+{
+switch (v) {
+ case ExpectationKind.aInstantaneous: return "Instantaneous";
+ case ExpectationKind.aContinuous: return "Continuous";
+} return "";
+}
+
+public static ExpectationKind StringTo_Enum_ExpectationKind( string  str)
+{
+if (str.Equals("Instantaneous")){
+  return ExpectationKind.aInstantaneous;
+} // If
+if (str.Equals("Continuous")){
+  return ExpectationKind.aContinuous;
+} // If
+return ExpectationKind.defaultExpectationKind;
+}
+
+
+/// <remarks>This method is used by XMLBooster-generated code
+/// internally. Please refrain from using it, as it
+/// might produce unexpected results, and might change
+/// or even disappear in the future.</remarks>
 public static bool lAcceptBoolean (XmlBContext ctxt)
 
 {
@@ -34619,7 +34705,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1710)");
+ctxt.recoverableFail ("Other character expected (1712)");
 break;
 } // Switch
 break;
@@ -34686,7 +34772,7 @@ res = true;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1719)");
+ctxt.recoverableFail ("Other character expected (1721)");
 break;
 } // Switch
 break;
@@ -34722,7 +34808,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1725)");
+ctxt.recoverableFail ("Other character expected (1727)");
 break;
 } // Switch
 break;
@@ -34762,7 +34848,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1731)");
+ctxt.recoverableFail ("Other character expected (1733)");
 break;
 } // Switch
 break;
@@ -34780,7 +34866,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1734)");
+ctxt.recoverableFail ("Other character expected (1736)");
 break;
 } // Switch
 return res;
@@ -36659,28 +36745,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 1827;
+indicator = 1829;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 1826;
+indicator = 1828;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1824;
+indicator = 1826;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1825;
+indicator = 1827;
 break;
 } // Case
 case 'a':
@@ -36691,18 +36777,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 1828;
+indicator = 1830;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 1823;
+indicator = 1825;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1836)");
+ctxt.recoverableFail ("Other character expected (1838)");
 break;
 } // Switch
 break;
@@ -36711,39 +36797,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 1829;
+indicator = 1831;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1838)");
+ctxt.recoverableFail ("Other character expected (1840)");
 break;
 } // Switch
 switch (indicator) {
-case 1823: {
+case 1825: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 1824: {
+case 1826: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 1825: {
+case 1827: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 1826: {
+case 1828: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 1827: {
+case 1829: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 1828: {
+case 1830: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 1829: {
+case 1831: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -38181,7 +38267,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1846)");
+ctxt.recoverableFail ("Other character expected (1848)");
 break;
 } // Switch
 break;
@@ -38210,7 +38296,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1851)");
+ctxt.recoverableFail ("Other character expected (1853)");
 break;
 } // Switch
 break;
@@ -38269,7 +38355,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1858)");
+ctxt.recoverableFail ("Other character expected (1860)");
 break;
 } // Switch
 break;
@@ -38320,7 +38406,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1864)");
+ctxt.recoverableFail ("Other character expected (1866)");
 break;
 } // Switch
 break;
@@ -38375,7 +38461,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1871)");
+ctxt.recoverableFail ("Other character expected (1873)");
 break;
 } // Switch
 break;
@@ -38403,7 +38489,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1876)");
+ctxt.recoverableFail ("Other character expected (1878)");
 break;
 } // Switch
 break;
@@ -38442,13 +38528,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1881)");
+ctxt.recoverableFail ("Other character expected (1883)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1882)");
+ctxt.recoverableFail ("Other character expected (1884)");
 break;
 } // Switch
 break;
@@ -38486,7 +38572,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1888)");
+ctxt.recoverableFail ("Other character expected (1890)");
 break;
 } // Switch
 break;
@@ -38524,7 +38610,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1893)");
+ctxt.recoverableFail ("Other character expected (1895)");
 break;
 } // Switch
 break;
@@ -38566,13 +38652,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1900)");
+ctxt.recoverableFail ("Other character expected (1902)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1901)");
+ctxt.recoverableFail ("Other character expected (1903)");
 break;
 } // Switch
 break;
@@ -38603,7 +38689,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1906)");
+ctxt.recoverableFail ("Other character expected (1908)");
 break;
 } // Switch
 break;
@@ -38616,13 +38702,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1908)");
+ctxt.recoverableFail ("Other character expected (1910)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1909)");
+ctxt.recoverableFail ("Other character expected (1911)");
 break;
 } // Switch
 return res;

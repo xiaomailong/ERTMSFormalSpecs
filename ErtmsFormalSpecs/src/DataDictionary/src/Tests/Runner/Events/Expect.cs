@@ -25,12 +25,7 @@ namespace DataDictionary.Tests.Runner.Events
         {
             get
             {
-                if (Expectation.Blocking)
-                {
-                    return Time + Expectation.DeadLine;
-                }
-
-                return int.MaxValue;
+                return Time + Expectation.DeadLine;
             }
         }
 

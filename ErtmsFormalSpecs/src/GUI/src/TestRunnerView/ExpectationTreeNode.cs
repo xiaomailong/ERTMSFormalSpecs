@@ -44,8 +44,15 @@ namespace GUI.TestRunnerView
             [Category("Description")]
             public bool Blocking
             {
-                get { return Item.Blocking; }
-                set { Item.Blocking = value; }
+                get { return Item.getBlocking(); }
+                set { Item.setBlocking(value); }
+            }
+
+            [Category("Description"), TypeConverter(typeof(ExpectationKindConverter))]
+            public DataDictionary.Generated.acceptor.ExpectationKind Kind
+            {
+                get { return Item.getKind(); }
+                set { Item.setKind(value); }
             }
 
             [Category("Description")]
