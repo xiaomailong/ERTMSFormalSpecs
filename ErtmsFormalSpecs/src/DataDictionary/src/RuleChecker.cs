@@ -524,6 +524,14 @@ namespace DataDictionary
                             expect.AddError("Expression type should be Boolean");
                         }
                     }
+                    if (expect.getCondition() != null && !expect.getCondition().Contains("%"))
+                    {
+                        Interpreter.Expression expression = checkExpression(expect, expect.getCondition());
+                        if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                        {
+                            expect.AddError("Condition type should be Boolean");
+                        }
+                    }
                 }
                 catch (Exception exception)
                 {

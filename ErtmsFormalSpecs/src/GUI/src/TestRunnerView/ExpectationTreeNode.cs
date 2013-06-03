@@ -44,13 +44,6 @@ namespace GUI.TestRunnerView
                 set { Item.setValue(value); }
             }
 
-            [Category("Description"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-            public string Condition
-            {
-                get { return Item.getCondition(); }
-                set { Item.setCondition(value); }
-            }
-
             [Category("Description")]
             public bool Blocking
             {
@@ -59,10 +52,23 @@ namespace GUI.TestRunnerView
             }
 
             [Category("Description"), TypeConverter(typeof(ExpectationKindConverter))]
+            [ReadOnly(false)]
             public DataDictionary.Generated.acceptor.ExpectationKind Kind
             {
                 get { return Item.getKind(); }
-                set { Item.setKind(value); }
+                set
+                {
+                    Item.setKind(value);
+                    UpdateActivation();
+                }
+            }
+
+            [Category("Description"), DisplayName("While condition"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+            [ReadOnly(true)]
+            public string Condition
+            {
+                get { return Item.getCondition(); }
+                set { Item.setCondition(value); }
             }
 
             [Category("Description")]
@@ -71,6 +77,15 @@ namespace GUI.TestRunnerView
                 get { return Item.DeadLine; }
                 set { Item.DeadLine = value; }
             }
+
+            /// <summary>
+            /// Updates the activation state of each entry, according to the values of the edited element
+            /// </summary>
+            protected override void UpdateActivation()
+            {
+                UpdateFieldActivation("Condition", Item.getKind() != DataDictionary.Generated.acceptor.ExpectationKind.aContinuous);
+            }
+
         }
 
         /// <summary>

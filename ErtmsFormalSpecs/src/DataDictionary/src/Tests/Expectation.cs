@@ -126,7 +126,7 @@ namespace DataDictionary.Tests
         {
             get
             {
-                if (conditionTree == null)
+                if (conditionTree == null && getCondition() != null)
                 {
                     conditionTree = EFSSystem.Parser.Expression(this, getCondition());
                 }

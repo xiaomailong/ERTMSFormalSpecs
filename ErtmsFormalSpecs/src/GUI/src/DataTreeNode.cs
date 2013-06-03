@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
 using Utils;
 
@@ -753,7 +754,16 @@ namespace GUI
             /// <summary>
             /// The item that is edited. 
             /// </summary>
-            public T Item { get; set; }
+            private T item;
+            public T Item
+            {
+                get { return item; }
+                set
+                {
+                    item = value;
+                    UpdateActivation();
+                }
+            }
 
             /// <summary>
             /// The node that holds the item. 
@@ -780,6 +790,26 @@ namespace GUI
             /// </summary>
             protected Editor()
             {
+            }
+
+            /// <summary>
+            /// Updates the field activation according to the displayed data 
+            /// </summary>
+            protected virtual void UpdateActivation()
+            {
+            }
+
+            /// <summary>
+            /// Updates the activation of a single field
+            /// </summary>
+            /// <param name="name"></param>
+            /// <param name="value"></param>
+            protected void UpdateFieldActivation(string name, bool value)
+            {
+                PropertyDescriptor descriptor = TypeDescriptor.GetProperties(this.GetType())[name];
+                ReadOnlyAttribute attribute = (ReadOnlyAttribute)descriptor.Attributes[typeof(ReadOnlyAttribute)];
+                FieldInfo fieldToChange = attribute.GetType().GetField("isReadOnly", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                fieldToChange.SetValue(attribute, value);
             }
         }
 
