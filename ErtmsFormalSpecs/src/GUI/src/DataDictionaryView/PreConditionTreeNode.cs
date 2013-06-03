@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class PreConditionTreeNode : DataTreeNode<DataDictionary.Rules.PreCondition>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -15,14 +15,13 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace GUI.Shortcuts
 {
     public class ShortcutTreeNode : DataTreeNode<DataDictionary.Shortcuts.Shortcut>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

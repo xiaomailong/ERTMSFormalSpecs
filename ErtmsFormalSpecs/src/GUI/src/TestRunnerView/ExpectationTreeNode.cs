@@ -16,6 +16,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing.Design;
 using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
@@ -35,10 +37,18 @@ namespace GUI.TestRunnerView
             {
             }
 
-            [Category("Description")]
-            public override string Name
+            [Category("Description"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+            public string Expression
             {
-                get { return Item.Name; }
+                get { return Item.getValue(); }
+                set { Item.setValue(value); }
+            }
+
+            [Category("Description"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+            public string Condition
+            {
+                get { return Item.getCondition(); }
+                set { Item.setCondition(value); }
             }
 
             [Category("Description")]
@@ -61,7 +71,6 @@ namespace GUI.TestRunnerView
                 get { return Item.DeadLine; }
                 set { Item.DeadLine = value; }
             }
-
         }
 
         /// <summary>

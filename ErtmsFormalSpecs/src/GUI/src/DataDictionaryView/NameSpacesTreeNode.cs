@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class NameSpacesTreeNode : DataTreeNode<DataDictionary.Dictionary>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

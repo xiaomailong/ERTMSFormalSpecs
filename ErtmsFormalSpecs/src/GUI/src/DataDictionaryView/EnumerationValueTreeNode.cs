@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class EnumerationValueTreeNode : DataTreeNode<DataDictionary.Constants.EnumValue>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class ParametersTreeNode : FunctionTreeNode
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
     public abstract class UsageTreeNode<T> : DataTreeNode<T>
         where T : class, Utils.IModelElement
     {
-        private class UsageEditor : Editor
+        private class UsageEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

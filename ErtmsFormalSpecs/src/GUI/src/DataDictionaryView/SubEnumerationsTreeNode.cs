@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class SubEnumerationsTreeNode : DataTreeNode<DataDictionary.Types.Enum>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

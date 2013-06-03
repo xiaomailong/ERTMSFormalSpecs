@@ -615,6 +615,9 @@ namespace DataDictionary.Tests.Runner
             // Update the state of the expectation according to system's state
             foreach (Events.Expect expect in ActiveExpectations())
             {
+                Expectation expectation = expect.Expectation;
+
+                // Determine if the deadline is reached
                 if (expect.TimeOut < EventTimeLine.CurrentTime)
                 {
                     switch (expect.Expectation.getKind())
@@ -635,34 +638,43 @@ namespace DataDictionary.Tests.Runner
                 {
                     try
                     {
-                        Interpreter.Expression expression = expect.Expectation.ExpressionTree;
-                        Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(expect.Expectation);
-                        BoolValue value = expression.GetValue(context) as BoolValue;
-                        if (value != null)
+                        switch (expectation.getKind())
                         {
-                            switch (expect.Expectation.getKind())
-                            {
-                                case Generated.acceptor.ExpectationKind.aInstantaneous:
-                                case Generated.acceptor.ExpectationKind.defaultExpectationKind:
-                                    if (value.Val)
+                            case Generated.acceptor.ExpectationKind.aInstantaneous:
+                            case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                                if (getBoolValue(expectation, expectation.ExpressionTree))
+                                {
+                                    // An instantaneous expectation who reached its satisfactory condition
+                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                                }
+                                break;
+
+                            case Generated.acceptor.ExpectationKind.aContinuous:
+                                if (expectation.getCondition() != null)
+                                {
+                                    if (getBoolValue(expectation, expectation.ConditionTree))
                                     {
-                                        // An instantaneous expectation who reached its satisfactory condition
+                                        // An continuous expectation who reached its satisfactory condition
                                         EventTimeLine.AddModelEvent(new ExpectationReached(expect));
                                     }
-                                    break;
-
-                                case Generated.acceptor.ExpectationKind.aContinuous:
-                                    if (!value.Val)
+                                    else
+                                    {
+                                        if (!getBoolValue(expectation, expectation.ExpressionTree))
+                                        {
+                                            // A continuous expectation who reached a case where it is not satisfied
+                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (!getBoolValue(expectation, expectation.ExpressionTree))
                                     {
                                         // A continuous expectation who reached a case where it is not satisfied
                                         EventTimeLine.AddModelEvent(new FailedExpectation(expect));
                                     }
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            // Error : cannot evaluate the expression
+                                }
+                                break;
                         }
                     }
                     catch (Exception e)
@@ -671,6 +683,30 @@ namespace DataDictionary.Tests.Runner
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Provides the value of the expression provided
+        /// </summary>
+        /// <param name="expect"></param>
+        /// <returns></returns>
+        private bool getBoolValue(ModelElement instance, Expression expression)
+        {
+            bool retVal = false;
+
+            Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
+            BoolValue val = expression.GetValue(context) as BoolValue;
+
+            if (val != null)
+            {
+                retVal = val.Val;
+            }
+            else
+            {
+                throw new Exception("Cannot evaluate vaue of " + expression);
+            }
+
+            return retVal;
         }
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class ActionTreeNode : DataTreeNode<DataDictionary.Rules.Action>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

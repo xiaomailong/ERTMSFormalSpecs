@@ -22,7 +22,7 @@ namespace GUI.Shortcuts
 {
     public class ShortcutDictionaryTreeNode : DataTreeNode<DataDictionary.Shortcuts.ShortcutDictionary>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -15,8 +15,6 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Tests;
@@ -27,7 +25,7 @@ namespace GUI.TranslationRules
 {
     public class TranslationTreeNode : DataTreeNode<DataDictionary.Tests.Translations.Translation>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

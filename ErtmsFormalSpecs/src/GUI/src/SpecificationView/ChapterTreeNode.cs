@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

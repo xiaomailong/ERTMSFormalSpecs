@@ -753,12 +753,7 @@ namespace GUI
             /// <summary>
             /// The item that is edited. 
             /// </summary>
-            private T item;
-            internal T Item
-            {
-                get { return item; }
-                set { item = value; }
-            }
+            public T Item { get; set; }
 
             /// <summary>
             /// The node that holds the item. 
@@ -770,6 +765,31 @@ namespace GUI
                 set { node = value; }
             }
 
+            public void RefreshNode()
+            {
+                Node.RefreshNode();
+            }
+
+            public void RefreshTree()
+            {
+                Node.BaseTreeView.Refresh();
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            protected Editor()
+            {
+            }
+        }
+
+        /// <summary>
+        /// An editor for an item. It is the responsibility of this class to implement attributes 
+        /// for the elements to be edited.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public abstract class NamedEditor : Editor
+        {
             /// <summary>
             /// The item name
             /// </summary>
@@ -793,20 +813,10 @@ namespace GUI
                 get { return Item.FullName; }
             }
 
-            public void RefreshNode()
-            {
-                Node.RefreshNode();
-            }
-
-            public void RefreshTree()
-            {
-                Node.BaseTreeView.Refresh();
-            }
-
             /// <summary>
             /// Constructor
             /// </summary>
-            protected Editor()
+            protected NamedEditor()
             {
             }
         }
@@ -814,12 +824,7 @@ namespace GUI
         /// <summary>
         /// The element that is represented by this tree node
         /// </summary>
-        private T item;
-        internal T Item
-        {
-            get { return item; }
-            set { item = value; }
-        }
+        public T Item { get; set; }
 
         /// <summary>
         /// Constructor
@@ -867,7 +872,7 @@ namespace GUI
                     if (baseForm.Properties != null)
                     {
                         Editor editor = createEditor();
-                        editor.Item = item;
+                        editor.Item = Item;
                         editor.Node = this;
                         baseForm.Properties.SelectedObject = editor;
                     }

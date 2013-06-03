@@ -31,7 +31,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

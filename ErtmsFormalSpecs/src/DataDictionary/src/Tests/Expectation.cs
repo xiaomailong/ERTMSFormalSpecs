@@ -121,6 +121,22 @@ namespace DataDictionary.Tests
             }
         }
 
+        public Interpreter.Expression conditionTree;
+        public Interpreter.Expression ConditionTree
+        {
+            get
+            {
+                if (conditionTree == null)
+                {
+                    conditionTree = EFSSystem.Parser.Expression(this, getCondition());
+                }
+                return conditionTree;
+            }
+            set
+            {
+                conditionTree = value;
+            }
+        }
 
         public override string Name
         {
@@ -171,6 +187,5 @@ namespace DataDictionary.Tests
         public override void AddModelElement(Utils.IModelElement element)
         {
         }
-
     }
 }

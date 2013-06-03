@@ -15,16 +15,13 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
     public class RuleConditionsTreeNode : DataTreeNode<DataDictionary.Rules.Rule>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

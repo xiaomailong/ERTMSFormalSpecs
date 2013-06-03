@@ -422,20 +422,23 @@ namespace Utils
             if (root is ISubDeclarator)
             {
                 ISubDeclarator subDeclarator = root as ISubDeclarator;
-                foreach (KeyValuePair<string, List<INamable>> element in subDeclarator.DeclaredElements)
+                if (subDeclarator != null)
                 {
-                    string name = Utils.concat(scope, element.Key);
-
-                    List<INamable> values = element.Value;
-                    foreach (INamable value in values)
+                    foreach (KeyValuePair<string, List<INamable>> element in subDeclarator.DeclaredElements)
                     {
-                        if (!retVal.ContainsKey(name) && value is T)
+                        string name = Utils.concat(scope, element.Key);
+
+                        List<INamable> values = element.Value;
+                        foreach (INamable value in values)
                         {
-                            retVal[name] = value as T;
-                        }
-                        if (depth < MAX_DEPTH)
-                        {
-                            innerFindAllValues(value, name, retVal, depth + 1);
+                            if (!retVal.ContainsKey(name) && value is T)
+                            {
+                                retVal[name] = value as T;
+                            }
+                            if (depth < MAX_DEPTH)
+                            {
+                                innerFindAllValues(value, name, retVal, depth + 1);
+                            }
                         }
                     }
                 }

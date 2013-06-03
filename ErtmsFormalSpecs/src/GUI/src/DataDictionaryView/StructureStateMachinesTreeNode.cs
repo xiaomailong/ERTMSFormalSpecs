@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 
     public class StructureStateMachinesTreeNode : DataTreeNode<DataDictionary.Types.Structure>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

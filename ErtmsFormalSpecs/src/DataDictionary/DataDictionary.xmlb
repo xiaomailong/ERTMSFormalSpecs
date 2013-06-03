@@ -868,14 +868,15 @@
   <ELEMENT NAME="Expectation" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">test</META>
     <FIELDS>
-      <FIELD NAME="Value"    TYPE="PCHAR">
+      <FIELD NAME="Value"      TYPE="PCHAR">
         <META NAME="TargetName">Expression</META>
       </FIELD>
-      <FIELD NAME="Blocking" TYPE="BOOLEAN"/>
-      <FIELD NAME="Kind"     ENUMTYPE="ExpectationKind"/>
-      <FIELD NAME="DeadLine" TYPE="REAL">
+      <FIELD NAME="Blocking"   TYPE="BOOLEAN"/>
+      <FIELD NAME="Kind"       ENUMTYPE="ExpectationKind"/>
+      <FIELD NAME="DeadLine"   TYPE="REAL">
         <META NAME="TargetName">Deadline</META>
       </FIELD>
+      <FIELD NAME="Condition"  TYPE="PCHAR"/>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Kind"     TARGET="Kind"     OPTIONAL="TRUE" DEFAULT="Instantaneous"/>
@@ -883,7 +884,12 @@
       <ATTR NAME="DeadLine" TARGET="DeadLine" OPTIONAL="TRUE" DEFAULT="0"/>
     </ATTRIBUTES>
     <FORMULA>
-      <PCDATA TARGET="Value" />
+      <CONCAT>
+        <PCDATA TARGET="Value" />
+        <ENCLOSED NAME="Condition" OPTIONAL="TRUE">
+          <PCDATA TARGET="Condition" />
+        </ENCLOSED>
+      </CONCAT>
     </FORMULA>
   </ELEMENT>
 

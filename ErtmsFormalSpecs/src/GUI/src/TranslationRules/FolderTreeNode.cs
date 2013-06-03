@@ -21,7 +21,7 @@ namespace GUI.TranslationRules
 {
     public class FolderTreeNode : DataTreeNode<DataDictionary.Tests.Translations.Folder>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -22,7 +22,7 @@ namespace GUI.TestRunnerView
 {
     public class TestsTreeNode : DataTreeNode<DataDictionary.Dictionary>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

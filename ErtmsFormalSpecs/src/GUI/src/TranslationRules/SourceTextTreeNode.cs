@@ -15,15 +15,13 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GUI.TranslationRules
 {
     public class SourceTextTreeNode : DataTreeNode<DataDictionary.Tests.Translations.SourceText>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

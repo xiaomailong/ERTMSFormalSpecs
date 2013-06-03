@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class CasesTreeNode : FunctionTreeNode
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

@@ -25,7 +25,7 @@ namespace GUI
         /// <summary>
         /// The editor for message variables
         /// </summary>
-        protected class ReferencesParagraphEditor : Editor
+        protected class ReferencesParagraphEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

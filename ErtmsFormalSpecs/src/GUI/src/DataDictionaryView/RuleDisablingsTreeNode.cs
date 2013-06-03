@@ -21,7 +21,7 @@ namespace GUI.DataDictionaryView
 {
     public class RuleDisablingsTreeNode : DataTreeNode<DataDictionary.Dictionary>
     {
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor

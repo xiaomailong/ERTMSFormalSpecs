@@ -24,7 +24,7 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// The editor for message variables
         /// </summary>
-        private class ItemEditor : Editor
+        private class ItemEditor : NamedEditor
         {
             /// <summary>
             /// Constructor
