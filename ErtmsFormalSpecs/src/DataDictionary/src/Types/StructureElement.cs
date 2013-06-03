@@ -53,6 +53,11 @@ namespace DataDictionary.Types
                 if (Type is Structure)
                 {
                     Structure structure = Type as Structure;
+
+                    if (structure.DeclaredElements == null)
+                    {
+                        structure.InitDeclaredElements();
+                    }
                     retVal = structure.DeclaredElements;
                 }
 

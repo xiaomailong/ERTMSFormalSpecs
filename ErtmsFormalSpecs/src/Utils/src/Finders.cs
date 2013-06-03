@@ -424,6 +424,10 @@ namespace Utils
                 ISubDeclarator subDeclarator = root as ISubDeclarator;
                 if (subDeclarator != null)
                 {
+                    if (subDeclarator.DeclaredElements == null)
+                    {
+                        subDeclarator.InitDeclaredElements();
+                    }
                     foreach (KeyValuePair<string, List<INamable>> element in subDeclarator.DeclaredElements)
                     {
                         string name = Utils.concat(scope, element.Key);

@@ -216,6 +216,7 @@ namespace DataDictionary.Constants
         /// </summary>
         public void InitDeclaredElements()
         {
+            StateMachine.InitDeclaredElements();
         }
 
         /// <summary>
