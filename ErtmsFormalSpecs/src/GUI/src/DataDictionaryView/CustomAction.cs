@@ -59,7 +59,7 @@ namespace GUI.DataDictionaryView
                         Structure structure = DataDictionary.OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary, element.Type.FullName);
                         if (structure != null)
                         {
-                            foreach (DataDictionary.Types.StructureProcedure procedure in structure.Procedures)
+                            foreach (DataDictionary.Functions.Procedure procedure in structure.Procedures)
                             {
                                 System.Windows.Forms.CheckBox aCheckBox = new System.Windows.Forms.CheckBox();
                                 aCheckBox.AutoSize = true;
@@ -93,7 +93,7 @@ namespace GUI.DataDictionaryView
                     if (aCheckBox.Checked == true)
                     {
                         DataDictionary.Rules.Action anAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-                        anAction.ExpressionText = aCheckBox.Text + ".CurrentState" + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
+                        anAction.ExpressionText = aCheckBox.Text + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
                         CreateCustomAction(anAction);
                     }
                 }

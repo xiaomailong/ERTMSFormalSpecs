@@ -112,9 +112,9 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The enclosing procedure, if any
         /// </summary>
-        public Variables.Procedure EnclosingProcedure
+        public Functions.Procedure EnclosingProcedure
         {
-            get { return Enclosing as Variables.Procedure; }
+            get { return Enclosing as Functions.Procedure; }
         }
 
         /// <summary>
@@ -123,14 +123,6 @@ namespace DataDictionary.Rules
         public Types.Structure EnclosingStructure
         {
             get { return Utils.EnclosingFinder<Types.Structure>.find(this); }
-        }
-
-        /// <summary>
-        /// The enclosing structure procedure (if any)
-        /// </summary>
-        public Types.StructureProcedure EnclosingStructureProcedure
-        {
-            get { return Enclosing as Types.StructureProcedure; }
         }
 
         /// <summary>
@@ -160,10 +152,6 @@ namespace DataDictionary.Rules
                 if (EnclosingStructure != null)
                 {
                     return EnclosingStructure.Rules;
-                }
-                if (EnclosingStructureProcedure != null)
-                {
-                    return EnclosingStructureProcedure.Rules;
                 }
                 else
                 {
@@ -497,7 +485,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public bool BelongsToAProcedure()
         {
-            Variables.IProcedure procedure = Utils.EnclosingFinder<Variables.IProcedure>.find(this);
+            Functions.Procedure procedure = Utils.EnclosingFinder<Functions.Procedure>.find(this);
 
             return procedure != null;
         }

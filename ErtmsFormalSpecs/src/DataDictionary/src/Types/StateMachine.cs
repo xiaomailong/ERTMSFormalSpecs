@@ -53,31 +53,6 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The name of the state machine type
-        /// </summary>
-        public override string Name
-        {
-            get { return ((Utils.INamable)Enclosing).Name; }
-        }
-
-        /// <summary>
-        /// The name of the state machine type
-        /// </summary>
-        public override string FullName
-        {
-            get
-            {
-                string retVal = "";
-                Namable enclosing = Utils.EnclosingFinder<Namable>.find(this);
-                if (enclosing != null)
-                {
-                    retVal = enclosing.FullName;
-                }
-                return retVal;
-            }
-        }
-
-        /// <summary>
         /// The states 
         /// </summary>
         public System.Collections.ArrayList States
@@ -185,26 +160,11 @@ namespace DataDictionary.Types
             get { return Enclosing as Constants.State; }
         }
 
-        public Variables.Procedure EnclosingProcedure
-        {
-            get { return Utils.EnclosingFinder<Variables.Procedure>.find(this); }
-        }
-
-        public Types.StructureProcedure EnclosingStructureProcedure
-        {
-            get { return Utils.EnclosingFinder<Types.StructureProcedure>.find(this); }
-        }
-
         public override void Delete()
         {
             if (EnclosingState != null)
             {
                 EnclosingState.StateMachine = null;
-            }
-
-            if (EnclosingProcedure != null)
-            {
-                EnclosingProcedure.StateMachine = null;
             }
         }
 
@@ -219,7 +179,7 @@ namespace DataDictionary.Types
         public void ClearCache()
         {
             cachedValues = null;
-            declaredElements = null;
+            DeclaredElements = null;
         }
 
         /// <summary>
@@ -267,57 +227,28 @@ namespace DataDictionary.Types
                         current = current.EnclosingState;
                     }
                 }
-                else
-                {
-                    // HacK : compare by name if their state machines do not correspond
-                    if (state1.StateMachine != state2.StateMachine)
-                    {
-                        retVal = state2.FullName.StartsWith(state1.FullName);
-                    }
-                }
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Provides all the states available through this state machine
-        /// </summary>
-        public Dictionary<string, List<Utils.INamable>> declaredElements;
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
-        }
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
+            foreach (Constants.State state in States)
             {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    if (EnclosingProcedure != null)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EnclosingProcedure.CurrentState);
-                    }
-                    else if (EnclosingStructureProcedure != null)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EnclosingStructureProcedure.CurrentState);
-                    }
-                    foreach (Constants.State state in States)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, state);
-                    }
-                }
-
-                return declaredElements;
+                Utils.ISubDeclaratorUtils.AppendNamable(this, state);
             }
         }
+
+        /// <summary>
+        /// Provides all the states that can be stored in this state machine
+        /// </summary>
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -326,10 +257,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            if (DeclaredElements.ContainsKey(name))
-            {
-                retVal.AddRange(DeclaredElements[name]);
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -411,7 +339,7 @@ namespace DataDictionary.Types
                 {
                     if (stateMachineType == null)
                     {
-                        stateMachineType = Utils.EnclosingFinder<Variables.Procedure>.find(StateMachine).StateMachine;
+                        stateMachineType = Utils.EnclosingFinder<Functions.Procedure>.find(StateMachine).StateMachine;
                     }
                     return stateMachineType;
                 }
@@ -447,8 +375,8 @@ namespace DataDictionary.Types
                 {
                     foreach (Interpreter.Statement.VariableUpdateStatement update in action.UpdateStatements)
                     {
-                        ITypedElement element = update.Target;
-                        if (element != null && element.Type is StateMachine)
+                        Types.Type targetType = update.TargetType;
+                        if (targetType is StateMachine)
                         {
                             Interpreter.Expression expressionTree = update.Expression;
                             if (expressionTree != null)
@@ -473,13 +401,10 @@ namespace DataDictionary.Types
                                     {
                                         foreach (Rules.PreCondition preCondition in ruleCondition.AllPreConditions)
                                         {
-                                            if (preCondition.Reads(element))
+                                            // A transition from one state to another has been found
+                                            foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
                                             {
-                                                // A transition from one state to another has been found
-                                                foreach (Constants.State stt2 in GetStates(preCondition.ExpressionTree))
-                                                {
-                                                    filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
-                                                }
+                                                filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
                                             }
                                         }
                                     }

@@ -44,7 +44,7 @@ namespace GUI
         /// <summary>
         /// Constructor
         /// </summary>
-        public MyRichTextBox(bool readOnly)
+        public MyRichTextBox(bool readOnly = false)
         {
             if (ContextMenu == null)
             {

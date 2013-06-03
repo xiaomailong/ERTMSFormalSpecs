@@ -190,9 +190,9 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The procedure which is called by this call statement
         /// </summary>
-        public Variables.IProcedure getProcedure(InterpretationContext context)
+        public Functions.Procedure getProcedure(InterpretationContext context)
         {
-            Variables.IProcedure retVal = getCalled(context) as Variables.IProcedure;
+            Functions.Procedure retVal = getCalled(context) as Functions.Procedure;
 
             return retVal;
         }

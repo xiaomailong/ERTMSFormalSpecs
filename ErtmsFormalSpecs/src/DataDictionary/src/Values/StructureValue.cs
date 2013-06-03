@@ -51,24 +51,6 @@ namespace DataDictionary.Values
                 variable.Enclosing = this;
                 set(variable);
             }
-
-            foreach (Types.StructureProcedure procedure in Structure.Procedures)
-            {
-                Variables.Procedure proc = (Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-                proc.StateMachine = procedure.instanciateStateMachine();
-                proc.Rules = procedure.Rules;
-                proc.Name = procedure.Name;
-                proc.Default = procedure.Default;
-                foreach (Parameter parameter in procedure.FormalParameters)
-                {
-                    Parameter p2 = (Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
-                    p2.Name = parameter.Name;
-                    p2.Type = parameter.Type;
-                    proc.appendParameters(p2);
-                }
-                proc.Enclosing = this;
-                set(proc);
-            }
         }
 
         /// <summary>
@@ -101,29 +83,6 @@ namespace DataDictionary.Values
                     }
                     set(var2);
                 }
-
-                Variables.Procedure procedure = pair.Value as Variables.Procedure;
-                if (procedure != null)
-                {
-                    Variables.Procedure proc2 = (Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-                    proc2.StateMachine = procedure.StateMachine;
-                    proc2.Rules = procedure.Rules;
-                    proc2.Name = procedure.Name;
-                    proc2.Default = procedure.Default;
-                    foreach (Parameter parameter in procedure.FormalParameters)
-                    {
-                        Parameter p2 = (Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
-                        p2.Name = parameter.Name;
-                        p2.Type = parameter.Type;
-                        proc2.appendParameters(p2);
-                    }
-                    proc2.Enclosing = this;
-                    if (procedure.CurrentState != null)
-                    {
-                        proc2.CurrentState.Value = procedure.CurrentState.Value;
-                    }
-                    set(proc2);
-                }
             }
         }
 
@@ -149,28 +108,6 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Sets the value of a given association
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="val"></param>
-        public void set(Variables.Procedure procedure)
-        {
-            if (Val.ContainsKey(procedure.Name))
-            {
-                Variables.Procedure proc = Val[procedure.Name] as Variables.Procedure;
-
-                if (proc != null)
-                {
-                    proc.CurrentState.Value = procedure.CurrentState.Value;
-                }
-            }
-            else
-            {
-                Val.Add(procedure.Name, procedure);
-            }
-        }
-
-        /// <summary>
         /// Gets the value associated to a name
         /// </summary>
         /// <param name="name"></param>
@@ -188,46 +125,22 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Gets the value associated to a name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public Variables.IProcedure getProcedure(string name)
-        {
-            Variables.IProcedure retVal = null;
-
-            if (Val.ContainsKey(name))
-            {
-                retVal = Val[name] as Variables.IProcedure;
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Utils.INamable namable in Val.Values)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+            }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
-
-                foreach (Utils.INamable namable in Val.Values)
-                {
-                    Utils.ISubDeclaratorUtils.AppendNamable(retVal, namable);
-                }
-
-                return retVal;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -236,12 +149,7 @@ namespace DataDictionary.Values
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            Utils.INamable namable = null;
-
-            if (Val.TryGetValue(name, out namable))
-            {
-                retVal.Add(namable);
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         public override string Name
@@ -261,12 +169,6 @@ namespace DataDictionary.Values
                     if (variable != null && variable.Value != null)
                     {
                         retVal += "    " + variable.Name + " => " + variable.Value.FullName;
-                    }
-
-                    Variables.Procedure procedure = tmp as Variables.Procedure;
-                    if (procedure != null && procedure.CurrentState != null && procedure.CurrentState.Value != null)
-                    {
-                        retVal += procedure.Name + " => " + procedure.CurrentState.Value.FullName;
                     }
 
                     first = false;
@@ -302,33 +204,6 @@ namespace DataDictionary.Values
                 }
 
                 return subVariables;
-            }
-        }
-
-        /// <summary>
-        /// The sub variables of this structure
-        /// </summary>
-        private Dictionary<string, Variables.IProcedure> procedures;
-        public Dictionary<string, Variables.IProcedure> Procedures
-        {
-            get
-            {
-                if (procedures == null)
-                {
-                    procedures = new Dictionary<string, Variables.IProcedure>();
-
-                    foreach (KeyValuePair<string, Utils.INamable> kp in Val)
-                    {
-                        Variables.IProcedure proc = kp.Value as Variables.IProcedure;
-
-                        if (proc != null)
-                        {
-                            procedures.Add(kp.Key, proc);
-                        }
-                    }
-                }
-
-                return procedures;
             }
         }
 

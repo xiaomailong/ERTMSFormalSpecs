@@ -48,31 +48,20 @@ namespace GUI.DataDictionaryView
                 {
                     if (variable.Type == null)
                     {
-                        Nodes.Add(new VariableTreeNode(variable, encounteredTypes));
+                        Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
                     }
                     else
                     {
                         if (!encounteredTypes.Contains(variable.Type))
                         {
                             encounteredTypes.Add(variable.Type);
-                            Nodes.Add(new VariableTreeNode(variable, encounteredTypes));
+                            Nodes.Add(new VariableTreeNode(variable, encounteredTypes, true));
                             encounteredTypes.Remove(variable.Type);
                         }
                     }
                 }
             }
 
-            foreach (DataDictionary.Variables.IProcedure iprocedure in item.SubProcedures.Values)
-            {
-                DataDictionary.Variables.Procedure procedure = iprocedure as DataDictionary.Variables.Procedure;
-                if (procedure != null)
-                {
-                    if (procedure.CurrentState != null)
-                    {
-                        Nodes.Add(new VariableTreeNode(procedure.CurrentState, procedure.Name, encounteredTypes));
-                    }
-                }
-            }
             SortSubNodes();
         }
 

@@ -54,8 +54,12 @@ namespace Utils
         /// <returns></returns>
         public static T find(IEnclosed el)
         {
-            object current = el.Enclosing;
+            object current = null;
 
+            if (el != null)
+            {
+                current = el.Enclosing;
+            }
             while (current != null && !(current is T))
             {
                 if (current is IEnclosed)
@@ -114,21 +118,21 @@ namespace Utils
     public class ISubDeclaratorUtils
     {
         /// <summary>
-        /// Appends a namable in a dictionary
+        /// Appends a namable in a dictionary of a sub declarator
         /// </summary>
-        /// <param name="dictionary"></param>
+        /// <param name="subDeclarator"></param>
         /// <param name="namable"></param>
-        public static void AppendNamable(Dictionary<string, List<INamable>> dictionary, INamable namable)
+        public static void AppendNamable(ISubDeclarator subDeclarator, INamable namable)
         {
             if (namable != null)
             {
                 if (!Utils.isEmpty(namable.Name))
                 {
-                    if (!dictionary.ContainsKey(namable.Name))
+                    if (!subDeclarator.DeclaredElements.ContainsKey(namable.Name))
                     {
-                        dictionary[namable.Name] = new List<INamable>();
+                        subDeclarator.DeclaredElements[namable.Name] = new List<INamable>();
                     }
-                    dictionary[namable.Name].Add(namable);
+                    subDeclarator.DeclaredElements[namable.Name].Add(namable);
                 }
             }
         }
@@ -136,30 +140,37 @@ namespace Utils
         /// <summary>
         /// Appends a namable in a dictionary
         /// </summary>
-        /// <param name="dictionary"></param>
+        /// <param name="subDeclarator"></param>
         /// <param name="name"></param>
         /// <param name="namable"></param>
-        public static void AppendNamable(Dictionary<string, List<INamable>> dictionary, string name, INamable namable)
+        public static void AppendNamable(ISubDeclarator subDeclarator, string name, INamable namable)
         {
             if (namable != null)
             {
-                if (!dictionary.ContainsKey(name))
+                if (!subDeclarator.DeclaredElements.ContainsKey(name))
                 {
-                    dictionary[name] = new List<INamable>();
+                    subDeclarator.DeclaredElements[name] = new List<INamable>();
                 }
-                dictionary[name].Add(namable);
+                subDeclarator.DeclaredElements[name].Add(namable);
             }
         }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal from the dictionary
+        /// Finds a symbol in a sub declarator and adds it to retVal
         /// </summary>
+        /// <param name="subDeclarator"></param>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public static void Find(Dictionary<string, List<INamable>> dictionary, string name, List<INamable> retVal)
+        public static void Find(ISubDeclarator subDeclarator, string name, List<INamable> retVal)
         {
+            // Ensure that the declared elements are initialized
+            if (subDeclarator.DeclaredElements == null)
+            {
+                subDeclarator.InitDeclaredElements();
+            }
+
             List<INamable> tmp;
-            if (dictionary.TryGetValue(name, out tmp))
+            if (subDeclarator.DeclaredElements.TryGetValue(name, out tmp))
             {
                 retVal.AddRange(tmp);
             }
@@ -168,15 +179,15 @@ namespace Utils
         /// <summary>
         /// Indicates whether the declarator contains the value provided as parameter
         /// </summary>
-        /// <param name="dictionary"></param>
+        /// <param name="subDeclarator"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool ContainsValue(Dictionary<string, List<INamable>> dictionary, INamable value)
+        public static bool ContainsValue(ISubDeclarator subDeclarator, INamable value)
         {
             bool retVal = false;
 
             List<INamable> tmp;
-            if (dictionary.TryGetValue(value.Name, out tmp))
+            if (subDeclarator.DeclaredElements.TryGetValue(value.Name, out tmp))
             {
                 foreach (INamable namable in tmp)
                 {

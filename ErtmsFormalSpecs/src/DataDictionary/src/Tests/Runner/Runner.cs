@@ -186,26 +186,6 @@ namespace DataDictionary.Tests.Runner
             }
 
             /// <summary>
-            /// Set the initial value for each procedure
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Procedure obj, bool visitSubNodes)
-            {
-                DataDictionary.Variables.Procedure procedure = obj as DataDictionary.Variables.Procedure;
-
-                if (procedure != null)
-                {
-                    if (procedure.StateMachine.States.Count > 0)
-                    {
-                        procedure.CurrentState.Value = procedure.DefaultValue;
-                    }
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
             /// Indicates which rules are not active
             /// </summary>
             /// <param name="obj"></param>
@@ -451,10 +431,9 @@ namespace DataDictionary.Tests.Runner
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
-            foreach (Variables.Procedure procedure in nameSpace.Procedures)
+            foreach (Functions.Procedure procedure in nameSpace.Procedures)
             {
                 rules.Clear();
-                EvaluateStateMachine(rules, priority, procedure.CurrentState);
                 Activation.RegisterRules(activations, rules, procedure);
             }
 
@@ -490,10 +469,6 @@ namespace DataDictionary.Tests.Runner
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
                             EvaluateVariable(priority, activations, subVariable);
-                        }
-                        foreach (Variables.IProcedure procedure in value.Procedures.Values)
-                        {
-                            EvaluateVariable(priority, activations, procedure.CurrentState);
                         }
                     }
                 }
@@ -559,23 +534,24 @@ namespace DataDictionary.Tests.Runner
             {
                 if (activation.RuleCondition.Actions.Count > 0)
                 {
-                    EventTimeLine.AddModelEvent(new Tests.Runner.Events.RuleFired(activation.RuleCondition));
-                }
-            }
+                    // Register the fact that a rule has been triggered
+                    Events.RuleFired ruleFired = new Events.RuleFired(activation.RuleCondition);
+                    EventTimeLine.AddModelEvent(ruleFired);
 
-            foreach (Activation activation in activations)
-            {
-                foreach (Rules.Action action in activation.RuleCondition.Actions)
-                {
-                    if (action.Statement != null)
+                    // Registers all model updates due to this rule triggering
+                    foreach (Rules.Action action in activation.RuleCondition.Actions)
                     {
-                        EventTimeLine.AddModelEvent(new Events.VariableUpdate(action, activation.Instance));
+                        if (action.Statement != null)
+                        {
+                            Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance);
+                            EventTimeLine.AddModelEvent(variableUpdate);
+                            ruleFired.AddVariableUpdate(variableUpdate);
+                        }
+                        else
+                        {
+                            action.AddError("Cannot parse action statement");
+                        }
                     }
-                    else
-                    {
-                        action.AddError("Cannot parse action statement");
-                    }
-
                 }
             }
 
@@ -1006,12 +982,13 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Indicates whether a rule condition has been activated at a given time
         /// </summary>
-        /// <param name="ruleCondition"></param>
-        /// <param name="time"></param>
+        /// <param name="ruleCondition">The rule condition that should be activated</param>
+        /// <param name="time">the time when the rule condition should be activated</param>
+        /// <param name="variable">The variable impacted by this rule condition, if any</param>
         /// <returns>true if the corresponding rule condition has been activated at the time provided</returns>
-        public bool RuleActivatedAtTime(DataDictionary.Rules.RuleCondition ruleCondition, double time)
+        public bool RuleActivatedAtTime(DataDictionary.Rules.RuleCondition ruleCondition, double time, Variables.IVariable variable)
         {
-            return EventTimeLine.RuleActivatedAtTime(ruleCondition, time);
+            return EventTimeLine.RuleActivatedAtTime(ruleCondition, time, variable);
         }
 
         /// <summary>

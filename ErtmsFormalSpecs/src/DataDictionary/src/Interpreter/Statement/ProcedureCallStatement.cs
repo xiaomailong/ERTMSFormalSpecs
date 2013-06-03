@@ -65,7 +65,7 @@ namespace DataDictionary.Interpreter.Statement
                 InterpretationContext ctxt = getContext(new InterpretationContext(Root));
                 if (Call != null)
                 {
-                    Variables.IProcedure procedure = Call.getProcedure(ctxt);
+                    Functions.Procedure procedure = Call.getProcedure(ctxt);
                     if (procedure != null)
                     {
                         return procedure.Rules;
@@ -208,7 +208,7 @@ namespace DataDictionary.Interpreter.Statement
             Call.checkExpression();
             if (Call != null)
             {
-                DataDictionary.Variables.IProcedure procedure = Call.getProcedure(context);
+                Functions.Procedure procedure = Call.getProcedure(context);
                 if (procedure != null)
                 {
 
@@ -237,7 +237,7 @@ namespace DataDictionary.Interpreter.Statement
             if (Call != null)
             {
                 InterpretationContext ctxt = getContext(context);
-                DataDictionary.Variables.IProcedure procedure = Call.getProcedure(ctxt);
+                Functions.Procedure procedure = Call.getProcedure(ctxt);
                 if (procedure != null)
                 {
                     ExplanationPart part = new ExplanationPart(Root);

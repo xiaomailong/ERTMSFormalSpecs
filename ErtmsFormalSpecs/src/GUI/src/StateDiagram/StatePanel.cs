@@ -31,6 +31,10 @@ namespace GUI.StateDiagram
         public StatePanel()
         {
             InitializeComponent();
+
+            MouseDown += new MouseEventHandler(StatePanel_MouseDown);
+            MouseMove += new MouseEventHandler(StatePanel_MouseMove);
+            MouseUp += new MouseEventHandler(StatePanel_MouseUp);
         }
 
         /// <summary>
@@ -42,6 +46,111 @@ namespace GUI.StateDiagram
             container.Add(this);
 
             InitializeComponent();
+            MouseDown += new MouseEventHandler(StatePanel_MouseDown);
+            MouseMove += new MouseEventHandler(StatePanel_MouseMove);
+        }
+
+        /// <summary>
+        /// The transition that is currently being changed
+        /// </summary>
+        private TransitionControl changingTransition = null;
+
+        /// <summary>
+        /// The action that is applied on the transition
+        /// </summary>
+        private enum ChangeAction { None, InitialState, TargetState };
+        private ChangeAction chaningTransitionAction = ChangeAction.None;
+
+        void StatePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point clickPoint = new Point(e.X, e.Y);
+                foreach (TransitionControl transition in transitions.Values)
+                {
+                    if (around(transition.StartLocation, clickPoint))
+                    {
+                        changingTransition = transition;
+                        changingTransition.Parent = this;   // I do not know why...
+                        chaningTransitionAction = ChangeAction.InitialState;
+                        break;
+                    }
+                    if (around(transition.TargetLocation, clickPoint))
+                    {
+                        changingTransition = transition;
+                        changingTransition.Parent = this;   // I do not know why...
+                        chaningTransitionAction = ChangeAction.TargetState;
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the move event, which, in case of a transition is selected to be modified, 
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void StatePanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (changingTransition != null && chaningTransitionAction != ChangeAction.None)
+            {
+                foreach (StateControl state in states.Values)
+                {
+                    if ((e.X > state.Location.X && e.X < state.Location.X + state.Width) &&
+                        (e.Y > state.Location.Y && e.Y < state.Location.Y + state.Height))
+                    {
+                        switch (chaningTransitionAction)
+                        {
+                            case ChangeAction.InitialState:
+                                if (changingTransition.Transition.InitialState != state.State)
+                                {
+                                    changingTransition.SetInitialState(state.State);
+                                }
+                                break;
+                            case ChangeAction.TargetState:
+                                if (changingTransition.Transition.TargetState != state.State)
+                                {
+                                    if (changingTransition.Transition.InitialState != null)
+                                    {
+                                        changingTransition.SetTargetState(state.State);
+                                    }
+                                    else
+                                    {
+                                        StateMachine.setInitialState(state.State.Name);
+                                        RefreshControl();
+                                        Refresh();
+                                    }
+                                }
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        void StatePanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            changingTransition = null;
+            chaningTransitionAction = ChangeAction.None;
+        }
+
+        /// <summary>
+        /// The maximum delta when considering if two points are near one from the other
+        /// </summary>
+        private const int MAX_DELTA = 5;
+
+        /// <summary>
+        /// Indicates whether two points are near one from the other
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        private bool around(Point p1, Point p2)
+        {
+            return Math.Abs(p1.X - p2.X) < MAX_DELTA && Math.Abs(p1.Y - p2.Y) < MAX_DELTA;
         }
 
         /// <summary>
@@ -163,6 +272,11 @@ namespace GUI.StateDiagram
                 RefreshControl();
             }
         }
+
+        /// <summary>
+        /// The state variable for this state machine
+        /// </summary>
+        public DataDictionary.Variables.IVariable StateMachineVariable { get; set; }
 
         /// <summary>
         /// Indicates whether the layout should be suspended

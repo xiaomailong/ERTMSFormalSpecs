@@ -43,7 +43,7 @@ namespace GUI.DataDictionaryView
         public NameSpaceProceduresTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Procedures", true)
         {
-            foreach (DataDictionary.Variables.Procedure procedure in item.Procedures)
+            foreach (DataDictionary.Functions.Procedure procedure in item.Procedures)
             {
                 Nodes.Add(new ProcedureTreeNode(procedure));
             }
@@ -61,7 +61,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Variables.Procedure procedure = (DataDictionary.Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
+            DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
             procedure.Name = "<Procedure" + (GetNodeCount(false) + 1) + ">";
             AddProcedure(procedure);
         }
@@ -70,7 +70,7 @@ namespace GUI.DataDictionaryView
         /// Adds a procedure in the corresponding namespace
         /// </summary>
         /// <param name="procedure"></param>
-        public ProcedureTreeNode AddProcedure(DataDictionary.Variables.Procedure procedure)
+        public ProcedureTreeNode AddProcedure(DataDictionary.Functions.Procedure procedure)
         {
             Item.appendProcedures(procedure);
             ProcedureTreeNode retVal = new ProcedureTreeNode(procedure);
@@ -104,7 +104,7 @@ namespace GUI.DataDictionaryView
             if (SourceNode is ProcedureTreeNode)
             {
                 ProcedureTreeNode procedureTreeNode = SourceNode as ProcedureTreeNode;
-                DataDictionary.Variables.Procedure procedure = procedureTreeNode.Item;
+                DataDictionary.Functions.Procedure procedure = procedureTreeNode.Item;
 
                 procedureTreeNode.Delete();
                 AddProcedure(procedure);
@@ -114,7 +114,7 @@ namespace GUI.DataDictionaryView
                 SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
                 DataDictionary.Specification.Paragraph paragaph = node.Item;
 
-                DataDictionary.Variables.Procedure procedure = (DataDictionary.Variables.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
+                DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
                 procedure.Name = paragaph.Name;
 
                 DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();

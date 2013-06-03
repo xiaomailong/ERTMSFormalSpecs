@@ -19,6 +19,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using DataDictionary.Rules;
+using DataDictionary.Types;
 
 namespace GUI.StateDiagram
 {
@@ -137,8 +138,12 @@ namespace GUI.StateDiagram
                 Text = "Initial state";
 
             }
-            Panel.UpdateTransitionPosition();
-            Panel.Refresh();
+
+            if (Panel != null)
+            {
+                Panel.UpdateTransitionPosition();
+                Panel.Refresh();
+            }
         }
 
         /// <summary>
@@ -379,7 +384,12 @@ namespace GUI.StateDiagram
         /// </summary>
         public static Color NORMAL_COLOR = Color.Black;
         public static Pen NORMAL_PEN = new Pen(NORMAL_COLOR);
-        public static Pen NORMAL_PEN_SELECTED = new Pen(NORMAL_COLOR, 4);
+
+        /// <summary>
+        /// A degraded case pen
+        /// </summary>
+        public static Color DEGRADED_CASE_COLOR = Color.MediumPurple;
+        public static Pen DEGRADED_CASE_PEN = new Pen(DEGRADED_CASE_COLOR);
 
         /// <summary>
         /// A pen indicating that the transition is disabled
@@ -412,8 +422,19 @@ namespace GUI.StateDiagram
                 Point target = TargetLocation;
 
                 // Select the pen used to draw the arrow
-                Pen pen = NORMAL_PEN;
-                SetColor(NORMAL_COLOR);
+                Pen pen;
+                if (Utils.EnclosingFinder<StateMachine>.find(Transition.RuleCondition) == null && InitialStateControl != null)
+                {
+                    // A degraded case is a transition that is not defined in any state machine
+                    pen = DEGRADED_CASE_PEN;
+                    SetColor(DEGRADED_CASE_COLOR);
+                }
+                else
+                {
+                    pen = NORMAL_PEN;
+                    SetColor(NORMAL_COLOR);
+                }
+
                 if (Transition.RuleCondition != null)
                 {
                     if (Transition.RuleCondition.IsDisabled())
@@ -426,20 +447,18 @@ namespace GUI.StateDiagram
                         DataDictionary.Tests.Runner.Runner runner = Transition.RuleCondition.EFSSystem.Runner;
                         if (runner != null)
                         {
-                            if (runner.RuleActivatedAtTime(Transition.RuleCondition, runner.LastActivationTime))
+                            if (runner.RuleActivatedAtTime(Transition.RuleCondition, runner.LastActivationTime, Panel.StateMachineVariable))
                             {
                                 pen = ACTIVATED_PEN;
                                 SetColor(ACTIVATED_COLOR);
                             }
                         }
-                        else
-                        {
-                            if (Panel.isSelected(this))
-                            {
-                                pen = NORMAL_PEN_SELECTED;
-                            }
-                        }
                     }
+                }
+                if (Panel.isSelected(this))
+                {
+                    // Change the pen when the transition is selected
+                    pen = new Pen(pen.Color, 4);
                 }
 
                 // Draw the arrow

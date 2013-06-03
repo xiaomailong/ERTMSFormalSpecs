@@ -66,9 +66,11 @@ namespace GUI.TestRunnerView
             this.subSequenceSelectorComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripCurrentStepTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.messageRichTextBox = new GUI.MyRichTextBox(true);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.testBrowserTreeView = new GUI.TestRunnerView.TestTreeView();
+            this.commentsRichTextBox = new MyRichTextBox();
+            this.editTextBox = new MyRichTextBox();
+            this.messageRichTextBox = new MyRichTextBox(false);
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
@@ -76,12 +78,10 @@ namespace GUI.TestRunnerView
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.editTextBox = new GUI.MyRichTextBox(false);
             this.explainTextBox = new System.Windows.Forms.RichTextBox();
             this.timeLineTabPage = new System.Windows.Forms.TabPage();
             this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
             this.commentsTabPage = new System.Windows.Forms.TabPage();
-            this.commentsRichTextBox = new GUI.MyRichTextBox(false);
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -320,6 +320,7 @@ namespace GUI.TestRunnerView
             // 
             this.testBrowserTreeView.AllowDrop = true;
             this.testBrowserTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testBrowserTreeView.HideSelection = false;
             this.testBrowserTreeView.ImageIndex = 0;
             this.testBrowserTreeView.LabelEdit = true;
             this.testBrowserTreeView.Location = new System.Drawing.Point(0, 0);
@@ -511,7 +512,7 @@ namespace GUI.TestRunnerView
             this.ClientSize = new System.Drawing.Size(1492, 586);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -554,7 +555,6 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private TimeLineControl.TimeLineControl evcTimeLineControl;
         private TestTreeView testBrowserTreeView;
-        private System.Windows.Forms.RichTextBox messageRichTextBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private MyPropertyGrid propertyGrid;
@@ -585,6 +585,7 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage descriptionTabPage;
+        private MyRichTextBox messageRichTextBox;
 
     }
 }

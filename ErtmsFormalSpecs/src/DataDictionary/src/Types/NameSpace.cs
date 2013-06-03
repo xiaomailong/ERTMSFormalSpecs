@@ -104,6 +104,21 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// The state machines types
+        /// </summary>
+        public System.Collections.ArrayList StateMachines
+        {
+            get
+            {
+                if (allStateMachines() == null)
+                {
+                    setAllStateMachines(new System.Collections.ArrayList());
+                }
+                return allStateMachines();
+            }
+        }
+
+        /// <summary>
         /// The functions declared in the namespace
         /// </summary>
         public System.Collections.ArrayList Functions
@@ -170,7 +185,7 @@ namespace DataDictionary.Types
         {
             cachedVariables = null;
             types = null;
-            declaredElements = null;
+            DeclaredElements = null;
         }
 
         /// <summary>
@@ -222,66 +237,53 @@ namespace DataDictionary.Types
                     {
                         types.Add(collection);
                     }
+                    foreach (StateMachine stateMachine in StateMachines)
+                    {
+                        types.Add(stateMachine);
+                    }
                 }
 
                 return types;
             }
         }
 
-
-        /// <summary>
-        /// Provides all the types available through this namespace
-        /// </summary>
-        private Dictionary<string, List<Utils.INamable>> declaredElements;
-
         /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
             foreach (NameSpace nameSpace in SubNameSpaces)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, nameSpace);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
 
             foreach (Types.Type type in Types)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, type);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, type);
             }
 
             foreach (Variables.IVariable variable in AllVariables)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, variable);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, variable);
             }
 
-            foreach (Variables.Procedure proc in Procedures)
+            foreach (Functions.Procedure proc in Procedures)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, proc);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, proc);
             }
 
             foreach (Functions.Function function in Functions)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, function);
+                Utils.ISubDeclaratorUtils.AppendNamable(this, function);
             }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                if (declaredElements == null)
-                {
-                    InitDeclaredElements();
-                }
-
-                return declaredElements;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -290,12 +292,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            List<Utils.INamable> list;
-
-            if (DeclaredElements.TryGetValue(name, out list))
-            {
-                retVal.AddRange(list);
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
 
@@ -439,7 +436,7 @@ namespace DataDictionary.Types
                 }
             }
             {
-                Variables.Procedure item = element as Variables.Procedure;
+                Functions.Procedure item = element as Functions.Procedure;
                 if (item != null)
                 {
                     appendProcedures(item);

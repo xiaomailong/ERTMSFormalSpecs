@@ -1,3 +1,4 @@
+using System;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -14,7 +15,6 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
-using System;
 
 namespace DataDictionary.Types
 {
@@ -84,8 +84,8 @@ namespace DataDictionary.Types
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, True);
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, False);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, True);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, False);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

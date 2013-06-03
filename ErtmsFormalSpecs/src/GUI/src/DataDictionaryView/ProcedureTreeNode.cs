@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class ProcedureTreeNode : ReqRelatedTreeNode<DataDictionary.Variables.Procedure>
+    public class ProcedureTreeNode : ReqRelatedTreeNode<DataDictionary.Functions.Procedure>
     {
         private class ItemEditor : ReqRelatedEditor
         {
@@ -62,7 +62,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ProcedureTreeNode(DataDictionary.Variables.Procedure item)
+        public ProcedureTreeNode(DataDictionary.Functions.Procedure item)
             : base(item)
         {
             stateMachine = new StateMachineTreeNode(item.StateMachine);
@@ -78,7 +78,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public ProcedureTreeNode(DataDictionary.Variables.Procedure item, string name, bool isFolder, bool addRequirements)
+        public ProcedureTreeNode(DataDictionary.Functions.Procedure item, string name, bool isFolder, bool addRequirements)
             : base(item, name, isFolder, addRequirements)
         {
         }

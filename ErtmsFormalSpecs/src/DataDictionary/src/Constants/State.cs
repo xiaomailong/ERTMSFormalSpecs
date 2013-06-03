@@ -33,11 +33,6 @@ namespace DataDictionary.Constants
                     stt = stt.EnclosingState;
                 }
 
-                if (EnclosingProcedure != null)
-                {
-                    retVal = EnclosingProcedure.Name + "." + retVal;
-                }
-
                 return retVal;
             }
         }
@@ -190,22 +185,6 @@ namespace DataDictionary.Constants
         public Types.StateMachine EnclosingStateMachine
         {
             get { return Enclosing as Types.StateMachine; }
-        }
-
-        /// <summary>
-        /// The enclosing procedure
-        /// </summary>
-        public Variables.Procedure EnclosingProcedure
-        {
-            get { return Utils.EnclosingFinder<Variables.Procedure>.find(this); }
-        }
-
-        /// <summary>
-        /// The enclosing structure procedure
-        /// </summary>
-        public Types.StructureProcedure EnclosingStructureProcedure
-        {
-            get { return Utils.EnclosingFinder<Types.StructureProcedure>.find(this); }
         }
 
         /// <summary>

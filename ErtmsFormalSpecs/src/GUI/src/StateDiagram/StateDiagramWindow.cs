@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Rules;
 using DataDictionary.Types;
+using DataDictionary.Variables;
 using Utils;
 
 namespace GUI.StateDiagram
@@ -37,17 +38,42 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
+        /// Sets the state machine type
+        /// </summary>
+        /// <param name="stateMachine"></param>
+        public void SetStateMachine(StateMachine stateMachine)
+        {
+            __stateMachine = stateMachine;
+            StateContainerPanel.StateMachine = stateMachine;
+        }
+
+        /// <summary>
+        /// Sets the state machine variable (and type)
+        /// </summary>
+        /// <param name="stateMachine">The state machine variable to display</param>
+        /// <param name="stateMachineType">The state machine type which should be displayed. If null, the default state machine is displayed</param>
+        public void SetStateMachine(IVariable stateMachine, StateMachine stateMachineType = null)
+        {
+            if (stateMachineType == null)
+            {
+                stateMachineType = stateMachine.Type as StateMachine;
+            }
+
+            if (stateMachineType != null)
+            {
+                __stateMachine = stateMachineType;
+                StateContainerPanel.StateMachine = stateMachineType;
+                StateContainerPanel.StateMachineVariable = stateMachine;
+            }
+        }
+
+        /// <summary>
         /// The state machine currently displayed
         /// </summary>
-        private StateMachine stateMachine;
+        private StateMachine __stateMachine;
         public StateMachine StateMachine
         {
-            get { return stateMachine; }
-            set
-            {
-                stateMachine = value;
-                StateContainerPanel.StateMachine = value;
-            }
+            get { return __stateMachine; }
         }
 
         /// <summary>
@@ -247,7 +273,7 @@ namespace GUI.StateDiagram
         private void addStateMenuItem_Click(object sender, EventArgs e)
         {
             State state = (State)DataDictionary.Generated.acceptor.getFactory().createState();
-            state.Name = "State" + (stateMachine.States.Count + 1);
+            state.Name = "State" + (StateMachine.States.Count + 1);
 
             if (MDIWindow.DataDictionaryWindow != null)
             {
@@ -271,14 +297,14 @@ namespace GUI.StateDiagram
             {
                 DataDictionary.ObjectFactory factory = (DataDictionary.ObjectFactory)DataDictionary.Generated.acceptor.getFactory();
                 DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)factory.createRule();
-                rule.Name = "<Rule" + (stateMachine.Rules.Count + 1) + ">";
+                rule.Name = "Rule" + (StateMachine.Rules.Count + 1);
 
                 DataDictionary.Rules.RuleCondition ruleCondition = (DataDictionary.Rules.RuleCondition)factory.createRuleCondition();
-                ruleCondition.Name = "<RuleCondition" + (rule.RuleConditions.Count + 1) + ">";
+                ruleCondition.Name = "RuleCondition" + (rule.RuleConditions.Count + 1);
                 rule.appendConditions(ruleCondition);
 
                 DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)factory.createAction();
-                action.Expression = "CurrentState <- " + ((State)StateMachine.States[1]).LiteralName;
+                action.Expression = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
                 ruleCondition.appendActions(action);
 
                 if (MDIWindow.DataDictionaryWindow != null)
@@ -342,5 +368,6 @@ namespace GUI.StateDiagram
         {
             return control == Selected;
         }
+
     }
 }

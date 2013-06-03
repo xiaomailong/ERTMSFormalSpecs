@@ -223,7 +223,7 @@ namespace DataDictionary.Specification
             }
             else
             {
-                if (id.StartsWith(FullId))
+                if ((id.StartsWith(FullId) && id[FullId.Length] == '.') || !create)
                 {
                     foreach (Paragraph sub in SubParagraphs)
                     {

@@ -14,6 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Functions;
+using Utils;
 
 namespace DataDictionary.Types
 {
@@ -57,48 +59,51 @@ namespace DataDictionary.Types
             }
         }
 
-        public void ClearCache()
+        /// <summary>
+        /// The state machines
+        /// </summary>
+        public System.Collections.ArrayList StateMachines
         {
-            declaredElements = null;
+            get
+            {
+                if (allStateMachines() == null)
+                {
+                    setAllStateMachines(new System.Collections.ArrayList());
+                }
+                return allStateMachines();
+            }
         }
 
-        /// <summary>
-        /// Provides all the values that can be stored in this structure
-        /// </summary>
-        public Dictionary<string, List<Utils.INamable>> declaredElements;
+        public void ClearCache()
+        {
+        }
 
         /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
-        }
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
+            foreach (StructureElement element in Elements)
             {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
+                Utils.ISubDeclaratorUtils.AppendNamable(this, element);
+            }
+            foreach (Procedure procedure in Procedures)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, procedure);
+            }
 
-                    foreach (StructureElement element in Elements)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, element);
-                    }
-
-                    foreach (StructureProcedure procedure in Procedures)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, procedure);
-                    }
-                }
-
-                return declaredElements;
+            foreach (StateMachine stateMachine in StateMachines)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, stateMachine);
             }
         }
 
+        /// <summary>
+        /// The declared elements of the structure
+        /// </summary>
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -107,18 +112,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            List<Utils.INamable> list;
-
-            if (DeclaredElements.TryGetValue(name, out list))
-            {
-                foreach (Namable namable in list)
-                {
-                    if (!retVal.Contains(namable))
-                    {
-                        retVal.Add(namable);
-                    }
-                }
-            }
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -178,7 +172,7 @@ namespace DataDictionary.Types
                 }
             }
             {
-                StructureProcedure item = element as StructureProcedure;
+                Procedure item = element as Procedure;
                 if (item != null)
                 {
                     appendProcedures(item);
@@ -249,7 +243,7 @@ namespace DataDictionary.Types
                 retVal += "\\par" + TextualExplainUtilities.Pad("{" + element.Name + " : " + element.TypeName + "}", indentLevel + 2);
             }
 
-            foreach (StructureProcedure procedure in Procedures)
+            foreach (Procedure procedure in Procedures)
             {
                 retVal += "\\par" + procedure.getExplain(indentLevel + 2, false);
             }

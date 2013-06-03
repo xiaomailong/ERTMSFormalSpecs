@@ -88,43 +88,26 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The elements declared in this enum
-        /// </summary>
-        Dictionary<string, List<Utils.INamable>> declaredElements = null;
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Constants.EnumValue value in Values)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, value);
+            }
+            foreach (Types.Enum subEnum in SubEnums)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, subEnum);
+            }
         }
 
         /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    foreach (Constants.EnumValue value in Values)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, value);
-                    }
-                    foreach (Types.Enum subEnum in SubEnums)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, subEnum);
-                    }
-                }
-
-                return declaredElements;
-            }
-        }
-
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal

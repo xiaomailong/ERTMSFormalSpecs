@@ -13,17 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 namespace GUI.DataDictionaryView
 {
-    public class StructureProcedureRulesTreeNode : DataTreeNode<DataDictionary.Types.StructureProcedure>
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+
+    public class StructureStateMachinesTreeNode : DataTreeNode<DataDictionary.Types.Structure>
     {
-        /// <summary>
-        /// The editor for message variables
-        /// </summary>
         private class ItemEditor : Editor
         {
             /// <summary>
@@ -40,12 +37,12 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructureProcedureRulesTreeNode(DataDictionary.Types.StructureProcedure item)
-            : base(item, "Rules", true)
+        public StructureStateMachinesTreeNode(DataDictionary.Types.Structure item)
+            : base(item, "State Machines", true)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.Rules)
+            foreach (DataDictionary.Types.StateMachine stateMachine in item.StateMachines)
             {
-                Nodes.Add(new RuleTreeNode(rule));
+                Nodes.Add(new StateMachineTreeNode(stateMachine));
             }
             SortSubNodes();
         }
@@ -61,19 +58,23 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
-            rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
-            AddRule(rule);
+            DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
+            if (treeView != null)
+            {
+                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                stateMachine.Name = "<StateMachine" + (GetNodeCount(false) + 1) + ">";
+                AddStateMachine(stateMachine);
+            }
         }
 
         /// <summary>
-        /// Adds a rule in the corresponding namespace
+        /// Adds a new state machine
         /// </summary>
-        /// <param name="variable"></param>
-        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
+        /// <param name="collection"></param>
+        public StateMachineTreeNode AddStateMachine(DataDictionary.Types.StateMachine stateMachine)
         {
-            Item.appendRules(rule);
-            RuleTreeNode retVal = new RuleTreeNode(rule);
+            StateMachineTreeNode retVal = new StateMachineTreeNode(stateMachine);
+            Item.appendStateMachines(stateMachine);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -86,12 +87,13 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = new List<MenuItem>();
+            List<MenuItem> retVal = base.GetMenuItems();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }
+
 
         /// <summary>
         /// Accepts drop of a tree node, in a drag & drop operation
@@ -101,26 +103,26 @@ namespace GUI.DataDictionaryView
         {
             base.AcceptDrop(SourceNode);
 
-            if (SourceNode is RuleTreeNode)
+            if (SourceNode is StateMachineTreeNode)
             {
-                RuleTreeNode ruleTreeNode = SourceNode as RuleTreeNode;
-                DataDictionary.Rules.Rule rule = ruleTreeNode.Item;
+                StateMachineTreeNode stateMachineTreeNode = SourceNode as StateMachineTreeNode;
+                DataDictionary.Types.StateMachine stateMachine = stateMachineTreeNode.Item;
 
-                ruleTreeNode.Delete();
-                AddRule(rule);
+                stateMachineTreeNode.Delete();
+                AddStateMachine(stateMachine);
             }
             else if (SourceNode is SpecificationView.ParagraphTreeNode)
             {
                 SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
                 DataDictionary.Specification.Paragraph paragaph = node.Item;
 
-                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
-                rule.Name = paragaph.Name;
+                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                stateMachine.Name = paragaph.Name;
 
                 DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
-                rule.appendRequirements(reqRef);
-                AddRule(rule);
+                stateMachine.appendRequirements(reqRef);
+                AddStateMachine(stateMachine);
             }
         }
     }

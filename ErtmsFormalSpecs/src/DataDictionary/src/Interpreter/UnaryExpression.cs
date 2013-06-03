@@ -203,12 +203,6 @@ namespace DataDictionary.Interpreter
             if (Term != null)
             {
                 retVal = Term.GetExpressionType();
-
-                Variables.IProcedure procedure = retVal as Variables.IProcedure;
-                if (procedure != null && procedure.CurrentState != null)
-                {
-                    retVal = procedure.CurrentState.Type;
-                }
             }
             else if (Expression != null)
             {

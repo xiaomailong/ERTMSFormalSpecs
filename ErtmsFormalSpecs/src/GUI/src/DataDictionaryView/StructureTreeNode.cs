@@ -39,6 +39,7 @@ namespace GUI.DataDictionaryView
 
         private RulesTreeNode rules;
         private StructureElementsTreeNode elements;
+        private StructureStateMachinesTreeNode stateMachines;
         private StructureProceduresTreeNode procedures;
 
         /// <summary>
@@ -52,7 +53,9 @@ namespace GUI.DataDictionaryView
             rules = new RulesTreeNode(item);
             elements = new StructureElementsTreeNode(item);
             procedures = new StructureProceduresTreeNode(item);
+            stateMachines = new StructureStateMachinesTreeNode(item);
             Nodes.Add(procedures);
+            Nodes.Add(stateMachines);
             Nodes.Add(elements);
             Nodes.Add(rules);
         }
@@ -85,7 +88,7 @@ namespace GUI.DataDictionaryView
         {
             if (procedures != null)
             {
-                procedures.AddProcedureHandler(sender, args);
+                procedures.AddHandler(sender, args);
             }
         }
 

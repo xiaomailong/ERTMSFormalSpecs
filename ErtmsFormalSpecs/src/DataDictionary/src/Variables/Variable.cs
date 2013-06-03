@@ -227,25 +227,6 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The enclosed procedures
-        /// </summary>
-        public Dictionary<string, IProcedure> SubProcedures
-        {
-            get
-            {
-                Values.StructureValue structureValue = Value as Values.StructureValue;
-                if (structureValue != null)
-                {
-                    return structureValue.Procedures;
-                }
-                else
-                {
-                    return new Dictionary<string, IProcedure>();
-                }
-            }
-        }
-
-        /// <summary>
         /// Provides the variable's default value
         /// </summary>
         public Values.IValue DefaultValue

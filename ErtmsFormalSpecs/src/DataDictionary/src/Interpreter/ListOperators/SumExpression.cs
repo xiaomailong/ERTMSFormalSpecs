@@ -46,7 +46,7 @@ namespace DataDictionary.Interpreter.ListOperators
             AccumulatorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             AccumulatorVariable.Enclosing = this;
             AccumulatorVariable.Name = "RESULT";
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, AccumulatorVariable);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, AccumulatorVariable);
 
             Accumulator = new BinaryExpression(root, expression, BinaryExpression.OPERATOR.ADD, new UnaryExpression(root, new Term(root, new Designator(root, "RESULT"))));
             Accumulator.Enclosing = this;

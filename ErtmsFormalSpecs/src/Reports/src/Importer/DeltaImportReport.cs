@@ -83,20 +83,27 @@ namespace Reports.Importer
 
             AddSubParagraph("New paragraphs");
             AddParagraph("This section lists the paragraphs that have been added during the importation");
+            AddTable(new string[] { "Paragraph", "Contents" }, new int[] { 40, 100 });
             foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.NewParagraphs)
             {
-                AddSubParagraph(paragraph.Id);
-                AddParagraph(ValidText(paragraph.Text));
-                CloseSubParagraph();
+                AddRow(paragraph.Id, paragraph.Text);
             }
             CloseSubParagraph();
             AddSubParagraph("Removed paragraphs");
             AddParagraph("This section lists the paragraphs that have been removed during the importation");
+            AddTable(new string[] { "Paragraph", "Contents" }, new int[] { 40, 100 });
             foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.RemovedParagraphs)
             {
-                AddSubParagraph(paragraph.Id);
-                AddParagraph(ValidText(paragraph.Text));
-                CloseSubParagraph();
+                AddRow(paragraph.Id, paragraph.Text);
+            }
+            CloseSubParagraph();
+
+            AddSubParagraph("Errors during importation");
+            AddParagraph("This section lists the errors encountered during importation");
+            AddTable(new string[] { "Paragraph", "Error" }, new int[] { 40, 100 });
+            foreach (Importers.RtfDeltaImporter.ImportationError error in importResult.Errors)
+            {
+                AddRow(error.Paragraph.Id, error.Message);
             }
             CloseSubParagraph();
         }

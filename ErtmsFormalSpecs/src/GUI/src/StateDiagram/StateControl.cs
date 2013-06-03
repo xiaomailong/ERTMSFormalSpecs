@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
+using DataDictionary.Variables;
 
 namespace GUI.StateDiagram
 {
@@ -123,18 +124,11 @@ namespace GUI.StateDiagram
             Pen pen = NORMAL_PEN;
             e.Graphics.DrawRectangle(pen, Location.X, Location.Y, Width, Height);
 
-            DataDictionary.Variables.Procedure procedure = State.EnclosingProcedure;
-            if (procedure != null)
+            IVariable variable = Panel.StateMachineVariable;
+            if (variable != null && Panel.StateMachine.Contains(State, variable.Value))
             {
-                if (Panel.StateMachine.Contains(State, State.EnclosingProcedure.CurrentState.Value))
-                {
-                    pen = ACTIVATED_PEN;
-                    SetColor(ACTIVATED_COLOR);
-                }
-                else
-                {
-                    SetColor(NORMAL_COLOR);
-                }
+                pen = ACTIVATED_PEN;
+                SetColor(ACTIVATED_COLOR);
             }
             else
             {
@@ -309,7 +303,7 @@ namespace GUI.StateDiagram
             {
                 StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
                 Panel.MDIWindow.AddChildWindow(window);
-                window.StateMachine = State.StateMachine;
+                window.SetStateMachine(Panel.StateMachineVariable, State.StateMachine);
                 window.Text = State.StateMachine.Name + " state diagram";
             }
         }

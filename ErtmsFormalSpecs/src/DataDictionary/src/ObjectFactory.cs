@@ -68,11 +68,6 @@ namespace DataDictionary
             return new Types.StructureElement();
         }
 
-        public override Generated.StructureProcedure createStructureProcedure()
-        {
-            return new Types.StructureProcedure();
-        }
-
         public override Generated.Function createFunction()
         {
             return new Functions.Function();
@@ -90,7 +85,7 @@ namespace DataDictionary
 
         public override Generated.Procedure createProcedure()
         {
-            return new Variables.Procedure();
+            return new Functions.Procedure();
         }
 
         public override Generated.StateMachine createStateMachine()

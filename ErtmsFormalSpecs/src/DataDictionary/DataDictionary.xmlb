@@ -152,6 +152,9 @@
       <FIELD NAME="Collections"         REFTYPE="Collection"    MODE="DEFAULT">
         <META NAME="TargetName">Types</META>
       </FIELD>
+      <FIELD NAME="StateMachines"       REFTYPE="StateMachine"  MODE="DEFAULT">
+        <META NAME="TargetName">Types</META>
+      </FIELD>
       <FIELD NAME="Functions"           REFTYPE="Function"      MODE="DEFAULT">
         <META NAME="TargetName">Types</META>
       </FIELD>
@@ -185,6 +188,11 @@
         <ENCLOSED NAME="Collections" OPTIONAL="TRUE">
           <REPEAT TARGET="Collections">
             <ELEMENTREF NAME="Collection" />
+          </REPEAT>
+        </ENCLOSED>
+        <ENCLOSED NAME="StateMachines" OPTIONAL="TRUE">
+          <REPEAT TARGET="StateMachines">
+            <ELEMENTREF NAME="StateMachine" />
           </REPEAT>
         </ENCLOSED>
         <ENCLOSED NAME="Functions" OPTIONAL="TRUE">
@@ -327,9 +335,10 @@
   <ELEMENT NAME="Structure" BASEELEMENT="Type" MAIN="TRUE" BASECLASS="DataDictionary.Types.Type">
     <META NAME="Package">types</META>
     <FIELDS>
-      <FIELD NAME="Elements"   REFTYPE="StructureElement"/>
-      <FIELD NAME="Procedures" REFTYPE="StructureProcedure"/>
-      <FIELD NAME="Rules"      REFTYPE="Rule"/>
+      <FIELD NAME="Elements"      REFTYPE="StructureElement"/>
+      <FIELD NAME="Procedures"    REFTYPE="Procedure"/>
+      <FIELD NAME="StateMachines" REFTYPE="StateMachine"/>
+      <FIELD NAME="Rules"         REFTYPE="Rule"/>
     </FIELDS>
     <FORMULA>
       <CONCAT>
@@ -340,12 +349,17 @@
         </ENCLOSED>
         <ENCLOSED NAME="Procedures" OPTIONAL="TRUE">
           <REPEAT TARGET="Procedures">
-            <ELEMENTREF NAME="StructureProcedure" />
+            <ELEMENTREF NAME="Procedure" />
           </REPEAT>
         </ENCLOSED>
         <REPEAT TARGET="Elements">
           <ELEMENTREF NAME="StructureElement" />
         </REPEAT>
+        <ENCLOSED NAME="StateMachines" OPTIONAL="TRUE">
+          <REPEAT TARGET="StateMachines">
+            <ELEMENTREF NAME="StateMachine" />
+          </REPEAT>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
@@ -369,33 +383,6 @@
       <ATTR NAME="Default"  TARGET="Default" OPTIONAL="TRUE" DEFAULT=""/>
       <ATTR NAME="Mode"     TARGET="Mode"    OPTIONAL="TRUE" DEFAULT="Internal"/>
     </ATTRIBUTES>
-  </ELEMENT>
-
-  <!-- ------------------- -->
-  <!-- Structure Procedure -->
-  <!-- ------------------- -->
-  <ELEMENT NAME="StructureProcedure" BASEELEMENT="ReqRelated" MAIN="TRUE" BASECLASS="DataDictionary.ReqRelated">
-    <META NAME="Class">Procedure</META>	
-    <FIELDS>
-      <FIELD NAME="StateMachine" REFTYPE="StateMachine" />
-      <FIELD NAME="Rules"        REFTYPE="Rule" />
-      <FIELD NAME="Parameters"   REFTYPE="Parameter" />
-    </FIELDS>
-    <FORMULA>
-       <CONCAT>
-         <ENCLOSED NAME="Parameters" OPTIONAL="TRUE" >
-           <REPEAT TARGET="Parameters">
-             <ELEMENTREF NAME="Parameter"/>
-           </REPEAT>
-         </ENCLOSED>
-        <ENCLOSED NAME="Rules" OPTIONAL="TRUE">
-          <REPEAT TARGET="Rules">
-            <ELEMENTREF NAME="Rule" />
-          </REPEAT>
-        </ENCLOSED>
-        <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
-      </CONCAT>
-    </FORMULA>
   </ELEMENT>
 
   <!-- --------------- -->

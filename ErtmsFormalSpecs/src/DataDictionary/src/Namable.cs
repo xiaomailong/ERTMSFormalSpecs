@@ -35,6 +35,10 @@ namespace DataDictionary
             get { return getName(); }
             set
             {
+                if (value == null)
+                {
+                    value = "";
+                }
                 if (value.EndsWith(" "))
                 {
                     while (value.EndsWith(" "))
@@ -75,6 +79,11 @@ namespace DataDictionary
                     else
                     {
                         __fullName = Name;
+                    }
+
+                    while (__fullName != null && __fullName.EndsWith("."))
+                    {
+                        __fullName = __fullName.Substring(1, __fullName.Length - 1);
                     }
                 }
 

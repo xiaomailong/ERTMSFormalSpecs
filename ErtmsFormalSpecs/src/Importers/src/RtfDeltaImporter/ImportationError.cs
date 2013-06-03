@@ -1,4 +1,4 @@
-// ------------------------------------------------------------------------------
+﻿// ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
 // -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
@@ -13,20 +13,29 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
-namespace DataDictionary.Variables
+namespace Importers.RtfDeltaImporter
 {
-    public interface IProcedure : Utils.INamable, Interpreter.ICallable
+    public class ImportationError
     {
         /// <summary>
-        /// The rules to be applied when the procedure is invoked
+        /// The error message
         /// </summary>
-        System.Collections.ArrayList Rules { get; }
+        public string Message { get; private set; }
 
         /// <summary>
-        /// The current state of the procedure
+        /// The paragraph on which the error message applies
         /// </summary>
-        Variables.Variable CurrentState { get; }
+        public Paragraph Paragraph { get; private set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="paragraph"></param>
+        public ImportationError(string message, Paragraph paragraph)
+        {
+            Message = message;
+            Paragraph = paragraph;
+        }
     }
 }

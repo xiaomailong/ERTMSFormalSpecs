@@ -13,17 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 namespace GUI.DataDictionaryView
 {
-    public class StructureProceduresTreeNode : DataTreeNode<DataDictionary.Types.Structure>
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+
+    public class StateMachinesTreeNode : DataTreeNode<DataDictionary.Types.NameSpace>
     {
-        /// <summary>
-        /// The editor for message variables
-        /// </summary>
         private class ItemEditor : Editor
         {
             /// <summary>
@@ -40,12 +37,12 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructureProceduresTreeNode(DataDictionary.Types.Structure item)
-            : base(item, "Procedures", true)
+        public StateMachinesTreeNode(DataDictionary.Types.NameSpace item)
+            : base(item, "State Machines", true)
         {
-            foreach (DataDictionary.Functions.Procedure procedure in item.Procedures)
+            foreach (DataDictionary.Types.StateMachine stateMachine in item.StateMachines)
             {
-                Nodes.Add(new ProcedureTreeNode(procedure));
+                Nodes.Add(new StateMachineTreeNode(stateMachine));
             }
             SortSubNodes();
         }
@@ -61,19 +58,23 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-            procedure.Name = "<Procedure" + (GetNodeCount(false) + 1) + ">";
-            AddProcedure(procedure);
+            DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
+            if (treeView != null)
+            {
+                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                stateMachine.Name = "<StateMachine" + (GetNodeCount(false) + 1) + ">";
+                AddStateMachine(stateMachine);
+            }
         }
 
         /// <summary>
-        /// Adds a procedure in the corresponding namespace
+        /// Adds a new state machine
         /// </summary>
-        /// <param name="procedure"></param>
-        public ProcedureTreeNode AddProcedure(DataDictionary.Functions.Procedure procedure)
+        /// <param name="collection"></param>
+        public StateMachineTreeNode AddStateMachine(DataDictionary.Types.StateMachine stateMachine)
         {
-            Item.appendProcedures(procedure);
-            ProcedureTreeNode retVal = new ProcedureTreeNode(procedure);
+            StateMachineTreeNode retVal = new StateMachineTreeNode(stateMachine);
+            Item.appendStateMachines(stateMachine);
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -86,41 +87,42 @@ namespace GUI.DataDictionaryView
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
         {
-            List<MenuItem> retVal = new List<MenuItem>();
+            List<MenuItem> retVal = base.GetMenuItems();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }
 
+
         /// <summary>
-        /// Accepts a new procedure
+        /// Accepts drop of a tree node, in a drag & drop operation
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
 
-            if (SourceNode is ProcedureTreeNode)
+            if (SourceNode is StateMachineTreeNode)
             {
-                ProcedureTreeNode procedureTreeNode = SourceNode as ProcedureTreeNode;
-                DataDictionary.Functions.Procedure procedure = procedureTreeNode.Item;
+                StateMachineTreeNode stateMachineTreeNode = SourceNode as StateMachineTreeNode;
+                DataDictionary.Types.StateMachine stateMachine = stateMachineTreeNode.Item;
 
-                procedureTreeNode.Delete();
-                AddProcedure(procedure);
+                stateMachineTreeNode.Delete();
+                AddStateMachine(stateMachine);
             }
             else if (SourceNode is SpecificationView.ParagraphTreeNode)
             {
                 SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
                 DataDictionary.Specification.Paragraph paragaph = node.Item;
 
-                DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
-                procedure.Name = paragaph.Name;
+                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                stateMachine.Name = paragaph.Name;
 
                 DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
-                procedure.appendRequirements(reqRef);
-                AddProcedure(procedure);
+                stateMachine.appendRequirements(reqRef);
+                AddStateMachine(stateMachine);
             }
         }
 
@@ -130,7 +132,7 @@ namespace GUI.DataDictionaryView
         public override void SelectionChanged()
         {
             base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Procedures.Count + (Item.Procedures.Count > 1 ? " procedures " : " procedure ") + "selected.";
+            (BaseForm as Window).toolStripStatusLabel.Text = Item.Collections.Count + (Item.Collections.Count > 1 ? " collections " : " collection ") + "selected.";
         }
     }
 }

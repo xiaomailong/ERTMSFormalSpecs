@@ -52,26 +52,30 @@ namespace GUI.TranslationRules
             this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.translationTreeView = new GUI.TranslationRules.TranslationTreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.propertyGrid = new GUI.MyPropertyGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.messageRichTextBox = new GUI.MyRichTextBox(true);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.commentRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.translationTreeView = new GUI.TranslationRules.TranslationTreeView();
-            this.propertyGrid = new GUI.MyPropertyGrid();
-            this.editTextBox = new GUI.MyRichTextBox(false);
+            this.messageRichTextBox = new MyRichTextBox(false);
+            this.editTextBox = new MyRichTextBox();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -157,6 +161,21 @@ namespace GUI.TranslationRules
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
+            // translationTreeView
+            // 
+            this.translationTreeView.AllowDrop = true;
+            this.translationTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translationTreeView.HideSelection = false;
+            this.translationTreeView.ImageIndex = 0;
+            this.translationTreeView.LabelEdit = true;
+            this.translationTreeView.Location = new System.Drawing.Point(0, 0);
+            this.translationTreeView.Name = "translationTreeView";
+            this.translationTreeView.Root = null;
+            this.translationTreeView.Selected = null;
+            this.translationTreeView.SelectedImageIndex = 0;
+            this.translationTreeView.Size = new System.Drawing.Size(186, 275);
+            this.translationTreeView.TabIndex = 1;
+            // 
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,6 +212,17 @@ namespace GUI.TranslationRules
             this.splitContainer3.Size = new System.Drawing.Size(371, 159);
             this.splitContainer3.SplitterDistance = 200;
             this.splitContainer3.TabIndex = 7;
+            // 
+            // propertyGrid
+            // 
+            this.propertyGrid.AllowDrop = true;
+            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.propertyGrid.Name = "propertyGrid";
+            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+            this.propertyGrid.Size = new System.Drawing.Size(200, 159);
+            this.propertyGrid.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -235,39 +265,6 @@ namespace GUI.TranslationRules
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 4;
             // 
-            // commentRichTextBox
-            // 
-            this.commentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.commentRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.commentRichTextBox.Name = "commentRichTextBox";
-            this.commentRichTextBox.Size = new System.Drawing.Size(218, 113);
-            this.commentRichTextBox.TabIndex = 3;
-            this.commentRichTextBox.Text = "";
-            this.commentRichTextBox.TextChanged += new System.EventHandler(this.commentRichTextBox_TextChanged);
-            // 
-            // translationTreeView
-            // 
-            this.translationTreeView.AllowDrop = true;
-            this.translationTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.translationTreeView.Location = new System.Drawing.Point(0, 0);
-            this.translationTreeView.Name = "translationTreeView";
-            this.translationTreeView.Root = null;
-            this.translationTreeView.Selected = null;
-            this.translationTreeView.Size = new System.Drawing.Size(186, 275);
-            this.translationTreeView.TabIndex = 1;
-            // 
-            // propertyGrid
-            // 
-            this.propertyGrid.AllowDrop = true;
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(200, 159);
-            this.propertyGrid.TabIndex = 0;
-            // 
             // editTextBox
             // 
             this.editTextBox.AllowDrop = true;
@@ -280,6 +277,17 @@ namespace GUI.TranslationRules
             this.editTextBox.Text = "";
             this.editTextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged_1);
             // 
+            // commentRichTextBox
+            // 
+            this.commentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commentRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.commentRichTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.commentRichTextBox.Name = "commentRichTextBox";
+            this.commentRichTextBox.Size = new System.Drawing.Size(218, 113);
+            this.commentRichTextBox.TabIndex = 3;
+            this.commentRichTextBox.Text = "";
+            this.commentRichTextBox.TextChanged += new System.EventHandler(this.commentRichTextBox_TextChanged);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,7 +295,7 @@ namespace GUI.TranslationRules
             this.ClientSize = new System.Drawing.Size(560, 300);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -296,16 +304,20 @@ namespace GUI.TranslationRules
             this.toolStrip2.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -330,7 +342,7 @@ namespace GUI.TranslationRules
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RichTextBox messageRichTextBox;
+        private MyRichTextBox messageRichTextBox;
 
     }
 }

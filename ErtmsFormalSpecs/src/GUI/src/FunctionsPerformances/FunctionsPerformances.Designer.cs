@@ -73,7 +73,6 @@ namespace GUI.FunctionsPerformances
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 262);
             this.Controls.Add(this.dataGridView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FunctionsPerformances";
             this.ShowInTaskbar = false;
             this.Text = "Functions performances";

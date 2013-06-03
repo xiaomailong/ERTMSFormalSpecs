@@ -68,30 +68,18 @@ namespace DataDictionary
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            foreach (Types.NameSpace nameSpace in NameSpaces)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+            }
         }
 
         /// <summary>
         /// Provides the list of declared elements in this Dictionary
         /// </summary>
-        private Dictionary<string, List<Utils.INamable>> declaredElements;
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
-        {
-            get
-            {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    foreach (Types.NameSpace nameSpace in NameSpaces)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, nameSpace);
-                    }
-                }
-
-                return declaredElements;
-            }
-        }
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
@@ -100,14 +88,7 @@ namespace DataDictionary
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            List<Utils.INamable> namables;
-            if (DeclaredElements.TryGetValue(name, out namables))
-            {
-                foreach (Utils.INamable namable in namables)
-                {
-                    retVal.Add(namable);
-                }
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -240,7 +221,7 @@ namespace DataDictionary
         {
             definedTypes = null;
             cachedRuleDisablings = null;
-            declaredElements = null;
+            DeclaredElements = null;
             cache.Clear();
         }
 

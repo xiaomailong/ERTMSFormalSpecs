@@ -80,8 +80,8 @@ namespace DataDictionary.Interpreter.ListOperators
         {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, IteratorVariable);
-            Utils.ISubDeclaratorUtils.AppendNamable(DeclaredElements, PreviousIteratorVariable);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
+            Utils.ISubDeclaratorUtils.AppendNamable(this, PreviousIteratorVariable);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="retVal"></param>
         public void Find(string name, List<Utils.INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(DeclaredElements, name, retVal);
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>

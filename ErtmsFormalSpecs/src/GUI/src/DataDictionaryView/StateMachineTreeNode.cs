@@ -58,7 +58,7 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         public StateMachineTreeNode(DataDictionary.Types.StateMachine item)
-            : base(item, "State machine", false)
+            : base(item)
         {
             states = new StateMachineStatesTreeNode(item);
             Nodes.Add(states);
@@ -111,7 +111,7 @@ namespace GUI.DataDictionaryView
         {
             StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
             BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
-            window.StateMachine = Item;
+            window.SetStateMachine(Item);
             window.Text = Item.Name + " state diagram";
         }
 
@@ -144,10 +144,6 @@ namespace GUI.DataDictionaryView
                     if (Item.EnclosingState != null)
                     {
                         Item.EnclosingState.StateMachine = stateMachine;
-                    }
-                    else if (Item.EnclosingProcedure != null)
-                    {
-                        Item.EnclosingProcedure.StateMachine = stateMachine;
                     }
 
                     // Update the view

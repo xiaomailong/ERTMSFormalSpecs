@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class ProcedureRulesTreeNode : DataTreeNode<DataDictionary.Variables.Procedure>
+    public class ProcedureRulesTreeNode : DataTreeNode<DataDictionary.Functions.Procedure>
     {
         /// <summary>
         /// The editor for message variables
@@ -40,7 +40,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public ProcedureRulesTreeNode(DataDictionary.Variables.Procedure item)
+        public ProcedureRulesTreeNode(DataDictionary.Functions.Procedure item)
             : base(item, "Rules", true)
         {
             foreach (DataDictionary.Rules.Rule rule in item.Rules)

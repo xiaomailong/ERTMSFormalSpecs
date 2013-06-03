@@ -701,42 +701,36 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The sets of elements declared in this system
-        /// </summary>
-        private Dictionary<string, List<Utils.INamable>> declaredElements = null;
-
-        /// <summary>
         /// Initialises the declared elements 
         /// </summary>
         public void InitDeclaredElements()
         {
-            declaredElements = null;
+            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+
+            Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
+            foreach (Types.Type type in PredefinedTypes.Values)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, type);
+            }
+            foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
+            {
+                Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+            }
         }
 
         /// <summary>
         /// Provides the list of declared elements in this System
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+
+        /// <summary>
+        /// Appends the INamable which match the name provided in retVal
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="retVal"></param>
+        public void Find(string name, List<Utils.INamable> retVal)
         {
-            get
-            {
-                if (declaredElements == null)
-                {
-                    declaredElements = new Dictionary<string, List<Utils.INamable>>();
-
-                    Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, EmptyValue);
-                    foreach (Types.Type type in PredefinedTypes.Values)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, type);
-                    }
-                    foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
-                    {
-                        Utils.ISubDeclaratorUtils.AppendNamable(declaredElements, function);
-                    }
-                }
-
-                return declaredElements;
-            }
+            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -758,35 +752,6 @@ namespace DataDictionary
             }
 
             return retVal;
-        }
-
-        /// <summary>
-        /// Appends the INamable which match the name provided in retVal
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
-        {
-            if (name.CompareTo(EmptyValue.Name) == 0)
-            {
-                retVal.Add(EmptyValue);
-            }
-            foreach (Types.Type item in PredefinedTypes.Values)
-            {
-                if (item.Name.CompareTo(name) == 0)
-                {
-                    retVal.Add(item);
-                    break;
-                }
-            }
-            foreach (Functions.PredefinedFunctions.PredefinedFunction item in PredefinedFunctions.Values)
-            {
-                if (item.Name.CompareTo(name) == 0)
-                {
-                    retVal.Add(item);
-                    break;
-                }
-            }
         }
 
         /// <summary>

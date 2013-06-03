@@ -53,6 +53,7 @@ namespace GUI.StateDiagram
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.descriptionRichTextBox = new MyRichTextBox(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +94,7 @@ namespace GUI.StateDiagram
             this.StateContainerPanel.Name = "StateContainerPanel";
             this.StateContainerPanel.Size = new System.Drawing.Size(403, 341);
             this.StateContainerPanel.StateMachine = null;
+            this.StateContainerPanel.StateMachineVariable = null;
             this.StateContainerPanel.TabIndex = 0;
             // 
             // contextMenu
@@ -159,11 +161,11 @@ namespace GUI.StateDiagram
             this.propertyGrid.Size = new System.Drawing.Size(233, 170);
             this.propertyGrid.TabIndex = 0;
             // 
-            // descriptionRichTextBox
+            // richTextBox1
             // 
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.descriptionRichTextBox.Name = "descriptionRichTextBox";
+            this.descriptionRichTextBox.Name = "richTextBox1";
             this.descriptionRichTextBox.Size = new System.Drawing.Size(233, 167);
             this.descriptionRichTextBox.TabIndex = 0;
             this.descriptionRichTextBox.Text = "";
@@ -174,7 +176,7 @@ namespace GUI.StateDiagram
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 341);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StateDiagramWindow";
             this.Text = "StateDiagramWindow";

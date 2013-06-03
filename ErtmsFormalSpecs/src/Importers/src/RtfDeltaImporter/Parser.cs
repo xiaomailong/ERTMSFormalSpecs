@@ -224,6 +224,13 @@ namespace Importers.RtfDeltaImporter
                 key.Equals("headerr") ||
                 key.Equals("footerr") ||
                 key.Equals("pntxta") ||
+                key.Equals("shp") ||
+                key.Equals("themedata") ||
+                key.Equals("colorschememapping") ||
+                key.Equals("lsdlockedexcept") ||
+                key.Equals("datastore") ||
+                key.Equals("pntxta") ||
+                key.Equals("pntxtb") ||
                 key.Equals("pict"))
             {
                 Stack.CurrentFrame.IgnoreTextMode = IgnoreTextEnum.IgnoreText;
@@ -240,7 +247,17 @@ namespace Importers.RtfDeltaImporter
             }
             else if (key.Equals("cell"))
             {
-                addTextToCurrentParagraph(" ");
+                addTextToCurrentParagraph(",");
+            }
+
+            if (key.Equals("trowd"))
+            {
+                if (CurrentParagraph != null)
+                {
+                    CurrentParagraph = new TableRow(CurrentParagraph);
+                    Doc.AddParagraph(CurrentParagraph);
+                    EnclosingParagraphId = null;
+                }
             }
         }
 
@@ -269,24 +286,35 @@ namespace Importers.RtfDeltaImporter
             {
                 if (Stack.IsParagraphNumberMode(ParagraphNumberEnum.PnText))
                 {
+                    text = text.Trim();
+
                     // This paragraph is a continuation of the preceding one. 
                     if (CurrentParagraph != null)
                     {
-                        if (EnclosingParagraphId == null)
+                        if (text.CompareTo("-") == 0)
                         {
-                            EnclosingParagraphId = CurrentParagraph.Id;
+                            // Add dash separated list in the same paragraph
+                            // because there is no way to uniquely identify 
+                            // each element
+                            addTextToCurrentParagraph(text);
                         }
-
-                        // Create the paragraph number
-                        string id = EnclosingParagraphId + "." + text;
-                        id = id.Trim();
-                        if (id.EndsWith(")"))
+                        else
                         {
-                            id = id.Substring(0, id.Length - 1);
-                        }
+                            if (EnclosingParagraphId == null)
+                            {
+                                EnclosingParagraphId = CurrentParagraph.Id;
+                            }
 
-                        CurrentParagraph = new Paragraph(id);
-                        Doc.AddParagraph(CurrentParagraph);
+                            // Create the paragraph number
+                            string id = EnclosingParagraphId + "." + text;
+                            if (id.EndsWith(")"))
+                            {
+                                id = id.Substring(0, id.Length - 1);
+                            }
+
+                            CurrentParagraph = new Paragraph(id);
+                            Doc.AddParagraph(CurrentParagraph);
+                        }
                     }
                 }
                 else
