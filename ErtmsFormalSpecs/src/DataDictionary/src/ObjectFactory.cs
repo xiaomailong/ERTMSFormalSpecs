@@ -38,6 +38,11 @@ namespace DataDictionary
             return new Types.NameSpace();
         }
 
+        public override Generated.NameSpaceRef createNameSpaceRef()
+        {
+            return new Types.NameSpaceRef();
+        }
+
         public override Generated.Enum createEnum()
         {
             return new Types.Enum();
@@ -124,6 +129,11 @@ namespace DataDictionary
         public override Generated.Action createAction()
         {
             return new Rules.Action();
+        }
+
+        public override Generated.FrameRef createFrameRef()
+        {
+            return new Tests.FrameRef();
         }
 
         public override Generated.Frame createFrame()

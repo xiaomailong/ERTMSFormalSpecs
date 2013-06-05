@@ -14,6 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using System.IO;
+using DataDictionary.Tests;
+using DataDictionary.Types;
+using Utils;
 
 namespace DataDictionary
 {
@@ -30,11 +34,106 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Updates the dictionary contents before saving it
+        /// </summary>
+        private class Updater : Generated.Visitor
+        {
+            /// <summary>
+            /// The base path used to save files
+            /// </summary>
+            public string BasePath { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="basePath"></param>
+            public Updater(string basePath)
+                : base()
+            {
+                BasePath = basePath;
+            }
+
+            public override void visit(Generated.Dictionary obj, bool visitSubNodes)
+            {
+                base.visit(obj, visitSubNodes);
+
+                Dictionary dictionary = (Dictionary)obj;
+
+                if (dictionary.allNameSpaces() != null)
+                {
+                    foreach (NameSpace subNameSpace in dictionary.allNameSpaces())
+                    {
+                        dictionary.appendNameSpaceRefs(referenceNameSpace(dictionary, subNameSpace));
+                    }
+                    dictionary.allNameSpaces().Clear();
+                }
+
+                if (dictionary.allTests() != null)
+                {
+                    foreach (Frame frame in dictionary.allTests())
+                    {
+                        dictionary.appendTestRefs(referenceFrame(dictionary, frame));
+                    }
+                    dictionary.allTests().Clear();
+                }
+            }
+
+            public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+            {
+                base.visit(obj, visitSubNodes);
+
+                NameSpace nameSpace = (NameSpace)obj;
+
+                if (nameSpace.allNameSpaces() != null)
+                {
+                    foreach (NameSpace subNameSpace in nameSpace.allNameSpaces())
+                    {
+                        nameSpace.appendNameSpaceRefs(referenceNameSpace(nameSpace, subNameSpace));
+                    }
+                    nameSpace.allNameSpaces().Clear();
+                }
+            }
+
+            private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
+            {
+                NameSpaceRef retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
+                retVal.Name = nameSpace.Name;
+                retVal.setFather(enclosing);
+                retVal.SaveNameSpace(nameSpace);
+
+                return retVal;
+            }
+
+            private FrameRef referenceFrame(ModelElement enclosing, Frame test)
+            {
+                FrameRef retVal = (FrameRef)Generated.acceptor.getFactory().createFrameRef();
+                retVal.Name = test.Name;
+                retVal.setFather(enclosing);
+                retVal.SaveFrame(test);
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// The base path for accessing files of this dictionary
+        /// </summary>
+        public string BasePath
+        {
+            get { return Path.GetDirectoryName(FilePath) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(FilePath); }
+        }
+
+        /// <summary>
         /// Saves the dictionary according to its filename
         /// </summary>
         public void save()
         {
-            save(FilePath);
+            Updater updater = new Updater(BasePath);
+            updater.visit(this);
+
+            VersionedWriter writer = new VersionedWriter(FilePath);
+            unParse(writer, false);
+            writer.Close();
         }
 
         /// <summary>

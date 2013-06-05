@@ -17,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DataDictionary.Functions;
+using DataDictionary.Tests;
+using DataDictionary.Tests.Translations;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using XmlBooster;
@@ -80,6 +82,66 @@ namespace DataDictionary
 
                         structure.removeProcedures(procedure);
                     }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Updates the dictionary contents
+        /// </summary>
+        private class LoadDepends : Generated.Visitor
+        {
+            /// <summary>
+            /// The base path used to load files
+            /// </summary>
+            public string BasePath { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="basePath"></param>
+            public LoadDepends(string basePath)
+            {
+                BasePath = basePath;
+            }
+
+            public override void visit(Generated.Dictionary obj, bool visitSubNodes)
+            {
+                Dictionary dictionary = (Dictionary)obj;
+
+                if (dictionary.allNameSpaceRefs() != null)
+                {
+                    foreach (NameSpaceRef nameSpaceRef in dictionary.allNameSpaceRefs())
+                    {
+                        dictionary.appendNameSpaces(nameSpaceRef.LoadNameSpace());
+                    }
+                    dictionary.allNameSpaceRefs().Clear();
+                }
+                if (dictionary.allTestRefs() != null)
+                {
+                    foreach (FrameRef testRef in dictionary.allTestRefs())
+                    {
+                        dictionary.appendTests(testRef.LoadFrame());
+                    }
+                    dictionary.allTestRefs().Clear();
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+            {
+                NameSpace nameSpace = (NameSpace)obj;
+
+                if (nameSpace.allNameSpaceRefs() != null)
+                {
+                    foreach (NameSpaceRef nameSpaceRef in nameSpace.allNameSpaceRefs())
+                    {
+                        nameSpace.appendNameSpaces(nameSpaceRef.LoadNameSpace());
+                    }
+                    nameSpace.allNameSpaceRefs().Clear();
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -181,34 +243,33 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a dictionary according to the corresponding specifications
+        /// Loads a document and handles its associated locks
         /// </summary>
-        /// <param name="filePath">The path of the file which holds the dictionary data</param>
-        /// <param name="efsSystem">The system for which this dictionary is loaded</param>
-        /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem)
+        /// <typeparam name="T"></typeparam>
+        private class DocumentLoader<T>
+            where T : class, IXmlBBase
         {
-            Dictionary retVal = null;
-
-            Generated.ControllersManager.NamableController.DesactivateNotification();
-            try
+            /// <summary>
+            /// Loads a translation dictionary and lock the file
+            /// </summary>
+            /// <param name="filePath"></param>
+            /// <param name="enclosing"></param>
+            /// <returns></returns>
+            public static T loadFile(string filePath, ModelElement enclosing = null)
             {
+                T retVal = null;
+
                 XmlBFileContext ctxt = new XmlBFileContext();
                 ctxt.readFile(filePath);
                 try
                 {
-                    retVal = (Dictionary)Generated.acceptor.accept(ctxt);
-                    retVal.FilePath = filePath;
-                    efsSystem.AddDictionary(retVal);
-
-                    Updater updater = new Updater();
-                    updater.visit(retVal);
-                    if (retVal.Specifications != null)
+                    Generated.ControllersManager.NamableController.DesactivateNotification();
+                    retVal = Generated.acceptor.accept(ctxt) as T;
+                    if (retVal != null)
                     {
-                        retVal.Specifications.ManageTypeSpecs();
+                        retVal.setFather(enclosing);
+                        LockFile(filePath);
                     }
-
-                    LockFile(filePath);
                 }
                 catch (XmlBooster.XmlBException excp)
                 {
@@ -218,70 +279,94 @@ namespace DataDictionary
                 {
                     Log.Error(e.Message);
                 }
+                finally
+                {
+                    Generated.ControllersManager.NamableController.ActivateNotification();
+                }
+
+                return retVal;
             }
-            finally
+        }
+
+        /// <summary>
+        /// Loads a dictionary and lock the file
+        /// </summary>
+        /// <param name="filePath">The path of the file which holds the dictionary data</param>
+        /// <param name="efsSystem">The system for which this dictionary is loaded</param>
+        /// <returns></returns>
+        public static Dictionary load(String filePath, EFSSystem efsSystem)
+        {
+            Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath);
+
+            if (retVal != null)
             {
-                Generated.ControllersManager.NamableController.ActivateNotification();
+                retVal.FilePath = filePath;
+                efsSystem.AddDictionary(retVal);
+
+                // Loads the dependancies for this .efs file
+                LoadDepends loadDepends = new LoadDepends(retVal.BasePath);
+                loadDepends.visit(retVal);
+
+                // Updates the contents of this .efs file
+                Updater updater = new Updater();
+                updater.visit(retVal);
+                if (retVal.Specifications != null)
+                {
+                    retVal.Specifications.ManageTypeSpecs();
+                }
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Loads a specification
+        /// Loads a specification and lock the file
         /// </summary>
-        /// <param name="fileName">The name of the file which holds the dictionary data</param>
+        /// <param name="filePath">The name of the file which holds the dictionary data</param>
         /// <param name="dictionary">The dictionary for which the specification is loaded</param>
         /// <returns></returns>
-        public static Specification.Specification loadSpecification(String fileName, Dictionary dictionary)
+        public static Specification.Specification loadSpecification(String filePath, Dictionary dictionary)
         {
-            Specification.Specification retVal = null;
-
-            XmlBFileContext ctxt = new XmlBFileContext();
-            ctxt.readFile(fileName);
-            try
-            {
-                retVal = (Specification.Specification)Generated.acceptor.accept(ctxt);
-                dictionary.Specifications = retVal;
-                retVal.setFather(dictionary);
-
-                Updater updater = new Updater();
-                updater.visit(retVal);
-
-                LockFile(fileName);
-            }
-            catch (XmlBooster.XmlBException excp)
-            {
-                Log.Error(ctxt.errorMessage());
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-            }
+            Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath, dictionary);
 
             return retVal;
         }
 
-        public static Tests.Translations.TranslationDictionary loadTranslationDictionary(string fileName, DataDictionary.Dictionary dictionary)
+        /// <summary>
+        /// Loads a translation dictionary and lock the file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public static TranslationDictionary loadTranslationDictionary(string filePath, DataDictionary.Dictionary dictionary)
         {
-            Tests.Translations.TranslationDictionary retVal = null;
+            TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary);
 
-            XmlBFileContext ctxt = new XmlBFileContext();
-            ctxt.readFile(fileName);
-            try
-            {
-                retVal = Generated.acceptor.accept(ctxt) as Tests.Translations.TranslationDictionary;
-                if (retVal != null)
-                {
-                    retVal.setFather(dictionary);
-                }
+            return retVal;
+        }
 
-                LockFile(fileName);
-            }
-            catch (XmlBooster.XmlBException excp)
-            {
-                Log.Error(ctxt.errorMessage());
-            }
+        /// <summary>
+        /// Loads a namespace and locks the file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public static NameSpace loadNameSpace(string filePath, ModelElement enclosing)
+        {
+            NameSpace retVal = DocumentLoader<NameSpace>.loadFile(filePath, enclosing);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Loads a namespace and locks the file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public static Frame loadFrame(string filePath, ModelElement enclosing)
+        {
+            Frame retVal = DocumentLoader<Frame>.loadFile(filePath, enclosing);
 
             return retVal;
         }

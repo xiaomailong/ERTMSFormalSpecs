@@ -74,7 +74,9 @@
       <FIELD NAME="NameSpaces"            REFTYPE="NameSpace" >
         <META NAME="TargetName">Namespaces</META>
       </FIELD>
+      <FIELD NAME="NameSpaceRefs"         REFTYPE="NameSpaceRef" />
       <FIELD NAME="Tests"                 REFTYPE="Frame"/>
+      <FIELD NAME="TestRefs"              REFTYPE="FrameRef"/>
       <FIELD NAME="TranslationDictionary" REFTYPE="TranslationDictionary">
         <META NAME="TargetName">Translations</META>
       </FIELD>
@@ -101,14 +103,24 @@
           </REPEAT>
         </ENCLOSED>
         <ENCLOSED NAME="NameSpaces">
-          <REPEAT TARGET="NameSpaces">
-            <ELEMENTREF NAME="NameSpace"/>
-          </REPEAT>
+	  <CONCAT>
+            <REPEAT TARGET="NameSpaces">
+              <ELEMENTREF NAME="NameSpace"/>
+            </REPEAT>
+            <REPEAT TARGET="NameSpaceRefs">
+              <ELEMENTREF NAME="NameSpaceRef"/>
+            </REPEAT>
+	  </CONCAT>
         </ENCLOSED>
         <ENCLOSED NAME="Tests" OPTIONAL="TRUE">
-          <REPEAT TARGET="Tests">
-            <ELEMENTREF NAME="Frame" />
-          </REPEAT>
+	  <CONCAT>
+            <REPEAT TARGET="Tests">
+              <ELEMENTREF NAME="Frame" />
+            </REPEAT>
+            <REPEAT TARGET="TestRefs">
+              <ELEMENTREF NAME="FrameRef" />
+            </REPEAT>
+	  </CONCAT>
         </ENCLOSED>
         <ELEMENTREF NAME="TranslationDictionary" TARGET="TranslationDictionary" OPTIONAL="TRUE" />
 	<ELEMENTREF NAME="ShortcutDictionary"    TARGET="ShortcutDictionary"    OPTIONAL="TRUE" />
@@ -131,6 +143,12 @@
     </ATTRIBUTES>
   </ELEMENT>
 
+  <!-- ------------------- -->
+  <!-- NameSpace Reference -->
+  <!-- ------------------- -->
+  <ELEMENT NAME="NameSpaceRef" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
+  </ELEMENT>
+
   <!-- --------- -->
   <!-- NameSpace -->
   <!-- --------- -->
@@ -140,6 +158,7 @@
       <FIELD NAME="NameSpaces"          REFTYPE="NameSpace"     MODE="DEFAULT">
         <META NAME="TargetName">SubNamespaces</META>
       </FIELD>
+      <FIELD NAME="NameSpaceRefs"       REFTYPE="NameSpaceRef" />
       <FIELD NAME="Ranges"              REFTYPE="Range"         MODE="DEFAULT">
         <META NAME="TargetName">Types</META>
       </FIELD>
@@ -166,9 +185,14 @@
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="NameSpaces" OPTIONAL="TRUE">
-          <REPEAT TARGET="NameSpaces">
-            <ELEMENTREF NAME="NameSpace" />
-          </REPEAT>
+	  <CONCAT>
+            <REPEAT TARGET="NameSpaces">
+              <ELEMENTREF NAME="NameSpace"/>
+            </REPEAT>
+            <REPEAT TARGET="NameSpaceRefs">
+              <ELEMENTREF NAME="NameSpaceRef"/>
+            </REPEAT>
+	  </CONCAT>
         </ENCLOSED>
         <ENCLOSED NAME="Ranges" OPTIONAL="TRUE">
           <REPEAT TARGET="Ranges">
@@ -659,6 +683,12 @@
     <FORMULA>
       <PCDATA TARGET="Expression" />
     </FORMULA>
+  </ELEMENT>
+
+  <!-- -------------------- -->
+  <!-- Test Frame Reference -->
+  <!-- -------------------- -->
+  <ELEMENT NAME="FrameRef" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
   </ELEMENT>
 
   <!-- ---------- -->
