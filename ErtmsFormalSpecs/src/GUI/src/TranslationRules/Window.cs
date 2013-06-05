@@ -25,17 +25,17 @@ namespace GUI.TranslationRules
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
+        public EditorTextBox ExpressionTextBox
         {
             get { return editTextBox; }
         }
 
-        public RichTextBox CommentsTextBox
+        public EditorTextBox CommentsTextBox
         {
             get { return commentRichTextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public EditorTextBox MessagesTextBox
         {
             get { return messageRichTextBox; }
         }

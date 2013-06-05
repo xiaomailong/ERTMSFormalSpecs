@@ -30,6 +30,14 @@ namespace DataDictionary.Values
             }
         }
 
+        public override string FullName
+        {
+            get
+            {
+                return Type.FullName + "." + Name;
+            }
+        }
+
         public override string LiteralName
         {
             get

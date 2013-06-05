@@ -26,17 +26,17 @@ namespace GUI.TestRunnerView
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
+        public EditorTextBox ExpressionTextBox
         {
             get { return editTextBox; }
         }
 
-        public RichTextBox CommentsTextBox
+        public EditorTextBox CommentsTextBox
         {
             get { return commentsRichTextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public EditorTextBox MessagesTextBox
         {
             get { return messageRichTextBox; }
         }

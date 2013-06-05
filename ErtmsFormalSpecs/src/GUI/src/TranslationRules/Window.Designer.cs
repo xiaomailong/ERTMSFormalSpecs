@@ -58,9 +58,9 @@ namespace GUI.TranslationRules
             this.propertyGrid = new GUI.MyPropertyGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.commentRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.messageRichTextBox = new MyRichTextBox(false);
-            this.editTextBox = new MyRichTextBox();
+            this.commentRichTextBox = new EditorTextBox();
+            this.messageRichTextBox = new EditorTextBox();
+            this.editTextBox = new EditorTextBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -237,14 +237,12 @@ namespace GUI.TranslationRules
             // 
             // messageRichTextBox
             // 
-            this.messageRichTextBox.AcceptsTab = true;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.Size = new System.Drawing.Size(161, 140);
             this.messageRichTextBox.TabIndex = 4;
             this.messageRichTextBox.Text = "";
-            this.messageRichTextBox.WordWrap = false;
             // 
             // splitContainer2
             // 
@@ -335,14 +333,14 @@ namespace GUI.TranslationRules
         private System.Windows.Forms.SplitContainer splitContainer4;
         private MyPropertyGrid propertyGrid;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private MyRichTextBox editTextBox;
-        public System.Windows.Forms.RichTextBox commentRichTextBox;
+        private EditorTextBox editTextBox;
+        public EditorTextBox commentRichTextBox;
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
         private System.Windows.Forms.ToolStripButton nextWarningToolStripButton;
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private MyRichTextBox messageRichTextBox;
+        private EditorTextBox messageRichTextBox;
 
     }
 }

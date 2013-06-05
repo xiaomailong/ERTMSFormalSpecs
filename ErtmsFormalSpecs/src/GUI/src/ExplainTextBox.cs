@@ -16,13 +16,13 @@
 
 namespace GUI
 {
-    public class ExplainTextBox : MyRichTextBox
+    public class ExplainTextBox : EditorTextBox
     {
         /// <summary>
         /// Constructor
         /// </summary>
         public ExplainTextBox()
-            : base(false)
+            : base()
         {
         }
 

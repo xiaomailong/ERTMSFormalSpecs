@@ -57,6 +57,12 @@
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureStateMachinesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateMachinesTreeNode.cs" />
+    <Compile Include="src\EditorTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\EditorTextBox.Designer.cs">
+      <DependentUpon>EditorTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Excel\Frm_ExcelImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,7 +133,7 @@
     <Compile Include="src\DataDictionaryView\TypeTreeNode.cs" />
     <Compile Include="src\EnumConverter.cs" />
     <Compile Include="src\ExplainTextBox.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\GUIUtils.cs" />
     <Compile Include="src\ProgressDialog.cs">
@@ -177,9 +183,6 @@
     <Compile Include="src\DataDictionaryView\ProcedureTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\RangeTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\NameSpaceTreeNode.cs" />
-    <Compile Include="src\MyRichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="src\DataDictionaryView\ActionsTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\ActionTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\RulePreConditionsTreeNode.cs" />
@@ -357,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\DataDictionaryView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\EditorTextBox.resx">
+      <DependentUpon>EditorTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Excel\Frm_ExcelImport.resx">
       <DependentUpon>Frm_ExcelImport.cs</DependentUpon>

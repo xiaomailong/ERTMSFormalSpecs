@@ -53,7 +53,7 @@ namespace GUI.StateDiagram
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.descriptionRichTextBox = new MyRichTextBox(false);
+            this.descriptionRichTextBox = new EditorTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -204,6 +204,6 @@ namespace GUI.StateDiagram
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private MyRichTextBox descriptionRichTextBox;
+        private EditorTextBox descriptionRichTextBox;
     }
 }

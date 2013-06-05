@@ -652,7 +652,7 @@ namespace GUI
         /// <summary>
         /// The rich text box currently selected
         /// </summary>
-        public MyRichTextBox SelectedRichTextBox { get; set; }
+        public EditorTextBox SelectedRichTextBox { get; set; }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -59,10 +59,10 @@ namespace GUI.DataDictionaryView
             this.dataDictPropertyGrid = new GUI.MyPropertyGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.messagesRichTextBox = new MyRichTextBox();
-            this.commentRichTextBox = new MyRichTextBox();
-            this.expressionTextBox = new MyRichTextBox();
-            this.requirementsTextBox = new MyRichTextBox();
+            this.messagesRichTextBox = new EditorTextBox();
+            this.commentRichTextBox = new EditorTextBox();
+            this.expressionTextBox = new EditorTextBox();
+            this.requirementsTextBox = new EditorTextBox();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.ruleExplainTextBox = new GUI.RuleExplainTextBox();
@@ -310,7 +310,6 @@ namespace GUI.DataDictionaryView
             // 
             // requirementsTextBox
             // 
-            this.requirementsTextBox.AcceptsTab = true;
             this.requirementsTextBox.AllowDrop = true;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
@@ -321,7 +320,6 @@ namespace GUI.DataDictionaryView
             // 
             // ruleExplainTextBox
             // 
-            this.ruleExplainTextBox.AcceptsTab = true;
             this.ruleExplainTextBox.AllowDrop = true;
             this.ruleExplainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleExplainTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -331,7 +329,6 @@ namespace GUI.DataDictionaryView
             this.ruleExplainTextBox.Size = new System.Drawing.Size(346, 280);
             this.ruleExplainTextBox.TabIndex = 24;
             this.ruleExplainTextBox.Text = "";
-            this.ruleExplainTextBox.WordWrap = false;
             // 
             // stateDiagramPanel
             // 
@@ -489,18 +486,18 @@ namespace GUI.DataDictionaryView
         private MyPropertyGrid dataDictPropertyGrid;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private MyRichTextBox expressionTextBox;
+        private EditorTextBox expressionTextBox;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage expressionTabPage;
         private System.Windows.Forms.TabPage commentTabPage;
-        private MyRichTextBox commentRichTextBox;
+        private EditorTextBox commentRichTextBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.TabPage usageTabPage;
         public UsageTreeView.UsageTreeView usageTreeView;
         private System.Windows.Forms.TabPage descriptionTabPage;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        public MyRichTextBox requirementsTextBox;
+        public EditorTextBox requirementsTextBox;
         public RuleExplainTextBox ruleExplainTextBox;
         public StateDiagram.StatePanel stateDiagramPanel;
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
@@ -510,6 +507,6 @@ namespace GUI.DataDictionaryView
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip statusStrip;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private MyRichTextBox messagesRichTextBox;
+        private EditorTextBox messagesRichTextBox;
     }
 }

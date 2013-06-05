@@ -45,7 +45,7 @@ namespace GUI.TestRunnerView
         {
             this.explainTreeView = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.explainRichTextBox = new MyRichTextBox(false);
+            this.explainRichTextBox = new EditorTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,7 +109,7 @@ namespace GUI.TestRunnerView
 
         private System.Windows.Forms.TreeView explainTreeView;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private MyRichTextBox explainRichTextBox;
+        private EditorTextBox explainRichTextBox;
 
     }
 }

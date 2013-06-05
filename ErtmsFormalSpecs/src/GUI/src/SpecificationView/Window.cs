@@ -28,17 +28,17 @@ namespace GUI.SpecificationView
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
+        public EditorTextBox ExpressionTextBox
         {
             get { return specBrowserTextView; }
         }
 
-        public RichTextBox CommentsTextBox
+        public EditorTextBox CommentsTextBox
         {
             get { return commentsRichTextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public EditorTextBox MessagesTextBox
         {
             get { return messagesRichTextBox; }
         }

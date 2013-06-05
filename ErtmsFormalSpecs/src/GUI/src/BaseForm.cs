@@ -13,10 +13,6 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GUI
@@ -31,17 +27,17 @@ namespace GUI
         /// <summary>
         /// The text editor for expressions
         /// </summary>
-        RichTextBox ExpressionTextBox { get; }
+        EditorTextBox ExpressionTextBox { get; }
 
         /// <summary>
         /// The text editor for comments
         /// </summary>
-        RichTextBox CommentsTextBox { get; }
+        EditorTextBox CommentsTextBox { get; }
 
         /// <summary>
         /// The text editor for messages
         /// </summary>
-        RichTextBox MessagesTextBox { get; }
+        EditorTextBox MessagesTextBox { get; }
 
         /// <summary>
         /// The enclosing MDI Window

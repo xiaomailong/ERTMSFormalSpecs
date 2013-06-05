@@ -68,9 +68,9 @@ namespace GUI.TestRunnerView
             this.toolStripCurrentStepTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.testBrowserTreeView = new GUI.TestRunnerView.TestTreeView();
-            this.commentsRichTextBox = new MyRichTextBox();
-            this.editTextBox = new MyRichTextBox();
-            this.messageRichTextBox = new MyRichTextBox(false);
+            this.commentsRichTextBox = new EditorTextBox();
+            this.editTextBox = new EditorTextBox();
+            this.messageRichTextBox = new EditorTextBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
@@ -288,14 +288,12 @@ namespace GUI.TestRunnerView
             // 
             // messageRichTextBox
             // 
-            this.messageRichTextBox.AcceptsTab = true;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.Size = new System.Drawing.Size(519, 180);
             this.messageRichTextBox.TabIndex = 4;
             this.messageRichTextBox.Text = "";
-            this.messageRichTextBox.WordWrap = false;
             // 
             // splitContainer1
             // 
@@ -563,7 +561,7 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage timeLineTabPage;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private MyRichTextBox editTextBox;
+        private EditorTextBox editTextBox;
         public System.Windows.Forms.RichTextBox explainTextBox;
         private System.Windows.Forms.ToolStripButton StepOnceButton;
         private System.Windows.Forms.ToolStripButton RestartButton;
@@ -571,7 +569,7 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripComboBox subSequenceSelectorComboBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.TabPage commentsTabPage;
-        private MyRichTextBox commentsRichTextBox;
+        private EditorTextBox commentsRichTextBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
@@ -585,7 +583,7 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage descriptionTabPage;
-        private MyRichTextBox messageRichTextBox;
+        private EditorTextBox messageRichTextBox;
 
     }
 }

@@ -32,7 +32,7 @@ namespace GUI.StateDiagram
         /// </summary>
         public StateDiagramWindow()
         {
-            descriptionRichTextBox = new MyRichTextBox(true);
+            descriptionRichTextBox = new EditorTextBox();
             InitializeComponent();
             splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
         }

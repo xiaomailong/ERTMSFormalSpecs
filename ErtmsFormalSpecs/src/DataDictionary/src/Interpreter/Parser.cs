@@ -1014,8 +1014,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">the element for which this expression should be parsed</param>
         /// <param name="expression"></param>
+        /// <param name="filter">The filter to apply when performing the semantic analysis</param>
         /// <returns></returns>
-        public Expression Expression(ModelElement root, string expression)
+        public Expression Expression(ModelElement root, string expression, Filter.AcceptableChoice filter = null)
         {
             Expression retVal = null;
 
@@ -1041,7 +1042,14 @@ namespace DataDictionary.Interpreter
                 }
                 if (retVal != null)
                 {
-                    retVal.SemanticAnalysis(Filter.IsVariableOrValue);
+                    if (filter == null)
+                    {
+                        retVal.SemanticAnalysis(Filter.IsVariableOrValue);
+                    }
+                    else
+                    {
+                        retVal.SemanticAnalysis(filter);
+                    }
                 }
             }
             finally
