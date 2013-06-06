@@ -233,22 +233,22 @@ namespace DataDictionary.Specification
                             break;
                         }
                     }
-                }
-            }
 
-            if (retVal == null && create)
-            {
-                retVal = (Paragraph)Generated.acceptor.getFactory().createParagraph();
-                string subId = id.Substring(FullId.Length);
-                string[] items = subId.Split('.');
-                if (items.Length > 0)
-                {
-                    retVal.setId(FullId + "." + items[0]);
-                    appendParagraphs(retVal);
-
-                    if (retVal.getId().Length < id.Length)
+                    if (retVal == null && create)
                     {
-                        retVal = retVal.FindParagraph(id, create);
+                        retVal = (Paragraph)Generated.acceptor.getFactory().createParagraph();
+                        string subId = id.Substring(FullId.Length + 1);
+                        string[] items = subId.Split('.');
+                        if (items.Length > 0)
+                        {
+                            retVal.setId(FullId + "." + items[0]);
+                            appendParagraphs(retVal);
+
+                            if (retVal.getId().Length < id.Length)
+                            {
+                                retVal = retVal.FindParagraph(id, create);
+                            }
+                        }
                     }
                 }
             }

@@ -98,7 +98,7 @@ namespace Importers.RtfDeltaImporter
                 RowNumber = 0;
             }
 
-            Id = BaseName + " Entry " + RowNumber;
+            Id = BaseName + ".Entry " + RowNumber;
         }
     }
 }
