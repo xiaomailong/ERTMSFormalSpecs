@@ -1,0 +1,2718 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Train Trip - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S010: Train trip initiation"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Train trip initiation events"
+>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A115: Report mode change to RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Report mode change to RBC"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A115"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Report mode change to RBC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A115</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S120</Expectation><Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Post_Trip</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D090: Branch by level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 0"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D090.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A145</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level NTC"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D090.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A150</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A030: Report mode change to the RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Report mode change to the RBC"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A030"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A030</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation><Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Messages.M_MODE.Trip</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A035: MA and track description data deleted"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="MA and track description data deleted"
+>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S050: Waiting for standstill"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Standstill reached"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S050.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Standstill reached"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S050</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S060</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D020: Branch by level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 0, 1 or NTC"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D020.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 2 or 3"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D020.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A030</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level 3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A030</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A105: Mode change to PT"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to PT"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A105"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to PT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A105</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.PT</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D110</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.EmergencyBrakeApplied == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A140: Mode change to SH"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to SH"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A140"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A140</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.SH</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D085: Branch by train data status"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No valid train data"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D085.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Unknown train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Valid train data"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D085.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D090</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D080: Branch by level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 1, 2 or 3"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D80.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A105</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A105</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A105</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 0 or NTC"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D80.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D085</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D085</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A145: Mode change to UN"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to UN"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A145"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A145</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.UN</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A150: Mode change to SN"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to SN"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A150"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to SN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A150</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.SN</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D110: Branch by level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 1"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D110.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 2 or 3"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D110.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A115</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level 3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A115</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A025: Mode change to TR"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to TR"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.A025"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to TR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A025</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.TR</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D020</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S060: Display request for driver acknowledgement to Train Trip"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Display request for driver acknowledgement"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S060.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Display request for driver acknowledgement"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver acknowledged"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S060.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Driver acknowledged"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D080</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D130: Branch by pending emergency stops"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="There is at least one emergency stop"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D130.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - There is at least one emergency stop"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.EmergencyStops &lt;- 
+[
+  Kernel.EmergencyStop{
+    Id =&gt; Kernel.BrakeReason.DriverAckTimeOut,
+    IsConditional =&gt; True,
+    StopLocation =&gt; 1040.0
+  }
+]</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S130</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No pending emergency stops"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.D130.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - No emergency stops"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action>
+<Action>Kernel.EmergencyStops &lt;- []</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S120: Waiting for the RBC acknowledge"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC acknowledge received"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S120.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - RBC acknowledge received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    RECOGNITION_OF_EXIT_FROM_TRIP_MODE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message
+    {
+        L_MESSAGE =&gt; 10,
+        M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+        NID_LRBG =&gt; 2010,
+        NID_MESSAGE =&gt; 6,
+        T_TRAIN =&gt; 200
+    }
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D130</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Degraded situations"
+>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S130: Waiting for revocation of all emergency stops"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="All emergency stops revoked"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S130"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - All emergency stops revoked"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S130</Action>
+<Action>Kernel.EmergencyStops &lt;- []</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S140: Driver selection"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer driver selection"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S140.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer driver selection, valid train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Offer driver selection, invalid train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Invalid</Action>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects Start, level 1"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S140.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Start selected, level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S160</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects Start, level 2 or 3"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S140.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Start selected, level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Start selected, level 3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects SH"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S140.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - SH selected"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S170: Acknowledgement and mode change to OS/LS/SH"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request driver acknowledgement"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S170.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Request driver ackwnowledgement for OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.OS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Request driver acknowledgement to LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.LS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Request driver acknowledgement to SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.SH,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to OS/LS/SH"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S170.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Mode change to LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
+<Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.LS</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Mode change to SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
+<Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.SH</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S160: Acknowledgement and mode change to SR"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request driver acknowledgement"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S160.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Request driver acknowledgement"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode change to SR"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S160.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mode change to SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S150: MA request to the RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.Mode &lt;- Mode.PT</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request to the RBC and wait"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S150.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA request to the RBC and wait"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.SendMARequest</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Expectation><Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR authorisation received"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S150.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - SR authorisation received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- Kernel.SR.SR
+{
+    Distance =&gt; 0.0,
+    BGs =&gt; []
+}</Action>
+<Action>Kernel.MA.MA &lt;- EMPTY</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S160</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MA allowing OS/LS/SH received"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S150.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - MA allowing OS received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.OS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - MA allowing LS received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.LS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - MA allowing SH received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.SH,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MA allowing FS received"
+>
+<ReqRef
+ Id="Entry 5.11.2.2.S150.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - MA allowing FS received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Gradient =&gt; -0.1,
+        Location =&gt; 0.0
+    }
+]</Action>
+<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        BasicSpeed =&gt; 70.0,
+        Categories =&gt; [],
+        Distance =&gt; 0.0,
+        TrainLengthDelay =&gt;Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

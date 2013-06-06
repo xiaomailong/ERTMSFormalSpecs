@@ -1,0 +1,34 @@
+<NameSpace
+ Name="INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet is used to inhibit revocable TSRs from balises in level 2 or 3.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="64"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

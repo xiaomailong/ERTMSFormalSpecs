@@ -1,0 +1,1088 @@
+<NameSpace
+ Name="ModeProfile"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="ModeProfile"
+>
+<ReqRef
+ Id="3.12.4.2"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+>
+<ReqRef
+ Id="7.5.1.14"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.1"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.Mode.ModeProfile"
+ Default="Default.Mode.ModeProfile.LS"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Mode"
+>
+<ReqRef
+ Id="7.5.1.70"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Speed"
+>
+<ReqRef
+ Id="7.5.1.159"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Length"
+>
+<ReqRef
+ Id="7.5.1.47"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="AcknLength"
+>
+<ReqRef
+ Id="7.5.1.40"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_MAMODE"
+ Default="Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SupervisionQualifier"
+>
+<ReqRef
+ Id="7.5.1.118.2"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="ModeProfile"
+ MaxSize="20"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ModeProfiles"
+>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DistanceIsWithinAModeProfile"
+>
+<ReqRef
+ Id="Entry 4.6.3.35"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.6.3.41"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.4.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.4.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="A1.1.15.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.4.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="ModeProfile.ModeProfile"
+ Name="aModeProfile"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>aModeProfile.Mode == Mode.ModeProfile.SH</PreCondition>
+</PreConditions>
+<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>aModeProfile.Mode == Mode.ModeProfile.OS</PreCondition>
+</PreConditions>
+<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
+  AND
+TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )
+  AND
+Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+</Case><Case
+ Name="LS"
+>
+<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
+  AND
+TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ModeProfileIsApplicable"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.2"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Mode profile not available"
+>
+<PreConditions>
+<PreCondition>MA.MA == EMPTY OR Profile == []</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Mode profile available"
+>
+<Expression>DistanceIsWithinAModeProfile ( FIRST_IN Profile )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.Mode.ModeProfile"
+ Implemented="TRUE"
+ Name="CurrentMode"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S25.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>( FIRST_IN Profile ).Mode</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RemoveMode"
+>
+<ReqRef
+ Id="5.19.6.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.6.1.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="ModeProfile"
+ Name="aProfile"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="OS or LS"
+>
+<PreConditions>
+<PreCondition>aProfile.Mode == Mode.ModeProfile.OS</PreCondition>
+</PreConditions>
+<Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &gt;= aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length )</Expression>
+</Case><Case
+ Name="SH"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="ModeProfile"
+ Implemented="TRUE"
+ Name="ProfileForInfill"
+>
+<ReqRef
+ Id="3.12.4.3.1"
+>
+</ReqRef>
+<Comment>Indicates if the given mode profile should be deleted or not when an infill information is received. There are three possible cases:
+1. If the profile is before the infill location, it should be kept (the whole profile is returned).
+2. If the profile is after the infill location, it should be deleted (EMPTY is returned).
+3. If the infill location is inside the profile, the latter is shortened until the infill location.</Comment>
+<Parameters>
+<Parameter
+ Type="ModeProfile"
+ Name="aProfile"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="InfillDistance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Infill location after profile"
+>
+<PreConditions>
+<PreCondition>aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= InfillDistance</PreCondition>
+</PreConditions>
+<Expression>aProfile</Expression>
+</Case><Case
+ Name="Infill location after profile"
+>
+<PreConditions>
+<PreCondition>InfillDistance &lt;= aProfile.Distance</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Infill location inside profile"
+>
+<Expression>ModeProfile
+{
+    AcknLength =&gt; aProfile.AcknLength,
+    Distance =&gt; aProfile.Distance,
+    Length =&gt; InfillDistance - aProfile.Distance,
+    Mode =&gt; aProfile.Mode,
+    Speed =&gt; aProfile.Speed,
+    SupervisionQualifier =&gt; aProfile.SupervisionQualifier
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.Mode.ModeProfile"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ERTMS_To_EFS_Mode"
+>
+<Parameters>
+<Parameter
+ Type="Messages.M_MAMODE"
+ Name="aMode"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>aMode == Messages.M_MAMODE.On_Sight</PreCondition>
+</PreConditions>
+<Expression>Mode.ModeProfile.OS</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>aMode == Messages.M_MAMODE.Limited_Supervision</PreCondition>
+</PreConditions>
+<Expression>Mode.ModeProfile.LS</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>aMode == Messages.M_MAMODE.Shunting</PreCondition>
+</PreConditions>
+<Expression>Mode.ModeProfile.SH</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcknAreaReached"
+>
+<ReqRef
+ Id="5.9.3.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.2.a"
+>
+</ReqRef>
+<Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
+<Parameters>
+<Parameter
+ Type="ModeProfile"
+ Name="aProfile"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>aProfile.Distance - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Implemented="TRUE"
+ Name="EOA"
+>
+<ReqRef
+ Id="5.9.3.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.5"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Mode Profile EOA available"
+>
+<PreConditions>
+<PreCondition>Available ( MA.MA )</PreCondition>
+<PreCondition>Profile != []</PreCondition>
+<PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition>
+</PreConditions>
+<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Speed =&gt; 0.0,
+    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+}</Expression>
+</Case><Case
+ Name="No Mode Profile EOA available"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
+ Implemented="TRUE"
+ Name="SvL"
+>
+<ReqRef
+ Id="5.9.3.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.5"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Mode Profile SvL available"
+>
+<PreConditions>
+<PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).SupervisionQualifier == Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA</PreCondition>
+<PreCondition>( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ) != EMPTY</PreCondition>
+<PreCondition>Profile != []</PreCondition>
+<PreCondition>Available ( MA.MA )</PreCondition>
+</PreConditions>
+<Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
+{
+    Location =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Distance,
+    Speed =&gt; 0.0,
+    Length =&gt; ( FIRST_IN Profile | NOT ModeProfileIsApplicable ( X ) ).Length
+}</Expression>
+</Case><Case
+ Name="No Mode Profile SvL available"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateDriverAck"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Initiate driver ack"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initiate driver ack for OS"
+>
+<ReqRef
+ Id="5.9.3.7"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>CurrentMode() == Mode.ModeProfile.OS</PreCondition>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action>
+<Action>DriverAckTimer &lt;- CurrentTime</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Initiate driver ack for LS"
+>
+<ReqRef
+ Id="5.19.3.7"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>CurrentMode() == Mode.ModeProfile.LS</PreCondition>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action>
+<Action>DriverAckTimer &lt;- CurrentTime</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Initiate driver ack for SH"
+>
+<ReqRef
+ Id="5.7.3.6"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.1.4"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>CurrentMode() == Mode.ModeProfile.SH</PreCondition>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action>
+<Action>DriverAckTimer &lt;- CurrentTime</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="ModeProfileReceived"
+>
+<ReqRef
+ Id="3.7.1.1.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.1.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Add first profile"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add first profile"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>AddNewProfile
+(
+    L_ACKMAMODE =&gt; Packet.L_ACKMAMODE,
+    D_MAMODE =&gt; Packet.D_MAMODE,
+    L_MAMODE =&gt; Packet.L_MAMODE,
+    M_MAMODE =&gt; Packet.M_MAMODE,
+    V_MAMODE =&gt; Packet.V_MAMODE,
+    Q_MAMODE =&gt; Packet.Q_MAMODE,
+    Q_SCALE =&gt; Packet.Q_SCALE
+)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Add following profiles"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add following profiles"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>APPLY
+    AddNewProfile
+    (
+        L_ACKMAMODE =&gt; X.L_ACKMAMODE,
+        D_MAMODE =&gt; X.D_MAMODE,
+        L_MAMODE =&gt; X.L_MAMODE,
+        M_MAMODE =&gt; X.M_MAMODE,
+        V_MAMODE =&gt; X.V_MAMODE,
+        Q_MAMODE =&gt; X.Q_MAMODE,
+        Q_SCALE =&gt; Packet.Q_SCALE
+    )
+ON
+    Packet.Sequence1</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AddNewProfile"
+>
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.40"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.14"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.47"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.70"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.159"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.118.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Length"
+ Name="L_ACKMAMODE"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Distance"
+ Name="D_MAMODE"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Length"
+ Name="L_MAMODE"
+>
+</Parameter><Parameter
+ Type="Messages.M_MAMODE"
+ Name="M_MAMODE"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Speed"
+ Name="V_MAMODE"
+>
+</Parameter><Parameter
+ Type="Messages.Q_MAMODE"
+ Name="Q_MAMODE"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Q_SCALE"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Add new profile"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Add new profile"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT
+    ModeProfile
+    {
+        AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
+        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
+        Length =&gt; MessageTypes.QScaleLength ( length =&gt; L_MAMODE, scale =&gt; Q_SCALE ),
+        Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
+        Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
+        SupervisionQualifier =&gt; Q_MAMODE
+    }
+IN
+    Profile</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="ModeProfiles"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="Profile"
+>
+<ReqRef
+ Id="3.12.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.b"
+>
+</ReqRef>
+<Comment>Represents the mode profile of the train.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="DriverAckTimer"
+>
+<ReqRef
+ Id="5.9.3.8"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.8"
+>
+</ReqRef>
+<Comment>Represents the time when the driver ack was requested.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="5.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="Tack"
+>
+<ReqRef
+ Id="Entry 3.A3.1.1.24"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.8"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.8"
+>
+</ReqRef>
+<Comment>Driver acknowledgement time.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="Clear profile"
+>
+<ReqRef
+ Id="5.9.6.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.6.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Clear profile"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>REMOVE ALL RemoveMode ( X ) IN  Profile</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Display driver ack"
+>
+<Comment>For the modes SB and PT, the acknowledgement procedure is launched in the procedures Start of Mission and Train Trip respectively.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display driver ack for OS"
+>
+<ReqRef
+ Id="5.9.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.2.c"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.4.2"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition>
+<PreCondition>( FIRST_IN Profile | X.Mode == Mode.OS ) != EMPTY</PreCondition>
+<PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.OS )</PreCondition>
+<PreCondition>ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition>
+<PreCondition>NOT DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition>
+</PreConditions>
+<Actions>
+<Action>InitiateDriverAck()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Display driver ack for LS"
+>
+<ReqRef
+ Id="5.19.2.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.2.c"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.1.2"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition>
+<PreCondition>( FIRST_IN Profile | X.Mode == Mode.LS ) != EMPTY</PreCondition>
+<PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.LS )</PreCondition>
+<PreCondition>ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition>
+<PreCondition>NOT DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition>
+</PreConditions>
+<Actions>
+<Action>InitiateDriverAck()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Display driver ack for SH"
+>
+<ReqRef
+ Id="5.7.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.1.4"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Mode not in [Mode.SB, Mode.PT]</PreCondition>
+<PreCondition>( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition>
+<PreCondition>AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition>
+<PreCondition>ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.EstimatedSpeed </PreCondition>
+<PreCondition>NOT DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition>
+</PreConditions>
+<Actions>
+<Action>InitiateDriverAck()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver ack timeout"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver ack timeout for OS"
+>
+<ReqRef
+ Id="5.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.8"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition>
+<PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition>
+<PreCondition>NOT EmergencyBrakeApplied</PreCondition>
+<PreCondition>Kernel.Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action>
+<Action>INSERT
+    Kernel.EmergencyStop
+    {
+        Id =&gt; BrakeReason.DriverAckTimeOut,
+        IsConditional =&gt; False,
+        StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+    }
+IN
+    Kernel.EmergencyStops</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver ack timeout for LS"
+>
+<ReqRef
+ Id="5.19.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.8"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.LS</PreCondition>
+<PreCondition>NOT EmergencyBrakeApplied</PreCondition>
+<PreCondition>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition>
+<PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition>
+</PreConditions>
+<Actions>
+<Action>INSERT
+    Kernel.EmergencyStop
+    {
+        Id =&gt; BrakeReason.DriverAckTimeOut,
+        IsConditional =&gt; False,
+        StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+    }
+IN
+    Kernel.EmergencyStops</Action>
+<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver ack timeout for SH"
+>
+<ReqRef
+ Id="5.7.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.2.4"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.SH</PreCondition>
+<PreCondition>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition>
+<PreCondition>NOT EmergencyBrakeApplied</PreCondition>
+<PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action>
+<Action>INSERT
+    Kernel.EmergencyStop
+    {
+        Id =&gt; BrakeReason.DriverAckTimeOut,
+        IsConditional =&gt; False,
+        StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+    }
+IN
+    Kernel.EmergencyStops</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Release emergency brake"
+>
+<ReqRef
+ Id="5.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.3.8"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.3.8"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Release emergency brake"
+>
+<PreConditions>
+<PreCondition>EmergencyBrakeApplied</PreCondition>
+<PreCondition>THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition>
+<PreCondition>( COUNT EmergencyStops ) == 1</PreCondition>
+</PreConditions>
+<Actions>
+<Action>EmergencyBrakeApplied &lt;- False</Action>
+<Action>EmergencyStops &lt;- EMPTY</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

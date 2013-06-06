@@ -1,0 +1,383 @@
+<NameSpace
+ Name="ModeRelatedSpeedLimits"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="TracksideModeRelatedSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.7.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<Comment>Represents the mode related speed restrictions that can be modified by driver or trackside. </Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="Default.BaseTypes.Speed.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RV"
+>
+<ReqRef
+ Id="3.11.7.1.2"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="Default.BaseTypes.Speed.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR"
+>
+<ReqRef
+ Id="3.11.7.1.3"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="LSModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to LS mode.
+- If a value was provided by the trackside, this value is returned
+- Else, if applicable national values are available on-board, the speed limit specified by the national values is returned
+- Else, a speed limit specified by default values is returned</Comment>
+<Cases>
+<Case
+ Name="ValueGivenByTrackside"
+>
+<PreConditions>
+<PreCondition>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS ) != EMPTY</PreCondition>
+</PreConditions>
+<Expression>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS ).Speed</Expression>
+</Case><Case
+ Name="NationalValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.LimitedSupervisionModeSpeedLimit</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="OSModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to OS mode.
+- If a value was provided by the trackside, this value is returned
+- Else, if applicable national values are available on-board, the speed limit specified by the national values is returned
+- Else, a speed limit specified by default values is returned</Comment>
+<Cases>
+<Case
+ Name="ValueGivenByTrackside"
+>
+<PreConditions>
+<PreCondition>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS ) != EMPTY</PreCondition>
+</PreConditions>
+<Expression>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS ).Speed</Expression>
+</Case><Case
+ Name="NationalValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.OnSightModeSpeedLimit</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to the current mode of tha train.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>SHModeSpeedLimit()</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>SRModeSpeedLimit()</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>UNModeSpeedLimit()</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>LSModeSpeedLimit()</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>OSModeSpeedLimit()</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>RVModeSpeedLimit()</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="RVModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.2"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to RV mode.
+- If a value was provided by the trackside, this value is returned</Comment>
+<Cases>
+<Case
+ Name="ValueGivenByTrackside"
+>
+<PreConditions>
+<PreCondition>TracksideModeRelatedSpeedRestrictions.RV  != Default.BaseTypes.Speed.NA</PreCondition>
+</PreConditions>
+<Expression>TracksideModeRelatedSpeedRestrictions.RV</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SHModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to SH mode.
+- If a value was provided by the trackside, this value is returned
+- Else, if applicable national values are available on-board, the speed limit specified by the national values is returned
+- Else, a speed limit specified by default values is returned</Comment>
+<Cases>
+<Case
+ Name="ValueGivenByTrackside"
+>
+<PreConditions>
+<PreCondition>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.SH ) != EMPTY</PreCondition>
+</PreConditions>
+<Expression>( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.SH ).Speed</Expression>
+</Case><Case
+ Name="NationalValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.ShuntingModeSpeedLimit</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SRModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.3"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to SR mode.
+- If a value was provided by the driver, this value is returned
+- Else, if applicable national values are available on-board, the speed limit specified by the national values is returned
+- Else, a speed limit specified by default values is returned</Comment>
+<Cases>
+<Case
+ Name="ValueGivenByDriver"
+>
+<PreConditions>
+<PreCondition>TracksideModeRelatedSpeedRestrictions.SR != Default.BaseTypes.Speed.NA</PreCondition>
+</PreConditions>
+<Expression>TracksideModeRelatedSpeedRestrictions.SR</Expression>
+</Case><Case
+ Name="NationalValue"
+>
+<PreConditions>
+<PreCondition>TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.StaffResponsibleModeSpeedLimit</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="UNModeSpeedLimit"
+>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<Comment>Provides the speed limit related to UN mode.
+- If applicable national values are available on-board, the speed limit specified by the national values is returned
+- Else, a speed limit specified by default values is returned</Comment>
+<Cases>
+<Case
+ Name="NationalValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.UnfittedModeSpeedLimit</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="TracksideModeRelatedSpeedRestrictions"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="TracksideModeRelatedSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<Comment></Comment>
+</Variable></Variables>
+</NameSpace>

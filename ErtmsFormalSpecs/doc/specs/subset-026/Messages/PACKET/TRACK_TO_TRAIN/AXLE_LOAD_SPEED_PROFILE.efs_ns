@@ -1,0 +1,202 @@
+<NameSpace
+ Name="AXLE_LOAD_SPEED_PROFILE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="51"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TRACKINIT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACKINIT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_TRACKINIT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="Q_FRONT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_FRONT"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_0"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_1"
+>
+</StructureElement><StructureElement
+ TypeName="Collection3"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence3"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="M_AXLELOAD"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_AXLELOAD"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure2"
+>
+<StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="Q_FRONT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_FRONT"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection2"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence2"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure3"
+>
+<StructureElement
+ TypeName="M_AXLELOAD"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_AXLELOAD"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection><Collection
+ TypeName="SubStructure3"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection2"
+>
+</Collection><Collection
+ TypeName="SubStructure2"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection3"
+>
+</Collection></Collections>
+</NameSpace>

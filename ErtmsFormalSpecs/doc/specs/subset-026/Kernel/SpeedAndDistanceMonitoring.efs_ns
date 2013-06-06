@@ -1,0 +1,538 @@
+<NameSpace
+ Name="SpeedAndDistanceMonitoring"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="CeilingSupervision"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TargetSupervision"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ReleaseSpeedSupervision"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="PreIndicationLocation"
+>
+</NameSpaceRef></NameSpaces>
+<Enumerations>
+<Enum
+ Default="SupervisionType.Ceiling"
+ Implemented="TRUE"
+ Name="MonitoringType"
+>
+<ReqRef
+ Id="3.13.10.1.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.1.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.1.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.1.2"
+>
+</ReqRef>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Ceiling"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Target"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="ReleaseSpeed"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="SupervisionStatus.Normal"
+ Implemented="TRUE"
+ Name="SupervisionStatus"
+>
+<ReqRef
+ Id="3.13.10.1.1"
+>
+</ReqRef>
+<Comment>Indicates the current supervision status of the train.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Normal"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Indication"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Overspeed"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Warning"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Intervention"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="f41"
+>
+<ReqRef
+ Id="A1.1.10.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.4.6.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="A1.1.10.2"
+>
+</ReqRef>
+<ReqRef
+ Id="A1.1.10.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.11.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.3.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.9.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="A1.1.10.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.9"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Speed lower than 30km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 30.0</PreCondition>
+<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition>
+</PreConditions>
+<Expression>2.0</Expression>
+</Case><Case
+ Name="Speed upper than 30km/h"
+>
+<PreConditions>
+<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition>
+</PreConditions>
+<Expression>V / 47.0 + 7.0 - 265.0 / 47.0</Expression>
+</Case><Case
+ Name="Compensation of inaccuracy inhibited"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SBIsAvailableForUse"
+>
+<ReqRef
+ Id="3.13.10.4.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>TrainData.TrainData.Value.SBCommandIsImplemented AND NOT NationalValues.UseOfSBIsInhibited()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="PermittedSpeed"
+>
+<ReqRef
+ Id="3.13.10.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.4.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.4.4"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="CeilingSpeedMonitoring_P"
+>
+<PreConditions>
+<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition>
+<PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition>
+</PreConditions>
+<Expression>CeilingSupervision.P ( Distance )</Expression>
+</Case><Case
+ Name="CeilingSpeedMonitoring_SBI"
+>
+<PreConditions>
+<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition>
+</PreConditions>
+<Expression>CeilingSupervision.SBI ( Distance )</Expression>
+</Case><Case
+ Name="TargetSpeedMonitoring_P"
+>
+<PreConditions>
+<PreCondition>Monitoring == MonitoringType.Target</PreCondition>
+<PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition>
+</PreConditions>
+<Expression>TargetSupervision.V_P_DMI()</Expression>
+</Case><Case
+ Name="TargetSpeedMonitoring_FLOI"
+>
+<PreConditions>
+<PreCondition>Monitoring == MonitoringType.Target</PreCondition>
+</PreConditions>
+<Expression>TargetSupervision.V_FLOI_DMI()</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="UpdateMonitoring"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="UpdateMonitoring"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="ReleaseSpeed"
+>
+<ReqRef
+ Id="3.13.9.4.6"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
+AND
+ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
+<PreCondition>Monitoring != MonitoringType.ReleaseSpeed</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Monitoring &lt;- MonitoringType.ReleaseSpeed</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerEBCommand"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerEBCommand"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerEBCommand"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EBTriggered &lt;- True</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerSBCommand"
+>
+<ReqRef
+ Id="3.13.2.3.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.2.3"
+>
+</ReqRef>
+<Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TriggerSBCommand"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SBIsAvailableForUse"
+>
+<PreConditions>
+<PreCondition>SBIsAvailableForUse()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SBTriggered &lt;- True</Action>
+<Action>SBSpecified &lt;- True</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Otherwise"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>TriggerEBCommand()</Action>
+<Action>SBSpecified &lt;- True</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="RevokeEBCommand"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RevokeSBCommand"
+>
+<ReqRef
+ Id="3.13.2.3.7.1"
+>
+</ReqRef>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="RevokeSBCommand"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SBIsAvailableForUse"
+>
+<PreConditions>
+<PreCondition>SBIsAvailableForUse()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SBTriggered &lt;- False</Action>
+<Action>SBSpecified &lt;- False</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Otherwise"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>RevokeEBCommand()</Action>
+<Action>SBSpecified &lt;- False</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="MonitoringType"
+ DefaultValue="MonitoringType.Ceiling"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="Monitoring"
+>
+<ReqRef
+ Id="3.13.10.1.2"
+>
+</ReqRef>
+<Comment>Indicates the current monitoring of the train.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SBTriggered"
+>
+<ReqRef
+ Id="3.13.10.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.4.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.2.3"
+>
+</ReqRef>
+<Comment>Indicates if SB was triggered.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="EBTriggered"
+>
+<ReqRef
+ Id="3.13.10.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.4.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.2.3"
+>
+</ReqRef>
+<Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="TractionCutOffTriggered"
+>
+<ReqRef
+ Id="3.13.10.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.4.10"
+>
+</ReqRef>
+<Comment>Indicates if the traction cuf-off command was triggered.</Comment>
+</Variable><Variable
+ Type="SpeedAndDistanceMonitoring.SupervisionStatus"
+ DefaultValue="SupervisionStatus.Normal"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="Supervision"
+>
+<ReqRef
+ Id="3.13.10.1.1"
+>
+</ReqRef>
+<Comment></Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SpeedAndDistanceMonitoringIsActive"
+>
+<ReqRef
+ Id="3.13.10.3.5"
+>
+</ReqRef>
+<Comment>Indicates if the speed and distance monitoring function is active.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TCOSpecified"
+>
+<Comment>Indicates if traction cut-off command was specified.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SBSpecified"
+>
+<ReqRef
+ Id="3.13.10.2.4"
+>
+</ReqRef>
+<Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="TrainTripped"
+>
+<Comment>Indicates if the train is tripped.</Comment>
+</Variable></Variables>
+</NameSpace>

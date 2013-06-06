@@ -1,0 +1,113 @@
+<NameSpace
+ Name="EUROBALISE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Eurobalise</Comment>
+<StructureElement
+ TypeName="Q_UPDOWN"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_UPDOWN"
+>
+</StructureElement><StructureElement
+ TypeName="M_VERSION"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_VERSION"
+>
+</StructureElement><StructureElement
+ TypeName="Q_MEDIA"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_MEDIA"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_PIG"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_TOTAL"
+>
+</StructureElement><StructureElement
+ TypeName="M_DUP"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_DUP"
+>
+</StructureElement><StructureElement
+ TypeName="M_MCOUNT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_MCOUNT"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="NID_BG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_LINK"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_LINK"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+<Comment></Comment>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<Comment></Comment>
+<StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TRACK_TO_TRAIN"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection></Collections>
+</NameSpace>

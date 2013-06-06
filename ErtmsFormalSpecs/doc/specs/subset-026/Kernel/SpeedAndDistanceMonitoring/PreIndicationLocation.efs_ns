@@ -1,0 +1,284 @@
+<NameSpace
+ Name="PreIndicationLocation"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_EBI"
+>
+<ReqRef
+ Id="3.13.9.5.3.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.3.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.4"
+>
+</ReqRef>
+<Comment>Provides the location of the EBI supervision limit.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; f41 ( Vmrsp ) ) - ( Vmrsp + f41 ( Vmrsp ) ) * ( TargetSupervision.T_berem() + TargetSupervision.T_traction() )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_SBI2"
+>
+<ReqRef
+ Id="3.13.9.5.4"
+>
+</ReqRef>
+<Comment>Provides the distance d_SBI2.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>PreIndicationLocation.d_EBI ( Vmrsp )  - Vmrsp * TargetSupervision.T_bs2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_I"
+>
+<ReqRef
+ Id="3.13.9.5.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.3"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>PreIndicationLocation.d_P ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_P_EOA"
+>
+<ReqRef
+ Id="3.13.9.5.8"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="GUI is inhibited"
+>
+<PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
+</PreConditions>
+<Expression>TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
+</Case><Case
+ Name="GUI is enabled"
+>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="Compute_d_preindication"
+>
+<ReqRef
+ Id="3.13.9.5.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="TargetSupervision.Target"
+ Name="MRSPn"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="EOA, first case"
+>
+<PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
+<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
+<PreCondition>MA.IsEOA ( MRSPn )</PreCondition>
+</PreConditions>
+<Expression>d_I_EOA ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
+</Case><Case
+ Name="Other target, first case"
+>
+<PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
+<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
+</PreConditions>
+<Expression>PreIndicationLocation.d_I ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
+</Case><Case
+ Name="Second case"
+>
+<PreConditions>
+<PreCondition>PreIndicationLocation.d_I
+(
+    REDUCE
+        TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) | X.Location &gt; MRSPn.Location
+    USING
+        BaseTypes.MinDistance ( X.Location, RESULT )
+    INITIAL_VALUE
+        BaseTypes.Distance.Infinity
+) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
+<PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
+</PreConditions>
+<Expression>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) - MRSPn.Speed * T_preindication</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_I_EOA"
+>
+<ReqRef
+ Id="3.13.9.5.8"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>d_P_EOA ( Vmrsp ) - Vmrsp * TargetSupervision.T_indication()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_P"
+>
+<ReqRef
+ Id="3.13.9.5.4"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vmrsp"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="GUI is inhibited"
+>
+<PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
+</PreConditions>
+<Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
+</Case><Case
+ Name="GUI is enabled"
+>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; TargetSupervision.GUI, Speed =&gt; Vmrsp ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_preindication"
+>
+<ReqRef
+ Id="3.13.9.5.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.8"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Compute_d_preindication ( FIRST_IN TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) )</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="7.0"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="T_preindication"
+>
+<ReqRef
+ Id="Entry 3.A3.1.1.18"
+>
+<Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.5.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
+</Variable></Variables>
+</NameSpace>

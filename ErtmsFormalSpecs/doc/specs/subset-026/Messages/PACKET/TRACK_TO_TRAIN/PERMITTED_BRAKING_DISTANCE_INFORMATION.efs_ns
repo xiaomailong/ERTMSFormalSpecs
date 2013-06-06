@@ -1,0 +1,166 @@
+<NameSpace
+ Name="PERMITTED_BRAKING_DISTANCE_INFORMATION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="52"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TRACKINIT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACKINIT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_TRACKINIT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_PBD"
+>
+</StructureElement><StructureElement
+ TypeName="Q_GDIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_GDIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Gradient"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="G_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="Q_PBDSR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_PBD"
+>
+</StructureElement><StructureElement
+ TypeName="Q_GDIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_GDIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Gradient"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="G_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="Q_PBDSR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_PBDSR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PBDSR"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection></Collections>
+</NameSpace>

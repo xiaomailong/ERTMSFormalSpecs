@@ -1,0 +1,61 @@
+<NameSpace
+ Name="ONBOARD_TELEPHONE_NUMBERS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Telephone numbers associated to the onboard equipment</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="3"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="NID_RADIO"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_RADIO"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection></Collections>
+</NameSpace>

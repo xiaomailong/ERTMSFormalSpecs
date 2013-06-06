@@ -1,0 +1,20 @@
+<NameSpace
+ Name="END_OF_INFORMATION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet consists only of NID_PACKET containing 8 bit 1s It acts as a finish flag ; the receiver will stop reading the remaining part of the message/telegram when receiving eight bits set to one in the NID_PACKET field.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="255"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

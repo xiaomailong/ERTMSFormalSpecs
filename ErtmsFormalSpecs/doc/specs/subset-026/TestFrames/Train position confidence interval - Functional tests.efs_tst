@@ -1,0 +1,516 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Train position confidence interval - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Confidence interval"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test environment"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;2.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;1.0
+  }
+}</Action>
+<Action>BTM.BGLocationDetectionError &lt;- 4.0</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 10.0,
+    D_ora =&gt; 12.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BG location accuracy value"
+>
+<ReqRef
+ Id="3.6.4.2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Linking information available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Linking.Linkings&lt;- 
+[ 
+  BTM.Linking.LinkingData
+  {
+    LocationAccuracy =&gt; 14.0
+  }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.BGLocationAccuracy() == 14.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Linking not available, national values available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 13</Action>
+<Action>BTM.Linking.Linkings &lt;- []</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.BGLocationAccuracy() == 13.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Linking and national values not available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Linking.Linkings &lt;- EMPTY</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.BGLocationAccuracy() == 3.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.DefaultValues.DefaultLocationAccuracyOfABaliseGroup == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Over-reading amount"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Over-reading amount"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Position.OverReadingAmountOdo &lt;- 1.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.OverReadingAmount() == 7.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Under-reading amount"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Under-reading amount"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Position.UnderReadingAmountOdo &lt;- 1.0</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 5.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.UnderReadingAmount() == 8.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Confidence interval"
+>
+<ReqRef
+ Id="3.6.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.4.2.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="L_DOUBTOVER"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER) == 10.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.BGLocationAccuracy() == 3.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.OverReadingAmount() == 7.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="L_DOUBTUNDER"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER) == 11.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.UnderReadingAmount() == 8.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.BGLocationAccuracy() == 3.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance from LRBG"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Distance from LRBG"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action>
+<Action>BTM.LRBG.Position.Position &lt;- 40.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.DistanceFromLRBG() == 160.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train front end position"
+>
+<ReqRef
+ Id="3.6.4.4.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.4.4.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.4.4.c"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Estimated front end"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 1800.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) == Odometry.NominalDistance - BTM.LRBG.Position.Position</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Maximum safe front end"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) == 1771.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) == 11.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Minimum safe front end"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min) == 1750.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) == 10.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Additional over-reading amount"
+>
+<ReqRef
+ Id="3.6.4.7.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Additional over-reading amount"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.UnlinkedBGPosition.OverReadingAmountOdo &lt;- 2.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.AdditionalOverReadingAmount() == 6.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Additional under-reading amount"
+>
+<ReqRef
+ Id="3.6.4.7.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Additional under-reading amount"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.UnlinkedBGPosition.UnderReadingAmountOdo &lt;- 2.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.AdditionalUnderReadingAmount() == 7.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Additional confidence interval"
+>
+<ReqRef
+ Id="3.6.4.7.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="L_DOUBTOVER"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.AdditionalConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER) == Kernel.ConfidenceInterval.AdditionalOverReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="L_DOUBTUNDER"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ConfidenceInterval.AdditionalConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER) == Kernel.ConfidenceInterval.AdditionalUnderReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

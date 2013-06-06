@@ -1,0 +1,41 @@
+<NameSpace
+ Name="DANGER_FOR_SHUNTING_INFORMATION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Transmission of the aspect of a shunting signal</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="132"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_ASPECT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_ASPECT"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

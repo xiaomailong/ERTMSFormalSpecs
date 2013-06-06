@@ -1,0 +1,2217 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Supervision limits - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Braking to target supervision limits"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 12.0,
+    D_ora =&gt; 8.0,
+    V_ora =&gt; 2.0,
+    V_ura =&gt; 4.0
+}</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues{
+    DataState =&gt; Default.DataState.Invalid,
+    Value =&gt; Kernel.NationalValues.NationalDefaultData{
+        ModificationOfAdhesionFactorByDriver =&gt; Messages.Q_NVDRIVER_ADHES.Not_allowed,
+        PermToUseTheServiceBrakeFeedback =&gt; Messages.Q_NVSBFBPERM.No,
+        DefaultLocationAccuracyOfABaliseGroup =&gt; 3,
+        IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; 1.1,
+        MaxDecelValueUnderReducedAdhesionCond1 =&gt; 1.0,
+        MaxDecelValueUnderReducedAdhesionCond2 =&gt; 0.7,
+        MaxDecelValueUnderReducedAdhesionCond3 =&gt; 0.7,
+        ShuntingModeSpeedLimit =&gt; 30.0,
+        StaffResponsibleModeSpeedLimit =&gt; 40.0,
+        OnSightModeSpeedLimit =&gt; 30.0,
+        LimitedSupervisionModeSpeedLimit =&gt; 100.0,
+        UnfittedModeSpeedLimit =&gt; 100.0,
+        ReleaseSpeed =&gt; 40.0,
+        DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup =&gt; 2.0,
+        UseServiceBrakeInTargetSpeedMonitoring =&gt; Messages.Q_NVSBTSMPERM.Yes,
+        PermToReleaseEmergencyBrake =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+        PermToUseGuidanceCurves =&gt; Messages.Q_NVGUIPERM.No,
+        PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy =&gt; Messages.Q_NVINHSMICPERM.Yes,
+        SpeedLimitForTriggeringTheOverrideFunction =&gt; 0.0,
+        OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive =&gt; 30.0,
+        DistForTrainTripSuppressionWhenOverrideIsTriggered =&gt; 200.0,
+        MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered =&gt; 60.0,
+        ChangeOfDriverIDPermittedWhileRunning =&gt; Messages.M_NVDERUN.Yes,
+        SystemReactionIfRadioChannelMonitoringTimeLimitExpires =&gt; Messages.M_NVCONTACT.No_Reaction,
+        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; Default.BaseTypes.Time.Infinity,
+        DistToBeAllowedForReversingInPostTripMode =&gt; 200.0,
+        MaxPermDistToRunInStaffResponsibleMode =&gt; Default.BaseTypes.Distance.Infinity,
+        WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.0,
+        ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_9999999,
+        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSet{
+            Val0 =&gt; Kernel.NationalValues.KrIntValue{
+                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                Value =&gt; 0.9
+            },
+            Val1 =&gt; Kernel.NationalValues.KrIntValue{
+                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                Value =&gt; 0.9
+            },
+            Val2 =&gt; Kernel.NationalValues.KrIntValue{
+                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                Value =&gt; 0.9
+            },
+            Val3 =&gt; Kernel.NationalValues.KrIntValue{
+                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                Value =&gt; 0.9
+            },
+            Val4 =&gt; Kernel.NationalValues.KrIntValue{
+                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                Value =&gt; 0.9
+            }
+        },
+        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrain{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                Value =&gt; 0.7
+            },
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                Value =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                Value =&gt; 0.7
+            },
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                Value =&gt; 0.7
+            },
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                Value =&gt; 0.7
+            },
+            A_NVP12 =&gt; Default.BaseTypes.Acceleration.NA,
+            A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
+        },
+        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrain{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                ValueA =&gt; 0.7,
+                ValueB =&gt; 0.7
+            },
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                ValueA =&gt; 0.7,
+                ValueB =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                ValueA =&gt; 0.7,
+                ValueB =&gt; 0.7
+            },
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                ValueA =&gt; 0.7,
+                ValueB =&gt; 0.7
+            },
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                ValueA =&gt; 0.7,
+                ValueB =&gt; 0.7
+            },
+            A_NVP12 =&gt; Default.BaseTypes.Acceleration.NA,
+            A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
+        }
+    },
+    ApplicableDistance =&gt; 0.0,
+    NID_C =&gt; 214
+}</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 3.0</Action>
+<Action>Odometry.NominalDistance &lt;- 10.0</Action>
+<Action>BTM.LRBG.Position.Position &lt;- 0.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vdelta0"
+>
+<ReqRef
+ Id="3.13.9.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Vdelta0, compensation of inaccuracy inhibited"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta0() == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Vdelta0, compensation of inaccuracy not inhibited"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.No</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta0() == 4.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_traction"
+>
+<ReqRef
+ Id="3.13.9.3.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.3.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.3.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 &lt;- 2.4</Action>
+<Action>Odometry.EstimatedAcceleration &lt;- 0.7</Action>
+<Action>Odometry.NominalDistance &lt;- 4000.0</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+{
+    EddyCurrent =&gt; 12.0,
+    EddyCurrent_Magnetic =&gt; 14.0,
+    EddyCurrent_Regenerative =&gt; 17.2,
+    EddyCurrent_Ep =&gt; 8.3,
+    Magnetic_Regenerative =&gt; 16.7,
+    Magnetic_Ep =&gt; 15.0,
+    Regenerative_Ep =&gt; 16.0,
+    EddyCurrent_Magnetic_Regenerative =&gt; 4.4,
+    EddyCurrent_Magnetic_Ep =&gt; 8.1,
+    EddyCurrent_Regenerative_Ep =&gt; 8.6,
+    Magnetic_Regenerative_Ep =&gt; 12.0,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 2.1,
+    Magnetic =&gt; 2.9,
+    Regenerative =&gt; 3.7,
+    Ep =&gt; 4.5
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+{
+    EddyCurrent =&gt; 12.1,
+    EddyCurrent_Magnetic =&gt; 5.6,
+    EddyCurrent_Regenerative =&gt; 6.3,
+    EddyCurrent_Ep =&gt; 6.4,
+    Magnetic_Regenerative =&gt; 7.1,
+    Magnetic_Ep =&gt; 7.8,
+    Regenerative_Ep =&gt; 2.1,
+    EddyCurrent_Magnetic_Regenerative =&gt; 6.5,
+    EddyCurrent_Magnetic_Ep =&gt; 10.3,
+    EddyCurrent_Regenerative_Ep =&gt; 8.9,
+    Magnetic_Regenerative_Ep =&gt; 6.2,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 11.8,
+    Magnetic =&gt; 12.4,
+    Regenerative =&gt; 12.1,
+    Ep =&gt; 11.0
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+{
+    Coefficient =&gt; 14.0,
+    Constant =&gt; 2.0
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Traction_cut_off interface not implemented"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 11.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction() == 11.8</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Traction_cut_off interface implemented"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 7.4</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_berem"
+>
+<ReqRef
+ Id="3.13.9.3.2.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+{
+    EddyCurrent =&gt; 0.4,
+    EddyCurrent_Magnetic =&gt; 0.78,
+    EddyCurrent_Regenerative =&gt; 1.2,
+    EddyCurrent_Ep =&gt; 0.12,
+    Magnetic_Regenerative =&gt; 0.54,
+    Magnetic_Ep =&gt; 0.64,
+    Regenerative_Ep =&gt; 1.25,
+    EddyCurrent_Magnetic_Regenerative =&gt; 0.47,
+    EddyCurrent_Magnetic_Ep =&gt; 0.6,
+    EddyCurrent_Regenerative_Ep =&gt; 0.11,
+    Magnetic_Regenerative_Ep =&gt; 0.98,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 1.7,
+    Magnetic =&gt; 1.82,
+    Regenerative =&gt; 0.96,
+    Ep =&gt; 0.85
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - T_traction greater than T_be"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 7.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_be() == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - T_be greater than T_traction"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+{
+    EddyCurrent =&gt; 0.4,
+    EddyCurrent_Magnetic =&gt; 0.78,
+    EddyCurrent_Regenerative =&gt; 1.2,
+    EddyCurrent_Ep =&gt; 0.12,
+    Magnetic_Regenerative =&gt; 0.54,
+    Magnetic_Ep =&gt; 0.64,
+    Regenerative_Ep =&gt; 1.25,
+    EddyCurrent_Magnetic_Regenerative =&gt; 0.47,
+    EddyCurrent_Magnetic_Ep =&gt; 9.12,
+    EddyCurrent_Regenerative_Ep =&gt; 0.11,
+    Magnetic_Regenerative_Ep =&gt; 0.98,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 1.7,
+    Magnetic =&gt; 1.82,
+    Regenerative =&gt; 0.96,
+    Ep =&gt; 0.85
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 7.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_be() == 9.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 1.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vdelta1"
+>
+<ReqRef
+ Id="3.13.9.3.2.8"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta1() == 5.18</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Aest1() == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 7.4</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vdelta2"
+>
+<ReqRef
+ Id="3.13.9.3.2.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Estimated acceleration greater than 0.4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() == 0.688</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Aest2() == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 1.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Estimated acceleration lower than 0.0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedAcceleration &lt;- -0.2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Aest2() == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 9.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.A_traction ( EstimatedTrainAcceleration =&gt; Odometry.EstimatedAcceleration, Gradient =&gt; Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 2.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_be () == 9.12</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Estimated acceleration between 0.0 and 0.4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedAcceleration &lt;- 0.2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() == 1.744</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Aest2() == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 8.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_warning"
+>
+<ReqRef
+ Id="3.13.9.3.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.16"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning == 2.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_bs1 and T_bs2"
+>
+<ReqRef
+ Id="3.13.9.3.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.3.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+{
+    EddyCurrent =&gt; 1.16,
+    EddyCurrent_Magnetic =&gt; 0.48,
+    EddyCurrent_Regenerative =&gt; 2.01,
+    EddyCurrent_Ep =&gt; 0.72,
+    Magnetic_Regenerative =&gt; 0.28,
+    Magnetic_Ep =&gt; 0.56,
+    Regenerative_Ep =&gt; 1.63,
+    EddyCurrent_Magnetic_Regenerative =&gt; 0.45,
+    EddyCurrent_Magnetic_Ep =&gt; 1.4,
+    EddyCurrent_Regenerative_Ep =&gt; 1.8,
+    Magnetic_Regenerative_Ep =&gt; 0.78,
+    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 0.21,
+    Magnetic =&gt; 0.55,
+    Regenerative =&gt; 1.15,
+    Ep =&gt; 0.46
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_bs() == 0.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB command available, SB feedback not available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- False</Action>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check T_bs1 and T_bs2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 == 0.72</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 == 0.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SB command available, SB feedback available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
+<Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- True</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Check T_bs1 and T_bs2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 == 0.72</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 == 0.72</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - SB command not available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - Check T_bs1 and T_bs2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vbec"
+>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check Vbec"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta1() == 0.416</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta0() == 4.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() == 1.408</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 88.0, Vtarget =&gt; 90.0 ) == 93.824</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 75.0, Vtarget =&gt; 90.0 ) == 91.408</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_berem() == 7.04</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_traction () == 2.08</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Dbec"
+>
+<ReqRef
+ Id="3.13.9.3.2.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check Dbec"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 88.0, Vtarget =&gt; 90.0 ) &gt; 235.377 AND Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 88.0, Vtarget =&gt; 90.0 ) &lt; 235.378</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 75.0, Vtarget =&gt; 90.0 ) &gt; 229.3767 AND Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 75.0, Vtarget =&gt; 90.0 ) &lt; 229.3768</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_EBI"
+>
+<ReqRef
+ Id="3.13.9.3.2.12"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; Kernel.MA.SectionTimeOut
+        {
+            TimeOut =&gt; 0.0,
+            Distance =&gt; 0.0
+        },
+        TimeOut =&gt; Kernel.MA.SectionTimeOut
+        {
+            TimeOut =&gt; 0.0,
+            Distance =&gt; 0.0
+        },
+        Length =&gt; 10000.0,
+        DangerPoint =&gt; Kernel.MA.DangerPoint
+        {
+            Distance =&gt; 0.0,
+            ReleaseSpeed =&gt; 0.0
+        },
+        Overlap =&gt; Kernel.MA.Overlap
+        {
+            Distance =&gt; 0.0,
+            TimerDistance =&gt; 0.0,
+            ReleaseSpeed =&gt; 0.0,
+            TimeOut =&gt; 0.0
+        }
+    },
+    TargetSpeedTimeOut =&gt; 0.0,
+    ReferenceBG =&gt; 4120,
+    ReferenceBGLocation =&gt; 0.0
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 150.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+{
+    DataState =&gt; DataState.Valid,
+    NID_C =&gt; 42,
+    ApplicableDistance =&gt; 0.0,
+    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    {
+        ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_99,
+        MaxDecelValueUnderReducedAdhesionCond1 =&gt; 2.2,
+        MaxDecelValueUnderReducedAdhesionCond2 =&gt; 2.4,
+        MaxDecelValueUnderReducedAdhesionCond3 =&gt; 2.7,
+        WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.99
+    }
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.65
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.45
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.25
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 240.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 25.0,
+                        Acceleration =&gt; 0.75
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.99
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 190.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.45
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 4.7
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 3.9
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 2.5
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 1.0
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 170.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 270.0,
+                        Acceleration =&gt; 0.4
+                    }
+                }
+            },
+            Kdry_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValuesSet{
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.12,
+                        CF1 =&gt; 0.17,
+                        CF2 =&gt; 0.28,
+                        CF3 =&gt; 0.35,
+                        CF4 =&gt; 0.49,
+                        CF5 =&gt; 0.68,
+                        CF6 =&gt; 0.9
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.08,
+                        CF1 =&gt; 0.14,
+                        CF2 =&gt; 0.2,
+                        CF3 =&gt; 0.25,
+                        CF4 =&gt; 0.43,
+                        CF5 =&gt; 0.65,
+                        CF6 =&gt; 0.8
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.0,
+                        CF1 =&gt; 0.002,
+                        CF2 =&gt; 0.019,
+                        CF3 =&gt; 0.025,
+                        CF4 =&gt; 0.03,
+                        CF5 =&gt; 0.04,
+                        CF6 =&gt; 0.055
+                    }
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.1,
+                        CF1 =&gt; 0.17,
+                        CF2 =&gt; 0.24,
+                        CF3 =&gt; 0.37,
+                        CF4 =&gt; 0.45,
+                        CF5 =&gt; 0.69,
+                        CF6 =&gt; 0.92
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.02,
+                        CF1 =&gt; 0.07,
+                        CF2 =&gt; 0.2,
+                        CF3 =&gt; 0.28,
+                        CF4 =&gt; 0.4,
+                        CF5 =&gt; 0.67,
+                        CF6 =&gt; 0.81
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.03,
+                        CF1 =&gt; 0.08,
+                        CF2 =&gt; 0.12,
+                        CF3 =&gt; 0.17,
+                        CF4 =&gt; 0.24,
+                        CF5 =&gt; 0.38,
+                        CF6 =&gt; 0.52
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.04,
+                        CF1 =&gt; 0.05,
+                        CF2 =&gt; 0.08,
+                        CF3 =&gt; 0.19,
+                        CF4 =&gt; 0.24,
+                        CF5 =&gt; 0.35,
+                        CF6 =&gt; 0.42
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.01,
+                        CF1 =&gt; 0.04,
+                        CF2 =&gt; 0.1,
+                        CF3 =&gt; 0.19,
+                        CF4 =&gt; 0.28,
+                        CF5 =&gt; 0.43,
+                        CF6 =&gt; 0.69
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.01,
+                        CF1 =&gt; 0.02,
+                        CF2 =&gt; 0.04,
+                        CF3 =&gt; 0.09,
+                        CF4 =&gt; 0.18,
+                        CF5 =&gt; 0.22,
+                        CF6 =&gt; 0.35
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.1,
+                        CF1 =&gt; 0.24,
+                        CF2 =&gt; 0.32,
+                        CF3 =&gt; 0.47,
+                        CF4 =&gt; 0.58,
+                        CF5 =&gt; 0.74,
+                        CF6 =&gt; 0.92
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.07,
+                        CF1 =&gt; 0.12,
+                        CF2 =&gt; 0.19,
+                        CF3 =&gt; 0.28,
+                        CF4 =&gt; 0.37,
+                        CF5 =&gt; 0.58,
+                        CF6 =&gt; 0.64
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.002,
+                        CF1 =&gt; 0.007,
+                        CF2 =&gt; 0.012,
+                        CF3 =&gt; 0.015,
+                        CF4 =&gt; 0.022,
+                        CF5 =&gt; 0.037,
+                        CF6 =&gt; 0.042
+                    }
+                }
+            },
+            Kwet_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet{
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.04,
+                    CF1 =&gt; 0.11,
+                    CF2 =&gt; 0.3,
+                    CF3 =&gt; 0.49,
+                    CF4 =&gt; 0.54,
+                    CF5 =&gt; 0.59,
+                    CF6 =&gt; 0.76
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.07,
+                    CF1 =&gt; 0.12,
+                    CF2 =&gt; 0.2,
+                    CF3 =&gt; 0.4,
+                    CF4 =&gt; 0.47,
+                    CF5 =&gt; 0.55,
+                    CF6 =&gt; 0.71
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.1,
+                    CF1 =&gt; 0.18,
+                    CF2 =&gt; 0.24,
+                    CF3 =&gt; 0.33,
+                    CF4 =&gt; 0.4,
+                    CF5 =&gt; 0.5,
+                    CF6 =&gt; 0.81
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.0,
+                    CF1 =&gt; 0.032,
+                    CF2 =&gt; 0.04,
+                    CF3 =&gt; 0.048,
+                    CF4 =&gt; 0.062,
+                    CF5 =&gt; 0.074,
+                    CF6 =&gt; 0.085
+                }
+            }
+        }</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+        {
+            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
+            {
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.65
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.49
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.38
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.31
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.27
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 240.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 25.0,
+                        Acceleration =&gt; 0.75
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.008
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.004
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.003
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.002
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.001
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 190.0,
+                        Acceleration =&gt; 0.0001
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.00001
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.87
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 170.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 270.0,
+                        Acceleration =&gt; 0.2
+                    }
+                }
+            }
+        }</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check d_EBI"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed (
+    Function =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD,
+    Speed =&gt; 34.416 ) &gt; 5089.533 AND
+DistanceForSpeed (
+    Function =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD,
+    Speed =&gt; 34.416 ) &lt; 5089.534</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 0.0 ) &gt; 19.7646 AND Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 0.0 ) &lt; 19.7647</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 30.0, Vtarget =&gt; 0.0 ) == 34.416</Expectation><Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed (
+    Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target
+    (
+        Distance =&gt; d,
+        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+    ),
+    Speed =&gt; 34.416 ) &gt; 5089.533 AND
+DistanceForSpeed (
+    Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target
+    (
+        Distance =&gt; d,
+        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+    ),
+    Speed =&gt; 34.416 ) &lt; 5089.534</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Add TSRs"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TSR.TSRs &lt;-
+[
+    Kernel.TSR.TemporarySpeedRestriction
+    {
+        Id =&gt; 1212,
+        Length =&gt; 500.0,
+        Location =&gt; 4000.0,
+        LRBG =&gt; 5417,
+        Speed =&gt; 20.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element
+    },
+    Kernel.TSR.TemporarySpeedRestriction
+    {
+        Id =&gt; 1212,
+        Length =&gt; 1000.0,
+        Location =&gt; 8000.0,
+        LRBG =&gt; 5417,
+        Speed =&gt; 10.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element
+    }
+]</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Check d_EBI"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 2204.984 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 2204.985</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 20.0 ) &gt; 19.7646 AND Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 20.0 ) &lt; 19.7647</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 30.0, Vtarget =&gt; 20.0 ) == 34.416</Expectation><Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed (
+    Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target
+    (
+        Distance =&gt; d,
+        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+    ),
+    Speed =&gt; 34.416 ) &gt;= 2224.748</Expectation><Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed (
+    Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target
+    (
+        Distance =&gt; d,
+        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+    ),
+    Speed =&gt; 34.416 ) &lt;= 2224.749</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Remove TSRs"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TSR.TSRs &lt;- []</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_SBI1"
+>
+<ReqRef
+ Id="3.13.9.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check d_SBI1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed ( Function =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD, Speed =&gt; 34.72  ) &gt;= 4186.54</Expectation><Expectation
+ Kind="Instantaneous"
+>DistanceForSpeed ( Function =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD, Speed =&gt; 34.72  ) &lt;= 4186.55</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1 ( Vest =&gt; 34.72 ) &lt;= 4179.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1 ( Vest =&gt; 34.72 ) &gt;= 4179.59</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_SBI2"
+>
+<ReqRef
+ Id="3.13.9.3.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check d_SBI2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5063.76 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
+    Vest =&gt; 30.0,
+    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5063.77</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vsbi1"
+>
+<ReqRef
+ Id="3.13.9.3.3.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check Vsbi1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 74.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) + Odometry.EstimatedSpeed * Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 == 2053.28</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi1 ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &gt;= 40.297</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi1 ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt;= 40.298</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi1 ( 10000.0 ) == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vsbi2"
+>
+<ReqRef
+ Id="3.13.9.3.3.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 14.0,
+    D_ora =&gt; 12.0,
+    V_ora =&gt; 2.0,
+    V_ura =&gt; 3.0
+}</Action>
+<Action>INSERT 
+BTM.Linking.LinkingData
+{
+    LocationAccuracy =&gt; 1.0
+}
+IN
+    BTM.Linking.Linkings</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    Position =&gt; BTM.Position
+    {
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 4.0,
+        OverReadingAmountOdo =&gt; 2.0
+    },
+    NID =&gt; 1515,
+    Orientation =&gt; Orientation.Nominal
+}</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 88.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check Vsbi2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 88.0, Vtarget =&gt; 25.0 ) == 91.416</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 88.0, Vtarget =&gt; 25.0 ) &gt; 52.6979 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 88.0, Vtarget =&gt; 25.0 ) &lt; 52.698</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi2 ( Dmaxsafefrontend =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 50.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi2 ( Dmaxsafefrontend =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 25.0 ) &gt; 46.2708 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi2 ( Dmaxsafefrontend =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 25.0 ) &lt; 46.2709</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) == 2011.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_FLOI"
+>
+<ReqRef
+ Id="3.13.9.3.3.9"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check d_FLOI"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI ( 25.0 ) &gt; 6631.146 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI ( 25.0 ) &lt; 6631.147</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_W"
+>
+<ReqRef
+ Id="3.13.9.3.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check d_W"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W  ( 25.0 ) &gt; 6617.257 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W  ( 25.0 ) &lt; 6617.258</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="d_P"
+>
+<ReqRef
+ Id="3.13.9.3.5.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check d_P, calculation of the GUI inhibited"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &gt; 6603.3683 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check d_P, calculation of the GUI enabled"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_driver"
+>
+<ReqRef
+ Id="Entry 3.A3.1.1.17"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check T_driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver == 4.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_P_EOA"
+>
+<ReqRef
+ Id="3.13.9.3.5.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check V_P_EOA, calculation of the GUI inhibited"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EOA ( d_estfront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; 88.0 ) &gt;= 39.657</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EOA ( d_estfront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; 88.0 ) &lt;= 39.658</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check V_P_EOA, calculation of the GUI inhibited"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 11000.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EOA ( d_estfront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; 88.0 ) &lt;= 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_P_EBD"
+>
+<ReqRef
+ Id="3.13.9.3.5.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>INSERT
+    Kernel.TSR.TemporarySpeedRestriction
+    {
+        Id =&gt; 14,
+        Length =&gt; 500.0,
+        Location =&gt; 2000.0,
+        LRBG =&gt; 1515,
+        Speed =&gt; 20.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element
+    }
+IN
+    Kernel.TSR.TSRs</Action>
+<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check V_P_EBD, V_EBD"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) == 1011.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &gt; 59.6312 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) &lt; 59.6313</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0 ) == 103.416</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &gt; 26.0216 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &lt; 26.0217</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check V_P_EBD, Vtarget"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 8000.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) == 20.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_indication"
+>
+<ReqRef
+ Id="3.13.9.3.6.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.6.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check T_indication, SB available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.Yes</Action>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_service.EddyCurrent_Regenerative_Ep &lt;- 7.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_indication() == 5.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check T_indication, SB not available"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.No</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_indication() == 5.6</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_I"
+>
+<ReqRef
+ Id="3.13.9.3.6.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check d_I"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I ( 25.0 ) &gt; 6564.4794 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I ( 25.0 ) &lt; 6564.4795</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

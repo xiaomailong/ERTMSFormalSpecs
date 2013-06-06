@@ -1,0 +1,55 @@
+<NameSpace
+ Name="INFILL_LOCATION_REFERENCE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="136"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NEWCOUNTRY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NEWCOUNTRY"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="NID_BG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

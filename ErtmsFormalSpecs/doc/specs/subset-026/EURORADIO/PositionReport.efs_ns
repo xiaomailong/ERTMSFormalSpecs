@@ -1,0 +1,1352 @@
+<NameSpace
+ Name="PositionReport"
+>
+<NameSpaces>
+</NameSpaces>
+<Enumerations>
+<Enum
+ Default="PositionReportSpecialLocation.DoNotSend"
+ Implemented="TRUE"
+ Name="PositionReportSpecialLocation"
+>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.69"
+>
+</ReqRef>
+<Values>
+<EnumValue
+ Value="0"
+ Name="DoNotSend"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Now"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="LRBG"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PositionReportEventsTracker"
+>
+<StructureElement
+ TypeName="Messages.Q_LENGTH"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainIntegrityStatus"
+>
+<ReqRef
+ Id="3.6.5.1.4.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.d"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+<ReqRef
+ Id="3.6.5.1.4.a"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level"
+>
+<ReqRef
+ Id="3.6.5.1.4.g"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode"
+>
+<ReqRef
+ Id="3.6.5.1.4.b"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="HasActiveSession"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="PositionReportParametersValues"
+>
+<ReqRef
+ Id="7.4.2.15.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<Comment>Parameters of position reporting given by RBC.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TimeInterval"
+>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DistanceInterval"
+>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="PositionReportSpecialLocation"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpecialLocation"
+>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.1"
+>
+<Comment>This requirement is always satisfied because the value of the field PositionReportSpecialLocation can be either LRBG or Now and never the both together.</Comment>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="PositionReportLocations"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Locations"
+>
+<ReqRef
+ Id="3.6.5.1.5.c"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="PositionReportParameters"
+>
+<StructureElement
+ TypeName="Default.DataState"
+ Default=""
+ Mode="Internal"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+>
+</StructureElement><StructureElement
+ TypeName="PositionReportParametersValues"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="Values"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LastPositionReportInformation"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Time"
+>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.6.4.2"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position"
+>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="BTM.BaliseGroup"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LRBG"
+>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="PositionLocation"
+ MaxSize="32"
+ Default="[]"
+ Name="PositionReportLocations"
+>
+<ReqRef
+ Id="3.6.5.1.5.c"
+>
+</ReqRef>
+<Comment></Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SendReportDueToCommunicationSessionIsEstablished"
+>
+<ReqRef
+ Id="3.6.5.1.4.h"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.HasActiveSession == Boolean.False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToLevelChange"
+>
+<ReqRef
+ Id="3.6.5.1.4.g"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.Level != Kernel.Level.Value</Expression>
+</Case><Case
+ Name="DoNotSend"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToLossOfTrainIntegrityDetected"
+>
+<ReqRef
+ Id="3.6.5.1.4.d"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status AND Kernel.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost
+</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToModeChange"
+>
+<ReqRef
+ Id="3.6.5.1.4.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A030.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A115.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.6.2.2.A095"
+>
+</ReqRef>
+<Comment>Determines if the train has to send a position report to the RBC due to the mode change. If the report has to be sent, the function returns the mode to be sent with the report. In not, the function returns EMPTY.</Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.Mode != Kernel.Mode</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToPositionReportTimeReached"
+>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>Kernel.CurrentTime &gt;= LastPositionReport.Time + PositionReportParameters.Values.TimeInterval AND PositionReportParameters.DataState == Default.DataState.Valid AND PositionReportParameters.Values.TimeInterval != 0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToPositionReportDistanceReached"
+>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>(Odometry.NominalDistance &gt;= (LastPositionReport.Position + PositionReportParameters.Values.DistanceInterval)) AND (PositionReportParameters.DataState == Default.DataState.Valid) AND (PositionReportParameters.Values.DistanceInterval != Default.BaseTypes.Distance.Infinity)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToSpecialLocationNow"
+>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToStandstillReached"
+>
+<ReqRef
+ Id="3.6.5.1.4.a"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed AND Odometry.EstimatedSpeed == 0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToTrainIntegrityConfirmedByDriver"
+>
+<ReqRef
+ Id="3.6.5.1.4.c"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status AND 
+Kernel.TrainIntegrity.Status in [
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
+]
+</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToRBCBorderPassedWithMaxSafeFrontEnd"
+>
+<ReqRef
+ Id="3.6.5.1.4.k"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToPositionReportSpecialLocationReached"
+>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>SendReportDueToSpecialLocationNow() OR SendReportDueToSpecialLocationLRBGCompliantBG()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToRBCBorderPassedWithMinSafeRearEnd"
+>
+<ReqRef
+ Id="3.6.5.1.4.e"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToLRBGCompliantBGPassed"
+>
+<ReqRef
+ Id="3.6.5.1.4.j"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToLevelTransitionBorderPassedWithMinSafeRearEnd"
+>
+<ReqRef
+ Id="3.6.5.1.4.f"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="SendReportDueToSpecialLocationLRBGCompliantBG"
+>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendReportNow"
+>
+<ReqRef
+ Id="3.6.5.1.4.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.g"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.h"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.i"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.k"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A030.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A115.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.6.2.2.A095"
+>
+</ReqRef>
+<Comment>Determines if the train has to send a position report to the RBC now.</Comment>
+<Cases>
+<Case
+ Name="Condition"
+>
+<Expression>(
+    BTM.LRBG.Orientation != Orientation.Unknown
+        OR
+    BTM.PreviousLRBG() != EMPTY
+)
+    AND
+(
+    SendReportDueToStandstillReached() OR 
+    SendReportDueToModeChange() OR 
+    SendReportDueToTrainIntegrityConfirmedByDriver() OR 
+    SendReportDueToLossOfTrainIntegrityDetected() OR 
+    SendReportDueToRBCBorderPassedWithMinSafeRearEnd() OR 
+    SendReportDueToLevelTransitionBorderPassedWithMinSafeRearEnd() OR 
+    SendReportDueToLevelChange() OR 
+    SendReportDueToCommunicationSessionIsEstablished() OR 
+    SendReportDueToLRBGCompliantBGPassed() OR 
+    SendReportDueToRBCBorderPassedWithMaxSafeFrontEnd() OR 
+    SendReportDueToPositionReportDistanceReached() OR 
+    SendReportDueToPositionReportSpecialLocationReached() OR
+    SendReportDueToPositionReportTimeReached()
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="PositionReportSpecialLocation"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ERTMSSpecialLocationConverter"
+>
+<Parameters>
+<Parameter
+ Type="Messages.M_LOC"
+ Name="M_LOC"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Now"
+>
+<PreConditions>
+<PreCondition>M_LOC == 0</PreCondition>
+</PreConditions>
+<Expression>PositionReportSpecialLocation.Now</Expression>
+</Case><Case
+ Name="LRBG"
+>
+<PreConditions>
+<PreCondition>M_LOC == 1</PreCondition>
+</PreConditions>
+<Expression>PositionReportSpecialLocation.LRBG</Expression>
+</Case><Case
+ Name="DoNotSend"
+>
+<PreConditions>
+<PreCondition>M_LOC == 2</PreCondition>
+</PreConditions>
+<Expression>PositionReportSpecialLocation.DoNotSend</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_LEVEL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillLevelInformation"
+>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="LevelChanged"
+>
+<PreConditions>
+<PreCondition>SendReportDueToLevelChange()</PreCondition>
+</PreConditions>
+<Expression>Default.EFSLevelConverter ( Kernel.Level.Value )</Expression>
+</Case><Case
+ Name="LevelUnchanged"
+>
+<PreConditions>
+<PreCondition>NOT SendReportDueToLevelChange()</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_MODE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillModeInformation"
+>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="ModeChanged"
+>
+<PreConditions>
+<PreCondition>SendReportDueToModeChange()</PreCondition>
+</PreConditions>
+<Expression>Default.EFSModeConverter ( Kernel.Mode )</Expression>
+</Case><Case
+ Name="ModeUnchanged"
+>
+<PreConditions>
+<PreCondition>NOT SendReportDueToModeChange()</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Length"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillTrainIntegrityInformation"
+>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.3.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.3.2.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="TrainIntegrityConfirmed"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainIntegrity.Status in [
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
+]</PreCondition>
+</PreConditions>
+<Expression>Kernel.TrainIntegrity.SafeTrainLength</Expression>
+</Case><Case
+ Name="TrainIntegrityNotConfirmed"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainIntegrity.Status not in [
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
+  Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
+]
+</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
+ Implemented="TRUE"
+ Name="CreatePositionReport"
+>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.3.1.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="One BG"
+>
+<PreConditions>
+<PreCondition>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
+{
+    POSITION_REPORT=&gt; Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message
+    {
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+        NID_LRBG =&gt; BTM.LRBG.NID,
+        D_LRBG =&gt; FillDistance(),
+        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
+        Q_LENGTH =&gt; Kernel.TrainIntegrity.Status,
+        L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
+        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; FillModeInformation(),
+        M_LEVEL =&gt; FillLevelInformation()
+    },
+    POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS =&gt; EMPTY
+}</Expression>
+</Case><Case
+ Name="Two BGs"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
+{
+    POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS=&gt;Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message
+    {
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+        NID_LRBG =&gt; BTM.LRBG.NID,
+        NID_PRVLRBG =&gt; Messages.NID_PRVBG ( BTM.PreviousLRBG().NID ),
+        D_LRBG =&gt; FillDistance(),
+        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTOVER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTUNDER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+        Q_LENGTH =&gt; Kernel.TrainIntegrity.Status,
+        L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
+        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; FillModeInformation(),
+        M_LEVEL =&gt; FillLevelInformation()
+    }
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_STATUS"
+ Implemented="TRUE"
+ Name="FillQStatus"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A33.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.A34.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Valid"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_STATUS.Valid</Expression>
+</Case><Case
+ Name="Invalid"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_STATUS.Invalid</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_STATUS.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Distance"
+ Implemented="TRUE"
+ Name="FillDistance"
+>
+<ReqRef
+ Id="Entry 5.6.2.2.A045"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Distance unknown"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.DistanceUnknown</Expression>
+</Case><Case
+ Name="Distance known"
+>
+<Expression>MessageTypes.UnScaleDistance ( BTM.DistanceFromLRBG(), Messages.Q_SCALE._1_m_scaleC )</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Name="UpdatePositionReportParameters"
+>
+<ReqRef
+ Id="3.6.5.1.7"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Name="UpdatePositionReportParameters"
+>
+<ReqRef
+ Id="7.4.2.15.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdatePositionReportParameters"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action>
+<Action>PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action>
+<Action>PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action>
+<Action>PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendSOMPositionReport"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A33.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.A34.1"
+>
+</ReqRef>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Send SOM position report"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send SOM position report"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EuroradioMessageOut.SOM_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message
+{
+    L_MESSAGE =&gt; EMPTY,
+    NID_ENGINE =&gt; EMPTY,
+    NID_MESSAGE =&gt; EMPTY,
+    Q_STATUS =&gt; FillQStatus(),
+    POSITION_REPORT =&gt; CreatePositionReport(),
+    Sequence1 =&gt; EMPTY,
+    T_TRAIN =&gt; EMPTY
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SendPositionReport"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EuroradioMessageOut.TRAIN_POSITION_REPORT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message
+{
+    L_MESSAGE =&gt; EMPTY,
+    NID_ENGINE =&gt; EMPTY,
+    NID_MESSAGE =&gt; EMPTY,
+    POSITION_REPORT =&gt; CreatePositionReport(),
+    Sequence1 =&gt; EMPTY,
+    T_TRAIN =&gt; EMPTY
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="PositionReportParameters"
+ DefaultValue=""
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="PositionReportParameters"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<Comment>This variable contains the position report parameters given by the RBC.</Comment>
+</Variable><Variable
+ Type="PositionReportEventsTracker"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="PositionReportEventsTracker"
+>
+<ReqRef
+ Id="3.6.5.1.4.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.g"
+>
+</ReqRef>
+<Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
+</Variable><Variable
+ Type="LastPositionReportInformation"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="LastPositionReport"
+>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<Comment>Indicates when and where the last position report was sent.</Comment>
+</Variable><Variable
+ Type="Integer"
+ DefaultValue="0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="NumberOfSentReportRepetitions"
+>
+<ReqRef
+ Id="5.6.4.3"
+>
+</ReqRef>
+<Comment>Indicates the number of sent position report repetitions.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ NeedsRequirement="FALSE"
+ Name="PositionReportEventsTrackerCleanUp"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="PositionReportEventsCleanUp"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CommunicationSessionState"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CommunicationSessionState"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportEventsTracker.HasActiveSession &lt;- EURORADIO.HasActiveSession()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mode"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.Mode != Kernel.Mode</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportEventsTracker.Mode &lt;- Kernel.Mode</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainIntegrity"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainIntegrity"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportEventsTracker.TrainIntegrityStatus &lt;- Kernel.TrainIntegrity.Status</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+<PreConditions>
+<PreCondition>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpecialLocation"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpecialLocation"
+>
+<PreConditions>
+<PreCondition>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action>
+<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action>
+<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PositionReportTimeInterval"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PositionReportTimeInterval"
+>
+<PreConditions>
+<PreCondition>SendReportDueToPositionReportTimeReached()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PositionReportDistanceInterval"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PositionReportDistanceInterval"
+>
+<PreConditions>
+<PreCondition>SendReportDueToPositionReportDistanceReached()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send position report"
+>
+<ReqRef
+ Id="3.6.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A030.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A115.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.6.2.2.A095"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>SendReportNow()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SendPositionReport()</Action>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Verified="TRUE"
+ Name="Send report due to mode change"
+>
+<ReqRef
+ Id="3.5.3.4.c"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send report due to mode change"
+>
+<PreConditions>
+<PreCondition>SendReportDueToModeChange()</PreCondition>
+<PreCondition>NOT HasActiveSession()</PreCondition>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
+<PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition>
+</PreConditions>
+<Actions>
+<Action>OpenRBCSession()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

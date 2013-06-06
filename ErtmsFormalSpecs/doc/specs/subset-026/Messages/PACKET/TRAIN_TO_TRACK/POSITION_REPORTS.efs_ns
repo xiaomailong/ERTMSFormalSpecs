@@ -1,0 +1,42 @@
+<NameSpace
+ Name="POSITION_REPORTS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<StructureElement
+ TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="POSITION_REPORT"
+>
+</StructureElement><StructureElement
+ TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
+>
+</StructureElement></Structure></Structures>
+<Variables>
+<Variable
+ Type="Default.MessageTypes.Distance"
+ DefaultValue="32767"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DistanceUnknown"
+>
+<ReqRef
+ Id="7.5.1.13.0"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Predefined value representing an unknown distance.</Comment>
+</Variable></Variables>
+</NameSpace>

@@ -1,0 +1,631 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="TSR - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Handle several TSRs"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Provide several TSRs"
+>
+<ReqRef
+ Id="3.11.5.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.5.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Provide the first TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;65,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3050.0</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+{
+    NID=&gt;9616,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position
+    {
+        OverReadingAmountOdo=&gt;2.0,
+        Position=&gt;3000.0,
+        UnderReadingAmountOdo=&gt;3.0
+    }
+}</Action>
+<Action>Kernel.TSR.TSRs &lt;- []</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check the first TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5500.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5499.0 ) == 25.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Provide the second TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;65,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 3000,
+                    L_TSR =&gt; 3000,
+                    NID_TSR =&gt; 1516,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 10
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Check the second TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 2000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5500.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Revoke a TSR"
+>
+<ReqRef
+ Id="3.11.5.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.5.8"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Provide revocation of the first TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION_REVOCATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message
+                {
+                    NID_PACKET=&gt;66,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    NID_TSR =&gt; 1515
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check TSR revoked"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5000.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Train passes the TSR"
+>
+<ReqRef
+ Id="3.11.2.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Train passed the TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- (FIRST_IN Kernel.TSR.TSRs).Location + BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs)) + BTM.LRBG.Position.Position</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check TSR is revoked"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Handle single TSR"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+{
+    NID=&gt;9616,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position
+    {
+        OverReadingAmountOdo=&gt;3.0,
+        Position=&gt;1080.0,
+        UnderReadingAmountOdo=&gt;3.0
+    }
+}</Action>
+<Action>Kernel.TSR.TSRs &lt;- []</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Ensure TSR is active"
+>
+<ReqRef
+ Id="3.11.5.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5499.9 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 2920.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5500.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3999.9 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="TSR depending on train length"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="TSR depending on train length"
+>
+<ReqRef
+ Id="3.11.5.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Provide TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 4000,
+                    L_TSR =&gt; 1500,
+                    NID_TSR =&gt; 1515,
+                    Q_FRONT =&gt;Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 2700.0</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+{
+    NID=&gt;9616,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 1.0
+    }
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 150.0</Action>
+<Action>Kernel.TSR.TSRs &lt;- []</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check TSR length"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5499.9 + 150.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TSR.SpeedRestrictions ( 5500.0 + 150.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

@@ -1,0 +1,391 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Adhesion factors - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Adhesion factors"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup &amp; Receive adhesion factors"
+>
+<ReqRef
+ Id="3.18.4.6.2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9600,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 500.0,
+        UnderReadingAmountOdo =&gt; 2.0
+    }
+}</Action>
+<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
+<Action>Odometry.NominalDistance &lt;- 600.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Receive adhesion factors"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2100,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                ADHESION_FACTOR =&gt;Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message
+                {
+                    NID_PACKET =&gt; 71,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_ADHESION =&gt; 1000,
+                    L_ADHESION =&gt; 500,
+                    M_ADHESION =&gt; Messages.M_ADHESION.Slippery_rail
+                }
+            }
+        },
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                ADHESION_FACTOR =&gt;Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message
+                {
+                    NID_PACKET =&gt; 71,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_ADHESION =&gt; 4000,
+                    L_ADHESION =&gt; 300,
+                    M_ADHESION =&gt; Messages.M_ADHESION.Non_slippery_rail
+                }
+            }
+        },
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                ADHESION_FACTOR =&gt;Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message
+                {
+                    NID_PACKET =&gt; 71,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_ADHESION =&gt; 6000,
+                    L_ADHESION =&gt; 400,
+                    M_ADHESION =&gt; Messages.M_ADHESION.Slippery_rail
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check adhesion factor info"
+>
+<ReqRef
+ Id="3.13.5.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Check adhesion factors info"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 6000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 400.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 620.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 520.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Receive new adhesion factors"
+>
+<ReqRef
+ Id="3.7.3.1.l"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.4.6.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.4.6.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Receive new adhesion factors"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2100,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                ADHESION_FACTOR =&gt;Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message
+                {
+                    NID_PACKET =&gt; 71,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_ADHESION =&gt; 3700,
+                    L_ADHESION =&gt; 500,
+                    M_ADHESION =&gt; Messages.M_ADHESION.Slippery_rail
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 2100,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 1000.0,
+        UnderReadingAmountOdo =&gt; 7.0
+    }
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 1100.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Check adhesion factor info"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+ Kind="Instantaneous"
+>(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 3700.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check selection of slippery rail by the driver"
+>
+<ReqRef
+ Id="3.18.4.6.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.4.6.2.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Default value"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Non_slippery_rail</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Modification of slippery rail permitted by National values"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action>
+<Action>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Slippery_rail</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Modification of slippery rail no more permitted by National values"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Not_allowed</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Non_slippery_rail</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

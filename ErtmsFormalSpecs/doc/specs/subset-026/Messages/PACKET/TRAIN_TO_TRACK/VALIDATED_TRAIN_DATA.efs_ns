@@ -1,0 +1,156 @@
+<NameSpace
+ Name="VALIDATED_TRAIN_DATA"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Validated train data. For some variables, if the engine does not know a data value, it may use the corresponding default value</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="11"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="NC_CDTRAIN"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NC_CDTRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="NC_TRAIN"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NC_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_MAXTRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="M_LOADINGGAUGE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_LOADINGGAUGE"
+>
+</StructureElement><StructureElement
+ TypeName="M_AXLELOAD"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_AXLELOAD"
+>
+</StructureElement><StructureElement
+ TypeName="M_AIRTIGHT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_AIRTIGHT"
+>
+</StructureElement><StructureElement
+ TypeName="N_AXLE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_AXLE"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_0"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_1"
+>
+</StructureElement><StructureElement
+ TypeName="Collection2"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence2"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="M_VOLTAGE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_VOLTAGE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_CTRACTION"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_CTRACTION"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure2"
+>
+<StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection><Collection
+ TypeName="SubStructure2"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection2"
+>
+</Collection></Collections>
+</NameSpace>

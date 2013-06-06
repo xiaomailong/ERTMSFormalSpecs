@@ -1,0 +1,2347 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Braking models - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Full service brake deceleration"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test environment"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Initialize SB models"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+{
+    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
+    {
+        NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.16
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.12
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 140.0,
+                Acceleration =&gt; 0.07
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.04
+            }
+        },
+        EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.7
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 30.0,
+                Acceleration =&gt; 0.65
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.55
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.3
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.25
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 240.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.5
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.2
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.1
+            }
+        },
+        EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.99
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.9
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.7
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.4
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.3
+            }
+        },
+        EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.4
+            }
+        },
+        Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.75
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.45
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.9
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.5
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 90.0,
+                Acceleration =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.4
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.1
+            }
+        }
+    }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check service braking model information"
+>
+<ReqRef
+ Id="3.13.2.2.3.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Eddy Current + Magnetic Shoe + Regenerative brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ), 
+Speed =&gt; 160.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.99</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 50.0 ) == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Eddy Current + Magnetic Shoe brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.55</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 160.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 20.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 200.0 ) == 0.25</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 30.0 ) == 0.65</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 70.0 ) == 0.6</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Eddy Current + Regenerative brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 50.0 ) == 0.9</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ), 
+Speed =&gt; 160.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.99</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Eddy Current brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 70.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 30.0 ) == 0.65</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 200.0 ) == 0.25</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 20.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 160.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.55</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Magnetic Shoe + Regenerative Brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.9</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 120.0 ) == 0.5</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Magnetic Shoe brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.04</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 150.0 ) == 0.07</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.16</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - Regenerative brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 120.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - No special brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 150.0 ) == 0.07</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.SBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_service ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Normal service brake deceleration"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test environment"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Initialize Normal service brake model"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
+{
+    TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel
+    {
+        BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.72
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.45
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.32
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.3
+            }
+        },
+        BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.82
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 70.0,
+                Acceleration =&gt; 0.68
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.51
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.34
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.27
+            }
+        },
+        BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.94
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.8
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 75.0,
+                Acceleration =&gt; 0.65
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.5
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.4
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.35
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.3
+            }
+        }
+    },
+    TrainInP =&gt; Kernel.TrainData.BrakingParameters.BNSModel
+    {
+        BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.4
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.9
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 25.0,
+                Acceleration =&gt; 0.8
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.64
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 75.0,
+                Acceleration =&gt; 0.5
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.35
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.2
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.14
+            }
+        },
+        BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.6
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.2
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.1
+            }
+        }
+    },
+    A_SB01 =&gt; 0.4,
+    A_SB12 =&gt; 0.7
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+{
+    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
+    {
+        EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.7
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 30.0,
+                Acceleration =&gt; 0.65
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.55
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.3
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.25
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 240.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.5
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.2
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.1
+            }
+        },
+        EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.3
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.28
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.21
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.18
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.07
+            }
+        },
+        EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.5
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.4
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.21
+            }
+        },
+        Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.75
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.45
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.9
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.5
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 90.0,
+                Acceleration =&gt; 0.7
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.4
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.1
+            }
+        }
+    }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Freight train in G"
+>
+<ReqRef
+ Id="3.13.2.2.3.1.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.9.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - BNS0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.SelectBNSModelSet () == Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.TrainInG</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.32</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.72</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 150.0 ) == 0.45</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.Default_brk_service ( V =&gt; 0.0 ) == 0.3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - BNS1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.SelectBNSModelSet () == Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.TrainInG</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.82</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.27</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.51</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.27</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 150.0 ) == 0.34</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - BNS2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.27</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.SelectBNSModelSet () == Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.TrainInG</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.94</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.35</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 150.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 80.0 ) == 0.65</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Freigth train in P / Passenger train in P"
+>
+<ReqRef
+ Id="3.13.2.2.3.1.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.9.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Freight train in P"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.SelectBNSModelSet () == Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.TrainInP</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Passenger train in P"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.SelectBNSModelSet () == Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.TrainInP</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - BNS0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.4</Action>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.6</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 150.0 ) == 0.4</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - BNS1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.9</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.35</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.64</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 150.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 25.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 75.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.14</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.14</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - BNS2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 0.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 200.0 ) == 0.1</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 50.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 250.0 ) == 0.1</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction (
+    BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBNSBrakingModel(),
+    Speed =&gt; 100.0 ) == 0.2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Emergency brake norminal deceleration"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test environment"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Initialize EB models"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value. EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
+                NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.2
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 70.0,
+                        Acceleration =&gt; 0.15
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.12
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 190.0,
+                        Acceleration =&gt; 0.09
+                    }
+                },
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.65
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.45
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.25
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 240.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 70.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.2
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.1
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.99
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 50.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 140.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.3
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.6
+                    }
+                },
+                Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.75
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.45
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 90.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 170.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.1
+                    }
+                }
+            }
+        }</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check emergency braking model information"
+>
+<ReqRef
+ Id="3.13.2.2.3.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.3.1.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Eddy Current + Magnetic Shoe + Regenerative brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 170.0 ) == 0.6</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Eddy Current + Magnetic Shoe brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+ Speed =&gt; 50.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+ Speed =&gt; 250.0 ) == 0.1</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+ Speed =&gt; 150.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ), 
+Speed =&gt; 100.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+ Speed =&gt; 0.0 ) == 0.8</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Eddy Current + Regenerative brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 50.0 ) == 0.9</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ), 
+Speed =&gt; 160.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.99</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Eddy Current brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 70.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 30.0 ) == 0.65</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 200.0 ) == 0.25</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 20.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 160.0 ) == 0.45</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Magnetic Shoe + Regenerative Brakes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.1</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 200.0 ) == 0.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 120.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.8</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Magnetic Shoe brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 90.0 ) == 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 150.0 ) == 0.45</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.75</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - Regenerative brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 120.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - No special brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; False,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 0.0 ) == 0.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 100.0 ) == 0.15</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 150.0 ) == 0.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.BrakingModelFunction ( 
+BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
+    aModelSet =&gt; Kernel.TrainData.TrainData.Value.EBModels.ModelSet,
+    RegBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.Regenerative ),
+    EddyCurBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent ),
+    MagnBrakeUsed =&gt; Kernel.TrainData.BrakingParameters.UseBrakeFor_A_brake_emergency ( Kernel.TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe ) ),
+Speed =&gt; 250.0 ) == 0.09</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

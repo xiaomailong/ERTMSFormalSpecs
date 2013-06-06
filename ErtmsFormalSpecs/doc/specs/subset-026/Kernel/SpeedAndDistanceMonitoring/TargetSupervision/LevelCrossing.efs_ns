@@ -1,0 +1,122 @@
+<NameSpace
+ Name="LevelCrossing"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_EBI"
+>
+<ReqRef
+ Id="3.13.9.3.5.12"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.11.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.11.b"
+>
+</ReqRef>
+<Comment>Provides the location of the EBI supervision limit.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vlx"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vlx + f41 ( Vlx ) ) - ( Vlx + f41 ( Vlx ) ) * ( T_berem() + T_traction() )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_SBI2"
+>
+<ReqRef
+ Id="3.13.9.3.5.12"
+>
+</ReqRef>
+<Comment>Provides the distance d_SBI2.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vlx"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>LevelCrossing.d_EBI ( Vlx )  - Vlx * TargetSupervision.T_bs2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_FLOI"
+>
+<ReqRef
+ Id="3.13.9.3.5.12"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vlx"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="First case"
+>
+<PreConditions>
+<PreCondition>LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition>
+</PreConditions>
+<Expression>d_SBI1 ( Vlx )</Expression>
+</Case><Case
+ Name="Second case"
+>
+<Expression>LevelCrossing.d_SBI2 ( Vlx )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_P"
+>
+<ReqRef
+ Id="3.13.2.3.7.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.12"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Vlx"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="GUI is inhibited"
+>
+<PreConditions>
+<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
+</PreConditions>
+<Expression>LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
+</Case><Case
+ Name="GUI is enabled"
+>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; GUI, Speed =&gt; Vlx ) )</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

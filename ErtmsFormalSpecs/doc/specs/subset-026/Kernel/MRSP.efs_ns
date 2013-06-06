@@ -1,0 +1,101 @@
+<NameSpace
+ Name="MRSP"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpeedRestrictions"
+>
+<ReqRef
+ Id="3.13.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.7.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.1.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.13.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.7.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<Comment>Provides the speed restrictions associated to the MRSP</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>MIN (
+    MIN (
+        MIN (
+            MIN ( LX.SpeedRestrictions, MA.SignallingRelatedSpeedRestrictions ),
+            MIN ( TSR.SpeedRestrictions, ModeRelatedSpeedLimits.SpeedRestrictions )
+        ),
+        MIN (
+            MIN ( NationalValues.OverrideRelatedSpeedRestrictions, TrainData.TrainData.Value.MaximumSpeed ),
+            MIN ( STM.MaxSpeedRestrictions, STM.SystemSpeedRestrictions )
+        )
+    ),
+    MIN (
+        MIN (
+            TrackDescription.AxleLoad.SpeedRestrictions,
+            TrackDescription.StaticSpeedProfile.SpeedRestrictions
+        ),
+        TrackDescription.PermittedBrakingDistance.SpeedRestrictions
+    )
+)
+(distance)</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

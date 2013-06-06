@@ -1,0 +1,82 @@
+<NameSpace
+ Name="LIST_OF_BALISES_FOR_SH_AREA"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Used to list balise group(s) which the train can pass over in SH mode</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="49"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="Q_NEWCOUNTRY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NEWCOUNTRY"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="NID_BG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection></Collections>
+</NameSpace>

@@ -1,0 +1,141 @@
+<NameSpace
+ Name="GUI"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_EBI"
+>
+<ReqRef
+ Id="3.13.9.3.5.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.9.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.9.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.5.9"
+>
+</ReqRef>
+<Comment>Provides the location of the EBI supervision limit.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + f41 ( Vtarget ) ) - ( Vtarget + f41 (Vtarget ) ) * ( T_berem() + T_traction() )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="d_P"
+>
+<ReqRef
+ Id="3.13.9.3.5.10"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
+</PreConditions>
+<Expression>GUI.d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SpeedRestrictions"
+>
+<ReqRef
+ Id="3.13.8.5.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition>
+</PreConditions>
+<Expression>(REDUCE
+    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
+ USING  
+    MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
+                  Second =&gt; RESULT )
+INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
+</Case><Case
+ Name="No targets"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="TargetSpeedRestriction"
+>
+<ReqRef
+ Id="3.13.8.5.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="TargetSupervision.Target"
+ Name="aTarget"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="During target (SvL)"
+>
+<PreConditions>
+<PreCondition>aTarget.Location &lt;= Distance</PreCondition>
+<PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition>
+<PreCondition>MA.IsSvL ( aTarget )</PreCondition>
+</PreConditions>
+<Expression>aTarget.Speed</Expression>
+</Case><Case
+ Name="During target (other)"
+>
+<PreConditions>
+<PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition>
+<PreCondition>GUI.d_P ( aTarget.Speed ) &lt;= Distance</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Outside"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

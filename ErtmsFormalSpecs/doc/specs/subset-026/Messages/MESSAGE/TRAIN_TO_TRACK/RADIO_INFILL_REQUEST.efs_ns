@@ -1,0 +1,69 @@
+<NameSpace
+ Name="RADIO_INFILL_REQUEST"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Radio infill request</Comment>
+<StructureElement
+ TypeName="NID_MESSAGE"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="NID_ENGINE"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_ENGINE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="NID_BG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_INFILL"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_INFILL"
+>
+</StructureElement><StructureElement
+ TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="POSITION_REPORT"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

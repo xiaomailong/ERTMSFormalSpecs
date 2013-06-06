@@ -1,0 +1,316 @@
+<NameSpace
+ Name="ReversingArea"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ReversingAreaInformation"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+>
+<ReqRef
+ Id="7.5.1.27"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Length"
+>
+<ReqRef
+ Id="7.5.1.50"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MaxDistance"
+>
+<ReqRef
+ Id="7.5.1.23"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.2.a"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Speed"
+>
+<ReqRef
+ Id="3.15.4.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.170"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="ReversingSupervisionInformationReceived"
+>
+<ReqRef
+ Id="7.4.2.34.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.35.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.13.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A035"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
+ Name="RVSupervisionPacket"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Reversing Supervision information"
+>
+<ReqRef
+ Id="3.15.4.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.3.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update Reversing Area information"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReversingAreaProfile.MaxDistance &lt;- MessageTypes.QScaleDistance ( distance =&gt; RVSupervisionPacket.D_REVERSE, scale =&gt; RVSupervisionPacket.Q_SCALE )</Action>
+<Action>ReversingAreaProfile.Speed &lt;- MessageTypes.SpeedResolution ( speed =&gt; RVSupervisionPacket.V_REVERSE, resolution =&gt; 5.0 )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="ReversingAreaInformationReceived"
+>
+<ReqRef
+ Id="7.4.2.34.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.35.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.13.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.13.1.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.c.7"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A035"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
+ Name="RVAreaPacket"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
+ Name="RVSupervisionPacket"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Reversing Area information"
+>
+<ReqRef
+ Id="3.15.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.3"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update Reversing Area information"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReversingAreaProfile &lt;- ReversingAreaInformation
+{
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVAreaPacket.D_STARTREVERSE, scale =&gt; RVAreaPacket.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; RVAreaPacket.L_REVERSEAREA, scale =&gt; RVAreaPacket.Q_SCALE ),
+    MaxDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVSupervisionPacket.D_REVERSE, scale =&gt; RVSupervisionPacket.Q_SCALE ),
+    Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; RVSupervisionPacket.V_REVERSE, resolution =&gt; 5.0 )
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="ReversingArea.ReversingAreaInformation"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ReversingAreaProfile"
+>
+<ReqRef
+ Id="3.15.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.c.7"
+>
+</ReqRef>
+<Comment>Represents the location and supervision information of the reversing area.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="DriverTriesReversing"
+>
+<ReqRef
+ Id="5.13.1.4"
+>
+</ReqRef>
+<Comment>Information provided by the direction controller in the reverse position indicating that the driver tries to initiate reverse movement.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display reversing is possible"
+>
+<ReqRef
+ Id="3.15.4.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.13.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.2.2"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Display reversing is possible"
+>
+<PreConditions>
+<PreCondition>Available ( ReversingAreaProfile )</PreCondition>
+<PreCondition>ReversingAreaProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+  AND
+TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfile.Distance + BaseTypes.LengthToDistance ( ReversingAreaProfile.Length )</PreCondition>
+<PreCondition>Odometry.TrainIsAtStandstill()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().DisplayReversingAllowed()</Action>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Ask acknowledge of RV mode"
+>
+<ReqRef
+ Id="5.13.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="4.6.3.78"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.4"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Ask acknowledge of RV mode"
+>
+<PreConditions>
+<PreCondition>DriverTriesReversing</PreCondition>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfRVMode()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

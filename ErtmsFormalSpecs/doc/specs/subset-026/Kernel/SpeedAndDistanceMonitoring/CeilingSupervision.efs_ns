@@ -1,0 +1,964 @@
+<NameSpace
+ Name="CeilingSupervision"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_ebi"
+>
+<ReqRef
+ Id="3.13.9.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>C_ebi</Comment>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>( dV_ebi_max - dV_ebi_min ) / ( V_ebi_max - V_ebi_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_sbi"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>( dV_sbi_max - dV_sbi_min ) / ( V_sbi_max - V_sbi_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="C_warning"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_warning_min"
+>
+<PreConditions>
+<PreCondition>V &gt; V_warning_min</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_warning_min"
+>
+<Expression>dV_warning_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi"
+>
+<ReqRef
+ Id="3.13.9.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>The delta speed to add to P in order to get EBI</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_ebi_min"
+>
+<PreConditions>
+<PreCondition>V &gt; V_ebi_min</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_ebi_min"
+>
+<Expression>dV_ebi_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="V &gt; V_sbi_min"
+>
+<PreConditions>
+<PreCondition>V &gt; V_sbi_min</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
+</Case><Case
+ Name="V &lt;= V_sbi_min"
+>
+<Expression>dV_sbi_min</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="P"
+>
+<ReqRef
+ Id="3.11.1.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.11.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.7"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.2"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.6.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.6.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.1.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.1"
+>
+</ReqRef>
+<Comment>The speed restriction applied to the train. This combines both MA and MRSP speed restrictions</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>MIN ( MIN ( MA.SpeedRestrictions, MRSP.SpeedRestrictions), NationalValues.MaxDistInSRSpeedRestriction ) (distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="W"
+>
+<ReqRef
+ Id="3.13.9.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.2"
+>
+</ReqRef>
+<Comment>Provides the tolerant speed restriction based on the MRSP speed restriction</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Permitted speed is not zero"
+>
+<PreConditions>
+<PreCondition>P ( distance ) &gt; 0.0</PreCondition>
+</PreConditions>
+<Expression>AddIncrement (
+  Function =&gt; P, 
+  Increment =&gt; CeilingSupervision.dV_warning
+) (distance)</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SupervisedSpeed"
+>
+<ReqRef
+ Id="3.13.10.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="MRSP speed increases"
+>
+<PreConditions>
+<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition>
+</PreConditions>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) </Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) </Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SBI"
+>
+<ReqRef
+ Id="3.13.9.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>AddIncrement (
+  Function =&gt; P, 
+  Increment =&gt; dV_sbi
+) ( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="EBI"
+>
+<ReqRef
+ Id="3.13.9.2.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.6.1.2"
+>
+</ReqRef>
+<Comment>Provides the tolerant speed restriction based on the MRSP speed restriction, if the target belongs to the MRSP or is an LOA. If the target is an SvL of the maximum permitted distance to run in Staff Responsible, EBI returns 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Permitted speed is not zero"
+>
+<PreConditions>
+<PreCondition>P ( Distance ) &gt; 0.0</PreCondition>
+</PreConditions>
+<Expression>AddIncrement (
+  Function =&gt; P, 
+  Increment =&gt; dV_ebi
+) ( Distance )</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="210.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_ebi_max"
+>
+<ReqRef
+ Id="3.13.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_ebi stops to increae to dV_ebi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="5.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning_max"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Warning supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_ebi_min"
+>
+<ReqRef
+ Id="3.13.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_ebi starts to increase to dV_ebi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="7.5"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi_min"
+>
+<ReqRef
+ Id="3.13.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Emergency Brake Intervention supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="4.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_warning_min"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.12"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Warning supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="15.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_ebi_max"
+>
+<ReqRef
+ Id="3.13.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Emergency Brake Intervention supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="140.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_warning_max"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.15"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_warning stops to increase to dV_warning_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_warning_min"
+>
+<ReqRef
+ Id="3.13.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.14"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_warning starts to increase to dV_warning_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="10.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi_max"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Service Brake Intervention supervision limits, maximum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="5.5"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="dV_sbi_min"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.8"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Speed difference between Permitted speed and Service Brake Intervention supervision limits, minimum value</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="210.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_sbi_max"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_sbi stops to increase to dV_sbi_max</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="110.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_sbi_min"
+>
+<ReqRef
+ Id="3.13.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Value of MRSP where dV_sbi starts to increase to dV_sbi_max</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="UpdateSupervisionStatus"
+>
+<ReqRef
+ Id="3.13.10.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.2"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CheckSpeedAndDistanceMonitoringStatus"
+>
+<PreConditions>
+<PreCondition>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Ceiling</PreCondition>
+<PreCondition>Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="UpdateSupervisionStatus"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.4"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="t5"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_ebi ( SupervisedSpeed() )</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
+<Action>TriggerEBCommand()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="t4"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.2.5"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_sbi ( SupervisedSpeed() )</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
+<Action>TriggerSBCommand()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="t3"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.4"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_warning ( SupervisedSpeed() )</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Warning</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="t2"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &gt; SupervisedSpeed()</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="t1"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.5"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Normal</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="r1"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.10.3.6"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</PreCondition>
+<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Supervision &lt;- SupervisionStatus.Normal</Action>
+<Action>SBTriggered &lt;- False</Action>
+<Action>RevokeSBCommand()</Action>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RevokeEB"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.2.2"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RevokeEB"
+>
+<PreConditions>
+<PreCondition>NationalValues.ReleaseOfEBIsPermitted()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>RevokeEBCommand()</Action>
+<Action>EBTriggered &lt;- False</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="r0"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.13.10.3.4.1.1"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed == 0.0</PreCondition>
+<PreCondition>Supervision == SupervisionStatus.Intervention</PreCondition>
+</PreConditions>
+<Actions>
+<Action>EBTriggered &lt;- False</Action>
+<Action>RevokeEBCommand()</Action>
+<Action>Supervision &lt;- SupervisionStatus.Normal</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

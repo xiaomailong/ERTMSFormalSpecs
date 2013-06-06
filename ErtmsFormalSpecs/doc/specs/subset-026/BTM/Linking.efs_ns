@@ -1,0 +1,584 @@
+<NameSpace
+ Name="Linking"
+>
+<NameSpaces>
+</NameSpaces>
+<Enumerations>
+<Enum
+ Default="LinkingReaction.NoReaction"
+ Implemented="TRUE"
+ Name="LinkingReaction"
+>
+<ReqRef
+ Id="3.4.4.2.3"
+>
+</ReqRef>
+<Values>
+<EnumValue
+ Value="1"
+ Name="TrainTrip"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="CommandServiceBrake"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NoReaction"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="LinkingData"
+>
+<ReqRef
+ Id="3.4.4.2.1"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="Default.BaseTypes.Length.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LocationAccuracy"
+>
+<ReqRef
+ Id="3.6.4.2.b"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.2.1.c"
+>
+</ReqRef>
+<Comment>Represents the location accuracy of balise groups.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Orientation"
+ Default="Default.Orientation.Unknown"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Orientation"
+>
+<ReqRef
+ Id="3.4.4.2.1.d"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="LinkingReaction"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Reaction"
+>
+<ReqRef
+ Id="3.4.4.2.1.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.2.3"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="Default.BaseTypes.Distance.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+>
+<ReqRef
+ Id="3.4.4.2.1.b"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_BG"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NID_BG"
+>
+<ReqRef
+ Id="3.4.4.2.1.a"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="LinkingData"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Linkings"
+>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="LinkingData"
+ NeedsRequirement="FALSE"
+ Name="CreateLinkingData"
+>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Distance"
+ Name="D_LINK"
+>
+</Parameter><Parameter
+ Type="Messages.NID_BG"
+ Name="NID_BG"
+>
+</Parameter><Parameter
+ Type="Messages.Q_LINKORIENTATION"
+ Name="Q_LINK_ORIENTATION"
+>
+</Parameter><Parameter
+ Type="Messages.Q_LINKREACTION"
+ Name="Q_LINK_REACTION"
+>
+</Parameter><Parameter
+ Type="Messages.Q_LOCACC"
+ Name="Q_LOCACC"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Q_SCALE"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>LinkingData {
+  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
+  NID_BG =&gt; NID_BG,
+  Orientation =&gt; LinkingOrientationConverter ( Q_LINK_ORIENTATION ),
+  Reaction =&gt; ConvertLinkingReaction ( Q_LINK_REACTION ),
+  LocationAccuracy =&gt; MessageTypes.QLocAccLength(Q_LOCACC)
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CurrentBGWithinFrame"
+>
+<ReqRef
+ Id="3.4.4.4.3"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.3.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.3.2"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Linking information available"
+>
+<PreConditions>
+<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition>
+<PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+AND
+(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Default"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="LinkingData"
+ Implemented="TRUE"
+ Name="CurrentLinking"
+>
+<ReqRef
+ Id="3.4.4.4.5"
+>
+</ReqRef>
+<Comment>Provides the linking info currently active</Comment>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>FIRST_IN Linkings</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="CurrentBGAcceptableUnknown"
+>
+<ReqRef
+ Id="3.4.4.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.2.1.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.2.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.8.5.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.5"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Acceptable"
+>
+<PreConditions>
+<PreCondition>Available ( CurrentLinking() )</PreCondition>
+<PreCondition> (FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition>
+<PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition>
+<PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition>
+<PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Default"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="CurrentBGIsNominalDirection"
+>
+<Cases>
+<Case
+ Name="IsNominal"
+>
+<PreConditions>
+<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="BaliseHasReposPacketValidForDirection"
+>
+<ReqRef
+ Id="3.4.4.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.2.1.b"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="message"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Checks"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR) </PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Name="DistanceToBaliseGroup"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="NID_BG"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="LinkingReaction"
+ Implemented="TRUE"
+ Name="ConvertLinkingReaction"
+>
+<ReqRef
+ Id="3.4.4.2.3"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.Q_LINKREACTION"
+ Name="Reaction"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No reaction"
+>
+<PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition>
+</PreConditions>
+<Expression>LinkingReaction.NoReaction</Expression>
+</Case><Case
+ Name="Train trip"
+>
+<PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition>
+</PreConditions>
+<Expression>LinkingReaction.TrainTrip</Expression>
+</Case><Case
+ Name=" Command service brake"
+>
+<PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition>
+</PreConditions>
+<Expression>LinkingReaction.CommandServiceBrake</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConsiderBG"
+>
+<ReqRef
+ Id="3.4.4.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.4.5"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>NOT Available ( Linking.CurrentLinking() )
+  OR
+( Available ( Linking.CurrentLinking () )
+    AND
+    (
+        Linking.CurrentBGWithinFrame()
+            OR
+        Message.Q_LINK == Messages.Q_LINK.Unlinked
+    )
+)</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Name="LinkingInformationReceived"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ClearLinkingInformation"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No infill"
+>
+<ReqRef
+ Id="3.7.3.1.m"
+>
+</ReqRef>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Linkings &lt;- []</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="Infill"
+>
+<ReqRef
+ Id="3.7.3.1.n"
+>
+</ReqRef>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Insert first BG"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert first BG"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT CreateLinkingData (
+  D_LINK =&gt; Packet.D_LINK,
+  NID_BG =&gt; Packet.NID_BG,
+  Q_LINK_ORIENTATION =&gt; Packet.Q_LINKORIENTATION,
+  Q_LINK_REACTION =&gt; Packet.Q_LINKREACTION,
+  Q_LOCACC =&gt; Packet.Q_LOCACC,
+  Q_SCALE =&gt; Packet.Q_SCALE
+)
+IN Linkings </Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Insert following BGs"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Insert following BGs"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1 </Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="StoreLinkingInfo"
+>
+<Comment>Stores a linking information in the list of available linking informations</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
+ Name="Info"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Q_SCALE"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Store info"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Store info"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT CreateLinkingData (
+  D_LINK =&gt; Info.D_LINK,
+  NID_BG =&gt; Info.NID_BG,
+  Q_LINK_ORIENTATION =&gt; Info.Q_LINKORIENTATION,
+  Q_LINK_REACTION =&gt; Info.Q_LINKREACTION,
+  Q_LOCACC =&gt; Info.Q_LOCACC,
+  Q_SCALE =&gt; Q_SCALE
+) 
+IN Linkings</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanLinkingInfo"
+>
+<ReqRef
+ Id="3.4.4.2.1.1"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ClearLinkingInfo"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="FilterLinkings"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Comment></Comment>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="Linkings"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="Linkings"
+>
+<Comment>Stores the next linking data as provided by the balises</Comment>
+</Variable></Variables>
+</NameSpace>

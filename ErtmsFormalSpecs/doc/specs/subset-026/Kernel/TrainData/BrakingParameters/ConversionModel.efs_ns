@@ -1,0 +1,874 @@
+<NameSpace
+ Name="ConversionModel"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConversionModelIsUsed"
+>
+<ReqRef
+ Id="3.13.6.2.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.11.1"
+>
+</ReqRef>
+<Comment>Indicates whether the conversion model is used (i.e. the train satisfies the requirements for the use of conversion model). If the conversion model is used, the train is called &quot;Lambda&quot; train, otherwise it is called &quot;Gamma train&quot;.</Comment>
+<Cases>
+<Case
+ Name="ConversionModelIsUsed"
+>
+<PreConditions>
+<PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.MaximumSpeed</PreCondition>
+<PreCondition>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition>
+<PreCondition>TrainData.Value.BrakePercentage != Percentage.NA</PreCondition>
+<PreCondition>30.0 &lt;= TrainData.Value.BrakePercentage</PreCondition>
+<PreCondition>TrainData.Value.BrakePercentage &lt;= 250.0</PreCondition>
+<PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.TrainLength</PreCondition>
+<PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 750.0</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="ConversionModelIsNotUsed"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="BasicDecelerationNextAcceleration"
+>
+<ReqRef
+ Id="Entry 3.A3.7.6.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.7.6.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.7.6.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.7.6.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.7.6.5"
+>
+</ReqRef>
+<Comment>Computes the acceleration value for A_brake_emergency or A_brake_service that will be applicable after the speed V provided as parameter, according to the algorithm described in 3.A3.7.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter><Parameter
+ Type="Default.Percentage"
+ Name="aBrakePercentage"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Below 100 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 100.0</PreCondition>
+</PreConditions>
+<Expression> - 0.00000063 * aBrakePercentage * aBrakePercentage * aBrakePercentage + 0.000061 * aBrakePercentage * aBrakePercentage + 0.00472 * aBrakePercentage + 0.0663</Expression>
+</Case><Case
+ Name="Between 100 km/h and 120 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 120.0</PreCondition>
+</PreConditions>
+<Expression>0.000000273 * aBrakePercentage * aBrakePercentage * aBrakePercentage - 0.00000454 * aBrakePercentage * aBrakePercentage + 0.00514 * aBrakePercentage + 0.13</Expression>
+</Case><Case
+ Name="Between 120 km/h and 150 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 150.0</PreCondition>
+</PreConditions>
+<Expression>0.0000000558 * aBrakePercentage * aBrakePercentage * aBrakePercentage - 0.00000676 * aBrakePercentage * aBrakePercentage + 0.00581 * aBrakePercentage + 0.0479</Expression>
+</Case><Case
+ Name="Between 150 km/h and 180 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 180.0</PreCondition>
+</PreConditions>
+<Expression>0.00000003 * aBrakePercentage * aBrakePercentage * aBrakePercentage - 0.00000385 * aBrakePercentage * aBrakePercentage + 0.00552 * aBrakePercentage + 0.048</Expression>
+</Case><Case
+ Name="Above 180 km/h"
+>
+<Expression>0.00000000323 * aBrakePercentage * aBrakePercentage * aBrakePercentage + 0.00000166 * aBrakePercentage * aBrakePercentage + 0.00506 * aBrakePercentage + 0.0559</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="BasicDecelerationNextSpeedStep"
+>
+<ReqRef
+ Id="3.A3.7.5"
+>
+</ReqRef>
+<Comment>Computes the nexr speed step for A_brake_emergency or A_brake_service, according to the algorithm described in 3.A3.7.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="100 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 100.0</PreCondition>
+</PreConditions>
+<Expression>100.0</Expression>
+</Case><Case
+ Name="120 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 120.0</PreCondition>
+</PreConditions>
+<Expression>120.0</Expression>
+</Case><Case
+ Name="150 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 150.0</PreCondition>
+</PreConditions>
+<Expression>150.0</Expression>
+</Case><Case
+ Name="180 km/h"
+>
+<PreConditions>
+<PreCondition>V &lt; 180.0</PreCondition>
+</PreConditions>
+<Expression>180.0</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Default.BaseTypes.Speed.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
+ Name="T_brake_basic_sb"
+>
+<ReqRef
+ Id="3.A3.9.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.9.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.9.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.11.1"
+>
+</ReqRef>
+<Comment>Provides the value of the basic brake build up time for full service brake.</Comment>
+<Cases>
+<Case
+ Name="Passenger train"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Time ( 3.0 +
+                             1.5 * ( TrainData.Value.TrainLength / 100.0 ) +
+                             0.1 * ( TrainData.Value.TrainLength / 100.0 ) *
+                                     ( TrainData.Value.TrainLength / 100.0 ) )</Expression>
+</Case><Case
+ Name="Freight train in G"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Time ( 3.0 +
+                              2.77 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) +
+                              0.00 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) *
+                                         ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) )</Expression>
+</Case><Case
+ Name="Freight train in P"
+>
+<Expression>BaseTypes.Time ( 3.0 +
+                              2.77 * ( TrainData.Value.TrainLength / 100.0 ) +
+                              0.00 * ( TrainData.Value.TrainLength / 100.0 ) *
+                                         (TrainData.Value.TrainLength / 100.0 ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorrectionFactor"
+ Implemented="TRUE"
+ Name="kto"
+>
+<ReqRef
+ Id="3.A3.8.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.9.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.1.1"
+>
+</ReqRef>
+<Comment>Provides the correction factor kto.</Comment>
+<Cases>
+<Case
+ Name="Passenger train"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition>
+</PreConditions>
+<Expression>1.0 + 0.2</Expression>
+</Case><Case
+ Name="Freight train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition>
+</PreConditions>
+<Expression>1.0 + 0.2</Expression>
+</Case><Case
+ Name="Freight train in G"
+>
+<Expression>1.0 + 0.16</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
+ Name="T_brake_basic_eb"
+>
+<ReqRef
+ Id="3.A3.8.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.8.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.11.1"
+>
+</ReqRef>
+<Comment>Provides the value of basic brake build up time for the emergency brake.</Comment>
+<Cases>
+<Case
+ Name="Train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP OR TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Time ( 2.3 +
+                             0.0 *   ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) +
+                             0.17 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) *
+                                        ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) )</Expression>
+</Case><Case
+ Name="Freight train in G"
+>
+<Expression>BaseTypes.Time ( 12.0 +
+                              0.0 *   ( TrainData.Value.TrainLength / 100.0 ) +
+                              0.05 * ( TrainData.Value.TrainLength / 100.0 ) *
+                                         ( TrainData.Value.TrainLength / 100.0 ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_brake_emergency"
+>
+<ReqRef
+ Id="3.13.6.2.1.4"
+>
+</ReqRef>
+<Comment>Provides the value of A_brake_emergency(V) computed by the conversion model.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>BrakingModelFunction ( BrakingModel =&gt; A_brake_emergency, Speed =&gt; V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
+ Name="T_brake_service"
+>
+<ReqRef
+ Id="3.13.6.3.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.3.2.3.a"
+>
+</ReqRef>
+<Comment>Provides the value of T_brake_service computed by the conversion model.</Comment>
+<Cases>
+<Case
+ Name="Target speed equals 0"
+>
+<PreConditions>
+<PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition>
+</PreConditions>
+<Expression>T_brake_service_cm0</Expression>
+</Case><Case
+ Name="Target speed different from 0"
+>
+<Expression>T_brake_service_cmt</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
+ Name="T_brake_emergency"
+>
+<ReqRef
+ Id="3.13.6.2.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.2.2.a"
+>
+</ReqRef>
+<Comment>Provides the value of T_brake_emergency computed by the conversion model.</Comment>
+<Cases>
+<Case
+ Name="Target speed equals 0"
+>
+<PreConditions>
+<PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition>
+</PreConditions>
+<Expression>T_brake_emergency_cm0</Expression>
+</Case><Case
+ Name="Target speed different from 0"
+>
+<Expression>T_brake_emergency_cmt</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_brake_service"
+>
+<ReqRef
+ Id="3.13.6.3.1.3"
+>
+</ReqRef>
+<Comment>Provides the value of A_brake_service(V) computed by the conversion model.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>BrakingModelFunction ( BrakingModel =&gt; A_brake_service, Speed =&gt; V )</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ComputeA_safe"
+>
+<ReqRef
+ Id="3.13.3.3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.5.1"
+>
+</ReqRef>
+<Comment>Computes A_safe from conversion model using the algorithm described in 3.A.3.7.</Comment>
+<Parameters>
+<Parameter
+ Type="BrakingModel"
+ Name="aBrakingModel"
+>
+</Parameter><Parameter
+ Type="Default.Percentage"
+ Name="aBrakePercentage"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ComputeFirstStep"
+>
+<ReqRef
+ Id="3.A3.7.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.7.4"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Calculate first step"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>aBrakingModel.Val0.SpeedStep &lt;- 0.0</Action>
+<Action>aBrakingModel.Val0.Acceleration &lt;- 0.0075 * aBrakePercentage + 0.076</Action>
+<Action>aBrakingModel.Val1.SpeedStep &lt;- 16.85 * aBrakePercentage ^ 0.428</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ComputeFollowingSteps"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Calculate following steps"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>aBrakingModel.Val1.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val1.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+<Action>aBrakingModel.Val2.SpeedStep &lt;- BasicDecelerationNextSpeedStep ( aBrakingModel.Val1.SpeedStep )</Action>
+<Action>aBrakingModel.Val2.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val2.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+<Action>aBrakingModel.Val3.SpeedStep &lt;- BasicDecelerationNextSpeedStep ( aBrakingModel.Val2.SpeedStep )</Action>
+<Action>aBrakingModel.Val3.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val3.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+<Action>aBrakingModel.Val4.SpeedStep &lt;- BasicDecelerationNextSpeedStep ( aBrakingModel.Val3.SpeedStep )</Action>
+<Action>aBrakingModel.Val4.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val4.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+<Action>aBrakingModel.Val5.SpeedStep &lt;- BasicDecelerationNextSpeedStep ( aBrakingModel.Val4.SpeedStep )</Action>
+<Action>aBrakingModel.Val5.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val5.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+<Action>aBrakingModel.Val6.SpeedStep &lt;- BasicDecelerationNextSpeedStep ( aBrakingModel.Val5.SpeedStep )</Action>
+<Action>aBrakingModel.Val6.Acceleration &lt;- BasicDecelerationNextAcceleration ( V =&gt; aBrakingModel.Val6.SpeedStep, aBrakePercentage =&gt; aBrakePercentage )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="ComputeBasicDeceleration"
+>
+<ReqRef
+ Id="3.A3.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.7.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.5.1"
+>
+</ReqRef>
+<Comment>Computes A_brake_emergency and A_brake_service from conversion model using the algorithm described in 3.A.3.7.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ComputeBasicDeceleration_SB"
+>
+<ReqRef
+ Id="3.13.3.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.3.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ComputeBasicDeceleration_SB"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>A_brake_service &lt;- BrakingModel{}</Action>
+<Action>ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinPercentage ( TrainData.Value.BrakePercentage, 135.0 ) )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ComputeBasicDeceleration_EB"
+>
+<ReqRef
+ Id="3.13.3.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.3.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ComputeBasicDeceleration_EB"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>A_brake_emergency &lt;- BrakingModel{}</Action>
+<Action>ComputeA_safe ( aBrakingModel =&gt; A_brake_emergency, aBrakePercentage =&gt; TrainData.Value.BrakePercentage )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="ComputeServiceBrakeEquivalentTime"
+>
+<ReqRef
+ Id="3.13.3.4.4.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.A3.9.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.5.1"
+>
+</ReqRef>
+<Comment>Computes service brake equivalent time from conversion model.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ComputeServiceBrakeEquivalentTime"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Target speed equals 0"
+>
+<PreConditions>
+<PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition>
+</PreConditions>
+<Actions>
+<Action>T_brake_service_cm0 &lt;- T_brake_basic_sb ()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Target speed different from 0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>T_brake_service_cmt &lt;- T_brake_basic_sb () * BaseTypes.Time ( kto () )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="ComputeEmergencyBrakeEquivalentTime"
+>
+<ReqRef
+ Id="3.A3.8.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.5.1"
+>
+</ReqRef>
+<Comment>Computes emergency brake equivalent time from conversion model.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ComputeEmergencyBrakeEquivalentTime"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Target speed equals 0"
+>
+<PreConditions>
+<PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition>
+</PreConditions>
+<Actions>
+<Action>T_brake_emergency_cm0 &lt;- T_brake_basic_eb ()</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Target speed different from 0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>T_brake_emergency_cmt &lt;- T_brake_basic_eb () * BaseTypes.Time ( kto () )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="Initialize"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ApplyConversionModel"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ApplyConversionModel"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="T_brake_emergency_cm0"
+>
+<ReqRef
+ Id="3.13.3.4.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="T_brake_emergency_cmt"
+>
+<ReqRef
+ Id="3.13.3.4.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is different zero.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="T_brake_service_cm0"
+>
+<ReqRef
+ Id="3.13.3.4.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The value of the equivalent service brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="T_brake_service_cmt"
+>
+<ReqRef
+ Id="3.13.3.4.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.4.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.4.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The value of the equivalent service brake build up time to be used when the target speed (V_target) is different from zero.</Comment>
+</Variable><Variable
+ Type="BrakingModel"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="A_brake_emergency"
+>
+<ReqRef
+ Id="3.13.6.2.1.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The speed dependent deceleration model for the emergency brake, derived from the brake percentage using the conversion model (if no speed dependent deceleration model for emergency brake was acquired as part of Train Data).</Comment>
+</Variable><Variable
+ Type="BrakingModel"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="A_brake_service"
+>
+<ReqRef
+ Id="3.13.6.3.1.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.3.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.6.3"
+>
+</ReqRef>
+<Comment>The speed dependent deceleration model for the service brake, derived from the brake percentage using the conversion model (if no speed dependent deceleration model for service brake was acquired as part of Train Data).</Comment>
+</Variable></Variables>
+</NameSpace>

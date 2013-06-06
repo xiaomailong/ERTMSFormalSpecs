@@ -1,0 +1,32 @@
+<NameSpace
+ Name="MESSAGE"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="TRAIN_TO_TRACK"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRACK_TO_TRAIN"
+>
+</NameSpaceRef></NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TRAIN_TO_TRACK"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRACK_TO_TRAIN.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TRACK_TO_TRAIN"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

@@ -1,0 +1,48 @@
+<NameSpace
+ Name="DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="141"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_GDIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_GDIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Gradient"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="G_TSR"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

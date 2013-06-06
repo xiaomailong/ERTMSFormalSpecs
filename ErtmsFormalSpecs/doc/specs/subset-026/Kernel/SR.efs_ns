@@ -1,0 +1,173 @@
+<NameSpace
+ Name="SR"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR"
+>
+<ReqRef
+ Id="8.5.3.2"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="Default.BaseTypes.Distance.Unknown"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance"
+>
+<ReqRef
+ Id="8.7.1.8"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="BaliseGroups"
+ Default="[]"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BGs"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="BaliseGroup"
+ MaxSize="20"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="BaliseGroups"
+>
+<ReqRef
+ Id="7.4.2.16"
+>
+</ReqRef>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="BaliseGroups"
+ NeedsRequirement="FALSE"
+ Name="CreateBaliseGroups"
+>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Collection1"
+ Name="BaliseGroups"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NoBaliseGroupsSent"
+>
+<PreConditions>
+<PreCondition>BaliseGroups == EMPTY</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="BaliseGroupsSent"
+>
+<Expression>MAP ( FIRST_IN ( BaliseGroups ) ).LIST_OF_BALISES_IN_SR_AUTHORITY.Sequence1 USING CreateBaliseGroup ( X )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaliseGroup"
+ NeedsRequirement="FALSE"
+ Name="CreateBaliseGroup"
+>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
+ Name="aBaliseGroup"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>BaliseGroup
+{
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( aBaliseGroup.Q_NEWCOUNTRY ),
+    NID_C =&gt; aBaliseGroup.NID_C,
+    NID_BG =&gt; aBaliseGroup.NID_BG
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SRAuthorised"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Available ( SRAuthorisation )
+  AND
+SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="SRAuthorisationReceived"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.1"
+>
+</ReqRef>
+<ReqRef
+ Id="8.5.3.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="UpdateSRAuthorisation"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="UpdateSRAuthorisation"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- Kernel.SR.SR
+{
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
+    BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 )
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="SR.SR"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SRAuthorisation"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.1"
+>
+</ReqRef>
+<Comment>Contains information about the SR authorisation.</Comment>
+</Variable></Variables>
+</NameSpace>

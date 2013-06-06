@@ -1,0 +1,182 @@
+<NameSpace
+ Name="TRAIN_TO_TRACK"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="VALIDATED_TRAIN_DATA"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="REQUEST_FOR_SHUNTING"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="MA_REQUEST"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRAIN_POSITION_REPORT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="REQUEST_TO_SHORTEN_MA_IS_GRANTED"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="REQUEST_TO_SHORTEN_MA_IS_REJECTED"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ACKNOWLEDGEMENT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ACKNOWLEDGEMENT_OF_EMERGENCY_STOP"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRACK_AHEAD_FREE_GRANTED"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="END_OF_MISSION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="RADIO_INFILL_REQUEST"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="NO_COMPATIBLE_VERSION_SUPPORTED"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="INITIATION_OF_A_COMMUNICATION_SESSION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TERMINATION_OF_A_COMMUNICATION_SESSION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SOM_POSITION_REPORT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SESSION_ESTABLISHED"
+>
+</NameSpaceRef></NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="VALIDATED_TRAIN_DATA"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="REQUEST_FOR_SHUNTING"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="MA_REQUEST"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TRAIN_POSITION_REPORT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_GRANTED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="REQUEST_TO_SHORTEN_MA_IS_GRANTED"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_REJECTED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="REQUEST_TO_SHORTEN_MA_IS_REJECTED"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="ACKNOWLEDGEMENT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="ACKNOWLEDGEMENT_OF_EMERGENCY_STOP"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.TRACK_AHEAD_FREE_GRANTED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TRACK_AHEAD_FREE_GRANTED"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="END_OF_MISSION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.RADIO_INFILL_REQUEST.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="RADIO_INFILL_REQUEST"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.NO_COMPATIBLE_VERSION_SUPPORTED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NO_COMPATIBLE_VERSION_SUPPORTED"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.INITIATION_OF_A_COMMUNICATION_SESSION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="INITIATION_OF_A_COMMUNICATION_SESSION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TERMINATION_OF_A_COMMUNICATION_SESSION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="SOM_POSITION_REPORT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_TO_TRACK.SESSION_ESTABLISHED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="SESSION_ESTABLISHED"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

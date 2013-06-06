@@ -1,0 +1,194 @@
+<NameSpace
+ Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment></Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="72"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TEXTCLASS"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTCLASS"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTDISPLAY"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_TEXTDISPLAY"
+>
+</StructureElement><StructureElement
+ TypeName="M_MODETEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_MODETEXTDISPLAY_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_LEVELTEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_LEVELTEXTDISPLAY_0"
+>
+</StructureElement><StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_TEXTDISPLAY"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_TEXTDISPLAY"
+>
+</StructureElement><StructureElement
+ TypeName="M_MODETEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_MODETEXTDISPLAY_1"
+>
+</StructureElement><StructureElement
+ TypeName="M_LEVELTEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_LEVELTEXTDISPLAY_1"
+>
+</StructureElement><StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TEXTCONFIRM"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTCONFIRM"
+>
+</StructureElement><StructureElement
+ TypeName="Q_CONFTEXTDISPLAY"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_CONFTEXTDISPLAY"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTREPORT"
+>
+</StructureElement><StructureElement
+ TypeName="NID_TEXTMESSAGE"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_TEXTMESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="NID_RBC"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_RBC"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_TEXT"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="String"
+ Default="&apos;&apos;"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="X_TEXT"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection></Collections>
+</NameSpace>

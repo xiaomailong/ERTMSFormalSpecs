@@ -1,0 +1,7930 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Start of Mission - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S0 : Initiation"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initiating start of mission"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S0"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- Boolean.False</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Kernel.PowerOn &lt;- True</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>DMI.DMI2.DeskOpen &lt;- Boolean.False</Action>
+<Action>DMI.DMI1.IsMaster &lt;- Boolean.True</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reach S0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- Boolean.True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Reach S1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A29 : Inform Radio Network registration has failed"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Inform failure of the Radio Network registration"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A29"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to reenter Radio Network ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A29</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI(). Out_RadioNetworkRegistrationFailed.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S1 : Enter driver ID and train running number"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update unknown driver ID"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unknown driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Hans&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Retrieve validated driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.Value == &apos;Fred&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update invalid driver ID"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Hans&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Retrieve validated driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.Value == &apos;Fred&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update unknown train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unknown train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Retrieve validated train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update invalid train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Retrieve validated train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Valid data available"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Johan&apos;</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;4321&apos;</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D3 : Branch by level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level2 or 3"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level0, 1 or NTC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D3.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D7 : Mobile terminal registered"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Mobile terminal registered"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.D7.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mobile terminal registered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A31</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - No mobile terminal registered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- False</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A29</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S2 : Level inhibition"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer possibility to inhibit level"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Mobile terminal registered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InhibitedLevels.Levels &lt;- [Level.L2, Level.L3]</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels == [Level.L2, Level.L3]</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_LevelInhibition.InhibitionAction.InhibitLevel == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_LevelInhibition.InhibitionAction.RemoveExistingInhibition == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Take care of inhibition response"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Set the state of the inhibited level to unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;- [Level.L2, Level.L3]</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Do not set the state of the non-inhibited level to unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;- [Level.L2, Level.L3]</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.Value == Level.L1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request level if unknown or invalid"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Request level : Unknown level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Level.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Request level : Invalid level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Level.L1</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.DriverAction.ReValidate == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Do not request level : Valid level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Selected level is L2 or L3"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.9"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level is L2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level is L3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Selected level is L0, L1 or NTC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.9"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level is L0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level is L1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level is NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S20 : Start"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer the possibility to select Start, level is NTC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S20.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select Start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S22</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer the possibility to select Start, level is Level 0"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S20.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select Start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S23</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer the possibility to select Start, level is Level 1"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S20.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select Start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S24</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer the possibility to select Start, level is Level 2"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S20.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select Start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S21</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer the possibility to select Start, level is Level 3"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S20.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select Start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive start"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S21</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S3 : Radio Network ID"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer possibility to ReEnter the Radio Network ID"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to reenter Radio Network ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Default.Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver Elects to Re-Enter Radio Network ID"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Retrieve list of allowed networks"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.DriverResponse1</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.AcquireListOfAvailableNetworks.RequestState == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Allow driver to select a Radio network ID from the non empty list"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [&apos;1234&apos;, &apos;4562&apos;] </Action>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.AcquireListOfAvailableNetworks.RequestState == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverToSelectNetworkId == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AvailableNetworkIDs == [&apos;1234&apos;, &apos;4562&apos;]</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.AskDriverOptionToChangeNetworkId == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - When driver selects a network ID, register to the network"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId &lt;- True</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID &lt;- &apos;4562&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RegisterMobileTerminal in EURORADIO.RegisterMobileTerminal.Registering</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.NetworkID == &apos;4562&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Mobile terminal registered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - The list of Radio Network Ids is empty"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [] </Action>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A29</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="One mobile terminal registerd on network"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Status of RBC ID/Phone number is invalid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6543&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5742&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id == &apos;6543&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber == &apos;5742&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Status of RBC ID/Phone number is valid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;7654&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;6574&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id == &apos;7654&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber == &apos;6574&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Status of RBC ID/Phone number is unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6541&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5741&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.ReEnter == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseEirene == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RbcIdNumberChoice.UseLastStored == False</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id == &apos;6541&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber == &apos;5741&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="At the end, go to A31"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S3.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.12"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.13"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - After driver responds, go to A31"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A31</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - In case of change, apply them in EURORADIO"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId &lt;- True</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id &lt;- &apos;6656&apos;</Action>
+<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;2398&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;6656&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;2398&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S12 : Train data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request train data"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S12"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.22"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Request train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S12</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Train data validated(E16)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response </Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.TrainData.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D12</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D12 : Check Train Running Number"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Valid train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D12.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D12</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D12.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S13</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Unknown train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S13</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S13 : Train running number"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unknown train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S13"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S13.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.23"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unknown train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Train data validated(E16)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D10</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S13"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S13.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Train data validated(E16)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D10</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Valid train running number"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S13"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S13.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Train data validated(E16)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D10 : Level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 2"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D10.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D11</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 3"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D10.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D11</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 0"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D10.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level 1"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D10.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level NTC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D10.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S11 : Send train data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send train data"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S11"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S11.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.VALIDATED_TRAIN_DATA )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive acknowledgement"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11.TrainDataSent</Action>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    ACKNOWLEDGEMENT_OF_TRAIN_DATA =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.Message
+    {
+        L_MESSAGE =&gt; 10,
+        M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+        NID_LRBG =&gt; 3090,
+        NID_MESSAGE =&gt; 8,
+        T_TRAIN_0 =&gt; 0,
+        T_TRAIN_1 =&gt; 0
+    }
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D11 : Session is open"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session is open"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Session is open"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S11</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session is not open"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Session is not open"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S10 : Selection of SH, NL or Data Entry"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer selection of SH, NL or Data Entry"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select SH, NL or Data Entry"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects SH"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.19"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 : Driver selects SH (E12), Level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 : Driver selects SH (E12), Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 : Driver selects SH (E12), Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects NL"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.18"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 : Driver selects NL (E10), Level0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.NLSignalReceived &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 : Driver selects NL (E10), Level1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 : Driver selects NL (E10), Level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 : Driver selects NL (E10), Level2, no session is open"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 : Driver selects NL (E10), Level3, no session is open"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selects Train Data Entry"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 : Driver selects Train Data Entry"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S12</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S21 : MA Request"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request and receive SR"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- Kernel.SR.SR
+{
+    Distance =&gt; 0.0,
+    BGs =&gt; []
+}</Action>
+<Action>Kernel.MA.MA &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S24</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request and receive MA allowing OS"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.OS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S25</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request and receive MA allowing LS"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.LS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S25</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request and receive MA allowing SH"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.SH,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S25</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send MA request and receive MA allowing FS"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S21.3"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.MA_REQUEST )</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive MA"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.FS</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S22 : SN Mode"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for SN mode, valid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S22"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S22.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack SN, valid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, keep train position valid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.SN</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for SN mode, invalid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S22"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S22.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S22.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.19"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack SN, invalid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, set train position as unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.SN</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S23 : UN Mode"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for UN mode, valid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S23"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S23.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack UN, valid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, keep train position valid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.UN</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for UN mode, invalid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S23"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S23.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S23.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.19"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack UN, invalid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, set train position as unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.UN</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S24 : SR Mode"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for SR mode, valid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S24"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S24.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack SR, valid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, keep train position valid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.SR</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for SR mode, invalid train position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S24"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S24.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S24.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.19"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack SR, invalid train position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack, set train position as unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.SR</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S25 : OS/LS/SH Mode"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for OS mode"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S25.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S25"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.OS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.OS</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for LS mode"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S25.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S25"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.LS,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.LS</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Request acknowledgement for SH mode"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S25.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.S25"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.6.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Ack SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
+<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+    Kernel.MA.ModeProfile.ModeProfile
+    {
+        AcknLength =&gt; 0.0,
+        Distance =&gt; 0.0,
+        Length =&gt; 1000.0,
+        Mode =&gt; Mode.ModeProfile.SH,
+        Speed =&gt; 40.0,
+        SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+    }
+]</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Receive ack"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.SH</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Kernel.MissionIsOnGoing</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A31 : Open communication with RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<ReqRef
+ Id="3.5.3.4.a"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Inactive</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Open communication session with RBC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A31"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Open communication with RBC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A31</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D31 : Open communication status"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check open communication status"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D31"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.14"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.15"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Communication established, where RBC contact information was invalid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
+<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
+<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RequestOpenRbcSession.RequestState == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D32</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Communication established, where RBC contact information was unknown"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
+<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
+<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RequestOpenRbcSession.RequestState == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D32</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Communication failed"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
+<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
+<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Failed</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RequestOpenRbcSession.RequestState == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A32</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A32 : Alert driver of the failure to open RBC communication"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Alert driver"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A32.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Alert driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.ConnectionStatus == EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Exit to S10"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A32.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Alert driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D2 : Check stored position"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>EURORADIO.CurrentRadioSession &lt;-
+EURORADIO.RadioSession{
+SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
+}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Both level and position are valid"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D2.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid level &amp; position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid level"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid level &amp; position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid level &amp; position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid level and position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid level &amp; position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid position, check Level &amp; RBC Id or Phone number state change"
+>
+<ReqRef
+ Id="Entry 5.4.3.3.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Valid RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Unknown level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Unknown RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Invalid level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Invalid RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid level, RBC Id or Phone number state change"
+>
+<ReqRef
+ Id="Entry 5.4.3.3.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Unknown RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Invalid RBC phone number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A23 : RBC accepts the train, even if the position is invalid"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC informs that the train is accepted"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A23"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - RBC accepts the train"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A23</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A24</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A33 : SoM valid position report"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Valid position data"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A33.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.A33.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Send SoM position report"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A33</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.SOM_POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D32 : Check stored position"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position is valid"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D32"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Valid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A33</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Invalid position"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D32"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A34</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A34 : SoM invalid position report"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send SoM position report"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A34.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.A34.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Invalid position data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.SOM_POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.SOM_POSITION_REPORT.Q_STATUS == Messages.Q_STATUS.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unknown position data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( EURORADIO.EuroradioMessageOut.SOM_POSITION_REPORT )</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.SOM_POSITION_REPORT.Q_STATUS == Messages.Q_STATUS.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Receive response from RBC"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.D22.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.2.D33.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - RBC confirms on-board position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
+    {
+    }
+}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A35</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - RBC accepts the train"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    TRAIN_ACCEPTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message
+    {
+    }
+}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A23</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - RBC rejects the train"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    TRAIN_REJECTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message
+    {
+    }
+}</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A38</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A35 : RBC informs that the position is valid"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC informs that the position is valid"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A35"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.16"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - RBC informs that the position is valid"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A35</Action>
+<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+{
+    SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
+    {
+    
+    }
+}</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10
+</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A24 : Delete train position data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete train position data"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A24"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.17"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Delete train position data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A24</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A38 : RBC informs that it rejects the train"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RBC informs that the train is rejected"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A38"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - The RBC has rejected the train"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A38</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A39</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A39 : The train is rejected"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete train position data and terminate RBC session"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A39"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.18"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Delete train position data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A39</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="100"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Terminating</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.A40</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="A40 : Inform the driver that the train is rejected"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Inform driver that the train is rejected"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.A40"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Inform driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A40</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.ShowRequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - go to S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="End of SoM"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Transition to any mode other than SB"
+>
+<ReqRef
+ Id="5.4.3.2.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Somewhere in SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Transition to any mode other than SB"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT ( Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Close the desk"
+>
+<ReqRef
+ Id="5.4.3.2.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Somewhere in SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>DMI.DMI1.DeskOpen &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Close the desk"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT ( Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose to re-enter level in S10 and S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter level in S10"
+>
+<ReqRef
+ Id="5.4.5.3.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.25"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter level is proposed in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter level, valid level, valid RBC Contact information"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - We reach S2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Driver elects to re-enter level, unknown level, valid RBC Contact information"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Driver elects to re-enter level, unknown level, unknown RBC Contact information"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter level in S20"
+>
+<ReqRef
+ Id="5.4.5.3.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter level is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter level"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Loss of open session with RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Loss of connection after D11"
+>
+<ReqRef
+ Id="5.4.5.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Somewhere in SoM, after D11"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S21</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Loss of RBC connection"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose Override in S10 and S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose Override in S10"
+>
+<ReqRef
+ Id="5.4.5.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Override is proposed in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to go in Override mode, valid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Driver elects to go in Override mode, invalid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose Override in S20"
+>
+<ReqRef
+ Id="5.4.5.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Override is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to go in Override mode, valid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Driver elects to go in Override mode, invalid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose to re-enter driver ID in S10 and S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter driver ID in S10"
+>
+<ReqRef
+ Id="5.4.5.3.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter Driver ID is proposed in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.Value == &apos;Jacques&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled
+</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - We are still in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter driver ID in S20"
+>
+<ReqRef
+ Id="5.4.5.3.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter Driver ID is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter driver ID"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.Value == &apos;Jacques&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled
+</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - We are still in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose to re-enter train running number in S10 and S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter train running number in S10"
+>
+<ReqRef
+ Id="5.4.5.3.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter train running number is proposed in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.Value == &apos;1234&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - We are still in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter train running number in S20"
+>
+<ReqRef
+ Id="5.4.5.3.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter train running number is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter train running number"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.Value == &apos;1234&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - We are still in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose to re-enter train data in S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose to re-enter train data in S20"
+>
+<ReqRef
+ Id="5.4.5.3.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Re-enter train data is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 0.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to re-enter train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>DMI.MasterDMI().In_TrainData.Data &lt;- Kernel.TrainData.TrainDataValues{MaximumSpeed=&gt;30.0}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed == 30.0</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S12</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose Non leading in S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose Non Leading in S20"
+>
+<ReqRef
+ Id="5.4.5.3.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Non leading is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to go in non leading mode, valid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.NLSignalReceived &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Driver elects to go in non leading mode, invalid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose Shunting in S20"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose Shunting in S20"
+>
+<ReqRef
+ Id="5.4.5.3.7"
+>
+</ReqRef>
+<ReqRef
+ Id="5.4.5.3.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step 1 - Shunting is proposed in S20"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver elects to go in shunting mode, valid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Driver elects to go in shunting mode, invalid position"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Degraded situation - Propose Start in S10"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Propose Start in S10"
+>
+<ReqRef
+ Id="5.4.5.3.8"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.25"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Start is proposed in S10"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Driver selects Start in level 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S23</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Driver selects Start in level NTC"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S22</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Driver selects Start in level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S24</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Driver selects Start in level 2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S24</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Driver selects Start in level 3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S24</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

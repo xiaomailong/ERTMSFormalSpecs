@@ -1,0 +1,553 @@
+<NameSpace
+ Name="NATIONAL_VALUES"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Downloads a set of National Values to the train</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="3"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_VALIDNV"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVSHUNT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVSTFF"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVONSIGHT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVLIMSUPERV"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVUNFIT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVREL"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_NVROLL"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVSBTSMPERM"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVSBTSMPERM"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVEMRRLS"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVEMRRLS"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVGUIPERM"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVGUIPERM"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVSBFBPERM"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVSBFBPERM"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVINHSMICPERM"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVINHSMICPERM"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVALLOWOVTRP"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVSUPOVTRP"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_NVOVTRP"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_NVOVTRP"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_NVPOTRP"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVCONTACT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVCONTACT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_NVCONTACT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVDERUN"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVDERUN"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_NVSTFF"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVDRIVER_ADHES"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVDRIVER_ADHES"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVMAXREDADH1"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVMAXREDADH2"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVMAXREDADH3"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVLOCACC"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVLOCACC"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVAVADH"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVAVADH"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVEBCL"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVEBCL"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVKINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVKINT"
+>
+</StructureElement><StructureElement
+ TypeName="Q_NVKVINTSET"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVKVINTSET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVP12"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVP23"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVKVINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_1"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_0"
+>
+</StructureElement><StructureElement
+ TypeName="Collection2"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence2"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_1"
+>
+</StructureElement><StructureElement
+ TypeName="Collection4"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence4"
+>
+</StructureElement><StructureElement
+ TypeName="L_NVKRINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_NVKRINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKRINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKRINT"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_2"
+>
+</StructureElement><StructureElement
+ TypeName="Collection5"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence5"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKTINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKTINT"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure2"
+>
+<StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVKVINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure3"
+>
+<StructureElement
+ TypeName="Q_NVKVINTSET"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_NVKVINTSET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVP12"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Acceleration"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="A_NVP23"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVKVINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_1"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Number"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+</StructureElement><StructureElement
+ TypeName="Collection3"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Sequence3"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure4"
+>
+<StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_NVKVINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKVINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT_1"
+>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SubStructure5"
+>
+<StructureElement
+ TypeName="L_NVKRINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_NVKRINT"
+>
+</StructureElement><StructureElement
+ TypeName="M_NVKRINT"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_NVKRINT"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection><Collection
+ TypeName="SubStructure2"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection2"
+>
+</Collection><Collection
+ TypeName="SubStructure4"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection3"
+>
+</Collection><Collection
+ TypeName="SubStructure3"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection4"
+>
+</Collection><Collection
+ TypeName="SubStructure5"
+ MaxSize="0"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="Collection5"
+>
+</Collection></Collections>
+</NameSpace>

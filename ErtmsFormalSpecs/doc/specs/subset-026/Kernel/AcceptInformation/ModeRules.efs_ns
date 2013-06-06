@@ -1,0 +1,8198 @@
+<NameSpace
+ Name="ModeRules"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptCoOperativeShorteningOfMA"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.43"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptAcknowledgementOfTrainData"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.42"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRecognitionOfExitFromTRIPMode"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.41"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptUnconditionalEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.44"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSHRefused"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.47"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRevocationOfEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.46"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptConditionalEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.45"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptLocationIdentity"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.40"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptAssignmentOfCoOrdinateSystem"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.35"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptEOLMInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.34"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSessionManagementWithNeighbouringRIU"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.33"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptInfillLocationReference"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.36"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrackConditionsBigMetalMasses"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.39"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrackConditionsIncludingSpecialCases"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.38"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrackConditionsExcludingSpecialCases"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.37"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSHAuthorised"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.48"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptReversingSupervisionInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.59"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptReversingAreaInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.58"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSoMPositionReportConfirmedByRBC"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.57"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptDefaultBaliseLoopRIUInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.60"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptLevelCrossingInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.63"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptPermittedBrakingDistanceInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.62"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrackAheadFreeUpToLevel2_3TransitionLocation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.61"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrainAccepted"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.56"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrackAheadFreeRequest"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.51"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSystemVersionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.50"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTracksideConstituentSystemVersion"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.49"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrainRunningNumber"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.52"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTrainRejected"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.55"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptAcknowledgementOfSessionTermination"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.54"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptInitiationOfSession"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.53"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRadioInfillAreaInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.32"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptLevelTransitionOrders"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.11"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException7()</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException7()</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1() AND Exceptions.ModeException7()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSTMSystemSpeedDistance"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.10"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSTMMaxSpeed"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.9"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptLevelInhibitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.12"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptMARequestParameters"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.15"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRadioNetworkRegistration"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.14"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSessionManagement"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.13"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException3()</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException3()</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptAxleLoadSpeedProfile"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.8"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSignallingRelatedSpeedRestriction"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.3"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptLinking"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.2"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptNationalValues"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptMovementAuthority"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.4"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptInternationalSSP"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.7"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptGradientProfile"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.6"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRepositioningInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.5"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptPositionReportParameters"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.16"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptFixedTextInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.27"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptPlainTextInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.26"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptAdhesionFactor"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.25"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptGeographicalPosition"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.28"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptStopShuntingOnDeskOpening"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.31"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptDangerForSHInformation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.30"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRBCTransitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.29"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException8()</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException8()</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptRouteSuitabilityData"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.24"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSRDistanceInformationFromLoop"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.19"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException6()</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptStopIfInSRMode"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.18"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptSRAuthorisation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.17"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTemporarySpeedRestriction"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.20"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptDefaultGradientForTSR"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.23"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptInhibitionOfRevocableTSRs"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.22"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcceptTemporarySpeedRestrictionRevocation"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.21"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NP"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NP</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException2() AND Exceptions.ModeException4()</Expression>
+</Case><Case
+ Name="PS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SH</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.FS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.LS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.OS</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.NL</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.UN</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.TR</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Exceptions.ModeException1()</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SF</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.IS</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.SN</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Mode.RV</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

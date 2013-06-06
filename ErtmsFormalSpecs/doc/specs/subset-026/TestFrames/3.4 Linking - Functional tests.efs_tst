@@ -1,0 +1,247 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="3.4 Linking - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Simple test"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Receive a linking packet"
+>
+<ReqRef
+ Id="3.16.2.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.4.2.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Odometry.NominalDistance &lt;- 0.0</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Linking packet received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
+                {
+                    NID_PACKET=&gt;5,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_LINK=&gt;3500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;10000,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1,
+N_ITER=&gt;0                  
+                    }
+            }
+        }
+    ]
+}</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 4.0
+    }
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT BTM.Linking.Linkings) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - See a linked balise rear of window"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 10000,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 5.0,
+        Position =&gt; 3100.0,
+        UnderReadingAmountOdo =&gt; 7.0
+    }
+}</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;1,
+    NID_C=&gt;140,
+    NID_BG=&gt;10000,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                SYSTEM_VERSION_ORDER =&gt;Messages.PACKET.TRACK_TO_TRAIN.SYSTEM_VERSION_ORDER.Message
+                {
+                    NID_PACKET=&gt;2,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    M_VERSION=&gt;    Messages.M_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0            
+                    }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3200.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.SpeedAndDistanceMonitoring.SBSpecified == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Purge obsolete linking info"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 12600.0</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 10001,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 8.0,
+        Position =&gt; 9000.0,
+        UnderReadingAmountOdo =&gt; 10.0
+    }
+}</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;1,
+    NID_C=&gt;140,
+    NID_BG=&gt;10001,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                SYSTEM_VERSION_ORDER =&gt;Messages.PACKET.TRACK_TO_TRAIN.SYSTEM_VERSION_ORDER.Message
+                {
+                    NID_PACKET=&gt;2,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    M_VERSION=&gt;    Messages.M_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0            
+                    }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

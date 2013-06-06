@@ -1,0 +1,6299 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Handling of Accepted and Stored Information - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="List of inhibited levels"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.39.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.39.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.39.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.InhibitedLevels.Levels &lt;- [Default.Level.L1, Default.Level.LNTC]</Action>
+<Action>Kernel.InhibitedLevels.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.InhibitedLevels.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.InhibitedLevels.Levels == [Default.Level.L1, Default.Level.LNTC]</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Driver ID"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.40.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.40.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.40.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.DriverId.Value &lt;- &apos;Svetlana&apos;</Action>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.DriverId.Value == &apos;Svetlana&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="ERTMS/ETCS level"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.37.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.37.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.37.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Level.Value == Level.L1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Table of priority of trackside supported levels"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.38.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.38.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.38.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Radio Newtork ID"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.41.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.41.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.41.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RadioNetworkId.Id &lt;- &apos;Network_Id&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RadioNetworkId.Id == &apos;Network_Id&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="RBC/RIU System Version"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.49.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.49.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.49.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.RbcRiuSystemVersion.Value &lt;- &apos;RBC RIU system version&apos;</Action>
+<Action>EURORADIO.RbcRiuSystemVersion.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RbcRiuSystemVersion.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.RbcRiuSystemVersion.Value == &apos;RBC RIU system version&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Operated System Version"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.50.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.50.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.50.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;147&apos;</Action>
+<Action>Kernel.OperatedSystemVersion.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.OperatedSystemVersion.Value == &apos;147&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.OperatedSystemVersion.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="RBC ID/Phone number"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.42.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.42.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.42.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;RBC_Id&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Train Running Number"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.43.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.43.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.43.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;148&apos;</Action>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainRunningNumber.Value == &apos;148&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Stop Shunting on desk opening"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.11.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.11.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.11.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MA Request Parameters"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.13.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.13.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.13.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Language used to display information to the driver"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.51.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.51.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.51.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>DMI.MasterDMI().DisplayLanguage.Value &lt;- Language.FR</Action>
+<Action>DMI.MasterDMI().DisplayLanguage.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().DisplayLanguage.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().DisplayLanguage.Value == Language.FR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Not yet applicable National Values"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.2.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.NationalValues.NotApplicableNationalValues.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.DataState == DataState.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position Report parameters"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.14.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.14.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.14.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 40.0</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 1000.0</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.LRBG</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.Locations &lt;- [EURORADIO.PositionLocation{Distance=&gt;1040.0,TrainEnd=&gt;EURORADIO.TrainEnd.MinSafeRearEnd}]</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainEnd.MinSafeRearEnd</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation == EURORADIO.PositionReport.PositionReportSpecialLocation.LRBG</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).Distance == 1040.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Train Position"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.34.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.34.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.34.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition {
+  DataState =&gt; DataState.Valid,
+  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation {
+    TrainFrontEndPosition =&gt; Orientation.Nominal,
+    TrainOrientation =&gt; Orientation.Nominal,
+    TrainRunningDirection =&gt; Orientation.Reverse
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainPosition.Position == Kernel.TrainPosition.TrainPosition
+{
+  DataState =&gt; DataState.Valid,
+  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+  {
+    TrainFrontEndPosition =&gt; Orientation.Nominal,
+    TrainOrientation =&gt; Orientation.Nominal,
+    TrainRunningDirection =&gt; Orientation.Reverse
+  }
+}</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Train Data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.35.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.35.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.35.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 80.0</Action>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.TrainData.TrainData.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed == 80.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Geographical Position"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.25.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.25.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.25.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="EOLM information"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.29.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.29.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.29.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="National Values"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.1.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance &lt;- 0.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ChangeOfDriverIDPermittedWhileRunning &lt;- Messages.M_NVDERUN.Yes</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails &lt;- Messages.M_NVEBCL.Confidence_level___50</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 4</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered &lt;- 100.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeAllowedForReversingInPostTripMode &lt;- 80.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup &lt;- 90.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime &lt;- 24.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit &lt;- 70.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain &lt;- Kernel.NationalValues.KvIntValueSet_PassengerTrain
+{
+    A_NVP12 =&gt; 10.0,
+    A_NVP23 =&gt; 45.0,
+    Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain
+    {
+        SpeedStep =&gt; 14.0,
+        ValueA =&gt; 0.15,
+        ValueB =&gt; 0.17
+    }
+}</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 &lt;- 12.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 &lt;- 14.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 16.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode &lt;- 200.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit &lt;- 20.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered &lt;- 40.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram &lt;- 30.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive &lt;- 60.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.No</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake &lt;- Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.Yes</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.Yes</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ReleaseSpeed &lt;- 40.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit &lt;- 35.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.SpeedLimitForTriggeringTheOverrideFunction &lt;- 70.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit &lt;- 25.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires &lt;- Messages.M_NVCONTACT.No_Reaction</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt &lt;- Kernel.NationalValues.KrIntValueSet
+{
+    Val0 =&gt; Kernel.NationalValues.KrIntValue
+    {
+        Value =&gt; 12.4,
+        LengthStep =&gt; 0.0
+    }
+}</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit &lt;- 80.0</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring &lt;- Messages.Q_NVSBTSMPERM.Yes</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain &lt;- Kernel.NationalValues.KvIntValueSet_FreightTrain
+{
+    A_NVP12 =&gt; 15.0,
+    A_NVP23 =&gt; 64.0,
+    Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain
+    {
+        SpeedStep =&gt; 17.0,
+        Value =&gt; 0.21
+    }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ChangeOfDriverIDPermittedWhileRunning == Messages.M_NVDERUN.Yes</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails == Messages.M_NVEBCL.Confidence_level___50</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup == 4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeAllowedForReversingInPostTripMode == 80.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup == 90.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime == 24.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == 10.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 == 12.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 == 14.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 == 16.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode == 200.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == 30.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit == 20.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.No</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ReleaseSpeed == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit == 35.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA == 0.15</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SpeedLimitForTriggeringTheOverrideFunction == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep == 14.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.No_Reaction</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.Value == 12.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.LengthStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit == 80.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == 64.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.Yes</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == 15.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == 45.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB == 0.17</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.Value == 0.21</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep == 17.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

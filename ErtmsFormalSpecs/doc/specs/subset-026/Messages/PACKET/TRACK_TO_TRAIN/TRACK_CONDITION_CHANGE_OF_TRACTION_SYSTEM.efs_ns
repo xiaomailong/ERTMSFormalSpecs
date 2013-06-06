@@ -1,0 +1,62 @@
+<NameSpace
+ Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>The packet gives information about change of the traction system.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="38"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_TRACTION"
+>
+</StructureElement><StructureElement
+ TypeName="M_VOLTAGE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_VOLTAGE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_CTRACTION"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_CTRACTION"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

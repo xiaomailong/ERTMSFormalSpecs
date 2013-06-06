@@ -1,0 +1,481 @@
+<NameSpace
+ Name="Odometry"
+>
+<NameSpaces>
+</NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="4294967295"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_MAXSUMVAR"
+>
+<Comment>Maximum Sum of Variance.
+Maximum Sum of Variance, adding to the positive movement direction of the confidence interval.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="4294967295"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_MINSUMVAR"
+>
+<Comment>Minimum Sum of Variance.
+Minimum Sum of Variance, adding to the negative movement direction of the confidence interval.</Comment>
+</Range></Ranges>
+<Enumerations>
+<Enum
+ Default="Q_NOM_ODO.Nominal"
+ NeedsRequirement="FALSE"
+ Name="Q_NOM_ODO"
+>
+<Comment>Nominal odometer qualifier.
+Indicate if the odometer configuration is nominal (all sensors available) or not.</Comment>
+<Values>
+<EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NotNominal"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Q_SAFEDIR.NotAmbiguous"
+ NeedsRequirement="FALSE"
+ Name="Q_SAFEDIR"
+>
+<Comment>Direction ambiguity.
+Define if the direction information is ambiguous or not.</Comment>
+<Values>
+<EnumValue
+ Value="1"
+ Name="Ambiguous"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NotAmbiguous"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="M_K_ETCS.ReservedForNonStaticalModel"
+ NeedsRequirement="FALSE"
+ Name="M_K_ETCS"
+>
+<Comment>Confidence level.
+The confidence level (K) is defined as a level of probability that the true position is inside the confidence interval.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="ReservedForNonStaticalModel"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="68"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="95"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="99.7"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="99.99"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="99.9999"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="99.999999"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="99.99999999"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="OdometerAccuracy"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="D_ura"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+</ReqRef>
+<Comment>Distance under reading amount.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="D_ora"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+</ReqRef>
+<Comment>Distance over reading amount.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_ora"
+>
+<Comment>Speed over reading amount.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="V_ura"
+>
+<ReqRef
+ Id="3.13.9.3.2.1"
+>
+</ReqRef>
+<Comment>Speed under reading amount.</Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OdometerMulticastMessage"
+>
+<ReqRef
+ Id="A1.1.2.1"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.IdentityNumber"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+<Comment>Packet identifier. Value = 8.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+<Comment>Packet length.</Comment>
+</StructureElement><StructureElement
+ TypeName="Q_SAFEDIR"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="Q_SAFEDIR"
+>
+<Comment>Ambiguous Direction.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="V_MAX"
+>
+<Comment>Upper bound of the measured speed.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="V_NOM"
+>
+<Comment>Nominal speed value.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="V_MIN"
+>
+<Comment>Lower bound of the measured speed.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_MAX_ACCUM"
+>
+<Comment>Accumulative part in positive movement direction of stochastical confidence interval. Variable not transmitted if M_K_ETCS =0.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_MAX"
+>
+<Comment>MAX_ODO, Positive direction side of non-stochastic confidence interval.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_NOM"
+>
+<Comment>NOM_ODO, nominal value of distance.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_MIN"
+>
+<Comment>MIN_ODO, Negative direction side of non-stochastic confidence interval.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_MIN_ACCUM"
+>
+<Comment>Accumulative part in negative movement direction of stochastical confidence interval. Variable not transmitted if M_K_ETCS =0.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="T_ODO"
+>
+<Comment>Timestamp.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="D_RES"
+>
+<Comment>RES_ODO, resolution of distance (RES_ODO) measurement.</Comment>
+</StructureElement><StructureElement
+ TypeName="Q_NOM_ODO"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="Q_NOM_ODO"
+>
+<Comment>Indicate if the odometer configuration is nominal or not.</Comment>
+</StructureElement><StructureElement
+ TypeName="M_K_ETCS"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="M_K_ETCS"
+>
+<Comment>The confidence level (K) is defined as a level of probability that the true position is inside the confidence interval.</Comment>
+</StructureElement><StructureElement
+ TypeName="M_MAXSUMVAR"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="M_MAXSUMVAR"
+>
+<Comment>Maximum Sum of Variance. Variable not transmitted if M_K_ETCS =0.</Comment>
+</StructureElement><StructureElement
+ TypeName="M_MINSUMVAR"
+ Default=""
+ Mode="Incoming"
+ NeedsRequirement="FALSE"
+ Name="M_MINSUMVAR"
+>
+<Comment>Minimum Sum of Variance. Variable not transmitted if M_K_ETCS =0.</Comment>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrainIsAtStandstill"
+>
+<ReqRef
+ Id="3.15.4.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.15.4.7"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>EstimatedSpeed == 0.0</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="StoreOdometerMessage"
+>
+<Parameters>
+<Parameter
+ Type="OdometerMulticastMessage"
+ Name="Message"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="StoreOdometerMessage"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="StoreOdometerMessage"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action>
+<Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action>
+<Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action>
+<Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action>
+<Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action>
+<Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action>
+<Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action>
+<Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="OdometerAccuracy"
+ DefaultValue="OdometerAccuracy
+{
+    D_ura =&gt; 0.0,
+    D_ora =&gt; 0.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="Accuracy"
+>
+<ReqRef
+ Id="3.6.4.2.a"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
+OdometerAccuracy.LowerBoundConfidenceInterval is obtained by computing Distance.Nom - Distance.Min.
+OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.Max - Distance.Nom.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="CurrentTime"
+>
+<Comment>The current time of the odometry.</Comment>
+</Variable><Variable
+ Type="OdometerMulticastMessage"
+ DefaultValue="EMPTY"
+ VariableMode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>Represents an odometer message. The message is received if NewMessageReceived sub variable equals True. OdometerMessage.Message contains the received message.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Distance"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="NominalDistance"
+>
+<Comment>The estimated position of the train.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EstimatedSpeed"
+>
+<Comment>The estimated speed of the train.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PreviousTime"
+>
+<Comment>Contains the time value received in the previous odometry message, used to calculate the estimated acceleration.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PreviousSpeed"
+>
+<Comment>Contains the speed value received in the previous odometry message, used to calculate the estimated acceleration.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Acceleration"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EstimatedAcceleration"
+>
+<Comment>The acceleration of the train, computed from its speed and the time.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ClearNewMessage"
+>
+<Comment>After processing the new message its content is deleted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ClearNewMessage"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>Available ( Odometry.Message )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Odometry.Message &lt;- EMPTY</Action>
+<Action>PreviousTime &lt;- CurrentTime</Action>
+<Action>PreviousSpeed &lt;- EstimatedSpeed</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

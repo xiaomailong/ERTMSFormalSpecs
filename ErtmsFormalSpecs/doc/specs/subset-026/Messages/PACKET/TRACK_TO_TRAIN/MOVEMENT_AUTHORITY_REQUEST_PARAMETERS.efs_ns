@@ -1,0 +1,55 @@
+<NameSpace
+ Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet is intended to give parameters telling when and how often the train has to ask for a movement authority.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="57"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_MAR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_TIMEOUTRQST"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="T_CYCRQST"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

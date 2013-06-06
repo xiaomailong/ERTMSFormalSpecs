@@ -1,0 +1,555 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="3.5 Management of Radio Communication - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - Ordered by trackside"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Session establishment ordered by trackside"
+>
+<ReqRef
+ Id="3.5.3.4.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Kernel.TrainData.Initialize()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ReceiveOrder"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 21.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 20.0
+    }
+}</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                SESSION_MANAGEMENT =&gt;Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message
+                {
+                    NID_PACKET=&gt;42,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_RBC=&gt;Messages.Q_RBC.Establish_communication_session,
+                    NID_C=&gt;140,
+                    NID_RBC=&gt;22,
+                    NID_RADIO=&gt;123456,
+                    Q_SLEEPSESSION=&gt;Messages.Q_SLEEPSESSION.Execute_session_establishment_order             
+                  }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 25.0,
+    D_ora =&gt; 22.2,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - When mode changes"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Mode change has to be reported"
+>
+<ReqRef
+ Id="3.5.3.4.c"
+>
+</ReqRef>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Setup"
+>
+<Comment></Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+<Action>Kernel.MA.MA &lt;- EMPTY</Action>
+<Action>Kernel.Mode &lt;- Mode.UN</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="2"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - End of radio hole"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="End of radio hole"
+>
+<ReqRef
+ Id="3.5.3.4.e"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Setup"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 10.0</Action>
+<Action>Kernel.TrainIntegrity.Status &lt;-Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ReceiveTrackConditionRadioHole"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 15.0,
+        Position =&gt; 3800.0,
+        UnderReadingAmountOdo =&gt; 17.0
+    }
+}</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TRACK_CONDITION =&gt;Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message
+                {
+                    NID_PACKET=&gt;68,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+Q_TRACKINIT=&gt;Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+D_TRACKCOND=&gt;500,
+L_TRACKCOND=&gt;100,
+M_TRACKCOND=&gt;Messages.M_TRACKCOND.Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT,
+N_ITER=&gt;0   
+                  }
+            }
+        }
+    ]
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 4000.0</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 16.0,
+    D_ora =&gt; 17.2,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ReachesRadioHole"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 4301.0</Action>
+<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.ConnectionLost</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.TrackConditions.InsideRadioHole == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ReachesEndOfRadioHole"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 4450.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="200"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - Communication lost"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Communication lost"
+>
+<ReqRef
+ Id="3.5.3.4.f"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Setup"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ComLost"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 4301.0</Action>
+<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.ConnectionLost</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="ReachesEndOfRadioHole"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - Som ends with no session"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="SoM ends in NL"
+>
+<ReqRef
+ Id="3.5.3.4.g"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Setup"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.NLSignalReceived &lt;- True</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.Mode == Mode.NL</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Session establishment - Disconnect and connect another one"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Disconnect and connect another one"
+>
+<ReqRef
+ Id="3.5.3.5.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

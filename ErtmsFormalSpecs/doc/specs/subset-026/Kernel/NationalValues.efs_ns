@@ -1,0 +1,2796 @@
+<NameSpace
+ Name="NationalValues"
+>
+<NameSpaces>
+</NameSpaces>
+<Ranges>
+<Range
+ MinValue="0.0"
+ MaxValue="1.55"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="CorFactorKr"
+>
+<ReqRef
+ Id="7.5.1.75.2"
+>
+</ReqRef>
+</Range><Range
+ MinValue="0.0"
+ MaxValue="1.55"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="CorFactorKt"
+>
+<ReqRef
+ Id="7.5.1.75.3"
+>
+</ReqRef>
+</Range><Range
+ MinValue="0.0"
+ MaxValue="2.54"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="CorFactorKv"
+>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+</Range><Range
+ MinValue="0.0"
+ MaxValue="1.0"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="WeightFactor"
+>
+<ReqRef
+ Id="7.5.1.73.1"
+>
+</ReqRef>
+</Range></Ranges>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NationalValues"
+>
+<ReqRef
+ Id="3.18.2.2"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="Default.DataState"
+ Default="Default.DataState.Invalid"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DataState"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Kernel.NationalValues.NationalDefaultData"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Value"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ApplicableDistance"
+>
+<ReqRef
+ Id="3.18.2.3"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Distance from where the National values become applicable.</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_C"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NID_C"
+>
+<ReqRef
+ Id="3.18.2.4"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="NationalDefaultData"
+>
+<ReqRef
+ Id="Table 3.A3.2.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.5"
+>
+</ReqRef>
+<Comment>Represents the set of national/default values.</Comment>
+<StructureElement
+ TypeName="Messages.Q_NVDRIVER_ADHES"
+ Default="Messages.Q_NVDRIVER_ADHES.Not_allowed"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ModificationOfAdhesionFactorByDriver"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.122"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVSBFBPERM"
+ Default="Messages.Q_NVSBFBPERM.No"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PermToUseTheServiceBrakeFeedback"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.12"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.4"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVLOCACC"
+ Default="3"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DefaultLocationAccuracyOfABaliseGroup"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.23"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.5"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="CorFactorKt"
+ Default="1.1"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IntegratedCorrectionFactorForBrakeBuildUpTime"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.30"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.14"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.2.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.2.3"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="1.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxDecelValueUnderReducedAdhesionCond1"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.31"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.a"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="0.7"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxDecelValueUnderReducedAdhesionCond2"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.32"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.b"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="0.7"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxDecelValueUnderReducedAdhesionCond3"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.33"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.c"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="30.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ShuntingModeSpeedLimit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.165"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="40.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StaffResponsibleModeSpeedLimit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.166"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="30.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="OnSightModeSpeedLimit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.162"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="100.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LimitedSupervisionModeSpeedLimit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161.2"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="100.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="UnfittedModeSpeedLimit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.167"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="40.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ReleaseSpeed"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.7"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.164"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.8"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="2.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.8"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.17"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVSBTSMPERM"
+ Default="Messages.Q_NVSBTSMPERM.Yes"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="UseServiceBrakeInTargetSpeedMonitoring"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.9"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.124"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.1"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVEMRRLS"
+ Default="Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PermToReleaseEmergencyBrake"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.10"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVGUIPERM"
+ Default="Messages.Q_NVGUIPERM.No"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PermToUseGuidanceCurves"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.11"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.3"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_NVINHSMICPERM"
+ Default="Messages.Q_NVINHSMICPERM.No"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.13"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.9"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SpeedLimitForTriggeringTheOverrideFunction"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.14"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="30.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.15"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.163"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="200.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DistForTrainTripSuppressionWhenOverrideIsTriggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.16"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.15"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default="60.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.17"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.149"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.M_NVDERUN"
+ Default="Messages.M_NVDERUN.Yes"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ChangeOfDriverIDPermittedWhileRunning"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.18"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.M_NVCONTACT"
+ Default="Messages.M_NVCONTACT.No_Reaction"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SystemReactionIfRadioChannelMonitoringTimeLimitExpires"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.19"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.74"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default="Default.BaseTypes.Time.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.20"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.148"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="200.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="DistToBeAllowedForReversingInPostTripMode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.21"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.16"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="Default.BaseTypes.Distance.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="MaxPermDistToRunInStaffResponsibleMode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.22"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.18"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="WeightFactor"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="WeightingFactorForAvailableWheelRailAdhesion"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.24"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.73.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.6"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.M_NVEBCL"
+ Default="Messages.M_NVEBCL.Confidence_level___99_9999999"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ConfLevelForEmergBrakeSafeDecelerationOnDryRails"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.25"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.h"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.5"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="KrIntValueSet"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IntegratedCorrectionFactorKrInt"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.26"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.27"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.i"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="KvIntValueSet_FreightTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IntegratedCorrectionFactorKvInt_FreightTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.i"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="KvIntValueSet_PassengerTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IntegratedCorrectionFactorKvInt_PassengerTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.i"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="KrIntValue"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="Default.BaseTypes.Length.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LengthStep"
+>
+<ReqRef
+ Id="7.5.1.48.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.26"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="CorFactorKr"
+ Default="0.9"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Value"
+>
+<ReqRef
+ Id="7.5.1.75.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.27"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="KrIntValueSet"
+>
+<ReqRef
+ Id="3.13.2.3.7.12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.12"
+>
+</ReqRef>
+<StructureElement
+ TypeName="KrIntValue"
+ Default="Kernel.NationalValues.KrIntValue { LengthStep =&gt; 0.0 }"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val0"
+>
+</StructureElement><StructureElement
+ TypeName="KrIntValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+</StructureElement><StructureElement
+ TypeName="KrIntValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+</StructureElement><StructureElement
+ TypeName="KrIntValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+</StructureElement><StructureElement
+ TypeName="KrIntValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="KvIntValue_FreightTrain"
+>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="Default.BaseTypes.Speed.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SpeedStep"
+>
+<ReqRef
+ Id="7.5.1.161.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="CorFactorKv"
+ Default="0.7"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Value"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="KvIntValueSet_PassengerTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.11.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<StructureElement
+ TypeName="KvIntValue_PassengerTrain"
+ Default="Kernel.NationalValues.KvIntValue_PassengerTrain { SpeedStep =&gt; 0.0 }"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val0"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_PassengerTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_PassengerTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_PassengerTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_PassengerTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="Default.BaseTypes.Acceleration.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="A_NVP12"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="Default.BaseTypes.Acceleration.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="A_NVP23"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="KvIntValue_PassengerTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.11.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="Default.BaseTypes.Speed.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SpeedStep"
+>
+<ReqRef
+ Id="7.5.1.161.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="CorFactorKv"
+ Default="0.7"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ValueA"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.5"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="CorFactorKv"
+ Default="0.7"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ValueB"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.6"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="KvIntValueSet_FreightTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.11.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="KvIntValue_FreightTrain"
+ Default="Kernel.NationalValues.KvIntValue_FreightTrain { SpeedStep =&gt; 0.0 }"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val0"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_FreightTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_FreightTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_FreightTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+</StructureElement><StructureElement
+ TypeName="KvIntValue_FreightTrain"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="Default.BaseTypes.Acceleration.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="A_NVP12"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Acceleration"
+ Default="Default.BaseTypes.Acceleration.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="A_NVP23"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="NationalValues"
+ Implemented="TRUE"
+ Name="CreateNewNationalValues"
+>
+<ReqRef
+ Id="3.18.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.165"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.166"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.162"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.167"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.164"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.17"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.163"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.15"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.16"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.18"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.161.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.3"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.5"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.148"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.149"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.74"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.122"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.6"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.124"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.3"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.73.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.123.5"
+>
+</ReqRef>
+<Comment>Creates a new NationalValues structure value from the received packet.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
+ Name="Packet"
+>
+</Parameter><Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Kernel.NationalValues.NationalValues
+{
+    DataState =&gt; Default.DataState.Valid,
+    ApplicableDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
+    NID_C =&gt; NID_C,
+    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    {
+        ModificationOfAdhesionFactorByDriver =&gt; Packet.Q_NVDRIVER_ADHES,
+        ShuntingModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSHUNT, 5.0 ),
+        StaffResponsibleModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSTFF, 5.0 ),
+        OnSightModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVONSIGHT, 5.0 ),
+        LimitedSupervisionModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVLIMSUPERV, 5.0 ),
+        UnfittedModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVUNFIT, 5.0 ),
+        ReleaseSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_NVREL, 5.0 ),
+        DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup =&gt; MessageTypes.QScaleDistance ( Packet.D_NVROLL, Packet.Q_SCALE ),
+        UseServiceBrakeInTargetSpeedMonitoring =&gt; Packet.Q_NVSBTSMPERM,
+        PermToReleaseEmergencyBrake =&gt; Packet.Q_NVEMRRLS,
+        PermToUseGuidanceCurves =&gt; Packet.Q_NVGUIPERM,
+        PermToUseTheServiceBrakeFeedback =&gt; Packet.Q_NVSBFBPERM,
+        PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy =&gt; Packet.Q_NVINHSMICPERM,
+        SpeedLimitForTriggeringTheOverrideFunction =&gt; MessageTypes.SpeedResolution ( Packet.V_NVALLOWOVTRP, 5.0 ),
+        OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSUPOVTRP, 5.0 ),
+        DistForTrainTripSuppressionWhenOverrideIsTriggered =&gt; MessageTypes.QScaleDistance ( Packet.D_NVOVTRP, Packet.Q_SCALE ),
+        MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered =&gt; BaseTypes.Time ( Packet.T_NVOVTRP ),
+        ChangeOfDriverIDPermittedWhileRunning =&gt; Packet.M_NVDERUN,
+        SystemReactionIfRadioChannelMonitoringTimeLimitExpires =&gt; Packet.M_NVCONTACT,
+        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; BaseTypes.Time ( Packet.T_NVCONTACT ),
+        DistToBeAllowedForReversingInPostTripMode =&gt; MessageTypes.QScaleDistance ( Packet.D_NVPOTRP, Packet.Q_SCALE ),
+        MaxPermDistToRunInStaffResponsibleMode =&gt; MessageTypes.QScaleDistance ( Packet.D_NVSTFF, Packet.Q_SCALE ),
+        DefaultLocationAccuracyOfABaliseGroup =&gt; Packet.Q_NVLOCACC,
+        WeightingFactorForAvailableWheelRailAdhesion =&gt; WeightFactResolution ( Packet.M_NVAVADH ),
+        ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Packet.M_NVEBCL,
+        IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; KtResolution ( Packet.M_NVKTINT ),
+        MaxDecelValueUnderReducedAdhesionCond1 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH1, 0.05 ),
+        MaxDecelValueUnderReducedAdhesionCond2 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH2, 0.05 ),
+        MaxDecelValueUnderReducedAdhesionCond3 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH3, 0.05 )
+    }
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="OverrideRelatedSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.10.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.10.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NationalValuesAvailable"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
+</Case><Case
+ Name="DefaultValue"
+>
+<PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
+</Case><Case
+ Name="OverrideNotActive"
+>
+<PreConditions>
+<PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition>
+</PreConditions>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_MAXREDADH"
+>
+<ReqRef
+ Id="3.13.6.2.1.6"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.0.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="FreightTrain_NV"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3</Expression>
+</Case><Case
+ Name="FreightTrain_Default"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition>
+</PreConditions>
+<Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond3</Expression>
+</Case><Case
+ Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_NV"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+<PreCondition>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1</Expression>
+</Case><Case
+ Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_Default"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+<PreCondition>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition>
+</PreConditions>
+<Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond1</Expression>
+</Case><Case
+ Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_NV"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+<PreCondition>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2</Expression>
+</Case><Case
+ Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_Default"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+<PreCondition>NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition>
+</PreConditions>
+<Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKt"
+ Implemented="TRUE"
+ Name="KtResolution"
+>
+<ReqRef
+ Id="7.5.1.75.3"
+>
+</ReqRef>
+<Comment>Computes the value of the correction factor Kt from the value provided by the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_NVKTINT"
+ Name="KtValue"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="WeightFactor"
+ Implemented="TRUE"
+ Name="WeightFactResolution"
+>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.73.1"
+>
+</ReqRef>
+<Comment>Computes the value of the weighting factor for available wheel/rail adhesion from the value provided by the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_NVAVADH"
+ Name="VadhValue"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKr"
+ Implemented="TRUE"
+ Name="KrResolution"
+>
+<ReqRef
+ Id="7.5.1.75.2"
+>
+</ReqRef>
+<Comment>Computes the value of the correction factor Kr from the value provided by the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_NVKRINT"
+ Name="KrValue"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKv"
+ Implemented="TRUE"
+ Name="KvResolution"
+>
+<ReqRef
+ Id="7.5.1.75.4"
+>
+</ReqRef>
+<Comment>Computes the value of the correction factor Kv from the value provided by the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_NVKVINT"
+ Name="KvValue"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKr"
+ Implemented="TRUE"
+ Name="Kr_intFunction"
+>
+<ReqRef
+ Id="3.13.2.3.7.12"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="KrIntValueSet"
+ Name="aKr_int"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="L"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="ICF0"
+>
+<PreConditions>
+<PreCondition>L &lt;= aKr_int.Val1.LengthStep </PreCondition>
+<PreCondition>aKr_int.Val0.LengthStep &lt;= L</PreCondition>
+</PreConditions>
+<Expression>aKr_int.Val0.Value</Expression>
+</Case><Case
+ Name="ICF1"
+>
+<PreConditions>
+<PreCondition>aKr_int.Val1.LengthStep &lt; L</PreCondition>
+<PreCondition>L &lt;= aKr_int.Val2.LengthStep </PreCondition>
+</PreConditions>
+<Expression>aKr_int.Val1.Value</Expression>
+</Case><Case
+ Name="ICF2"
+>
+<PreConditions>
+<PreCondition>aKr_int.Val2.LengthStep &lt; L</PreCondition>
+<PreCondition>L &lt;= aKr_int.Val3.LengthStep </PreCondition>
+</PreConditions>
+<Expression>aKr_int.Val2.Value</Expression>
+</Case><Case
+ Name="ICF3"
+>
+<PreConditions>
+<PreCondition>aKr_int.Val3.LengthStep &lt; L</PreCondition>
+<PreCondition>L &lt;= aKr_int.Val4.LengthStep </PreCondition>
+</PreConditions>
+<Expression>aKr_int.Val3.Value</Expression>
+</Case><Case
+ Name="ICF4"
+>
+<PreConditions>
+<PreCondition>aKr_int.Val4.LengthStep &lt; L</PreCondition>
+</PreConditions>
+<Expression>aKr_int.Val4.Value</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKv"
+ Implemented="TRUE"
+ Name="Kv_intFunction_FreightTrains"
+>
+<ReqRef
+ Id="3.13.2.3.7.11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="KvIntValueSet_FreightTrain"
+ Name="aKv_int"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="ICF0"
+>
+<PreConditions>
+<PreCondition>V &lt;= aKv_int.Val1.SpeedStep</PreCondition>
+<PreCondition>aKv_int.Val0.SpeedStep &lt;= V</PreCondition>
+</PreConditions>
+<Expression>aKv_int.Val0.Value</Expression>
+</Case><Case
+ Name="ICF1"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val1.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val2.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aKv_int.Val1.Value</Expression>
+</Case><Case
+ Name="ICF2"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val2.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val3.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aKv_int.Val2.Value</Expression>
+</Case><Case
+ Name="ICF3"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val3.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val4.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aKv_int.Val3.Value</Expression>
+</Case><Case
+ Name="ICF4"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val4.SpeedStep &lt; V</PreCondition>
+</PreConditions>
+<Expression>aKv_int.Val4.Value</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKv"
+ Implemented="TRUE"
+ Name="Kv_intFunction_PassengerTrains"
+>
+<ReqRef
+ Id="3.13.2.3.7.11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="KvIntValueSet_PassengerTrain"
+ Name="aKv_int"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="ICF0"
+>
+<PreConditions>
+<PreCondition>V &lt;= aKv_int.Val1.SpeedStep</PreCondition>
+<PreCondition>aKv_int.Val0.SpeedStep &lt;= V</PreCondition>
+</PreConditions>
+<Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
+                                  A_P23 =&gt; aKv_int.A_NVP23,
+                                  ValA =&gt; aKv_int.Val0.ValueA,
+                                  ValB =&gt; aKv_int.Val0.ValueB )</Expression>
+</Case><Case
+ Name="ICF1"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val1.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val2.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
+                                  A_P23 =&gt; aKv_int.A_NVP23,
+                                  ValA =&gt; aKv_int.Val1.ValueA,
+                                  ValB =&gt; aKv_int.Val1.ValueB )</Expression>
+</Case><Case
+ Name="ICF2"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val2.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val3.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
+                                  A_P23 =&gt; aKv_int.A_NVP23,
+                                  ValA =&gt; aKv_int.Val2.ValueA,
+                                  ValB =&gt; aKv_int.Val2.ValueB )</Expression>
+</Case><Case
+ Name="ICF3"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val3.SpeedStep &lt; V</PreCondition>
+<PreCondition>V &lt;= aKv_int.Val4.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
+                                  A_P23 =&gt; aKv_int.A_NVP23,
+                                  ValA =&gt; aKv_int.Val3.ValueA,
+                                  ValB =&gt; aKv_int.Val3.ValueB )</Expression>
+</Case><Case
+ Name="ICF4"
+>
+<PreConditions>
+<PreCondition>aKv_int.Val4.SpeedStep &lt; V</PreCondition>
+</PreConditions>
+<Expression>Kv_intValueFunction ( A_P12 =&gt; aKv_int.A_NVP12,
+                                  A_P23 =&gt; aKv_int.A_NVP23,
+                                  ValA =&gt; aKv_int.Val4.ValueA,
+                                  ValB =&gt; aKv_int.Val4.ValueB )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="Kv_intValueFunction"
+>
+<ReqRef
+ Id="3.13.6.2.1.8.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.6"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="A_P12"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="A_P23"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="ValA"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="ValB"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="A_ebmax &lt;= AP_12"
+>
+<PreConditions>
+<PreCondition>A_P12 &gt;= TrainData.BrakingParameters.A_ebmax()</PreCondition>
+</PreConditions>
+<Expression>ValA</Expression>
+</Case><Case
+ Name="A_ebmax &gt;= A_P23"
+>
+<PreConditions>
+<PreCondition>A_P23 &lt;= TrainData.BrakingParameters.A_ebmax()</PreCondition>
+</PreConditions>
+<Expression>ValB</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>ValA + ( TrainData.BrakingParameters.A_ebmax() - A_P12 ) / ( A_P23 - A_P12 ) * ( ValB-ValA )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="Kv_int"
+>
+<ReqRef
+ Id="3.13.2.3.7.11"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NV available, passenger train"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kv_intFunction_PassengerTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain, V =&gt; V )</Expression>
+</Case><Case
+ Name="NV available, freight train"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kv_intFunction_FreightTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain, V =&gt; V )</Expression>
+</Case><Case
+ Name="No NV available, passenger train"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition>
+</PreConditions>
+<Expression>Kv_intFunction_PassengerTrains ( aKv_int =&gt; DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain, V =&gt; V )</Expression>
+</Case><Case
+ Name="No NV available, freight train"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition>
+</PreConditions>
+<Expression>Kv_intFunction_FreightTrains ( aKv_int =&gt; DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain, V =&gt; V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="Kr_int"
+>
+<ReqRef
+ Id="3.13.2.3.7.12"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Length"
+ Name="L"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="NV available"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kr_intFunction ( aKr_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt, L =&gt; L )</Expression>
+</Case><Case
+ Name="No NV available"
+>
+<Expression>Kr_intFunction ( aKr_int =&gt; DefaultValues.IntegratedCorrectionFactorKrInt, L =&gt; L )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Implemented="TRUE"
+ Name="MaxDistInSRSpeedRestriction"
+>
+<ReqRef
+ Id="3.13.8.2.1.d"
+>
+</ReqRef>
+<Comment>Provides the speed restriction due to the maximum permitted distance to run in Staff Responsible mode.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Stopping required"
+>
+<PreConditions>
+<PreCondition>Distance &lt; ApplicableNationalValues.ApplicableDistance</PreCondition>
+<PreCondition>ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode &lt;= Distance</PreCondition>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+<PreCondition>Kernel.Mode == Mode.SR</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="No speed restriction"
+>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ComputationOfGUIIsEnabled"
+>
+<ReqRef
+ Id="3.13.2.3.7.3"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>Kernel.NationalValues.DefaultValues.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CompensationOfInaccuracyOfTheSpeedIsInhibited"
+>
+<ReqRef
+ Id="3.13.2.3.7.9"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ReleaseSpeed"
+>
+<ReqRef
+ Id="3.13.2.3.7.8"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.ReleaseSpeed</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>DefaultValues.ReleaseSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UseOfSBFeedbackIsPermitted"
+>
+<ReqRef
+ Id="3.13.2.3.7.4"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>Kernel.NationalValues.DefaultValues.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ReleaseOfEBIsPermitted"
+>
+<ReqRef
+ Id="Entry 3.13.10.3.3.2.2"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues_Standstill"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.EstimatedSpeed == 0.0</Expression>
+</Case><Case
+ Name="NationalValues_SpeedSupervisionLimitIsNoLongerExceeded"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+</Case><Case
+ Name="DefaultValues_Standstill"
+>
+<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.EstimatedSpeed == 0.0</Expression>
+</Case><Case
+ Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
+>
+<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UseOfSBIsInhibited"
+>
+<ReqRef
+ Id="3.13.2.3.7.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorFactorKt"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IntegratedCorrectionFactorForBrakeBuildUpTime"
+>
+<Cases>
+<Case
+ Name="NationalValues"
+>
+<PreConditions>
+<PreCondition>ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
+</PreConditions>
+<Expression>ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime</Expression>
+</Case><Case
+ Name="DefaultValues"
+>
+<Expression>DefaultValues.IntegratedCorrectionFactorForBrakeBuildUpTime</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="NationalValuesReceived"
+>
+<ReqRef
+ Id="3.18.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.4"
+>
+</ReqRef>
+<Comment>Determines if the received national values will be applicable immediately or not and assings the new value (created thanks to the function CreateNewNationalValues)  to the appropriate variable.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
+ Name="Packet"
+>
+</Parameter><Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Applicable"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Applicable"
+>
+<PreConditions>
+<PreCondition>Packet.D_VALIDNV == 0</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action>
+<Action>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; ApplicableNationalValues.Value )</Action>
+<Action>CreateKvIntValueSet
+(
+    Qualifier =&gt; Packet.Q_NVKINT,
+    TrainType =&gt; Packet.Q_NVKVINTSET,
+    LowerLimit =&gt; Packet.A_NVP12,
+    UpperLimit =&gt; Packet.A_NVP23,
+    InitialSpeed =&gt; Packet.V_NVKVINT,
+    InitialValueA =&gt; Packet.M_NVKVINT_0,
+    InitialValueB =&gt; Packet.M_NVKVINT_1,
+    Values =&gt; Packet.Sequence2,
+    ValueSets =&gt; Packet.Sequence4,
+    NV =&gt; ApplicableNationalValues.Value
+)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="NotApplicable"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NotApplicable"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>Packet.D_VALIDNV != 0</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NotApplicableNationalValues &lt;- CreateNewNationalValues(Packet=&gt;Packet,NID_C=&gt;NID_C)</Action>
+<Action>CreateKrIntValueSet ( InitialLength =&gt; Packet.L_NVKRINT, InitialValue =&gt; Packet.M_NVKRINT, Values =&gt; Packet.Sequence5, NV =&gt; NotApplicableNationalValues.Value )</Action>
+<Action>CreateKvIntValueSet
+(
+    Qualifier =&gt; Packet.Q_NVKINT,
+    TrainType =&gt; Packet.Q_NVKVINTSET,
+    LowerLimit =&gt; Packet.A_NVP12,
+    UpperLimit =&gt; Packet.A_NVP23,
+    InitialSpeed =&gt; Packet.V_NVKVINT,
+    InitialValueA =&gt; Packet.M_NVKVINT_0,
+    InitialValueB =&gt; Packet.M_NVKVINT_1,
+    Values =&gt; Packet.Sequence2,
+    ValueSets =&gt; Packet.Sequence4,
+    NV =&gt; NotApplicableNationalValues.Value
+)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="CreateKvIntValueSet"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fills the KrInt information from information received from the National Values.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_NVKINT"
+ Name="Qualifier"
+>
+</Parameter><Parameter
+ Type="Messages.Q_NVKVINTSET"
+ Name="TrainType"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Acceleration"
+ Name="LowerLimit"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Acceleration"
+ Name="UpperLimit"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Speed"
+ Name="InitialSpeed"
+>
+</Parameter><Parameter
+ Type="Messages.M_NVKVINT"
+ Name="InitialValueA"
+>
+</Parameter><Parameter
+ Type="Messages.M_NVKVINT"
+ Name="InitialValueB"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection2"
+ Name="Values"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection4"
+ Name="ValueSets"
+>
+</Parameter><Parameter
+ Type="NationalDefaultData"
+ Name="NV"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValueSet"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValueSet_PassengerTrains"
+>
+<PreConditions>
+<PreCondition>TrainType == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition>
+<PreCondition>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( InitialValueA )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( InitialValueB )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( UpperLimit, 0.05 )</Action>
+<Action>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Values</Action>
+<Action>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValueSet_FreightTrains"
+>
+<PreConditions>
+<PreCondition>TrainType == Messages.Q_NVKVINTSET.Freight_trains</PreCondition>
+<PreCondition>Qualifier == Messages.Q_NVKINT.Integrated_correction_factors_follow</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action>
+<Action>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Values</Action>
+<Action>APPLY CreateKvIntValue ( Value =&gt; X, NV =&gt; NV ) ON ValueSets</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="CreateKvIntValue"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3"
+ Name="Value"
+>
+</Parameter><Parameter
+ Type="NationalDefaultData"
+ Name="NV"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValue"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValueSet_PassengerTrains"
+>
+<PreConditions>
+<PreCondition>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Conventional_passenger_trains</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( Value.M_NVKVINT_0 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( Value.M_NVKVINT_1 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action>
+<Action>APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Value.Sequence3</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValueSet_FreightTrains"
+>
+<PreConditions>
+<PreCondition>Value.Q_NVKVINTSET == Messages.Q_NVKVINTSET.Freight_trains</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action>
+<Action>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action>
+<Action>APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Value.Sequence3</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateKrIntValueSet"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fills the KrInt information from information received from the National Values.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.L_NVKRINT"
+ Name="InitialLength"
+>
+</Parameter><Parameter
+ Type="Messages.M_NVKRINT"
+ Name="InitialValue"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Collection5"
+ Name="Values"
+>
+</Parameter><Parameter
+ Type="NationalDefaultData"
+ Name="NV"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKrIntValueSet"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="CreateKrIntValueSet"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>NV.IntegratedCorrectionFactorKrInt.Val0.LengthStep &lt;-  KrIntLengthConverter ( InitialLength )</Action>
+<Action>NV.IntegratedCorrectionFactorKrInt.Val0.Value &lt;- KrResolution ( InitialValue )</Action>
+<Action>APPLY CreateKrIntValue ( Value =&gt; X, KrInt =&gt; NV.IntegratedCorrectionFactorKrInt ) ON Values</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="CreateKrIntValue"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5"
+ Name="Value"
+>
+</Parameter><Parameter
+ Type="KrIntValueSet"
+ Name="KrInt"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKrIntValue"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+<PreConditions>
+<PreCondition>KrInt.Val1.LengthStep == BaseTypes.Length.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KrInt.Val1.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action>
+<Action>KrInt.Val1.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+<PreConditions>
+<PreCondition>KrInt.Val2.LengthStep == BaseTypes.Length.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KrInt.Val2.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action>
+<Action>KrInt.Val2.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+<PreConditions>
+<PreCondition>KrInt.Val3.LengthStep == BaseTypes.Length.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KrInt.Val3.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action>
+<Action>KrInt.Val3.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+<PreConditions>
+<PreCondition>KrInt.Val4.LengthStep == BaseTypes.Length.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KrInt.Val4.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action>
+<Action>KrInt.Val4.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="CreateKvIntValue_FreightTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Speed"
+ Name="Speed"
+>
+</Parameter><Parameter
+ Type="KvIntValueSet_FreightTrain"
+ Name="KvInt"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValue"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+<PreConditions>
+<PreCondition>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+<PreConditions>
+<PreCondition>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+<PreConditions>
+<PreCondition>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+<PreConditions>
+<PreCondition>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="CreateKvIntValue_PassengerTrain"
+>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Comment>Fill the elements of KrInt (the first element was filled by the procedure CreateKrIntValueSet). The selected element to fill is the first element was has not yet been initialized (the value of LengthStep equals Infinity).</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.M_NVKVINT"
+ Name="ValueA"
+>
+</Parameter><Parameter
+ Type="Messages.M_NVKVINT"
+ Name="ValueB"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Speed"
+ Name="Speed"
+>
+</Parameter><Parameter
+ Type="KvIntValueSet_PassengerTrain"
+ Name="KvInt"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="CreateKvIntValue"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+<PreConditions>
+<PreCondition>KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+<Action>KvInt.Val1.ValueA &lt;- KvResolution ( ValueA )</Action>
+<Action>KvInt.Val1.ValueB &lt;- KvResolution ( ValueB )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+<PreConditions>
+<PreCondition>KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+<Action>KvInt.Val2.ValueA &lt;- KvResolution ( ValueA )</Action>
+<Action>KvInt.Val2.ValueB &lt;- KvResolution ( ValueB )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+<PreConditions>
+<PreCondition>KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val3.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+<Action>KvInt.Val3.ValueA &lt;- KvResolution ( ValueA )</Action>
+<Action>KvInt.Val3.ValueB &lt;- KvResolution ( ValueB )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+<PreConditions>
+<PreCondition>KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition>
+</PreConditions>
+<Actions>
+<Action>KvInt.Val4.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action>
+<Action>KvInt.Val4.ValueA &lt;- KvResolution ( ValueA )</Action>
+<Action>KvInt.Val4.ValueB &lt;- KvResolution ( ValueB )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="NationalValues"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="NotApplicableNationalValues"
+>
+<ReqRef
+ Id="3.18.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.3"
+>
+</ReqRef>
+<Comment>Represents national values that are not yet applicable on the train.</Comment>
+<SubVariables>
+<Variable
+ Type="Default.BaseTypes.Distance"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="RemainingDistance"
+>
+</Variable></SubVariables>
+</Variable><Variable
+ Type="NationalValues"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ApplicableNationalValues"
+>
+<ReqRef
+ Id="3.18.2.2"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.18.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.g"
+>
+</ReqRef>
+<Comment>Represents the national values currenty applicable on the train.</Comment>
+</Variable><Variable
+ Type="NationalDefaultData"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="DefaultValues"
+>
+<ReqRef
+ Id="3.18.2.5"
+>
+</ReqRef>
+<Comment></Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="NVBecomeApplicable"
+>
+<ReqRef
+ Id="3.18.2.8.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NVBecomeApplicable"
+>
+<PreConditions>
+<PreCondition>Odometry.NominalDistance == NotApplicableNationalValues.ApplicableDistance</PreCondition>
+<PreCondition>NotApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition>
+</PreConditions>
+<Actions>
+<Action>NotApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action>
+<Action>ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action>
+<Action>ApplicableNationalValues.Value &lt;- NotApplicableNationalValues.Value</Action>
+<Action>ApplicableNationalValues.ApplicableDistance &lt;- NotApplicableNationalValues.ApplicableDistance</Action>
+<Action>ApplicableNationalValues.NID_C &lt;- NotApplicableNationalValues.NID_C</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

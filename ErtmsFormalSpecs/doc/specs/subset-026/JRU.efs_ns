@@ -1,0 +1,278 @@
+<NameSpace
+ Name="JRU"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Name="JRU"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Ack level change"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Ack level change"
+>
+<PreConditions>
+<PreCondition>ReportLevelChange.Request == Request.Response</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReportLevelChange.Request &lt;- Request.Disabled</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Ack mode change"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Ack mode change"
+>
+<PreConditions>
+<PreCondition>ReportModeChange.Request == Request.Response</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReportModeChange.Request &lt;- Request.Disabled</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Report level change"
+>
+<ReqRef
+ Id="Entry 3.A3.3.1.3"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Report level change"
+>
+<PreConditions>
+<PreCondition>LoggedState.Level != Kernel.Level.Value</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReportLevelChange.Request &lt;- Request.Request</Action>
+<Action>ReportLevelChange.Level &lt;- Kernel.Level.Value</Action>
+<Action>LoggedState.Level &lt;- Kernel.Level.Value</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Report mode change"
+>
+<ReqRef
+ Id="Entry 3.A3.3.1.2"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Report mode change"
+>
+<PreConditions>
+<PreCondition>LoggedState.Mode != Kernel.Mode</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ReportModeChange.Request &lt;- Request.Request</Action>
+<Action>ReportModeChange.Mode &lt;- Kernel.Mode</Action>
+<Action>LoggedState.Mode &lt;- Kernel.Mode</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StructureElement
+ TypeName="ReportLevelChange"
+ Default=""
+ Mode="InOut"
+ Name="ReportLevelChange"
+>
+</StructureElement><StructureElement
+ TypeName="LoggedState"
+ Default=""
+ Mode="Internal"
+ Name="LoggedState"
+>
+</StructureElement><StructureElement
+ TypeName="ReportModeChange"
+ Default=""
+ Mode="InOut"
+ Name="ReportModeChange"
+>
+</StructureElement><StructureElement
+ TypeName="Procedure1SM"
+ Default=""
+ Mode="Internal"
+ Name="Procedure1"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="State1"
+ Default="State1"
+ NeedsRequirement="FALSE"
+ Name="Procedure1SM"
+>
+<States>
+<State
+ X="200"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="State1"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Rule1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Rule1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- State2</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Rule2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Rule2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- State3</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="210"
+ Y="250"
+ Width="100"
+ Height="50"
+ Name="State2"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State><State
+ X="410"
+ Y="190"
+ Width="100"
+ Height="50"
+ Name="State3"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Rule3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Rule3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- State4</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="290"
+ Y="380"
+ Width="100"
+ Height="50"
+ Name="State4"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ Name="ReportLevelChange"
+>
+<StructureElement
+ TypeName="Level"
+ Default="Level.Unknown"
+ Mode="Outgoing"
+ Name="Level"
+>
+</StructureElement><StructureElement
+ TypeName="Request"
+ Default="Request.Disabled"
+ Mode="InOut"
+ Name="Request"
+>
+</StructureElement></Structure><Structure
+ Name="LoggedState"
+>
+<StructureElement
+ TypeName="Mode"
+ Default="Mode.Unknown"
+ Mode="Internal"
+ Name="Mode"
+>
+</StructureElement><StructureElement
+ TypeName="Level"
+ Default="Level.Unknown"
+ Mode="Internal"
+ Name="Level"
+>
+</StructureElement></Structure><Structure
+ Name="ReportModeChange"
+>
+<StructureElement
+ TypeName="Mode"
+ Default="Mode.Unknown"
+ Mode="Outgoing"
+ Name="Mode"
+>
+</StructureElement><StructureElement
+ TypeName="Request"
+ Default="Request.Disabled"
+ Mode="InOut"
+ Name="Request"
+>
+</StructureElement></Structure></Structures>
+<Variables>
+<Variable
+ Type="JRU"
+ VariableMode="InOut"
+ Name="jru1"
+>
+</Variable></Variables>
+</NameSpace>

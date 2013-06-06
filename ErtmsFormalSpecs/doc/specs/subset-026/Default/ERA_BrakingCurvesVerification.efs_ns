@@ -1,0 +1,91 @@
+<NameSpace
+ Name="ERA_BrakingCurvesVerification"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="Compare"
+>
+<Parameters>
+<Parameter
+ Type="Double"
+ Name="Val1"
+>
+</Parameter><Parameter
+ Type="Double"
+ Name="Val2"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>AbsoluteValue ( AbsoluteValue (Val1) - AbsoluteValue (Val2) ) &lt; 0.25</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ NeedsRequirement="FALSE"
+ Name="AbsoluteValue"
+>
+<Parameters>
+<Parameter
+ Type="Double"
+ Name="Value"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Negative"
+>
+<PreConditions>
+<PreCondition>Value &lt; 0.0</PreCondition>
+</PreConditions>
+<Expression>- Value</Expression>
+</Case><Case
+ Name="Positive"
+>
+<Expression>Value</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ NeedsRequirement="FALSE"
+ Name="ConvertTargetDistance"
+>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Kernel.MA.EndOfMovementAuthority().Location - d</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="CompareAcceleration"
+>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="Val1"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Acceleration"
+ Name="Val2"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>AbsoluteValue ( AbsoluteValue (Val1) - AbsoluteValue (Val2) ) &lt; 0.001</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

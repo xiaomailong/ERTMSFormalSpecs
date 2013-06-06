@@ -1,0 +1,386 @@
+<NameSpace
+ Name="MessageTypes"
+>
+<NameSpaces>
+</NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="32769"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Acceleration"
+>
+<SpecialValues>
+<EnumValue
+ Value="32769"
+ Name="NA"
+>
+</EnumValue><EnumValue
+ Value="32768"
+ Name="Infinity"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="-2147483647"
+ MaxValue="2147483648"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Distance"
+>
+<SpecialValues>
+<EnumValue
+ Value="2147483648"
+ Name="Infinity"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Gradient"
+>
+</Range><Range
+ MinValue="0"
+ MaxValue="32769"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Length"
+>
+<SpecialValues>
+<EnumValue
+ Value="32769"
+ Name="NA"
+>
+</EnumValue><EnumValue
+ Value="32768"
+ Name="Infinity"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="-32768"
+ MaxValue="32769"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+<SpecialValues>
+<EnumValue
+ Value="32769"
+ Name="NA"
+>
+</EnumValue><EnumValue
+ Value="32768"
+ Name="Infinity"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Time"
+>
+</Range></Ranges>
+<Functions>
+<Function
+ Type="BaseTypes.Length"
+ NeedsRequirement="FALSE"
+ Name="QLocAccLength"
+>
+<Parameters>
+<Parameter
+ Type="Messages.Q_LOCACC"
+ Name="length"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>BaseTypes.Length ( length )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Gradient"
+ NeedsRequirement="FALSE"
+ Name="QScaleGradient"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Gradient"
+ Name="gradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>BaseTypes.Gradient ( BaseTypes.Gradient ( gradient ) / 1000.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Acceleration"
+ NeedsRequirement="FALSE"
+ Name="DecelerationResolution"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Acceleration"
+ Name="acceleration"
+>
+</Parameter><Parameter
+ Type="Double"
+ Name="resolution"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>- BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Speed"
+ NeedsRequirement="FALSE"
+ Name="UnResolveSpeed"
+>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Speed"
+ Name="speed"
+>
+</Parameter><Parameter
+ Type="Double"
+ Name="resolution"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Empty"
+>
+<PreConditions>
+<PreCondition>NOT ( Available ( speed ) )</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Always"
+>
+<Expression>MessageTypes.Speed ( speed / resolution )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Length"
+ NeedsRequirement="FALSE"
+ Name="UnScaleLength"
+>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Length"
+ Name="length"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="scale"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Empty"
+>
+<PreConditions>
+<PreCondition>NOT ( Available ( length ) )</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="10 cm"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Length ( length * 10.0 )</Expression>
+</Case><Case
+ Name="1 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Length ( length )</Expression>
+</Case><Case
+ Name="10 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Length ( length / 10.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ NeedsRequirement="FALSE"
+ Name="SpeedResolution"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Speed"
+ Name="speed"
+>
+</Parameter><Parameter
+ Type="Double"
+ Name="resolution"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Use correction factor"
+>
+<Expression>BaseTypes.Speed ( BaseTypes.Speed ( speed ) * resolution )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Length"
+ NeedsRequirement="FALSE"
+ Name="QScaleLength"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Length"
+ Name="length"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="scale"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="10 cm"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Length ( BaseTypes.Length ( length ) / 10.0 )</Expression>
+</Case><Case
+ Name="1 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Length ( length ) </Expression>
+</Case><Case
+ Name="10 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Length ( BaseTypes.Length ( length ) * 10.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="MessageTypes.Distance"
+ NeedsRequirement="FALSE"
+ Name="UnScaleDistance"
+>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="distance"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="scale"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Empty"
+>
+<PreConditions>
+<PreCondition>NOT ( Available ( distance ) )</PreCondition>
+</PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="10 cm"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Distance ( distance * 10.0 )</Expression>
+</Case><Case
+ Name="1 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Distance ( distance )</Expression>
+</Case><Case
+ Name="10 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>MessageTypes.Distance ( distance / 10.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ NeedsRequirement="FALSE"
+ Name="QScaleDistance"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Distance"
+ Name="distance"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="scale"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="10 cm"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) / 10.0 )</Expression>
+</Case><Case
+ Name="1 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Distance ( distance )</Expression>
+</Case><Case
+ Name="10 m"
+>
+<PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) * 10.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Acceleration"
+ NeedsRequirement="FALSE"
+ Name="AccelerationResolution"
+>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Acceleration"
+ Name="acceleration"
+>
+</Parameter><Parameter
+ Type="Double"
+ Name="resolution"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

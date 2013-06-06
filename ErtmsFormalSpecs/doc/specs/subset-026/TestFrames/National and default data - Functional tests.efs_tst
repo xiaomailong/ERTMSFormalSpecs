@@ -1,0 +1,4774 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="National and default data - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Not applicable national values received from a BG"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="New national values received"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - New national values received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;180,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
+                {
+                    NID_PACKET =&gt; 3,
+                    L_PACKET =&gt; 200,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_SCALE =&gt; Messages.Q_SCALE._10_m_scaleC,
+                    D_VALIDNV =&gt; 120,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    V_NVSHUNT =&gt; 9,
+                    V_NVSTFF =&gt; 12,
+                    V_NVONSIGHT =&gt; 20,
+                    V_NVLIMSUPERV =&gt; 16,
+                    V_NVUNFIT =&gt; 10,
+                    V_NVREL =&gt; 9,
+                    D_NVROLL =&gt; 14,
+                    Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.No,
+                    Q_NVEMRRLS =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.No,
+                    Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.Yes,
+                    Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.No,
+                    V_NVALLOWOVTRP =&gt; 15,
+                    V_NVSUPOVTRP =&gt; 5,
+                    D_NVOVTRP =&gt; 24,
+                    T_NVOVTRP =&gt; 100,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.No,
+                    M_NVCONTACT =&gt; Messages.M_NVCONTACT.No_Reaction,
+                    T_NVCONTACT =&gt; 300,
+                    D_NVPOTRP =&gt; 100,
+                    D_NVSTFF =&gt; 60,
+                    Q_NVLOCACC =&gt; 7,
+                    M_NVAVADH =&gt; 2,
+                    M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_999,
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 10,
+                    Sequence5 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._100mC,
+                            M_NVKRINT =&gt; 15
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1000mC,
+                            M_NVKRINT =&gt; 18
+                        }
+                    ],
+                    Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
+                    Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
+                    A_NVP12 =&gt; 10,
+                    A_NVP23 =&gt; 14,
+                    V_NVKVINT =&gt; 8,
+                    M_NVKVINT_0 =&gt; 16,
+                    M_NVKVINT_1 =&gt; 29,
+                    Sequence2 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 12,
+                            M_NVKVINT_0 =&gt; 21,
+                            M_NVKVINT_1 =&gt; 48
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 19,
+                            M_NVKVINT_0 =&gt; 45,
+                            M_NVKVINT_1 =&gt; 72
+                        }
+                    ],
+                    Sequence4 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
+                        {
+                            Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Freight_trains,
+                            A_NVP12 =&gt; 11,
+                            A_NVP23 =&gt; 21,
+                            V_NVKVINT =&gt; 9,
+                            M_NVKVINT_0 =&gt; 10,
+                            M_NVKVINT_1 =&gt; 45,
+                            Sequence3 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 15,
+                                    M_NVKVINT_0 =&gt; 34,
+                                    M_NVKVINT_1 =&gt; 81
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 24,
+                                    M_NVKVINT_0 =&gt; 62,
+                                    M_NVKVINT_1 =&gt; 112
+                                }
+                            ]
+                        }
+                    ],
+                    M_NVKTINT =&gt; 18,
+                    A_NVMAXREDADH1 =&gt; 4,
+                    A_NVMAXREDADH2 =&gt; 2,
+                    A_NVMAXREDADH3 =&gt; 1
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9620,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 3000.0,
+        UnderReadingAmountOdo =&gt; 7.0
+    }
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 5000.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Modification of adhesion factor by driver"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Modification of adhesion factor by driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Shunting mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Shunting mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.ShuntingModeSpeedLimit == 45.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Staff Responsible mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Staff Responsible mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit == 60.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="On Sight mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - On Sight mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.OnSightModeSpeedLimit == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Limited Supervision mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Limited Supervision mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit == 80.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unfitted mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unfitted mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.UnfittedModeSpeedLimit == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Release Speed"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Release Speed"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.ReleaseSpeed == 45.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be used in roll away protection, ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup== 140.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Use service brake in target speed monitoring"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.9"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Use service brake in target speed monitoring"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to release emergency brake"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Permission to release emergency brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use guidance curves"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use guidance curves"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use the service brake feedback"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.12"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use the service brake feedback"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to inhibit the compensation of the speed ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.13"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to inhibit the compensation of the speed ..."
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed limit for triggering the override function"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.14"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Speed limit for triggering the override function"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.SpeedLimitForTriggeringTheOverrideFunction == 75.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Override speed limit to be supervised when override is active"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.15"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Override speed limit to be supervised when override is active"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive == 25.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.16"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered == 240.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max time for train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.17"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max time for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Change of driver ID permitted while running"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.18"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Change of driver ID permitted while running"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.ChangeOfDriverIDPermittedWhileRunning == Messages.M_NVDERUN.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="System reaction if radio channel monitoring time limit expires"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.19"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - System reaction if radio channel monitoring thime limit expires"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.No_Reaction</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum time since creation in the RBC of last received telegram"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum time since creation in the RBC of last received telegram"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == 300.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be allowed for reversing in Post Trip mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.21"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance to be allowed for reversing in Post Trip mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.DistToBeAllowedForReversingInPostTripMode == 1000.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max permitted distance to run in Staff Responsible mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.22"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max permitted distance to run in Staff Responsible mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode == 600.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Default location accuracy of a balise group"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.23"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Default location accuracy of a balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup == 7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Weighting factor for available wheel rail adhesion"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Weighting factor for available wheel rail adhesion"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion == 0.1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Confidence level for emergency brake safe deceleration on dry rails"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.25"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Confidence level for emergency brake safe deceleration on dry rails"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails == Messages.M_NVEBCL.Confidence_level___99_999</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kr_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.26"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.27"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kr_int"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.LengthStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1.LengthStep == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val2.LengthStep == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1.Value == 0.75</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.Value == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val2.Value == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kv_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kv_int (Passenger train)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == -0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == -0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA== 0.32</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB == 0.58</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.SpeedStep == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.SpeedStep == 95.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val3.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.ValueA== 0.42</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.ValueA== 0.9</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.ValueB == 0.96</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.ValueB == 1.44</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Integrated correction factor Kv_int (Freight train)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == 0.55</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == 1.05</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep == 45.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1.SpeedStep == 75.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val2.SpeedStep == 120.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val3.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val2.Value == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor for brake build up time"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.30"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.14"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor for brake build up time"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.31"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.a"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 == -4.0 * 0.05</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.32"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 == -2.0 * 0.05</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.33"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.c"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 == -1.0 * 0.05</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Data state"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Data state"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Country"
+>
+<ReqRef
+ Id="3.18.2.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Country"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.NID_C == 180</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Applicable distance"
+>
+<ReqRef
+ Id="3.18.2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Remaining distance"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance == 1200.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Default data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Modification of adhesion factor by driver"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Modification of adhesion factor by driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Not_allowed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Shunting mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Shunting mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.ShuntingModeSpeedLimit == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Staff Responsible mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Staff Responsible mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.StaffResponsibleModeSpeedLimit == 40.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="On Sight mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - On Sight mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.OnSightModeSpeedLimit == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Limited Supervision mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Limited Supervision mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.LimitedSupervisionModeSpeedLimit == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unfitted mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unfitted mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.UnfittedModeSpeedLimit == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Release Speed"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Release Speed"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.ReleaseSpeed == 40.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be used in roll away protection, ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup== 2.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Use service brake in target speed monitoring"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.9"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Use service brake in target speed monitoring"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to release emergency brake"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Permission to release emergency brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use guidance curves"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use guidance curves"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use the service brake feedback"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.12"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use the service brake feedback"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to inhibit the compensation of the speed ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.13"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to inhibit the compensation of the speed ..."
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed limit for triggering the override function"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.14"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Speed limit for triggering the override function"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.SpeedLimitForTriggeringTheOverrideFunction == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Override speed limit to be supervised when override is active"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.15"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Override speed limit to be supervised when override is active"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.16"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.DistForTrainTripSuppressionWhenOverrideIsTriggered == 200.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max time for train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.17"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max time for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered == 60.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Change of driver ID permitted while running"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.18"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Change of driver ID permitted while running"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.ChangeOfDriverIDPermittedWhileRunning == Messages.M_NVDERUN.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="System reaction if radio channel monitoring time limit expires"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.19"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - System reaction if radio channel monitoring thime limit expires"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.No_Reaction</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum time since creation in the RBC of last received telegram"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum time since creation in the RBC of last received telegram"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == Default.BaseTypes.Time.Infinity</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be allowed for reversing in Post Trip mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.21"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance to be allowed for reversing in Post Trip mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.DistToBeAllowedForReversingInPostTripMode == 200.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max permitted distance to run in Staff Responsible mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.22"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max permitted distance to run in Staff Responsible mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxPermDistToRunInStaffResponsibleMode == Default.BaseTypes.Distance.Infinity</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Default location accuracy of a balise group"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.23"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Default location accuracy of a balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Weighting factor for available wheel rail adhesion"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Weighting factor for available wheel rail adhesion"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.WeightingFactorForAvailableWheelRailAdhesion == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Confidence level for emergency brake safe deceleration on dry rails"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.25"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Confidence level for emergency brake safe deceleration on dry rails"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.ConfLevelForEmergBrakeSafeDecelerationOnDryRails == Messages.M_NVEBCL.Confidence_level___99_9999999</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kr_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.26"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.27"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kr_int"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKrInt.Val0.LengthStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKrInt.Val1.LengthStep == BaseTypes.Length.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1.Value == 0.9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kv_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kv_int (Passenger train)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.Val1.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor for brake build up time"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.30"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor for brake build up time"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorForBrakeBuildUpTime == 1.1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.31"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxDecelValueUnderReducedAdhesionCond1 == 1.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.32"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxDecelValueUnderReducedAdhesionCond2 == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.33"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.DefaultValues.MaxDecelValueUnderReducedAdhesionCond3 == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Applicable national values received from a BG"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Step1 - Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - New national values received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
+                {
+                    NID_PACKET =&gt; 3,
+                    L_PACKET =&gt; 200,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+                    D_VALIDNV =&gt; 0,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    V_NVSHUNT =&gt; 10,
+                    V_NVSTFF =&gt; 16,
+                    V_NVONSIGHT =&gt; 22,
+                    V_NVLIMSUPERV =&gt; 18,
+                    V_NVUNFIT =&gt; 14,
+                    V_NVREL =&gt; 8,
+                    D_NVROLL =&gt; 1200,
+                    Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
+                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
+                    Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
+                    Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
+                    V_NVALLOWOVTRP =&gt; 9,
+                    V_NVSUPOVTRP =&gt; 11,
+                    D_NVOVTRP =&gt; 2000,
+                    T_NVOVTRP =&gt; 150,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
+                    T_NVCONTACT =&gt; 400,
+                    D_NVPOTRP =&gt; 8000,
+                    D_NVSTFF =&gt; 7000,
+                    Q_NVLOCACC =&gt; 10,
+                    M_NVAVADH =&gt; 4,
+                    M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 6,
+                    Sequence5 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._150mC,
+                            M_NVKRINT =&gt; 10
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
+                            M_NVKRINT =&gt; 14
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1100mC,
+                            M_NVKRINT =&gt; 20
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1500mC,
+                            M_NVKRINT =&gt; 28
+                        }
+                    ],
+                    Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
+                    Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
+                    A_NVP12 =&gt; 12,
+                    A_NVP23 =&gt; 15,
+                    V_NVKVINT =&gt; 4,
+                    M_NVKVINT_0 =&gt; 22,
+                    M_NVKVINT_1 =&gt; 39,
+                    Sequence2 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 8,
+                            M_NVKVINT_0 =&gt; 26,
+                            M_NVKVINT_1 =&gt; 40
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 10,
+                            M_NVKVINT_0 =&gt; 30,
+                            M_NVKVINT_1 =&gt; 57
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 14,
+                            M_NVKVINT_0 =&gt; 40,
+                            M_NVKVINT_1 =&gt; 80
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 18,
+                            M_NVKVINT_0 =&gt; 60,
+                            M_NVKVINT_1 =&gt; 100
+                        }
+                    ],
+                    Sequence4 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
+                        {
+                            Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Freight_trains,
+                            A_NVP12 =&gt; 16,
+                            A_NVP23 =&gt; 20,
+                            V_NVKVINT =&gt; 8,
+                            M_NVKVINT_0 =&gt; 40,
+                            M_NVKVINT_1 =&gt; 50,
+                            Sequence3 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 14,
+                                    M_NVKVINT_0 =&gt; 64,
+                                    M_NVKVINT_1 =&gt; 80
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 18,
+                                    M_NVKVINT_0 =&gt; 80,
+                                    M_NVKVINT_1 =&gt; 100
+                                }
+                            ]
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Modification of adhesion factor by driver"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Modification of adhesion factor by driver"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Shunting mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Shunting mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Staff Responsible mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Staff Responsible mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit == 80.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="On Sight mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - On Sight mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit == 110.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Limited Supervision mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Limited Supervision mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit == 90.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unfitted mode speed limit"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Unfitted mode speed limit"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit == 70.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Release Speed"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.7"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Release Speed"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ReleaseSpeed == 40.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be used in roll away protection, ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup== 120.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Use service brake in target speed monitoring"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.9"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Use service brake in target speed monitoring"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to release emergency brake"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Permission to release emergency brake"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use guidance curves"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.11"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use guidance curves"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to use the service brake feedback"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.12"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to use the service brake feedback"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.No</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Permission to inhibit the compensation of the speed ..."
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.13"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Permission to inhibit the compensation of the speed ..."
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed limit for triggering the override function"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.14"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Speed limit for triggering the override function"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SpeedLimitForTriggeringTheOverrideFunction == 45.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Override speed limit to be supervised when override is active"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.15"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Override speed limit to be supervised when override is active"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive == 55.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.16"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered == 200.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max time for train trip suppression when override is triggered"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.17"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max time for train trip suppression when override is triggered"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered == 150.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Change of driver ID permitted while running"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.18"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Change of driver ID permitted while running"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ChangeOfDriverIDPermittedWhileRunning == Messages.M_NVDERUN.Yes</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="System reaction if radio channel monitoring time limit expires"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.19"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - System reaction if radio channel monitoring thime limit expires"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.Train_trip</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum time since creation in the RBC of last received telegram"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.20"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum time since creation in the RBC of last received telegram"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == 400.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance to be allowed for reversing in Post Trip mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.21"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Distance to be allowed for reversing in Post Trip mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DistToBeAllowedForReversingInPostTripMode == 800.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max permitted distance to run in Staff Responsible mode"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.22"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Max permitted distance to run in Staff Responsible mode"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode == 700.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Default location accuracy of a balise group"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.23"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Default location accuracy of a balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup == 10</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Weighting factor for available wheel rail adhesion"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.24"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Weighting factor for available wheel rail adhesion"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion == 0.2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Confidence level for emergency brake safe deceleration on dry rails"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.25"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Confidence level for emergency brake safe deceleration on dry rails"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails == Messages.M_NVEBCL.Confidence_level___99_9</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kr_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.26"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.27"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.12"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kr_int"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.Value == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0.LengthStep == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val2.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val2.LengthStep == 500.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1.Value == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1.LengthStep == 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val4.LengthStep == 1500.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val3.LengthStep == 1100.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val3.Value == 1.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val4.Value == 1.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 0.0 ) == 0.3</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 200.0 ) == 0.5</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 1000.0 ) == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 1200.0 ) == 1.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 2000.0 ) == 1.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.Kr_int ( 32000.0 ) == 1.4</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor Kv_int"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.28"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.29"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.34"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.2.1.35"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.13"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.8"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor Kv_int (Passenger train)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
+<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
+{
+    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
+        EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; -0.7
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 30.0,
+                Acceleration =&gt; 0.65
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.5
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.45
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.25
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 240.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 25.0,
+                Acceleration =&gt; 0.75
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.7
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.4
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.3
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.2
+            }
+        },
+        EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.99
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.9
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.8
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.7
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.6
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 190.0,
+                Acceleration =&gt; 0.5
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 220.0,
+                Acceleration =&gt; 0.45
+            }
+        },
+        EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.7
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.5
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.45
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 170.0,
+                Acceleration =&gt; 0.4
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 220.0,
+                Acceleration =&gt; 0.3
+            },
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                SpeedStep =&gt; 270.0,
+                Acceleration =&gt; 0.22
+            }
+        }
+    }
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == -0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == -0.75</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep == 20.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA== 0.44</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB == 0.78</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.SpeedStep == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.SpeedStep == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val3.SpeedStep == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val4.SpeedStep == 90.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.ValueA== 0.52</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.ValueA== 0.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val3.ValueA== 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val4.ValueA== 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.ValueB == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val2.ValueB == 1.14</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val3.ValueB == 1.6</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val4.ValueB == 2.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Integrated correction factor Kv_int (Freight train)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == 0.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == 1.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1.SpeedStep == 70.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val2.SpeedStep == 90.0</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val3.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1.Value == 0.7</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val2.Value == 0.7</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Integrated correction factor for brake build up time"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.30"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.14"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.10"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Integrated correction factor for brake build up time"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime == 1.25</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.31"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.a"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (1)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 == -0.5</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.32"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (2)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 == -7.0 * 0.05</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<ReqRef
+ Id="Entry 3.A3.2.1.33"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7.c"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Maximum deceleration value under reduced adhesion conditions (3)"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 == -0.25</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Data state"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Data state"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Country"
+>
+<ReqRef
+ Id="3.18.2.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Country"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.NID_C == 140</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remaining distance"
+>
+<ReqRef
+ Id="3.18.2.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Remaining distance"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Mode related speed restrictions"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Default values"
+>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 )  == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 40.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="National values"
+>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - New national values received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
+                {
+                    NID_PACKET =&gt; 3,
+                    L_PACKET =&gt; 200,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+                    D_VALIDNV =&gt; 0,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    V_NVSHUNT =&gt; 10,
+                    V_NVSTFF =&gt; 16,
+                    V_NVONSIGHT =&gt; 22,
+                    V_NVLIMSUPERV =&gt; 18,
+                    V_NVUNFIT =&gt; 14,
+                    V_NVREL =&gt; 8,
+                    D_NVROLL =&gt; 1200,
+                    Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
+                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
+                    Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
+                    Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
+                    V_NVALLOWOVTRP =&gt; 9,
+                    V_NVSUPOVTRP =&gt; 11,
+                    D_NVOVTRP =&gt; 2000,
+                    T_NVOVTRP =&gt; 150,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
+                    T_NVCONTACT =&gt; 400,
+                    D_NVPOTRP =&gt; 8000,
+                    D_NVSTFF =&gt; 7000,
+                    Q_NVLOCACC =&gt; 10,
+                    M_NVAVADH =&gt; 4,
+                    M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 4,
+                    Sequence5 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._200mC,
+                            M_NVKRINT =&gt; 8
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
+                            M_NVKRINT =&gt; 17
+                        }
+                    ],
+                    Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
+                    Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
+                    A_NVP12 =&gt; 10,
+                    A_NVP23 =&gt; 14,
+                    V_NVKVINT =&gt; 8,
+                    M_NVKVINT_0 =&gt; 16,
+                    M_NVKVINT_1 =&gt; 29,
+                    Sequence2 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 12,
+                            M_NVKVINT_0 =&gt; 21,
+                            M_NVKVINT_1 =&gt; 48
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 19,
+                            M_NVKVINT_0 =&gt; 45,
+                            M_NVKVINT_1 =&gt; 72
+                        }
+                    ],
+                    Sequence4 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
+                        {
+                            Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Freight_trains,
+                            A_NVP12 =&gt; 11,
+                            A_NVP23 =&gt; 21,
+                            V_NVKVINT =&gt; 9,
+                            M_NVKVINT_0 =&gt; 10,
+                            M_NVKVINT_1 =&gt; 45,
+                            Sequence3 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 15,
+                                    M_NVKVINT_0 =&gt; 34,
+                                    M_NVKVINT_1 =&gt; 81
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 24,
+                                    M_NVKVINT_0 =&gt; 62,
+                                    M_NVKVINT_1 =&gt; 112
+                                }
+                            ]
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 90.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 110.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 80.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 70.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Speed limits given by the trackside or by the driver"
+>
+<ReqRef
+ Id="3.11.2.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.7.1.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Speed limits given by the trackside"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>INSERT
+Kernel.MA.ModeProfile.ModeProfile
+{
+    AcknLength =&gt; 0.0,
+    Distance =&gt; 0.0,
+    Length =&gt; 1000.0,
+    Mode =&gt; Mode.ModeProfile.LS,
+    Speed =&gt; 40.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+}
+IN
+Kernel.MA.ModeProfile.Profile</Action>
+<Action>INSERT
+Kernel.MA.ModeProfile.ModeProfile
+{
+    AcknLength =&gt; 0.0,
+    Distance =&gt; 0.0,
+    Length =&gt; 1000.0,
+    Mode =&gt; Mode.ModeProfile.OS,
+    Speed =&gt; 60.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+}
+IN
+Kernel.MA.ModeProfile.Profile</Action>
+<Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.RV &lt;- 70.0</Action>
+<Action>INSERT
+Kernel.MA.ModeProfile.ModeProfile
+{
+    AcknLength =&gt; 0.0,
+    Distance =&gt; 0.0,
+    Length =&gt; 1000.0,
+    Mode =&gt; Mode.ModeProfile.SH,
+    Speed =&gt; 30.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
+}
+IN
+Kernel.MA.ModeProfile.Profile</Action>
+<Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.SR &lt;- 100.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 40.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 60.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 70.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == 70.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Override function related speed restrictions"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Default value"
+>
+<ReqRef
+ Id="3.11.2.2.j"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.OverrideRelatedSpeedRestrictions(0.0) == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="National values received"
+>
+<ReqRef
+ Id="3.11.2.2.j"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - New national values received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
+                {
+                    NID_PACKET =&gt; 3,
+                    L_PACKET =&gt; 200,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+                    D_VALIDNV =&gt; 0,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    V_NVSHUNT =&gt; 10,
+                    V_NVSTFF =&gt; 16,
+                    V_NVONSIGHT =&gt; 22,
+                    V_NVLIMSUPERV =&gt; 18,
+                    V_NVUNFIT =&gt; 14,
+                    V_NVREL =&gt; 8,
+                    D_NVROLL =&gt; 1200,
+                    Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
+                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
+                    Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
+                    Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
+                    V_NVALLOWOVTRP =&gt; 9,
+                    V_NVSUPOVTRP =&gt; 11,
+                    D_NVOVTRP =&gt; 2000,
+                    T_NVOVTRP =&gt; 150,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
+                    T_NVCONTACT =&gt; 400,
+                    D_NVPOTRP =&gt; 8000,
+                    D_NVSTFF =&gt; 7000,
+                    Q_NVLOCACC =&gt; 10,
+                    M_NVAVADH =&gt; 4,
+                    M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 12,
+                    Sequence5 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._75mC,
+                            M_NVKRINT =&gt; 15
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._200mC,
+                            M_NVKRINT =&gt; 16
+                        }
+                    ],
+                    Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
+                    Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
+                    A_NVP12 =&gt; 10,
+                    A_NVP23 =&gt; 14,
+                    V_NVKVINT =&gt; 8,
+                    M_NVKVINT_0 =&gt; 16,
+                    M_NVKVINT_1 =&gt; 29,
+                    Sequence2 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 12,
+                            M_NVKVINT_0 =&gt; 21,
+                            M_NVKVINT_1 =&gt; 48
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
+                        {
+                            V_NVKVINT =&gt; 19,
+                            M_NVKVINT_0 =&gt; 45,
+                            M_NVKVINT_1 =&gt; 72
+                        }
+                    ],
+                    Sequence4 =&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
+                        {
+                            Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Freight_trains,
+                            A_NVP12 =&gt; 11,
+                            A_NVP23 =&gt; 21,
+                            V_NVKVINT =&gt; 9,
+                            M_NVKVINT_0 =&gt; 10,
+                            M_NVKVINT_1 =&gt; 45,
+                            Sequence3 =&gt;
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 15,
+                                    M_NVKVINT_0 =&gt; 34,
+                                    M_NVKVINT_1 =&gt; 81
+                                },
+                                Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
+                                {
+                                    V_NVKVINT =&gt; 24,
+                                    M_NVKVINT_0 =&gt; 62,
+                                    M_NVKVINT_1 =&gt; 112
+                                }
+                            ]
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.OverrideRelatedSpeedRestrictions(0.0) == 55.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Override function is disabled"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Override function is disabled"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.NationalValues.OverrideRelatedSpeedRestrictions(0.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

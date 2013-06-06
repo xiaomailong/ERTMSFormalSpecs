@@ -1,0 +1,1081 @@
+<NameSpace
+ Name="Gradient"
+>
+<NameSpaces>
+</NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="10"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="CorrectionFactor"
+>
+<ReqRef
+ Id="3.13.2.2.9.2.1"
+>
+</ReqRef>
+</Range></Ranges>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientInfo"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Location"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Gradient"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Gradient"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DefaultGradientForTSR"
+>
+<StructureElement
+ TypeName="Default.BaseTypes.Gradient"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Gradient"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CorFactValue"
+>
+<Comment></Comment>
+<StructureElement
+ TypeName="CorrectionFactor"
+ Default="0.0"
+ Mode="Constant"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Factor"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="Default.BaseTypes.Speed.Infinity"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpeedStep"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CorFact"
+>
+<ReqRef
+ Id="3.13.2.2.9.2.2"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="CorFactValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val3"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="CorFactValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val4"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="CorFactValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val2"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="CorFactValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val0"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="CorFactValue"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Val1"
+>
+<Comment></Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="Gradient.GradientInfo"
+ MaxSize="50"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Gradients"
+>
+<ReqRef
+ Id="A1.1.11.4"
+>
+</ReqRef>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientProfileWithDefaultValue"
+>
+<Comment>Provides a default value where the gradient is not defined</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="DefaultGradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Indefinite gradient profile"
+>
+<PreConditions>
+<PreCondition>GradientInfoProfileSummary ( Distance ) == BaseTypes.Gradient.Indefinite</PreCondition>
+</PreConditions>
+<Expression>DefaultGradient</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>GradientInfoProfileSummary (Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientEnd"
+>
+<ReqRef
+ Id="3.11.12.2"
+>
+</ReqRef>
+<Comment>Provides the end of the gradient information</Comment>
+<Parameters>
+<Parameter
+ Type="Gradient.GradientInfo"
+ Name="Current"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>REDUCE Gradients | X.Location &gt; Current.Location
+  USING BaseTypes.MinDistance ( X.Location, RESULT )
+  INITIAL_VALUE Current.Location + MaxGradientLength</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ Name="GradientInfoProfile_NonCompensated"
+>
+<ReqRef
+ Id="3.13.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.3"
+>
+</ReqRef>
+<Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
+Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
+<Parameters>
+<Parameter
+ Type="Gradient.GradientInfo"
+ Name="GradientInfo"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="TrainLength"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Before gradient info (considering train length)"
+>
+<PreConditions>
+<PreCondition>Distance &lt; GradientInfo.Location</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Gradient.Indefinite</Expression>
+</Case><Case
+ Name="After gradient info"
+>
+<PreConditions>
+<PreCondition>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Gradient.Indefinite</Expression>
+</Case><Case
+ Name="Within gradient info"
+>
+<Expression>GradientInfo.Gradient</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateGradient"
+>
+<ReqRef
+ Id="3.11.12.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.12.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.37.0"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.110"
+>
+</ReqRef>
+<Comment>Creates a gradient based on the gradient orientation( uphill or downhill) and the corresponding gradient value</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_GDIR"
+ Name="Q_GDIR"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Gradient"
+ Name="G_A"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Last gradient value"
+>
+<PreConditions>
+<PreCondition>G_A == 255</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Q_GDIR is uphill"
+>
+<PreConditions>
+<PreCondition>Q_GDIR == Messages.Q_GDIR.uphill</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Gradient ( G_A )</Expression>
+</Case><Case
+ Name="Q_GDIR is downhill"
+>
+<PreConditions>
+<PreCondition>Q_GDIR == Messages.Q_GDIR.downhill</PreCondition>
+</PreConditions>
+<Expression>- BaseTypes.Gradient ( G_A )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AbsoluteDistance"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Collection1"
+ Name="Gradients"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1"
+ Name="Gradient"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Scale"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>SUM
+    Gradients |
+        Before(ExpectedFirst =&gt; X, ExpectedSecond =&gt; Gradient, Collection =&gt; Gradients) OR ( X == Gradient )
+USING
+    Default.MessageTypes.QScaleDistance (X.D_GRADIENT, Scale)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CompensateGradientWithRotatingMass"
+>
+<ReqRef
+ Id="3.13.4.3.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.4.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Compensates the gradient with the rotating mass of the train.
+The formulae are easier than in subset 26 since the values of grad and M_rotating_xxx are expressed as % : e.g. 1% = 0.01</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="M_rotating_nom is unknown, uphill"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition>
+<PreCondition>Gradient &gt;= 0.0</PreCondition>
+</PreConditions>
+<Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_max )</Expression>
+</Case><Case
+ Name="M_rotating_nom is unknown, downhill"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition>
+<PreCondition>Gradient &lt; 0.0</PreCondition>
+</PreConditions>
+<Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_min )</Expression>
+</Case><Case
+ Name="M_rotating_nom is known, uphill"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition>
+<PreCondition>Gradient &gt;= 0.0</PreCondition>
+</PreConditions>
+<Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
+</Case><Case
+ Name="M_rotating_nom is known, downhill"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition>
+<PreCondition>Gradient &lt; 0.0</PreCondition>
+</PreConditions>
+<Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_gradient"
+>
+<ReqRef
+ Id="3.13.6.2.1.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.3.1.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.2.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.4.3.2"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ Name="GradientInfoProfileSummary_NonCompensated"
+>
+<ReqRef
+ Id="3.13.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.3"
+>
+</ReqRef>
+<Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>(REDUCE Gradients 
+    USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile_NonCompensated( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
+  INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientProfile"
+>
+<ReqRef
+ Id="3.13.4.1.3"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.b"
+>
+</ReqRef>
+<Comment>Takes into account the default values for the gradient </Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Default Gradient for a TSR is available and the default target is due to a TSR"
+>
+<PreConditions>
+<PreCondition>Available ( DefaultGradientForTSR )</PreCondition>
+<PreCondition>TSR.CurrentTargetDueToTSR ()</PreCondition>
+</PreConditions>
+<Expression>GradientProfileWithDefaultValue ( Distance, DefaultGradientForTSR.Gradient )</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>GradientProfileWithDefaultValue ( Distance, 0.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientInfoProfile"
+>
+<ReqRef
+ Id="3.13.4.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.4.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.4.1.2"
+>
+</ReqRef>
+<Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
+Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
+<Parameters>
+<Parameter
+ Type="Gradient.GradientInfo"
+ Name="GradientInfo"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="TrainLength"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Before gradient info (considering train length)"
+>
+<PreConditions>
+<PreCondition>Distance &lt; GradientInfo.Location</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Gradient.Indefinite</Expression>
+</Case><Case
+ Name="After gradient info"
+>
+<PreConditions>
+<PreCondition>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Gradient.Indefinite</Expression>
+</Case><Case
+ Name="Within gradient info"
+>
+<Expression>CompensateGradientWithRotatingMass( GradientInfo.Gradient )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientInfoProfileSummary"
+>
+<ReqRef
+ Id="3.13.4.2.1"
+>
+</ReqRef>
+<Comment>Provides the gradient profile based on the gradient information stored in Gradients</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+>
+<Expression>(REDUCE Gradients 
+    USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
+  INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Gradient"
+ Implemented="TRUE"
+ Name="GradientProfile_NonCompensated"
+>
+<ReqRef
+ Id="3.13.6.4.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.2.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.9.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.9.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.3.1"
+>
+</ReqRef>
+<Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Indefinite gradient profile"
+>
+<PreConditions>
+<PreCondition>GradientInfoProfileSummary_NonCompensated ( d ) == BaseTypes.Gradient.Indefinite</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Positive gradient value"
+>
+<PreConditions>
+<PreCondition>GradientInfoProfileSummary_NonCompensated ( d ) &gt;= 0.0</PreCondition>
+</PreConditions>
+<Expression>KnPlus ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
+</Case><Case
+ Name="Negative gradient value"
+>
+<Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorrectionFactor"
+ Implemented="TRUE"
+ Name="CorrectionFactorFunction"
+>
+<ReqRef
+ Id="3.13.2.2.9.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.9.2.2"
+>
+</ReqRef>
+<Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
+<Parameters>
+<Parameter
+ Type="CorFact"
+ Name="aCorrectionFactor"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="GCF_0"
+>
+<PreConditions>
+<PreCondition>aCorrectionFactor.Val0.SpeedStep &lt;= V</PreCondition>
+<PreCondition>V &lt; aCorrectionFactor.Val1.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aCorrectionFactor.Val0.Factor</Expression>
+</Case><Case
+ Name="GCF_1"
+>
+<PreConditions>
+<PreCondition>aCorrectionFactor.Val1.SpeedStep &lt;= V</PreCondition>
+<PreCondition>V &lt; aCorrectionFactor.Val2.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aCorrectionFactor.Val1.Factor</Expression>
+</Case><Case
+ Name="GCF_2"
+>
+<PreConditions>
+<PreCondition>aCorrectionFactor.Val2.SpeedStep &lt;=  V</PreCondition>
+<PreCondition>V &lt; aCorrectionFactor.Val3.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aCorrectionFactor.Val2.Factor</Expression>
+</Case><Case
+ Name="GCF_3"
+>
+<PreConditions>
+<PreCondition>aCorrectionFactor.Val3.SpeedStep &lt;= V</PreCondition>
+<PreCondition>V &lt; aCorrectionFactor.Val4.SpeedStep</PreCondition>
+</PreConditions>
+<Expression>aCorrectionFactor.Val3.Factor</Expression>
+</Case><Case
+ Name="GCF_4"
+>
+<PreConditions>
+<PreCondition>aCorrectionFactor.Val4.SpeedStep &lt;= V</PreCondition>
+</PreConditions>
+<Expression>aCorrectionFactor.Val4.Factor</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorrectionFactor"
+ Implemented="TRUE"
+ Name="KnPlus"
+>
+<ReqRef
+ Id="3.13.6.4.2.e"
+>
+</ReqRef>
+<Comment>Provides the value of the on-board correction factor Kn+(V).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="CorrectionFactor"
+ Implemented="TRUE"
+ Name="KnMin"
+>
+<ReqRef
+ Id="3.13.6.4.2.e"
+>
+</ReqRef>
+<Comment>Provides the value of the on-board correction factor Kn-(V).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="ProfileReceived"
+>
+<ReqRef
+ Id="3.11.12.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.12.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.c.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A035"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove previous values"
+>
+<ReqRef
+ Id="3.7.3.1.b"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stores gradient profile info"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Store first gradient value"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Store first gradient value"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>StoreSingleProfileInfo ( 
+  GradientInfo {
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
+    Gradient =&gt; CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_A )
+  }
+)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Store following graduent values"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Store following graduent values"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>APPLY  
+  StoreSingleProfileInfo
+  ( 
+    GradientInfo
+    {
+      Location =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
+      Gradient =&gt; CreateGradient ( Q_GDIR =&gt; X.Q_GDIR, G_A =&gt; X.G_A )
+    }
+  )
+ON Packet.Sequence1</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="StoreSingleProfileInfo"
+>
+<Parameters>
+<Parameter
+ Type="GradientInfo"
+ Name="Info"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stores the profile info"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stores the profile info"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT Info IN Gradients</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="DefaultGradientForTSRReceived"
+>
+<ReqRef
+ Id="3.11.12.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.12.6"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stores the default gradient for TSR value"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stores the default gradient for TSR value"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>DefaultGradientForTSR &lt;- DefaultGradientForTSR
+{
+  Gradient =&gt; CreateGradient
+  (
+    Q_GDIR =&gt; Packet.Q_GDIR, 
+    G_A =&gt; Packet.G_TSR,
+  )
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="Gradients"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Gradients"
+>
+<ReqRef
+ Id="3.7.1.1.c.2"
+>
+</ReqRef>
+<Comment>Holds the gradient information received from trackside</Comment>
+</Variable><Variable
+ Type="Default.Percentage"
+ DefaultValue="15.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_rotating_max"
+>
+<ReqRef
+ Id="Entry 3.A3.1.1.19"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Maximum possible rotating mass as a percentage of the total weight of the train: 15 %</Comment>
+</Variable><Variable
+ Type="Default.Percentage"
+ DefaultValue="2.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_rotating_min"
+>
+<ReqRef
+ Id="Entry 3.A3.1.1.20"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
+</Variable><Variable
+ Type="DefaultGradientForTSR"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DefaultGradientForTSR"
+>
+<ReqRef
+ Id="3.11.12.5"
+>
+</ReqRef>
+<Comment>Represents the default gradient for TSR supervision.</Comment>
+</Variable><Variable
+ Type="CorFact"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="KnMin"
+>
+<ReqRef
+ Id="3.13.2.2.9.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.2.e"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
+</Variable><Variable
+ Type="CorFact"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="KnPlus"
+>
+<ReqRef
+ Id="3.13.2.2.9.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.4.2.e"
+>
+</ReqRef>
+<Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Length"
+ DefaultValue="10000.0"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MaxGradientLength"
+>
+<Comment>Represents the maximum length of the gradient. Used to compute the end of the last gradient in the gradient profile.</Comment>
+</Variable></Variables>
+</NameSpace>

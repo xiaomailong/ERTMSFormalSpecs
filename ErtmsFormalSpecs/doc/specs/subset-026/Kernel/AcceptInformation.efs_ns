@@ -1,0 +1,2173 @@
+<NameSpace
+ Name="AcceptInformation"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="Exceptions"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ModeRules"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="LevelRules"
+>
+</NameSpaceRef></NameSpaces>
+<Enumerations>
+<Enum
+ Default="Source.BaliseGroup"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Source"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="RBC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="BaliseGroup"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Loop"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="RIU"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="UnconditionalEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.83"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.84"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.44"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptUnconditionalEmergencyStopFromRBC() AND ModeRules.AcceptUnconditionalEmergencyStop()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="CoOperativeShorteningOfMA"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.81"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.82"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.43"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptCoOperativeShorteningOfMAFromRBC() AND ModeRules.AcceptCoOperativeShorteningOfMA()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcknowledgementOfTrainData"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.79"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.80"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.42"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptAcknowledgementOfTrainDataFromRBC() AND ModeRules.AcceptAcknowledgementOfTrainData()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConditionalEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.85"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.86"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.45"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptConditionalEmergencyStopFromRBC() AND ModeRules.AcceptConditionalEmergencyStop()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SHAuthorised"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.91"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.92"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.48"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSHAuthorisedFromRBC() AND ModeRules.AcceptSHAuthorised()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SHRefused"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.89"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.90"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.47"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSHRefusedFromRBC() AND ModeRules.AcceptSHRefused()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RevocationOfEmergencyStop"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.87"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.88"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.46"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRevocationOfEmergencyStopFromRBC() AND ModeRules.AcceptRevocationOfEmergencyStop()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RecognitionOfExitFromTRIPMode"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.77"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.78"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.41"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRecognitionOfExitFromTRIPModeFromRBC() AND ModeRules.AcceptRecognitionOfExitFromTRIPMode()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="InfillLocationReference"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.69"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.70"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.36"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptInfillLocationReference() AND ModeRules.AcceptInfillLocationReference()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AssignmentOfCoOrdinateSystem"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.67"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.68"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.35"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptAssignmentOfCoOrdinateSystemFromRBC() AND ModeRules.AcceptAssignmentOfCoOrdinateSystem()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="EOLMInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.65"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.66"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.34"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptEOLMInformation() AND ModeRules.AcceptEOLMInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrackConditionsExclusingSpecialCases"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.71"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.72"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.37"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMassesFromRBC() AND ModeRules.AcceptTrackConditionsExcludingSpecialCases()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMasses() AND ModeRules.AcceptTrackConditionsExcludingSpecialCases()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="LocationIdentity"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.75"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.76"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.40"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptLocationIdentity() AND ModeRules.AcceptLocationIdentity()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrackConditionsBigMetalMasses"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.73"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.74"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.39"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrackConditionsBigMetalMasses() AND ModeRules.AcceptTrackConditionsBigMetalMasses()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrackConditionsIncludingSpecialCases"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.71"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.72"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.38"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMassesFromRBC() AND ModeRules.AcceptTrackConditionsIncludingSpecialCases()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptTrackConditionsExcludingBigMetalMasses() AND ModeRules.AcceptTrackConditionsIncludingSpecialCases()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TracksideConstituentSystemVersion"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.93"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.94"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.49"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTracksideConstituentSystemVersionFromRBC() AND ModeRules.AcceptTracksideConstituentSystemVersion()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptTracksideConstituentSystemVersion() AND ModeRules.AcceptTracksideConstituentSystemVersion()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DefaultBaliseLoopRIUInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.115"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.116"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.60"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptDefaultBaliseLoopRIUInformation() AND ModeRules.AcceptDefaultBaliseLoopRIUInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ReversingSupervisionInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.113"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.114"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.59"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptReversingSupervisionInformationFromRBC() AND ModeRules.AcceptReversingSupervisionInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptReversingSupervisionInformation() AND ModeRules.AcceptReversingSupervisionInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ReversingAreaInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.111"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.112"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.58"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptReversingAreaInformationFromRBC() AND ModeRules.AcceptReversingAreaInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptNationalValues() AND ModeRules.AcceptNationalValues()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrackAheadFreeUpToLevel2_3TransitionLocation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.117"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.118"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.61"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrackAheadFreeUpToLevel2_3TransitionLocation() AND ModeRules.AcceptTrackAheadFreeUpToLevel2_3TransitionLocation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="LevelCrossingInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.121"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.122"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.63"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptLevelCrossingInformationFromRBC() AND ModeRules.AcceptLevelCrossingInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptLevelCrossingInformation() AND ModeRules.AcceptLevelCrossingInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="PermittedBrakingDistanceInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.119"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.120"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.62"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptPermittedBrakingDistanceInformationFromRBC() AND ModeRules.AcceptPermittedBrakingDistanceInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptPermittedBrakingDistanceInformation() AND ModeRules.AcceptPermittedBrakingDistanceInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SoMPositionReportConfirmedByRBC"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.109"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.110"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.57"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSoMPositionReportConfirmedByRBCFromRBC() AND ModeRules.AcceptSoMPositionReportConfirmedByRBC()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrainRunningNumber"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.99"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.100"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.52"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrainRunningNumberFromRBC() AND ModeRules.AcceptTrainRunningNumber()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrackAheadFreeRequest"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.97"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.98"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.51"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrackAheadFreeRequestFromRBC() AND ModeRules.AcceptTrackAheadFreeRequest()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SystemVersionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.95"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.96"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.50"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSystemVersionOrder() AND ModeRules.AcceptSystemVersionOrder()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="InitiationOfSession"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.101"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.102"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.53"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptInitiationOfSessionFromRBC() AND ModeRules.AcceptInitiationOfSession()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrainAccepted"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.107"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.108"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.56"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrainAcceptedFromRBC() AND ModeRules.AcceptTrainAccepted()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TrainRejected"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.105"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.106"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.55"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTrainRejectedFromRBC() AND ModeRules.AcceptTrainRejected()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AcknowledgementOfSessionTermination"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.103"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.104"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.54"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptAcknowledgementOfSessionTerminationFromRBC() AND ModeRules.AcceptAcknowledgementOfSessionTermination()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptAcknowledgementOfSessionTermination() AND ModeRules.AcceptAcknowledgementOfSessionTermination()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SessionManagementWithNeighbouringRIU"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.63"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.64"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.33"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSessionManagementWithNeighbouringRIU() AND ModeRules.AcceptSessionManagementWithNeighbouringRIU()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="LevelInhibitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.21"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.22"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.12"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptLevelInhibitionOrderFromRBC() AND ModeRules.AcceptLevelInhibitionOrder()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptLevelInhibitionOrder() AND ModeRules.AcceptLevelInhibitionOrder()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ConditionalLevelTransitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.19"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.20"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.11"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptConditionalLevelTransitionOrder() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="LevelTransitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.17"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.18"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.11"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptLevelTransitionOrderFromRBC() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptLevelTransitionOrder() AND ModeRules.AcceptLevelTransitionOrders()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SessionManagement"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.23"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.24"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.13"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSessionManagementFromRBC() AND ModeRules.AcceptSessionManagement()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptSessionManagement() AND ModeRules.AcceptSessionManagement()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="PositionReportParameters"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.29"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.30"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.16"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptPositionReportParametersFromRBC() AND ModeRules.AcceptPositionReportParameters()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="MARequestParameters"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.27"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.28"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.15"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptMARequestParametersFromRBC() AND ModeRules.AcceptMARequestParameters()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RadioNetworkRegistration"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.25"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.26"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.14"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRadioNetworkRegistrationFromRBC() AND ModeRules.AcceptRadioNetworkRegistration()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptRadioNetworkRegistration() AND ModeRules.AcceptRadioNetworkRegistration()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AxleLoadSpeedProfile"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.15"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.16"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.8"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptAxleLoadSpeedProfileFromRBC() AND ModeRules.AcceptAxleLoadSpeedProfile()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptAxleLoadSpeedProfile() AND ModeRules.AcceptAxleLoadSpeedProfile()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SignallingRelatedSpeedRestriction"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.6"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.3"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSignallingRelatedSpeedRestriction() AND ModeRules.AcceptSignallingRelatedSpeedRestriction()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="Linking"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptLinkingFromRBC() AND ModeRules.AcceptLinking()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptLinking() AND ModeRules.AcceptLinking()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="NationalValues"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptNationalValuesFromRBC() AND ModeRules.AcceptNationalValues()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptNationalValues() AND ModeRules.AcceptNationalValues()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="MovementAuthority"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.7"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.8"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.4"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptMovementAuthorityFromRBC() AND ModeRules.AcceptMovementAuthority()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptMovementAuthority() AND ModeRules.AcceptMovementAuthority()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="InternationalSSP"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.13"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.14"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.7"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptInternationalSSPFromRBC() AND ModeRules.AcceptInternationalSSP()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptInternationalSSP() AND ModeRules.AcceptInternationalSSP()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="GradientProfile"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.11"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.12"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.6"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptGradientProfileFromRBC() AND ModeRules.AcceptGradientProfile()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptGradientProfile() AND ModeRules.AcceptGradientProfile()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RepositioningInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.9"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.10"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.5"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRepositioningInformation() AND ModeRules.AcceptRepositioningInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SRAuthorisation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.31"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.32"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.17"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSRAuthorisationFromRBC() AND ModeRules.AcceptSRAuthorisation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="GeographicalPosition"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.53"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.54"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.28"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptGeographicalPositionFromRBC() AND ModeRules.AcceptGeographicalPosition()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptGeographicalPosition() AND ModeRules.AcceptGeographicalPosition()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="FixedTextInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.51"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.52"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.27"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptFixedTextInformationFromRBC() AND ModeRules.AcceptFixedTextInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptFixedTextInformation() AND ModeRules.AcceptFixedTextInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="PlainTextInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.49"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.50"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.26"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptPlainTextInformationFromRBC() AND ModeRules.AcceptPlainTextInformation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptPlainTextInformation() AND ModeRules.AcceptPlainTextInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RBCTransitionOrder"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.55"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.56"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.29"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRBCTransitionOrderFromRBC() AND ModeRules.AcceptRBCTransitionOrder()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptRBCTransitionOrder() AND ModeRules.AcceptRBCTransitionOrder()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RadioInfillAreaInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.61"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.62"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.32"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRadioInfillAreaInformation() AND ModeRules.AcceptRadioInfillAreaInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="StopShuntingOnDeskOpening"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.59"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.60"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.31"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptStopShuntingOnDeskOpening() AND ModeRules.AcceptStopShuntingOnDeskOpening()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DangerForSHInformation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.57"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.58"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.30"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptDangerForSHInformation() AND ModeRules.AcceptDangerForSHInformation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AdhesionFactor"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.47"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.48"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.25"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptAdhesionFactorFromRBC() AND ModeRules.AcceptAdhesionFactor()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptAdhesionFactor() AND ModeRules.AcceptAdhesionFactor()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TemporarySpeedRestriction"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.37"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.38"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.20"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTemporarySpeedRestrictionFromRBC() AND ModeRules.AcceptTemporarySpeedRestriction()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptTemporarySpeedRestriction() AND ModeRules.AcceptTemporarySpeedRestriction()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SRDistanceInformationFromLoop"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.35"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.36"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.19"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptSRDistanceInformationFromLoop() AND ModeRules.AcceptSRDistanceInformationFromLoop()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="StopIfInSRMode"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.33"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.34"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.18"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptStopIfInSRMode() AND ModeRules.AcceptStopIfInSRMode()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="TemporarySpeedRestrictionRevocation"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.39"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.40"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.21"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptTemporarySpeedRestrictionRevocationFromRBC() AND ModeRules.AcceptTemporarySpeedRestrictionRevocation()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptTemporarySpeedRestrictionRevocation() AND ModeRules.AcceptTemporarySpeedRestrictionRevocation()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="RouteSuitabilityData"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.45"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.46"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.24"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From RBC"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptRouteSuitabilityDataFromRBC() AND ModeRules.AcceptRouteSuitabilityData()</Expression>
+</Case><Case
+ Name="Ohterwise"
+>
+<Expression>LevelRules.AcceptRouteSuitabilityData() AND ModeRules.AcceptRouteSuitabilityData()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="DefaultGradientForTSR"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.43"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.44"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.23"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source != Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptDefaultGradientForTSR() AND ModeRules.AcceptDefaultGradientForTSR()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="InhibitionOfRevocableTSRs"
+>
+<ReqRef
+ Id="Entry 4.8.2.2.41"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.2.2.42"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 4.8.4.2.2.22"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>Source == Source.RBC</PreCondition>
+</PreConditions>
+<Expression>LevelRules.AcceptInhibitionOfRevocableTSRsFromRBC() AND ModeRules.AcceptInhibitionOfRevocableTSRs()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="STMMaxSpeed"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.9"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>ModeRules.AcceptSTMMaxSpeed()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="STMSystemSpeedDistance"
+>
+<ReqRef
+ Id="Entry 4.8.4.2.2.10"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Source"
+ Name="Source"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>ModeRules.AcceptSTMSystemSpeedDistance()</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

@@ -1,0 +1,2277 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Position Reporting to the RBC - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: position parameters"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 6.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 5.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;2.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;4.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position report parameters - periodically in time"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action>
+<Action>Odometry.CurrentTime &lt;- 1390.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Time reached"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.CurrentTime &lt;- 1400.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportTimeReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Time == 1400.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action>
+<Action>Odometry.CurrentTime &lt;- 1490.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Time reached"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.CurrentTime &lt;- 1500.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportTimeReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Time == 1500.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position report parameters - periodically in space"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action>
+<Action>Odometry.NominalDistance &lt;- 795.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Distance reached"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 800.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportDistanceReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Position == 800.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action>
+<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action>
+<Action>Odometry.NominalDistance &lt;- 895.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Distance reached"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 900.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportDistanceReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Position == 800.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Position report parameters - max safe front end or min safe rear end passes a specified location"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Position report parameters - at every passage of an LRBG compliant BG"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.1"
+>
+</ReqRef>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position report parameters - immediately"
+>
+<ReqRef
+ Id="3.6.5.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.5.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Position report has to be sent immediately"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
+<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
+<Action>Kernel.CurrentTime &lt;- 2000.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportSpecialLocationReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Position == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation == EURORADIO.PositionReport.PositionReportSpecialLocation.DoNotSend</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Time == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToSpecialLocationNow() == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Position report has to be sent immediately"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
+<Action>Odometry.NominalDistance &lt;- 1400.0</Action>
+<Action>Kernel.CurrentTime &lt;- 2400.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToSpecialLocationNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Position == 1400.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation == EURORADIO.PositionReport.PositionReportSpecialLocation.DoNotSend</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.LastPositionReport.Time == 2400.0</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToPositionReportSpecialLocationReached() == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: train reached standstill"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 11.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 14.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;7.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;6.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The train reaches standstill"
+>
+<ReqRef
+ Id="3.6.5.1.4.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Train reaches standstill"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToStandstillReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Train reaches standstill"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToStandstillReached() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: mode changes"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 38.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;26.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;14.0
+  }
+}</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 50.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The mode changes"
+>
+<ReqRef
+ Id="3.6.5.1.4.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Mode changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToModeChange() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Default.EFSModeConverter(Default.Mode.TR)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StandBy</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Mode changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.TR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_MODE == Default.EFSModeConverter(Default.Mode.TR)</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToModeChange() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: driver confirms train integrity"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 18.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;6.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;2.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The driver confirms train integrity"
+>
+<ReqRef
+ Id="3.6.5.1.4.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Driver confirms train integrity"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 115.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToTrainIntegrityConfirmedByDriver() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_LENGTH == Kernel.TrainIntegrity.Status</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT. L_TRAININT == 115</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Level changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_LENGTH == Kernel.TrainIntegrity.Status</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToTrainIntegrityConfirmedByDriver() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS. L_TRAININT == 117</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: a loss of train integrity detected"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;14.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;17.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A loss of train integrity is detected"
+>
+<ReqRef
+ Id="3.6.5.1.4.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Train integrity is lost"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToLossOfTrainIntegrityDetected() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_LENGTH == Kernel.TrainIntegrity.Status</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Train integrity is lost"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_LENGTH == Kernel.TrainIntegrity.Status</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToLossOfTrainIntegrityDetected() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: train passes a RBC/RBC border with its min safe rear end"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 1084.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 1078.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;1078.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;1084.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="The train passes a RBC/RBC border with its min safe rear end"
+>
+<ReqRef
+ Id="3.6.5.1.4.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: train passes a level transition border with its min safe rear end"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 14.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;12.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;11.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="The train passes a level transition border (from level 2/3 to level 0, 1, NTC) with its min safe rear end"
+>
+<ReqRef
+ Id="3.6.5.1.4.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: level changes"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;84.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;81.0
+  }
+}</Action>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 92.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 97.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The level changes"
+>
+<ReqRef
+ Id="3.6.5.1.4.g"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Level changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToLevelChange() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_LEVEL == Default.EFSLevelConverter(Level.L2)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Level changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_LEVEL == Default.EFSLevelConverter(Level.L2)</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToLevelChange() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: a communication session is successfully estalished"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 15.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;8.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;11.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A communication session is successfully established"
+>
+<ReqRef
+ Id="3.6.5.1.4.h"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="One BG - Step2: Communication session is established"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToCommunicationSessionIsEstablished() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step1: Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Two BGs - Step2: Communication session is established"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportDueToCommunicationSessionIsEstablished() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: train passes an LRBG compliant BG, if no report parameters"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;11.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;11.0
+  }
+}</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The train passes an LRBG compliant balise group, if no position report parameters are stored on-board"
+>
+<ReqRef
+ Id="3.6.5.1.4.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report events: train passes a RBC/RBC border with its max safe front end"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 41.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 44.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;28.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;22.0
+  }
+}</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="The train passes a RBC/RBC border with its max safe front end"
+>
+<ReqRef
+ Id="3.6.5.1.4.k"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.4.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Position report data"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 16.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup{
+    NID=&gt;9614,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position{
+      OverReadingAmountOdo=&gt;1039.0,
+      Position=&gt;1040.0,
+      UnderReadingAmountOdo=&gt;1042.0
+    }
+  }
+]</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt;11.0,
+    Position=&gt;1080.0,
+    UnderReadingAmountOdo=&gt;11.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position report data"
+>
+<ReqRef
+ Id="3.6.5.1.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.f"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.g"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.h"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2.i"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.6.5.1.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - One BG"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 114.0</Action>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
+<Action>BTM.LRBG &lt;- 
+BTM.BaliseGroup {
+    NID=&gt;1290,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;
+        BTM.Position {
+            OverReadingAmountOdo=&gt;1028.0,
+            Position=&gt;1030.0,
+            UnderReadingAmountOdo=&gt;1034.0
+        }
+}</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 84.0</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 1028.0</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 1034.0</Action>
+<Action>Odometry.NominalDistance &lt;- 2500.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.D_LRBG == 2500 - 1030</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.L_DOUBTOVER == 3</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.L_DOUBTUNDER == 3</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.NID_LRBG == 1290</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_DIRLRBG == Messages.Q_DIRLRBG.Nominal</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_DIRTRAIN == Messages.Q_DIRTRAIN.Nominal</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_DLRBG == Messages.Q_DLRBG.Reverse</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.V_TRAIN == 17</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.Q_LENGTH == Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.L_TRAININT == 114</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Two BGs"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device</Action>
+<Action>BTM.LRBG &lt;- 
+BTM.BaliseGroup {
+    NID=&gt;1296,
+    Orientation =&gt; Orientation.Unknown,
+    Position=&gt;
+        BTM.Position {
+            OverReadingAmountOdo=&gt;1047.0,
+            Position=&gt;1050.0,
+            UnderReadingAmountOdo=&gt;1052.0
+        }
+}</Action>
+<Action>Odometry.EstimatedSpeed &lt;- 87.0</Action>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+<Action>BTM.PreviousLRBGs &lt;-
+[BTM.BaliseGroup {
+    NID=&gt;1292,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;
+        BTM.Position {
+            OverReadingAmountOdo=&gt;1024.0,
+            Position=&gt;1026.0,
+            UnderReadingAmountOdo=&gt;1028.0
+        }
+}]</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 1047.0</Action>
+<Action>Odometry.Accuracy.D_ura &lt;- 1052.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.PositionReport.SendReportNow() == True</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
+ Kind="Instantaneous"
+>Available(EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.D_LRBG == 2500 - 1050</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.L_DOUBTOVER == 3</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.L_DOUBTUNDER ==3</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.NID_LRBG == 1296</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_DIRLRBG == Messages.Q_DIRLRBG.Reverse</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_DIRTRAIN == Messages.Q_DIRTRAIN.Nominal</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_DLRBG == Messages.Q_DLRBG.Reverse</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.V_TRAIN == 17</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Q_LENGTH == Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.L_TRAININT == 117</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.EuroradioMessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.NID_PRVLRBG == 1292</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

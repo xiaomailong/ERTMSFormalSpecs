@@ -1,0 +1,2771 @@
+<NameSpace
+ Name="Messages"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="PACKET"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="EUROBALISE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="EUROLOOP"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="MESSAGE"
+>
+</NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_AXLELOAD"
+>
+<Comment>Axle load category
+The values allocated below correspond to a list of increasing axle load categories (i.e. B2 &gt; B1, D2 &gt; C4, ?.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories refer to TSI RST and INF.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="A"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="B1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="B2"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="C2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="C3"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="C4"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="D2"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="D3"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="D4"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="D4XL"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="E4"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="E5"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_CURRENT"
+>
+<Comment>Allowed current consumption
+It defines the allowed current consumption to be used by the train</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="No_restriction_for_current_consumption"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_ERROR"
+>
+<Comment>Identifier of the type of error
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Balise_group__linking_consistency_error__ref__3_16_2_3"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Linked_balise_group__message_consistency_error_ref__3_16_2_4_1_4"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unlinked_balise_group__message_consistency_error__ref__3_16_2_5"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Radio__message_consistency_error__ref__3_16_3_1_1a_c"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Radio__sequence_error__ref__3_16_3_1_1b"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Radio__safe_radio_connection_error__ref__3_16_3_4__to_be_sent_when_communication_links_re_established"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Safety_critical_failure__ref_4_4_6_1_6___4_4_15_1_5"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Double_linking_error__3_16_2_7_1"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Double_repositioning_error__3_16_2_7_2"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LEVEL"
+>
+<Comment>Current Operating Level
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Level_0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Level_NTC_specified_by_NID_NTC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Level_1"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Level_2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Level_3"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LEVELINH"
+>
+<Comment>Level to be inhibited
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Level_0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Level_NTC_specified_by_NID_NTC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Level_1"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Level_2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Level_3"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LEVELTEXTDISPLAY"
+>
+<Comment>Onboard operating level for text display
+The text is displayed when entering / as long as in the defined level</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Level_0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Level_STM_specified_by_NID_STM"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Level_1"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Level_2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Level_3"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="The_display_of_the_text_shall_not_be_limited_by_the_level"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LEVELTR"
+>
+<Comment>Required level
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Level_0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Level_STM_specified_by_NID_STM"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Level_1"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Level_2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Level_3"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LINEGAUGE"
+>
+<Comment>Line gauge
+Defining which loading gauge(s) are permitted on a line (refer to TSI INF)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1"
+ Name="G1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="GA"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="GB"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="GC"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="64"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="128"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LOADINGGAUGE"
+>
+<Comment>Loading gauge
+Defining the loading gauge profile of a train (refer to TSI RST)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="The_train_does_not_fit_to_any_of_the_interoperable_loading_gauge_profiles"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="G1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="GA"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="GB"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="GC"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_LOC"
+>
+<Comment>Special location/moment where the train has to report its location
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Now__The_position_report_is_sent_upon_receipt_of_the_order"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Every_LRBG_compliant_balise_group"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Do_not_send_position_report_on_passage_of_LRBG_compliant_balise_group"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_MCOUNT"
+>
+<Comment>Message counter
+The purpose of this counter is to make it possible for the ERTMS/ETCS on-board to detect which balise group message the telegram belongs to.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="254"
+ Name="The_telegram_never_fits_any_message_of_the_group"
+>
+</EnumValue><EnumValue
+ Value="255"
+ Name="The_telegram_fits_with_all_telegrams_of_the_same_balise_group"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_NVAVADH"
+>
+<Comment>Weighting factor for available wheel/rail adhesion
+This variable is part of the National Values.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_NVEBCL"
+>
+<Comment>Confidence level for emergency brake safe deceleration on dry rails
+This variable is part of the National Values. Based on the required confidence level, the on-board equipment selects its corresponding rolling stock correction factor Kdry_rst(V). The confidence level on emergency brake safe deceleration represents the probability of the following individual event: the rolling stock emergency brake subsystem of the train does ensure a deceleration at least equal to A_brake_emergency(V) * Kdry_rst(V), when the emergency brake is commanded on dry rails.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Confidence_level___50"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Confidence_level___90"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Confidence_level___99"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Confidence_level___99_9"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Confidence_level___99_99"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Confidence_level___99_999"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Confidence_level___99_9999"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Confidence_level___99_99999"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Confidence_level___99_999999"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Confidence_level___99_9999999"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_NVKRINT"
+>
+<Comment>Integrated correction factor Kr
+This is the train length dependent integrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1). M_NVKRINT is valid between 0m and L_NVKRINT(1) This variable is part of the National Values</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_NVKTINT"
+>
+<Comment>Integrated correction factor Kt
+This variable is part of the National Values</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_NVKVINT"
+>
+<Comment>Integrated correction factor Kv
+This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1). M_NVKVINT is valid between 0 km/h and V_NVKVINT(1) This variable is part of the National Values</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_PLATFORM"
+>
+<Comment>Type of platform
+Nominal height of platform above rail level (refer to TSI infrastructure)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="_200_mmC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="_300_380_mmC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="_550_mmC"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="_580_mmC"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="_680_mmC"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="_685_mmC"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="_730_mmC"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="_760_mmC"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="_840_mmC"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="_900_mmC"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="_915_mmC"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="_920_mmC"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="_960_mmC"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="_1100_mmC"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1048575"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_POSITION"
+>
+<Comment>Track kilometre reference value
+The geographical position reporting function uses this variables content as a reference value.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1048575"
+ Name="No_more_geographical_position_reporting_after_this_reference_location"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_TRACKCOND"
+>
+<Comment>Type of track condition
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Non_stopping_area___tunnel__Initial_state__stopping_permitted__no_tunnel"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Sound_horn__Initial_state__no_request_for_sound_horn"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Powerless_section___lower_pantograph__Initial_state__not_powerless_section"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Air_tightness__Initial_state__no_request_for_air_tightness"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Switch_off_regenerative_brake__Initial_state__regenerative_brake_on"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_TRACTION"
+>
+<Comment>Traction System voltage
+It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE ? 0, by the country identifier of the traction system (NID_CTRACTION)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Line_not_fitted_with_any_traction_system"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="AC_25_kV_50_Hz"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="AC_15_kV_16_7_Hz"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="DC_3_kV"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="DC_1_5_kV"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="DC_600_750_V"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_VOLTAGE"
+>
+<Comment>Traction System voltage
+It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE ? 0, by the country identifier of the traction system (NID_CTRACTION)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Line_not_fitted_with_any_traction_system"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="AC_25_kV_50_Hz"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="AC_15_kV_16_7_Hz"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="DC_3_kV"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="DC_1_5_kV"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="DC_600_750_V"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="M_VERSION"
+>
+<Comment>Version of ETCS system
+This gives the version of the ETCS system Each part indicates the first and second number of the version respectively. - The first number distinguishes not compatible versions. (The three MSB?s) - The second number indicates compatibility within a version X. (The four LSB?s)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16"
+ Name="Class_1__version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
+>
+</EnumValue><EnumValue
+ Value="17"
+ Name="Class_1__version_1_1__introduced_in_SRS_3_0_0"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Class_1__version_2_0__introduced_in_SRS_3_0_0"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="N_AXLE"
+>
+<Comment>Axle number of the engine
+This gives the number of axles of the single unit (fixed train set or locomotive) in which the onboard equipment is fitted</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NC_DIFF"
+>
+<Comment>IOther specific SSP category
+It is the ?other specific? SSP category for which a different value for the static line speed exists. Used together with V_DIFF to permit trains belonging to the corresponding ?other international? train category to go faster or lower than the ?international basic static speed? given by V_STATIC. Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Specific_SSP_applicable_to_Freight_train_braked_in__P__position"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Specific_SSP_applicable_to_Freight_train_braked_in__G__position"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Specific_SSP_applicable_to_Passenger_train"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NC_TRAIN"
+>
+<Comment>Other International Train Category. 
+Other train category (different from Cant Deficiency) to which the train belongs. Thanks to NC_TRAIN, the train knows the ?Other specific? SSP category it must consider. By receiving a list of static speed profile, thanks to NC_DIFF, the train can select the SSP it must obey. Each bit represents one category. A train can belong to various categories. </Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Train_does_not_belong_to_any_of_the__Other_International__Train_Category"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Freight_train_braked_in__P__position"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Freight_train_braked_in__G__position"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Passenger_train"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="64"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="128"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="256"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="512"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="1024"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="2048"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="4096"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="8192"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="16384"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+<Comment>Identity number of the balise group
+Identity number of a balise group or loop within the country or region defined by NID_C.
+
+16383 =  Identity is unknown (only to be used for Linking information)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16383"
+ Name="NID_UNKNOWN"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+<Comment>Identity number of the country or region
+Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_CTRACTION"
+>
+<Comment>Country identifier of the traction system
+It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_EM"
+>
+<Comment>Emergency message identity
+Identifies the number of the emergency message</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_ENGINE"
+>
+<Comment>Onboard ETCS identity
+The ETCS identity number is uniquely defined for ERTMS/ETCS purposes</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_LOOP"
+>
+<Comment>Identity number of the loop
+Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_LRBG"
+>
+<Comment>Identity of last relevant balise group
+Country/region identity (NID_C) + balise identity number of last relevant balise group (NID_BG).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16777215"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_LTRBG"
+>
+<Comment>Identity of the level 2/3 transition balise group
+Identity of the balise group at the level 2/3 transition location towards which the train is running. Country/region identity (NID_C) + balise identity number of the level 2/3 transition location balise group (NID_BG).</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_LX"
+>
+<Comment>Identity number of the Level Crossing.
+</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_MESSAGE"
+>
+<Comment>Message identifier
+Message identifier. Regards defined values of NID_MESSAGE, refer to chapters 8.5.2 and 8.5.3</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_MN"
+>
+<Comment>Identity of Radio Network
+The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="4294967295"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_OPERATIONAL"
+>
+<Comment>Train Running Number
+This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+<Comment>Packet identifier
+This is used in the header for each packet, allowing the receiving equipment to identify the data which follows. Regards defined values of NID_PACKET,.refer to ?packet numbers? in the tables in chapter 7.4.1.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_PRVBG"
+>
+<Comment>Identity of the previous balise group
+Previous balise group detected when running towards the balise group identified as LRBG with no change of direction in-between. Country/region identity (NID_C) + balise identity number of the previous balise group (NID_BG).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16777215"
+ Name="unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="18446744073709551615"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_RADIO"
+>
+<Comment>Radio subscriber number.
+Quoted as a 16 digit decimal number. The number is to be entered &quot;left adjusted&quot; starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_RBC"
+>
+<Comment>RBC ETCS identity number
+This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16383"
+ Name="not_known"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_RIU"
+>
+<Comment>Identity of radio in-fill unit
+This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16383"
+ Name="not_known"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_STM"
+>
+<Comment>National System identity
+Each value of this variable represents the identity of a National System.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+<Comment>National System identity
+Each value of this variable represents the identity of a National System.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_TEXTMESSAGE"
+>
+<Comment>Text message identifier
+Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_TSR"
+>
+<Comment>Identity number of Temporary Speed Restriction.
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="255"
+ Name="Non_revocable_speed_restriction__applicable_for_all_transmission_media"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="511"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NID_XUSER"
+>
+<Comment>Identity of user system
+Identity of user system for which remainder of packet is intended.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NC_CDDIFF"
+>
+<Comment>Cant Deficiency SSP category
+It is the ?Cant Deficiency? SSP category for which a different value for the static line speed exists. Used together with V_DIFF to permit certain trains to go faster or lower than the ?international basic static speed? given by V_STATIC. </Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_80_mm"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_100_mm"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_130_mm"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_150_mm"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_165_mm"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_180_mm"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_210_mm"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_225_mm"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_245_mm"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_275_mm"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Specific_SSP_applicable_to_Cant_Deficiency_300_mm"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="NC_CDTRAIN"
+>
+<Comment>Cant Deficiency Train Category
+Cant Deficiency Train category to which the train belongs. Thanks to NC_CDTRAIN, the train knows the ?Cant Deficiency? SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the ?Cant Deficiency? SSP best suiting its NC_CDTRAIN. A train belongs to one and only one category of Cant Deficiency. </Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Cant_Deficiency_80_mm"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Cant_Deficiency_100_mm"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Cant_Deficiency_130_mm"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Cant_Deficiency_150_mm"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Cant_Deficiency_165_mm"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Cant_Deficiency_180_mm"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Cant_Deficiency_210_mm"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Cant_Deficiency_225_mm"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Cant_Deficiency_245_mm"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Cant_Deficiency_275_mm"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Cant_Deficiency_300_mm"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="63"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_LOCACC"
+>
+<Comment>Accuracy of the balise location
+This Qualifier defines the absolute value of the accuracy of the Balise location (i.e., the value 63m identifies a location accuracy of +/- 63m)</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_MARQSTREASON"
+>
+<Comment>Reason for MA request sending
+Qualifier to indicate the reason why the MA request is sent to the RBC</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1"
+ Name="Start_selected_by_driver"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Time_before_reaching_pre_indication_location_for_the_EOA_LOA_reached"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Time_before_a_section_timer_LOA_speed_timer_expires_reached"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Track_description_deleted"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="TAF_up_to_level_2_3_transition_location"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_NVKVINTSET"
+>
+<Comment>Type of Kv_int set
+</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Freight_trains"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Conventional_passenger_trains"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_NVLOCACC"
+>
+<Comment>Default accuracy of the balise location (absolute value)
+This variable is part of the National Values</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_SSCODE"
+>
+<Comment>Spread Spectrum Code for Euroloop
+Specifies the code required to receive telegrams from a specific Euroloop installation.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="15"
+ Name="Code_reserved_for_test_purposes"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXT"
+>
+<Comment>Fixed message to be displayed.
+Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table. </Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="__Level_crossing_not_protected_C"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="__Acknowledgement_C"
+>
+</EnumValue></SpecialValues>
+</Range></Ranges>
+<Enumerations>
+<Enum
+ Default="_0mC"
+ NeedsRequirement="FALSE"
+ Name="L_NVKRINT"
+>
+<Comment>OTrain length step used to define the integrated correction factor Kr
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="_0mC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="_25mC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="_50mC"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="_75mC"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="_100mC"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="_150mC"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="_200mC"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="_300mC"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="_400mC"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="_500mC"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="_600mC"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="_700mC"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="_800mC"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="_900mC"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="_1000mC"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="_1100mC"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="_1200mC"
+>
+</EnumValue><EnumValue
+ Value="17"
+ Name="_1300mC"
+>
+</EnumValue><EnumValue
+ Value="18"
+ Name="_1400mC"
+>
+</EnumValue><EnumValue
+ Value="19"
+ Name="_1500mC"
+>
+</EnumValue><EnumValue
+ Value="20"
+ Name="_1600mC"
+>
+</EnumValue><EnumValue
+ Value="21"
+ Name="_1700mC"
+>
+</EnumValue><EnumValue
+ Value="22"
+ Name="_1800mC"
+>
+</EnumValue><EnumValue
+ Value="23"
+ Name="_1900mC"
+>
+</EnumValue><EnumValue
+ Value="24"
+ Name="_2000mC"
+>
+</EnumValue><EnumValue
+ Value="25"
+ Name="_2100mC"
+>
+</EnumValue><EnumValue
+ Value="26"
+ Name="_2200mC"
+>
+</EnumValue><EnumValue
+ Value="27"
+ Name="_2300mC"
+>
+</EnumValue><EnumValue
+ Value="28"
+ Name="_2400mC"
+>
+</EnumValue><EnumValue
+ Value="29"
+ Name="_2500mC"
+>
+</EnumValue><EnumValue
+ Value="30"
+ Name="_2600mC"
+>
+</EnumValue><EnumValue
+ Value="31"
+ Name="_2700C"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_acknowledgement_required"
+ NeedsRequirement="FALSE"
+ Name="M_ACK"
+>
+<Comment>Qualifier for acknowledgement request
+Indicates whether the telegram must be acknowledged or not</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_acknowledgement_required"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Acknowledgement_required"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Slippery_rail"
+ NeedsRequirement="FALSE"
+ Name="M_ADHESION"
+>
+<Comment>Adhesion factor
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Slippery_rail"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Non_slippery_rail"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Not_fitted"
+ NeedsRequirement="FALSE"
+ Name="M_AIRTIGHT"
+>
+<Comment>airtight system presence
+indicates whether the train is fitted with an airtight system or not.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Not_fitted"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Fitted"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_duplicates"
+ NeedsRequirement="FALSE"
+ Name="M_DUP"
+>
+<Comment>Duplicate balise
+Flags to tell whether the balise is a duplicate of one of the adjacent balises.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_duplicates"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="On_Sight"
+ NeedsRequirement="FALSE"
+ Name="M_MAMODE"
+>
+<Comment>Required mode for a part of the MA
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="On_Sight"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Shunting"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Limited_Supervision"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Full_Supervision"
+ NeedsRequirement="FALSE"
+ Name="M_MODE"
+>
+<Comment>Onboard operating mode
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Full_Supervision"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="On_Sight"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Staff_Responsible"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Shunting"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Unfitted"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Sleeping"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Stand_By"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Trip"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Post_Trip"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="System_Failure"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Isolation"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="Non_Leading"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="Limited_Supervision"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="National_System"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="Reversing"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Full_Supervision"
+ NeedsRequirement="FALSE"
+ Name="M_MODETEXTDISPLAY"
+>
+<Comment>Onboard operating mode for text display
+The text is displayed when entering / as long as in the defined mode</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Full_Supervision"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="On_Sight"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Staff_Responsible"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Unfitted"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Stand_By"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Trip"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Post_Trip"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="Non_Leading"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="Limited_Supervision"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="Reversing"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="The_display_of_the_text_shall_not_be_limited_by_the_mode"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Train_trip"
+ NeedsRequirement="FALSE"
+ Name="M_NVCONTACT"
+>
+<Comment>T_NVCONTACT reaction
+Indicates the reaction to be performed when T_NVCONTACT timer elapses This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Train_trip"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Apply_service_brake"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="No_Reaction"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="M_NVDERUN"
+>
+<Comment>Entry of Driver ID permitted while running
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Stop_if_in_SH_mode"
+ NeedsRequirement="FALSE"
+ Name="Q_ASPECT"
+>
+<Comment>Aspect of &quot;danger for shunting&quot; signal
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Stop_if_in_SH_mode"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Go_if_in_SH_mode"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Driver_acknowledgement_always_ends_the_text_display__regardless_of_the_end_condition"
+ NeedsRequirement="FALSE"
+ Name="Q_CONFTEXTDISPLAY"
+>
+<Comment>Qualifier for text confirmation versus end of text display
+Gives the relationship between the event ?driver acknowledgement? and the list of events ?location?, ?time?, ?mode?, ?level? defining the end condition for text display</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Driver_acknowledgement_always_ends_the_text_display__regardless_of_the_end_condition"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="GDriver_acknowledgement_is_an_additional_condition_to_end_the_display"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_danger_point_information"
+ NeedsRequirement="FALSE"
+ Name="Q_DANGERPOINT"
+>
+<Comment>Qualifier for danger point description.
+This variable is set to 1 if either a danger point exists or a release speed has to be specified</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_danger_point_information"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Danger_point_information_to_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Cant_Deficiency_specific_category"
+ NeedsRequirement="FALSE"
+ Name="Q_DIFF"
+>
+<Comment>Qualifier for specific SSP categories. 
+Indicates the type of specific SSP category In case of ?other specific? SSP, it tells ERTMS/ETCS on-board equipment whether it replaces or not the Cant Deficiency SSP as selected by on-board (ref. 3.11.3.2.3), when the train belongs to an ?other international? train category to which the ?other specific? SSP applies</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Cant_Deficiency_specific_category"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Other_specific_category__replaces_the_Cant_Deficiency_SSP"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Reverse"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+<Comment>Validity direction of transmitted data
+Qualifier to indicate the relevant validity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Both_directions"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Reverse"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+<Comment>Orientation of the train in relation to the direction of the LRBG
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Reverse"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRTRAIN"
+>
+<Comment>Direction of train movement in relation to the LRBG orientation
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Reverse"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+<Comment>Qualifier telling on which side of the LRBG the estimated front end is
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="CConditional_Emergency_Stop_accepted__with_update_of_EOA"
+ NeedsRequirement="FALSE"
+ Name="Q_EMERGENCYSTOP"
+>
+<Comment>Qualifier for emergency stop acknowledgement
+Qualifier to inform the RBC about the use of emergency stop by on-board equipment.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="CConditional_Emergency_Stop_accepted__with_update_of_EOA"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Conditional_Emergency_Stop_accepted__with_no_update_of_EOA"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unconditional_Emergency_Stop_accepted"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Emergency_stop__Conditional_or_Unconditional__rejected__whatever_the_reason"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_End_section_timer_information"
+ NeedsRequirement="FALSE"
+ Name="Q_ENDTIMER"
+>
+<Comment>Qualifier to indicate whether end section timer information exists for the End section in the MA
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_End_section_timer_information"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="End_section_timer_information_to_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Train_length_delay_on_validity_end_point_of_profile_element"
+ NeedsRequirement="FALSE"
+ Name="Q_FRONT"
+>
+<Comment>Qualifier for validity end point of profile element
+Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Train_length_delay_on_validity_end_point_of_profile_element"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="No_train_length_delay_on_validity_end_point_of_profile_element"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="downhill"
+ NeedsRequirement="FALSE"
+ Name="Q_GDIR"
+>
+<Comment>Qualifier for gradient slope.
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="downhill"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="uphill"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Enter"
+ NeedsRequirement="FALSE"
+ Name="Q_INFILL"
+>
+<Comment>Qualifier to indicate whether a train is entering or exiting the radio infill area.
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Enter"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Exit"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_train_integrity_information_available"
+ NeedsRequirement="FALSE"
+ Name="Q_LENGTH"
+>
+<Comment>Qualifier for train integrity status
+Qualifier, identifying the train integrity information available. The related safe train length information is given by L_TRAININT</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_train_integrity_information_available"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Train_integrity_confirmed_by_integrity_monitoring_device"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Train_integrity_confirmed_by_driver"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Train_integrity_lost"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Packet_empty__remove_all_inhibitions"
+ NeedsRequirement="FALSE"
+ Name="Q_LEVELINH"
+>
+<Comment>Qualifier for level inhibitions
+Qualifier to remove all inhibitions or identify that a list of level inhibitions follows</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Packet_empty__remove_all_inhibitions"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="TInhibited_levels_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Min_safe_rear_end"
+ NeedsRequirement="FALSE"
+ Name="Q_LGTLOC"
+>
+<Comment>Qualifier for the specified report location
+This qualifier tells whether the train has to report its position when the max safe front end or when the min safe rear end has over passed the location defined by D_LOC</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Min_safe_rear_end"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Max_safe_front_end"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Unlinked"
+ NeedsRequirement="FALSE"
+ Name="Q_LINK"
+>
+<Comment>Link Qualifier
+This qualifier is used to mark a balise group as linked or unlinked.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Unlinked"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Linked"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="The_balise_group_is_seen_by_the_train_in_reverse_direction"
+ NeedsRequirement="FALSE"
+ Name="Q_LINKORIENTATION"
+>
+<Comment>Qualifier for the direction of the linked balise group
+Indicates whether the linked balise group will be overpassed by the train in nominal or reverse direction.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="The_balise_group_is_seen_by_the_train_in_reverse_direction"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="The_balise_group_is_seen_by_the_train_in_nominal_direction"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Train_trip"
+ NeedsRequirement="FALSE"
+ Name="Q_LINKREACTION"
+>
+<Comment>linking reaction
+Qualifier for the reaction to be performed if a linking or a balise group message consistency problem occurs with the balise group linked to.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Train_trip"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Apply_service_brake"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="No_Reaction"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Opposite"
+ NeedsRequirement="FALSE"
+ Name="Q_LOOPDIR"
+>
+<Comment>Qualifier to indicate the direction of the loop
+Indicates LOOP-reference direction in relation to EOLM direction</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Opposite"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Same"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="LX_is_protected"
+ NeedsRequirement="FALSE"
+ Name="Q_LXSTATUS"
+>
+<Comment>LX Protection Status
+Indicates whether the LX is protected or not</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="LX_is_protected"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="LX_is_not_protected"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="as_the_EOA__keeping_the_SvL_given_by_the_MA"
+ NeedsRequirement="FALSE"
+ Name="Q_MAMODE"
+>
+<Comment>Qualifier to indicate the supervision of the beginning of the mode profile
+This qualifier defines whether the beginning of the mode profile shall be considered either as the EOA (keeping the SvL given by the MA) or as both the EOA and SvL (instead of the EOA and SvL given by the MA).</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="as_the_EOA__keeping_the_SvL_given_by_the_MA"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Balise"
+ NeedsRequirement="FALSE"
+ Name="Q_MEDIA"
+>
+<Comment>Qualifier to indicate the type of media
+Indicates whether it is a balise telegram or a loop message</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Balise"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Loop"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Opposite__counting_downwards_if_passed_in_nominal_direction_or_counting_upwards_if_passed_in_reverse_direction"
+ NeedsRequirement="FALSE"
+ Name="Q_MPOSITION"
+>
+<Comment>Qualifier for track kilometre direction.
+Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Opposite__counting_downwards_if_passed_in_nominal_direction_or_counting_upwards_if_passed_in_reverse_direction"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Same__counting_upwards_if_passed_in_nominal_direction_or_counting_downwards_if_passed_in_reverse_direction"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Same_country___railway_administration__no_NID_C_follows"
+ NeedsRequirement="FALSE"
+ Name="Q_NEWCOUNTRY"
+>
+<Comment>New Country Qualifier
+Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not. For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Same_country___railway_administration__no_NID_C_follows"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Not_the_same_country___railway_administration__NID_C_follows"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Not_allowed"
+ NeedsRequirement="FALSE"
+ Name="Q_NVDRIVER_ADHES"
+>
+<Comment>Qualifier for the modification of trackside adhesion factor by driver
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Not_allowed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Allowed"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Revoke_emergency_brake_command_at_standstill"
+ NeedsRequirement="FALSE"
+ Name="Q_NVEMRRLS"
+>
+<Comment>Qualifier Emergency Brake Release
+Permission to revoke the emergency brake command when the Permitted Speed limit is no longer exceeded or at standstill (for ceiling speed and target speed monitoring). This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Revoke_emergency_brake_command_at_standstill"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="Q_NVGUIPERM"
+>
+<Comment>Permission to use the guidance curve
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="Q_NVINHSMICPERM"
+>
+<Comment>Permission to inhibit the compensation of the speed measurement inaccuracy
+Qualifier to inhibit the compensation of the speed measurement inaccuracy for the calculation of the EBI related supervision limits. This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_integrated_correction_factors_follow"
+ NeedsRequirement="FALSE"
+ Name="Q_NVKINT"
+>
+<Comment>Qualifier for integrated correction factors
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_integrated_correction_factors_follow"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Integrated_correction_factors_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="Q_NVSBFBPERM"
+>
+<Comment>Permission to use the service brake feedback
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="Q_NVSRBKTRG"
+>
+<Comment>Permission to use service brake in target speed monitoring
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No"
+ NeedsRequirement="FALSE"
+ Name="Q_NVSBTSMPERM"
+>
+<Comment>Permission to use service brake in target speed monitoring
+This variable is part of the National Values</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="The_balise_group_has_been_passed_by_the_train_in_reverse_direction"
+ NeedsRequirement="FALSE"
+ Name="Q_ORIENTATION"
+>
+<Comment>Co-ordinate system assigned to a single balise group
+The co-ordinate system is assigned by the RBC to a balise group reported by the on-board equipment as LRBG. The information reverse/nominal (i.e., the assigned co-ordinate system) is given in relation to the direction in which the balise has been passed when reading it.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="The_balise_group_has_been_passed_by_the_train_in_reverse_direction"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="The_balise_group_has_been_passed_by_the_train_in_nominal_direction"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_overlap_information"
+ NeedsRequirement="FALSE"
+ Name="Q_OVERLAP"
+>
+<Comment>Qualifier to tell whether there is an overlap
+This variable is set to 1 if either an overlap exists or a release speed has to be specified</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_overlap_information"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Overlap_information_to_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="EB_intervention_requested"
+ NeedsRequirement="FALSE"
+ Name="Q_PBDSR"
+>
+<Comment>Qualifier for Permitted Braking Distance
+Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="EB_intervention_requested"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="SB_intervention_requested"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Platform_on_left_side"
+ NeedsRequirement="FALSE"
+ Name="Q_PLATFORM"
+>
+<Comment>Platform position (relative to direction of authorised movement)
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Platform_on_left_side"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Platform_on_right_side"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Platform_on_both_sides"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Terminate_communication_session"
+ NeedsRequirement="FALSE"
+ Name="Q_RBC"
+>
+<Comment>Qualifier for communication session order
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Terminate_communication_session"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Establish_communication_session"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Terminate_communication_session"
+ NeedsRequirement="FALSE"
+ Name="Q_RIU"
+>
+<Comment>Qualifier for communication session order
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Terminate_communication_session"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Establish_communication_session"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="_10_cm_scaleC"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+<Comment>Qualifier for the distance scale.
+Qualifier to indicate the same scale used for describing all distances inside the packet that contains Q_SCALE.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="_10_cm_scaleC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="_1_m_scaleC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="_10_m_scaleC"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_Section_Timer_information"
+ NeedsRequirement="FALSE"
+ Name="Q_SECTIONTIMER"
+>
+<Comment>Qualifier to indicate whether there is a Section Time Out related to the section
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_Section_Timer_information"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Section_Timer_information_to_follow"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Ignore_session_establishment_order"
+ NeedsRequirement="FALSE"
+ Name="Q_SLEEPSESSION"
+>
+<Comment>Session management for sleeping equipment
+Qualifier for a Sleeping onboard equipment to execute or not the ?session establishment? order</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Ignore_session_establishment_order"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Execute_session_establishment_order"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Stop_if_in_SR_mode"
+ NeedsRequirement="FALSE"
+ Name="Q_SRSTOP"
+>
+<Comment>&quot;Stop if in Staff Responsible&quot; information
+Specifies whether an onboard equipment in staff responsible has to stop or not</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Stop_if_in_SR_mode"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Go_if_in_SR_mode"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Invalid"
+ NeedsRequirement="FALSE"
+ Name="Q_STATUS"
+>
+<Comment>status of SoM position report
+It provides the status of the position report</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Invalid"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Valid"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_stop_required"
+ NeedsRequirement="FALSE"
+ Name="Q_STOPLX"
+>
+<Comment>Qualifier for stopping in rear of the LX
+Indicates whether stopping the train in rear of a non protected LX is required</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_stop_required"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Stop_required"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Loading_gauge_profile"
+ NeedsRequirement="FALSE"
+ Name="Q_SUITABILITY"
+>
+<Comment>Type of route suitability data</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Loading_gauge_profile"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Max_axle_load"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Traction_system"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Auxiliary_Information"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTCLASS"
+>
+<Comment>Class of message to be displayed.
+Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message)</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Auxiliary_Information"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Important_Information"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_confirmation_required"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTCONFIRM"
+>
+<Comment>Qualifier for text confirmation
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_confirmation_required"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Confirmation_required"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Confirmation_required__command_application_of_the_service_brake_when_display_end_condition_is_fulfilled__unless_the_text_has_already_been_acknowledged_by_the_driver"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Confirmation_required__command_application_of_the_emergency_brake_when_display_end_condition_is_fulfilled__unless_the_text_has_already_been_acknowledged_by_the_driver"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No__display_as_soon_as___until_one_of_the_events_is_fulfilled"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXTDISPLAY"
+>
+<Comment>Qualifier for the combination of text message events
+Q_TEXTDISPLAY defines whether the start/end events for text message are to be combined or not </Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No__display_as_soon_as___until_one_of_the_events_is_fulfilled"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes__display_as_soon_as___until_all_events_are_fulfilled"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_driver_acknowledgement_report_required"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACKDEL"
+>
+<Comment>Qualifier for reporting acknowledgement of text by driver</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_driver_acknowledgement_report_required"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Driver_acknowledgement_report_required"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="No_initial_states_to_be_resumed__profile_to_follow"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACKINIT"
+>
+<Comment>Qualifier for resuming the initial states of the related track description of the packet.
+</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="No_initial_states_to_be_resumed__profile_to_follow"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Empty_profile__initial_states_to_be_resumed"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Down_link_telegram"
+ NeedsRequirement="FALSE"
+ Name="Q_UPDOWN"
+>
+<Comment>Balise telegram transmission direction
+It defines the direction of the information in the balise telegram</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Down_link_telegram"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Up_link_telegram"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Variables>
+<Variable
+ Type="Messages.EUROBALISE.Message"
+ VariableMode="InOut"
+ NeedsRequirement="FALSE"
+ Name="EUROBALISE"
+>
+<Comment></Comment>
+</Variable><Variable
+ Type="Messages.EUROLOOP.Message"
+ VariableMode="InOut"
+ NeedsRequirement="FALSE"
+ Name="EUROLOOP"
+>
+<Comment></Comment>
+</Variable><Variable
+ Type="Messages.MESSAGE.Message"
+ VariableMode="InOut"
+ NeedsRequirement="FALSE"
+ Name="EURORADIO"
+>
+<Comment>Euroradio</Comment>
+</Variable></Variables>
+</NameSpace>

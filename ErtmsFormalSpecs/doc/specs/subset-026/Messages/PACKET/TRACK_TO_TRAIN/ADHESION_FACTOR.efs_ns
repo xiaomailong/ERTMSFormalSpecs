@@ -1,0 +1,62 @@
+<NameSpace
+ Name="ADHESION_FACTOR"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet is used when the trackside requests a change of the adhesion factor to be used in the brake model.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="71"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIR"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_ADHESION"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_ADHESION"
+>
+</StructureElement><StructureElement
+ TypeName="M_ADHESION"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_ADHESION"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

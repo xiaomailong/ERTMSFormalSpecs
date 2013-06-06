@@ -1,0 +1,1132 @@
+<NameSpace
+ Name="PermittedBrakingDistance"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SRPB"
+>
+<Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Location"
+>
+<ReqRef
+ Id="3.11.11.2.1"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Length"
+>
+<ReqRef
+ Id="3.11.11.2.1"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Gradient"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Gradient"
+>
+<ReqRef
+ Id="3.11.11.2.4"
+>
+</ReqRef>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_PBDSR"
+ Default="Messages.Q_PBDSR.EB_intervention_requested"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="BrakeType"
+>
+<ReqRef
+ Id="3.11.11.2.3"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="BrakingDistance"
+>
+<ReqRef
+ Id="3.11.11.2.2"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ NeedsRequirement="FALSE"
+ Name="SRPBProfile"
+>
+<Comment>Represents the speed restrictions to ensure permitted braking distance.</Comment>
+<StructureElement
+ TypeName="Messages.Q_TRACKINIT"
+ Default="Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="InitialState"
+>
+<ReqRef
+ Id="7.5.1.141"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="EmptyProfileDistance"
+>
+<ReqRef
+ Id="7.5.1.32"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="SRPBs"
+ Default="[]"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SpeedRestrictions"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SRPB"
+ MaxSize="20"
+ Default="[]"
+ Implemented="TRUE"
+ Name="SRPBs"
+>
+<ReqRef
+ Id="3.11.11.2"
+>
+</ReqRef>
+<Comment>Represents the speed restrictions to ensure permitted braking distance.</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="SRPB"
+ Implemented="TRUE"
+ Name="CreateNewSpeedRestriction"
+>
+<ReqRef
+ Id="3.11.11.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.2.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.2"
+>
+</ReqRef>
+<Comment>Creates a new speed restriction to ensure permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Location"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="Length"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PBDSR"
+ Name="BrakeType"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>SRPB
+{
+    BrakingDistance =&gt; PermittedBrakingDistance,
+    BrakeType =&gt; BrakeType,
+    Gradient =&gt; Gradient,
+    Location =&gt; Location,
+    Length =&gt; Length,
+    Speed =&gt; ComputePermittedSpeed ( PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="EBSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.11.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.3"
+>
+</ReqRef>
+<Comment>Computes EBI  target speed supervision value.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Before permitted braking distance"
+>
+<PreConditions>
+<PreCondition>d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 )</PreCondition>
+<PreCondition>0.0 &lt;= d</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
+ Name="After permitted braking distance"
+>
+<PreConditions>
+<PreCondition>PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) &lt;= d</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="ComputePermittedSpeed"
+>
+<ReqRef
+ Id="3.11.11.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.6.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.6.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.5"
+>
+</ReqRef>
+<Comment>Computes the permitted speed for a speed restriction to ensure permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PBDSR"
+ Name="BrakeType"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>RoundToMultiple (
+    Value =&gt; ComputeSBCeilingSpeedIntervention (
+        PermittedBrakingDistance =&gt; PermittedBrakingDistance,
+        Gradient =&gt; Gradient,
+        BrakeType =&gt; BrakeType ) -
+            SpeedAndDistanceMonitoring.CeilingSupervision.dV_sbi ( ComputeSBCeilingSpeedIntervention ( PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType ) ),
+    Multiple =&gt; 5.0
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="ComputeSBCeilingSpeedIntervention"
+>
+<ReqRef
+ Id="3.11.11.4"
+>
+</ReqRef>
+<Comment>Computes SB ceiling speed intervention value for a speed restriction to ensure permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PBDSR"
+ Name="BrakeType"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="EB"
+>
+<PreConditions>
+<PreCondition>BrakeType == Messages.Q_PBDSR.EB_intervention_requested</PreCondition>
+</PreConditions>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; EBSpeedRestrictions ( d =&gt; d, PermittedBrakingDistance =&gt; PermittedBrakingDistance ), 
+  DecelerationFactor =&gt; FUNCTION d : Default.BaseTypes.Distance, V : Default.BaseTypes.Speed =&gt; A_safe ( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient ) ) 
+( 0.0 )</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>BrakeType == Messages.Q_PBDSR.SB_intervention_requested</PreCondition>
+</PreConditions>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; SBSpeedRestrictions ( d =&gt; d, PermittedBrakingDistance =&gt; PermittedBrakingDistance ), 
+  DecelerationFactor =&gt; FUNCTION d : Default.BaseTypes.Distance, V : Default.BaseTypes.Speed =&gt; A_safe ( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient ) ) 
+( 0.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="Dbec"
+>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.9.3.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Provides the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.TargetSupervision.Vdelta1() / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.TargetSupervision.T_traction() +
+( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.TargetSupervision.Vdelta1(), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.TargetSupervision.Vdelta2() / 2.0 ) * SpeedAndDistanceMonitoring.TargetSupervision.T_berem()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="Vdelta0"
+>
+<ReqRef
+ Id="3.13.9.3.2.10"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.g"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 3.A3.1.1.22"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.1.j"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.12.1"
+>
+</ReqRef>
+<Comment>Provides the value of Vdelta0 for speed restrictions to ensure permitted braking distance.</Comment>
+<Cases>
+<Case
+ Name="Compensation of speed inaccuracy is inhibited by NV"
+>
+<PreConditions>
+<PreCondition>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Compensation of speed inaccuracy is not inhibited by NV"
+>
+<Expression>5.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_safe"
+>
+<ReqRef
+ Id="3.13.6.2.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.5.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.e"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.1"
+>
+</ReqRef>
+<Comment>Computes the safe deceleration of the train, with gradient 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>(
+    REDUCE
+        TrackDescription.AdhesionFactors.AdhFactors
+    USING
+        Override
+        (
+            Default =&gt; RESULT,
+            Override =&gt; FUNCTION d :  BaseTypes.Distance, V : BaseTypes.Speed =&gt; A_safe_forAdhesionFactor ( anAdhFactor =&gt; X, d =&gt; d, V =&gt; V, Gradient =&gt; Gradient )
+        )
+    INITIAL_VALUE
+        FUNCTION d :  BaseTypes.Distance, V : BaseTypes.Speed =&gt; Default_A_safe ( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient )
+)
+(d, V)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_safe_forAdhesionFactor"
+>
+<ReqRef
+ Id="3.13.5.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.5.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.c"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.7.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.d"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.1"
+>
+</ReqRef>
+<Comment>Provides value of A_safe for adhesion factor slippery rail with gradient 0.</Comment>
+<Parameters>
+<Parameter
+ Type="TrackDescription.AdhesionFactors.AdhesionFactor"
+ Name="anAdhFactor"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Slippery Rail (driver selected)"
+>
+<PreConditions>
+<PreCondition>AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition>
+</PreConditions>
+<Expression>( MINSURFACE ( TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + Gradient ) (d, V)</Expression>
+</Case><Case
+ Name="Adhesion factor available (trackside)"
+>
+<PreConditions>
+<PreCondition>d &lt; anAdhFactor.Distance + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition>
+<PreCondition>anAdhFactor.Distance &lt;= d</PreCondition>
+<PreCondition>anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition>
+</PreConditions>
+<Expression>( MINSURFACE ( TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + Gradient ) (d, V)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="Default_A_safe"
+>
+<ReqRef
+ Id="3.13.6.2.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.2.1.2.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.3.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.1"
+>
+</ReqRef>
+<Comment>Computes the value of A_safe for normal adhesion conditions with gradient 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ) + Gradient </Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SBSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.11.4.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.4"
+>
+</ReqRef>
+<Comment>Computes FLOI target speed supervision value.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Before permitted braking distance"
+>
+<PreConditions>
+<PreCondition>0.0 &lt;= d</PreCondition>
+<PreCondition>d &lt; PermittedBrakingDistance - SB_PBD ()</PreCondition>
+</PreConditions>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
+ Name="After permitted braking distance"
+>
+<PreConditions>
+<PreCondition>PermittedBrakingDistance - SB_PBD () &lt;= d</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
+ Name="SB_PBD"
+>
+<ReqRef
+ Id="3.13.9.3.3.9"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="SBI1"
+>
+<PreConditions>
+<PreCondition>( SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 * Odometry.EstimatedSpeed</PreCondition>
+</PreConditions>
+<Expression>SpeedAndDistanceMonitoring.TargetSupervision.T_bs1 * Odometry.EstimatedSpeed</Expression>
+</Case><Case
+ Name="SBI2"
+>
+<Expression>SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
+ Name="A_expected"
+>
+<ReqRef
+ Id="3.13.6.3.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.6.3.1.2.a"
+>
+</ReqRef>
+<ReqRef
+ Id="A1.1.9.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.2.1.3"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.8.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.11.4.1"
+>
+</ReqRef>
+<Comment>Provides the value of the expected deceleration of the train, with gradient 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From train data"
+>
+<PreConditions>
+<PreCondition>TrainData.TrainData.Value.SBModels != EMPTY</PreCondition>
+</PreConditions>
+<Expression>TrainData.BrakingParameters.A_brake_service ( d =&gt; d, V =&gt; V )</Expression>
+</Case><Case
+ Name="From conversion model"
+>
+<PreConditions>
+<PreCondition>TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition>
+</PreConditions>
+<Expression>TrainData.BrakingParameters.ConversionModel.A_brake_service ( V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.11.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.k"
+>
+</ReqRef>
+<Comment>Provides the speed profile due to speed restrictions to ensure permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>(REDUCE SpeedRestrictionsProfile.SpeedRestrictions 
+    USING  
+        MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; PBDSpeedRestriction ( aSRPB =&gt; X, Distance =&gt; d ), 
+                  Second =&gt; RESULT )
+INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PBDSpeedRestriction"
+>
+<Comment>Provides the speed restriction for a certain request to calculate a speed restriction which ensures that the train stops within a given permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="SRPB"
+ Name="aSRPB"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="DuringPBD"
+>
+<PreConditions>
+<PreCondition>Distance &lt; aSRPB.Location + BaseTypes.LengthToDistance ( aSRPB.Length )</PreCondition>
+<PreCondition>aSRPB.Location &lt;= Distance</PreCondition>
+</PreConditions>
+<Expression>aSRPB.Speed</Expression>
+</Case><Case
+ Name="BeyondPBD"
+>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="PermittedBrakingDistanceReceived"
+>
+<ReqRef
+ Id="3.11.11.1"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.c.4"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.11.2.2.A035"
+>
+</ReqRef>
+<Comment>This procedure is called when a new speed restriction to ensure permitted braking distance is received. There are two cases:
+  - If the initial states have to be resumed, the distance to where they have to be resumed is saved
+  - If no initial states have to be resumed, the speed restriction profile is updated.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="InitialStatesToBeResumed"
+>
+<ReqRef
+ Id="7.5.1.141"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.32"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="InitialStatesToBeResumed"
+>
+<PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SpeedRestrictionsProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action>
+<Action>SpeedRestrictionsProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="NoInitialStatesToBeResumed_RemoveOldRestrictions"
+>
+<ReqRef
+ Id="3.7.3.1.d"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NoInitialStatesToBeResumted_RemoveOldRestrictions"
+>
+<PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ) IN SpeedRestrictionsProfile.SpeedRestrictions</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="NoInitialStatesToBeResumed_InsertNewRestrictions"
+>
+<ReqRef
+ Id="3.11.11.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.19.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.19.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.37.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.126.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.49.1"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NoInitialStatesToBeResumed_InsertFirstRestriction"
+>
+<PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>AddNewSpeedRestriction ( Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ),
+                                            Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_PBDSR, scale =&gt; Packet.Q_SCALE ),
+                                            PermittedBrakingDistance =&gt;  MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBD, scale =&gt; Packet.Q_SCALE ),
+                                            Gradient =&gt; TrackDescription.Gradient.CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_PBDSR ),
+                                            BrakeType =&gt; Packet.Q_PBDSR )</Action>
+<Action>APPLY
+    AddNewSpeedRestriction ( Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; X.D_PBDSR, scale =&gt; Packet.Q_SCALE ),
+                                                Length =&gt; MessageTypes.QScaleLength ( length =&gt; X.L_PBDSR, scale =&gt; Packet.Q_SCALE ),
+                                                PermittedBrakingDistance =&gt;  MessageTypes.QScaleDistance ( distance =&gt; X.D_PBD, scale =&gt; Packet.Q_SCALE ),
+                                                Gradient =&gt; TrackDescription.Gradient.CreateGradient ( Q_GDIR =&gt; X.Q_GDIR, G_A =&gt;  X.G_PBDSR ),
+                                                BrakeType =&gt; X.Q_PBDSR )
+ON
+    Packet.Sequence1</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SaveBrakingModels"
+>
+<ReqRef
+ Id="3.11.11.2.4"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SaveBrakingModels"
+>
+<PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition>
+</PreConditions>
+<Actions>
+<Action>PrevEBModels &lt;- TrainData.TrainData.Value.EBModels</Action>
+<Action>PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AddNewSpeedRestriction"
+>
+<Comment>Adds a new speed restriction to the speed restriction profile.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Location"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Length"
+ Name="Length"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="PermittedBrakingDistance"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+>
+</Parameter><Parameter
+ Type="Messages.Q_PBDSR"
+ Name="BrakeType"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="InsertNewSpeedRestriction"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="InsertNewSpeedRestriction"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT CreateNewSpeedRestriction ( Location =&gt; Location, Length =&gt; Length, PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
+IN SpeedRestrictionsProfile.SpeedRestrictions</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure><Procedure
+ Implemented="TRUE"
+ Name="UpdateSpeedRestriction"
+>
+<ReqRef
+ Id="3.11.11.3"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="SRPB"
+ Name="aSRPB"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateSpeedRestriction"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateSpeedRestriction"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>aSRPB.Speed &lt;- ComputePermittedSpeed ( PermittedBrakingDistance =&gt; aSRPB.BrakingDistance, Gradient =&gt; aSRPB.Gradient, BrakeType =&gt; aSRPB.BrakeType )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></Procedure></Procedures>
+<Variables>
+<Variable
+ Type="SRPBProfile"
+ DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
+{
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow, 
+    EmptyProfileDistance =&gt; 0.0, 
+    SpeedRestrictions =&gt; []
+}"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SpeedRestrictionsProfile"
+>
+<ReqRef
+ Id="3.11.2.2.k"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.c.4"
+>
+</ReqRef>
+<Comment>Contains the speed restrictions due to permitted braking distance.</Comment>
+</Variable><Variable
+ Type="TrainData.BrakingParameters.EBModelSet"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="PrevEBModels"
+>
+<ReqRef
+ Id="3.11.11.3"
+>
+</ReqRef>
+<Comment>Contains the previous value of emergency braking models.</Comment>
+</Variable><Variable
+ Type="TrainData.BrakingParameters.SBModelSet"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="PrevSBModels"
+>
+<ReqRef
+ Id="3.11.11.2.4"
+>
+</ReqRef>
+<Comment>Contains the previous value of service braking models.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ Name="TrackBrakeCharacteristicsChange"
+>
+<ReqRef
+ Id="3.11.11.3"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="TrackBrakeCharacteristicsChange"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition>
+<PreCondition>PrevEBModels != TrainData.TrainData.Value.EBModels OR PrevSBModels != TrainData.TrainData.Value.SBModels</PreCondition>
+<PreCondition>SpeedRestrictionsProfile != EMPTY</PreCondition>
+</PreConditions>
+<Actions>
+<Action>APPLY
+    UpdateSpeedRestriction ( X )
+ON
+    SpeedRestrictionsProfile.SpeedRestrictions</Action>
+<Action>PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action>
+<Action>PrevEBModels &lt;- TrainData.TrainData.Value.EBModels</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

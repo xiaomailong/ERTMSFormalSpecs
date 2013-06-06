@@ -1,0 +1,333 @@
+<NameSpace
+ Name="HandlingOfAcceptedAndStoredInformation"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Name="SituationA"
+>
+<ReqRef
+ Id="3.A3.4.1.2.a"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SituationB"
+>
+<ReqRef
+ Id="3.A3.4.1.2.b"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>ShortenedMaReceived OR ShortenedMaReceivedRegardlessOfSvL</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationC"
+>
+<ReqRef
+ Id="3.A3.4.1.2.c"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationD"
+>
+<ReqRef
+ Id="3.A3.4.1.2.d"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationE"
+>
+<ReqRef
+ Id="3.A3.4.1.2.e"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationF"
+>
+<ReqRef
+ Id="3.A3.4.1.2.f"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationG"
+>
+<ReqRef
+ Id="3.A3.4.1.2.g"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationH"
+>
+<ReqRef
+ Id="3.A3.4.1.2.h"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationI"
+>
+<ReqRef
+ Id="3.A3.4.1.2.i"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationJ"
+>
+<ReqRef
+ Id="3.A3.4.1.2.j"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="SituationK"
+>
+<ReqRef
+ Id="3.A3.4.1.2.k"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>DeskClosedDuringSoM</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationL"
+>
+<ReqRef
+ Id="3.A3.4.1.2.l"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationM"
+>
+<ReqRef
+ Id="3.A3.4.1.2.m"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Boolean"
+ Name="SituationN"
+>
+<ReqRef
+ Id="3.A3.4.1.2.n"
+>
+</ReqRef>
+<Cases>
+</Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="DeskClosedDuringSoM"
+>
+<ReqRef
+ Id="3.A3.4.1.2.k"
+>
+</ReqRef>
+<Comment>Indicates if the desk of the master DMI was closed during the Start of Mission.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ShortenedMaReceived"
+>
+<ReqRef
+ Id="3.A3.4.1.2.b"
+>
+</ReqRef>
+<Comment>Indicates if the on-board received a shortened MA.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ShortenedMaReceivedRegardlessOfSvL"
+>
+<ReqRef
+ Id="3.A3.4.1.2.b"
+>
+</ReqRef>
+<Comment>Indicates if the on-board received a shortened MA regardless of SvL location.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="HandleInformation"
+>
+<ReqRef
+ Id="3.A3.4"
+>
+</ReqRef>
+<ReqRef
+ Id="A1.1.5.1"
+>
+</ReqRef>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="HandleInformation"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="UpdateINTERNAL"
+ NeedsRequirement="FALSE"
+ Name="TrainData"
+>
+<ReqRef
+ Id="Entry 3.A3.4.1.3.1.35"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="ThirdPriority"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.35.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>SituationK()</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ NeedsRequirement="FALSE"
+ Name="DriverId"
+>
+<ReqRef
+ Id="Entry 3.A3.4.1.3.1.40"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="ThirdPriority"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.40.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.DriverId.DataState &lt;- Default.DataState.Invalid</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ NeedsRequirement="FALSE"
+ Name="TrainRunningNumber"
+>
+<ReqRef
+ Id="Entry 3.A3.4.1.3.1.43"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="ThirdPriority"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.43.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Invalid</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ NeedsRequirement="FALSE"
+ Name="NotYetApplicableNationalValues"
+>
+<ReqRef
+ Id="Entry 3.A3.4.1.3.1.2"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ThirdPriority"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.2.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission</PreCondition>
+<PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.NationalValues.NotApplicableNationalValues.DataState &lt;- DataState.Unknown</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

@@ -1,0 +1,132 @@
+<NameSpace
+ Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This packet is an extension of the &quot;standard position report &quot; packet 0. It is used in case of single balise groups if the orientation of the LRBG is unknown but the on-board equipment is able to report a second balise group (the one detected before) to give an indication of the running direction to the RBC.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="1"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_PACKET"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_LRBG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_LRBG"
+>
+</StructureElement><StructureElement
+ TypeName="NID_PRVBG"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_PRVLRBG"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Distance"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="D_LRBG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIRLRBG"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DLRBG"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTOVER"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTUNDER"
+>
+</StructureElement><StructureElement
+ TypeName="Q_LENGTH"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_LENGTH"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="L_TRAININT"
+>
+</StructureElement><StructureElement
+ TypeName="MessageTypes.Speed"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="V_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIRTRAIN"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRTRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="M_MODE"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_MODE"
+>
+</StructureElement><StructureElement
+ TypeName="M_LEVEL"
+ Default=""
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="M_LEVEL"
+>
+</StructureElement><StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

@@ -1,0 +1,1400 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="BTM - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Balise reception, change in M_MCOUNT"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initial configuration"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of a balise group, where M_MCOUNT changes"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reception of the second balise of the balise group, change of M_MCOUNT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;2,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;27,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Reception of the third balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;3,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;27,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == []</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.LRBG )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Previous balises handling"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initial configuration"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.PreviousLRBGs &lt;- 
+[
+  BTM.BaliseGroup {
+    NID =&gt; 2121,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position {
+      Position =&gt; 34321.0
+    }
+  },
+  BTM.BaliseGroup {
+    NID =&gt; 2122,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position {
+      Position =&gt; 36532.0
+    }
+  },
+  BTM.BaliseGroup {
+    NID =&gt; 2123,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position {
+      Position =&gt; 37432.0
+    }
+  }
+]</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Previous balise"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Nominal train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBG().NID == 2123</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reverse train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBG().NID == 2121</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Unknown train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.PreviousLRBG() )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Farther balise"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Nominal train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.FartherLRBG().NID == 2121</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reverse train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.FartherLRBG().NID == 2123</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Unknown train orientation"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.FartherLRBG() )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Balise reception"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initial configuration"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 0.0,
+    D_ora =&gt; 0.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Receiption of a single balise"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Single balise reception"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 24510.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2124</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 24510.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == []</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Orientation == Orientation.Unknown</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of a balise group, nominal orientation"
+>
+<ReqRef
+ Id="3.4.2.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2124</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 24510.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == []</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reception of the second balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2124</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Reception of the third balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;2,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == 
+[
+  BTM.BaliseGroup
+  {
+    NID =&gt; 2124,
+    Orientation =&gt; Orientation.Unknown,
+    Position =&gt; BTM.Position
+    {
+      OverReadingAmountOdo =&gt; 0.0,
+      Position =&gt; 24510.0,
+      UnderReadingAmountOdo =&gt; 0.0
+    }
+  }
+]</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2125</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 25620.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Orientation == Orientation.Nominal</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of a balise group, reverse orientation"
+>
+<ReqRef
+ Id="3.4.2.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.1.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.4.2.2.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;2,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 27530.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2125</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == 
+[
+  BTM.BaliseGroup
+  {
+    NID =&gt; 2124,
+    Orientation =&gt; Orientation.Unknown,
+    Position =&gt; BTM.Position
+    {
+      OverReadingAmountOdo =&gt; 0.0,
+      Position =&gt; 24510.0,
+      UnderReadingAmountOdo =&gt; 0.0
+    }
+  }
+]</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 25620.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reception of the second balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 27550.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2125</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Reception of the third balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;2,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 27570.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == [
+  BTM.BaliseGroup {
+    NID =&gt; 2124,
+    Orientation =&gt; Orientation.Unknown,
+    Position =&gt; BTM.Position {
+      OverReadingAmountOdo =&gt; 0.0,
+      Position =&gt; 24510.0,
+      UnderReadingAmountOdo =&gt; 0.0
+    }
+  },
+  BTM.BaliseGroup {
+    NID =&gt; 2125,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position {
+      OverReadingAmountOdo =&gt; 0.0,
+      Position =&gt; 25620.0,
+      UnderReadingAmountOdo =&gt; 0.0
+    }
+  }
+]</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2126</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 27570.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Orientation == Orientation.Reverse</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Balise reception, incomplete balise group received"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initial configuration"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 0.0,
+    D_ora =&gt; 0.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of a incomplete balise group"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.LRBG )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reception of the second balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;2,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Reception of the fourth balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;4,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == []</Expectation><Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.LRBG )</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 3</Expectation><Expectation
+ Kind="Instantaneous"
+>( COUNT BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of balise of another balise group"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;3234,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.LRBG )</Expectation><Expectation
+ Kind="Instantaneous"
+>( COUNT BTM.CurrentBaliseGroup ) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Count messages in current BG"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="No duplicates"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Balise group received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.CurrentBaliseGroup &lt;- 
+[ 
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;1,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.No_duplicates,
+      M_MCOUNT=&gt;3,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  },
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;2,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.No_duplicates,
+      M_MCOUNT=&gt;3,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  },
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;3,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.No_duplicates,
+      M_MCOUNT=&gt;3,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  }
+]
+</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Duplicates messages"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 : missing next duplicate"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.CurrentBaliseGroup &lt;- 
+[ 
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;1,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group,
+      M_MCOUNT=&gt;3,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  },
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;3,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.No_duplicates,
+      M_MCOUNT=&gt;3,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 : missing previous duplicate"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.CurrentBaliseGroup &lt;- 
+[ 
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;2,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group,
+      M_MCOUNT=&gt;4,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  },
+  Messages.EUROBALISE.Message
+  {
+      Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+      M_VERSION=&gt;1,
+      Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+      N_PIG=&gt;3,
+      N_TOTAL=&gt;2,
+      M_DUP=&gt;Messages.M_DUP.No_duplicates,
+      M_MCOUNT=&gt;4,
+      NID_C=&gt;140,
+      NID_BG=&gt;2125,
+      Q_LINK=&gt;Messages.Q_LINK.Linked,
+      Sequence1=&gt; []
+  }
+]</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Balise reception, duplicate balise"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initial configuration"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 0.0,
+    D_ora =&gt; 0.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Reception of a duplicate message in the balise group"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Reception of the first balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>NOT Available ( BTM.LRBG )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Reception of the second message, duplicate of the third"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Reception of the third message, duplicate message of the second"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;2,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>( COUNT BTM.CurrentBaliseGroup ) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Reception of the fourth balise of the balise group"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;4,
+    N_TOTAL=&gt;3,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt; []
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>BTM.PreviousLRBGs == []</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.NID == 2125</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Position.Position == 25620.0</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.LRBG.Orientation == Orientation.Nominal</Expectation><Expectation
+ Kind="Instantaneous"
+>BTM.CountBalises() == 4</Expectation><Expectation
+ Kind="Instantaneous"
+>( COUNT BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
