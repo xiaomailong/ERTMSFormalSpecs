@@ -114,6 +114,7 @@ namespace Importers.RtfDeltaImporter
                     if (par != null)
                     {
                         par.setText(p.Text);
+                        par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
                         par.AddInfo("New paragraph");
                     }
                     else
@@ -130,6 +131,7 @@ namespace Importers.RtfDeltaImporter
                 if (par != null)
                 {
                     par.Text = "<Removed in current release>";
+                    par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
                     par.AddInfo("Paragraph has been removed");
                 }
                 else
