@@ -66,6 +66,15 @@ namespace Reports.Importer
         {
             AddParagraph("This document lists the changes that have been applied during the imporation of a new release of the specification");
 
+            AddSubParagraph("Summary");
+            AddParagraph("This section presents the summary of the document importation");
+            AddTable(new string[] { "Item", "Count", "Comment" }, new int[] { 40, 40, 60 });
+            AddRow("Paragraph count", importResult.Paragraphs.Count.ToString(), "This is the number of paragraphs processed during the importation of the document");
+            AddRow("Modified paragraphs", importResult.ChangedParagraphs.Count.ToString(), "This is the number of paragraphs that have been changed between the two revisions");
+            AddRow("New paragraphs", importResult.NewParagraphs.Count.ToString(), "The is the number of new paragraphs in this new revision");
+            AddRow("Deleted paragraphs", importResult.RemovedParagraphs.Count.ToString(), "This is the number of paragraphs that have been deleted in this new revision");
+            CloseSubParagraph();
+
             AddSubParagraph("Modified paragraphs");
             AddParagraph("This section lists the paragraphs that have been modified during the importation");
             foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.ChangedParagraphs)
