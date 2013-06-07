@@ -186,6 +186,7 @@ namespace GUI
         {
             List<string> retVal = new List<string>();
 
+            // Also use the default namespace
             List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
             string currentText = CurrentPrefix().Trim();
 
@@ -227,6 +228,8 @@ namespace GUI
                 retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
             }
 
+
+            retVal.Sort();
             return retVal;
         }
 
@@ -238,56 +241,59 @@ namespace GUI
             string prefix;
             List<string> allChoices = AllChoices(out prefix);
 
-            EditionTextBox.Select(EditionTextBox.SelectionStart - prefix.Length, prefix.Length);
-            if (allChoices.Count == 1)
+            if (prefix.Length <= EditionTextBox.SelectionStart)
             {
-                EditionTextBox.SelectedText = allChoices[0];
-            }
-            else if (allChoices.Count > 1)
-            {
-                SelectionComboBox.Items.Clear();
-                foreach (string choice in allChoices)
+                EditionTextBox.Select(EditionTextBox.SelectionStart - prefix.Length, prefix.Length);
+                if (allChoices.Count == 1)
                 {
-                    SelectionComboBox.Items.Add(choice);
+                    EditionTextBox.SelectedText = allChoices[0];
                 }
-                if (prefix != null && prefix.Length > 0)
+                else if (allChoices.Count > 1)
                 {
-                    SelectionComboBox.Text = prefix;
-                }
-                else
-                {
-                    SelectionComboBox.Text = allChoices[0];
-                }
-
-                // Try to compute the combo box location
-                // TODO : Hypothesis. The first displayed line is the first line of the text
-                int line = 1;
-                string lineData = "";
-                for (int i = 0; i < EditionTextBox.SelectionStart; i++)
-                {
-                    switch (EditionTextBox.Text[i])
+                    SelectionComboBox.Items.Clear();
+                    foreach (string choice in allChoices)
                     {
-                        case '\n':
-                            line += 1;
-                            lineData = "";
-                            break;
-
-                        default:
-                            lineData += EditionTextBox.Text[i];
-                            break;
+                        SelectionComboBox.Items.Add(choice);
                     }
+                    if (prefix != null && prefix.Length > 0)
+                    {
+                        SelectionComboBox.Text = prefix;
+                    }
+                    else
+                    {
+                        SelectionComboBox.Text = allChoices[0];
+                    }
+
+                    // Try to compute the combo box location
+                    // TODO : Hypothesis. The first displayed line is the first line of the text
+                    int line = 1;
+                    string lineData = "";
+                    for (int i = 0; i < EditionTextBox.SelectionStart; i++)
+                    {
+                        switch (EditionTextBox.Text[i])
+                        {
+                            case '\n':
+                                line += 1;
+                                lineData = "";
+                                break;
+
+                            default:
+                                lineData += EditionTextBox.Text[i];
+                                break;
+                        }
+                    }
+
+                    // TODO : How to get a Graphics without having to create it.
+                    Graphics g = EnclosingForm.MDIWindow.CreateGraphics();
+                    SizeF size = g.MeasureString(lineData, EditionTextBox.Font);
+                    g.Dispose();
+
+                    Point comboBoxLocation = new Point((int)size.Width, (line - 1) * EditionTextBox.Font.Height + 5);
+                    SelectionComboBox.Location = comboBoxLocation;
+                    PendingSelection = true;
+                    SelectionComboBox.Show();
+                    SelectionComboBox.Focus();
                 }
-
-                // TODO : How to get a Graphics without having to create it.
-                Graphics g = EnclosingForm.MDIWindow.CreateGraphics();
-                SizeF size = g.MeasureString(lineData, EditionTextBox.Font);
-                g.Dispose();
-
-                Point comboBoxLocation = new Point((int)size.Width, (line - 1) * EditionTextBox.Font.Height + 5);
-                SelectionComboBox.Location = comboBoxLocation;
-                PendingSelection = true;
-                SelectionComboBox.Show();
-                SelectionComboBox.Focus();
             }
         }
 

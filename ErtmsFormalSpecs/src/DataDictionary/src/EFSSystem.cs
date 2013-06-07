@@ -17,6 +17,7 @@ namespace DataDictionary
 {
     using System;
     using System.Collections.Generic;
+    using DataDictionary.Types;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -715,6 +716,28 @@ namespace DataDictionary
             foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
             {
                 Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+            }
+
+            // Adds the namable from the default namespace as directly accessible
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                foreach (NameSpace nameSpace in dictionary.NameSpaces)
+                {
+                    if (nameSpace.Name.CompareTo("Default") == 0)
+                    {
+                        if (nameSpace.DeclaredElements == null)
+                        {
+                            nameSpace.InitDeclaredElements();
+                        }
+                        foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
+                        {
+                            foreach (Utils.INamable namable in namables)
+                            {
+                                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                            }
+                        }
+                    }
+                }
             }
         }
 

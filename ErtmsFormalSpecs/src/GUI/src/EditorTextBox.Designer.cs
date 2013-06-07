@@ -43,10 +43,13 @@
             // 
             // SelectionComboBox
             // 
+            this.SelectionComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.SelectionComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.SelectionComboBox.FormattingEnabled = true;
-            this.SelectionComboBox.Location = new System.Drawing.Point(185, 26);
+            this.SelectionComboBox.Location = new System.Drawing.Point(64, 56);
             this.SelectionComboBox.Name = "SelectionComboBox";
-            this.SelectionComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SelectionComboBox.Size = new System.Drawing.Size(236, 21);
+            this.SelectionComboBox.Sorted = true;
             this.SelectionComboBox.TabIndex = 0;
             this.SelectionComboBox.Visible = false;
             // 
