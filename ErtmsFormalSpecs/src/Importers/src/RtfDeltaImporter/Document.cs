@@ -72,6 +72,25 @@ namespace Importers.RtfDeltaImporter
                     {
                         p.OriginalText = originalParagraph.Text;
                         p.State = Paragraph.ParagraphState.Changed;
+
+                        // Maybe the row has been moved (new row inserted before)
+                        TableRow row = originalParagraph as TableRow;
+                        if (row != null)
+                        {
+                            foreach (Paragraph otherParagraph in original.Paragraphs.Values)
+                            {
+                                TableRow otherRow = otherParagraph as TableRow;
+                                if (otherRow != null && otherRow.EnclosingParagraph == row.EnclosingParagraph)
+                                {
+                                    if (otherRow.Text.Equals(p.Text))
+                                    {
+                                        p.State = Paragraph.ParagraphState.Moved;
+                                        p.OriginalText = otherRow.Id;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 else
@@ -119,7 +138,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been added in this release
+        /// Provides the paragraph that have been removed in this release
         /// </summary>
         public List<Paragraph> RemovedParagraphs
         {
@@ -130,7 +149,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been added in this release
+        /// Provides the paragraph that have been changed in this release
         /// </summary>
         public List<Paragraph> ChangedParagraphs
         {
@@ -140,6 +159,16 @@ namespace Importers.RtfDeltaImporter
             }
         }
 
+        /// <summary>
+        /// Provides the paragraph that have been moved in this release
+        /// </summary>
+        public List<Paragraph> MovedParagraphs
+        {
+            get
+            {
+                return findMatching(IsMoved);
+            }
+        }
         /// <summary>
         /// Predicates on paragraphs
         /// </summary>
@@ -175,6 +204,16 @@ namespace Importers.RtfDeltaImporter
         private bool IsChanged(Paragraph p)
         {
             return p.State == Paragraph.ParagraphState.Changed;
+        }
+
+        /// <summary>
+        /// Paragraph has been moved 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private bool IsMoved(Paragraph p)
+        {
+            return p.State == Paragraph.ParagraphState.Moved;
         }
 
         /// <summary>

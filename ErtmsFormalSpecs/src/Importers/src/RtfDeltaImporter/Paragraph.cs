@@ -44,8 +44,9 @@ namespace Importers.RtfDeltaImporter
         ///  - Changed : the paragraph text has changed
         ///  - Inserted : the paragraph was not present in the original
         ///  - Deleted : the paragraph is no more present in the document
+        ///  - Moved : only for table row, the row has been moved in the table
         /// </summary>
-        public enum ParagraphState { NoChange, Changed, Inserted, Deleted };
+        public enum ParagraphState { NoChange, Changed, Inserted, Deleted, Moved };
         public ParagraphState State { get; set; }
 
         /// <summary>

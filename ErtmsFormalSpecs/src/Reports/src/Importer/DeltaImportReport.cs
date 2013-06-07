@@ -98,12 +98,45 @@ namespace Reports.Importer
             }
             CloseSubParagraph();
 
+            AddSubParagraph("Moved paragraphs");
+            AddParagraph("This section lists the paragraphs that have been moved during the importation. No change has been performed in the model. Review should be performed manually.");
+            AddTable(new string[] { "Paragraph", "Contents", "Initial position" }, new int[] { 40, 100, 40 });
+            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.MovedParagraphs)
+            {
+                AddRow(paragraph.Id, paragraph.Text, paragraph.OriginalText);
+            }
+            CloseSubParagraph();
+
             AddSubParagraph("Errors during importation");
-            AddParagraph("This section lists the errors encountered during importation");
+            AddParagraph("This section lists the errors encountered during importation. No change has been performed in the model. Review should be performed manually.");
             AddTable(new string[] { "Paragraph", "Text", "Error" }, new int[] { 30, 80, 80 });
             foreach (Importers.RtfDeltaImporter.ImportationError error in importResult.Errors)
             {
                 AddRow(error.Paragraph.Id, error.Paragraph.Text, error.Message);
+            }
+            CloseSubParagraph();
+
+            AddSubParagraph("List of paragraphs");
+            AddParagraph("This section lists the paragraphs that have been processed during the importation");
+            AddTable(new string[] { "Paragraph", "", "", "", "" }, new int[] { 30, 30, 30, 30, 30 });
+            int i = 0;
+            string[] data = new string[5] { "", "", "", "", "" };
+            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.Paragraphs.Values)
+            {
+                data[i] = paragraph.Id;
+                i += 1;
+
+                if (i == data.Length)
+                {
+                    AddRow(data);
+                    i = 0;
+                    data = new string[5] { "", "", "", "", "" };
+                }
+            }
+
+            if (i > 0)
+            {
+                AddRow(data);
             }
             CloseSubParagraph();
         }
