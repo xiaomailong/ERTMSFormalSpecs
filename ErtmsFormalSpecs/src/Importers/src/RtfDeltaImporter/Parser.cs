@@ -200,6 +200,7 @@ namespace Importers.RtfDeltaImporter
                 Stack.CurrentFrame.ParagraphNumberMode = ParagraphNumberEnum.PnText;
             }
 
+
             // When an outline level is encountered, this starts a new paragraph
             else if (key.Equals("outlinelevel"))
             {
@@ -214,7 +215,8 @@ namespace Importers.RtfDeltaImporter
             }
 
             // \bkmkstart and \bkmkend seems to be related to bookmarks. Ignore the corresponding text
-            if (key.Equals("bkmkstart") ||
+            if (key.Equals("xmlopen") ||
+                key.Equals("bkmkstart") ||
                 key.Equals("bkmkend") ||
                 key.Equals("objclass") ||
                 key.Equals("objdata") ||
