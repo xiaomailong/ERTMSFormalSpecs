@@ -1179,6 +1179,7 @@
       <FIELD NAME="Chapters" REFTYPE="Chapter" MODE="DEFAULT">
         <META NAME="TargetName">Paragraphs</META>
       </FIELD>
+      <FIELD NAME="ChapterRefs" REFTYPE="ChapterRef" MODE="DEFAULT" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="version" TARGET="Version" OPTIONAL="TRUE"/>
@@ -1188,8 +1189,17 @@
         <REPEAT TARGET="Chapters">
           <ELEMENTREF NAME="Chapter"/>
         </REPEAT>
+        <REPEAT TARGET="ChapterRefs">
+          <ELEMENTREF NAME="ChapterRef"/>
+        </REPEAT>
       </CONCAT>
     </FORMULA>
+  </ELEMENT>
+
+  <!-- ----------------- -->
+  <!-- Chapter Reference -->
+  <!-- ----------------- -->
+  <ELEMENT NAME="ChapterRef" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
   </ELEMENT>
 
   <!-- ------- -->

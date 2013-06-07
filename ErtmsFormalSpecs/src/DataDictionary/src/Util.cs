@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DataDictionary.Functions;
+using DataDictionary.Specification;
 using DataDictionary.Tests;
 using DataDictionary.Tests.Translations;
 using DataDictionary.Types;
@@ -142,6 +143,22 @@ namespace DataDictionary
                         nameSpace.appendNameSpaces(nameSpaceRef.LoadNameSpace());
                     }
                     nameSpace.allNameSpaceRefs().Clear();
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            public override void visit(Generated.Specification obj, bool visitSubNodes)
+            {
+                Specification.Specification specification = (Specification.Specification)obj;
+
+                if (specification.allChapterRefs() != null)
+                {
+                    foreach (ChapterRef chapterRef in specification.allChapterRefs())
+                    {
+                        specification.appendChapters(chapterRef.LoadChapter());
+                    }
+                    specification.allChapterRefs().Clear();
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -359,7 +376,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a namespace and locks the file
+        /// Loads a frame and locks the file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="dictionary"></param>
@@ -367,6 +384,19 @@ namespace DataDictionary
         public static Frame loadFrame(string filePath, ModelElement enclosing)
         {
             Frame retVal = DocumentLoader<Frame>.loadFile(filePath, enclosing);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Loads a chapter and locks the file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public static Chapter loadChapter(string filePath, ModelElement enclosing)
+        {
+            Chapter retVal = DocumentLoader<Chapter>.loadFile(filePath, enclosing);
 
             return retVal;
         }

@@ -191,6 +191,11 @@ namespace DataDictionary
             return new Specification.Chapter();
         }
 
+        public override Generated.ChapterRef createChapterRef()
+        {
+            return new Specification.ChapterRef();
+        }
+
         public override Generated.Paragraph createParagraph()
         {
             return new Specification.Paragraph();

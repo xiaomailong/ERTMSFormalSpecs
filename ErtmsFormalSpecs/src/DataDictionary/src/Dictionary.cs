@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using System.IO;
+using DataDictionary.Specification;
 using DataDictionary.Tests;
 using DataDictionary.Types;
 using Utils;
@@ -94,6 +95,22 @@ namespace DataDictionary
                 }
             }
 
+            public override void visit(Generated.Specification obj, bool visitSubNodes)
+            {
+                base.visit(obj, visitSubNodes);
+
+                Specification.Specification specification = (Specification.Specification)obj;
+
+                if (specification.allChapters() != null)
+                {
+                    foreach (Chapter chapter in specification.allChapters())
+                    {
+                        specification.appendChapterRefs(referenceChapter(specification, chapter));
+                    }
+                    specification.allChapters().Clear();
+                }
+            }
+
             private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
             {
                 NameSpaceRef retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
@@ -113,6 +130,17 @@ namespace DataDictionary
 
                 return retVal;
             }
+
+            private ChapterRef referenceChapter(ModelElement enclosing, Chapter chapter)
+            {
+                ChapterRef retVal = (ChapterRef)Generated.acceptor.getFactory().createChapterRef();
+                retVal.Name = chapter.Name;
+                retVal.setFather(enclosing);
+                retVal.SaveChapter(chapter);
+
+                return retVal;
+            }
+
         }
 
         /// <summary>
