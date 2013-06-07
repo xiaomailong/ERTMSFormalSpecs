@@ -91,15 +91,18 @@ namespace Importers.RtfDeltaImporter
                                     }
                                 }
                             }
-                            foreach (Paragraph otherParagraph in Paragraphs.Values)
+                            if (p.State == Paragraph.ParagraphState.Changed)
                             {
-                                TableRow otherRow = otherParagraph as TableRow;
-                                if (otherRow != null && otherRow.EnclosingParagraph == row.EnclosingParagraph)
+                                foreach (Paragraph otherParagraph in Paragraphs.Values)
                                 {
-                                    if (otherRow.Text.Equals(originalRow.Text))
+                                    TableRow otherRow = otherParagraph as TableRow;
+                                    if (otherRow != null && otherRow.EnclosingParagraph == row.EnclosingParagraph)
                                     {
-                                        p.State = Paragraph.ParagraphState.Inserted;
-                                        break;
+                                        if (otherRow.Text.Equals(originalRow.Text))
+                                        {
+                                            p.State = Paragraph.ParagraphState.Inserted;
+                                            break;
+                                        }
                                     }
                                 }
                             }
