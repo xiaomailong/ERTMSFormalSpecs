@@ -144,6 +144,8 @@ namespace Importers.RtfDeltaImporter
             par.Comment = par.Comment + "\nPrevious revision status was " + par.getImplementationStatus_AsString();
             par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
             par.setReviewed(false);
+            par.setBl("3.2.0");
+            par.setVersion("3.2.0");
             foreach (DataDictionary.ReqRef reqRef in par.Implementations)
             {
                 DataDictionary.ReqRelated reqRelated = reqRef.Model as DataDictionary.ReqRelated;
