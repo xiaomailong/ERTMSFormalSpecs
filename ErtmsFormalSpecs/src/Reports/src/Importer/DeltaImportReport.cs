@@ -100,10 +100,10 @@ namespace Reports.Importer
 
             AddSubParagraph("Errors during importation");
             AddParagraph("This section lists the errors encountered during importation");
-            AddTable(new string[] { "Paragraph", "Error" }, new int[] { 40, 100 });
+            AddTable(new string[] { "Paragraph", "Text", "Error" }, new int[] { 30, 80, 80 });
             foreach (Importers.RtfDeltaImporter.ImportationError error in importResult.Errors)
             {
-                AddRow(error.Paragraph.Id, error.Message);
+                AddRow(error.Paragraph.Id, error.Paragraph.Text, error.Message);
             }
             CloseSubParagraph();
         }
