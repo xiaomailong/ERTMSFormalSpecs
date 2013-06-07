@@ -73,19 +73,32 @@ namespace Importers.RtfDeltaImporter
                         p.OriginalText = originalParagraph.Text;
                         p.State = Paragraph.ParagraphState.Changed;
 
-                        // Maybe the row has been moved (new row inserted before)
-                        TableRow row = originalParagraph as TableRow;
-                        if (row != null)
+                        // Maybe the row has been moved (new row inserted before), or this is a new row
+                        TableRow row = p as TableRow;
+                        TableRow originalRow = originalParagraph as TableRow;
+                        if (originalRow != null)
                         {
                             foreach (Paragraph otherParagraph in original.Paragraphs.Values)
                             {
                                 TableRow otherRow = otherParagraph as TableRow;
-                                if (otherRow != null && otherRow.EnclosingParagraph == row.EnclosingParagraph)
+                                if (otherRow != null && otherRow.EnclosingParagraph == originalRow.EnclosingParagraph)
                                 {
                                     if (otherRow.Text.Equals(p.Text))
                                     {
                                         p.State = Paragraph.ParagraphState.Moved;
                                         p.OriginalText = otherRow.Id;
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Paragraph otherParagraph in Paragraphs.Values)
+                            {
+                                TableRow otherRow = otherParagraph as TableRow;
+                                if (otherRow != null && otherRow.EnclosingParagraph == row.EnclosingParagraph)
+                                {
+                                    if (otherRow.Text.Equals(originalRow.Text))
+                                    {
+                                        p.State = Paragraph.ParagraphState.Inserted;
                                         break;
                                     }
                                 }
