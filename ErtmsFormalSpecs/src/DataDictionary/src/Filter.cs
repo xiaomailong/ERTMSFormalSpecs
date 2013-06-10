@@ -107,6 +107,16 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Predicates which indicates that the namable is a type
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsType(INamable value)
+        {
+            return value is Types.Type;
+        }
+
+        /// <summary>
         /// Predicates which indicates that the namable is a structure type
         /// </summary>
         /// <param name="value"></param>

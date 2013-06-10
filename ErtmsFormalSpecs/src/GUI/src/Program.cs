@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System;
+using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 
@@ -34,6 +35,18 @@ namespace ERTMSFormalSpecs
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 log4net.Config.XmlConfigurator.Configure(new FileInfo("logconfig.xml"));
+
+                System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (config.AppSettings != null && config.AppSettings.Settings != null)
+                {
+                    foreach (KeyValueConfigurationElement keyValue in config.AppSettings.Settings)
+                    {
+                        if (keyValue.Key == "LockOpenedFiles")
+                        {
+                            DataDictionary.Util.PleaseLockFiles = !(keyValue.Value.CompareTo("false") == 0);
+                        }
+                    }
+                }
 
                 GUI.MainWindow window = new GUI.MainWindow();
                 Application.Run(window);
