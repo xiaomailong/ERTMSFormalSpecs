@@ -32,7 +32,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The data dictionary
         /// </summary>
-        public EFSSystem EFSSystem
+        public virtual EFSSystem EFSSystem
         {
             get
             {
@@ -77,7 +77,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Visitor used to clean caches of functions (graphs, surfaces)
         /// </summary>
-        private class FunctionGraphCache : Generated.Visitor
+        protected class FunctionGraphCache : Generated.Visitor
         {
             /// <summary>
             /// The list of functions to be cleared
@@ -132,7 +132,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The function cache cleaner
         /// </summary>
-        private FunctionGraphCache FunctionCacheCleaner { get; set; }
+        protected FunctionGraphCache FunctionCacheCleaner { get; set; }
 
         /// <summary>
         /// Constructor
@@ -224,9 +224,12 @@ namespace DataDictionary.Tests.Runner
                 FunctionCacheCleaner = new FunctionGraphCache(EFSSystem);
 
                 // Setup the step
-                Expression expression = EFSSystem.Parser.Expression(SubSequence.Frame, SubSequence.Frame.getCycleDuration());
-                Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
-                Step = Functions.Function.getDoubleValue(value);
+                if (SubSequence != null)
+                {
+                    Expression expression = EFSSystem.Parser.Expression(SubSequence.Frame, SubSequence.Frame.getCycleDuration());
+                    Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
+                    Step = Functions.Function.getDoubleValue(value);
+                }
             }
             finally
             {
@@ -415,7 +418,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="activations">The set of activations to be filled</param>
         /// <param name="nameSpace">The namespace to consider</param>
         /// <returns></returns>
-        private void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
