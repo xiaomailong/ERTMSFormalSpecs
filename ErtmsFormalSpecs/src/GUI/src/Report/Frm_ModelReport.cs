@@ -77,7 +77,7 @@ namespace GUI.Report
                     DeselectCheckBoxes(cbLevel); /* we disable the statistics check boxes of the selected level */
                 }
             }
-            if (cbLevel == 9)
+            if (cbLevel == 10)
             {
                 if (cb.Checked)
                 {
@@ -133,7 +133,7 @@ namespace GUI.Report
                     string cbProperty = tags[0];
                     int cbLevel;
                     Int32.TryParse(tags[1], out cbLevel);
-                    if (cbProperty.Equals(property) && cbLevel != 9 && cb.Enabled == true)
+                    if (cbProperty.Equals(property) && cbLevel != 10 && cb.Enabled == true)
                     {
                         cb.Checked = true;
                     }
@@ -182,7 +182,7 @@ namespace GUI.Report
                     string cbProperty = tags[0];
                     int cbLevel;
                     Int32.TryParse(tags[1], out cbLevel);
-                    if (cbProperty.Equals(property) && cbLevel != 9)
+                    if (cbProperty.Equals(property) && cbLevel != 10)
                     {
                         cb.Checked = false;
                     }
@@ -198,32 +198,37 @@ namespace GUI.Report
         /// <param name="e"></param>
         private void Btn_CreateReport_Click(object sender, EventArgs e)
         {
-            reportHandler.Name = "Model report";
+            reportHandler.Name                    = "Model report";
 
-            reportHandler.AddRanges = CB_AddRanges.Checked;
-            reportHandler.AddRangesDetails = CB_AddRangesDetails.Checked;
+            reportHandler.AddRanges               = CB_AddRanges.Checked;
+            reportHandler.AddRangesDetails        = CB_AddRangesDetails.Checked;
 
-            reportHandler.AddEnumerations = CB_AddEnumerations.Checked;
-            reportHandler.AddEnumerationsDetails = CB_AddEnumerationsDetails.Checked;
+            reportHandler.AddEnumerations         = CB_AddEnumerations.Checked;
+            reportHandler.AddEnumerationsDetails  = CB_AddEnumerationsDetails.Checked;
 
-            reportHandler.AddStructures = CB_AddStructures.Checked;
-            reportHandler.AddStructuresDetails = CB_AddStructuresDetails.Checked;
+            reportHandler.AddStructures           = CB_AddStructures.Checked;
+            reportHandler.AddStructuresDetails    = CB_AddStructuresDetails.Checked;
 
-            reportHandler.AddCollections = CB_AddCollections.Checked;
-            reportHandler.AddCollectionsDetails = CB_AddCollectionsDetails.Checked;
+            reportHandler.AddCollections          = CB_AddCollections.Checked;
+            reportHandler.AddCollectionsDetails   = CB_AddCollectionsDetails.Checked;
 
-            reportHandler.AddFunctions = CB_AddFunctions.Checked;
-            reportHandler.AddFunctionsDetails = CB_AddFunctionsDetails.Checked;
+            reportHandler.AddStateMachines        = CB_AddCollections.Checked;
+            reportHandler.AddStateMachinesDetails = CB_AddCollectionsDetails.Checked;
 
-            reportHandler.AddProcedures = CB_AddProcedures.Checked;
-            reportHandler.AddProceduresDetails = CB_AddProceduresDetails.Checked;
+            reportHandler.AddFunctions            = CB_AddFunctions.Checked;
+            reportHandler.AddFunctionsDetails     = CB_AddFunctionsDetails.Checked;
 
-            reportHandler.AddVariables = CB_AddVariables.Checked;
-            reportHandler.AddVariablesDetails = CB_AddVariablesDetails.Checked;
-            reportHandler.InOutFilter = CB_InOutFilter.Checked;
+            reportHandler.AddProcedures           = CB_AddProcedures.Checked;
+            reportHandler.AddProceduresDetails    = CB_AddProceduresDetails.Checked;
 
-            reportHandler.AddRules = CB_AddRules.Checked;
-            reportHandler.AddRulesDetails = CB_AddRulesDetails.Checked;
+            reportHandler.AddVariables            = CB_AddVariables.Checked;
+            reportHandler.AddVariablesDetails     = CB_AddVariablesDetails.Checked;
+            reportHandler.InOutFilter             = CB_InOutFilter.Checked;
+
+            reportHandler.AddRules                = CB_AddRules.Checked;
+            reportHandler.AddRulesDetails         = CB_AddRulesDetails.Checked;
+
+            reportHandler.ImplementedOnly         = CB_ImplementedFilter.Checked;
 
             Hide();
 

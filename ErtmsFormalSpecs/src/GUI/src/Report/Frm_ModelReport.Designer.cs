@@ -44,6 +44,9 @@ namespace GUI.Report
         private void InitializeComponent()
         {
             this.GrB_Options = new System.Windows.Forms.GroupBox();
+            this.CB_AddStateMachinesDetails = new System.Windows.Forms.CheckBox();
+            this.CB_AddStateMachines = new System.Windows.Forms.CheckBox();
+            this.CB_ImplementedFilter = new System.Windows.Forms.CheckBox();
             this.CB_InOutFilter = new System.Windows.Forms.CheckBox();
             this.CB_SelectAllDetails = new System.Windows.Forms.CheckBox();
             this.CB_SelectAll = new System.Windows.Forms.CheckBox();
@@ -71,6 +74,9 @@ namespace GUI.Report
             // 
             // GrB_Options
             // 
+            this.GrB_Options.Controls.Add(this.CB_AddStateMachinesDetails);
+            this.GrB_Options.Controls.Add(this.CB_AddStateMachines);
+            this.GrB_Options.Controls.Add(this.CB_ImplementedFilter);
             this.GrB_Options.Controls.Add(this.CB_InOutFilter);
             this.GrB_Options.Controls.Add(this.CB_SelectAllDetails);
             this.GrB_Options.Controls.Add(this.CB_SelectAll);
@@ -93,20 +99,61 @@ namespace GUI.Report
             this.GrB_Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrB_Options.Location = new System.Drawing.Point(13, 13);
             this.GrB_Options.Name = "GrB_Options";
-            this.GrB_Options.Size = new System.Drawing.Size(388, 232);
+            this.GrB_Options.Size = new System.Drawing.Size(388, 255);
             this.GrB_Options.TabIndex = 0;
             this.GrB_Options.TabStop = false;
             this.GrB_Options.Text = "Options";
+            // 
+            // CB_AddStateMachinesDetails
+            // 
+            this.CB_AddStateMachinesDetails.AutoSize = true;
+            this.CB_AddStateMachinesDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_AddStateMachinesDetails.Location = new System.Drawing.Point(155, 113);
+            this.CB_AddStateMachinesDetails.Name = "CB_AddStateMachinesDetails";
+            this.CB_AddStateMachinesDetails.Size = new System.Drawing.Size(86, 17);
+            this.CB_AddStateMachinesDetails.TabIndex = 22;
+            this.CB_AddStateMachinesDetails.Tag = "STAT.5";
+            this.CB_AddStateMachinesDetails.Text = "Show details";
+            this.CB_AddStateMachinesDetails.UseVisualStyleBackColor = true;
+            // 
+            // CB_AddStateMachines
+            // 
+            this.CB_AddStateMachines.AutoSize = true;
+            this.CB_AddStateMachines.Checked = true;
+            this.CB_AddStateMachines.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_AddStateMachines.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_AddStateMachines.Location = new System.Drawing.Point(6, 113);
+            this.CB_AddStateMachines.Name = "CB_AddStateMachines";
+            this.CB_AddStateMachines.Size = new System.Drawing.Size(99, 17);
+            this.CB_AddStateMachines.TabIndex = 21;
+            this.CB_AddStateMachines.Tag = "FILTER.5";
+            this.CB_AddStateMachines.Text = "State machines";
+            this.CB_AddStateMachines.UseVisualStyleBackColor = true;
+            this.CB_AddStateMachines.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
+            // CB_ImplementedFilter
+            // 
+            this.CB_ImplementedFilter.AutoSize = true;
+            this.CB_ImplementedFilter.Checked = true;
+            this.CB_ImplementedFilter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_ImplementedFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_ImplementedFilter.Location = new System.Drawing.Point(276, 228);
+            this.CB_ImplementedFilter.Name = "CB_ImplementedFilter";
+            this.CB_ImplementedFilter.Size = new System.Drawing.Size(108, 17);
+            this.CB_ImplementedFilter.TabIndex = 20;
+            this.CB_ImplementedFilter.Tag = "IMPL.11";
+            this.CB_ImplementedFilter.Text = "Implemented only";
+            this.CB_ImplementedFilter.UseVisualStyleBackColor = true;
             // 
             // CB_InOutFilter
             // 
             this.CB_InOutFilter.AutoSize = true;
             this.CB_InOutFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CB_InOutFilter.Location = new System.Drawing.Point(289, 158);
+            this.CB_InOutFilter.Location = new System.Drawing.Point(276, 182);
             this.CB_InOutFilter.Name = "CB_InOutFilter";
             this.CB_InOutFilter.Size = new System.Drawing.Size(93, 17);
             this.CB_InOutFilter.TabIndex = 19;
-            this.CB_InOutFilter.Tag = "STATa.7";
+            this.CB_InOutFilter.Tag = "STATa.8";
             this.CB_InOutFilter.Text = "IN / OUT only";
             this.CB_InOutFilter.UseVisualStyleBackColor = true;
             // 
@@ -114,11 +161,11 @@ namespace GUI.Report
             // 
             this.CB_SelectAllDetails.AutoSize = true;
             this.CB_SelectAllDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_SelectAllDetails.Location = new System.Drawing.Point(187, 204);
+            this.CB_SelectAllDetails.Location = new System.Drawing.Point(155, 228);
             this.CB_SelectAllDetails.Name = "CB_SelectAllDetails";
             this.CB_SelectAllDetails.Size = new System.Drawing.Size(69, 17);
             this.CB_SelectAllDetails.TabIndex = 18;
-            this.CB_SelectAllDetails.Tag = "STAT.9";
+            this.CB_SelectAllDetails.Tag = "STAT.10";
             this.CB_SelectAllDetails.Text = "Select all";
             this.CB_SelectAllDetails.UseVisualStyleBackColor = true;
             this.CB_SelectAllDetails.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -129,11 +176,11 @@ namespace GUI.Report
             this.CB_SelectAll.Checked = true;
             this.CB_SelectAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CB_SelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_SelectAll.Location = new System.Drawing.Point(6, 205);
+            this.CB_SelectAll.Location = new System.Drawing.Point(6, 228);
             this.CB_SelectAll.Name = "CB_SelectAll";
             this.CB_SelectAll.Size = new System.Drawing.Size(81, 17);
             this.CB_SelectAll.TabIndex = 17;
-            this.CB_SelectAll.Tag = "FILTER.9";
+            this.CB_SelectAll.Tag = "FILTER.10";
             this.CB_SelectAll.Text = "Deselect all";
             this.CB_SelectAll.UseVisualStyleBackColor = true;
             this.CB_SelectAll.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -142,11 +189,11 @@ namespace GUI.Report
             // 
             this.CB_AddRulesDetails.AutoSize = true;
             this.CB_AddRulesDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddRulesDetails.Location = new System.Drawing.Point(187, 181);
+            this.CB_AddRulesDetails.Location = new System.Drawing.Point(155, 205);
             this.CB_AddRulesDetails.Name = "CB_AddRulesDetails";
             this.CB_AddRulesDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddRulesDetails.TabIndex = 16;
-            this.CB_AddRulesDetails.Tag = "STAT.8";
+            this.CB_AddRulesDetails.Tag = "STAT.9";
             this.CB_AddRulesDetails.Text = "Show details";
             this.CB_AddRulesDetails.UseVisualStyleBackColor = true;
             // 
@@ -156,11 +203,11 @@ namespace GUI.Report
             this.CB_AddRules.Checked = true;
             this.CB_AddRules.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CB_AddRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddRules.Location = new System.Drawing.Point(6, 182);
+            this.CB_AddRules.Location = new System.Drawing.Point(6, 205);
             this.CB_AddRules.Name = "CB_AddRules";
             this.CB_AddRules.Size = new System.Drawing.Size(53, 17);
             this.CB_AddRules.TabIndex = 15;
-            this.CB_AddRules.Tag = "FILTER.8";
+            this.CB_AddRules.Tag = "FILTER.9";
             this.CB_AddRules.Text = "Rules";
             this.CB_AddRules.UseVisualStyleBackColor = true;
             this.CB_AddRules.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -169,7 +216,7 @@ namespace GUI.Report
             // 
             this.CB_AddStructuresDetails.AutoSize = true;
             this.CB_AddStructuresDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddStructuresDetails.Location = new System.Drawing.Point(187, 66);
+            this.CB_AddStructuresDetails.Location = new System.Drawing.Point(155, 67);
             this.CB_AddStructuresDetails.Name = "CB_AddStructuresDetails";
             this.CB_AddStructuresDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddStructuresDetails.TabIndex = 6;
@@ -181,7 +228,7 @@ namespace GUI.Report
             // 
             this.CB_AddCollectionsDetails.AutoSize = true;
             this.CB_AddCollectionsDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddCollectionsDetails.Location = new System.Drawing.Point(187, 89);
+            this.CB_AddCollectionsDetails.Location = new System.Drawing.Point(155, 90);
             this.CB_AddCollectionsDetails.Name = "CB_AddCollectionsDetails";
             this.CB_AddCollectionsDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddCollectionsDetails.TabIndex = 8;
@@ -193,11 +240,11 @@ namespace GUI.Report
             // 
             this.CB_AddFunctionsDetails.AutoSize = true;
             this.CB_AddFunctionsDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddFunctionsDetails.Location = new System.Drawing.Point(187, 112);
+            this.CB_AddFunctionsDetails.Location = new System.Drawing.Point(155, 136);
             this.CB_AddFunctionsDetails.Name = "CB_AddFunctionsDetails";
             this.CB_AddFunctionsDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddFunctionsDetails.TabIndex = 10;
-            this.CB_AddFunctionsDetails.Tag = "STAT.5";
+            this.CB_AddFunctionsDetails.Tag = "STAT.6";
             this.CB_AddFunctionsDetails.Text = "Show details";
             this.CB_AddFunctionsDetails.UseVisualStyleBackColor = true;
             // 
@@ -205,11 +252,11 @@ namespace GUI.Report
             // 
             this.CB_AddProceduresDetails.AutoSize = true;
             this.CB_AddProceduresDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CB_AddProceduresDetails.Location = new System.Drawing.Point(187, 135);
+            this.CB_AddProceduresDetails.Location = new System.Drawing.Point(155, 159);
             this.CB_AddProceduresDetails.Name = "CB_AddProceduresDetails";
             this.CB_AddProceduresDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddProceduresDetails.TabIndex = 12;
-            this.CB_AddProceduresDetails.Tag = "STAT.6";
+            this.CB_AddProceduresDetails.Tag = "STAT.7";
             this.CB_AddProceduresDetails.Text = "Show details";
             this.CB_AddProceduresDetails.UseVisualStyleBackColor = true;
             // 
@@ -217,11 +264,11 @@ namespace GUI.Report
             // 
             this.CB_AddVariablesDetails.AutoSize = true;
             this.CB_AddVariablesDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CB_AddVariablesDetails.Location = new System.Drawing.Point(187, 158);
+            this.CB_AddVariablesDetails.Location = new System.Drawing.Point(155, 182);
             this.CB_AddVariablesDetails.Name = "CB_AddVariablesDetails";
             this.CB_AddVariablesDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddVariablesDetails.TabIndex = 14;
-            this.CB_AddVariablesDetails.Tag = "STAT.7";
+            this.CB_AddVariablesDetails.Tag = "STAT.8";
             this.CB_AddVariablesDetails.Text = "Show details";
             this.CB_AddVariablesDetails.UseVisualStyleBackColor = true;
             // 
@@ -231,11 +278,11 @@ namespace GUI.Report
             this.CB_AddVariables.Checked = true;
             this.CB_AddVariables.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CB_AddVariables.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddVariables.Location = new System.Drawing.Point(6, 159);
+            this.CB_AddVariables.Location = new System.Drawing.Point(6, 182);
             this.CB_AddVariables.Name = "CB_AddVariables";
             this.CB_AddVariables.Size = new System.Drawing.Size(69, 17);
             this.CB_AddVariables.TabIndex = 13;
-            this.CB_AddVariables.Tag = "FILTER.7";
+            this.CB_AddVariables.Tag = "FILTER.8";
             this.CB_AddVariables.Text = "Variables";
             this.CB_AddVariables.UseVisualStyleBackColor = true;
             this.CB_AddVariables.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -246,11 +293,11 @@ namespace GUI.Report
             this.CB_AddProcedures.Checked = true;
             this.CB_AddProcedures.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CB_AddProcedures.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddProcedures.Location = new System.Drawing.Point(6, 136);
+            this.CB_AddProcedures.Location = new System.Drawing.Point(6, 159);
             this.CB_AddProcedures.Name = "CB_AddProcedures";
             this.CB_AddProcedures.Size = new System.Drawing.Size(80, 17);
             this.CB_AddProcedures.TabIndex = 11;
-            this.CB_AddProcedures.Tag = "FILTER.6";
+            this.CB_AddProcedures.Tag = "FILTER.7";
             this.CB_AddProcedures.Text = "Procedures";
             this.CB_AddProcedures.UseVisualStyleBackColor = true;
             this.CB_AddProcedures.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -261,11 +308,11 @@ namespace GUI.Report
             this.CB_AddFunctions.Checked = true;
             this.CB_AddFunctions.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CB_AddFunctions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddFunctions.Location = new System.Drawing.Point(6, 113);
+            this.CB_AddFunctions.Location = new System.Drawing.Point(6, 136);
             this.CB_AddFunctions.Name = "CB_AddFunctions";
             this.CB_AddFunctions.Size = new System.Drawing.Size(72, 17);
             this.CB_AddFunctions.TabIndex = 9;
-            this.CB_AddFunctions.Tag = "FILTER.5";
+            this.CB_AddFunctions.Tag = "FILTER.6";
             this.CB_AddFunctions.Text = "Functions";
             this.CB_AddFunctions.UseVisualStyleBackColor = true;
             this.CB_AddFunctions.CheckedChanged += new System.EventHandler(this.CheckedChanged);
@@ -304,7 +351,7 @@ namespace GUI.Report
             // 
             this.CB_AddRangesDetails.AutoSize = true;
             this.CB_AddRangesDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddRangesDetails.Location = new System.Drawing.Point(187, 20);
+            this.CB_AddRangesDetails.Location = new System.Drawing.Point(155, 21);
             this.CB_AddRangesDetails.Name = "CB_AddRangesDetails";
             this.CB_AddRangesDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddRangesDetails.TabIndex = 2;
@@ -331,7 +378,7 @@ namespace GUI.Report
             // 
             this.CB_AddEnumerationsDetails.AutoSize = true;
             this.CB_AddEnumerationsDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_AddEnumerationsDetails.Location = new System.Drawing.Point(187, 43);
+            this.CB_AddEnumerationsDetails.Location = new System.Drawing.Point(155, 44);
             this.CB_AddEnumerationsDetails.Name = "CB_AddEnumerationsDetails";
             this.CB_AddEnumerationsDetails.Size = new System.Drawing.Size(86, 17);
             this.CB_AddEnumerationsDetails.TabIndex = 4;
@@ -356,14 +403,14 @@ namespace GUI.Report
             // 
             // TxtB_Path
             // 
-            this.TxtB_Path.Location = new System.Drawing.Point(12, 251);
+            this.TxtB_Path.Location = new System.Drawing.Point(12, 274);
             this.TxtB_Path.Name = "TxtB_Path";
             this.TxtB_Path.Size = new System.Drawing.Size(200, 20);
             this.TxtB_Path.TabIndex = 19;
             // 
             // Btn_SelectFile
             // 
-            this.Btn_SelectFile.Location = new System.Drawing.Point(218, 251);
+            this.Btn_SelectFile.Location = new System.Drawing.Point(218, 272);
             this.Btn_SelectFile.Name = "Btn_SelectFile";
             this.Btn_SelectFile.Size = new System.Drawing.Size(87, 23);
             this.Btn_SelectFile.TabIndex = 20;
@@ -373,7 +420,7 @@ namespace GUI.Report
             // 
             // Btn_CreateReport
             // 
-            this.Btn_CreateReport.Location = new System.Drawing.Point(314, 251);
+            this.Btn_CreateReport.Location = new System.Drawing.Point(314, 272);
             this.Btn_CreateReport.Name = "Btn_CreateReport";
             this.Btn_CreateReport.Size = new System.Drawing.Size(87, 23);
             this.Btn_CreateReport.TabIndex = 0;
@@ -385,7 +432,7 @@ namespace GUI.Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 278);
+            this.ClientSize = new System.Drawing.Size(413, 302);
             this.Controls.Add(this.TxtB_Path);
             this.Controls.Add(this.Btn_SelectFile);
             this.Controls.Add(this.Btn_CreateReport);
@@ -426,5 +473,8 @@ namespace GUI.Report
         private System.Windows.Forms.CheckBox CB_SelectAllDetails;
         private System.Windows.Forms.CheckBox CB_SelectAll;
         private System.Windows.Forms.CheckBox CB_InOutFilter;
+        private System.Windows.Forms.CheckBox CB_ImplementedFilter;
+        private System.Windows.Forms.CheckBox CB_AddStateMachinesDetails;
+        private System.Windows.Forms.CheckBox CB_AddStateMachines;
     }
 }

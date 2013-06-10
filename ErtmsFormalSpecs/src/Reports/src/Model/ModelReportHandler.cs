@@ -23,22 +23,23 @@ namespace Reports.Model
             : base(aDictionary)
         {
             createFileName("ModelReport");
-            AddRanges = false;
-            AddRangesDetails = false;
-            AddEnumerations = false;
+            AddRanges              = false;
+            AddRangesDetails       = false;
+            AddEnumerations        = false;
             AddEnumerationsDetails = false;
-            AddStructures = false;
-            AddStructuresDetails = false;
-            AddCollections = false;
-            AddCollectionsDetails = false;
-            AddFunctions = false;
-            AddFunctionsDetails = false;
-            AddProcedures = false;
-            AddProceduresDetails = false;
-            AddVariables = false;
-            AddVariablesDetails = false;
-            AddRules = false;
-            AddRulesDetails = false;
+            AddStructures          = false;
+            AddStructuresDetails   = false;
+            AddCollections         = false;
+            AddCollectionsDetails  = false;
+            AddFunctions           = false;
+            AddFunctionsDetails    = false;
+            AddProcedures          = false;
+            AddProceduresDetails   = false;
+            AddVariables           = false;
+            AddVariablesDetails    = false;
+            AddRules               = false;
+            AddRulesDetails        = false;
+            ImplementedOnly        = true;
         }
 
         /// <summary>
@@ -66,44 +67,120 @@ namespace Reports.Model
         public void CreateNamespaceSection(ModelReport report, DataDictionary.Types.NameSpace aNameSpace)
         {
             Log.Info("..generating name space " + aNameSpace.Name);
+            bool informationAdded = false;
 
             if (!aNameSpace.FullName.StartsWith("Messages"))
             {
-                report.AddSubParagraph("Namespace " + aNameSpace.FullName);
-
                 if (AddRanges)
                 {
-                    report.CreateRangesSection(aNameSpace, AddRangesDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Ranges, ImplementedOnly) > 0)
+                    {
+                        report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                        report.CreateRangesSection(aNameSpace, AddRangesDetails, ImplementedOnly);
+                        informationAdded = true;
+                    }
                 }
                 if (AddEnumerations)
                 {
-                    report.CreateEnumerationsSection(aNameSpace, AddEnumerationsDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Enumerations, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateEnumerationsSection(aNameSpace, AddEnumerationsDetails, ImplementedOnly);
+                    }
                 }
                 if (AddStructures)
                 {
-                    report.CreateStructuresSection(aNameSpace, AddStructuresDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Structures, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateStructuresSection(aNameSpace, AddStructuresDetails, ImplementedOnly);
+                    }
                 }
                 if (AddCollections)
                 {
-                    report.CreateCollectionsSection(aNameSpace, AddCollectionsDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Collections, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateCollectionsSection(aNameSpace, AddCollectionsDetails, ImplementedOnly);
+                    }
+                }
+                if (AddStateMachines)
+                {
+                    if (report.CountDisplayedReqRelated(aNameSpace.StateMachines, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateStateMachinesSection(aNameSpace, AddStateMachinesDetails, ImplementedOnly);
+                    }
                 }
                 if (AddFunctions)
                 {
-                    report.CreateFunctionsSection(aNameSpace, AddFunctionsDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Functions, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateFunctionsSection(aNameSpace, AddFunctionsDetails, ImplementedOnly);
+                    }
                 }
                 if (AddProcedures)
                 {
-                    report.CreateProceduresSection(aNameSpace, AddProceduresDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Procedures, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateProceduresSection(aNameSpace, AddProceduresDetails, ImplementedOnly);
+                    }
                 }
                 if (AddVariables)
                 {
-                    report.CreateVariablesSection(aNameSpace, AddVariablesDetails, InOutFilter);
+                    if (report.CountDisplayedVariables(aNameSpace.Variables, ImplementedOnly, InOutFilter) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateVariablesSection(aNameSpace, AddVariablesDetails, ImplementedOnly, InOutFilter);
+                    }
                 }
                 if (AddRules)
                 {
-                    report.CreateRulesSection(aNameSpace, AddRulesDetails);
+                    if (report.CountDisplayedReqRelated(aNameSpace.Rules, ImplementedOnly) > 0)
+                    {
+                        if (!informationAdded)
+                        {
+                            report.AddSubParagraph("Namespace " + aNameSpace.FullName);
+                            informationAdded = true;
+                        }
+                        report.CreateRulesSection(aNameSpace, AddRulesDetails, ImplementedOnly);
+                    }
                 }
-                report.CloseSubParagraph();
+
+                if (informationAdded)
+                {
+                    report.CloseSubParagraph();
+                }
 
                 foreach (DataDictionary.Types.NameSpace nameSpace in aNameSpace.SubNameSpaces)
                 {
@@ -112,29 +189,34 @@ namespace Reports.Model
             }
         }
 
-        public bool AddRanges { set; get; }
-        public bool AddRangesDetails { set; get; }
+        public bool AddRanges               { set; get; }
+        public bool AddRangesDetails        { set; get; }
 
-        public bool AddEnumerations { set; get; }
-        public bool AddEnumerationsDetails { set; get; }
+        public bool AddEnumerations         { set; get; }
+        public bool AddEnumerationsDetails  { set; get; }
 
-        public bool AddStructures { set; get; }
-        public bool AddStructuresDetails { set; get; }
+        public bool AddStructures           { set; get; }
+        public bool AddStructuresDetails    { set; get; }
 
-        public bool AddCollections { set; get; }
-        public bool AddCollectionsDetails { set; get; }
+        public bool AddCollections          { set; get; }
+        public bool AddCollectionsDetails   { set; get; }
 
-        public bool AddFunctions { set; get; }
-        public bool AddFunctionsDetails { set; get; }
+        public bool AddStateMachines        { set; get; }
+        public bool AddStateMachinesDetails { set; get; }
 
-        public bool AddProcedures { set; get; }
-        public bool AddProceduresDetails { set; get; }
+        public bool AddFunctions            { set; get; }
+        public bool AddFunctionsDetails     { set; get; }
 
-        public bool AddVariables { set; get; }
-        public bool AddVariablesDetails { set; get; }
-        public bool InOutFilter { set; get; }
+        public bool AddProcedures           { set; get; }
+        public bool AddProceduresDetails    { set; get; }
 
-        public bool AddRules { set; get; }
-        public bool AddRulesDetails { set; get; }
+        public bool AddVariables            { set; get; }
+        public bool AddVariablesDetails     { set; get; }
+        public bool InOutFilter             { set; get; }
+
+        public bool AddRules                { set; get; }
+        public bool AddRulesDetails         { set; get; }
+
+        public bool ImplementedOnly         { set; get; }
     }
 }
