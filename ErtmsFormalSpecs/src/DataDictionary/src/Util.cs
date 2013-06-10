@@ -34,6 +34,11 @@ namespace DataDictionary
         protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
+        /// Indicates that the files should be locked for edition when opened
+        /// </summary>
+        public static bool PleaseLockFiles = true;
+
+        /// <summary>
         /// Updates the dictionary contents
         /// </summary>
         private class Updater : Generated.Visitor
@@ -200,7 +205,7 @@ namespace DataDictionary
             /// </summary>
             public void Lock()
             {
-                if (Stream == null)
+                if (Stream == null && PleaseLockFiles)
                 {
                     Stream = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                     LockLength = Stream.Length;
@@ -213,7 +218,7 @@ namespace DataDictionary
             /// </summary>
             public void Unlock()
             {
-                if (Stream != null)
+                if (Stream != null && PleaseLockFiles)
                 {
                     Stream.Unlock(0, LockLength);
                     Stream.Close();

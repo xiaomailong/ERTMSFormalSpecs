@@ -19,7 +19,6 @@ using DataDictionary;
 using DataDictionary.Interpreter;
 using DataDictionary.Values;
 using DataDictionary.Variables;
-using Utils;
 
 namespace Interpreter
 {
@@ -77,10 +76,11 @@ namespace Interpreter
                 Expression type = parser.Expression(subset26, "Odometry.OdometerMulticastMessage", Filter.IsStructure);
                 DataDictionary.Types.Structure structureType = type.Ref as DataDictionary.Types.Structure;
                 StructureValue value = new StructureValue(structureType, subset26);
+
+                // 2. Create the value to be set to the variable
+                Expression Speed = parser.Expression(subset26, "Default.BaseTypes.Speed", Filter.IsType);
+                DataDictionary.Types.Range SpeedType = Speed.Ref as DataDictionary.Types.Range;
                 {
-                    // 2. Create the value to be set to the variable
-                    Expression Speed = parser.Expression(subset26, "Default.BaseTypes.Speed", Filter.IsType);
-                    DataDictionary.Types.Range SpeedType = Speed.Ref as DataDictionary.Types.Range;
 
                     value.getVariable("V_MAX").Value = new DoubleValue(SpeedType, 12.21);
                     value.getVariable("V_MIN").Value = new DoubleValue(SpeedType, 11.59);
