@@ -40,6 +40,7 @@ namespace Interpreter
 
                 // Load the dictionaries provided as parameters
                 EFSSystem efsSystem = EFSSystem.INSTANCE;
+                DataDictionary.Util.PleaseLockFiles = false;
                 foreach (string arg in args)
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
