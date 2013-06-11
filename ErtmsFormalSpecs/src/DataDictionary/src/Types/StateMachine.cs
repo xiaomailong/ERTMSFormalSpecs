@@ -334,26 +334,8 @@ namespace DataDictionary.Types
                 private set
                 {
                     stateMachine = value;
-                    stateMachineType = null;
                 }
             }
-
-            /// <summary>
-            /// Provides the type of elements for this state machine
-            /// </summary>
-            private Type stateMachineType;
-            public Type StateMachineType
-            {
-                get
-                {
-                    if (stateMachineType == null)
-                    {
-                        stateMachineType = Utils.EnclosingFinder<Functions.Procedure>.find(StateMachine).StateMachine;
-                    }
-                    return stateMachineType;
-                }
-            }
-
 
             /// <summary>
             /// Constructor

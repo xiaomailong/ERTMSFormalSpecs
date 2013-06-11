@@ -44,11 +44,6 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The state machine tree node 
-        /// </summary>
-        public StateMachineTreeNode stateMachine;
-
-        /// <summary>
         /// The rules associates to this procedure
         /// </summary>
         public ProcedureRulesTreeNode rules;
@@ -65,10 +60,8 @@ namespace GUI.DataDictionaryView
         public ProcedureTreeNode(DataDictionary.Functions.Procedure item)
             : base(item)
         {
-            stateMachine = new StateMachineTreeNode(item.StateMachine);
             rules = new ProcedureRulesTreeNode(item);
             parameters = new ProcedureParametersTreeNode(item);
-            Nodes.Add(stateMachine);
             Nodes.Add(rules);
             Nodes.Add(parameters);
         }
@@ -92,19 +85,6 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        protected void ViewStateDiagramHandler(object sender, EventArgs args)
-        {
-            stateMachine.ViewDiagram();
-        }
-
-        public override void DoubleClickHandler()
-        {
-            if (stateMachine != null)
-            {
-                stateMachine.ViewDiagram();
-            }
-        }
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -115,7 +95,6 @@ namespace GUI.DataDictionaryView
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
 
             return retVal;
         }

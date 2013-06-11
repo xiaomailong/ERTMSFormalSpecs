@@ -1288,11 +1288,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  Name="HandleNewLRBG"
 >
@@ -1364,11 +1360,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  Name="HandleUnlinkedBG"
 >
@@ -1416,11 +1408,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleBaliseMessage"
@@ -1608,13 +1596,7 @@ ON Message.Sequence1</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
->
-<Comment></Comment>
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreBaliseGroupMessage"
@@ -1697,11 +1679,7 @@ If all the messages of the current balise group have been received, calls Handle
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure></Procedures>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="Default.BaseTypes.Length"

@@ -444,15 +444,6 @@ namespace Reports.Model
                             CreateRulesSection(procedure.Rules, addDetails, true);
                         }
 
-                        if (procedure.StateMachine != null && procedure.StateMachine.States.Count > 0)
-                        {
-                            if (considerReqRelated(procedure.StateMachine))
-                            {
-                                AddSubParagraph("State machines of " + procedure.Name);
-                                AddStateMachineSection(procedure.StateMachine, addDetails);
-                                CloseSubParagraph();
-                            }
-                        }
                         CreateStatusTable(procedure);
                         if (!addToExistingTable)
                         {
@@ -530,7 +521,7 @@ namespace Reports.Model
                     AddRuleSection(rule, addDetails, addToExistingTable);
                 }
             }
-            if(!addToExistingTable)
+            if (!addToExistingTable)
                 CloseSubParagraph();
         }
 

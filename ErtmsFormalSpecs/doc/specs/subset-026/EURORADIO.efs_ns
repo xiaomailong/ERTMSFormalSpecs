@@ -331,30 +331,15 @@
  NeedsRequirement="FALSE"
  Name="SendTerminationOfCommunicationSessionMessage"
 >
-<StateMachine
- InitialState=""
- Default=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="ProcessAllMessages"
 >
-<StateMachine
- InitialState=""
- Default=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="ProcessAckMessages"
 >
-<StateMachine
- InitialState=""
- Default=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure></Procedures>
+</Procedure></Procedures>
 <StructureElement
  TypeName="EURORADIO.SafeRadioConnectionStatus"
  Default="SafeRadioConnectionStatus.NoConnection"
@@ -758,21 +743,11 @@
  NeedsRequirement="FALSE"
  Name="Connect"
 >
-<StateMachine
- InitialState=""
- Default=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="Disconnect"
 >
-<StateMachine
- InitialState=""
- Default=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure></Procedures>
+</Procedure></Procedures>
 <StructureElement
  TypeName="Boolean"
  Default=""
@@ -1004,10 +979,7 @@
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState="Inactive"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="HandleEuroradioMessage"
 >
@@ -1298,11 +1270,7 @@
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TracksideOrderedSession"
@@ -1375,11 +1343,7 @@
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StoreSessionInformation"
@@ -1424,19 +1388,11 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="SendInitiationOfComSessionMessage"
 >
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="SendVersionMessage"
 >
@@ -1446,11 +1402,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="IsMatching"
 >
 </Parameter></Parameters>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="CloseRBCSession"
 >
@@ -1473,19 +1425,11 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  NeedsRequirement="FALSE"
  Name="SetNewAsCurrentSession"
 >
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  Name="SendMARequest"
 >
@@ -1526,10 +1470,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
->
-</StateMachine></Procedure><Procedure
+</Procedure><Procedure
  Implemented="TRUE"
  Name="SendRequestForShunting"
 >
@@ -1564,11 +1505,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-<StateMachine
- InitialState=""
- Implemented="TRUE"
->
-</StateMachine></Procedure></Procedures>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="String"

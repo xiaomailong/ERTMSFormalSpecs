@@ -1,0 +1,6342 @@
+<Chapter
+ id="6"
+>
+<Paragraph
+ id="6.3"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlock="TRUE"
+ functionalBlockName="6.6 On-board requirements in relation to older system versions"
+ Name=""
+>Scope<Sub>
+<Paragraph
+ id="6.3.1.1"
+ type="DEFINITION"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The chapter defines the composition of envelope of legally operated system versions, i.e. all the ERTMS/ETCS system versions that trackside shall be allowed to operate and that on-board equipment shall support.</Paragraph><Paragraph
+ id="6.3.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>By default, all the requirements listed in the other SRS chapters shall be applicable regardless of the system version operated; this chapter includes the exceptions to these requirements and the additional requirements, which shall apply when the system version of some trackside constituents and/or the system version operated relates to a version number older than the last one introduced.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.4"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlock="TRUE"
+ functionalBlockName="6.6 On-board requirements in relation to older system versions"
+ Name=""
+>Envelope of legally operated system versions<Sub>
+<Paragraph
+ id="6.4.1"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Incompatible versions<Sub>
+<Paragraph
+ id="6.4.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The system version number X, which a trackside infrastructure is allowed to operate with, shall be one of the following: 1 or 2</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.4.2"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Compatible versions<Sub>
+<Paragraph
+ id="6.4.2.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Within system version number X = 1, the system version number Y that a trackside infrastructure is allowed to use shall be any of the following: 0 or 1</Paragraph><Paragraph
+ id="6.4.2.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Within system version number X = 2, the system version number Y that a trackside infrastructure is allowed to use shall be 0</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Trackside requirements in relation to older system versions<Sub>
+<Paragraph
+ id="6.5.1"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Trackside areas operated with system version number X = 1<Sub>
+<Paragraph
+ id="6.5.1.1"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Introduction<Sub>
+<Paragraph
+ id="6.5.1.1.1"
+ type="NOTE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The section is applicable for trackside infrastructures that will be tendered and still operated with the system version number X = 1, after the entry into force of this release of the SRS.</Paragraph><Paragraph
+ id="6.5.1.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Within a trackside infrastructure operated with the system version number X = 1, it shall be allowed to use the following values of M_VERSION: 1.0, and 1.1</Paragraph><Paragraph
+ id="6.5.1.1.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Within a trackside area operated with an RBC certified to the system version number X = 1, it shall also be allowed to use the value M_VERSION = 2.0 for balises.<Sub>
+<Paragraph
+ id="6.5.1.1.3.1"
+ type="NOTE"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Note: this configuration is meaningful in case the trains operating on this RBC area support the system version number X = 2 and the on-board requirements related to the trackside information marked with 2.0 are applicable regardless of the operated version (i.e. they are applied by the on-board equipment even if this latter operates with the system version number X = 1 ordered by RBC).</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.2"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 3<Sub>
+<Paragraph
+ id="6.5.1.2.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR593} Section 3.6.2.4 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Clause 3.7.1.1 b) shall be replaced with: &quot;When needed, limitations related to the movement authority, i.e. Mode profile for On Sight or Shunting and signalling related speed restriction (see sections 3.12.4 and 3.11.6). Mode profile and Signalling related Speed restriction shall always be sent together with the MA to which the information belongs&quot;</Paragraph><Paragraph
+ id="6.5.1.2.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR745} In clause 3.7.1.1 c), the bullet &quot;Optionally Speed restriction to ensure a given permitted braking distance (see section 3.11. 11)&quot; shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR413} In clause 3.7.2.4, the bullet &quot;LX speed restrictions&quot; shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR123} In clause 3.7.2.4, the bullet &quot;Inhibition of revocable TSRs from balises in L2/3 (from RBC only)&quot; shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR742} Clause 3.9.3.2 shall be replaced with: &quot;The orders shall be sent via balise groups.&quot;</Paragraph><Paragraph
+ id="6.5.1.2.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR742} Clause 3.9.3.8.1 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.8"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR342} Clause 3.11.3.2.2 c) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.9"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR342} Clause 3.11.3.2.3.1 shall be replaced with: &quot;If at least one other specific SSP is less restrictive than any &quot;Cant Deficiency&quot; SSP, it is the responsibility of the trackside engineering to ensure that for all possible combinations of international train categories a train might belong to, the ERTMS/ETCS on-board equipment will not replace the &quot;Cant Deficiency&quot; SSP as selected in 3.11.3.2.3 leading to an unsafe situation by applying the requirement 3.11.3.2.6&quot;</Paragraph><Paragraph
+ id="6.5.1.2.10"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR123} Clause 3.11.5.12 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.11"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Clause 3.11.7.1.1 shall be replaced with: &quot;Exception 1: For the modes On-sight and Shunting the speed limit can also be given from the trackside. The speed limit given from the trackside prevails on the National value and the default value.</Paragraph><Paragraph
+ id="6.5.1.2.12"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR413} Clauses 3.11.9.1, 3.12.5.1, 3.12.5.2, 3.12.5.4, 3.12.5.5, 3.12.5.6, 3.12.5.7, 3.15.1.2.3.1 o) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.13"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR745} Clauses 3.11.11.1, 3.11.11.2 shall not apply</Paragraph><Paragraph
+ id="6.5.1.2.14"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR719} Clause 3.12.3.4.3.2 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.15"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR763} Clauses 3.12.3.1.11 and 3.12.3.5.1 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.16"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Clause 3.12.4.1 shall be replaced with: &quot;The Mode Profile can request On Sight mode and Shunting mode.&quot;</Paragraph><Paragraph
+ id="6.5.1.2.17"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Clause 3.12.4.2 shall be replaced with: &quot;For OS mode the mode profile shall define the entry and the length of the On Sight area. For SH mode the mode profile only defines the entry location to SH mode, any length given shall be ignored by the on-board.&quot;</Paragraph><Paragraph
+ id="6.5.1.2.18"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR745} Clause 3.15.1.2.3.1 p) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.2.19"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR756} Clause 3.15.9.2 shall not apply.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.3"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 4<Sub>
+<Paragraph
+ id="6.5.1.3.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.4"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 5<Sub>
+<Paragraph
+ id="6.5.1.4.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 7<Sub>
+<Paragraph
+ id="6.5.1.5.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The table 7.4.1.1 shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.5.1.1"
+ type="TABLE_HEADER"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Packet Number; Packet Name; Page Number<Sub>
+<Paragraph
+ id="Entry 6.5.1.5.1.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; System Version Order; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; National Values; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; Linking; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>12; Level 1 Movement Authority ; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>15; Level 2/3 Movement Authority; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>16; Repositioning Information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>21; Gradient Profile; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.8"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>27; International Static Speed Profile; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.9"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>38; Track Condition Change of traction system; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.10"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>41; Level Transition Order; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.11"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>42; Session Management; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.12"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>44; Data used by applications outside the ERTMS/ETCS system.; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.13"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>45; Radio Network registration; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.14"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>46; Conditional Level Transition Order; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.15"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>49; List of balises for SH Area; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.16"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>51; Axle load Speed Profile; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.17"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>57; Movement Authority Request Parameters; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.18"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>58; Position Report Parameters; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.19"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>63; List of Balises in SR Authority; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.20"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>65; Temporary Speed Restriction; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.21"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>66; Temporary Speed Restriction Revocation; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.22"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>67; Track Condition Big Metal Masses; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.23"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>68; Track Condition; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.24"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>70; Route Suitability Data; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.25"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>71; Adhesion Factor; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.26"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>72; Packet for sending plain text messages; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.27"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>76; Packet for sending fixed text messages; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.28"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>79; Geographical Position Information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.29"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>80; Mode profile; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.30"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>90; Track Ahead Free up to level 2/3 transition location; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.31"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>131; RBC transition order; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.32"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>132; Danger for Shunting information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.33"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>133; Radio infill area information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.34"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>134; EOLM Packet; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.35"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>135; Stop Shunting on desk opening; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.36"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>136; Infill location reference; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.37"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>137; Stop if in Staff Responsible; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.38"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>138; Reversing area information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.39"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>139; Reversing supervision information; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.40"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>140; Train running number from RBC; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.41"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>141; Default Gradient for Temporary Speed Restriction; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.42"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>145; Inhibition of balise group message consistency reaction; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.43"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>203; National Values for braking curves; </Paragraph><Paragraph
+ id="Entry 6.5.1.5.1.44"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>254; Default balise, loop or RIU information; </Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR437} {CR595} {CR637} {CR804} {CR901}Table 7.4.2.1.1 (Packet Number 3: National Values) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.2.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Downloads a set of National Values to the train
+    NID PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    D_VALIDNV  [15]
+    N_ITER  [5]
+    NID_C(k)  [10]  (Identification of national area(s) to which the set applies)
+    V_NVSHUNT  [7]
+    V_NVSTFF  [7]
+    V_NVONSIGHT  [7]
+    V_NVUNFIT  [7]
+    V_NVREL  [7]
+    D_NVROLL  [15]
+    Q_NVSRBKTRG  [1]
+    Q_NVEMRRLS  [1]
+    V_NVALLOWOVTRP  [7]
+    V_NVSUPOVTRP  [7]
+    D_NVOVTRP  [15]
+    T_NVOVTRP  [8]
+    D_NVPOTRP   [15]
+    M_NVCONTACT  [2]
+    T_NVCONTACT  [8]
+    M_NVDERUN  [1]
+    D_NVSTFF  [15]
+    Q_NVDRIVER_ADHES  [1]<Message
+ description="Downloads a set of National Values to the train"
+ media="Balise, RBC"
+>
+<MsgVariable
+ name="NID PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_VALIDNV"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_C(k)"
+ length="10"
+ comment="Identification of national area(s) to which the set applies"
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVSHUNT"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVSTFF"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVONSIGHT"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVUNFIT"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVREL"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_NVROLL"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVSRBKTRG"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVEMRRLS"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVALLOWOVTRP"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVSUPOVTRP"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_NVOVTRP"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="T_NVOVTRP"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_NVPOTRP "
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVCONTACT"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="T_NVCONTACT"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVDERUN"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_NVSTFF"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVDRIVER_ADHES"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR593} Section 7.4.2.3.1 (Packet Number 13: Staff Responsible distance Information from loop) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR342} Table 7.4.2.7 (Packet Number 27: International Static Speed Profile) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.4.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Static speed profile and optionally speed limits depending on the international train category.
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    D_STATIC  [15]
+    V_STATIC  [7]
+    Q_FRONT  [1]
+    N_ITER  [5]
+    NC_DIFF(n)  [4]
+    V_DIFF(n)  [7]
+    N_ITER  [5]
+    D_STATIC(k)  [15]
+    V_STATIC(k)  [7]
+    Q_FRONT(k)  [1]
+    N_ITER(k)  [5]
+    NC_DIFF(k,m)  [4]
+    V_DIFF(k,m)  [7]<Message
+ description="Static speed profile and optionally speed limits depending on the international train category."
+ media="Any"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_STATIC"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_STATIC"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_FRONT"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NC_DIFF(n)"
+ length="4"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_DIFF(n)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_STATIC(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_STATIC(k)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_FRONT(k)"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER(k)"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NC_DIFF(k,m)"
+ length="4"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_DIFF(k,m)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR676} Section 7.4.2.8.1 (Packet Number 40: Track Condition Change of allowed current consumption) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR660} Table 7.4.2.11 (Packet Number 44: Data used by applications outside the ERTMS/ETCS system) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.6.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system.
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    NID_XUSER  [9]
+    Other data, depending on  NID_XUSER  []<Message
+ description="Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system."
+ media="Any"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_XUSER"
+ length="9"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Other data, depending on  NID_XUSER"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR756} Section 7.4.2.11.3 (Packet Number 47: Level Inhibition Order) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.8"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR317} Table 7.4.2.13 (Packet Number 51: Axle Load Speed Profile) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.8.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>This packet gives the speed restrictions for trains with axle load higher than or equal to the specified value for the speed restriction
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    Q_TRACKINIT  [1]
+    D_AXLELOAD  [15]
+    L_AXLELOAD  [15]
+    Q_FRONT  [1]
+    N_ITER  [5]
+    M_AXLELOAD(n)  [7]
+    V_AXLELOAD(n)  [7]  (Speed restriction to be applied if the axle load of the train ? M_AXLELOAD(n))
+    N_ITER  [5]
+    D_AXLELOAD(k)  [15]
+    L_AXLELOAD(k)  [15]
+    Q_FRONT(k)  [1]
+    N_ITER(k)  [5]
+    M_AXLELOAD(k,m)  [7]
+    V_AXLELOAD(k,m)  [7]  (Speed restriction to be applied if the axle load of the train ? M_AXLELOAD(k,m))<Message
+ description="This packet gives the speed restrictions for trains with axle load higher than or equal to the specified value for the speed restriction"
+ media="Any"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TRACKINIT"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_AXLELOAD"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_AXLELOAD"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_FRONT"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_AXLELOAD(n)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_AXLELOAD(n)"
+ length="7"
+ comment="Speed restriction to be applied if the axle load of the train ? M_AXLELOAD(n)"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_AXLELOAD(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_AXLELOAD(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_FRONT(k)"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER(k)"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_AXLELOAD(k,m)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_AXLELOAD(k,m)"
+ length="7"
+ comment="Speed restriction to be applied if the axle load of the train ? M_AXLELOAD(k,m)"
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.9"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR745} Section 7.4.2.13.1 (Packet 52: Permitted Braking Distance Information) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.10"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR123} Section 7.4.2.16.1 (Packet Number 64: Inhibition of revocable TSRs from balises in L2/3) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.11"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR535} Section 7.4.2.20.1 (Packet Number 69: Track Condition Station Platforms) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.12"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR719} {CR763}Table 7.4.2.23 (Packet Number 72: Packet for sending plain text messages) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.12.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    Q_TEXTCLASS  [2]
+    Q_TEXTDISPLAY  [1]
+    D_TEXTDISPLAY  [15]  (Start condition)
+    M_MODETEXTDISPLAY  [4]  (Start condition)
+    M_LEVELTEXTDISPLAY  [3]  (Start condition)
+    NID_NTC  [8]  (If M_LEVELTEXTDISPLAY = 1 (NTC))
+    L_TEXTDISPLAY  [15]  (End condition)
+    T_TEXTDISPLAY  [10]  (End condition)
+    M_MODETEXTDISPLAY  [4]  (End condition)
+    M_LEVELTEXTDISPLAY  [3]  (End condition)
+    NID_NTC  [8]  (If M_LEVELTEXTDISPLAY = 1 (NTC))
+    Q_TEXTCONFIRM  [2]
+    L_TEXT  [8]
+    X_TEXT(L_TEXT)  [8]<Message
+ description=""
+ media="Balise, RBC"
+ bl="3.2.0"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTCLASS"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTDISPLAY"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_TEXTDISPLAY"
+ length="15"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MODETEXTDISPLAY"
+ length="4"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_LEVELTEXTDISPLAY"
+ length="3"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_NTC"
+ length="8"
+ comment="If M_LEVELTEXTDISPLAY = 1 (NTC)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="L_TEXTDISPLAY"
+ length="15"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="T_TEXTDISPLAY"
+ length="10"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MODETEXTDISPLAY"
+ length="4"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_LEVELTEXTDISPLAY"
+ length="3"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_NTC"
+ length="8"
+ comment="If M_LEVELTEXTDISPLAY = 1 (NTC)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTCONFIRM"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_TEXT"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="X_TEXT(L_TEXT)"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.13"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR719} {CR763}Table 7.4.2.24 (Packet Number 76: Packet for sending fixed text messages) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.13.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    Q_TEXTCLASS  [2]
+    Q_TEXTDISPLAY  [1]
+    D_TEXTDISPLAY  [15]  (Start condition)
+    M_MODETEXTDISPLAY  [4]  (Start condition)
+    M_LEVELTEXTDISPLAY  [3]  (Start condition)
+    NID_NTC  [8]  (If M_LEVELTEXTDISPLAY = 1 (NTC))
+    L_TEXTDISPLAY  [15]  (End condition)
+    T_TEXTDISPLAY  [10]  (End condition)
+    M_MODETEXTDISPLAY  [4]  (End condition)
+    M_LEVELTEXTDISPLAY  [3]  (End condition)
+    NID_NTC  [8]  (If M_LEVELTEXTDISPLAY = 1 (NTC))
+    Q_TEXTCONFIRM  [2]
+    Q_TEXT  [8]<Message
+ description=""
+ media="Balise, RBC"
+ bl="3.2.0"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTCLASS"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTDISPLAY"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_TEXTDISPLAY"
+ length="15"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MODETEXTDISPLAY"
+ length="4"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_LEVELTEXTDISPLAY"
+ length="3"
+ comment="Start condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_NTC"
+ length="8"
+ comment="If M_LEVELTEXTDISPLAY = 1 (NTC)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="L_TEXTDISPLAY"
+ length="15"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="T_TEXTDISPLAY"
+ length="10"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MODETEXTDISPLAY"
+ length="4"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_LEVELTEXTDISPLAY"
+ length="3"
+ comment="End condition"
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_NTC"
+ length="8"
+ comment="If M_LEVELTEXTDISPLAY = 1 (NTC)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXTCONFIRM"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_TEXT"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.14"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} {CR824}Table 7.4.2.26 (Packet Number 80: Mode profile) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.14.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Mode profile associated to an MA
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_SCALE  [2]
+    D_MAMODE  [15]
+    M_MAMODE  [2]  (OS, SH)
+    V_MAMODE  [7]
+    L_MAMODE  [15]
+    L_ACKMAMODE  [15]
+    N_ITER  [5]
+    D_MAMODE(k)  [15]
+    M_MAMODE(k)  [2]  (OS, SH)
+    V_MAMODE(k)  [7]
+    L_MAMODE(k)  [15]
+    L_ACKMAMODE(k)  [15]<Message
+ description="Mode profile associated to an MA"
+ media="Any"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_SCALE"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_MAMODE"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MAMODE"
+ length="2"
+ comment="OS, SH"
+>
+</MsgVariable>
+<MsgVariable
+ name="V_MAMODE"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_MAMODE"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_ACKMAMODE"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="D_MAMODE(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_MAMODE(k)"
+ length="2"
+ comment="OS, SH"
+>
+</MsgVariable>
+<MsgVariable
+ name="V_MAMODE(k)"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_MAMODE(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_ACKMAMODE(k)"
+ length="15"
+ comment=""
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.15"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR413} Section 7.4.2.26.1 (Packet Number 88: Level Crossing information) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.16"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR742} Section 7.4.2.37.1 (Packet Number 143: Session Management with neighbouring Radio Infill Unit) shall not apply.</Paragraph><Paragraph
+ id="6.5.1.5.17"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR595/901} Added section 7.4.2.37.2 (Packet Number 203: National Values for braking curves) shall apply:<Sub>
+<Paragraph
+ id="6.5.1.5.17.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Downloads a subset of National Values to the train, used for braking curves. This subset is a complement to the National Values included in packet 3.
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_NVGUIPERM  [1]
+    Q_NVSBFBPERM  [1]
+    Q_NVINHSMICPERM  [1]
+    A_NVMAXREDADH1  [6]
+    A_NVMAXREDADH2  [6]
+    A_NVMAXREDADH3  [6]
+    M_NVAVADH  [5]
+    M_NVEBCL  [4]
+    Q_NVKINT  [1]
+    Q_NVKVINTSET  [2]  (Only if Q_NVKINT = 1, Q_NVKVINTSET and the following variables follow)
+    A_NVP12  [6]  (Only if Q_NVKVINTSET = 1)
+    A_NVP23  [6]  (Only if Q_NVKVINTSET = 1)
+    V_NVKVINT  [7]  (= 0km/h)
+    M_NVKVINT  [7]  (Valid between  V_NVKVINT and V_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12)
+    M_NVKVINT  [7]  (Only if Q_NVKVINTSET = 1;Valid between V_NVKVINT and V_NVKVINT(1) Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23)
+    N_ITER  [5]
+    V_NVKVINT(n)  [7]
+    M_NVKVINT(n)  [7]  (Valid between V_NVKVINT(n) and V_NVKVINT(n+1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12)
+    M_NVKVINT(n)  [7]  (Only if Q_NVKVINTSET = 1 Valid between V_NVKVINT(n) and V_NVKVINT(n+1) Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23)
+    N_ITER  [5]
+    Q_NVKVINTSET(k)  [2]
+    A_NVP12(k)  [6]  (Only if Q_NVKVINTSET(k) = 1)
+    A_NVP23(k)  [6]  (Only if Q_NVKVINTSET(k) = 1)
+    V_NVKVINT(k)  [7]  (= 0km/h)
+    M_NVKVINT(k)  [7]  (Valid between V_NVKVINT(k) and V_NVKVINT(k,1) If Q_NVKVINTSET(k) = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12(k))
+    M_NVKVINT(k)  [7]  (Only if Q_NVKVINTSET(k) = 1 Valid between V_NVKVINT(k) and V_NVKVINT(k,1) Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23(k))
+    N_ITER(k)  [5]
+    V_NVKVINT(k,m)  [7]
+    M_NVKVINT(k,m)  [7]  (Valid between V_NVKVINT(k,m) and V_NVKVINT(k,m+1) If Q_NVKVINTSET(k) = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12(k))
+    M_NVKVINT(k,m)  [7]  (Only if Q_NVKVINTSET(k) = 1 Valid between V_NVKVINT(k,m) and V_NVKVINT(k,m+1) Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23(k))
+    L_NVKRINT  [5]  (= 0m)
+    M_NVKRINT  [5]  (Valid between L_NVKRINT and L_NVKRINT(1))
+    N_ITER  [5]
+    L_NVKRINT(l)  [5]
+    M_NVKRINT(l)  [5]  (Valid between L_NVKRINT(l) and L_NVKRINT(l+1))
+    M_NVKTINT  [5]<Message
+ description="Downloads a subset of National Values to the train, used for braking curves. This subset is a complement to the National Values included in packet 3."
+ media="Balise, RBC"
+ bl="3.2.0"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_DIR"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVGUIPERM"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVSBFBPERM"
+ length="1"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVINHSMICPERM"
+ length="1"
+ comment=""
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVMAXREDADH1"
+ length="6"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVMAXREDADH2"
+ length="6"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVMAXREDADH3"
+ length="6"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVAVADH"
+ length="5"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVEBCL"
+ length="4"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVKINT"
+ length="1"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVKVINTSET"
+ length="2"
+ comment="Only if Q_NVKINT = 1, Q_NVKVINTSET and the following variables follow"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVP12"
+ length="6"
+ comment="Only if Q_NVKVINTSET = 1"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVP23"
+ length="6"
+ comment="Only if Q_NVKVINTSET = 1"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVKVINT"
+ length="7"
+ comment="= 0km/h"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT"
+ length="7"
+ comment="Valid between  V_NVKVINT and V_NVKVINT(1)&amp;#xD;&amp;#xA;If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT"
+ length="7"
+ comment="Only if Q_NVKVINTSET = 1&amp;#xD;&amp;#xA;Valid between V_NVKVINT and V_NVKVINT(1)&amp;#xD;&amp;#xA;Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVKVINT(n)"
+ length="7"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(n)"
+ length="7"
+ comment="Valid between V_NVKVINT(n) and V_NVKVINT(n+1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(n)"
+ length="7"
+ comment="Only if Q_NVKVINTSET = 1 Valid between V_NVKVINT(n) and V_NVKVINT(n+1) Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="Q_NVKVINTSET(k)"
+ length="2"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVP12(k)"
+ length="6"
+ comment="Only if Q_NVKVINTSET(k) = 1"
+>
+</MsgVariable>
+<MsgVariable
+ name="A_NVP23(k)"
+ length="6"
+ comment="Only if Q_NVKVINTSET(k) = 1"
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVKVINT(k)"
+ length="7"
+ comment="= 0km/h"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(k)"
+ length="7"
+ comment="Valid between V_NVKVINT(k) and V_NVKVINT(k,1)&amp;#xD;&amp;#xA;If Q_NVKVINTSET(k) = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12(k)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(k)"
+ length="7"
+ comment="Only if Q_NVKVINTSET(k) = 1&amp;#xD;&amp;#xA;Valid between V_NVKVINT(k) and V_NVKVINT(k,1)&amp;#xD;&amp;#xA;Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23(k)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER(k)"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_NVKVINT(k,m)"
+ length="7"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(k,m)"
+ length="7"
+ comment="Valid between V_NVKVINT(k,m) and V_NVKVINT(k,m+1) If Q_NVKVINTSET(k) = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12(k)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKVINT(k,m)"
+ length="7"
+ comment="Only if Q_NVKVINTSET(k) = 1&amp;#xD;&amp;#xA;Valid between V_NVKVINT(k,m) and V_NVKVINT(k,m+1)&amp;#xD;&amp;#xA;Gives the correction factor if maximum emergency brake deceleration is higher than A_NVP23(k)"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="L_NVKRINT"
+ length="5"
+ comment="= 0m"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKRINT"
+ length="5"
+ comment="Valid between L_NVKRINT and L_NVKRINT(1)"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_NVKRINT(l)"
+ length="5"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKRINT(l)"
+ length="5"
+ comment="Valid between L_NVKRINT(l) and L_NVKRINT(l+1)"
+ bl="3.1.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_NVKTINT"
+ length="5"
+ comment=""
+ bl="3.1.0"
+>
+</MsgVariable>
+</Message>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.18"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR459} Table 7.5.1.36 (D_VALIDNV) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.18.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Distance to start of validity of national values"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Distance to start of validity of national values"
+>Short description: Distance to start of validity of national values
+Length: 15 bits
+Minimum value: 0 cm
+Maximum value: 327.670 km
+Resolution formula: 10 cm, 1m or 10 m depends on Q_SCALE<TypeSpec
+ length="15"
+ minimum_value="0 cm"
+ maximum_value="327.670 km"
+ resolution_formula="10 cm, 1m or 10 m depends on Q_SCALE"
+>
+<short-description>Distance to start of validity of national values</short-description>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.19"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR1004} Table 7.5.1.62 (M_AXLELOAD) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.19.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name="Axle load"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Axle load"
+>Short description: Axle load
+Length: 7 bits
+Minimum value: 0 t
+Maximum value: 40 t
+Resolution formula: 0.5 t
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            MatchRange: minimum: 81, maximum: 125
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 126
+            Meaning: 
+                Type: enum
+                Value: Axle load above 40 t
+        SpecialOrReservedValue: 
+            Match: 127
+            Meaning: 
+                Type: invalid
+                Value: Spare<TypeSpec
+ length="7"
+ minimum_value="0 t"
+ maximum_value="40 t"
+ resolution_formula="0.5 t"
+>
+<short-description>Axle load</short-description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>81</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>125</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>126</match>
+<meaning
+ type="enum"
+>Axle load above 40 t</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>127</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.20"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Table 7.5.1.70 (M_MAMODE) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.20.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Required mode for a part of the MA"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Required mode for a part of the MA"
+>Short description: Required mode for a part of the MA
+Length: 2 bits
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 00
+            Meaning: 
+                Type: enum
+                Value: On Sight
+        SpecialOrReservedValue: 
+            Match: 01
+            Meaning: 
+                Type: enum
+                Value: Shunting
+        SpecialOrReservedValue: 
+            MatchRange: minimum: 10, maximum: 11
+            Meaning: 
+                Type: invalid
+                Value: Spare<TypeSpec
+ length="2"
+ minimum_value=""
+ maximum_value=""
+ resolution_formula=""
+>
+<short-description>Required mode for a part of the MA</short-description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>00</match>
+<meaning
+ type="enum"
+>On Sight</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>01</match>
+<meaning
+ type="enum"
+>Shunting</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match-range>
+<minimum>10</minimum>
+<maximum>11</maximum>
+</match-range>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.21"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Table 7.5.1.73 (M_MODETEXTDISPLAY) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.21.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Onboard operating mode for text display"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Onboard operating mode for text display"
+>Short description: Onboard operating mode for text display
+Description:
+The text is displayed when entering / as long as in the defined mode
+Length: 4 bits
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Full Supervision
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: On Sight
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Staff Responsible
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Unfitted
+        SpecialOrReservedValue: 
+            Match: 5
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 6
+            Meaning: 
+                Type: enum
+                Value: Stand By
+        SpecialOrReservedValue: 
+            Match: 7
+            Meaning: 
+                Type: enum
+                Value: Trip
+        SpecialOrReservedValue: 
+            Match: 8
+            Meaning: 
+                Type: enum
+                Value: Post Trip
+        SpecialOrReservedValue: 
+            Match: 9
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 10
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 11
+            Meaning: 
+                Type: enum
+                Value: Non Leading
+        SpecialOrReservedValue: 
+            Match: 12
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 13
+            Meaning: 
+                Type: invalid
+                Value: Spare
+        SpecialOrReservedValue: 
+            Match: 14
+            Meaning: 
+                Type: enum
+                Value: Reversing
+        SpecialOrReservedValue: 
+            Match: 15
+            Meaning: 
+                Type: enum
+                Value: The display of the text shall not be limited by the mode.<TypeSpec
+ length="4"
+ minimum_value=""
+ maximum_value=""
+ resolution_formula=""
+>
+<short-description>Onboard operating mode for text display</short-description>
+<Description>The text is displayed when entering / as long as in the defined mode</Description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>0</match>
+<meaning
+ type="enum"
+>Full Supervision</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>1</match>
+<meaning
+ type="enum"
+>On Sight</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>2</match>
+<meaning
+ type="enum"
+>Staff Responsible</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>3</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>4</match>
+<meaning
+ type="enum"
+>Unfitted</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>5</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>6</match>
+<meaning
+ type="enum"
+>Stand By</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>7</match>
+<meaning
+ type="enum"
+>Trip</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>8</match>
+<meaning
+ type="enum"
+>Post Trip</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>9</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>10</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>11</match>
+<meaning
+ type="enum"
+>Non Leading</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>12</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>13</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>14</match>
+<meaning
+ type="enum"
+>Reversing</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>15</match>
+<meaning
+ type="enum"
+>The display of the text shall not be limited by the mode.</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.22"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR732} {CR929} {CR972} {CR1000} Table 7.5.1.77 (M_TRACKCOND) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.22.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Type of track condition"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Type of track condition"
+>Short description: Type of track condition
+Length: 4 bits
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Non stopping area - tunnel. Initial state: stopping permitted (no tunnel)
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Non stopping area - bridge. Initial state: stopping permitted (no bridge)
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Non stopping area - other reasons. Initial state: stopping permitted 
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: enum
+                Value: Powerless section - lower pantograph. Initial state: not powerless section
+        SpecialOrReservedValue: 
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Radio hole (stop supervising T_NVCONTACT). Initial state: supervise T_NVCONTACT
+        SpecialOrReservedValue: 
+            Match: 5
+            Meaning: 
+                Type: enum
+                Value: Air tightness. Initial state: no request for air tightness
+        SpecialOrReservedValue: 
+            Match: 6
+            Meaning: 
+                Type: enum
+                Value: Switch off regenerative brake. Initial state: regenerative brake on
+        SpecialOrReservedValue: 
+            Match: 7
+            Meaning: 
+                Type: enum
+                Value: Switch off eddy current brake for service brake. Initial state: eddy current brake for service brake on
+        SpecialOrReservedValue: 
+            Match: 8
+            Meaning: 
+                Type: enum
+                Value: Switch off magnetic shoe brake. Initial state: magnetic shoe brake on
+        SpecialOrReservedValue: 
+            Match: 9
+            Meaning: 
+                Type: enum
+                Value: Powerless section - switch off the main power switch. Initial state: not powerless section
+        SpecialOrReservedValue: 
+            MatchRange: minimum: 10, maximum: 15
+            Meaning: 
+                Type: invalid
+                Value: Spare<TypeSpec
+ length="4"
+ minimum_value=""
+ maximum_value=""
+ resolution_formula=""
+>
+<short-description>Type of track condition</short-description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>0</match>
+<meaning
+ type="enum"
+>Non stopping area - tunnel. Initial state: stopping permitted (no tunnel)</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>1</match>
+<meaning
+ type="enum"
+>Non stopping area - bridge. Initial state: stopping permitted (no bridge)</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>2</match>
+<meaning
+ type="enum"
+>Non stopping area - other reasons. Initial state: stopping permitted </meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>3</match>
+<meaning
+ type="enum"
+>Powerless section - lower pantograph. Initial state: not powerless section</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>4</match>
+<meaning
+ type="enum"
+>Radio hole (stop supervising T_NVCONTACT). Initial state: supervise T_NVCONTACT</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>5</match>
+<meaning
+ type="enum"
+>Air tightness. Initial state: no request for air tightness</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>6</match>
+<meaning
+ type="enum"
+>Switch off regenerative brake. Initial state: regenerative brake on</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>7</match>
+<meaning
+ type="enum"
+>Switch off eddy current brake for service brake. Initial state: eddy current brake for service brake on</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>8</match>
+<meaning
+ type="enum"
+>Switch off magnetic shoe brake. Initial state: magnetic shoe brake on</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>9</match>
+<meaning
+ type="enum"
+>Powerless section - switch off the main power switch. Initial state: not powerless section</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match-range>
+<minimum>10</minimum>
+<maximum>15</maximum>
+</match-range>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.23"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR342} Table 7.5.1.83 (NC_DIFF) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.23.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Specific SSP category"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Specific SSP category"
+>Short description: Specific SSP category
+Description:
+It is the specific SSP category for which a differential value for the static line speed exists.
+Used together with V_DIFF to permit trains belonging to the corresponding international train category to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC. 
+Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.
+Length: 4 bits
+Minimum value: 0
+Maximum value: 15
+Resolution formula: Numbers
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 1
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 2
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 3
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 4
+        SpecialOrReservedValue: 
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 5
+        SpecialOrReservedValue: 
+            Match: 5
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 6
+        SpecialOrReservedValue: 
+            Match: 6
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 7
+        SpecialOrReservedValue: 
+            Match: 7
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 8
+        SpecialOrReservedValue: 
+            Match: 8
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 9
+        SpecialOrReservedValue: 
+            Match: 9
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 10
+        SpecialOrReservedValue: 
+            Match: 10
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 11
+        SpecialOrReservedValue: 
+            Match: 11
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 12
+        SpecialOrReservedValue: 
+            Match: 12
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 13
+        SpecialOrReservedValue: 
+            Match: 13
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 14
+        SpecialOrReservedValue: 
+            Match: 14
+            Meaning: 
+                Type: enum
+                Value: Specific SSP applicable to international train category 15
+        SpecialOrReservedValue: 
+            Match: 15
+            Meaning: 
+                Type: invalid
+                Value: Spare<TypeSpec
+ length="4"
+ minimum_value=""
+ maximum_value="15"
+ resolution_formula="Numbers"
+>
+<short-description>Specific SSP category</short-description>
+<Description>It is the specific SSP category for which a differential value for the static line speed exists.
+	Used together with V_DIFF to permit trains belonging to the corresponding international train category to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC. 
+	Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.</Description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>0</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 1</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>1</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 2</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>2</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 3</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>3</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 4</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>4</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 5</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>5</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 6</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>6</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 7</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>7</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 8</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>8</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 9</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>9</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 10</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>10</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 11</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>11</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 12</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>12</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 13</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>13</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 14</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>14</match>
+<meaning
+ type="enum"
+>Specific SSP applicable to international train category 15</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>15</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.24"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR637} Table 7.5.1.138 (Q_TEXTCONFIRM) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.24.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name="Qualifies the need / reaction of text confirmation"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name="Qualifies the need / reaction of text confirmation"
+>Short description: Qualifies the need / reaction of text confirmation
+Length: 2 bits
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: No confirmation required 
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Continue display until confirmed
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Apply service brake if not confirmed when end conditions reached
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: invalid
+                Value: Spare<TypeSpec
+ length="2"
+ minimum_value=""
+ maximum_value=""
+ resolution_formula=""
+>
+<short-description>Qualifies the need / reaction of text confirmation</short-description>
+<Values>
+<special-or-reserved-values>
+<special-or-reserved-value>
+<match>0</match>
+<meaning
+ type="enum"
+>No confirmation required </meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>1</match>
+<meaning
+ type="enum"
+>Continue display until confirmed</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>2</match>
+<meaning
+ type="enum"
+>Apply service brake if not confirmed when end conditions reached</meaning>
+</special-or-reserved-value>
+<special-or-reserved-value>
+<match>3</match>
+<meaning
+ type="invalid"
+>Spare</meaning>
+</special-or-reserved-value>
+</special-or-reserved-values>
+</Values>
+</TypeSpec>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.5.25"
+ type="NOTE"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Note: the packets listed above, which are not allowed for use in balise telegrams/loop messages marked with system version number X = 1 or in messages from RBC/RIU operating with system version number X = 1, may contain variables that have been introduced in the system version number X = 2. These variables are not mentioned in this section, since their use is implicitly forbidden by the fact that the packets using them are not allowed.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.6"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 8<Sub>
+<Paragraph
+ id="6.5.1.6.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR413} Clause 8.4.1.4.5 shall not apply.</Paragraph><Paragraph
+ id="6.5.1.6.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The table under clause 8.4.4.4.1 shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.2.1"
+ type="TABLE_HEADER"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track to Train message; Mess. ID; Optional packets<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.2.1.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>SR Authorisation; 2; 63</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Movement Authority; 3; 21, 27, 49, 80, plus common optional packets</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Request To Shorten MA; 9; 80</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>General Message; 24; From RBC: 21, 27, plus common optional packets From RIU: 45, 254</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>SH authorised; 28; 49, plus common optional packets</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>MA with Shifted Location Reference; 33; 21, 27, 80, plus common optional packets</Paragraph><Paragraph
+ id="Entry 6.5.1.6.2.1.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Infill MA; 37; 5, 21, 27, 38, 41, 44, 51, 65, 66, 68, 70, 71, 80, 138, 139</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.6.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The table under clause 8.4.4.4.1.1 shall be replaced with: <Sub>
+<Paragraph
+ id="Table 6.5.1.6.3.1"
+ type="TABLE_HEADER"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Common optional packets<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.3.1.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2, 3, 5, 38, 51, 41, 42, 44, 45, 57, 58, 65, 66, 68, 70, 71, 72, 76, 79, 131, 138, 139, 140, 203</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.6.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR207} Table 8.7.6 (Message 15: Conditional Emergency Stop) shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.4.1"
+ type="TABLE_HEADER"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Field No.; VARIABLE; Remarks<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.4.1.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1; NID_MESSAGE;</Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; L_MESSAGE; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; T_TRAIN; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>4; M_ACK; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; NID_LRBG; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>6; NID_EM; Identification Number of the Emergency Stop Message.</Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>7; Q_SCALE; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.8"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>8; Q_DIR; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.4.1.9"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>9; D_EMERGENCYSTOP; Distance between LRBG and the position reference to the emergency stop.</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.6.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR207} Table 8.7.14 (Message 34: Track Ahead Free Request) shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.5.1"
+ type="TABLE_HEADER"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Field No.; VARIABLE; Remarks<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.5.1.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1; NID_MESSAGE;</Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; L_MESSAGE; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; T_TRAIN; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>4; M_ACK; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; NID_LRBG; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.6"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>6; Q_SCALE; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.7"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>7; Q_DIR; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.8"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>8; D_TAFDISPLAY; </Paragraph><Paragraph
+ id="Entry 6.5.1.6.5.1.9"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>9; L_TAFDISPLAY; </Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.1.7"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Additional requirements<Sub>
+<Paragraph
+ id="6.5.1.7.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Any balise telegram, which includes the packet 2, the packet 38, the packet 135, the packet 145 or the packet 203, shall be marked with the system version number 1.1.</Paragraph><Paragraph
+ id="6.5.1.7.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>An RBC that uses the packet 38 or the packet 203 shall transmit a system version number equal to 1.1, when negotiating the establishment of the communication session.</Paragraph><Paragraph
+ id="6.5.1.7.3"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Any message transmitted by loop, which includes the packet 38, shall be marked with the system version number 1.1.</Paragraph><Paragraph
+ id="6.5.1.7.4"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>An RIU that uses the packet 38 shall transmit a system version number equal to 1.1, when negotiating the establishment of the communication session.</Paragraph><Paragraph
+ id="6.5.1.7.5"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>A balise group or RBC message including the packet 203 shall also include the packet 3 (i.e. in a message, the packet 203 cannot be transmitted without the packet 3).</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.2"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Trackside areas operated with system version number X = 2<Sub>
+<Paragraph
+ id="6.5.2.1"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>General<Sub>
+<Paragraph
+ id="6.5.2.1.1"
+ type="NOTE"
+ scope="TRACK"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>This section is applicable for trackside infrastructures that were operated with the system version number X = 1, before the migration to the system version number X = 2.</Paragraph><Paragraph
+ id="6.5.2.1.2"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Within a trackside infrastructure operated with the system version number X =2, it shall be allowed to use the following values of M_VERSION: 1.0, 1.1 and 2.0</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.2.2"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 3, 4, 5<Sub>
+<Paragraph
+ id="6.5.2.2.1"
+ type="NOTE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.5.2.3"
+ type="TITLE"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 7, 8<Sub>
+<Paragraph
+ id="6.5.2.3.1"
+ type="REQUIREMENT"
+ scope="TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>For the balise telegrams/loop messages marked with the system version number 1.0 or 1.1 and for messages transmitted by RIUs certified to the system version number 1.0 or 1.1, the exceptions listed in sections 6.5.1.5 and 6.5.1.6 shall apply by analogy.</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlock="TRUE"
+ functionalBlockName="6.6 On-board requirements in relation to older system versions"
+ Name=""
+>On-board requirements in relation to older system versions<Sub>
+<Paragraph
+ id="6.6.1"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Introduction<Sub>
+<Paragraph
+ id="6.6.1.1"
+ type="DEFINITION"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>This section covers the following situations:
+	a) Train is running on a trackside infrastructure operated with system version number X = 1
+	b) Train is running on a trackside infrastructure operated with system version number X = 2, but still transmitting some balise/loop/RIU information related to system version number X = 1 (see section 6.5.2)
+	c) Train is running on a trackside infrastructure operated with system version number X = 2, but on-board equipment has established a communication session with a neighbouring RBC certified to system version number X = 1</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.2"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Specific requirements for on-board operating with system version number X = 1<Sub>
+<Paragraph
+ id="6.6.2.1"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 3<Sub>
+<Paragraph
+ id="6.6.2.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR719} Clause 3.12.3.4.7.2 shall be replaced with: &quot;If the driver acknowledges before the end condition is fulfilled, the on-board equipment shall consider the driver acknowledgement as always ending the text display, regardless of the end condition defined in 3.12.3.4.3.1&quot;.
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.2.2"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 4<Sub>
+<Paragraph
+ id="6.6.2.2.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.2.3"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 5<Sub>
+<Paragraph
+ id="6.6.2.3.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.2.4"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Exceptions to chapter 7,8<Sub>
+<Paragraph
+ id="6.6.2.4.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Void.</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Handling of air gap data related to system version number X = 1<Sub>
+<Paragraph
+ id="6.6.3.1"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>General<Sub>
+<Paragraph
+ id="6.6.3.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>For information received from trackside, the message consistency check shall be achieved taking into account the exceptions to chapters 7 and 8, as described in sections 6.5.1.5 and 6.5.1.6.
+</Paragraph><Paragraph
+ id="6.6.3.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>For information received from trackside, the ERTMS/ETCS on-board equipment shall use the translation tables defined here below, in order to use the information as if it had been elaborated in compliance with the current chapters 7 and 8.
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.2"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Packets received from balise, loop, RIU, RBC<Sub>
+<Paragraph
+ id="6.6.3.2.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>In the table below, the translation of information may depend on the on-board operated system version at the time the information is received and accepted on-board.</Paragraph><Paragraph
+ id="6.6.3.2.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>When a level transition or an RBC/RBC handover is announced, the information stored on-board in the transition buffer shall be translated according to system version operated on-board at the time the information is released from the transition buffer (i.e. the system version operated by the trackside infrastructure, towards which the train is running).
+</Paragraph><Paragraph
+ id="6.6.3.2.3"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Depending on the packet, the action can be:
+	a) data is unchanged,
+	b) data is rejected,
+	c) data is translated,
+	d) not relevant<Sub>
+<Paragraph
+ id="6.6.3.2.3.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>R = Rejected; T = Translated; U = Unchanged; NR = Not relevant</Paragraph><Paragraph
+ id="Table 6.6.3.2.3.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Received information; Action
+Packet Number; Packet Name; Operated system version number X = 1; Operated system version number X = 2<Sub>
+<Paragraph
+ id="Entry 6.6.3.2.3.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; System Version Order; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; National Values; T [1] [2]; T [1] [2]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; Linking; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>12; Level 1 Movement Authority ; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>15; Level 2/3 Movement Authority ; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>16; Repositioning Information; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>21; Gradient Profile ; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>27; International Static Speed Profile; U [3]; U [3]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>38; Track Condition Change of traction system; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>39; Track Condition Change of traction power (National function) ; R; R</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>41; Level Transition Order; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>42; Session Management; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>44; Data used by applications outside the ERTMS/ETCS system.; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>45; Radio Network registration; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>46; Conditional Level Transition Order; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.16"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>49; List of balises for SH Area; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>51; Axle load Speed Profile; T [4][5]; T [4][5]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.18"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>57; Movement Authority Request Parameters; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.19"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>58; Position Report Parameters; U [10]; U [10]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.20"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>63; List of Balises in SR Authority; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.21"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>65; Temporary Speed Restriction; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.22"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>66; Temporary Speed Restriction Revocation; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.23"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>67; Track Condition Big Metal Masses; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.24"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>68; Track Condition; U [8]; U [8]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.25"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>70; Route Suitability Data; U [11] [12]; U [11] [12]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.26"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>71; Adhesion Factor; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.27"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>72; Packet for sending plain text messages; U [6]; U [6]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.28"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>76; Packet for sending fixed text messages; U [6]; U [6]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.29"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>79; Geographical Position Information; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.30"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>80; Mode profile; T [7]; T [7]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.31"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>90; Track Ahead Free up to level 2/3 transition location; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.32"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>131; RBC transition order; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.33"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>132; Danger for Shunting information; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.34"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>133; Radio infill area information; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.35"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>134; EOLM Packet; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.36"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>135; Stop Shunting on desk opening ; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.37"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>136; Infill location reference; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.38"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>137; Stop if in Staff Responsible; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.39"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>138; Reversing area information; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.40"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>139; Reversing supervision information ; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.41"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>140; Train running number from RBC; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.42"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>141; Default Gradient for Temporary Speed Restriction; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.43"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>145; Inhibition of balise group message consistency reaction; U; U</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.44"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>203; National Values for braking curves; T [9]; T [9]</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.1.45"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>254; Default balise, loop or RIU information; U; U</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.2.3.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[1] The National Values Q_NVLOCACC, V_NVLIMSUPERV (introduced in system version number X = 2) shall be set to their respective default value</Paragraph><Paragraph
+ id="6.6.3.2.3.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[2] If the packet 203 is not received in the same message, the National Values for braking curves Q_NVGUIPERM, Q_NVSBFBPERM, Q_NVINHSMICPERM, M_NVAVADH, M_NVEBCL, A_NVP12, A_NVP23, V_NVKVINT, M_NVKVINT, L_NVKRINT, M_NVKRINT, M_NVKTINT, A_NVMAXREDADH1, A_NVMAXREDADH2, A_NVMAXREDADH3 (introduced in system version number X.Y = 1.1), if already stored on-board and applicable, shall not be affected by the content of the packet 3 (i.e. if the National Values for braking curves were already applicable, they shall remain applicable with their country identifier(s) previously stored).</Paragraph><Paragraph
+ id="6.6.3.2.3.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Note: if a mismatch is detected between the country identifier read from the balise group transmitting the packet 3 without the packet 203, and the corresponding identifier(s) with which the applicable set of National Values for braking curves was received and stored, the default values will be used for the National Values for braking curves (refer to 3.18.2.5).</Paragraph><Paragraph
+ id="6.6.3.2.3.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3] Exception: if N_ITER (following Q_FRONT) not equal to 0, the variables Q_DIFF, NC_CDDIFF (introduced in system version number X = 2) and NC_DIFF (as specified in system version number X = 2) shall be set according to the following table:<Sub>
+<Paragraph
+ id="Table 6.6.3.2.3.5.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Value received from X = 1 trackside; Translated values on-board
+NC_DIFF; Q_DIFF; NC_CDDIFF; NC_DIFF<Sub>
+<Paragraph
+ id="Entry 6.6.3.2.3.5.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>0; 0; 9; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1; 0; 0; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; 0; 1; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; 0; 2; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>4; 0; 3; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; 0; 4; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>6; 0; 5; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>7; 0; 7; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>8; 0; 10; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>9; 1; -; 0</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>10; 1; -; 1</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>11; 1; -; 2</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>12; 0; 8; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>13; 0; 6; -</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>14; 1; -; 3</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.2.3.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[4] If Q_TRACKINIT = 1, D_TRACKINIT (introduced in system version number X = 2) shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.2.3.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[5] The variable M_AXLELOAD (modified in system version number X = 2) shall be set according to the following table:<Sub>
+<Paragraph
+ id="Table 6.6.3.2.3.5.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Value received from X = 1 trackside; Translated value on-board<Sub>
+<Paragraph
+ id="Entry 6.6.3.2.3.5.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>M_AXLELOAD &lt; 18 t; A</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>18 t = M_AXLELOAD &lt; 20 t; B1</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>20 t = M_AXLELOAD &lt; 22,5 t; C2</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>22,5 t = M_AXLELOAD &lt; 25 t; D2</Paragraph><Paragraph
+ id="Entry 6.6.3.2.3.5.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>25 t = M_AXLELOAD = 40 t
+	or M_AXLELOAD = &quot;Axle load above 40 t&quot;; E4</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.2.3.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[6] Exception: if Q_TEXTCONFIRM is not equal to 0, then Q_CONFTEXTDISPLAY and Q_TEXTREPORT (introduced in system version number X = 2) shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.2.3.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[7] The variable Q_MAMODE (introduced in system version number X = 2) shall be set to 1</Paragraph><Paragraph
+ id="6.6.3.2.3.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[8] Exception: if M_TRACKCOND = 1 or 2, then M_TRACKCOND (modified in system version number X = 2) shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.2.3.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[9] The National Values included in the packet 203 shall be appended to the packet 3 received in the same message, in order to form a single set of National Values, to which apply the distance to start of validity and the list of national area identifiers given in the packet 3.</Paragraph><Paragraph
+ id="6.6.3.2.3.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[10] Exception: if M_LOC = 011, the packet shall be rejected</Paragraph><Paragraph
+ id="6.6.3.2.3.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[11] Exception: in case the value &quot;01&quot; of the variable Q_SUITABILITY is used, the ERTMS/ETCS on-board shall apply the translation [5] to the variable M_AXLELOAD</Paragraph><Paragraph
+ id="6.6.3.2.3.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[12] Exception: in case the value &quot;10&quot; of the variable Q_SUITABILITY is used, the ERTMS/ETCS on-board shall ignore the information related to the traction system</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.3"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Messages received from RBC/RIU<Sub>
+<Paragraph
+ id="6.6.3.3.1"
+ type="DEFINITION"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>This section applies for the parts of radio messages, excluding the packets themselves, which are received from an RBC/RIU certified to the system version number X = 1.</Paragraph><Paragraph
+ id="6.6.3.3.2"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Depending on the received message, the action can be:
+	a) data is unchanged,
+	b) data is rejected
+	c) data is translated,
+	d) not relevant<Sub>
+<Paragraph
+ id="6.6.3.3.2.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>R = Rejected; T = Translated; U = Unchanged; NR = Not relevant</Paragraph><Paragraph
+ id="Table 6.6.3.3.2.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Message Number; Message Name; Action<Sub>
+<Paragraph
+ id="Entry 6.6.3.3.2.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; SR Authorisation; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; Movement Authority; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>6; Recognition of exit from TRIP mode; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>8; Acknowledgement of Train Data; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>9; Request to Shorten MA; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>15; Conditional Emergency Stop; T [1]</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>16; Unconditional Emergency Stop; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>18; Revocation of Emergency Stop; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>24; General message; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>27; SH Refused; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>28; SH Authorised; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>33; MA with Shifted Location Reference; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>34; Track Ahead Free Request; T [1]</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>37; Infill MA; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>40; Train Rejected; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.16"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>32; RBC/RIU system version; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>38; Initiation of a communication session; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.18"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>39; Acknowledgement of termination of a communication session; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.19"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>41; Train Accepted; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.20"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>43; SoM position report confirmed by RBC; U</Paragraph><Paragraph
+ id="Entry 6.6.3.3.2.1.21"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>45; Assignment of coordinate system; U</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.3.2.24"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[1] Variable D_REF (introduced in system version number X = 2) shall be set to 0</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.4"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Messages transmitted to RBC/RIU<Sub>
+<Paragraph
+ id="6.6.3.4.1"
+ type="DEFINITION"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>This section applies for radio messages/packets, which are transmitted to an RBC or an RIU certified to the system version number X = 1.</Paragraph><Paragraph
+ id="6.6.3.4.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR656} Clause 3.18.4.5.4 shall be replaced with: &quot;Only if valid Train Data is available: following any entry/modification of the train running number when a communication session is already established or following the successful establishment of a communication session when valid train running number is already available, the ERTMS/ETCS on-board equipment shall send the Train Data to the RBC.
+</Paragraph><Paragraph
+ id="6.6.3.4.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{CR656} Clause 3.18.4.5.4.1 shall be replaced with: &quot;Exception: if the train running number has been received from the RBC, the Train Data shall not be sent back to the RBC by the ERTMS/ETCS on-board equipment.
+</Paragraph><Paragraph
+ id="6.6.3.4.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The ERTMS/ETCS on-board equipment shall elaborate the information to be transmitted to the RBC/RIU certified to system version number X = 1, by applying the following translation table to the corresponding information intended for an RBC/RIU certified to the system version number X = 2.
+</Paragraph><Paragraph
+ id="6.6.3.4.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Depending on the transmitted message/packet, the action can be:
+	a) data is unchanged,
+	b) data is deleted (i.e. it is not sent to the receiver)
+	c) data is translated,
+	d) not relevant (i.e. no corresponding requirement to trigger the sending is applicable)<Sub>
+<Paragraph
+ id="6.6.3.4.5.1"
+ type="NOTE"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>D = Deleted; T = Translated; U = Unchanged; NR = Not relevant</Paragraph><Paragraph
+ id="Table 6.6.3.4.5.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Mess nbpck nb; Message name/packet name; Action<Sub>
+<Paragraph
+ id="6.6.3.4.5.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>XXX0; Position Report; U [1]</Paragraph><Paragraph
+ id="6.6.3.4.5.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>XXX1; Position Report based on two balise groups; U [1]</Paragraph><Paragraph
+ id="6.6.3.4.5.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1593; On-board telephone numbers; U</Paragraph><Paragraph
+ id="6.6.3.4.5.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>XXX4; Error Reporting; U [2]</Paragraph><Paragraph
+ id="6.6.3.4.5.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>XXX5; Train Running Number; NR</Paragraph><Paragraph
+ id="6.6.3.4.5.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1329; Level 2/3 transition information; U</Paragraph><Paragraph
+ id="6.6.3.4.5.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>12911; Validated Train Data (packet); T [3]</Paragraph><Paragraph
+ id="6.6.3.4.5.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>129; Validated Train Data (message); U</Paragraph><Paragraph
+ id="6.6.3.4.5.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>130; Request for Shunting; U</Paragraph><Paragraph
+ id="6.6.3.4.5.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>132; MA Request; T [4]</Paragraph><Paragraph
+ id="6.6.3.4.5.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>136; Train Position Report; U</Paragraph><Paragraph
+ id="6.6.3.4.5.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>137; Request to shorten MA is granted; U</Paragraph><Paragraph
+ id="6.6.3.4.5.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>138; Request to shorten MA is rejected; U</Paragraph><Paragraph
+ id="6.6.3.4.5.16"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>146; Acknowledgement; U</Paragraph><Paragraph
+ id="6.6.3.4.5.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>147; Acknowledgement of Emergency Stop; T [5]</Paragraph><Paragraph
+ id="6.6.3.4.5.18"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>149; Track Ahead Free Granted; U</Paragraph><Paragraph
+ id="6.6.3.4.5.19"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>150; End of Mission; U</Paragraph><Paragraph
+ id="6.6.3.4.5.20"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>153; Radio infill request; U</Paragraph><Paragraph
+ id="6.6.3.4.5.21"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>154; No compatible version supported; U</Paragraph><Paragraph
+ id="6.6.3.4.5.22"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>155; Initiation of a communication session; U</Paragraph><Paragraph
+ id="6.6.3.4.5.23"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>156; Termination of a communication session; U</Paragraph><Paragraph
+ id="6.6.3.4.5.24"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>157; SoM Position Report; U</Paragraph><Paragraph
+ id="6.6.3.4.5.25"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>159; Session Established; U</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.4.5.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[1] Note: if M_MODE= 12 (LS), no translation is effected and the value 12 will be understood by RBC X = 1 as SE mode</Paragraph><Paragraph
+ id="6.6.3.4.5.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[2] Exceptions: if M_ERROR (X=2) = 6, then M_ERROR (X=1) = 7; if M_ERROR (X=2) = 7 or 8, then the packet is deleted</Paragraph><Paragraph
+ id="6.6.3.4.5.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3] the packet 11 shall be translated as follows:
+			<Message
+ description="Validated train data."
+ media="RBC"
+ bl="3.2.0"
+>
+<MsgVariable
+ name="NID_PACKET"
+ length="8"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="L_PACKET"
+ length="13"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_OPERATIONAL"
+ length="32"
+ comment="See translation [3a]"
+>
+</MsgVariable>
+<MsgVariable
+ name="NC_TRAIN"
+ length="15"
+ comment="See translation [3b]"
+>
+</MsgVariable>
+<MsgVariable
+ name="L_TRAIN"
+ length="12"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="V_MAXTRAIN"
+ length="7"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="M_LOADINGGAUGE"
+ length="8"
+ comment="See translation [3c]"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_AXLELOAD"
+ length="7"
+ comment="See translation [3d]"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="M_AIRTIGHT"
+ length="2"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment="See translation [3e]"
+ bl="3.2.0"
+>
+</MsgVariable>
+<MsgVariable
+ name="N_ITER"
+ length="5"
+ comment=""
+>
+</MsgVariable>
+<MsgVariable
+ name="NID_NTC (k)"
+ length="8"
+ comment="Type of NTC available"
+ bl="3.2.0"
+>
+</MsgVariable>
+</Message>
+<Sub>
+<Paragraph
+ id="Table 6.6.3.4.5.4.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Description; Validates train data.
+Transmitted to; RBC
+Content; Variable; Length; Comment<Sub>
+<Paragraph
+ id="Entry 6.6.3.4.5.4.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; NID_PACKET; 8;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; L_PACKET; 13;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; NID_OPERATIONAL; 32; See translation [3a]</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; NC_TRAIN; 15; See translation [3b]</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; L_TRAIN; 12;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; V_MAXTRAIN; 7;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; M_LOADINGGAUGE; 8; See translation [3c]</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; M_AXLELOAD; 7; See translation [3d]</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; M_AIRTIGHT; 2;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; N_ITER; 5; See translation [3e]</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; N_ITER; 5;</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.4.1.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; NID_NTC(k); 8; Type of National System available</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.4.5.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3a] NID_OPERATIONAL shall be set to the value stored on-board</Paragraph><Paragraph
+ id="6.6.3.4.5.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3b] NC_TRAIN shall be set according to the following table:<Sub>
+<Paragraph
+ id="Table 6.6.3.4.5.6.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Value stored on-board; Transmitted value to X=1 RBC
+NC_CDTRAIN; NC_TRAIN<Sub>
+<Paragraph
+ id="Entry 6.6.3.4.5.6.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>0; xxx xxxx xxxx xx1x</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1; xxx xxxx xxxx x1xx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; xxx xxxx xxxx 1xxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; xxx xxxx xxx1 xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>4; xxx xxxx xx1x xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; xxx xxxx x1xx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>6; x1x xxxx xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>7; xxx xxxx 1xxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>8; xx1 xxxx xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>9; xxx xxxx xxxx xxx1</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>NC_TRAIN; </Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>000 0000 0000 0000; No bit is set to 1</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>xxx xxxx xxxx xxx1; xxx xx1x xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>xxx xxxx xxxx xx1x; xxx x1xx xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>xxx xxxx xxxx x1xx; xxx 1xxx xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.16"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>xxx xxxx xxx 1xxx; 1xx xxxx xxxx xxxx</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.6.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Other values; No bit is set to 1</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.4.5.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3c] M_LOADINGGAUGE shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.4.5.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3d] M_AXLELOAD shall be set according to the following table:<Sub>
+<Paragraph
+ id="Table 6.6.3.4.5.8.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Value stored on-board; Transmitted value to X=1 RBC<Sub>
+<Paragraph
+ id="Entry 6.6.3.4.5.8.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>A; 16 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>B1; 18 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>B2; 18 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>C2; 20 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>C3; 20 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>C4; 20 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>D2; 22,5 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>D3; 22,5 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>D4; 22,5 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>D4xL; 22,5 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>E4; 25 t</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.8.1.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>E5; 25 t</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="6.6.3.4.5.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[3e] N_ITER shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.4.5.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[4] Q_MARQSTREASON shall be replaced with Q_TRACKDEL (1 bit) as follows: if Q_MARQSTREASON = x1xxx, Q_TRACKDEL shall be set to 1, otherwise Q_TRACKDEL shall be set to 0</Paragraph><Paragraph
+ id="6.6.3.4.5.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[5] The variable Q_EMERGENCYSTOP (modified in system version number X = 2) shall be set according to the following table:<Sub>
+<Paragraph
+ id="Table 6.6.3.4.5.11.1"
+ type="TABLE_HEADER"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Value that would be transmitted to X=2 RBC; Transmitted value to X=1 RBC
+Q_EMERGENCYSTOP; Q_EMERGENCYSTOP<Sub>
+<Paragraph
+ id="Entry 6.6.3.4.5.11.1.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>0; 0</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.11.1.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>1; 0</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.11.1.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; 2</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.11.1.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; 1 (if rejection of CES)
+	or
+	2 (if rejection of UES)</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph></Chapter>

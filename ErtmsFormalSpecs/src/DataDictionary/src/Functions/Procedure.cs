@@ -159,24 +159,6 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The procedure state machine
-        /// </summary>
-        public Types.StateMachine StateMachine
-        {
-            get
-            {
-                if (getStateMachine() == null)
-                {
-                    Types.StateMachine stateMachine = (Types.StateMachine)Generated.acceptor.getFactory().createStateMachine();
-                    setStateMachine(stateMachine);
-                    stateMachine.setFather(this);
-                }
-                return (Types.StateMachine)getStateMachine();
-            }
-            set { setStateMachine(value); }
-        }
-
-        /// <summary>
         /// The rules declared in this procedure
         /// </summary>
         public System.Collections.ArrayList Rules

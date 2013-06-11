@@ -111,6 +111,14 @@ namespace DataDictionary
                 }
             }
 
+            public override void visit(Generated.Procedure obj, bool visitSubNodes)
+            {
+                base.visit(obj, visitSubNodes);
+
+                // States machine are not more useful in procedures
+                obj.setStateMachine(null);
+            }
+
             private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
             {
                 NameSpaceRef retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
