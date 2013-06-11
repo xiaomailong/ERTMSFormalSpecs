@@ -55,7 +55,7 @@ namespace Reports.Model
             retVal.Info.Author = "ERTMS Solutions";
             retVal.Info.Subject = "Model report";
 
-            ModelReport report = new ModelReport(retVal);
+            ModelReport report = new ModelReport(retVal, ImplementedOnly);
             foreach (DataDictionary.Types.NameSpace nameSpace in Dictionary.NameSpaces)
             {
                 CreateNamespaceSection(report, nameSpace);
@@ -73,107 +73,107 @@ namespace Reports.Model
             {
                 if (AddRanges)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Ranges, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Ranges) > 0)
                     {
                         report.AddSubParagraph("Namespace " + aNameSpace.FullName);
-                        report.CreateRangesSection(aNameSpace, AddRangesDetails, ImplementedOnly);
+                        report.CreateRangesSection(aNameSpace.Ranges, AddRangesDetails);
                         informationAdded = true;
                     }
                 }
                 if (AddEnumerations)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Enumerations, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Enumerations) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateEnumerationsSection(aNameSpace, AddEnumerationsDetails, ImplementedOnly);
+                        report.CreateEnumerationsSection(aNameSpace.Enumerations, AddEnumerationsDetails);
                     }
                 }
                 if (AddStructures)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Structures, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Structures) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateStructuresSection(aNameSpace, AddStructuresDetails, ImplementedOnly);
+                        report.CreateStructuresSection(aNameSpace.Structures, AddStructuresDetails);
                     }
                 }
                 if (AddCollections)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Collections, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Collections) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateCollectionsSection(aNameSpace, AddCollectionsDetails, ImplementedOnly);
+                        report.CreateCollectionsSection(aNameSpace.Collections, AddCollectionsDetails);
                     }
                 }
                 if (AddStateMachines)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.StateMachines, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.StateMachines) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateStateMachinesSection(aNameSpace, AddStateMachinesDetails, ImplementedOnly);
+                        report.CreateStateMachinesSection(aNameSpace.StateMachines, AddStateMachinesDetails);
                     }
                 }
                 if (AddFunctions)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Functions, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Functions) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateFunctionsSection(aNameSpace, AddFunctionsDetails, ImplementedOnly);
+                        report.CreateFunctionsSection(aNameSpace.Functions, AddFunctionsDetails);
                     }
                 }
                 if (AddProcedures)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Procedures, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Procedures) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateProceduresSection(aNameSpace, AddProceduresDetails, ImplementedOnly);
+                        report.CreateProceduresSection(aNameSpace.Procedures, AddProceduresDetails, false);
                     }
                 }
                 if (AddVariables)
                 {
-                    if (report.CountDisplayedVariables(aNameSpace.Variables, ImplementedOnly, InOutFilter) > 0)
+                    if (report.CountDisplayedVariables(aNameSpace.Variables, InOutOnly) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateVariablesSection(aNameSpace, AddVariablesDetails, ImplementedOnly, InOutFilter);
+                        report.CreateVariablesSection(aNameSpace.Variables, AddVariablesDetails, InOutOnly);
                     }
                 }
                 if (AddRules)
                 {
-                    if (report.CountDisplayedReqRelated(aNameSpace.Rules, ImplementedOnly) > 0)
+                    if (report.CountDisplayedReqRelated(aNameSpace.Rules) > 0)
                     {
                         if (!informationAdded)
                         {
                             report.AddSubParagraph("Namespace " + aNameSpace.FullName);
                             informationAdded = true;
                         }
-                        report.CreateRulesSection(aNameSpace, AddRulesDetails, ImplementedOnly);
+                        report.CreateRulesSection(aNameSpace.Rules, AddRulesDetails, false);
                     }
                 }
 
@@ -212,7 +212,7 @@ namespace Reports.Model
 
         public bool AddVariables            { set; get; }
         public bool AddVariablesDetails     { set; get; }
-        public bool InOutFilter             { set; get; }
+        public bool InOutOnly               { set; get; }
 
         public bool AddRules                { set; get; }
         public bool AddRulesDetails         { set; get; }
