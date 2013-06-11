@@ -25,27 +25,34 @@ namespace Reports.Model
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
+        /// Indicates if only the implemented model elements should be included to the report
+        /// </summary>
+        private bool implementedOnly;
+
+
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="document"></param>
-        public ModelReport(Document document)
+        public ModelReport(Document document, bool ImplementedOnly)
             : base(document)
         {
+            this.implementedOnly = ImplementedOnly;
         }
 
         /// <summary>
         /// Counts the number of req related in a list which implementation is partially completed
         /// </summary>
         /// <param name="list">The list of req related to consider</param>
-        /// <param name="implementedOnly">Consider only implemented elements or not</param>
         /// <returns></returns>
-        public int CountDisplayedReqRelated(ArrayList list, bool implementedOnly)
+        public int CountDisplayedReqRelated(ArrayList list)
         {
             int retVal = 0;
 
             foreach (ReqRelated reqRelated in list)
             {
-                if (reqRelated.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(reqRelated))
                 {
                     retVal += 1;
                 }
@@ -58,18 +65,15 @@ namespace Reports.Model
         /// Counts the number of req related in a list which implementation is partially completed
         /// </summary>
         /// <param name="list">The list of req related to consider</param>
-        /// <param name="implementedOnly">Consider only implemented elements or not</param>
+        /// <param name="inOutFilter">Consider only IN and OUT variables</param>
         /// <returns></returns>
-        public int CountDisplayedVariables(ArrayList list, bool implementedOnly, bool inOutFilter)
+        public int CountDisplayedVariables(ArrayList list, bool inOutOnly)
         {
             int retVal = 0;
 
             foreach (DataDictionary.Variables.Variable variable in list)
             {
-                if ( (variable.ImplementationPartiallyCompleted || !implementedOnly) &&
-                     (!inOutFilter || variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming ||
-                                      variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aOutgoing ||
-                                      variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aInOut ) )
+                if (considerVariable(variable, inOutOnly))
                 {
                     retVal += 1;
                 }
@@ -81,16 +85,14 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the ranges of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="ranges">The list of ranges to add</param>
         /// <param name="addDetails">Add details or simply enumerate the ranges</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
-        /// <returns></returns>
-        public void CreateRangesSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateRangesSection(ArrayList ranges, bool addDetails)
         {
             AddSubParagraph("Ranges");
-            foreach (DataDictionary.Types.Range range in aNameSpace.Ranges)
+            foreach (DataDictionary.Types.Range range in ranges)
             {
-                if (range.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(range))
                 {
                     if (addDetails)
                     {
@@ -132,16 +134,14 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the enums and sub-enums of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="enumerations">The list of enumerations to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
-        /// <returns></returns>
-        public void CreateEnumerationsSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateEnumerationsSection(ArrayList enumerations, bool addDetails)
         {
             AddSubParagraph("Enumerations");
-            foreach (DataDictionary.Types.Enum anEnum in aNameSpace.Enumerations)
+            foreach (DataDictionary.Types.Enum anEnum in enumerations)
             {
-                if (anEnum.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(anEnum))
                 {
                     AddEnumerationSection(anEnum, addDetails);
                 }
@@ -185,7 +185,7 @@ namespace Reports.Model
 
                 foreach (DataDictionary.Types.Enum subEnum in anEnum.SubEnums)
                 {
-                    if (subEnum.ImplementationPartiallyCompleted == true)
+                    if (considerReqRelated(subEnum))
                     {
                         AddEnumerationSection(subEnum, addDetails);
                     }
@@ -202,16 +202,14 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the structures of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="structures">The list of structures to add</param>
         /// <param name="addDetails">Add details or simply enumerate the structures</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
-        /// <returns></returns>
-        public void CreateStructuresSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateStructuresSection(ArrayList structures, bool addDetails)
         {
             AddSubParagraph("Structures");
-            foreach (DataDictionary.Types.Structure structure in aNameSpace.Structures)
+            foreach (DataDictionary.Types.Structure structure in structures)
             {
-                if (structure.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(structure))
                 {
                     if (addDetails)
                     {
@@ -221,55 +219,21 @@ namespace Reports.Model
                             AddParagraph(structure.Comment);
                         }
 
-                        AddTable(new string[] { "Structure " + structure.Name }, new int[] { 30, 20, 40, 50 });
+                        AddTable(new string[] { "Structure " + structure.Name }, new int[] { 35, 15, 40, 50 });
                         AddTableHeader("Sub element name", "Mode", "Type", "Comment");
                         foreach (DataDictionary.Types.StructureElement element in structure.Elements)
                         {
                             AddRow(element.Name, element.getMode_AsString(), element.TypeName, element.Comment);
                         }
 
-                        if (CountDisplayedReqRelated(structure.Rules, implementedOnly) > 0)
+                        if (CountDisplayedReqRelated(structure.Rules) > 0)
                         {
-                            AddTableHeader("Rules");
-                            foreach (DataDictionary.Rules.Rule rule in structure.Rules)
-                            {
-                                AddRuleRow(rule, addDetails);
-                            }
+                            CreateRulesSection(structure.Rules, addDetails, true);
                         }
 
-                        if (CountDisplayedReqRelated(structure.Procedures, implementedOnly) > 0)
+                        if (CountDisplayedReqRelated(structure.Procedures) > 0)
                         {
-                            AddSubParagraph("Procedures");
-                            foreach (DataDictionary.Functions.Procedure procedure in structure.Procedures)
-                            {
-                                if (procedure.ImplementationPartiallyCompleted || !implementedOnly)
-                                {
-                                    AddSubParagraph(procedure.Name);
-                                    CreateParameters("Procedure " + procedure.Name, procedure.Comment, procedure.FormalParameters, null);
-
-                                    if (procedure.Rules.Count > 0)
-                                    {
-                                        AddTableHeader("Behaviour");
-                                        foreach (DataDictionary.Rules.Rule rule in procedure.Rules)
-                                        {
-                                            AddRuleRow(rule, true);
-                                        }
-                                    }
-
-                                    if (procedure.StateMachine != null && procedure.StateMachine.States.Count > 0)
-                                    {
-                                        if (procedure.StateMachine.ImplementationPartiallyCompleted || !implementedOnly)
-                                        {
-                                            AddSubParagraph("State machines of " + procedure.Name);
-                                            AddStateMachineSection(procedure.StateMachine, addDetails, implementedOnly);
-                                            CloseSubParagraph();
-                                        }
-                                    }
-                                    CreateStatusTable(procedure);
-                                    CloseSubParagraph();
-                                }
-                            }
-                            CloseSubParagraph();
+                            CreateProceduresSection(structure.Procedures, addDetails, true);
                         }
 
                         CreateStatusTable(structure);
@@ -287,16 +251,15 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the collections of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="collections">The list of collections to add</param>
         /// <param name="addDetails">Add details or simply enumerate the collections</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
         /// <returns></returns>
-        public void CreateCollectionsSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateCollectionsSection(ArrayList collections, bool addDetails)
         {
             AddSubParagraph("Collections");
-            foreach (DataDictionary.Types.Collection collection in aNameSpace.Collections)
+            foreach (DataDictionary.Types.Collection collection in collections)
             {
-                if (collection.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(collection))
                 {
                     if (addDetails)
                     {
@@ -324,18 +287,17 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the state machines of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="stateMachines">The list of state machines to add</param>
         /// <param name="addDetails">Add details or simply enumerate the state machines</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
         /// <returns></returns>
-        public void CreateStateMachinesSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateStateMachinesSection(ArrayList stateMachines, bool addDetails)
         {
             AddSubParagraph("State machines");
-            foreach (DataDictionary.Types.StateMachine aStateMachine in aNameSpace.StateMachines)
+            foreach (DataDictionary.Types.StateMachine stateMachine in stateMachines)
             {
-                if (aStateMachine.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(stateMachine))
                 {
-                    AddStateMachineSection(aStateMachine, addDetails, implementedOnly);
+                    AddStateMachineSection(stateMachine, addDetails);
                 }
             }
             CloseSubParagraph();
@@ -346,12 +308,16 @@ namespace Reports.Model
         /// </summary>
         /// <param name="aSM">The state machine</param>
         /// <param name="addDetails">Add details or simply enumerate the state machines</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
-        private void AddStateMachineSection(DataDictionary.Types.StateMachine aSM, bool addDetails, bool implementedOnly)
+        private void AddStateMachineSection(DataDictionary.Types.StateMachine aSM, bool addDetails)
         {
-            AddSubParagraph(aSM.FullName);
+            string name = aSM.FullName;
+            if (name == "" && aSM.EnclosingState != null)
+            {
+                name = aSM.EnclosingState.FullName;
+            }
+            AddSubParagraph(name);
 
-            AddTable(new string[] { "State machine " + aSM.FullName }, new int[] { 30, 30, 80 });
+            AddTable(new string[] { "State machine " + name }, new int[] { 20, 40, 80 });
             AddRow(aSM.Comment);
             if (aSM.States.Count > 0)
             {
@@ -371,28 +337,18 @@ namespace Reports.Model
                 }
             }
 
-            if (CountDisplayedReqRelated(aSM.Rules, implementedOnly) > 0)
+            if (CountDisplayedReqRelated(aSM.Rules) > 0)
             {
-                AddTableHeader("Rules");
-                foreach (DataDictionary.Rules.Rule rule in aSM.Rules)
-                {
-                    if (rule.ImplementationPartiallyCompleted == true)
-                    {
-                        AddRuleRow(rule, true);
-                    }
-                }
+                CreateRulesSection(aSM.Rules, addDetails, true);
             }
             CreateStatusTable(aSM);
             CloseSubParagraph();
 
             foreach (DataDictionary.Constants.State state in aSM.States)
             {
-                if (state.StateMachine != null)
+                if (state.StateMachine != null && considerReqRelated(state.StateMachine))
                 {
-                    if (state.StateMachine.ImplementationPartiallyCompleted)
-                    {
-                        AddStateMachineSection(state.StateMachine, addDetails, implementedOnly);
-                    }
+                    AddStateMachineSection(state.StateMachine, addDetails);
                 }
             }
         }
@@ -400,16 +356,15 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the functions of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="functions">The list of functions to add</param>
         /// <param name="addDetails">Add details or simply enumerate the collections</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
         /// <returns></returns>
-        public void CreateFunctionsSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateFunctionsSection(ArrayList functions, bool addDetails)
         {
             AddSubParagraph("Functions");
-            foreach (DataDictionary.Functions.Function function in aNameSpace.Functions)
+            foreach (DataDictionary.Functions.Function function in functions)
             {
-                if (function.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerReqRelated(function))
                 {
                     if (addDetails)
                     {
@@ -458,42 +413,51 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the procedures of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="procedures">The list of procedures to add</param>
         /// <param name="addDetails">Add de tails or simply enumerate the procedures</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
+        /// <param name="addToExistingTable">Add information to an existing table or create a separate section</param>
         /// <returns></returns>
-        public void CreateProceduresSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateProceduresSection(ArrayList procedures, bool addDetails, bool addToExistingTable)
         {
-            AddSubParagraph("Procedures");
-
-            foreach (DataDictionary.Functions.Procedure procedure in aNameSpace.Procedures)
+            if (!addToExistingTable)
             {
-                if (procedure.ImplementationPartiallyCompleted || !implementedOnly)
+                AddSubParagraph("Procedures");
+            }
+            else
+            {
+                AddTableHeader("Procedures");
+            }
+
+            foreach (DataDictionary.Functions.Procedure procedure in procedures)
+            {
+                if (considerReqRelated(procedure))
                 {
                     if (addDetails)
                     {
-                        AddSubParagraph(procedure.Name);
-                        CreateParameters("Procedure " + procedure.Name, procedure.Comment, procedure.FormalParameters, null);
-                        if (procedure.Rules.Count > 0)
+                        if (!addToExistingTable)
                         {
-                            AddTableHeader("Behaviour");
-                            foreach (DataDictionary.Rules.Rule rule in procedure.Rules)
-                            {
-                                AddRuleRow(rule, true);
-                            }
+                            AddSubParagraph(procedure.Name);
+                        }
+                        CreateParameters("Procedure " + procedure.Name, procedure.Comment, procedure.FormalParameters, null);
+                        if (CountDisplayedReqRelated(procedure.Rules) > 0)
+                        {
+                            CreateRulesSection(procedure.Rules, addDetails, true);
                         }
 
                         if (procedure.StateMachine != null && procedure.StateMachine.States.Count > 0)
                         {
-                            if (procedure.StateMachine.ImplementationPartiallyCompleted || !implementedOnly)
+                            if (considerReqRelated(procedure.StateMachine))
                             {
                                 AddSubParagraph("State machines of " + procedure.Name);
-                                AddStateMachineSection(procedure.StateMachine, addDetails, implementedOnly);
+                                AddStateMachineSection(procedure.StateMachine, addDetails);
                                 CloseSubParagraph();
                             }
                         }
                         CreateStatusTable(procedure);
-                        CloseSubParagraph();
+                        if (!addToExistingTable)
+                        {
+                            CloseSubParagraph();
+                        }
                     }
                     else
                     {
@@ -501,43 +465,40 @@ namespace Reports.Model
                     }
                 }
             }
-            CloseSubParagraph();
+            if (!addToExistingTable)
+            {
+                CloseSubParagraph();
+            }
         }
 
         /// <summary>
         /// Creates a section for all the variables of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="variables">The list of variables to add</param>
         /// <param name="addDetails">Add details or simply enumerate the variables</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
-        /// <param name="inOutFilter">Add only IN or OUT variables</param>
+        /// <param name="inOutOnly">Add only IN or OUT variables</param>
         /// <returns></returns>
-        public void CreateVariablesSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly, bool inOutFilter)
+        public void CreateVariablesSection(ArrayList variables, bool addDetails, bool inOutOnly)
         {
             AddSubParagraph("Variables");
-            foreach (DataDictionary.Variables.Variable variable in aNameSpace.Variables)
+            foreach (DataDictionary.Variables.Variable variable in variables)
             {
-                if (variable.ImplementationPartiallyCompleted || !implementedOnly)
+                if (considerVariable(variable, inOutOnly))
                 {
-                    if (!inOutFilter || (variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming ||
-                                         variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aOutgoing ||
-                                         variable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aInOut))
+                    if (addDetails)
                     {
-                        if (addDetails)
-                        {
-                            AddSubParagraph(variable.Name);
-                            AddTable(new string[] { "Variable " + variable.Name }, new int[] { 40, 100 });
-                            AddRow(variable.Comment);
-                            AddRow("Type", variable.getTypeName());
-                            AddRow("Default value", variable.Default);
-                            AddRow("Mode", variable.getVariableMode_AsString());
-                            CreateStatusTable(variable);
-                            CloseSubParagraph();
-                        }
-                        else
-                        {
-                            AddParagraph(variable.Name + " (" + GetRequirementsAsString(variable.Requirements) + ")");
-                        }
+                        AddSubParagraph(variable.Name);
+                        AddTable(new string[] { "Variable " + variable.Name }, new int[] { 40, 100 });
+                        AddRow(variable.Comment);
+                        AddRow("Type", variable.getTypeName());
+                        AddRow("Default value", variable.Default);
+                        AddRow("Mode", variable.getVariableMode_AsString());
+                        CreateStatusTable(variable);
+                        CloseSubParagraph();
+                    }
+                    else
+                    {
+                        AddParagraph(variable.Name + " (" + GetRequirementsAsString(variable.Requirements) + ")");
                     }
                 }
             }
@@ -548,21 +509,29 @@ namespace Reports.Model
         /// <summary>
         /// Creates a section for all the rules of the given namespace
         /// </summary>
-        /// <param name="aNameSpace">The namespace</param>
+        /// <param name="rules">The list of rules to add</param>
         /// <param name="addDetails">Add details or simply enumerate the rules</param>
-        /// <param name="implementedOnly">Add only implemented elements or not</param>
+        /// <param name="addToExistingTable">Add information to an existing table or create a separate section</param>
         /// <returns></returns>
-        public void CreateRulesSection(DataDictionary.Types.NameSpace aNameSpace, bool addDetails, bool implementedOnly)
+        public void CreateRulesSection(ArrayList rules, bool addDetails, bool addToExistingTable)
         {
-            AddSubParagraph("Rules");
-            foreach (DataDictionary.Rules.Rule rule in aNameSpace.Rules)
+            if (!addToExistingTable)
             {
-                if (rule.ImplementationPartiallyCompleted == true)
+                AddSubParagraph("Rules");
+            }
+            else
+            {
+                AddTableHeader("Rules");
+            }
+            foreach (DataDictionary.Rules.Rule rule in rules)
+            {
+                if (considerReqRelated(rule))
                 {
-                    AddRuleSection(rule, addDetails);
+                    AddRuleSection(rule, addDetails, addToExistingTable);
                 }
             }
-            CloseSubParagraph();
+            if(!addToExistingTable)
+                CloseSubParagraph();
         }
 
         /// <summary>
@@ -570,28 +539,24 @@ namespace Reports.Model
         /// </summary>
         /// <param name="aRule">The rule to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
-        private void AddRuleSection(DataDictionary.Rules.Rule aRule, bool addDetails)
+        /// <param name="addToExistingTable">Add information to an existing table or create a separate section</param>
+        private void AddRuleSection(DataDictionary.Rules.Rule aRule, bool addDetails, bool addToExitingTable)
         {
             if (addDetails)
             {
-                AddSubParagraph(aRule.Name);
+                if (!addToExitingTable)
+                {
+                    AddSubParagraph(aRule.Name);
+                }
                 AddRuleRow(aRule, addDetails);
-                CloseSubParagraph();
+                if (!addToExitingTable)
+                {
+                    CloseSubParagraph();
+                }
             }
             else
             {
                 AddParagraph(aRule.Name + " (" + GetRequirementsAsString(aRule.Requirements) + ")");
-            }
-
-            foreach (DataDictionary.Rules.RuleCondition ruleCondition in aRule.RuleConditions)
-            {
-                foreach (DataDictionary.Rules.Rule subRule in ruleCondition.SubRules)
-                {
-                    if (subRule.ImplementationPartiallyCompleted == true)
-                    {
-                        AddRuleSection(subRule, addDetails);
-                    }
-                }
             }
         }
 
@@ -604,7 +569,14 @@ namespace Reports.Model
         {
             if (addDetails)
             {
-                AddTableHeader("Rule " + aRule.Name);
+                if (aRule.EnclosingRuleCondition != null)
+                {
+                    AddTable(new string[] { "Sub-rule " + aRule.Name + " (parent rule condition : " + aRule.EnclosingRuleCondition.Name + ")" }, new int[] { 40, 100 });
+                }
+                else
+                {
+                    AddTable(new string[] { "Rule " + aRule.Name }, new int[] { 40, 100 });
+                }
                 AddRow(aRule.Comment);
                 AddRow("Activation priority", aRule.getPriority_AsString());
                 AddRow(Utils.RTFConvertor.RTFToPlainText(aRule.getExplain(false)));
@@ -616,9 +588,16 @@ namespace Reports.Model
 
             foreach (DataDictionary.Rules.RuleCondition ruleCondition in aRule.RuleConditions)
             {
-                foreach (DataDictionary.Rules.Rule subRule in ruleCondition.SubRules)
+                if (CountDisplayedReqRelated(ruleCondition.SubRules) > 0)
                 {
-                    AddRuleRow(subRule, addDetails);
+                    AddTableHeader("Sub-rules of " + ruleCondition.Name);
+                    foreach (DataDictionary.Rules.Rule subRule in ruleCondition.SubRules)
+                    {
+                        if (considerReqRelated(subRule))
+                        {
+                            AddRuleRow(subRule, addDetails);
+                        }
+                    }
                 }
             }
         }
@@ -707,6 +686,30 @@ namespace Reports.Model
 
             AddRow("Status", implemented, verified);
             AddRow("Requirements", GetRequirementsAsString(aReqRelated.Requirements));
+        }
+
+        /// <summary>
+        /// Indicates if a req related should be considered for the report
+        /// </summary>
+        /// <param name="aReqRelated"></param>
+        /// <returns></returns>
+        private bool considerReqRelated(ReqRelated aReqRelated)
+        {
+            return aReqRelated.ImplementationCompleted || !implementedOnly;
+        }
+
+        /// <summary>
+        /// Indicates if a variable should be considered for the report
+        /// </summary>
+        /// <param name="aVariable"></param>
+        /// <param name="inOutOnly"></param>
+        /// <returns></returns>
+        private bool considerVariable(DataDictionary.Variables.Variable aVariable, bool inOutOnly)
+        {
+            return (aVariable.ImplementationPartiallyCompleted || !implementedOnly) &&
+                   (!inOutOnly || aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming ||
+                                  aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aOutgoing ||
+                                  aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aInOut);
         }
     }
 }
