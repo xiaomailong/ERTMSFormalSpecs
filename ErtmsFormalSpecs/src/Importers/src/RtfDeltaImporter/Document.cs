@@ -40,6 +40,10 @@ namespace Importers.RtfDeltaImporter
         {
             Parser parser = new Parser(filePath, this);
             Errors = new List<ImportationError>();
+            foreach (Paragraph p in Paragraphs.Values)
+            {
+                p.Text = p.Text.Trim();
+            }
         }
 
         /// <summary>
@@ -224,7 +228,7 @@ namespace Importers.RtfDeltaImporter
         /// <returns></returns>
         private bool IsInserted(Paragraph p)
         {
-            return p.State == Paragraph.ParagraphState.Inserted;
+            return p.State == Paragraph.ParagraphState.Inserted && p.Text.Length > 0;
         }
 
         /// <summary>
@@ -254,7 +258,7 @@ namespace Importers.RtfDeltaImporter
         /// <returns></returns>
         private bool IsMoved(Paragraph p)
         {
-            return p.State == Paragraph.ParagraphState.Moved;
+            return p.State == Paragraph.ParagraphState.Moved && p.Text.Length > 0;
         }
 
         /// <summary>
