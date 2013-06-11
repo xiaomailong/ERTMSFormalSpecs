@@ -72,6 +72,7 @@ namespace Reports.Importer
             AddRow("Paragraph count", importResult.Paragraphs.Count.ToString(), "This is the number of paragraphs processed during the importation of the document");
             AddRow("Modified paragraphs", importResult.ChangedParagraphs.Count.ToString(), "This is the number of paragraphs that have been changed between the two revisions");
             AddRow("New paragraphs", importResult.NewParagraphs.Count.ToString(), "The is the number of new paragraphs in this new revision");
+            AddRow("Moved paragraphs", importResult.MovedParagraphs.Count.ToString(), "The is the number of paragraphs that have been moved around in this new revision");
             AddRow("Deleted paragraphs", importResult.RemovedParagraphs.Count.ToString(), "This is the number of paragraphs that have been deleted in this new revision");
             CloseSubParagraph();
 
