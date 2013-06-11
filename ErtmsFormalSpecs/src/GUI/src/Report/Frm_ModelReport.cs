@@ -212,8 +212,8 @@ namespace GUI.Report
             reportHandler.AddCollections          = CB_AddCollections.Checked;
             reportHandler.AddCollectionsDetails   = CB_AddCollectionsDetails.Checked;
 
-            reportHandler.AddStateMachines        = CB_AddCollections.Checked;
-            reportHandler.AddStateMachinesDetails = CB_AddCollectionsDetails.Checked;
+            reportHandler.AddStateMachines        = CB_AddStateMachines.Checked;
+            reportHandler.AddStateMachinesDetails = CB_AddStateMachinesDetails.Checked;
 
             reportHandler.AddFunctions            = CB_AddFunctions.Checked;
             reportHandler.AddFunctionsDetails     = CB_AddFunctionsDetails.Checked;
@@ -223,7 +223,7 @@ namespace GUI.Report
 
             reportHandler.AddVariables            = CB_AddVariables.Checked;
             reportHandler.AddVariablesDetails     = CB_AddVariablesDetails.Checked;
-            reportHandler.InOutFilter             = CB_InOutFilter.Checked;
+            reportHandler.InOutOnly               = CB_InOutFilter.Checked;
 
             reportHandler.AddRules                = CB_AddRules.Checked;
             reportHandler.AddRulesDetails         = CB_AddRulesDetails.Checked;
