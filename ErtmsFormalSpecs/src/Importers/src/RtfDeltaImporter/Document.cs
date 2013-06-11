@@ -78,6 +78,8 @@ namespace Importers.RtfDeltaImporter
                         TableRow originalRow = originalParagraph as TableRow;
                         if (originalRow != null)
                         {
+                            // Try to determine if the paragraph as been moved (instead of changed)
+                            // The paragraph has been moved when we can find it, at another location in the original table
                             foreach (Paragraph otherParagraph in original.Paragraphs.Values)
                             {
                                 TableRow otherRow = otherParagraph as TableRow;
@@ -93,6 +95,9 @@ namespace Importers.RtfDeltaImporter
                             }
                             if (p.State == Paragraph.ParagraphState.Changed)
                             {
+                                // If the paragraph has not been moved, try to determine if the paragraph has been inserted
+                                // The paragraph has been inserted if the corresponding paragraph in the original table 
+                                // can be found at another location of this table
                                 foreach (Paragraph otherParagraph in Paragraphs.Values)
                                 {
                                     TableRow otherRow = otherParagraph as TableRow;
@@ -113,6 +118,26 @@ namespace Importers.RtfDeltaImporter
                 {
                     // Original paragraph could not be found => This is a new paragraph
                     p.State = Paragraph.ParagraphState.Inserted;
+
+                    TableRow originalRow = originalParagraph as TableRow;
+                    if (originalRow != null)
+                    {
+                        // Try to determine if the paragraph as been moved (instead of changed)
+                        // The paragraph has been moved when we can find it, at another location in the original table
+                        foreach (Paragraph otherParagraph in original.Paragraphs.Values)
+                        {
+                            TableRow otherRow = otherParagraph as TableRow;
+                            if (otherRow != null && otherRow.EnclosingParagraph == originalRow.EnclosingParagraph)
+                            {
+                                if (otherRow.Text.Equals(p.Text))
+                                {
+                                    p.State = Paragraph.ParagraphState.Moved;
+                                    p.OriginalText = otherRow.Id;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
