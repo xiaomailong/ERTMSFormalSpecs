@@ -53,6 +53,7 @@ namespace GUI
             EditionTextBox.AllowDrop = true;
             EditionTextBox.DragDrop += new DragEventHandler(Editor_DragDropHandler);
             EditionTextBox.KeyUp += new KeyEventHandler(Editor_KeyUp);
+            EditionTextBox.KeyPress += new KeyPressEventHandler(Editor_KeyPress);
 
             EditionTextBox.ShortcutsEnabled = true;
 
@@ -314,18 +315,52 @@ namespace GUI
                         break;
                 }
             }
-            else
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.OemPeriod:
-                        DisplayComboBox();
-                        break;
+        }
 
-                    default:
-                        break;
-                }
+        void Editor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '.':
+                    EditionTextBox.SelectedText = e.KeyChar.ToString();
+                    e.Handled = true;
+                    DisplayComboBox();
+                    break;
+
+                case '{':
+                    Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
+                    if (structureTypeExpression != null)
+                    {
+                        DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
+                        if (structure != null)
+                        {
+                            StringBuilder builder = new StringBuilder("{\n");
+                            createDefaultStructureValue(builder, structure, false);
+                            EditionTextBox.SelectedText = builder.ToString();
+                            e.Handled = true;
+                        }
+                    }
+                    break;
+
+                case '(':
+                    Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
+                    if (callableExpression != null)
+                    {
+                        DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
+                        if (callable != null)
+                        {
+                            StringBuilder builder = new StringBuilder();
+                            createCallableParameters(builder, callable);
+                            EditionTextBox.SelectedText = builder.ToString();
+                            e.Handled = true;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
             }
+
         }
 
         private void ConfirmComboBoxSelection()
@@ -412,18 +447,7 @@ namespace GUI
                         DataDictionary.Types.Structure structure = variable.Type as DataDictionary.Types.Structure;
                         if (structure != null)
                         {
-                            text.Append(StripUseless(structure.FullName, EnclosingForm.Selected) + "{\n");
-                            bool first = true;
-                            foreach (DataDictionary.Types.StructureElement element in structure.Elements)
-                            {
-                                if (!first)
-                                {
-                                    text.Append(",\n");
-                                }
-                                insertElement(element, text, 4);
-                                first = false;
-                            }
-                            text.Append("}\n");
+                            createDefaultStructureValue(text, structure);
                         }
                         else
                         {
@@ -437,6 +461,42 @@ namespace GUI
                     }
                 }
             }
+        }
+
+        private void createDefaultStructureValue(StringBuilder text, DataDictionary.Types.Structure structure, bool displayStructureName = true)
+        {
+            if (displayStructureName)
+            {
+                text.Append(StripUseless(structure.FullName, EnclosingForm.Selected) + "{\n");
+            }
+
+            bool first = true;
+            foreach (DataDictionary.Types.StructureElement element in structure.Elements)
+            {
+                if (!first)
+                {
+                    text.Append(",\n");
+                }
+                insertElement(element, text, 4);
+                first = false;
+            }
+            text.Append("\n}\n");
+        }
+
+        private void createCallableParameters(StringBuilder text, DataDictionary.Interpreter.ICallable callable)
+        {
+            text.Append("(\n");
+            bool first = true;
+            foreach (DataDictionary.Parameter parameter in callable.FormalParameters)
+            {
+                if (!first)
+                {
+                    text.Append(",\n");
+                }
+                text.Append(TextualExplainUtilities.Pad(parameter.Name + "=>" + parameter.Type.Default, 4));
+                first = false;
+            }
+            text.Append("\n)\n");
         }
 
         private void insertElement(DataDictionary.Types.ITypedElement element, StringBuilder text, int indent)
@@ -462,7 +522,14 @@ namespace GUI
             }
             else
             {
-                text.Append(element.Default);
+                if (element.Default == null || element.Default.Length == 0)
+                {
+                    text.Append(element.Type.Default);
+                }
+                else
+                {
+                    text.Append(element.Default);
+                }
             }
         }
 
