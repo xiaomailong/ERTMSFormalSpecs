@@ -62,8 +62,8 @@ namespace GUI.StateDiagram
             if (stateMachineType != null)
             {
                 __stateMachine = stateMachineType;
-                StateContainerPanel.StateMachine = stateMachineType;
                 StateContainerPanel.StateMachineVariable = stateMachine;
+                StateContainerPanel.StateMachine = stateMachineType;
             }
         }
 
