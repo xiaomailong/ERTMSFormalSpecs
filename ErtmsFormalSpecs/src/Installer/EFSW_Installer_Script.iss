@@ -49,10 +49,13 @@ Source: ..\..\bin\gnuplot\*; DestDir: {app}\bin\gnuplot; Flags: recursesubdirs
 Source: ..\..\doc\EFSW_Technical_Design.pdf; DestDir: {app}\doc;
 Source: ..\..\doc\EFSW_User_Guide.pdf; DestDir: {app}\doc;
 Source: ..\..\doc\EFSW_Release_Notes.pdf; DestDir: {app};
-Source: ..\..\doc\specs\DataDictionary.xsd; DestDir: {app}\doc\specs;
+;Source: ..\..\doc\specs\DataDictionary.xsd; DestDir: {app}\doc\specs;
 Source: ..\..\doc\specs\subset-026.efs; DestDir: {app}\doc\specs;
+Source: ..\..\doc\specs\subset-026\*; DestDir: {app}\doc\specs\subset-026; Flags: recursesubdirs
 Source: ..\..\doc\specs\disable shunting.efs; DestDir: {app}\doc\specs;
+Source: ..\..\doc\specs\disable shunting\*; DestDir: {app}\doc\specs\disable shunting; Flags: recursesubdirs
 Source: ..\..\doc\specs\subset-076.efs; DestDir: {app}\doc\specs;
+Source: ..\..\doc\specs\subset-076\*; DestDir: {app}\doc\specs\subset-076; Flags: recursesubdirs
 ;Source: ..\..\doc\SpecificationCoverageReport.pdf; DestDir: {app}\doc;
 ;Source: ..\..\doc\ModelReport.pdf; DestDir: {app}\doc;
 ;Source: ..\..\doc\TestCoverageReport.pdf; DestDir: {app}\doc;
