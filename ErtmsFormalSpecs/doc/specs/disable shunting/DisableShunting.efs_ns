@@ -1,0 +1,37 @@
+<NameSpace
+ Name="DisableShunting"
+>
+<NameSpaces>
+</NameSpaces>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="S10 - Request Driver selection"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10"
+>
+</ReqRef>
+<ReqRef
+ Id="1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Request Driver selection"
+>
+<PreConditions>
+<PreCondition>Kernel.HandleModeChange.CurrentState in Kernel.HandleModeChange.StartOfMission.S10.InitialState</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().InitiateNonLeadingRequest()</Action>
+<Action>DMI.MasterDMI().InitiateTrainDataRequest()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

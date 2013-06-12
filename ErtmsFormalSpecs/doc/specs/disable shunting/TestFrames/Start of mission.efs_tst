@@ -1,0 +1,199 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Start of mission"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="S10 : Selection of SH, NL or Data Entry"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initial state"
+>
+<SubSteps>
+<SubStep
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>DMI.DMI1.DeskOpen &lt;- True</Action>
+<Action>DMI.DMI2.DeskOpen &lt;- Boolean.False</Action>
+<Action>DMI.DMI1.IsMaster &lt;- Boolean.True</Action>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.NoProcedure</Action>
+<Action>Kernel.TrainData.Initialize()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Offer selection of SH, NL or Data Entry"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10"
+>
+</ReqRef>
+<ReqRef
+ Id="1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Offer possibility to select SH, NL or Data Entry"
+>
+<SubSteps>
+<SubStep
+>
+<Actions>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.HandleModeChange.CurrentState == Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver cannot select SH, even so, no transition to SH mode"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S10.1"
+>
+</ReqRef>
+<ReqRef
+ Id="Entry 5.4.3.3.19"
+>
+</ReqRef>
+<ReqRef
+ Id="1.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 : Driver selects SH (E12), Level 0"
+>
+<SubSteps>
+<SubStep
+>
+<Actions>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.HandleModeChange.CurrentState in Kernel.HandleModeChange.StartOfMission</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 : Driver selects SH (E12), Level 1"
+>
+<SubSteps>
+<SubStep
+>
+<Actions>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.HandleModeChange.CurrentState in Kernel.HandleModeChange.StartOfMission</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 : Driver selects SH (E12), Level NTC"
+>
+<SubSteps>
+<SubStep
+>
+<Actions>
+<Action>Kernel.HandleModeChange.CurrentState &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
+<Action>Kernel.Mode &lt;- Mode.SB</Action>
+<Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Invalid</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.HandleModeChange.CurrentState in Kernel.HandleModeChange.StartOfMission</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Mode.SB</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
