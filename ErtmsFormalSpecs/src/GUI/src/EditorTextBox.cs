@@ -480,7 +480,7 @@ namespace GUI
                 insertElement(element, text, 4);
                 first = false;
             }
-            text.Append("\n}\n");
+            text.Append("\n}");
         }
 
         private void createCallableParameters(StringBuilder text, DataDictionary.Interpreter.ICallable callable)
@@ -496,7 +496,7 @@ namespace GUI
                 text.Append(TextualExplainUtilities.Pad(parameter.Name + "=>" + parameter.Type.Default, 4));
                 first = false;
             }
-            text.Append("\n)\n");
+            text.Append("\n)");
         }
 
         private void insertElement(DataDictionary.Types.ITypedElement element, StringBuilder text, int indent)
