@@ -169,10 +169,13 @@ namespace Utils
                 subDeclarator.InitDeclaredElements();
             }
 
-            List<INamable> tmp;
-            if (subDeclarator.DeclaredElements.TryGetValue(name, out tmp))
+            if (name != null)
             {
-                retVal.AddRange(tmp);
+                List<INamable> tmp;
+                if (subDeclarator.DeclaredElements.TryGetValue(name, out tmp))
+                {
+                    retVal.AddRange(tmp);
+                }
             }
         }
 
