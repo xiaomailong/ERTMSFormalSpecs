@@ -443,7 +443,7 @@ namespace GUI.TestRunnerView
             this.editTextBox.Size = new System.Drawing.Size(401, 327);
             this.editTextBox.TabIndex = 0;
             this.editTextBox.Text = "";
-            this.editTextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged);
+            this.editTextBox.TextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged);
             // 
             // explainTextBox
             // 
@@ -501,7 +501,7 @@ namespace GUI.TestRunnerView
             this.commentsRichTextBox.Size = new System.Drawing.Size(983, 329);
             this.commentsRichTextBox.TabIndex = 0;
             this.commentsRichTextBox.Text = "";
-            this.commentsRichTextBox.TextChanged += new System.EventHandler(this.commentsRichTextBox_TextChanged);
+            this.commentsRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentsRichTextBox_TextChanged);
             // 
             // Window
             // 

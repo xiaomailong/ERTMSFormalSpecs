@@ -25,19 +25,19 @@ namespace GUI.TranslationRules
             get { return propertyGrid; }
         }
 
-        public EditorTextBox ExpressionTextBox
+        public RichTextBox ExpressionTextBox
         {
-            get { return editTextBox; }
+            get { return editTextBox.TextBox; }
         }
 
-        public EditorTextBox CommentsTextBox
+        public RichTextBox CommentsTextBox
         {
-            get { return commentRichTextBox; }
+            get { return commentRichTextBox.TextBox; }
         }
 
-        public EditorTextBox MessagesTextBox
+        public RichTextBox MessagesTextBox
         {
-            get { return messageRichTextBox; }
+            get { return messageRichTextBox.TextBox; }
         }
 
         public BaseTreeView subTreeView

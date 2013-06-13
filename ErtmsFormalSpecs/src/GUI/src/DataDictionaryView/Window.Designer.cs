@@ -364,7 +364,7 @@ namespace GUI.DataDictionaryView
             this.expressionTextBox.Size = new System.Drawing.Size(690, 293);
             this.expressionTextBox.TabIndex = 0;
             this.expressionTextBox.Text = "";
-            this.expressionTextBox.TextChanged += new System.EventHandler(this.expressionTextBox_TextChanged);
+            this.expressionTextBox.TextBox.TextChanged += new System.EventHandler(this.expressionTextBox_TextChanged);
             // 
             // commentTabPage
             // 
@@ -388,7 +388,7 @@ namespace GUI.DataDictionaryView
             this.commentRichTextBox.Size = new System.Drawing.Size(690, 293);
             this.commentRichTextBox.TabIndex = 0;
             this.commentRichTextBox.Text = "";
-            this.commentRichTextBox.TextChanged += new System.EventHandler(this.commentTextBox_TextChanged);
+            this.commentRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentTextBox_TextChanged);
             // 
             // usageTabPage
             // 

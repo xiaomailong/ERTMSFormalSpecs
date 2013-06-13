@@ -66,17 +66,17 @@ namespace GUI.Shortcuts
             get { return null; }
         }
 
-        public EditorTextBox ExpressionTextBox
+        public RichTextBox ExpressionTextBox
         {
             get { return null; }
         }
 
-        public EditorTextBox CommentsTextBox
+        public RichTextBox CommentsTextBox
         {
             get { return null; }
         }
 
-        public EditorTextBox MessagesTextBox
+        public RichTextBox MessagesTextBox
         {
             get { return null; }
         }

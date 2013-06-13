@@ -273,7 +273,7 @@ namespace GUI.TranslationRules
             this.editTextBox.Size = new System.Drawing.Size(150, 113);
             this.editTextBox.TabIndex = 0;
             this.editTextBox.Text = "";
-            this.editTextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged_1);
+            this.editTextBox.TextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged_1);
             // 
             // commentRichTextBox
             // 
@@ -284,7 +284,7 @@ namespace GUI.TranslationRules
             this.commentRichTextBox.Size = new System.Drawing.Size(218, 113);
             this.commentRichTextBox.TabIndex = 3;
             this.commentRichTextBox.Text = "";
-            this.commentRichTextBox.TextChanged += new System.EventHandler(this.commentRichTextBox_TextChanged);
+            this.commentRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentRichTextBox_TextChanged);
             // 
             // Window
             // 

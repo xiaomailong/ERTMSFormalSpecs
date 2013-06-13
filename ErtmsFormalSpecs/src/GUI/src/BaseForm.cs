@@ -27,17 +27,17 @@ namespace GUI
         /// <summary>
         /// The text editor for expressions
         /// </summary>
-        EditorTextBox ExpressionTextBox { get; }
+        RichTextBox ExpressionTextBox { get; }
 
         /// <summary>
         /// The text editor for comments
         /// </summary>
-        EditorTextBox CommentsTextBox { get; }
+        RichTextBox CommentsTextBox { get; }
 
         /// <summary>
         /// The text editor for messages
         /// </summary>
-        EditorTextBox MessagesTextBox { get; }
+        RichTextBox MessagesTextBox { get; }
 
         /// <summary>
         /// The enclosing MDI Window

@@ -25,19 +25,19 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public EditorTextBox ExpressionTextBox
+        public RichTextBox ExpressionTextBox
         {
-            get { return expressionTextBox; }
+            get { return expressionTextBox.TextBox; }
         }
 
-        public EditorTextBox CommentsTextBox
+        public RichTextBox CommentsTextBox
         {
-            get { return commentRichTextBox; }
+            get { return commentRichTextBox.TextBox; }
         }
 
-        public EditorTextBox MessagesTextBox
+        public RichTextBox MessagesTextBox
         {
-            get { return messagesRichTextBox; }
+            get { return messagesRichTextBox.TextBox; }
         }
 
         public BaseTreeView TreeView

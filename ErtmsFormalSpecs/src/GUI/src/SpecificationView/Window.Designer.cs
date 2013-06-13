@@ -302,7 +302,7 @@ namespace GUI.SpecificationView
             this.specBrowserTextView.Size = new System.Drawing.Size(671, 267);
             this.specBrowserTextView.TabIndex = 3;
             this.specBrowserTextView.Text = "";
-            this.specBrowserTextView.TextChanged += new System.EventHandler(this.specBrowserTextView_TextChanged);
+            this.specBrowserTextView.TextBox.TextChanged += new System.EventHandler(this.specBrowserTextView_TextChanged);
             // 
             // commentsTabPage
             // 
@@ -326,7 +326,7 @@ namespace GUI.SpecificationView
             this.commentsRichTextBox.Size = new System.Drawing.Size(537, 148);
             this.commentsRichTextBox.TabIndex = 0;
             this.commentsRichTextBox.Text = "";
-            this.commentsRichTextBox.TextChanged += new System.EventHandler(this.commentsRichTextBox_TextChanged);
+            this.commentsRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentsRichTextBox_TextChanged);
             // 
             // implementationTabPage
             // 

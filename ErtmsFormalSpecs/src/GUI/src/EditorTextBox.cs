@@ -54,15 +54,18 @@ namespace GUI
             EditionTextBox.DragDrop += new DragEventHandler(Editor_DragDropHandler);
             EditionTextBox.KeyUp += new KeyEventHandler(Editor_KeyUp);
             EditionTextBox.KeyPress += new KeyPressEventHandler(Editor_KeyPress);
-
             EditionTextBox.ShortcutsEnabled = true;
 
             EditionTextBox.GotFocus += new EventHandler(Editor_GotFocus);
             EditionTextBox.LostFocus += new EventHandler(Editor_LostFocus);
-
             SelectionComboBox.LostFocus += new EventHandler(SelectionComboBox_LostFocus);
             SelectionComboBox.KeyUp += new KeyEventHandler(SelectionComboBox_KeyUp);
         }
+
+        /// <summary>
+        /// The text box
+        /// </summary>
+        public RichTextBox TextBox { get { return EditionTextBox; } }
 
         public void Copy()
         {

@@ -159,17 +159,17 @@ namespace GUI.GraphView
         /// <summary>
         /// The text editor for expressions
         /// </summary>
-        public EditorTextBox ExpressionTextBox { get { return null; } }
+        public RichTextBox ExpressionTextBox { get { return null; } }
 
         /// <summary>
         /// The text editor for comments
         /// </summary>
-        public EditorTextBox CommentsTextBox { get { return null; } }
+        public RichTextBox CommentsTextBox { get { return null; } }
 
         /// <summary>
         /// The text editor for messages
         /// </summary>
-        public EditorTextBox MessagesTextBox { get { return null; } }
+        public RichTextBox MessagesTextBox { get { return null; } }
 
         /// <summary>
         /// The enclosing MDI Window

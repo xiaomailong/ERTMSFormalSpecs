@@ -28,19 +28,19 @@ namespace GUI.SpecificationView
             get { return propertyGrid; }
         }
 
-        public EditorTextBox ExpressionTextBox
+        public RichTextBox ExpressionTextBox
         {
-            get { return specBrowserTextView; }
+            get { return specBrowserTextView.TextBox; }
         }
 
-        public EditorTextBox CommentsTextBox
+        public RichTextBox CommentsTextBox
         {
-            get { return commentsRichTextBox; }
+            get { return commentsRichTextBox.TextBox; }
         }
 
-        public EditorTextBox MessagesTextBox
+        public RichTextBox MessagesTextBox
         {
-            get { return messagesRichTextBox; }
+            get { return messagesRichTextBox.TextBox; }
         }
 
         public BaseTreeView TreeView
