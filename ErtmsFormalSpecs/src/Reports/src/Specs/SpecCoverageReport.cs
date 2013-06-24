@@ -268,9 +268,8 @@ namespace Reports.Specs
         /// <summary>
         /// Creates a table for a given set of paragraphs
         /// </summary>
-        /// <param name="title">Title of the table</param>
         /// <param name="paragraphs">The paragraphs to display</param>
-        /// <param name="showAssociatedImplementations">Indicates if we need to show the model elements implementing the paragraphs</param>
+        /// <param name="dictionary">The dictionary</param>
         /// <returns></returns>
         private void CreateImplementedParagraphsTable(HashSet<DataDictionary.Specification.Paragraph> paragraphs, Dictionary dictionary)
         {
@@ -293,15 +292,26 @@ namespace Reports.Specs
                         ReqRelated reqRelated = reqRef.Enclosing as ReqRelated;
                         if (reqRelated != null)
                         {
-                            fullName = reqRelated.FullName;
+                            if (reqRelated is DataDictionary.Tests.TestCase)  /* TODO: review it */
+                            {
+                                fullName = "TEST CASE " + reqRelated.Name;
+                            }
+                            else if (reqRelated is DataDictionary.Types.StateMachine)  /* TODO: review it */
+                            {
+                                fullName = reqRelated.Name;
+                            }
+                            else
+                            {
+                                fullName = reqRelated.FullName;
+                            }
                             comment = reqRelated.Comment;
                         }
                         else
                         {
                             DataDictionary.Specification.Paragraph par = reqRef.Enclosing as DataDictionary.Specification.Paragraph;
-                            if (par != null)
+                            if (par != null)  /* TODO: review it */
                             {
-                                fullName = paragraph.FullName;
+                                fullName = "PARAGRAPH " + paragraph.FullId;
                                 comment = paragraph.Comment;
                             }
                         }
@@ -315,8 +325,14 @@ namespace Reports.Specs
                             }
                             else
                             {
-                                AddRow("", fullName, comment);
-                                previousCell.MergeDown += 1;
+                                if (AddRow("", fullName, comment) != null)
+                                {
+                                    previousCell.MergeDown += 1;
+                                }
+                                else
+                                {
+                                    Log.Error("Error: tried to add an empty row in the spec coverage report");
+                                }
                             }
                         }
                     }

@@ -114,8 +114,14 @@ namespace Reports.Model
 
                             foreach (DataDictionary.Constants.EnumValue value in range.SpecialValues)
                             {
-                                AddRow("", value.getValue().ToString(), value.Name);
-                                firstRow.Cells[0].MergeDown += 1;
+                                if (AddRow("", value.getValue().ToString(), value.Name) != null)
+                                {
+                                    firstRow.Cells[0].MergeDown += 1;
+                                }
+                                else
+                                {
+                                    Log.Error("Error: tried to add an empty row in the model report");
+                                }
                             }
                         }
                         CreateStatusTable(range);
@@ -332,8 +338,14 @@ namespace Reports.Model
                     {
                         comment = "Initial state";
                     }
-                    AddRow("", state.Name, comment);
-                    firstRow.Cells[0].MergeDown += 1;
+                    if (AddRow("", state.Name, comment) != null)
+                    {
+                        firstRow.Cells[0].MergeDown += 1;
+                    }
+                    else
+                    {
+                        Log.Error("Error: tried to add an empty row in model report");
+                    }
                 }
             }
 
