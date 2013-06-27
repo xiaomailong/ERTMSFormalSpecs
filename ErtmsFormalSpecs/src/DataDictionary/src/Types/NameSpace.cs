@@ -13,12 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 
 namespace DataDictionary.Types
 {
     public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder
     {
+        /// <summary>
+        /// Used to temporarily store the list of sub-namespaces
+        /// </summary>
+        private ArrayList savedNameSpaces;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -186,6 +192,47 @@ namespace DataDictionary.Types
             cachedVariables = null;
             types = null;
             DeclaredElements = null;
+        }
+
+        /// <summary>
+        /// Removes temporary files created for reference namespaces
+        /// </summary>
+        public void ClearTempFiles()
+        {
+            if (allNameSpaceRefs() != null)
+            {
+                foreach (NameSpaceRef aReferenceNameSpace in allNameSpaceRefs())
+                {
+                    aReferenceNameSpace.ClearTempFile();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Used to store the list of sub-namespaces before saving the model
+        /// </summary>
+        public void StoreInfo()
+        {
+            savedNameSpaces = new ArrayList();
+            foreach (NameSpace aNameSpace in allNameSpaces())
+            {
+                savedNameSpaces.Add(aNameSpace);
+            }
+            allNameSpaces().Clear();
+        }
+
+        /// <summary>
+        /// Used to restore the list of sub-namespaces, after having saved the model
+        /// </summary>
+        public void RestoreInfo()
+        {
+            setAllNameSpaces(new ArrayList());
+            foreach (NameSpace aNameSpace in savedNameSpaces)
+            {
+                allNameSpaces().Add(aNameSpace);
+                aNameSpace.RestoreInfo();
+            }
+            savedNameSpaces.Clear();
         }
 
         /// <summary>

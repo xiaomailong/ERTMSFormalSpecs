@@ -67,5 +67,14 @@ namespace DataDictionary.Specification
         {
             return Util.loadChapter(FileName, Enclosing as ModelElement);
         }
+
+        /// <summary>
+        /// Removes the temporary file associated to that item
+        /// </summary>
+        public void ClearTempFile()
+        {
+            VersionedWriter writer = new VersionedWriter(FileName);
+            writer.Close();
+        }
     }
 }

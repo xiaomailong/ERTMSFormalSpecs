@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using DataDictionary.Specification;
@@ -35,10 +36,25 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Used to temporarily store the list of sub-namespaces
+        /// </summary>
+        private ArrayList savedNameSpaces;
+
+        /// <summary>
+        /// Used to temporarily store the list of test frames
+        /// </summary>
+        private ArrayList savedTests;
+
+        /// <summary>
         /// Updates the dictionary contents before saving it
         /// </summary>
         private class Updater : Generated.Visitor
         {
+            /// <summary>
+            /// Indicates if the update is from the elements to references or from references to elements
+            /// </summary>
+            private bool elementsToRefs;
+
             /// <summary>
             /// The base path used to save files
             /// </summary>
@@ -48,10 +64,11 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="basePath"></param>
-            public Updater(string basePath)
+            public Updater(string basePath, bool elementsToRefs)
                 : base()
             {
                 BasePath = basePath;
+                this.elementsToRefs = elementsToRefs;
             }
 
             public override void visit(Generated.Dictionary obj, bool visitSubNodes)
@@ -60,22 +77,32 @@ namespace DataDictionary
 
                 Dictionary dictionary = (Dictionary)obj;
 
-                if (dictionary.allNameSpaces() != null)
+                if (elementsToRefs)
                 {
-                    foreach (NameSpace subNameSpace in dictionary.allNameSpaces())
-                    {
-                        dictionary.appendNameSpaceRefs(referenceNameSpace(dictionary, subNameSpace));
-                    }
-                    dictionary.allNameSpaces().Clear();
-                }
+                    dictionary.ClearTempFiles();
+                    dictionary.allNameSpaceRefs().Clear();
+                    dictionary.allTestRefs().Clear();
 
-                if (dictionary.allTests() != null)
-                {
-                    foreach (Frame frame in dictionary.allTests())
+                    if (dictionary.allNameSpaces() != null)
                     {
-                        dictionary.appendTestRefs(referenceFrame(dictionary, frame));
+                        foreach (NameSpace subNameSpace in dictionary.allNameSpaces())
+                        {
+                            dictionary.appendNameSpaceRefs(referenceNameSpace(dictionary, subNameSpace));
+                        }
                     }
-                    dictionary.allTests().Clear();
+
+                    if (dictionary.allTests() != null)
+                    {
+                        foreach (Frame frame in dictionary.allTests())
+                        {
+                            dictionary.appendTestRefs(referenceFrame(dictionary, frame));
+                        }
+                    }
+                    dictionary.StoreInfo();
+                }
+                else
+                {
+                    dictionary.RestoreInfo();
                 }
             }
 
@@ -85,13 +112,23 @@ namespace DataDictionary
 
                 NameSpace nameSpace = (NameSpace)obj;
 
-                if (nameSpace.allNameSpaces() != null)
+                if (elementsToRefs)
                 {
-                    foreach (NameSpace subNameSpace in nameSpace.allNameSpaces())
+                    nameSpace.ClearTempFiles();
+                    nameSpace.allNameSpaceRefs().Clear();
+
+                    if (nameSpace.allNameSpaces() != null)
                     {
-                        nameSpace.appendNameSpaceRefs(referenceNameSpace(nameSpace, subNameSpace));
+                        foreach (NameSpace subNameSpace in nameSpace.allNameSpaces())
+                        {
+                            nameSpace.appendNameSpaceRefs(referenceNameSpace(nameSpace, subNameSpace));
+                        }
                     }
-                    nameSpace.allNameSpaces().Clear();
+                    nameSpace.StoreInfo();
+                }
+                else
+                {
+                    nameSpace.RestoreInfo();
                 }
             }
 
@@ -101,22 +138,24 @@ namespace DataDictionary
 
                 Specification.Specification specification = (Specification.Specification)obj;
 
-                if (specification.allChapters() != null)
+                if (elementsToRefs)
                 {
-                    foreach (Chapter chapter in specification.allChapters())
+                    specification.ClearTempFiles();
+                    specification.allChapterRefs().Clear();
+
+                    if (specification.allChapters() != null)
                     {
-                        specification.appendChapterRefs(referenceChapter(specification, chapter));
+                        foreach (Chapter chapter in specification.allChapters())
+                        {
+                            specification.appendChapterRefs(referenceChapter(specification, chapter));
+                        }
                     }
-                    specification.allChapters().Clear();
+                    specification.StoreInfo();
                 }
-            }
-
-            public override void visit(Generated.Procedure obj, bool visitSubNodes)
-            {
-                base.visit(obj, visitSubNodes);
-
-                // States machine are not more useful in procedures
-                obj.setStateMachine(null);
+                else
+                {
+                    specification.RestoreInfo();
+                }
             }
 
             private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
@@ -164,12 +203,56 @@ namespace DataDictionary
         /// </summary>
         public void save()
         {
-            Updater updater = new Updater(BasePath);
+            Updater updater = new Updater(BasePath, true);
             updater.visit(this);
 
             VersionedWriter writer = new VersionedWriter(FilePath);
             unParse(writer, false);
             writer.Close();
+
+            updater = new Updater(BasePath, false);
+            updater.visit(this);
+        }
+
+        /// <summary>
+        /// Used to store the list of sub-namespaces and test frames before saving the model
+        /// </summary>
+        public void StoreInfo()
+        {
+            savedNameSpaces = new ArrayList();
+            foreach (NameSpace aNameSpace in allNameSpaces())
+            {
+                savedNameSpaces.Add(aNameSpace);
+            }
+            allNameSpaces().Clear();
+
+            savedTests = new ArrayList();
+            foreach (Frame aTest in allTests())
+            {
+                savedTests.Add(aTest);
+            }
+            allTests().Clear();
+        }
+
+        /// <summary>
+        /// Used to restore the list of sub-namespaces and test frames, after having saved the model
+        /// </summary>
+        public void RestoreInfo()
+        {
+            setAllNameSpaces(new ArrayList());
+            foreach (NameSpace aNameSpace in savedNameSpaces)
+            {
+                allNameSpaces().Add(aNameSpace);
+                aNameSpace.RestoreInfo();
+            }
+            savedNameSpaces.Clear();
+
+            setAllTests(new ArrayList());
+            foreach (Frame aTest in savedTests)
+            {
+                allTests().Add(aTest);
+            }
+            savedTests.Clear();
         }
 
         /// <summary>
@@ -358,6 +441,27 @@ namespace DataDictionary
             cachedRuleDisablings = null;
             DeclaredElements = null;
             cache.Clear();
+        }
+
+        /// <summary>
+        /// Removes temporary files created for reference elements
+        /// </summary>
+        public void ClearTempFiles()
+        {
+            if (allNameSpaceRefs() != null)
+            {
+                foreach (NameSpaceRef aReferenceNameSpace in allNameSpaceRefs())
+                {
+                    aReferenceNameSpace.ClearTempFile();
+                }
+            }
+            if (allTestRefs() != null)
+            {
+                foreach (FrameRef aReferenceTest in allTestRefs())
+                {
+                    aReferenceTest.ClearTempFile();
+                }
+            }
         }
 
         /// <summary>

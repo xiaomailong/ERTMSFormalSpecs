@@ -14,12 +14,18 @@
 // --
 // ------------------------------------------------------------------------------
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace DataDictionary.Specification
 {
     public class Specification : Generated.Specification, Utils.IFinder
     {
+        /// <summary>
+        /// Used to temporarily store the list of chapters
+        /// </summary>
+        private ArrayList savedChapters;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -64,6 +70,46 @@ namespace DataDictionary.Specification
         public void ClearCache()
         {
             TheCache.Clear();
+        }
+
+        /// <summary>
+        /// Removes temporary files created for reference chapters
+        /// </summary>
+        public void ClearTempFiles()
+        {
+            if (allChapterRefs() != null)
+            {
+                foreach (ChapterRef aReferenceChapter in allChapterRefs())
+                {
+                    aReferenceChapter.ClearTempFile();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Used to store the list of chapters before saving the specification
+        /// </summary>
+        public void StoreInfo()
+        {
+            savedChapters = new ArrayList();
+            foreach (Chapter aChapter in allChapters())
+            {
+                savedChapters.Add(aChapter);
+            }
+            allChapters().Clear();
+        }
+
+        /// <summary>
+        /// Used to restore the list of chapters, after having saved the specification
+        /// </summary>
+        public void RestoreInfo()
+        {
+            setAllChapters(new ArrayList());
+            foreach (Chapter aChapter in savedChapters)
+            {
+                allChapters().Add(aChapter);
+            }
+            savedChapters.Clear();
         }
 
         /// <summary>
