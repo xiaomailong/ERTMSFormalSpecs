@@ -40,7 +40,7 @@ namespace GUI.DataDictionaryView
         {
             DataDictionary.Types.NameSpace nameSpace = (DataDictionary.Types.NameSpace)DataDictionary.Generated.acceptor.getFactory().createNameSpace();
             nameSpace.Name = "<NameSpace" + (GetNodeCount(false) + 1) + ">";
-            AddNameSpace(nameSpace);
+            AddSubNameSpace(nameSpace);
         }
 
         /// <summary>
