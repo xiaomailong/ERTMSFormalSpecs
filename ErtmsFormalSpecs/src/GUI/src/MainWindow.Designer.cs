@@ -88,6 +88,7 @@ namespace GUI
             this.exportFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.generateCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateSpecIssuesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -144,7 +145,6 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -471,7 +471,7 @@ namespace GUI
             // 
             this.implementedToolStripMenuItem.Name = "implementedToolStripMenuItem";
             this.implementedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.implementedToolStripMenuItem.Text = "Mark implemented";
+            this.implementedToolStripMenuItem.Text = "Mark not implemented";
             this.implementedToolStripMenuItem.Click += new System.EventHandler(this.implementedToolStripMenuItem_Click);
             // 
             // verifiedToolStripMenuItem
@@ -527,6 +527,13 @@ namespace GUI
             this.importToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
             this.importToolStripMenuItem.Text = "Import new version...";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // markParagraphsFromNewRevisionToolStripMenuItem
+            // 
+            this.markParagraphsFromNewRevisionToolStripMenuItem.Name = "markParagraphsFromNewRevisionToolStripMenuItem";
+            this.markParagraphsFromNewRevisionToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
+            this.markParagraphsFromNewRevisionToolStripMenuItem.Text = "Mark paragraphs from new revision";
+            this.markParagraphsFromNewRevisionToolStripMenuItem.Click += new System.EventHandler(this.markParagraphsFromNewRevisionToolStripMenuItem_Click);
             // 
             // toolStripSeparator15
             // 
@@ -944,13 +951,6 @@ namespace GUI
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // markParagraphsFromNewRevisionToolStripMenuItem
-            // 
-            this.markParagraphsFromNewRevisionToolStripMenuItem.Name = "markParagraphsFromNewRevisionToolStripMenuItem";
-            this.markParagraphsFromNewRevisionToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.markParagraphsFromNewRevisionToolStripMenuItem.Text = "Mark paragraphs from new revision";
-            this.markParagraphsFromNewRevisionToolStripMenuItem.Click += new System.EventHandler(this.markParagraphsFromNewRevisionToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
