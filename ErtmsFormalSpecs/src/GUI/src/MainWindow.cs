@@ -1363,5 +1363,15 @@ namespace GUI
                 Refresh();
             }
         }
+
+        private void generateERTMSAcademyReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                Report.ERTMSAcademyReport aReport = new Report.ERTMSAcademyReport(dictionary);
+                aReport.ShowDialog(this);
+            }
+        }
     }
 }

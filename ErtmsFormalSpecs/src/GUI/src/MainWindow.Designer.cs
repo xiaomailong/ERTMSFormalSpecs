@@ -116,6 +116,7 @@ namespace GUI
             this.importFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.generateDynamicCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateERTMSAcademyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
@@ -384,6 +385,7 @@ namespace GUI
             this.specificationsToolStripMenuItem,
             this.findToolStripMenuItem,
             this.testsToolStripMenuItem,
+            this.generateERTMSAcademyReportToolStripMenuItem,
             this.toolStripSeparator9,
             this.searchToolStripMenuItem1,
             this.toolStripSeparator19,
@@ -397,7 +399,7 @@ namespace GUI
             // clearMarksToolStripMenuItem
             // 
             this.clearMarksToolStripMenuItem.Name = "clearMarksToolStripMenuItem";
-            this.clearMarksToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearMarksToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.clearMarksToolStripMenuItem.Text = "Clear marks";
             this.clearMarksToolStripMenuItem.Click += new System.EventHandler(this.clearMarksToolStripMenuItem_Click);
             // 
@@ -405,7 +407,7 @@ namespace GUI
             // 
             this.checkModelToolStripMenuItem.Name = "checkModelToolStripMenuItem";
             this.checkModelToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.checkModelToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.checkModelToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.checkModelToolStripMenuItem.Text = "Check model";
             this.checkModelToolStripMenuItem.Click += new System.EventHandler(this.checkModelToolStripMenuItem_Click);
             // 
@@ -431,7 +433,7 @@ namespace GUI
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
             this.specificationsToolStripMenuItem.Name = "specificationsToolStripMenuItem";
-            this.specificationsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.specificationsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.specificationsToolStripMenuItem.Text = "Specifications";
             // 
             // showSpecificationViewToolStripMenuItem
@@ -569,7 +571,7 @@ namespace GUI
             this.showRulePerformancesToolStripMenuItem,
             this.showFunctionsPerformancesToolStripMenuItem});
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.findToolStripMenuItem.Text = "Model";
             // 
             // showModelViewToolStripMenuItem
@@ -659,7 +661,7 @@ namespace GUI
             this.toolStripSeparator16,
             this.generateDynamicCoverageReportToolStripMenuItem});
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.testsToolStripMenuItem.Text = "Tests";
             // 
             // showTestsToolStripMenuItem
@@ -734,40 +736,47 @@ namespace GUI
             this.generateDynamicCoverageReportToolStripMenuItem.Text = "Generate dynamic coverage report...";
             this.generateDynamicCoverageReportToolStripMenuItem.Click += new System.EventHandler(this.generateDynamicCoverageReportToolStripMenuItem_Click);
             // 
+            // generateERTMSAcademyReportToolStripMenuItem
+            // 
+            this.generateERTMSAcademyReportToolStripMenuItem.Name = "generateERTMSAcademyReportToolStripMenuItem";
+            this.generateERTMSAcademyReportToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.generateERTMSAcademyReportToolStripMenuItem.Text = "Generate ERTMS Academy report....";
+            this.generateERTMSAcademyReportToolStripMenuItem.Click += new System.EventHandler(this.generateERTMSAcademyReportToolStripMenuItem_Click);
+            // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(182, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(258, 6);
             // 
             // searchToolStripMenuItem1
             // 
             this.searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
             this.searchToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(261, 22);
             this.searchToolStripMenuItem1.Text = "Search";
             this.searchToolStripMenuItem1.Click += new System.EventHandler(this.searchToolStripMenuItem1_Click);
             // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(182, 6);
+            this.toolStripSeparator19.Size = new System.Drawing.Size(258, 6);
             // 
             // refreshWindowsToolStripMenuItem
             // 
             this.refreshWindowsToolStripMenuItem.Name = "refreshWindowsToolStripMenuItem";
-            this.refreshWindowsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.refreshWindowsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.refreshWindowsToolStripMenuItem.Text = "Refresh windows";
             this.refreshWindowsToolStripMenuItem.Click += new System.EventHandler(this.refreshWindowsToolStripMenuItem_Click);
             // 
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(182, 6);
+            this.toolStripSeparator17.Size = new System.Drawing.Size(258, 6);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // windowsMenu
@@ -1079,6 +1088,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem generateSpecIssuesReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markParagraphsFromNewRevisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateERTMSAcademyReportToolStripMenuItem;
     }
 }
 
