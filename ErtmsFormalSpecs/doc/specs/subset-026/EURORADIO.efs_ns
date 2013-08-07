@@ -1146,10 +1146,6 @@
  Id="3.7.1.1.a"
 >
 </ReqRef>
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1157,13 +1153,12 @@
  Name="MovementAuthority"
 >
 <PreConditions>
-<PreCondition>Available ( EuroradioMessageIn.MOVEMENT_AUTHORITY )</PreCondition>
+<PreCondition>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition>
 </PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl2or3Received
 (
-    MA_Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    ModeProfile_Packet =&gt; ( FIRST_IN EuroradioMessageIn.MOVEMENT_AUTHORITY.Sequence1 | X.MODE_PROFILE != EMPTY ).MODE_PROFILE,
+    Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; Message.MOVEMENT_AUTHORITY.NID_LRBG
 )</Action>
 </Actions>
@@ -1171,7 +1166,7 @@
 <Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report Parameters received"
 >
 <ReqRef
  Id="3.6.5.1.7"
@@ -1181,7 +1176,7 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="7.4.2.15.1"
@@ -1196,6 +1191,27 @@
 <Action>PositionReport.UpdatePositionReportParameters(
   (FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
 )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="List of balises for SH area received"
+>
+<ReqRef
+ Id="3.7.1.1.b"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="List of balises for SH area received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE ) ).MODE_PROFILE )</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>

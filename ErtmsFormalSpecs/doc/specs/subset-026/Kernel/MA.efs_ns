@@ -1395,11 +1395,7 @@ Mode != Mode.TR
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
- Name="MA_Packet"
->
-</Parameter><Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
- Name="ModeProfile_Packet"
+ Name="Packet"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
@@ -1425,35 +1421,8 @@ Mode != Mode.TR
 <PreCondition>FullTrackDescriptionAvailable()</PreCondition>
 </PreConditions>
 <Actions>
-<Action>UpdateMA ( MA_Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( MA_Packet ), ModeProfile_Packet =&gt; ModeProfile_Packet, NID_BG =&gt; NID_BG )</Action>
+<Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action>
 </Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Store Mode Profile"
->
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Mode profile available"
->
-<PreConditions>
-<PreCondition>ModeProfile_Packet != EMPTY</PreCondition>
-</PreConditions>
-<Actions>
-<Action>ModeProfile.ModeProfileReceived ( ModeProfile_Packet )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1481,11 +1450,7 @@ Mode != Mode.TR
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
- Name="MA_Packet"
->
-</Parameter><Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
- Name="ModeProfile_Packet"
+ Name="Packet"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
@@ -1519,34 +1484,9 @@ Mode != Mode.TR
 <PreCondition>AcceptMA()</PreCondition>
 </PreConditions>
 <Actions>
-<Action>UpdateMA ( MA_Packet =&gt; MA_Packet, ModeProfile_Packet =&gt; ModeProfile_Packet, NID_BG =&gt; NID_BG )</Action>
-<Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; MA_Packet.V_MAIN, resolution =&gt; 5.0 )</Action>
+<Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action>
+<Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action>
 </Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Store Mode Profile"
->
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Mode Profile available"
->
-<PreConditions>
-<PreCondition>ModeProfile_Packet != EMPTY</PreCondition>
-</PreConditions>
-<Actions>
-<Action>ModeProfile.ModeProfileReceived ( ModeProfile_Packet )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1570,7 +1510,7 @@ Mode != Mode.TR
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>MA_Packet.V_MAIN == 0</PreCondition>
+<PreCondition>Packet.V_MAIN == 0</PreCondition>
 <PreCondition>Infill.Data == EMPTY</PreCondition>
 </PreConditions>
 <Actions>
@@ -1603,11 +1543,7 @@ Mode != Mode.TR
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
- Name="MA_Packet"
->
-</Parameter><Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
- Name="ModeProfile_Packet"
+ Name="Packet"
 >
 </Parameter><Parameter
  Type="Messages.NID_BG"
@@ -1616,63 +1552,6 @@ Mode != Mode.TR
 </Parameter></Parameters>
 <Rules>
 <Rule
- Priority="Processing"
- Name="Remove previous mode profile"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Infill information"
->
-<ReqRef
- Id="3.12.4.3.1"
->
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( Infill.Data )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ) )</Action>
-</Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No infill"
->
-<ReqRef
- Id="3.12.4.3"
->
-</ReqRef>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>ModeProfile.Profile &lt;- []</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Update mode profile"
->
-<ReqRef
- Id="3.12.4.3"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update mode profile"
->
-<PreConditions>
-<PreCondition>ModeProfile_Packet != EMPTY</PreCondition>
-</PreConditions>
-<Actions>
-<Action>ModeProfile.ModeProfileReceived ( ModeProfile_Packet )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Store previous information"
@@ -1732,8 +1611,8 @@ Mode != Mode.TR
 <Actions>
 <Action>MA &lt;- MovementAuthority
 {
-    TargetSpeed =&gt; MessageTypes.SpeedResolution ( MA_Packet.V_LOA, 5.0 ),
-    TargetSpeedTimeOut =&gt; BaseTypes.Time ( MA_Packet.T_LOA )
+    TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
+    TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
 }</Action>
 </Actions>
 <SubRules>
@@ -1764,7 +1643,7 @@ Mode != Mode.TR
 <PreCondition>Kernel.Infill.Data != EMPTY</PreCondition>
 </PreConditions>
 <Actions>
-<Action>UpdateSectionsForInfill ( InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ), Packet =&gt; MA_Packet )</Action>
+<Action>UpdateSectionsForInfill ( InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ), Packet =&gt; Packet )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1804,10 +1683,10 @@ Mode != Mode.TR
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>MA_Packet.N_ITER != 0</PreCondition>
+<PreCondition>Packet.N_ITER != 0</PreCondition>
 </PreConditions>
 <Actions>
-<Action>MA.Sections &lt;- MAP MA_Packet.Sequence1 USING CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; MA_Packet.Q_SCALE )</Action>
+<Action>MA.Sections &lt;- MAP Packet.Sequence1 USING CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1815,7 +1694,7 @@ Mode != Mode.TR
  Name="SectionsNotAvailable"
 >
 <PreConditions>
-<PreCondition>MA_Packet.N_ITER == 0</PreCondition>
+<PreCondition>Packet.N_ITER == 0</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.Sections &lt;- EMPTY</Action>
@@ -1847,7 +1726,7 @@ Mode != Mode.TR
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>MA.EndSection.Length &lt;- MessageTypes.QScaleLength ( MA_Packet.L_ENDSECTION, MA_Packet.Q_SCALE )</Action>
+<Action>MA.EndSection.Length &lt;- MessageTypes.QScaleLength ( Packet.L_ENDSECTION, Packet.Q_SCALE )</Action>
 </Actions>
 <SubRules>
 <Rule
@@ -1876,13 +1755,13 @@ Mode != Mode.TR
 >
 </ReqRef>
 <PreConditions>
-<PreCondition>MA_Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition>
+<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.EndSectionTimeOut &lt;- SectionTimeOut
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; MA_Packet.D_ENDTIMERSTARTLOC, scale =&gt; MA_Packet.Q_SCALE ),
-    TimeOut =&gt; BaseTypes.Time ( MA_Packet.T_ENDTIMER )
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ENDTIMERSTARTLOC, scale =&gt; Packet.Q_SCALE ),
+    TimeOut =&gt; BaseTypes.Time ( Packet.T_ENDTIMER )
 }</Action>
 </Actions>
 </RuleCondition><RuleCondition
@@ -1891,7 +1770,7 @@ Mode != Mode.TR
  Name="EndSectionTimeOutNotAvailable"
 >
 <PreConditions>
-<PreCondition>MA_Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.No_End_section_timer_information</PreCondition>
+<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.No_End_section_timer_information</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.EndSectionTimeOut &lt;- EMPTY</Action>
@@ -1927,13 +1806,13 @@ Mode != Mode.TR
 >
 </ReqRef>
 <PreConditions>
-<PreCondition>MA_Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition>
+<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.TimeOut &lt;- SectionTimeOut
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; MA_Packet.D_SECTIONTIMERSTOPLOC, scale =&gt; MA_Packet.Q_SCALE ),
-    TimeOut =&gt; BaseTypes.Time ( MA_Packet.T_SECTIONTIMER )
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SECTIONTIMERSTOPLOC, scale =&gt; Packet.Q_SCALE ),
+    TimeOut =&gt; BaseTypes.Time ( Packet.T_SECTIONTIMER )
 }</Action>
 </Actions>
 </RuleCondition><RuleCondition
@@ -1942,7 +1821,7 @@ Mode != Mode.TR
  Name="TimeOutNotAvailable"
 >
 <PreConditions>
-<PreCondition>MA_Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition>
+<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.TimeOut &lt;- EMPTY</Action>
@@ -1987,13 +1866,13 @@ Mode != Mode.TR
 >
 </ReqRef>
 <PreConditions>
-<PreCondition>MA_Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition>
+<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.DangerPoint &lt;- DangerPoint
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; MA_Packet.D_DP, scale =&gt; MA_Packet.Q_SCALE ),
-    ReleaseSpeed =&gt; CreateReleaseSpeed ( MA_Packet.V_RELEASEDP )
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_DP, scale =&gt; Packet.Q_SCALE ),
+    ReleaseSpeed =&gt; CreateReleaseSpeed ( Packet.V_RELEASEDP )
 }</Action>
 </Actions>
 </RuleCondition><RuleCondition
@@ -2002,7 +1881,7 @@ Mode != Mode.TR
  Name="DangerPointNotAvailable"
 >
 <PreConditions>
-<PreCondition>MA_Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.No_danger_point_information</PreCondition>
+<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.No_danger_point_information</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.DangerPoint &lt;- EMPTY</Action>
@@ -2051,15 +1930,15 @@ Mode != Mode.TR
 </ReqRef>
 <Comment></Comment>
 <PreConditions>
-<PreCondition>MA_Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow</PreCondition>
+<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.Overlap &lt;- Overlap
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; MA_Packet.D_OL, scale =&gt; MA_Packet.Q_SCALE ),
-    ReleaseSpeed =&gt; CreateReleaseSpeed ( MA_Packet.V_RELEASEOL ),
-    TimerDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; MA_Packet.D_STARTOL, scale =&gt; MA_Packet.Q_SCALE ),
-    TimeOut =&gt; BaseTypes.Time ( MA_Packet.T_OL )
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_OL, scale =&gt; Packet.Q_SCALE ),
+    ReleaseSpeed =&gt; CreateReleaseSpeed ( Packet.V_RELEASEOL ),
+    TimerDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STARTOL, scale =&gt; Packet.Q_SCALE ),
+    TimeOut =&gt; BaseTypes.Time ( Packet.T_OL )
 }</Action>
 </Actions>
 </RuleCondition><RuleCondition
@@ -2068,7 +1947,7 @@ Mode != Mode.TR
  Name="OverlapNotAvailable"
 >
 <PreConditions>
-<PreCondition>MA_Packet.Q_OVERLAP == Messages.Q_OVERLAP.No_overlap_information</PreCondition>
+<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.No_overlap_information</PreCondition>
 </PreConditions>
 <Actions>
 <Action>MA.EndSection.Overlap &lt;- EMPTY</Action>

@@ -531,7 +531,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Add first profile"
+ Name="Add new profile"
 >
 <PreConditions>
 </PreConditions>
@@ -578,7 +578,6 @@ ON
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="AddNewProfile"
 >
 <ReqRef
@@ -651,7 +650,31 @@ ON
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Add new profile"
+ Name="Infill available"
+>
+<ReqRef
+ Id="3.6.2.3.1"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition>
+</PreConditions>
+<Actions>
+<Action>INSERT
+    ModeProfile
+    {
+        AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
+        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
+        Length =&gt; MessageTypes.QScaleLength ( length =&gt; L_MAMODE, scale =&gt; Q_SCALE ),
+        Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
+        Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
+        SupervisionQualifier =&gt; Q_MAMODE
+    }
+IN
+    Profile</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="No infill available"
 >
 <PreConditions>
 </PreConditions>
@@ -668,6 +691,54 @@ ON
     }
 IN
     Profile</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="ClearModeProfile"
+>
+<ReqRef
+ Id="3.12.4.3"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
+ Name="InfillPacket"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Clear previous Mode Profile"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Infill available"
+>
+<ReqRef
+ Id="3.12.4.3.1"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>InfillPacket != EMPTY</PreCondition>
+</PreConditions>
+<Actions>
+<Action>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No infill available"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>ModeProfile.Profile &lt;- []</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>

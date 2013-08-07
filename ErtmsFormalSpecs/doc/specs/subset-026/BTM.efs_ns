@@ -737,90 +737,12 @@ If the train direction is unknown, this function returns true only if the packet
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
 </PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Mode Profile"
->
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<ReqRef
- Id="5.7.1.3"
->
-</ReqRef>
-<ReqRef
- Id="7.4.1.1.36"
->
-</ReqRef>
-<ReqRef
- Id="5.19.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Mode Profile available"
->
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
-<Actions>
 <Action>Kernel.MA.MALvl1Received
 (
-    MA_Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
-    ModeProfile_Packet =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE,
+    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action>
 </Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="List of balises for SH area available"
->
-<ReqRef
- Id="5.7.1.3"
->
-</ReqRef>
-<ReqRef
- Id="7.4.1.1.19"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="List of balises for SH are available"
->
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Mode Profile not available"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>Kernel.MA.MALvl1Received
-(
-    MA_Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
-    ModeProfile_Packet =&gt; EMPTY,
-    NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="MA Lvl2or3 available"
@@ -845,90 +767,12 @@ If the train direction is unknown, this function returns true only if the packet
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
 </PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Mode Profile"
->
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<ReqRef
- Id="5.7.1.3"
->
-</ReqRef>
-<ReqRef
- Id="7.4.1.1.36"
->
-</ReqRef>
-<ReqRef
- Id="5.19.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Mode Profile available"
->
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
-<Actions>
 <Action>Kernel.MA.MALvl2or3Received
 (
-    MA_Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    ModeProfile_Packet =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE,
+    Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action>
 </Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="List of balises for SH area available"
->
-<ReqRef
- Id="5.7.1.3"
->
-</ReqRef>
-<ReqRef
- Id="7.4.1.1.19"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="List of balises for SH area available"
->
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Mode Profile not available"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>Kernel.MA.MALvl2or3Received 
-(
-    MA_Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    ModeProfile_Packet =&gt; EMPTY,
-    NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Repositioning information available"
@@ -1010,6 +854,24 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </PreConditions>
 <Actions>
 <Action>EURORADIO.TracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="List of balises for SH available"
+>
+<ReqRef
+ Id="7.4.1.1.19"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.1.3"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1164,6 +1026,32 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.AdhesionFactors.AdhesionFactorReceived ( Packet.TRACK_TO_TRAIN.ADHESION_FACTOR )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Mode Profile available"
+>
+<ReqRef
+ Id="7.4.1.1.36"
+>
+</ReqRef>
+<ReqRef
+ Id="5.7.1.3"
+>
+</ReqRef>
+<ReqRef
+ Id="5.19.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="3.7.1.1.b"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1496,6 +1384,73 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Actions>
 <Action>HandleUnlinkedBG(Message)</Action>
 </Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Clear mode profile if MA received"
+>
+<ReqRef
+ Id="3.12.4.3"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Clear mode profile if MA received"
+>
+<PreConditions>
+<PreCondition>Linking.ConsiderBG()</PreCondition>
+<PreCondition>THERE_IS_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) )</PreCondition>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Test infill availability"
+>
+<ReqRef
+ Id="3.12.4.3.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Infill available, before MA"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition>
+<PreCondition>Before
+(
+    ExpectedFirst=&gt; FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ),
+    ExpectedSecond=&gt; FIRST_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) ),
+    Collection=&gt; Message.Sequence1
+)</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; ( FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ) ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="Infill available, after MA"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="No infill available"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
