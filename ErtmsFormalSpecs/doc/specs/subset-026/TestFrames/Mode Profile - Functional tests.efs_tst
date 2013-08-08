@@ -25,10 +25,6 @@
  Id="3.12.4.1"
 >
 </ReqRef>
-<ReqRef
- Id="3.12.4.2"
->
-</ReqRef>
 <Steps>
 <Step
  IO="NA"
@@ -109,18 +105,7 @@
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.Shunting,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ] 
+                   Sequence1=&gt;[] 
                }
           }
       },
@@ -128,7 +113,6 @@
         {
             TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-
                  LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;12,
@@ -317,18 +301,7 @@
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ] 
+                   Sequence1=&gt;[] 
                 }
            }
                },
@@ -370,6 +343,11 @@
 <Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
 <Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
 </Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -388,7 +366,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Default.Mode.OS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -402,13 +383,13 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="ONLY MA received"
+ Name="MA without Mode Profile received"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
- Name="ONLY MA received"
+ Name="MA without Mode Profile received"
 >
 <ReqRef
  Id="3.12.4.3"
@@ -439,7 +420,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - MA + ModeProfile"
+ Name="Step2 - MA with ModeProfile"
 >
 <SubSteps>
 <SubStep
@@ -477,18 +458,7 @@
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.Shunting,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ] 
+                   Sequence1=&gt;[] 
              }
           }
                },
@@ -554,7 +524,9 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Available (Kernel.MA.ModeProfile.Profile)</Expectation></Expectations>
+>Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -563,7 +535,7 @@ Messages.EUROBALISE.SubStructure1
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - New MA"
+ Name="Step3 - New MA without Mode Profile"
 >
 <SubSteps>
 <SubStep
@@ -638,7 +610,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Available (Kernel.MA.ModeProfile.Profile)</Expectation></Expectations>
+>Kernel.MA.ModeProfile.Profile == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -652,13 +624,13 @@ Messages.EUROBALISE.SubStructure1
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="MA + ModeProfile received"
+ Name="MA with Mode Profile received"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
- Name="MA + ModeProfile received"
+ Name="MA  with ModeProfile received"
 >
 <ReqRef
  Id="3.12.4.3"
@@ -689,7 +661,7 @@ Messages.EUROBALISE.SubStructure1
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - MA + ModeProfile received"
+ Name="Step2 - MA with ModeProfile received"
 >
 <SubSteps>
 <SubStep
@@ -727,18 +699,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.Shunting,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ]
+                   Sequence1=&gt;[]
           }
             } 
                },
@@ -804,7 +765,9 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Available (Kernel.MA.ModeProfile.Profile)</Expectation></Expectations>
+>Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -813,7 +776,7 @@ Messages.EUROBALISE.SubStructure1
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - New MA + ModeProfile received"
+ Name="Step3 - New MA with ModeProfile received"
 >
 <SubSteps>
 <SubStep
@@ -844,25 +807,14 @@ Messages.EUROBALISE.SubStructure1
                    L_ACKMAMODE=&gt;700,
                    L_MAMODE=&gt;200,
                    L_PACKET=&gt;0,
-                   M_MAMODE=&gt;   Messages.M_MAMODE.Shunting,               
+                   M_MAMODE=&gt;   Messages.M_MAMODE.On_Sight,               
                    N_ITER=&gt;1,
                    NID_PACKET=&gt;80,
                    Q_DIR=&gt; Messages.Q_DIR.Nominal,
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.Shunting,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ] 
+                   Sequence1=&gt;[] 
             }
         }
                },
@@ -898,28 +850,6 @@ Messages.EUROBALISE.SubStructure1
                     V_RELEASEOL=&gt;0
                 }
             }
-         },
-           Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                               LIST_OF_BALISES_FOR_SH_AREA =&gt; Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message
-                  {
-                      NID_PACKET =&gt; 49,
-                      Q_DIR =&gt; Messages.Q_DIR.Nominal,
-                      L_PACKET =&gt; 0,
-                      N_ITER =&gt; 1,
-                      Sequence1 =&gt; 
-                              [
-                                 Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.SubStructure1
-                                  {
-                                        NID_BG=&gt; 2124,
-                                        Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
-                                        NID_C=&gt;140
-                                    }
-                              ]
-                   } 
-            }
          }
                 ]
 }</Action>
@@ -942,7 +872,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Available (Kernel.MA.ModeProfile.Profile)</Expectation></Expectations>
+>Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1048,18 +981,7 @@ Messages.EUROBALISE.SubStructure1
                    Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                    V_MAMODE=&gt;1,
-                   Sequence1=&gt;
-                     [
-                      Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.SubStructure1
-                      {
-                       D_MAMODE=&gt;0,
-                       L_ACKMAMODE=&gt;500,
-                       L_MAMODE=&gt;100,
-                       M_MAMODE=&gt;Messages.M_MAMODE.Limited_Supervision,
-                       Q_MAMODE=&gt;Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                       V_MAMODE=&gt;1 
-                       }
-                     ] 
+                   Sequence1=&gt; [] 
                 }
            }
                },
@@ -1101,6 +1023,11 @@ Messages.EUROBALISE.SubStructure1
 <Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
 <Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
 </Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1119,7 +1046,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->Kernel.Mode == Default.Mode.LS</Expectation></Expectations>
+>Kernel.Mode == Default.Mode.LS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
