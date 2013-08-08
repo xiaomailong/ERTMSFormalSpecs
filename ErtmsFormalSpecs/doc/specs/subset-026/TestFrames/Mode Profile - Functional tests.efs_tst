@@ -19,6 +19,7 @@
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="SH Mode Profile received"
 >
 <ReqRef
@@ -215,6 +216,7 @@
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="OS Mode Profile received"
 >
 <ReqRef
@@ -389,6 +391,7 @@
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="MA without Mode Profile received"
 >
 <ReqRef
@@ -525,6 +528,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1000"
 >Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -630,6 +634,7 @@ Messages.EUROBALISE.SubStructure1
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="MA  with ModeProfile received"
 >
 <ReqRef
@@ -766,6 +771,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1000"
 >Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -895,6 +901,7 @@ Messages.EUROBALISE.SubStructure1
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="LS Mode Profile received"
 >
 <ReqRef
