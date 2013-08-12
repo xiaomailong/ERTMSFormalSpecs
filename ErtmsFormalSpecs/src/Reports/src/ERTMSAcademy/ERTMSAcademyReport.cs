@@ -35,17 +35,24 @@ namespace Reports.ERTMSAcademy
         }
 
 
-        public void Fill(string path, string pattern)
+        public void Fill(string path, string title, string pattern)
         {
-            string[] lines = File.ReadAllLines(path);
-            string author = "", date = "", comment = "", stats = "";
-            bool addEntry = false;
+            string[] lines  = File.ReadAllLines(path);
+            string author   = "", date = "", comment = "", stats = "";
+            bool addEntry   = false;
+            bool titleAdded = false;
+
             foreach (string line in lines)
             {
                 if (line.StartsWith("Author")) /* Name of the author */
                 {
                     if (date != "" && comment != "" && stats != "")
                     {
+                        if (!titleAdded)
+                        {
+                            AddSubParagraph(title);
+                            titleAdded = true;
+                        }
                         AddTable(new string[] { "Added on " + date }, new int[] { 20, 120 });
                         AddRow("Author",     author );
                         AddRow("Comment",    comment);
@@ -85,6 +92,11 @@ namespace Reports.ERTMSAcademy
             /* Adding the last entry */
             if (date != "" && comment != "" && stats != "")
             {
+                if (!titleAdded)
+                {
+                    AddSubParagraph(title);
+                    titleAdded = true;
+                }
                 AddTable(new string[] { "Added on " + date }, new int[] { 20, 120 });
                 AddRow("Author",     author );
                 AddRow("Comment",    comment);

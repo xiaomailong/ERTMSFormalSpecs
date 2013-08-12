@@ -46,11 +46,9 @@ namespace Reports.ERTMSAcademy
 
             ERTMSAcademyReport report = new ERTMSAcademyReport(retVal);
 
-            report.AddSubParagraph("Implementation activity by " + UserName);
-            report.Fill("ERTMSAcademyReport.txt", "DEV");
+            report.Fill("ERTMSAcademyReport.txt", "Implementation activity by " + UserName, "EA_MODEL");
 
-            report.AddSubParagraph("Testing activity by " + UserName);
-            report.Fill("ERTMSAcademyReport.txt", "Added");
+            report.Fill("ERTMSAcademyReport.txt", "Testing activity by " + UserName, "EA_TEST");
 
             return retVal;
         }
