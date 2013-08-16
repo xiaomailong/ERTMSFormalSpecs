@@ -1060,5 +1060,268 @@ Messages.EUROBALISE.SubStructure1
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Beginning/End of ModeProfile relates to Max/Min SafeFrontEnd"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Name="Beginning/End of ModeProfile relates to Max/Min SafeFrontEnd"
+>
+<ReqRef
+ Id="3.12.4.5"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.4.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Level and PreviousMode received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - LS ModeProfile and MA received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
+{ 
+    Distance=&gt;30.0,
+    Length=&gt;200.0,
+    Mode=&gt;Default.Mode.ModeProfile.LS  
+}
+IN Kernel.MA.ModeProfile.Profile</Action>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt;Kernel.MA.EndSection
+{
+        EndSectionTimeOut =&gt; Kernel.MA.SectionTimeOut
+       {
+            TimeOut =&gt; 0.0,
+            Distance =&gt; 1000.0
+        },
+        TimeOut =&gt; Kernel.MA.SectionTimeOut
+        {
+            TimeOut =&gt; 10.0,
+            Distance =&gt; 1000.0
+        },
+        Length =&gt; 1000.0,
+        DangerPoint =&gt; Kernel.MA.DangerPoint
+        {
+            Distance =&gt;10.0,
+            ReleaseSpeed =&gt; 0.0
+        },
+        Overlap =&gt; Kernel.MA.Overlap
+      {
+            Distance =&gt; 0.0,
+            TimerDistance =&gt; 0.0,
+            ReleaseSpeed =&gt; 0.0,
+            TimeOut =&gt; 0.0
+        }
+    },
+    TargetSpeedTimeOut =&gt; 0.0,
+    ReferenceBG =&gt; 0,
+    ReferenceBGLocation =&gt; 0.0
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.SR</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Min
+) == -16.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Max
+) == 13.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Max SafeFrontEnd Before LS ModeProfile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode != Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Max
+) == 13.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step5 - Beginning of LS Mode Profile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 167.0 </Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Max
+) == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Max SafeFrontEnd After LS ModeProfile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 170.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Max
+) == 33.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step7 - Min SafeFrontEnd Before Exit LSModeProfile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 396.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Min
+) == 230.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - Min SafeFrontEnd After Exit LS ModeProfile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 397.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>Kernel.Mode != Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Min
+) == 231.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
