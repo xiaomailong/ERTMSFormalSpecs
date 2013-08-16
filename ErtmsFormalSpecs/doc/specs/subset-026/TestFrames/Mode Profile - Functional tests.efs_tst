@@ -1224,13 +1224,33 @@ Kernel.TrainPosition.FrontEndPosition(
 ) == 13.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ TranslationRequired="FALSE"
+ Name="Step5 - Beginning of LS Mode Profile"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 167.0 </Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1000"
+>Kernel.Mode == Default.Mode.LS
+AND 
+Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Max
+) == 30.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
  IO="NA"
  LevelIN="NA"
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step5 - Max SafeFrontEnd After LS ModeProfile"
+ Name="Step6 - Max SafeFrontEnd After LS ModeProfile"
 >
 <SubSteps>
 <SubStep
@@ -1256,7 +1276,7 @@ Kernel.TrainPosition.FrontEndPosition(
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step6 - Min SafeFrontEnd Before Exit LSModeProfile"
+ Name="Step7 - Min SafeFrontEnd Before Exit LSModeProfile"
 >
 <SubSteps>
 <SubStep
@@ -1282,7 +1302,7 @@ Kernel.TrainPosition.FrontEndPosition(
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step7 - Min SafeFrontEnd After Exit LS ModeProfile"
+ Name="Step8 - Min SafeFrontEnd After Exit LS ModeProfile"
 >
 <SubSteps>
 <SubStep
