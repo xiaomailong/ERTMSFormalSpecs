@@ -608,6 +608,10 @@ ON
  Id="7.5.1.118.2"
 >
 </ReqRef>
+<ReqRef
+ Id="3.12.4.2"
+>
+</ReqRef>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Length"
@@ -650,7 +654,54 @@ ON
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Infill available"
+ Name="Infill available, SH"
+>
+<ReqRef
+ Id="3.6.2.3.1"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition>
+<PreCondition>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition>
+</PreConditions>
+<Actions>
+<Action>INSERT
+    ModeProfile
+    {
+        AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
+        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
+        Length =&gt; BaseTypes.Length.NA,
+        Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
+        Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
+        SupervisionQualifier =&gt; Q_MAMODE
+    }
+IN
+    Profile</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="No infill available, SH"
+>
+<PreConditions>
+<PreCondition>M_MAMODE == Messages.M_MAMODE.Shunting</PreCondition>
+</PreConditions>
+<Actions>
+<Action>INSERT
+    ModeProfile
+    {
+        AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
+        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
+        Length =&gt; BaseTypes.Length.NA,
+        Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
+        Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
+        SupervisionQualifier =&gt; Q_MAMODE
+    }
+IN
+    Profile</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Infill available, LS or OS"
 >
 <ReqRef
  Id="3.6.2.3.1"
@@ -674,7 +725,7 @@ IN
     Profile</Action>
 </Actions>
 </RuleCondition><RuleCondition
- Name="No infill available"
+ Name="No infill available, LS or OS"
 >
 <PreConditions>
 </PreConditions>
