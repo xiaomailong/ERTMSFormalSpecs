@@ -317,9 +317,16 @@ AND
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Information available"
 >
-<Expression>0.0</Expression>
+<PreConditions>
+<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition>
+</PreConditions>
+<Expression>( FIRST_IN Linkings | X.NID_BG == NID_BG ).Distance</Expression>
+</Case><Case
+ Name="No information available"
+>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="LinkingReaction"
