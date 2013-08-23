@@ -1995,7 +1995,14 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->( FIRST_IN Kernel.Shunting.BaliseGroupsForShArea ).NID_BG == 2124</Expectation></Expectations>
+>Kernel.Shunting.BaliseGroupsForShArea ==
+[Kernel.BaliseGroup
+{
+NewCountry =&gt; Boolean.False,
+NID_C =&gt; 140,
+NID_BG =&gt; 2124
+}
+]</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2108,7 +2115,14 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->( FIRST_IN Kernel.Shunting.BaliseGroupsForShArea ).NID_BG == 2125</Expectation></Expectations>
+>Kernel.Shunting.BaliseGroupsForShArea ==
+[Kernel.BaliseGroup
+{
+NewCountry =&gt; Boolean.False,
+NID_C =&gt; 140,
+NID_BG =&gt; 2125
+}
+]</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
