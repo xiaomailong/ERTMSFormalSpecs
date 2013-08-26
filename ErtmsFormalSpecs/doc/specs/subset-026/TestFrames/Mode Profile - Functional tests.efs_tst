@@ -2126,5 +2126,269 @@ NID_BG =&gt; 1313
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="New MA by INFILL shall delete the current MP after the reference location of the INFILL"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="New MA by INFILL shall delete the current MP after the reference location of the INFILL"
+>
+<ReqRef
+ Id="3.12.4.3.1"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Mode OS + Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 BTM.LRBG + BTM.Linking"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>INSERT BTM.Linking.LinkingData 
+{
+    NID_BG =&gt; 2126,
+    Distance =&gt;700.0,
+    Orientation =&gt; Orientation.Nominal,
+    LocationAccuracy =&gt; 5.0
+}
+IN BTM.Linking.Linkings</Action>
+<Action>BTM.LRBG &lt;- 
+BTM.BaliseGroup {
+    NID=&gt;2124,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;
+        BTM.Position {
+            OverReadingAmountOdo=&gt;2.0,
+            Position=&gt;1000.0,
+            UnderReadingAmountOdo=&gt;2.0
+        }
+}</Action>
+<Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+{
+    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+{
+        TrainFrontEndPosition =&gt; Orientation.Nominal,
+        TrainOrientation =&gt; Orientation.Nominal,
+        TrainRunningDirection =&gt; Orientation.Nominal
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action>
+<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
+<Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
+{ 
+    Distance=&gt;100.0,
+    Length=&gt;1000.0,
+    Mode=&gt;Default.Mode.ModeProfile.OS
+}
+IN Kernel.MA.ModeProfile.Profile</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - BTM.Message with MA, MP and INFILL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [ 
+         Messages.EUROBALISE.SubStructure1
+            {
+              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                {
+                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                     {
+                          L_PACKET=&gt;10,
+                          NID_BG=&gt;2126,
+                          NID_C=&gt;140,
+                          NID_PACKET=&gt;136,
+                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                     }
+                 }
+             },
+     Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         },
+       Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;50,
+                   L_ACKMAMODE=&gt;10,
+                   L_MAMODE=&gt;500,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;   Messages.M_MAMODE.Limited_Supervision,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+             }
+          }
+               }
+    
+                ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Data check"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 600.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0
+ </Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>THERE_IS_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0
+ </Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
