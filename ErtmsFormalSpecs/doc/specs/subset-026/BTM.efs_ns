@@ -1617,6 +1617,14 @@ If all the messages of the current balise group have been received, calls Handle
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
 >
+<ReqRef
+ Id="7.5.1.71"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.71.0"
+>
+</ReqRef>
 <Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1627,7 +1635,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Comment>N_TOTAL is the number of balises - 1</Comment>
 <PreConditions>
 <PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition>
-<PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition>
+<PreCondition>FORALL_IN CurrentBaliseGroup |  ( X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT OR X.M_MCOUNT == 255 )</PreCondition>
 </PreConditions>
 <Actions>
 <Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>
