@@ -998,6 +998,10 @@
  Id="8.4.4.4.1.5"
 >
 </ReqRef>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1039,6 +1043,26 @@
 )</Action>
 </Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="LevelTransitionOrderReceived"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="LevelTransitionOrderReceived"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1057,6 +1081,10 @@
  Id="3.7.1.1.b"
 >
 </ReqRef>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1068,6 +1096,28 @@
 </PreConditions>
 <Actions>
 </Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="LevelTransitionOrderReceived"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="LevelTransitionOrderReceived"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1083,6 +1133,10 @@
 </ReqRef>
 <ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.1"
 >
 </ReqRef>
 <SubRules></SubRules>
@@ -1127,6 +1181,26 @@
 )</Action>
 </Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="LevelTransitionOrderReceived"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="LevelTransitionOrderReceived"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1144,6 +1218,10 @@
 </ReqRef>
 <ReqRef
  Id="3.7.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.1"
 >
 </ReqRef>
 <SubRules></SubRules>
@@ -1203,17 +1281,6 @@
 >
 </ReqRef>
 <SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="List of balises for SH area received"
->
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE ) ).MODE_PROFILE )</Action>
-</Actions>
-</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule

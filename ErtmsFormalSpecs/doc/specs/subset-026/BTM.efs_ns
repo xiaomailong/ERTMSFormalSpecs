@@ -1174,6 +1174,19 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Actions>
 <Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action>
 </Actions>
+</RuleCondition><RuleCondition
+ Name="Level Transition available"
+>
+<ReqRef
+ Id="7.4.1.1.13"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1544,6 +1557,7 @@ ON Message.Sequence1</Action>
  NeedsRequirement="FALSE"
  Name="ClearInfillInfo"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
