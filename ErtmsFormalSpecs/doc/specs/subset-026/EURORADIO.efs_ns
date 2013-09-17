@@ -992,6 +992,7 @@
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  Name="GeneralMessage"
 >
 <ReqRef
@@ -1045,6 +1046,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="LevelTransitionOrderReceived"
 >
 <ReqRef
@@ -1054,6 +1056,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="LevelTransitionOrderReceived"
 >
 <PreConditions>
@@ -1099,6 +1102,7 @@
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="LevelTransitionOrderReceived"
 >
 <ReqRef
@@ -1108,6 +1112,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="LevelTransitionOrderReceived"
 >
 <PreConditions>
@@ -1121,6 +1126,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  Name="MAWithShiftedLocationReference"
 >
 <ReqRef
@@ -1142,6 +1148,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MAWithShiftedLocationReference"
 >
@@ -1281,6 +1288,24 @@
 >
 </ReqRef>
 <SubRules></SubRules>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LevelTransitionOrderReceived"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LevelTransitionOrderReceived"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
