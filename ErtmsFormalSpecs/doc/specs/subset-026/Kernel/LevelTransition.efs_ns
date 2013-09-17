@@ -1,0 +1,170 @@
+<NameSpace
+ Name="LevelTransition"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Name="LevelTransition"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Internal"
+ Name="TRLevel"
+>
+<ReqRef
+ Id="7.5.1.67"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Name="Distance"
+>
+<ReqRef
+ Id="7.5.1.9"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Internal"
+ Name="AcknLength"
+>
+<ReqRef
+ Id="7.5.1.39"
+>
+</ReqRef>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="LevelTransition"
+ MaxSize="20"
+ Default="[]"
+ Name="LevelTransitions"
+>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Default.Level"
+ Name="ERTMS_to_EFS_Level"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.M_LEVELTR"
+ Name="LevelT"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Level 0"
+>
+<PreConditions>
+<PreCondition>LevelT== Messages.M_LEVELTR.Level_0</PreCondition>
+</PreConditions>
+<Expression>Default.Level.L0</Expression>
+</Case><Case
+ Name="Level 1"
+>
+<PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_1</PreCondition>
+</PreConditions>
+<Expression> Default.Level.L1</Expression>
+</Case><Case
+ Name="Level 2"
+>
+<PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_2</PreCondition>
+</PreConditions>
+<Expression> Default.Level.L2</Expression>
+</Case><Case
+ Name="Level 3"
+>
+<PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_3</PreCondition>
+</PreConditions>
+<Expression> Default.Level.L3</Expression>
+</Case><Case
+ Name="Level STM"
+>
+<PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition>
+</PreConditions>
+<Expression> Default.Level.LNTC</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Name="LTOReceived"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="ChangeLevel"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="NewLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT
+LevelTransition
+{
+    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_ACKLEVELTR, scale =&gt; Packet.Q_SCALE ),
+    Distance=&gt;MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
+    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; Packet.M_LEVELTR ) 
+}
+IN LevelTransitions</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="LevelTransitions"
+ DefaultValue=""
+ VariableMode="Internal"
+ Name="LevelTransitions"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<Comment>Level transition received from the track side</Comment>
+</Variable></Variables>
+</NameSpace>
