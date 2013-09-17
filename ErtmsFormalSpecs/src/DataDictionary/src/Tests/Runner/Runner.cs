@@ -402,6 +402,8 @@ namespace DataDictionary.Tests.Runner
                         }
                     }
                 }
+
+                EventTimeLine.GarbageCollect();
             }
             finally
             {

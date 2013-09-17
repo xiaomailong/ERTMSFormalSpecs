@@ -42,6 +42,12 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
+        /// Provides the maximum number of events that are stored in the time-line.
+        /// Expectations do not count in this number
+        /// </summary>
+        public int MaxNumberOfEvents { get; set; }
+
+        /// <summary>
         /// Keeps track of step activation
         /// </summary>
         private Dictionary<SubStep, SubStepActivated> subStepActivationCache = new Dictionary<SubStep, SubStepActivated>();
@@ -65,6 +71,7 @@ namespace DataDictionary.Tests.Runner.Events
         public EventTimeLine()
         {
             CurrentTime = 0;
+            MaxNumberOfEvents = 10000;
         }
 
         /// <summary>
@@ -77,25 +84,6 @@ namespace DataDictionary.Tests.Runner.Events
             modelEvent.TimeLine = this;
             modelEvents.Add(modelEvent);
             modelEvent.Apply();
-        }
-
-        /// <summary>
-        /// Provides all the expects in the time line
-        /// </summary>
-        /// <returns></returns>
-        public List<Expect> GetExpects()
-        {
-            List<Expect> retVal = new List<Expect>();
-
-            foreach (ModelEvent modelEvent in Events)
-            {
-                if (modelEvent is Expect)
-                {
-                    retVal.Add(modelEvent as Expect);
-                }
-            }
-
-            return retVal;
         }
 
         /// <summary>
@@ -373,5 +361,41 @@ namespace DataDictionary.Tests.Runner.Events
             return retVal;
         }
 
+        /// <summary>
+        /// Cleans up the time line by removing the events exceeding the maximum number of events in the time line, 
+        /// not counting the Expects.
+        /// </summary>
+        public void GarbageCollect()
+        {
+            int elementCount = Events.Count - MaxNumberOfEvents;
+            if (elementCount > 0)
+            {
+                // Builds a new list of events
+                List<ModelEvent> newEvents = new List<ModelEvent>();
+
+                foreach (ModelEvent modelEvent in Events)
+                {
+                    if (modelEvent is Expect)
+                    {
+                        // We keep expectations in the event list
+                        newEvents.Add(modelEvent);
+                    }
+                    else
+                    {
+                        // Keep only the last events in the event list
+                        if (elementCount > 0)
+                        {
+                            elementCount -= 1;
+                        }
+                        else
+                        {
+                            newEvents.Add(modelEvent);
+                        }
+                    }
+                }
+
+                Events = newEvents;
+            }
+        }
     }
 }
