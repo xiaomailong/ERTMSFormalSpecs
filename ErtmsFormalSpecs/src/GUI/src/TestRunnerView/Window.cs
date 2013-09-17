@@ -97,6 +97,10 @@ namespace GUI.TestRunnerView
         public Window(DataDictionary.EFSSystem efsSystem)
         {
             InitializeComponent();
+
+            commentsRichTextBox.AutoComplete = false;
+            messageRichTextBox.AutoComplete = false;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Text = "System test view";
             Visible = false;

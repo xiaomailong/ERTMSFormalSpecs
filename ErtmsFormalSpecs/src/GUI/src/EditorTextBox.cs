@@ -44,11 +44,18 @@ namespace GUI
         private EFSSystem EFSSystem { get { return Instance.EFSSystem; } }
 
         /// <summary>
+        /// Indicates that autocompletion is active for the text box
+        /// </summary>
+        public bool AutoComplete { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EditorTextBox()
         {
             InitializeComponent();
+
+            AutoComplete = true;
 
             EditionTextBox.AllowDrop = true;
             EditionTextBox.DragDrop += new DragEventHandler(Editor_DragDropHandler);
@@ -303,67 +310,72 @@ namespace GUI
 
         void Editor_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Control == true)
+            if (AutoComplete)
             {
-                switch (e.KeyCode)
+                if (e.Control == true)
                 {
-                    case Keys.Space:
-                        // Remove the space that has just been added
-                        EditionTextBox.Select(EditionTextBox.SelectionStart - 1, 1);
-                        EditionTextBox.SelectedText = "";
-                        DisplayComboBox();
-                        break;
+                    switch (e.KeyCode)
+                    {
+                        case Keys.Space:
+                            // Remove the space that has just been added
+                            EditionTextBox.Select(EditionTextBox.SelectionStart - 1, 1);
+                            EditionTextBox.SelectedText = "";
+                            DisplayComboBox();
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
 
         void Editor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch (e.KeyChar)
+            if (AutoComplete)
             {
-                case '.':
-                    EditionTextBox.SelectedText = e.KeyChar.ToString();
-                    e.Handled = true;
-                    DisplayComboBox();
-                    break;
+                switch (e.KeyChar)
+                {
+                    case '.':
+                        EditionTextBox.SelectedText = e.KeyChar.ToString();
+                        e.Handled = true;
+                        DisplayComboBox();
+                        break;
 
-                case '{':
-                    Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
-                    if (structureTypeExpression != null)
-                    {
-                        DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
-                        if (structure != null)
+                    case '{':
+                        Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
+                        if (structureTypeExpression != null)
                         {
-                            StringBuilder builder = new StringBuilder("{\n");
-                            createDefaultStructureValue(builder, structure, false);
-                            EditionTextBox.SelectedText = builder.ToString();
-                            e.Handled = true;
+                            DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
+                            if (structure != null)
+                            {
+                                StringBuilder builder = new StringBuilder("{\n");
+                                createDefaultStructureValue(builder, structure, false);
+                                EditionTextBox.SelectedText = builder.ToString();
+                                e.Handled = true;
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case '(':
-                    Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
-                    if (callableExpression != null)
-                    {
-                        DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
-                        if (callable != null)
+                    case '(':
+                        Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
+                        if (callableExpression != null)
                         {
-                            StringBuilder builder = new StringBuilder();
-                            createCallableParameters(builder, callable);
-                            EditionTextBox.SelectedText = builder.ToString();
-                            e.Handled = true;
+                            DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
+                            if (callable != null)
+                            {
+                                StringBuilder builder = new StringBuilder();
+                                createCallableParameters(builder, callable);
+                                EditionTextBox.SelectedText = builder.ToString();
+                                e.Handled = true;
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
-
         }
 
         private void ConfirmComboBoxSelection()

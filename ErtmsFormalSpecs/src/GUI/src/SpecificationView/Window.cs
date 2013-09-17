@@ -95,6 +95,10 @@ namespace GUI.SpecificationView
         public Window(DataDictionary.Dictionary dictionary)
         {
             InitializeComponent();
+
+            commentsRichTextBox.AutoComplete = false;
+            messagesRichTextBox.AutoComplete = false;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;

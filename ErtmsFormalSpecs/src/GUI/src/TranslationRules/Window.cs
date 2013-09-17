@@ -63,6 +63,9 @@ namespace GUI.TranslationRules
         {
             InitializeComponent();
 
+            commentRichTextBox.AutoComplete = false;
+            messageRichTextBox.AutoComplete = false;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             translationTreeView.Root = dictionary;
