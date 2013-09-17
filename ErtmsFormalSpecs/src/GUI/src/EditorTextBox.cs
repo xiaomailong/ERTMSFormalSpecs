@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Interpreter;
 using Utils;
+using DataDictionary.Types;
+using DataDictionary.Interpreter.ListOperators;
 namespace GUI
 {
     public partial class EditorTextBox : UserControl
@@ -133,7 +135,18 @@ namespace GUI
 
             while (element != null)
             {
+                bool type = false;
+
                 ISubDeclarator subDeclarator = element as ISubDeclarator;
+                if (subDeclarator == null)
+                {
+                    DataDictionary.Types.ITypedElement typedElement = element as DataDictionary.Types.ITypedElement;
+                    if (typedElement != null)
+                    {
+                        type = true;
+                        subDeclarator = typedElement.Type as ISubDeclarator;
+                    }
+                }
                 if (subDeclarator != null)
                 {
                     subDeclarator.InitDeclaredElements();
@@ -145,7 +158,7 @@ namespace GUI
                             {
                                 foreach (Utils.INamable namable in subDeclarator.DeclaredElements[subElem])
                                 {
-                                    if (namable.FullName.EndsWith(enclosingName + "." + subElem))
+                                    if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type)
                                     {
                                         retVal.Add(subElem);
                                         break;
@@ -197,6 +210,9 @@ namespace GUI
         {
             List<string> retVal = new List<string>();
 
+            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
+            compiler.Compile();
+
             // Also use the default namespace
             List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
             string currentText = CurrentPrefix().Trim();
@@ -206,25 +222,71 @@ namespace GUI
             if (lastDot > 0)
             {
                 enclosingName = currentText.Substring(0, lastDot);
-                Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches);
-                if (expression != null)
+
+                if (currentText.StartsWith("X."))
                 {
-                    if (expression.Ref != null)
+                    // Computes the location of the IN keyword
+                    int start = EditionTextBox.SelectionStart;
+                    bool found = false;
+                    while (start > 1 && !found)
                     {
-                        possibleInstances.Add(expression.Ref);
+                        found = EditionTextBox.Text[start - 1] == 'I' && EditionTextBox.Text[start] == 'N';
+                        start -= 1;
                     }
-                    else
+
+                    if (found)
                     {
-                        foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
+                        start += 2;
+                        while (start < EditionTextBox.SelectionStart && Char.IsSeparator(EditionTextBox.Text[start]))
                         {
-                            possibleInstances.Add(element.Value);
+                            start += 1;
+                        }
+
+                        // Computes the location of the end of the list identification
+                        found = false;
+                        int len = 0;
+                        while (start + len < EditionTextBox.SelectionStart && !found)
+                        {
+                            found = Char.IsSeparator(EditionTextBox.Text[start + len]);
+                            len += 1;
+                        }
+
+
+                        // Create a fake foreach expression to hold the list expression and the current expression
+                        Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
+                        Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
+                        Expression foreachExpression = new ForAllExpression(Instance, listExpression, currentExpression);
+                        foreachExpression.SemanticAnalysis();
+                        if (currentExpression.Ref != null)
+                        {
+                            possibleInstances.Add(currentExpression.Ref);
                         }
                     }
                 }
                 else
                 {
-                    possibleInstances.Add(Instance);
+                    Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches);
+
+                    if (expression != null)
+                    {
+                        if (expression.Ref != null)
+                        {
+                            possibleInstances.Add(expression.Ref);
+                        }
+                        else
+                        {
+                            foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
+                            {
+                                possibleInstances.Add(element.Value);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        possibleInstances.Add(Instance);
+                    }
                 }
+
                 prefix = currentText.Substring(lastDot + 1);
             }
             else

@@ -1013,10 +1013,11 @@ namespace DataDictionary.Interpreter
         /// Provides the parse tree according to the expression provided
         /// </summary>
         /// <param name="root">the element for which this expression should be parsed</param>
-        /// <param name="expression"></param>
+        /// <param name="expression">the expression to parse</param>
         /// <param name="filter">The filter to apply when performing the semantic analysis</param>
+        /// <param name="doSemanticalAnalysis">true indicates that the semantical analysis should be performed</param>
         /// <returns></returns>
-        public Expression Expression(ModelElement root, string expression, Filter.AcceptableChoice filter = null)
+        public Expression Expression(ModelElement root, string expression, Filter.AcceptableChoice filter = null, bool doSemanticalAnalysis = true)
         {
             Expression retVal = null;
 
@@ -1040,7 +1041,7 @@ namespace DataDictionary.Interpreter
                         Root.AddError("End of expression expected, but found EOF");
                     }
                 }
-                if (retVal != null)
+                if (retVal != null && doSemanticalAnalysis)
                 {
                     if (filter == null)
                     {
