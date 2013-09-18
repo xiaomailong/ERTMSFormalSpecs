@@ -226,7 +226,7 @@ namespace DataDictionary.Tests.Runner
                 // Setup the step
                 if (SubSequence != null)
                 {
-                    Expression expression = EFSSystem.Parser.Expression(SubSequence.Frame, SubSequence.Frame.getCycleDuration());
+                    Expression expression = SubSequence.Frame.CycleDuration;
                     Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
                     Step = Functions.Function.getDoubleValue(value);
                 }

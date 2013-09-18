@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
+using System;
 
 namespace DataDictionary.Tests
 {
@@ -133,7 +134,15 @@ namespace DataDictionary.Tests
             {
                 if (__cycleTime == null)
                 {
-                    __cycleTime = EFSSystem.Parser.Expression(this, getCycleDuration());
+                    try
+                    {
+                        __cycleTime = EFSSystem.Parser.Expression(this, getCycleDuration());
+                    }
+                    catch (Exception e)
+                    {
+                        AddError("Invalid cycle type, 100 ms assumed");
+                        __cycleTime = EFSSystem.Parser.Expression(this, "100");
+                    }
                 }
 
                 return __cycleTime;
