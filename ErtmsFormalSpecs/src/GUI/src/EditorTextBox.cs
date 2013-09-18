@@ -534,7 +534,19 @@ namespace GUI
                     }
                     else
                     {
-                        EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, EnclosingForm.Selected);
+                        DataDictionaryView.StructureTreeNode structureTreeNode = SourceNode as DataDictionaryView.StructureTreeNode;
+                        if (structureTreeNode != null)
+                        {
+                            StringBuilder text = new StringBuilder();
+
+                            DataDictionary.Types.Structure structure = structureTreeNode.Item;
+                            createDefaultStructureValue(text, structure);
+                            EditionTextBox.SelectedText = text.ToString();
+                        }
+                        else
+                        {
+                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, EnclosingForm.Selected);
+                        }
                     }
                 }
             }
