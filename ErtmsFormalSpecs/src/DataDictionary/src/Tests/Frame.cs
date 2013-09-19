@@ -152,5 +152,20 @@ namespace DataDictionary.Tests
                 __cycleTime = null;
             }
         }
+
+        /// <summary>
+        /// Creates the frame and sets its default values
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static Frame createDefault(string name)
+        {
+            Frame retVal = (Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+            retVal.Name = name;
+            retVal.setCycleDuration("0.1");
+            retVal.appendSubSequences(SubSequence.createDefault("Sequence1"));
+
+            return retVal;
+        }
     }
 }

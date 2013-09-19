@@ -136,5 +136,20 @@ namespace DataDictionary.Tests
             }
         }
 
+
+        /// <summary>
+        /// Creates a sub sequence and sets its default value
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static SubSequence createDefault(string name)
+        {
+            SubSequence retVal = (SubSequence)DataDictionary.Generated.acceptor.getFactory().createSubSequence();
+            retVal.Name = name;
+
+            retVal.appendTestCases(TestCase.createDefault("Test case1"));
+
+            return retVal;
+        }
     }
 }

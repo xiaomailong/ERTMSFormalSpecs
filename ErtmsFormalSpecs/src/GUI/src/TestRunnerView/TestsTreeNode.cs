@@ -65,8 +65,7 @@ namespace GUI.TestRunnerView
         {
             FrameTreeNode retVal;
 
-            DataDictionary.Tests.Frame frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
-            frame.Name = name;
+            DataDictionary.Tests.Frame frame = DataDictionary.Tests.Frame.createDefault(name);
             Item.appendTests(frame);
 
             retVal = new FrameTreeNode(frame);

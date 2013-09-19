@@ -198,5 +198,20 @@ namespace DataDictionary.Tests
         {
             allMessages().Add(message);
         }
+
+        /// <summary>
+        /// Creates a step and sets its default values
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static Step createDefault(string name)
+        {
+            Step retVal = (Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+            retVal.Name = name;
+
+            retVal.appendSubSteps(SubStep.createDefault("SubStep1"));
+
+            return retVal;
+        }
     }
 }

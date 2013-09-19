@@ -132,9 +132,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.SubSequence subSequence = (DataDictionary.Tests.SubSequence)DataDictionary.Generated.acceptor.getFactory().createSubSequence();
-            subSequence.Name = "Sequence" + (GetNodeCount(false) + 1);
-            createSubSequence(subSequence);
+            createSubSequence(DataDictionary.Tests.SubSequence.createDefault("Sequence" + (GetNodeCount(false) + 1)));
         }
 
         private void ClearAll()

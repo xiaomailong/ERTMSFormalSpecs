@@ -118,9 +118,9 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.TestCase testCase = (DataDictionary.Tests.TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+            DataDictionary.Tests.TestCase testCase = DataDictionary.Tests.TestCase.createDefault("Test case" + (Item.TestCases.Count + 1));
             testCase.Enclosing = Item;
-            testCase.Name = "Test case" + (Item.TestCases.Count + 1);
+
             createTestCase(testCase);
         }
 
