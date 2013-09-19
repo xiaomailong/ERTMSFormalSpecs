@@ -5,6 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="LevelTransition"
 >
 <ReqRef
@@ -15,10 +16,15 @@
  Id="7.4.2.9.1"
 >
 </ReqRef>
+<ReqRef
+ Id="5.10.1.2"
+>
+</ReqRef>
 <StructureElement
  TypeName="Default.Level"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="TRLevel"
 >
 <ReqRef
@@ -26,9 +32,33 @@
 >
 </ReqRef>
 </StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="AcknLength"
+>
+<ReqRef
+ Id="7.5.1.39"
+>
+</ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="LevelTransitionOrder"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
  Name="Distance"
 >
 <ReqRef
@@ -36,10 +66,11 @@
 >
 </ReqRef>
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Length"
+ TypeName="LTs"
  Default=""
  Mode="Internal"
- Name="AcknLength"
+ Implemented="TRUE"
+ Name="LevelandLength"
 >
 <ReqRef
  Id="7.5.1.39"
@@ -51,8 +82,9 @@
  TypeName="LevelTransition"
  MaxSize="20"
  Default="[]"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="LevelTransitions"
+ Name="LTs"
 >
 <ReqRef
  Id="7.4.2.9.1"
@@ -62,6 +94,7 @@
 <Functions>
 <Function
  Type="Default.Level"
+ Implemented="TRUE"
  Name="ERTMS_to_EFS_Level"
 >
 <ReqRef
@@ -114,6 +147,7 @@
 </Function></Functions>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  Name="LTOReceived"
 >
 <ReqRef
@@ -122,6 +156,19 @@
 </ReqRef>
 <ReqRef
  Id="7.4.2.9.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.2"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.1"
 >
 </ReqRef>
 <Parameters>
@@ -133,11 +180,93 @@
 <Rules>
 <Rule
  Priority="Processing"
- Name="ChangeLevel"
+ Implemented="TRUE"
+ Name="LTOReceived"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ Name="NewLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>AddNewLTO 
+(
+          L_ACKLEVELTR =&gt; Packet.L_ACKLEVELTR,
+          M_LEVELTR =&gt; Packet.M_LEVELTR,  
+          Q_SCALE =&gt; Packet.Q_SCALE
+)</Action>
+<Action>LevelTransitionOrders.Distance &lt;- MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ) </Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="NextLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>APPLY
+    AddNewLTO
+    (
+        L_ACKLEVELTR =&gt; X.L_ACKLEVELTR,
+        M_LEVELTR =&gt; X.M_LEVELTR,
+        Q_SCALE =&gt; Packet.Q_SCALE
+    )
+ON
+    Packet.Sequence1</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="AddNewLTO"
+>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.39"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.67"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Length"
+ Name="L_ACKLEVELTR"
+>
+</Parameter><Parameter
+ Type="Messages.M_LEVELTR"
+ Name="M_LEVELTR"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Q_SCALE"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="AddNewLTO"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
  Name="NewLevelTransition"
 >
 <PreConditions>
@@ -146,30 +275,33 @@
 <Action>INSERT
 LevelTransition
 {
-    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_ACKLEVELTR, scale =&gt; Packet.Q_SCALE ),
-    Distance=&gt;MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
-    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; Packet.M_LEVELTR ) 
+    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
+    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) 
 }
-IN LevelTransitions</Action>
+IN  LevelTransitionOrders.LevelandLength</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="LevelTransitions"
- DefaultValue=""
+ Type="LevelTransitionOrder"
  VariableMode="Internal"
- Name="LevelTransitions"
+ Implemented="TRUE"
+ Name="LevelTransitionOrders"
 >
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
 <ReqRef
  Id="5.10.1.1"
 >
 </ReqRef>
 <ReqRef
- Id="7.4.2.9.1"
+ Id="5.10.2.2.1"
 >
 </ReqRef>
-<Comment>Level transition received from the track side</Comment>
+<Comment>Level transition order  received from the track side</Comment>
 </Variable></Variables>
 </NameSpace>
