@@ -210,97 +210,103 @@ namespace GUI
         {
             List<string> retVal = new List<string>();
 
-            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
-            compiler.Compile();
-
-            // Also use the default namespace
-            List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
-            string currentText = CurrentPrefix().Trim();
-
-            string enclosingName;
-            int lastDot = currentText.LastIndexOf('.');
-            if (lastDot > 0)
+            try
             {
-                enclosingName = currentText.Substring(0, lastDot);
+                DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
+                compiler.Compile();
 
-                if (currentText.StartsWith("X."))
+                // Also use the default namespace
+                List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
+                string currentText = CurrentPrefix().Trim();
+
+                string enclosingName;
+                int lastDot = currentText.LastIndexOf('.');
+                if (lastDot > 0)
                 {
-                    // Computes the location of the IN keyword
-                    int start = EditionTextBox.SelectionStart;
-                    bool found = false;
-                    while (start > 1 && !found)
+                    enclosingName = currentText.Substring(0, lastDot);
+
+                    if (currentText.StartsWith("X."))
                     {
-                        found = EditionTextBox.Text[start - 1] == 'I' && EditionTextBox.Text[start] == 'N';
-                        start -= 1;
-                    }
-
-                    if (found)
-                    {
-                        start += 2;
-                        while (start < EditionTextBox.SelectionStart && Char.IsSeparator(EditionTextBox.Text[start]))
+                        // Computes the location of the IN keyword
+                        int start = EditionTextBox.SelectionStart;
+                        bool found = false;
+                        while (start > 1 && !found)
                         {
-                            start += 1;
+                            found = EditionTextBox.Text[start - 1] == 'I' && EditionTextBox.Text[start] == 'N';
+                            start -= 1;
                         }
 
-                        // Computes the location of the end of the list identification
-                        found = false;
-                        int len = 0;
-                        while (start + len < EditionTextBox.SelectionStart && !found)
+                        if (found)
                         {
-                            found = Char.IsSeparator(EditionTextBox.Text[start + len]);
-                            len += 1;
-                        }
-
-
-                        // Create a fake foreach expression to hold the list expression and the current expression
-                        Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
-                        Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
-                        Expression foreachExpression = new ForAllExpression(Instance, listExpression, currentExpression);
-                        foreachExpression.SemanticAnalysis();
-                        if (currentExpression.Ref != null)
-                        {
-                            possibleInstances.Add(currentExpression.Ref);
-                        }
-                    }
-                }
-                else
-                {
-                    Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches);
-
-                    if (expression != null)
-                    {
-                        if (expression.Ref != null)
-                        {
-                            possibleInstances.Add(expression.Ref);
-                        }
-                        else
-                        {
-                            foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
+                            start += 2;
+                            while (start < EditionTextBox.SelectionStart && Char.IsSeparator(EditionTextBox.Text[start]))
                             {
-                                possibleInstances.Add(element.Value);
+                                start += 1;
+                            }
+
+                            // Computes the location of the end of the list identification
+                            found = false;
+                            int len = 0;
+                            while (start + len < EditionTextBox.SelectionStart && !found)
+                            {
+                                found = Char.IsSeparator(EditionTextBox.Text[start + len]);
+                                len += 1;
+                            }
+
+
+                            // Create a fake foreach expression to hold the list expression and the current expression
+                            Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
+                            Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
+                            Expression foreachExpression = new ForAllExpression(Instance, listExpression, currentExpression);
+                            foreachExpression.SemanticAnalysis();
+                            if (currentExpression.Ref != null)
+                            {
+                                possibleInstances.Add(currentExpression.Ref);
                             }
                         }
                     }
                     else
                     {
-                        possibleInstances.Add(Instance);
+                        Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches);
+
+                        if (expression != null)
+                        {
+                            if (expression.Ref != null)
+                            {
+                                possibleInstances.Add(expression.Ref);
+                            }
+                            else
+                            {
+                                foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
+                                {
+                                    possibleInstances.Add(element.Value);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            possibleInstances.Add(Instance);
+                        }
                     }
+
+                    prefix = currentText.Substring(lastDot + 1);
+                }
+                else
+                {
+                    possibleInstances.Add(Instance);
+                    enclosingName = null;
+                    prefix = currentText;
                 }
 
-                prefix = currentText.Substring(lastDot + 1);
+                foreach (Utils.INamable namable in possibleInstances)
+                {
+                    retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
+                }
             }
-            else
+            catch (Exception)
             {
-                possibleInstances.Add(Instance);
-                enclosingName = null;
-                prefix = currentText;
+                prefix = "";
             }
-
-            foreach (Utils.INamable namable in possibleInstances)
-            {
-                retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
-            }
-
 
             retVal.Sort();
             return retVal;
@@ -394,49 +400,55 @@ namespace GUI
 
         void Editor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (AutoComplete)
+            try
             {
-                switch (e.KeyChar)
+                if (AutoComplete)
                 {
-                    case '.':
-                        EditionTextBox.SelectedText = e.KeyChar.ToString();
-                        e.Handled = true;
-                        DisplayComboBox();
-                        break;
+                    switch (e.KeyChar)
+                    {
+                        case '.':
+                            EditionTextBox.SelectedText = e.KeyChar.ToString();
+                            e.Handled = true;
+                            DisplayComboBox();
+                            break;
 
-                    case '{':
-                        Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
-                        if (structureTypeExpression != null)
-                        {
-                            DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
-                            if (structure != null)
+                        case '{':
+                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
+                            if (structureTypeExpression != null)
                             {
-                                StringBuilder builder = new StringBuilder("{\n");
-                                createDefaultStructureValue(builder, structure, false);
-                                EditionTextBox.SelectedText = builder.ToString();
-                                e.Handled = true;
+                                DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
+                                if (structure != null)
+                                {
+                                    StringBuilder builder = new StringBuilder("{\n");
+                                    createDefaultStructureValue(builder, structure, false);
+                                    EditionTextBox.SelectedText = builder.ToString();
+                                    e.Handled = true;
+                                }
                             }
-                        }
-                        break;
+                            break;
 
-                    case '(':
-                        Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
-                        if (callableExpression != null)
-                        {
-                            DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
-                            if (callable != null)
+                        case '(':
+                            Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
+                            if (callableExpression != null)
                             {
-                                StringBuilder builder = new StringBuilder();
-                                createCallableParameters(builder, callable);
-                                EditionTextBox.SelectedText = builder.ToString();
-                                e.Handled = true;
+                                DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
+                                if (callable != null)
+                                {
+                                    StringBuilder builder = new StringBuilder();
+                                    createCallableParameters(builder, callable);
+                                    EditionTextBox.SelectedText = builder.ToString();
+                                    e.Handled = true;
+                                }
                             }
-                        }
-                        break;
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
+            }
+            catch (Exception)
+            {
             }
         }
 
