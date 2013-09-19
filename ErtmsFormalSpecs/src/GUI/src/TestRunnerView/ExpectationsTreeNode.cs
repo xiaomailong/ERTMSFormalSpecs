@@ -75,8 +75,6 @@ namespace GUI.TestRunnerView
         {
             DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
             expectation.Name = "<Expectation" + (GetNodeCount(false)) + ">";
-            expectation.Blocking = true;
-            expectation.DeadLine = 1000;
             addExpectation(expectation);
         }
 
