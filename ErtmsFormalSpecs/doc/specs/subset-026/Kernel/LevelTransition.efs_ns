@@ -282,6 +282,33 @@ IN  LevelTransitionOrders.LevelandLength</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="LevelTransitionAnnouncement"
+>
+<ReqRef
+ Id="5.10.1.3"
+>
+</ReqRef>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LevelTransitionAnnouncement"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LevelTransitionAnnouncement"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
