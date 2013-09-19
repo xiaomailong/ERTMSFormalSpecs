@@ -23,6 +23,11 @@ namespace DataDictionary.Rules
     public class Change
     {
         /// <summary>
+        /// The Logger
+        /// </summary>
+        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
         /// Indicates whether the change has already been applied
         /// </summary>
         public bool Applied { get; private set; }
@@ -63,6 +68,7 @@ namespace DataDictionary.Rules
         {
             if (!Applied)
             {
+                Log.Info(Variable.FullName + "<-" + NewValue.LiteralName);
                 Variable.Value = NewValue;
                 Applied = true;
             }

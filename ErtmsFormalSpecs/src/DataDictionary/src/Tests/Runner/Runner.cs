@@ -25,6 +25,11 @@ namespace DataDictionary.Tests.Runner
     public class Runner
     {
         /// <summary>
+        /// The Logger
+        /// </summary>
+        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
         /// The event time line for this runner
         /// </summary>
         public Events.EventTimeLine EventTimeLine { get; private set; }
@@ -348,6 +353,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
+                Log.Info("New cycle");
                 DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
 
                 LastActivationTime = Time;
@@ -356,6 +362,7 @@ namespace DataDictionary.Tests.Runner
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
+                    Log.Info("Priority=" + priority);
                     // Clears the cache of functions
                     FunctionCacheCleaner.ClearCaches();
 
@@ -537,6 +544,7 @@ namespace DataDictionary.Tests.Runner
         {
             foreach (Activation activation in activations)
             {
+                Log.Info("Activating " + activation.RuleCondition.FullName);
                 if (activation.RuleCondition.Actions.Count > 0)
                 {
                     // Register the fact that a rule has been triggered
