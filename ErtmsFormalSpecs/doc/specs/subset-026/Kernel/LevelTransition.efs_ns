@@ -181,7 +181,7 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LTOReceived"
+ Name="NewLevelTransition"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -192,15 +192,20 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>AddNewLTO 
-(
-          L_ACKLEVELTR =&gt; Packet.L_ACKLEVELTR,
-          M_LEVELTR =&gt; Packet.M_LEVELTR,  
-          Q_SCALE =&gt; Packet.Q_SCALE
-)</Action>
-<Action>LevelTransitionOrders.Distance &lt;- MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ) </Action>
+<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
+{
+  Distance =&gt; EMPTY,
+  LevelandLength =&gt; [EMPTY, EMPTY]
+}</Action>
 </Actions>
-</RuleCondition><RuleCondition
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="NextLevelTransition"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
  Implemented="TRUE"
  Name="NextLevelTransition"
 >
@@ -225,10 +230,6 @@ ON
 >
 <ReqRef
  Id="7.4.2.9.1"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
 >
 </ReqRef>
 <ReqRef
@@ -278,7 +279,7 @@ LevelTransition
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
     TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) 
 }
-IN  LevelTransitionOrders.LevelandLength</Action>
+IN  LevelTransitionOrder.LevelandLength</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -313,9 +314,10 @@ IN  LevelTransitionOrders.LevelandLength</Action>
 <Variables>
 <Variable
  Type="LevelTransitionOrder"
+ DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
- Name="LevelTransitionOrders"
+ Name="LevelTransitionOrder"
 >
 <ReqRef
  Id="7.4.2.9.1"
