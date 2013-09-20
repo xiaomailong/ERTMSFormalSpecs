@@ -185,7 +185,7 @@ namespace Reports.Tests
             AddSubParagraph("Sub sequence " + aSubSequence.Name);
 
             HashSet<RuleCondition> rules = new HashSet<RuleCondition>();
-            aSubSequence.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(aSubSequence);
+            aSubSequence.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(aSubSequence, false);
             foreach (TestCase testCase in aSubSequence.TestCases)
             {
                 // each test case will calculate the list of rules it activate

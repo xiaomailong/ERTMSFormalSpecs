@@ -64,11 +64,14 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Applies the change if it has not yet been applied
         /// </summary>
-        public void Apply()
+        public void Apply(bool log)
         {
             if (!Applied)
             {
-                Log.Info(Variable.FullName + "<-" + NewValue.LiteralName);
+                if (log)
+                {
+                    Log.Info(Variable.FullName + "<-" + NewValue.LiteralName);
+                }
                 Variable.Value = NewValue;
                 Applied = true;
             }
@@ -110,12 +113,12 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="change">The change to add</param>
         /// <param name="apply">Indicates whether the change should be applied immediately</param>
-        public void Add(Change change, bool apply)
+        public void Add(Change change, bool apply, bool log)
         {
             Changes.Add(change);
             if (apply)
             {
-                change.Apply();
+                change.Apply(log);
             }
         }
 
@@ -137,11 +140,11 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Apply all changes
         /// </summary>
-        public void Apply()
+        public void Apply(bool log)
         {
             foreach (DataDictionary.Rules.Change change in Changes)
             {
-                change.Apply();
+                change.Apply(log);
             }
         }
 

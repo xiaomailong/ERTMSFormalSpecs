@@ -59,7 +59,7 @@ namespace EFSTester
                         foreach (DataDictionary.Tests.SubSequence subSequence in frame.SubSequences)
                         {
                             Console.Out.WriteLine("Executing sub sequence " + subSequence.FullName);
-                            DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence);
+                            DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false);
                             runner.RunUntilStep(null);
 
                             bool failed = false;

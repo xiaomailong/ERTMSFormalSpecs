@@ -81,7 +81,7 @@ namespace GUI.TestRunnerView
                 {
                     if (subSequence != null)
                     {
-                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence);
+                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false);
                         break;
                     }
                 }
@@ -322,7 +322,7 @@ namespace GUI.TestRunnerView
                     DataDictionary.Tests.SubSequence subSequence = Frame.findSubSequence(subSequenceSelectorComboBox.Text);
                     if (subSequence != null)
                     {
-                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence);
+                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false);
                     }
                 }
             }

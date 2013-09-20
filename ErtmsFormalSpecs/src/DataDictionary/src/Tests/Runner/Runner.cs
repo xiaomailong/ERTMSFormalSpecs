@@ -35,6 +35,11 @@ namespace DataDictionary.Tests.Runner
         public Events.EventTimeLine EventTimeLine { get; private set; }
 
         /// <summary>
+        /// Indicates whether events should be logged using log4net
+        /// </summary>
+        public bool LogEvents { get; set; }
+
+        /// <summary>
         /// The data dictionary
         /// </summary>
         public virtual EFSSystem EFSSystem
@@ -143,11 +148,13 @@ namespace DataDictionary.Tests.Runner
         /// Constructor
         /// </summary>
         /// <param name="subSequence"></param>
-        public Runner(SubSequence subSequence)
+        /// <param name="logEvents">Indicates whether events should be logged</param>
+        public Runner(SubSequence subSequence, bool logEvents = true)
         {
             EventTimeLine = new Events.EventTimeLine();
             SubSequence = subSequence;
             EFSSystem.Runner = this;
+            LogEvents = logEvents;
 
             // Compile everything
             Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
@@ -353,7 +360,10 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                Log.Info("New cycle");
+                if (LogEvents)
+                {
+                    Log.Info("New cycle");
+                }
                 DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
 
                 LastActivationTime = Time;
@@ -362,7 +372,10 @@ namespace DataDictionary.Tests.Runner
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
-                    Log.Info("Priority=" + priority);
+                    if (LogEvents)
+                    {
+                        Log.Info("Priority=" + priority);
+                    }
                     // Clears the cache of functions
                     FunctionCacheCleaner.ClearCaches();
 
@@ -544,12 +557,15 @@ namespace DataDictionary.Tests.Runner
         {
             foreach (Activation activation in activations)
             {
-                Log.Info("Activating " + activation.RuleCondition.FullName);
+                if (LogEvents)
+                {
+                    Log.Info("Activating " + activation.RuleCondition.FullName);
+                }
                 if (activation.RuleCondition.Actions.Count > 0)
                 {
                     // Register the fact that a rule has been triggered
                     Events.RuleFired ruleFired = new Events.RuleFired(activation.RuleCondition);
-                    EventTimeLine.AddModelEvent(ruleFired);
+                    EventTimeLine.AddModelEvent(ruleFired, LogEvents);
 
                     // Registers all model updates due to this rule triggering
                     foreach (Rules.Action action in activation.RuleCondition.Actions)
@@ -557,7 +573,7 @@ namespace DataDictionary.Tests.Runner
                         if (action.Statement != null)
                         {
                             Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance);
-                            EventTimeLine.AddModelEvent(variableUpdate);
+                            EventTimeLine.AddModelEvent(variableUpdate, LogEvents);
                             ruleFired.AddVariableUpdate(variableUpdate);
                         }
                         else
@@ -584,7 +600,7 @@ namespace DataDictionary.Tests.Runner
                 // No setup can occur when some expectations are still active
                 if (ActiveBlockingExpectations().Count == 0)
                 {
-                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep));
+                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep), LogEvents);
                 }
             }
             finally
@@ -638,12 +654,12 @@ namespace DataDictionary.Tests.Runner
                         case Generated.acceptor.ExpectationKind.aInstantaneous:
                         case Generated.acceptor.ExpectationKind.defaultExpectationKind:
                             // Instantaneous expectation who raised its deadling
-                            EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
                             break;
 
                         case Generated.acceptor.ExpectationKind.aContinuous:
                             // Continuous expectation who raised its deadline
-                            EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                            EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
                             break;
                     }
                 }
@@ -658,7 +674,7 @@ namespace DataDictionary.Tests.Runner
                                 if (getBoolValue(expectation, expectation.ExpressionTree))
                                 {
                                     // An instantaneous expectation who reached its satisfactory condition
-                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                                    EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
                                 }
                                 break;
 
@@ -668,14 +684,14 @@ namespace DataDictionary.Tests.Runner
                                     if (!getBoolValue(expectation, expectation.ConditionTree))
                                     {
                                         // An continuous expectation who reached its satisfactory condition
-                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect));
+                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect), LogEvents);
                                     }
                                     else
                                     {
                                         if (!getBoolValue(expectation, expectation.ExpressionTree))
                                         {
                                             // A continuous expectation who reached a case where it is not satisfied
-                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
                                         }
                                     }
                                 }
@@ -684,7 +700,7 @@ namespace DataDictionary.Tests.Runner
                                     if (!getBoolValue(expectation, expectation.ExpressionTree))
                                     {
                                         // A continuous expectation who reached a case where it is not satisfied
-                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect));
+                                        EventTimeLine.AddModelEvent(new FailedExpectation(expect), LogEvents);
                                     }
                                 }
                                 break;

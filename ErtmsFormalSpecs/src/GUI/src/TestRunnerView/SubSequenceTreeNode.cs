@@ -173,7 +173,7 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setSubSequence(SubSequence);
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence);
+                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
                     EFSSystem.Runner.RunUntilStep(null);
                 }
             }

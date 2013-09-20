@@ -28,7 +28,7 @@ namespace Interpreter
 
         // Constructor
         public InterpreterRunner()
-            : base(null)
+            : base(null, false)
         {
             Step = 100;
         }

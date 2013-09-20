@@ -47,7 +47,7 @@ namespace DataDictionary.Tests
 
             foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
             {
-                EFSSystem.Runner = new Runner.Runner(subSequence);
+                EFSSystem.Runner = new Runner.Runner(subSequence, false);
                 int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
                 if (testCasesFailed > 0)
                 {
