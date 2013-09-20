@@ -194,13 +194,14 @@
 <Actions>
 <Action>LevelTransitionOrder &lt;- LevelTransitionOrder
 {
-  Distance =&gt; EMPTY,
-  LevelandLength =&gt; [EMPTY, EMPTY]
+  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
+  LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="NextLevelTransition"
 >
 <SubRules></SubRules>
@@ -314,7 +315,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <Variables>
 <Variable
  Type="LevelTransitionOrder"
- DefaultValue=""
+ DefaultValue="EMPTY"
  VariableMode="Internal"
  Implemented="TRUE"
  Name="LevelTransitionOrder"
