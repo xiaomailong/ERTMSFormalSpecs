@@ -243,6 +243,34 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Provides the int value from the IValue provided
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        private int getValue(Values.IValue val)
+        {
+            int retVal = 0;
+
+            Constants.EnumValue enumValue = val as Constants.EnumValue;
+            if (enumValue != null)
+            {
+                val = enumValue.Value;
+            }
+
+            Values.IntValue vi = val as Values.IntValue;
+            if (vi != null)
+            {
+                retVal = (int)vi.Val;
+            }
+            else
+            {
+                throw new Exception("Cannot get integer value from " + val.LiteralName);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>
@@ -254,32 +282,32 @@ namespace DataDictionary.Types
         {
             Values.IntValue retVal = null;
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            int int1 = getValue(left);
+            int int2 = getValue(right);
 
             switch (Operation)
             {
                 case Interpreter.BinaryExpression.OPERATOR.EXP:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (Decimal)Math.Pow((double)int1.Val, (double)int2.Val));
+                    retVal = new Values.IntValue(EFSSystem.IntegerType, (Decimal)Math.Pow((double)int1, (double)int2));
                     break;
 
                 case Interpreter.BinaryExpression.OPERATOR.MULT:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1.Val * int2.Val));
+                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 * int2));
                     break;
 
                 case Interpreter.BinaryExpression.OPERATOR.DIV:
-                    if (int2.Val == 0)
+                    if (int2 == 0)
                         throw new Exception("Division by zero");
                     else
-                        retVal = new Values.IntValue(EFSSystem.IntegerType, (int1.Val / int2.Val));
+                        retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 / int2));
                     break;
 
                 case Interpreter.BinaryExpression.OPERATOR.ADD:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1.Val + int2.Val));
+                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 + int2));
                     break;
 
                 case Interpreter.BinaryExpression.OPERATOR.SUB:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1.Val - int2.Val));
+                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 - int2));
                     break;
             }
 
@@ -290,13 +318,10 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            int int1 = getValue(left);
+            int int2 = getValue(right);
 
-            if (int1 != null && int2 != null)
-            {
-                retVal = int1.Val == int2.Val;
-            }
+            retVal = int1 == int2;
 
             return retVal;
         }
@@ -305,13 +330,10 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            int int1 = getValue(left);
+            int int2 = getValue(right);
 
-            if (int1 != null && int2 != null)
-            {
-                retVal = int1.Val < int2.Val;
-            }
+            retVal = int1 < int2;
 
             return retVal;
         }
@@ -320,13 +342,10 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            int int1 = getValue(left);
+            int int2 = getValue(right);
 
-            if (int1 != null && int2 != null)
-            {
-                retVal = int1.Val > int2.Val;
-            }
+            retVal = int1 > int2;
 
             return retVal;
         }
