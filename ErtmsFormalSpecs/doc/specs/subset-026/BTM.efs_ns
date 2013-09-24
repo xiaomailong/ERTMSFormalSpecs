@@ -44,6 +44,7 @@
 <ReqRef
  Id="3.4.2.1.1"
 >
+<Comment></Comment>
 </ReqRef>
 <ReqRef
  Id="3.4.2.1.2"
@@ -84,7 +85,12 @@
  NeedsRequirement="FALSE"
  Name="OverReadingAmountOdo"
 >
-</StructureElement></Structure></Structures>
+<Comment></Comment>
+</StructureElement></Structure><Structure
+ Name="a"
+>
+<Comment></Comment>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="BaliseGroup"
@@ -842,19 +848,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Action>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action>
 </Actions>
 </RuleCondition><RuleCondition
- Name="Level Transition available"
->
-<ReqRef
- Id="7.4.1.1.13"
->
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
-</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Session management available"
 >
@@ -1557,7 +1550,6 @@ ON Message.Sequence1</Action>
  NeedsRequirement="FALSE"
  Name="ClearInfillInfo"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>

@@ -282,7 +282,7 @@
  Kind="Instantaneous"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP != []</Expectation><Expectation
  Kind="Instantaneous"
->(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
+>(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == Default.BaseTypes.Distance(2000)</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.StaticSpeedProfile.SSPEnd((FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
@@ -299,8 +299,6 @@
 >Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP, 11000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.StaticSpeedProfile.SpeedRestrictions ( 0.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrackDescription.StaticSpeedProfile.SpeedRestrictions ( 2000.0 ) == 30.0</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.StaticSpeedProfile.SpeedRestrictions ( 3119.0 ) == 30.0</Expectation><Expectation
  Kind="Instantaneous"
