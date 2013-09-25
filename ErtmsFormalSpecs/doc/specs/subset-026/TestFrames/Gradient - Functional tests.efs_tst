@@ -717,5 +717,210 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Replace existing gradient information"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Name="Test case1 - Partial replacement"
+>
+<ReqRef
+ Id="3.7.3.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.12"
+>
+</ReqRef>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
+<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+  NID=&gt;9616,
+  Orientation=&gt;Orientation.Nominal,
+  Position=&gt;BTM.Position{
+    OverReadingAmountOdo=&gt; 2.0,
+    Position=&gt;4000.0,
+    UnderReadingAmountOdo=&gt;7.0
+  }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Receive gradient profile"
+>
+<Comment></Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
+                {
+                    NID_PACKET=&gt;21,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_GRADIENT =&gt; 4000,
+                    Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                    G_A =&gt; 2,
+                    N_ITER =&gt; 3,
+                    Sequence1 =&gt; [
+                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
+                        D_GRADIENT =&gt; 2000,
+                        Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                        G_A =&gt; 1
+                      },
+                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
+                        D_GRADIENT =&gt; 1000,
+                        Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                        G_A =&gt; 4
+                      },
+                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
+                        D_GRADIENT =&gt; 5000,
+                        Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                        G_A =&gt; 255
+                      }
+                    ]
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Available ( FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 4000.0 )</Expectation><Expectation
+ DeadLine="1000"
+>(COUNT Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+ DeadLine="1000"
+>Available ( LAST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 12000.0 )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step4 - Receive new gradient profile with partial overwriting"
+>
+<Comment>Keep in mind: D_Gradient is an incemental value -- but Kernel.TrackDescription.Gradient.GradientInfo.Location holds an absolute value.</Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
+                {
+                    NID_PACKET=&gt;21,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_GRADIENT =&gt; 6000,
+                    Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                    G_A =&gt; 3,
+                    N_ITER =&gt; 1,
+                    Sequence1 =&gt; [
+                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
+                        D_GRADIENT =&gt; 1000,
+                        Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                        G_A =&gt; 2
+                      }
+                    ]
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1000"
+>(COUNT Kernel.TrackDescription.Gradient.Gradients) == 3</Expectation><Expectation
+ DeadLine="1000"
+>Available ( LAST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 7000.0 )</Expectation><Expectation
+ DeadLine="1000"
+>Available ( FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 6000.0 )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
