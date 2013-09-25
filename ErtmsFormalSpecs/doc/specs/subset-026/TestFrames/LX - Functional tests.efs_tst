@@ -372,10 +372,16 @@
 <Expectation
  Kind="Instantaneous"
 >(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - Another protected level crossing is received which should overwrite the old one"
 >
@@ -421,10 +427,15 @@
     ]
 }</Action>
 </Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
