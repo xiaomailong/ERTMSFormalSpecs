@@ -42,6 +42,17 @@
  Id="7.5.1.39"
 >
 </ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_NTC"
+ Default=""
+ Mode="Internal"
+ Name="TRLevelNTCID"
+>
+<ReqRef
+ Id="7.5.1.98"
+>
+</ReqRef>
+<Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelTransitionOrder"
@@ -54,6 +65,7 @@
  Id="7.4.2.9.1"
 >
 </ReqRef>
+<Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -76,6 +88,37 @@
  Id="7.5.1.39"
 >
 </ReqRef>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="ConditionalLevelTransition"
+>
+<ReqRef
+ Id="5.10.1.4"
+>
+</ReqRef>
+<StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="CTRLevel"
+>
+<ReqRef
+ Id="7.5.1.67"
+>
+</ReqRef>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_NTC"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="CTRLevelNTCID"
+>
+<ReqRef
+ Id="7.5.1.98"
+>
+</ReqRef>
+<Comment></Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -218,7 +261,8 @@
     (
         L_ACKLEVELTR =&gt; X.L_ACKLEVELTR,
         M_LEVELTR =&gt; X.M_LEVELTR,
-        Q_SCALE =&gt; Packet.Q_SCALE
+        Q_SCALE =&gt; Packet.Q_SCALE,
+        NID_NTC =&gt; Packet.NID_NTC
     )
 ON
     Packet.Sequence1</Action>
@@ -258,6 +302,10 @@ ON
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
 >
+</Parameter><Parameter
+ Type="Messages.NID_NTC"
+ Name="NID_NTC"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -278,7 +326,8 @@ ON
 LevelTransition
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) 
+    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+    TRLevelNTCID =&gt; NID_NTC
 }
 IN  LevelTransitionOrder.LevelandLength</Action>
 </Actions>
@@ -311,6 +360,51 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="CLTOReceived"
+>
+<ReqRef
+ Id="5.10.1.4"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.1.1.17"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.Level"
+ Name="M_LEVELTR"
+>
+</Parameter><Parameter
+ Type="Messages.NID_NTC"
+ Name="NID_NTC"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="NewConditionalLevelTransitionOrder"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="NewConditionalLevelTransitionOrder"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>ConditionalLevelTransitionOrder &lt;- ConditionalLevelTransition
+{
+    CTRLevel =&gt; M_LEVELTR,
+    CTRLevelNTCID =&gt; NID_NTC
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -333,5 +427,22 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 >
 </ReqRef>
 <Comment>Level transition order  received from the track side</Comment>
+</Variable><Variable
+ Type="ConditionalLevelTransition"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ConditionalLevelTransitionOrder"
+>
+<ReqRef
+ Id="7.4.1.1.17"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.4"
+>
+</ReqRef>
+<Comment>Conditional Level transition order  received from the track side</Comment>
 </Variable></Variables>
 </NameSpace>
