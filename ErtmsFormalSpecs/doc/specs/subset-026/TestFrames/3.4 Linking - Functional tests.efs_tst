@@ -243,5 +243,178 @@ N_ITER=&gt;0
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ Name="New linking information replaces old one"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Name="Test case1"
+>
+<ReqRef
+ Id="3.7.3.1.m"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+<Action>Odometry.NominalDistance &lt;- 0.0</Action>
+<Action>BTM.LRBG &lt;- EMPTY</Action>
+<Action>BTM.PreviousLRBGs &lt;- []</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Linking packet received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
+                {
+                    NID_PACKET=&gt;5,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_LINK=&gt;3500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;10000,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1,
+N_ITER=&gt;1,
+Sequence1 =&gt; [
+Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1 {
+ D_LINK=&gt;4500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;10000,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1
+}
+]                  
+                    }
+            }
+        }
+    ]
+}</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 4.0
+    }
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
+ DeadLine="1000"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+ DeadLine="1000"
+>(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LINKING =&gt;Messages.PACKET.TRACK_TO_TRAIN.LINKING.Message
+                {
+                    NID_PACKET=&gt;5,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_LINK=&gt;3500,
+                    Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                    NID_BG=&gt;10000,
+Q_LINKORIENTATION=&gt;Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction,
+Q_LINKREACTION=&gt;Messages.Q_LINKREACTION.Apply_service_brake,
+Q_LOCACC=&gt;1,
+N_ITER=&gt;0                  
+                    }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1000"
+>(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+ DeadLine="1000"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
