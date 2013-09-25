@@ -13,12 +13,13 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence1"
+ Name="Send + store PBD message"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="Test case1"
 >
 <ReqRef
@@ -91,7 +92,7 @@ pbd sr</Comment>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3"
+ Name="Step3 - Send out PBD message"
 >
 <Comment>Q_FRONT could be Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element</Comment>
 <SubSteps>
@@ -144,7 +145,7 @@ pbd sr</Comment>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4"
+ Name="Step4 - Check that PBD values are stored correctly"
 >
 <Comment>The value of &quot;Speed&quot; is not tested here because it is the result of an internal calculation inside the Kernel (and hence not explicitly set in the the BTM.Message)</Comment>
 <SubSteps>
@@ -181,12 +182,13 @@ pbd sr</Comment>
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence2"
+ Name="Check initial state"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="Test case1"
 >
 <ReqRef
@@ -224,7 +226,7 @@ pbd sr</Comment>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2"
+ Name="Step2 - Clear profile"
 >
 <SubSteps>
 <SubStep
@@ -247,7 +249,7 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3"
+ Name="Step3 - Check for emptyness"
 >
 <SubSteps>
 <SubStep
@@ -262,12 +264,22 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
- Name="Sequence3"
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Values of new packet overwrite values from old packet"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="Test case1"
 >
 <ReqRef
@@ -276,6 +288,11 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 </ReqRef>
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - Setup"
 >
@@ -287,8 +304,14 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 <Action>Kernel.InitializeTestEnvironment(
 )</Action>
 </Actions>
-</SubStep><SubStep
- Name="Sub-step2"
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step2 - Initialize Kernel with PBD values"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
 >
 <Actions>
 <Action>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- 
@@ -318,10 +341,17 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 3</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step3"
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Send out PBD message"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
 >
 <Actions>
 <Action>BTM.Message &lt;- Messages.EUROBALISE.Message
@@ -372,21 +402,33 @@ Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
     }
 }</Action>
 </Actions>
-</SubStep><SubStep
- Name="Sub-step4"
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Check that PBD message has overwritten old values"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 1</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 10.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 5000.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
