@@ -848,6 +848,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="7.4.1.1.13"
 >
 </ReqRef>
+<Comment></Comment>
 <PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
 </PreConditions>
@@ -1186,6 +1187,15 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Name="Conditional Level Transition Order"
+>
+<PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
