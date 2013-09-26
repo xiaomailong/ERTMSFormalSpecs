@@ -244,12 +244,22 @@ N_ITER=&gt;0
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="New linking information replaces old one"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="Test case1"
 >
 <ReqRef
@@ -356,12 +366,19 @@ Q_LOCACC=&gt;1
 <Expectation
  Kind="Instantaneous"
 >(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3"
 >
@@ -409,8 +426,10 @@ N_ITER=&gt;0
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation></Expectations>
 </SubStep></SubSteps>
