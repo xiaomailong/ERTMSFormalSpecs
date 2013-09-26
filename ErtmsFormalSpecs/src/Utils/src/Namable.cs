@@ -57,6 +57,11 @@ namespace Utils
                         retVal = namable;
                         break;
                     }
+                    else if (namable.FullName.CompareTo(name) == 0)
+                    {
+                        retVal = namable;
+                        break;
+                    }
                 }
             }
 

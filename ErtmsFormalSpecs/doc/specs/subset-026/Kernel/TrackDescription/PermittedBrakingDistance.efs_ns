@@ -63,6 +63,7 @@
  Id="3.11.11.2.3"
 >
 </ReqRef>
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -90,6 +91,7 @@
  Id="7.5.1.141"
 >
 </ReqRef>
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -121,6 +123,7 @@
 <ReqRef
  Id="3.11.11.2"
 >
+<Comment></Comment>
 </ReqRef>
 <Comment>Represents the speed restrictions to ensure permitted braking distance.</Comment>
 </Collection></Collections>
@@ -1073,6 +1076,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action>
 <Comment>Contains the previous value of emergency braking models.</Comment>
 </Variable><Variable
  Type="TrainData.BrakingParameters.SBModelSet"
+ DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
  Name="PrevSBModels"

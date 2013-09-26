@@ -78,6 +78,11 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
+            commentRichTextBox.AutoComplete = false;
+            messagesRichTextBox.AutoComplete = false;
+            requirementsTextBox.AutoComplete = false;
+            ruleExplainTextBox.AutoComplete = false;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;

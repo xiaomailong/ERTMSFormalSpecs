@@ -21,24 +21,20 @@ namespace GUI.DataDictionaryView.UsageTreeView
         {
             Nodes.Clear();
 
-            if (false)
+            if (Root is DataDictionary.Types.ITypedElement)
             {
-                // This takes too much time. Do not do, for now.
-                if (Root is DataDictionary.Types.ITypedElement)
+                DataDictionary.Variables.IVariable variable = Root as DataDictionary.Variables.IVariable;
+                foreach (DataDictionary.Rules.RuleCondition ruleCondition in DataDictionary.Rules.Rule.RulesUsingThisElement(variable))
                 {
-                    DataDictionary.Variables.IVariable variable = Root as DataDictionary.Variables.IVariable;
-                    foreach (DataDictionary.Rules.RuleCondition ruleCondition in DataDictionary.Rules.Rule.RulesUsingThisElement(variable))
-                    {
-                        Nodes.Add(new RuleUsageTreeNode(ruleCondition));
-                    }
+                    Nodes.Add(new RuleUsageTreeNode(ruleCondition));
                 }
-                else if (Root is DataDictionary.Types.Type)
+            }
+            else if (Root is DataDictionary.Types.Type)
+            {
+                DataDictionary.Types.Type type = Root as DataDictionary.Types.Type;
+                foreach (DataDictionary.Types.ITypedElement element in DataDictionary.Types.Type.ElementsOfType(type))
                 {
-                    DataDictionary.Types.Type type = Root as DataDictionary.Types.Type;
-                    foreach (DataDictionary.Types.ITypedElement element in DataDictionary.Types.Type.ElementsOfType(type))
-                    {
-                        Nodes.Add(new TypeUsageTreeNode(element));
-                    }
+                    Nodes.Add(new TypeUsageTreeNode(element));
                 }
             }
         }

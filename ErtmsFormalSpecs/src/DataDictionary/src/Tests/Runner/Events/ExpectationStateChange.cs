@@ -69,9 +69,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Apply the expectation state change
         /// </summary>
-        public override void Apply()
+        public override void Apply(bool log)
         {
-            base.Apply();
+            base.Apply(log);
             PrevState = Expect.State;
         }
 
@@ -112,9 +112,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// Apply the failed expectation
         /// </summary>
         /// <param name="localScope">The values of local variables</param>
-        public override void Apply()
+        public override void Apply(bool log)
         {
-            base.Apply();
+            base.Apply(log);
 
             Expect.State = Events.Expect.EventState.TimeOut;
             TimeLine.ActiveExpectations.Remove(Expect);
@@ -149,9 +149,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Apply the reached expectation
         /// </summary>
-        public override void Apply()
+        public override void Apply(bool log)
         {
-            base.Apply();
+            base.Apply(log);
 
             Expect.State = Events.Expect.EventState.Fullfilled;
             TimeLine.ActiveExpectations.Remove(Expect);

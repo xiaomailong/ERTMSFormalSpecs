@@ -118,9 +118,9 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.TestCase testCase = (DataDictionary.Tests.TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+            DataDictionary.Tests.TestCase testCase = DataDictionary.Tests.TestCase.createDefault("Test case" + (Item.TestCases.Count + 1));
             testCase.Enclosing = Item;
-            testCase.Name = "Test case" + (Item.TestCases.Count + 1);
+
             createTestCase(testCase);
         }
 
@@ -173,7 +173,7 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setSubSequence(SubSequence);
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence);
+                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
                     EFSSystem.Runner.RunUntilStep(null);
                 }
             }

@@ -232,7 +232,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
         {
             if (Call != null)
             {
@@ -252,7 +252,7 @@ namespace DataDictionary.Interpreter.Statement
 
                     foreach (Rules.Rule rule in Rules)
                     {
-                        ApplyRule(rule, changes, ctxt, part);
+                        ApplyRule(rule, changes, ctxt, part, log);
                     }
 
                     ctxt.LocalScope.PopContext(token);
@@ -274,7 +274,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="rule"></param>
         /// <param name="changes"></param>
         /// <param name="ctxt"></param>
-        private void ApplyRule(Rules.Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation)
+        private void ApplyRule(Rules.Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, bool log)
         {
             foreach (Rules.RuleCondition condition in rule.RuleConditions)
             {
@@ -282,12 +282,12 @@ namespace DataDictionary.Interpreter.Statement
                 {
                     foreach (Rules.Action action in condition.Actions)
                     {
-                        action.GetChanges(ctxt, changes, explanation, true);
+                        action.GetChanges(ctxt, changes, explanation, true, log);
                     }
 
                     foreach (Rules.Rule subRule in condition.SubRules)
                     {
-                        ApplyRule(subRule, changes, ctxt, explanation);
+                        ApplyRule(subRule, changes, ctxt, explanation, log);
                     }
                     break;
                 }

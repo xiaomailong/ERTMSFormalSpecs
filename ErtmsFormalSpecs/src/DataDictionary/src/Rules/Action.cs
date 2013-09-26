@@ -206,7 +206,7 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <returns>The list to fill with the changes</param>
-        public void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply)
+        public void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, bool log)
         {
             long start = System.Environment.TickCount;
 
@@ -214,7 +214,7 @@ namespace DataDictionary.Rules
             {
                 if (Statement != null)
                 {
-                    Statement.GetChanges(context, changes, explanation, apply);
+                    Statement.GetChanges(context, changes, explanation, apply, log);
                 }
                 else
                 {

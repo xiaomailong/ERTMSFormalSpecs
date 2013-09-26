@@ -163,7 +163,7 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.97";
+        private string versionNumber = "0.9.8";
 
 
         /// <summary>

@@ -829,7 +829,32 @@ namespace GUI
                 get { return Item.Name; }
                 set
                 {
-                    Item.Name = value;
+                    if (Item.EnclosingCollection != null)
+                    {
+                        bool unique = true;
+                        foreach (Utils.IModelElement model in Item.EnclosingCollection)
+                        {
+                            INamable namable = model as INamable;
+                            if (namable != Item && namable != null && namable.Name.CompareTo(value) == 0)
+                            {
+                                unique = false;
+                                break;
+                            }
+                        }
+
+                        if (unique)
+                        {
+                            Item.Name = value;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot set the name to " + value + "because it conflits with another element of the same collection", "Name conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        Item.Name = value;
+                    }
                     RefreshNode();
                 }
             }

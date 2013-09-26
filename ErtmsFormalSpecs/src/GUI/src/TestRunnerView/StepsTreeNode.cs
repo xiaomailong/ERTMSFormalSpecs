@@ -75,10 +75,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Step step = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
-            step.Name = "Step" + (GetNodeCount(false) + 1);
-
-            createStep(step);
+            createStep(DataDictionary.Tests.Step.createDefault("Step" + (GetNodeCount(false) + 1)));
         }
 
         /// <summary>

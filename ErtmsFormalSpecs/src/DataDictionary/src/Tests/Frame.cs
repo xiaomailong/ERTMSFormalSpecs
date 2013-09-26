@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
+using System;
 
 namespace DataDictionary.Tests
 {
@@ -46,7 +47,7 @@ namespace DataDictionary.Tests
 
             foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
             {
-                EFSSystem.Runner = new Runner.Runner(subSequence);
+                EFSSystem.Runner = new Runner.Runner(subSequence, false);
                 int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
                 if (testCasesFailed > 0)
                 {
@@ -133,7 +134,15 @@ namespace DataDictionary.Tests
             {
                 if (__cycleTime == null)
                 {
-                    __cycleTime = EFSSystem.Parser.Expression(this, getCycleDuration());
+                    try
+                    {
+                        __cycleTime = EFSSystem.Parser.Expression(this, getCycleDuration());
+                    }
+                    catch (Exception e)
+                    {
+                        AddError("Invalid cycle type, 100 ms assumed");
+                        __cycleTime = EFSSystem.Parser.Expression(this, "100");
+                    }
                 }
 
                 return __cycleTime;
@@ -142,6 +151,21 @@ namespace DataDictionary.Tests
             {
                 __cycleTime = null;
             }
+        }
+
+        /// <summary>
+        /// Creates the frame and sets its default values
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static Frame createDefault(string name)
+        {
+            Frame retVal = (Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+            retVal.Name = name;
+            retVal.setCycleDuration("0.1");
+            retVal.appendSubSequences(SubSequence.createDefault("Sequence1"));
+
+            return retVal;
         }
     }
 }

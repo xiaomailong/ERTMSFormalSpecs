@@ -214,7 +214,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
         {
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
@@ -279,7 +279,7 @@ namespace DataDictionary.Interpreter.Statement
                     }
 
                     Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
-                    changes.Add(change, apply);
+                    changes.Add(change, apply, log);
                     explanation.SubExplanations.Add(new ExplanationPart(Root, change));
 
                     context.LocalScope.PopContext(token);

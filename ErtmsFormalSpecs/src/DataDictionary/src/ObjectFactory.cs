@@ -163,7 +163,11 @@ namespace DataDictionary
 
         public override Generated.Expectation createExpectation()
         {
-            return new Tests.Expectation();
+            Generated.Expectation retVal = new Tests.Expectation();
+            retVal.setDeadLine(1);
+            retVal.setBlocking(true);
+
+            return retVal;
         }
 
         public override Generated.DBMessage createDBMessage()

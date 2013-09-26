@@ -87,7 +87,14 @@ namespace GUI.DataDictionaryView
         private void AddHandler(object sender, EventArgs args)
         {
             DataDictionary.Rules.RuleCondition rule = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
-            rule.Name = "<RuleCondition" + (GetNodeCount(false) + 1) + ">";
+            if (Item.RuleConditions.Count == 0)
+            {
+                rule.Name = Item.Name;
+            }
+            else
+            {
+                rule.Name = Item.Name + (Item.RuleConditions.Count + 1);
+            }
             AddRuleCondition(rule);
         }
 

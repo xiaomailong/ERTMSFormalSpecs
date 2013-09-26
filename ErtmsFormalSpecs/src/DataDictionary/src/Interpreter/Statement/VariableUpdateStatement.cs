@@ -190,7 +190,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
         {
             Variables.IVariable var = VariableIdentification.GetVariable(context);
             if (var != null)
@@ -202,7 +202,7 @@ namespace DataDictionary.Interpreter.Statement
                     value = value.RightSide(var, true);
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
-                changes.Add(change, apply);
+                changes.Add(change, apply, log);
                 explanation.SubExplanations.Add(new ExplanationPart(Root, change));
             }
             else

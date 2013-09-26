@@ -53,9 +53,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
-        public override bool ComputeChanges(bool apply)
+        public override bool ComputeChanges(bool apply, bool log)
         {
-            bool retVal = base.ComputeChanges(apply);
+            bool retVal = base.ComputeChanges(apply, log);
 
             if (retVal)
             {
@@ -80,20 +80,20 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// Applies this step activation be registering it in the activation cache
         /// </summary>
-        public override void Apply()
+        public override void Apply(bool log)
         {
-            base.Apply();
+            base.Apply(log);
 
             TimeLine.SubStepActivationCache[SubStep] = this;
             foreach (VariableUpdate update in Updates)
             {
-                TimeLine.AddModelEvent(update);
+                TimeLine.AddModelEvent(update, log);
             }
 
             // Store the step corresponding expectations
             foreach (Expectation expectation in subStep.Expectations)
             {
-                TimeLine.AddModelEvent(new Events.Expect(expectation));
+                TimeLine.AddModelEvent(new Events.Expect(expectation), log);
             }
         }
 

@@ -278,6 +278,169 @@
 >Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="New LX information with same id replaces old information"
+>
+<ReqRef
+ Id="3.12.5.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - A protected level crossing is received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;18,
+                    D_LX=&gt;3000,
+                    L_LX=&gt;50,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9621,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 27.0,
+        Position =&gt; 3000.0,
+        UnderReadingAmountOdo =&gt; 24.0
+    }
+}</Action>
+<Action>Odometry.NominalDistance &lt;- 3500.0</Action>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Another protected level crossing is received which should overwrite the old one"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;18,
+                    D_LX=&gt;4000,
+                    L_LX=&gt;50,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
@@ -830,6 +993,460 @@
 >Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="LX data storage"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="protected + non-protected LX"
+>
+<ReqRef
+ Id="3.12.5.4"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.5.5"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Initialize test-data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9620,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 44.0,
+        Position =&gt; 2600.0,
+        UnderReadingAmountOdo =&gt; 41.0
+    }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - A protected level crossing is received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9620,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 44.0,
+        Position =&gt; 2600.0,
+        UnderReadingAmountOdo =&gt; 41.0
+    }
+}</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;7,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;18,
+                    D_LX=&gt;1000,
+                    L_LX=&gt;50,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - A non-protected level crossing is received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;19,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Check if the information is correctly stored"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(LAST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(LAST_IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(LAST_IN Kernel.LX.LevelCrossings).Location == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(LAST_IN Kernel.LX.LevelCrossings).Id == 19</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(COUNT Kernel.LX.LevelCrossings) == 2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="non-protected LX"
+>
+<ReqRef
+ Id="3.12.5.6"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.5.7"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.5.6.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.5.6.b"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Initialize test-data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9620,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 44.0,
+        Position =&gt; 2600.0,
+        UnderReadingAmountOdo =&gt; 41.0
+    }
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - A non-protected level crossing is received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;20,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;4,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Check for speed and absence of stopping requirement"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).Speed == 20.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Another non-protected level crossing is received"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;20,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;10,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.Stop_required,
+                    L_STOPLX=&gt;100
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Check for presence of stopping requirement and associated stopping area"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1000"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

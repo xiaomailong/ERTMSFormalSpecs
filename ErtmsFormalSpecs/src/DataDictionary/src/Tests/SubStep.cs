@@ -147,5 +147,18 @@ namespace DataDictionary.Tests
 
             return retVal;
         }
+
+        /// <summary>
+        /// Creates a sub step and sets its default values
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static SubStep createDefault(string name)
+        {
+            SubStep retVal = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+            retVal.Name = name;
+
+            return retVal;
+        }
     }
 }

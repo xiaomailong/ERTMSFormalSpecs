@@ -124,5 +124,20 @@ namespace DataDictionary.Tests
                 }
             }
         }
+
+        /// <summary>
+        /// Creates a test case and sets its default values
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static TestCase createDefault(string name)
+        {
+            TestCase retVal = (TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+            retVal.Name = name;
+
+            retVal.appendSteps(Step.createDefault("Step1"));
+
+            return retVal;
+        }
     }
 }
