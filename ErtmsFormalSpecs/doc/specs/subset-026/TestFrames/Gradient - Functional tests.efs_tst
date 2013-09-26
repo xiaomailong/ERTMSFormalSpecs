@@ -178,6 +178,7 @@
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1000"
 >( THERE_IS_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 4000.0 )</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1319,17 +1320,26 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     ]
 }</Action>
 </Actions>
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step5 - Check that no overwriting has occured"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+>( FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Location == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Location == 12000.0</Expectation><Expectation
+>(COUNT Kernel.TrackDescription.Gradient.Gradients) == 6</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1000"
->( FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Location == 4000.0</Expectation></Expectations>
+>(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Location == 14000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
