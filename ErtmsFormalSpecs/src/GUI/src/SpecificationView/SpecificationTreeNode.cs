@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -33,6 +33,20 @@ namespace GUI.SpecificationView
             public ItemEditor()
                 : base()
             {
+            }
+
+            /// <summary>
+            /// The specification document name
+            /// </summary>
+            [Category("Description")]
+            public string Document
+            {
+                get { return Item.Name; }
+                set
+                {
+                    Item.Name = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>

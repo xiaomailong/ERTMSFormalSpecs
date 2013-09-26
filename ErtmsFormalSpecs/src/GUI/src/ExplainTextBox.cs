@@ -48,19 +48,6 @@ namespace GUI
         /// </summary>
         public virtual void RefreshData()
         {
-            Text = "";
-        }
-    }
-
-    /// <summary>
-    /// Explains a rule
-    /// </summary>
-    public class RuleExplainTextBox : ExplainTextBox
-    {
-        public override void RefreshData()
-        {
-            base.RefreshData();
-
             DataDictionary.TextualExplain explainable = Model as DataDictionary.TextualExplain;
 
             if (explainable != null)

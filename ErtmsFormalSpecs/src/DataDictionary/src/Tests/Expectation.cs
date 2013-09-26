@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Tests
 {
-    public class Expectation : Generated.Expectation
+    public class Expectation : Generated.Expectation, IExpressionable
     {
         public override string ExpressionText
         {
@@ -186,6 +186,15 @@ namespace DataDictionary.Tests
         /// <param name="copy"></param>
         public override void AddModelElement(Utils.IModelElement element)
         {
+        }
+
+        /// <summary>
+        /// The explanation of this step, as RTF pseudo code
+        /// </summary>
+        /// <returns></returns>
+        public override string getExplain()
+        {
+            return Name;
         }
     }
 }

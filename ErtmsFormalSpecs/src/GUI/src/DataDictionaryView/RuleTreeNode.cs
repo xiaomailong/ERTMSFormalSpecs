@@ -36,7 +36,7 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(RulePriorityConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.RulePriorityConverter))]
             public DataDictionary.Generated.acceptor.RulePriority Priority
             {
                 get { return Item.getPriority(); }

@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
 using Utils;
+using DataDictionary;
 
 namespace GUI
 {
@@ -423,7 +424,7 @@ namespace GUI
                     reqRelated.setVerified(false);
                 }
 
-                DataDictionary.Generated.ControllersManager.NamableController.alertChange(null, null);
+                DataDictionary.Generated.ControllersManager.BaseModelElementController.alertChange(null, null);
             }
         }
 
@@ -755,6 +756,8 @@ namespace GUI
             /// The item that is edited. 
             /// </summary>
             private T item;
+
+            [Browsable(false)]
             public T Item
             {
                 get { return item; }
@@ -918,6 +921,20 @@ namespace GUI
         public override void SelectionChanged()
         {
             base.SelectionChanged();
+
+            IBaseForm window = BaseForm as IBaseForm;
+            if (window != null && window.ExplainTextBox != null)
+            {
+                TextualExplain textualExplain = Item as TextualExplain;
+                if (textualExplain != null)
+                {
+                    window.ExplainTextBox.Rtf = TextualExplainUtilities.Encapsule(textualExplain.getExplain(true));
+                }
+                else
+                {
+                    window.ExplainTextBox.Rtf = TextualExplainUtilities.Encapsule("");
+                }
+            }
 
             if (BaseTreeView.RefreshNodeContent)
             {

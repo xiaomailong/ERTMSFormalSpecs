@@ -94,6 +94,5 @@ namespace GUI
             }
             return control as IBaseForm;
         }
-
     }
 }

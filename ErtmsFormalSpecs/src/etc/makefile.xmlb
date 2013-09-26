@@ -3,8 +3,8 @@
 # Depends on the following variables
 #  META : the name of the meta definition file, without .xmlb extension
 #
-XMLBOOSTER_ROOT=/cygdrive/c/yafl/bin
-XMLB_CALL=${XMLBOOSTER_ROOT}/xmlb2.exe -CFG=../../../tools/xmlb/xmlbcfg.xml
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb
+XMLB_CALL=/cygdrive/c/repositories/raincode/xmlb/xmlb2.exe -CFG=../../../../tools/xmlb/xmlbcfg.xml
 
 .phony: all clean 
 .default: all
@@ -19,7 +19,7 @@ bin/$(META).dll : $(META).xmlb
 	@make clean
 	@-mkdir generated
 	@-mkdir bin
-	@-$(XMLB_CALL) -TARGETDIR=generated -CSHARP $<
+	-$(XMLB_CALL) -TARGETDIR=generated -CSHARP $<
 	@$(BUILD)
 
 clean:

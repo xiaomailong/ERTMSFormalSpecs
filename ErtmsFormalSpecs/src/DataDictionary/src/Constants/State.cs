@@ -266,7 +266,7 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } }
+        public string TypeName { get { return Type.FullName; } set { } }
 
         /// <summary>
         /// Provides the mode of the typed element

@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -44,6 +44,12 @@ namespace GUI.SpecificationView
                     Item.setId(value);
                     RefreshNode();
                 }
+            }
+
+            [Category("Description")]
+            public string Name
+            {
+                get { return Item.Name; }
             }
         }
 

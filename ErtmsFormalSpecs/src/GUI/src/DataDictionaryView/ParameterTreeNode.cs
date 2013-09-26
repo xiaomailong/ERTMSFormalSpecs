@@ -23,7 +23,7 @@ namespace GUI.DataDictionaryView
 {
     public class ParameterTreeNode : DataTreeNode<Parameter>
     {
-        private class InternalNameSpaceConverter : NameSpaceConverter
+        private class InternalNameSpaceConverter : Converters.NameSpaceConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
@@ -33,7 +33,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)

@@ -37,11 +37,17 @@ namespace GUI.TestRunnerView
             {
             }
 
-            [Category("Description"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-            public string Expression
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
+            public DataDictionary.Tests.Expectation Expression
             {
-                get { return Item.getValue(); }
-                set { Item.setValue(value); }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             [Category("Description")]
@@ -51,7 +57,7 @@ namespace GUI.TestRunnerView
                 set { Item.setBlocking(value); }
             }
 
-            [Category("Description"), TypeConverter(typeof(ExpectationKindConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.ExpectationKindConverter))]
             [ReadOnly(false)]
             public DataDictionary.Generated.acceptor.ExpectationKind Kind
             {

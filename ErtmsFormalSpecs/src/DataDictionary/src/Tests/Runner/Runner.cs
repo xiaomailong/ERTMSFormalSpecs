@@ -221,7 +221,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                Generated.ControllersManager.NamableController.DesactivateNotification();
+                Generated.ControllersManager.DesactivateAllNotifications();
                 // Setup the execution environment
                 Setuper setuper = new Setuper(EFSSystem);
                 foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -245,7 +245,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                Generated.ControllersManager.NamableController.ActivateNotification();
+                Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -364,7 +364,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     Log.Info("New cycle");
                 }
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
@@ -427,7 +427,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;
@@ -594,7 +594,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                 LogInstance = subStep;
 
                 // No setup can occur when some expectations are still active
@@ -605,7 +605,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 

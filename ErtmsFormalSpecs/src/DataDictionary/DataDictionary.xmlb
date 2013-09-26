@@ -12,6 +12,12 @@
   </CSHARPCONFIG>
 
   <!-- ------------------------- -->
+  <!-- Model Elements            -->
+  <!-- ------------------------- -->
+  <ELEMENT NAME="BaseModelElement" ABSTRACT="TRUE" BASECLASS="Utils.ModelElement">
+  </ELEMENT>
+
+  <!-- ------------------------- -->
   <!-- Elements that have a name -->
   <!-- ------------------------- -->
   <ELEMENT NAME="Namable" ABSTRACT="TRUE" MAIN="TRUE" BASECLASS="ModelElement">

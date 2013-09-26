@@ -16,7 +16,7 @@
 
 namespace DataDictionary
 {
-    public abstract class ModelElement : Utils.ModelElement
+    public abstract class ModelElement : Generated.BaseModelElement
     {
         /// <summary>
         /// Provides the EFS System in which this element belongs
@@ -58,7 +58,6 @@ namespace DataDictionary
             }
         }
     }
-
 
     public interface TextualExplain
     {
@@ -127,12 +126,13 @@ namespace DataDictionary
         /// <returns></returns>
         public static string Encapsule(string data)
         {
-            data = data.Replace("\n", "\\par ") + "}";
-            // data = data.Replace("{", "\\{");
+            string retVal = data;
 
-            string retVal = "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}";
-
-            retVal = retVal + data;
+            if (!retVal.StartsWith("\\rtf"))
+            {
+                retVal = retVal.Replace("\n", "\\par ");
+                retVal = "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}" + retVal + "}";
+            }
 
             return retVal;
         }

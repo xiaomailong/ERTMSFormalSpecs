@@ -262,5 +262,15 @@ namespace DataDictionary.Types
 
             return TextualExplainUtilities.Encapsule(retVal);
         }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public override string getExplain()
+        {
+            return getExplain(0);
+        }
     }
 }

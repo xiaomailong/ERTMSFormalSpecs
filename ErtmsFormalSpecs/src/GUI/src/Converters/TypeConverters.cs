@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace GUI
+namespace GUI.Converters
 {
     /// <summary>
     /// Types converter. Provides the available types 

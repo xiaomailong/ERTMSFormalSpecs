@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Tests;
 using DataDictionary.Tests.Translations;
+using System.Drawing.Design;
 
 
 namespace GUI.TranslationRules
@@ -33,6 +34,19 @@ namespace GUI.TranslationRules
             public ItemEditor()
                 : base()
             {
+            }
+
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public DataDictionary.Tests.Translations.Translation Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>

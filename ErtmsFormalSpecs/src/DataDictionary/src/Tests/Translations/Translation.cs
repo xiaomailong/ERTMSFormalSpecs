@@ -101,7 +101,7 @@ namespace DataDictionary.Tests.Translations
         /// The explanation of this translation, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
-        public string getExplain()
+        public override string getExplain()
         {
             string retVal = "";
 

@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Rules
 {
-    public class PreCondition : Generated.PreCondition, Utils.IPreCondition, TextualExplain
+    public class PreCondition : Generated.PreCondition, Utils.IPreCondition, IExpressionable, TextualExplain
     {
         /// <summary>
         /// The precondition expression

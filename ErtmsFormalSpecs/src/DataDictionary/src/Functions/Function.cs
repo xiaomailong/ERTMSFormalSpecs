@@ -36,7 +36,14 @@ namespace DataDictionary.Functions
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                setTypeName(value);
+            }
         }
 
         /// <summary>

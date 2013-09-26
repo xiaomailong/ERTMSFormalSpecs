@@ -28,12 +28,12 @@ namespace GUI.TestRunnerView
 
         public RichTextBox ExpressionTextBox
         {
-            get { return editTextBox.TextBox; }
+            get { return null; }
         }
 
         public RichTextBox CommentsTextBox
         {
-            get { return commentsRichTextBox.TextBox; }
+            get { return null; }
         }
 
         public RichTextBox MessagesTextBox
@@ -53,7 +53,7 @@ namespace GUI.TestRunnerView
 
         public ExplainTextBox ExplainTextBox
         {
-            get { return null; }
+            get { return explainTextBox; }
         }
 
         /// <summary>
@@ -98,7 +98,6 @@ namespace GUI.TestRunnerView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
             messageRichTextBox.AutoComplete = false;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
@@ -251,16 +250,6 @@ namespace GUI.TestRunnerView
             }
 
             base.Refresh();
-        }
-
-        private void editTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleExpressionTextChanged(editTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleCommentTextChanged(commentsRichTextBox.Text);
         }
 
         /// <summary>

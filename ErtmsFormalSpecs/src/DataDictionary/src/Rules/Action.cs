@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Rules
 {
-    public class Action : Generated.Action
+    public class Action : Generated.Action, IExpressionable
     {
         public override string Name
         {
@@ -241,7 +241,7 @@ namespace DataDictionary.Rules
         /// Explains the pre Condition
         /// </summary>
         /// <returns></returns>
-        public string getExplain()
+        public override string getExplain()
         {
             string retVal = Expression;
 

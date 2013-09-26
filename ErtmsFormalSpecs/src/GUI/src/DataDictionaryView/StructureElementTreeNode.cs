@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class StructureElementTreeNode : ReqRelatedTreeNode<DataDictionary.Types.StructureElement>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -31,7 +31,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class InternalValuesConverter : ValuesConverter
+        private class InternalValuesConverter : Converters.ValuesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -102,7 +102,7 @@ namespace GUI.DataDictionaryView
 
             /// </summary>
 
-            [Category("Description"), TypeConverter(typeof(VariableModeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
 
             public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
             {

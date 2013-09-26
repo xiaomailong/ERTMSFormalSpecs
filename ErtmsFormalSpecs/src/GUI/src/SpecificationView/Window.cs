@@ -35,7 +35,7 @@ namespace GUI.SpecificationView
 
         public RichTextBox CommentsTextBox
         {
-            get { return commentsRichTextBox.TextBox; }
+            get { return null; }
         }
 
         public RichTextBox MessagesTextBox
@@ -96,7 +96,7 @@ namespace GUI.SpecificationView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
+            specBrowserTextView.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);

@@ -27,17 +27,27 @@ namespace GUI.DataDictionaryView
 
         public RichTextBox ExpressionTextBox
         {
-            get { return expressionTextBox.TextBox; }
+            get { return null; }
         }
 
         public RichTextBox CommentsTextBox
         {
-            get { return commentRichTextBox.TextBox; }
+            get { return null; }
         }
 
         public RichTextBox MessagesTextBox
         {
-            get { return messagesRichTextBox.TextBox; }
+            get
+            {
+                if (messagesRichTextBox != null)
+                {
+                    return messagesRichTextBox.TextBox;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         public BaseTreeView TreeView
@@ -78,7 +88,6 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
@@ -111,16 +120,6 @@ namespace GUI.DataDictionaryView
         public void RefreshModel()
         {
             dataDictTree.RefreshModel();
-        }
-
-        private void expressionTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleExpressionTextChanged(expressionTextBox.Text);
-        }
-
-        private void commentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleCommentTextChanged(commentRichTextBox.Text);
         }
 
         /// <summary>

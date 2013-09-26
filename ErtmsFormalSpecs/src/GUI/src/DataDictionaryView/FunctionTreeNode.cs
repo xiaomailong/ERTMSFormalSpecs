@@ -24,7 +24,7 @@ namespace GUI.DataDictionaryView
 {
     public class FunctionTreeNode : ReqRelatedTreeNode<Function>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
