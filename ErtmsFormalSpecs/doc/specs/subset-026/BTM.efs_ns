@@ -842,6 +842,20 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Action>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action>
 </Actions>
 </RuleCondition><RuleCondition
+ Name="Level Transition available"
+>
+<ReqRef
+ Id="7.4.1.1.13"
+>
+</ReqRef>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
+</PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action>
+</Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Session management available"
 >
@@ -1175,17 +1189,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action>
 </Actions>
 </RuleCondition><RuleCondition
- Name="Level Transition available"
+ Name="Conditional Level Transition Order"
 >
-<ReqRef
- Id="7.4.1.1.13"
->
-</ReqRef>
 <PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
 </PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action>
+<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1631,14 +1641,6 @@ If all the messages of the current balise group have been received, calls Handle
  NeedsRequirement="FALSE"
  Name="All balises have been received for the balise group"
 >
-<ReqRef
- Id="7.5.1.71"
->
-</ReqRef>
-<ReqRef
- Id="7.5.1.71.0"
->
-</ReqRef>
 <Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1649,7 +1651,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Comment>N_TOTAL is the number of balises - 1</Comment>
 <PreConditions>
 <PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition>
-<PreCondition>FORALL_IN CurrentBaliseGroup |  ( X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition>
+<PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition>
 </PreConditions>
 <Actions>
 <Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>
