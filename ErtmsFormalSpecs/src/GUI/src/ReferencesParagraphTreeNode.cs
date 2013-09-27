@@ -134,7 +134,7 @@ namespace GUI
             DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
             if (window != null)
             {
-                window.requirementsTextBox.Lines = Utils.Utils.toStrings(Item.getRequirements());
+                window.requirementsTextBox.Text = Item.getRequirements();
             }
         }
 

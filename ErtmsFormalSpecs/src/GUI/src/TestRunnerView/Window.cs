@@ -26,16 +26,6 @@ namespace GUI.TestRunnerView
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }

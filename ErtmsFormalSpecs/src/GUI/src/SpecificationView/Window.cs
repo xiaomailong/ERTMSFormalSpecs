@@ -33,11 +33,6 @@ namespace GUI.SpecificationView
             get { return specBrowserTextView.TextBox; }
         }
 
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messagesRichTextBox.TextBox; }
@@ -142,17 +137,6 @@ namespace GUI.SpecificationView
         public MainWindow MDIWindow
         {
             get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
-        private void specBrowserTextView_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTextView.Enabled = true;
-            specBrowserTreeView.HandleExpressionTextChanged(ExpressionTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTreeView.HandleCommentTextChanged(CommentsTextBox.Text);
         }
 
         /// <summary>

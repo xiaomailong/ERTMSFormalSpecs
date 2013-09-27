@@ -25,16 +25,6 @@ namespace GUI
         MyPropertyGrid Properties { get; }
 
         /// <summary>
-        /// The text editor for expressions
-        /// </summary>
-        RichTextBox ExpressionTextBox { get; }
-
-        /// <summary>
-        /// The text editor for comments
-        /// </summary>
-        RichTextBox CommentsTextBox { get; }
-
-        /// <summary>
         /// The text editor for messages
         /// </summary>
         RichTextBox MessagesTextBox { get; }

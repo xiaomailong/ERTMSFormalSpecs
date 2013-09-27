@@ -255,31 +255,6 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleExpressionTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.ExpressionTextChanged(text);
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleCommentTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.CommentTextChanged(text);
-            }
-        }
-
-
-        /// <summary>
         /// Clears messages associated to the elements on the tree view
         /// </summary>
         public void ClearMessages()

@@ -156,40 +156,6 @@ namespace GUI
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
                 {
-                    if (baseForm.ExpressionTextBox != null)
-                    {
-                        if (Model.ExpressionText != null)
-                        {
-                            baseForm.ExpressionTextBox.Lines = Utils.Utils.toStrings(Model.ExpressionText);
-                            baseForm.ExpressionTextBox.Enabled = true;
-                        }
-                        else
-                        {
-                            baseForm.ExpressionTextBox.Text = "";
-                            baseForm.ExpressionTextBox.Enabled = false;
-                        }
-
-                        RefreshNode();
-                    }
-
-                    if (baseForm.CommentsTextBox != null)
-                    {
-                        if (Model is DataDictionary.ICommentable)
-                        {
-                            DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                            baseForm.CommentsTextBox.Lines = Utils.Utils.toStrings(commentable.Comment);
-                            baseForm.CommentsTextBox.Enabled = true;
-                        }
-                        else
-                        {
-                            baseForm.CommentsTextBox.Text = "";
-                            baseForm.CommentsTextBox.Enabled = false;
-                        }
-
-                        RefreshNode();
-                    }
-
                     if (baseForm.MessagesTextBox != null)
                     {
                         baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
@@ -215,37 +181,6 @@ namespace GUI
         public virtual void DoubleClickHandler()
         {
             // By default, nothing to do
-        }
-
-        /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void ExpressionTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                Model.ExpressionText = baseForm.ExpressionTextBox.Text;
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void CommentTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                if (Model is DataDictionary.ICommentable)
-                {
-                    DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                    commentable.Comment = baseForm.CommentsTextBox.Text;
-                }
-            }
         }
 
         /// <summary>
@@ -921,20 +856,6 @@ namespace GUI
         public override void SelectionChanged()
         {
             base.SelectionChanged();
-
-            IBaseForm window = BaseForm as IBaseForm;
-            if (window != null && window.ExplainTextBox != null)
-            {
-                TextualExplain textualExplain = Item as TextualExplain;
-                if (textualExplain != null)
-                {
-                    window.ExplainTextBox.Rtf = TextualExplainUtilities.Encapsule(textualExplain.getExplain(true));
-                }
-                else
-                {
-                    window.ExplainTextBox.Rtf = TextualExplainUtilities.Encapsule("");
-                }
-            }
 
             if (BaseTreeView.RefreshNodeContent)
             {

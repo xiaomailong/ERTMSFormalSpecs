@@ -130,26 +130,6 @@ namespace GUI.TranslationRules
             createSubStep(subStep);
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            Window window = BaseForm as Window;
-
-            if (window != null)
-            {
-                if (window.ExpressionTextBox != null)
-                {
-                    window.ExpressionTextBox.Lines = Utils.Utils.toStrings(Item.getExplain());
-                }
-                if (window.CommentsTextBox != null)
-                {
-                    window.CommentsTextBox.Lines = Utils.Utils.toStrings(Item.getComment());
-                }
-            }
-            RefreshNode();
-        }
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>

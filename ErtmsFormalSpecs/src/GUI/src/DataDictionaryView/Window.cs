@@ -25,16 +25,6 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return null; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return null; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get

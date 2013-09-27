@@ -53,7 +53,6 @@ namespace GUI
 
             editorTextBox.TextBox.TextChanged += new EventHandler(TextChangedHandler);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-
         }
 
         /// <summary>
@@ -132,7 +131,11 @@ namespace GUI
         public string Value
         {
             get { return editorTextBox.TextBox.Text; }
-            set { editorTextBox.TextBox.Text = value; }
+            set
+            {
+                editorTextBox.TextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                editorTextBox.TextBox.Text = value;
+            }
         }
 
         /// <summary>

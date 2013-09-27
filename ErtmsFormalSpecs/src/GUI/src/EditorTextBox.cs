@@ -19,6 +19,11 @@ namespace GUI
         private bool PendingSelection { get; set; }
 
         /// <summary>
+        /// The initial RTF data, used to initialise back the control and remove all formatting information
+        /// </summary>
+        private string InitialRTF { get; set; }
+
+        /// <summary>
         /// The enclosing IBaseForm
         /// </summary>
         IBaseForm EnclosingForm
@@ -72,6 +77,7 @@ namespace GUI
         public EditorTextBox()
         {
             InitializeComponent();
+            InitialRTF = EditionTextBox.Rtf;
 
             AutoComplete = true;
 
@@ -690,8 +696,54 @@ namespace GUI
             return retVal;
         }
 
-        public string Rtf { get { return EditionTextBox.Rtf; } set { EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value); } }
-        public bool ReadOnly { get { return EditionTextBox.ReadOnly; } set { EditionTextBox.ReadOnly = value; } }
-        public string[] Lines { get { return EditionTextBox.Lines; } set { EditionTextBox.Lines = value; } }
+        public string Rtf
+        {
+            get
+            {
+                return EditionTextBox.Rtf;
+            }
+            set
+            {
+                EditionTextBox.Rtf = InitialRTF;
+                EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value);
+            }
+        }
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return EditionTextBox.ReadOnly;
+            }
+            set
+            {
+                EditionTextBox.ReadOnly = value;
+            }
+        }
+
+        public string[] Lines
+        {
+            get
+            {
+                return EditionTextBox.Lines;
+            }
+            set
+            {
+                EditionTextBox.Rtf = InitialRTF;
+                EditionTextBox.Lines = value;
+            }
+        }
+        public override string Text
+        {
+            get
+            {
+                return EditionTextBox.Text;
+            }
+            set
+            {
+                EditionTextBox.Rtf = InitialRTF;
+                EditionTextBox.Text = value;
+            }
+        }
     }
 }

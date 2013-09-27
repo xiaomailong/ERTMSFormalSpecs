@@ -50,6 +50,7 @@ namespace GUI
         {
             DataDictionary.TextualExplain explainable = Model as DataDictionary.TextualExplain;
 
+            Rtf = "";
             if (explainable != null)
             {
                 string explanation = explainable.getExplain(true);
@@ -57,16 +58,7 @@ namespace GUI
                 if (explanation != null)
                 {
                     Rtf = explanation;
-                    Visible = true;
                 }
-                else
-                {
-                    Visible = false;
-                }
-            }
-            else
-            {
-                Visible = false;
             }
         }
     }
