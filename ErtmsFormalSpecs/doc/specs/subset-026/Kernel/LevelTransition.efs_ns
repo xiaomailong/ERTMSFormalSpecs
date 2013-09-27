@@ -56,7 +56,7 @@
 <Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- Name="LevelTransitionOrderOrCondLT"
+ Name="LevelTransitionOrder"
 >
 <ReqRef
  Id="5.10.1.1"
@@ -107,7 +107,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="LevelTransitionOrderOrCondLT"
+ Name="IsLTO"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -234,9 +234,9 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>LevelTransitionOrderOrCondLT &lt;- LevelTransitionOrderOrCondLT
+<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
 {
-  LevelTransitionOrderOrCondLT =&gt; True,
+  IsLTO=&gt; True,
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
   LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
@@ -329,7 +329,7 @@ LevelTransition
     TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
     TRLevelNTCID =&gt; NID_NTC
 }
-IN  LevelTransitionOrderOrCondLT.LevelandLength</Action>
+IN  LevelTransitionOrder.LevelandLength</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -393,9 +393,9 @@ IN  LevelTransitionOrderOrCondLT.LevelandLength</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>LevelTransitionOrderOrCondLT &lt;- LevelTransitionOrderOrCondLT
+<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
 {
-   LevelTransitionOrderOrCondLT=&gt; False,
+   IsLTO=&gt; False,
    Distance =&gt; EMPTY,
    LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
@@ -416,66 +416,26 @@ IN  LevelTransitionOrderOrCondLT.LevelandLength</Action>
 </PreConditions>
 <Actions>
 <Action>APPLY 
-AddNewCLTO 
+AddNewLTO 
 (  
    M_LEVELTR =&gt; X.M_LEVELTR,
    NID_NTC =&gt; Packet.NID_NTC,
+   Q_SCALE =&gt; EMPTY,
+   L_ACKLEVELTR =&gt; EMPTY 
 )
 ON 
 Packet.Sequence1 </Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="AddNewCLTO"
->
-<ReqRef
- Id="5.10.1.4"
->
-</ReqRef>
-<Parameters>
-<Parameter
- Type="Messages.M_LEVELTR"
- Name="M_LEVELTR"
->
-</Parameter><Parameter
- Type="Messages.NID_NTC"
- Name="NID_NTC"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Name="AddNewCLTO"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="NewConditionalLevelTransition"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>INSERT
-LevelTransition
-{
-    AcknLength=&gt;EMPTY,
-    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
-    TRLevelNTCID =&gt; NID_NTC
-}
-IN  LevelTransitionOrderOrCondLT.LevelandLength</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="LevelTransitionOrderOrCondLT"
+ Type="LevelTransitionOrder"
  DefaultValue=""
  VariableMode="Internal"
  Implemented="TRUE"
- Name="LevelTransitionOrderOrCondLT"
+ Name="LevelTransitionOrder"
 >
 <ReqRef
  Id="7.4.1.1.17"
@@ -524,8 +484,8 @@ IN  LevelTransitionOrderOrCondLT.LevelandLength</Action>
  Name="ExecuteLevelTransitionOrder"
 >
 <PreConditions>
-<PreCondition>LevelTransition.LevelTransitionOrderOrCondLT.Distance == Odometry.NominalDistance </PreCondition>
-<PreCondition>Kernel.LevelTransition.LevelTransitionOrderOrCondLT.LevelTransitionOrderOrCondLT == True </PreCondition>
+<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition>
+<PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition>
 </PreConditions>
 <Actions>
 <Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel</Action>
