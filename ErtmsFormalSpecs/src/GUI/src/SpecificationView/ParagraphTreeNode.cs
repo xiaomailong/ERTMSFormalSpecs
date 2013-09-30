@@ -277,8 +277,10 @@ namespace GUI.SpecificationView
                     AddParagraph(paragraph);
                 }
             }
-
-            base.AcceptDrop(SourceNode);
+            else
+            {
+                base.AcceptDrop(SourceNode);
+            }
         }
 
         public override void AcceptCopy(BaseTreeNode SourceNode)
