@@ -4561,6 +4561,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -4572,6 +4573,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -4602,20 +4604,19 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Examples: The table of trackside supported levels gives 2, NTC X, 1, NTC Y. If level 1, 0 and NTC X are &quot;Available for use&quot;, the ERTMS/ETCS on-board will select NTC X level. If level 1, 0 and NTC Y are &quot;Available for use&quot;, it will select level 1. If level 2, 1 and 0 are &quot;Available for use&quot;, it will select level 2.
-</Paragraph></Sub>
+>Examples: The table of trackside supported levels gives 2, NTC X, 1, NTC Y. If level 1, 0 and NTC X are &quot;Available for use&quot;, the ERTMS/ETCS on-board will select NTC X level. If level 1, 0 and NTC Y are &quot;Available for use&quot;, it will select level 1. If level 2, 1 and 0 are &quot;Available for use&quot;, it will select level 2.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.10.2.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the onboard has selected the level it will switch to, it shall carry out the level transition as if it has received a level transition order to this level only i.e. it shall ignore the requirements related to transitions to the other levels.
-</Paragraph><Paragraph
+>When the onboard has selected the level it will switch to, it shall carry out the level transition as if it has received a level transition order to this level only i.e. it shall ignore the requirements related to transitions to the other levels.</Paragraph><Paragraph
  id="5.10.2.6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4625,13 +4626,13 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall inform the driver about the selected level transition only.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall inform the driver about the selected level transition only.</Paragraph><Paragraph
  id="5.10.2.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -4654,12 +4655,12 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If, due to level inhibition, no level transition will be possible the ERTMS/ETCS Onboard equipment shall command the service brake and the driver shall be informed.
-</Paragraph></Sub>
+>If, due to level inhibition, no level transition will be possible the ERTMS/ETCS On-board equipment shall command the service brake and the driver shall be informed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.10.2.8"
  type="REQUIREMENT"
@@ -4956,12 +4957,12 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).
-</Paragraph><Paragraph
+>A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
  id="5.10.3.4.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4971,8 +4972,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The driver is responsible for entering the level 1 area at a speed not exceeding the speed limits of the unequipped line.
-</Paragraph></Sub>
+>The driver is responsible for entering the level 1 area at a speed not exceeding the speed limits of the unequipped line.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.10.3.5"
  type="TITLE"
@@ -5479,12 +5479,12 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the current level is contained in the priority list of the conditional level transition order, the onboard shall not change the level.
-</Paragraph><Paragraph
+>If the current level is contained in the priority list of the conditional level transition order, the onboard shall not change the level.</Paragraph><Paragraph
  id="5.10.3.14.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
