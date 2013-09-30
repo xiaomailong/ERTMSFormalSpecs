@@ -29,6 +29,26 @@ namespace GUI
     public class BaseTreeNode : TreeNode, IComparable<BaseTreeNode>
     {
         /// <summary>
+        /// The editor for this tree node
+        /// </summary>
+        public class BaseEditor
+        {
+            /// <summary>
+            /// The model element currently edited
+            /// </summary>
+            [Browsable(false)]
+            public IModelElement Model { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="model"></param>
+            protected BaseEditor()
+            {
+            }
+        }
+
+        /// <summary>
         /// The fixed node name
         /// </summary>
         private string defaultName;
@@ -685,7 +705,7 @@ namespace GUI
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class Editor
+        public abstract class Editor : BaseTreeNode.BaseEditor
         {
             /// <summary>
             /// The item that is edited. 
@@ -699,6 +719,7 @@ namespace GUI
                 set
                 {
                     item = value;
+                    Model = (IModelElement)value;
                     UpdateActivation();
                 }
             }
@@ -727,6 +748,7 @@ namespace GUI
             /// Constructor
             /// </summary>
             protected Editor()
+                : base()
             {
             }
 

@@ -85,6 +85,9 @@ namespace GUI.DataDictionaryView
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
+
+            // TODO : Does not work yet
+            // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
             Refresh();
         }
 

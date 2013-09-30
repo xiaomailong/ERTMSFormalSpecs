@@ -28,6 +28,34 @@ namespace GUI.Converters
     /// </summary>
     public class CommentableUITypeConverter : StringConverter
     {
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return true;
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            BaseTreeNode.BaseEditor editor = context.Instance as BaseTreeNode.BaseEditor;
+            string text = value as string;
+            if (editor != null && text != null)
+            {
+                ICommentable commentable = editor.Model as ICommentable;
+                if (commentable != null)
+                {
+                    commentable.Comment = text;
+                    return commentable;
+                }
+                else
+                {
+                    return base.ConvertFrom(context, culture, value);
+                }
+            }
+            else
+            {
+                return base.ConvertFrom(context, culture, value);
+            }
+        }
+
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             string retVal = "<unknown>";
@@ -50,11 +78,6 @@ namespace GUI.Converters
             }
 
             return retVal;
-        }
-
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            return false;
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)

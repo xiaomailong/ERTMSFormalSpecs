@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace GUI
 {
@@ -108,6 +109,33 @@ namespace GUI
             {
                 // No cache
             }
+        }
+
+        public static void ResizePropertyGridSplitter(
+            PropertyGrid propertyGrid,
+            int labelColumnPercentageWidth)
+        {
+            var width =
+                propertyGrid.Width * (labelColumnPercentageWidth / 100.0);
+
+            // Go up in hierarchy until found real property grid type.
+            var realType = propertyGrid.GetType();
+            while (realType != null && realType != typeof(PropertyGrid))
+            {
+                realType = realType.BaseType;
+            }
+
+            var gvf = realType.GetField(@"gridView",
+                BindingFlags.NonPublic |
+                BindingFlags.GetField |
+                BindingFlags.Instance);
+            var gv = gvf.GetValue(propertyGrid);
+
+            var mtf = gv.GetType().GetMethod(@"MoveSplitterTo",
+                BindingFlags.NonPublic |
+                BindingFlags.InvokeMethod |
+                BindingFlags.Instance);
+            mtf.Invoke(gv, new object[] { (int)width });
         }
     }
 }
