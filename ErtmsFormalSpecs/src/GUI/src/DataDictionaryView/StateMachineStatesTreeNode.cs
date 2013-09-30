@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class StateMachineStatesTreeNode : DataTreeNode<DataDictionary.Types.StateMachine>
     {
-        private class InternalStateTypeConverter : StateTypeConverter
+        private class InternalStateTypeConverter : Converters.StateTypeConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)

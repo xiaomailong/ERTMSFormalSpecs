@@ -250,7 +250,7 @@ namespace DataDictionary
                 ctxt.readFile(filePath);
                 try
                 {
-                    Generated.ControllersManager.NamableController.DesactivateNotification();
+                    Generated.ControllersManager.DesactivateAllNotifications();
                     retVal = Generated.acceptor.accept(ctxt) as T;
                     if (retVal != null)
                     {
@@ -268,7 +268,7 @@ namespace DataDictionary
                 }
                 finally
                 {
-                    Generated.ControllersManager.NamableController.ActivateNotification();
+                    Generated.ControllersManager.ActivateAllNotifications();
                 }
 
                 return retVal;

@@ -274,7 +274,7 @@ namespace DataDictionary.Types
 
             foreach (Constants.EnumValue enumValue in Values)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + enumValue.Name + "}", indentLevel + 2);
+                retVal += "\\par" + enumValue.getExplain(indentLevel + 2);
             }
 
 

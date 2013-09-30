@@ -41,22 +41,6 @@ namespace GUI.TranslationRules
         {
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            Window window = BaseForm as Window;
-
-            if (window != null)
-            {
-                if (window.ExpressionTextBox != null)
-                {
-                    window.ExpressionTextBox.Lines = Utils.Utils.toStrings(Item.Name);
-                }
-            }
-            RefreshNode();
-        }
-
         /// <summary>
         /// Creates the editor for this tree node
         /// </summary>

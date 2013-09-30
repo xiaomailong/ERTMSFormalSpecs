@@ -133,7 +133,7 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } }
+        public string TypeName { get { return Type.FullName; } set { } }
 
         /// <summary>
         /// Provides the mode of the typed element
@@ -151,6 +151,33 @@ namespace DataDictionary.Constants
         /// <param name="copy"></param>
         public override void AddModelElement(Utils.IModelElement element)
         {
+        }
+
+        /// <summary>
+        /// Provides an explanation of the enumeration
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel)
+        {
+            string retVal = Name;
+
+            if (!String.IsNullOrEmpty(getValue()))
+            {
+                retVal += " : " + getValue();
+            }
+
+            return TextualExplainUtilities.Pad("{" + retVal + "}", indentLevel);
+        }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool subElements)
+        {
+            return getExplain(0);
         }
     }
 }

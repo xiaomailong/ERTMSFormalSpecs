@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : ReferencesParagraphEditor
+        private class ItemEditor : UnnamedReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor
@@ -33,20 +33,6 @@ namespace GUI.SpecificationView
             public ItemEditor()
                 : base()
             {
-            }
-
-            /// <summary>
-            /// The item name
-            /// </summary>
-            [Category("Description")]
-            public override string Name
-            {
-                get { return base.Name; }
-                set
-                {
-                    base.Name = value;
-                    RefreshNode();
-                }
             }
 
             /// <summary>
@@ -64,9 +50,23 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
+            /// The item name
+            /// </summary>
+            [Category("Description")]
+            public string Text
+            {
+                get { return Item.Text; }
+                set
+                {
+                    Item.setText(value);
+                    RefreshNode();
+                }
+            }
+
+            /// <summary>
             /// Provides the type of the paragraph
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(SpecTypeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.SpecTypeConverter))]
             public virtual DataDictionary.Generated.acceptor.Paragraph_type Type
             {
                 get { return Item.getType(); }
@@ -81,7 +81,7 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Provides the scope of the paragraph
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(ScopeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.ScopeConverter))]
             public virtual DataDictionary.Generated.acceptor.Paragraph_scope Scope
             {
                 get { return Item.getScope(); }
@@ -121,7 +121,7 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Indicates if the paragraph can be implemented by the EFS
             /// </summary>
-            [Category("Meta data"), TypeConverter(typeof(ImplementationStatusConverter))]
+            [Category("Meta data"), TypeConverter(typeof(Converters.ImplementationStatusConverter))]
             public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
             {
                 get { return Item.getImplementationStatus(); }
@@ -147,7 +147,7 @@ namespace GUI.SpecificationView
                 get
                 {
                     if (Item.getFunctionalBlock() && Item.getFunctionalBlockName().Equals(""))
-                        Item.setFunctionalBlockName(this.Name);
+                        Item.setFunctionalBlockName(Text);
                     return Item.getFunctionalBlockName();
                 }
                 set
@@ -187,6 +187,8 @@ namespace GUI.SpecificationView
             Window window = BaseForm as Window;
             if (window != null)
             {
+                window.specBrowserTextView.Text = Item.Text;
+                window.specBrowserTextView.Enabled = true;
                 window.specBrowserRuleView.Nodes.Clear();
                 foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
                 {
@@ -275,8 +277,10 @@ namespace GUI.SpecificationView
                     AddParagraph(paragraph);
                 }
             }
-
-            base.AcceptDrop(SourceNode);
+            else
+            {
+                base.AcceptDrop(SourceNode);
+            }
         }
 
         public override void AcceptCopy(BaseTreeNode SourceNode)

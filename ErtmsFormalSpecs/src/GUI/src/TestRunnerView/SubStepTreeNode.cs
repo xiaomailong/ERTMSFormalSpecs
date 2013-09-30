@@ -69,18 +69,6 @@ namespace GUI.TestRunnerView
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            Window window = BaseForm as Window;
-            if (window != null)
-            {
-                window.ExpressionTextBox.Lines = Utils.Utils.toStrings(Item.Name);
-                //window.explainTextBox.Lines = Utils.Utils.toStrings(Item.getExplain());
-            }
-        }
-
         /// <summary>
         /// Ensures that the runner corresponds to test case
         /// </summary>

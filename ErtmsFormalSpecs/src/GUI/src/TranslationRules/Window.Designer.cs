@@ -54,13 +54,10 @@ namespace GUI.TranslationRules
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.translationTreeView = new GUI.TranslationRules.TranslationTreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.commentRichTextBox = new EditorTextBox();
-            this.messageRichTextBox = new EditorTextBox();
-            this.editTextBox = new EditorTextBox();
+            this.messageRichTextBox = new GUI.EditorTextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -70,15 +67,8 @@ namespace GUI.TranslationRules
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -92,7 +82,7 @@ namespace GUI.TranslationRules
             this.nextInfoToolStripButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(560, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(767, 25);
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -156,8 +146,8 @@ namespace GUI.TranslationRules
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer1.Size = new System.Drawing.Size(560, 275);
-            this.splitContainer1.SplitterDistance = 186;
+            this.splitContainer1.Size = new System.Drawing.Size(767, 436);
+            this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -173,7 +163,7 @@ namespace GUI.TranslationRules
             this.translationTreeView.Root = null;
             this.translationTreeView.Selected = null;
             this.translationTreeView.SelectedImageIndex = 0;
-            this.translationTreeView.Size = new System.Drawing.Size(186, 275);
+            this.translationTreeView.Size = new System.Drawing.Size(254, 436);
             this.translationTreeView.TabIndex = 1;
             // 
             // splitContainer4
@@ -186,32 +176,15 @@ namespace GUI.TranslationRules
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer4.Panel1.Controls.Add(this.propertyGrid);
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer4.Size = new System.Drawing.Size(371, 275);
-            this.splitContainer4.SplitterDistance = 159;
+            this.splitContainer4.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer4.Size = new System.Drawing.Size(510, 436);
+            this.splitContainer4.SplitterDistance = 252;
             this.splitContainer4.SplitterWidth = 3;
             this.splitContainer4.TabIndex = 1;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.propertyGrid);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer3.Size = new System.Drawing.Size(371, 159);
-            this.splitContainer3.SplitterDistance = 200;
-            this.splitContainer3.TabIndex = 7;
             // 
             // propertyGrid
             // 
@@ -221,76 +194,48 @@ namespace GUI.TranslationRules
             this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
             this.propertyGrid.Name = "propertyGrid";
             this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(200, 159);
+            this.propertyGrid.Size = new System.Drawing.Size(510, 252);
             this.propertyGrid.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.messageRichTextBox);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(167, 159);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Messages";
             // 
             // messageRichTextBox
             // 
+            this.messageRichTextBox.AutoComplete = true;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
+            this.messageRichTextBox.Lines = new string[0];
+            this.messageRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.messageRichTextBox.Name = "messageRichTextBox";
-            this.messageRichTextBox.Size = new System.Drawing.Size(161, 140);
+            this.messageRichTextBox.ReadOnly = false;
+            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
+            this.messageRichTextBox.Size = new System.Drawing.Size(496, 149);
             this.messageRichTextBox.TabIndex = 4;
-            this.messageRichTextBox.Text = "";
             // 
-            // splitContainer2
+            // tabControl1
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer2.Name = "splitContainer2";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(510, 181);
+            this.tabControl1.TabIndex = 0;
             // 
-            // splitContainer2.Panel1
+            // tabPage1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.editTextBox);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.commentRichTextBox);
-            this.splitContainer2.Size = new System.Drawing.Size(371, 113);
-            this.splitContainer2.SplitterDistance = 150;
-            this.splitContainer2.SplitterWidth = 3;
-            this.splitContainer2.TabIndex = 4;
-            // 
-            // editTextBox
-            // 
-            this.editTextBox.AllowDrop = true;
-            this.editTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editTextBox.Location = new System.Drawing.Point(0, 0);
-            this.editTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.editTextBox.Name = "editTextBox";
-            this.editTextBox.Size = new System.Drawing.Size(150, 113);
-            this.editTextBox.TabIndex = 0;
-            this.editTextBox.Text = "";
-            this.editTextBox.TextBox.TextChanged += new System.EventHandler(this.editTextBox_TextChanged_1);
-            // 
-            // commentRichTextBox
-            // 
-            this.commentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.commentRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.commentRichTextBox.Name = "commentRichTextBox";
-            this.commentRichTextBox.Size = new System.Drawing.Size(218, 113);
-            this.commentRichTextBox.TabIndex = 3;
-            this.commentRichTextBox.Text = "";
-            this.commentRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentRichTextBox_TextChanged);
+            this.tabPage1.Controls.Add(this.messageRichTextBox);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(502, 155);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Messages";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 300);
+            this.ClientSize = new System.Drawing.Size(767, 461);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
@@ -308,15 +253,8 @@ namespace GUI.TranslationRules
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,15 +270,12 @@ namespace GUI.TranslationRules
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private MyPropertyGrid propertyGrid;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private EditorTextBox editTextBox;
-        public EditorTextBox commentRichTextBox;
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
         private System.Windows.Forms.ToolStripButton nextWarningToolStripButton;
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.GroupBox groupBox1;
         private EditorTextBox messageRichTextBox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
 
     }
 }

@@ -97,7 +97,7 @@ namespace DataDictionary.Tests
         /// The explanation of this step, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
-        public string getExplain()
+        public override string getExplain()
         {
             string retVal = "";
 

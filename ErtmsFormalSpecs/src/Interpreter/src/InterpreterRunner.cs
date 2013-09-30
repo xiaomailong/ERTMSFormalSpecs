@@ -41,7 +41,7 @@ namespace Interpreter
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
@@ -67,7 +67,7 @@ namespace Interpreter
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;

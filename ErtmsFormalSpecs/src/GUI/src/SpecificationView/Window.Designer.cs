@@ -54,21 +54,18 @@ namespace GUI.SpecificationView
             this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.specBrowserTreeView = new GUI.SpecificationView.SpecificationTreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.propertyGrid = new GUI.MyPropertyGrid();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.messagesRichTextBox = new EditorTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.specTabPage = new System.Windows.Forms.TabPage();
-            this.specBrowserTextView = new EditorTextBox();
-            this.commentsRichTextBox = new EditorTextBox();
-            this.commentsTabPage = new System.Windows.Forms.TabPage();
             this.implementationTabPage = new System.Windows.Forms.TabPage();
-            this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
+            this.messagesTabPage = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.specBrowserTreeView = new GUI.SpecificationView.SpecificationTreeView();
+            this.propertyGrid = new GUI.MyPropertyGrid();
+            this.specBrowserTextView = new GUI.EditorTextBox();
+            this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
+            this.messagesRichTextBox = new GUI.EditorTextBox();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,15 +75,10 @@ namespace GUI.SpecificationView
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.specTabPage.SuspendLayout();
-            this.commentsTabPage.SuspendLayout();
             this.implementationTabPage.SuspendLayout();
+            this.messagesTabPage.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,21 +175,6 @@ namespace GUI.SpecificationView
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
-            // specBrowserTreeView
-            // 
-            this.specBrowserTreeView.AllowDrop = true;
-            this.specBrowserTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.specBrowserTreeView.HideSelection = false;
-            this.specBrowserTreeView.ImageIndex = 0;
-            this.specBrowserTreeView.LabelEdit = true;
-            this.specBrowserTreeView.Location = new System.Drawing.Point(0, 0);
-            this.specBrowserTreeView.Name = "specBrowserTreeView";
-            this.specBrowserTreeView.Root = null;
-            this.specBrowserTreeView.Selected = null;
-            this.specBrowserTreeView.SelectedImageIndex = 0;
-            this.specBrowserTreeView.Size = new System.Drawing.Size(335, 501);
-            this.specBrowserTreeView.TabIndex = 2;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -208,7 +185,7 @@ namespace GUI.SpecificationView
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
             // 
             // splitContainer2.Panel2
             // 
@@ -218,61 +195,11 @@ namespace GUI.SpecificationView
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
             // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.propertyGrid);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer3.Size = new System.Drawing.Size(683, 201);
-            this.splitContainer3.SplitterDistance = 343;
-            this.splitContainer3.TabIndex = 1;
-            // 
-            // propertyGrid
-            // 
-            this.propertyGrid.AllowDrop = true;
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(343, 201);
-            this.propertyGrid.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.messagesRichTextBox);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(336, 201);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Messages";
-            // 
-            // messagesRichTextBox
-            // 
-            this.messagesRichTextBox.AllowDrop = true;
-            this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messagesRichTextBox.Location = new System.Drawing.Point(3, 16);
-            this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.messagesRichTextBox.Name = "messagesRichTextBox";
-            this.messagesRichTextBox.Size = new System.Drawing.Size(330, 182);
-            this.messagesRichTextBox.TabIndex = 0;
-            this.messagesRichTextBox.Text = "";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.specTabPage);
-            this.tabControl1.Controls.Add(this.commentsTabPage);
             this.tabControl1.Controls.Add(this.implementationTabPage);
+            this.tabControl1.Controls.Add(this.messagesTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -290,43 +217,8 @@ namespace GUI.SpecificationView
             this.specTabPage.Padding = new System.Windows.Forms.Padding(2);
             this.specTabPage.Size = new System.Drawing.Size(675, 271);
             this.specTabPage.TabIndex = 0;
-            this.specTabPage.Text = "Specification";
+            this.specTabPage.Text = "Description";
             this.specTabPage.UseVisualStyleBackColor = true;
-            // 
-            // specBrowserTextView
-            // 
-            this.specBrowserTextView.AllowDrop = true;
-            this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
-            this.specBrowserTextView.Name = "specBrowserTextView";
-            this.specBrowserTextView.Size = new System.Drawing.Size(671, 267);
-            this.specBrowserTextView.TabIndex = 3;
-            this.specBrowserTextView.Text = "";
-            this.specBrowserTextView.TextBox.TextChanged += new System.EventHandler(this.specBrowserTextView_TextChanged);
-            // 
-            // commentsTabPage
-            // 
-            this.commentsTabPage.Controls.Add(this.commentsRichTextBox);
-            this.commentsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.commentsTabPage.Margin = new System.Windows.Forms.Padding(2);
-            this.commentsTabPage.Name = "commentsTabPage";
-            this.commentsTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.commentsTabPage.Size = new System.Drawing.Size(675, 271);
-            this.commentsTabPage.TabIndex = 3;
-            this.commentsTabPage.Text = "Comments";
-            this.commentsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // commentsRichTextBox
-            // 
-            this.commentsRichTextBox.AllowDrop = true;
-            this.commentsRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentsRichTextBox.Location = new System.Drawing.Point(2, 2);
-            this.commentsRichTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.commentsRichTextBox.Name = "commentsRichTextBox";
-            this.commentsRichTextBox.Size = new System.Drawing.Size(537, 148);
-            this.commentsRichTextBox.TabIndex = 0;
-            this.commentsRichTextBox.Text = "";
-            this.commentsRichTextBox.TextBox.TextChanged += new System.EventHandler(this.commentsRichTextBox_TextChanged);
             // 
             // implementationTabPage
             // 
@@ -340,20 +232,15 @@ namespace GUI.SpecificationView
             this.implementationTabPage.Text = "Implementation";
             this.implementationTabPage.UseVisualStyleBackColor = true;
             // 
-            // specBrowserRuleView
+            // messagesTabPage
             // 
-            this.specBrowserRuleView.AllowDrop = true;
-            this.specBrowserRuleView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.specBrowserRuleView.HideSelection = false;
-            this.specBrowserRuleView.ImageIndex = 0;
-            this.specBrowserRuleView.LabelEdit = true;
-            this.specBrowserRuleView.Location = new System.Drawing.Point(2, 2);
-            this.specBrowserRuleView.Name = "specBrowserRuleView";
-            this.specBrowserRuleView.Root = null;
-            this.specBrowserRuleView.Selected = null;
-            this.specBrowserRuleView.SelectedImageIndex = 0;
-            this.specBrowserRuleView.Size = new System.Drawing.Size(537, 148);
-            this.specBrowserRuleView.TabIndex = 4;
+            this.messagesTabPage.Controls.Add(this.messagesRichTextBox);
+            this.messagesTabPage.Location = new System.Drawing.Point(4, 22);
+            this.messagesTabPage.Name = "messagesTabPage";
+            this.messagesTabPage.Size = new System.Drawing.Size(675, 271);
+            this.messagesTabPage.TabIndex = 2;
+            this.messagesTabPage.Text = "Messages";
+            this.messagesTabPage.UseVisualStyleBackColor = true;
             // 
             // statusStrip
             // 
@@ -371,6 +258,98 @@ namespace GUI.SpecificationView
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(31, 17);
             this.toolStripStatusLabel.Text = "        ";
+            // 
+            // specBrowserTreeView
+            // 
+            this.specBrowserTreeView.AllowDrop = true;
+            this.specBrowserTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.specBrowserTreeView.HideSelection = false;
+            this.specBrowserTreeView.ImageIndex = 0;
+            this.specBrowserTreeView.LabelEdit = true;
+            this.specBrowserTreeView.Location = new System.Drawing.Point(0, 0);
+            this.specBrowserTreeView.Name = "specBrowserTreeView";
+            this.specBrowserTreeView.Root = null;
+            this.specBrowserTreeView.Selected = null;
+            this.specBrowserTreeView.SelectedImageIndex = 0;
+            this.specBrowserTreeView.Size = new System.Drawing.Size(335, 501);
+            this.specBrowserTreeView.TabIndex = 2;
+            // 
+            // propertyGrid
+            // 
+            this.propertyGrid.AllowDrop = true;
+            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.propertyGrid.Name = "propertyGrid";
+            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+            this.propertyGrid.Size = new System.Drawing.Size(683, 201);
+            this.propertyGrid.TabIndex = 0;
+            // 
+            // specBrowserTextView
+            // 
+            this.specBrowserTextView.AllowDrop = true;
+            this.specBrowserTextView.AutoComplete = true;
+            this.specBrowserTextView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.specBrowserTextView.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.specBrowserTextView.Location = new System.Drawing.Point(2, 2);
+            this.specBrowserTextView.Name = "specBrowserTextView";
+            this.specBrowserTextView.ReadOnly = false;
+            this.specBrowserTextView.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\par\r\n\\par\r\n\\fs17\\par\r\n\\par\r\n\\par" +
+    "\r\n\\par\r\n\\par\r\n\\par\r\n\\par\r\n}\r\n";
+            this.specBrowserTextView.Size = new System.Drawing.Size(671, 267);
+            this.specBrowserTextView.TabIndex = 3;
+            // 
+            // specBrowserRuleView
+            // 
+            this.specBrowserRuleView.AllowDrop = true;
+            this.specBrowserRuleView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.specBrowserRuleView.HideSelection = false;
+            this.specBrowserRuleView.ImageIndex = 0;
+            this.specBrowserRuleView.LabelEdit = true;
+            this.specBrowserRuleView.Location = new System.Drawing.Point(2, 2);
+            this.specBrowserRuleView.Name = "specBrowserRuleView";
+            this.specBrowserRuleView.Root = null;
+            this.specBrowserRuleView.Selected = null;
+            this.specBrowserRuleView.SelectedImageIndex = 0;
+            this.specBrowserRuleView.Size = new System.Drawing.Size(671, 267);
+            this.specBrowserRuleView.TabIndex = 4;
+            // 
+            // messagesRichTextBox
+            // 
+            this.messagesRichTextBox.AllowDrop = true;
+            this.messagesRichTextBox.AutoComplete = true;
+            this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.messagesRichTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.messagesRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.messagesRichTextBox.Name = "messagesRichTextBox";
+            this.messagesRichTextBox.ReadOnly = false;
+            this.messagesRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\par\r\n\\par\r\n\\fs17\\par\r\n\\par\r\n\\par" +
+    "\r\n\\par\r\n\\par\r\n\\par\r\n\\par\r\n}\r\n";
+            this.messagesRichTextBox.Size = new System.Drawing.Size(675, 271);
+            this.messagesRichTextBox.TabIndex = 0;
             // 
             // Window
             // 
@@ -395,15 +374,10 @@ namespace GUI.SpecificationView
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.specTabPage.ResumeLayout(false);
-            this.commentsTabPage.ResumeLayout(false);
             this.implementationTabPage.ResumeLayout(false);
+            this.messagesTabPage.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -428,16 +402,13 @@ namespace GUI.SpecificationView
         private EditorTextBox messagesRichTextBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.TabPage commentsTabPage;
-        private EditorTextBox commentsRichTextBox;
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
         private System.Windows.Forms.ToolStripButton nextWarningToolStripButton;
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.StatusStrip statusStrip;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TabPage messagesTabPage;
 
     }
 }

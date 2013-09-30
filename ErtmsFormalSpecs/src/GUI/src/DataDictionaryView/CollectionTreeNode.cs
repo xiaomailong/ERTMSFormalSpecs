@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class CollectionTreeNode : TypeTreeNode<DataDictionary.Types.Collection>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)

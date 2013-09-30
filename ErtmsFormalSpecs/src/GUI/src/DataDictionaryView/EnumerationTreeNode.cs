@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class EnumerationTreeNode : TypeTreeNode<DataDictionary.Types.Enum>
     {
-        private class InternalValuesConverter : ValuesConverter
+        private class InternalValuesConverter : Converters.ValuesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)

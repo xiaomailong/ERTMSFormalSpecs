@@ -69,6 +69,12 @@ namespace Utils
         /// </summary>
         /// <param name="copy"></param>
         void AddModelElement(IModelElement element);
+
+        /// <summary>
+        /// Provides an RTF explanation of the model element
+        /// </summary>
+        /// <returns></returns>
+        string getExplain();
     }
 
     public abstract class ModelElement : XmlBooster.XmlBBase, IModelElement
@@ -111,7 +117,6 @@ namespace Utils
                 }
             }
         }
-
 
         /// <summary>
         /// The sub elements of this model element
@@ -333,5 +338,14 @@ namespace Utils
         /// Counts the number of errors raised
         /// </summary>
         public static int ErrorCount = 0;
+
+        /// <summary>
+        /// Provides an RTF explanation of the model element
+        /// </summary>
+        /// <returns></returns>
+        public virtual string getExplain()
+        {
+            return "";
+        }
     }
 }

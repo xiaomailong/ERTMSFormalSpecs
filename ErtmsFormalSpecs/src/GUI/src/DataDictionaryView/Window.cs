@@ -25,19 +25,19 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return expressionTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
-            get { return messagesRichTextBox.TextBox; }
+            get
+            {
+                if (messagesRichTextBox != null)
+                {
+                    return messagesRichTextBox.TextBox;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         public BaseTreeView TreeView
@@ -78,7 +78,6 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
@@ -86,6 +85,9 @@ namespace GUI.DataDictionaryView
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
+
+            // TODO : Does not work yet
+            // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
             Refresh();
         }
 
@@ -111,16 +113,6 @@ namespace GUI.DataDictionaryView
         public void RefreshModel()
         {
             dataDictTree.RefreshModel();
-        }
-
-        private void expressionTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleExpressionTextChanged(expressionTextBox.Text);
-        }
-
-        private void commentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleCommentTextChanged(commentRichTextBox.Text);
         }
 
         /// <summary>

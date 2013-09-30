@@ -47,7 +47,7 @@ namespace DataDictionary
         /// <summary>
         /// Listener to model changes
         /// </summary>
-        public class NamableChangeListener : XmlBooster.IListener<DataDictionary.Generated.Namable>
+        public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
         {
             /// <summary>
             /// The system for which this listener listens
@@ -58,19 +58,19 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="system"></param>
-            public NamableChangeListener(EFSSystem system)
+            public BaseModelElementChangeListener(EFSSystem system)
             {
                 System = system;
             }
 
             #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
             {
                 System.ShouldRebuild = true;
                 System.ShouldSave = true;
             }
 
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
             {
                 HandleChangeEvent(sender);
             }
@@ -86,8 +86,7 @@ namespace DataDictionary
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
 
-            Generated.ControllersManager.NamableController.ActivateNotification();
-            Generated.ControllersManager.NamableController.Listeners.Insert(0, new NamableChangeListener(this));
+            Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
         /// <summary>
@@ -917,5 +916,13 @@ namespace DataDictionary
             }
         }
 
+        /// <summary>
+        /// Provides an RTF explanation of the system
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain()
+        {
+            return "";
+        }
     }
 }

@@ -16,12 +16,14 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing.Design;
+using System.ComponentModel;
 
 namespace GUI.DataDictionaryView
 {
     public class PreConditionTreeNode : DataTreeNode<DataDictionary.Rules.PreCondition>
     {
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -29,6 +31,19 @@ namespace GUI.DataDictionaryView
             public ItemEditor()
                 : base()
             {
+            }
+
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
+            public DataDictionary.Rules.PreCondition Expression
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>

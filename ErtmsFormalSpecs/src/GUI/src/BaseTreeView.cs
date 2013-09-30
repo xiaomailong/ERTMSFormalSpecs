@@ -255,31 +255,6 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleExpressionTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.ExpressionTextChanged(text);
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleCommentTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.CommentTextChanged(text);
-            }
-        }
-
-
-        /// <summary>
         /// Clears messages associated to the elements on the tree view
         /// </summary>
         public void ClearMessages()
@@ -389,7 +364,7 @@ namespace GUI
             BaseTreeNode selected = Selected;
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 SuspendLayout();
                 RefreshNodeContent = false;
@@ -402,7 +377,7 @@ namespace GUI
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
 
                 ResumeLayout(true);
                 RefreshNodeContent = true;

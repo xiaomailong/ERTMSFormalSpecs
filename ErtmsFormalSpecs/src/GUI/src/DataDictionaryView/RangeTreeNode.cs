@@ -35,7 +35,7 @@ namespace GUI.DataDictionaryView
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(RangePrecisionConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.RangePrecisionConverter))]
             public DataDictionary.Generated.acceptor.PrecisionEnum Precision
             {
                 get { return Item.getPrecision(); }

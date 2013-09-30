@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
 using Utils;
+using DataDictionary;
 
 namespace GUI
 {
@@ -27,6 +28,26 @@ namespace GUI
     /// </summary>
     public class BaseTreeNode : TreeNode, IComparable<BaseTreeNode>
     {
+        /// <summary>
+        /// The editor for this tree node
+        /// </summary>
+        public class BaseEditor
+        {
+            /// <summary>
+            /// The model element currently edited
+            /// </summary>
+            [Browsable(false)]
+            public IModelElement Model { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="model"></param>
+            protected BaseEditor()
+            {
+            }
+        }
+
         /// <summary>
         /// The fixed node name
         /// </summary>
@@ -155,40 +176,6 @@ namespace GUI
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
                 {
-                    if (baseForm.ExpressionTextBox != null)
-                    {
-                        if (Model.ExpressionText != null)
-                        {
-                            baseForm.ExpressionTextBox.Lines = Utils.Utils.toStrings(Model.ExpressionText);
-                            baseForm.ExpressionTextBox.Enabled = true;
-                        }
-                        else
-                        {
-                            baseForm.ExpressionTextBox.Text = "";
-                            baseForm.ExpressionTextBox.Enabled = false;
-                        }
-
-                        RefreshNode();
-                    }
-
-                    if (baseForm.CommentsTextBox != null)
-                    {
-                        if (Model is DataDictionary.ICommentable)
-                        {
-                            DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                            baseForm.CommentsTextBox.Lines = Utils.Utils.toStrings(commentable.Comment);
-                            baseForm.CommentsTextBox.Enabled = true;
-                        }
-                        else
-                        {
-                            baseForm.CommentsTextBox.Text = "";
-                            baseForm.CommentsTextBox.Enabled = false;
-                        }
-
-                        RefreshNode();
-                    }
-
                     if (baseForm.MessagesTextBox != null)
                     {
                         baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
@@ -214,37 +201,6 @@ namespace GUI
         public virtual void DoubleClickHandler()
         {
             // By default, nothing to do
-        }
-
-        /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void ExpressionTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                Model.ExpressionText = baseForm.ExpressionTextBox.Text;
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void CommentTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                if (Model is DataDictionary.ICommentable)
-                {
-                    DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                    commentable.Comment = baseForm.CommentsTextBox.Text;
-                }
-            }
         }
 
         /// <summary>
@@ -423,7 +379,7 @@ namespace GUI
                     reqRelated.setVerified(false);
                 }
 
-                DataDictionary.Generated.ControllersManager.NamableController.alertChange(null, null);
+                DataDictionary.Generated.ControllersManager.BaseModelElementController.alertChange(null, null);
             }
         }
 
@@ -749,18 +705,21 @@ namespace GUI
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class Editor
+        public abstract class Editor : BaseTreeNode.BaseEditor
         {
             /// <summary>
             /// The item that is edited. 
             /// </summary>
             private T item;
+
+            [Browsable(false)]
             public T Item
             {
                 get { return item; }
                 set
                 {
                     item = value;
+                    Model = (IModelElement)value;
                     UpdateActivation();
                 }
             }
@@ -789,6 +748,7 @@ namespace GUI
             /// Constructor
             /// </summary>
             protected Editor()
+                : base()
             {
             }
 

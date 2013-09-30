@@ -1023,7 +1023,7 @@ namespace DataDictionary.Interpreter
 
             try
             {
-                Generated.ControllersManager.NamableController.DesactivateNotification();
+                Generated.ControllersManager.DesactivateAllNotifications();
                 Root = root;
                 Buffer = expression.ToCharArray();
                 retVal = Expression(0);
@@ -1059,7 +1059,7 @@ namespace DataDictionary.Interpreter
             }
             finally
             {
-                Generated.ControllersManager.NamableController.ActivateNotification();
+                Generated.ControllersManager.ActivateAllNotifications();
             }
 
             return retVal;
@@ -1224,7 +1224,7 @@ namespace DataDictionary.Interpreter
 
             try
             {
-                Generated.ControllersManager.NamableController.DesactivateNotification();
+                Generated.ControllersManager.DesactivateAllNotifications();
 
                 Root = root;
                 Buffer = expression.ToCharArray();
@@ -1246,7 +1246,7 @@ namespace DataDictionary.Interpreter
             }
             finally
             {
-                Generated.ControllersManager.NamableController.ActivateNotification();
+                Generated.ControllersManager.ActivateAllNotifications();
             }
 
             return retVal;

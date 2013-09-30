@@ -1,18 +1,7 @@
-// ------------------------------------------------------------------------------
-// -- Copyright RainCode
-// -- All rights reserved
-// --
-// -- This file is part of ERTMSFormalSpec software and documentation
-// --
-// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
-// --  it under the terms of the EUPL General Public License, v.1.1
-// --
-// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
-// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
-// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// --
-// ------------------------------------------------------------------------------
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace XmlBooster
 {
@@ -137,14 +126,14 @@ namespace XmlBooster
         /// <summary>
         /// Indicates that notifications should be sent to the listeners
         /// </summary>
-        private int notify = 0;
+        private int notifyCount = 1;
 
         /// <summary>
         /// Activates the notifications to the listeners
         /// </summary>
         public void ActivateNotification()
         {
-            notify += 1;
+            notifyCount += 1;
         }
 
         /// <summary>
@@ -152,7 +141,7 @@ namespace XmlBooster
         /// </summary>
         public void DesactivateNotification()
         {
-            notify -= 1;
+            notifyCount -= 1;
         }
 
         /// <summary>
@@ -171,7 +160,7 @@ namespace XmlBooster
         /// <param name="sender"></param>
         public void alertChange(Lock aLock, T sender)
         {
-            if (notify > 0)
+            if (notifyCount > 0)
             {
                 foreach (IListener<T> listener in Listeners)
                 {
