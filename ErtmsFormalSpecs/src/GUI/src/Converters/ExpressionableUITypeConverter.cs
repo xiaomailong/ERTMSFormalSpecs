@@ -62,7 +62,7 @@ namespace GUI.Converters
             IExpressionable expressionable = value as IExpressionable;
             if (expressionable != null)
             {
-                retVal = expressionable.ExpressionText;
+                retVal = expressionable.ExpressionText.Trim();
                 if (retVal != null)
                 {
                     int index = retVal.IndexOf("\n");
