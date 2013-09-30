@@ -18,6 +18,7 @@ using System.Windows.Forms;
 
 using Reports.Specs;
 using Reports.Tests;
+using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
@@ -94,10 +95,23 @@ namespace GUI.SpecificationView
             specBrowserTextView.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
 
+            specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Paragraph paragraph = Selected as Paragraph;
+            if (paragraph != null)
+            {
+                if (paragraph.Text.CompareTo(specBrowserTextView.Text) != 0)
+                {
+                    paragraph.Text = specBrowserTextView.Text;
+                }
+            }
         }
 
         /// <summary>

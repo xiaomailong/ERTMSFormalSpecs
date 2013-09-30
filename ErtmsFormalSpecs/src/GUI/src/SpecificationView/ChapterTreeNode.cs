@@ -145,12 +145,19 @@ namespace GUI.SpecificationView
         {
             base.SelectionChanged();
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-            foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
+            Window window = BaseForm as Window;
+            if (window != null)
             {
-                paragraphs.AddRange(paragraph.getSubParagraphs());
+                window.specBrowserTextView.Text = Item.Name;
+                window.specBrowserTextView.Enabled = false;
+
+                List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+                foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
+                {
+                    paragraphs.AddRange(paragraph.getSubParagraphs());
+                }
+                window.toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
             }
-            (BaseForm as Window).toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
         }
     }
 }

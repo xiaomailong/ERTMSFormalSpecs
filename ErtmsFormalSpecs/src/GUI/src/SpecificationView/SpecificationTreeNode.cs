@@ -125,15 +125,22 @@ namespace GUI.SpecificationView
         {
             base.SelectionChanged();
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-            foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
+            Window window = BaseForm as Window;
+            if (window != null)
             {
-                foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                window.specBrowserTextView.Text = Item.Name;
+                window.specBrowserTextView.Enabled = false;
+
+                List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+                foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
                 {
-                    paragraphs.AddRange(paragraph.getSubParagraphs());
+                    foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                    {
+                        paragraphs.AddRange(paragraph.getSubParagraphs());
+                    }
                 }
+                window.toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
             }
-            (BaseForm as Window).toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
         }
     }
 }

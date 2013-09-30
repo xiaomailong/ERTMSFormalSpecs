@@ -187,6 +187,8 @@ namespace GUI.SpecificationView
             Window window = BaseForm as Window;
             if (window != null)
             {
+                window.specBrowserTextView.Text = Item.Text;
+                window.specBrowserTextView.Enabled = true;
                 window.specBrowserRuleView.Nodes.Clear();
                 foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
                 {
