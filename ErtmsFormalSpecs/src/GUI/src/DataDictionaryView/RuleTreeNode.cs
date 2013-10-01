@@ -75,17 +75,6 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
-            if (window != null)
-            {
-                window.requirementsTextBox.Lines = Utils.Utils.toStrings(Item.getRequirements());
-            }
-        }
-
         /// <summary>
         /// Handles a drop event
         /// </summary>

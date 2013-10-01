@@ -18,12 +18,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Functions;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
     public class CaseTreeNode : DataTreeNode<Case>
     {
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -34,15 +35,18 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            public string Expression
+            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
+            public DataDictionary.Functions.Case Expression
             {
-                get { return Item.getExpression(); }
+                get { return Item; }
                 set
                 {
-                    Item.ExpressionText = value;
+                    Item = value;
                     RefreshNode();
                 }
             }
+
         }
 
 

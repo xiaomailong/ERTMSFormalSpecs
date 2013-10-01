@@ -30,6 +30,11 @@ namespace GUI
         RichTextBox MessagesTextBox { get; }
 
         /// <summary>
+        /// The requirements text box used to display the associated requirements
+        /// </summary>
+        EditorTextBox RequirementsTextBox { get; }
+
+        /// <summary>
         /// The enclosing MDI Window
         /// </summary>
         MainWindow MDIWindow { get; }

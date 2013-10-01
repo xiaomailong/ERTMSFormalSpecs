@@ -589,15 +589,13 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{" + Name + " : RANGE FROM " + MinValue + " TO " + MaxValue + "}", indentLevel);
-
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : RANGE FROM " + MinValue + " TO " + MaxValue + "}", indentLevel);
             foreach (Constants.EnumValue enumValue in SpecialValues)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + enumValue.Name + " : " + enumValue.getValue() + "}", indentLevel + 2);
+                retVal += enumValue.getExplain(indentLevel + 2);
             }
-
 
             return retVal;
         }

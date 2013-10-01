@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Rules
 {
-    public class Action : Generated.Action, IExpressionable
+    public class Action : Generated.Action, IExpressionable, TextualExplain
     {
         public override string Name
         {
@@ -282,6 +282,35 @@ namespace DataDictionary.Rules
             Action retVal = (Action)Generated.acceptor.getFactory().createAction();
             retVal.Name = Name;
             retVal.ExpressionText = ExpressionText;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel, bool explainSubElements)
+        {
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
+
+            retVal += TextualExplainUtilities.Pad(ExpressionText, indentLevel);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = "";
+
+            retVal = getExplain(0, explainSubElements);
 
             return retVal;
         }

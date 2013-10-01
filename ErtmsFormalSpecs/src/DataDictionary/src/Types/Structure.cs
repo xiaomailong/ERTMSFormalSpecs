@@ -234,18 +234,17 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{STRUCTURE " + Name + "}", indentLevel);
-
+            retVal += TextualExplainUtilities.Pad("{STRUCTURE " + Name + "} \\par", indentLevel);
             foreach (StructureElement element in Elements)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + element.Name + " : " + element.TypeName + "}", indentLevel + 2);
+                retVal += element.getExplain(indentLevel + 2) + "\\par";
             }
 
             foreach (Procedure procedure in Procedures)
             {
-                retVal += "\\par" + procedure.getExplain(indentLevel + 2, false);
+                retVal += procedure.getExplain(indentLevel + 2, false) + "\\par";
             }
 
             return retVal;

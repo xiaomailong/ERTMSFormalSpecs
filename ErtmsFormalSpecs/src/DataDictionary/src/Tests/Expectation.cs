@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Tests
 {
-    public class Expectation : Generated.Expectation, IExpressionable
+    public class Expectation : Generated.Expectation, IExpressionable, TextualExplain
     {
         public override string ExpressionText
         {
@@ -189,12 +189,32 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The explanation of this step, as RTF pseudo code
+        /// Provides an explanation of the step's behaviour
         /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
-        public override string getExplain()
+        public string getExplain(int indentLevel, bool explainSubElements)
         {
-            return Name;
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
+
+            retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = "";
+
+            retVal = getExplain(0, explainSubElements);
+
+            return retVal;
         }
     }
 }

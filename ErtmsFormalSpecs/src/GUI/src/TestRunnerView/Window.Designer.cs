@@ -70,13 +70,15 @@ namespace GUI.TestRunnerView
             this.testBrowserTreeView = new GUI.TestRunnerView.TestTreeView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
-            this.messageRichTextBox = new GUI.EditorTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.explainTextBox = new GUI.ExplainTextBox();
             this.timeLineTabPage = new System.Windows.Forms.TabPage();
             this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
             this.messagesTabPage = new System.Windows.Forms.TabPage();
+            this.messageRichTextBox = new GUI.EditorTextBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.requirementsTextBox = new GUI.EditorTextBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -90,6 +92,10 @@ namespace GUI.TestRunnerView
             this.descriptionTabPage.SuspendLayout();
             this.timeLineTabPage.SuspendLayout();
             this.messagesTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -337,23 +343,6 @@ namespace GUI.TestRunnerView
             this.propertyGrid.Size = new System.Drawing.Size(995, 199);
             this.propertyGrid.TabIndex = 0;
             // 
-            // messageRichTextBox
-            // 
-            this.messageRichTextBox.AutoComplete = true;
-            this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageRichTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        ""};
-            this.messageRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.messageRichTextBox.Name = "messageRichTextBox";
-            this.messageRichTextBox.ReadOnly = false;
-            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\fs17\\par\r\n\\par\r\n\\fs17\\par\r\n}\r\n";
-            this.messageRichTextBox.Size = new System.Drawing.Size(987, 333);
-            this.messageRichTextBox.TabIndex = 4;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.descriptionTabPage);
@@ -369,7 +358,7 @@ namespace GUI.TestRunnerView
             // 
             // descriptionTabPage
             // 
-            this.descriptionTabPage.Controls.Add(this.explainTextBox);
+            this.descriptionTabPage.Controls.Add(this.splitContainer2);
             this.descriptionTabPage.Location = new System.Drawing.Point(4, 22);
             this.descriptionTabPage.Name = "descriptionTabPage";
             this.descriptionTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -382,14 +371,18 @@ namespace GUI.TestRunnerView
             // 
             this.explainTextBox.AutoComplete = true;
             this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explainTextBox.Lines = new string[0];
-            this.explainTextBox.Location = new System.Drawing.Point(3, 3);
+            this.explainTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        ""};
+            this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
             this.explainTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
-            this.explainTextBox.Size = new System.Drawing.Size(981, 327);
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\fs17\\par\r\n\\par\r\n\\fs17\\par\r\n}\r\n";
+            this.explainTextBox.Size = new System.Drawing.Size(446, 327);
             this.explainTextBox.TabIndex = 3;
             // 
             // timeLineTabPage
@@ -426,6 +419,60 @@ namespace GUI.TestRunnerView
             this.messagesTabPage.Text = "Messages";
             this.messagesTabPage.UseVisualStyleBackColor = true;
             // 
+            // messageRichTextBox
+            // 
+            this.messageRichTextBox.AutoComplete = true;
+            this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.messageRichTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.messageRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.messageRichTextBox.Name = "messageRichTextBox";
+            this.messageRichTextBox.ReadOnly = false;
+            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\par\r\n\\par\r\n\\fs17\\par\r\n\\par\r\n\\par" +
+    "\r\n\\par\r\n\\par\r\n\\par\r\n\\par\r\n}\r\n";
+            this.messageRichTextBox.Size = new System.Drawing.Size(987, 333);
+            this.messageRichTextBox.TabIndex = 4;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.requirementsTextBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
+            this.splitContainer2.Size = new System.Drawing.Size(981, 327);
+            this.splitContainer2.SplitterDistance = 531;
+            this.splitContainer2.TabIndex = 4;
+            // 
+            // requirementsTextBox
+            // 
+            this.requirementsTextBox.AutoComplete = true;
+            this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.requirementsTextBox.Lines = new string[0];
+            this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
+            this.requirementsTextBox.Name = "requirementsTextBox";
+            this.requirementsTextBox.ReadOnly = false;
+            this.requirementsTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
+            this.requirementsTextBox.Size = new System.Drawing.Size(531, 327);
+            this.requirementsTextBox.TabIndex = 0;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -453,6 +500,10 @@ namespace GUI.TestRunnerView
             this.timeLineTabPage.ResumeLayout(false);
             this.timeLineTabPage.PerformLayout();
             this.messagesTabPage.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,6 +544,8 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.TabPage descriptionTabPage;
         private EditorTextBox messageRichTextBox;
         private System.Windows.Forms.TabPage messagesTabPage;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private EditorTextBox requirementsTextBox;
 
     }
 }

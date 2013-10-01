@@ -214,9 +214,9 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{" + Name + " : COLLECTION OF " + getTypeName() + "}", indentLevel);
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : COLLECTION OF " + getTypeName() + "}", indentLevel);
 
             return retVal;
         }

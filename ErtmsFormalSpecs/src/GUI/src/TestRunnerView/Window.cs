@@ -31,6 +31,11 @@ namespace GUI.TestRunnerView
             get { return messageRichTextBox.TextBox; }
         }
 
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return requirementsTextBox; }
+        }
+
         public BaseTreeView TreeView
         {
             get { return testBrowserTreeView; }
@@ -89,6 +94,11 @@ namespace GUI.TestRunnerView
             InitializeComponent();
 
             messageRichTextBox.AutoComplete = false;
+            requirementsTextBox.AutoComplete = false;
+            explainTextBox.AutoComplete = false;
+
+            requirementsTextBox.ReadOnly = true;
+            explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Text = "System test view";

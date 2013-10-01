@@ -18,7 +18,7 @@ using System.Collections;
 
 namespace DataDictionary.Tests
 {
-    public class Step : Generated.Step, ICommentable
+    public class Step : Generated.Step, ICommentable, TextualExplain
     {
         public override string Name
         {
@@ -210,6 +210,38 @@ namespace DataDictionary.Tests
             retVal.Name = name;
 
             retVal.appendSubSteps(SubStep.createDefault("SubStep1"));
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel, bool explainSubElements)
+        {
+            string retVal = TextualExplainUtilities.Header(this, indentLevel);
+
+            foreach (SubStep subStep in SubSteps)
+            {
+                retVal += subStep.getExplain(indentLevel + 2, explainSubElements) + "\\par";
+
+            }
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = "";
+
+            retVal = getExplain(0, explainSubElements);
 
             return retVal;
         }

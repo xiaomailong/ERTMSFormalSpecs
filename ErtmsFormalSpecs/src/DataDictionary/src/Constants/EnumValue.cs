@@ -160,8 +160,9 @@ namespace DataDictionary.Constants
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = Name;
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
+            retVal += Name;
             if (!String.IsNullOrEmpty(getValue()))
             {
                 retVal += " : " + getValue();

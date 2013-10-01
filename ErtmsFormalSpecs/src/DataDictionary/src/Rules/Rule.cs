@@ -187,7 +187,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public string getExplain(int indentLevel, bool explainSubRules)
         {
-            string retVal = TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
+            string retVal = TextualExplainUtilities.Header(this, indentLevel);
 
             bool first = true;
             bool condition = false;

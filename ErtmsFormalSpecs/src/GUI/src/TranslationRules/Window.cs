@@ -30,6 +30,11 @@ namespace GUI.TranslationRules
             get { return messageRichTextBox.TextBox; }
         }
 
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
         public BaseTreeView subTreeView
         {
             get { return null; }

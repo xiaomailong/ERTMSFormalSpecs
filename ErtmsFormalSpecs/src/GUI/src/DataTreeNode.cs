@@ -191,6 +191,32 @@ namespace GUI
                     {
                         baseForm.ExplainTextBox.SetModel(Model);
                     }
+
+                    if (baseForm.RequirementsTextBox != null)
+                    {
+                        string requirements = "";
+
+                        ReqRef reqRef = Model as ReqRef;
+                        if (reqRef != null)
+                        {
+                            requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                        }
+                        else
+                        {
+                            IModelElement current = Model;
+                            while (current != null)
+                            {
+                                ReqRelated reqRelated = current as ReqRelated;
+                                if (reqRelated != null)
+                                {
+                                    requirements += reqRelated.getRequirements();
+                                }
+                                current = current.Enclosing as IModelElement;
+                            }
+                        }
+
+                        baseForm.RequirementsTextBox.Text = requirements;
+                    }
                 }
             }
         }

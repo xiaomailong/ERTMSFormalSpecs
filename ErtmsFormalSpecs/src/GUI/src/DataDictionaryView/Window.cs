@@ -40,6 +40,11 @@ namespace GUI.DataDictionaryView
             }
         }
 
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return requirementsTextBox; }
+        }
+
         public BaseTreeView TreeView
         {
             get { return dataDictTree; }
@@ -81,6 +86,9 @@ namespace GUI.DataDictionaryView
             messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
+
+            ruleExplainTextBox.ReadOnly = true;
+            requirementsTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;

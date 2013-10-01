@@ -127,17 +127,6 @@ namespace GUI
             }
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
-            if (window != null)
-            {
-                window.requirementsTextBox.Text = Item.getRequirements();
-            }
-        }
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>

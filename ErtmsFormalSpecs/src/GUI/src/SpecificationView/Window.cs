@@ -39,6 +39,11 @@ namespace GUI.SpecificationView
             get { return messagesRichTextBox.TextBox; }
         }
 
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
         public BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
