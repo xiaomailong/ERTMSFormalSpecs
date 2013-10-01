@@ -226,6 +226,9 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
         {
+            int index = context.LocalScope.PushContext();
+            context.LocalScope.setVariable(IteratorVariable);
+
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
@@ -277,6 +280,8 @@ namespace DataDictionary.Interpreter.Statement
             {
                 Root.AddError("Cannot find variable for " + ListExpression.ToString());
             }
+
+            context.LocalScope.PopContext(index);
         }
 
         public override string ToString()
