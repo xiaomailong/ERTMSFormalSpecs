@@ -361,13 +361,12 @@
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 27.0,
+        OverReadingAmountOdo =&gt; 7.0,
         Position =&gt; 3000.0,
-        UnderReadingAmountOdo =&gt; 24.0
+        UnderReadingAmountOdo =&gt; 4.0
     }
 }</Action>
 <Action>Odometry.NominalDistance &lt;- 3500.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
 </Actions>
 <Expectations>
 <Expectation
@@ -1055,17 +1054,6 @@
 >
 <Actions>
 <Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 </Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1081,17 +1069,6 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 <Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
@@ -1280,17 +1257,6 @@
 >
 <Actions>
 <Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 </Actions>
 </SubStep></SubSteps>
 </Step><Step
