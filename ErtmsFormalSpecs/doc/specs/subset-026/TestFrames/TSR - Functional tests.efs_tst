@@ -1044,12 +1044,8 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1500.0</Expectation><Expectation
+>THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1500.0 AND X.Location == 4000.0) </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 4000.0</Expectation><Expectation
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 150</Expectation><Expectation
  DeadLine="1"
 >(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1106,13 +1102,8 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 150</Expectation><Expectation
+>THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1000.0 AND X.Location == 3000.0)</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1000.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation><Expectation
  DeadLine="1"
 >(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1169,17 +1160,17 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 255</Expectation><Expectation
+>THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 1300.0 AND X.Location == 3300.0)</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1000.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation><Expectation
  DeadLine="1"
 >(COUNT Kernel.TSR.TSRs) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step5 - New Non Revocable TSR"
 >
@@ -1225,14 +1216,12 @@
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Length == 2000.0</Expectation><Expectation
+>THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 2000.0 AND X.Location == 3500.0)</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3500.0</Expectation><Expectation
- DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 255</Expectation><Expectation
- DeadLine="1"
->(COUNT Kernel.TSR.TSRs) == 2</Expectation></Expectations>
+>(COUNT Kernel.TSR.TSRs) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
