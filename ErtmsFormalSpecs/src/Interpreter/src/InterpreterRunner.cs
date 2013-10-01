@@ -45,7 +45,7 @@ namespace Interpreter
 
                 LastActivationTime = Time;
 
-                Utils.ModelElement.ErrorCount = 0;
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();

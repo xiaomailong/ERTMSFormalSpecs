@@ -118,7 +118,7 @@ namespace DataDictionary.Tests.Runner.Events
 
             Expect.State = Events.Expect.EventState.TimeOut;
             TimeLine.ActiveExpectations.Remove(Expect);
-            ElementLog = Expect.Expectation.AddError(Message);
+            ElementLog = Expect.Expectation.AddError(Message, true);
         }
 
         /// <summary>

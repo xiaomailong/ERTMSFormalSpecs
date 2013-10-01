@@ -213,7 +213,7 @@ namespace GUI.TestRunnerView
 
             MainWindow.RefreshModel();
             string runtimeErrors = "";
-            if (Utils.ModelElement.ErrorCount > 0)
+            if (Utils.ModelElement.Errors.Values.Count > 0)
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }

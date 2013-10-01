@@ -62,7 +62,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             DataDictionary.Tests.Expectation retVal = null;
 
-
             ExpectationStateChange expectationChange = ModelEvent as ExpectationStateChange;
             if (expectationChange != null)
             {
@@ -176,6 +175,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                 }
             }
 
+            else if (ModelEvent is ModelInterpretationFailure)
+            {
+                if (TimeLine.Window.MDIWindow.DataDictionaryWindow != null)
+                {
+                    ModelInterpretationFailure failure = ModelEvent as ModelInterpretationFailure;
+                    TimeLine.Window.MDIWindow.DataDictionaryWindow.TreeView.Select(failure.Instance as Utils.IModelElement);
+                }
+            }
+
             lastClick = DateTime.Now;
         }
 
@@ -239,6 +247,10 @@ namespace GUI.TestRunnerView.TimeLineControl
                         color = Color.Red;
                         break;
                 }
+            }
+            else if (ModelEvent is ModelInterpretationFailure)
+            {
+                color = Color.Red;
             }
 
             BackColor = color;

@@ -1,0 +1,60 @@
+// ------------------------------------------------------------------------------
+// -- Copyright ERTMS Solutions
+// -- Licensed under the EUPL V.1.1
+// -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+// --
+// -- This file is part of ERTMSFormalSpec software and documentation
+// --
+// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
+// --  it under the terms of the EUPL General Public License, v.1.1
+// --
+// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
+// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// --
+// ------------------------------------------------------------------------------
+
+namespace DataDictionary.Tests.Runner.Events
+{
+    public class ModelInterpretationFailure : ModelEvent
+    {
+        /// <summary>
+        /// The log associated to this failure
+        /// </summary>
+        public Utils.ElementLog Log { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="id"></param>
+        public ModelInterpretationFailure(Utils.ElementLog log, Utils.INamable instance)
+            : base(log.Log, instance)
+        {
+            Log = log;
+        }
+
+        /// <summary>
+        /// Adds this expectation in the list of active expectations in the time line
+        /// </summary>
+        public override void Apply(bool log)
+        {
+            base.Apply(log);
+        }
+
+        /// <summary>
+        /// Rolls back this event
+        /// </summary>
+        public override void RollBack()
+        {
+            base.RollBack();
+        }
+
+        /// <summary>
+        /// The namespace associated to this event
+        /// </summary>
+        public override Types.NameSpace NameSpace
+        {
+            get { return null; }
+        }
+    }
+}

@@ -368,7 +368,7 @@ namespace DataDictionary.Tests.Runner
 
                 LastActivationTime = Time;
 
-                Utils.ModelElement.ErrorCount = 0;
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
@@ -394,31 +394,21 @@ namespace DataDictionary.Tests.Runner
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
 
-                if (Utils.ModelElement.ErrorCount > 0)
+                foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in Utils.ModelElement.Errors)
                 {
-                    SubStep subStep = CurrentSubStep();
-                    if (subStep != null)
+                    foreach (Utils.ElementLog log in pair.Value)
                     {
-                        subStep.AddError("Errors were raised while evaluating this sub step. See model view for more informations");
-                    }
-                    else
-                    {
-                        Step step = CurrentStep();
-                        if (step != null)
+                        switch (log.Level)
                         {
-                            step.AddError("Errors were raised while evaluating this step. See model view for more informations");
-                        }
-                        else
-                        {
-                            TestCase testCase = CurrentTestCase();
-                            if (testCase != null)
-                            {
-                                testCase.AddError("Errors were raised while evaluating this test case. See model view for more informations");
-                            }
-                            else
-                            {
-                                SubSequence.AddError("Errors were raised while evaluating this sub sequence. See model view for more informations");
-                            }
+                            case Utils.ElementLog.LevelEnum.Error:
+                                ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable);
+                                EventTimeLine.AddModelEvent(modelInterpretationFailure, false);
+                                break;
+
+                            case Utils.ElementLog.LevelEnum.Warning:
+                                break;
+                            case Utils.ElementLog.LevelEnum.Info:
+                                break;
                         }
                     }
                 }
@@ -631,7 +621,7 @@ namespace DataDictionary.Tests.Runner
         /// Provides the failed expectations
         /// </summary>
         /// <returns></returns>
-        public HashSet<Expect> FailedExpectations()
+        public HashSet<ModelEvent> FailedExpectations()
         {
             return EventTimeLine.FailedExpectations();
         }
