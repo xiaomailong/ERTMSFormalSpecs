@@ -1031,7 +1031,7 @@
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_TSR =&gt; 4000,
                     L_TSR =&gt; 1500,
-                    NID_TSR =&gt; 1515,
+                    NID_TSR =&gt; 150,
                     Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
                     V_TSR =&gt; 5
                 }
@@ -1042,10 +1042,16 @@
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1500.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 4000.0</Expectation></Expectations>
+>THERE_IS_IN Kernel.TSR.TSRs | X.Location == 4000.0</Expectation><Expectation
+ DeadLine="1"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 150</Expectation><Expectation
+ DeadLine="1"
+>(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1087,7 +1093,7 @@
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_TSR =&gt; 3000,
                     L_TSR =&gt; 1000,
-                    NID_TSR =&gt; 1515,
+                    NID_TSR =&gt; 150,
                     Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
                     V_TSR =&gt; 5
                 }
@@ -1100,13 +1106,15 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation><Expectation
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 150</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
 >THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation></Expectations>
+>THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation><Expectation
+ DeadLine="1"
+>(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1165,8 +1173,66 @@
  Kind="Instantaneous"
  DeadLine="1"
 >THERE_IS_IN Kernel.TSR.TSRs | X.Length == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation></Expectations>
+>THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3000.0</Expectation><Expectation
+ DeadLine="1"
+>(COUNT Kernel.TSR.TSRs) == 2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ TranslationRequired="FALSE"
+ Name="Step5 - New Non Revocable TSR"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    D_TSR =&gt; 3500,
+                    L_TSR =&gt; 2000,
+                    NID_TSR =&gt; 255,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    V_TSR =&gt; 5
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Length == 2000.0</Expectation><Expectation
+ DeadLine="1"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Location == 3500.0</Expectation><Expectation
+ DeadLine="1"
+>THERE_IS_IN Kernel.TSR.TSRs | X.Id == 255</Expectation><Expectation
+ DeadLine="1"
+>(COUNT Kernel.TSR.TSRs) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
