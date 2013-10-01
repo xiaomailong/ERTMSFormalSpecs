@@ -382,11 +382,19 @@ namespace GUI
         /// </summary>
         public override void Refresh()
         {
-            foreach (IBaseForm form in SubWindows)
+            try
             {
-                form.Refresh();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                foreach (IBaseForm form in SubWindows)
+                {
+                    form.Refresh();
+                }
+                UpdateTitle();
             }
-            UpdateTitle();
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
 
             base.Refresh();
         }
