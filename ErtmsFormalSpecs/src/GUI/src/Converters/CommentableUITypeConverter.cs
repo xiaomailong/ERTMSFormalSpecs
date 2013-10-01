@@ -62,13 +62,20 @@ namespace GUI.Converters
             ICommentable commentable = value as ICommentable;
             if (commentable != null)
             {
-                retVal = commentable.Comment.Trim();
-                if (retVal != null)
+                if (commentable.Comment != null)
                 {
-                    int index = retVal.IndexOf("\n");
-                    if (index > 0)
+                    retVal = commentable.Comment.Trim();
+                    if (retVal != null)
                     {
-                        retVal = retVal.Substring(0, index) + "...";
+                        int index = retVal.IndexOf("\n");
+                        if (index > 0)
+                        {
+                            retVal = retVal.Substring(0, index) + "...";
+                        }
+                    }
+                    else
+                    {
+                        retVal = "";
                     }
                 }
                 else
