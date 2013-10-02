@@ -68,34 +68,39 @@ namespace GUI.TestRunnerView
             this.toolStripCurrentStepTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.testBrowserTreeView = new GUI.TestRunnerView.TestTreeView();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new GUI.MyPropertyGrid();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.requirementsTextBox = new GUI.EditorTextBox();
             this.explainTextBox = new GUI.ExplainTextBox();
             this.timeLineTabPage = new System.Windows.Forms.TabPage();
             this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
-            this.messagesTabPage = new System.Windows.Forms.TabPage();
+            this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messageRichTextBox = new GUI.EditorTextBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.requirementsTextBox = new GUI.EditorTextBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.descriptionTabPage.SuspendLayout();
-            this.timeLineTabPage.SuspendLayout();
-            this.messagesTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.timeLineTabPage.SuspendLayout();
+            this.messagesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -291,7 +296,7 @@ namespace GUI.TestRunnerView
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1492, 561);
             this.splitContainer1.SplitterDistance = 494;
             this.splitContainer1.SplitterWidth = 3;
@@ -312,6 +317,24 @@ namespace GUI.TestRunnerView
             this.testBrowserTreeView.Size = new System.Drawing.Size(494, 561);
             this.testBrowserTreeView.TabIndex = 1;
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer5);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.messagesGroupBox);
+            this.splitContainer3.Size = new System.Drawing.Size(995, 561);
+            this.splitContainer3.SplitterDistance = 460;
+            this.splitContainer3.TabIndex = 2;
+            // 
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -327,8 +350,8 @@ namespace GUI.TestRunnerView
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer5.Size = new System.Drawing.Size(995, 561);
-            this.splitContainer5.SplitterDistance = 199;
+            this.splitContainer5.Size = new System.Drawing.Size(995, 460);
+            this.splitContainer5.SplitterDistance = 162;
             this.splitContainer5.SplitterWidth = 3;
             this.splitContainer5.TabIndex = 1;
             // 
@@ -340,20 +363,19 @@ namespace GUI.TestRunnerView
             this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
             this.propertyGrid.Name = "propertyGrid";
             this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(995, 199);
+            this.propertyGrid.Size = new System.Drawing.Size(995, 162);
             this.propertyGrid.TabIndex = 0;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.descriptionTabPage);
             this.tabControl1.Controls.Add(this.timeLineTabPage);
-            this.tabControl1.Controls.Add(this.messagesTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(995, 359);
+            this.tabControl1.Size = new System.Drawing.Size(995, 295);
             this.tabControl1.TabIndex = 1;
             // 
             // descriptionTabPage
@@ -362,10 +384,50 @@ namespace GUI.TestRunnerView
             this.descriptionTabPage.Location = new System.Drawing.Point(4, 22);
             this.descriptionTabPage.Name = "descriptionTabPage";
             this.descriptionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.descriptionTabPage.Size = new System.Drawing.Size(987, 333);
+            this.descriptionTabPage.Size = new System.Drawing.Size(987, 269);
             this.descriptionTabPage.TabIndex = 3;
             this.descriptionTabPage.Text = "Description";
             this.descriptionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.requirementsTextBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
+            this.splitContainer2.Size = new System.Drawing.Size(981, 263);
+            this.splitContainer2.SplitterDistance = 531;
+            this.splitContainer2.TabIndex = 4;
+            // 
+            // requirementsTextBox
+            // 
+            this.requirementsTextBox.AutoComplete = true;
+            this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.requirementsTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
+            this.requirementsTextBox.Name = "requirementsTextBox";
+            this.requirementsTextBox.ReadOnly = false;
+            this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
+            this.requirementsTextBox.Size = new System.Drawing.Size(531, 263);
+            this.requirementsTextBox.TabIndex = 0;
             // 
             // explainTextBox
             // 
@@ -375,14 +437,32 @@ namespace GUI.TestRunnerView
         "",
         "",
         "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
         ""};
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
-            this.explainTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\fs17\\par\r\n\\par\r\n\\fs17\\par\r\n}\r\n";
-            this.explainTextBox.Size = new System.Drawing.Size(446, 327);
+            this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
+            this.explainTextBox.Size = new System.Drawing.Size(446, 263);
             this.explainTextBox.TabIndex = 3;
             // 
             // timeLineTabPage
@@ -392,7 +472,7 @@ namespace GUI.TestRunnerView
             this.timeLineTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.timeLineTabPage.Name = "timeLineTabPage";
             this.timeLineTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.timeLineTabPage.Size = new System.Drawing.Size(987, 333);
+            this.timeLineTabPage.Size = new System.Drawing.Size(987, 252);
             this.timeLineTabPage.TabIndex = 0;
             this.timeLineTabPage.Text = "Time line";
             this.timeLineTabPage.UseVisualStyleBackColor = true;
@@ -405,19 +485,20 @@ namespace GUI.TestRunnerView
             this.evcTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.evcTimeLineControl.Location = new System.Drawing.Point(2, 2);
             this.evcTimeLineControl.Name = "evcTimeLineControl";
-            this.evcTimeLineControl.Size = new System.Drawing.Size(983, 329);
+            this.evcTimeLineControl.Size = new System.Drawing.Size(983, 248);
             this.evcTimeLineControl.TabIndex = 1;
             this.evcTimeLineControl.Text = "evcTimeLineControl1";
             // 
-            // messagesTabPage
+            // messagesGroupBox
             // 
-            this.messagesTabPage.Controls.Add(this.messageRichTextBox);
-            this.messagesTabPage.Location = new System.Drawing.Point(4, 22);
-            this.messagesTabPage.Name = "messagesTabPage";
-            this.messagesTabPage.Size = new System.Drawing.Size(987, 333);
-            this.messagesTabPage.TabIndex = 4;
-            this.messagesTabPage.Text = "Messages";
-            this.messagesTabPage.UseVisualStyleBackColor = true;
+            this.messagesGroupBox.Controls.Add(this.messageRichTextBox);
+            this.messagesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.messagesGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.messagesGroupBox.Name = "messagesGroupBox";
+            this.messagesGroupBox.Size = new System.Drawing.Size(995, 97);
+            this.messagesGroupBox.TabIndex = 0;
+            this.messagesGroupBox.TabStop = false;
+            this.messagesGroupBox.Text = "Messages";
             // 
             // messageRichTextBox
             // 
@@ -433,45 +514,50 @@ namespace GUI.TestRunnerView
         "",
         "",
         "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
         ""};
-            this.messageRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.ReadOnly = false;
-            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r\n\\par\r\n\\par\r\n\\fs17\\par\r\n\\par\r\n\\par" +
-    "\r\n\\par\r\n\\par\r\n\\par\r\n\\par\r\n}\r\n";
-            this.messageRichTextBox.Size = new System.Drawing.Size(987, 333);
+            this.messageRichTextBox.Rtf = resources.GetString("messageRichTextBox.Rtf");
+            this.messageRichTextBox.Size = new System.Drawing.Size(989, 78);
             this.messageRichTextBox.TabIndex = 4;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.requirementsTextBox);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
-            this.splitContainer2.Size = new System.Drawing.Size(981, 327);
-            this.splitContainer2.SplitterDistance = 531;
-            this.splitContainer2.TabIndex = 4;
-            // 
-            // requirementsTextBox
-            // 
-            this.requirementsTextBox.AutoComplete = true;
-            this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requirementsTextBox.Lines = new string[0];
-            this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
-            this.requirementsTextBox.Name = "requirementsTextBox";
-            this.requirementsTextBox.ReadOnly = false;
-            this.requirementsTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
-            this.requirementsTextBox.Size = new System.Drawing.Size(531, 327);
-            this.requirementsTextBox.TabIndex = 0;
             // 
             // Window
             // 
@@ -491,19 +577,23 @@ namespace GUI.TestRunnerView
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.descriptionTabPage.ResumeLayout(false);
-            this.timeLineTabPage.ResumeLayout(false);
-            this.timeLineTabPage.PerformLayout();
-            this.messagesTabPage.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.timeLineTabPage.ResumeLayout(false);
+            this.timeLineTabPage.PerformLayout();
+            this.messagesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,9 +633,10 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.TabPage descriptionTabPage;
         private EditorTextBox messageRichTextBox;
-        private System.Windows.Forms.TabPage messagesTabPage;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private EditorTextBox requirementsTextBox;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.GroupBox messagesGroupBox;
 
     }
 }
