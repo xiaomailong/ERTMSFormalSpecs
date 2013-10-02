@@ -742,7 +742,7 @@ namespace GUI
             set
             {
                 EditionTextBox.Rtf = InitialRTF;
-                EditionTextBox.Text = value;
+                EditionTextBox.Text = value.Trim();
             }
         }
     }
