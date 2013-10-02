@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 
 using DataDictionary.Specification;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Rules
 {
@@ -342,7 +343,7 @@ namespace DataDictionary.Rules
         /// <param name="instance">The instance on which the rule must be evaluated</param>
         /// <param name="ruleConditions">the rule conditions to be activated</param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions)
+        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation)
         {
             bool retVal = false;
 
@@ -352,7 +353,7 @@ namespace DataDictionary.Rules
             {
                 foreach (RuleCondition ruleCondition in RuleConditions)
                 {
-                    retVal = ruleCondition.Evaluate(runner, priority, instance, ruleConditions);
+                    retVal = ruleCondition.Evaluate(runner, priority, instance, ruleConditions, explanation);
                     if (retVal)
                     {
                         break;

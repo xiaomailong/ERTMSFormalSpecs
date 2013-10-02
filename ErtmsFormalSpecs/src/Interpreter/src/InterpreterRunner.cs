@@ -56,7 +56,7 @@ namespace Interpreter
                 {
                     foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                     {
-                        SetupNameSpaceActivations(priority, activations, nameSpace);
+                        SetupNameSpaceActivations(priority, activations, nameSpace, null);
                     }
                 }
 

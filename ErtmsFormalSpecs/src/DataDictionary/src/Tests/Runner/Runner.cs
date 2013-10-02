@@ -385,7 +385,7 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                         {
-                            SetupNameSpaceActivations(priority, activations, nameSpace);
+                            SetupNameSpaceActivations(priority, activations, nameSpace, null);
                         }
                     }
 
@@ -430,19 +430,19 @@ namespace DataDictionary.Tests.Runner
         /// <param name="activations">The set of activations to be filled</param>
         /// <param name="nameSpace">The namespace to consider</param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
             {
-                SetupNameSpaceActivations(priority, activations, subNameSpace);
+                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation);
             }
 
             List<Rules.RuleCondition> rules = new List<Rules.RuleCondition>();
             foreach (Rule rule in nameSpace.Rules)
             {
                 rules.Clear();
-                rule.Evaluate(this, priority, rule, rules);
+                rule.Evaluate(this, priority, rule, rules, explanation);
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
@@ -454,7 +454,7 @@ namespace DataDictionary.Tests.Runner
 
             foreach (Variables.IVariable variable in nameSpace.Variables)
             {
-                EvaluateVariable(priority, activations, variable);
+                EvaluateVariable(priority, activations, variable, explanation);
             }
         }
 
@@ -464,7 +464,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="priority"></param>
         /// <param name="activations"></param>
         /// <param name="variable"></param>
-        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable)
+        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation)
         {
             if (variable != null)
             {
@@ -474,7 +474,7 @@ namespace DataDictionary.Tests.Runner
                     Types.Structure structure = variable.Type as Types.Structure;
                     foreach (Rule rule in structure.Rules)
                     {
-                        rule.Evaluate(this, priority, variable, rules);
+                        rule.Evaluate(this, priority, variable, rules, explanation);
                     }
                     Activation.RegisterRules(activations, rules, variable);
 
@@ -483,14 +483,14 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
-                            EvaluateVariable(priority, activations, subVariable);
+                            EvaluateVariable(priority, activations, subVariable, explanation);
                         }
                     }
                 }
                 else if (variable.Type is Types.StateMachine)
                 {
                     List<Rules.RuleCondition> rules = new List<RuleCondition>();
-                    EvaluateStateMachine(rules, priority, variable);
+                    EvaluateStateMachine(rules, priority, variable, explanation);
                     Activation.RegisterRules(activations, rules, variable);
                 }
                 else if (variable.Type is Types.Collection)
@@ -507,7 +507,7 @@ namespace DataDictionary.Tests.Runner
                             tmp.Name = variable.Name + '[' + i + ']';
                             tmp.Type = collectionType.Type;
                             tmp.Value = subVal;
-                            EvaluateVariable(priority, activations, tmp);
+                            EvaluateVariable(priority, activations, tmp, explanation);
                             i = i + 1;
                         }
                     }
@@ -522,7 +522,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="ruleConditions"></param>
         /// <param name="priority"></param>
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
-        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable)
+        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation)
         {
             if (currentStateVariable != null)
             {
@@ -532,7 +532,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     foreach (Rule rule in currentStateMachine.Rules)
                     {
-                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions);
+                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation);
                     }
                     currentStateMachine = currentStateMachine.EnclosingStateMachine;
                 }

@@ -462,7 +462,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Indicates that all the steps related to the evaluation of the expression should be provided
         /// </summary>
-        protected static bool explain = false;
+        public static bool explain = false;
 
         /// <summary>
         /// The part of the explanation that is being explained
@@ -474,7 +474,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="previous">The previous explanation to store</param>
         /// <returns>The previous explanation (the one for which this is setup)</returns>
-        protected ExplanationPart SetupExplanation()
+        public ExplanationPart SetupExplanation()
         {
             ExplanationPart retVal = currentExplanation;
 
@@ -493,7 +493,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="message">the message to set to the current explanation</param>
         /// <param name="previous">the explanation for which this one is created</param>
-        protected void CompleteExplanation(ExplanationPart previous, string message)
+        public void CompleteExplanation(ExplanationPart previous, string message)
         {
             currentExplanation.Message = message;
             currentExplanation = previous;
