@@ -35,6 +35,11 @@ namespace GUI
         EditorTextBox RequirementsTextBox { get; }
 
         /// <summary>
+        /// The text box used to edit expression
+        /// </summary>
+        EditorTextBox ExpressionEditorTextBox { get; }
+
+        /// <summary>
         /// The enclosing MDI Window
         /// </summary>
         MainWindow MDIWindow { get; }

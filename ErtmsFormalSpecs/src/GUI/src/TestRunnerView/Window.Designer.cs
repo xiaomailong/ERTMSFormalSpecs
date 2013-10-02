@@ -75,6 +75,7 @@ namespace GUI.TestRunnerView
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.requirementsTextBox = new GUI.EditorTextBox();
+            this.expressionEditorTextBox = new GUI.EditorTextBox();
             this.explainTextBox = new GUI.ExplainTextBox();
             this.timeLineTabPage = new System.Windows.Forms.TabPage();
             this.evcTimeLineControl = new GUI.TestRunnerView.TimeLineControl.TimeLineControl();
@@ -401,9 +402,10 @@ namespace GUI.TestRunnerView
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.expressionEditorTextBox);
             this.splitContainer2.Panel2.Controls.Add(this.explainTextBox);
             this.splitContainer2.Size = new System.Drawing.Size(981, 263);
-            this.splitContainer2.SplitterDistance = 531;
+            this.splitContainer2.SplitterDistance = 490;
             this.splitContainer2.TabIndex = 4;
             // 
             // requirementsTextBox
@@ -415,19 +417,32 @@ namespace GUI.TestRunnerView
         "",
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
         ""};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
-            this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
-            this.requirementsTextBox.Size = new System.Drawing.Size(531, 263);
+            this.requirementsTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\par\r\n\\par\r\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.requirementsTextBox.Size = new System.Drawing.Size(490, 263);
             this.requirementsTextBox.TabIndex = 0;
+            // 
+            // expressionEditorTextBox
+            // 
+            this.expressionEditorTextBox.AutoComplete = true;
+            this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expressionEditorTextBox.Lines = new string[] {
+        "",
+        "",
+        ""};
+            this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
+            this.expressionEditorTextBox.Name = "expressionEditorTextBox";
+            this.expressionEditorTextBox.ReadOnly = false;
+            this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
+            this.expressionEditorTextBox.Size = new System.Drawing.Size(487, 263);
+            this.expressionEditorTextBox.TabIndex = 4;
+            this.expressionEditorTextBox.Visible = false;
             // 
             // explainTextBox
             // 
@@ -436,33 +451,15 @@ namespace GUI.TestRunnerView
             this.explainTextBox.Lines = new string[] {
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
         ""};
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
-            this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
-            this.explainTextBox.Size = new System.Drawing.Size(446, 263);
+            this.explainTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.explainTextBox.Size = new System.Drawing.Size(487, 263);
             this.explainTextBox.TabIndex = 3;
             // 
             // timeLineTabPage
@@ -472,7 +469,7 @@ namespace GUI.TestRunnerView
             this.timeLineTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.timeLineTabPage.Name = "timeLineTabPage";
             this.timeLineTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.timeLineTabPage.Size = new System.Drawing.Size(987, 252);
+            this.timeLineTabPage.Size = new System.Drawing.Size(987, 269);
             this.timeLineTabPage.TabIndex = 0;
             this.timeLineTabPage.Text = "Time line";
             this.timeLineTabPage.UseVisualStyleBackColor = true;
@@ -485,7 +482,7 @@ namespace GUI.TestRunnerView
             this.evcTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.evcTimeLineControl.Location = new System.Drawing.Point(2, 2);
             this.evcTimeLineControl.Name = "evcTimeLineControl";
-            this.evcTimeLineControl.Size = new System.Drawing.Size(983, 248);
+            this.evcTimeLineControl.Size = new System.Drawing.Size(983, 265);
             this.evcTimeLineControl.TabIndex = 1;
             this.evcTimeLineControl.Text = "evcTimeLineControl1";
             // 
@@ -507,55 +504,13 @@ namespace GUI.TestRunnerView
             this.messageRichTextBox.Lines = new string[] {
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
         ""};
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.ReadOnly = false;
-            this.messageRichTextBox.Rtf = resources.GetString("messageRichTextBox.Rtf");
+            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
             this.messageRichTextBox.Size = new System.Drawing.Size(989, 78);
             this.messageRichTextBox.TabIndex = 4;
             // 
@@ -637,6 +592,7 @@ namespace GUI.TestRunnerView
         private EditorTextBox requirementsTextBox;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox messagesGroupBox;
+        private EditorTextBox expressionEditorTextBox;
 
     }
 }

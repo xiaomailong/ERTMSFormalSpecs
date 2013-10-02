@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.DataDictionaryView
 {
@@ -43,6 +44,11 @@ namespace GUI.DataDictionaryView
         public EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return expressionEditorTextBox; }
         }
 
         public BaseTreeView TreeView
@@ -91,12 +97,22 @@ namespace GUI.DataDictionaryView
             requirementsTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             Dictionary = dictionary;
 
             // TODO : Does not work yet
             // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.Text;
+            }
         }
 
         /// <summary>

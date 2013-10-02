@@ -173,6 +173,8 @@ namespace GUI.GraphView
 
         public EditorTextBox RequirementsTextBox { get { return null; } }
 
+        public EditorTextBox ExpressionEditorTextBox { get { return null; } }
+
         /// <summary>
         /// The enclosing MDI Window
         /// </summary>

@@ -46,17 +46,25 @@ namespace DataDictionary
         /// <param name="log"></param>
         protected override void AddElementLog(Utils.ElementLog log)
         {
-            Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
-            if (enclosingParameter != null)
+            if (!BeSilent)
             {
-                log.Log = "In " + FullName + ":" + log.Log;
-                enclosingParameter.AddElementLog(log);
-            }
-            else
-            {
-                base.AddElementLog(log);
+                Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
+                if (enclosingParameter != null)
+                {
+                    log.Log = "In " + FullName + ":" + log.Log;
+                    enclosingParameter.AddElementLog(log);
+                }
+                else
+                {
+                    base.AddElementLog(log);
+                }
             }
         }
+
+        /// <summary>
+        /// Indicates that no logging should occur
+        /// </summary>
+        public static bool BeSilent { get; set; }
     }
 
     public interface TextualExplain

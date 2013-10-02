@@ -233,7 +233,7 @@ namespace GUI
             List<string> retVal = new List<string>();
 
             DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
-            compiler.Compile();
+            compiler.Compile(true);
 
             // Also use the default namespace
             List<Utils.INamable> possibleInstances = new List<Utils.INamable>();

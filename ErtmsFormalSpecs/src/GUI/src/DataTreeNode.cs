@@ -187,9 +187,15 @@ namespace GUI
                         baseForm.subTreeView.SetRoot(Model);
                     }
 
+                    // By default, the explain text box is visible
                     if (baseForm.ExplainTextBox != null)
                     {
                         baseForm.ExplainTextBox.SetModel(Model);
+                        baseForm.ExplainTextBox.Visible = true;
+                        if (baseForm.ExpressionEditorTextBox != null)
+                        {
+                            baseForm.ExpressionEditorTextBox.Visible = false;
+                        }
                     }
 
                     if (baseForm.RequirementsTextBox != null)
@@ -216,6 +222,19 @@ namespace GUI
                         }
 
                         baseForm.RequirementsTextBox.Text = requirements;
+                    }
+
+                    // Display the expression editor instead of the explain text box when the element can hold an expression
+                    if (baseForm.ExpressionEditorTextBox != null)
+                    {
+                        IExpressionable expressionable = Model as IExpressionable;
+                        if (expressionable != null)
+                        {
+                            baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
+                            baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
+                            baseForm.ExpressionEditorTextBox.Visible = true;
+                            baseForm.ExplainTextBox.Visible = false;
+                        }
                     }
                 }
             }

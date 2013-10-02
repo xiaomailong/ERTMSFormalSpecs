@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
@@ -35,6 +36,12 @@ namespace GUI.TestRunnerView
         {
             get { return requirementsTextBox; }
         }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return expressionEditorTextBox; }
+        }
+
 
         public BaseTreeView TreeView
         {
@@ -101,10 +108,20 @@ namespace GUI.TestRunnerView
             explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
             EFSSystem = efsSystem;
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
+            }
         }
 
         /// <summary>
