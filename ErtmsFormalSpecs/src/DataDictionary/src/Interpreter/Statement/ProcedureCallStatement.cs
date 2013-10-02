@@ -289,7 +289,7 @@ namespace DataDictionary.Interpreter.Statement
                 {
                     if (conditionExplanation != null)
                     {
-                        conditionExplanation.Message = "Condition " + condition.Name + " satisfied";
+                        conditionExplanation.Message = "SATISIFIED " + rule.Name + "." + condition.Name;
                     }
                     foreach (Rules.Action action in condition.Actions)
                     {
@@ -306,7 +306,7 @@ namespace DataDictionary.Interpreter.Statement
                 {
                     if (conditionExplanation != null)
                     {
-                        conditionExplanation.Message = "Condition " + condition.Name + " not satisfied";
+                        conditionExplanation.Message = "FAILED " + rule.Name + "." + condition.Name;
                     }
                 }
             }

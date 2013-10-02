@@ -474,7 +474,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="previous">The previous explanation to store</param>
         /// <returns>The previous explanation (the one for which this is setup)</returns>
-        public ExplanationPart SetupExplanation()
+        protected ExplanationPart SetupExplanation()
         {
             ExplanationPart retVal = currentExplanation;
 
@@ -493,26 +493,63 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="message">the message to set to the current explanation</param>
         /// <param name="previous">the explanation for which this one is created</param>
-        public void CompleteExplanation(ExplanationPart previous, string message)
+        protected void CompleteExplanation(ExplanationPart previous, string message)
         {
-            currentExplanation.Message = message;
-            currentExplanation = previous;
+            if (currentExplanation != null)
+            {
+                currentExplanation.Message = message;
+                currentExplanation = previous;
+            }
+        }
+
+        /// <summary>
+        /// Sets up a new explanation
+        /// </summary>
+        /// <returns></returns>
+        public ExplanationPart SetupNewExplanation()
+        {
+            ExplanationPart retVal = currentExplanation;
+
+            currentExplanation = new ExplanationPart(Root);
+            explain = true;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Completes the explanation and returns its
+        /// </summary>
+        /// <param name="previousExplanation"></param>
+        /// <returns></returns>
+        public ExplanationPart CompleteNewExplanation(ExplanationPart previousExplanation)
+        {
+            // The current explanation is just a placeholder
+            ExplanationPart retVal = currentExplanation.SubExplanations[0];
+
+            currentExplanation = previousExplanation;
+            explain = currentExplanation != null;
+
+            return retVal;
         }
 
         /// <summary>
         /// Provides all the steps used to get the value of the expression
         /// </summary>
         /// <returns></returns>
-        public ExplanationPart Explain()
+        public ExplanationPart Explain(InterpretationContext context)
         {
-            ExplanationPart retVal = new ExplanationPart(Root);
-            currentExplanation = retVal;
+            ExplanationPart retVal;
+            ExplanationPart previous = SetupNewExplanation();
 
+            Values.IValue value = null;
             try
             {
-                explain = true;
-                InterpretationContext context = new InterpretationContext();
-                Values.IValue value = GetValue(context);
+                value = GetValue(context);
+            }
+            finally
+            {
+                retVal = CompleteNewExplanation(previous);
+
                 if (value != null)
                 {
                     retVal.Message = ToString() + " = " + explainNamable(value);
@@ -522,12 +559,17 @@ namespace DataDictionary.Interpreter
                     retVal.Message = "Cannot evaluate value for " + ToString();
                 }
             }
-            finally
-            {
-                explain = false;
-            }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Provides all the steps used to get the value of the expression
+        /// </summary>
+        /// <returns></returns>
+        public ExplanationPart Explain()
+        {
+            return Explain(new InterpretationContext());
         }
 
         /// <summary>

@@ -267,6 +267,13 @@ namespace DataDictionary.Rules
                 try
                 {
                     Interpreter.Expression expression = preCondition.ExpressionTree;
+
+                    ExplanationPart previous = null;
+                    if (explanation != null)
+                    {
+                        previous = expression.SetupNewExplanation();
+                    }
+
                     Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
                     if (value != null)
                     {
@@ -280,7 +287,7 @@ namespace DataDictionary.Rules
 
                     if (explanation != null)
                     {
-                        explanation.SubExplanations.Add(new ExplanationPart(preCondition, preCondition.Name + " = " + retVal));
+                        explanation.SubExplanations.Add(expression.CompleteNewExplanation(previous));
                     }
 
                     if (!retVal)
