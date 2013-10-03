@@ -523,8 +523,13 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public ExplanationPart CompleteNewExplanation(ExplanationPart previousExplanation)
         {
-            // The current explanation is just a placeholder
-            ExplanationPart retVal = currentExplanation.SubExplanations[0];
+            ExplanationPart retVal = currentExplanation;
+
+            if (retVal.SubExplanations.Count == 1)
+            {
+                // The current explanation is just a placeholder
+                retVal = retVal.SubExplanations[0];
+            }
 
             currentExplanation = previousExplanation;
             explain = currentExplanation != null;
