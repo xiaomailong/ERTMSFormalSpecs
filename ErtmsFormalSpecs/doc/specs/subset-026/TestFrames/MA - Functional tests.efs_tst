@@ -1395,6 +1395,90 @@
 >Kernel.MA.EndOfMovementAuthority().Speed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Name="The SectionTimerStopLocation shall be inside the section"
+>
+<ReqRef
+ Id="3.8.3.4"
+>
+</ReqRef>
+<Steps>
+<Step
+ TranslationRequired="FALSE"
+ Name="Step1"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;4,
+                    Sequence1=&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;120,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
+                            D_SECTIONTIMERSTOPLOC=&gt;20,
+                            T_SECTIONTIMER=&gt;40
+                        }
+                    ],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.No_danger_point_information,
+                    D_DP=&gt;0,
+                    V_RELEASEDP=&gt;0,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+<Expectations>
+<Expectation
+ DeadLine="1"
+>THERE_IS_IN Kernel.MA.MA.Sections | ( X.Length == 120.0 AND X.TimeOut.Distance == 40.0 )</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
