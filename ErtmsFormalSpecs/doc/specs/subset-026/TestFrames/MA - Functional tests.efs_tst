@@ -1406,8 +1406,13 @@
 </ReqRef>
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1"
+ Name="The SectionTimerStopLocation shall be inside the section"
 >
 <SubSteps>
 <SubStep
@@ -1475,6 +1480,7 @@
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >THERE_IS_IN Kernel.MA.MA.Sections | ( X.Length == 120.0 AND X.TimeOut.Distance == 40.0 )</Expectation></Expectations>
 </SubStep></SubSteps>
