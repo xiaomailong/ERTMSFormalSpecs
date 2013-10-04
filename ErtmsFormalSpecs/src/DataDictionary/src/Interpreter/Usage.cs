@@ -20,12 +20,11 @@ namespace DataDictionary.Interpreter
     using System.Linq;
     using System.Text;
     using Utils;
-    using DataDictionary.Types;
 
     /// <summary>
     /// Indicates where the model element is used, associated with the usage mode (read / write)
     /// </summary>
-    public class Usage
+    public class Usage : IComparable<Usage>
     {
         /// <summary>
         /// The used element 
@@ -57,6 +56,73 @@ namespace DataDictionary.Interpreter
             Referenced = referenced;
             User = user;
             Mode = mode;
+        }
+
+        /// <summary>
+        /// Provides the display name of this usage
+        /// </summary>
+        /// <returns></returns>
+        public string DisplayName()
+        {
+            string retVal = null;
+
+            IModelElement current = User;
+            while (current != null && retVal == null)
+            {
+                if (current is Rules.RuleCondition ||
+                    current is Functions.Function ||
+                    current is Functions.Procedure ||
+                    current is Types.Type ||
+                    current is Tests.TestCase)
+                {
+                    retVal = current.Name;
+                }
+
+                current = current.Enclosing as IModelElement;
+            }
+
+            if (retVal == null)
+            {
+                retVal = User.Name;
+            }
+
+            return retVal;
+        }
+
+        public int CompareTo(Usage other)
+        {
+            int retVal = other.DisplayName().CompareTo(DisplayName());
+
+            if (retVal == 0)
+            {
+                if (other.Mode != null && Mode != null)
+                {
+                    ModeEnum m1 = (ModeEnum)Mode;
+                    ModeEnum m2 = (ModeEnum)other.Mode;
+
+                    retVal = m1.CompareTo(m2);
+                }
+                else
+                {
+                    if (Mode == null && other.Mode == null)
+                    {
+                        retVal = 0;
+                    }
+                    else
+                    {
+                        if (Mode == null)
+                        {
+                            retVal = -1;
+                        }
+                        else
+                        {
+                            retVal = 1;
+                        }
+                    }
+                }
+            }
+
+            return retVal;
         }
     }
 
@@ -106,7 +172,7 @@ namespace DataDictionary.Interpreter
             if (referenced != null)
             {
                 // Do not store namespaces
-                if (!(referenced is NameSpace))
+                if (!(referenced is Types.NameSpace))
                 {
                     Usage usage = new Usage(referenced, user, mode);
                     AllUsages.Add(usage);

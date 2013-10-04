@@ -52,7 +52,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// </summary>
         /// <param name="item"></param>
         public UsageTreeNode(Usage usage)
-            : base(usage.User)
+            : base(usage.User, usage.DisplayName())
         {
             Usage = usage;
         }

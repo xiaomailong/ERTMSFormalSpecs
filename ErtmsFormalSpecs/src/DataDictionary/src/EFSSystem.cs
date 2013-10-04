@@ -934,7 +934,7 @@ namespace DataDictionary
             /// <summary>
             /// The references found
             /// </summary>
-            public List<Usage> Usages { get; private set; }
+            public SortedSet<Usage> Usages { get; private set; }
 
             /// <summary>
             /// The element to be found
@@ -947,7 +947,7 @@ namespace DataDictionary
             /// <param name="model"></param>
             public ReferenceVisitor(ModelElement model)
             {
-                Usages = new List<Usage>();
+                Usages = new SortedSet<Usage>();
                 Model = model;
             }
 
@@ -961,7 +961,10 @@ namespace DataDictionary
                 Action action = (Action)obj;
 
                 List<Usage> usages = action.Statement.StaticUsage.Find(Model);
-                Usages.AddRange(usages);
+                foreach (Usage usage in usages)
+                {
+                    Usages.Add(usage);
+                }
 
                 base.visit(obj, visitSubNodes);
             }
@@ -976,7 +979,11 @@ namespace DataDictionary
                 PreCondition preCondition = (PreCondition)obj;
 
                 List<Usage> usages = preCondition.ExpressionTree.StaticUsage.Find(Model);
-                Usages.AddRange(usages);
+                foreach (Usage usage in usages)
+                {
+                    Usages.Add(usage);
+                }
+
 
                 base.visit(obj, visitSubNodes);
             }
@@ -991,7 +998,10 @@ namespace DataDictionary
                 Tests.Expectation expectation = (Tests.Expectation)obj;
 
                 List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
-                Usages.AddRange(usages);
+                foreach (Usage usage in usages)
+                {
+                    Usages.Add(usage);
+                }
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1022,7 +1032,7 @@ namespace DataDictionary
             {
                 Functions.Function function = (Functions.Function)obj;
 
-                if (function.Type == Model)
+                if (function.Type == Model && Model != function)
                 {
                     Usages.Add(new Usage(Model, function, Usage.ModeEnum.Type));
                 }
@@ -1058,6 +1068,25 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
+            /// <summary>
+            /// Walk through a structure declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Structure obj, bool visitSubNodes)
+            {
+                Types.Structure structure = (Types.Structure)obj;
+
+                foreach (StructureElement element in structure.Elements)
+                {
+                    if (element.Type == Model)
+                    {
+                        Usages.Add(new Usage(Model, element, Usage.ModeEnum.Type));
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>
@@ -1065,7 +1094,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public List<Usage> FindReferences(ModelElement model)
+        public SortedSet<Usage> FindReferences(ModelElement model)
         {
             // Ensure the system has been compiled
             Interpreter.Compiler compiler = new Interpreter.Compiler(this, ShouldRebuild);

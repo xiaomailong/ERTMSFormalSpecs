@@ -108,8 +108,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
             ModelElement model = Root as ModelElement;
             if (model != null)
             {
-                List<Usage> usages = model.EFSSystem.FindReferences(model);
-                foreach (Usage usage in usages)
+                foreach (Usage usage in model.EFSSystem.FindReferences(model))
                 {
                     UsageTreeNode current = new UsageTreeNode(usage);
                     current.setImageIndex(false);
