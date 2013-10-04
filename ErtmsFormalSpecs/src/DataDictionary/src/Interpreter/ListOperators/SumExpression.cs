@@ -64,9 +64,11 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (retVal)
             {
+                // Accumulator
                 AccumulatorVariable.Type = IteratorExpression.GetExpressionType();
 
                 Accumulator.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Accumulator.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;

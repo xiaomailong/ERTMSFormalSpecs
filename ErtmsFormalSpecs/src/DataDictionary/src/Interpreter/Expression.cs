@@ -398,6 +398,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                StaticUsage = new Usages();
                 SemanticAnalysisDone = true;
             }
 

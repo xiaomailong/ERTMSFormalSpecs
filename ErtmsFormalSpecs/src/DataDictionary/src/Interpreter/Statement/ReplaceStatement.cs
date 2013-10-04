@@ -102,14 +102,19 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // Value
                 Value.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Value.StaticUsage, Usage.ModeEnum.Read);
                 Types.Type valueType = Value.GetExpressionType();
                 if (valueType != null)
                 {
@@ -123,9 +128,11 @@ namespace DataDictionary.Interpreter.Statement
                     AddError("Cannot determine type of " + Value);
                 }
 
+                // Condition
                 if (Condition != null)
                 {
                     Condition.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 

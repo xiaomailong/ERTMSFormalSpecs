@@ -112,12 +112,21 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // InitialValue
                 InitialValue.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(InitialValue.StaticUsage, Usage.ModeEnum.Read);
+
+                // Expression
                 Expression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
+
+                // Condition
                 Condition.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
 
                 LastIteration.Type = InitialValue.GetExpressionType();
                 CurrentIteration.Type = InitialValue.GetExpressionType();
+                StaticUsage.AddUsage(InitialValue.GetExpressionType(), Root, Usage.ModeEnum.Type);
             }
 
             return retVal;

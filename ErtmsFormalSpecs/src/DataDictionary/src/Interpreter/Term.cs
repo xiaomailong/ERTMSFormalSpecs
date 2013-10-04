@@ -118,10 +118,12 @@ namespace DataDictionary.Interpreter
             if (Designator != null)
             {
                 Designator.SemanticAnalysis(instance, expectation, lastElement);
+                StaticUsage = Designator.StaticUsage;
             }
             else if (LiteralValue != null)
             {
                 LiteralValue.SemanticAnalysis(instance, expectation);
+                StaticUsage = LiteralValue.StaticUsage;
             }
         }
 

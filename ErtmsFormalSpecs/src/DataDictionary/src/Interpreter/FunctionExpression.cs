@@ -90,6 +90,7 @@ namespace DataDictionary.Interpreter
             if (retVal)
             {
                 Expression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Expression.StaticUsage, null);
             }
 
             return retVal;

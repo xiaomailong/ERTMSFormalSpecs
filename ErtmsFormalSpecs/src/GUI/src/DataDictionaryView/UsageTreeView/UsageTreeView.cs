@@ -15,27 +15,124 @@
 // ------------------------------------------------------------------------------
 namespace GUI.DataDictionaryView.UsageTreeView
 {
+    using DataDictionary;
+    using DataDictionary.Interpreter;
+    using System.Collections.Generic;
+
     public class UsageTreeView : TypedTreeView<Utils.IModelElement>
     {
+        private UsageTreeNode __tests = null;
+        private UsageTreeNode TestNode
+        {
+            get
+            {
+                if (__tests == null)
+                {
+                    __tests = new UsageTreeNode("Test");
+                    __tests.setImageIndex(false);
+                    Nodes.Add(__tests);
+                }
+
+                return __tests;
+            }
+            set
+            {
+                __tests = value;
+            }
+        }
+
+        private UsageTreeNode __models = null;
+        private UsageTreeNode ModelNode
+        {
+            get
+            {
+                if (__models == null)
+                {
+                    __models = new UsageTreeNode("Model");
+                    __models.setImageIndex(false);
+                    Nodes.Add(__models);
+                }
+
+                return __models;
+            }
+            set
+            {
+                __models = value;
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the element is a model element (as opposed to a test)
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private bool IsModel(Utils.IModelElement element)
+        {
+            bool retVal = false;
+
+            Utils.IModelElement current = element;
+            while (current != null && !retVal)
+            {
+                retVal = current is DataDictionary.Types.NameSpace;
+                current = current.Enclosing as Utils.IModelElement;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Indicates that the element belongs to a test 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private bool IsTest(Utils.IModelElement element)
+        {
+            bool retVal = false;
+
+            Utils.IModelElement current = element;
+            while (current != null && !retVal)
+            {
+                retVal = current is DataDictionary.Tests.Frame;
+                current = current.Enclosing as Utils.IModelElement;
+            }
+
+            return retVal;
+        }
+
         protected override void BuildModel()
         {
             Nodes.Clear();
+            ModelNode = null;
+            TestNode = null;
 
-            if (Root is DataDictionary.Types.ITypedElement)
+            ModelElement model = Root as ModelElement;
+            if (model != null)
             {
-                DataDictionary.Variables.IVariable variable = Root as DataDictionary.Variables.IVariable;
-                foreach (DataDictionary.Rules.RuleCondition ruleCondition in DataDictionary.Rules.Rule.RulesUsingThisElement(variable))
+                List<Usage> usages = model.EFSSystem.FindReferences(model);
+                foreach (Usage usage in usages)
                 {
-                    Nodes.Add(new RuleUsageTreeNode(ruleCondition));
+                    UsageTreeNode current = new UsageTreeNode(usage);
+                    current.setImageIndex(false);
+
+                    if (IsModel(usage.User))
+                    {
+                        ModelNode.Nodes.Add(current);
+                    }
+                    else if (IsTest(usage.User))
+                    {
+                        TestNode.Nodes.Add(current);
+                    }
+                    else
+                    {
+                        Nodes.Add(current);
+                    }
                 }
             }
-            else if (Root is DataDictionary.Types.Type)
+
+            Sort();
+            if (__models != null)
             {
-                DataDictionary.Types.Type type = Root as DataDictionary.Types.Type;
-                foreach (DataDictionary.Types.ITypedElement element in DataDictionary.Types.Type.ElementsOfType(type))
-                {
-                    Nodes.Add(new TypeUsageTreeNode(element));
-                }
+                ModelNode.ExpandAll();
             }
         }
     }

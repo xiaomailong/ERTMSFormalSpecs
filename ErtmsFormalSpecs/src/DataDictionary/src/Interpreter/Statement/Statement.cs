@@ -43,7 +43,11 @@ namespace DataDictionary.Interpreter.Statement
         {
             bool retVal = !SemanticalAnalysisDone;
 
-            SemanticalAnalysisDone = true;
+            if (retVal)
+            {
+                StaticUsage = new Usages();
+                SemanticalAnalysisDone = true;
+            }
 
             return retVal;
         }

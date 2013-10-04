@@ -60,7 +60,10 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Value
                 Value = Type.getValue(Image);
+                StaticUsage.AddUsage(Type, Root, Usage.ModeEnum.Type);
+
                 if (Value == null)
                 {
                     AddError("Cannot evaluate " + ToString() + " as a number");

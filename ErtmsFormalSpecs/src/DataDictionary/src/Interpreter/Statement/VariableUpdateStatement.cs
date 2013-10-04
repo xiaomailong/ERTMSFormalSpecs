@@ -55,8 +55,13 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // VariableIdentification
                 VariableIdentification.SemanticAnalysis(instance, Filter.IsLeftSide);
+                StaticUsage.AddUsages(VariableIdentification.StaticUsage, Usage.ModeEnum.Write);
+
+                // Expression
                 Expression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;

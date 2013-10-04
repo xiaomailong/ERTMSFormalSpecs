@@ -118,19 +118,29 @@ namespace GUI
         }
 
         /// <summary>
+        /// Changes the image index
+        /// </summary>
+        /// <param name="value"></param>
+        protected void ChangeImageIndex(int value)
+        {
+            ImageIndex = value;
+            SelectedImageIndex = value;
+        }
+
+        /// <summary>
         /// Sets the image index for this node
         /// </summary>
         /// <param name="isFolder">Indicates whether this item represents a folder</param>
-        protected virtual void setImageIndex(bool isFolder)
+        public virtual void setImageIndex(bool isFolder)
         {
             if (ImageIndex == -1)
             {
                 // Image index not yet selected
-                ImageIndex = BaseTreeView.ModelImageIndex;
+                ChangeImageIndex(BaseTreeView.ModelImageIndex);
 
                 if (isFolder)
                 {
-                    ImageIndex = BaseTreeView.ClosedFolderImageIndex;
+                    ChangeImageIndex(BaseTreeView.ClosedFolderImageIndex);
                 }
                 else
                 {
@@ -143,20 +153,18 @@ namespace GUI
                             || element is DataDictionary.Tests.TestCase
                             || element is DataDictionary.Tests.Step)
                         {
-                            ImageIndex = BaseTreeView.TestImageIndex;
+                            ChangeImageIndex(BaseTreeView.TestImageIndex);
                         }
 
                         if (element is DataDictionary.Specification.Specification
                             || element is DataDictionary.Specification.Chapter
                             || element is DataDictionary.Specification.Paragraph)
                         {
-                            ImageIndex = BaseTreeView.RequirementImageIndex;
+                            ChangeImageIndex(BaseTreeView.RequirementImageIndex);
                         }
                     }
                 }
             }
-
-            SelectedImageIndex = ImageIndex;
         }
 
         /// <summary>
@@ -171,7 +179,7 @@ namespace GUI
         /// </summary>
         public virtual void SelectionChanged()
         {
-            if (BaseTreeView.RefreshNodeContent)
+            if (Model != null && BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
@@ -707,8 +715,7 @@ namespace GUI
         {
             if (ImageIndex == BaseTreeView.ClosedFolderImageIndex)
             {
-                ImageIndex = BaseTreeView.ExpandedFolderImageIndex;
-                SelectedImageIndex = BaseTreeView.ExpandedFolderImageIndex;
+                ChangeImageIndex(BaseTreeView.ExpandedFolderImageIndex);
             }
         }
 
@@ -719,8 +726,7 @@ namespace GUI
         {
             if (ImageIndex == BaseTreeView.ExpandedFolderImageIndex)
             {
-                ImageIndex = BaseTreeView.ClosedFolderImageIndex;
-                SelectedImageIndex = BaseTreeView.ClosedFolderImageIndex;
+                ChangeImageIndex(BaseTreeView.ClosedFolderImageIndex);
             }
         }
 
@@ -924,7 +930,7 @@ namespace GUI
         {
             base.SelectionChanged();
 
-            if (BaseTreeView.RefreshNodeContent)
+            if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)

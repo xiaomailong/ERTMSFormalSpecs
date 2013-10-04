@@ -68,6 +68,7 @@ namespace DataDictionary.Interpreter.ListOperators
             if (retVal)
             {
                 InitialValue.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(InitialValue.StaticUsage, Usage.ModeEnum.Read);
 
                 AccumulatorVariable.Type = InitialValue.GetExpressionType();
             }

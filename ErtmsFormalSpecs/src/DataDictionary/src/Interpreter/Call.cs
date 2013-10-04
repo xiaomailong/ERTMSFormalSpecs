@@ -219,10 +219,15 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Called
                 Called.SemanticAnalysis(instance, Filter.IsCallable);
+                StaticUsage.AddUsages(Called.StaticUsage, Usage.ModeEnum.Call);
+
+                // Actual parameters
                 foreach (Expression actual in AllParameters)
                 {
                     actual.SemanticAnalysis(instance, Filter.IsActualParameter);
+                    StaticUsage.AddUsages(actual.StaticUsage, Usage.ModeEnum.Read);
                 }
 
                 ParameterAssociation = createParameterAssociation(Called.Ref as ICallable);

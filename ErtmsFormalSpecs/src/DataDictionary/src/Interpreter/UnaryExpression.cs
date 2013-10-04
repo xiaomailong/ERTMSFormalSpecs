@@ -137,10 +137,12 @@ namespace DataDictionary.Interpreter
                 if (Term != null)
                 {
                     Term.SemanticAnalysis(instance, expectation, true);
+                    StaticUsage = Term.StaticUsage;
                 }
                 else if (Expression != null)
                 {
                     Expression.SemanticAnalysis(instance, expectation);
+                    StaticUsage = Expression.StaticUsage;
                 }
             }
 

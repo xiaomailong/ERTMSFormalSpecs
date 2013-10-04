@@ -136,8 +136,6 @@
     <Compile Include="src\DataDictionaryView\ParameterTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\PreConditionsTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\UsageTreeView\UsageTreeNode.cs" />
-    <Compile Include="src\DataDictionaryView\UsageTreeView\TypeUsageTreeNode.cs" />
-    <Compile Include="src\DataDictionaryView\UsageTreeView\RuleUsageTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\UsageTreeView\UsageTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -507,8 +505,13 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\type_icon.png" />
+    <None Include="resources\call_icon.png" />
     <Content Include="resources\model_icon.png" />
+    <None Include="resources\write_icon.png" />
     <None Include="resources\req_icon.png" />
+    <None Include="resources\read_access.bmp" />
+    <None Include="resources\read_icon.png" />
     <Content Include="resources\test_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

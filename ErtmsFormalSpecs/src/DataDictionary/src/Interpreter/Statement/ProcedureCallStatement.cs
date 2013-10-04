@@ -50,6 +50,7 @@ namespace DataDictionary.Interpreter.Statement
             if (retVal)
             {
                 Call.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Call.StaticUsage, Usage.ModeEnum.Call);
             }
 
             return retVal;
