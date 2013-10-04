@@ -1791,6 +1791,7 @@
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="The SectionTimerStopLocation shall be inside the section"
 >
 <ReqRef
@@ -2027,6 +2028,7 @@
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.SvL().Location == Kernel.MA.OverlapLocation()</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -2108,6 +2110,7 @@
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.SvL().Location == Kernel.MA.DangerPointLocation()</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -2186,8 +2189,10 @@
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.SvL().Location == Kernel.MA.EndOfMovementAuthority().Location</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -2204,6 +2209,11 @@
 </ReqRef>
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 LimitofAuthority -&gt; No SvL defined"
 >
@@ -2267,8 +2277,10 @@
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.SvL() == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.TargetSpeed != 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
