@@ -1015,6 +1015,23 @@ namespace DataDictionary
             }
 
             /// <summary>
+            /// Walk through Collections declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Collection obj, bool visitSubNodes)
+            {
+                Types.Collection collection = (Types.Collection)obj;
+
+                if (collection.Type == Model)
+                {
+                    Usages.Add(new Usage(Model, collection, Usage.ModeEnum.Type));
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
             /// Walk through Variables declaration
             /// </summary>
             /// <param name="obj"></param>
