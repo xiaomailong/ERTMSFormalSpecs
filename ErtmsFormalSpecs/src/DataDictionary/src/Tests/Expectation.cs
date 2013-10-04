@@ -197,7 +197,10 @@ namespace DataDictionary.Tests
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel);
+            if (Expression != null)
+            {
+                retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel);
+            }
 
             return retVal;
         }

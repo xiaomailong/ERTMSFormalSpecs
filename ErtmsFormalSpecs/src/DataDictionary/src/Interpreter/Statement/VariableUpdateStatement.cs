@@ -161,10 +161,7 @@ namespace DataDictionary.Interpreter.Statement
                             UnaryExpression unaryExpression = Expression as UnaryExpression;
                             if (unaryExpression != null && unaryExpression.Term.LiteralValue != null)
                             {
-                                if (targetType.getValue(unaryExpression.ToString()) == null)
-                                {
-                                    Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
-                                }
+                                Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
                             }
                             else
                             {

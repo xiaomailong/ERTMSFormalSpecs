@@ -500,15 +500,30 @@ namespace DataDictionary.Tests.Runner
                     {
                         ListValue val = variable.Value as ListValue;
 
-                        int i = 1;
-                        foreach (IValue subVal in val.Val)
+                        if (val != null)
                         {
-                            Variables.Variable tmp = new Variables.Variable();
-                            tmp.Name = variable.Name + '[' + i + ']';
-                            tmp.Type = collectionType.Type;
-                            tmp.Value = subVal;
-                            EvaluateVariable(priority, activations, tmp, explanation);
-                            i = i + 1;
+                            int i = 1;
+                            foreach (IValue subVal in val.Val)
+                            {
+                                Variables.Variable tmp = new Variables.Variable();
+                                tmp.Name = variable.Name + '[' + i + ']';
+                                tmp.Type = collectionType.Type;
+                                tmp.Value = subVal;
+                                EvaluateVariable(priority, activations, tmp, explanation);
+                                i = i + 1;
+                            }
+                        }
+                        else
+                        {
+                            ModelElement element = variable as ModelElement;
+                            if (element != null)
+                            {
+                                element.AddError("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
+                            }
+                            else
+                            {
+                                throw new System.Exception("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
+                            }
                         }
                     }
                 }
