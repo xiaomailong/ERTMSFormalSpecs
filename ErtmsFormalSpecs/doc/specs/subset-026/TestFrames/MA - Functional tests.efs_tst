@@ -1910,12 +1910,22 @@
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="SvL"
 >
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
+ Implemented="TRUE"
  Name="SvL is defined"
 >
 <ReqRef
@@ -1940,6 +1950,11 @@
 </Actions>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - SvL Overlap"
 >
@@ -2003,12 +2018,17 @@
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.Overlap != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.SvL().Location == Kernel.MA.OverlapLocation()</Expectation></Expectations>
+>Kernel.MA.SvL().Location == Kernel.MA.OverlapLocation()</Expectation><Expectation
+ DeadLine="1"
+>Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2087,7 +2107,9 @@
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.SvL().Location == Kernel.MA.DangerPointLocation()</Expectation></Expectations>
+>Kernel.MA.SvL().Location == Kernel.MA.DangerPointLocation()</Expectation><Expectation
+ DeadLine="1"
+>Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2163,7 +2185,92 @@
 >Kernel.MA.SvL().Speed == Kernel.MA.MA.TargetSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.SvL().Location == Kernel.MA.EndOfMovementAuthority().Location</Expectation></Expectations>
+>Kernel.MA.SvL().Location == Kernel.MA.EndOfMovementAuthority().Location</Expectation><Expectation
+ DeadLine="1"
+>Kernel.MA.MA.EndSection.Overlap == EMPTY</Expectation><Expectation
+ DeadLine="1"
+>Kernel.MA.MA.EndSection.DangerPoint == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="SvL is not defined"
+>
+<ReqRef
+ Id="3.8.4.5.2"
+>
+</ReqRef>
+<Steps>
+<Step
+ TranslationRequired="FALSE"
+ Name="Step1 LimitofAuthority -&gt; No SvL defined"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.No_danger_point_information,
+                    D_DP=&gt;0,
+                    V_RELEASEDP=&gt;0,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;100,
+                    T_OL=&gt;40,
+                    D_OL=&gt;1150,
+                    V_RELEASEOL=&gt;6
+                }
+            }
+        }
+    ]
+}</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ DeadLine="1"
+>Kernel.MA.SvL() == EMPTY</Expectation><Expectation
+ DeadLine="1"
+>Kernel.MA.MA.TargetSpeed != 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
