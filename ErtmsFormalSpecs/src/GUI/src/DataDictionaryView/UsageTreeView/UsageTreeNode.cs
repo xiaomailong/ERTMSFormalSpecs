@@ -55,6 +55,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
             : base(usage.User, usage.DisplayName())
         {
             Usage = usage;
+            ToolTipText = usage.User.FullName;
         }
 
         public override void setImageIndex(bool isFolder)
