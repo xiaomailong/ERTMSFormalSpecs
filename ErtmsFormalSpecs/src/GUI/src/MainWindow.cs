@@ -1300,6 +1300,12 @@ namespace GUI
 
         private void refreshWindowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Ensure the system has been compiled
+            EFSSystem efsSystem = EFSSystem.INSTANCE;
+            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(efsSystem, efsSystem.ShouldRebuild);
+            compiler.Compile();
+            efsSystem.ShouldRebuild = false;
+
             RefreshModel();
         }
 

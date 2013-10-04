@@ -960,10 +960,13 @@ namespace DataDictionary
             {
                 Action action = (Action)obj;
 
-                List<Usage> usages = action.Statement.StaticUsage.Find(Model);
-                foreach (Usage usage in usages)
+                if (action.Statement != null && action.Statement.StaticUsage != null)
                 {
-                    Usages.Add(usage);
+                    List<Usage> usages = action.Statement.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -978,12 +981,14 @@ namespace DataDictionary
             {
                 PreCondition preCondition = (PreCondition)obj;
 
-                List<Usage> usages = preCondition.ExpressionTree.StaticUsage.Find(Model);
-                foreach (Usage usage in usages)
+                if (preCondition.ExpressionTree != null && preCondition.ExpressionTree.StaticUsage != null)
                 {
-                    Usages.Add(usage);
+                    List<Usage> usages = preCondition.ExpressionTree.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
                 }
-
 
                 base.visit(obj, visitSubNodes);
             }
@@ -997,10 +1002,13 @@ namespace DataDictionary
             {
                 Tests.Expectation expectation = (Tests.Expectation)obj;
 
-                List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
-                foreach (Usage usage in usages)
+                if (expectation.ExpressionTree != null && expectation.ExpressionTree.StaticUsage != null)
                 {
-                    Usages.Add(usage);
+                    List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -1096,11 +1104,6 @@ namespace DataDictionary
         /// <returns></returns>
         public SortedSet<Usage> FindReferences(ModelElement model)
         {
-            // Ensure the system has been compiled
-            Interpreter.Compiler compiler = new Interpreter.Compiler(this, ShouldRebuild);
-            compiler.Compile();
-            ShouldRebuild = false;
-
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(model);
             foreach (Dictionary dictionary in Dictionaries)
