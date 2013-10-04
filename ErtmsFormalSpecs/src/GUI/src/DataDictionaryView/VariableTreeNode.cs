@@ -83,21 +83,6 @@ namespace GUI.DataDictionaryView
                     RefreshNode();
                 }
             }
-            /// <summary>
-            /// The variable type
-            /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string OldType
-            {
-                get { return Item.getTypeName(); }
-                set
-                {
-                    Item.Type = null;
-                    Item.setTypeName(value);
-                    Item.Value = null;
-                    Node.RefreshNode();
-                }
-            }
 
             /// <summary>
             /// The default value for this variable
