@@ -4577,7 +4577,11 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The on-board equipment shall consider an ERTMS/ETCS level as &quot;Available for use&quot; as follows:
+><ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
+The on-board equipment shall consider an ERTMS/ETCS level as &quot;Available for use&quot; as follows:
 	a) Level 2 or 3: the level is configured on-board and at least one Mobile Terminal is available on-board, i.e. the ETCS onboard has detected at least one Mobile Terminal in working condition, independently whether it is registered to a network or not.
 	b) Level NTC: the concerned National System is available on-board (if an STM is used, refer to SUBSET-035 for further details).
 	c) Level 0 or 1: always.<Sub>
