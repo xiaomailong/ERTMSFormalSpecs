@@ -209,13 +209,8 @@ namespace GUI
         {
             string retVal = "";
 
-            int i = EditionTextBox.SelectionStart;
+            int i = EditionTextBox.SelectionStart - 1;
             while (i >= EditionTextBox.Text.Length)
-            {
-                i = i - 1;
-            }
-
-            if (Char.IsSeparator(EditionTextBox.Text[i]))
             {
                 i = i - 1;
             }
@@ -479,12 +474,12 @@ namespace GUI
         {
             if (PendingSelection)
             {
-                PendingSelection = false;
                 EditionTextBox.SelectedText = SelectionComboBox.Text;
-                EditionTextBox.SelectionStart = EditionTextBox.SelectionStart + SelectionComboBox.Text.Length;
+                EditionTextBox.SelectionStart = EditionTextBox.SelectionStart;
                 SelectionComboBox.Text = "";
                 SelectionComboBox.Items.Clear();
                 SelectionComboBox.Hide();
+                PendingSelection = false;
             }
         }
 
@@ -646,13 +641,25 @@ namespace GUI
             }
             else
             {
+                DataDictionary.Values.IValue value = null;
                 if (element.Default == null || element.Default.Length == 0)
                 {
-                    text.Append(element.Type.Default);
+                    if (element.Type != null && element.Type.DefaultValue != null)
+                    {
+                        value = element.Type.DefaultValue;
+                    }
                 }
                 else
                 {
-                    text.Append(element.Default);
+                    if (element.Type != null)
+                    {
+                        value = element.Type.getValue(element.Default);
+                    }
+                }
+
+                if (value != null)
+                {
+                    text.Append(value.FullName);
                 }
             }
         }
