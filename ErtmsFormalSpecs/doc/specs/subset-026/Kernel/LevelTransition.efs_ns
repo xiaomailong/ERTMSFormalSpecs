@@ -288,6 +288,24 @@ ON
 <Action>LTOtoProcess &lt;- FIRST_IN ( MAP LevelTransitionOrder.LevelandLength | AvailableForUse ( Level =&gt; X.TRLevel ) USING X)</Action>
 </Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="InformDriver"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="InformDriver"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>LevelTransitionAnnouncement(
+
+)</Action>
+</Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -349,10 +367,16 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="LevelTransitionAnnouncement"
 >
 <ReqRef
  Id="5.10.1.3"
+>
+<Comment></Comment>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.6"
 >
 </ReqRef>
 <Comment>Handles the display on the DMI</Comment>
@@ -371,7 +395,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement()</Action>
+<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel)</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
