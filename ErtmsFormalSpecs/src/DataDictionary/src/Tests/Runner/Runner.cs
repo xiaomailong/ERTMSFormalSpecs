@@ -737,7 +737,7 @@ namespace DataDictionary.Tests.Runner
             }
             else
             {
-                throw new Exception("Cannot evaluate vaue of " + expression);
+                throw new Exception("Cannot evaluate value of " + expression);
             }
 
             return retVal;
