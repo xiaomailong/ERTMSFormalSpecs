@@ -642,6 +642,12 @@ namespace GUI
             return retVal;
         }
 
+        /// <summary>
+        /// The tooltip associated to this form
+        /// </summary>
+        public ToolTip ToolTip { get { return toolTip; } }
+
+
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataDictionary.Dictionary activeDictionary = GetActiveDictionary();

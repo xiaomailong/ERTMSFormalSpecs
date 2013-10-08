@@ -283,22 +283,52 @@ namespace GUI.DataDictionaryView
             // 
             this.requirementsTextBox.AllowDrop = true;
             this.requirementsTextBox.AutoComplete = true;
+            this.requirementsTextBox.ConsiderOnlyTypes = false;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requirementsTextBox.Lines = new string[0];
+            this.requirementsTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
-            this.requirementsTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}\r\n\\" +
-    "viewkind4\\uc1\\pard\\fs17\\par\r\n}\r\n";
+            this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
             this.requirementsTextBox.Size = new System.Drawing.Size(345, 189);
             this.requirementsTextBox.TabIndex = 0;
             // 
             // ruleExplainTextBox
             // 
             this.ruleExplainTextBox.AutoComplete = true;
+            this.ruleExplainTextBox.ConsiderOnlyTypes = false;
             this.ruleExplainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleExplainTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         ""};
@@ -312,9 +342,28 @@ namespace GUI.DataDictionaryView
             // expressionEditorTextBox
             // 
             this.expressionEditorTextBox.AutoComplete = true;
+            this.expressionEditorTextBox.ConsiderOnlyTypes = false;
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expressionEditorTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         ""};
@@ -368,8 +417,33 @@ namespace GUI.DataDictionaryView
             // messagesRichTextBox
             // 
             this.messagesRichTextBox.AutoComplete = true;
+            this.messagesRichTextBox.ConsiderOnlyTypes = false;
             this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesRichTextBox.Lines = new string[] {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         "",
@@ -379,9 +453,7 @@ namespace GUI.DataDictionaryView
             this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.messagesRichTextBox.Name = "messagesRichTextBox";
             this.messagesRichTextBox.ReadOnly = false;
-            this.messagesRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
-    "\n\\par\r\n\\par\r\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.messagesRichTextBox.Rtf = resources.GetString("messagesRichTextBox.Rtf");
             this.messagesRichTextBox.Size = new System.Drawing.Size(696, 62);
             this.messagesRichTextBox.TabIndex = 1;
             // 

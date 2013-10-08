@@ -332,7 +332,10 @@ namespace GUI
                 {
                     if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
                     {
-                        tmp.Add(namable);
+                        if (!(namable is DataDictionary.Functions.Function))
+                        {
+                            tmp.Add(namable);
+                        }
                     }
                 }
                 possibleInstances = tmp;
