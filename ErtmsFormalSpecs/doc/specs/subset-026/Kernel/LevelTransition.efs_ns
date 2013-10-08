@@ -152,6 +152,7 @@
  Id="5.10.2.4.1"
 >
 </ReqRef>
+<Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
 <Parameters>
 <Parameter
  Type="Default.Level"
@@ -171,7 +172,7 @@
 >
 <PreConditions>
 <PreCondition>Level == Default.Level.LNTC</PreCondition>
-<PreCondition>STM.Available == Boolean.True</PreCondition>
+<PreCondition>STM.Available(Default.STM.Unknown) == Boolean.True</PreCondition>
 </PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
@@ -212,6 +213,10 @@
 </ReqRef>
 <ReqRef
  Id="5.10.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.5"
 >
 </ReqRef>
 <Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
@@ -394,8 +399,13 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
  Type="Boolean"
+ VariableMode="Internal"
  Name="LTOtoProcess"
 >
+<ReqRef
+ Id="5.10.2.5"
+>
+</ReqRef>
 <Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
 </Variable></Variables>
 </NameSpace>
