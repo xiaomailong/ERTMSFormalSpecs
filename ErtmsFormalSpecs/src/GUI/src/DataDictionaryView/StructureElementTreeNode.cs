@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -62,55 +63,39 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable type
+            /// The structure element type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Types.StructureElement Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.Type = null;
-                    Item.setTypeName(value);
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
-
-
             /// <summary>
-
             /// The default value for this variable
-
             /// </summary>
-
             [Category("Description"), TypeConverter(typeof(InternalValuesConverter))]
-
             public string DefaultValue
             {
-
                 get { return Item.getDefault(); }
-
                 set { Item.setDefault(value); }
-
             }
 
-
-
             /// <summary>
-
             /// The variable mode
-
             /// </summary>
-
             [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
-
             public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
             {
-
                 get { return Item.Mode; }
-
                 set { Item.Mode = value; }
-
             }
         }
 

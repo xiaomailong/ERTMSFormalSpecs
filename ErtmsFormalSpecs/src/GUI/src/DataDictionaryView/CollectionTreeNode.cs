@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -54,14 +55,16 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Types.Collection Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.Type = null;
-                    Item.setTypeName(value);
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
