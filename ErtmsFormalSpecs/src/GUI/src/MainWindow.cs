@@ -173,6 +173,15 @@ namespace GUI
                     }
                 }
 
+                DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                if (dictionary != null)
+                {
+                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
+                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
+                    AddChildWindow(newWindow);
+                    return newWindow;
+                }
+
                 return null;
             }
         }
@@ -498,16 +507,7 @@ namespace GUI
                         if (dictionary.ShortcutsDictionary != null)
                         {
                             IBaseForm shortcutsWindow = ShortcutsWindow;
-                            if (shortcutsWindow == null)
-                            {
-                                if (dictionary != null)
-                                {
-                                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
-                                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                                    AddChildWindow(newWindow);
-                                }
-                            }
-                            else
+                            if (shortcutsWindow != null)
                             {
                                 shortcutsWindow.RefreshModel();
                             }
@@ -526,6 +526,7 @@ namespace GUI
                 Refresh();
             }
         }
+
         #endregion
 
         #region SaveFile
