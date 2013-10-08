@@ -89,11 +89,11 @@ namespace GUI.Converters
         /// <param name="value"></param>
         private void HandleTextChange(ModelElement instance, string value)
         {
-            ICommentable commentable = instance as ICommentable;
+            DataDictionary.Types.ITypedElement typedElement = instance as DataDictionary.Types.ITypedElement;
 
-            if (commentable != null)
+            if (typedElement != null)
             {
-                commentable.Comment = value;
+                typedElement.TypeName = value;
             }
         }
 
@@ -102,12 +102,13 @@ namespace GUI.Converters
             IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
-                ICommentable commentable = value as ICommentable;
-                if (commentable != null)
+                DataDictionary.Types.ITypedElement typedElement = value as DataDictionary.Types.ITypedElement;
+                if (typedElement != null)
                 {
                     EditorForm form = new EditorForm();
                     form.AutoComplete = true;
-                    TextChangeHandler handler = new TextChangeHandler(commentable as ModelElement);
+                    form.ConsiderOnlyTypes = true;
+                    TextChangeHandler handler = new TextChangeHandler(typedElement as ModelElement);
                     form.setChangeHandler(handler);
                     GUIUtils.MDIWindow.AddChildWindow(form);
                 }

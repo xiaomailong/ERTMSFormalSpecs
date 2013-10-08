@@ -14,6 +14,11 @@ namespace GUI
     public partial class EditorTextBox : UserControl
     {
         /// <summary>
+        /// Indicates that only types should be considered in the search
+        /// </summary>
+        public bool ConsiderOnlyTypes { get; set; }
+
+        /// <summary>
         /// Indicates whether there is a pending selection in the combo box
         /// </summary>
         private bool PendingSelection { get; set; }
@@ -317,6 +322,20 @@ namespace GUI
                 possibleInstances.Add(Instance);
                 enclosingName = null;
                 prefix = currentText;
+            }
+
+            // Filter the namables
+            if (ConsiderOnlyTypes)
+            {
+                List<Utils.INamable> tmp = new List<Utils.INamable>();
+                foreach (Utils.INamable namable in possibleInstances)
+                {
+                    if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
+                    {
+                        tmp.Add(namable);
+                    }
+                }
+                possibleInstances = tmp;
             }
 
             foreach (Utils.INamable namable in possibleInstances)

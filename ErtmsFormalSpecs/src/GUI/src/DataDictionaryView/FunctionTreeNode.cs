@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Functions;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -52,16 +53,18 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The function type
+            /// The variable type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Functions.Function Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.ReturnType = null;
-                    Item.setTypeName(value);
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
