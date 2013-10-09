@@ -215,10 +215,6 @@
  Id="5.10.2.1"
 >
 </ReqRef>
-<ReqRef
- Id="5.10.2.5"
->
-</ReqRef>
 <Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
 <Parameters>
 <Parameter
@@ -253,6 +249,7 @@
  Implemented="TRUE"
  Name="NextLevelTransition"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -277,11 +274,22 @@ ON
  Priority="Processing"
  Name="ReduceLTOtoOne"
 >
+<ReqRef
+ Id="5.10.2.5"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.4"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="ReduceLTOtoOne"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -290,8 +298,40 @@ ON
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="FallbackIfNothingAvailable"
+>
+<ReqRef
+ Id="5.10.2.7"
+>
+<Comment></Comment>
+</ReqRef>
+<Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="FallbackIfNothingAvailable"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition>
+<PreCondition>LTOtoProcess.TRLevel == Default.Level.Unknown</PreCondition>
+</PreConditions>
+<Actions>
+<Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="InformDriver"
 >
+<ReqRef
+ Id="5.10.2.7.1"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.6"
+>
+</ReqRef>
 <Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -302,7 +342,6 @@ ON
 </PreConditions>
 <Actions>
 <Action>LevelTransitionAnnouncement(
-
 )</Action>
 </Actions>
 </RuleCondition></Conditions>
@@ -379,6 +418,10 @@ IN  LevelTransitionOrder.LevelandLength</Action>
  Id="5.10.2.6"
 >
 </ReqRef>
+<ReqRef
+ Id="5.10.2.7.1"
+>
+</ReqRef>
 <Comment>Handles the display on the DMI</Comment>
 <Rules>
 <Rule
@@ -386,6 +429,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
  Implemented="TRUE"
  Name="LevelTransitionAnnouncement"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -423,6 +467,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
  Type="Kernel.LevelTransition.LevelTransition"
+ DefaultValue=""
  VariableMode="Internal"
  Name="LTOtoProcess"
 >
