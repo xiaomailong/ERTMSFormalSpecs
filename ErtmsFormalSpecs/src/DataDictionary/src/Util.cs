@@ -43,20 +43,6 @@ namespace DataDictionary
         /// </summary>
         private class Updater : Generated.Visitor
         {
-            public override void visit(Generated.Expectation obj, bool visitSubNodes)
-            {
-                Expectation expectation = obj as Expectation;
-
-                if (expectation != null)
-                {
-                    if (expectation.getDeadLine() > 999)
-                    {
-                        expectation.setDeadLine(expectation.getDeadLine() / 1000);
-                    }
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
         }
 
         /// <summary>
@@ -250,7 +236,7 @@ namespace DataDictionary
                 ctxt.readFile(filePath);
                 try
                 {
-                    Generated.ControllersManager.NamableController.DesactivateNotification();
+                    Generated.ControllersManager.DesactivateAllNotifications();
                     retVal = Generated.acceptor.accept(ctxt) as T;
                     if (retVal != null)
                     {
@@ -268,7 +254,7 @@ namespace DataDictionary
                 }
                 finally
                 {
-                    Generated.ControllersManager.NamableController.ActivateNotification();
+                    Generated.ControllersManager.ActivateAllNotifications();
                 }
 
                 return retVal;

@@ -53,6 +53,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Value
                 Value = new Values.StringValue(EFSSystem.StringType, Image);
             }
 

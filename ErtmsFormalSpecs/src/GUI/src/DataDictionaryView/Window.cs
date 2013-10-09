@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.DataDictionaryView
 {
@@ -25,19 +26,29 @@ namespace GUI.DataDictionaryView
             get { return dataDictPropertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return expressionTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
-            get { return messagesRichTextBox.TextBox; }
+            get
+            {
+                if (messagesRichTextBox != null)
+                {
+                    return messagesRichTextBox.TextBox;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return requirementsTextBox; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return expressionEditorTextBox; }
         }
 
         public BaseTreeView TreeView
@@ -78,15 +89,30 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
 
+            ruleExplainTextBox.ReadOnly = true;
+            requirementsTextBox.ReadOnly = true;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             Dictionary = dictionary;
+
+            // TODO : Does not work yet
+            // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.Text;
+            }
         }
 
         /// <summary>
@@ -111,16 +137,6 @@ namespace GUI.DataDictionaryView
         public void RefreshModel()
         {
             dataDictTree.RefreshModel();
-        }
-
-        private void expressionTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleExpressionTextChanged(expressionTextBox.Text);
-        }
-
-        private void commentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleCommentTextChanged(commentRichTextBox.Text);
         }
 
         /// <summary>

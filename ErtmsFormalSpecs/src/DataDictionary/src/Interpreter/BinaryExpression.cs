@@ -103,8 +103,13 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Left
                 Left.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Left.StaticUsage, Usage.ModeEnum.Read);
+
+                // Right
                 Right.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;

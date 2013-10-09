@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Specification
 {
-    public class Paragraph : Generated.Paragraph, IComparable<Utils.IModelElement>, ICommentable
+    public class Paragraph : Generated.Paragraph, IComparable<Utils.IModelElement>
     {
         private static int A = Char.ConvertToUtf32("a", 0);
 

@@ -81,6 +81,16 @@ namespace GUI.Shortcuts
             get { return null; }
         }
 
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return null; }
+        }
+
         public BaseTreeView subTreeView
         {
             get { return null; }

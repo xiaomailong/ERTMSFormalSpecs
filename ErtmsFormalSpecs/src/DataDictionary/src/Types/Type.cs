@@ -32,7 +32,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        string TypeName { get; }
+        string TypeName { get; set; }
 
         /// <summary>
         /// The type of the element

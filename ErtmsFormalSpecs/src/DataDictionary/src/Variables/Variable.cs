@@ -180,7 +180,15 @@ namespace DataDictionary.Variables
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                type = null;
+                setTypeName(value);
+            }
         }
 
         /// <summary>

@@ -36,7 +36,7 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(RulePriorityConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.RulePriorityConverter))]
             public DataDictionary.Generated.acceptor.RulePriority Priority
             {
                 get { return Item.getPriority(); }
@@ -73,17 +73,6 @@ namespace GUI.DataDictionaryView
         protected override Editor createEditor()
         {
             return new ItemEditor();
-        }
-
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
-            if (window != null)
-            {
-                window.requirementsTextBox.Lines = Utils.Utils.toStrings(Item.getRequirements());
-            }
         }
 
         /// <summary>

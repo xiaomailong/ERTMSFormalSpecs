@@ -109,7 +109,7 @@ namespace DataDictionary
             findRelatedParagraphsRecursively(paragraphs);
             foreach (Specification.Paragraph paragraph in paragraphs)
             {
-                retVal = retVal + paragraph.FullId + ":" + paragraph.getText().Replace('\n', ' ') + "\n\n";
+                retVal = retVal + paragraph.FullId + ":" + paragraph.getText() + "\n\n";
             }
 
             return retVal;

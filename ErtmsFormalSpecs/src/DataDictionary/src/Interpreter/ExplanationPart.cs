@@ -75,6 +75,17 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="element">The element for which this explanation part is created</param>
+        public ExplanationPart(ModelElement element, string message)
+        {
+            Element = element;
+            Message = message;
+            SubExplanations = new List<ExplanationPart>();
+        }
+
+        /// <summary>
         /// Constructor for an explanation, based on a change
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>

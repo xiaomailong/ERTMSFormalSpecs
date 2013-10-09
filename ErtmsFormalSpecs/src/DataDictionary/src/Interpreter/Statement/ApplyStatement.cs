@@ -103,19 +103,25 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // ConditionExpression
                 if (ConditionExpression != null)
                 {
                     ConditionExpression.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(ConditionExpression.StaticUsage, Usage.ModeEnum.Read);
                 }
 
                 Call.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Call.StaticUsage, Usage.ModeEnum.Call);
             }
 
             return retVal;

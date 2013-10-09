@@ -56,10 +56,15 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Structure
                 Structure.SemanticAnalysis(instance, Filter.IsStructure);
+                StaticUsage.AddUsages(Structure.StaticUsage, Usage.ModeEnum.Type);
+
+                // Structure field Association
                 foreach (Expression expr in Associations.Values)
                 {
                     expr.SemanticAnalysis(instance, Filter.IsRightSide);
+                    StaticUsage.AddUsages(expr.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 

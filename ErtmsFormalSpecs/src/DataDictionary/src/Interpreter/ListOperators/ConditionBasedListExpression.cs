@@ -52,9 +52,11 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (retVal)
             {
+                // Condition
                 if (Condition != null)
                 {
                     Condition.SemanticAnalysis(instance, expectation);
+                    StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 

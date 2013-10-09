@@ -102,14 +102,19 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // Value
                 Value.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Value.StaticUsage, Usage.ModeEnum.Read);
                 Types.Type valueType = Value.GetExpressionType();
                 if (valueType != null)
                 {
@@ -123,9 +128,11 @@ namespace DataDictionary.Interpreter.Statement
                     AddError("Cannot determine type of " + Value);
                 }
 
+                // Condition
                 if (Condition != null)
                 {
                     Condition.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 
@@ -226,6 +233,9 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, bool log)
         {
+            int index = context.LocalScope.PushContext();
+            context.LocalScope.setVariable(IteratorVariable);
+
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
@@ -277,6 +287,8 @@ namespace DataDictionary.Interpreter.Statement
             {
                 Root.AddError("Cannot find variable for " + ListExpression.ToString());
             }
+
+            context.LocalScope.PopContext(index);
         }
 
         public override string ToString()

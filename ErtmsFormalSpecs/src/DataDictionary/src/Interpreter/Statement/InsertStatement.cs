@@ -68,11 +68,19 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // Value
                 Value.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Value.StaticUsage, Usage.ModeEnum.Read);
+
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance, Filter.IsLeftSide);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
+                // ReplaceElement
                 if (ReplaceElement != null)
                 {
                     ReplaceElement.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(ReplaceElement.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 

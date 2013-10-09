@@ -171,6 +171,10 @@ namespace GUI.GraphView
         /// </summary>
         public RichTextBox MessagesTextBox { get { return null; } }
 
+        public EditorTextBox RequirementsTextBox { get { return null; } }
+
+        public EditorTextBox ExpressionEditorTextBox { get { return null; } }
+
         /// <summary>
         /// The enclosing MDI Window
         /// </summary>

@@ -34,9 +34,9 @@ namespace GUI.Report
 
             List<string> userNames = new List<string>();
             userNames.Add("Diego");
-            userNames.Add("Svitlana");
-            userNames.Add("Laurent");
-            userNames.Add("Stan");
+            userNames.Add("Moritz");
+            userNames.Add("Peyman");
+            userNames.Add("Luis");
             Cbb_UserNames.DataSource = userNames;
         }
 

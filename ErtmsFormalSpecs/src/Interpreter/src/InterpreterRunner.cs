@@ -41,11 +41,11 @@ namespace Interpreter
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
-                Utils.ModelElement.ErrorCount = 0;
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
@@ -56,7 +56,7 @@ namespace Interpreter
                 {
                     foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                     {
-                        SetupNameSpaceActivations(priority, activations, nameSpace);
+                        SetupNameSpaceActivations(priority, activations, nameSpace, null);
                     }
                 }
 
@@ -67,7 +67,7 @@ namespace Interpreter
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;

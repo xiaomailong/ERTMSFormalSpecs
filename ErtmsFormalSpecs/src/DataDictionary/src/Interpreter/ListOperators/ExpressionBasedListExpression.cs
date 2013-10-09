@@ -49,7 +49,9 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (retVal)
             {
+                // Iterator expression
                 IteratorExpression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(IteratorExpression.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;

@@ -221,7 +221,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                Generated.ControllersManager.NamableController.DesactivateNotification();
+                Generated.ControllersManager.DesactivateAllNotifications();
                 // Setup the execution environment
                 Setuper setuper = new Setuper(EFSSystem);
                 foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -245,7 +245,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                Generated.ControllersManager.NamableController.ActivateNotification();
+                Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -364,11 +364,11 @@ namespace DataDictionary.Tests.Runner
                 {
                     Log.Info("New cycle");
                 }
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
-                Utils.ModelElement.ErrorCount = 0;
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
@@ -385,7 +385,7 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
                         {
-                            SetupNameSpaceActivations(priority, activations, nameSpace);
+                            SetupNameSpaceActivations(priority, activations, nameSpace, null);
                         }
                     }
 
@@ -394,31 +394,21 @@ namespace DataDictionary.Tests.Runner
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
 
-                if (Utils.ModelElement.ErrorCount > 0)
+                foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in Utils.ModelElement.Errors)
                 {
-                    SubStep subStep = CurrentSubStep();
-                    if (subStep != null)
+                    foreach (Utils.ElementLog log in pair.Value)
                     {
-                        subStep.AddError("Errors were raised while evaluating this sub step. See model view for more informations");
-                    }
-                    else
-                    {
-                        Step step = CurrentStep();
-                        if (step != null)
+                        switch (log.Level)
                         {
-                            step.AddError("Errors were raised while evaluating this step. See model view for more informations");
-                        }
-                        else
-                        {
-                            TestCase testCase = CurrentTestCase();
-                            if (testCase != null)
-                            {
-                                testCase.AddError("Errors were raised while evaluating this test case. See model view for more informations");
-                            }
-                            else
-                            {
-                                SubSequence.AddError("Errors were raised while evaluating this sub sequence. See model view for more informations");
-                            }
+                            case Utils.ElementLog.LevelEnum.Error:
+                                ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable);
+                                EventTimeLine.AddModelEvent(modelInterpretationFailure, false);
+                                break;
+
+                            case Utils.ElementLog.LevelEnum.Warning:
+                                break;
+                            case Utils.ElementLog.LevelEnum.Info:
+                                break;
                         }
                     }
                 }
@@ -427,7 +417,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;
@@ -440,19 +430,19 @@ namespace DataDictionary.Tests.Runner
         /// <param name="activations">The set of activations to be filled</param>
         /// <param name="nameSpace">The namespace to consider</param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
             {
-                SetupNameSpaceActivations(priority, activations, subNameSpace);
+                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation);
             }
 
             List<Rules.RuleCondition> rules = new List<Rules.RuleCondition>();
             foreach (Rule rule in nameSpace.Rules)
             {
                 rules.Clear();
-                rule.Evaluate(this, priority, rule, rules);
+                rule.Evaluate(this, priority, rule, rules, explanation);
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
@@ -464,7 +454,7 @@ namespace DataDictionary.Tests.Runner
 
             foreach (Variables.IVariable variable in nameSpace.Variables)
             {
-                EvaluateVariable(priority, activations, variable);
+                EvaluateVariable(priority, activations, variable, explanation);
             }
         }
 
@@ -474,7 +464,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="priority"></param>
         /// <param name="activations"></param>
         /// <param name="variable"></param>
-        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable)
+        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation)
         {
             if (variable != null)
             {
@@ -484,7 +474,7 @@ namespace DataDictionary.Tests.Runner
                     Types.Structure structure = variable.Type as Types.Structure;
                     foreach (Rule rule in structure.Rules)
                     {
-                        rule.Evaluate(this, priority, variable, rules);
+                        rule.Evaluate(this, priority, variable, rules, explanation);
                     }
                     Activation.RegisterRules(activations, rules, variable);
 
@@ -493,14 +483,14 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
-                            EvaluateVariable(priority, activations, subVariable);
+                            EvaluateVariable(priority, activations, subVariable, explanation);
                         }
                     }
                 }
                 else if (variable.Type is Types.StateMachine)
                 {
                     List<Rules.RuleCondition> rules = new List<RuleCondition>();
-                    EvaluateStateMachine(rules, priority, variable);
+                    EvaluateStateMachine(rules, priority, variable, explanation);
                     Activation.RegisterRules(activations, rules, variable);
                 }
                 else if (variable.Type is Types.Collection)
@@ -510,15 +500,30 @@ namespace DataDictionary.Tests.Runner
                     {
                         ListValue val = variable.Value as ListValue;
 
-                        int i = 1;
-                        foreach (IValue subVal in val.Val)
+                        if (val != null)
                         {
-                            Variables.Variable tmp = new Variables.Variable();
-                            tmp.Name = variable.Name + '[' + i + ']';
-                            tmp.Type = collectionType.Type;
-                            tmp.Value = subVal;
-                            EvaluateVariable(priority, activations, tmp);
-                            i = i + 1;
+                            int i = 1;
+                            foreach (IValue subVal in val.Val)
+                            {
+                                Variables.Variable tmp = new Variables.Variable();
+                                tmp.Name = variable.Name + '[' + i + ']';
+                                tmp.Type = collectionType.Type;
+                                tmp.Value = subVal;
+                                EvaluateVariable(priority, activations, tmp, explanation);
+                                i = i + 1;
+                            }
+                        }
+                        else
+                        {
+                            ModelElement element = variable as ModelElement;
+                            if (element != null)
+                            {
+                                element.AddError("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
+                            }
+                            else
+                            {
+                                throw new System.Exception("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
+                            }
                         }
                     }
                 }
@@ -532,7 +537,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="ruleConditions"></param>
         /// <param name="priority"></param>
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
-        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable)
+        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation)
         {
             if (currentStateVariable != null)
             {
@@ -542,7 +547,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     foreach (Rule rule in currentStateMachine.Rules)
                     {
-                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions);
+                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation);
                     }
                     currentStateMachine = currentStateMachine.EnclosingStateMachine;
                 }
@@ -594,7 +599,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                 LogInstance = subStep;
 
                 // No setup can occur when some expectations are still active
@@ -605,7 +610,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -631,7 +636,7 @@ namespace DataDictionary.Tests.Runner
         /// Provides the failed expectations
         /// </summary>
         /// <returns></returns>
-        public HashSet<Expect> FailedExpectations()
+        public HashSet<ModelEvent> FailedExpectations()
         {
             return EventTimeLine.FailedExpectations();
         }
@@ -732,7 +737,7 @@ namespace DataDictionary.Tests.Runner
             }
             else
             {
-                throw new Exception("Cannot evaluate vaue of " + expression);
+                throw new Exception("Cannot evaluate value of " + expression);
             }
 
             return retVal;

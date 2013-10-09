@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
@@ -26,20 +27,21 @@ namespace GUI.TestRunnerView
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return editTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentsRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
         }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return requirementsTextBox; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return expressionEditorTextBox; }
+        }
+
 
         public BaseTreeView TreeView
         {
@@ -53,7 +55,7 @@ namespace GUI.TestRunnerView
 
         public ExplainTextBox ExplainTextBox
         {
-            get { return null; }
+            get { return explainTextBox; }
         }
 
         /// <summary>
@@ -98,14 +100,28 @@ namespace GUI.TestRunnerView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
             messageRichTextBox.AutoComplete = false;
+            requirementsTextBox.AutoComplete = false;
+            explainTextBox.AutoComplete = false;
+
+            requirementsTextBox.ReadOnly = true;
+            explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
             EFSSystem = efsSystem;
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
+            }
         }
 
         /// <summary>
@@ -251,16 +267,6 @@ namespace GUI.TestRunnerView
             }
 
             base.Refresh();
-        }
-
-        private void editTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleExpressionTextChanged(editTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleCommentTextChanged(commentsRichTextBox.Text);
         }
 
         /// <summary>

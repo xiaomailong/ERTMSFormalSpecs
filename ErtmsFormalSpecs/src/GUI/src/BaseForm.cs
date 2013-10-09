@@ -25,19 +25,19 @@ namespace GUI
         MyPropertyGrid Properties { get; }
 
         /// <summary>
-        /// The text editor for expressions
-        /// </summary>
-        RichTextBox ExpressionTextBox { get; }
-
-        /// <summary>
-        /// The text editor for comments
-        /// </summary>
-        RichTextBox CommentsTextBox { get; }
-
-        /// <summary>
         /// The text editor for messages
         /// </summary>
         RichTextBox MessagesTextBox { get; }
+
+        /// <summary>
+        /// The requirements text box used to display the associated requirements
+        /// </summary>
+        EditorTextBox RequirementsTextBox { get; }
+
+        /// <summary>
+        /// The text box used to edit expression
+        /// </summary>
+        EditorTextBox ExpressionEditorTextBox { get; }
 
         /// <summary>
         /// The enclosing MDI Window
@@ -94,6 +94,5 @@ namespace GUI
             }
             return control as IBaseForm;
         }
-
     }
 }

@@ -15,9 +15,10 @@
 // ------------------------------------------------------------------------------
 namespace DataDictionary
 {
-    using System;
     using System.Collections.Generic;
     using DataDictionary.Types;
+    using DataDictionary.Interpreter;
+    using DataDictionary.Rules;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -47,7 +48,7 @@ namespace DataDictionary
         /// <summary>
         /// Listener to model changes
         /// </summary>
-        public class NamableChangeListener : XmlBooster.IListener<DataDictionary.Generated.Namable>
+        public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
         {
             /// <summary>
             /// The system for which this listener listens
@@ -58,19 +59,19 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="system"></param>
-            public NamableChangeListener(EFSSystem system)
+            public BaseModelElementChangeListener(EFSSystem system)
             {
                 System = system;
             }
 
             #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
             {
                 System.ShouldRebuild = true;
                 System.ShouldSave = true;
             }
 
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
             {
                 HandleChangeEvent(sender);
             }
@@ -86,8 +87,7 @@ namespace DataDictionary
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
 
-            Generated.ControllersManager.NamableController.ActivateNotification();
-            Generated.ControllersManager.NamableController.Listeners.Insert(0, new NamableChangeListener(this));
+            Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
         /// <summary>
@@ -338,14 +338,14 @@ namespace DataDictionary
         /// <summary>
         /// The predefined types
         /// </summary>
-        private Dictionary<String, Types.Type> predefinedTypes;
-        public Dictionary<String, Types.Type> PredefinedTypes
+        private Dictionary<string, Types.Type> predefinedTypes;
+        public Dictionary<string, Types.Type> PredefinedTypes
         {
             get
             {
                 if (predefinedTypes == null)
                 {
-                    PredefinedTypes = new Dictionary<String, Types.Type>();
+                    PredefinedTypes = new Dictionary<string, Types.Type>();
                     PredefinedTypes[BoolType.Name] = BoolType;
                     PredefinedTypes[IntegerType.Name] = IntegerType;
                     PredefinedTypes[DoubleType.Name] = DoubleType;
@@ -602,14 +602,14 @@ namespace DataDictionary
         /// <summary>
         /// The predefined functions
         /// </summary>
-        private Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
-        public Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction> PredefinedFunctions
+        private Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
+        public Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> PredefinedFunctions
         {
             get
             {
                 if (predefinedFunctions == null)
                 {
-                    predefinedFunctions = new Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction>();
+                    predefinedFunctions = new Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction>();
                     predefinedFunctions[AvailablePredefinedFunction.Name] = AvailablePredefinedFunction;
                     predefinedFunctions[AllocatePredefinedFunction.Name] = AllocatePredefinedFunction;
                     predefinedFunctions[NotPredefinedFunction.Name] = NotPredefinedFunction;
@@ -643,11 +643,11 @@ namespace DataDictionary
                 {
                     predefinedItems = new Dictionary<string, Utils.INamable>();
 
-                    foreach (KeyValuePair<String, Functions.PredefinedFunctions.PredefinedFunction> pair in PredefinedFunctions)
+                    foreach (KeyValuePair<string, Functions.PredefinedFunctions.PredefinedFunction> pair in PredefinedFunctions)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
                     }
-                    foreach (KeyValuePair<String, Types.Type> pair in PredefinedTypes)
+                    foreach (KeyValuePair<string, Types.Type> pair in PredefinedTypes)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
                         Types.IEnumerateValues enumerator = pair.Value as Types.IEnumerateValues;
@@ -655,7 +655,7 @@ namespace DataDictionary
                         {
                             Dictionary<string, object> constants = new Dictionary<string, object>();
                             enumerator.Constants("", constants);
-                            foreach (KeyValuePair<String, object> pair2 in constants)
+                            foreach (KeyValuePair<string, object> pair2 in constants)
                             {
                                 if (pair2.Value is Utils.INamable)
                                 {
@@ -917,5 +917,218 @@ namespace DataDictionary
             }
         }
 
+        /// <summary>
+        /// Provides an RTF explanation of the system
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain()
+        {
+            return "";
+        }
+
+        /// <summary>
+        /// The visitor who shall find all references
+        /// </summary>
+        private class ReferenceVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// The references found
+            /// </summary>
+            public SortedSet<Usage> Usages { get; private set; }
+
+            /// <summary>
+            /// The element to be found
+            /// </summary>
+            private ModelElement Model { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="model"></param>
+            public ReferenceVisitor(ModelElement model)
+            {
+                Usages = new SortedSet<Usage>();
+                Model = model;
+            }
+
+            /// <summary>
+            /// Walk through actions
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Action obj, bool visitSubNodes)
+            {
+                Action action = (Action)obj;
+
+                if (action.Statement != null && action.Statement.StaticUsage != null)
+                {
+                    List<Usage> usages = action.Statement.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Preconditions
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.PreCondition obj, bool visitSubNodes)
+            {
+                PreCondition preCondition = (PreCondition)obj;
+
+                if (preCondition.ExpressionTree != null && preCondition.ExpressionTree.StaticUsage != null)
+                {
+                    List<Usage> usages = preCondition.ExpressionTree.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Expectations
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Expectation obj, bool visitSubNodes)
+            {
+                Tests.Expectation expectation = (Tests.Expectation)obj;
+
+                if (expectation.ExpressionTree != null && expectation.ExpressionTree.StaticUsage != null)
+                {
+                    List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Collections declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Collection obj, bool visitSubNodes)
+            {
+                Types.Collection collection = (Types.Collection)obj;
+
+                if (collection.Type == Model)
+                {
+                    Usages.Add(new Usage(Model, collection, Usage.ModeEnum.Type));
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Variables declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Variable obj, bool visitSubNodes)
+            {
+                Variables.Variable variable = (Variables.Variable)obj;
+
+                if (variable.Type == Model)
+                {
+                    Usages.Add(new Usage(Model, variable, Usage.ModeEnum.Type));
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Functions declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Function obj, bool visitSubNodes)
+            {
+                Functions.Function function = (Functions.Function)obj;
+
+                if (function.Type == Model && Model != function)
+                {
+                    Usages.Add(new Usage(Model, function, Usage.ModeEnum.Type));
+                }
+
+                foreach (Parameter parameter in function.FormalParameters)
+                {
+                    if (parameter.Type == Model)
+                    {
+                        Usages.Add(new Usage(Model, parameter, Usage.ModeEnum.Type));
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Procedure declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Procedure obj, bool visitSubNodes)
+            {
+                Functions.Procedure procedure = (Functions.Procedure)obj;
+
+                foreach (Parameter parameter in procedure.FormalParameters)
+                {
+                    if (parameter.Type == Model)
+                    {
+                        Usages.Add(new Usage(Model, parameter, Usage.ModeEnum.Type));
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through a structure declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Structure obj, bool visitSubNodes)
+            {
+                Types.Structure structure = (Types.Structure)obj;
+
+                foreach (StructureElement element in structure.Elements)
+                {
+                    if (element.Type == Model)
+                    {
+                        Usages.Add(new Usage(Model, element, Usage.ModeEnum.Type));
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        ///  Provides the list of references of a given model element
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public SortedSet<Usage> FindReferences(ModelElement model)
+        {
+            // Find references
+            ReferenceVisitor visitor = new ReferenceVisitor(model);
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                visitor.visit(dictionary, true);
+            }
+
+            return visitor.Usages;
+        }
     }
 }

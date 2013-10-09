@@ -63,20 +63,29 @@ namespace EFSTester
                             runner.RunUntilStep(null);
 
                             bool failed = false;
-                            foreach (DataDictionary.Tests.Runner.Events.Expect expect in runner.FailedExpectations())
+                            foreach (DataDictionary.Tests.Runner.Events.ModelEvent evt in runner.FailedExpectations())
                             {
-                                Console.Out.WriteLine(" failed : " + expect.Message);
-                                DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
-                                if (testCase.ImplementationCompleted)
+                                DataDictionary.Tests.Runner.Events.Expect expect = evt as DataDictionary.Tests.Runner.Events.Expect;
+                                if (expect != null)
                                 {
-                                    Console.Out.WriteLine(" !Unexpected failed expectation: " + expect.Message);
+                                    Console.Out.WriteLine(" failed : " + expect.Message);
+                                    DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
+                                    if (testCase.ImplementationCompleted)
+                                    {
+                                        Console.Out.WriteLine(" !Unexpected failed expectation: " + expect.Message);
+                                        failed = true;
+                                    }
+                                    else
+                                    {
+                                        Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
+                                    }
+                                }
+                                DataDictionary.Tests.Runner.Events.ModelInterpretationFailure interpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
+                                if (interpretationFailure != null)
+                                {
+                                    Console.Out.WriteLine(" failed : " + expect.Message);
                                     failed = true;
                                 }
-                                else
-                                {
-                                    Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
-                                }
-
                             }
                             if (failed)
                             {

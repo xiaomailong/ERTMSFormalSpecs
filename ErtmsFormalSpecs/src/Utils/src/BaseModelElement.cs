@@ -69,6 +69,12 @@ namespace Utils
         /// </summary>
         /// <param name="copy"></param>
         void AddModelElement(IModelElement element);
+
+        /// <summary>
+        /// Provides an RTF explanation of the model element
+        /// </summary>
+        /// <returns></returns>
+        string getExplain();
     }
 
     public abstract class ModelElement : XmlBooster.XmlBBase, IModelElement
@@ -111,7 +117,6 @@ namespace Utils
                 }
             }
         }
-
 
         /// <summary>
         /// The sub elements of this model element
@@ -218,9 +223,15 @@ namespace Utils
             {
                 if (!log.FailedExpectation)  // if this is a failed expectation, this is not a model error
                 {
-                    ErrorCount += 1;
+                    if (!Errors.ContainsKey(this))
+                    {
+                        Errors.Add(this, new List<ElementLog>());
+                    }
+
+                    List<ElementLog> list;
+                    Errors.TryGetValue(this, out list);
+                    list.Add(log);
                 }
-                // System.Diagnostics.Debugger.Break();
             }
             foreach (ElementLog other in Messages)
             {
@@ -253,13 +264,10 @@ namespace Utils
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public ElementLog AddError(string message)
+        public ElementLog AddError(string message, bool failedExpectation = false)
         {
             ElementLog retVal = new ElementLog(ElementLog.LevelEnum.Error, message);
-            if (message.Contains("Failed expectation"))
-            {
-                retVal.FailedExpectation = true;
-            }
+            retVal.FailedExpectation = failedExpectation;
             AddElementLog(retVal);
             return retVal;
         }
@@ -332,6 +340,15 @@ namespace Utils
         /// <summary>
         /// Counts the number of errors raised
         /// </summary>
-        public static int ErrorCount = 0;
+        public static Dictionary<ModelElement, List<ElementLog>> Errors = new Dictionary<ModelElement, List<ElementLog>>();
+
+        /// <summary>
+        /// Provides an RTF explanation of the model element
+        /// </summary>
+        /// <returns></returns>
+        public virtual string getExplain()
+        {
+            return "";
+        }
     }
 }

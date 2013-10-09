@@ -53,11 +53,21 @@
     <Compile Include="src\BaseTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\Converters\CommentableUITypeConverter.cs" />
+    <Compile Include="src\Converters\CommentableUITypedEditor.cs" />
+    <Compile Include="src\Converters\TypeUITypeConverter.cs" />
+    <Compile Include="src\Converters\TypeUITypedEditor.cs" />
     <Compile Include="src\DataDictionaryView\StateRulesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateSubStatesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureStateMachinesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateMachinesTreeNode.cs" />
+    <Compile Include="src\EditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\EditorForm.Designer.cs">
+      <DependentUpon>EditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\EditorTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +80,8 @@
     <Compile Include="src\Excel\Frm_ExcelImport.Designer.cs">
       <DependentUpon>Frm_ExcelImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Converters\ExpressionableUITypeConverter.cs" />
+    <Compile Include="src\Converters\ExpressionableUITypedEditor.cs" />
     <Compile Include="src\FunctionsPerformances\FunctionsPerformances.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,15 +136,13 @@
     <Compile Include="src\DataDictionaryView\ParameterTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\PreConditionsTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\UsageTreeView\UsageTreeNode.cs" />
-    <Compile Include="src\DataDictionaryView\UsageTreeView\TypeUsageTreeNode.cs" />
-    <Compile Include="src\DataDictionaryView\UsageTreeView\RuleUsageTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\UsageTreeView\UsageTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\DataDictionaryView\StructureElementsTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\EnumerationValuesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\TypeTreeNode.cs" />
-    <Compile Include="src\EnumConverter.cs" />
+    <Compile Include="src\Converters\EnumConverter.cs" />
     <Compile Include="src\ExplainTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -313,7 +323,7 @@
     <Compile Include="src\TranslationRules\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\TypeConverters.cs" />
+    <Compile Include="src\Converters\TypeConverters.cs" />
     <Compile Include="src\DataDictionaryView\EnumerationTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\VariableTreeNode.cs" />
     <Compile Include="src\DataTreeNode.cs" />
@@ -367,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\DataDictionaryView\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\EditorForm.resx">
+      <DependentUpon>EditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\EditorTextBox.resx">
       <DependentUpon>EditorTextBox.cs</DependentUpon>
@@ -492,8 +505,12 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\type_icon.png" />
+    <None Include="resources\call_icon.png" />
     <Content Include="resources\model_icon.png" />
+    <None Include="resources\write_icon.png" />
     <None Include="resources\req_icon.png" />
+    <None Include="resources\read_icon.png" />
     <Content Include="resources\test_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

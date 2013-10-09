@@ -25,19 +25,19 @@ namespace GUI.TranslationRules
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return editTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
+        }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return null; }
         }
 
         public BaseTreeView subTreeView
@@ -63,7 +63,6 @@ namespace GUI.TranslationRules
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messageRichTextBox.AutoComplete = false;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
@@ -93,11 +92,6 @@ namespace GUI.TranslationRules
             base.Refresh();
         }
 
-        private void editTextBox_TextChanged(object sender, EventArgs e)
-        {
-            translationTreeView.HandleExpressionTextChanged(editTextBox.Text);
-        }
-
         /// <summary>
         /// The enclosing MDI Window
         /// </summary>
@@ -121,11 +115,6 @@ namespace GUI.TranslationRules
         public void RefreshModel()
         {
             translationTreeView.RefreshModel();
-        }
-
-        private void editTextBox_TextChanged_1(object sender, EventArgs e)
-        {
-            translationTreeView.HandleExpressionTextChanged(editTextBox.Text);
         }
 
         /// <summary>
@@ -174,11 +163,6 @@ namespace GUI.TranslationRules
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        private void commentRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            TreeView.HandleCommentTextChanged(CommentsTextBox.Text);
         }
     }
 }

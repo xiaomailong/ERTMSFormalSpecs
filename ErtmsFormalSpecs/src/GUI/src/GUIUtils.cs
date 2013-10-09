@@ -17,12 +17,59 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Reflection;
 
 namespace GUI
 {
     public class GUIUtils
     {
-        ///
+        /// <summary>
+        /// The main window of the application
+        /// </summary>
+        public static MainWindow MDIWindow { get; set; }
+
+        /// <summary>
+        /// Refreshes the view according to the model element that has been changed
+        /// </summary>
+        /// <param name="model"></param>
+        public static void RefreshViewAccordingToModel(DataDictionary.Generated.BaseModelElement model)
+        {
+            MDIWindow.Invoke((MethodInvoker)delegate
+            {
+                // Refresh the node which corresponds to the model that has been changed
+                foreach (IBaseForm form in MDIWindow.SubWindows)
+                {
+                    if (form.TreeView != null)
+                    {
+                        BaseTreeNode node = form.TreeView.FindNode(model);
+                        if (node != null)
+                        {
+                            node.RefreshNode();
+                            if (form.Properties != null)
+                            {
+                                form.Properties.Refresh();
+                            }
+                        }
+                    }
+                }
+
+                foreach (EditorForm editor in MDIWindow.Editors)
+                {
+                    if (editor.Instance == model)
+                    {
+                        editor.RefreshText();
+                    }
+                }
+            });
+        }
+
+        /// <summary>
+        /// Access to a graphics item
+        /// </summary>
+        public static Graphics Graphics { get; set; }
+
         /// --------------------------------------------------------------------
         ///   Enclosing finder
         /// --------------------------------------------------------------------
@@ -62,6 +109,33 @@ namespace GUI
             {
                 // No cache
             }
+        }
+
+        public static void ResizePropertyGridSplitter(
+            PropertyGrid propertyGrid,
+            int labelColumnPercentageWidth)
+        {
+            var width =
+                propertyGrid.Width * (labelColumnPercentageWidth / 100.0);
+
+            // Go up in hierarchy until found real property grid type.
+            var realType = propertyGrid.GetType();
+            while (realType != null && realType != typeof(PropertyGrid))
+            {
+                realType = realType.BaseType;
+            }
+
+            var gvf = realType.GetField(@"gridView",
+                BindingFlags.NonPublic |
+                BindingFlags.GetField |
+                BindingFlags.Instance);
+            var gv = gvf.GetValue(propertyGrid);
+
+            var mtf = gv.GetType().GetMethod(@"MoveSplitterTo",
+                BindingFlags.NonPublic |
+                BindingFlags.InvokeMethod |
+                BindingFlags.Instance);
+            mtf.Invoke(gv, new object[] { (int)width });
         }
     }
 }

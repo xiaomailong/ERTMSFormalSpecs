@@ -17,12 +17,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI
 {
     public class ReqRefTreeNode : DataTreeNode<DataDictionary.ReqRef>
     {
-        public class InternalTracesConverter : TracesConverter
+        public class InternalTracesConverter : Converters.TracesConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
@@ -53,6 +54,18 @@ namespace GUI
                 }
             }
 
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public DataDictionary.ReqRef Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
+            }
         }
 
         /// <summary>

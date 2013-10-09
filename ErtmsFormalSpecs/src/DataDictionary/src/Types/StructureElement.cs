@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Types
 {
-    public class StructureElement : Generated.StructureElement, ITypedElement, Utils.ISubDeclarator
+    public class StructureElement : Generated.StructureElement, ITypedElement, Utils.ISubDeclarator, TextualExplain
     {
         public NameSpace NameSpace
         {
@@ -227,5 +227,32 @@ namespace DataDictionary.Types
         {
             base.AddModelElement(element);
         }
+
+        /// <summary>
+        /// Provides an explanation of the structure element
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel)
+        {
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
+
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : " + TypeName + "}", indentLevel);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the range
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = getExplain(0);
+
+            return TextualExplainUtilities.Encapsule(retVal);
+        }
+
     }
 }

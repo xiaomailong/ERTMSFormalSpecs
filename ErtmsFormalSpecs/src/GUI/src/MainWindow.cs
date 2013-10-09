@@ -39,6 +39,19 @@ namespace GUI
         }
 
         /// <summary>
+        /// The Editors handled in this MDI
+        /// </summary>
+        private HashSet<EditorForm> editors = new HashSet<EditorForm>();
+
+        public HashSet<EditorForm> Editors
+        {
+            get
+            {
+                return editors;
+            }
+        }
+
+        /// <summary>
         /// Selects the model element in all opened sub windows
         /// </summary>
         /// <param name="model"></param>
@@ -63,6 +76,10 @@ namespace GUI
             if (form is IBaseForm)
             {
                 SubWindows.Remove((IBaseForm)form);
+            }
+            if (form is EditorForm)
+            {
+                Editors.Remove((EditorForm)form);
             }
         }
 
@@ -156,6 +173,15 @@ namespace GUI
                     }
                 }
 
+                DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                if (dictionary != null)
+                {
+                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
+                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
+                    AddChildWindow(newWindow);
+                    return newWindow;
+                }
+
                 return null;
             }
         }
@@ -169,7 +195,7 @@ namespace GUI
         /// <summary>
         /// Listener to model changes
         /// </summary>
-        public class NamableChangeListener : XmlBooster.IListener<DataDictionary.Generated.Namable>
+        public class ModelChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
         {
             /// <summary>
             /// The main window for which this listener listens
@@ -185,28 +211,31 @@ namespace GUI
             /// Constructor
             /// </summary>
             /// <param name="system"></param>
-            public NamableChangeListener(MainWindow window)
+            public ModelChangeListener(MainWindow window)
             {
                 MainWindow = window;
                 LastRefresh = DateTime.MinValue;
             }
 
             #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
             {
-                RefreshMainWindow();
+                RefreshModel(sender);
             }
 
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
             {
-                RefreshMainWindow();
+                RefreshModel(sender);
             }
 
-            private void RefreshMainWindow()
+            private void RefreshModel(DataDictionary.Generated.BaseModelElement model)
             {
                 DateTime now = DateTime.Now;
                 TimeSpan span = now - LastRefresh;
 
+                GUIUtils.RefreshViewAccordingToModel(model);
+
+                // Refresh the main window title (but not too often)
                 if (span > TimeSpan.FromSeconds(1))
                 {
                     MainWindow.Invoke((MethodInvoker)delegate
@@ -216,20 +245,39 @@ namespace GUI
                     LastRefresh = now;
                 }
             }
+
             #endregion
         }
 
         /// <summary>
-        /// Create the main window
+        /// Constructor
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             AllowRefresh = true;
+            GUIUtils.MDIWindow = this;
+            GUIUtils.Graphics = CreateGraphics();
 
-            DataDictionary.Generated.ControllersManager.NamableController.Listeners.Add(new NamableChangeListener(this));
+            DataDictionary.Generated.ControllersManager.BaseModelElementController.Listeners.Add(new ModelChangeListener(this));
 
             Refresh();
+        }
+
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~MainWindow()
+        {
+            try
+            {
+                GUIUtils.Graphics.Dispose();
+                GUIUtils.Graphics = null;
+            }
+            catch (Exception)
+            {
+            }
+            GUIUtils.MDIWindow = null;
         }
 
         /// <summary>
@@ -264,6 +312,10 @@ namespace GUI
                 {
                     SubWindows.Add((IBaseForm)window);
                 }
+                else if (window is EditorForm)
+                {
+                    Editors.Add((EditorForm)window);
+                }
 
                 ActivateMdiChild(window);
             }
@@ -286,6 +338,10 @@ namespace GUI
                     if (window is IBaseForm)
                     {
                         SubWindows.Remove((IBaseForm)window);
+                    }
+                    else if (window is EditorForm)
+                    {
+                        Editors.Remove((EditorForm)window);
                     }
 
                     RemoveOwnedForm(window);
@@ -335,11 +391,19 @@ namespace GUI
         /// </summary>
         public override void Refresh()
         {
-            foreach (IBaseForm form in SubWindows)
+            try
             {
-                form.Refresh();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                foreach (IBaseForm form in SubWindows)
+                {
+                    form.Refresh();
+                }
+                UpdateTitle();
             }
-            UpdateTitle();
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
 
             base.Refresh();
         }
@@ -411,7 +475,7 @@ namespace GUI
                     if (openFileOperation.Dictionary != null)
                     {
                         DataDictionary.Dictionary dictionary = openFileOperation.Dictionary;
-                        DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                         // Only open the specification window if specifications are available in the opened file
                         if (dictionary.Specifications != null && dictionary.Specifications.AllParagraphs.Count > 0)
@@ -443,16 +507,7 @@ namespace GUI
                         if (dictionary.ShortcutsDictionary != null)
                         {
                             IBaseForm shortcutsWindow = ShortcutsWindow;
-                            if (shortcutsWindow == null)
-                            {
-                                if (dictionary != null)
-                                {
-                                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
-                                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                                    AddChildWindow(newWindow);
-                                }
-                            }
-                            else
+                            if (shortcutsWindow != null)
                             {
                                 shortcutsWindow.RefreshModel();
                             }
@@ -465,12 +520,13 @@ namespace GUI
                 }
                 finally
                 {
-                    DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
 
                 Refresh();
             }
         }
+
         #endregion
 
         #region SaveFile
@@ -585,6 +641,12 @@ namespace GUI
 
             return retVal;
         }
+
+        /// <summary>
+        /// The tooltip associated to this form
+        /// </summary>
+        public ToolTip ToolTip { get { return toolTip; } }
+
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -755,7 +817,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                 try
                 {
                     foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -765,7 +827,7 @@ namespace GUI
                 }
                 finally
                 {
-                    DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
             }
         }
@@ -1245,6 +1307,12 @@ namespace GUI
 
         private void refreshWindowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Ensure the system has been compiled
+            EFSSystem efsSystem = EFSSystem.INSTANCE;
+            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(efsSystem, efsSystem.ShouldRebuild);
+            compiler.Compile();
+            efsSystem.ShouldRebuild = false;
+
             RefreshModel();
         }
 

@@ -18,6 +18,7 @@ using System.Windows.Forms;
 
 using Reports.Specs;
 using Reports.Tests;
+using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
@@ -33,14 +34,19 @@ namespace GUI.SpecificationView
             get { return specBrowserTextView.TextBox; }
         }
 
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentsRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messagesRichTextBox.TextBox; }
+        }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return null; }
         }
 
         public BaseTreeView TreeView
@@ -96,13 +102,26 @@ namespace GUI.SpecificationView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
+            specBrowserTextView.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
 
+            specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Paragraph paragraph = Selected as Paragraph;
+            if (paragraph != null)
+            {
+                if (paragraph.Text.CompareTo(specBrowserTextView.Text) != 0)
+                {
+                    paragraph.Text = specBrowserTextView.Text;
+                }
+            }
         }
 
         /// <summary>
@@ -142,17 +161,6 @@ namespace GUI.SpecificationView
         public MainWindow MDIWindow
         {
             get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
-        private void specBrowserTextView_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTextView.Enabled = true;
-            specBrowserTreeView.HandleExpressionTextChanged(ExpressionTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTreeView.HandleCommentTextChanged(CommentsTextBox.Text);
         }
 
         /// <summary>

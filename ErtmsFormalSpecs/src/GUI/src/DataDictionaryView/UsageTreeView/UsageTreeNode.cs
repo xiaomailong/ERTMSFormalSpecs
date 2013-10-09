@@ -16,12 +16,17 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Interpreter;
 
 namespace GUI.DataDictionaryView.UsageTreeView
 {
-    public abstract class UsageTreeNode<T> : DataTreeNode<T>
-        where T : class, Utils.IModelElement
+    public class UsageTreeNode : DataTreeNode<Utils.IModelElement>
     {
+        /// <summary>
+        /// The usage for which this tree node is built
+        /// </summary>
+        public Usage Usage { get; private set; }
+
         private class UsageEditor : NamedEditor
         {
             /// <summary>
@@ -46,8 +51,53 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        protected UsageTreeNode(T item)
-            : base(item)
+        public UsageTreeNode(Usage usage)
+            : base(usage.User, usage.DisplayName())
+        {
+            Usage = usage;
+            ToolTipText = usage.User.FullName;
+        }
+
+        public override void setImageIndex(bool isFolder)
+        {
+            if (Usage != null)
+            {
+                switch (Usage.Mode)
+                {
+                    case Usage.ModeEnum.Read:
+                        ChangeImageIndex(BaseTreeView.ReadAccessImageIndex);
+                        break;
+
+                    case Usage.ModeEnum.ReadAndWrite:
+                    case Usage.ModeEnum.Write:
+                        ChangeImageIndex(BaseTreeView.WriteAccessImageIndex);
+                        break;
+
+                    case Usage.ModeEnum.Call:
+                        ChangeImageIndex(BaseTreeView.CallImageIndex);
+                        break;
+
+                    case Usage.ModeEnum.Type:
+                        ChangeImageIndex(BaseTreeView.TypeImageIndex);
+                        break;
+                }
+            }
+            else if (Text.CompareTo("Test") == 0)
+            {
+                ChangeImageIndex(BaseTreeView.TestImageIndex);
+            }
+            else if (Text.CompareTo("Model") == 0)
+            {
+                ChangeImageIndex(BaseTreeView.ModelImageIndex);
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="item"></param>
+        public UsageTreeNode(string name)
+            : base(null, name, true)
         {
         }
 
@@ -59,21 +109,32 @@ namespace GUI.DataDictionaryView.UsageTreeView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Select", new EventHandler(SelectHandler)));
+            if (Item != null)
+            {
+                retVal.Add(new MenuItem("Select", new EventHandler(SelectHandler)));
+            }
 
             return retVal;
         }
 
         /// <summary>
-        /// Don't do things we usualy do when we select a new item
-        /// This is due to the fact that elements stored in this TreeNode 
-        /// do not reference typical sub elements
+        /// Don't do anything when the selection changed
         /// </summary>
         public override void SelectionChanged()
         {
+            setImageIndex(false);
         }
 
-        public abstract void SelectInGUI();
+        /// <summary>
+        /// Selects the elements in the GUI
+        /// </summary>
+        public void SelectInGUI()
+        {
+            if (Item != null)
+            {
+                BaseForm.MDIWindow.Select(Item, true);
+            }
+        }
 
         private void SelectHandler(object sender, EventArgs e)
         {
@@ -82,8 +143,11 @@ namespace GUI.DataDictionaryView.UsageTreeView
 
         public override void DoubleClickHandler()
         {
-            base.DoubleClickHandler();
-            SelectInGUI();
+            if (Item != null)
+            {
+                base.DoubleClickHandler();
+                SelectInGUI();
+            }
         }
     }
 }

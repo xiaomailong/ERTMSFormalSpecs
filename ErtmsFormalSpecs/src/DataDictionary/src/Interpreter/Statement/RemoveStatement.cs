@@ -108,16 +108,21 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // Condition
                 if (Condition != null)
                 {
                     Condition.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 

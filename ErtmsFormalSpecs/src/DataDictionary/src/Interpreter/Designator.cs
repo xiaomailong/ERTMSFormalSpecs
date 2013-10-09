@@ -309,6 +309,12 @@ namespace DataDictionary.Interpreter
             {
                 Ref = tmp.Values[0].Value;
             }
+
+            if (StaticUsage == null)
+            {
+                StaticUsage = new Usages();
+                StaticUsage.AddUsage(Ref, Root, null);
+            }
         }
 
         /// <summary>

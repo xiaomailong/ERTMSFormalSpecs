@@ -17,6 +17,7 @@
 using System;
 using DataDictionary.Functions;
 using Utils;
+using System.Collections.Generic;
 namespace DataDictionary.Interpreter
 {
     public class InterpreterTreeNode : Utils.INamable
@@ -37,6 +38,11 @@ namespace DataDictionary.Interpreter
         public InterpreterTreeNode Enclosing { get; set; }
 
         /// <summary>
+        /// The static usages performed by this statement
+        /// </summary>
+        public Usages StaticUsage { get; protected set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this interpreter tree node is created</param>
@@ -44,6 +50,7 @@ namespace DataDictionary.Interpreter
         public InterpreterTreeNode(ModelElement root)
         {
             Root = root;
+            StaticUsage = null;
         }
 
         public string Name { get { return ToString(); } set { } }

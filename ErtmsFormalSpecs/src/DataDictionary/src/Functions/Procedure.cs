@@ -218,17 +218,23 @@ namespace DataDictionary.Functions
         /// <returns></returns>
         public string getExplain(int indentLevel, bool getExplain)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal =
-                  TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('-', 6 + Name.Length) + "}\\cf1\\par", indentLevel)
-                + TextualExplainUtilities.Pad("{PROCEDURE " + Name + "(\\par", indentLevel);
-
-            foreach (Parameter parameter in FormalParameters)
+            // Creates the procedure header
+            retVal += TextualExplainUtilities.Pad("{ {\\b PROCEDURE } " + Name, indentLevel);
+            if (FormalParameters.Count > 0)
             {
-                retVal = retVal + TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName + ",\\par", indentLevel + 2);
+                retVal += "(\\par";
+                foreach (Parameter parameter in FormalParameters)
+                {
+                    retVal = retVal + TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName + ",\\par", indentLevel + 2);
+                }
+                retVal = retVal + ")}\\par";
             }
-            retVal = retVal + ")}\\par";
+            else
+            {
+                retVal += "()\\par";
+            }
 
             foreach (Rules.Rule rule in Rules)
             {

@@ -45,6 +45,10 @@ namespace GUI
         public static int RequirementImageIndex;
         public static int ModelImageIndex;
         public static int TestImageIndex;
+        public static int ReadAccessImageIndex;
+        public static int WriteAccessImageIndex;
+        public static int CallImageIndex;
+        public static int TypeImageIndex;
 
         /// <summary>
         /// Constructor
@@ -74,6 +78,10 @@ namespace GUI
             ImageList.Images.Add(GUI.Properties.Resources.req_icon);
             ImageList.Images.Add(GUI.Properties.Resources.model_icon);
             ImageList.Images.Add(GUI.Properties.Resources.test_icon);
+            ImageList.Images.Add(GUI.Properties.Resources.read_icon);
+            ImageList.Images.Add(GUI.Properties.Resources.write_icon);
+            ImageList.Images.Add(GUI.Properties.Resources.call_icon);
+            ImageList.Images.Add(GUI.Properties.Resources.type_icon);
 
             ImageIndex = 0;
             FileImageIndex = 0;
@@ -82,6 +90,10 @@ namespace GUI
             RequirementImageIndex = 3;
             ModelImageIndex = 4;
             TestImageIndex = 5;
+            ReadAccessImageIndex = 6;
+            WriteAccessImageIndex = 7;
+            CallImageIndex = 8;
+            TypeImageIndex = 9;
         }
 
         /// <summary>
@@ -255,31 +267,6 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleExpressionTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.ExpressionTextChanged(text);
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text"></param>
-        public void HandleCommentTextChanged(string text)
-        {
-            if (Selected != null)
-            {
-                Selected.CommentTextChanged(text);
-            }
-        }
-
-
-        /// <summary>
         /// Clears messages associated to the elements on the tree view
         /// </summary>
         public void ClearMessages()
@@ -389,7 +376,7 @@ namespace GUI
             BaseTreeNode selected = Selected;
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                 SuspendLayout();
                 RefreshNodeContent = false;
@@ -402,7 +389,7 @@ namespace GUI
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
 
                 ResumeLayout(true);
                 RefreshNodeContent = true;

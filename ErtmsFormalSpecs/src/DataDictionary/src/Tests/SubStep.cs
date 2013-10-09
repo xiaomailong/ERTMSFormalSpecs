@@ -17,7 +17,7 @@
 
 namespace DataDictionary.Tests
 {
-    public class SubStep : Generated.SubStep
+    public class SubStep : Generated.SubStep, TextualExplain
     {
         /// <summary>
         /// This step changes
@@ -127,7 +127,7 @@ namespace DataDictionary.Tests
         /// The explanation of this step, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
-        public string getExplain()
+        public override string getExplain()
         {
             string retVal = "";
 
@@ -141,7 +141,7 @@ namespace DataDictionary.Tests
                 retVal = retVal + "implies\n";
                 foreach (Expectation expectation in Expectations)
                 {
-                    retVal = retVal + "  " + expectation.Name + "\n";
+                    retVal = retVal + "  " + expectation.getExplain() + "\n";
                 }
             }
 
@@ -157,6 +157,44 @@ namespace DataDictionary.Tests
         {
             SubStep retVal = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
             retVal.Name = name;
+
+            return retVal;
+        }
+
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel, bool explainSubElements)
+        {
+            string retVal = TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
+
+            foreach (Rules.Action action in Actions)
+            {
+                retVal += action.getExplain(indentLevel + 2, explainSubElements) + "\\par";
+            }
+            retVal += TextualExplainUtilities.Pad("{\\b IMPLIES}\\par", indentLevel);
+            foreach (Expectation expectation in Expectations)
+            {
+                retVal += expectation.getExplain(indentLevel + 2, explainSubElements) + "\\par";
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the step's behaviour
+        /// </summary>
+
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = "";
+
+            retVal = getExplain(0, explainSubElements);
 
             return retVal;
         }

@@ -77,15 +77,24 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Compiles or recompiles everything
         /// </summary>
-        public void Compile()
+        public void Compile(bool silent = false)
         {
-            // Initialises the declared eleemnts
-            InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
-
-            // Compiles each expression and each statement encountered in the nodes
-            foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
+            try
             {
-                visit(dictionary, true);
+                ModelElement.BeSilent = silent;
+
+                // Initialises the declared eleemnts
+                InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
+
+                // Compiles each expression and each statement encountered in the nodes
+                foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
+                {
+                    visit(dictionary, true);
+                }
+            }
+            finally
+            {
+                ModelElement.BeSilent = false;
             }
         }
 

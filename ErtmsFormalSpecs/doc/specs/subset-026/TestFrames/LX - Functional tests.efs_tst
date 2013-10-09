@@ -361,20 +361,19 @@
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 27.0,
+        OverReadingAmountOdo =&gt; 7.0,
         Position =&gt; 3000.0,
-        UnderReadingAmountOdo =&gt; 24.0
+        UnderReadingAmountOdo =&gt; 4.0
     }
 }</Action>
 <Action>Odometry.NominalDistance &lt;- 3500.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
 </Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
 >(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -434,10 +433,10 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1055,17 +1054,6 @@
 >
 <Actions>
 <Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 </Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1081,17 +1069,6 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 <Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
@@ -1198,31 +1175,31 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.LX.LevelCrossings).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.LX.LevelCrossings).Id == 19</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.LX.LevelCrossings) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1280,17 +1257,6 @@
 >
 <Actions>
 <Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9620,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2600.0,
-        UnderReadingAmountOdo =&gt; 41.0
-    }
-}</Action>
 </Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1361,13 +1327,13 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).Speed == 20.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1439,13 +1405,13 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

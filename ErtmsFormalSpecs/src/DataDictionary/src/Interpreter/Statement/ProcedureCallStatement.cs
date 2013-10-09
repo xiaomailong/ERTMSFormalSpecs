@@ -50,6 +50,7 @@ namespace DataDictionary.Interpreter.Statement
             if (retVal)
             {
                 Call.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Call.StaticUsage, Usage.ModeEnum.Call);
             }
 
             return retVal;
@@ -278,18 +279,36 @@ namespace DataDictionary.Interpreter.Statement
         {
             foreach (Rules.RuleCondition condition in rule.RuleConditions)
             {
-                if (condition.EvaluatePreConditions(ctxt))
+                ExplanationPart conditionExplanation = null;
+                if (explanation != null)
                 {
+                    conditionExplanation = new ExplanationPart(condition);
+                    explanation.SubExplanations.Add(conditionExplanation);
+                }
+
+                if (condition.EvaluatePreConditions(ctxt, conditionExplanation))
+                {
+                    if (conditionExplanation != null)
+                    {
+                        conditionExplanation.Message = "SATISIFIED " + rule.Name + "." + condition.Name;
+                    }
                     foreach (Rules.Action action in condition.Actions)
                     {
-                        action.GetChanges(ctxt, changes, explanation, true, log);
+                        action.GetChanges(ctxt, changes, conditionExplanation, true, log);
                     }
 
                     foreach (Rules.Rule subRule in condition.SubRules)
                     {
-                        ApplyRule(subRule, changes, ctxt, explanation, log);
+                        ApplyRule(subRule, changes, ctxt, conditionExplanation, log);
                     }
                     break;
+                }
+                else
+                {
+                    if (conditionExplanation != null)
+                    {
+                        conditionExplanation.Message = "FAILED " + rule.Name + "." + condition.Name;
+                    }
                 }
             }
         }

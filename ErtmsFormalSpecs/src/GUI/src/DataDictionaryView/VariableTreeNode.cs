@@ -19,12 +19,13 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Types;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
     public class VariableTreeNode : ReqRelatedTreeNode<DataDictionary.Variables.Variable>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -34,7 +35,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class InternalValuesConverter : ValuesConverter
+        private class InternalValuesConverter : Converters.ValuesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -70,23 +71,16 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Variables.Variable Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.Type = null;
-                    Item.setTypeName(value);
-                    Item.Value = null;
-
-                    VariableTreeNode node = Node as VariableTreeNode;
-                    if (node != null)
-                    {
-                        node.Nodes.Remove(node.subVariables);
-                        node.subVariables = new SubVariablesTreeNode(Item, new HashSet<DataDictionary.Types.Type>());
-                        node.Nodes.Add(node.subVariables);
-                    }
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
@@ -103,7 +97,7 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable mode
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(VariableModeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
             public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
             {
                 get { return Item.getVariableMode(); }
@@ -258,6 +252,17 @@ namespace GUI.DataDictionaryView
                 view.Functions.Add(function);
                 view.Refresh();
             }
+        }
+
+        public override void RefreshNode()
+        {
+            if (Nodes != null && subVariables != null)
+            {
+                Nodes.Remove(subVariables);
+                subVariables = new SubVariablesTreeNode(Item, new HashSet<DataDictionary.Types.Type>());
+                Nodes.Add(subVariables);
+            }
+            base.RefreshNode();
         }
     }
 }

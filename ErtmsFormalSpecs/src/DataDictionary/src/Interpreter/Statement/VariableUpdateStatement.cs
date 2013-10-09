@@ -55,8 +55,13 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // VariableIdentification
                 VariableIdentification.SemanticAnalysis(instance, Filter.IsLeftSide);
+                StaticUsage.AddUsages(VariableIdentification.StaticUsage, Usage.ModeEnum.Write);
+
+                // Expression
                 Expression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;
@@ -156,10 +161,7 @@ namespace DataDictionary.Interpreter.Statement
                             UnaryExpression unaryExpression = Expression as UnaryExpression;
                             if (unaryExpression != null && unaryExpression.Term.LiteralValue != null)
                             {
-                                if (targetType.getValue(unaryExpression.ToString()) == null)
-                                {
-                                    Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
-                                }
+                                Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
                             }
                             else
                             {

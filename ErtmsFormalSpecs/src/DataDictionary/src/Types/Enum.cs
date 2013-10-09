@@ -268,13 +268,12 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{" + Name + " : ENUMERATION}", indentLevel);
-
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : ENUMERATION}", indentLevel);
             foreach (Constants.EnumValue enumValue in Values)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + enumValue.Name + "}", indentLevel + 2);
+                retVal += "\\par" + enumValue.getExplain(indentLevel + 2);
             }
 
 

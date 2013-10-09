@@ -64,6 +64,8 @@ namespace DataDictionary.Interpreter
                 foreach (Expression expr in ListElements)
                 {
                     expr.SemanticAnalysis(instance, expectation);
+                    StaticUsage.AddUsages(expr.StaticUsage, null);
+
                     Types.Type current = expr.GetExpressionType();
                     if (elementType == null)
                     {
@@ -84,6 +86,8 @@ namespace DataDictionary.Interpreter
                     ExpressionType.Type = elementType;
                     ExpressionType.Name = "ListOf_" + elementType.FullName;
                     ExpressionType.Enclosing = Root.EFSSystem;
+
+                    StaticUsage.AddUsage(elementType, Root, Usage.ModeEnum.Type);
                 }
                 else
                 {

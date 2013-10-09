@@ -69,7 +69,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -131,15 +131,15 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Min
 ) == -16.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Max
 ) == 13.0</Expectation></Expectations>
@@ -160,7 +160,7 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode != Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -186,7 +186,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -212,7 +212,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -238,7 +238,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -264,7 +264,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode != Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -335,7 +335,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -440,13 +440,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -480,7 +480,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -585,13 +585,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -658,7 +658,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -786,13 +786,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SH</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == Kernel.MA.ModeProfile.ModeProfile.Length.NA</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance ==  50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -967,7 +967,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -986,10 +986,10 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1145,10 +1145,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1232,7 +1232,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1357,10 +1357,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1465,10 +1465,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1621,7 +1621,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1640,10 +1640,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1796,7 +1796,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1815,10 +1815,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1994,7 +1994,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Shunting.BaliseGroupsForShArea ==
 [Kernel.BaliseGroup
 {
@@ -2114,7 +2114,7 @@ NID_BG =&gt; 1212
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Shunting.BaliseGroupsForShArea ==
 [Kernel.BaliseGroup
 {
@@ -2241,13 +2241,13 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2368,23 +2368,23 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 600.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0
  </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >THERE_IS_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0
  </Expectation></Expectations>
 </SubStep></SubSteps>
