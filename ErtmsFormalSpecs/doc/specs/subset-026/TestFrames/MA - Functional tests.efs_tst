@@ -2850,6 +2850,10 @@
  Id="3.8.4.6.2"
 >
 </ReqRef>
+<ReqRef
+ Id="3.8.4.6.3"
+>
+</ReqRef>
 <Steps>
 <Step
  IO="NA"
@@ -2885,6 +2889,13 @@
 <Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
 <Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
 </Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ DeadLine="1"
+>Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2977,12 +2988,23 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 IN
 BTM.Linking.Linkings</Action>
 </Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+>Kernel.MA.MA == EMPTY</Expectation><Expectation
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS </Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step4 - BTM.Message + Linking + Mode FS"
 >
@@ -3069,22 +3091,21 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 IN
 BTM.Linking.Linkings</Action>
 </Actions>
-</SubStep></SubSteps>
-</Step><Step
- TranslationRequired="FALSE"
- Name="Step5 - Data check"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
->
 <Expectations>
 <Expectation
  DeadLine="1"
->THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 0.0</Expectation><Expectation
+>Kernel.Infill.Data.NID_BG == 2126</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.Mode == Default.Mode.FS</Expectation></Expectations>
+>Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3093,7 +3114,7 @@ BTM.Linking.Linkings</Action>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step6 - BTM.Message + Linking + Mode LS"
+ Name="Step5 - BTM.Message + Linking + Mode LS"
 >
 <SubSteps>
 <SubStep
@@ -3190,28 +3211,17 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 IN
 BTM.Linking.Linkings</Action>
 </Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step7 - Data check"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
+</SubStep><SubStep
+ Name="Sub-step2"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 120.0</Expectation><Expectation
+>Kernel.Mode == Default.Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.Mode == Default.Mode.LS</Expectation></Expectations>
+>THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 120.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
