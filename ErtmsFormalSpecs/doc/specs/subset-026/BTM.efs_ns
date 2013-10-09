@@ -1551,29 +1551,6 @@ ON Message.Sequence1</Action>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="ClearInfillInfo"
->
-<ReqRef
- Id="3.9.1.2"
->
-</ReqRef>
-<Comment>Since the same infill information will be used by each infill device, the handling of infill information shouldn&apos;t have any influence to the handling of the infill information by the other infill devices =&gt; once the balise message is read, its infill information is erased.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="ClearInfillInfo"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>Kernel.Infill.Data &lt;- EMPTY</Action>
-</Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -1768,14 +1745,17 @@ If all the messages of the current balise group have been received, calls Handle
 <Rule
  Priority="CleanUp"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Clean Up"
 >
+<ReqRef
+ Id="3.9.1.2"
+>
+</ReqRef>
 <Comment>After processing the new telegram its content is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Clear just received balise telegram"
 >
 <Comment></Comment>
@@ -1784,10 +1764,12 @@ If all the messages of the current balise group have been received, calls Handle
 </PreConditions>
 <Actions>
 <Action>Message &lt;- EMPTY</Action>
+<Action>Kernel.Infill.Data &lt;- EMPTY</Action>
 </Actions>
 <SubRules>
 <Rule
  Priority="CleanUp"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear current balises from current balise group"
 >
