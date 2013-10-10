@@ -1115,9 +1115,18 @@ namespace DataDictionary
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(model);
-            foreach (Dictionary dictionary in Dictionaries)
+            bool prev = ModelElement.BeSilent;
+            try
             {
-                visitor.visit(dictionary, true);
+                ModelElement.BeSilent = true;
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    visitor.visit(dictionary, true);
+                }
+            }
+            finally
+            {
+                ModelElement.BeSilent = prev;
             }
 
             return visitor.Usages;
