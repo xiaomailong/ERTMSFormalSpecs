@@ -2559,7 +2559,7 @@
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Infill MA received only when FS or LS Mode"
+ Name="Infill MA received only when FS or LS Mode and Linking information available"
 >
 <ReqRef
  Id="3.8.4.6.2"
@@ -2569,6 +2569,11 @@
  Id="3.8.4.6.3"
 >
 </ReqRef>
+<ReqRef
+ Id="3.8.4.6.4"
+>
+</ReqRef>
+<Comment>In the steps 3 and 4 it is possible to see that the OBU receives Infill MA when there is Linking information ( step 4 ). If there is not Linking information, there is not Infill MA ( step 3). This is the requirement 3.8.4.6.4. </Comment>
 <Steps>
 <Step
  IO="NA"
@@ -2611,7 +2616,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+>Kernel.MA.MA == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Infill.Data == EMPTY </Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2714,7 +2722,10 @@ BTM.Linking.Linkings</Action>
 >Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.Mode == Default.Mode.OS </Expectation></Expectations>
+>Kernel.Mode == Default.Mode.OS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2812,7 +2823,9 @@ BTM.Linking.Linkings</Action>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.Infill.Data.NID_BG == 2126</Expectation></Expectations>
+>Kernel.Infill.Data.NID_BG == 2126</Expectation><Expectation
+ DeadLine="1"
+>Kernel.Infill.Data != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
 >
