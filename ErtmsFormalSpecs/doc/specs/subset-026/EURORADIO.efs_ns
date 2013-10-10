@@ -111,6 +111,19 @@
  Name="NonMatching"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Name="MobileTerminal"
+>
+<Values>
+<EnumValue
+ Value="1"
+ Name="Available"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NotAvailable"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -777,6 +790,16 @@
  NeedsRequirement="FALSE"
  Name="RadioSessions"
 >
+</Collection><Collection
+ TypeName="EURORADIO.MobileTerminal"
+ MaxSize="2"
+ Default="[MobileTerminal.Available, MobileTerminal.NotAvailable]"
+ Name="MobileTerminals"
+>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -1774,6 +1797,11 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Type="EURORADIO.RegisterMobileTerminalSM"
  VariableMode="Internal"
  Name="RegisterMobileTerminal"
+>
+</Variable><Variable
+ Type="EURORADIO.MobileTerminals"
+ VariableMode="Internal"
+ Name="AvailableMobileTerminals"
 >
 </Variable></Variables>
 <Rules>
