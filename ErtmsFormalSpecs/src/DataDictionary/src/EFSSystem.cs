@@ -890,15 +890,7 @@ namespace DataDictionary
         /// <returns></returns>
         public Interpreter.Statement.Statement ParseStatement(ModelElement root, string expression)
         {
-            try
-            {
-                return Parser.Statement(root, expression);
-            }
-            catch (Interpreter.ParseErrorException exception)
-            {
-                root.AddException(exception);
-                return null;
-            }
+            return Parser.Statement(root, expression);
         }
 
         /// <summary>
