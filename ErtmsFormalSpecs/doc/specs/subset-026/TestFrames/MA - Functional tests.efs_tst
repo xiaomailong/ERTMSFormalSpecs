@@ -2628,7 +2628,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - BTM.Message + Mode != LS or FS"
+ Name="Step3 - BTM.Message + Linking + Mode != LS or FS"
 >
 <SubSteps>
 <SubStep
@@ -2734,7 +2734,7 @@ BTM.Linking.Linkings</Action>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4 - BTM.Message + Linking + Mode FS"
+ Name="Step4 - BTM.Message + Mode FS"
 >
 <SubSteps>
 <SubStep
@@ -2806,24 +2806,13 @@ BTM.Linking.Linkings</Action>
          }
                 ]
 }</Action>
-<Action>INSERT
-BTM.Linking.LinkingData
-{
-Distance =&gt; 1000.0,
-LocationAccuracy =&gt; 100.0,
-NID_BG =&gt; 2126,
-Orientation =&gt; Default.Orientation.Nominal,
-Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
-
-}
-IN
-BTM.Linking.Linkings</Action>
 </Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Infill.Data.NID_BG == 2126</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Infill.Data != EMPTY</Expectation></Expectations>
 </SubStep><SubStep
@@ -2834,9 +2823,8 @@ BTM.Linking.Linkings</Action>
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Mode == Default.Mode.FS</Expectation><Expectation
- Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 0.0</Expectation></Expectations>
+>Kernel.MA.MA.EndSection.Length == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2845,7 +2833,7 @@ BTM.Linking.Linkings</Action>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step5 - BTM.Message + Linking + Mode LS"
+ Name="Step5 - BTM.Message + Mode LS"
 >
 <SubSteps>
 <SubStep
@@ -2929,18 +2917,6 @@ BTM.Linking.Linkings</Action>
          }
                 ]
 }</Action>
-<Action>INSERT
-BTM.Linking.LinkingData
-{
-Distance =&gt; 1000.0,
-LocationAccuracy =&gt; 100.0,
-NID_BG =&gt; 2126,
-Orientation =&gt; Default.Orientation.Nominal,
-Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
-
-}
-IN
-BTM.Linking.Linkings</Action>
 </Actions>
 </SubStep><SubStep
  Name="Sub-step2"
