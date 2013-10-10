@@ -191,11 +191,13 @@ namespace GUI
         /// </summary>
         public virtual void SynchronizeForm()
         {
-            if (Properties != null && !Properties.ContainsFocus)
+            if (Properties != null)
             {
-                Properties.Refresh();
+                if (!Properties.ContainsFocus && !(Properties.ActiveControl is System.Windows.Forms.Button))
+                {
+                    Properties.Refresh();
+                }
             }
-
 
             if (TreeView != null && TreeView.SelectedNode != null)
             {

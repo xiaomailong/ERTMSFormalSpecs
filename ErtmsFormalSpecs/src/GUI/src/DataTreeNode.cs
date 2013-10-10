@@ -211,9 +211,9 @@ namespace GUI
             }
 
             // By default, the explain text box is visible
-            if (baseForm.ExplainTextBox != null)
+            if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
             {
-                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
+                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused ))
                 {
                     baseForm.ExplainTextBox.SetModel(Model);
                     if (!baseForm.ExplainTextBox.Visible)
