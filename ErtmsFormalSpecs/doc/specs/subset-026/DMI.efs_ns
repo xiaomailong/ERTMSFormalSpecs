@@ -3623,6 +3623,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  NeedsRequirement="FALSE"
  Name="DisplayLocalTime"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3647,6 +3648,13 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  NeedsRequirement="FALSE"
  Name="DisplayLevelTransitionAnnouncement"
 >
+<Comment>Needs to display the target-level (parameter) in some way. This remains unimplemented.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.Level"
+ Name="TargetLevelToDisplay"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"

@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Types
 {
-    public class StructureElement : Generated.StructureElement, ITypedElement, Utils.ISubDeclarator, TextualExplain
+    public class StructureElement : Generated.StructureElement, ITypedElement, Utils.ISubDeclarator, TextualExplain, IDefaultValueElement
     {
         public NameSpace NameSpace
         {

@@ -18,6 +18,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
     using DataDictionary;
     using DataDictionary.Interpreter;
     using System.Collections.Generic;
+    using System.Windows.Forms;
 
     public class UsageTreeView : TypedTreeView<Utils.IModelElement>
     {
@@ -58,6 +59,40 @@ namespace GUI.DataDictionaryView.UsageTreeView
             set
             {
                 __models = value;
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public UsageTreeView()
+            : base()
+        {
+            MouseMove += new System.Windows.Forms.MouseEventHandler(UsageTreeView_MouseMove);
+        }
+
+        private void UsageTreeView_MouseMove(object sender, MouseEventArgs e)
+        {
+            ToolTip toolTip = ParentForm.MDIWindow.ToolTip;
+
+            TreeNode theNode = GetNodeAt(e.X, e.Y);
+            if ((theNode != null))
+            {
+                if (theNode.ToolTipText != null)
+                {
+                    if (theNode.ToolTipText != toolTip.GetToolTip(this))
+                    {
+                        toolTip.SetToolTip(this, theNode.ToolTipText);
+                    }
+                }
+                else
+                {
+                    toolTip.SetToolTip(this, "");
+                }
+            }
+            else
+            {
+                toolTip.SetToolTip(this, "");
             }
         }
 

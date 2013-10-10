@@ -45,6 +45,14 @@ namespace GUI
         }
 
         /// <summary>
+        /// Indicates that only types should be considered
+        /// </summary>
+        public bool ConsiderOnlyTypes
+        {
+            set { editorTextBox.ConsiderOnlyTypes = value; }
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EditorForm()
@@ -52,7 +60,22 @@ namespace GUI
             InitializeComponent();
 
             editorTextBox.TextBox.TextChanged += new EventHandler(TextChangedHandler);
+            editorTextBox.TextBox.KeyUp += new KeyEventHandler(TextBox_KeyUp);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+        }
+
+        void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    e.Handled = true;
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         /// <summary>

@@ -20,6 +20,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DataDictionary;
 using Utils;
+using System.Threading;
 
 namespace GUI
 {
@@ -173,6 +174,15 @@ namespace GUI
                     }
                 }
 
+                DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                if (dictionary != null)
+                {
+                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
+                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
+                    AddChildWindow(newWindow);
+                    return newWindow;
+                }
+
                 return null;
             }
         }
@@ -180,65 +190,46 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.9.8";
-
+        private string versionNumber = "0.9.8.1";
 
         /// <summary>
-        /// Listener to model changes
+        /// The thread used to synchronize node names with their model
         /// </summary>
-        public class ModelChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
+        private class Synchronizer : GenericSynchronizationHandler<MainWindow>
         {
-            /// <summary>
-            /// The main window for which this listener listens
-            /// </summary>
-            private MainWindow MainWindow { get; set; }
-
-            /// <summary>
-            /// Last time refresh was done
-            /// </summary>
-            private DateTime LastRefresh { get; set; }
-
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="system"></param>
-            public ModelChangeListener(MainWindow window)
+            /// <param name="instance"></param>
+            public Synchronizer(MainWindow instance, int cycleTime)
+                : base(instance, cycleTime)
             {
-                MainWindow = window;
-                LastRefresh = DateTime.MinValue;
             }
 
-            #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
             {
-                RefreshModel(sender);
-            }
-
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
-            {
-                RefreshModel(sender);
-            }
-
-            private void RefreshModel(DataDictionary.Generated.BaseModelElement model)
-            {
-                DateTime now = DateTime.Now;
-                TimeSpan span = now - LastRefresh;
-
-                GUIUtils.RefreshViewAccordingToModel(model);
-
-                // Refresh the main window title (but not too often)
-                if (span > TimeSpan.FromSeconds(1))
+                instance.Invoke((MethodInvoker)delegate
                 {
-                    MainWindow.Invoke((MethodInvoker)delegate
+                    instance.UpdateTitle();
+                    foreach (EditorForm editor in instance.Editors)
                     {
-                        MainWindow.UpdateTitle();
-                    });
-                    LastRefresh = now;
-                }
+                        if (!editor.EditorTextBoxHasFocus())
+                        {
+                            editor.RefreshText();
+                        }
+                    }
+                });
             }
-
-            #endregion
         }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private Synchronizer WindowSynchronizer { get; set; }
 
         /// <summary>
         /// Constructor
@@ -250,7 +241,7 @@ namespace GUI
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
 
-            DataDictionary.Generated.ControllersManager.BaseModelElementController.Listeners.Add(new ModelChangeListener(this));
+            WindowSynchronizer = new Synchronizer(this, 300);
 
             Refresh();
         }
@@ -498,16 +489,7 @@ namespace GUI
                         if (dictionary.ShortcutsDictionary != null)
                         {
                             IBaseForm shortcutsWindow = ShortcutsWindow;
-                            if (shortcutsWindow == null)
-                            {
-                                if (dictionary != null)
-                                {
-                                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
-                                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                                    AddChildWindow(newWindow);
-                                }
-                            }
-                            else
+                            if (shortcutsWindow != null)
                             {
                                 shortcutsWindow.RefreshModel();
                             }
@@ -526,6 +508,7 @@ namespace GUI
                 Refresh();
             }
         }
+
         #endregion
 
         #region SaveFile
@@ -640,6 +623,12 @@ namespace GUI
 
             return retVal;
         }
+
+        /// <summary>
+        /// The tooltip associated to this form
+        /// </summary>
+        public ToolTip ToolTip { get { return toolTip; } }
+
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {

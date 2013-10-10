@@ -109,6 +109,61 @@
 >
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="Available"
+>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.STM"
+ Name="STMid"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="STM1"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM1</PreCondition>
+</PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM2"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM2</PreCondition>
+</PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM3"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM3</PreCondition>
+</PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM4"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM4</PreCondition>
+</PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.Unknown</PreCondition>
+</PreConditions>
+<Expression>Boolean.False</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Boolean.False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable

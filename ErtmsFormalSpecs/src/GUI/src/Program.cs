@@ -55,6 +55,8 @@ namespace ERTMSFormalSpecs
             {
                 DataDictionary.Util.UnlockAllFiles();
             }
+
+            GUI.SynchronizerList.Stop();
         }
     }
 }

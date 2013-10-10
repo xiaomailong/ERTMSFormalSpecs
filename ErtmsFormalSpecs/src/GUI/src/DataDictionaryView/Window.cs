@@ -19,14 +19,14 @@ using DataDictionary;
 
 namespace GUI.DataDictionaryView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return dataDictPropertyGrid; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get
             {
@@ -41,27 +41,27 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        public EditorTextBox RequirementsTextBox
+        public override EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
         }
 
-        public EditorTextBox ExpressionEditorTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
             get { return expressionEditorTextBox; }
         }
 
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return dataDictTree; }
         }
 
-        public BaseTreeView subTreeView
+        public override BaseTreeView subTreeView
         {
             get { return usageTreeView; }
         }
 
-        public ExplainTextBox ExplainTextBox
+        public override ExplainTextBox ExplainTextBox
         {
             get { return ruleExplainTextBox; }
         }
@@ -134,17 +134,9 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             dataDictTree.RefreshModel();
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
         }
 
         /// <summary>
@@ -185,24 +177,6 @@ namespace GUI.DataDictionaryView
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
     }
 }

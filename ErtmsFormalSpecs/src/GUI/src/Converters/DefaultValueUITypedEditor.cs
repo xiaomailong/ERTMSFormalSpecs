@@ -28,7 +28,7 @@ namespace GUI.Converters
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class TypeUITypedEditor : UITypeEditor
+    public class DefaultValueUITypedEditor : UITypeEditor
     {
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
@@ -58,11 +58,11 @@ namespace GUI.Converters
             public override string GetText()
             {
                 string retVal = "";
-                DataDictionary.Types.ITypedElement typedElement = Instance as DataDictionary.Types.ITypedElement;
+                DataDictionary.Types.IDefaultValueElement defaultValueElement = Instance as DataDictionary.Types.IDefaultValueElement;
 
-                if (typedElement != null)
+                if (defaultValueElement != null)
                 {
-                    retVal = typedElement.TypeName;
+                    retVal = defaultValueElement.Default;
                 }
                 return retVal;
             }
@@ -73,11 +73,11 @@ namespace GUI.Converters
             /// <returns></returns>
             public override void SetText(string text)
             {
-                DataDictionary.Types.ITypedElement typedElement = Instance as DataDictionary.Types.ITypedElement;
+                DataDictionary.Types.IDefaultValueElement defaultValueElement = Instance as DataDictionary.Types.IDefaultValueElement;
 
-                if (typedElement != null)
+                if (defaultValueElement != null)
                 {
-                    typedElement.TypeName = text;
+                    defaultValueElement.Default = text;
                 }
             }
         }
@@ -89,11 +89,11 @@ namespace GUI.Converters
         /// <param name="value"></param>
         private void HandleTextChange(ModelElement instance, string value)
         {
-            DataDictionary.Types.ITypedElement typedElement = instance as DataDictionary.Types.ITypedElement;
+            DataDictionary.Types.IDefaultValueElement defaultValueElement = instance as DataDictionary.Types.IDefaultValueElement;
 
-            if (typedElement != null)
+            if (defaultValueElement != null)
             {
-                typedElement.TypeName = value;
+                defaultValueElement.Default = value;
             }
         }
 
@@ -102,13 +102,12 @@ namespace GUI.Converters
             IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
-                DataDictionary.Types.ITypedElement typedElement = value as DataDictionary.Types.ITypedElement;
-                if (typedElement != null)
+                DataDictionary.Types.IDefaultValueElement defaultValueElement = value as DataDictionary.Types.IDefaultValueElement;
+                if (defaultValueElement != null)
                 {
                     EditorForm form = new EditorForm();
                     form.AutoComplete = true;
-                    form.ConsiderOnlyTypes = true;
-                    TextChangeHandler handler = new TextChangeHandler(typedElement as ModelElement);
+                    TextChangeHandler handler = new TextChangeHandler(defaultValueElement as ModelElement);
                     form.setChangeHandler(handler);
                     GUIUtils.MDIWindow.AddChildWindow(form);
                 }

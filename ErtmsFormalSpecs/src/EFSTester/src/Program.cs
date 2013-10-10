@@ -80,11 +80,14 @@ namespace EFSTester
                                         Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
                                     }
                                 }
-                                DataDictionary.Tests.Runner.Events.ModelInterpretationFailure interpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
-                                if (interpretationFailure != null)
+                                else
                                 {
-                                    Console.Out.WriteLine(" failed : " + expect.Message);
-                                    failed = true;
+                                    DataDictionary.Tests.Runner.Events.ModelInterpretationFailure modelInterpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
+                                    if (modelInterpretationFailure != null)
+                                    {
+                                        Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);
+
+                                    }
                                 }
                             }
                             if (failed)

@@ -14,6 +14,11 @@ namespace GUI
     public partial class EditorTextBox : UserControl
     {
         /// <summary>
+        /// Indicates that only types should be considered in the search
+        /// </summary>
+        public bool ConsiderOnlyTypes { get; set; }
+
+        /// <summary>
         /// Indicates whether there is a pending selection in the combo box
         /// </summary>
         private bool PendingSelection { get; set; }
@@ -182,7 +187,20 @@ namespace GUI
                                 {
                                     if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type)
                                     {
-                                        retVal.Add(subElem);
+                                        if (ConsiderOnlyTypes)
+                                        {
+                                            if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
+                                            {
+                                                if (!(namable is DataDictionary.Functions.Function))
+                                                {
+                                                    retVal.Add(subElem);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            retVal.Add(subElem);
+                                        }
                                         break;
                                     }
                                 }

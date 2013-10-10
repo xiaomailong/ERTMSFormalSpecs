@@ -20,40 +20,40 @@ using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
         }
 
-        public EditorTextBox RequirementsTextBox
+        public override EditorTextBox RequirementsTextBox
         {
             get { return requirementsTextBox; }
         }
 
-        public EditorTextBox ExpressionEditorTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
             get { return expressionEditorTextBox; }
         }
 
 
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return testBrowserTreeView; }
         }
 
-        public BaseTreeView subTreeView
+        public override BaseTreeView subTreeView
         {
             get { return null; }
         }
 
-        public ExplainTextBox ExplainTextBox
+        public override ExplainTextBox ExplainTextBox
         {
             get { return explainTextBox; }
         }
@@ -166,10 +166,17 @@ namespace GUI.TestRunnerView
             });
         }
 
+        public override void SynchronizeForm()
+        {
+            base.SynchronizeForm();
+
+            evcTimeLineControl.Refresh();
+        }
+
         /// <summary>
         /// Refreshes the display
         /// </summary>
-        override public void Refresh()
+        public override void Refresh()
         {
             if (!DoingRefresh)
             {
@@ -270,14 +277,6 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
-        /// <summary>
         /// Step once
         /// </summary>
         public void StepOnce()
@@ -286,7 +285,6 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
-                MDIWindow.Refresh();
             }
         }
 
@@ -313,7 +311,6 @@ namespace GUI.TestRunnerView
             {
                 dictionary.ClearMessages();
             }
-            MDIWindow.Refresh();
         }
 
         /// <summary>
@@ -345,7 +342,6 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.StepBack();
-                MDIWindow.Refresh();
             }
         }
 
@@ -361,10 +357,9 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             testBrowserTreeView.RefreshModel();
-            Refresh();
         }
 
         /// <summary>
