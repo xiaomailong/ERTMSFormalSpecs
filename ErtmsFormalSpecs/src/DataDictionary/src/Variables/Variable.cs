@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Variables
 {
-    public class Variable : Generated.Variable, IVariable, Utils.ISubDeclarator, TextualExplain
+    public class Variable : Generated.Variable, IVariable, Utils.ISubDeclarator, TextualExplain, Types.IDefaultValueElement
     {
         /// <summary>
         /// Indicates that the DeclaredElement dictionary is currently being built

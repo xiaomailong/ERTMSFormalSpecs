@@ -213,13 +213,16 @@ namespace GUI
             // By default, the explain text box is visible
             if (baseForm.ExplainTextBox != null)
             {
-                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused) && baseForm.ExplainTextBox.Visible)
+                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
                 {
                     baseForm.ExplainTextBox.SetModel(Model);
-                    baseForm.ExplainTextBox.Visible = true;
-                    if (baseForm.ExpressionEditorTextBox != null)
+                    if (!baseForm.ExplainTextBox.Visible)
                     {
-                        baseForm.ExpressionEditorTextBox.Visible = false;
+                        baseForm.ExplainTextBox.Visible = true;
+                        if (baseForm.ExpressionEditorTextBox != null)
+                        {
+                            baseForm.ExpressionEditorTextBox.Visible = false;
+                        }
                     }
                 }
             }
@@ -260,8 +263,11 @@ namespace GUI
                     {
                         baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
                         baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
-                        baseForm.ExpressionEditorTextBox.Visible = true;
-                        baseForm.ExplainTextBox.Visible = false;
+                        if (!baseForm.ExpressionEditorTextBox.Visible)
+                        {
+                            baseForm.ExpressionEditorTextBox.Visible = true;
+                            baseForm.ExplainTextBox.Visible = false;
+                        }
                     }
                 }
             }

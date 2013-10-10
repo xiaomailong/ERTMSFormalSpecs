@@ -187,7 +187,20 @@ namespace GUI
                                 {
                                     if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type)
                                     {
-                                        retVal.Add(subElem);
+                                        if (ConsiderOnlyTypes)
+                                        {
+                                            if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
+                                            {
+                                                if (!(namable is DataDictionary.Functions.Function))
+                                                {
+                                                    retVal.Add(subElem);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            retVal.Add(subElem);
+                                        }
                                         break;
                                     }
                                 }
@@ -322,23 +335,6 @@ namespace GUI
                 possibleInstances.Add(Instance);
                 enclosingName = null;
                 prefix = currentText;
-            }
-
-            // Filter the namables
-            if (ConsiderOnlyTypes)
-            {
-                List<Utils.INamable> tmp = new List<Utils.INamable>();
-                foreach (Utils.INamable namable in possibleInstances)
-                {
-                    if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
-                    {
-                        if (!(namable is DataDictionary.Functions.Function))
-                        {
-                            tmp.Add(namable);
-                        }
-                    }
-                }
-                possibleInstances = tmp;
             }
 
             foreach (Utils.INamable namable in possibleInstances)

@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -56,11 +57,20 @@ namespace GUI.DataDictionaryView
                 set { Item.setMaxValue(value); }
             }
 
+            /// <summary>
+            /// The range default value
+            /// </summary>
             [Category("Description")]
-            public string DefaultValue
+            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
+            public DataDictionary.Types.Range DefaultValue
             {
-                get { return Item.getDefault(); }
-                set { Item.setDefault(value); }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
         }
 
