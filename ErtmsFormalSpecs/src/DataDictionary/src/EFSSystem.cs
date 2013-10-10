@@ -19,6 +19,7 @@ namespace DataDictionary
     using DataDictionary.Types;
     using DataDictionary.Interpreter;
     using DataDictionary.Rules;
+    using System;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -890,15 +891,7 @@ namespace DataDictionary
         /// <returns></returns>
         public Interpreter.Statement.Statement ParseStatement(ModelElement root, string expression)
         {
-            try
-            {
-                return Parser.Statement(root, expression);
-            }
-            catch (Interpreter.ParseErrorException exception)
-            {
-                root.AddException(exception);
-                return null;
-            }
+            return Parser.Statement(root, expression);
         }
 
         /// <summary>
@@ -958,7 +951,7 @@ namespace DataDictionary
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Action obj, bool visitSubNodes)
             {
-                Action action = (Action)obj;
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
 
                 if (action.Statement != null && action.Statement.StaticUsage != null)
                 {

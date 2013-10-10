@@ -1244,6 +1244,10 @@ namespace DataDictionary.Interpreter
                     retVal.SemanticAnalysis();
                 }
             }
+            catch (Exception exception)
+            {
+                root.AddException(exception);
+            }
             finally
             {
                 Generated.ControllersManager.ActivateAllNotifications();
