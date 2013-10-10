@@ -2286,5 +2286,662 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="MA from RBC"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="MA received from an RBC and by BTM.Message"
+>
+<ReqRef
+ Id="3.8.3.9"
+>
+</ReqRef>
+<ReqRef
+ Id="3.8.3.6"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Euroradio Message + BTM.LRBG"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9626,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 11.0,
+        Position =&gt; 4000.0,
+        UnderReadingAmountOdo =&gt; 12.0
+    }
+}</Action>
+<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; [
+
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+                                ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt; []
+}
+
+
+
+  
+            
+}</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>BTM.LRBG.NID == 9626</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.MA.MA.ReferenceBG == 9627</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - BTM.Message + BTM.LRBG"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;8,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;8,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;4,
+                    Sequence1=&gt;
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;120,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
+                            D_SECTIONTIMERSTOPLOC=&gt;20,
+                            T_SECTIONTIMER=&gt;40
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;140,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                            D_SECTIONTIMERSTOPLOC=&gt;0,
+                            T_SECTIONTIMER=&gt;0
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;100,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
+                            D_SECTIONTIMERSTOPLOC=&gt;25,
+                            T_SECTIONTIMER=&gt;20
+                        },
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;140,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
+                            D_SECTIONTIMERSTOPLOC=&gt;40,
+                            T_SECTIONTIMER=&gt;25
+                        }
+                    ],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.No_danger_point_information,
+                    D_DP=&gt;0,
+                    V_RELEASEDP=&gt;0,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+        }
+    ]
+}</Action>
+<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 2120,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 11.0,
+        Position =&gt; 4000.0,
+        UnderReadingAmountOdo =&gt; 12.0
+    }
+}</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>BTM.LRBG.NID == 2120</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.MA.MA.ReferenceBG == 2124</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Infill MA"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Infill MA received only when FS or LS Mode"
+>
+<ReqRef
+ Id="3.8.4.6.2"
+>
+</ReqRef>
+<ReqRef
+ Id="3.8.4.6.3"
+>
+</ReqRef>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action>
+</Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Mode OS + Level 1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.MA.MA == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - BTM.Message + Mode != LS or FS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [ 
+         Messages.EUROBALISE.SubStructure1
+            {
+              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                {
+                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                     {
+                          L_PACKET=&gt;10,
+                          NID_BG=&gt;2126,
+                          NID_C=&gt;140,
+                          NID_PACKET=&gt;136,
+                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                     }
+                 }
+             },
+     Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         }
+                ]
+}</Action>
+<Action>INSERT
+BTM.Linking.LinkingData
+{
+Distance =&gt; 1000.0,
+LocationAccuracy =&gt; 100.0,
+NID_BG =&gt; 2126,
+Orientation =&gt; Default.Orientation.Nominal,
+Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
+
+}
+IN
+BTM.Linking.Linkings</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.MA.MA == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS </Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - BTM.Message + Linking + Mode FS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [ 
+         Messages.EUROBALISE.SubStructure1
+            {
+              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                {
+                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                     {
+                          L_PACKET=&gt;10,
+                          NID_BG=&gt;2126,
+                          NID_C=&gt;140,
+                          NID_PACKET=&gt;136,
+                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                     }
+                 }
+             },
+     Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         }
+                ]
+}</Action>
+<Action>INSERT
+BTM.Linking.LinkingData
+{
+Distance =&gt; 1000.0,
+LocationAccuracy =&gt; 100.0,
+NID_BG =&gt; 2126,
+Orientation =&gt; Default.Orientation.Nominal,
+Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
+
+}
+IN
+BTM.Linking.Linkings</Action>
+</Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Infill.Data.NID_BG == 2126</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - BTM.Message + Linking + Mode LS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;
+    [ 
+         Messages.EUROBALISE.SubStructure1
+            {
+              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                {
+                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                     {
+                          L_PACKET=&gt;10,
+                          NID_BG=&gt;2126,
+                          NID_C=&gt;140,
+                          NID_PACKET=&gt;136,
+                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                     }
+                 }
+             },
+     Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;
+ [
+                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
+                        {
+                            L_SECTION=&gt;120,
+                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
+                            D_SECTIONTIMERSTOPLOC=&gt;20,
+                            T_SECTIONTIMER=&gt;40
+                        }
+
+
+
+],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         }
+                ]
+}</Action>
+<Action>INSERT
+BTM.Linking.LinkingData
+{
+Distance =&gt; 1000.0,
+LocationAccuracy =&gt; 100.0,
+NID_BG =&gt; 2126,
+Orientation =&gt; Default.Orientation.Nominal,
+Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
+
+}
+IN
+BTM.Linking.Linkings</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.LS</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 120.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
