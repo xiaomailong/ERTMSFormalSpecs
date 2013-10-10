@@ -2674,28 +2674,17 @@
             
 }</Action>
 </Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Datacheck"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
+</SubStep><SubStep
+ Name="Sub-step2"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.MA.MA.ReferenceBG == 9627</Expectation><Expectation
+>BTM.LRBG.NID == 9626</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->BTM.LRBG.NID == 9626</Expectation></Expectations>
+>Kernel.MA.MA.ReferenceBG == 9627</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2704,7 +2693,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4 - BTM.Message + BTM.LRBG"
+ Name="Step3 - BTM.Message + BTM.LRBG"
 >
 <SubSteps>
 <SubStep
@@ -2802,19 +2791,8 @@
     }
 }</Action>
 </Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step5 - Datacheck"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
+</SubStep><SubStep
+ Name="Sub-step2"
 >
 <Expectations>
 <Expectation
@@ -2894,6 +2872,7 @@
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -2996,6 +2975,7 @@ BTM.Linking.Linkings</Action>
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Mode == Default.Mode.OS </Expectation></Expectations>
 </SubStep></SubSteps>
@@ -3093,6 +3073,7 @@ BTM.Linking.Linkings</Action>
 </Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Infill.Data.NID_BG == 2126</Expectation></Expectations>
 </SubStep><SubStep
