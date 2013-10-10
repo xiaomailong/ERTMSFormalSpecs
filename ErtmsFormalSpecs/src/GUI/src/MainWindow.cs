@@ -20,6 +20,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DataDictionary;
 using Utils;
+using System.Threading;
 
 namespace GUI
 {
@@ -189,65 +190,46 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.9.8";
-
+        private string versionNumber = "0.9.8.1";
 
         /// <summary>
-        /// Listener to model changes
+        /// The thread used to synchronize node names with their model
         /// </summary>
-        public class ModelChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
+        private class Synchronizer : GenericSynchronizationHandler<MainWindow>
         {
-            /// <summary>
-            /// The main window for which this listener listens
-            /// </summary>
-            private MainWindow MainWindow { get; set; }
-
-            /// <summary>
-            /// Last time refresh was done
-            /// </summary>
-            private DateTime LastRefresh { get; set; }
-
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="system"></param>
-            public ModelChangeListener(MainWindow window)
+            /// <param name="instance"></param>
+            public Synchronizer(MainWindow instance, int cycleTime)
+                : base(instance, cycleTime)
             {
-                MainWindow = window;
-                LastRefresh = DateTime.MinValue;
             }
 
-            #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
             {
-                RefreshModel(sender);
-            }
-
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
-            {
-                RefreshModel(sender);
-            }
-
-            private void RefreshModel(DataDictionary.Generated.BaseModelElement model)
-            {
-                DateTime now = DateTime.Now;
-                TimeSpan span = now - LastRefresh;
-
-                GUIUtils.RefreshViewAccordingToModel(model);
-
-                // Refresh the main window title (but not too often)
-                if (span > TimeSpan.FromSeconds(1))
+                instance.Invoke((MethodInvoker)delegate
                 {
-                    MainWindow.Invoke((MethodInvoker)delegate
+                    instance.UpdateTitle();
+                    foreach (EditorForm editor in instance.Editors)
                     {
-                        MainWindow.UpdateTitle();
-                    });
-                    LastRefresh = now;
-                }
+                        if (!editor.EditorTextBoxHasFocus())
+                        {
+                            editor.RefreshText();
+                        }
+                    }
+                });
             }
-
-            #endregion
         }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private Synchronizer WindowSynchronizer { get; set; }
 
         /// <summary>
         /// Constructor
@@ -259,7 +241,7 @@ namespace GUI
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
 
-            DataDictionary.Generated.ControllersManager.BaseModelElementController.Listeners.Add(new ModelChangeListener(this));
+            WindowSynchronizer = new Synchronizer(this, 300);
 
             Refresh();
         }

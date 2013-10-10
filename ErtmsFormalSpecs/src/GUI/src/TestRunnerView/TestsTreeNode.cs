@@ -157,7 +157,7 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test frames", executeTestsHandler);
             dialog.ShowDialog();
-            MainWindow.RefreshModel();
+
             System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
         }
         #endregion

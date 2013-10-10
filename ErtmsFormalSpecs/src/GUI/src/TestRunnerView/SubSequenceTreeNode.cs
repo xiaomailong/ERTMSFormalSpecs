@@ -172,9 +172,11 @@ namespace GUI.TestRunnerView
             {
                 if (Window != null)
                 {
+                    SynchronizerList.SuspendSynchronization();
                     Window.setSubSequence(SubSequence);
                     EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
                     EFSSystem.Runner.RunUntilStep(null);
+                    SynchronizerList.ResumeSynchronization();
                 }
             }
         }
@@ -190,8 +192,6 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
             dialog.ShowDialog();
-
-            MainWindow.RefreshModel();
         }
         #endregion
 
