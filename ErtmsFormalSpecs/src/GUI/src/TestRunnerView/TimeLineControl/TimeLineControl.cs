@@ -232,21 +232,26 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
         }
 
+        private int lastCount = 0;
         public override void Refresh()
         {
             MySuspendLayout();
             if (TimeLine != null)
             {
-                SynchronizeWithTimeLine();
-                RefreshEventsState();
+                if (TimeLine.Events.Count != lastCount)
+                {
+                    lastCount = TimeLine.Events.Count;
+                    SynchronizeWithTimeLine();
+                    RefreshEventsState();
+                    base.Refresh();
+                }
             }
             else
             {
                 Clear();
+                base.Refresh();
             }
             MyResumeLayout();
-
-            base.Refresh();
         }
 
         /// <summary>

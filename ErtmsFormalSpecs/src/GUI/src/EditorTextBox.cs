@@ -727,6 +727,7 @@ namespace GUI
             return retVal;
         }
 
+        private string lastRtf = "";
         public string Rtf
         {
             get
@@ -735,8 +736,12 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
-                EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value);
+                if (value != lastRtf)
+                {
+                    lastRtf = value;
+                    EditionTextBox.Rtf = InitialRTF;
+                    EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value);
+                }
             }
         }
 
@@ -760,10 +765,11 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
                 EditionTextBox.Lines = value;
             }
         }
+
+        private string LastText = "";
         public override string Text
         {
             get
@@ -772,8 +778,12 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
-                EditionTextBox.Text = value.Trim();
+                if (value != LastText)
+                {
+                    LastText = value;
+                    EditionTextBox.Rtf = InitialRTF;
+                    EditionTextBox.Text = value.Trim();
+                }
             }
         }
     }
