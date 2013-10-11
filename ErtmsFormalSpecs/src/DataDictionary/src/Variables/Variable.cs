@@ -335,7 +335,12 @@ namespace DataDictionary.Variables
 
             if (!Utils.Utils.isEmpty(Comment))
             {
-                retVal = retVal + Comment;
+                retVal = retVal + Comment + "\n";
+            }
+
+            if (Value != null)
+            {
+                retVal = retVal + Name + " = " + Value.LiteralName;
             }
 
             return TextualExplainUtilities.Encapsule(retVal);
