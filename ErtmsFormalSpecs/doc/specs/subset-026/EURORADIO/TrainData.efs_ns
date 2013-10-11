@@ -31,8 +31,8 @@
     V_MAXTRAIN =&gt; MessageTypes.UnResolveSpeed ( speed =&gt; Kernel.TrainData.TrainData.Value.MaximumSpeed, resolution =&gt; 5.0 ),
     N_ITER_0 =&gt; COUNT ( Kernel.TrainData.TrainData.Value.TractionSystems ),
     Sequence1 =&gt; MAP Kernel.TrainData.TrainData.Value.TractionSystems USING CreateTractionSystem ( X ),
-    N_ITER_1 =&gt; COUNT ( Kernel.TrainData.TrainData.Value.NationalSystemsAvailableOnBoard ),
-    Sequence2 =&gt; MAP Kernel.TrainData.TrainData.Value.NationalSystemsAvailableOnBoard USING CreateNationalSystem ( X )
+    N_ITER_1 =&gt; COUNT Kernel.TrainData.TrainDataValues.LevelsSupportedOnBoard | X.Value == Default.Level.LNTC,
+    Sequence2 =&gt; MAP Kernel.TrainData.TrainDataValues.LevelsSupportedOnBoard | X .Value == Default.Level.LNTC USING CreateNationalSystem ( X.NTC )
 }</Expression>
 </Case></Cases>
 </Function><Function

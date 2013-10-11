@@ -513,6 +513,26 @@
 >
 </EnumValue></Values>
 </Enum></Enumerations>
+<Structures>
+<Structure
+ Name="LevelData"
+>
+<Comment></Comment>
+<StructureElement
+ TypeName="Messages.NID_NTC"
+ Default="Messages.NID_NTC.NOT_APPLICABLE"
+ Mode="InOut"
+ Name="NTC"
+>
+<Comment>only applicable if Value == Level.LNTC #morido, 13/10/10</Comment>
+</StructureElement><StructureElement
+ TypeName="Level"
+ Default="Level.Unknown"
+ Mode="InOut"
+ Name="Value"
+>
+<Comment></Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="DriverSelection"
@@ -525,17 +545,14 @@
  Name="RBCIDChoiceSet"
 >
 </Collection><Collection
- TypeName="Level"
- Default="[]"
+ TypeName="LevelData"
+ Default="LevelData {
+  Value =&gt; Level.Unknown,
+  NTC =&gt; Messages.NID_NTC.NOT_APPLICABLE
+}"
  Name="Levels"
 >
-</Collection><Collection
- TypeName="Messages.NID_NTC"
- MaxSize="256"
- Default="[]"
- NeedsRequirement="FALSE"
- Name="NationalSystems"
->
+<Comment>MaxSize is an arbitrarily chosen value. # morido, 13/10/09</Comment>
 </Collection></Collections>
 <Functions>
 <Function

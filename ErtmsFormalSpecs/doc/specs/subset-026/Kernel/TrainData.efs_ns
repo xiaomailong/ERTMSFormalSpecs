@@ -258,18 +258,6 @@
 </ReqRef>
 <Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Default.NationalSystems"
- Default="[]"
- Mode="Internal"
- Implemented="TRUE"
- Name="NationalSystemsAvailableOnBoard"
->
-<ReqRef
- Id="3.18.3.2.i"
->
-</ReqRef>
-<Comment></Comment>
-</StructureElement><StructureElement
  TypeName="TractionSystems"
  Default="[]"
  Mode="Internal"
@@ -759,6 +747,38 @@
 >
 </ReqRef>
 <Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Levels"
+ Default="[
+  Default.LevelData {
+     Value =&gt; Level.L1,
+     NTC =&gt; Messages.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.L2,
+     NTC =&gt; Messages.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 0
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 1
+  }
+]"
+ Mode="Internal"
+ Name="LevelsSupportedOnBoard"
+>
+<ReqRef
+ Id="3.18.3.2.i"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
+<Comment>DefaultValue is set arbitrarily. #morido, 13/10/09</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainData"

@@ -188,7 +188,7 @@
 <Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
 <Parameters>
 <Parameter
- Type="Default.Level"
+ Type="Default.LevelData"
  Name="Level"
 >
 </Parameter></Parameters>
@@ -197,22 +197,22 @@
  Name="Level 0,1"
 >
 <PreConditions>
-<PreCondition>Level in [Default.Level.L0, Default.Level.L1]</PreCondition>
+<PreCondition>Level.Value in [Default.Level.L0, Default.Level.L1]</PreCondition>
 </PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level == Default.Level.LNTC</PreCondition>
-<PreCondition>STM.Available(Default.STM.Unknown) == Boolean.True</PreCondition>
+<PreCondition>Level.Value == Default.Level.LNTC</PreCondition>
+<PreCondition>THERE_IS_IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition>
 </PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level 2,3"
 >
 <PreConditions>
-<PreCondition>Level in [Default.Level.L2, Default.Level.L3]</PreCondition>
+<PreCondition>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition>
 <PreCondition>THERE_IS_IN EURORADIO.AvailableMobileTerminals | X == EURORADIO.MobileTerminal.Available</PreCondition>
 </PreConditions>
 <Expression>Boolean.True</Expression>
@@ -291,6 +291,7 @@
  Implemented="TRUE"
  Name="NextLevelTransition"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
