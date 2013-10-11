@@ -215,7 +215,7 @@ namespace Utils
         /// Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
-        protected virtual void AddElementLog(ElementLog log)
+        public virtual void AddElementLog(ElementLog log)
         {
             bool add = true;
 
