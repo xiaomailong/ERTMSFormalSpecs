@@ -51,6 +51,7 @@ namespace DataDictionary.Tests
                 int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
                 if (testCasesFailed > 0)
                 {
+                    subSequence.AddError("Execution failed");
                     retVal += 1;
                 }
             }

@@ -44,7 +44,7 @@ namespace DataDictionary
         /// Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
-        protected override void AddElementLog(Utils.ElementLog log)
+        public override void AddElementLog(Utils.ElementLog log)
         {
             if (!BeSilent)
             {

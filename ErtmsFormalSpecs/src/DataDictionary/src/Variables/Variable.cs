@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Variables
 {
@@ -287,6 +288,31 @@ namespace DataDictionary.Variables
                 }
 
                 return retVal;
+            }
+        }
+
+        public override void AddElementLog(Utils.ElementLog log)
+        {
+            if (Enclosing is DataDictionary.Types.NameSpace)
+            {
+                base.AddElementLog(log);
+            }
+            else
+            {
+                IEnclosed current = Enclosing as IEnclosed;
+                while (current != null)
+                {
+                    ModelElement element = current as ModelElement;
+                    if (element != null)
+                    {
+                        element.AddElementLog(log);
+                        current = null;
+                    }
+                    else
+                    {
+                        current = current.Enclosing as IEnclosed;
+                    }
+                }
             }
         }
 
