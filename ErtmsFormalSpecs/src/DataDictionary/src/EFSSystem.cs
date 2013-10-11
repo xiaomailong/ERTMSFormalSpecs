@@ -19,6 +19,7 @@ namespace DataDictionary
     using DataDictionary.Types;
     using DataDictionary.Interpreter;
     using DataDictionary.Rules;
+    using System;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -950,7 +951,7 @@ namespace DataDictionary
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Action obj, bool visitSubNodes)
             {
-                Action action = (Action)obj;
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
 
                 if (action.Statement != null && action.Statement.StaticUsage != null)
                 {
