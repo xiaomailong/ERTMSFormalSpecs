@@ -190,7 +190,7 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.9.8.1";
+        private string versionNumber = "0.9.8.2";
 
         /// <summary>
         /// The thread used to synchronize node names with their model

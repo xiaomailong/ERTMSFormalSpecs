@@ -200,7 +200,17 @@ namespace GUI
             {
                 if (!(baseForm.MessagesTextBox.ContainsFocus && ignoreFocused))
                 {
-                    baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
+                    IModelElement current = Model;
+                    List<ElementLog> messages = new List<ElementLog>();
+                    while (current != null)
+                    {
+                        if (current.Messages != null)
+                        {
+                            messages.AddRange(current.Messages);
+                        }
+                        current = current.Enclosing as IModelElement;
+                    }
+                    baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
                     baseForm.MessagesTextBox.ReadOnly = true;
                 }
             }
@@ -213,7 +223,7 @@ namespace GUI
             // By default, the explain text box is visible
             if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
             {
-                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused ))
+                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
                 {
                     baseForm.ExplainTextBox.SetModel(Model);
                     if (!baseForm.ExplainTextBox.Visible)

@@ -137,8 +137,10 @@ namespace GUI.TestRunnerView
             {
                 DateTime start = DateTime.Now;
 
+                SynchronizerList.SuspendSynchronization();
                 Failed = Dictionary.ExecuteAllTests();
                 Dictionary.EFSSystem.Runner = null;
+                SynchronizerList.ResumeSynchronization();
 
                 Span = DateTime.Now.Subtract(start);
             }

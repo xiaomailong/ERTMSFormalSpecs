@@ -26,7 +26,7 @@ namespace GUI.Converters
     /// <summary>
     /// Converts IExpressionable to string, by getting the Expression property
     /// </summary>
-    public class DefaultValueUITypeConverter : StringConverter
+    public class VariableValueUITypeConverter : StringConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -39,11 +39,11 @@ namespace GUI.Converters
             string text = value as string;
             if (editor != null && text != null)
             {
-                DataDictionary.Types.IDefaultValueElement defaultValueElement = editor.Model as DataDictionary.Types.IDefaultValueElement;
-                if (defaultValueElement != null)
+                DataDictionary.Variables.IVariable variable = editor.Model as DataDictionary.Variables.IVariable;
+                if (variable != null && variable.Type != null)
                 {
-                    defaultValueElement.Default = text;
-                    return defaultValueElement;
+                    variable.Value = variable.Type.getValue(text);
+                    return variable;
                 }
                 else
                 {
@@ -64,10 +64,10 @@ namespace GUI.Converters
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             string retVal = "<unknown>";
-            DataDictionary.Types.IDefaultValueElement defaultValueElement = value as DataDictionary.Types.IDefaultValueElement;
-            if (defaultValueElement != null)
+            DataDictionary.Variables.IVariable variable = value as DataDictionary.Variables.IVariable;
+            if (variable != null)
             {
-                retVal = defaultValueElement.Default;
+                retVal = variable.Value.LiteralName;
                 if (retVal != null)
                 {
                     int index = retVal.IndexOf("\n");
