@@ -2583,6 +2583,7 @@
  ModeOUT="NA"
  Name="Step1 - Setup"
 >
+<Comment>Setup of the enviroment</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -2600,6 +2601,7 @@
  TranslationRequired="FALSE"
  Name="Step2 - Mode OS + Level 1"
 >
+<Comment>level 1 needed to change to a valid mode</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -2619,7 +2621,7 @@
 >Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.Infill.Data == EMPTY </Expectation></Expectations>
+>Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2630,6 +2632,7 @@
  TranslationRequired="FALSE"
  Name="Step3 - BTM.Message + Linking + Mode != LS or FS"
 >
+<Comment>This step is for testing that the OBU doesnt received the packets because it is not in the correct mode, in this case should be FS or LS </Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
@@ -2736,6 +2739,7 @@ BTM.Linking.Linkings</Action>
  TranslationRequired="FALSE"
  Name="Step4 - BTM.Message + Mode FS"
 >
+<Comment>This step is for testing that the OBU receives the packets. It has all the necessary for it. The linking information, the correct mode LS or FS and a BTM.Message with the packets. </Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
@@ -2823,6 +2827,7 @@ BTM.Linking.Linkings</Action>
  Kind="Instantaneous"
  DeadLine="1"
 >Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+ Kind="Instantaneous"
  DeadLine="1"
 >Kernel.MA.MA.EndSection.Length == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -2835,6 +2840,7 @@ BTM.Linking.Linkings</Action>
  TranslationRequired="FALSE"
  Name="Step5 - BTM.Message + Mode LS"
 >
+<Comment>Same as step 4 but for LS</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
@@ -2884,20 +2890,8 @@ BTM.Linking.Linkings</Action>
                     V_LOA=&gt;8,
                     T_LOA=&gt;200,
                     N_ITER=&gt;0,
-                    Sequence1=&gt;
- [
-                        Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1
-                        {
-                            L_SECTION=&gt;120,
-                            Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow,
-                            D_SECTIONTIMERSTOPLOC=&gt;20,
-                            T_SECTIONTIMER=&gt;40
-                        }
-
-
-
-],
-                    L_ENDSECTION=&gt;1000,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;800,
                     Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
                     T_SECTIONTIMER=&gt;0,
                     D_SECTIONTIMERSTOPLOC=&gt;0,
@@ -2928,7 +2922,100 @@ BTM.Linking.Linkings</Action>
 >Kernel.Mode == Default.Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->THERE_IS_IN Kernel.MA.MA.Sections | X.Length == 120.0</Expectation></Expectations>
+>Kernel.MA.MA.EndSection.Length == 800.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - BTM.Message + Mode LS + No Linking"
+>
+<Comment>This step is for testing that if there is not linking information, the OBU does not receive the packet even if it is in the correct mode. The value of the length of the EndSection, is for the previous MA. That means that the new one ( 1200 ) it is not stored.</Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Linking.Linkings &lt;- []</Action>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [ 
+         Messages.EUROBALISE.SubStructure1
+            {
+              TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+                {
+                   INFILL_LOCATION_REFERENCE =&gt;Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message
+                     {
+                          L_PACKET=&gt;10,
+                          NID_BG=&gt;2126,
+                          NID_C=&gt;140,
+                          NID_PACKET=&gt;136,
+                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
+                     }
+                 }
+             },
+     Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1200,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         }
+                ]
+}</Action>
+</Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.MA.MA.EndSection.Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
