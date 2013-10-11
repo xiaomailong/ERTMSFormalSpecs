@@ -185,7 +185,13 @@
  Id="3.18.4.5.1"
 >
 </ReqRef>
-<Comment>Represents the train running number.</Comment>
+<ReqRef
+ Id="7.5.1.92"
+>
+</ReqRef>
+<Comment>Represents the train running number.
+
+The bcd notation as required by 7.5.92 is not possible in the model. Hence we stick with a simple string here. As there are no operations performed based on this value, this is uncritical. #morido, 13/10/11</Comment>
 <StructureElement
  TypeName="String"
  Default="&apos;&apos;"
