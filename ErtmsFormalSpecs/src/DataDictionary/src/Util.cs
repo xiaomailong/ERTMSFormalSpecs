@@ -223,7 +223,7 @@ namespace DataDictionary
             where T : class, IXmlBBase
         {
             /// <summary>
-            /// Loads a translation dictionary and lock the file
+            /// Loads a file and locks it
             /// </summary>
             /// <param name="filePath"></param>
             /// <param name="enclosing"></param>
@@ -267,14 +267,17 @@ namespace DataDictionary
         /// <param name="filePath">The path of the file which holds the dictionary data</param>
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
         /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem)
+        public static Dictionary load(String filePath, EFSSystem efsSystem = null)
         {
             Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath);
 
             if (retVal != null)
             {
                 retVal.FilePath = filePath;
-                efsSystem.AddDictionary(retVal);
+                if (efsSystem != null)
+                {
+                    efsSystem.AddDictionary(retVal);
+                }
 
                 // Loads the dependancies for this .efs file
                 LoadDepends loadDepends = new LoadDepends(retVal.BasePath);

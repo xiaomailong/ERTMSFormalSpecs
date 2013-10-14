@@ -1423,5 +1423,39 @@ namespace GUI
                 aReport.ShowDialog(this);
             }
         }
+
+        private void compareWithToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open ERTMS Formal Spec file";
+            openFileDialog.Filter = "EFS Files (*.efs)|*.efs|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    // Open the dictionary but do not store it in the EFS System
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
+                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
+                    dialog.ShowDialog();
+
+                    // Compare the files
+                    if (openFileOperation.Dictionary != null)
+                    {
+                        DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                finally
+                {
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                }
+
+                Refresh();
+            }
+
+        }
     }
 }

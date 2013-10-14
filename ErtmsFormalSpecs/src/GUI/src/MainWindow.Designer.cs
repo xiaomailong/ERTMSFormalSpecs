@@ -146,6 +146,8 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -385,6 +387,7 @@ namespace GUI
             this.specificationsToolStripMenuItem,
             this.findToolStripMenuItem,
             this.testsToolStripMenuItem,
+            this.historyToolStripMenuItem,
             this.generateERTMSAcademyReportToolStripMenuItem,
             this.toolStripSeparator9,
             this.searchToolStripMenuItem1,
@@ -961,6 +964,21 @@ namespace GUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compareWithToolStripMenuItem});
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.historyToolStripMenuItem.Text = "History";
+            // 
+            // compareWithToolStripMenuItem
+            // 
+            this.compareWithToolStripMenuItem.Name = "compareWithToolStripMenuItem";
+            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.compareWithToolStripMenuItem.Text = "Compare with...";
+            this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1089,6 +1107,8 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markParagraphsFromNewRevisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateERTMSAcademyReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compareWithToolStripMenuItem;
     }
 }
 

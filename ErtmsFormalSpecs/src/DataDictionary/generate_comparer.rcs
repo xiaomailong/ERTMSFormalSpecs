@@ -31,30 +31,106 @@ BEGIN
 `// --
 `// ------------------------------------------------------------------------------
 `
-`namespace DataDictionary.Values
+`namespace DataDictionary
 `{
+`    /// <summary>
+`    /// This class is used to compare two dictionaries 
+`    /// by annotating the first dictionary with the differences with the second
+`    /// </summary>
 `    public static class Comparer
 `    {
+`
+`        /// <summary>
+`        /// Computes a canonic form of a string
+`        /// </summary>
+`        /// <param name="s1"></param>
+`        /// <returns></returns>
+`        public static string canonicString(string s1)
+`        {
+`            string retVal = s1;
+`
+`            if (retVal == null)
+`            {
+`                retVal = "";
+`            }
+`
+`            retVal = retVal.Replace('\n', ' ');
+`            retVal = retVal.Replace('\t', ' ');
+`            retVal = retVal.Replace('\r', ' ');
+`
+`            while (retVal.IndexOf("  ") >= 0)
+`            {
+`                retVal = retVal.Replace("  ", " ");
+`            }
+`
+`            return retVal;
+`        }
+`
+`        /// <summary>
+`        /// Compares two strings
+`        /// </summary>
+`        /// <param name="s1"></param>
+`        /// <param name="s2"></param>
+`        /// <returns></returns>
+`        public static bool canonicalStringEquality(string s1, string s2)
+`        {
+`            bool retVal;
+`
+`            s1 = canonicString(s1);
+`            s2 = canonicString(s2);
+`            retVal = s1 == s2;
+`
+`            return retVal;
+`        }
+`
   });
 
   FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
 
-    FILE1.WriteList ({
-`        public static void compare(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other)
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Compares two `element.NAME` and annotates the differences on the first one
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="other"></param>
+`        public static void compare`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other)
 `        {
-    });
+`            if ( other == null )
+`            { 
+`                obj.AddInfo ("Element has been added");
+`                return;
+`            }
+`
+      });
 
-    FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
-      IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
-        FILE1.WriteList ({
+      IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
+      FILE1.WriteList ({
+`            compare`ValidName (element.BaseElement.NAME)` (obj, other);
+`
+      });
+      END;
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
+          IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+            FILE1.WriteList ({
+`            if ( !canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
+`            {
+`                obj.AddInfo ("Value of `field.NAME` changed. Previous value was " + other.get`field.NAME`());
+`            }
+            });
+          ELSE
+            FILE1.WriteList ({
 `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
 `            {
 `                obj.AddInfo ("Value of `field.NAME` changed. Previous value was " + other.get`field.NAME`());
 `            }
-        });
-      ELSIF ( field CAN REFTYPE ) THEN
-        IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
-          FILE1.WriteList({
+            });
+          END;
+        ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
+          IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+            FILE1.WriteList({
 `            if ( obj.all`field.NAME`() != null && other.all`field.NAME`() != null ) 
 `            {
 `                foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
@@ -62,9 +138,9 @@ BEGIN
 `                    bool compared = false;
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
-`                        if ( subElement.Name == otherElement.Name )
+`                        if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
 `                        {
-`                            compare ( subElement, otherElement );
+`                            compare`ValidName (field.REFTYPE)` ( subElement, otherElement );
 `                            compared = true;
 `                            break;
 `                        }
@@ -81,7 +157,7 @@ BEGIN
 `                    bool found = false;
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        if ( subElement.Name == otherElement.Name )
+`                        if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
 `                        {
 `                            found = true;
 `                            break;
@@ -94,18 +170,30 @@ BEGIN
 `                   }
 `               }
 `            }
-          });
-        ELSE
-          FILE1.WriteList({
-`            compare ( obj.get`field.NAME`(), other.get`field.NAME`() );
-          });
+            });
+          ELSE
+            FILE1.WriteList({
+`            if ( obj.get`field.NAME`() == null )
+`            {
+`                if ( other.get`field.NAME`() != null )
+`                {
+`                    obj.AddInfo ("Element `field.NAME` has been removed");
+`                }
+`            }
+`            else
+`            {
+`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`() );
+`            }
+            });
+          END; -- IF
         END; -- IF
-      END; -- IF
-    END; -- FOR field
+      END; -- FOR field
       FILE1.WriteList ({
 `        }
+`
       });
-  END; -- FOR element
+    END; -- FOR element
+  END; -- IF
 
   FILE1.WriteList ({
 `    }
@@ -113,6 +201,40 @@ BEGIN
   });
   FILE1.Flush;
 END GenerateImporterClass;
+
+VAR
+  Elements;
+
+-- Creates the symbol table for the elements of the system
+PROCEDURE PopulateSymbols( doc )
+BEGIN
+  Elements := ASSOC.New;
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    Elements[X.NAME] := X;
+  END;
+END PopulateSymbols;
+
+PROCEDURE CreateClassHierarchy ( doc )
+BEGIN
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    IF X CAN BASEELEMENT THEN
+      X.BaseElement := Elements[X.BASEELEMENT];
+    END;
+  END;
+END;
+
+PROCEDURE InheritsFrom(Element, BaseElement)
+VAR 
+  current;
+BEGIN
+  RESULT := FALSE;
+  current := Element;
+  WHILE ( current <> VOID ) AND NOT RESULT DO
+--    OUT.WriteLn (' -- ' & current.NAME &' '& current!BASECLASS &' =?= '& BaseElement &' -> '& RESULT);
+    RESULT := current!BASECLASS == BaseElement;
+    current := current!BaseElement;
+  END;
+END;
 
 PROCEDURE TERMINATE;
 VAR 
@@ -123,6 +245,12 @@ BEGIN
   OUT.WriteLn ("XML document read");
   IF doc <> VOID THEN
     doc := doc.GetDocumentElement;
+
+    OUT.WriteLn ("Populate symbols");
+    PopulateSymbols( doc );
+
+    OUT.WriteLn ("Create class hierarchy");
+    CreateClassHierarchy ( doc );
 
     OUT.WriteLn ("Generate comparer class");
     GenerateImporterClass ( doc );
