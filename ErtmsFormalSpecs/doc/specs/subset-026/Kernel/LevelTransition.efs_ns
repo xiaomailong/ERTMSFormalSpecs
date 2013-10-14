@@ -321,7 +321,7 @@ Packet.Sequence1 </Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>LTOtoProcess &lt;- FIRST_IN ( MAP LevelTransitionOrder.LevelandLength | AvailableForUse ( Level =&gt; X.TRLevel ) USING X)</Action>
+<Action>LTOtoProcess &lt;- FIRST_IN LevelTransitionOrder.LevelandLength | AvailableForUse( Level=&gt; X.TRLevel )</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
