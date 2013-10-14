@@ -3671,6 +3671,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </PreConditions>
 <Actions>
 <Action>Out_LevelTransitionAnnouncement.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action>
+<Action>Out_LevelTransitionAnnouncement.Level &lt;- TargetLevelToDisplay</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
