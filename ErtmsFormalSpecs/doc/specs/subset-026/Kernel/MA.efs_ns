@@ -2059,13 +2059,16 @@ IsSvL ( MA.EndOfMovementAuthority() )</PreCondition>
  NeedsRequirement="FALSE"
  Name="Add end section to the list of sections"
 >
+<Comment>The end section, if non empty, is added to the list of sections: that allows the automatic handling of all the sections.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Add end section to the list of sections"
 >
+<Comment></Comment>
 <PreConditions>
+<PreCondition>MA.EndSection.Length &gt; 0</PreCondition>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -2081,14 +2084,14 @@ IN MA.Sections</Action>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Remove sections before infill location"
+ Name="Remove sections after infill location"
 >
-<Comment></Comment>
+<Comment>The sections after the infill location are removed (will be replaced by the information from the infill MA).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="Remove sections before infill location"
+ Name="Remove sections after infill location"
 >
 <PreConditions>
 </PreConditions>
