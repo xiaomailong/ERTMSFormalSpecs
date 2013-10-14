@@ -252,7 +252,14 @@ namespace GUI
                 ReqRef reqRef = Model as ReqRef;
                 if (reqRef != null)
                 {
-                    requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                    if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                    {
+                        requirements = reqRef.Paragraph.FullId + ", ";
+                    }
+                    else
+                    {
+                        requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                    }
                 }
                 else
                 {

@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.displayEnclosingMessagesCheckBox = new System.Windows.Forms.CheckBox();
+            this.displayRequirementsAsListCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.displayRequirementsAsListCheckBox);
             this.tabPage1.Controls.Add(this.displayEnclosingMessagesCheckBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -65,6 +67,16 @@
             this.displayEnclosingMessagesCheckBox.TabIndex = 1;
             this.displayEnclosingMessagesCheckBox.Text = "Display enclosing messages";
             this.displayEnclosingMessagesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // displayRequirementsAsListCheckBox
+            // 
+            this.displayRequirementsAsListCheckBox.AutoSize = true;
+            this.displayRequirementsAsListCheckBox.Location = new System.Drawing.Point(8, 29);
+            this.displayRequirementsAsListCheckBox.Name = "displayRequirementsAsListCheckBox";
+            this.displayRequirementsAsListCheckBox.Size = new System.Drawing.Size(152, 17);
+            this.displayRequirementsAsListCheckBox.TabIndex = 2;
+            this.displayRequirementsAsListCheckBox.Text = "Display requirements as list";
+            this.displayRequirementsAsListCheckBox.UseVisualStyleBackColor = true;
             // 
             // Options
             // 
@@ -86,5 +98,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.CheckBox displayEnclosingMessagesCheckBox;
+        private System.Windows.Forms.CheckBox displayRequirementsAsListCheckBox;
     }
 }

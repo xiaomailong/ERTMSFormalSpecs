@@ -1137,5 +1137,7 @@ namespace DataDictionary
         /// Indicates whether enclosing messages should be displayed
         /// </summary>
         public bool DisplayEnclosingMessages { get; set; }
+
+        public bool DisplayRequirementsAsList { get; set; }
     }
 }

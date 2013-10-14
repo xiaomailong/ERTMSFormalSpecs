@@ -23,6 +23,7 @@ namespace GUI.Options
         public void Setup(DataDictionary.EFSSystem system)
         {
             displayEnclosingMessagesCheckBox.Checked = system.DisplayEnclosingMessages;
+            displayRequirementsAsListCheckBox.Checked = system.DisplayRequirementsAsList;
         }
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace GUI.Options
         public void UpdateSystem(DataDictionary.EFSSystem system)
         {
             system.DisplayEnclosingMessages = displayEnclosingMessagesCheckBox.Checked;
+            system.DisplayRequirementsAsList = displayRequirementsAsListCheckBox.Checked;
         }
     }
 }
