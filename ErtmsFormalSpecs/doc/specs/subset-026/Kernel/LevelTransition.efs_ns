@@ -204,7 +204,7 @@
 >
 <PreConditions>
 <PreCondition>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition>
-<PreCondition>THERE_IS_IN EURORADIO.AvailableMobileTerminals | X == EURORADIO.MobileTerminal.Available</PreCondition>
+<PreCondition>EURORADIO.AvailableMobileTerminals &gt;= 1</PreCondition>
 </PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case

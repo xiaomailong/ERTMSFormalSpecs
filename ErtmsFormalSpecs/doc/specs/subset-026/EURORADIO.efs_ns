@@ -9,6 +9,20 @@
  Name="TrainData"
 >
 </NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="2"
+ Precision="IntegerPrecision"
+ Default="0"
+ Name="MobileTerminals"
+>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
+<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
+</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SafeRadioConnection.NoConnection"
@@ -109,20 +123,6 @@
 </EnumValue><EnumValue
  Value=""
  Name="NonMatching"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="NotAvailable"
- Name="MobileTerminal"
->
-<Values>
-<EnumValue
- Value="1"
- Name="Available"
->
-</EnumValue><EnumValue
- Value="0"
- Name="NotAvailable"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -791,16 +791,6 @@
  NeedsRequirement="FALSE"
  Name="RadioSessions"
 >
-</Collection><Collection
- TypeName="EURORADIO.MobileTerminal"
- MaxSize="2"
- Default="[MobileTerminal.Available, MobileTerminal.NotAvailable]"
- Name="MobileTerminals"
->
-<ReqRef
- Id="5.10.2.4.1"
->
-</ReqRef>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
