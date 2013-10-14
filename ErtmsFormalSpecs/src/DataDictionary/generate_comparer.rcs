@@ -1,0 +1,136 @@
+MODULE GenerateComparer;
+
+-- Create a valid C# name
+PROCEDURE ValidName ( name )
+BEGIN
+  RESULT := name;
+  RESULT := STR.Replace ( RESULT, "-", "_" );
+  RESULT := STR.Replace ( RESULT, "/", "_" );
+  RESULT := STR.Replace ( RESULT, ".", "_" );
+  RESULT := STR.Replace ( RESULT, " ", "_" );
+END ValidName;
+
+-- Generates the class for the corresponding element
+PROCEDURE GenerateImporterClass ( doc )
+BEGIN
+  FILE1.Redirect ("src/Comparer.cs");
+  FILE1.WriteList ({
+`// ------------------------------------------------------------------------------
+`// -- Copyright ERTMS Solutions
+`// -- Licensed under the EUPL V.1.1
+`// -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+`// --
+`// -- This file is part of ERTMSFormalSpec software and documentation
+`// --
+`// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
+`// --  it under the terms of the EUPL General Public License, v.1.1
+`// --
+`// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
+`// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+`// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+`// --
+`// ------------------------------------------------------------------------------
+`
+`namespace DataDictionary.Values
+`{
+`    public static class Comparer
+`    {
+  });
+
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    FILE1.WriteList ({
+`        public static void compare(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other)
+`        {
+    });
+
+    FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+      IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
+        FILE1.WriteList ({
+`            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
+`            {
+`                obj.AddInfo ("Value of `field.NAME` changed. Previous value was " + other.get`field.NAME`());
+`            }
+        });
+      ELSIF ( field CAN REFTYPE ) THEN
+        IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+          FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null && other.all`field.NAME`() != null ) 
+`            {
+`                foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                {
+`                    bool compared = false;
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        if ( subElement.Name == otherElement.Name )
+`                        {
+`                            compare ( subElement, otherElement );
+`                            compared = true;
+`                            break;
+`                        }
+`                    }
+`
+`                    if ( !compared ) 
+`                    {
+`                        subElement.AddInfo ("Element added");
+`                    }
+`                }
+``
+`                foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                {
+`                    bool found = false;
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        if ( subElement.Name == otherElement.Name )
+`                        {
+`                            found = true;
+`                            break;
+`                        }
+`                   }
+`
+`                   if ( !found )
+`                   {
+`                      obj.AddInfo("Element " + otherElement.Name + " has been removed");                   
+`                   }
+`               }
+`            }
+          });
+        ELSE
+          FILE1.WriteList({
+`            compare ( obj.get`field.NAME`(), other.get`field.NAME`() );
+          });
+        END; -- IF
+      END; -- IF
+    END; -- FOR field
+      FILE1.WriteList ({
+`        }
+      });
+  END; -- FOR element
+
+  FILE1.WriteList ({
+`    }
+`}
+  });
+  FILE1.Flush;
+END GenerateImporterClass;
+
+PROCEDURE TERMINATE;
+VAR 
+  doc;
+BEGIN
+  OUT.WriteLn ("Starting process");
+  doc := XML.LoadFile ( SYS.Args[1] );
+  OUT.WriteLn ("XML document read");
+  IF doc <> VOID THEN
+    doc := doc.GetDocumentElement;
+
+    OUT.WriteLn ("Generate comparer class");
+    GenerateImporterClass ( doc );
+    
+  ELSE
+    ERR.WriteLn ( "Cannot read file " & SYS.Args[1] );
+  END;
+
+  OUT.WriteLn ("Done");
+END TERMINATE;
+
