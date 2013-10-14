@@ -21,17 +21,6 @@
 >
 </ReqRef>
 <StructureElement
- TypeName="Default.Level"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="TRLevel"
->
-<ReqRef
- Id="7.5.1.67"
->
-</ReqRef>
-</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -43,17 +32,19 @@
 >
 </ReqRef>
 </StructureElement><StructureElement
- TypeName="Messages.NID_NTC"
+ TypeName="Default.LevelData"
  Default=""
  Mode="Internal"
- Implemented="TRUE"
- Name="TRLevelNTCID"
+ Name="TRLevel"
 >
+<ReqRef
+ Id="7.5.1.67"
+>
+</ReqRef>
 <ReqRef
  Id="7.5.1.98"
 >
 </ReqRef>
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelTransitionOrder"
@@ -351,7 +342,8 @@ Packet.Sequence1 </Action>
 <Comment></Comment>
 <PreConditions>
 <PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition>
-<PreCondition>LTOtoProcess.TRLevel == Default.Level.Unknown</PreCondition>
+<PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.Unknown</PreCondition>
+<PreCondition>LTOtoProcess.TRLevel.NTC == Messages.NID_NTC.NOT_APPLICABLE</PreCondition>
 </PreConditions>
 <Actions>
 <Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action>
@@ -440,8 +432,10 @@ Packet.Sequence1 </Action>
 LevelTransition
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
-    TRLevelNTCID =&gt; NID_NTC
+    TRLevel =&gt; Default.LevelData {
+       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+       NTC =&gt; NID_NTC
+    }
 }
 IN  LevelTransitionOrder.LevelandLength</Action>
 </Actions>
@@ -464,7 +458,9 @@ IN  LevelTransitionOrder.LevelandLength</Action>
  Id="5.10.2.7.1"
 >
 </ReqRef>
-<Comment>Handles the display on the DMI</Comment>
+<Comment>Handles the display on the DMI
+
+open question: In case of NTC shall the driver be informed about the NTC as well? #morido, 13/10/14</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -481,7 +477,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel)</Action>
+<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel.Value)</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -619,12 +615,13 @@ Packet.Sequence1 </Action>
  Implemented="TRUE"
  Name="ExecuteLevelTransitionOrder"
 >
+<Comment>NTC-part not functional for now (Kernel.NationalSystemId). Requirement for this is missing. Is it needed? #morido, 13/10/14</Comment>
 <PreConditions>
 <PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition>
-<PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition>
+<PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True</PreCondition>
 </PreConditions>
 <Actions>
-<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel</Action>
+<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel.Value</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
