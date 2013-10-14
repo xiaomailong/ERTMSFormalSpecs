@@ -117,67 +117,136 @@ BEGIN
             FILE1.WriteList ({
 `            if ( !canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
 `            {
-`                obj.AddInfo ("Value of `field.NAME` changed. Previous value was " + other.get`field.NAME`());
+`                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
           ELSE
             FILE1.WriteList ({
 `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
 `            {
-`                obj.AddInfo ("Value of `field.NAME` changed. Previous value was " + other.get`field.NAME`());
+`                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
           END;
         ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
           IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
-            FILE1.WriteList({
-`            if ( obj.all`field.NAME`() != null && other.all`field.NAME`() != null ) 
+            IF (field.REFTYPE = 'Action') OR (field.REFTYPE = 'PreCondition') OR (field.REFTYPE = 'Expectation') THEN
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
 `            {
-`                foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                if ( other.all`field.NAME`() != null ) 
 `                {
-`                    bool compared = false;
-`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    int i = 0;
+`                    while ( i < obj.count`field.NAME`() && i < other.count`field.NAME`() )
 `                    {
-`                        if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                        ModelElement element = (ModelElement) obj.get`field.NAME`( i );
+`                        ModelElement otherElement = (ModelElement) other.get`field.NAME`( i );
+`                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
 `                        {
-`                            compare`ValidName (field.REFTYPE)` ( subElement, otherElement );
-`                            compared = true;
-`                            break;
+`                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
 `                        }
+`                        i += 1;
 `                    }
-`
-`                    if ( !compared ) 
+`                    while ( i < obj.count`field.NAME`() )
 `                    {
-`                        subElement.AddInfo ("Element added");
+`                        obj.AddInfo("ADDED : " + obj.get`field.NAME`( i ).Name );                   
+`                        i += 1;
+`                    }
+`                    while ( i < other.count`field.NAME`() )
+`                    {
+`                        obj.AddInfo("REMOVED : " + other.get`field.NAME`( i ).Name );                   
+`                        i += 1;
 `                    }
 `                }
-``
-`                foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                else 
 `                {
-`                    bool found = false;
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
-`                        if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
-`                        {
-`                            found = true;
-`                            break;
-`                        }
-`                   }
-`
-`                   if ( !found )
-`                   {
-`                      obj.AddInfo("Element " + otherElement.Name + " has been removed");                   
-`                   }
-`               }
+`                        obj.AddInfo("ADDED : " + subElement.Name );                   
+`                    }
+`                }
 `            }
-            });
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
+`                    }
+`                }
+`            }
+              }); 
+            ELSE
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        bool compared = false;
+`                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                        {
+`                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            {
+`                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement );
+`                                compared = true;
+    `                            break;
+`                            }
+`                        }
+`
+`                        if ( !compared ) 
+`                        {
+`                            obj.AddInfo("ADDED : "+ subElement.Name );                   
+`                        }
+`                    }
+`
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        bool found = false;
+`                        foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                        {
+`                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            {
+`                                found = true;
+`                                break;
+`                            }
+`                        }
+`
+`                        if ( !found )
+`                        {
+`                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
+`                        }
+`                    }
+`                }
+`                else 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        obj.AddInfo("ADDED : "+ subElement.Name );                   
+`                    }
+`                }
+`            }
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
+`                    }
+`                }
+`            }
+              });
+            END;
           ELSE
             FILE1.WriteList({
 `            if ( obj.get`field.NAME`() == null )
 `            {
 `                if ( other.get`field.NAME`() != null )
 `                {
-`                    obj.AddInfo ("Element `field.NAME` has been removed");
+`                    obj.AddInfo ("REMOVED : `field.NAME`");
 `                }
 `            }
 `            else
