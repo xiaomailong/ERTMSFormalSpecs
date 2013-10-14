@@ -116,6 +116,8 @@ namespace GUI
             this.importFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.generateDynamicCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateERTMSAcademyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,8 +148,6 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compareWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -739,6 +739,21 @@ namespace GUI
             this.generateDynamicCoverageReportToolStripMenuItem.Text = "Generate dynamic coverage report...";
             this.generateDynamicCoverageReportToolStripMenuItem.Click += new System.EventHandler(this.generateDynamicCoverageReportToolStripMenuItem_Click);
             // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compareWithToolStripMenuItem});
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.historyToolStripMenuItem.Text = "History";
+            // 
+            // compareWithToolStripMenuItem
+            // 
+            this.compareWithToolStripMenuItem.Name = "compareWithToolStripMenuItem";
+            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.compareWithToolStripMenuItem.Text = "Compare with...";
+            this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
+            // 
             // generateERTMSAcademyReportToolStripMenuItem
             // 
             this.generateERTMSAcademyReportToolStripMenuItem.Name = "generateERTMSAcademyReportToolStripMenuItem";
@@ -781,6 +796,7 @@ namespace GUI
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -963,21 +979,6 @@ namespace GUI
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // historyToolStripMenuItem
-            // 
-            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.compareWithToolStripMenuItem});
-            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.historyToolStripMenuItem.Text = "History";
-            // 
-            // compareWithToolStripMenuItem
-            // 
-            this.compareWithToolStripMenuItem.Name = "compareWithToolStripMenuItem";
-            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.compareWithToolStripMenuItem.Text = "Compare with...";
-            this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

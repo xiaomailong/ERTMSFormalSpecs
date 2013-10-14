@@ -1132,5 +1132,10 @@ namespace DataDictionary
 
             return visitor.Usages;
         }
+
+        /// <summary>
+        /// Indicates whether enclosing messages should be displayed
+        /// </summary>
+        public bool DisplayEnclosingMessages { get; set; }
     }
 }

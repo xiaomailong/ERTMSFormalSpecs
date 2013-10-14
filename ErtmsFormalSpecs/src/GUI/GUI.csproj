@@ -100,6 +100,12 @@
     <Compile Include="src\GraphView\GraphView.Designer.cs">
       <DependentUpon>GraphView.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Options\Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Options\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\ReferencesParagraphTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\RuleConditionsTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\RuleConditionTreeNode.cs" />
@@ -399,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GraphView\GraphView.resx">
       <DependentUpon>GraphView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Options\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>

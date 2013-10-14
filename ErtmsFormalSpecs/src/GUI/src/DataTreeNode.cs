@@ -208,7 +208,15 @@ namespace GUI
                         {
                             messages.AddRange(current.Messages);
                         }
-                        current = current.Enclosing as IModelElement;
+
+                        if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
+                        {
+                            current = current.Enclosing as IModelElement;
+                        }
+                        else
+                        {
+                            current = null;
+                        }
                     }
                     baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
                     baseForm.MessagesTextBox.ReadOnly = true;
