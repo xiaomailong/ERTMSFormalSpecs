@@ -165,6 +165,26 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
+        /// A simple runner
+        /// </summary>
+        public Runner(bool logEvents = false, int step = 100, int storeEventCount = 0)
+        {
+            EventTimeLine = new Events.EventTimeLine();
+            SubSequence = null;
+            Step = 100;
+            EventTimeLine.MaxNumberOfEvents = storeEventCount;
+            EFSSystem.Runner = this;
+            LogEvents = logEvents;
+
+            // Compile everything
+            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
+            compiler.Compile();
+            EFSSystem.ShouldRebuild = false;
+
+            Setup();
+        }
+
+        /// <summary>
         /// Sets up all variables before any execution on the system
         /// </summary>
         private class Setuper : Generated.Visitor
@@ -372,24 +392,7 @@ namespace DataDictionary.Tests.Runner
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
-                    if (LogEvents)
-                    {
-                        Log.Info("Priority=" + priority);
-                    }
-                    // Clears the cache of functions
-                    FunctionCacheCleaner.ClearCaches();
-
-                    // Activates the processing engine
-                    HashSet<Activation> activations = new HashSet<Activation>();
-                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-                    {
-                        foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
-                        {
-                            SetupNameSpaceActivations(priority, activations, nameSpace, null);
-                        }
-                    }
-
-                    ApplyActivations(activations);
+                    innerExecuteOnePriority(priority);
                 }
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
@@ -418,6 +421,62 @@ namespace DataDictionary.Tests.Runner
             finally
             {
                 DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
+
+            EventTimeLine.CurrentTime += Step;
+        }
+
+        /// <summary>
+        /// Executes a single rule priority (shared version of the method)
+        /// </summary>
+        /// <param name="priority"></param>
+        private void innerExecuteOnePriority(Generated.acceptor.RulePriority priority)
+        {
+            if (LogEvents)
+            {
+                Log.Info("Priority=" + priority);
+            }
+            // Clears the cache of functions
+            FunctionCacheCleaner.ClearCaches();
+
+            // Activates the processing engine
+            HashSet<Activation> activations = new HashSet<Activation>();
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
+                {
+                    SetupNameSpaceActivations(priority, activations, nameSpace, null);
+                }
+            }
+
+            ApplyActivations(activations);
+        }
+        /// <summary>
+        /// Executes the interpretation machine for one priority
+        /// </summary>
+        /// <param name="priority"></param>
+        public void ExecuteOnePriority(DataDictionary.Generated.acceptor.RulePriority priority)
+        {
+            try
+            {
+                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                LastActivationTime = Time;
+
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+
+                // Executes a single rule priority
+                innerExecuteOnePriority(priority);
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+                EventTimeLine.GarbageCollect();
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
             }
 
             EventTimeLine.CurrentTime += Step;
