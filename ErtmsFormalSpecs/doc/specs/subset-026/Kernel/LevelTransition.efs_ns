@@ -216,6 +216,72 @@
 <Procedures>
 <Procedure
  Implemented="TRUE"
+ Name="AddNewLTO"
+>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.39"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.67"
+>
+</ReqRef>
+<ReqRef
+ Id="5.10.1.2"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Length"
+ Name="L_ACKLEVELTR"
+>
+</Parameter><Parameter
+ Type="Messages.M_LEVELTR"
+ Name="M_LEVELTR"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="Q_SCALE"
+>
+</Parameter><Parameter
+ Type="Messages.NID_NTC"
+ Name="NID_NTC"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="AddNewLTO"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="NewLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>INSERT
+LevelTransition
+{
+    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
+    TRLevel =&gt; Default.LevelData {
+       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+       NTC =&gt; NID_NTC
+    }
+}
+IN  LevelTransitionOrder.LevelandLength</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
  Name="LTOReceived"
 >
 <ReqRef
@@ -223,17 +289,9 @@
 >
 </ReqRef>
 <ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef>
-<ReqRef
  Id="5.10.1.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="5.10.2.2"
->
 </ReqRef>
 <ReqRef
  Id="5.10.2.1"
@@ -249,9 +307,16 @@
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="NewLevelTransition"
+ Name="ReceiveData"
 >
+<ReqRef
+ Id="5.10.2.2"
+>
+</ReqRef>
+<ReqRef
+ Id="7.4.2.9.1"
+>
+</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -269,16 +334,7 @@
   LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
 </Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="NextLevelTransition"
->
-<Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NextLevelTransition"
 >
@@ -377,72 +433,6 @@ Packet.Sequence1 </Action>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Name="AddNewLTO"
->
-<ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef>
-<ReqRef
- Id="7.5.1.39"
->
-</ReqRef>
-<ReqRef
- Id="7.5.1.67"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.2"
->
-</ReqRef>
-<Parameters>
-<Parameter
- Type="Default.MessageTypes.Length"
- Name="L_ACKLEVELTR"
->
-</Parameter><Parameter
- Type="Messages.M_LEVELTR"
- Name="M_LEVELTR"
->
-</Parameter><Parameter
- Type="Messages.Q_SCALE"
- Name="Q_SCALE"
->
-</Parameter><Parameter
- Type="Messages.NID_NTC"
- Name="NID_NTC"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="AddNewLTO"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="NewLevelTransition"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>INSERT
-LevelTransition
-{
-    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel =&gt; Default.LevelData {
-       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
-       NTC =&gt; NID_NTC
-    }
-}
-IN  LevelTransitionOrder.LevelandLength</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
  Name="LevelTransitionAnnouncement"
 >
 <ReqRef
@@ -502,14 +492,13 @@ open question: In case of NTC shall the driver be informed about the NTC as well
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="NewConditionalLevelTransitionOrder"
+ Name="ReceiveData"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="NewConditionalLevelTransitionOrder"
+ Name="NewConditionalLevelTransition"
 >
 <PreConditions>
 </PreConditions>
@@ -521,15 +510,7 @@ open question: In case of NTC shall the driver be informed about the NTC as well
    LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
 </Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="NextConditionalLevelTransitionOrder"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NextConditionalLevelTransition"
 >
