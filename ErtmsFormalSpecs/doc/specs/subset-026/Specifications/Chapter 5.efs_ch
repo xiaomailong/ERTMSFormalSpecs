@@ -4622,6 +4622,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
@@ -4823,8 +4824,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.
-</Paragraph><Paragraph
+>An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.</Paragraph><Paragraph
  id="5.10.3.2.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4958,11 +4958,13 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
->A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
+><Comment>Does the track description requirement imply a boolean AND or an OR for the individual description parts (Kernel.TrackDescription.TrackDescriptionAvailable)? #morido, 13/10/15</Comment>
+A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
  id="5.10.3.4.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -5469,7 +5471,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5480,7 +5482,7 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5490,12 +5492,12 @@ When performing a SoM or a Train Trip procedure and when the current level is 2 
  scope="OBU_AND_TRACK"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the current level is not contained in the priority list of the conditional level transition order, the onboard shall evaluate the conditional level transition order in the same way as an immediate level transition order (see section 5.10.2).
-</Paragraph><Paragraph
+>If the current level is not contained in the priority list of the conditional level transition order, the onboard shall evaluate the conditional level transition order in the same way as an immediate level transition order (see section 5.10.2).</Paragraph><Paragraph
  id="5.10.3.14.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"

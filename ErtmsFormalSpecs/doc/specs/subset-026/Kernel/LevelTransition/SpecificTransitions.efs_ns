@@ -5,16 +5,19 @@
 </NameSpaces>
 <Procedures>
 <Procedure
+ NeedsRequirement="FALSE"
  Name="L0toL1"
 >
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="PreconditionsForTransition"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="preconditions_not_met"
 >
 <ReqRef
