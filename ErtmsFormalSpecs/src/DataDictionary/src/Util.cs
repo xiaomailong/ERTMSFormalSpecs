@@ -280,15 +280,39 @@ namespace DataDictionary
                 }
 
                 // Loads the dependancies for this .efs file
-                LoadDepends loadDepends = new LoadDepends(retVal.BasePath);
-                loadDepends.visit(retVal);
+                try
+                {
+                    Generated.ControllersManager.DesactivateAllNotifications();
+                    LoadDepends loadDepends = new LoadDepends(retVal.BasePath);
+                    loadDepends.visit(retVal);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e.Message);
+                }
+                finally
+                {
+                    Generated.ControllersManager.ActivateAllNotifications();
+                }
 
                 // Updates the contents of this .efs file
-                Updater updater = new Updater();
-                updater.visit(retVal);
-                if (retVal.Specifications != null)
+                try
                 {
-                    retVal.Specifications.ManageTypeSpecs();
+                    Generated.ControllersManager.DesactivateAllNotifications();
+                    Updater updater = new Updater();
+                    updater.visit(retVal);
+                    if (retVal.Specifications != null)
+                    {
+                        retVal.Specifications.ManageTypeSpecs();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e.Message);
+                }
+                finally
+                {
+                    Generated.ControllersManager.ActivateAllNotifications();
                 }
             }
 
