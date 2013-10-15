@@ -184,23 +184,5 @@ namespace GUI.SpecificationView
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
         }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
-        }
     }
 }
