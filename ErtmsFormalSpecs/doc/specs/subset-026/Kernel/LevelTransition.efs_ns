@@ -2,7 +2,10 @@
  Name="LevelTransition"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="SpecificTransitions"
+>
+</NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
  Implemented="TRUE"
@@ -170,6 +173,7 @@
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="AvailableForUse"
 >
 <ReqRef
@@ -534,6 +538,32 @@ Packet.Sequence1 </Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="ProcessLTO"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="L0ToL1"
+>
+<ReqRef
+ Id="5.10.3.4"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.Level.Value == Default.Level.L0</PreCondition>
+<PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SpecificTransitions.L0toL1()</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -562,6 +592,7 @@ Packet.Sequence1 </Action>
  Type="Kernel.LevelTransition.LevelTransition"
  DefaultValue=""
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="LTOtoProcess"
 >
 <ReqRef

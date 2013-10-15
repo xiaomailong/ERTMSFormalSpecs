@@ -27,4 +27,31 @@
  Name="ReversingArea"
 >
 </NameSpaceRef></NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="TrackDescriptionAvailable"
+>
+<Cases>
+<Case
+ Name="NoInformationAvailable"
+>
+<PreConditions>
+<PreCondition>AdhesionFactors.AdhFactors == []</PreCondition>
+<PreCondition>AxleLoad.ASP.ALs == []</PreCondition>
+<PreCondition>Gradient.Gradients == []</PreCondition>
+<PreCondition>PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions == []</PreCondition>
+<PreCondition>ReversingArea.ReversingAreaProfile == EMPTY</PreCondition>
+<PreCondition>RouteSuitability.RouteSuitabilityProfile == EMPTY</PreCondition>
+<PreCondition>StaticSpeedProfile.SSP == []</PreCondition>
+<PreCondition>TrackConditions.TCProfile.Conditions == []</PreCondition>
+</PreConditions>
+<Expression>Boolean.False</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Boolean.True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>
