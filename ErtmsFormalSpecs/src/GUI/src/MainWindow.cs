@@ -21,6 +21,8 @@ using System.Windows.Forms;
 using DataDictionary;
 using Utils;
 using System.Threading;
+using LibGit2Sharp;
+using System.Diagnostics;
 
 namespace GUI
 {
@@ -436,7 +438,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System);
+                Dictionary = DataDictionary.Util.load(FileName, System, System != null);
             }
         }
 
@@ -1431,31 +1433,23 @@ namespace GUI
             openFileDialog.Filter = "EFS Files (*.efs)|*.efs|All Files (*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                try
-                {
-                    // Open the dictionary but do not store it in the EFS System
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                // Open the dictionary but do not store it in the EFS System
+                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
+                ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
+                dialog.ShowDialog();
 
-                    // Compare the files
-                    if (openFileOperation.Dictionary != null)
-                    {
-                        DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                finally
+                // Compare the files
+                if (openFileOperation.Dictionary != null)
                 {
-                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                    DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 Refresh();
             }
-
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1464,6 +1458,73 @@ namespace GUI
             optionForm.Setup(EFSSystem);
             optionForm.ShowDialog(this);
             optionForm.UpdateSystem(EFSSystem);
+        }
+
+        private void compareWithGitRevisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Compares with the active dictionary
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            string workingDir = Path.GetDirectoryName(dictionary.FilePath);
+
+            // Retrieve the hash tag
+            string versionHashTag = "1cefa41aff53ddef01f01621c9c90fe7040f3e4f ";
+
+            // Create the temp directory to store alternate version of the subset file
+            string tempDirectory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Directory.CreateDirectory(tempDirectory);
+            try
+            {
+                // Retrieve the archive of the selected version
+                {
+                    ProcessStartInfo _processStartInfo = new ProcessStartInfo();
+                    // _processStartInfo.WorkingDirectory = "c:\\ertms-repositories\\ERTMSFormalSpecs";
+                    _processStartInfo.WorkingDirectory = workingDir;
+                    _processStartInfo.FileName = "git";
+                    _processStartInfo.Arguments = "archive -o " + tempDirectory + "\\specs.zip " + versionHashTag + " .";
+                    _processStartInfo.CreateNoWindow = true;
+                    _processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process myProcess = Process.Start(_processStartInfo);
+                    myProcess.WaitForExit();
+                }
+
+                // Unzip the archive
+                {
+                    ICSharpCode.SharpZipLib.Zip.FastZip zip = new ICSharpCode.SharpZipLib.Zip.FastZip();
+                    zip.ExtractZip(tempDirectory + "\\specs.zip", tempDirectory, null);
+                }
+
+                // Open the dictionary but do not store it in the EFS System
+                OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null);
+                ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
+                dialog.ShowDialog();
+
+                // Compare the files
+                if (openFileOperation.Dictionary != null)
+                {
+                    DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                try
+                {
+                    Directory.Delete(tempDirectory, true);
+                }
+                catch (Exception exception2)
+                {
+                    MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            Refresh();
         }
     }
 }

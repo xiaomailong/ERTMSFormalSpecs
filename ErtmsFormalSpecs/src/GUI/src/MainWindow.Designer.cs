@@ -148,6 +148,7 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.compareWithGitRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -742,7 +743,8 @@ namespace GUI
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.compareWithToolStripMenuItem});
+            this.compareWithToolStripMenuItem,
+            this.compareWithGitRevisionToolStripMenuItem});
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.historyToolStripMenuItem.Text = "History";
@@ -750,8 +752,8 @@ namespace GUI
             // compareWithToolStripMenuItem
             // 
             this.compareWithToolStripMenuItem.Name = "compareWithToolStripMenuItem";
-            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.compareWithToolStripMenuItem.Text = "Compare with...";
+            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.compareWithToolStripMenuItem.Text = "Compare with local file...";
             this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
             // 
             // generateERTMSAcademyReportToolStripMenuItem
@@ -980,6 +982,13 @@ namespace GUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // compareWithGitRevisionToolStripMenuItem
+            // 
+            this.compareWithGitRevisionToolStripMenuItem.Name = "compareWithGitRevisionToolStripMenuItem";
+            this.compareWithGitRevisionToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.compareWithGitRevisionToolStripMenuItem.Text = "Compare with git revision...";
+            this.compareWithGitRevisionToolStripMenuItem.Click += new System.EventHandler(this.compareWithGitRevisionToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1110,6 +1119,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem generateERTMSAcademyReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compareWithToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compareWithGitRevisionToolStripMenuItem;
     }
 }
 
