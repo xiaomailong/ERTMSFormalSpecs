@@ -13,7 +13,7 @@ END ValidName;
 -- Generates the class for the corresponding element
 PROCEDURE GenerateImporterClass ( doc )
 BEGIN
-  FILE1.Redirect ("src/Comparer.cs");
+  FILE1.Redirect ("src/Compare/Comparer.cs");
   FILE1.WriteList ({
 `// ------------------------------------------------------------------------------
 `// -- Copyright ERTMS Solutions
@@ -31,58 +31,10 @@ BEGIN
 `// --
 `// ------------------------------------------------------------------------------
 `
-`namespace DataDictionary
+`namespace DataDictionary.Compare
 `{
-`    /// <summary>
-`    /// This class is used to compare two dictionaries 
-`    /// by annotating the first dictionary with the differences with the second
-`    /// </summary>
-`    public static class Comparer
+`    public static class Comparer 
 `    {
-`
-`        /// <summary>
-`        /// Computes a canonic form of a string
-`        /// </summary>
-`        /// <param name="s1"></param>
-`        /// <returns></returns>
-`        public static string canonicString(string s1)
-`        {
-`            string retVal = s1;
-`
-`            if (retVal == null)
-`            {
-`                retVal = "";
-`            }
-`
-`            retVal = retVal.Replace('\n', ' ');
-`            retVal = retVal.Replace('\t', ' ');
-`            retVal = retVal.Replace('\r', ' ');
-`
-`            while (retVal.IndexOf("  ") >= 0)
-`            {
-`                retVal = retVal.Replace("  ", " ");
-`            }
-`
-`            return retVal;
-`        }
-`
-`        /// <summary>
-`        /// Compares two strings
-`        /// </summary>
-`        /// <param name="s1"></param>
-`        /// <param name="s2"></param>
-`        /// <returns></returns>
-`        public static bool canonicalStringEquality(string s1, string s2)
-`        {
-`            bool retVal;
-`
-`            s1 = canonicString(s1);
-`            s2 = canonicString(s2);
-`            retVal = s1 == s2;
-`
-`            return retVal;
-`        }
-`
   });
 
   FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
@@ -94,10 +46,11 @@ BEGIN
 `        /// </summary>
 `        /// <param name="obj"></param>
 `        /// <param name="other"></param>
-`        public static void compare`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other)
+`        public static void compare`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other, VersionDiff diff)
 `        {
 `            if ( other == null )
 `            { 
+`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
 `                obj.AddInfo ("Element has been added");
 `                return;
 `            }
@@ -106,7 +59,7 @@ BEGIN
 
       IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
       FILE1.WriteList ({
-`            compare`ValidName (element.BaseElement.NAME)` (obj, other);
+`            compare`ValidName (element.BaseElement.NAME)` (obj, other, diff);
 `
       });
       END;
@@ -115,8 +68,9 @@ BEGIN
         IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
           IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
             FILE1.WriteList ({
-`            if ( !canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
+`            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
 `            {
+`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
 `                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
@@ -124,6 +78,7 @@ BEGIN
             FILE1.WriteList ({
 `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
 `            {
+`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
 `                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
@@ -141,19 +96,22 @@ BEGIN
 `                    {
 `                        ModelElement element = (ModelElement) obj.get`field.NAME`( i );
 `                        ModelElement otherElement = (ModelElement) other.get`field.NAME`( i );
-`                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+`                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
 `                        {
+`                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
 `                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
 `                        }
 `                        i += 1;
 `                    }
 `                    while ( i < obj.count`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
 `                        obj.AddInfo("ADDED : " + obj.get`field.NAME`( i ).Name );                   
 `                        i += 1;
 `                    }
 `                    while ( i < other.count`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.get`field.NAME`( i ).Name) );
 `                        obj.AddInfo("REMOVED : " + other.get`field.NAME`( i ).Name );                   
 `                        i += 1;
 `                    }
@@ -162,6 +120,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
 `                        obj.AddInfo("ADDED : " + subElement.Name );                   
 `                    }
 `                }
@@ -172,6 +131,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
 `                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                    }
 `                }
@@ -188,9 +148,9 @@ BEGIN
 `                        bool compared = false;
 `                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                        {
-`                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
 `                            {
-`                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement );
+`                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement, diff );
 `                                compared = true;
     `                            break;
 `                            }
@@ -198,6 +158,7 @@ BEGIN
 `
 `                        if ( !compared ) 
 `                        {
+`                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
 `                            obj.AddInfo("ADDED : "+ subElement.Name );                   
 `                        }
 `                    }
@@ -207,7 +168,7 @@ BEGIN
 `                        bool found = false;
 `                        foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                        {
-`                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
 `                            {
 `                                found = true;
 `                                break;
@@ -216,6 +177,7 @@ BEGIN
 `
 `                        if ( !found )
 `                        {
+`                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
 `                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                        }
 `                    }
@@ -224,6 +186,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
 `                        obj.AddInfo("ADDED : "+ subElement.Name );                   
 `                    }
 `                }
@@ -234,6 +197,7 @@ BEGIN
 `                {
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
 `                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                    }
 `                }
@@ -246,12 +210,13 @@ BEGIN
 `            {
 `                if ( other.get`field.NAME`() != null )
 `                {
+`                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "" ) );
 `                    obj.AddInfo ("REMOVED : `field.NAME`");
 `                }
 `            }
 `            else
 `            {
-`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`() );
+`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`(), diff );
 `            }
             });
           END; -- IF

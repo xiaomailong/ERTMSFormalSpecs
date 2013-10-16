@@ -1441,7 +1441,8 @@ namespace GUI
                 // Compare the files
                 if (openFileOperation.Dictionary != null)
                 {
-                    DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
+                    DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                    DataDictionary.Compare.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary, versionDiff);
                 }
                 else
                 {
@@ -1504,7 +1505,8 @@ namespace GUI
                     // Compare the files
                     if (openFileOperation.Dictionary != null)
                     {
-                        DataDictionary.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary);
+                        DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                        DataDictionary.Compare.Comparer.compareDictionary(GetActiveDictionary(), openFileOperation.Dictionary, versionDiff);
                     }
                     else
                     {

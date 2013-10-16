@@ -14,73 +14,27 @@
 // --
 // ------------------------------------------------------------------------------
 
-namespace DataDictionary
+namespace DataDictionary.Compare
 {
-    /// <summary>
-    /// This class is used to compare two dictionaries 
-    /// by annotating the first dictionary with the differences with the second
-    /// </summary>
-    public static class Comparer
+    public static class Comparer 
     {
-
-        /// <summary>
-        /// Computes a canonic form of a string
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <returns></returns>
-        public static string canonicString(string s1)
-        {
-            string retVal = s1;
-
-            if (retVal == null)
-            {
-                retVal = "";
-            }
-
-            retVal = retVal.Replace('\n', ' ');
-            retVal = retVal.Replace('\t', ' ');
-            retVal = retVal.Replace('\r', ' ');
-
-            while (retVal.IndexOf("  ") >= 0)
-            {
-                retVal = retVal.Replace("  ", " ");
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Compares two strings
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
-        public static bool canonicalStringEquality(string s1, string s2)
-        {
-            bool retVal;
-
-            s1 = canonicString(s1);
-            s2 = canonicString(s2);
-            retVal = s1 == s2;
-
-            return retVal;
-        }
-
         /// <summary>
         /// Compares two Namable and annotates the differences on the first one
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareNamable(Generated.Namable obj, Generated.Namable other)
+        public static void compareNamable(Generated.Namable obj, Generated.Namable other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            if ( !canonicalStringEquality(obj.getName(), other.getName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getName(), other.getName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Name", "Previously was [" + other.getName() + "]") );
                 obj.AddInfo ("CHANGED Name, Previously was [" + other.getName() + "]");
             }
         }
@@ -90,15 +44,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareReferencesParagraph(Generated.ReferencesParagraph obj, Generated.ReferencesParagraph other)
+        public static void compareReferencesParagraph(Generated.ReferencesParagraph obj, Generated.ReferencesParagraph other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allRequirements() != null )
             {
@@ -109,9 +64,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.ReqRef otherElement in other.allRequirements() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareReqRef ( subElement, otherElement );
+                                compareReqRef ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -119,6 +74,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -128,7 +84,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.ReqRef subElement in obj.allRequirements() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -137,6 +93,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -145,6 +102,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ReqRef subElement in obj.allRequirements() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -155,12 +113,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ReqRef otherElement in other.allRequirements() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
-            if ( !canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
                 obj.AddInfo ("CHANGED Comment, Previously was [" + other.getComment() + "]");
             }
         }
@@ -170,26 +130,30 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareReqRelated(Generated.ReqRelated obj, Generated.ReqRelated other)
+        public static void compareReqRelated(Generated.ReqRelated obj, Generated.ReqRelated other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReferencesParagraph (obj, other);
+            compareReferencesParagraph (obj, other, diff);
 
             if ( obj.getImplemented() != other.getImplemented() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Implemented", "Previously was [" + other.getImplemented() + "]") );
                 obj.AddInfo ("CHANGED Implemented, Previously was [" + other.getImplemented() + "]");
             }
             if ( obj.getVerified() != other.getVerified() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Verified", "Previously was [" + other.getVerified() + "]") );
                 obj.AddInfo ("CHANGED Verified, Previously was [" + other.getVerified() + "]");
             }
             if ( obj.getNeedsRequirement() != other.getNeedsRequirement() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "NeedsRequirement", "Previously was [" + other.getNeedsRequirement() + "]") );
                 obj.AddInfo ("CHANGED NeedsRequirement, Previously was [" + other.getNeedsRequirement() + "]");
             }
         }
@@ -199,10 +163,11 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareDictionary(Generated.Dictionary obj, Generated.Dictionary other)
+        public static void compareDictionary(Generated.Dictionary obj, Generated.Dictionary other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
@@ -211,12 +176,13 @@ namespace DataDictionary
             {
                 if ( other.getSpecification() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Specification", "" ) );
                     obj.AddInfo ("REMOVED : Specification");
                 }
             }
             else
             {
-                compareSpecification ( obj.getSpecification(), other.getSpecification() );
+                compareSpecification ( obj.getSpecification(), other.getSpecification(), diff );
             }
             if ( obj.allRuleDisablings() != null )
             {
@@ -227,9 +193,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRuleDisabling ( subElement, otherElement );
+                                compareRuleDisabling ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -237,6 +203,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -246,7 +213,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -255,6 +222,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -263,6 +231,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -273,6 +242,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -286,9 +256,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareNameSpace ( subElement, otherElement );
+                                compareNameSpace ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -296,6 +266,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -305,7 +276,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -314,6 +285,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -322,6 +294,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -332,6 +305,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -345,9 +319,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareNameSpaceRef ( subElement, otherElement );
+                                compareNameSpaceRef ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -355,6 +329,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -364,7 +339,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -373,6 +348,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -381,6 +357,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -391,6 +368,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -404,9 +382,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Frame otherElement in other.allTests() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareFrame ( subElement, otherElement );
+                                compareFrame ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -414,6 +392,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -423,7 +402,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Frame subElement in obj.allTests() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -432,6 +411,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -440,6 +420,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Frame subElement in obj.allTests() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -450,6 +431,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Frame otherElement in other.allTests() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -463,9 +445,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareFrameRef ( subElement, otherElement );
+                                compareFrameRef ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -473,6 +455,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -482,7 +465,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -491,6 +474,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -499,6 +483,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -509,6 +494,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -517,30 +503,34 @@ namespace DataDictionary
             {
                 if ( other.getTranslationDictionary() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TranslationDictionary", "" ) );
                     obj.AddInfo ("REMOVED : TranslationDictionary");
                 }
             }
             else
             {
-                compareTranslationDictionary ( obj.getTranslationDictionary(), other.getTranslationDictionary() );
+                compareTranslationDictionary ( obj.getTranslationDictionary(), other.getTranslationDictionary(), diff );
             }
             if ( obj.getShortcutDictionary() == null )
             {
                 if ( other.getShortcutDictionary() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ShortcutDictionary", "" ) );
                     obj.AddInfo ("REMOVED : ShortcutDictionary");
                 }
             }
             else
             {
-                compareShortcutDictionary ( obj.getShortcutDictionary(), other.getShortcutDictionary() );
+                compareShortcutDictionary ( obj.getShortcutDictionary(), other.getShortcutDictionary(), diff );
             }
-            if ( !canonicalStringEquality(obj.getXsi(), other.getXsi()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getXsi(), other.getXsi()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Xsi", "Previously was [" + other.getXsi() + "]") );
                 obj.AddInfo ("CHANGED Xsi, Previously was [" + other.getXsi() + "]");
             }
-            if ( !canonicalStringEquality(obj.getXsiLocation(), other.getXsiLocation()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getXsiLocation(), other.getXsiLocation()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "XsiLocation", "Previously was [" + other.getXsiLocation() + "]") );
                 obj.AddInfo ("CHANGED XsiLocation, Previously was [" + other.getXsiLocation() + "]");
             }
         }
@@ -550,18 +540,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareRuleDisabling(Generated.RuleDisabling obj, Generated.RuleDisabling other)
+        public static void compareRuleDisabling(Generated.RuleDisabling obj, Generated.RuleDisabling other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getRule(), other.getRule()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getRule(), other.getRule()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Rule", "Previously was [" + other.getRule() + "]") );
                 obj.AddInfo ("CHANGED Rule, Previously was [" + other.getRule() + "]");
             }
         }
@@ -571,15 +563,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareNameSpaceRef(Generated.NameSpaceRef obj, Generated.NameSpaceRef other)
+        public static void compareNameSpaceRef(Generated.NameSpaceRef obj, Generated.NameSpaceRef other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
         }
 
@@ -588,15 +581,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareNameSpace(Generated.NameSpace obj, Generated.NameSpace other)
+        public static void compareNameSpace(Generated.NameSpace obj, Generated.NameSpace other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allNameSpaces() != null )
             {
@@ -607,9 +601,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareNameSpace ( subElement, otherElement );
+                                compareNameSpace ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -617,6 +611,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -626,7 +621,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -635,6 +630,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -643,6 +639,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -653,6 +650,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -666,9 +664,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareNameSpaceRef ( subElement, otherElement );
+                                compareNameSpaceRef ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -676,6 +674,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -685,7 +684,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -694,6 +693,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -702,6 +702,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -712,6 +713,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -725,9 +727,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Range otherElement in other.allRanges() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRange ( subElement, otherElement );
+                                compareRange ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -735,6 +737,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -744,7 +747,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Range subElement in obj.allRanges() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -753,6 +756,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -761,6 +765,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Range subElement in obj.allRanges() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -771,6 +776,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Range otherElement in other.allRanges() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -784,9 +790,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Enum otherElement in other.allEnumerations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareEnum ( subElement, otherElement );
+                                compareEnum ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -794,6 +800,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -803,7 +810,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Enum subElement in obj.allEnumerations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -812,6 +819,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -820,6 +828,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Enum subElement in obj.allEnumerations() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -830,6 +839,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Enum otherElement in other.allEnumerations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -843,9 +853,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Structure otherElement in other.allStructures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareStructure ( subElement, otherElement );
+                                compareStructure ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -853,6 +863,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -862,7 +873,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Structure subElement in obj.allStructures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -871,6 +882,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -879,6 +891,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Structure subElement in obj.allStructures() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -889,6 +902,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Structure otherElement in other.allStructures() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -902,9 +916,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Collection otherElement in other.allCollections() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareCollection ( subElement, otherElement );
+                                compareCollection ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -912,6 +926,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -921,7 +936,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Collection subElement in obj.allCollections() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -930,6 +945,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -938,6 +954,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Collection subElement in obj.allCollections() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -948,6 +965,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Collection otherElement in other.allCollections() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -961,9 +979,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareStateMachine ( subElement, otherElement );
+                                compareStateMachine ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -971,6 +989,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -980,7 +999,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -989,6 +1008,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -997,6 +1017,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1007,6 +1028,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1020,9 +1042,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Function otherElement in other.allFunctions() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareFunction ( subElement, otherElement );
+                                compareFunction ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1030,6 +1052,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1039,7 +1062,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Function subElement in obj.allFunctions() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1048,6 +1071,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1056,6 +1080,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Function subElement in obj.allFunctions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1066,6 +1091,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Function otherElement in other.allFunctions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1079,9 +1105,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Procedure otherElement in other.allProcedures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareProcedure ( subElement, otherElement );
+                                compareProcedure ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1089,6 +1115,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1098,7 +1125,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Procedure subElement in obj.allProcedures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1107,6 +1134,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1115,6 +1143,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1125,6 +1154,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Procedure otherElement in other.allProcedures() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1138,9 +1168,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Variable otherElement in other.allVariables() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareVariable ( subElement, otherElement );
+                                compareVariable ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1148,6 +1178,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1157,7 +1188,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Variable subElement in obj.allVariables() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1166,6 +1197,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1174,6 +1206,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Variable subElement in obj.allVariables() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1184,6 +1217,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Variable otherElement in other.allVariables() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1197,9 +1231,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRule ( subElement, otherElement );
+                                compareRule ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1207,6 +1241,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1216,7 +1251,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1225,6 +1260,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1233,6 +1269,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1243,6 +1280,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1254,20 +1292,23 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareReqRef(Generated.ReqRef obj, Generated.ReqRef other)
+        public static void compareReqRef(Generated.ReqRef obj, Generated.ReqRef other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            if ( !canonicalStringEquality(obj.getId(), other.getId()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
                 obj.AddInfo ("CHANGED Id, Previously was [" + other.getId() + "]");
             }
-            if ( !canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
                 obj.AddInfo ("CHANGED Comment, Previously was [" + other.getComment() + "]");
             }
         }
@@ -1277,18 +1318,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareType(Generated.Type obj, Generated.Type other)
+        public static void compareType(Generated.Type obj, Generated.Type other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getDefault(), other.getDefault()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getDefault(), other.getDefault()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Default", "Previously was [" + other.getDefault() + "]") );
                 obj.AddInfo ("CHANGED Default, Previously was [" + other.getDefault() + "]");
             }
         }
@@ -1298,15 +1341,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareEnum(Generated.Enum obj, Generated.Enum other)
+        public static void compareEnum(Generated.Enum obj, Generated.Enum other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
             if ( obj.allValues() != null )
             {
@@ -1317,9 +1361,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.EnumValue otherElement in other.allValues() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareEnumValue ( subElement, otherElement );
+                                compareEnumValue ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1327,6 +1371,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1336,7 +1381,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.EnumValue subElement in obj.allValues() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1345,6 +1390,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1353,6 +1399,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.EnumValue subElement in obj.allValues() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1363,6 +1410,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.EnumValue otherElement in other.allValues() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1376,9 +1424,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Enum otherElement in other.allSubEnums() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareEnum ( subElement, otherElement );
+                                compareEnum ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1386,6 +1434,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1395,7 +1444,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Enum subElement in obj.allSubEnums() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1404,6 +1453,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1412,6 +1462,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Enum subElement in obj.allSubEnums() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1422,6 +1473,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Enum otherElement in other.allSubEnums() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1433,18 +1485,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareEnumValue(Generated.EnumValue obj, Generated.EnumValue other)
+        public static void compareEnumValue(Generated.EnumValue obj, Generated.EnumValue other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getValue(), other.getValue()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
                 obj.AddInfo ("CHANGED Value, Previously was [" + other.getValue() + "]");
             }
         }
@@ -1454,22 +1508,25 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareRange(Generated.Range obj, Generated.Range other)
+        public static void compareRange(Generated.Range obj, Generated.Range other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getMinValue(), other.getMinValue()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getMinValue(), other.getMinValue()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MinValue", "Previously was [" + other.getMinValue() + "]") );
                 obj.AddInfo ("CHANGED MinValue, Previously was [" + other.getMinValue() + "]");
             }
-            if ( !canonicalStringEquality(obj.getMaxValue(), other.getMaxValue()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getMaxValue(), other.getMaxValue()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MaxValue", "Previously was [" + other.getMaxValue() + "]") );
                 obj.AddInfo ("CHANGED MaxValue, Previously was [" + other.getMaxValue() + "]");
             }
             if ( obj.allSpecialValues() != null )
@@ -1481,9 +1538,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareEnumValue ( subElement, otherElement );
+                                compareEnumValue ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1491,6 +1548,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1500,7 +1558,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1509,6 +1567,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1517,6 +1576,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1527,12 +1587,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
             if ( obj.getPrecision() != other.getPrecision() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Precision", "Previously was [" + other.getPrecision() + "]") );
                 obj.AddInfo ("CHANGED Precision, Previously was [" + other.getPrecision() + "]");
             }
         }
@@ -1542,15 +1604,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareStructure(Generated.Structure obj, Generated.Structure other)
+        public static void compareStructure(Generated.Structure obj, Generated.Structure other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
             if ( obj.allElements() != null )
             {
@@ -1561,9 +1624,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.StructureElement otherElement in other.allElements() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareStructureElement ( subElement, otherElement );
+                                compareStructureElement ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1571,6 +1634,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1580,7 +1644,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.StructureElement subElement in obj.allElements() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1589,6 +1653,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1597,6 +1662,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StructureElement subElement in obj.allElements() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1607,6 +1673,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StructureElement otherElement in other.allElements() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1620,9 +1687,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Procedure otherElement in other.allProcedures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareProcedure ( subElement, otherElement );
+                                compareProcedure ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1630,6 +1697,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1639,7 +1707,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Procedure subElement in obj.allProcedures() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1648,6 +1716,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1656,6 +1725,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1666,6 +1736,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Procedure otherElement in other.allProcedures() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1679,9 +1750,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareStateMachine ( subElement, otherElement );
+                                compareStateMachine ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1689,6 +1760,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1698,7 +1770,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1707,6 +1779,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1715,6 +1788,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1725,6 +1799,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1738,9 +1813,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRule ( subElement, otherElement );
+                                compareRule ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1748,6 +1823,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1757,7 +1833,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1766,6 +1842,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1774,6 +1851,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1784,6 +1862,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1795,26 +1874,30 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareStructureElement(Generated.StructureElement obj, Generated.StructureElement other)
+        public static void compareStructureElement(Generated.StructureElement obj, Generated.StructureElement other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
                 obj.AddInfo ("CHANGED TypeName, Previously was [" + other.getTypeName() + "]");
             }
-            if ( !canonicalStringEquality(obj.getDefault(), other.getDefault()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getDefault(), other.getDefault()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Default", "Previously was [" + other.getDefault() + "]") );
                 obj.AddInfo ("CHANGED Default, Previously was [" + other.getDefault() + "]");
             }
             if ( obj.getMode() != other.getMode() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Mode", "Previously was [" + other.getMode() + "]") );
                 obj.AddInfo ("CHANGED Mode, Previously was [" + other.getMode() + "]");
             }
         }
@@ -1824,22 +1907,25 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareCollection(Generated.Collection obj, Generated.Collection other)
+        public static void compareCollection(Generated.Collection obj, Generated.Collection other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
                 obj.AddInfo ("CHANGED TypeName, Previously was [" + other.getTypeName() + "]");
             }
             if ( obj.getMaxSize() != other.getMaxSize() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MaxSize", "Previously was [" + other.getMaxSize() + "]") );
                 obj.AddInfo ("CHANGED MaxSize, Previously was [" + other.getMaxSize() + "]");
             }
         }
@@ -1849,15 +1935,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFunction(Generated.Function obj, Generated.Function other)
+        public static void compareFunction(Generated.Function obj, Generated.Function other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
             if ( obj.allParameters() != null )
             {
@@ -1868,9 +1955,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Parameter otherElement in other.allParameters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareParameter ( subElement, otherElement );
+                                compareParameter ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1878,6 +1965,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1887,7 +1975,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Parameter subElement in obj.allParameters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1896,6 +1984,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1904,6 +1993,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1914,6 +2004,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Parameter otherElement in other.allParameters() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -1927,9 +2018,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Case otherElement in other.allCases() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareCase ( subElement, otherElement );
+                                compareCase ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -1937,6 +2028,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -1946,7 +2038,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Case subElement in obj.allCases() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -1955,6 +2047,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -1963,6 +2056,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Case subElement in obj.allCases() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -1973,16 +2067,19 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Case otherElement in other.allCases() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
-            if ( !canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
                 obj.AddInfo ("CHANGED TypeName, Previously was [" + other.getTypeName() + "]");
             }
             if ( obj.getCacheable() != other.getCacheable() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Cacheable", "Previously was [" + other.getCacheable() + "]") );
                 obj.AddInfo ("CHANGED Cacheable, Previously was [" + other.getCacheable() + "]");
             }
         }
@@ -1992,18 +2089,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareParameter(Generated.Parameter obj, Generated.Parameter other)
+        public static void compareParameter(Generated.Parameter obj, Generated.Parameter other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
                 obj.AddInfo ("CHANGED TypeName, Previously was [" + other.getTypeName() + "]");
             }
         }
@@ -2013,15 +2112,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareCase(Generated.Case obj, Generated.Case other)
+        public static void compareCase(Generated.Case obj, Generated.Case other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allPreConditions() != null )
             {
@@ -2032,19 +2132,22 @@ namespace DataDictionary
                     {
                         ModelElement element = (ModelElement) obj.getPreConditions( i );
                         ModelElement otherElement = (ModelElement) other.getPreConditions( i );
-                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
                             element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
                         i += 1;
                     }
                     while ( i < obj.countPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                         obj.AddInfo("ADDED : " + obj.getPreConditions( i ).Name );                   
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getPreConditions( i ).Name) );
                         obj.AddInfo("REMOVED : " + other.getPreConditions( i ).Name );                   
                         i += 1;
                     }
@@ -2053,6 +2156,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
@@ -2063,12 +2167,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
-            if ( !canonicalStringEquality(obj.getExpression(), other.getExpression()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getExpression(), other.getExpression()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Expression", "Previously was [" + other.getExpression() + "]") );
                 obj.AddInfo ("CHANGED Expression, Previously was [" + other.getExpression() + "]");
             }
         }
@@ -2078,26 +2184,28 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareProcedure(Generated.Procedure obj, Generated.Procedure other)
+        public static void compareProcedure(Generated.Procedure obj, Generated.Procedure other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
             if ( obj.getStateMachine() == null )
             {
                 if ( other.getStateMachine() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "StateMachine", "" ) );
                     obj.AddInfo ("REMOVED : StateMachine");
                 }
             }
             else
             {
-                compareStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+                compareStateMachine ( obj.getStateMachine(), other.getStateMachine(), diff );
             }
             if ( obj.allRules() != null )
             {
@@ -2108,9 +2216,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRule ( subElement, otherElement );
+                                compareRule ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2118,6 +2226,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2127,7 +2236,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2136,6 +2245,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2144,6 +2254,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2154,6 +2265,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2167,9 +2279,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Parameter otherElement in other.allParameters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareParameter ( subElement, otherElement );
+                                compareParameter ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2177,6 +2289,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2186,7 +2299,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Parameter subElement in obj.allParameters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2195,6 +2308,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2203,6 +2317,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2213,6 +2328,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Parameter otherElement in other.allParameters() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2224,18 +2340,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareStateMachine(Generated.StateMachine obj, Generated.StateMachine other)
+        public static void compareStateMachine(Generated.StateMachine obj, Generated.StateMachine other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareType (obj, other);
+            compareType (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getInitialState(), other.getInitialState()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getInitialState(), other.getInitialState()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "InitialState", "Previously was [" + other.getInitialState() + "]") );
                 obj.AddInfo ("CHANGED InitialState, Previously was [" + other.getInitialState() + "]");
             }
             if ( obj.allStates() != null )
@@ -2247,9 +2365,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.State otherElement in other.allStates() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareState ( subElement, otherElement );
+                                compareState ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2257,6 +2375,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2266,7 +2385,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.State subElement in obj.allStates() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2275,6 +2394,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2283,6 +2403,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.State subElement in obj.allStates() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2293,6 +2414,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.State otherElement in other.allStates() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2306,9 +2428,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRule ( subElement, otherElement );
+                                compareRule ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2316,6 +2438,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2325,7 +2448,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2334,6 +2457,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2342,6 +2466,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2352,6 +2477,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2363,41 +2489,47 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareState(Generated.State obj, Generated.State other)
+        public static void compareState(Generated.State obj, Generated.State other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
             if ( obj.getStateMachine() == null )
             {
                 if ( other.getStateMachine() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "StateMachine", "" ) );
                     obj.AddInfo ("REMOVED : StateMachine");
                 }
             }
             else
             {
-                compareStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+                compareStateMachine ( obj.getStateMachine(), other.getStateMachine(), diff );
             }
             if ( obj.getWidth() != other.getWidth() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Width", "Previously was [" + other.getWidth() + "]") );
                 obj.AddInfo ("CHANGED Width, Previously was [" + other.getWidth() + "]");
             }
             if ( obj.getHeight() != other.getHeight() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Height", "Previously was [" + other.getHeight() + "]") );
                 obj.AddInfo ("CHANGED Height, Previously was [" + other.getHeight() + "]");
             }
             if ( obj.getX() != other.getX() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "X", "Previously was [" + other.getX() + "]") );
                 obj.AddInfo ("CHANGED X, Previously was [" + other.getX() + "]");
             }
             if ( obj.getY() != other.getY() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Y", "Previously was [" + other.getY() + "]") );
                 obj.AddInfo ("CHANGED Y, Previously was [" + other.getY() + "]");
             }
         }
@@ -2407,26 +2539,30 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareVariable(Generated.Variable obj, Generated.Variable other)
+        public static void compareVariable(Generated.Variable obj, Generated.Variable other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
                 obj.AddInfo ("CHANGED TypeName, Previously was [" + other.getTypeName() + "]");
             }
-            if ( !canonicalStringEquality(obj.getDefaultValue(), other.getDefaultValue()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getDefaultValue(), other.getDefaultValue()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "DefaultValue", "Previously was [" + other.getDefaultValue() + "]") );
                 obj.AddInfo ("CHANGED DefaultValue, Previously was [" + other.getDefaultValue() + "]");
             }
             if ( obj.getVariableMode() != other.getVariableMode() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "VariableMode", "Previously was [" + other.getVariableMode() + "]") );
                 obj.AddInfo ("CHANGED VariableMode, Previously was [" + other.getVariableMode() + "]");
             }
             if ( obj.allSubVariables() != null )
@@ -2438,9 +2574,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Variable otherElement in other.allSubVariables() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareVariable ( subElement, otherElement );
+                                compareVariable ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2448,6 +2584,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2457,7 +2594,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Variable subElement in obj.allSubVariables() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2466,6 +2603,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2474,6 +2612,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Variable subElement in obj.allSubVariables() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2484,6 +2623,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Variable otherElement in other.allSubVariables() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2495,18 +2635,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareRule(Generated.Rule obj, Generated.Rule other)
+        public static void compareRule(Generated.Rule obj, Generated.Rule other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
             if ( obj.getPriority() != other.getPriority() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Priority", "Previously was [" + other.getPriority() + "]") );
                 obj.AddInfo ("CHANGED Priority, Previously was [" + other.getPriority() + "]");
             }
             if ( obj.allConditions() != null )
@@ -2518,9 +2660,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.RuleCondition otherElement in other.allConditions() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRuleCondition ( subElement, otherElement );
+                                compareRuleCondition ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2528,6 +2670,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2537,7 +2680,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.RuleCondition subElement in obj.allConditions() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2546,6 +2689,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2554,6 +2698,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.RuleCondition subElement in obj.allConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2564,6 +2709,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.RuleCondition otherElement in other.allConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2575,15 +2721,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareRuleCondition(Generated.RuleCondition obj, Generated.RuleCondition other)
+        public static void compareRuleCondition(Generated.RuleCondition obj, Generated.RuleCondition other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
             if ( obj.allPreConditions() != null )
             {
@@ -2594,19 +2741,22 @@ namespace DataDictionary
                     {
                         ModelElement element = (ModelElement) obj.getPreConditions( i );
                         ModelElement otherElement = (ModelElement) other.getPreConditions( i );
-                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
                             element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
                         i += 1;
                     }
                     while ( i < obj.countPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                         obj.AddInfo("ADDED : " + obj.getPreConditions( i ).Name );                   
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getPreConditions( i ).Name) );
                         obj.AddInfo("REMOVED : " + other.getPreConditions( i ).Name );                   
                         i += 1;
                     }
@@ -2615,6 +2765,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
@@ -2625,6 +2776,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2638,19 +2790,22 @@ namespace DataDictionary
                     {
                         ModelElement element = (ModelElement) obj.getActions( i );
                         ModelElement otherElement = (ModelElement) other.getActions( i );
-                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
                             element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
                         i += 1;
                     }
                     while ( i < obj.countActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                         obj.AddInfo("ADDED : " + obj.getActions( i ).Name );                   
                         i += 1;
                     }
                     while ( i < other.countActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getActions( i ).Name) );
                         obj.AddInfo("REMOVED : " + other.getActions( i ).Name );                   
                         i += 1;
                     }
@@ -2659,6 +2814,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
@@ -2669,6 +2825,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Action otherElement in other.allActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2682,9 +2839,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allSubRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareRule ( subElement, otherElement );
+                                compareRule ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2692,6 +2849,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2701,7 +2859,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allSubRules() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2710,6 +2868,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2718,6 +2877,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule subElement in obj.allSubRules() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2728,6 +2888,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Rule otherElement in other.allSubRules() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2739,16 +2900,18 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void comparePreCondition(Generated.PreCondition obj, Generated.PreCondition other)
+        public static void comparePreCondition(Generated.PreCondition obj, Generated.PreCondition other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            if ( !canonicalStringEquality(obj.getCondition(), other.getCondition()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getCondition(), other.getCondition()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Condition", "Previously was [" + other.getCondition() + "]") );
                 obj.AddInfo ("CHANGED Condition, Previously was [" + other.getCondition() + "]");
             }
         }
@@ -2758,16 +2921,18 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareAction(Generated.Action obj, Generated.Action other)
+        public static void compareAction(Generated.Action obj, Generated.Action other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            if ( !canonicalStringEquality(obj.getExpression(), other.getExpression()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getExpression(), other.getExpression()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Expression", "Previously was [" + other.getExpression() + "]") );
                 obj.AddInfo ("CHANGED Expression, Previously was [" + other.getExpression() + "]");
             }
         }
@@ -2777,15 +2942,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFrameRef(Generated.FrameRef obj, Generated.FrameRef other)
+        public static void compareFrameRef(Generated.FrameRef obj, Generated.FrameRef other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
         }
 
@@ -2794,18 +2960,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFrame(Generated.Frame obj, Generated.Frame other)
+        public static void compareFrame(Generated.Frame obj, Generated.Frame other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getCycleDuration(), other.getCycleDuration()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getCycleDuration(), other.getCycleDuration()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "CycleDuration", "Previously was [" + other.getCycleDuration() + "]") );
                 obj.AddInfo ("CHANGED CycleDuration, Previously was [" + other.getCycleDuration() + "]");
             }
             if ( obj.allSubSequences() != null )
@@ -2817,9 +2985,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareSubSequence ( subElement, otherElement );
+                                compareSubSequence ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2827,6 +2995,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2836,7 +3005,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2845,6 +3014,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2853,6 +3023,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2863,6 +3034,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2874,50 +3046,60 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSubSequence(Generated.SubSequence obj, Generated.SubSequence other)
+        public static void compareSubSequence(Generated.SubSequence obj, Generated.SubSequence other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getD_LRBG(), other.getD_LRBG()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getD_LRBG(), other.getD_LRBG()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "D_LRBG", "Previously was [" + other.getD_LRBG() + "]") );
                 obj.AddInfo ("CHANGED D_LRBG, Previously was [" + other.getD_LRBG() + "]");
             }
-            if ( !canonicalStringEquality(obj.getLevel(), other.getLevel()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getLevel(), other.getLevel()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Level", "Previously was [" + other.getLevel() + "]") );
                 obj.AddInfo ("CHANGED Level, Previously was [" + other.getLevel() + "]");
             }
-            if ( !canonicalStringEquality(obj.getMode(), other.getMode()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getMode(), other.getMode()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Mode", "Previously was [" + other.getMode() + "]") );
                 obj.AddInfo ("CHANGED Mode, Previously was [" + other.getMode() + "]");
             }
-            if ( !canonicalStringEquality(obj.getNID_LRBG(), other.getNID_LRBG()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getNID_LRBG(), other.getNID_LRBG()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "NID_LRBG", "Previously was [" + other.getNID_LRBG() + "]") );
                 obj.AddInfo ("CHANGED NID_LRBG, Previously was [" + other.getNID_LRBG() + "]");
             }
-            if ( !canonicalStringEquality(obj.getQ_DIRLRBG(), other.getQ_DIRLRBG()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getQ_DIRLRBG(), other.getQ_DIRLRBG()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DIRLRBG", "Previously was [" + other.getQ_DIRLRBG() + "]") );
                 obj.AddInfo ("CHANGED Q_DIRLRBG, Previously was [" + other.getQ_DIRLRBG() + "]");
             }
-            if ( !canonicalStringEquality(obj.getQ_DIRTRAIN(), other.getQ_DIRTRAIN()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getQ_DIRTRAIN(), other.getQ_DIRTRAIN()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DIRTRAIN", "Previously was [" + other.getQ_DIRTRAIN() + "]") );
                 obj.AddInfo ("CHANGED Q_DIRTRAIN, Previously was [" + other.getQ_DIRTRAIN() + "]");
             }
-            if ( !canonicalStringEquality(obj.getQ_DLRBG(), other.getQ_DLRBG()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getQ_DLRBG(), other.getQ_DLRBG()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DLRBG", "Previously was [" + other.getQ_DLRBG() + "]") );
                 obj.AddInfo ("CHANGED Q_DLRBG, Previously was [" + other.getQ_DLRBG() + "]");
             }
-            if ( !canonicalStringEquality(obj.getRBC_ID(), other.getRBC_ID()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getRBC_ID(), other.getRBC_ID()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "RBC_ID", "Previously was [" + other.getRBC_ID() + "]") );
                 obj.AddInfo ("CHANGED RBC_ID, Previously was [" + other.getRBC_ID() + "]");
             }
-            if ( !canonicalStringEquality(obj.getRBCPhone(), other.getRBCPhone()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getRBCPhone(), other.getRBCPhone()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "RBCPhone", "Previously was [" + other.getRBCPhone() + "]") );
                 obj.AddInfo ("CHANGED RBCPhone, Previously was [" + other.getRBCPhone() + "]");
             }
             if ( obj.allTestCases() != null )
@@ -2929,9 +3111,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.TestCase otherElement in other.allTestCases() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareTestCase ( subElement, otherElement );
+                                compareTestCase ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -2939,6 +3121,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -2948,7 +3131,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.TestCase subElement in obj.allTestCases() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -2957,6 +3140,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -2965,6 +3149,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.TestCase subElement in obj.allTestCases() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -2975,6 +3160,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.TestCase otherElement in other.allTestCases() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -2986,22 +3172,25 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareTestCase(Generated.TestCase obj, Generated.TestCase other)
+        public static void compareTestCase(Generated.TestCase obj, Generated.TestCase other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReqRelated (obj, other);
+            compareReqRelated (obj, other, diff);
 
             if ( obj.getFeature() != other.getFeature() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Feature", "Previously was [" + other.getFeature() + "]") );
                 obj.AddInfo ("CHANGED Feature, Previously was [" + other.getFeature() + "]");
             }
             if ( obj.getCase() != other.getCase() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Case", "Previously was [" + other.getCase() + "]") );
                 obj.AddInfo ("CHANGED Case, Previously was [" + other.getCase() + "]");
             }
             if ( obj.allSteps() != null )
@@ -3013,9 +3202,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Step otherElement in other.allSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareStep ( subElement, otherElement );
+                                compareStep ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3023,6 +3212,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3032,7 +3222,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Step subElement in obj.allSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3041,6 +3231,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3049,6 +3240,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Step subElement in obj.allSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3059,6 +3251,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Step otherElement in other.allSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3070,66 +3263,80 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareStep(Generated.Step obj, Generated.Step other)
+        public static void compareStep(Generated.Step obj, Generated.Step other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.getTCS_Order() != other.getTCS_Order() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TCS_Order", "Previously was [" + other.getTCS_Order() + "]") );
                 obj.AddInfo ("CHANGED TCS_Order, Previously was [" + other.getTCS_Order() + "]");
             }
             if ( obj.getDistance() != other.getDistance() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Distance", "Previously was [" + other.getDistance() + "]") );
                 obj.AddInfo ("CHANGED Distance, Previously was [" + other.getDistance() + "]");
             }
-            if ( !canonicalStringEquality(obj.getDescription(), other.getDescription()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getDescription(), other.getDescription()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Description", "Previously was [" + other.getDescription() + "]") );
                 obj.AddInfo ("CHANGED Description, Previously was [" + other.getDescription() + "]");
             }
-            if ( !canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
                 obj.AddInfo ("CHANGED Comment, Previously was [" + other.getComment() + "]");
             }
-            if ( !canonicalStringEquality(obj.getUserComment(), other.getUserComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getUserComment(), other.getUserComment()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "UserComment", "Previously was [" + other.getUserComment() + "]") );
                 obj.AddInfo ("CHANGED UserComment, Previously was [" + other.getUserComment() + "]");
             }
             if ( obj.getIO() != other.getIO() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "IO", "Previously was [" + other.getIO() + "]") );
                 obj.AddInfo ("CHANGED IO, Previously was [" + other.getIO() + "]");
             }
             if ( obj.getInterface() != other.getInterface() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Interface", "Previously was [" + other.getInterface() + "]") );
                 obj.AddInfo ("CHANGED Interface, Previously was [" + other.getInterface() + "]");
             }
             if ( obj.getLevelIN() != other.getLevelIN() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "LevelIN", "Previously was [" + other.getLevelIN() + "]") );
                 obj.AddInfo ("CHANGED LevelIN, Previously was [" + other.getLevelIN() + "]");
             }
             if ( obj.getLevelOUT() != other.getLevelOUT() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "LevelOUT", "Previously was [" + other.getLevelOUT() + "]") );
                 obj.AddInfo ("CHANGED LevelOUT, Previously was [" + other.getLevelOUT() + "]");
             }
             if ( obj.getModeIN() != other.getModeIN() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ModeIN", "Previously was [" + other.getModeIN() + "]") );
                 obj.AddInfo ("CHANGED ModeIN, Previously was [" + other.getModeIN() + "]");
             }
             if ( obj.getModeOUT() != other.getModeOUT() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ModeOUT", "Previously was [" + other.getModeOUT() + "]") );
                 obj.AddInfo ("CHANGED ModeOUT, Previously was [" + other.getModeOUT() + "]");
             }
             if ( obj.getTranslationRequired() != other.getTranslationRequired() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TranslationRequired", "Previously was [" + other.getTranslationRequired() + "]") );
                 obj.AddInfo ("CHANGED TranslationRequired, Previously was [" + other.getTranslationRequired() + "]");
             }
             if ( obj.getTranslated() != other.getTranslated() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Translated", "Previously was [" + other.getTranslated() + "]") );
                 obj.AddInfo ("CHANGED Translated, Previously was [" + other.getTranslated() + "]");
             }
             if ( obj.allSubSteps() != null )
@@ -3141,9 +3348,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareSubStep ( subElement, otherElement );
+                                compareSubStep ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3151,6 +3358,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3160,7 +3368,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3169,6 +3377,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3177,6 +3386,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3187,6 +3397,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3200,9 +3411,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.DBMessage otherElement in other.allMessages() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareDBMessage ( subElement, otherElement );
+                                compareDBMessage ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3210,6 +3421,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3219,7 +3431,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.DBMessage subElement in obj.allMessages() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3228,6 +3440,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3236,6 +3449,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBMessage subElement in obj.allMessages() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3246,6 +3460,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBMessage otherElement in other.allMessages() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3257,15 +3472,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSubStep(Generated.SubStep obj, Generated.SubStep other)
+        public static void compareSubStep(Generated.SubStep obj, Generated.SubStep other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allActions() != null )
             {
@@ -3276,19 +3492,22 @@ namespace DataDictionary
                     {
                         ModelElement element = (ModelElement) obj.getActions( i );
                         ModelElement otherElement = (ModelElement) other.getActions( i );
-                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
                             element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
                         i += 1;
                     }
                     while ( i < obj.countActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                         obj.AddInfo("ADDED : " + obj.getActions( i ).Name );                   
                         i += 1;
                     }
                     while ( i < other.countActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getActions( i ).Name) );
                         obj.AddInfo("REMOVED : " + other.getActions( i ).Name );                   
                         i += 1;
                     }
@@ -3297,6 +3516,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
@@ -3307,6 +3527,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Action otherElement in other.allActions() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3320,19 +3541,22 @@ namespace DataDictionary
                     {
                         ModelElement element = (ModelElement) obj.getExpectations( i );
                         ModelElement otherElement = (ModelElement) other.getExpectations( i );
-                        if ( !canonicalStringEquality(element.Name, otherElement.Name) )
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
                             element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
                         i += 1;
                     }
                     while ( i < obj.countExpectations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                         obj.AddInfo("ADDED : " + obj.getExpectations( i ).Name );                   
                         i += 1;
                     }
                     while ( i < other.countExpectations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getExpectations( i ).Name) );
                         obj.AddInfo("REMOVED : " + other.getExpectations( i ).Name );                   
                         i += 1;
                     }
@@ -3341,6 +3565,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Expectation subElement in obj.allExpectations() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
@@ -3351,12 +3576,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Expectation otherElement in other.allExpectations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
             if ( obj.getSkipEngine() != other.getSkipEngine() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SkipEngine", "Previously was [" + other.getSkipEngine() + "]") );
                 obj.AddInfo ("CHANGED SkipEngine, Previously was [" + other.getSkipEngine() + "]");
             }
         }
@@ -3366,34 +3593,40 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareExpectation(Generated.Expectation obj, Generated.Expectation other)
+        public static void compareExpectation(Generated.Expectation obj, Generated.Expectation other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getValue(), other.getValue()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
                 obj.AddInfo ("CHANGED Value, Previously was [" + other.getValue() + "]");
             }
             if ( obj.getBlocking() != other.getBlocking() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Blocking", "Previously was [" + other.getBlocking() + "]") );
                 obj.AddInfo ("CHANGED Blocking, Previously was [" + other.getBlocking() + "]");
             }
             if ( obj.getKind() != other.getKind() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Kind", "Previously was [" + other.getKind() + "]") );
                 obj.AddInfo ("CHANGED Kind, Previously was [" + other.getKind() + "]");
             }
             if ( obj.getDeadLine() != other.getDeadLine() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "DeadLine", "Previously was [" + other.getDeadLine() + "]") );
                 obj.AddInfo ("CHANGED DeadLine, Previously was [" + other.getDeadLine() + "]");
             }
-            if ( !canonicalStringEquality(obj.getCondition(), other.getCondition()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getCondition(), other.getCondition()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Condition", "Previously was [" + other.getCondition() + "]") );
                 obj.AddInfo ("CHANGED Condition, Previously was [" + other.getCondition() + "]");
             }
         }
@@ -3403,22 +3636,25 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareDBMessage(Generated.DBMessage obj, Generated.DBMessage other)
+        public static void compareDBMessage(Generated.DBMessage obj, Generated.DBMessage other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.getMessageOrder() != other.getMessageOrder() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MessageOrder", "Previously was [" + other.getMessageOrder() + "]") );
                 obj.AddInfo ("CHANGED MessageOrder, Previously was [" + other.getMessageOrder() + "]");
             }
             if ( obj.getMessageType() != other.getMessageType() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MessageType", "Previously was [" + other.getMessageType() + "]") );
                 obj.AddInfo ("CHANGED MessageType, Previously was [" + other.getMessageType() + "]");
             }
             if ( obj.allFields() != null )
@@ -3430,9 +3666,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.DBField otherElement in other.allFields() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareDBField ( subElement, otherElement );
+                                compareDBField ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3440,6 +3676,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3449,7 +3686,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.DBField subElement in obj.allFields() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3458,6 +3695,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3466,6 +3704,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3476,6 +3715,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBField otherElement in other.allFields() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3489,9 +3729,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.DBPacket otherElement in other.allPackets() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareDBPacket ( subElement, otherElement );
+                                compareDBPacket ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3499,6 +3739,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3508,7 +3749,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.DBPacket subElement in obj.allPackets() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3517,6 +3758,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3525,6 +3767,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBPacket subElement in obj.allPackets() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3535,6 +3778,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBPacket otherElement in other.allPackets() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3546,15 +3790,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareDBPacket(Generated.DBPacket obj, Generated.DBPacket other)
+        public static void compareDBPacket(Generated.DBPacket obj, Generated.DBPacket other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allFields() != null )
             {
@@ -3565,9 +3810,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.DBField otherElement in other.allFields() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareDBField ( subElement, otherElement );
+                                compareDBField ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3575,6 +3820,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3584,7 +3830,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.DBField subElement in obj.allFields() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3593,6 +3839,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3601,6 +3848,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3611,6 +3859,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.DBField otherElement in other.allFields() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3622,22 +3871,25 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareDBField(Generated.DBField obj, Generated.DBField other)
+        public static void compareDBField(Generated.DBField obj, Generated.DBField other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getVariable(), other.getVariable()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getVariable(), other.getVariable()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Variable", "Previously was [" + other.getVariable() + "]") );
                 obj.AddInfo ("CHANGED Variable, Previously was [" + other.getVariable() + "]");
             }
             if ( obj.getValue() != other.getValue() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
                 obj.AddInfo ("CHANGED Value, Previously was [" + other.getValue() + "]");
             }
         }
@@ -3647,15 +3899,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareTranslationDictionary(Generated.TranslationDictionary obj, Generated.TranslationDictionary other)
+        public static void compareTranslationDictionary(Generated.TranslationDictionary obj, Generated.TranslationDictionary other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allFolders() != null )
             {
@@ -3666,9 +3919,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Folder otherElement in other.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareFolder ( subElement, otherElement );
+                                compareFolder ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3676,6 +3929,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3685,7 +3939,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Folder subElement in obj.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3694,6 +3948,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3702,6 +3957,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3712,6 +3968,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Folder otherElement in other.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3725,9 +3982,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Translation otherElement in other.allTranslations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareTranslation ( subElement, otherElement );
+                                compareTranslation ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3735,6 +3992,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3744,7 +4002,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Translation subElement in obj.allTranslations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3753,6 +4011,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3761,6 +4020,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3771,6 +4031,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Translation otherElement in other.allTranslations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3782,15 +4043,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareFolder(Generated.Folder obj, Generated.Folder other)
+        public static void compareFolder(Generated.Folder obj, Generated.Folder other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allFolders() != null )
             {
@@ -3801,9 +4063,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Folder otherElement in other.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareFolder ( subElement, otherElement );
+                                compareFolder ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3811,6 +4073,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3820,7 +4083,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Folder subElement in obj.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3829,6 +4092,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3837,6 +4101,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3847,6 +4112,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Folder otherElement in other.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3860,9 +4126,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Translation otherElement in other.allTranslations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareTranslation ( subElement, otherElement );
+                                compareTranslation ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3870,6 +4136,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3879,7 +4146,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Translation subElement in obj.allTranslations() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3888,6 +4155,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3896,6 +4164,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3906,6 +4175,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Translation otherElement in other.allTranslations() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -3917,15 +4187,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareTranslation(Generated.Translation obj, Generated.Translation other)
+        public static void compareTranslation(Generated.Translation obj, Generated.Translation other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -3936,9 +4207,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareSourceText ( subElement, otherElement );
+                                compareSourceText ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -3946,6 +4217,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -3955,7 +4227,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -3964,6 +4236,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -3972,6 +4245,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -3982,12 +4256,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
             if ( obj.getImplemented() != other.getImplemented() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Implemented", "Previously was [" + other.getImplemented() + "]") );
                 obj.AddInfo ("CHANGED Implemented, Previously was [" + other.getImplemented() + "]");
             }
             if ( obj.allSubSteps() != null )
@@ -3999,9 +4275,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareSubStep ( subElement, otherElement );
+                                compareSubStep ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4009,6 +4285,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4018,7 +4295,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4027,6 +4304,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4035,6 +4313,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4045,12 +4324,14 @@ namespace DataDictionary
                 {
                     foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
             }
-            if ( !canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
                 obj.AddInfo ("CHANGED Comment, Previously was [" + other.getComment() + "]");
             }
         }
@@ -4060,15 +4341,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSourceText(Generated.SourceText obj, Generated.SourceText other)
+        public static void compareSourceText(Generated.SourceText obj, Generated.SourceText other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
         }
 
@@ -4077,15 +4359,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcutDictionary(Generated.ShortcutDictionary obj, Generated.ShortcutDictionary other)
+        public static void compareShortcutDictionary(Generated.ShortcutDictionary obj, Generated.ShortcutDictionary other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allFolders() != null )
             {
@@ -4096,9 +4379,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareShortcutFolder ( subElement, otherElement );
+                                compareShortcutFolder ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4106,6 +4389,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4115,7 +4399,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4124,6 +4408,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4132,6 +4417,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4142,6 +4428,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4155,9 +4442,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareShortcut ( subElement, otherElement );
+                                compareShortcut ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4165,6 +4452,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4174,7 +4462,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4183,6 +4471,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4191,6 +4480,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4201,6 +4491,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4212,15 +4503,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcutFolder(Generated.ShortcutFolder obj, Generated.ShortcutFolder other)
+        public static void compareShortcutFolder(Generated.ShortcutFolder obj, Generated.ShortcutFolder other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
             if ( obj.allFolders() != null )
             {
@@ -4231,9 +4523,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareShortcutFolder ( subElement, otherElement );
+                                compareShortcutFolder ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4241,6 +4533,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4250,7 +4543,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4259,6 +4552,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4267,6 +4561,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4277,6 +4572,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4290,9 +4586,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareShortcut ( subElement, otherElement );
+                                compareShortcut ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4300,6 +4596,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4309,7 +4606,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4318,6 +4615,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4326,6 +4624,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4336,6 +4635,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4347,18 +4647,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcut(Generated.Shortcut obj, Generated.Shortcut other)
+        public static void compareShortcut(Generated.Shortcut obj, Generated.Shortcut other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getShortcutName(), other.getShortcutName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getShortcutName(), other.getShortcutName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ShortcutName", "Previously was [" + other.getShortcutName() + "]") );
                 obj.AddInfo ("CHANGED ShortcutName, Previously was [" + other.getShortcutName() + "]");
             }
         }
@@ -4368,18 +4670,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSpecification(Generated.Specification obj, Generated.Specification other)
+        public static void compareSpecification(Generated.Specification obj, Generated.Specification other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
                 obj.AddInfo ("CHANGED Version, Previously was [" + other.getVersion() + "]");
             }
             if ( obj.allChapters() != null )
@@ -4391,9 +4695,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Chapter otherElement in other.allChapters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareChapter ( subElement, otherElement );
+                                compareChapter ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4401,6 +4705,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4410,7 +4715,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Chapter subElement in obj.allChapters() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4419,6 +4724,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4427,6 +4733,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Chapter subElement in obj.allChapters() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4437,6 +4744,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Chapter otherElement in other.allChapters() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4450,9 +4758,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareChapterRef ( subElement, otherElement );
+                                compareChapterRef ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4460,6 +4768,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4469,7 +4778,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4478,6 +4787,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4486,6 +4796,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4496,6 +4807,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4507,15 +4819,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareChapterRef(Generated.ChapterRef obj, Generated.ChapterRef other)
+        public static void compareChapterRef(Generated.ChapterRef obj, Generated.ChapterRef other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
         }
 
@@ -4524,18 +4837,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareChapter(Generated.Chapter obj, Generated.Chapter other)
+        public static void compareChapter(Generated.Chapter obj, Generated.Chapter other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareNamable (obj, other);
+            compareNamable (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getId(), other.getId()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
                 obj.AddInfo ("CHANGED Id, Previously was [" + other.getId() + "]");
             }
             if ( obj.allParagraphs() != null )
@@ -4547,9 +4862,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareParagraph ( subElement, otherElement );
+                                compareParagraph ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4557,6 +4872,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4566,7 +4882,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4575,6 +4891,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4583,6 +4900,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4593,6 +4911,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4604,50 +4923,60 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareParagraph(Generated.Paragraph obj, Generated.Paragraph other)
+        public static void compareParagraph(Generated.Paragraph obj, Generated.Paragraph other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            compareReferencesParagraph (obj, other);
+            compareReferencesParagraph (obj, other, diff);
 
-            if ( !canonicalStringEquality(obj.getId(), other.getId()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
                 obj.AddInfo ("CHANGED Id, Previously was [" + other.getId() + "]");
             }
             if ( obj.getType() != other.getType() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Type", "Previously was [" + other.getType() + "]") );
                 obj.AddInfo ("CHANGED Type, Previously was [" + other.getType() + "]");
             }
             if ( obj.getScope() != other.getScope() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Scope", "Previously was [" + other.getScope() + "]") );
                 obj.AddInfo ("CHANGED Scope, Previously was [" + other.getScope() + "]");
             }
-            if ( !canonicalStringEquality(obj.getBl(), other.getBl()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Bl", "Previously was [" + other.getBl() + "]") );
                 obj.AddInfo ("CHANGED Bl, Previously was [" + other.getBl() + "]");
             }
             if ( obj.getOptional() != other.getOptional() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Optional", "Previously was [" + other.getOptional() + "]") );
                 obj.AddInfo ("CHANGED Optional, Previously was [" + other.getOptional() + "]");
             }
-            if ( !canonicalStringEquality(obj.getText(), other.getText()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Text", "Previously was [" + other.getText() + "]") );
                 obj.AddInfo ("CHANGED Text, Previously was [" + other.getText() + "]");
             }
-            if ( !canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
                 obj.AddInfo ("CHANGED Version, Previously was [" + other.getVersion() + "]");
             }
             if ( obj.getReviewed() != other.getReviewed() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Reviewed", "Previously was [" + other.getReviewed() + "]") );
                 obj.AddInfo ("CHANGED Reviewed, Previously was [" + other.getReviewed() + "]");
             }
             if ( obj.getImplementationStatus() != other.getImplementationStatus() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ImplementationStatus", "Previously was [" + other.getImplementationStatus() + "]") );
                 obj.AddInfo ("CHANGED ImplementationStatus, Previously was [" + other.getImplementationStatus() + "]");
             }
             if ( obj.allParagraphs() != null )
@@ -4659,9 +4988,9 @@ namespace DataDictionary
                         bool compared = false;
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
-                                compareParagraph ( subElement, otherElement );
+                                compareParagraph ( subElement, otherElement, diff );
                                 compared = true;
                             break;
                             }
@@ -4669,6 +4998,7 @@ namespace DataDictionary
 
                         if ( !compared ) 
                         {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                             obj.AddInfo("ADDED : "+ subElement.Name );                   
                         }
                     }
@@ -4678,7 +5008,7 @@ namespace DataDictionary
                         bool found = false;
                         foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                         {
-                            if ( canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
                             {
                                 found = true;
                                 break;
@@ -4687,6 +5017,7 @@ namespace DataDictionary
 
                         if ( !found )
                         {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                             obj.AddInfo("REMOVED : " + otherElement.Name );                   
                         }
                     }
@@ -4695,6 +5026,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
                         obj.AddInfo("ADDED : "+ subElement.Name );                   
                     }
                 }
@@ -4705,6 +5037,7 @@ namespace DataDictionary
                 {
                     foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                     {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
                         obj.AddInfo("REMOVED : " + otherElement.Name );                   
                     }
                 }
@@ -4713,27 +5046,32 @@ namespace DataDictionary
             {
                 if ( other.getRevision() != null )
                 {
+                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Revision", "" ) );
                     obj.AddInfo ("REMOVED : Revision");
                 }
             }
             else
             {
-                compareParagraphRevision ( obj.getRevision(), other.getRevision() );
+                compareParagraphRevision ( obj.getRevision(), other.getRevision(), diff );
             }
             if ( obj.getMoreInfoRequired() != other.getMoreInfoRequired() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MoreInfoRequired", "Previously was [" + other.getMoreInfoRequired() + "]") );
                 obj.AddInfo ("CHANGED MoreInfoRequired, Previously was [" + other.getMoreInfoRequired() + "]");
             }
             if ( obj.getSpecIssue() != other.getSpecIssue() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SpecIssue", "Previously was [" + other.getSpecIssue() + "]") );
                 obj.AddInfo ("CHANGED SpecIssue, Previously was [" + other.getSpecIssue() + "]");
             }
             if ( obj.getFunctionalBlock() != other.getFunctionalBlock() )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlock", "Previously was [" + other.getFunctionalBlock() + "]") );
                 obj.AddInfo ("CHANGED FunctionalBlock, Previously was [" + other.getFunctionalBlock() + "]");
             }
-            if ( !canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlockName", "Previously was [" + other.getFunctionalBlockName() + "]") );
                 obj.AddInfo ("CHANGED FunctionalBlockName, Previously was [" + other.getFunctionalBlockName() + "]");
             }
         }
@@ -4743,20 +5081,23 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareParagraphRevision(Generated.ParagraphRevision obj, Generated.ParagraphRevision other)
+        public static void compareParagraphRevision(Generated.ParagraphRevision obj, Generated.ParagraphRevision other, VersionDiff diff)
         {
             if ( other == null )
             { 
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
                 obj.AddInfo ("Element has been added");
                 return;
             }
 
-            if ( !canonicalStringEquality(obj.getText(), other.getText()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Text", "Previously was [" + other.getText() + "]") );
                 obj.AddInfo ("CHANGED Text, Previously was [" + other.getText() + "]");
             }
-            if ( !canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
             {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
                 obj.AddInfo ("CHANGED Version, Previously was [" + other.getVersion() + "]");
             }
         }
