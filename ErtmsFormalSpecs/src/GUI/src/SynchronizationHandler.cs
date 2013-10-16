@@ -125,6 +125,8 @@ namespace GUI
 
             while (Synchronize)
             {
+                Thread.Sleep(CycleTime);
+
                 if (!Suspend)
                 {
                     try
@@ -135,8 +137,6 @@ namespace GUI
                     {
                     }
                 }
-
-                Thread.Sleep(CycleTime);
             }
         }
 
