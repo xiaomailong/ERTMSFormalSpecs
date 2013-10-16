@@ -51,7 +51,6 @@ BEGIN
 `            if ( other == null )
 `            { 
 `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
-`                obj.AddInfo ("Element has been added");
 `                return;
 `            }
 `
@@ -71,7 +70,6 @@ BEGIN
 `            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
 `            {
 `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
-`                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
           ELSE
@@ -79,7 +77,6 @@ BEGIN
 `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
 `            {
 `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
-`                obj.AddInfo ("CHANGED `field.NAME`, Previously was [" + other.get`field.NAME`() + "]");
 `            }
             });
           END;
@@ -106,13 +103,11 @@ BEGIN
 `                    while ( i < obj.count`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
-`                        obj.AddInfo("ADDED : " + obj.get`field.NAME`( i ).Name );                   
 `                        i += 1;
 `                    }
 `                    while ( i < other.count`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.get`field.NAME`( i ).Name) );
-`                        obj.AddInfo("REMOVED : " + other.get`field.NAME`( i ).Name );                   
 `                        i += 1;
 `                    }
 `                }
@@ -121,7 +116,6 @@ BEGIN
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-`                        obj.AddInfo("ADDED : " + subElement.Name );                   
 `                    }
 `                }
 `            }
@@ -132,7 +126,6 @@ BEGIN
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-`                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                    }
 `                }
 `            }
@@ -159,7 +152,6 @@ BEGIN
 `                        if ( !compared ) 
 `                        {
 `                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-`                            obj.AddInfo("ADDED : "+ subElement.Name );                   
 `                        }
 `                    }
 `
@@ -178,7 +170,6 @@ BEGIN
 `                        if ( !found )
 `                        {
 `                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-`                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                        }
 `                    }
 `                }
@@ -187,7 +178,6 @@ BEGIN
 `                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-`                        obj.AddInfo("ADDED : "+ subElement.Name );                   
 `                    }
 `                }
 `            }
@@ -198,7 +188,6 @@ BEGIN
 `                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                    {
 `                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-`                        obj.AddInfo("REMOVED : " + otherElement.Name );                   
 `                    }
 `                }
 `            }
@@ -211,7 +200,6 @@ BEGIN
 `                if ( other.get`field.NAME`() != null )
 `                {
 `                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "" ) );
-`                    obj.AddInfo ("REMOVED : `field.NAME`");
 `                }
 `            }
 `            else
