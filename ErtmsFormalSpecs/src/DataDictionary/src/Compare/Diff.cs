@@ -58,6 +58,26 @@ namespace DataDictionary.Compare
             Field = field;
             Message = message;
         }
+
+        /// <summary>
+        /// Marks the model according to this diff
+        /// </summary>
+        public void markModel()
+        {
+            switch (Action)
+            {
+                case ActionEnum.Add:
+                    Model.AddInfo("ADDED");
+                    break;
+
+                case ActionEnum.Remove:
+                    Model.AddInfo("REMOVED " + Field + " : " + Message);
+                    break;
+                case ActionEnum.Change:
+                    Model.AddInfo("CHANGED " + Field + " : " + Message);
+                    break;
+            }
+        }
     }
 
     public class VersionDiff
@@ -73,6 +93,18 @@ namespace DataDictionary.Compare
         public VersionDiff()
         {
             Diffs = new List<Diff>();
+        }
+
+        /// <summary>
+        /// Marks the model according to the version changes
+        /// </summary>
+        public void markVersionChanges(Dictionary dictionary)
+        {
+            dictionary.ClearMessages();
+            foreach (Diff diff in Diffs)
+            {
+                diff.markModel();
+            }
         }
     }
 }
