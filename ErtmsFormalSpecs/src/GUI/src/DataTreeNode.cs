@@ -428,7 +428,15 @@ namespace GUI
                     ComputedColor = INFO_COLOR_PATH;
                 }
 
-                ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                BaseTreeNode parent = Parent as BaseTreeNode;
+                if (parent != null && parent.Model != Model)
+                {
+                    // If the parent node is the same as the current node, the color does not count
+                    // since it has already been reported in the enclosing node. Just consider subnodes 
+                    // for this node's color
+
+                    ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                }
             }
 
             return ComputedColor;
