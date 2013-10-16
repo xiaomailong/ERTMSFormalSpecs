@@ -821,7 +821,9 @@ namespace GUI
             CheckModelHandler checkModelHandler = new CheckModelHandler(EFSSystem);
             ProgressDialog dialog = new ProgressDialog("Check model", checkModelHandler);
             dialog.ShowDialog();
-            Refresh();
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
