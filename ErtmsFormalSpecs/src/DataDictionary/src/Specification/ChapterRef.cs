@@ -66,7 +66,9 @@ namespace DataDictionary.Specification
         /// <returns></returns>
         public Chapter LoadChapter(bool lockFiles)
         {
-            return Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles);
+            Chapter retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles);
+
+            return retVal;
         }
 
         /// <summary>

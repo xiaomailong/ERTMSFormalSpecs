@@ -300,12 +300,16 @@ namespace DataDictionary
                 catch (Exception e)
                 {
                     Log.Error(e.Message);
+                    retVal = null;
                 }
                 finally
                 {
                     Generated.ControllersManager.ActivateAllNotifications();
                 }
+            }
 
+            if (retVal != null)
+            {
                 // Updates the contents of this .efs file
                 try
                 {
@@ -341,6 +345,11 @@ namespace DataDictionary
         {
             Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath, dictionary, lockFiles);
 
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
+
             return retVal;
         }
 
@@ -354,6 +363,11 @@ namespace DataDictionary
         public static TranslationDictionary loadTranslationDictionary(string filePath, DataDictionary.Dictionary dictionary, bool lockFiles)
         {
             TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary, lockFiles);
+
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
 
             return retVal;
         }
@@ -369,6 +383,11 @@ namespace DataDictionary
         {
             NameSpace retVal = DocumentLoader<NameSpace>.loadFile(filePath, enclosing, lockFiles);
 
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
+
             return retVal;
         }
 
@@ -383,6 +402,11 @@ namespace DataDictionary
         {
             Frame retVal = DocumentLoader<Frame>.loadFile(filePath, enclosing, lockFiles);
 
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
+
             return retVal;
         }
 
@@ -396,6 +420,11 @@ namespace DataDictionary
         public static Chapter loadChapter(string filePath, ModelElement enclosing, bool lockFiles)
         {
             Chapter retVal = DocumentLoader<Chapter>.loadFile(filePath, enclosing, lockFiles);
+
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
 
             return retVal;
         }
