@@ -33,6 +33,8 @@ BEGIN
 `
 `namespace DataDictionary.Compare
 `{
+`    using System.Collections.Generic;
+
 `    public static class Comparer 
 `    {
   });
@@ -214,8 +216,68 @@ BEGIN
 `        }
 `
       });
-    END; -- FOR element
-  END; -- IF
+    END; -- IF
+  END; -- FOR element
+
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Searches a specific string in `element.NAME` and updates the list 
+`        /// of model element with all the elements in which that string is found
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="obj">The string to search for</param>
+`        /// <param name="occurences">The list of model elements which hold the searched string</param>
+`        public static void search`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, string searchString, List<ModelElement> occurences)
+`        {
+      });
+
+      IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
+      FILE1.WriteList ({
+`            search`ValidName (element.BaseElement.NAME)` (obj, searchString, occurences);
+`
+      });
+      END;
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
+          IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+            FILE1.WriteList ({
+`            if ( obj.get`ValidName(field.NAME)`() != null && obj.get`ValidName(field.NAME)`().Contains (searchString) ) 
+`            {
+`                occurences.Add ( obj );
+`            }
+            });
+          END;
+        ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
+          IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+            FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                {
+`                    search`ValidName (field.REFTYPE)` ( subElement, searchString, occurences );
+`                }
+`            }
+            }); 
+          ELSE
+            FILE1.WriteList({
+`            if ( obj.get`field.NAME`() != null )
+`            {
+`                search`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), searchString, occurences );
+`            }
+            });
+          END; -- IF
+        END; -- IF
+      END; -- FOR field
+      FILE1.WriteList ({
+`        }
+`
+      });
+    END; -- IF
+  END; -- FOR element
 
   FILE1.WriteList ({
 `    }

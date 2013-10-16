@@ -16,6 +16,7 @@
 
 namespace DataDictionary.Compare
 {
+    using System.Collections.Generic;
     public static class Comparer 
     {
         /// <summary>
@@ -4673,6 +4674,1258 @@ namespace DataDictionary.Compare
             if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Namable and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchNamable(Generated.Namable obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getName() != null && obj.getName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ReferencesParagraph and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchReferencesParagraph(Generated.ReferencesParagraph obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allRequirements() != null )
+            {
+                foreach ( Generated.ReqRef subElement in obj.allRequirements() )
+                {
+                    searchReqRef ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ReqRelated and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchReqRelated(Generated.ReqRelated obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReferencesParagraph (obj, searchString, occurences);
+
+        }
+
+        /// <summary>
+        /// Searches a specific string in Dictionary and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchDictionary(Generated.Dictionary obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getSpecification() != null )
+            {
+                searchSpecification ( obj.getSpecification(), searchString, occurences );
+            }
+            if ( obj.allRuleDisablings() != null )
+            {
+                foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
+                {
+                    searchRuleDisabling ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allNameSpaces() != null )
+            {
+                foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                {
+                    searchNameSpace ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allNameSpaceRefs() != null )
+            {
+                foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                {
+                    searchNameSpaceRef ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allTests() != null )
+            {
+                foreach ( Generated.Frame subElement in obj.allTests() )
+                {
+                    searchFrame ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allTestRefs() != null )
+            {
+                foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
+                {
+                    searchFrameRef ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getTranslationDictionary() != null )
+            {
+                searchTranslationDictionary ( obj.getTranslationDictionary(), searchString, occurences );
+            }
+            if ( obj.getShortcutDictionary() != null )
+            {
+                searchShortcutDictionary ( obj.getShortcutDictionary(), searchString, occurences );
+            }
+            if ( obj.getXsi() != null && obj.getXsi().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getXsiLocation() != null && obj.getXsiLocation().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in RuleDisabling and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchRuleDisabling(Generated.RuleDisabling obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getRule() != null && obj.getRule().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in NameSpaceRef and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchNameSpaceRef(Generated.NameSpaceRef obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+        }
+
+        /// <summary>
+        /// Searches a specific string in NameSpace and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchNameSpace(Generated.NameSpace obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allNameSpaces() != null )
+            {
+                foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                {
+                    searchNameSpace ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allNameSpaceRefs() != null )
+            {
+                foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                {
+                    searchNameSpaceRef ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allRanges() != null )
+            {
+                foreach ( Generated.Range subElement in obj.allRanges() )
+                {
+                    searchRange ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allEnumerations() != null )
+            {
+                foreach ( Generated.Enum subElement in obj.allEnumerations() )
+                {
+                    searchEnum ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allStructures() != null )
+            {
+                foreach ( Generated.Structure subElement in obj.allStructures() )
+                {
+                    searchStructure ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allCollections() != null )
+            {
+                foreach ( Generated.Collection subElement in obj.allCollections() )
+                {
+                    searchCollection ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allStateMachines() != null )
+            {
+                foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                {
+                    searchStateMachine ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allFunctions() != null )
+            {
+                foreach ( Generated.Function subElement in obj.allFunctions() )
+                {
+                    searchFunction ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allProcedures() != null )
+            {
+                foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                {
+                    searchProcedure ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allVariables() != null )
+            {
+                foreach ( Generated.Variable subElement in obj.allVariables() )
+                {
+                    searchVariable ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                foreach ( Generated.Rule subElement in obj.allRules() )
+                {
+                    searchRule ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ReqRef and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchReqRef(Generated.ReqRef obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getId() != null && obj.getId().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Type and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchType(Generated.Type obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getDefault() != null && obj.getDefault().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Enum and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchEnum(Generated.Enum obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.allValues() != null )
+            {
+                foreach ( Generated.EnumValue subElement in obj.allValues() )
+                {
+                    searchEnumValue ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allSubEnums() != null )
+            {
+                foreach ( Generated.Enum subElement in obj.allSubEnums() )
+                {
+                    searchEnum ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in EnumValue and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchEnumValue(Generated.EnumValue obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getValue() != null && obj.getValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Range and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchRange(Generated.Range obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.getMinValue() != null && obj.getMinValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getMaxValue() != null && obj.getMaxValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allSpecialValues() != null )
+            {
+                foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
+                {
+                    searchEnumValue ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Structure and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchStructure(Generated.Structure obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.allElements() != null )
+            {
+                foreach ( Generated.StructureElement subElement in obj.allElements() )
+                {
+                    searchStructureElement ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allProcedures() != null )
+            {
+                foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                {
+                    searchProcedure ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allStateMachines() != null )
+            {
+                foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                {
+                    searchStateMachine ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                foreach ( Generated.Rule subElement in obj.allRules() )
+                {
+                    searchRule ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in StructureElement and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchStructureElement(Generated.StructureElement obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getTypeName() != null && obj.getTypeName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getDefault() != null && obj.getDefault().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Collection and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchCollection(Generated.Collection obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.getTypeName() != null && obj.getTypeName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Function and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFunction(Generated.Function obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.allParameters() != null )
+            {
+                foreach ( Generated.Parameter subElement in obj.allParameters() )
+                {
+                    searchParameter ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allCases() != null )
+            {
+                foreach ( Generated.Case subElement in obj.allCases() )
+                {
+                    searchCase ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getTypeName() != null && obj.getTypeName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Parameter and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchParameter(Generated.Parameter obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getTypeName() != null && obj.getTypeName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Case and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchCase(Generated.Case obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allPreConditions() != null )
+            {
+                foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
+                {
+                    searchPreCondition ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getExpression() != null && obj.getExpression().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Procedure and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchProcedure(Generated.Procedure obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getStateMachine() != null )
+            {
+                searchStateMachine ( obj.getStateMachine(), searchString, occurences );
+            }
+            if ( obj.allRules() != null )
+            {
+                foreach ( Generated.Rule subElement in obj.allRules() )
+                {
+                    searchRule ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allParameters() != null )
+            {
+                foreach ( Generated.Parameter subElement in obj.allParameters() )
+                {
+                    searchParameter ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in StateMachine and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchStateMachine(Generated.StateMachine obj, string searchString, List<ModelElement> occurences)
+        {
+            searchType (obj, searchString, occurences);
+
+            if ( obj.getInitialState() != null && obj.getInitialState().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allStates() != null )
+            {
+                foreach ( Generated.State subElement in obj.allStates() )
+                {
+                    searchState ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                foreach ( Generated.Rule subElement in obj.allRules() )
+                {
+                    searchRule ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in State and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchState(Generated.State obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getStateMachine() != null )
+            {
+                searchStateMachine ( obj.getStateMachine(), searchString, occurences );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Variable and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchVariable(Generated.Variable obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.getTypeName() != null && obj.getTypeName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getDefaultValue() != null && obj.getDefaultValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allSubVariables() != null )
+            {
+                foreach ( Generated.Variable subElement in obj.allSubVariables() )
+                {
+                    searchVariable ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Rule and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchRule(Generated.Rule obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.allConditions() != null )
+            {
+                foreach ( Generated.RuleCondition subElement in obj.allConditions() )
+                {
+                    searchRuleCondition ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in RuleCondition and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchRuleCondition(Generated.RuleCondition obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.allPreConditions() != null )
+            {
+                foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
+                {
+                    searchPreCondition ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allActions() != null )
+            {
+                foreach ( Generated.Action subElement in obj.allActions() )
+                {
+                    searchAction ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allSubRules() != null )
+            {
+                foreach ( Generated.Rule subElement in obj.allSubRules() )
+                {
+                    searchRule ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in PreCondition and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchPreCondition(Generated.PreCondition obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getCondition() != null && obj.getCondition().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Action and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchAction(Generated.Action obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getExpression() != null && obj.getExpression().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in FrameRef and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFrameRef(Generated.FrameRef obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+        }
+
+        /// <summary>
+        /// Searches a specific string in Frame and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFrame(Generated.Frame obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getCycleDuration() != null && obj.getCycleDuration().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allSubSequences() != null )
+            {
+                foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
+                {
+                    searchSubSequence ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in SubSequence and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchSubSequence(Generated.SubSequence obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getD_LRBG() != null && obj.getD_LRBG().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getLevel() != null && obj.getLevel().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getMode() != null && obj.getMode().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getNID_LRBG() != null && obj.getNID_LRBG().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getQ_DIRLRBG() != null && obj.getQ_DIRLRBG().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getQ_DIRTRAIN() != null && obj.getQ_DIRTRAIN().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getQ_DLRBG() != null && obj.getQ_DLRBG().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getRBC_ID() != null && obj.getRBC_ID().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getRBCPhone() != null && obj.getRBCPhone().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allTestCases() != null )
+            {
+                foreach ( Generated.TestCase subElement in obj.allTestCases() )
+                {
+                    searchTestCase ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in TestCase and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchTestCase(Generated.TestCase obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReqRelated (obj, searchString, occurences);
+
+            if ( obj.allSteps() != null )
+            {
+                foreach ( Generated.Step subElement in obj.allSteps() )
+                {
+                    searchStep ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Step and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchStep(Generated.Step obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getDescription() != null && obj.getDescription().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getUserComment() != null && obj.getUserComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allSubSteps() != null )
+            {
+                foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                {
+                    searchSubStep ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allMessages() != null )
+            {
+                foreach ( Generated.DBMessage subElement in obj.allMessages() )
+                {
+                    searchDBMessage ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in SubStep and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchSubStep(Generated.SubStep obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allActions() != null )
+            {
+                foreach ( Generated.Action subElement in obj.allActions() )
+                {
+                    searchAction ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allExpectations() != null )
+            {
+                foreach ( Generated.Expectation subElement in obj.allExpectations() )
+                {
+                    searchExpectation ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Expectation and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchExpectation(Generated.Expectation obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getValue() != null && obj.getValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getCondition() != null && obj.getCondition().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in DBMessage and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchDBMessage(Generated.DBMessage obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFields() != null )
+            {
+                foreach ( Generated.DBField subElement in obj.allFields() )
+                {
+                    searchDBField ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allPackets() != null )
+            {
+                foreach ( Generated.DBPacket subElement in obj.allPackets() )
+                {
+                    searchDBPacket ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in DBPacket and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchDBPacket(Generated.DBPacket obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFields() != null )
+            {
+                foreach ( Generated.DBField subElement in obj.allFields() )
+                {
+                    searchDBField ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in DBField and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchDBField(Generated.DBField obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getVariable() != null && obj.getVariable().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in TranslationDictionary and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchTranslationDictionary(Generated.TranslationDictionary obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFolders() != null )
+            {
+                foreach ( Generated.Folder subElement in obj.allFolders() )
+                {
+                    searchFolder ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allTranslations() != null )
+            {
+                foreach ( Generated.Translation subElement in obj.allTranslations() )
+                {
+                    searchTranslation ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Folder and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchFolder(Generated.Folder obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFolders() != null )
+            {
+                foreach ( Generated.Folder subElement in obj.allFolders() )
+                {
+                    searchFolder ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allTranslations() != null )
+            {
+                foreach ( Generated.Translation subElement in obj.allTranslations() )
+                {
+                    searchTranslation ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Translation and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchTranslation(Generated.Translation obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allSourceTexts() != null )
+            {
+                foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
+                {
+                    searchSourceText ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allSubSteps() != null )
+            {
+                foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                {
+                    searchSubStep ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in SourceText and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchSourceText(Generated.SourceText obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+        }
+
+        /// <summary>
+        /// Searches a specific string in ShortcutDictionary and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchShortcutDictionary(Generated.ShortcutDictionary obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFolders() != null )
+            {
+                foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                {
+                    searchShortcutFolder ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allShortcuts() != null )
+            {
+                foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                {
+                    searchShortcut ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ShortcutFolder and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchShortcutFolder(Generated.ShortcutFolder obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allFolders() != null )
+            {
+                foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                {
+                    searchShortcutFolder ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allShortcuts() != null )
+            {
+                foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                {
+                    searchShortcut ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Shortcut and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchShortcut(Generated.Shortcut obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getShortcutName() != null && obj.getShortcutName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Specification and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchSpecification(Generated.Specification obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getVersion() != null && obj.getVersion().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allChapters() != null )
+            {
+                foreach ( Generated.Chapter subElement in obj.allChapters() )
+                {
+                    searchChapter ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.allChapterRefs() != null )
+            {
+                foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
+                {
+                    searchChapterRef ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ChapterRef and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchChapterRef(Generated.ChapterRef obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+        }
+
+        /// <summary>
+        /// Searches a specific string in Chapter and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchChapter(Generated.Chapter obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.getId() != null && obj.getId().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allParagraphs() != null )
+            {
+                foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                {
+                    searchParagraph ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in Paragraph and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchParagraph(Generated.Paragraph obj, string searchString, List<ModelElement> occurences)
+        {
+            searchReferencesParagraph (obj, searchString, occurences);
+
+            if ( obj.getId() != null && obj.getId().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getBl() != null && obj.getBl().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getText() != null && obj.getText().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getVersion() != null && obj.getVersion().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.allParagraphs() != null )
+            {
+                foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                {
+                    searchParagraph ( subElement, searchString, occurences );
+                }
+            }
+            if ( obj.getRevision() != null )
+            {
+                searchParagraphRevision ( obj.getRevision(), searchString, occurences );
+            }
+            if ( obj.getFunctionalBlockName() != null && obj.getFunctionalBlockName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in ParagraphRevision and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchParagraphRevision(Generated.ParagraphRevision obj, string searchString, List<ModelElement> occurences)
+        {
+            if ( obj.getText() != null && obj.getText().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getVersion() != null && obj.getVersion().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
             }
         }
 
