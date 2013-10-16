@@ -46,7 +46,7 @@ namespace DataDictionary.Tests.Runner
         {
             get
             {
-                return SubSequence.EFSSystem;
+                return EFSSystem.INSTANCE;
             }
         }
 
