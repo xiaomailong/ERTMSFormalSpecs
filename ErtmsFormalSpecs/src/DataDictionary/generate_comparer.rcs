@@ -85,7 +85,7 @@ BEGIN
           END;
         ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
           IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
-            IF (field.REFTYPE = 'Action') OR (field.REFTYPE = 'PreCondition') OR (field.REFTYPE = 'Expectation') THEN
+            IF (field.REFTYPE IN {'Action', 'PreCondition', 'Expectation', 'Case', 'EnumValue'}) THEN
               FILE1.WriteList({
 `            if ( obj.all`field.NAME`() != null )
 `            {

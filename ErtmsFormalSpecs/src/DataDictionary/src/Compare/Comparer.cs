@@ -1356,43 +1356,29 @@ namespace DataDictionary.Compare
             {
                 if ( other.allValues() != null ) 
                 {
-                    foreach ( Generated.EnumValue subElement in obj.allValues() )
+                    int i = 0;
+                    while ( i < obj.countValues() && i < other.countValues() )
                     {
-                        bool compared = false;
-                        foreach ( Generated.EnumValue otherElement in other.allValues() )
+                        ModelElement element = (ModelElement) obj.getValues( i );
+                        ModelElement otherElement = (ModelElement) other.getValues( i );
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                compareEnumValue ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
-                            }
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
+                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
-
-                        if ( !compared ) 
-                        {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                            obj.AddInfo("ADDED : "+ subElement.Name );                   
-                        }
+                        i += 1;
                     }
-
-                    foreach ( Generated.EnumValue otherElement in other.allValues() )
+                    while ( i < obj.countValues() )
                     {
-                        bool found = false;
-                        foreach ( Generated.EnumValue subElement in obj.allValues() )
-                        {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if ( !found )
-                        {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
-                        }
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        obj.AddInfo("ADDED : " + obj.getValues( i ).Name );                   
+                        i += 1;
+                    }
+                    while ( i < other.countValues() )
+                    {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getValues( i ).Name) );
+                        obj.AddInfo("REMOVED : " + other.getValues( i ).Name );                   
+                        i += 1;
                     }
                 }
                 else 
@@ -1400,7 +1386,7 @@ namespace DataDictionary.Compare
                     foreach ( Generated.EnumValue subElement in obj.allValues() )
                     {
                         diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                        obj.AddInfo("ADDED : "+ subElement.Name );                   
+                        obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
             }
@@ -1533,43 +1519,29 @@ namespace DataDictionary.Compare
             {
                 if ( other.allSpecialValues() != null ) 
                 {
-                    foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
+                    int i = 0;
+                    while ( i < obj.countSpecialValues() && i < other.countSpecialValues() )
                     {
-                        bool compared = false;
-                        foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
+                        ModelElement element = (ModelElement) obj.getSpecialValues( i );
+                        ModelElement otherElement = (ModelElement) other.getSpecialValues( i );
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                compareEnumValue ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
-                            }
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
+                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
-
-                        if ( !compared ) 
-                        {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                            obj.AddInfo("ADDED : "+ subElement.Name );                   
-                        }
+                        i += 1;
                     }
-
-                    foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
+                    while ( i < obj.countSpecialValues() )
                     {
-                        bool found = false;
-                        foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
-                        {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if ( !found )
-                        {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
-                        }
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        obj.AddInfo("ADDED : " + obj.getSpecialValues( i ).Name );                   
+                        i += 1;
+                    }
+                    while ( i < other.countSpecialValues() )
+                    {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getSpecialValues( i ).Name) );
+                        obj.AddInfo("REMOVED : " + other.getSpecialValues( i ).Name );                   
+                        i += 1;
                     }
                 }
                 else 
@@ -1577,7 +1549,7 @@ namespace DataDictionary.Compare
                     foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
                     {
                         diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                        obj.AddInfo("ADDED : "+ subElement.Name );                   
+                        obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
             }
@@ -2013,43 +1985,29 @@ namespace DataDictionary.Compare
             {
                 if ( other.allCases() != null ) 
                 {
-                    foreach ( Generated.Case subElement in obj.allCases() )
+                    int i = 0;
+                    while ( i < obj.countCases() && i < other.countCases() )
                     {
-                        bool compared = false;
-                        foreach ( Generated.Case otherElement in other.allCases() )
+                        ModelElement element = (ModelElement) obj.getCases( i );
+                        ModelElement otherElement = (ModelElement) other.getCases( i );
+                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                compareCase ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
-                            }
+                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
+                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
                         }
-
-                        if ( !compared ) 
-                        {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                            obj.AddInfo("ADDED : "+ subElement.Name );                   
-                        }
+                        i += 1;
                     }
-
-                    foreach ( Generated.Case otherElement in other.allCases() )
+                    while ( i < obj.countCases() )
                     {
-                        bool found = false;
-                        foreach ( Generated.Case subElement in obj.allCases() )
-                        {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if ( !found )
-                        {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
-                            obj.AddInfo("REMOVED : " + otherElement.Name );                   
-                        }
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        obj.AddInfo("ADDED : " + obj.getCases( i ).Name );                   
+                        i += 1;
+                    }
+                    while ( i < other.countCases() )
+                    {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getCases( i ).Name) );
+                        obj.AddInfo("REMOVED : " + other.getCases( i ).Name );                   
+                        i += 1;
                     }
                 }
                 else 
@@ -2057,7 +2015,7 @@ namespace DataDictionary.Compare
                     foreach ( Generated.Case subElement in obj.allCases() )
                     {
                         diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
-                        obj.AddInfo("ADDED : "+ subElement.Name );                   
+                        obj.AddInfo("ADDED : " + subElement.Name );                   
                     }
                 }
             }
