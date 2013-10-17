@@ -289,7 +289,7 @@ namespace DataDictionary.Rules
                         // TODO : Handle Error
                     }
 
-                    Log.InfoFormat("Precondition {0} value {1}", preCondition, retVal);
+                    Log.InfoFormat("Precondition {0} value {1}", preCondition.ExpressionText, retVal);
 
                     if (explanation != null)
                     {
