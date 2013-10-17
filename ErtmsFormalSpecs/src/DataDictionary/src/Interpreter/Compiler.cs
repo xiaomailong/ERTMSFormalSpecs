@@ -27,7 +27,7 @@ namespace DataDictionary.Interpreter
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void dispatch(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            public override void visit(XmlBooster.IXmlBBase obj, bool visitSubNodes)
             {
                 Utils.ISubDeclarator subDeclarator = obj as Utils.ISubDeclarator;
                 if (subDeclarator != null)
@@ -35,7 +35,13 @@ namespace DataDictionary.Interpreter
                     subDeclarator.InitDeclaredElements();
                 }
 
-                base.dispatch(obj, visitSubNodes);
+                Utils.IFinder finder = obj as Utils.IFinder;
+                if (finder != null)
+                {
+                    finder.ClearCache();
+                }
+
+                base.visit(obj, visitSubNodes);
             }
 
             /// <summary>
