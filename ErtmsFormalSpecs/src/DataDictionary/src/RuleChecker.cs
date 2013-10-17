@@ -618,8 +618,8 @@ namespace DataDictionary
                         if (type is Types.Range)
                         {
                             Types.Range range = type as Types.Range;
-                            if (range.getPrecision() == Generated.acceptor.PrecisionEnum.aIntegerPrecision && range.Default.IndexOf('.') > 0
-                                    || range.getPrecision() == Generated.acceptor.PrecisionEnum.aDoublePrecision && range.Default.IndexOf('.') <= 0)
+                            if ((range.getPrecision() == Generated.acceptor.PrecisionEnum.aIntegerPrecision && range.Default != null && range.Default.IndexOf('.') > 0)
+                                    || (range.getPrecision() == Generated.acceptor.PrecisionEnum.aDoublePrecision && range.Default != null && range.Default.IndexOf('.') <= 0))
                             {
                                 type.AddError("Default value's precision does not correspond to the type's precision");
                             }
