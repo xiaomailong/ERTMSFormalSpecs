@@ -515,8 +515,17 @@
 </Enum></Enumerations>
 <Structures>
 <Structure
+ Implemented="TRUE"
  Name="LevelData"
 >
+<ReqRef
+ Id="2.6.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="2.6.2.3"
+>
+</ReqRef>
 <Comment></Comment>
 <StructureElement
  TypeName="Messages.NID_NTC"
@@ -550,8 +559,17 @@
   Value =&gt; Level.Unknown,
   NTC =&gt; Messages.NID_NTC.NOT_APPLICABLE
 }"
+ Implemented="TRUE"
  Name="Levels"
 >
+<ReqRef
+ Id="2.6.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="2.6.2.3"
+>
+</ReqRef>
 <Comment>MaxSize is an arbitrarily chosen value. # morido, 13/10/09</Comment>
 </Collection></Collections>
 <Functions>
