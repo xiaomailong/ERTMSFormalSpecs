@@ -209,8 +209,10 @@ namespace DataDictionary.Rules
         /// <param name="priority">the priority level : a rule can be activated only if its priority level == priority</param>
         /// <param name="instance">The instance on which the rule must be evaluated</param>
         /// <param name="ruleConditions">the rule conditions to be activated</param>
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that a log should be performed</param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation)
+        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation, bool log)
         {
             bool retVal = false;
 
@@ -222,7 +224,7 @@ namespace DataDictionary.Rules
             }
 
             Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
-            retVal = EvaluatePreConditions(context, conditionExplanation);
+            retVal = EvaluatePreConditions(context, conditionExplanation, log);
 
             if (retVal)
             {
@@ -233,7 +235,7 @@ namespace DataDictionary.Rules
 
                 foreach (Rule subRule in SubRules)
                 {
-                    subRule.Evaluate(runner, priority, instance, ruleConditions, conditionExplanation);
+                    subRule.Evaluate(runner, priority, instance, ruleConditions, conditionExplanation, log);
                 }
 
                 if (EnclosingRule.getPriority() == priority)
@@ -257,8 +259,10 @@ namespace DataDictionary.Rules
         /// Provides the actual value for the preconditions
         /// </summary>
         /// <param name="context">The context on which the precondition must be evaluated</param>
+        /// <param name="explanation">The explanation part to fill, if any</param>
+        /// <param name="log">indicates that this should be logged</param>
         /// <returns></returns>
-        public bool EvaluatePreConditions(Interpreter.InterpretationContext context, ExplanationPart explanation)
+        public bool EvaluatePreConditions(Interpreter.InterpretationContext context, ExplanationPart explanation, bool log)
         {
             bool retVal = true;
 
@@ -284,6 +288,8 @@ namespace DataDictionary.Rules
                         retVal = false;
                         // TODO : Handle Error
                     }
+
+                    Log.InfoFormat("Precondition {0} value {1}", preCondition, retVal);
 
                     if (explanation != null)
                     {
