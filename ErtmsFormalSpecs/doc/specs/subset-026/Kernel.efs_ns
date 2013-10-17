@@ -1198,7 +1198,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef>
 <PreConditions>
-<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X == Kernel.Level.Value</PreCondition>
+<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X.Value == Kernel.Level.Value</PreCondition>
 </PreConditions>
 <Actions>
 <Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
