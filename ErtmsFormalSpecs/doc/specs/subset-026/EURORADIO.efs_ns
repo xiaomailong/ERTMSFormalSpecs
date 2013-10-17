@@ -9,21 +9,6 @@
  Name="TrainData"
 >
 </NameSpaceRef></NameSpaces>
-<Ranges>
-<Range
- MinValue="0"
- MaxValue="2"
- Precision="IntegerPrecision"
- Default="0"
- Implemented="TRUE"
- Name="MobileTerminals"
->
-<ReqRef
- Id="5.10.2.4.1"
->
-</ReqRef>
-<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
-</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SafeRadioConnection.NoConnection"
@@ -124,6 +109,20 @@
 </EnumValue><EnumValue
  Value=""
  Name="NonMatching"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="NOT_AVAILABLE"
+ Name="MobileTerminalState"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="AVAILABLE"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="NOT_AVAILABLE"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -792,6 +791,13 @@
  NeedsRequirement="FALSE"
  Name="RadioSessions"
 >
+</Collection><Collection
+ TypeName="MobileTerminalState"
+ MaxSize="2"
+ Default="[MobileTerminalState.NOT_AVAILABLE, MobileTerminalState.NOT_AVAILABLE]"
+ Name="MobileTerminalsState"
+>
+<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -919,6 +925,28 @@
  Name="Default"
 >
 <Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Inactive</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="OneMobileTerminalIsAvailable"
+>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="AtLeastOneIsAvailable"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN EURORADIO.MobileTerminals | X == EURORADIO.MobileTerminalState.AVAILABLE</PreCondition>
+</PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1792,9 +1820,9 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="RegisterMobileTerminal"
 >
 </Variable><Variable
- Type="EURORADIO.MobileTerminals"
+ Type="EURORADIO.MobileTerminalsState"
  VariableMode="Internal"
- Name="AvailableMobileTerminals"
+ Name="MobileTerminals"
 >
 </Variable></Variables>
 <Rules>
