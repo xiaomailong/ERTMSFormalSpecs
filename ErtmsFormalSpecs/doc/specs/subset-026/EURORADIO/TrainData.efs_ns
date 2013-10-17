@@ -196,9 +196,10 @@
  NeedsRequirement="FALSE"
  Name="CreateNationalSystem"
 >
+<Comment>we have to explicitly cast back to the &quot;base range&quot; of Default.NID_NTC (Messges.NID_NTC without the special value) so the data can be sent out again properly. #morido, 13/10/17</Comment>
 <Parameters>
 <Parameter
- Type="Messages.NID_NTC"
+ Type="Default.NID_NTC"
  Name="aNationalSystem"
 >
 </Parameter></Parameters>
@@ -206,9 +207,12 @@
 <Case
  Name="Value"
 >
+<PreConditions>
+<PreCondition>aNationalSystem != Default.NID_NTC.NOT_APPLICABLE</PreCondition>
+</PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2
 {
-    NID_NTC =&gt; aNationalSystem
+    NID_NTC =&gt; Messages.NID_NTC(aNationalSystem)
 }</Expression>
 </Case></Cases>
 </Function></Functions>

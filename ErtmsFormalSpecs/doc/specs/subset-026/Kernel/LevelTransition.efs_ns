@@ -252,7 +252,7 @@
  Name="Q_SCALE"
 >
 </Parameter><Parameter
- Type="Messages.NID_NTC"
+ Type="Default.NID_NTC"
  Name="NID_NTC"
 >
 </Parameter></Parameters>
@@ -555,7 +555,7 @@ Packet.Sequence1 </Action>
 <PreConditions>
 <PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition>
 <PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.Unknown</PreCondition>
-<PreCondition>LTOtoProcess.TRLevel.NTC == Messages.NID_NTC.NOT_APPLICABLE</PreCondition>
+<PreCondition>LTOtoProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition>
 </PreConditions>
 <Actions>
 <Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action>

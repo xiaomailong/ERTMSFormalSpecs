@@ -66,6 +66,25 @@
  Name="NA"
 >
 </EnumValue></SpecialValues>
+</Range><Range
+ MinValue="-1"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="NOT_APPLICABLE"
+ Implemented="TRUE"
+ Name="NID_NTC"
+>
+<ReqRef
+ Id="7.5.1.98"
+>
+</ReqRef>
+<Comment>This is a copy of Messages.NID_NTC enhanced by a special value for Levels != LNTC #morido, 13/10/17</Comment>
+<SpecialValues>
+<EnumValue
+ Value="-1"
+ Name="NOT_APPLICABLE"
+>
+</EnumValue></SpecialValues>
 </Range></Ranges>
 <Enumerations>
 <Enum
@@ -528,15 +547,15 @@
 </ReqRef>
 <Comment></Comment>
 <StructureElement
- TypeName="Messages.NID_NTC"
- Default="Messages.NID_NTC.NOT_APPLICABLE"
+ TypeName="Default.NID_NTC"
+ Default="Default.NID_NTC.NOT_APPLICABLE"
  Mode="Internal"
  Name="NTC"
 >
 <Comment>only applicable if Value == Level.LNTC #morido, 13/10/10</Comment>
 </StructureElement><StructureElement
- TypeName="Level"
- Default="Level.Unknown"
+ TypeName="Default.Level"
+ Default="Default.Level.Unknown"
  Mode="Internal"
  Name="Value"
 >
@@ -556,8 +575,8 @@
 </Collection><Collection
  TypeName="LevelData"
  Default="LevelData {
-  Value =&gt; Level.Unknown,
-  NTC =&gt; Messages.NID_NTC.NOT_APPLICABLE
+  Value =&gt; Default.Level.Unknown,
+  NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
 }"
  Implemented="TRUE"
  Name="Levels"
