@@ -312,7 +312,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="ReceiveData"
+ Name="ReceiveData_Part1"
 >
 <ReqRef
  Id="5.10.2.2"
@@ -339,7 +339,14 @@ IN  LevelTransitionOrder.LevelandLength</Action>
   LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
 </Actions>
-</RuleCondition><RuleCondition
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ReceiveData_Part2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
  Implemented="TRUE"
  Name="NextLevelTransition"
 >
@@ -396,7 +403,7 @@ Packet.Sequence1 </Action>
 <Rules>
 <Rule
  Priority="Processing"
- Name="ReceiveData"
+ Name="ReceiveData_Part1"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -414,7 +421,14 @@ Packet.Sequence1 </Action>
    LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
 </Actions>
-</RuleCondition><RuleCondition
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ReceiveData_Part2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
  Implemented="TRUE"
  Name="NextConditionalLevelTransition"
 >
