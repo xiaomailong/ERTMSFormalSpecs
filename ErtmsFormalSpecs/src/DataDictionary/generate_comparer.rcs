@@ -93,13 +93,9 @@ BEGIN
 `                    int i = 0;
 `                    while ( i < obj.count`field.NAME`() && i < other.count`field.NAME`() )
 `                    {
-`                        ModelElement element = (ModelElement) obj.get`field.NAME`( i );
-`                        ModelElement otherElement = (ModelElement) other.get`field.NAME`( i );
-`                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-`                        {
-`                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-`                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-`                        }
+`                        Generated.`field.REFTYPE` element = obj.get`field.NAME`( i );
+`                        Generated.`field.REFTYPE` otherElement = other.get`field.NAME`( i );
+`                        compare`field.REFTYPE` ( element, otherElement, diff );
 `                        i += 1;
 `                    }
 `                    while ( i < obj.count`field.NAME`() )

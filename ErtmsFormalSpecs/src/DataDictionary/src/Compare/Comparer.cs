@@ -1268,13 +1268,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countValues() && i < other.countValues() )
                     {
-                        ModelElement element = (ModelElement) obj.getValues( i );
-                        ModelElement otherElement = (ModelElement) other.getValues( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.EnumValue element = obj.getValues( i );
+                        Generated.EnumValue otherElement = other.getValues( i );
+                        compareEnumValue ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countValues() )
@@ -1418,13 +1414,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countSpecialValues() && i < other.countSpecialValues() )
                     {
-                        ModelElement element = (ModelElement) obj.getSpecialValues( i );
-                        ModelElement otherElement = (ModelElement) other.getSpecialValues( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.EnumValue element = obj.getSpecialValues( i );
+                        Generated.EnumValue otherElement = other.getSpecialValues( i );
+                        compareEnumValue ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countSpecialValues() )
@@ -1850,13 +1842,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countCases() && i < other.countCases() )
                     {
-                        ModelElement element = (ModelElement) obj.getCases( i );
-                        ModelElement otherElement = (ModelElement) other.getCases( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.Case element = obj.getCases( i );
+                        Generated.Case otherElement = other.getCases( i );
+                        compareCase ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countCases() )
@@ -1941,13 +1929,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countPreConditions() && i < other.countPreConditions() )
                     {
-                        ModelElement element = (ModelElement) obj.getPreConditions( i );
-                        ModelElement otherElement = (ModelElement) other.getPreConditions( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        comparePreCondition ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countPreConditions() )
@@ -2504,13 +2488,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countPreConditions() && i < other.countPreConditions() )
                     {
-                        ModelElement element = (ModelElement) obj.getPreConditions( i );
-                        ModelElement otherElement = (ModelElement) other.getPreConditions( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        comparePreCondition ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countPreConditions() )
@@ -2549,13 +2529,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countActions() && i < other.countActions() )
                     {
-                        ModelElement element = (ModelElement) obj.getActions( i );
-                        ModelElement otherElement = (ModelElement) other.getActions( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.Action element = obj.getActions( i );
+                        Generated.Action otherElement = other.getActions( i );
+                        compareAction ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countActions() )
@@ -3188,13 +3164,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countActions() && i < other.countActions() )
                     {
-                        ModelElement element = (ModelElement) obj.getActions( i );
-                        ModelElement otherElement = (ModelElement) other.getActions( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.Action element = obj.getActions( i );
+                        Generated.Action otherElement = other.getActions( i );
+                        compareAction ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countActions() )
@@ -3233,13 +3205,9 @@ namespace DataDictionary.Compare
                     int i = 0;
                     while ( i < obj.countExpectations() && i < other.countExpectations() )
                     {
-                        ModelElement element = (ModelElement) obj.getExpectations( i );
-                        ModelElement otherElement = (ModelElement) other.getExpectations( i );
-                        if ( !CompareUtil.canonicalStringEquality(element.Name, otherElement.Name) )
-                        {
-                            diff.Diffs.Add ( new Diff(element, Diff.ActionEnum.Change, "", "Previously was [" + otherElement.Name + "]") );
-                            element.AddInfo ("CHANGED, Previously was [" + otherElement.Name + "]");
-                        }
+                        Generated.Expectation element = obj.getExpectations( i );
+                        Generated.Expectation otherElement = other.getExpectations( i );
+                        compareExpectation ( element, otherElement, diff );
                         i += 1;
                     }
                     while ( i < obj.countExpectations() )
