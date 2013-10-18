@@ -2,10 +2,7 @@
  Name="LevelTransition"
 >
 <NameSpaces>
-<NameSpaceRef
- Name="SpecificTransitions"
->
-</NameSpaceRef></NameSpaces>
+</NameSpaces>
 <Structures>
 <Structure
  Implemented="TRUE"
@@ -503,12 +500,13 @@ Packet.Sequence1 </Action>
  Id="5.10.3.4"
 >
 </ReqRef>
+<Comment>The handling of the other preconditions as required by 5.10.3.4.1 is done by Kernel.ModeTransitions.Condition39, #morido, 13/10/17</Comment>
 <PreConditions>
 <PreCondition>Kernel.Level.Value == Default.Level.L0</PreCondition>
 <PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition>
 </PreConditions>
 <Actions>
-<Action>SpecificTransitions.L0ToL1()</Action>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
