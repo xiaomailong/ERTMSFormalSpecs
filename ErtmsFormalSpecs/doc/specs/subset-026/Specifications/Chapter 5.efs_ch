@@ -1674,7 +1674,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following D2: stored position is &quot;invalid&quot; or &quot;unknown&quot;; ; ; ; ; REACH RBC ID/Phone Number - Invalid ; LEAVES RBC ID/Phone Number - Valid ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following D2: stored level is &quot;invalid&quot; or &quot;unknown&quot;; ; ; ; ; REACH RBC ID/Phone Number - Invalid ; LEAVES RBC ID/Phone Number - Valid ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.8"
  type="REQUIREMENT"
  scope="OBU"
@@ -1685,7 +1685,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S2: Driver inhibits the current level; REACH ERTMS/ETCS Level - Un-known; LEAVES ERTMS/ETCS Level - Invalid; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following S2 : driver has entered level; LEAVES ERTMS/ETCS Level - Un-known; ; REACH ERTMS/ETCS Level - Valid; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -1696,7 +1696,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S2 : driver has entered level; LEAVES ERTMS/ETCS Level - Un-known; ; REACH ERTMS/ETCS Level - Valid; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following S2 : driver has re-validated/ re-entered level; ; LEAVES ERTMS/ETCS Level - Invalid; REACH ERTMS/ETCS Level - Valid; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -1707,7 +1707,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S2 : driver has re-validated/ re-entered level; ; LEAVES ERTMS/ETCS Level - Invalid; REACH ERTMS/ETCS Level - Valid; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>S3: driver has re-entered a Radio Network ID; ; ; ; REACH RBC ID/Phone Number - Unknown; LEAVES RBC ID/Phone Number - Invalid; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.11"
  type="REQUIREMENT"
  scope="OBU"
@@ -1718,7 +1718,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S3: driver has re-entered a Radio Network ID; ; ; ; REACH RBC ID/Phone Number - Unknown; LEAVES RBC ID/Phone Number - Invalid; ; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following S3 : driver has entered RBC ID/Phone Number; ; ; ; LEAVES RBC ID/Phone Number - Unknown; ; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -1729,7 +1729,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S3 : driver has entered RBC ID/Phone Number; ; ; ; LEAVES RBC ID/Phone Number - Unknown; ; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following S3: driver has re-validated/re-entered RBC ID/Phone Number; ; ; ; ; LEAVES RBC ID/Phone Number - Invalid; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -1740,7 +1740,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S3: driver has re-validated/re-entered RBC ID/Phone Number; ; ; ; ; LEAVES RBC ID/Phone Number - Invalid; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following  D31: session has been successfully opened; ; ; ; ; LEAVES RBC ID/Phone Number - Invalid; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.14"
  type="REQUIREMENT"
  scope="OBU"
@@ -1751,7 +1751,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following  D31: session has been successfully opened; ; ; ; ; LEAVES RBC ID/Phone Number - Invalid; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following  D31: session has been successfully opened; ; ; ; LEAVES RBC ID/Phone Number - Unknown; ; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.15"
  type="REQUIREMENT"
  scope="OBU"
@@ -1762,7 +1762,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following  D31: session has been successfully opened; ; ; ; LEAVES RBC ID/Phone Number - Unknown; ; REACH RBC ID/Phone Number - Valid; ; ; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>A35 : RBC reports to On-board : position valid; ; ; ; ; ; ; ; LEAVES Train position data - Invalid; REACH Train position data - Valid; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.16"
  type="REQUIREMENT"
  scope="OBU"
@@ -1773,7 +1773,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A35 : RBC reports to On-board : position valid; ; ; ; ; ; ; ; LEAVES Train position data - Invalid; REACH Train position data - Valid; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>A24 : On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.17"
  type="REQUIREMENT"
  scope="OBU"
@@ -1784,7 +1784,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A24 : On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>A39 : On-board terminates session, deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.18"
  type="REQUIREMENT"
  scope="OBU"
@@ -1795,7 +1795,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A39 : On-board terminates session, deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following E10, E12, E30, E31, E32, On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.19"
  type="REQUIREMENT"
  scope="OBU"
@@ -1806,7 +1806,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following E10, E12, E30, E31, E32, On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following 5.4.5.3 a), f), g), On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.20"
  type="REQUIREMENT"
  scope="OBU"
@@ -1817,7 +1817,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following 5.4.5.3 a), f), g), On-board deletes stored position data; ; ; ; ; ; ; REACH Train position data - Unknown; LEAVES Train position data - Invalid; ; ; ; ; ; ; ; ; ; ;</Paragraph><Paragraph
+>Following S12: Train Data have been entered; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Data - Unknown; ; REACH Train Data - Valid; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.21"
  type="REQUIREMENT"
  scope="OBU"
@@ -1828,7 +1828,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S12: Train Data have been entered; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Data - Unknown; ; REACH Train Data - Valid; ; ; ;</Paragraph><Paragraph
+>Following S12: Driver has (re-) validatedTrain Data; ; ; ; ; ; ; ; ; ; ; ; ;  LEAVES Train Data - Invalid; REACH Train Data - Valid; ; ; ;</Paragraph><Paragraph
  id="Entry 5.4.3.3.22"
  type="REQUIREMENT"
  scope="OBU"
@@ -1839,7 +1839,7 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S12: Driver has (re-) validatedTrain Data; ; ; ; ; ; ; ; ; ; ; ; ;  LEAVES Train Data - Invalid; REACH Train Data - Valid; ; ; ;</Paragraph><Paragraph
+>Following S13: Driver has entered train running number; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Running Number - Unknown; ; REACH Train Running Number - Valid;</Paragraph><Paragraph
  id="Entry 5.4.3.3.23"
  type="REQUIREMENT"
  scope="OBU"
@@ -1850,19 +1850,8 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Following S13: Driver has entered train running number; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Running Number - Unknown; ; REACH Train Running Number - Valid;</Paragraph><Paragraph
- id="Entry 5.4.3.3.24"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >Following S13: Driver has re-validated/re-entered train running number; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Running Number - Invalid; REACH Train Running Number - Valid;</Paragraph><Paragraph
- id="Entry 5.4.3.3.25"
+ id="Entry 5.4.3.3.24"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -1948,7 +1937,7 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  Name=""
 >The ERTMS/ETCS on-board equipment shall also offer the driver the following possibilities, in addition to the ones that are described in section 5.4.3:<Sub>
 <Paragraph
- id="5.4.5.3.1"
+ id="5.4.5.3.a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1958,9 +1947,9 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a) only at S10 and S20 and if valid Train data is available, to select &quot;Override&quot;. If the driver chooses to do so, then the process shall go to the procedure &quot;Override&quot;<Sub>
+>only at S10 and S20 and if valid Train data is available, to select &quot;Override&quot;. If the driver chooses to do so, then the process shall go to the procedure &quot;Override&quot;<Sub>
 <Paragraph
- id="5.4.5.3.1.1"
+ id="5.4.5.3.a.1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1973,7 +1962,7 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  Name=""
 >and, if the position is still invalid, the ERTMS/ETCS on-board shall delete the train position data (new status: &quot;unknown&quot;)</Paragraph></Sub>
 </Paragraph><Paragraph
- id="5.4.5.3.2"
+ id="5.4.5.3.b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1983,8 +1972,8 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->b) only at S10 and S20, to re-enter the Driver-ID</Paragraph><Paragraph
- id="5.4.5.3.3"
+>only at S10 and S20, to re-enter the Driver-ID</Paragraph><Paragraph
+ id="5.4.5.3.c"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -1994,8 +1983,8 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->c) only at S10 and S20,to re-enter the &quot;Train running number&quot;</Paragraph><Paragraph
- id="5.4.5.3.4"
+>only at S10 and S20,to re-enter the &quot;Train running number&quot;</Paragraph><Paragraph
+ id="5.4.5.3.d"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2005,8 +1994,8 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->d) only at S20, to re-enter the Train data. If the driver chooses to do so, then the process shall go to S12.</Paragraph><Paragraph
- id="5.4.5.3.5"
+>only at S20, to re-enter the Train data. If the driver chooses to do so, then the process shall go to S12.</Paragraph><Paragraph
+ id="5.4.5.3.e"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2016,8 +2005,8 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e) only at S10 and S20, to re-enter the Level. If the driver chooses to do so, then the process shall go to S2</Paragraph><Paragraph
- id="5.4.5.3.6"
+>only at S10 and S20, to re-enter the Level. If the driver chooses to do so, then the process shall go to S2</Paragraph><Paragraph
+ id="5.4.5.3.f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2027,9 +2016,9 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->f) only at S20, to select &quot;Non Leading&quot;. If the driver chooses to do so, then the ERTMS/ETCS on-board equipment shall immediately switch to Non Leading mode<Sub>
+>only at S20, to select &quot;Non Leading&quot;. If the driver chooses to do so, then the ERTMS/ETCS on-board equipment shall immediately switch to Non Leading mode<Sub>
 <Paragraph
- id="5.4.5.3.6.1"
+ id="5.4.5.3.f.1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2042,7 +2031,7 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  Name=""
 >and, if the position is still invalid, the ERTMS/ETCS on-board shall delete the train position data (new status: &quot;unknown&quot;).</Paragraph></Sub>
 </Paragraph><Paragraph
- id="5.4.5.3.7"
+ id="5.4.5.3.g"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2052,9 +2041,9 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  version="3.0.0"
  functionalBlockName=""
  Name=""
->g) only at S20, to select &quot;Shunting&quot;. If the driver chooses to do so, then the process shall go to the procedure &quot;Shunting initiated by driver&quot;<Sub>
+>only at S20, to select &quot;Shunting&quot;. If the driver chooses to do so, then the process shall go to the procedure &quot;Shunting initiated by driver&quot;<Sub>
 <Paragraph
- id="5.4.5.3.7.1"
+ id="5.4.5.3.g.1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2066,7 +2055,7 @@ Nominally, accidental loss of an already open session (that can occur at any ste
  Name=""
 ><Comment></Comment>
 and  if the position is still invalid, the ERTMS/ETCS on-board shall delete the train position data (new status: &quot;unknown&quot;). </Paragraph><Paragraph
- id="5.4.5.3.7.2"
+ id="5.4.5.3.g.2"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2079,7 +2068,7 @@ and  if the position is still invalid, the ERTMS/ETCS on-board shall delete the 
 ><Comment>Will be implemented when implementing Shunting procedure</Comment>
 If, in level 2 or 3, the RBC rejects the request for Shunting, the process shall go back to S20.</Paragraph></Sub>
 </Paragraph><Paragraph
- id="5.4.5.3.8"
+ id="5.4.5.3.h"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -2089,10 +2078,24 @@ If, in level 2 or 3, the RBC rejects the request for Shunting, the process shall
  version="3.0.0"
  functionalBlockName=""
  Name=""
->h) only at S10, if valid Train Data is available, to select &quot;Start&quot;. If the driver chooses to do so:
+>only at S10, if valid Train Data is available, to select &quot;Start&quot;. If the driver chooses to do so:
  - if the level is 0, then the process shall go to S23.
  - if the level is NTC, then the process shall go to S22.
- - if the level is 1/2/3, then the process shall go to S24.</Paragraph></Sub>
+ - if the level is 1/2/3, then the process shall go to S24.</Paragraph><Paragraph
+ id="5.4.5.3.i"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment>
+Previous revision status was </Comment>
+only at S10 and S20, to set/remove a Virtual Balise Cover.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.4.6"
@@ -2611,6 +2614,44 @@ ID #; Requirements<Sub>
  Name=""
 >If the current ETCS Level of operation is 2 or 3, the process shall go to A045.</Paragraph></Sub>
 </Paragraph><Paragraph
+ id="Entry 5.6.2.2.D030"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>If there is an on-going National Trip procedure reported by the STM, the process shall go to A030 <Sub>
+<Paragraph
+ id="Entry 5.6.2.2.D030.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Otherwise the process shall go to A050</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="Entry 5.6.2.2.A030"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The process shall go to the &quot;Train trip&quot; procedure</Paragraph><Paragraph
  id="Entry 5.6.2.2.A045"
  type="REQUIREMENT"
  scope="OBU"
@@ -2865,12 +2906,12 @@ The ERTMS/ETCS on-board equipment shall terminate the communication session.<Sub
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 ><Comment>This requirement was not tested for the modes SN and UN since the on-board can only be in the state A220 if its level is 2 or 3; that is impossible if its mode is SN or UN.</Comment>
-An indication shall be given to the driver that SH was refused by the RBC.<Sub>
+An indication shall be given to the driver that SH was refused by the RBC. The process shall END.<Sub>
 <Paragraph
  id="Entry 5.6.2.2.A220.1"
  type="REQUIREMENT"
@@ -2934,7 +2975,8 @@ The process shall END.</Paragraph></Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->ERTMS/ETCS level 2 or 3: no answer to Shunting request is received from the RBC<Sub>
+><Comment></Comment>
+ERTMS/ETCS level 2 or 3: no answer to Shunting request is received from the RBC<Sub>
 <Paragraph
  id="5.6.4.1.1"
  type="REQUIREMENT"
@@ -2954,10 +2996,11 @@ The process shall END.</Paragraph></Sub>
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data) , and if no reply is received within the fixed waiting time from the time of the last sending of &quot;Request for Shunting&quot;,. the ERTMS/ETCS onboard equipment shall inform the driver and shall terminate the communication session.</Paragraph><Paragraph
+><Comment></Comment>
+After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the time of the last sending of Request for Shunting,. the ERTMS/ETCS onboard equipment shall inform the driver and shall terminate the communication session.</Paragraph><Paragraph
  id="5.6.4.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -2988,7 +3031,7 @@ The process shall END.</Paragraph></Sub>
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  specIssue="TRUE"
  functionalBlockName=""
  Name=""
@@ -2997,7 +3040,7 @@ The process shall END.</Paragraph></Sub>
 >
 <Comment></Comment>
 </ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should be process end? or remain in the same state?</Comment>
-After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the last sending of the mode change report, the ERTMS/ETCS onboard equipment shall terminate the session.</Paragraph></Sub>
+After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the last sending of the mode change report, the ERTMS/ETCS onboard equipment shall terminate the communication session.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.7"
@@ -3478,8 +3521,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
 >The ERTMS/ETCS on-board equipment shall allow the driver to select &quot;Override&quot; (i.e. the &quot;Override&quot; button becomes available) only when:
 	a) The train speed is under or equal to the speed limit for triggering the &quot;override&quot; function (national value) AND
 	b) The current mode is Full Supervision, Limited Supervision, On Sight, Staff Responsible, Shunting, Unfitted, Post Trip, Stand By (in level 2/3 only) or SN (National System) AND
-	c) Validated Train Data is available (except when already in Shunting mode).
-</Paragraph><Paragraph
+	c) Validated Train Data is available (except when already in Shunting mode).</Paragraph><Paragraph
  id="5.8.2.2"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -3606,8 +3648,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In SR mode the driver may modify the value of the SR mode speed limit and of the distance to run in SR mode (refer to chapter 4, Staff Responsible mode)
-</Paragraph><Paragraph
+>In SR mode the driver may modify the value of the SR mode speed limit and of the distance to run in SR mode (refer to chapter 4, Staff Responsible mode)</Paragraph><Paragraph
  id="5.8.3.6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3617,8 +3658,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The train trip shall be inhibited (suppression of the transition to the Trip mode), and only in level 0, 1, 2, 3, the MRSP shall include the Override function related Speed Restriction (see 3.11.10) as long as the Override function is active.
-</Paragraph><Paragraph
+>The train trip shall be inhibited (suppression of the transition to the Trip mode), and only in level 0, 1, 2, 3, the MRSP shall include the Override function related Speed Restriction (see 3.11.10) as long as the Override function is active.</Paragraph><Paragraph
  id="5.8.3.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3628,8 +3668,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The status &quot;override active&quot; shall be indicated to the driver.
-</Paragraph><Paragraph
+>The status &quot;override active&quot; shall be indicated to the driver.</Paragraph><Paragraph
  id="5.8.3.8"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3639,8 +3678,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->As long as the Override function is active, new SR distance information received from EUROLOOP shall be rejected.
-</Paragraph><Paragraph
+>As long as the Override function is active, new SR distance information received from EUROLOOP shall be rejected.</Paragraph><Paragraph
  id="5.8.3.9"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3650,8 +3688,7 @@ Further, the Override procedure allows a train in SR mode reaching the end of th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When &quot;Override&quot; is selected and Override is already active, the supervision of the time and distance (see 5.8.4.1 a) and b)) for train trip suppression shall be re-started.
-</Paragraph></Sub>
+>When &quot;Override&quot; is selected and Override is already active, the supervision of the time and distance (see 5.8.4.1 a) and b)) for train trip suppression shall be re-started.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.8.4"
  type="TITLE"
@@ -4390,8 +4427,7 @@ On Sight from Unfitted or SN mode<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In Shunting and Passive Shunting modes only one set of Level Transition Information shall be stored at a time. Therefore a set of Level Transition Information received shall replace any Level Transition Information already stored on-board.
-</Paragraph></Sub>
+>In Shunting and Passive Shunting modes only one set of Level Transition Information shall be stored at a time. Therefore a set of Level Transition Information received shall replace any Level Transition Information already stored on-board.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.10.1.7"
  type="REQUIREMENT"
@@ -4535,14 +4571,14 @@ On Sight from Unfitted or SN mode<Sub>
  id="5.10.2.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When receiving the information about all ERTMS/ETCS levels that are supported by trackside, the ERTMS/ETCS on-board equipment shall select from the table the level with the highest priority, which is available for use by the onboard equipment and is not inhibited.<Sub>
+><Comment>Previous revision status was NA</Comment>
+When receiving the information about all ERTMS/ETCS levels that are supported by trackside, the ERTMS/ETCS on-board equipment shall select from the table the level with the highest priority, which is available for use by the onboard equipment.<Sub>
 <Paragraph
  id="5.10.2.4.1"
  type="REQUIREMENT"
@@ -4607,14 +4643,15 @@ On Sight from Unfitted or SN mode<Sub>
  id="5.10.2.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If none of the ordered level(s) is available for use by the ERTMS/ETCS on-board equipment, it shall nevertheless make the transition, to the ordered level with the lowest priority that is not inhibited.<Sub>
+><Comment></Comment>
+If none of the ordered level(s) is available for use by the ERTMS/ETCS on-board equipment, it shall nevertheless make the transition, to the ordered level with the lowest priority.<Sub>
 <Paragraph
  id="5.10.2.7.1"
  type="REQUIREMENT"
@@ -4626,18 +4663,8 @@ On Sight from Unfitted or SN mode<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Justification: The On-board equipment will then indicate the trackside level to the driver to allow him to select the correct procedures for degraded situations.</Paragraph><Paragraph
- id="5.10.2.7.2"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->If, due to level inhibition, no level transition will be possible the ERTMS/ETCS On-board equipment shall command the service brake and the driver shall be informed.</Paragraph></Sub>
+><Comment></Comment>
+Justification: The On-board equipment will then indicate the trackside level to the driver to allow him to select the correct procedures for degraded situations.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.10.2.8"
  type="REQUIREMENT"
@@ -4648,8 +4675,8 @@ On Sight from Unfitted or SN mode<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall store the table of priority of trackside supported ERTMS/ETCS levels.
-</Paragraph><Paragraph
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall store the table of priority of trackside supported ERTMS/ETCS levels.</Paragraph><Paragraph
  id="5.10.2.9"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -4719,8 +4746,7 @@ On Sight from Unfitted or SN mode<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.
-</Paragraph><Paragraph
+>An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.</Paragraph><Paragraph
  id="5.10.3.1.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4732,8 +4758,7 @@ On Sight from Unfitted or SN mode<Sub>
  Name=""
 >For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:
 	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.
-</Paragraph><Paragraph
+	b) as a target speed at the border location i.e. as an LOA.</Paragraph><Paragraph
  id="5.10.3.1.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4975,8 +5000,7 @@ A level 1 MA and track description information shall be received before or at th
  Name=""
 >For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
 	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.
-</Paragraph><Paragraph
+	b) as a target speed at the border location i.e. as an LOA.</Paragraph><Paragraph
  id="5.10.3.5.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -5012,8 +5036,7 @@ A level 1 MA and track description information shall be received before or at th
  Name=""
 >For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
 	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.
-</Paragraph><Paragraph
+	b) as a target speed at the border location i.e. as an LOA.</Paragraph><Paragraph
  id="5.10.3.6.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -5196,8 +5219,7 @@ A level 1 MA and track description information shall be received before or at th
  Name=""
 >For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
 	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.
-</Paragraph><Paragraph
+	b) as a target speed at the border location i.e. as an LOA.</Paragraph><Paragraph
  id="5.10.3.9.2"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -5244,8 +5266,7 @@ A level 1 MA and track description information shall be received before or at th
  Name=""
 >For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
 	- as an MA and track description information into the new area, or
-	- as a target speed at the border location i.e. as an LOA.
-</Paragraph><Paragraph
+	- as a target speed at the border location i.e. as an LOA.</Paragraph><Paragraph
  id="5.10.3.10.2"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -5518,8 +5539,7 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Transition initiated by driver
-</Paragraph><Paragraph
+>Transition initiated by driver</Paragraph><Paragraph
  id="5.10.3.15.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -5604,8 +5624,7 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the driver has not yet acknowledged within the driver acknowledgement time (refer to Appendix A3.1) after the level transition, a service brake command shall be initiated.
-</Paragraph><Paragraph
+>If the driver has not yet acknowledged within the driver acknowledgement time (refer to Appendix A3.1) after the level transition, a service brake command shall be initiated.</Paragraph><Paragraph
  id="5.10.4.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -5615,8 +5634,7 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The driver shall then acknowledge the level transition in order to release the service brake command.
-</Paragraph><Paragraph
+>The driver shall then acknowledge the level transition in order to release the service brake command.</Paragraph><Paragraph
  id="5.10.4.4"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -6752,20 +6770,9 @@ c) If the driver selects SH (E145), the process shall continue in the same ways 
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Sub>
+>The described situation is the following: The train has two engines (engine A and engine B). The engine A is the leading engine. The engine B is a slave engine. Each engine has its own ERTMS/ETCS on-board equipment.<Sub>
 <Paragraph
- id="5.12.3.1.1"
- type="NOTE"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The described situation is the following: The train has two engines (engine A and engine B). The engine A is the leading engine. The engine B is a slave engine. Each engine has its own ERTMS/ETCS on-board equipment.</Paragraph><Paragraph
- id="5.12.3.1.2"
+ id="5.12.3.1.a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -6775,9 +6782,9 @@ c) If the driver selects SH (E145), the process shall continue in the same ways 
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a) If engine B is remote controlled, its ETCS on-board equipment is in Sleeping mode.
+>If engine B is remote controlled, its ETCS on-board equipment is in Sleeping mode.
 Note: The mode is entered when on-board equipment detects the presence of the &quot;remote control&quot; signal.</Paragraph><Paragraph
- id="5.12.3.1.3"
+ id="5.12.3.1.b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -6787,8 +6794,8 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->b) If the slave engine is not remote controlled (Tandem operation) by the leading engine but there is a driver who controls the engine, then the on-board equipment is in Non leading mode.</Paragraph><Paragraph
- id="5.12.3.1.4"
+>If the slave engine is not remote controlled (Tandem operation) by the leading engine but there is a driver who controls the engine, then the on-board equipment is in Non leading mode.</Paragraph><Paragraph
+ id="5.12.3.1.c"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -6798,7 +6805,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->c) If the engine B is not remote controlled (Tandem Shunting operation) by the leading engine and there is no driver who controls the engine, then the on-board equipment is in Passive Shunting mode.</Paragraph></Sub>
+>If the engine B is not remote controlled (Tandem Shunting operation) by the leading engine and there is no driver who controls the engine, then the on-board equipment is in Passive Shunting mode.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.12.3.2"
  type="TITLE"
@@ -6810,20 +6817,9 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Sub>
+>Assumption: The train configuration does not change.<Sub>
 <Paragraph
- id="5.12.3.2.1"
- type="NOTE"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Assumption: The train configuration does not change.</Paragraph><Paragraph
- id="5.12.3.2.2"
+ id="5.12.3.2.a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -6833,8 +6829,8 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a) When changing the train orientation, the leading engine A will become the slave engine, and the slave engine B will become the leading engine.</Paragraph><Paragraph
- id="5.12.3.2.3"
+>When changing the train orientation, the leading engine A will become the slave engine, and the slave engine B will become the leading engine.</Paragraph><Paragraph
+ id="5.12.3.2.b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -6844,7 +6840,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->b) If before the change of train orientation engine B was in SL, afterwards engine A will be in SL mode; If before the change of train orientation engine B was in NL, afterwards engine A will be in NL mode; If before the change of train orientation engine B was in PS, afterwards engine A will be in PS mode.</Paragraph></Sub>
+>If before the change of train orientation engine B was in SL, afterwards engine A will be in SL mode; If before the change of train orientation engine B was in NL, afterwards engine A will be in NL mode; If before the change of train orientation engine B was in PS, afterwards engine A will be in PS mode.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.12.3.3"
  type="TITLE"
@@ -7012,8 +7008,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The situation is the following: while the ERTMS/ETCS on-board equipment is in Shunting mode, the driver closes the desk A and leaves the cab A of the Shunting engine, to go to cab B and open desk B of this same engine.
-</Paragraph><Paragraph
+>The situation is the following: while the ERTMS/ETCS on-board equipment is in Shunting mode, the driver closes the desk A and leaves the cab A of the Shunting engine, to go to cab B and open desk B of this same engine.</Paragraph><Paragraph
  id="5.12.4.2"
  type="NOTE"
  scope="OBU"
@@ -7061,8 +7056,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the driver closes a desk and opens the other one of the same engine, the ERTMS/ETCS on-board equipment shall be able to calculate the new train position data (train front position, train orientation), by use of the previous data.
-</Paragraph></Sub>
+>When the driver closes a desk and opens the other one of the same engine, the ERTMS/ETCS on-board equipment shall be able to calculate the new train position data (train front position, train orientation), by use of the previous data.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.13"
@@ -7410,8 +7404,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Every RBC/RBC handover shall be announced to the ERTMS/ETCS on-board equipment via a balise group or via the RBC.
-</Paragraph><Paragraph
+>Every RBC/RBC handover shall be announced to the ERTMS/ETCS on-board equipment via a balise group or via the RBC.</Paragraph><Paragraph
  id="5.15.1.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -7543,8 +7536,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
 	d) Announcement of the RBC transition
 	e) Transfer of train supervision to the &quot;Accepting&quot; RBC;
 	f) Termination of the session with &quot;Handing Over&quot; RBC.
-	g) Registration to the new Radio Network of first Mobile Terminal (optional)
-</Paragraph></Sub>
+	g) Registration to the new Radio Network of first Mobile Terminal (optional)</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.15.2.2"
  type="TITLE"
@@ -8169,8 +8161,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In case the LX is not protected, the ERTMS/ETCS on-board equipment (in FS, LS or OS mode) shall temporarily supervise the LX start location as both the EOA and SvL (instead of the EOA and SvL given by the MA), with no release speed.
-</Paragraph><Paragraph
+>In case the LX is not protected, the ERTMS/ETCS on-board equipment (in FS, LS or OS mode) shall temporarily supervise the LX start location as both the EOA and SvL (instead of the EOA and SvL given by the MA), with no release speed.</Paragraph><Paragraph
  id="5.16.1.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8180,8 +8171,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The supervision of the LX start location as both the EOA and SvL shall be substituted by the inclusion of the LX speed restriction in the MRSP under conditions depending on whether stopping in rear of the LX start location is required or not. The conditions of this substitution are specified in 5.16.2 or 5.16.3.
-</Paragraph><Paragraph
+>The supervision of the LX start location as both the EOA and SvL shall be substituted by the inclusion of the LX speed restriction in the MRSP under conditions depending on whether stopping in rear of the LX start location is required or not. The conditions of this substitution are specified in 5.16.2 or 5.16.3.</Paragraph><Paragraph
  id="5.16.1.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8191,8 +8181,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The start location of the LX speed restriction depends on the substitution conditions, which are specified in 5.16.2 or 5.16.3. The end location of the LX speed restriction shall be the LX end location.
-</Paragraph><Paragraph
+>The start location of the LX speed restriction depends on the substitution conditions, which are specified in 5.16.2 or 5.16.3. The end location of the LX speed restriction shall be the LX end location.</Paragraph><Paragraph
  id="5.16.1.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8204,8 +8193,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  Name=""
 >When approaching a non protected LX, the on-board equipment shall inform the driver about the status of the LX, as soon as: 
 	a) either the EOA or the SvL related to the LX start location becomes the Most Restrictive Displayed Target (see 3.13.10.4.2), or
-	b) the ERTMS/ETCS on-board equipment substitutes the supervision of the LX start location as both the EOA and SvL by the inclusion of the LX speed restriction in the MRSP.
-</Paragraph><Paragraph
+	b) the ERTMS/ETCS on-board equipment substitutes the supervision of the LX start location as both the EOA and SvL by the inclusion of the LX speed restriction in the MRSP.</Paragraph><Paragraph
  id="5.16.1.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8217,8 +8205,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  Name=""
 >Indication given to the driver shall remain displayed until one of the following conditions is met:
 	a) information &quot;LX is protected&quot; is received on-board;
-	b) train has passed the LX end location with its min safe front end.
-</Paragraph></Sub>
+	b) train has passed the LX end location with its min safe front end.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.16.2"
  type="TITLE"
@@ -8241,19 +8228,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Once the train has stopped with its estimated front end inside the stopping area, given by trackside, the ERTMS/ETCS on-board equipment shall no longer supervise the LX start location as both the EOA and SvL (i.e. the ones given by the MA shall be again supervised) and shall immediately include the LX speed restriction in the MRSP, starting from the estimated train front end.
-</Paragraph><Paragraph
- id="5.16.2.2"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->If the max safe front end of the train reaches the beginning of the LX area before the train is brought to standstill, the ERTMS/ETCS on-board equipment shall withdraw the LX braking curve (i.e. EOA at the LX start location shall no longer be supervised) and shall immediately supervise the LX speed, as a ceiling speed.
-</Paragraph></Sub>
+>Once the train has stopped with its estimated front end inside the stopping area, given by trackside, the ERTMS/ETCS on-board equipment shall no longer supervise the LX start location as both the EOA and SvL (i.e. the ones given by the MA shall be again supervised) and shall immediately include the LX speed restriction in the MRSP, starting from the estimated train front end.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.16.3"
  type="TITLE"
@@ -8336,8 +8311,7 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When valid Train Data is stored on-board, input information acquired from ERTMS/ETCS external sources different from the driver may affect some of the Train Data, depending on the type of train (e.g. tilting input information from tilting external device may affect the train category and the loading gauge).
-</Paragraph><Paragraph
+>When valid Train Data is stored on-board, input information acquired from ERTMS/ETCS external sources different from the driver may affect some of the Train Data, depending on the type of train (e.g. tilting input information from tilting external device may affect the train category and the loading gauge).</Paragraph><Paragraph
  id="5.17.1.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -8350,16 +8324,16 @@ Note: The mode is entered when on-board equipment detects the presence of the &q
  Name=""
 >The procedure here below describes the necessary steps performed by the ERTMS/ETCS on-board equipment from the detection of an input information change on an external interface, to the effective encountering of the Train Data change by the ERTMS/ETCS on-board equipment.</Paragraph><Paragraph
  id="5.17.1.3"
- type="DELETED"
- scope="OBU_AND_TRACK"
- bl="3.1.0"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
  name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.</Paragraph></Sub>
+><Comment></Comment>
+This procedure is not applicable for trains running in RV mode: on leaving RV mode, the Train Data will always be invalidated or deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.17.2"
  type="TITLE"
@@ -8406,7 +8380,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S0; The ERTMS/ETCS on-board equipment is in one of the following modes: FS, LS, OS, SR, SB, SN, UN, TR, PT, RV and valid Train Data is stored on-board.
+>The ERTMS/ETCS on-board equipment is in one of the following modes: FS, LS, OS, SR, SB, SN, UN, TR, PT, RV and valid Train Data is stored on-board.
 	If a change of input information, which affects Train Data, is detected on an ERTMS/ETCS on-board external interface (E1), the process shall go to D0</Paragraph><Paragraph
  id="Entry 5.17.2.2.D0"
  type="REQUIREMENT"
@@ -8417,10 +8391,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D0; According to the specific train implementation, Train Data which is/are affected by the change of input information from the ERTMS/ETCS on-board equipment external interface may require validation:
+>According to the specific train implementation, Train Data which is/are affected by the change of input information from the ERTMS/ETCS on-board equipment external interface may require validation:
 	- If the affected data requires driver validation, the process shall go to D9
-	- If the affected data does not require driver validation, the process shall go to D1
-</Paragraph><Paragraph
+	- If the affected data does not require driver validation, the process shall go to D1</Paragraph><Paragraph
  id="Entry 5.17.2.2.D1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8430,10 +8403,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D1; Depending on the type of Train Data which is/are affected by the change of input information from the ERTMS/ETCS on-board external interface, the following shall apply:
+>Depending on the type of Train Data which is/are affected by the change of input information from the ERTMS/ETCS on-board external interface, the following shall apply:
 	- If the impacted Train Data regards either train category, or axle load category, or traction system(s) accepted by the engine, or loading gauge, the process shall go to D3
-	- If the impacted Train Data regards any other type of Train Data, the process shall go to A1
-</Paragraph><Paragraph
+	- If the impacted Train Data regards any other type of Train Data, the process shall go to A1</Paragraph><Paragraph
  id="Entry 5.17.2.2.D3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8443,11 +8415,10 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D3; Depending on the mode of the ERTMS/ETCS on-board equipment, the following shall apply:
+>Depending on the mode of the ERTMS/ETCS on-board equipment, the following shall apply:
 	- If mode is FS, LS, or OS, the process shall go to D7
 	- If mode is SB, PT, or RV, the process shall go to A1
-	- If mode is UN, SN, SR, or TR the process shall go to D5
-</Paragraph><Paragraph
+	- If mode is UN, SN, SR, or TR the process shall go to D5</Paragraph><Paragraph
  id="Entry 5.17.2.2.D5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8457,10 +8428,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D5; The ERTMS/ETCS on-board equipment shall check whether MA and track description, received from RBC, are stored on-board, in case a level 2/3 transition or a RBC transition for a further location has been ordered:
+>The ERTMS/ETCS on-board equipment shall check whether MA and track description, received from RBC, are stored on-board, in case a level 2/3 transition or a RBC transition for a further location has been ordered:
 	- If MA and track description are stored, the process shall go to D7
-	- If MA and track description are not both stored, the process shall go to A1
-</Paragraph><Paragraph
+	- If MA and track description are not both stored, the process shall go to A1</Paragraph><Paragraph
  id="Entry 5.17.2.2.D7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8470,10 +8440,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D7; The ERTMS/ETCS on-board equipment shall check whether the train is at standstill:
+>The ERTMS/ETCS on-board equipment shall check whether the train is at standstill:
 	- If at standstill, the process shall go to A1
-	- If not at standstill, the process shall go to S2
-</Paragraph><Paragraph
+	- If not at standstill, the process shall go to S2</Paragraph><Paragraph
  id="Entry 5.17.2.2.A1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8483,8 +8452,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A1; The ERTMS/ETCS on-board equipment shall inform the driver that Train Data has been changed and the process shall go to A7
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall inform the driver that Train Data has been changed and the process shall go to A7</Paragraph><Paragraph
  id="Entry 5.17.2.2.S2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8494,8 +8462,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S2; The ERTMS/ETCS on-board equipment shall command the service brake, inform the driver about the reason of this brake command and waits for the train to be at standstill; when the ERTMS/ETCS on-board equipment detects that the train is at standstill (E2), the process shall go to S3
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall command the service brake, inform the driver about the reason of this brake command and waits for the train to be at standstill; when the ERTMS/ETCS on-board equipment detects that the train is at standstill (E2), the process shall go to S3</Paragraph><Paragraph
  id="Entry 5.17.2.2.S3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8505,8 +8472,56 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S3; The ERTMS/ETCS on-board equipment shall request the driver to acknowledge the brake command; when the driver acknowledges (E3), the process shall go to A5
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall request the driver to acknowledge the brake command; when the driver acknowledges (E3), the process shall go to A5</Paragraph><Paragraph
+ id="Entry 5.17.2.2.A5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The ERTMS/ETCS on-board equipment shall release the brake command and the process shall go to A7</Paragraph><Paragraph
+ id="Entry 5.17.2.2.D2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Depending on the mode of the ERTMS/ETCS on-board equipment, the following shall apply:
+- If mode is FS, LS, OS, SR, SB, SN or UN the process shall go to D9
+- If mode is TR or PT, the process shall go to S1</Paragraph><Paragraph
+ id="Entry 5.17.2.2.S1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The ERTMS/ETCS on-board equipment shall wait for the end of the Train Trip procedure (see section 5.11). When the Train Trip procedure is exited (E1) (i.e. there is a mode transition to another mode than TR, PT), the process shall go to D4	</Paragraph><Paragraph
+ id="Entry 5.17.2.2.D4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Depending on the mode of the ERTMS/ETCS on-board equipment, the following shall apply:
+- If mode is FS, LS, OS, SR, SN or UN the process shall go to S6
+- If mode is SH, the Train Data are invalidated and the process shall END	
+	</Paragraph><Paragraph
  id="Entry 5.17.2.2.D9"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8516,10 +8531,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D9; The ERTMS/ETCS on-board equipment shall check whether the train is at standstill:
+>The ERTMS/ETCS on-board equipment shall check whether the train is at standstill:
 	- If at standstill, the process shall go to S6
-	- If not at standstill, the process shall go to S4
-</Paragraph><Paragraph
+	- If not at standstill, the process shall go to S4</Paragraph><Paragraph
  id="Entry 5.17.2.2.S4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8529,8 +8543,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S4; The ERTMS/ETCS on-board equipment shall command the service brake, inform the driver about the reason of this brake command and wait for the train to be at standstill; when the ERTMS/ETCS on-board equipment detects that the train is at standstill (E4), the process shall go to S5
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall command the service brake, inform the driver about the reason of this brake command and wait for the train to be at standstill; when the ERTMS/ETCS on-board equipment detects that the train is at standstill (E4), the process shall go to S5</Paragraph><Paragraph
  id="Entry 5.17.2.2.S5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8540,8 +8553,18 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S5; The ERTMS/ETCS on-board equipment shall request the driver to acknowledge the brake command; when the driver acknowledges (E5), the process shall go to A6
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall request the driver to acknowledge the brake command; when the driver acknowledges (E5), the process shall go to A6</Paragraph><Paragraph
+ id="Entry 5.17.2.2.A6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The ERTMS/ETCS on-board equipment shall release the brake command and the process shall go to S6</Paragraph><Paragraph
  id="Entry 5.17.2.2.S6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8551,9 +8574,8 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->S6; The ERTMS/ETCS on-board equipment shall request the driver to re-enter or re-validate the Train Data.
-	Once Train Data is validated (E6), the process shall go to A7
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall request the driver to re-enter or re-validate the Train Data.
+	Once Train Data is validated (E6), the process shall go to A7</Paragraph><Paragraph
  id="Entry 5.17.2.2.A7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8563,9 +8585,9 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A7; The ERTMS/ETCS on-board equipment shall consider the Train Data as being changed and shall apply, when relevant, the requirements regarding change of Train Data (refer to clauses 3.18.3.4, 3.18.3.7 and 3.18.3.8).
-	The process shall END.
-</Paragraph></Sub>
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall consider the Train Data as being changed and shall apply, when relevant, the requirements regarding change of Train Data (refer to clauses 3.18.3.4, 3.18.3.7 and 3.18.3.8).
+	The process shall END.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.17.3"
@@ -8628,7 +8650,8 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->This set of procedures specifies the sequences of driver indications related to the following track-conditions:
+><Comment></Comment>
+This set of procedures specifies the sequences of driver indications related to the following track-conditions:
 	a) powerless section with pantograph to be lowered, potentially including a change of traction system,
 	b) powerless section with main power switch to be switched off,
 	c) non-stopping area,
@@ -8636,7 +8659,8 @@ ID #; Requirements<Sub>
 	e) air tightness area,
 	f) Inhibition of a defined type of brake,
 	g) tunnel stopping area,
-	h) sound horn.</Paragraph><Paragraph
+	h) sound horn,
+	i) change of traction system.</Paragraph><Paragraph
  id="5.18.1.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -8651,39 +8675,42 @@ ID #; Requirements<Sub>
 </Paragraph><Paragraph
  id="5.18.2"
  type="TITLE"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Indications related to a powerless section with change of traction system<Sub>
+><Comment></Comment>
+Passing a powerless section with pantograph to be lowered<Sub>
 <Paragraph
  id="5.18.2.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
+ type="DEFINITION"
+ scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This procedure is dealing with the case where the ERTMS/ETCS on-board equipment has to manage a change of traction system which requires lowering of pantograph, i.e., the ERTMS/ETCS on-board equipment has received both track condition information &quot;Powerless section - Lower pantograph&quot; and &quot;Change of traction system&quot;.<Sub>
+><Comment></Comment>
+This procedure is dealing with the announcement and indication to the driver of a powerless section with the pantograph to be lowered.<Sub>
 <Paragraph
  id="5.18.2.1.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
+ type="DELETED"
+ scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: There are other situations where lowering pantograph is requested not linked to a change of traction system, also a change of traction system will not always require lowering of the pantograph. In this case, only the relevant part of this procedure applies.</Paragraph></Sub>
+><Comment></Comment>
+Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.2.2"
  type="REQUIREMENT"
@@ -8744,56 +8771,46 @@ ID #; Requirements<Sub>
  Name=""
 >When the max safe front end of the train reaches the start location (point D) of the powerless section:
 	- &quot;Lower pantograph announcement&quot; shall no longer be displayed to the driver,
-	- &quot;Lowered Pantograph&quot; information shall be displayed to the driver.
-</Paragraph><Paragraph
+	- &quot;Lowered Pantograph&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.2.4"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ type="DELETED"
+ scope="OBU"
  bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When the max safe front end of the train reaches the Change of traction system location (Point F), the &quot;New traction system&quot; information shall be displayed to the driver.<Sub>
-<Paragraph
- id="5.18.2.4.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: This location is defined inside the powerless section according to an engineering rule.</Paragraph><Paragraph
- id="5.18.2.4.2"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+><Comment></Comment>
+Intentionally deleted.<Sub>
+<Paragraph
+ id="5.18.2.4.1"
+ type="DELETED"
+ scope="OBU"
  bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The displayed &quot;New traction system&quot; information shall also indicate if the related functionality is executed
-	- automatically, or
-	- if the driver is requested to act.
-</Paragraph></Sub>
+><Comment></Comment>
+Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.2.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When the min safe front end of the train reaches the &quot;Powerless section&quot; end location point E):
-	- &quot;Lowered Pantograph&quot; information shall no longer be displayed
-	- &quot;Raise pantograph&quot; information shall be displayed to the driver.<Sub>
+><Comment></Comment>
+When the min safe front end of the train reaches the Powerless section end location point E):
+- Lowered Pantograph information shall no longer be displayed to the driver
+- Raise pantograph information shall be displayed to the driver.<Sub>
 <Paragraph
  id="5.18.2.5.1"
  type="REQUIREMENT"
@@ -8823,14 +8840,15 @@ ID #; Requirements<Sub>
 </Paragraph><Paragraph
  id="5.18.2.6"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The &quot;New traction system&quot; information and &quot;Raise pantograph&quot; information shall remain displayed for a fixed time (see Appendix A3.1) after the minimum safe rear end of the train has passed the end of the &quot;Powerless section&quot;.<Sub>
+><Comment></Comment>
+The Raise pantograph information shall remain displayed for a fixed time (see Appendix A3.1) after the minimum safe rear end of the train has passed the end of the Powerless section.<Sub>
 <Paragraph
  id="5.18.2.6.1"
  type="NOTE"
@@ -8847,139 +8865,165 @@ ID #; Requirements<Sub>
 </Paragraph><Paragraph
  id="5.18.3"
  type="TITLE"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Passing a powerless section without lowering pantograph<Sub>
+><Comment></Comment>
+Passing a powerless section with main power switch to be switched off<Sub>
 <Paragraph
  id="5.18.3.1"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->&quot;Neutral section announcement&quot; shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the beginning of the powerless section.<Sub>
-<Paragraph
- id="5.18.3.1.1"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->This location shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.
-</Paragraph><Paragraph
- id="5.18.3.1.2"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The displayed &quot;Neutral section announcement&quot; information shall also indicate if the related functionality is executed
-	- automatically, or
-	- if the driver is requested to act.<Sub>
-<Paragraph
- id="5.18.3.1.2.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
+ type="DEFINITION"
+ scope="OBU"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: Whether the operation is automatic or manual is application dependent.</Paragraph></Sub>
-</Paragraph></Sub>
-</Paragraph><Paragraph
+><Comment></Comment>
+This procedure is dealing with the announcement and indication to the driver of a powerless section with main power switch to be switched off.</Paragraph><Paragraph
  id="5.18.3.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When the max safe front end of the train reaches the starting location (point D) of the powerless section:
-	- &quot;Neutral section announcement&quot; shall no longer be displayed,
-	- &quot;Neutral section&quot; information shall be displayed to the driver.
+><Comment></Comment>
+&quot;Neutral section announcement&quot; shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the beginning of the powerless section.<Sub>
+<Paragraph
+ id="5.18.3.2.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
+ id="5.18.3.2.2"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The displayed Neutral section announcement information shall also indicate if the related functionality is executed
+automatically, or
+if the driver is requested to act.<Sub>
+<Paragraph
+ id="5.18.3.2.2.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.</Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.3.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When the min safe front end of the train reaches the &quot;Powerless section&quot; end location point E):
-	- &quot;Neutral section&quot; information shall no longer be displayed
-	- &quot;End of Neutral section&quot; information shall be displayed to the driver.<Sub>
-<Paragraph
- id="5.18.3.3.1"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The displayed &quot;End of Neutral section&quot; information shall also indicate if the related functionality is executed
-	- automatically
-	- or if the driver is requested to act.<Sub>
-<Paragraph
- id="5.18.3.3.1.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Note: Whether the operation is automatic or manual is application dependent.</Paragraph></Sub>
-</Paragraph></Sub>
-</Paragraph><Paragraph
+><Comment></Comment>
+When the max safe front end of the train reaches the starting location (point D) of the powerless section:
+- &quot;Neutral section announcement&quot; shall no longer be displayed to the driver,
+- &quot;Neutral section&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.3.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The &quot;End of Neutral section&quot; information shall remain displayed for a fixed time (see Appendix A3.1) after the minimum safe rear end of the train has passed the end of the &quot;Powerless section&quot;.<Sub>
+><Comment></Comment>
+When the min safe front end of the train reaches the Powerless section end location point E):
+- &quot;Neutral section&quot; information shall no longer be displayed to the driver
+- &quot;End of Neutral section&quot; information shall be displayed to the driver.<Sub>
 <Paragraph
  id="5.18.3.4.1"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: The train front end position, when this information disappears is shown as point G in the Figure 14.</Paragraph></Sub>
+><Comment></Comment>
+The displayed End of Neutral section information shall also indicate if the related functionality is executed
+- Automatically, or
+- if the driver is requested to act.<Sub>
+<Paragraph
+ id="5.18.3.4.1.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.</Paragraph></Sub>
+</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="5.18.3.5"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The &quot;End of Neutral section&quot; information shall remain displayed for a fixed time (see Appendix A3.1) after the minimum safe rear end of the train has passed the end of the &quot;Powerless section&quot;.<Sub>
+<Paragraph
+ id="5.18.3.5.1"
+ type="NOTE"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: The train front end position, when this information disappears is shown as point G in the Figure 14.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.4"
@@ -9017,8 +9061,7 @@ ID #; Requirements<Sub>
 >As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within the closest non stopping area. This shall be achieved taking into account two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:
 	a) If the max safe front end is in rear of the first SBI supervision limit (SBID) no information related to this non stopping area shall be displayed
 	b) If the max safe front end is in advance of first SBI supervision limit and the min safe front end in rear of the second SBI supervision limit, the non stopping area related information shall be displayed to the driver.
-	c) If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed and the next non stopping area stored on-board, if any, shall be checked.
-</Paragraph><Paragraph
+	c) If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed and the next non stopping area stored on-board, if any, shall be checked.</Paragraph><Paragraph
  id="5.18.4.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9028,8 +9071,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the max safe front end reaches the first SBI supervision limit  (point C), the &quot;Non stopping area announcement&quot; shall be displayed to the driver.
-</Paragraph><Paragraph
+>When the max safe front end reaches the first SBI supervision limit  (point C), the &quot;Non stopping area announcement&quot; shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.4.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9041,8 +9083,7 @@ ID #; Requirements<Sub>
  Name=""
 >When the max safe front end reaches the start location (point D) of the non stopping area:
 	- &quot;Non stopping area announcement&quot; shall no longer be displayed
-	- &quot;Non stopping area&quot; information shall be displayed to the driver.
-</Paragraph><Paragraph
+	- &quot;Non stopping area&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.4.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9052,8 +9093,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.
-</Paragraph><Paragraph
+>When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.</Paragraph><Paragraph
  id="5.18.4.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -9098,8 +9138,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the max safe front end of the train passes the start location (point D) of the radio hole area, the &quot;radio hole&quot; indication shall be displayed to the driver.
-</Paragraph><Paragraph
+>When the max safe front end of the train passes the start location (point D) of the radio hole area, the &quot;radio hole&quot; indication shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.5.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9109,8 +9148,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the min safe rear end of the train passes the end location (point E) of the radio hole area, the &quot;radio hole&quot; indication to the driver shall be removed.
-</Paragraph></Sub>
+>When the min safe rear end of the train passes the end location (point E) of the radio hole area, the &quot;radio hole&quot; indication to the driver shall be removed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.6"
  type="TITLE"
@@ -9155,8 +9193,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.
-</Paragraph><Paragraph
+>This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
  id="5.18.6.2.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9194,8 +9231,7 @@ ID #; Requirements<Sub>
  Name=""
 >When the max safe front end of the train reaches the start location (point D) of the air tightness area:
 	- &quot;Close air conditioning intake announcement&quot; information shall no longer be displayed.
-	- &quot;Air conditioning intake closed&quot; information shall be displayed to the driver.
-</Paragraph><Paragraph
+	- &quot;Air conditioning intake closed&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.6.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9331,15 +9367,16 @@ ID #; Requirements<Sub>
 </Paragraph><Paragraph
  id="5.18.7.3.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This location shall be determined by the On-Board equipment taking into account the time necessary for performing the required actions and the current train speed.
-</Paragraph></Sub>
+><Comment></Comment>
+This location (point C) shall be determined by the On-Board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.7.4"
  type="REQUIREMENT"
@@ -9352,8 +9389,7 @@ ID #; Requirements<Sub>
  Name=""
 >When the max safe front end of the train reaches the start location (point D) of the regenerative brake inhibition area:
 	- Indication &quot;Inhibition of Regenerative Brake announcement&quot; shall no longer be displayed,
-	- Indication &quot;Inhibition of Regenerative Brake&quot; shall be displayed to the driver.
-</Paragraph><Paragraph
+	- Indication &quot;Inhibition of Regenerative Brake&quot; shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.7.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9363,8 +9399,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the min safe rear end of the train reaches the end location (point E) of the regenerative brake inhibition area the indication &quot;Inhibition of Regenerative Brake&quot; information shall no longer be displayed.
-</Paragraph></Sub>
+>When the min safe rear end of the train reaches the end location (point E) of the regenerative brake inhibition area the indication &quot;Inhibition of Regenerative Brake&quot; information shall no longer be displayed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.8"
  type="TITLE"
@@ -9376,7 +9411,8 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Advising a tunnel stopping area<Sub>
+><Comment></Comment>
+Advising a tunnel stopping area<Sub>
 <Paragraph
  id="5.18.8.1"
  type="NOTE"
@@ -9411,8 +9447,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->On driver request, the ERTMS/ETCS on-board equipment shall enable/disable the display of the tunnel stopping area related information (initial state: disabled).
-</Paragraph><Paragraph
+>On driver request, the ERTMS/ETCS on-board equipment shall enable/disable the display of the tunnel stopping area related information (initial state: disabled).</Paragraph><Paragraph
  id="5.18.8.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9424,8 +9459,7 @@ ID #; Requirements<Sub>
  Name=""
 >As long as the display of the tunnel stopping areas is enabled (point C) and there are tunnel stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train to determine whether the driver can stop the train with the full service brake before reaching the end of the closest tunnel stopping area. This shall be achieved taking into account a virtual Permitted supervision limit (with no contribution of the GUI curve, if any), calculated at the estimated speed from an SBD curve of which the foot is the end location of the tunnel stopping area:
 	a) If the train front end is in rear of the Permitted supervision limit, the tunnel stopping area related information shall be displayed to the driver. 
-	b) If the train front end is in advance of the Permitted supervision limit, no information related to this tunnel stopping area shall be displayed and the next tunnel stopping area stored on-board, if any, shall be checked.
-</Paragraph><Paragraph
+	b) If the train front end is in advance of the Permitted supervision limit, no information related to this tunnel stopping area shall be displayed and the next tunnel stopping area stored on-board, if any, shall be checked.</Paragraph><Paragraph
  id="5.18.8.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9435,8 +9469,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Before the train reaches the start location (point D) of the tunnel stopping area, the &quot;tunnel stopping area announcement&quot; shall be displayed to the driver. This shall include the indication of the remaining distance to the start location of the tunnel stopping area.
-</Paragraph><Paragraph
+>Before the train reaches the start location (point D) of the tunnel stopping area, the &quot;tunnel stopping area announcement&quot; shall be displayed to the driver. This shall include the indication of the remaining distance to the start location of the tunnel stopping area.</Paragraph><Paragraph
  id="5.18.8.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9448,8 +9481,7 @@ ID #; Requirements<Sub>
  Name=""
 >When the train front end reaches the start location (point D) of the tunnel stopping area:
 	- &quot;Tunnel stopping area announcement&quot; shall no longer be displayed
-	- &quot;Tunnel stopping area&quot; information shall be displayed to the driver.
-</Paragraph><Paragraph
+	- &quot;Tunnel stopping area&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.8.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -9498,15 +9530,16 @@ ID #; Requirements<Sub>
 <Paragraph
  id="5.18.9.2.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This location shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for the driver to perform the required action (see Appendix A3.1) and the current train speed.
-</Paragraph></Sub>
+><Comment></Comment>
+This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for the driver to perform the required action (see Appendix A3.1) and the current train speed.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.9.3"
  type="REQUIREMENT"
@@ -9517,8 +9550,7 @@ ID #; Requirements<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the estimated front end of the train reaches the end location (point E) of the &quot;sound horn&quot; area, the indication &quot;Sound horn&quot; information shall no longer be displayed.
-</Paragraph><Paragraph
+>When the estimated front end of the train reaches the end location (point E) of the &quot;sound horn&quot; area, the indication &quot;Sound horn&quot; information shall no longer be displayed.</Paragraph><Paragraph
  id="5.18.9.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9530,6 +9562,127 @@ ID #; Requirements<Sub>
  functionalBlockName=""
  Name=""
 >Note: In order not to encourage the driver to stop sounding the horn too early, the track condition &quot;sound horn&quot; is defined as an area so that the display of the indication &quot;Sound horn&quot; continues during a certain distance sent by trackside (i.e. until point E), after the theoretical location of the board on the line (i.e. point D).</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="5.18.10"
+ type="TITLE"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Changing the traction system<Sub>
+<Paragraph
+ id="5.18.10.1"
+ type="DEFINITION"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+This procedure is dealing with the announcement and indication to the driver of a change of traction system.</Paragraph><Paragraph
+ id="5.18.10.2"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Change of traction system announcement shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the location of change of traction system (point F).</Paragraph><Paragraph
+ id="5.18.10.3"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
+ id="5.18.10.4"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The displayed Change of traction system announcement information shall also indicate if the related functionality is executed
+automatically, or
+if the driver is requested to act.<Sub>
+<Paragraph
+ id="5.18.10.4.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: Whether the operation is automatic or manual is application dependent.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="5.18.10.5"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+When the max safe front end of the train reaches the Change of traction system location (point F):
+the Change of traction system announcement information shall no longer be displayed to the driver,
+the New traction system information shall be displayed to the driver.</Paragraph><Paragraph
+ id="5.18.10.6"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The New traction system information shall remain displayed for a fixed time (see Appendix A3.1) after the minimum safe rear end of the train has passed the Change of traction system location (point F).<Sub>
+<Paragraph
+ id="5.18.10.6.1"
+ type="NOTE"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: The train front end position when this information disappears is shown as point G in the Figure 21.</Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.19"

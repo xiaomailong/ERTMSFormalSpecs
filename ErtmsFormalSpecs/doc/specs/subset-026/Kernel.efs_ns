@@ -310,7 +310,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Value of the ERTMS/ETCS operated system.</Comment>
 </StructureElement></Structure><Structure
- Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InhibitedLevels"
 >
@@ -6097,7 +6096,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="A050"
 >
 <ReqRef
@@ -6170,7 +6168,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="A045"
 >
 <ReqRef
@@ -6248,7 +6245,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A220</Action></Actions>
 </RuleCondition><RuleCondition
- Implemented="TRUE"
  Name="No answer, maximum number of requests reached"
 >
 <ReqRef
@@ -6455,7 +6451,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
 </RuleCondition><RuleCondition
- Implemented="TRUE"
  Name="No order received, maximum number of requests reached"
 >
 <ReqRef
@@ -7017,7 +7012,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Type="InhibitedLevels"
  DefaultValue=""
  VariableMode="Internal"
- Implemented="TRUE"
  Name="InhibitedLevels"
 >
 <ReqRef
@@ -7096,7 +7090,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Type="Default.BaseTypes.Distance"
  DefaultValue=""
  VariableMode="Internal"
- Implemented="TRUE"
  Name="FirstTargetAtZeroSpeed"
 >
 <ReqRef
@@ -7109,7 +7102,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  VariableMode="Internal"
- Implemented="TRUE"
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef

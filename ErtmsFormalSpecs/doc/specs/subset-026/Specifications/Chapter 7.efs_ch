@@ -503,41 +503,41 @@ Definition of Packets<Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.3.3.3"
- type="DEFINITION"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >The packet definition does not change when transmitted over different transmission media.</Paragraph><Paragraph
  id="7.3.3.4"
- type="DEFINITION"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 ><Comment></Comment>
 All currently not defined packet identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11). All future packet definitions shall follow the above defined structure.</Paragraph><Paragraph
  id="7.3.3.5"
- type="DEFINITION"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NA"
+ version="3.2.0"
  infoRequired="TRUE"
  functionalBlockName=""
  Name=""
-><Comment>How is the 255 packet different ?</Comment>
-Exception: Packet 255: &quot;End of Telegram&quot; does not follow the above rule.</Paragraph><Paragraph
+><Comment>How are these packets different?</Comment>
+Exception: Packet 0 &quot;Virtual Balise Cover marker&quot; and Packet 255: &quot;End of Telegram&quot; do not follow the above defined structure.</Paragraph><Paragraph
  id="7.3.3.6"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
@@ -635,19 +635,7 @@ PACKETS<Sub>
  Name=""
 >List of Packets<Sub>
 <Paragraph
- id="7.4.1.1"
- type="TITLE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Track to Train<Sub>
-<Paragraph
- id="7.4.1.1.1"
+ id="Table 7.4.1.1"
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -657,9 +645,24 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Packet Number; Packet Name; Page No</Paragraph><Paragraph
- id="7.4.1.1.2"
- type="NOTE"
+>Track to Train
+Packet Number; Packet Name; Page No<Sub>
+<Paragraph
+ id="Entry 7.4.1.1.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+0; Virtual Balise Cover marker; 11</Paragraph><Paragraph
+ id="Entry 7.4.1.1.2"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -669,8 +672,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >2; System Version order; 11</Paragraph><Paragraph
- id="7.4.1.1.3"
- type="NOTE"
+ id="Entry 7.4.1.1.3"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -680,8 +683,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >3; National Values; 11</Paragraph><Paragraph
- id="7.4.1.1.4"
- type="NOTE"
+ id="Entry 7.4.1.1.4"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -691,7 +694,42 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >5; Linking; 14</Paragraph><Paragraph
- id="7.4.1.1.5"
+ id="Entry 7.4.1.1.5"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+6; Virtual Balise Cover order; 15</Paragraph><Paragraph
+ id="Entry 7.4.1.1.6"
+ type="DEFINITION"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>12; Level 1 Movement Authority; 15</Paragraph><Paragraph
+ id="Entry 7.4.1.1.7"
+ type="DEFINITION"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>13; Staff Responsible distance information from loop; 17</Paragraph><Paragraph
+ id="Entry 7.4.1.1.8"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -701,9 +739,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->12; Level 1 Movement Authority ; 15</Paragraph><Paragraph
- id="7.4.1.1.6"
- type="NOTE"
+>15; Level 2/3 Movement Authority; 17</Paragraph><Paragraph
+ id="Entry 7.4.1.1.9"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -712,9 +750,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->13; Staff Responsible distance information from loop; 16</Paragraph><Paragraph
- id="7.4.1.1.7"
- type="NOTE"
+>16; Repositioning Information; 18</Paragraph><Paragraph
+ id="Entry 7.4.1.1.10"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -723,31 +761,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->15; Level 2/3 Movement Authority ; 16</Paragraph><Paragraph
- id="7.4.1.1.8"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->16; Repositioning Information; 17</Paragraph><Paragraph
- id="7.4.1.1.9"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->21; Gradient Profile ; 17</Paragraph><Paragraph
- id="7.4.1.1.10"
- type="NOTE"
+>21; Gradient Profile; 18</Paragraph><Paragraph
+ id="Entry 7.4.1.1.11"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -757,8 +773,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >27; International Static Speed Profile; 18</Paragraph><Paragraph
- id="7.4.1.1.11"
- type="NOTE"
+ id="Entry 7.4.1.1.12"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
@@ -767,8 +783,8 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->38; Track Condition Change of traction system; 18</Paragraph><Paragraph
- id="7.4.1.1.12"
+>39; Track Condition Change of traction system; 19</Paragraph><Paragraph
+ id="Entry 7.4.1.1.13"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -778,9 +794,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->40; Track Condition Change of allowed current consumption; 19</Paragraph><Paragraph
- id="7.4.1.1.13"
- type="NOTE"
+>40; Track Condition Change of allowed current consumption; 20</Paragraph><Paragraph
+ id="Entry 7.4.1.1.14"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -790,8 +806,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >41; Level Transition Order; 20</Paragraph><Paragraph
- id="7.4.1.1.14"
- type="NOTE"
+ id="Entry 7.4.1.1.15"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -800,9 +816,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->42; Session Management; 20</Paragraph><Paragraph
- id="7.4.1.1.15"
- type="NOTE"
+>42; Session Management; 21</Paragraph><Paragraph
+ id="Entry 7.4.1.1.16"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -812,8 +828,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >44; Data used by applications outside the ERTMS/ETCS system.; 21</Paragraph><Paragraph
- id="7.4.1.1.16"
- type="NOTE"
+ id="Entry 7.4.1.1.17"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -823,8 +839,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >45; Radio Network registration; 21</Paragraph><Paragraph
- id="7.4.1.1.17"
- type="NOTE"
+ id="Entry 7.4.1.1.18"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -834,19 +850,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >46; Conditional Level Transition Order; 21</Paragraph><Paragraph
- id="7.4.1.1.18"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->47; Level Inhibition Order; 22</Paragraph><Paragraph
- id="7.4.1.1.19"
- type="NOTE"
+ id="Entry 7.4.1.1.19"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -856,8 +861,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >49; List of balises for SH Area; 22</Paragraph><Paragraph
- id="7.4.1.1.20"
- type="NOTE"
+ id="Entry 7.4.1.1.20"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -867,8 +872,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >51; Axle load Speed Profile; 22</Paragraph><Paragraph
- id="7.4.1.1.21"
- type="NOTE"
+ id="Entry 7.4.1.1.21"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -878,8 +883,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >52; Permitted Braking Distance Information; 23</Paragraph><Paragraph
- id="7.4.1.1.22"
- type="NOTE"
+ id="Entry 7.4.1.1.22"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -889,8 +894,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >57; Movement Authority Request Parameters; 24</Paragraph><Paragraph
- id="7.4.1.1.23"
- type="NOTE"
+ id="Entry 7.4.1.1.23"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -900,8 +905,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >58; Position Report Parameters; 24</Paragraph><Paragraph
- id="7.4.1.1.24"
- type="NOTE"
+ id="Entry 7.4.1.1.24"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -911,8 +916,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >63; List of Balises in SR Authority; 25</Paragraph><Paragraph
- id="7.4.1.1.25"
- type="NOTE"
+ id="Entry 7.4.1.1.25"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -922,8 +927,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >64; Inhibition of revocable TSRs from balises in L2/3; 25</Paragraph><Paragraph
- id="7.4.1.1.26"
- type="NOTE"
+ id="Entry 7.4.1.1.26"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -933,8 +938,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >65; Temporary Speed Restriction; 25</Paragraph><Paragraph
- id="7.4.1.1.27"
- type="NOTE"
+ id="Entry 7.4.1.1.27"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -944,8 +949,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >66; Temporary Speed Restriction Revocation; 26</Paragraph><Paragraph
- id="7.4.1.1.28"
- type="NOTE"
+ id="Entry 7.4.1.1.28"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -955,8 +960,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >67; Track Condition Big Metal Masses; 26</Paragraph><Paragraph
- id="7.4.1.1.29"
- type="NOTE"
+ id="Entry 7.4.1.1.29"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -965,9 +970,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->68; Track Condition; 27</Paragraph><Paragraph
- id="7.4.1.1.30"
- type="NOTE"
+>68; Track Condition; 26</Paragraph><Paragraph
+ id="Entry 7.4.1.1.30"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -977,8 +982,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >69; Track Condition Station Platforms; 27</Paragraph><Paragraph
- id="7.4.1.1.31"
- type="NOTE"
+ id="Entry 7.4.1.1.31"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -987,9 +992,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->70; Route Suitability Data; 28</Paragraph><Paragraph
- id="7.4.1.1.32"
- type="NOTE"
+>70; Route Suitability Data; 27</Paragraph><Paragraph
+ id="Entry 7.4.1.1.32"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -998,9 +1003,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->71; Adhesion Factor; 29</Paragraph><Paragraph
- id="7.4.1.1.33"
- type="NOTE"
+>71; Adhesion Factor; 28</Paragraph><Paragraph
+ id="Entry 7.4.1.1.33"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1010,8 +1015,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >72; Packet for sending plain text messages; 29</Paragraph><Paragraph
- id="7.4.1.1.34"
- type="NOTE"
+ id="Entry 7.4.1.1.34"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1020,9 +1025,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->76; Packet for sending fixed text messages; 30</Paragraph><Paragraph
- id="7.4.1.1.35"
- type="NOTE"
+>76; Packet for sending fixed text messages; 29</Paragraph><Paragraph
+ id="Entry 7.4.1.1.35"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1031,9 +1036,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->79; Geographical Position Information; 31</Paragraph><Paragraph
- id="7.4.1.1.36"
- type="NOTE"
+>79; Geographical Position Information; 30</Paragraph><Paragraph
+ id="Entry 7.4.1.1.36"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1043,8 +1048,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >80; Mode profile; 31</Paragraph><Paragraph
- id="7.4.1.1.37"
- type="NOTE"
+ id="Entry 7.4.1.1.37"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1054,8 +1059,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >88; Level crossing information; 32</Paragraph><Paragraph
- id="7.4.1.1.38"
- type="NOTE"
+ id="Entry 7.4.1.1.38"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1064,9 +1069,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->90; Track Ahead Free up to level 2/3 transition location; 33</Paragraph><Paragraph
- id="7.4.1.1.39"
- type="NOTE"
+>90; Track Ahead Free up to level 2/3 transition location; 32</Paragraph><Paragraph
+ id="Entry 7.4.1.1.39"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1075,9 +1080,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->131; RBC transition order; 33</Paragraph><Paragraph
- id="7.4.1.1.40"
- type="NOTE"
+>131; RBC transition order; 32</Paragraph><Paragraph
+ id="Entry 7.4.1.1.40"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1087,8 +1092,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >132; Danger for Shunting information; 33</Paragraph><Paragraph
- id="7.4.1.1.41"
- type="NOTE"
+ id="Entry 7.4.1.1.41"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1097,9 +1102,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->133; Radio infill area information; 34</Paragraph><Paragraph
- id="7.4.1.1.42"
- type="NOTE"
+>133; Radio infill area information; 33</Paragraph><Paragraph
+ id="Entry 7.4.1.1.42"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1108,9 +1113,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->134; EOLM Packet; 34</Paragraph><Paragraph
- id="7.4.1.1.43"
- type="NOTE"
+>134; EOLM Packet; 33</Paragraph><Paragraph
+ id="Entry 7.4.1.1.43"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
@@ -1119,9 +1124,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->135; Stop Shunting on desk opening; 35</Paragraph><Paragraph
- id="7.4.1.1.44"
- type="NOTE"
+>135; Stop Shunting on desk opening; 34</Paragraph><Paragraph
+ id="Entry 7.4.1.1.44"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1130,9 +1135,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->136; Infill location reference; 35</Paragraph><Paragraph
- id="7.4.1.1.45"
- type="NOTE"
+>136; Infill location reference; 34</Paragraph><Paragraph
+ id="Entry 7.4.1.1.45"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1141,9 +1146,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->137; Stop if in Staff Responsible; 35</Paragraph><Paragraph
- id="7.4.1.1.46"
- type="NOTE"
+>137; Stop if in Staff Responsible; 34</Paragraph><Paragraph
+ id="Entry 7.4.1.1.46"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1153,8 +1158,8 @@ PACKETS<Sub>
  functionalBlockName=""
  Name=""
 >138; Reversing area information; 35</Paragraph><Paragraph
- id="7.4.1.1.47"
- type="NOTE"
+ id="Entry 7.4.1.1.47"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1163,9 +1168,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->139; Reversing supervision information ; 36</Paragraph><Paragraph
- id="7.4.1.1.48"
- type="NOTE"
+>139; Reversing supervision information; 35</Paragraph><Paragraph
+ id="Entry 7.4.1.1.48"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1174,9 +1179,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->140; Train running number from RBC; 36</Paragraph><Paragraph
- id="7.4.1.1.49"
- type="NOTE"
+>140; Train running number from RBC; 35</Paragraph><Paragraph
+ id="Entry 7.4.1.1.49"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1185,9 +1190,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->141; Default Gradient for Temporary Speed Restriction; 36</Paragraph><Paragraph
- id="7.4.1.1.50"
- type="NOTE"
+>141; Default Gradient for Temporary Speed Restriction; 35</Paragraph><Paragraph
+ id="Entry 7.4.1.1.50"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1196,9 +1201,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->143; Session Management with neighbouring Radio Infill Unit; 37</Paragraph><Paragraph
- id="7.4.1.1.51"
- type="NOTE"
+>143; Session Management with neighbouring Radio Infill Unit; 36</Paragraph><Paragraph
+ id="Entry 7.4.1.1.51"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
@@ -1207,9 +1212,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->145; Inhibition of balise group message consistency reaction; 37</Paragraph><Paragraph
- id="7.4.1.1.52"
- type="NOTE"
+>145; Inhibition of balise group message consistency reaction; 36</Paragraph><Paragraph
+ id="Entry 7.4.1.1.52"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1218,21 +1223,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->254; Default balise, loop or RIU information; 37</Paragraph></Sub>
+>254; Default balise, loop or RIU information; 36</Paragraph></Sub>
 </Paragraph><Paragraph
- id="7.4.1.2"
- type="TITLE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Train to Track<Sub>
-<Paragraph
- id="7.4.1.2.1"
+ id="Table 7.4.1.2"
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1242,9 +1235,11 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Packet Number; Packet Name; Page No</Paragraph><Paragraph
- id="7.4.1.2.2"
- type="NOTE"
+>Train to Track
+Packet Number; Packet Name; Page No<Sub>
+<Paragraph
+ id="Entry 7.4.1.2.1"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1253,9 +1248,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->0; Position Report; 38</Paragraph><Paragraph
- id="7.4.1.2.3"
- type="NOTE"
+>0; Position Report; 37</Paragraph><Paragraph
+ id="Entry 7.4.1.2.2"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1264,9 +1259,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->1; Position Report based on two balise groups; 38</Paragraph><Paragraph
- id="7.4.1.2.4"
- type="NOTE"
+>1; Position Report based on two balise groups; 37</Paragraph><Paragraph
+ id="Entry 7.4.1.2.3"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1275,9 +1270,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->3; Onboard telephone numbers; 39</Paragraph><Paragraph
- id="7.4.1.2.5"
- type="NOTE"
+>3; Onboard telephone numbers; 38</Paragraph><Paragraph
+ id="Entry 7.4.1.2.4"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1286,9 +1281,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->4; Error Reporting; 40</Paragraph><Paragraph
- id="7.4.1.2.6"
- type="NOTE"
+>4; Error Reporting; 38</Paragraph><Paragraph
+ id="Entry 7.4.1.2.5"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1297,9 +1292,9 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->5; Train running number; 40</Paragraph><Paragraph
- id="7.4.1.2.7"
- type="NOTE"
+>5; Train running number; 39</Paragraph><Paragraph
+ id="Entry 7.4.1.2.6"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1308,32 +1303,10 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->9; Level 2/3 transition information; 40</Paragraph><Paragraph
- id="7.4.1.2.8"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->11; Validated train data; 40</Paragraph><Paragraph
- id="7.4.1.2.9"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->44; Data used by applications outside the ERTMS/ETCS system.; 41</Paragraph></Sub>
+>9; Level 2/3 transition information; 39
 </Paragraph><Paragraph
- id="7.4.1.3"
- type="TITLE"
+ id="Entry 7.4.1.2.7"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1342,10 +1315,34 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track to Train or Train to Track<Sub>
+>11; Validated train data; 39</Paragraph><Paragraph
+ id="Entry 7.4.1.2.8"
+ type="DEFINITION"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>44; Data used by applications outside the ERTMS/ETCS system.; 40</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="Table 7.4.1.3"
+ type="TABLE_HEADER"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track to Train or Train to Track
+Packet Number; Packet Name; Page No<Sub>
 <Paragraph
  id="7.4.1.3.1"
- type="TABLE_HEADER"
+ type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
@@ -1354,18 +1351,7 @@ PACKETS<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Packet Number; Packet Name; Page No</Paragraph><Paragraph
- id="7.4.1.3.2"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->255; End of information; 42</Paragraph></Sub>
+>255; End of information; 41</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2"
@@ -1380,6 +1366,35 @@ PACKETS<Sub>
  Name=""
 >PACKETS: TRACK TO TRAIN<Sub>
 <Paragraph
+ id="7.4.2.0"
+ type="NOTE"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Packet Number 0: Virtual Balise Cover marker<Sub>
+<Paragraph
+ id="7.4.2.0.bis"
+ type="NOTE"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Indication to on-board that the telegram can be ignored according to a VBC
+    NID PACKET  [8]
+    NID_VBCMK  [6]</Paragraph></Sub>
+</Paragraph><Paragraph
  id="7.4.2.1"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1392,7 +1407,7 @@ PACKETS<Sub>
  Name=""
 >Packet Number 2: System Version order<Sub>
 <Paragraph
- id="7.4.2.1.1"
+ id="7.4.2.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1448,7 +1463,7 @@ PACKETS<Sub>
  Name=""
 >Packet Number 3: National Values<Sub>
 <Paragraph
- id="7.4.2.1.1.1"
+ id="7.4.2.1.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -1934,7 +1949,7 @@ Downloads a set of National Values to the train
 ><Comment></Comment>
 Packet Number 5: Linking<Sub>
 <Paragraph
- id="7.4.2.2.1"
+ id="7.4.2.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2083,6 +2098,39 @@ Packet Number 5: Linking<Sub>
 >
 </MsgVariable>
 </Message>
+</Paragraph><Paragraph
+ id="7.4.2.2.1"
+ type="NOTE"
+ scope="OBU_AND_TRACK"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Packet Number 6: Virtual Balise Cover order<Sub>
+<Paragraph
+ id="7.4.2.2.1.bis"
+ type="NOTE"
+ scope="OBU_AND_TRACK"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The packet sets/removes a Virtual Balise Cover.
+    NID PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_VBCO  [1]
+    NID_VBCMK  [6]
+    NID_C  [10]
+            T_VBC  [8]  (Only if Q_VBCO = 1)</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.3"
@@ -2098,7 +2146,7 @@ Packet Number 5: Linking<Sub>
 ><Comment></Comment>
 Packet Number 12: Level 1 Movement Authority<Sub>
 <Paragraph
- id="7.4.2.3.1"
+ id="7.4.2.3.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2319,7 +2367,7 @@ Transmission of a movement authority for level 1.
 ><Comment></Comment>
 Packet Number 13: Staff Responsible distance Information from loop<Sub>
 <Paragraph
- id="7.4.2.3.1.1"
+ id="7.4.2.3.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2462,7 +2510,7 @@ Packet Number 13: Staff Responsible distance Information from loop<Sub>
 ><Comment></Comment>
 Packet Number 15: Level 2/3 Movement Authority<Sub>
 <Paragraph
- id="7.4.2.4.1"
+ id="7.4.2.4.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2675,7 +2723,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  Name=""
 >Packet Number 16: Repositioning Information<Sub>
 <Paragraph
- id="7.4.2.5.1"
+ id="7.4.2.5.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2739,7 +2787,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  Name=""
 >Packet Number 21: Gradient Profile<Sub>
 <Paragraph
- id="7.4.2.6.1"
+ id="7.4.2.6.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -2845,7 +2893,7 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  Name=""
 >Packet Number 27: International Static Speed Profile<Sub>
 <Paragraph
- id="7.4.2.7.1"
+ id="7.4.2.7.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3016,12 +3064,13 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Packet Number 38: Track Condition Change of traction system<Sub>
+><Comment></Comment>
+Packet Number 39: Track Condition Change of traction system<Sub>
 <Paragraph
- id="7.4.2.8.1"
+ id="7.4.2.8.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3029,18 +3078,16 @@ Packet Number 15: Level 2/3 Movement Authority<Sub>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  functionalBlockName=""
  Name=""
-><Comment>What is the size of M_VOLTAGE ? </Comment>
+><Comment></Comment>
 The packet gives information about change of the traction system.
     NID PACKET  [8]
     Q_DIR  [2]
     L_PACKET  [13]
     Q_SCALE  [2]
     D_TRACTION  [15]
-    M_VOLTAGE  [Error! Reference source not found.]  (Identity of the traction system)
+    M_VOLTAGE  [4]  (Identity of the traction system)
             NID_CTRACTION  [10]  (NID_CTRACTION given only if M_VOLTAGE &lt;&gt; 0)<Message
  description="The packet gives information about change of the traction system."
  media="Any"
@@ -3104,7 +3151,7 @@ The packet gives information about change of the traction system.
 ><Comment></Comment>
 Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 <Paragraph
- id="7.4.2.8.1.1"
+ id="7.4.2.8.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3176,7 +3223,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 41: Level Transition Order<Sub>
 <Paragraph
- id="7.4.2.9.1"
+ id="7.4.2.9.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3291,7 +3338,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 42: Session Management<Sub>
 <Paragraph
- id="7.4.2.10.1"
+ id="7.4.2.10.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3377,7 +3424,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 <Paragraph
- id="7.4.2.11.1"
+ id="7.4.2.11.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3448,7 +3495,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 45: Radio Network registration<Sub>
 <Paragraph
- id="7.4.2.11.1.1"
+ id="7.4.2.11.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3506,7 +3553,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 46: Conditional Level Transition Order<Sub>
 <Paragraph
- id="7.4.2.11.2.1"
+ id="7.4.2.11.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3581,102 +3628,6 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 </MsgVariable>
 </Message>
 </Paragraph></Sub>
-</Paragraph><Paragraph
- id="7.4.2.11.3"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Packet Number 47: Level Inhibition Order<Sub>
-<Paragraph
- id="7.4.2.11.3.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Packet for level inhibition order
-    NID PACKET  [8]
-    Q_DIR  [2]
-    L_PACKET  [13]
-    Q_LEVELINH  [1]
-            M_LEVELINH  [3]  (Only if Q_LEVELINH = 1,  M_LEVELINH and the following variables follow)
-                    NID_NTC  [8]  (If M_LEVELINH = 1 (NTC))
-            N_ITER  [5]
-            M_LEVELINH(k)  [3]
-                    NID_NTC(k)  [8]  (If M_LEVELINH(k) = 1 (NTC))<Message
- description="Packet for level inhibition order"
- media="Balise, RBC"
- bl="3.2.0"
->
-<MsgVariable
- name="NID PACKET"
- length="8"
- comment=""
->
-</MsgVariable>
-<MsgVariable
- name="Q_DIR"
- length="2"
- comment=""
->
-</MsgVariable>
-<MsgVariable
- name="L_PACKET"
- length="13"
- comment=""
->
-</MsgVariable>
-<MsgVariable
- name="Q_LEVELINH"
- length="1"
- comment=""
->
-<MsgVariable
- name="M_LEVELINH"
- length="3"
- comment="Only if Q_LEVELINH = 1,  M_LEVELINH and the following variables follow"
- bl="3.2.0"
->
-<MsgVariable
- name="NID_NTC"
- length="8"
- comment="If M_LEVELINH = 1 (NTC)"
- bl="3.2.0"
->
-</MsgVariable>
-</MsgVariable>
-<MsgVariable
- name="N_ITER"
- length="5"
- comment=""
->
-</MsgVariable>
-<MsgVariable
- name="M_LEVELINH(k)"
- length="3"
- comment=""
->
-<MsgVariable
- name="NID_NTC(k)"
- length="8"
- comment="If M_LEVELINH(k) = 1 (NTC)"
- bl="3.2.0"
->
-</MsgVariable>
-</MsgVariable>
-</MsgVariable>
-</Message>
-</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.4.2.12"
@@ -3691,7 +3642,7 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
  Name=""
 >Packet Number 49: List of balises for SH Area<Sub>
 <Paragraph
- id="7.4.2.12.1"
+ id="7.4.2.12.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -3771,17 +3722,18 @@ Packet Number 40: Track Condition Change of allowed current consumption<Sub>
 ><Comment></Comment>
 Packet Number 51: Axle Load Speed Profile<Sub>
 <Paragraph
- id="7.4.2.13.1"
+ id="7.4.2.13.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction
+><Comment></Comment>
+This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction
     NID PACKET  [8]
     Q_DIR  [2]
     L_PACKET  [13]
@@ -3792,15 +3744,15 @@ Packet Number 51: Axle Load Speed Profile<Sub>
             L_AXLELOAD  [15]
             Q_FRONT  [1]
             N_ITER  [5]
-            M_AXLELOAD(n)  [7]
-            V_AXLELOAD(n)  [7]  (Speed restriction to be applied if the axle load category of the train ? M_AXLELOAD(n))
+            M_AXLELOADCAT(n)  [7]
+            V_AXLELOAD(n)  [7]  (Speed restrictions to be applied if the axle load category of the train &gt;= M_AXLELOADCAT(n))
             N_ITER  [5]
             D_AXLELOAD(k)  [15]
             L_AXLELOAD(k)  [15]
             Q_FRONT(k)  [1]
             N_ITER(k)  [5]
-            M_AXLELOAD(k,m)  [7]
-            V_AXLELOAD(k,m)  [7]  (Speed restriction to be applied if the axle load category of the train ? M_AXLELOAD(k,m))<Message
+            M_AXLELOADCAT(k, m)  [7]
+            V_AXLELOAD(k,m)  [7]  (Speed restrictions to be applied if the axle load category of the train &gt;= M_AXLELOADCAT(k,m))<Message
  description="This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction"
  media="Any"
  bl="3.2.0"
@@ -3935,7 +3887,7 @@ Packet Number 51: Axle Load Speed Profile<Sub>
  Name=""
 >Packet 52: Permitted Braking Distance Information<Sub>
 <Paragraph
- id="7.4.2.13.1.1"
+ id="7.4.2.13.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4100,7 +4052,7 @@ This packet requests the on-board calculation of speed restrictions which ensure
 ><Comment></Comment>
 Packet Number 57: Movement Authority Request Parameters<Sub>
 <Paragraph
- id="7.4.2.14.1"
+ id="7.4.2.14.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4172,7 +4124,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 58: Position Report Parameters<Sub>
 <Paragraph
- id="7.4.2.15.1"
+ id="7.4.2.15.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4271,7 +4223,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 63: List of Balises in SR Authority<Sub>
 <Paragraph
- id="7.4.2.16.1"
+ id="7.4.2.16.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4350,7 +4302,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 64: Inhibition of revocable TSRs from balises in L2/3<Sub>
 <Paragraph
- id="7.4.2.16.1.1"
+ id="7.4.2.16.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4402,7 +4354,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 65: Temporary Speed Restriction<Sub>
 <Paragraph
- id="7.4.2.17.1"
+ id="7.4.2.17.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4494,7 +4446,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 66: Temporary Speed Restriction Revocation<Sub>
 <Paragraph
- id="7.4.2.18.1"
+ id="7.4.2.18.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4551,7 +4503,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 67: Track Condition Big Metal Masses<Sub>
 <Paragraph
- id="7.4.2.19.1"
+ id="7.4.2.19.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4643,7 +4595,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 68: Track Condition<Sub>
 <Paragraph
- id="7.4.2.20.1"
+ id="7.4.2.20.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4762,7 +4714,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 69: Track Condition Station Platforms<Sub>
 <Paragraph
- id="7.4.2.20.1.1"
+ id="7.4.2.20.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -4897,7 +4849,7 @@ Packet Number 57: Movement Authority Request Parameters<Sub>
  Name=""
 >Packet Number 70:  Route Suitability Data<Sub>
 <Paragraph
- id="7.4.2.21.1"
+ id="7.4.2.21.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5067,7 +5019,7 @@ The packet gives the characteristics needed to enter a route.
 ><Comment></Comment>
 Packet number 71: Adhesion factor<Sub>
 <Paragraph
- id="7.4.2.22.1"
+ id="7.4.2.22.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5145,7 +5097,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 72: Packet for sending plain text messages<Sub>
 <Paragraph
- id="7.4.2.23.1"
+ id="7.4.2.23.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5337,7 +5289,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 76: Packet for sending fixed text messages<Sub>
 <Paragraph
- id="7.4.2.24.1"
+ id="7.4.2.24.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5522,7 +5474,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 79: Geographical Position Information<Sub>
 <Paragraph
- id="7.4.2.25.1"
+ id="7.4.2.25.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5672,7 +5624,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 80: Mode profile<Sub>
 <Paragraph
- id="7.4.2.26.1"
+ id="7.4.2.26.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5819,7 +5771,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 88: Level Crossing information<Sub>
 <Paragraph
- id="7.4.2.26.1.1"
+ id="7.4.2.26.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5925,7 +5877,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 90: Track Ahead Free up to level 2/3 transition location<Sub>
 <Paragraph
- id="7.4.2.26.2.1"
+ id="7.4.2.26.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -5997,7 +5949,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 131: RBC transition order<Sub>
 <Paragraph
- id="7.4.2.27.1"
+ id="7.4.2.27.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6090,7 +6042,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 132: Danger for Shunting information<Sub>
 <Paragraph
- id="7.4.2.28.1"
+ id="7.4.2.28.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6147,7 +6099,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 133: Radio infill area information<Sub>
 <Paragraph
- id="7.4.2.29.1"
+ id="7.4.2.29.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6252,7 +6204,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 134: EOLM Packet<Sub>
 <Paragraph
- id="7.4.2.30.1"
+ id="7.4.2.30.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6344,7 +6296,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 135: Stop Shunting on desk opening<Sub>
 <Paragraph
- id="7.4.2.31.1"
+ id="7.4.2.31.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -6394,7 +6346,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 136: Infill location reference<Sub>
 <Paragraph
- id="7.4.2.32.1"
+ id="7.4.2.32.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6466,7 +6418,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 137: Stop if in Staff Responsible<Sub>
 <Paragraph
- id="7.4.2.33.1"
+ id="7.4.2.33.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6523,7 +6475,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 138: Reversing area information<Sub>
 <Paragraph
- id="7.4.2.34.1"
+ id="7.4.2.34.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6592,9 +6544,9 @@ Packet number 71: Adhesion factor<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Packet Number 139: Reversing supervision information <Sub>
+>Packet Number 139: Reversing supervision information<Sub>
 <Paragraph
- id="7.4.2.35.1"
+ id="7.4.2.35.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6665,7 +6617,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 140: Train running number from RBC<Sub>
 <Paragraph
- id="7.4.2.36.1"
+ id="7.4.2.36.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6723,7 +6675,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 141: Default Gradient for Temporary Speed Restriction<Sub>
 <Paragraph
- id="7.4.2.37.1"
+ id="7.4.2.37.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6786,7 +6738,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 143: Session Management with neighbouring Radio Infill Unit<Sub>
 <Paragraph
- id="7.4.2.37.1.1"
+ id="7.4.2.37.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6865,7 +6817,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 145: Inhibition of balise group message consistency reaction<Sub>
 <Paragraph
- id="7.4.2.37.2.1"
+ id="7.4.2.37.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
@@ -6916,7 +6868,7 @@ Packet number 71: Adhesion factor<Sub>
  Name=""
 >Packet Number 254: Default balise, loop or RIU information<Sub>
 <Paragraph
- id="7.4.2.38.1"
+ id="7.4.2.38.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -6982,7 +6934,7 @@ PACKETS: TRAIN TO TRACK<Sub>
 ><Comment></Comment>
 Packet Number 0: Position Report<Sub>
 <Paragraph
- id="7.4.3.1.1"
+ id="7.4.3.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7124,9 +7076,9 @@ This packet is used to report the train position and speed as well as some addit
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Packet Number 1: Position Report based on two balise groups <Sub>
+>Packet Number 1: Position Report based on two balise groups<Sub>
 <Paragraph
- id="7.4.3.2.1"
+ id="7.4.3.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7276,7 +7228,7 @@ This packet is used to report the train position and speed as well as some addit
  Name=""
 >Packet Number 3: Onboard telephone numbers<Sub>
 <Paragraph
- id="7.4.3.3.1"
+ id="7.4.3.3.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7334,7 +7286,7 @@ This packet is used to report the train position and speed as well as some addit
  Name=""
 >Packet Number 4: Error reporting<Sub>
 <Paragraph
- id="7.4.3.4.1"
+ id="7.4.3.4.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7384,7 +7336,7 @@ This packet is used to report the train position and speed as well as some addit
  Name=""
 >Packet Number 5: Train running number<Sub>
 <Paragraph
- id="7.4.3.4.1.1"
+ id="7.4.3.4.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7435,7 +7387,7 @@ This packet is used to report the train position and speed as well as some addit
  Name=""
 >Packet Number 9: Level 2/3 transition information<Sub>
 <Paragraph
- id="7.4.3.4.2.1"
+ id="7.4.3.4.2.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7487,7 +7439,7 @@ This packet is used to report the train position and speed as well as some addit
  Name=""
 >Packet Number 11: Validated train data<Sub>
 <Paragraph
- id="7.4.3.5.1"
+ id="7.4.3.5.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7495,11 +7447,9 @@ This packet is used to report the train position and speed as well as some addit
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  functionalBlockName=""
  Name=""
-><Comment>Invalid length for M_VOLTAGE</Comment>
+><Comment></Comment>
 Validated train data.
     NID_PACKET  [8]
     L_PACKET  [13]
@@ -7512,7 +7462,7 @@ Validated train data.
     M_AIRTIGHT  [2]
     N_AXLE  [10]
     N_ITER  [5]
-    M_VOLTAGE(k)  [Error! Reference source not found.]  (Identity of the traction system)
+    M_VOLTAGE(k)  [4]  (Identity of the traction system)
             NID_CTRACTION(k)  [10]  (NID_CTRACTION(k) given only if M_VOLTAGE(k) &lt;&gt; 0)
     N_ITER  [5]
     NID_NTC(k)  [8]  (Type of National System available)<Message
@@ -7628,9 +7578,9 @@ Validated train data.
  functionalBlockName=""
  Name=""
 ><Comment></Comment>
-Packet Number 44: Data used by applications outside the ERTMS/ETCS system. <Sub>
+Packet Number 44: Data used by applications outside the ERTMS/ETCS system.<Sub>
 <Paragraph
- id="7.4.3.6.1"
+ id="7.4.3.6.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -7701,7 +7651,7 @@ Packet Number 44: Data used by applications outside the ERTMS/ETCS system. <Sub>
  Name=""
 >Packet Number 255: End of Information<Sub>
 <Paragraph
- id="7.4.4.1.1"
+ id="7.4.4.1.bis"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8266,7 +8216,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.9.0"
+ id="7.5.1.9.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8382,7 +8332,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.12.0"
+ id="7.5.1.12.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8440,7 +8390,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.13.0"
+ id="7.5.1.13.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8608,7 +8558,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.17.0"
+ id="7.5.1.17.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8624,7 +8574,7 @@ Values:
         Match: 32767
         Meaning: 
             Type: infinite
-            Value: </Paragraph></Sub>
+            Value:</Paragraph></Sub>
 <TypeSpec
  length="15"
  id="D_NVROLL"
@@ -8667,7 +8617,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.18.0"
+ id="7.5.1.18.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8683,7 +8633,7 @@ Values:
         Match: 32767
         Meaning: 
             Type: infinite
-            Value: </Paragraph></Sub>
+            Value:</Paragraph></Sub>
 <TypeSpec
  length="15"
  id="D_NVSTFF"
@@ -8862,25 +8812,13 @@ Values:
 ><Comment>Review the negative processing</Comment>
 Id: D_REF
 Short description: Reference distance
+Description:
+Distance between the LRBG and the new shifted location reference. The positive values are in the nominal direction of the LRBG
 Length: 16 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.22.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
-><Comment></Comment>
-Description:
-Distance between the LRBG and the new shifted location reference. The positive values are in the nominal direction of the LRBG</Paragraph><Paragraph
- id="7.5.1.22.1"
+ id="7.5.1.22.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8896,7 +8834,7 @@ Distance between the LRBG and the new shifted location reference. The positive v
         Match: The negative value are coded in 2&apos;s complement
         Meaning: 
             Type: unknown
-            Value: </Paragraph></Sub>
+            Value:</Paragraph></Sub>
 <TypeSpec
  length="16"
  id="D_REF"
@@ -8940,7 +8878,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.23.0"
+ id="7.5.1.23.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9028,7 +8966,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.25.0"
+ id="7.5.1.25.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9233,7 +9171,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.31.0"
+ id="7.5.1.31.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9411,7 +9349,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.36.0"
+ id="7.5.1.36.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9471,7 +9409,7 @@ Length: 8 bits
 Values:
     ResolutionFormula: value: 1, units: per-thousand<Sub>
 <Paragraph
- id="7.5.1.37.0"
+ id="7.5.1.37.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9703,7 +9641,7 @@ Baseline: 3.2.0
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.43.0"
+ id="7.5.1.43.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9764,7 +9702,7 @@ Baseline: 3.2.0
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.44.0"
+ id="7.5.1.44.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -9820,26 +9758,7 @@ Values:
 Short description: Length of the End section in the MA
 Length: 15 bits
 Values:
-    ResolutionFormula: value: 1, units: q_scale<Sub>
-<Paragraph
- id="7.5.1.45.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->SpecialOrReservedValues:
-    SpecialOrReservedValue: 
-        Match: 32767
-        Meaning: 
-            Type: unknown
-            Value: Length not known</Paragraph></Sub>
-<TypeSpec
+    ResolutionFormula: value: 1, units: q_scale<TypeSpec
  length="15"
  id="L_ENDSECTION"
  ertms-type="length"
@@ -9873,6 +9792,22 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
+ id="7.5.1.46.bis"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>SpecialOrReservedValues:
+    SpecialOrReservedValue: 
+        Match: 32767
+        Meaning: 
+            Type: unknown
+            Value: Unknown</Paragraph><Paragraph
  id="7.5.1.46.1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9943,7 +9878,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.47.0"
+ id="7.5.1.47.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10020,7 +9955,7 @@ This variable is part of the National Values
 Length: 5 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.48.1.0"
+ id="7.5.1.48.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10394,7 +10329,7 @@ Length: 15 bits
 Values:
     ResolutionFormula: value: 1, units: q_scale<Sub>
 <Paragraph
- id="7.5.1.54.0"
+ id="7.5.1.54.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10469,7 +10404,7 @@ Values:
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -10569,7 +10504,7 @@ Description:
 Indicates whether the telegram must be acknowledged or not
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.59.0"
+ id="7.5.1.59.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10632,7 +10567,7 @@ Length: 1 bits<Sub>
 Short description: Adhesion factor
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.60.0"
+ id="7.5.1.60.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10696,7 +10631,7 @@ Description:
 indicates whether the train is fitted with an airtight system or not.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.61.0"
+ id="7.5.1.61.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10769,22 +10704,23 @@ Length: 2 bits<Sub>
  id="7.5.1.62"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Id: M_AXLELOAD
-Short description: Axle load
+><Comment></Comment>
+Id: M_AXLELOADCAT
+Short description: Axle load category
 Description:
-The values allocated below correspond to a list of increasing axle load categories (i.e. B2 &gt; B1, D2 &gt; C4, ....etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories refer to TSI RST and INF.
-Length: 7 bits
-Baseline: 3.2.0<Sub>
+The values allocated below correspond to a list of increasing axle load categories (i.e. B1 &gt; HS17, B2 &gt; B1, D2 &gt; C4, ....etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.
+For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.
+The category HS17 (axle load &lt;= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1.
+Length: 7 bits<Sub>
 <Paragraph
- id="7.5.1.62.0"
+ id="7.5.1.62.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -10806,59 +10742,64 @@ Baseline: 3.2.0<Sub>
             Match: 1
             Meaning: 
                 Type: enum
-                Value: B1
+                Value: HS17
         SpecialOrReservedValue: 
             Match: 2
             Meaning: 
                 Type: enum
-                Value: B2
+                Value: B1
         SpecialOrReservedValue: 
             Match: 3
             Meaning: 
                 Type: enum
-                Value: C2
+                Value: B2
         SpecialOrReservedValue: 
             Match: 4
             Meaning: 
                 Type: enum
-                Value: C3
+                Value: C2
         SpecialOrReservedValue: 
             Match: 5
             Meaning: 
                 Type: enum
-                Value: C4
+                Value: C3
         SpecialOrReservedValue: 
             Match: 6
             Meaning: 
                 Type: enum
-                Value: D2
+                Value: C4
         SpecialOrReservedValue: 
             Match: 7
             Meaning: 
                 Type: enum
-                Value: D3
+                Value: D2
         SpecialOrReservedValue: 
             Match: 8
             Meaning: 
                 Type: enum
-                Value: D4
+                Value: D3
         SpecialOrReservedValue: 
             Match: 9
             Meaning: 
                 Type: enum
-                Value: D4XL
+                Value: D4
         SpecialOrReservedValue: 
             Match: 10
             Meaning: 
                 Type: enum
-                Value: E4
+                Value: D4XL
         SpecialOrReservedValue: 
             Match: 11
             Meaning: 
                 Type: enum
+                Value: E4
+        SpecialOrReservedValue: 
+            Match: 12
+            Meaning: 
+                Type: enum
                 Value: E5
         SpecialOrReservedValue: 
-            MatchRange: minimum: 12, maximum: a127
+            MatchRange: minimum: 13, maximum: a127
             Meaning: 
                 Type: invalid
                 Value: Spare</Paragraph><Paragraph
@@ -10881,7 +10822,7 @@ Length: 2 bits
 Values:
     ResolutionFormula: value: 10, units: A<Sub>
 <Paragraph
- id="7.5.1.62.1.0"
+ id="7.5.1.62.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11019,7 +10960,7 @@ Description:
 Flags to tell whether the balise is a duplicate of one of the adjacent balises.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.63.0"
+ id="7.5.1.63.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11105,7 +11046,7 @@ Id: M_ERROR
 Short description: Identifier of the type of error
 Length: 8 bits<Sub>
 <Paragraph
- id="7.5.1.64.0"
+ id="7.5.1.64.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11260,7 +11201,7 @@ Short description: Current Operating Level
 Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.65.0"
+ id="7.5.1.65.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11302,67 +11243,7 @@ SpecialOrReservedValues:
         MatchRange: minimum: 5, maximum: a7
         Meaning: 
             Type: invalid
-            Value: Spare</Paragraph><Paragraph
- id="7.5.1.65.1"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
-><Comment></Comment>
-Id: M_LEVELINH
-Short description: Level to be inhibited
-Length: 3 bits
-Baseline: 3.2.0<Sub>
-<Paragraph
- id="7.5.1.65.1.1"
- type="DEFINITION"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->SpecialOrReservedValues:
-    SpecialOrReservedValue: 
-        Match: 0
-        Meaning: 
-            Type: enum
-            Value: Level 0
-    SpecialOrReservedValue: 
-        Match: 1
-        Meaning: 
-            Type: enum
-            Value: Level STM specified by NID_NTC
-    SpecialOrReservedValue: 
-        Match: 2
-        Meaning: 
-            Type: enum
-            Value: Level 1
-    SpecialOrReservedValue: 
-        Match: 3
-        Meaning: 
-            Type: enum
-            Value: Level 2
-    SpecialOrReservedValue: 
-        Match: 4
-        Meaning: 
-            Type: enum
-            Value: Level 3
-    SpecialOrReservedValue: 
-        MatchRange: minimum: 5, maximum: a7
-        Meaning: 
-            Type: invalid
             Value: Spare</Paragraph></Sub>
-</Paragraph></Sub>
 <TypeSpec
  length="3"
  id="M_LEVEL"
@@ -11435,7 +11316,7 @@ The text is displayed when entering / as long as in the defined level
 Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.66.0"
+ id="7.5.1.66.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11560,7 +11441,7 @@ Short description: Required level
 Length: 3 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.67.0"
+ id="7.5.1.67.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11657,8 +11538,8 @@ Baseline: 3.2.0<Sub>
     SpecialOrReservedValue: 
         Match: 8
         Meaning: 
-            Type: invalid
-            Value: spare
+            Type: enum
+            Value: GC
     SpecialOrReservedValue: 
         Match: 32
         Meaning: 
@@ -11747,7 +11628,7 @@ Defining the loading gauge profile of a train (refer to TSI RST)
 Length: 8 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.68.0"
+ id="7.5.1.68.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11860,7 +11741,7 @@ Id: M_LOC
 Short description: Special location/moment where the train has to report its position
 Length: 3 bits<Sub>
 <Paragraph
- id="7.5.1.69.0"
+ id="7.5.1.69.1"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -11949,7 +11830,7 @@ Id: M_MAMODE
 Short description: Required mode for a part of the MA
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.70.0"
+ id="7.5.1.70.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12036,7 +11917,7 @@ The purpose of this counter is to make it possible for the ERTMS/ETCS on-board t
 Length: 8 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.71.0"
+ id="7.5.1.71.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12101,7 +11982,7 @@ Id: M_MODE
 Short description: Onboard operating mode
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.72.0"
+ id="7.5.1.72.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12192,8 +12073,8 @@ Length: 4 bits<Sub>
     SpecialOrReservedValue: 
         Match: 15
         Meaning: 
-            Type: invalid
-            Value: Spare</Paragraph></Sub>
+            Type: enum
+            Value: PassiveShunting</Paragraph></Sub>
 <TypeSpec
  length="4"
  id="M_MODE"
@@ -12321,7 +12202,7 @@ Description:
 The text is displayed when entering / as long as in the defined mode
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.73.0"
+ id="7.5.1.73.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12432,7 +12313,7 @@ Length: 5 bits
 Values:
     ResolutionFormula: value: 0.05, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.73.1.0"
+ id="7.5.1.73.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12445,7 +12326,7 @@ Values:
  Name=""
 >SpecialOrReservedValues:
     SpecialOrReservedValue: 
-        MatchRange: minimum: 1.05, maximum: a1_55
+        MatchRange: minimum: 1.05, maximum: 1.55
         Meaning: 
             Type: invalid
             Value: Spare</Paragraph></Sub>
@@ -12578,7 +12459,7 @@ Indicates the reaction to be performed when T_NVCONTACT timer elapses
 This variable is part of the National Values
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.74.0"
+ id="7.5.1.74.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12666,7 +12547,7 @@ Description:
 This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.75.0"
+ id="7.5.1.75.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12708,7 +12589,7 @@ The confidence level on emergency brake safe deceleration represents the probabi
 Length: 4 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.75.1.0"
+ id="7.5.1.75.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12790,27 +12671,14 @@ Baseline: 3.2.0<Sub>
  Name=""
 >Id: M_NVKRINT
 Short description: Integrated correction factor Kr
-Length: 5 bits
-Values:
-    ResolutionFormula: value: 0.05, units: defaultresolution_formula_units<Sub>
-<Paragraph
- id="7.5.1.75.2.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 This is the train length dependent integrated correction factor.
 M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1).
 M_NVKRINT is valid between 0m and L_NVKRINT(1)
-This variable is part of the National Values</Paragraph></Sub>
-</Paragraph><Paragraph
+This variable is part of the National Values
+Length: 5 bits
+Values:
+    ResolutionFormula: value: 0.05, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -12842,27 +12710,14 @@ Values:
  Name=""
 >Id: M_NVKVINT
 Short description: Integrated correction factor Kv
-Length: 7 bits
-Values:
-    ResolutionFormula: value: 0.02, units: defaultresolution_formula_units<Sub>
-<Paragraph
- id="7.5.1.75.4.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 This is the speed dependent integrated correction factor.
 M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1).
 M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)
-This variable is part of the National Values</Paragraph></Sub>
-</Paragraph><Paragraph
+This variable is part of the National Values
+Length: 7 bits
+Values:
+    ResolutionFormula: value: 0.02, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.75.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -12880,7 +12735,7 @@ Description:
 Nominal height of platform above rail level (refer to TSI infrastructure)
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.75.5.0"
+ id="7.5.1.75.5.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -12963,7 +12818,7 @@ Length: 4 bits<Sub>
             Type: enum
             Value: 1100 mm
     SpecialOrReservedValue: 
-        MatchRange: minimum: 14, maximum: a15
+        MatchRange: minimum: 14, maximum: 15
         Meaning: 
             Type: invalid
             Value: Spare</Paragraph></Sub>
@@ -13008,24 +12863,13 @@ Length: 4 bits<Sub>
 ><Comment></Comment>
 Id: M_POSITION
 Short description: Track kilometre reference value
+Description:
+The geographical position reporting function uses this variables content as a reference value.
 Length: 20 bits
 Values:
     ResolutionFormula: value: 1, units: m<Sub>
 <Paragraph
- id="7.5.1.76.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-The geographical position reporting function uses this variables content as a reference value.</Paragraph><Paragraph
- id="7.5.1.76.1"
+ id="7.5.1.76.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13037,8 +12881,13 @@ The geographical position reporting function uses this variables content as a re
  functionalBlockName=""
  Name=""
 >SpecialOrReservedValues:
-    SpecialOrReservedValue: 
+    SpecialOrReservedValue:
+        MatchRange: minimum: 10000000, maximum: 16777214
+        Meaning: 
+            Type: invalid
+            Value: Spare
         Match: 1048575
+    SpecialOrReservedValue: 
         Meaning: 
             Type: enum
             Value: No more geographical position calculation after this reference location</Paragraph></Sub>
@@ -13080,7 +12929,7 @@ The geographical position reporting function uses this variables content as a re
 Short description: Type of track condition
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.77.0"
+ id="7.5.1.77.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13257,24 +13106,13 @@ Length: 4 bits<Sub>
  Name=""
 >Id: M_VOLTAGE
 Short description: Traction System voltage
+Description:
+It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine
+The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE &lt;&gt; 0, by the country identifier of the traction system (NID_CTRACTION)
 Length: 4 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.78.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine
-The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE &lt;&gt; 0, by the country identifier of the traction system (NID_CTRACTION)</Paragraph><Paragraph
- id="7.5.1.78.1"
+ id="7.5.1.78.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13403,7 +13241,7 @@ This gives the version of the ETCS system
 	- The second number indicates compatibility within a version X. (The four LSB&apos;s)
 Length: 7 bits<Sub>
 <Paragraph
- id="7.5.1.79.0"
+ id="7.5.1.79.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13421,17 +13259,17 @@ SpecialOrReservedValues:
         Match: 0
         Meaning: 
             Type: enum
-            Value: Pre class 1 system according to e.g. EEIG SRS, UIC A200 SRS
+            Value: Previous versions according to e.g. EEIG SRS, UIC A200 SRS
     SpecialOrReservedValue: 
         Match: 16
         Meaning: 
             Type: enum
-            Value: Class 1, version 1.0, introduced in SRS 1.2.0 and re-used in SRSs 2.0.0, 2.2.2, 2.3.0
+            Value: Version 1.0, introduced in SRS 1.2.0 and re-used in SRSs 2.0.0, 2.2.2, 2.3.0
     SpecialOrReservedValue: 
         Match: 17
         Meaning: 
             Type: enum
-            Value: Class 1, version 1.1, introduced in SRS 3.0.0
+            Value: Version 1.1, introduced in SRS 3.0.0
     SpecialOrReservedValue: 
         Match: 18
         Meaning: 
@@ -13446,7 +13284,7 @@ SpecialOrReservedValues:
         Match: 32
         Meaning: 
             Type: enum
-            Value: Class 1, version 2.0, introduced in SRS 3.0.0
+            Value: Version 2.0, introduced in SRS 3.3.0
     SpecialOrReservedValue: 
         Match: 33
         Meaning: 
@@ -13476,7 +13314,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: integers, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.79.1.0"
+ id="7.5.1.79.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13607,7 +13445,7 @@ Description:
 Defines the relative position in a balise group
 Length: 3 bits<Sub>
 <Paragraph
- id="7.5.1.81.0"
+ id="7.5.1.81.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13736,7 +13574,7 @@ Length: 3 bits<Sub>
 Short description: Total number of balise(s) in the group
 Length: 3 bits<Sub>
 <Paragraph
- id="7.5.1.82.0"
+ id="7.5.1.82.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13801,23 +13639,12 @@ Length: 3 bits<Sub>
  Name=""
 >Id: NC_CDDIFF
 Short description: Cant Deficiency SSP category
+Description:
+It is the &quot;Cant Deficiency&quot; SSP category for which a different value for the static line speed exists.
+Used together with V_DIFF to permit certain trains to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC.
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.82.1.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-It is the &quot;Cant Deficiency&quot; SSP category for which a different value for the static line speed exists.
-Used together with V_DIFF to permit certain trains to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC.</Paragraph><Paragraph
- id="7.5.1.82.1.1"
+ id="7.5.1.82.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -13909,24 +13736,13 @@ Used together with V_DIFF to permit certain trains to go faster or lower than th
  Name=""
 >Id: NC_CDTRAIN
 Short description: Cant Deficiency Train Category
-Length: 4 bits<Sub>
-<Paragraph
- id="7.5.1.82.2.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 Cant Deficiency Train category to which the train belongs.
 Thanks to NC_CDTRAIN, the train knows the &quot;Cant Deficiency&quot; SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the &quot;Cant Deficiency&quot; SSP best suiting its NC_CDTRAIN.
-A train belongs to one and only one category of Cant Deficiency.</Paragraph><Paragraph
- id="7.5.1.82.2.1"
+A train belongs to one and only one category of Cant Deficiency.
+Length: 4 bits<Sub>
+<Paragraph
+ id="7.5.1.82.2.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14079,24 +13895,15 @@ A train belongs to one and only one category of Cant Deficiency.</Paragraph><Par
  Name=""
 >Id: NC_DIFF
 Short description: Other specific SSP category
-Length: 4 bits<Sub>
-<Paragraph
- id="7.5.1.83.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 It is the &quot;other specific&quot; SSP category for which a different value for the static line speed exists.
 Used together with V_DIFF to permit trains belonging to the corresponding &quot;other international&quot; train category to go faster or lower than the &quot;international basic static speed&quot; given by V_STATIC. 
-Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.</Paragraph><Paragraph
- id="7.5.1.83.1"
+Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MSB (15-bit variable) of NC_TRAIN.
+Length: 4 bits
+Values:
+    ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
+<Paragraph
+ id="7.5.1.83.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14192,27 +13999,17 @@ Value 0 of NC_DIFF corresponds to the LSB of NC_TRAIN, value 14 of NC_DIFF to MS
  Name=""
 >Id: NC_TRAIN
 Short description: Other International Train Category.
-Length: 15 bits
-Baseline: 3.2.0<Sub>
-<Paragraph
- id="7.5.1.84.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 Other train category (different from Cant Deficiency) to which the train belongs.
 Thanks to NC_TRAIN, the train knows the &quot;Other specific&quot; SSP category it must consider.
 By receiving a list of static speed profile, thanks to NC_DIFF, the train can select the SSP it must obey.
 Each bit represents one category.
-A train can belong to various categories.</Paragraph><Paragraph
- id="7.5.1.84.1"
+A train can belong to various categories.
+Length: 15 bits
+Values:
+    ResolutionFormula: value: Bitset, units: defaultresolution_formula_units<Sub>
+<Paragraph
+ id="7.5.1.84.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14465,11 +14262,10 @@ Short description: Identity number of the balise group
 Description:
 Identity number of a balise group or loop within the country or region defined by NID_C.
 Length: 14 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.85.0"
+ id="7.5.1.85.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14544,7 +14340,6 @@ Short description: Country identifier of the traction system
 Description:
 It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.
 Length: 10 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="10"
@@ -14590,8 +14385,7 @@ Values:
 Short description: Emergency message identity
 Description:
 Identifies the number of the emergency message
-Length: 4 bits
-Baseline: 3.2.0<TypeSpec
+Length: 4 bits<TypeSpec
  length="4"
  id="NID_EM"
  ertms-type="identity-number"
@@ -14647,8 +14441,8 @@ Short description: Identity number of the loop
 Description:
 Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header.
 Length: 14 bits
-Baseline: 3.2.0
-Values:<TypeSpec
+Values:
+    ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<TypeSpec
  length="14"
  id="NID_LOOP (Values to be assigned according to 7.3.1.3)"
  ertms-type="identity-number"
@@ -14678,7 +14472,7 @@ Description:
 Country/region identity (NID_C) + balise identity number of last relevant balise group (NID_BG).
 Length: 24 bits<Sub>
 <Paragraph
- id="7.5.1.90.0"
+ id="7.5.1.90.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14729,7 +14523,7 @@ Length: 8 bits
 Values:
     ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.90.2.0"
+ id="7.5.1.90.2.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14805,25 +14599,13 @@ Values:
 ><Comment></Comment>
 Id: NID_MN (Values to be assigned according to 7.3.1.3)
 Short description: Identity of Radio Network
+Description:
+The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.
 Length: 24 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_unit<Sub>
 <Paragraph
- id="7.5.1.91.1.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Paragraph><Paragraph
- id="7.5.1.91.1.2"
+ id="7.5.1.91.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -14906,26 +14688,13 @@ SpecialOrReservedValues:
 ><Comment></Comment>
 Id: NID_OPERATIONAL
 Short description: Train Running Number
+Description:
+This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.
 Length: 32 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.92.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
-><Comment></Comment>
-Description:
-This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character &quot;F&quot;.</Paragraph><Paragraph
- id="7.5.1.92.1"
+ id="7.5.1.92.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15041,7 +14810,7 @@ Previous LRBG detected when running towards the balise group identified as LRBG 
 	Country/region identity (NID_C) + balise identity number of the previous LRBG (NID_BG).
 Length: 24 bits<Sub>
 <Paragraph
- id="7.5.1.94.0"
+ id="7.5.1.94.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15093,26 +14862,15 @@ Length: 24 bits<Sub>
 ><Comment></Comment>
 Id: NID_RADIO (Values to be assigned according to 7.3.1.3)
 Short description: Radio subscriber number.
+Description:
+Quoted as a 16 digit decimal number. 
+The number is to be entered &quot;left adjusted&quot; starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. 
+For further information about NID_RADIO  refer to SUBSET-054.
 Length: 64 bits
 Values:
     ResolutionFormula: value: Binary Coded Decimal, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.95.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-Quoted as a 16 digit decimal number. 
-The number is to be entered &quot;left adjusted&quot; starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. 
-For further information about NID_RADIO  refer to SUBSET-054.</Paragraph><Paragraph
- id="7.5.1.95.1"
+ id="7.5.1.95.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15192,23 +14950,14 @@ For further information about NID_RADIO  refer to SUBSET-054.</Paragraph><Paragr
 ><Comment></Comment>
 Id: NID_RBC (Values to be assigned according to 7.3.1.3)
 Short description: RBC ETCS identity number
-Length: 14 bits<Sub>
-<Paragraph
- id="7.5.1.96.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Description:
 This variable provides the identity of the RBC belonging to NID_C.
-The RBC ETCS identity is given by NID_C + NID_RBC.</Paragraph><Paragraph
- id="7.5.1.96.1"
+The RBC ETCS identity is given by NID_C + NID_RBC.
+Length: 14 bits
+Values:
+    ResolutionFormula: value: Numbers, units: defaultresolution_formula_units<Sub>
+<Paragraph
+ id="7.5.1.96.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15250,54 +14999,20 @@ The RBC ETCS identity is given by NID_C + NID_RBC.</Paragraph><Paragraph
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment></Comment>
-Id: NID_RIU (Values to be assigned according to 7.3.1.3)
-Short description: Identity of radio infill unit 
-Length: 14 bits
-Values:
-    ResolutionFormula: value: Number, units: defaultresolution_formula_units<Sub>
-<Paragraph
- id="7.5.1.97.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
-><Comment></Comment>
+>Id: NID_RIU (Values to be assigned according to 7.3.1.3)
+Short description: Identity of radio infill unit
 Description:
 This variable provides the identity of the RIU belonging to NID_C.
-The RIU ETCS identity is given by NID_C + NID_RIU.</Paragraph></Sub>
-<TypeSpec
- length="14"
- id="NID_RIU (Values to be assigned according to 7.3.1.3)"
- ertms-type="identity-number"
->
-<short-description>Identity of radio infill unit </short-description>
-<Description>This variable provides the identity of the RIU belonging to NID_C.
-	The RIU ETCS identity is given by NID_C + NID_RIU.</Description>
-<reference>7.5.1.97</reference>
-<Values>
-<resolution-formula
->Number</resolution-formula>
-<special-or-reserved-values>
-<special-or-reserved-value>
-</special-or-reserved-value>
-</special-or-reserved-values>
-</Values>
-</TypeSpec>
-</Paragraph><Paragraph
+The RIU ECTS identity is given by NID_C + NID_RIU.
+Length: 14 bits
+Values:
+    ResolutionFormula: value: Numbers, units: defaultresolution_formula_units</Paragraph><Paragraph
  id="7.5.1.98"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -15314,9 +15029,7 @@ Id: NID_NTC (Values to be assigned according to 7.3.1.3)
 Short description: National System identity
 Description:
 Each value of this variable represents the identity of a National System.
-Length: 8 bits
-Baseline: 3.2.0
-Values:<Sub>
+Length: 8 bits<Sub>
 <Paragraph
  id="7.5.1.98.1"
  type="REQUIREMENT"
@@ -15333,7 +15046,9 @@ Values:<Sub>
 Short description: Text message identifier
 Description:
 Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC
-Length: 8 bits<TypeSpec
+Length: 8 bits
+Values:
+    ResolutionFormula: value: Number, units: defaultresolution_formula_units<TypeSpec
  length="8"
  id="7.5.1.98.1 NID_TEXTMESSAGE"
  ertms-type="identity-number"
@@ -15376,7 +15091,7 @@ Length: 8 bits
 Values:
     ResolutionFormula: value: Number, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.99.0"
+ id="7.5.1.99.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15403,7 +15118,24 @@ SpecialOrReservedValues:
         Match: 255
         Meaning: 
             Type: enum
-            Value: Non-revocable speed restriction (applicable for all transmission media)</Paragraph></Sub>
+            Value: Non-revocable speed restriction (applicable for all transmission media)</Paragraph><Paragraph
+ id="7.5.1.99.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Id: NID_VBCMK
+Short description: Marker for Virtual Balise Cover
+Length: 6 bits
+Values:
+    ResolutionFormula: value: Number, units: defaultresolution_formula_units</Paragraph></Sub>
 <TypeSpec
  length="8"
  id="NID_TSR"
@@ -15490,7 +15222,7 @@ Values:
 Short description: Aspect of &quot;danger for shunting&quot; signal
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.101.0"
+ id="7.5.1.101.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15529,7 +15261,7 @@ Description:
 Gives the relationship between the event &quot;driver acknowledgement&quot; and the list of events &quot;location&quot;, &quot;time&quot;, &quot;mode&quot;, &quot;level&quot; defining the end condition for text display
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.101.1.0"
+ id="7.5.1.101.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15619,7 +15351,7 @@ Description:
 This variable is set to 1 if either a danger point exists or a release speed has to be specified
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.102.0"
+ id="7.5.1.102.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15653,24 +15385,13 @@ Length: 1 bits<Sub>
  functionalBlockName=""
  Name=""
 >Id: Q_DIFF
-Short description: Qualifier for specific SSP categories. 
-Length: 1 bits<Sub>
-<Paragraph
- id="7.5.1.102.1.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
+Short description: Qualifier for specific SSP categories.
+Description:
 Indicates the type of specific SSP category
-In case of &quot;other specific&quot; SSP, it tells ERTMS/ETCS on-board equipment whether it replaces or not the Cant Deficiency SSP as selected by on-board (ref. 3.11.3.2.3), when the train belongs to an &quot;other international&quot; train category to which the &quot;other specific&quot; SSP applies</Paragraph><Paragraph
- id="7.5.1.102.1.1"
+In case of &quot;other specific&quot; SSP, it tells ERTMS/ETCS on-board equipment whether it replaces or not the Cant Deficiency SSP as selected by on-board (ref. 3.11.3.2.3), when the train belongs to an &quot;other international&quot; train category to which the &quot;other specific&quot; SSP applies
+Length: 2 bits<Sub>
+<Paragraph
+ id="7.5.1.102.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15746,7 +15467,7 @@ Description:
 Qualifier to indicate the relevant validity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.103.0"
+ id="7.5.1.103.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15831,7 +15552,7 @@ Length: 2 bits<Sub>
 Short description: Orientation of the train in relation to the direction of the LRBG
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.104.0"
+ id="7.5.1.104.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15915,7 +15636,7 @@ Length: 2 bits<Sub>
 Short description: Direction of train movement in relation to the LRBG orientation
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.105.0"
+ id="7.5.1.105.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15999,7 +15720,7 @@ Length: 2 bits<Sub>
 Short description: Qualifier telling on which side of the LRBG the estimated front end is
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.106.0"
+ id="7.5.1.106.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16085,7 +15806,7 @@ Description:
 Qualifier to inform the RBC about the use of emergency stop by on-board equipment.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.107.0"
+ id="7.5.1.107.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16116,7 +15837,7 @@ Length: 2 bits<Sub>
         Match: 3
         Meaning: 
             Type: invalid
-            Value: Emergency stop (Conditional or Unconditional) rejected, whatever the reason </Paragraph></Sub>
+            Value: Emergency stop (Conditional or Unconditional) rejected, whatever the reason</Paragraph></Sub>
 <TypeSpec
  length="2"
  id="Q_EMERGENCYSTOP"
@@ -16170,7 +15891,7 @@ Length: 2 bits<Sub>
 Short description: Qualifier to indicate whether end section timer information exists for the End section in the MA
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.108.0"
+ id="7.5.1.108.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16234,7 +15955,7 @@ Description:
 Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.109.1"
+ id="7.5.1.109.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16297,7 +16018,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier for gradient slope.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.110.0"
+ id="7.5.1.110.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16359,7 +16080,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier to indicate whether a train is entering or exiting the radio infill area.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.111.0"
+ id="7.5.1.111.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16423,7 +16144,7 @@ Description:
 Qualifier, identifying the train integrity information available. The related safe train length information is given by L_TRAININT
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.112.0"
+ id="7.5.1.112.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16454,72 +16175,7 @@ Length: 2 bits<Sub>
         Match: 3
         Meaning: 
             Type: enum
-            Value: Train integrity lost</Paragraph><Paragraph
- id="7.5.1.112.1"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Id: Q_LEVELINH
-Short description: Qualifier for level inhibitions
-Description:
-Qualifier to remove all inhibitions or identify that a list of level inhibitions follows
-Length: 2 bits<Sub>
-<Paragraph
- id="7.5.1.112.1.0"
- type="DEFINITION"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->SpecialOrReservedValues:
-    SpecialOrReservedValue: 
-        Match: 0
-        Meaning: 
-            Type: enum
-            Value: Packet empty, remove all inhibitions
-    SpecialOrReservedValue: 
-        Match: 1
-        Meaning: 
-            Type: enum
-            Value: Inhibited levels follow</Paragraph></Sub>
-<TypeSpec
- length="2"
- id="Q_LEVELINH"
- ertms-type="qualifier"
->
-<short-description>Qualifier for level inhibitions</short-description>
-<Description>Qualifier to remove all inhibitions or identify that a list of level inhibitions follows</Description>
-<reference>7.5.1.112.1</reference>
-<Values>
-<special-or-reserved-values>
-<special-or-reserved-value>
-<match>0</match>
-<meaning
- type="enum"
->Packet empty, remove all inhibitions</meaning>
-</special-or-reserved-value>
-<special-or-reserved-value>
-<match>1</match>
-<meaning
- type="enum"
->Inhibited levels follow</meaning>
-</special-or-reserved-value>
-</special-or-reserved-values>
-</Values>
-</TypeSpec>
-</Paragraph></Sub>
+            Value: Train integrity lost</Paragraph></Sub>
 <TypeSpec
  length="2"
  id="Q_LENGTH"
@@ -16571,22 +16227,11 @@ Length: 2 bits<Sub>
  Name=""
 >Id: Q_LGTLOC
 Short description: Qualifier for the specified report location
+Description:
+This qualifier tells whether the train has to report its location when the max safe front end or when the min safe rear end has over passed the location defined by D_LOC
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.113.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-This qualifier tells whether the train has to report its location when the max safe front end or when the min safe rear end has over passed the location defined by D_LOC</Paragraph><Paragraph
- id="7.5.1.113.1"
+ id="7.5.1.113.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16651,7 +16296,7 @@ Description:
 This qualifier is used to mark a balise group as linked or unlinked.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.114.0"
+ id="7.5.1.114.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16748,7 +16393,7 @@ Description:
 Indicates whether the linked balise group will be overpassed by the train in nominal or reverse direction.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.116.0"
+ id="7.5.1.116.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16813,7 +16458,7 @@ Description:
 Qualifier for the reaction to be performed if a linking or a balise group message consistency problem occurs with the balise group linked to.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.117.0"
+ id="7.5.1.117.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16900,7 +16545,7 @@ Description:
 Indicates LOOP-reference direction in relation to EOLM direction
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.118.0"
+ id="7.5.1.118.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16940,7 +16585,7 @@ Description:
 Indicates whether the LX is protected  or not
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.118.1.0"
+ id="7.5.1.118.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -16977,22 +16622,11 @@ Length: 1 bits<Sub>
 ><Comment></Comment>
 Id: Q_MAMODE
 Short description: Qualifier to indicate the supervision of the beginning of the  mode profile
+Description:
+This qualifier defines whether the beginning of the mode profile shall be considered either as the EOA (keeping the SvL given by the MA) or as both the EOA and SvL (instead of the EOA and SvL given by the MA).
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.118.2.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-This qualifier defines whether the beginning of the mode profile shall be considered either as the EOA (keeping the SvL given by the MA) or as both the EOA and SvL (instead of the EOA and SvL given by the MA).</Paragraph><Paragraph
- id="7.5.1.118.2.1"
+ id="7.5.1.118.2.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17035,7 +16669,7 @@ Length: 1 bits
 Values:
     ResolutionFormula: value: Bitset, units: defaultresolution_formula_units<Sub>
 <Paragraph
- id="7.5.1.118.3.0"
+ id="7.5.1.118.3.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17117,7 +16751,7 @@ Description:
 Indicates whether it is a balise telegram or a loop message
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.119.0"
+ id="7.5.1.119.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17182,7 +16816,7 @@ Description:
 Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.120.0"
+ id="7.5.1.120.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17248,7 +16882,7 @@ Qualifier to indicate whether the next balise group is in the same country / rai
 For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.121.0"
+ id="7.5.1.121.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17301,24 +16935,22 @@ Length: 1 bits<Sub>
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Id: Q_NVDRIVER_ADHES
+>Id: Q_NDRIVER_ADHES
 Short description: Qualifier for the modification of trackside adhesion factor by driver
 Description:
 This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.122.1"
- type="DEFINITION"
+ id="7.5.1.122.bis"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
@@ -17336,31 +16968,6 @@ Length: 1 bits<Sub>
         Meaning: 
             Type: enum
             Value: Allowed</Paragraph></Sub>
-<TypeSpec
- length="1"
- id="Q_NVDRIVER_ADHES"
- ertms-type="qualifier"
->
-<short-description>Qualifier for the modification of trackside adhesion factor by driver</short-description>
-<Description>This variable is part of the National Values</Description>
-<reference>7.5.1.122</reference>
-<Values>
-<special-or-reserved-values>
-<special-or-reserved-value>
-<match>0</match>
-<meaning
- type="enum"
->Not allowed</meaning>
-</special-or-reserved-value>
-<special-or-reserved-value>
-<match>1</match>
-<meaning
- type="enum"
->Allowed</meaning>
-</special-or-reserved-value>
-</special-or-reserved-values>
-</Values>
-</TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.123"
  type="REQUIREMENT"
@@ -17380,7 +16987,7 @@ Permission to revoke the emergency brake command when the Permitted Speed limit 
 This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.123.0"
+ id="7.5.1.123.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17419,7 +17026,7 @@ Description:
 This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.123.1.0"
+ id="7.5.1.123.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17461,7 +17068,7 @@ This variable is part of the National Values
 Length: 1 bits
 Baseline: 3.2.0<Sub>
 <Paragraph
- id="7.5.1.123.2.0"
+ id="7.5.1.123.2.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17499,10 +17106,9 @@ Baseline: 3.2.0<Sub>
 Short description: Qualifier for integrated correction factors
 Description:
 This variable is part of the National Values
-Length: 1 bits
-Baseline: 3.2.0<Sub>
+Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.123.3.0"
+ id="7.5.1.123.3.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17523,7 +17129,6 @@ Baseline: 3.2.0<Sub>
         Match: 1
         Meaning: 
             Type: enum
-
             Value: Integrated correction factors follow</Paragraph></Sub>
 </Paragraph><Paragraph
  id="7.5.1.123.4"
@@ -17539,10 +17144,9 @@ Baseline: 3.2.0<Sub>
  Name=""
 >Id: Q_NVKVINTSET
 Short description: Type of Kv_int set
-Length: 1 bits
-Baseline: 3.2.0<Sub>
+Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.123.4.0"
+ id="7.5.1.123.4.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17565,7 +17169,7 @@ Baseline: 3.2.0<Sub>
             Type: enum
             Value: Conventional passenger trains
     SpecialOrReservedValue: 
-        MatchRange: minimum: 10, maximum: a11
+        MatchRange: minimum: 2, maximum: 3
         Meaning: 
             Type: invalid
             Value: Spare</Paragraph></Sub>
@@ -17586,7 +17190,6 @@ Short description: Default accuracy of the balise location (absolute value)
 Description:
 This variable is part of the National Values
 Length: 6 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: 1, units: m</Paragraph><Paragraph
  id="7.5.1.123.6"
@@ -17604,10 +17207,9 @@ Values:
 Short description: Permission to use the service brake feedback
 Description:
 This variable is part of the National Values
-Length: 1 bits
-Baseline: 3.2.0<Sub>
+Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.123.6.0"
+ id="7.5.1.123.6.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17675,7 +17277,7 @@ Description:
 This variable is part of the National Values
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.124.0"
+ id="7.5.1.124.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17740,7 +17342,7 @@ Description:
 The co-ordinate system is assigned by the RBC to a balise group reported by the on-board equipment as LRBG. The information reverse/nominal (i.e., the assigned co-ordinate system) is given in relation to the direction in which the balise has been passed when reading it.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.125.0"
+ id="7.5.1.125.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17805,7 +17407,7 @@ Description:
 This variable is set to 1 if either an overlap exists or a release speed has to be specified
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.126.0"
+ id="7.5.1.126.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17844,7 +17446,7 @@ Description:
 Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.126.1.0"
+ id="7.5.1.126.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17880,9 +17482,9 @@ Length: 1 bits<Sub>
  Name=""
 >Id: Q_PLATFORM
 Short description: Platform position (relative to direction of authorised movement)
-Length: 1 bits<Sub>
+Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.126.2.0"
+ id="7.5.1.126.2.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -17956,7 +17558,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier for communication session order
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.127.0"
+ id="7.5.1.127.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18018,7 +17620,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier for communication session order
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.128.0"
+ id="7.5.1.128.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18082,7 +17684,7 @@ Description:
 Qualifier to indicate the same scale used for describing all distances inside the packet that contains Q_SCALE.
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.129.0"
+ id="7.5.1.129.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18177,10 +17779,9 @@ Length: 2 bits<Sub>
  Name=""
 >Id: Q_SECTIONTIMER
 Short description: Qualifier to indicate whether there is a Section Time Out related to the section
-Length: 1 bits
-Baseline: 3.2.0<Sub>
+Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.130.0"
+ id="7.5.1.130.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18245,7 +17846,7 @@ Description:
 Order for a Sleeping onboard equipment to consider or not the &quot;session management&quot; information
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.131.0"
+ id="7.5.1.131.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18310,7 +17911,7 @@ Description:
 Specifies whether an onboard equipment in staff responsible has to stop or not
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.132.0"
+ id="7.5.1.132.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18375,7 +17976,7 @@ Description:
 Specifies the code required to receive telegrams from a specific Euroloop installation.
 Length: 4 bits<Sub>
 <Paragraph
- id="7.5.1.133.0"
+ id="7.5.1.133.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18429,7 +18030,7 @@ Description:
 It provides the status of the position report
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.134.0"
+ id="7.5.1.134.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18478,14 +18079,14 @@ Description:
 Indicates whether stopping the train in rear of a non protected LX is required
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.134.1.0"
+ id="7.5.1.134.1.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -18579,7 +18180,7 @@ Length: 1 bits<Sub>
 Short description: Type of route suitability data
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.135.0"
+ id="7.5.1.135.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18669,7 +18270,7 @@ Description:
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.
 Length: 8 bits<Sub>
 <Paragraph
- id="7.5.1.136.0"
+ id="7.5.1.136.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18750,7 +18351,7 @@ Description:
 Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message)
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.137.0"
+ id="7.5.1.137.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18835,7 +18436,7 @@ Length: 2 bits<Sub>
 Short description: Qualifier for text confirmation
 Length: 2 bits<Sub>
 <Paragraph
- id="7.5.1.138.0"
+ id="7.5.1.138.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18921,7 +18522,7 @@ Description:
 Q_TEXTDISPLAY defines whether the start/end conditions for text message are to be combined or not
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.139.0"
+ id="7.5.1.139.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -18984,7 +18585,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier for reporting acknowledgement of text by driver
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.140.0"
+ id="7.5.1.140.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19046,7 +18647,7 @@ Length: 1 bits<Sub>
 Short description: Qualifier for resuming the initial states of the related track description of the packet.
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.141.0"
+ id="7.5.1.141.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19110,7 +18711,7 @@ Description:
 It defines the direction of the information in the balise telegram
 Length: 1 bits<Sub>
 <Paragraph
- id="7.5.1.142.0"
+ id="7.5.1.142.bis"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19131,7 +18732,46 @@ Length: 1 bits<Sub>
         Match: 1
         Meaning: 
             Type: enum
-            Value: Up link telegram</Paragraph></Sub>
+            Value: Up link telegram</Paragraph><Paragraph
+ id="7.5.1.142.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Id: Q_VBCO
+Short description: Qualifier for Virtual Balise Cover order
+Description:
+Qualifier to set or remove a VBC
+Length: 1 bits<Sub>
+<Paragraph
+ id="7.5.1.142.1.bis"
+ type="DEFINITION"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>SpecialOrReservedValues:
+    SpecialOrReservedValue: 
+        Match: 0
+        Meaning: 
+            Type: enum
+            Value: Remove the Virtual Balise Cover
+    SpecialOrReservedValue: 
+        Match: 1
+        Meaning: 
+            Type: enum
+            Value: Set the Virtual Balise Cover</Paragraph></Sub>
+</Paragraph></Sub>
 <TypeSpec
  length="1"
  id="Q_UPDOWN"
@@ -19171,24 +18811,13 @@ Length: 1 bits<Sub>
  Name=""
 >Id: T_CYCLOC
 Short description: Time Interval between two location reports sent by the train
+Description:
+The train must send its location every T_CYCLOC
 Length: 8 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.143.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-The train must send its location every T_CYCLOC</Paragraph><Paragraph
- id="7.5.1.143.1"
+ id="7.5.1.143.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19241,24 +18870,13 @@ The train must send its location every T_CYCLOC</Paragraph><Paragraph
  Name=""
 >Id: T_CYCRQST
 Short description: Time between two cyclic requests for a movement authority
+Description:
+When the train asks for a movement authority request, it will repeat its request every T_CYCRQST seconds until it receives a new MA
 Length: 8 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.144.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-When the train asks for a movement authority request, it will repeat its request every T_CYCRQST seconds until it receives a new MA</Paragraph><Paragraph
- id="7.5.1.144.1"
+ id="7.5.1.144.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19317,7 +18935,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.145.0"
+ id="7.5.1.145.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19376,7 +18994,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.146.0"
+ id="7.5.1.146.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19433,7 +19051,7 @@ Length: 8 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.147.0"
+ id="7.5.1.147.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19485,25 +19103,14 @@ Values:
  Name=""
 >Id: T_NVCONTACT
 Short description: Maximal time without new &quot;safe&quot; message.
+Description:
+If no &quot;safe&quot; message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according to M_NVCONTACT must be triggered.
+This variable is part of the National Values
 Length: 8 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.148.0"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Description:
-If no &quot;safe&quot; message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according to M_NVCONTACT must be triggered.
-This variable is part of the National Values</Paragraph><Paragraph
- id="7.5.1.148.1"
+ id="7.5.1.148.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19595,7 +19202,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.150.0"
+ id="7.5.1.150.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19654,7 +19261,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.151.0"
+ id="7.5.1.151.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19712,7 +19319,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.152.0"
+ id="7.5.1.152.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19770,7 +19377,7 @@ Length: 10 bits
 Values:
     ResolutionFormula: value: 1, units: s<Sub>
 <Paragraph
- id="7.5.1.153.0"
+ id="7.5.1.153.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19828,7 +19435,7 @@ Length: 32 bits
 Values:
     ResolutionFormula: value: 10, units: ms<Sub>
 <Paragraph
- id="7.5.1.154.0"
+ id="7.5.1.154.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -19844,7 +19451,24 @@ Values:
         Match: 4294967295
         Meaning: 
             Type: unknown
-            Value: Unknown</Paragraph></Sub>
+            Value: Unknown</Paragraph><Paragraph
+ id="7.5.1.154.1"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Id: T_VBC
+Short description: VBC validity period
+Length: 8 bits
+Values:
+    ResolutionFormula: value: 1, units: day</Paragraph></Sub>
 <TypeSpec
  length="32"
  id="T_TRAIN"
@@ -19872,10 +19496,9 @@ Values:
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -19885,11 +19508,10 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.155.1"
+ id="7.5.1.155.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
@@ -19902,30 +19524,6 @@ Values:
         Meaning: 
             Type: invalid
             Value: Spare</Paragraph></Sub>
-<TypeSpec
- length="7"
- id="V_AXLELOAD"
- ertms-type="speed"
->
-<short-description>Speed restriction related to axleload</short-description>
-<reference>7.5.1.155</reference>
-<Values>
-<resolution-formula
- units="km/h"
->5</resolution-formula>
-<special-or-reserved-values>
-<special-or-reserved-value>
-<match-range>
-<minimum>121</minimum>
-<maximum>127</maximum>
-</match-range>
-<meaning
- type="invalid"
->Spare</meaning>
-</special-or-reserved-value>
-</special-or-reserved-values>
-</Values>
-</TypeSpec>
 </Paragraph><Paragraph
  id="7.5.1.156"
  type="REQUIREMENT"
@@ -19944,7 +19542,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.156.0"
+ id="7.5.1.156.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20004,7 +19602,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.157.0"
+ id="7.5.1.157.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20040,7 +19638,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.157.1.0"
+ id="7.5.1.157.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20100,7 +19698,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.158.0"
+ id="7.5.1.158.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20164,7 +19762,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.159.0"
+ id="7.5.1.159.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20231,11 +19829,10 @@ Values:
 >Id: V_MAXTRAIN
 Short description: Maximum train speed.
 Length: 7 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.160.1"
+ id="7.5.1.160.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20297,7 +19894,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.161.0"
+ id="7.5.1.161.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20333,7 +19930,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.161.1.0"
+ id="7.5.1.161.1.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20370,7 +19967,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.161.2.0"
+ id="7.5.1.161.2.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20433,7 +20030,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.162.1"
+ id="7.5.1.162.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20495,7 +20092,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.163.0"
+ id="7.5.1.163.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20557,7 +20154,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.164.0"
+ id="7.5.1.164.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20619,7 +20216,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.165.0"
+ id="7.5.1.165.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20681,7 +20278,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.166.0"
+ id="7.5.1.166.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20743,7 +20340,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.167.0"
+ id="7.5.1.167.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20803,7 +20400,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.168.0"
+ id="7.5.1.168.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20884,7 +20481,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.169.0"
+ id="7.5.1.169.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -20965,7 +20562,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.170.0"
+ id="7.5.1.170.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21026,7 +20623,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.171.0"
+ id="7.5.1.171.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -21094,7 +20691,6 @@ Values:
 >Id: V_TRAIN
 Short description: Train speed
 Length: 7 bits
-Baseline: 3.2.0
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
@@ -21158,7 +20754,7 @@ Length: 7 bits
 Values:
     ResolutionFormula: value: 5, units: km_h<Sub>
 <Paragraph
- id="7.5.1.173.0"
+ id="7.5.1.173.bis"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
