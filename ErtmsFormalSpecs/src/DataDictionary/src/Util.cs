@@ -329,6 +329,11 @@ namespace DataDictionary
                 {
                     Generated.ControllersManager.ActivateAllNotifications();
                 }
+
+                if (efsSystem != null)
+                {
+                    efsSystem.Compiler.Compile_Asynchronous(false);
+                }
             }
 
             return retVal;

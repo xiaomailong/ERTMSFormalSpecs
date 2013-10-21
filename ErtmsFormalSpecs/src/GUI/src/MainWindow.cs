@@ -438,7 +438,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System, System != null);
+                Dictionary = DataDictionary.Util.load(FileName, System, false);
             }
         }
 
@@ -1295,8 +1295,7 @@ namespace GUI
         {
             // Ensure the system has been compiled
             EFSSystem efsSystem = EFSSystem.INSTANCE;
-            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(efsSystem, efsSystem.ShouldRebuild);
-            compiler.Compile();
+            efsSystem.Compiler.Compile_Synchronous(efsSystem.ShouldRebuild);
             efsSystem.ShouldRebuild = false;
 
             RefreshModel();

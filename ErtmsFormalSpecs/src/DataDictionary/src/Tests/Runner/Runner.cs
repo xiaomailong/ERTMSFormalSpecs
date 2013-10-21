@@ -157,8 +157,7 @@ namespace DataDictionary.Tests.Runner
             LogEvents = logEvents;
 
             // Compile everything
-            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
-            compiler.Compile();
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
 
             Setup();
@@ -177,8 +176,7 @@ namespace DataDictionary.Tests.Runner
             LogEvents = logEvents;
 
             // Compile everything
-            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
-            compiler.Compile();
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
 
             Setup();

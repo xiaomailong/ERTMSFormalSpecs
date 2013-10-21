@@ -80,6 +80,11 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The compiler used to compile the system
+        /// </summary>
+        public Compiler Compiler { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EFSSystem()
@@ -87,6 +92,7 @@ namespace DataDictionary
             Dictionaries = new List<Dictionary>();
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
+            Compiler = new Interpreter.Compiler(this);
 
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
