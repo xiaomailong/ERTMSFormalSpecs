@@ -1016,15 +1016,10 @@
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- Implemented="TRUE"
  Name="GeneralMessage"
 >
 <ReqRef
  Id="8.4.4.4.1.5"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
 >
 </ReqRef>
 <SubRules></SubRules>
@@ -1108,10 +1103,6 @@
  Id="3.7.1.1.b"
 >
 </ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1171,7 +1162,6 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
- Implemented="TRUE"
  Name="MAWithShiftedLocationReference"
 >
 <ReqRef
@@ -1184,10 +1174,6 @@
 </ReqRef>
 <ReqRef
  Id="3.7.1.1.b"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
 >
 </ReqRef>
 <SubRules></SubRules>
@@ -1294,10 +1280,6 @@
  Id="3.7.1.1.a"
 >
 </ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1371,6 +1353,10 @@
  Implemented="TRUE"
  Name="Level transition order received"
 >
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
