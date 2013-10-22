@@ -885,7 +885,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition>
 </PreConditions>
 <Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1059,6 +1059,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </ReqRef>
 <ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.1"
 >
 </ReqRef>
 <PreConditions>
@@ -1628,7 +1632,9 @@ If all the messages of the current balise group have been received, calls Handle
 <Comment>N_TOTAL is the number of balises - 1</Comment>
 <PreConditions>
 <PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition>
-<PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition>
+<PreCondition>FORALL_IN CurrentBaliseGroup |  
+  (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
+  OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition>
 </PreConditions>
 <Actions>
 <Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>

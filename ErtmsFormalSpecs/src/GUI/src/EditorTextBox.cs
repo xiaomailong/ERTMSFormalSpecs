@@ -251,8 +251,9 @@ namespace GUI
         {
             List<string> retVal = new List<string>();
 
-            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
-            compiler.Compile(true);
+            bool rebuild = false;
+            bool silent = true;
+            EFSSystem.Compiler.Compile_Asynchronous(rebuild, silent);
 
             // Also use the default namespace
             List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
@@ -421,6 +422,10 @@ namespace GUI
                                 EditionTextBox.Select(EditionTextBox.SelectionStart - 1, 1);
                                 EditionTextBox.SelectedText = "";
                                 DisplayComboBox();
+                                break;
+
+                            case Keys.A:
+                                EditionTextBox.SelectAll();
                                 break;
 
                             default:

@@ -118,6 +118,11 @@ namespace DataDictionary.Rules
             Changes.Add(change);
             if (apply)
             {
+                // BUG: This is the case for procedure calls.
+                // In this case, computing the next changes induced by the procedure must be based on this changes.
+                // However, this contradicts a invariant : the state of the system does not change as long as all changes have not been computed
+                // To fix this, changes should be unapplied at the end of the procedure call change evaluation to be applied back 
+                // during the activation application.
                 change.Apply(log);
             }
         }

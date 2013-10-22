@@ -56,6 +56,8 @@ namespace ERTMSFormalSpecs
                 DataDictionary.Util.UnlockAllFiles();
             }
 
+
+            DataDictionary.EFSSystem.INSTANCE.Stop();
             GUI.SynchronizerList.Stop();
         }
     }

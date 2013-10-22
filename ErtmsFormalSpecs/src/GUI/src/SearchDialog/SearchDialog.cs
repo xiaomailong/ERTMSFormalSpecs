@@ -15,6 +15,8 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using DataDictionary;
 
 namespace GUI.SearchDialog
 {
@@ -48,37 +50,23 @@ namespace GUI.SearchDialog
         public void Initialise(DataDictionary.EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
+
+            searchTextBox.KeyUp += new KeyEventHandler(searchTextBox_KeyUp);
         }
 
         /// <summary>
-        /// Medor, who searches through the model
+        /// Handles specific key actions
         /// </summary>
-        private class Medor : DataDictionary.Generated.Visitor
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void searchTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            /// <summary>
-            /// The string to be looked for
-            /// </summary>
-            public string SearchString { get; private set; }
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="searchString"></param>
-            public Medor(string searchString)
+            switch (e.KeyCode)
             {
-                SearchString = searchString;
-            }
-
-            public override void visit(DataDictionary.Generated.Namable obj, bool visitSubNodes)
-            {
-                DataDictionary.Namable namable = (DataDictionary.Namable)obj;
-
-                if (namable.FullName != null && namable.FullName.Contains(SearchString))
-                {
-                    namable.AddInfo(SearchString + " found here");
-                }
-
-                base.visit(obj, visitSubNodes);
+                case Keys.Escape:
+                    e.Handled = true;
+                    Close();
+                    break;
             }
         }
 
@@ -89,15 +77,32 @@ namespace GUI.SearchDialog
         /// <param name="e"></param>
         private void searchButton_Click(object sender, EventArgs e)
         {
-            Medor medor = new Medor(searchTextBox.Text);
+            searchOccurences(searchTextBox.Text);
+        }
 
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+        /// <summary>
+        /// Searches for all occurences of the search string
+        /// </summary>
+        /// <param name="searchString"></param>
+        private void searchOccurences(string searchString)
+        {
+            List<ModelElement> occurences = new List<ModelElement>();
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                DataDictionary.Compare.Comparer.searchDictionary(dictionary, searchString, occurences);
+            }
+
+            // Clears all messages and mark the occurences
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
-                medor.visit(dictionary);
             }
-            MDIWindow.Refresh();
+            foreach (ModelElement element in occurences)
+            {
+                element.AddInfo("Found " + searchString);
+            }
 
+            MessageBox.Show(occurences.Count + " occurence(s) of " + searchString + " found", "Search complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -110,16 +115,7 @@ namespace GUI.SearchDialog
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Medor medor = new Medor(searchTextBox.Text);
-
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-                {
-                    dictionary.ClearMessages();
-                    medor.visit(dictionary);
-                }
-                MDIWindow.Refresh();
-
-                Close();
+                searchOccurences(searchTextBox.Text);
             }
         }
     }

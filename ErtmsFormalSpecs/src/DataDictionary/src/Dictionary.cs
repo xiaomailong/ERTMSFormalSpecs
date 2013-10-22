@@ -676,8 +676,7 @@ namespace DataDictionary
             ClearMessages();
 
             // Rebuilds everything
-            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
-            compiler.Compile();
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
 
             // Check rules

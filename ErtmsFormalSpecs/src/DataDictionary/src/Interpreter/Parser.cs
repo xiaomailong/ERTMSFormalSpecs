@@ -193,7 +193,7 @@ namespace DataDictionary.Interpreter
             }
             else
             {
-                throw new ParseErrorException("Expecting " + expected);
+                throw new ParseErrorException("Expecting " + expected, Index, Buffer);
             }
         }
 
@@ -789,7 +789,7 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            throw new ParseErrorException("Syntax error");
+                            throw new ParseErrorException("Syntax error", Index, Buffer);
                         }
                     }
                 }
@@ -845,13 +845,13 @@ namespace DataDictionary.Interpreter
                             }
                             else
                             {
-                                throw new ParseErrorException("REDUCE requires an initial value");
+                                throw new ParseErrorException("REDUCE requires an initial value", Index, Buffer);
                             }
                         }
                     }
                     else
                     {
-                        throw new ParseErrorException("Function designator expected");
+                        throw new ParseErrorException("Function designator expected", Index, Buffer);
                     }
                 }
                 else
@@ -978,12 +978,12 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            throw new ParseErrorException("Parameter type expected");
+                            throw new ParseErrorException("Parameter type expected", Index, Buffer);
                         }
                     }
                     else
                     {
-                        throw new ParseErrorException("Parameter identifier expected");
+                        throw new ParseErrorException("Parameter identifier expected", Index, Buffer);
                     }
 
                     cont = LookAhead(",");
@@ -1002,7 +1002,7 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    throw new ParseErrorException("Function expression expected");
+                    throw new ParseErrorException("Function expression expected", Index, Buffer);
                 }
             }
 
@@ -1235,7 +1235,7 @@ namespace DataDictionary.Interpreter
                 {
                     if (Index < Buffer.Length)
                     {
-                        throw new ParseErrorException("End of statement expected at " + Index + ", but found " + Buffer[Index]);
+                        throw new ParseErrorException("End of statement expected", Index, Buffer);
                     }
                 }
 

@@ -208,7 +208,15 @@ namespace GUI
                         {
                             messages.AddRange(current.Messages);
                         }
-                        current = current.Enclosing as IModelElement;
+
+                        if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
+                        {
+                            current = current.Enclosing as IModelElement;
+                        }
+                        else
+                        {
+                            current = null;
+                        }
                     }
                     baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
                     baseForm.MessagesTextBox.ReadOnly = true;
@@ -244,7 +252,14 @@ namespace GUI
                 ReqRef reqRef = Model as ReqRef;
                 if (reqRef != null)
                 {
-                    requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                    if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                    {
+                        requirements = reqRef.Paragraph.FullId + ", ";
+                    }
+                    else
+                    {
+                        requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                    }
                 }
                 else
                 {
@@ -413,7 +428,15 @@ namespace GUI
                     ComputedColor = INFO_COLOR_PATH;
                 }
 
-                ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                BaseTreeNode parent = Parent as BaseTreeNode;
+                if (parent != null && parent.Model != Model)
+                {
+                    // If the parent node is the same as the current node, the color does not count
+                    // since it has already been reported in the enclosing node. Just consider subnodes 
+                    // for this node's color
+
+                    ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                }
             }
 
             return ComputedColor;
@@ -719,6 +742,27 @@ namespace GUI
                 try
                 {
                     DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    Utils.INamable namable = copy as Utils.INamable;
+                    if (namable != null && SourceNode.Model.EnclosingCollection != null)
+                    {
+                        int previousIndex = 0;
+                        int index = 1;
+                        while (previousIndex != index)
+                        {
+                            previousIndex = index;
+                            foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
+                            {
+                                if (other.Name.Equals(namable.Name + "_" + index))
+                                {
+                                    index += 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        namable.Name = namable.Name + "_" + index;
+                    }
+
                     Model.AddModelElement(copy);
                     MainWindow.RefreshModel();
                 }

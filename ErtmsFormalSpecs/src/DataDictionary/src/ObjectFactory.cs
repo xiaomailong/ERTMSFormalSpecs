@@ -16,298 +16,701 @@
 
 namespace DataDictionary
 {
+    /// <summary>
+    /// Sets the default values of the objects
+    /// </summary>
+    public class DefaultValueSetter : Generated.Visitor
+    {
+        public override void visit(Generated.ReqRelated obj, bool visitSubNodes)
+        {
+            obj.setImplemented(false);
+            obj.setVerified(false);
+            obj.setNeedsRequirement(true);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.EnumValue obj, bool visitSubNodes)
+        {
+            obj.setValue("0");
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Range obj, bool visitSubNodes)
+        {
+            obj.setPrecision(Generated.acceptor.PrecisionEnum.aIntegerPrecision);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.StructureElement obj, bool visitSubNodes)
+        {
+            obj.setDefault("");
+            obj.setMode(Generated.acceptor.VariableModeEnumType.aInternal);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Collection obj, bool visitSubNodes)
+        {
+            obj.setMaxSize(10);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Function obj, bool visitSubNodes)
+        {
+            obj.setCacheable(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.State obj, bool visitSubNodes)
+        {
+            obj.setX(0);
+            obj.setY(0);
+            obj.setWidth(0);
+            obj.setHeight(0);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Variable obj, bool visitSubNodes)
+        {
+            obj.setVariableMode(Generated.acceptor.VariableModeEnumType.aInternal);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Rule obj, bool visitSubNodes)
+        {
+            obj.setPriority(Generated.acceptor.RulePriority.aProcessing);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Frame obj, bool visitSubNodes)
+        {
+            obj.setCycleDuration("0.1");
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.SubSequence obj, bool visitSubNodes)
+        {
+            obj.setD_LRBG("");
+            obj.setLevel("");
+            obj.setMode("");
+            obj.setNID_LRBG("");
+            obj.setQ_DIRLRBG("");
+            obj.setQ_DIRTRAIN("");
+            obj.setQ_DLRBG("");
+            obj.setRBC_ID("");
+            obj.setRBCPhone("");
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.TestCase obj, bool visitSubNodes)
+        {
+            obj.setFeature(9999);
+            obj.setCase(9999);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Step obj, bool visitSubNodes)
+        {
+            obj.setTCS_Order(0);
+            obj.setDistance(0);
+            obj.setIO(Generated.acceptor.ST_IO.StIO_NA);
+            obj.setLevelIN(Generated.acceptor.ST_LEVEL.StLevel_NA);
+            obj.setLevelOUT(Generated.acceptor.ST_LEVEL.StLevel_NA);
+            obj.setModeIN(Generated.acceptor.ST_MODE.Mode_NA);
+            obj.setModeOUT(Generated.acceptor.ST_MODE.Mode_NA);
+            obj.setTranslationRequired(true);
+            obj.setTranslated(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.SubStep obj, bool visitSubNodes)
+        {
+            obj.setSkipEngine(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Expectation obj, bool visitSubNodes)
+        {
+            obj.setKind(Generated.acceptor.ExpectationKind.aInstantaneous);
+            obj.setBlocking(true);
+            obj.setDeadLine(1);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.DBMessage obj, bool visitSubNodes)
+        {
+            obj.setMessageOrder(0);
+            obj.setMessageType(Generated.acceptor.DBMessageType.aEUROBALISE);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.DBField obj, bool visitSubNodes)
+        {
+            obj.setValue(0);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Translation obj, bool visitSubNodes)
+        {
+            obj.setImplemented(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+        {
+            obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
+            obj.setScope(Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK);
+            obj.setBl("");
+            obj.setOptional(true);
+            obj.setName("");
+            obj.setReviewed(false);
+            obj.setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+            obj.setVersion("3.0.0");
+            obj.setMoreInfoRequired(false);
+            obj.setSpecIssue(false);
+            obj.setFunctionalBlock(false);
+            obj.setFunctionalBlockName("");
+
+            base.visit(obj, visitSubNodes);
+        }
+    }
+
+    /// <summary>
+    /// The factory
+    /// </summary>
     public class ObjectFactory : Generated.Factory
     {
+        /// The class used to set the default values
+        private DefaultValueSetter DefaultValueSetter = new DefaultValueSetter();
+
         public override Generated.Dictionary createDictionary()
         {
-            return new Dictionary();
+            Generated.Dictionary retVal = new Dictionary();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.ReqRef createReqRef()
         {
-            return new ReqRef();
+            Generated.ReqRef retVal = new ReqRef();
+
+            DefaultValueSetter.visit(retVal);
+            return retVal;
+
         }
 
         public override Generated.RuleDisabling createRuleDisabling()
         {
-            return new Rules.RuleDisabling();
+            Generated.RuleDisabling retVal = new Rules.RuleDisabling();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.NameSpace createNameSpace()
         {
-            return new Types.NameSpace();
+            Generated.NameSpace retVal = new Types.NameSpace();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.NameSpaceRef createNameSpaceRef()
         {
-            return new Types.NameSpaceRef();
+            Generated.NameSpaceRef retVal = new Types.NameSpaceRef();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Enum createEnum()
         {
-            return new Types.Enum();
+            Generated.Enum retVal = new Types.Enum();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.EnumValue createEnumValue()
         {
-            return new Constants.EnumValue();
+            Generated.EnumValue retVal = new Constants.EnumValue();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Range createRange()
         {
-            return new Types.Range();
+            Generated.Range retVal = new Types.Range();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Structure createStructure()
         {
-            return new Types.Structure(); ;
+            Generated.Structure retVal = new Types.Structure();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Collection createCollection()
         {
-            return new Types.Collection();
+            Generated.Collection retVal = new Types.Collection();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.StructureElement createStructureElement()
         {
-            return new Types.StructureElement();
+            Generated.StructureElement retVal = new Types.StructureElement();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Function createFunction()
         {
-            return new Functions.Function();
+            Generated.Function retVal = new Functions.Function();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Parameter createParameter()
         {
-            return new Parameter();
+            Generated.Parameter retVal = new Parameter();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Case createCase()
         {
-            return new Functions.Case();
+            Generated.Case retVal = new Functions.Case();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Procedure createProcedure()
         {
-            return new Functions.Procedure();
+            Generated.Procedure retVal = new Functions.Procedure();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.StateMachine createStateMachine()
         {
-            return new Types.StateMachine();
+            Generated.StateMachine retVal = new Types.StateMachine();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.State createState()
         {
-            return new Constants.State();
+            Generated.State retVal = new Constants.State();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Variable createVariable()
         {
-            return new Variables.Variable();
+            Generated.Variable retVal = new Variables.Variable();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Rule createRule()
         {
-            Rules.Rule retVal = new Rules.Rule();
-            retVal.setPriority(Generated.acceptor.RulePriority.aProcessing);
+            Generated.Rule retVal = new Rules.Rule();
+
+            DefaultValueSetter.visit(retVal);
+
             return retVal;
         }
 
         public override Generated.RuleCondition createRuleCondition()
         {
-            Rules.RuleCondition retVal = new Rules.RuleCondition();
+            Generated.RuleCondition retVal = new Rules.RuleCondition();
+
+            DefaultValueSetter.visit(retVal);
+
             return retVal;
         }
 
         public override Generated.PreCondition createPreCondition()
         {
-            return new Rules.PreCondition();
+            Generated.PreCondition retVal = new Rules.PreCondition();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Action createAction()
         {
-            return new Rules.Action();
+            Generated.Action retVal = new Rules.Action();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.FrameRef createFrameRef()
         {
-            return new Tests.FrameRef();
+            Generated.FrameRef retVal = new Tests.FrameRef();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Frame createFrame()
         {
-            return new Tests.Frame();
+            Generated.Frame retVal = new Tests.Frame();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.SubSequence createSubSequence()
         {
-            return new Tests.SubSequence();
+            Generated.SubSequence retVal = new Tests.SubSequence();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.TestCase createTestCase()
         {
-            return new Tests.TestCase();
+            Generated.TestCase retVal = new Tests.TestCase();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Step createStep()
         {
-            return new Tests.Step();
+            Generated.Step retVal = new Tests.Step();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.SubStep createSubStep()
         {
-            return new Tests.SubStep();
+            Generated.SubStep retVal = new Tests.SubStep();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Expectation createExpectation()
         {
             Generated.Expectation retVal = new Tests.Expectation();
-            retVal.setDeadLine(1);
-            retVal.setBlocking(true);
+
+            DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
         public override Generated.DBMessage createDBMessage()
         {
-            return new Tests.DBElements.DBMessage();
+            Generated.DBMessage retVal = new Tests.DBElements.DBMessage();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.DBPacket createDBPacket()
         {
-            return new Tests.DBElements.DBPacket();
+            Generated.DBPacket retVal = new Tests.DBElements.DBPacket();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.DBField createDBField()
         {
-            return new Tests.DBElements.DBField();
+            Generated.DBField retVal = new Tests.DBElements.DBField();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Specification createSpecification()
         {
-            return new Specification.Specification();
+            Generated.Specification retVal = new Specification.Specification();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Chapter createChapter()
         {
-            return new Specification.Chapter();
+            Generated.Chapter retVal = new Specification.Chapter();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.ChapterRef createChapterRef()
         {
-            return new Specification.ChapterRef();
+            Generated.ChapterRef retVal = new Specification.ChapterRef();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Paragraph createParagraph()
         {
-            return new Specification.Paragraph();
+            Generated.Paragraph retVal = new Specification.Paragraph();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Message createMessage()
         {
-            return new Specification.Message();
+            Generated.Message retVal = new Specification.Message();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.MsgVariable createMsgVariable()
         {
-            return new Specification.MsgVariable();
+            Generated.MsgVariable retVal = new Specification.MsgVariable();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.TypeSpec createTypeSpec()
         {
-            return new Specification.TypeSpec();
+            Generated.TypeSpec retVal = new Specification.TypeSpec();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Values createValues()
         {
-            return new Specification.Values();
+            Generated.Values retVal = new Specification.Values();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.special_or_reserved_values createspecial_or_reserved_values()
         {
-            return new Specification.SpecialOrReservedValues();
+            Generated.special_or_reserved_values retVal = new Specification.SpecialOrReservedValues();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.special_or_reserved_value createspecial_or_reserved_value()
         {
-            return new Specification.SpecialOrReservedValue();
+            Generated.special_or_reserved_value retVal = new Specification.SpecialOrReservedValue();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.mask createmask()
         {
-            return new Specification.Mask();
+            Generated.mask retVal = new Specification.Mask();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.match creatematch()
         {
-            return new Specification.Match();
+            Generated.match retVal = new Specification.Match();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.meaning createmeaning()
         {
-            return new Specification.Meaning();
+            Generated.meaning retVal = new Specification.Meaning();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.match_range creatematch_range()
         {
-            return new Specification.MatchRange();
+            Generated.match_range retVal = new Specification.MatchRange();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.resolution_formula createresolution_formula()
         {
-            return new Specification.ResolutionFormula();
+            Generated.resolution_formula retVal = new Specification.ResolutionFormula();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.value createvalue()
         {
-            return new Specification.Value();
+            Generated.value retVal = new Specification.Value();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.char_value createchar_value()
         {
-            return new Specification.CharValue();
+            Generated.char_value retVal = new Specification.CharValue();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.ParagraphRevision createParagraphRevision()
         {
-            return new Specification.ParagraphRevision();
+            Generated.ParagraphRevision retVal = new Specification.ParagraphRevision();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.TranslationDictionary createTranslationDictionary()
         {
-            return new Tests.Translations.TranslationDictionary();
+            Generated.TranslationDictionary retVal = new Tests.Translations.TranslationDictionary();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Folder createFolder()
         {
-            return new Tests.Translations.Folder();
+            Generated.Folder retVal = new Tests.Translations.Folder();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Translation createTranslation()
         {
-            return new Tests.Translations.Translation();
+            Generated.Translation retVal = new Tests.Translations.Translation();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.SourceText createSourceText()
         {
-            return new Tests.Translations.SourceText();
+            Generated.SourceText retVal = new Tests.Translations.SourceText();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.ShortcutDictionary createShortcutDictionary()
         {
-            return new Shortcuts.ShortcutDictionary();
+            Generated.ShortcutDictionary retVal = new Shortcuts.ShortcutDictionary();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.ShortcutFolder createShortcutFolder()
         {
-            return new Shortcuts.ShortcutFolder();
+            Generated.ShortcutFolder retVal = new Shortcuts.ShortcutFolder();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
 
         public override Generated.Shortcut createShortcut()
         {
-            return new Shortcuts.Shortcut();
+            Generated.Shortcut retVal = new Shortcuts.Shortcut();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
         }
     }
 }

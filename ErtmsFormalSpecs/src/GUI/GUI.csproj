@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="LibGit2Sharp, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -99,6 +101,12 @@
     </Compile>
     <Compile Include="src\GraphView\GraphView.Designer.cs">
       <DependentUpon>GraphView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Options\Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Options\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
     </Compile>
     <Compile Include="src\ReferencesParagraphTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\RuleConditionsTreeNode.cs" />
@@ -363,6 +371,12 @@
     <Compile Include="src\TestRunnerView\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\VersionSelector\VersionSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\VersionSelector\VersionSelector.Designer.cs">
+      <DependentUpon>VersionSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\VerticalLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -399,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GraphView\GraphView.resx">
       <DependentUpon>GraphView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Options\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
@@ -464,6 +481,9 @@
     <EmbeddedResource Include="src\TranslationRules\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\VersionSelector\VersionSelector.resx">
+      <DependentUpon>VersionSelector.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
