@@ -1145,5 +1145,13 @@ namespace DataDictionary
         public bool DisplayEnclosingMessages { get; set; }
 
         public bool DisplayRequirementsAsList { get; set; }
+
+        /// <summary>
+        /// Stops the system
+        /// </summary>
+        public void Stop()
+        {
+            Compiler.DoCompile = false;
+        }
     }
 }
