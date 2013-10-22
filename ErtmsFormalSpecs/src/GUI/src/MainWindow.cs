@@ -244,8 +244,27 @@ namespace GUI
             GUIUtils.Graphics = CreateGraphics();
 
             WindowSynchronizer = new Synchronizer(this, 300);
-
+            KeyUp += new KeyEventHandler(MainWindow_KeyUp);
             Refresh();
+        }
+
+        /// <summary>
+        /// Handles specific key actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W:
+                        CheckSaveThenClose();
+                        e.Handled = true;
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -673,6 +692,14 @@ namespace GUI
         #endregion
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckSaveThenClose();
+        }
+
+        /// <summary>
+        /// Checks that save oeprations should be performed, if not, close the window
+        /// </summary>
+        private void CheckSaveThenClose()
         {
             if (EFSSystem.ShouldSave)
             {

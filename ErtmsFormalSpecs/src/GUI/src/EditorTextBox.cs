@@ -424,6 +424,10 @@ namespace GUI
                                 DisplayComboBox();
                                 break;
 
+                            case Keys.A:
+                                EditionTextBox.SelectAll();
+                                break;
+
                             default:
                                 break;
                         }

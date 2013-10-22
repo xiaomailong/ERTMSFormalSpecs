@@ -151,7 +151,7 @@ namespace GUI
 
             BeforeExpand += new TreeViewCancelEventHandler(BeforeExpandHandler);
             BeforeCollapse += new TreeViewCancelEventHandler(BeforeCollapseHandler);
-
+            KeyUp += new KeyEventHandler(BaseTreeView_KeyUp);
             AfterLabelEdit += new NodeLabelEditEventHandler(LabelEditHandler);
             LabelEdit = true;
             HideSelection = false;
@@ -182,6 +182,20 @@ namespace GUI
 
             NodeColorSynchronizer = new ColorSynchronizer(this, 300);
             NodeNameSynchronizer = new NameSynchronizer(this, 5000);
+        }
+
+        void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    if (Selected != null)
+                    {
+                        Selected.BeginEdit();
+                    }
+                    e.Handled = true;
+                    break;
+            }
         }
 
         /// <summary>

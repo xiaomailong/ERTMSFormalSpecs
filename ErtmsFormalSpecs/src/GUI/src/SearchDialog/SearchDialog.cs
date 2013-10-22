@@ -50,6 +50,24 @@ namespace GUI.SearchDialog
         public void Initialise(DataDictionary.EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
+
+            searchTextBox.KeyUp += new KeyEventHandler(searchTextBox_KeyUp);
+        }
+
+        /// <summary>
+        /// Handles specific key actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void searchTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    e.Handled = true;
+                    Close();
+                    break;
+            }
         }
 
         /// <summary>
