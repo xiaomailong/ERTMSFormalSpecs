@@ -37,14 +37,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 800.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 800.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
         {
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
             {
@@ -259,13 +257,11 @@
                     }
                 }
             }
-        }</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+        }</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+}</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
                 NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
@@ -679,16 +675,11 @@
                     CF6 =&gt; 0.85
                 }
             }
-        }</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 114.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+        }</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 114.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 45.0,
     Sections =&gt; []
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -701,40 +692,31 @@
 <ReqRef
  Id="3.A3.8.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.8.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.8.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.8.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -767,10 +749,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -795,9 +774,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -822,9 +799,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -849,10 +824,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt &lt;- Default.BaseTypes.Time.NA</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt &lt;- Default.BaseTypes.Time.NA</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -867,8 +839,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -891,9 +862,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -916,9 +885,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -939,44 +906,34 @@
 <ReqRef
  Id="3.A3.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.9.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.9.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.9.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.9.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.4.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -990,10 +947,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 20.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 450.0</Action>
-</Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 20.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 450.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1014,8 +968,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1040,9 +993,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1067,9 +1018,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1094,10 +1043,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt &lt;- Default.BaseTypes.Time.NA</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt &lt;- Default.BaseTypes.Time.NA</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1112,8 +1058,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1136,9 +1081,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1161,9 +1104,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1210,8 +1151,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1227,10 +1167,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1243,56 +1180,43 @@
 <ReqRef
  Id="3.13.3.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1306,8 +1230,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1428,56 +1351,43 @@
 <ReqRef
  Id="3.13.3.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.7.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.7.6.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

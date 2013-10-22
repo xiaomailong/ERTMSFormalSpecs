@@ -17,8 +17,7 @@
 <ReqRef
  Id="3.13.8.1.1"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -54,8 +53,7 @@
 <ReqRef
  Id="3.13.8.1.2"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
@@ -65,16 +63,13 @@
 <ReqRef
  Id="3.13.9.3.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI2.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -99,8 +94,7 @@
 <ReqRef
  Id="3.13.9.3.2.9"
 >
-</ReqRef>
-<Comment>Provides the estimated acceleration to be used during T_berem.</Comment>
+</ReqRef><Comment>Provides the estimated acceleration to be used during T_berem.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -115,8 +109,7 @@
 <ReqRef
  Id="3.13.9.3.2.8"
 >
-</ReqRef>
-<Comment>Provides the estimated acceleration to be used during T_traction.</Comment>
+</ReqRef><Comment>Provides the estimated acceleration to be used during T_traction.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -131,12 +124,10 @@
 <ReqRef
  Id="3.13.9.3.2.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.6"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Value"
@@ -151,35 +142,28 @@
 <ReqRef
  Id="3.13.9.3.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Traction cut-off is implemented"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
 <Expression>BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off () - ( T_warning + TargetSupervision.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
 </Case><Case
  Name="Traction cut-off is not implemented"
@@ -194,23 +178,19 @@
 <ReqRef
  Id="3.13.9.3.2.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.g"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Compensation of speed inaccuracy is inhibited by NV"
 >
 <PreConditions>
-<PreCondition>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</PreCondition>
-</PreConditions>
+<PreCondition>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Compensation of speed inaccuracy is not inhibited by NV"
@@ -226,12 +206,10 @@
  Id="3.13.9.3.2.10"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.8"
 >
-</ReqRef>
-<Comment>Provides the speed during T_traction.</Comment>
+</ReqRef><Comment>Provides the speed during T_traction.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -246,12 +224,10 @@
 <ReqRef
  Id="3.13.9.3.2.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.10"
 >
-</ReqRef>
-<Comment>Provides the speed during T_berem.</Comment>
+</ReqRef><Comment>Provides the speed during T_berem.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -266,8 +242,7 @@
 <ReqRef
  Id="3.13.9.3.2.10"
 >
-</ReqRef>
-<Comment>Provides the compensated speed during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
+</ReqRef><Comment>Provides the compensated speed during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -292,12 +267,10 @@
 <ReqRef
  Id="3.13.9.3.2.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.2.2"
 >
-</ReqRef>
-<Comment>Provides the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
+</ReqRef><Comment>Provides the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -323,20 +296,16 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <ReqRef
  Id="3.13.9.3.2.12"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.6"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -352,9 +321,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Name="Release speed"
 >
 <PreConditions>
-<PreCondition>ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable ( aTarget )</PreCondition>
-<PreCondition>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget ) &gt;= ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed )</PreCondition>
-</PreConditions>
+<PreCondition>ReleaseSpeedSupervision.ReleaseSpeedSupervisionApplicable ( aTarget )</PreCondition><PreCondition>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget ) &gt;= ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed )</PreCondition></PreConditions>
 <Expression>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed )</Expression>
 </Case><Case
  Name="Value"
@@ -369,12 +336,10 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <ReqRef
  Id="3.A3.10.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.4"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Value"
@@ -390,8 +355,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Id="3.13.9.3.3.8"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Provides the SBI2 speed for the estimated train front end, for display purpose only.</Comment>
+</ReqRef><Comment>Provides the SBI2 speed for the estimated train front end, for display purpose only.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -407,8 +371,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Name="Before EBD(Vtarget)"
 >
 <PreConditions>
-<PreCondition>Dmaxsafefrontend + Odometry.EstimatedSpeed * T_bs2 + Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition>
-</PreConditions>
+<PreCondition>Dmaxsafefrontend + Odometry.EstimatedSpeed * T_bs2 + Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
 <Expression>EBD ( Dmaxsafefrontend + Odometry.EstimatedSpeed * T_bs2 + Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget) ) - ( Vbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget ) - Odometry.EstimatedSpeed )</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
@@ -423,8 +386,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <ReqRef
  Id="3.13.9.3.3.7"
 >
-</ReqRef>
-<Comment>Provides the SBI1 speed for the estimated train front end, for display purpose only.</Comment>
+</ReqRef><Comment>Provides the SBI1 speed for the estimated train front end, for display purpose only.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -436,8 +398,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
  Name="Before EOA"
 >
 <PreConditions>
-<PreCondition>Destfront + Odometry.EstimatedSpeed * T_bs1 &lt; MA.EndOfMovementAuthority().Location</PreCondition>
-</PreConditions>
+<PreCondition>Destfront + Odometry.EstimatedSpeed * T_bs1 &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>SBD ( Destfront + Odometry.EstimatedSpeed * T_bs1 )</Expression>
 </Case><Case
  Name="After EOA"
@@ -452,22 +413,18 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <ReqRef
  Id="3.13.9.3.6.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.4"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="SB feedback interface available"
 >
 <PreConditions>
-<PreCondition>ServiceBrakeFeedbackAvailable ()</PreCondition>
-</PreConditions>
+<PreCondition>ServiceBrakeFeedbackAvailable ()</PreCondition></PreConditions>
 <Expression>5.0</Expression>
 </Case><Case
  Name="SB feedback interface not available"
@@ -482,8 +439,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <ReqRef
  Id="3.13.9.3.3.9"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -509,8 +465,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.9"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -521,8 +476,7 @@ INITIAL_VALUE
  Name="d_SBI1"
 >
 <PreConditions>
-<PreCondition>d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition>
-</PreConditions>
+<PreCondition>d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>d_SBI1 ( Vest )</Expression>
 </Case><Case
  Name="d_SBI2_MREBDT"
@@ -537,24 +491,19 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="d_estfront"
@@ -569,17 +518,13 @@ INITIAL_VALUE
  Name="GUI is inhibited, first case"
 >
 <PreConditions>
-<PreCondition>d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition>
-<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition>
-</PreConditions>
+<PreCondition>d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition><PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
 <Expression>SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
 >
 <PreConditions>
-<PreCondition>NationalValues.ComputationOfGUIIsEnabled ()</PreCondition>
-<PreCondition>d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition>
-</PreConditions>
+<PreCondition>NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition>d_estfront + Vest * ( T_driver + T_bs1 ) &lt; MA.EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.MinDistance ( X1 =&gt; SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) ), X2 =&gt; GUI ( d_estfront ) )</Expression>
 </Case><Case
  Name="Second case"
@@ -594,24 +539,19 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.5.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -631,17 +571,13 @@ INITIAL_VALUE
  Name="GUI is inhibited, first case"
 >
 <PreConditions>
-<PreCondition>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition>
-<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition>
-</PreConditions>
+<PreCondition>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
 <Expression>EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
 >
 <PreConditions>
-<PreCondition>NationalValues.ComputationOfGUIIsEnabled ()</PreCondition>
-<PreCondition>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition>
-</PreConditions>
+<PreCondition>NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition>d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) &lt; DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget )</PreCondition></PreConditions>
 <Expression>BaseTypes.MinDistance ( X1 =&gt; EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) ) - ( Vbec ( Vest =&gt; Vest, Vtarget =&gt; Vtarget ) - Vest ), X2 =&gt; GUI ( d_maxsafefront ) )</Expression>
 </Case><Case
  Name="Second case"
@@ -657,20 +593,16 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.8.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.6.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.2.1.c"
 >
-</ReqRef>
-<Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -695,8 +627,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.8.5.2"
 >
-</ReqRef>
-<Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -720,8 +651,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.2"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -736,16 +666,13 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.8.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.3.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -768,16 +695,13 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.8.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.3.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -818,15 +742,13 @@ INITIAL_VALUE
  Name="MaxSpeed"
 >
 <PreConditions>
-<PreCondition>Distance &lt; aTarget.Location</PreCondition>
-</PreConditions>
+<PreCondition>Distance &lt; aTarget.Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Speed = 0"
 >
 <PreConditions>
-<PreCondition>aTarget.Speed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>aTarget.Speed == 0.0</PreCondition></PreConditions>
 <Expression>aTarget.Speed</Expression>
 </Case><Case
  Name="Speed &gt; 0"
@@ -842,8 +764,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.2"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -862,8 +783,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Target"
  Name="X1"
@@ -878,38 +798,31 @@ INITIAL_VALUE
  Name="X1 is EOA, X1 &lt;= X2"
 >
 <PreConditions>
-<PreCondition>MA.IsEOA ( X1 )</PreCondition>
-<PreCondition> V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+<PreCondition>MA.IsEOA ( X1 )</PreCondition><PreCondition>V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 is EOA, X1 &gt; X2"
 >
 <PreConditions>
-<PreCondition>MA.IsEOA ( X1 )</PreCondition>
-</PreConditions>
+<PreCondition>MA.IsEOA ( X1 )</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 is EOA, X1 &lt;= X2"
 >
 <PreConditions>
-<PreCondition>MA.IsEOA ( X2 )</PreCondition>
-<PreCondition>V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;=  V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+<PreCondition>MA.IsEOA ( X2 )</PreCondition><PreCondition>V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;=  V_P_EOA ( d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 is EOA, X1 &gt; X2"
 >
 <PreConditions>
-<PreCondition>MA.IsEOA ( X2 )</PreCondition>
-</PreConditions>
+<PreCondition>MA.IsEOA ( X2 )</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt;= X2"
 >
 <PreConditions>
-<PreCondition>V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed ) </PreCondition>
-</PreConditions>
+<PreCondition>V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X1.Speed, Vest =&gt; Odometry.EstimatedSpeed ) &lt;= V_P_EBD_Target ( d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; X2.Speed, Vest =&gt; Odometry.EstimatedSpeed ) </PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -924,40 +837,31 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.13.10.4.10.1.9"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -968,8 +872,7 @@ INITIAL_VALUE
  Name="SBI1"
 >
 <PreConditions>
-<PreCondition>d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition>
-</PreConditions>
+<PreCondition>d_SBI1 ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= d_SBI2_MREBDT ( Vest ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="SBI2"
@@ -984,8 +887,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.3"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -999,14 +901,12 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.4"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="EOA or SvL"
 >
 <PreConditions>
-<PreCondition>MA.IsEOA ( MRDT() ) OR MA.IsSvL ( MRDT() )</PreCondition>
-</PreConditions>
+<PreCondition>MA.IsEOA ( MRDT() ) OR MA.IsSvL ( MRDT() )</PreCondition></PreConditions>
 <Expression>BaseTypes.MinSpeed
 (
     X1 =&gt; BaseTypes.MaxSpeed
@@ -1029,28 +929,22 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.12"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI1.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI1.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1071,24 +965,19 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.11"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1099,8 +988,7 @@ INITIAL_VALUE
  Name="Below P"
 >
 <PreConditions>
-<PreCondition>Vest &lt;= CeilingSupervision.P ( InterventionValue ( Vest ) )</PreCondition>
-</PreConditions>
+<PreCondition>Vest &lt;= CeilingSupervision.P ( InterventionValue ( Vest ) )</PreCondition></PreConditions>
 <Expression>InterventionValue ( Vest )</Expression>
 </Case><Case
  Name="Above P"
@@ -1115,36 +1003,28 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1155,8 +1035,7 @@ INITIAL_VALUE
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>d_FLOI ( Vest ) - BaseTypes.SpeedToMS ( Vest ) * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
@@ -1171,28 +1050,22 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vest"
@@ -1212,8 +1085,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.6.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1234,16 +1106,13 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.4.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.6.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.6.a"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1273,16 +1142,13 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.3.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.3.5"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1298,15 +1164,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition>
-<PreCondition>NOT TrainData.TrainData.Value.SBFeedbackIsImplemented</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition><PreCondition>NOT TrainData.TrainData.Value.SBFeedbackIsImplemented</PreCondition></PreConditions>
 <Actions>
-<Action>T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action>
-<Action>T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action>
-</Actions>
+<Action>T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action>T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandAvailable_SBFeedbackAvailable"
@@ -1314,15 +1175,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition>
-<PreCondition>TrainData.TrainData.Value.SBFeedbackIsImplemented</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition><PreCondition>TrainData.TrainData.Value.SBFeedbackIsImplemented</PreCondition></PreConditions>
 <Actions>
-<Action>T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action>
-<Action>T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action>
-</Actions>
+<Action>T_bs1 &lt;- TrainData.BrakingParameters.T_bs()</Action><Action>T_bs2 &lt;- TrainData.BrakingParameters.T_bs()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SBCommandNotAvailable"
@@ -1330,14 +1186,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.5"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>NOT TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>NOT TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
 <Actions>
-<Action>T_bs1 &lt;- 0.0</Action>
-<Action>T_bs2 &lt;- 0.0</Action>
-</Actions>
+<Action>T_bs1 &lt;- 0.0</Action><Action>T_bs2 &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1352,8 +1204,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.1"
 >
-</ReqRef>
-<Comment>Time interval used to compute d_SBI1.</Comment>
+</ReqRef><Comment>Time interval used to compute d_SBI1.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
@@ -1364,8 +1215,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.3.2"
 >
-</ReqRef>
-<Comment>Time interval used to compute d_SBI2.</Comment>
+</ReqRef><Comment>Time interval used to compute d_SBI2.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="4.0"
@@ -1376,21 +1226,17 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.1.1.17"
 >
 <Comment>Driver reaction time between Permitted speed supervision limit and FLOI.</Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment>Driver reaction time between Permitted speed supervision limit and FLOI.</Comment>
+</ReqRef><Comment>Driver reaction time between Permitted speed supervision limit and FLOI.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="2.0"
@@ -1401,20 +1247,16 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.3.4.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.1.1.16"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment>Time between Warning supervision limit and FLOI.</Comment>
+</ReqRef><Comment>Time between Warning supervision limit and FLOI.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -1425,8 +1267,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.10"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1434,10 +1275,7 @@ INITIAL_VALUE
  Name="CheckSpeedAndDistanceMonitoringStatus"
 >
 <PreConditions>
-<PreCondition>Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition>
-<PreCondition>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition>
-<PreCondition>TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.SpeedAndDistanceMonitoring.SpeedAndDistanceMonitoringIsActive</PreCondition><PreCondition>Kernel.SpeedAndDistanceMonitoring.Monitoring == Kernel.SpeedAndDistanceMonitoring.MonitoringType.Target</PreCondition><PreCondition>TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1449,8 +1287,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.4.10"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1459,15 +1296,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.14"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition></PreConditions>
 <Actions>
-<Action>TriggerEBCommand()</Action>
-<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
-</Actions>
+<Action>TriggerEBCommand()</Action><Action>Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t13"
@@ -1475,17 +1307,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.13"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
-<PreCondition>MRDT().Speed + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition>MRDT().Speed + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi ( V =&gt; Kernel.MRSP.SpeedRestrictions ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition></PreConditions>
 <Actions>
-<Action>TriggerEBCommand()</Action>
-<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
-</Actions>
+<Action>TriggerEBCommand()</Action><Action>Supervision &lt;- SupervisionStatus.Intervention</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t12"
@@ -1493,18 +1318,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.12"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
-<PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition>
-<PreCondition>TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition><PreCondition>TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= TargetSupervision.d_EBI ( Vest =&gt; Odometry.EstimatedSpeed, aTarget =&gt; MRDT() )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
-<Action>TriggerSBCommand()</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Intervention</Action><Action>TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t11"
@@ -1512,17 +1329,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.11"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_ebi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
-<Action>TriggerSBCommand()</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Intervention</Action><Action>TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t10"
@@ -1530,17 +1340,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.10"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition>
-<PreCondition>MRDT().Speed + CeilingSupervision.dV_sbi ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Intervention</PreCondition><PreCondition>MRDT().Speed + CeilingSupervision.dV_sbi ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Intervention</Action>
-<Action>TriggerSBCommand()</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Intervention</Action><Action>TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t9"
@@ -1548,18 +1351,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.9"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition><PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= TargetSupervision.d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Warning</Action>
-<Action>TCOSpecified &lt;- True</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Warning</Action><Action>TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t8"
@@ -1567,17 +1362,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.8"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition><PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Warning</Action>
-<Action>TCOSpecified &lt;- True</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Warning</Action><Action>TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t7"
@@ -1585,17 +1373,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.7"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition>
-<PreCondition>MRDT().Speed + CeilingSupervision.dV_warning ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Warning</PreCondition><PreCondition>MRDT().Speed + CeilingSupervision.dV_warning ( MRDT().Speed ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Warning</Action>
-<Action>TCOSpecified &lt;- True</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Warning</Action><Action>TCOSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t6"
@@ -1603,17 +1384,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.6"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition>
-<PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ( Odometry.EstimatedSpeed )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t5"
@@ -1621,16 +1395,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.5"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSupervision.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t4"
@@ -1638,16 +1406,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition>
-<PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Overspeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t3"
@@ -1655,16 +1417,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Indication</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition>
-<PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Indication</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Indication</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Indication</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t2"
@@ -1672,16 +1428,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition>
-<PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition>
-<PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition><PreCondition>MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition><PreCondition>FLOIComparedDistance ( Odometry.EstimatedSpeed ) &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Normal</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="t1"
@@ -1689,14 +1439,10 @@ INITIAL_VALUE
 <ReqRef
  Id="Entry 3.13.10.4.10.1.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed &lt;= MRDT().Speed</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Supervision != SupervisionStatus.Normal</PreCondition><PreCondition>Odometry.EstimatedSpeed &lt;= MRDT().Speed</PreCondition></PreConditions>
 <Actions>
-<Action>Supervision &lt;- SupervisionStatus.Normal</Action>
-</Actions>
+<Action>Supervision &lt;- SupervisionStatus.Normal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

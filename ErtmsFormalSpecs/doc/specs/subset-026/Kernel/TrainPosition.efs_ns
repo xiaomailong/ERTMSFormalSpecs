@@ -12,13 +12,11 @@
  Id="3.6.1.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.1.3.4"
 >
 <Comment>Even if the requirement is related to the train position, it seems more consistent to place the previous LRBGs in the BTM namespace</Comment>
-</ReqRef>
-<Comment>Represents the current position of the train, as described in 3.6.1.3.
+</ReqRef><Comment>Represents the current position of the train, as described in 3.6.1.3.
 The estimated train front end can be computed using Kernel.FrontEndPosition function.
 The confidence interval can be computed using Kernel.ConfidenceInterval.ConfidenceInterval function.</Comment>
 <StructureElement
@@ -32,8 +30,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.3"
 >
-</ReqRef>
-<Comment>The directional position information of the train (the train front end position, the train orientation and the train running direction).</Comment>
+</ReqRef><Comment>The directional position information of the train (the train front end position, the train orientation and the train running direction).</Comment>
 </StructureElement><StructureElement
  TypeName="Default.DataState"
  Default="Default.DataState.Unknown"
@@ -45,8 +42,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<Comment>The data state of the train position.</Comment>
+</ReqRef><Comment>The data state of the train position.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="DirectionalTrainPositionInformation"
@@ -54,8 +50,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.3"
 >
-</ReqRef>
-<Comment>This structure represents the directional train position information, in reference to the balise group orientation.</Comment>
+</ReqRef><Comment>This structure represents the directional train position information, in reference to the balise group orientation.</Comment>
 <StructureElement
  TypeName="Default.Orientation"
  Default=""
@@ -66,8 +61,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.3.1"
 >
-</ReqRef>
-<Comment>Position of the train front end, corresponds to Q_DLRBG.</Comment>
+</ReqRef><Comment>Position of the train front end, corresponds to Q_DLRBG.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
  Default=""
@@ -78,8 +72,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.3.2"
 >
-</ReqRef>
-<Comment>Train orientation, corresponds to Q_DIRLRBG.</Comment>
+</ReqRef><Comment>Train orientation, corresponds to Q_DIRLRBG.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
  Default=""
@@ -90,8 +83,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.3.3"
 >
-</ReqRef>
-<Comment>Train running direction, corresponds to Q_DIRTRAIN.</Comment>
+</ReqRef><Comment>Train running direction, corresponds to Q_DIRTRAIN.</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -102,12 +94,10 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4"
 >
-</ReqRef>
-<Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
+</ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
@@ -119,29 +109,25 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="No valid position on-board"
 >
 <PreConditions>
-<PreCondition>Position.DataState != DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Position.DataState != DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition>
-</PreConditions>
+<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition>
-</PreConditions>
+<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition>
-</PreConditions>
+<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
@@ -152,8 +138,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.4.4.1"
 >
-</ReqRef>
-<Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
+</ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
@@ -165,41 +150,34 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="No valid position on-board"
 >
 <PreConditions>
-<PreCondition>Position.DataState != DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Position.DataState != DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition>
-<PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition>PointOfInterest == Default.DistanceInterval.Nom</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]</PreCondition>
-</PreConditions>
+]</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition>
-<PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition>PointOfInterest == Default.DistanceInterval.Max</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]</PreCondition>
-</PreConditions>
+]</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
 >
 <PreConditions>
-<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition>
-<PreCondition>Kernel.TrainIntegrity.Status in [
+<PreCondition>PointOfInterest == Default.DistanceInterval.Min</PreCondition><PreCondition>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]</PreCondition>
-</PreConditions>
+]</PreCondition></PreConditions>
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.TrainIntegrity.SafeTrainLength) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -218,29 +196,23 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <ReqRef
  Id="3.6.1.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="LRBG is known"
 >
 <PreConditions>
-<PreCondition>Available ( BTM.LRBG )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( BTM.LRBG )</PreCondition></PreConditions>
 <Actions>
-<Action>Position.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Position.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="LRBG is unknown"
 >
 <PreConditions>
-<PreCondition>BTM.LRBG == EMPTY</PreCondition>
-<PreCondition>Position.DataState != DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>BTM.LRBG == EMPTY</PreCondition><PreCondition>Position.DataState != DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>Position.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -256,11 +228,9 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Id="3.6.1.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable></Variables>
 </NameSpace>

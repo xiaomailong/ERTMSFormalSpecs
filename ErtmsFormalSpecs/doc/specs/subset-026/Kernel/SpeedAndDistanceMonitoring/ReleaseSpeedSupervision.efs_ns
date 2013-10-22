@@ -12,8 +12,7 @@
 <ReqRef
  Id="3.13.9.4.7"
 >
-</ReqRef>
-<Comment>Provides the location of the FLOI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the FLOI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -25,8 +24,7 @@
  Name="d_SBI1"
 >
 <PreConditions>
-<PreCondition>TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= ReleaseSpeedSupervision.d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition>
-</PreConditions>
+<PreCondition>TargetSupervision.d_SBI1 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt;= ReleaseSpeedSupervision.d_SBI2 ( V ) - TrainPosition.FrontEndPosition ( DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"
@@ -42,12 +40,10 @@
  Id="3.13.9.4.8.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8.1"
 >
-</ReqRef>
-<Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
+</ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -73,16 +69,13 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.6.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.6.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.7"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -107,16 +100,13 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -137,27 +127,22 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
+</ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
 <Cases>
 <Case
  Name="Compensation of inaccuracy inhibited"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition>
-</PreConditions>
+<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>Vdelta0rsob</Expression>
 </Case><Case
  Name="Compensation of inaccuracy inhibited"
@@ -172,8 +157,7 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef>
-<Comment>Computes the trip location related to the EOA.</Comment>
+</ReqRef><Comment>Computes the trip location related to the EOA.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -188,8 +172,7 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.7"
 >
-</ReqRef>
-<Comment>Provides the location of the SBI2 supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the SBI2 supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -210,12 +193,10 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8.1"
 >
-</ReqRef>
-<Comment>Used to compute the release speed on-board.</Comment>
+</ReqRef><Comment>Used to compute the release speed on-board.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -231,9 +212,7 @@ STOP_CONDITION
  Name="First case"
 >
 <PreConditions>
-<PreCondition>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition>
-<PreCondition>TargetSupervision.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob() ) &gt; Vtarget</PreCondition>
-</PreConditions>
+<PreCondition>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition>TargetSupervision.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob() ) &gt; Vtarget</PreCondition></PreConditions>
 <Expression>TargetSupervision.EBD ( d_tripEOA () + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) ) - Vdelta0rsob()</Expression>
 </Case><Case
  Name="Second case"
@@ -248,8 +227,7 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.1"
 >
-</ReqRef>
-<Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
+</ReqRef><Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
 <Parameters>
 <Parameter
  Type="TargetSupervision.Target"
@@ -261,8 +239,7 @@ STOP_CONDITION
  Name="MA available"
 >
 <PreConditions>
-<PreCondition>Available ( MA.MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA.MA )</PreCondition></PreConditions>
 <Expression>ReleaseSpeed != 0.0 AND ( MA.IsSvL ( aTarget ) OR MA.IsEOA ( aTarget) )</Expression>
 </Case><Case
  Name="No MA available"
@@ -277,8 +254,7 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.6"
 >
-</ReqRef>
-<Comment>Provides the start location of the release speed monitoring for the release speed received as parameter.</Comment>
+</ReqRef><Comment>Provides the start location of the release speed monitoring for the release speed received as parameter.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -299,15 +275,13 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef>
-<Comment>Gives the distance between the estimated front end of the train and the location of EOA.</Comment>
+</ReqRef><Comment>Gives the distance between the estimated front end of the train and the location of EOA.</Comment>
 <Cases>
 <Case
  Name="EOA is not passed"
 >
 <PreConditions>
-<PreCondition>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition>
-</PreConditions>
+<PreCondition>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
 <Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="EOA is passed"
@@ -322,12 +296,10 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.2.3.7.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.9"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -339,8 +311,7 @@ STOP_CONDITION
  Name="ComputeOnBoard"
 >
 <PreConditions>
-<PreCondition>Vrel == BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition>
-</PreConditions>
+<PreCondition>Vrel == BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
 <Expression>REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) |
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
@@ -354,8 +325,7 @@ INITIAL_VALUE
  Name="UseNV"
 >
 <PreConditions>
-<PreCondition>Vrel == BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition>
-</PreConditions>
+<PreCondition>Vrel == BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition></PreConditions>
 <Expression>NationalValues.ReleaseSpeed()</Expression>
 </Case><Case
  Name="FixedValue"
@@ -370,12 +340,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.8.1.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8"
 >
-</ReqRef>
-<Comment>Computes the value of the release speed for all the EBI targets situated between d_tripEOA and the SvL.</Comment>
+</ReqRef><Comment>Computes the value of the release speed for all the EBI targets situated between d_tripEOA and the SvL.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -413,14 +381,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.8.1.1.e"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( MA.MA )</PreCondition>
-<PreCondition>Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action>
-</Actions>
+<Action>ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="DangerPoint"
@@ -428,14 +392,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.8.1.1.e"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( MA.MA )</PreCondition>
-<PreCondition>Kernel.MA.MA.EndSection.DangerPoint != EMPTY</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.DangerPoint != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.DangerPoint.ReleaseSpeed )</Action>
-</Actions>
+<Action>ReleaseSpeed &lt;- ReleaseSpeedValue ( MA.MA.EndSection.DangerPoint.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NoReleaseSpeed"
@@ -443,12 +403,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.9.4.4"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>ReleaseSpeed &lt;- 0.0</Action>
-</Actions>
+<Action>ReleaseSpeed &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -464,21 +422,17 @@ INITIAL_VALUE
  Id="Entry 3.A3.1.1.21"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.8.1.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment>Compensation of the speed measurement inaccuracy used for the on-board calculation of the release speed.</Comment>
+</ReqRef><Comment>Compensation of the speed measurement inaccuracy used for the on-board calculation of the release speed.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
@@ -490,8 +444,7 @@ INITIAL_VALUE
  Id="3.13.9.4.8.2"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Used for stabilization of release speed computation.</Comment>
+</ReqRef><Comment>Used for stabilization of release speed computation.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Speed"
  DefaultValue="0.0"
@@ -502,6 +455,5 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.10.5.1"
 >
-</ReqRef>
-</Variable></Variables>
+</ReqRef></Variable></Variables>
 </NameSpace>

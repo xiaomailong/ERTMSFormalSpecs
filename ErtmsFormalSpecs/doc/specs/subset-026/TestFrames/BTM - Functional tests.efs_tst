@@ -36,15 +36,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>BTM.PreviousLRBGs &lt;- []</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -80,9 +77,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25620.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -110,9 +105,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25640.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -140,9 +133,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25700.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -185,8 +176,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -214,8 +204,7 @@
       Position =&gt; 37432.0
     }
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -238,8 +227,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -258,8 +246,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -278,8 +265,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -306,8 +292,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -326,8 +311,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -346,8 +330,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -388,22 +371,18 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+<Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 0.0,
     D_ora =&gt; 0.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -439,9 +418,7 @@
     NID_BG=&gt;2124,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 24510.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 24510.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -463,20 +440,16 @@
 <ReqRef
  Id="3.4.2.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -503,9 +476,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25620.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -541,9 +512,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25640.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -575,9 +544,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25700.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -612,20 +579,16 @@
 <ReqRef
  Id="3.4.2.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -652,9 +615,7 @@
     NID_BG=&gt;2126,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 27530.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 27530.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -703,9 +664,7 @@
     NID_BG=&gt;2126,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 27550.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 27550.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -737,9 +696,7 @@
     NID_BG=&gt;2126,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 27570.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 27570.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -805,22 +762,18 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+<Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 0.0,
     D_ora =&gt; 0.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -856,9 +809,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25620.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -890,9 +841,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25640.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -920,9 +869,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25700.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -968,9 +915,7 @@
     NID_BG=&gt;3234,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25620.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1013,8 +958,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1075,8 +1019,7 @@
       Sequence1=&gt; []
   }
 ]
-</Action>
-</Actions>
+</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1133,8 +1076,7 @@
       Q_LINK=&gt;Messages.Q_LINK.Linked,
       Sequence1=&gt; []
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1183,8 +1125,7 @@
       Q_LINK=&gt;Messages.Q_LINK.Linked,
       Sequence1=&gt; []
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1225,22 +1166,18 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+<Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 0.0,
     D_ora =&gt; 0.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1276,9 +1213,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25620.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25620.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1310,9 +1245,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25640.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1340,9 +1273,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25640.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25640.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1376,9 +1307,7 @@
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt; []
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 25700.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 25700.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

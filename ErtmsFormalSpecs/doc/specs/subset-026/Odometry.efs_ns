@@ -111,8 +111,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Id="3.6.4.2.a"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
+</ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -123,8 +122,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <ReqRef
  Id="3.6.4.2.a"
 >
-</ReqRef>
-<Comment>Distance under reading amount.</Comment>
+</ReqRef><Comment>Distance under reading amount.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -135,8 +133,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <ReqRef
  Id="3.6.4.2.a"
 >
-</ReqRef>
-<Comment>Distance over reading amount.</Comment>
+</ReqRef><Comment>Distance over reading amount.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0.0"
@@ -156,8 +153,7 @@ The confidence level (K) is defined as a level of probability that the true posi
 <ReqRef
  Id="3.13.9.3.2.1"
 >
-</ReqRef>
-<Comment>Speed under reading amount.</Comment>
+</ReqRef><Comment>Speed under reading amount.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -167,8 +163,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Id="A1.1.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
+</ReqRef><Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.IdentityNumber"
  Default=""
@@ -315,12 +310,10 @@ The confidence level (K) is defined as a level of probability that the true posi
 <ReqRef
  Id="3.15.4.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.15.4.7"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -353,16 +346,8 @@ The confidence level (K) is defined as a level of probability that the true posi
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action>
-<Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action>
-<Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action>
-<Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action>
-<Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action>
-<Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action>
-<Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action>
-<Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action>
-</Actions>
+<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -384,8 +369,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Id="3.6.4.2.a"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
+</ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
 OdometerAccuracy.LowerBoundConfidenceInterval is obtained by computing Distance.Nom - Distance.Min.
 OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.Max - Distance.Nom.</Comment>
 </Variable><Variable
@@ -465,13 +449,9 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( Odometry.Message )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Odometry.Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Odometry.Message &lt;- EMPTY</Action>
-<Action>PreviousTime &lt;- CurrentTime</Action>
-<Action>PreviousSpeed &lt;- EstimatedSpeed</Action>
-</Actions>
+<Action>Odometry.Message &lt;- EMPTY</Action><Action>PreviousTime &lt;- CurrentTime</Action><Action>PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

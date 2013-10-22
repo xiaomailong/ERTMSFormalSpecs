@@ -11,16 +11,13 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.2"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.Level"
  Default=""
  Mode="Internal"
@@ -30,8 +27,7 @@
 <ReqRef
  Id="7.5.1.67"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -41,8 +37,7 @@
 <ReqRef
  Id="7.5.1.39"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.NID_NTC"
  Default=""
  Mode="Internal"
@@ -52,8 +47,7 @@
 <ReqRef
  Id="7.5.1.98"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelTransitionOrder"
@@ -61,24 +55,19 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.13"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.17"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -89,8 +78,7 @@
 <ReqRef
  Id="7.5.1.9"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="LTs"
  Default=""
  Mode="Internal"
@@ -100,8 +88,7 @@
 <ReqRef
  Id="7.5.1.39"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
@@ -122,8 +109,7 @@
 <ReqRef
  Id="7.4.2.9.1"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.Level"
@@ -133,8 +119,7 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.M_LEVELTR"
  Name="LevelT"
@@ -145,36 +130,31 @@
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>LevelT== Messages.M_LEVELTR.Level_0</PreCondition>
-</PreConditions>
+<PreCondition>LevelT== Messages.M_LEVELTR.Level_0</PreCondition></PreConditions>
 <Expression>Default.Level.L0</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_1</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_1</PreCondition></PreConditions>
 <Expression> Default.Level.L1</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_2</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_2</PreCondition></PreConditions>
 <Expression> Default.Level.L2</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_3</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_3</PreCondition></PreConditions>
 <Expression> Default.Level.L3</Expression>
 </Case><Case
  Name="Level STM"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition></PreConditions>
 <Expression> Default.Level.LNTC</Expression>
 </Case></Cases>
 </Function><Function
@@ -184,8 +164,7 @@
 <ReqRef
  Id="5.10.2.4.1"
 >
-</ReqRef>
-<Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
+</ReqRef><Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
 <Parameters>
 <Parameter
  Type="Default.Level"
@@ -197,24 +176,19 @@
  Name="Level 0,1"
 >
 <PreConditions>
-<PreCondition>Level in [Default.Level.L0, Default.Level.L1]</PreCondition>
-</PreConditions>
+<PreCondition>Level in [Default.Level.L0, Default.Level.L1]</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level == Default.Level.LNTC</PreCondition>
-<PreCondition>STM.Available(Default.STM.Unknown) == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>Level == Default.Level.LNTC</PreCondition><PreCondition>STM.Available(Default.STM.Unknown) == Boolean.True</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level 2,3"
 >
 <PreConditions>
-<PreCondition>Level in [Default.Level.L2, Default.Level.L3]</PreCondition>
-<PreCondition>THERE_IS_IN EURORADIO.AvailableMobileTerminals | X == EURORADIO.MobileTerminal.Available</PreCondition>
-</PreConditions>
+<PreCondition>Level in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition>THERE_IS_IN EURORADIO.AvailableMobileTerminals | X == EURORADIO.MobileTerminal.Available</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -230,25 +204,20 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.1"
 >
-</ReqRef>
-<Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
+</ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
@@ -276,8 +245,7 @@
   IsLTO=&gt; True,
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
   LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -303,8 +271,7 @@ AddNewLTO
    Q_SCALE=&gt; Packet.Q_SCALE
 )
 ON 
-Packet.Sequence1 </Action>
-</Actions>
+Packet.Sequence1 </Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -313,13 +280,11 @@ Packet.Sequence1 </Action>
 <ReqRef
  Id="5.10.2.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.4"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
+</ReqRef><Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -329,8 +294,7 @@ Packet.Sequence1 </Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>LTOtoProcess &lt;- FIRST_IN ( MAP LevelTransitionOrder.LevelandLength | AvailableForUse ( Level =&gt; X.TRLevel ) USING X)</Action>
-</Actions>
+<Action>LTOtoProcess &lt;- FIRST_IN ( MAP LevelTransitionOrder.LevelandLength | AvailableForUse ( Level =&gt; X.TRLevel ) USING X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -340,8 +304,7 @@ Packet.Sequence1 </Action>
  Id="5.10.2.7"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
+</ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -349,12 +312,9 @@ Packet.Sequence1 </Action>
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition>
-<PreCondition>LTOtoProcess.TRLevel == Default.Level.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition>LTOtoProcess.TRLevel == Default.Level.Unknown</PreCondition></PreConditions>
 <Actions>
-<Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action>
-</Actions>
+<Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -363,12 +323,10 @@ Packet.Sequence1 </Action>
 <ReqRef
  Id="5.10.2.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.6"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -378,8 +336,7 @@ Packet.Sequence1 </Action>
 </PreConditions>
 <Actions>
 <Action>LevelTransitionAnnouncement(
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -389,20 +346,16 @@ Packet.Sequence1 </Action>
 <ReqRef
  Id="7.4.2.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.39"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.67"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.MessageTypes.Length"
  Name="L_ACKLEVELTR"
@@ -442,8 +395,7 @@ LevelTransition
     TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
     TRLevelNTCID =&gt; NID_NTC
 }
-IN  LevelTransitionOrder.LevelandLength</Action>
-</Actions>
+IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -454,16 +406,13 @@ IN  LevelTransitionOrder.LevelandLength</Action>
  Id="5.10.1.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.2.7.1"
 >
-</ReqRef>
-<Comment>Handles the display on the DMI</Comment>
+</ReqRef><Comment>Handles the display on the DMI</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -480,8 +429,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel)</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -491,12 +439,10 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <ReqRef
  Id="5.10.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.17"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Message"
  Name="Packet"
@@ -522,8 +468,7 @@ IN  LevelTransitionOrder.LevelandLength</Action>
    IsLTO=&gt; False,
    Distance =&gt; EMPTY,
    LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -548,8 +493,7 @@ AddNewLTO
    L_ACKLEVELTR =&gt; EMPTY 
 )
 ON 
-Packet.Sequence1 </Action>
-</Actions>
+Packet.Sequence1 </Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -564,18 +508,15 @@ Packet.Sequence1 </Action>
 <ReqRef
  Id="7.4.1.1.17"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.13"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Level transition order  received from the track side</Comment>
+</ReqRef><Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
  Type="Kernel.LevelTransition.LevelTransition"
  DefaultValue=""
@@ -585,8 +526,7 @@ Packet.Sequence1 </Action>
 <ReqRef
  Id="5.10.2.5"
 >
-</ReqRef>
-<Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
+</ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -598,20 +538,16 @@ Packet.Sequence1 </Action>
  Id="5.10.1.5"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.17"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.13"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.10.1.4"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -619,12 +555,9 @@ Packet.Sequence1 </Action>
  Name="ExecuteLevelTransitionOrder"
 >
 <PreConditions>
-<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition>
-<PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition>
-</PreConditions>
+<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

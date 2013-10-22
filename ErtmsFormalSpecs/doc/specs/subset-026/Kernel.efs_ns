@@ -67,13 +67,11 @@
  Id="3.13.10.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.7.2.2.8"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The status of speed and distance monitoring supervision.</Comment>
+</ReqRef><Comment>The status of speed and distance monitoring supervision.</Comment>
 <Values>
 <EnumValue
  Value="0"
@@ -104,8 +102,7 @@
 <ReqRef
  Id="Entry 4.7.2.2.46"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value=""
  Name="DriverAckTimeOut"
@@ -120,8 +117,7 @@
 <ReqRef
  Id="3.18.4.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="String"
  Default="&apos;Henry&apos;"
@@ -140,8 +136,7 @@
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<Comment>The data state of the driver id.</Comment>
+</ReqRef><Comment>The data state of the driver id.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelData"
@@ -150,12 +145,10 @@
  Id="2.6.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="2.6.2.1"
 >
-</ReqRef>
-<Comment>Represents the ERTMS/ETCS level of the train.</Comment>
+</ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
  TypeName="Level"
  Default="Level.L0"
@@ -175,8 +168,7 @@
  Id="5.4.2.2"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The data state of the current ERTMS/ETCS level.</Comment>
+</ReqRef><Comment>The data state of the current ERTMS/ETCS level.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainRunningNumber"
@@ -184,8 +176,7 @@
 <ReqRef
  Id="3.18.4.5.1"
 >
-</ReqRef>
-<Comment>Represents the train running number.</Comment>
+</ReqRef><Comment>Represents the train running number.</Comment>
 <StructureElement
  TypeName="String"
  Default="&apos;&apos;"
@@ -204,8 +195,7 @@
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<Comment>Data state of the train running number.</Comment>
+</ReqRef><Comment>Data state of the train running number.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="EmergencyStop"
@@ -213,8 +203,7 @@
 <ReqRef
  Id="3.10.2.1"
 >
-</ReqRef>
-<Comment>Represents a received emergency stop (conditional or unconditional).</Comment>
+</ReqRef><Comment>Represents a received emergency stop (conditional or unconditional).</Comment>
 <StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -235,8 +224,7 @@
 <ReqRef
  Id="Entry 4.7.2.2.46"
 >
-</ReqRef>
-<Comment>The id of the emergency stop.</Comment>
+</ReqRef><Comment>The id of the emergency stop.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -253,8 +241,7 @@
 <ReqRef
  Id="3.6.5.2.3"
 >
-</ReqRef>
-<Comment>Train integrity information.</Comment>
+</ReqRef><Comment>Train integrity information.</Comment>
 <StructureElement
  TypeName="Messages.Q_LENGTH"
  Default=""
@@ -266,8 +253,7 @@
 <ReqRef
  Id="3.6.5.2.3.1"
 >
-</ReqRef>
-<Comment>Status of the train integrity information.</Comment>
+</ReqRef><Comment>Status of the train integrity information.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -279,8 +265,7 @@
 <ReqRef
  Id="3.6.5.2.3.2"
 >
-</ReqRef>
-<Comment>Safe train length.</Comment>
+</ReqRef><Comment>Safe train length.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -292,8 +277,7 @@
 <ReqRef
  Id="3.6.5.2.3.2"
 >
-</ReqRef>
-<Comment>Data state of the train integrity information.</Comment>
+</ReqRef><Comment>Data state of the train integrity information.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="OperatedSystemVersion"
@@ -301,8 +285,7 @@
 <ReqRef
  Id="3.17.2.1"
 >
-</ReqRef>
-<Comment>Represesnts the version of the ERTMS/ETCS operated system.</Comment>
+</ReqRef><Comment>Represesnts the version of the ERTMS/ETCS operated system.</Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -329,8 +312,7 @@
 <ReqRef
  Id="3.15.9.2"
 >
-</ReqRef>
-<Comment>Represents the list of currently inhibited levels and its data state.</Comment>
+</ReqRef><Comment>Represents the list of currently inhibited levels and its data state.</Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -356,8 +338,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050.1"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -390,12 +371,10 @@
  Id="3.10.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.10.3.1"
 >
-</ReqRef>
-<Comment>Represents the set of received emergency stops (conditional or unconditional).</Comment>
+</ReqRef><Comment>Represents the set of received emergency stops (conditional or unconditional).</Comment>
 </Collection><Collection
  TypeName="BaliseGroup"
  MaxSize="20"
@@ -406,8 +385,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050.1"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <StateMachines>
 <StateMachine
  InitialState="NoProcedure"
@@ -436,30 +414,22 @@
 <ReqRef
  Id="Entry 5.4.3.2.S0"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.12.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.12.3.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="StartOfMission Initiation"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode == Mode.SB</PreCondition>
-<PreCondition>(DMI.MasterDMI()).DeskOpen == True</PreCondition>
-<PreCondition>EURORADIO.SessionState == SessionState.Closed</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Mode == Mode.SB</PreCondition><PreCondition>(DMI.MasterDMI()).DeskOpen == True</PreCondition><PreCondition>EURORADIO.SessionState == SessionState.Closed</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission</Action>
-<Action>DMI.MasterDMI().DisplayErtmsEtcsMode()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission</Action><Action>DMI.MasterDMI().DisplayErtmsEtcsMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -469,25 +439,19 @@
 <ReqRef
  Id="Entry 5.6.2.2.E015"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Launch ShuntingInitiatedByDriver"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.SR, Mode.SN, Mode.UN]</PreCondition>
-<PreCondition>Odometry.EstimatedSpeed == 0.0</PreCondition>
-<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.SR, Mode.SN, Mode.UN]</PreCondition><PreCondition>Odometry.EstimatedSpeed == 0.0</PreCondition><PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action>
-</Actions>
+<Action>HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -501,8 +465,7 @@
 <ReqRef
  Id="5.4"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="S0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -530,8 +493,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A31"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -541,13 +503,10 @@
 <ReqRef
  Id="3.5.3.4.a"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.OpenRBCSession()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D31</Action>
-</Actions>
+<Action>EURORADIO.OpenRBCSession()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.D31</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -572,16 +531,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.A39"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.18"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.5.1.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -591,10 +547,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.CloseRBCSession()</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A40</Action>
-</Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.A40</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -619,8 +572,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D31"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -628,12 +580,9 @@
  Name="D31"
 >
 <PreConditions>
-<PreCondition>EURORADIO.RequestOpenRbcSession.RequestState == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.RequestOpenRbcSession.RequestState == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Disabled</Action>
-<Action>EURORADIO.SessionState &lt;- EURORADIO.RequestOpenRbcSession.SessionState</Action>
-</Actions>
+<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Disabled</Action><Action>EURORADIO.SessionState &lt;- EURORADIO.RequestOpenRbcSession.SessionState</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -650,18 +599,13 @@
 <ReqRef
  Id="Entry 5.4.3.3.14"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.15"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.RequestOpenRbcSession.SessionState == SessionState.Established</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.RequestOpenRbcSession.SessionState == SessionState.Established</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D32</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D32</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -670,8 +614,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A32</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A32</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -698,8 +641,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D32"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -724,11 +666,9 @@
  Name="Train position data valid"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A33</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A33</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -743,11 +683,9 @@
  Name="Train position data invalid"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A34</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A34</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -774,8 +712,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S0"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -785,8 +722,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S1</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -814,12 +750,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S1.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -841,8 +775,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S1.DriverIdAsked</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S1.DriverIdAsked</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -852,8 +785,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -861,8 +793,7 @@
  Name="Invalid or Unknown train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -879,15 +810,13 @@
  Name="Unknown train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateTrainRunningNumberRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -902,15 +831,13 @@
  Name="Invalid train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateTrainRunningNumberRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -922,8 +849,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -931,8 +857,7 @@
  Name="Invalid or Unknown driver ID"
 >
 <PreConditions>
-<PreCondition>Kernel.DriverId.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.DriverId.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -949,15 +874,13 @@
  Name="Invalid driver ID"
 >
 <PreConditions>
-<PreCondition>Kernel.DriverId.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.DriverId.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateDriverIdRequest(
   Id =&gt; Kernel.DriverId.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -972,15 +895,13 @@
  Name="Unknown driver ID"
 >
 <PreConditions>
-<PreCondition>Kernel.DriverId.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.DriverId.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateDriverIdRequest(
   Id =&gt; Kernel.DriverId.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1010,12 +931,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1023,13 +942,9 @@
  Name="Receive Driver Id"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1039,12 +954,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.5"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1052,13 +965,9 @@
  Name="Receive Train running number"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1071,8 +980,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S1.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1080,12 +988,9 @@
  Name="E1 : Valid ID &amp; Train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.DriverId.DataState == DataState.Valid</PreCondition>
-<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.DriverId.DataState == DataState.Valid</PreCondition><PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D2</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1125,12 +1030,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.9"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1138,15 +1041,9 @@
  Name="Driver has selected a level"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1156,8 +1053,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1165,14 +1061,9 @@
  Name="Driver has selected inhibition"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.SelectLevel</Action>
-<Action>Kernel.InhibitedLevels.Levels &lt;- DMI.MasterDMI().In_LevelInhibition.InhibitedLevels</Action>
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.SelectLevel</Action><Action>Kernel.InhibitedLevels.Levels &lt;- DMI.MasterDMI().In_LevelInhibition.InhibitedLevels</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1189,13 +1080,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.8"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X == Kernel.Level.Value</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X == Kernel.Level.Value</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1211,12 +1099,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S2.3"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1230,8 +1116,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1239,16 +1124,13 @@
  Name="Invalid level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action>
-<Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1258,8 +1140,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1267,16 +1148,13 @@
  Name="Unknown level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action>
-<Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Level.Unknown, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1286,12 +1164,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1299,11 +1175,9 @@
  Name="Valid level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1323,12 +1197,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.10"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1342,14 +1214,9 @@
  Name="Driver has selected a level"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1363,8 +1230,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.5"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1378,8 +1244,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.5"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1404,11 +1269,9 @@
  Name="Level 2 or 3"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1423,11 +1286,9 @@
  Name="Level 0, 1 or LNTC"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1443,8 +1304,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -1475,8 +1335,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1484,20 +1343,16 @@
  Name="Unknown level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
-<Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Level.Unknown, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action>
-<Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
+)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
   InhibitLevel =&gt; True, 
   RemoveExistingInhibition =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1507,8 +1362,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1516,20 +1370,16 @@
  Name="Invalid level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
-<Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action>
-<Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
+)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
   InhibitLevel =&gt; True, 
   RemoveExistingInhibition =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1539,12 +1389,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1552,11 +1400,9 @@
  Name="Valid level"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1568,8 +1414,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1582,8 +1427,7 @@
 <Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
   InhibitLevel =&gt; True, 
   RemoveExistingInhibition =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1612,8 +1456,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1627,8 +1470,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1636,11 +1478,9 @@
  Name="OfferChangeNetworkID"
 >
 <PreConditions>
-<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.RequestState == Default.Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.RequestState == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Default.Request.Disabled</Action>
-</Actions>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Default.Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1651,8 +1491,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1660,11 +1499,9 @@
  Name="E3"
 >
 <PreConditions>
-<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs == []</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs == []</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A29</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A29</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1675,8 +1512,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1684,12 +1520,9 @@
  Name="List not empty"
 >
 <PreConditions>
-<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs != []</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs != []</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdchangeOffered</Action>
-<Action>DMI.MasterDMI().SelectNetworkId(EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs)</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdchangeOffered</Action><Action>DMI.MasterDMI().SelectNetworkId(EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1705,8 +1538,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1720,12 +1552,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.11"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1733,12 +1563,9 @@
  Name="ReceiveNetworkIDResponse"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.RegisteringMobileTerminal</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.RegisteringMobileTerminal</Action><Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1753,13 +1580,9 @@
  Name="Change"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.NetworkID &lt;- DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-<Action>EURORADIO.RegisterMobileTerminal &lt;- EURORADIO.RegisterMobileTerminal.Registering</Action>
-</Actions>
+<Action>EURORADIO.NetworkID &lt;- DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action><Action>EURORADIO.RegisterMobileTerminal &lt;- EURORADIO.RegisterMobileTerminal.Registering</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1775,8 +1598,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1790,8 +1612,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1799,11 +1620,9 @@
  Name="OfferChangeRBCID"
 >
 <PreConditions>
-<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1813,8 +1632,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1822,8 +1640,7 @@
  Name="Valid RBCID"
 >
 <PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateRBCIdOrPhoneNumberRequest(
   Id =&gt; EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id, 
@@ -1832,8 +1649,7 @@
   ReEnter =&gt; False, 
   UseEirene =&gt; True,
   UseLastStored =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1843,12 +1659,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S3.2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1856,8 +1670,7 @@
  Name="Unknown RBCID"
 >
 <PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateRBCIdOrPhoneNumberRequest(
   Id =&gt; EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id, 
@@ -1866,8 +1679,7 @@
   ReEnter =&gt; False, 
   UseEirene =&gt; True, 
   UseLastStored =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1877,16 +1689,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S3.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S3.2.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1894,8 +1703,7 @@
  Name="Invalid RBCID"
 >
 <PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateRBCIdOrPhoneNumberRequest(
   Id =&gt; EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id, 
@@ -1904,8 +1712,7 @@
   ReEnter =&gt; True, 
   UseEirene =&gt; True, 
   UseLastStored =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1921,8 +1728,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.3"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1936,8 +1742,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1945,12 +1750,9 @@
  Name="ReceiveRBCIDResponse"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ExitState</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ExitState</Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1967,19 +1769,13 @@
 <ReqRef
  Id="Entry 5.4.3.3.11"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.12"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1995,8 +1791,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.3"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2010,8 +1805,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2021,8 +1815,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A31</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A31</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2036,8 +1829,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2052,8 +1844,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2061,11 +1852,9 @@
  Name="Acquire network IDs"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Default.Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2081,12 +1870,9 @@
  Name="Driver elects to enter network ID"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Default.Request.Request</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action>
-</Actions>
+<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Default.Request.Request</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2095,8 +1881,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2112,8 +1897,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2128,8 +1912,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2139,9 +1922,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.DriverResponse1</Action>
-<Action>DMI.MasterDMI().InitiateNetworkIdRequest()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.DriverResponse1</Action><Action>DMI.MasterDMI().InitiateNetworkIdRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2173,11 +1954,9 @@
  Name="Mobile terminal registered"
 >
 <PreConditions>
-<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCID</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2206,8 +1985,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S10"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2222,8 +2000,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S10"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2233,11 +2010,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().InitiateNonLeadingRequest()</Action>
-<Action>DMI.MasterDMI().InitiateShuntingRequest()</Action>
-<Action>DMI.MasterDMI().InitiateTrainDataEntryRequest()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().InitiateNonLeadingRequest()</Action><Action>DMI.MasterDMI().InitiateShuntingRequest()</Action><Action>DMI.MasterDMI().InitiateTrainDataEntryRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2263,8 +2036,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S10.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2272,12 +2044,9 @@
  Name="E11: Train data entry selected by driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S12</Action>
-<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S12</Action><Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2287,20 +2056,16 @@
 <ReqRef
  Id="Entry 5.4.3.2.S10.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.3.4.g"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2308,15 +2073,9 @@
  Name="E12: Shunting selected by driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>EURORADIO.OpenRBCSession()</Action>
-</Actions>
+<Action>HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>EURORADIO.OpenRBCSession()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2327,27 +2086,22 @@
 <ReqRef
  Id="5.4.5.3.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.19"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S10.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Invalid to unknown"
 >
 <PreConditions>
-<PreCondition>TrainPosition.Position.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action>
-</Actions>
+<Action>TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2362,8 +2116,7 @@
 <ReqRef
  Id="5.4.5.3.8"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2371,8 +2124,7 @@
  Name="Allow start for state S10"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2390,22 +2142,18 @@
  Name="Start not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateStartRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateStartRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected Start"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2421,33 +2169,27 @@
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- S23</Action>
-</Actions>
+<Action>THIS &lt;- S23</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- S22</Action>
-</Actions>
+<Action>THIS &lt;- S22</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level 1, 2 or 3"
 >
 <PreConditions>
-<PreCondition>Level.Value in [ Level.L1, Level.L2, Level.L3 ]</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value in [ Level.L1, Level.L2, Level.L3 ]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- S24</Action>
-</Actions>
+<Action>THIS &lt;- S24</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2479,8 +2221,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S11"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2494,8 +2235,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S11"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2505,9 +2245,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.TrainData.SendTrainData()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S11.TrainDataSent</Action>
-</Actions>
+<Action>EURORADIO.TrainData.SendTrainData()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S11.TrainDataSent</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2521,8 +2259,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S11.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2536,8 +2273,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S11.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2545,11 +2281,9 @@
  Name="E14"
 >
 <PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S20</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S20</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2578,8 +2312,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S13"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2599,11 +2332,9 @@
  Name="Request train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberAsked</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberAsked</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2619,15 +2350,13 @@
  Name="Invalid train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateTrainRunningNumberRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2643,15 +2372,13 @@
  Name="Unknown train running number"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateTrainRunningNumberRequest(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2679,12 +2406,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.23"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.24"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2692,13 +2417,9 @@
  Name="Receive driver response"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action>
-</Actions>
+<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>Kernel.TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2711,8 +2432,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S13.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2720,11 +2440,9 @@
  Name="E18"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2752,8 +2470,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2767,8 +2484,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2778,9 +2494,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateStartRequest()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S20.StartProposed</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateStartRequest()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S20.StartProposed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2794,20 +2508,16 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S20.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S20.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S20.4"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2821,8 +2531,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2830,13 +2539,9 @@
  Name="E20"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.LNTC</PreCondition>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.LNTC</PreCondition><PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S22</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S22</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2846,8 +2551,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2855,13 +2559,9 @@
  Name="E21"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.L0</PreCondition>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L0</PreCondition><PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S23</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S23</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2871,8 +2571,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2880,13 +2579,9 @@
  Name="E22"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.L1</PreCondition>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L1</PreCondition><PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S24</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S24</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2896,8 +2591,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S20.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2905,13 +2599,9 @@
  Name="E24"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S21</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S21</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2924,8 +2614,7 @@
 <ReqRef
  Id="5.4.5.3.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2951,24 +2640,18 @@
  Name="Reenter train data not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateTrainDataRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateTrainDataRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected to reenter the train data"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action>
-<Action>THIS &lt;- S12</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action>THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2980,12 +2663,10 @@
 <ReqRef
  Id="5.4.5.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.20"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3011,11 +2692,9 @@
  Name="Non leading not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateNonLeadingRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateNonLeadingRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3027,12 +2706,10 @@
 <ReqRef
  Id="5.4.5.3.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.20"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3058,23 +2735,18 @@
  Name="Shunting not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateShuntingRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateShuntingRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected shunting"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- ShuntingInitiatedByDriver</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>THIS &lt;- ShuntingInitiatedByDriver</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -3085,8 +2757,7 @@
 <ReqRef
  Id="5.4.5.3.7.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3094,11 +2765,9 @@
  Name="Invalid position"
 >
 <PreConditions>
-<PreCondition>TrainPosition.Position.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3127,8 +2796,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S24"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3136,11 +2804,9 @@
  Name="Display driver ack request"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSRMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSRMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3166,16 +2832,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S25"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3183,11 +2846,9 @@
  Name="Display driver ack request for LS"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3198,16 +2859,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S25"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.5.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3215,11 +2873,9 @@
  Name="Display driver ack request for OS"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3230,16 +2886,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S25"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3247,11 +2900,9 @@
  Name="Display driver ack request for SH"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3276,17 +2927,14 @@
 <ReqRef
  Id="Entry 5.4.3.2.D2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.12.2.5"
 >
 <Comment>Closing the desk does not invalidates the train position stored in the engine</Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.12.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3296,14 +2944,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D2.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D3</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3312,12 +2956,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D2.2"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -3335,17 +2977,13 @@
 <ReqRef
  Id="Entry 5.4.3.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.7"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Level.DataState == Default.DataState.Valid</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>Level.DataState &lt;- Default.DataState.Invalid</Action>
-</Actions>
+<Action>Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3363,13 +3001,10 @@
 <ReqRef
  Id="Entry 5.4.3.3.6"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3397,12 +3032,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.D3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3412,13 +3045,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D3.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3427,13 +3057,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D3.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D7</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D7</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3458,24 +3085,19 @@
 <ReqRef
  Id="Entry 5.4.3.2.A32.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A32.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A32.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A32.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A32.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3485,9 +3107,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplaySafeRadioConnectionIndication(EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed)</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplaySafeRadioConnectionIndication(EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed)</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3512,12 +3132,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.A33.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A33.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3525,12 +3143,9 @@
  Name="Transmit valid SoM position report if train position is valid"
 >
 <PreConditions>
-<PreCondition>TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.PositionReport.SendSOMPositionReport()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.SendSOMPositionReport()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3557,8 +3172,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A34.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3572,8 +3186,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A34.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3583,9 +3196,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.PositionReport.SendSOMPositionReport()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.SendSOMPositionReport()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3599,8 +3210,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A34.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3614,8 +3224,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A34.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3624,13 +3233,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D33.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SOM_POSITION_REPORT_CONFIRMED_BY_RBC )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SOM_POSITION_REPORT_CONFIRMED_BY_RBC )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A35</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A35</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC reports train accepted"
@@ -3638,13 +3244,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D22.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_ACCEPTED )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_ACCEPTED )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A23</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A23</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC reports train rejected"
@@ -3652,13 +3255,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.D22.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_REJECTED )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_REJECTED )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A38</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A38</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3678,8 +3278,7 @@
 <ReqRef
  Id="Entry 5.4.3.3.16"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -3689,8 +3288,7 @@
  Id="Entry 5.4.3.2.A35"
 >
 <Comment>The position report has been received while leaving D33</Comment>
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3700,9 +3298,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3727,8 +3323,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A23"
 >
-</ReqRef>
-<Comment>The acceptation message has already been received in D22</Comment>
+</ReqRef><Comment>The acceptation message has already been received in D22</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3740,8 +3335,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A24</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A24</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3766,12 +3360,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.A24"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.17"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3781,9 +3373,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3808,8 +3398,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A38"
 >
-</ReqRef>
-<Comment>The message that indicates that the train is rejected by the RBC has been recevied in D22</Comment>
+</ReqRef><Comment>The message that indicates that the train is rejected by the RBC has been recevied in D22</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3821,8 +3410,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A39</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A39</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3847,8 +3435,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A40"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3858,9 +3445,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayTrainIsRejected()</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplayTrainIsRejected()</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3888,8 +3473,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S12"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3904,8 +3488,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S12"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3915,10 +3498,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S12.TrainDataRequested</Action>
-<Action>DMI.MasterDMI().InitiateTrainDataRequest()</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S12.TrainDataRequested</Action><Action>DMI.MasterDMI().InitiateTrainDataRequest()</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3932,8 +3512,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S12.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3948,8 +3527,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S12.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3959,20 +3537,13 @@
 <ReqRef
  Id="Entry 5.4.3.3.21"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.22"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D12</Action>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D12</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4016,8 +3587,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D12.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4025,11 +3595,9 @@
  Name="Train running number is invalid or unknown"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState in [DataState.Unknown, DataState.Invalid]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState in [DataState.Unknown, DataState.Invalid]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S13</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S13</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4039,8 +3607,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D12.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4048,11 +3615,9 @@
  Name="Train running number is valid"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4097,8 +3662,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D10.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4106,11 +3670,9 @@
  Name="Level2 or Level3"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D11</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D11</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4120,8 +3682,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D10.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4129,11 +3690,9 @@
  Name="Level0, Level1, Level NTC"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S20</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S20</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4160,8 +3719,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D11"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4169,11 +3727,9 @@
  Name="Session is open"
 >
 <PreConditions>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S11</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S11</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4182,8 +3738,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4211,16 +3766,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S21.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S21.3"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4241,13 +3793,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>SR.SRAuthorised()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>SR.SRAuthorised()</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S24</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S24</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E27: OS/LS/SH mode"
@@ -4255,26 +3804,19 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.5.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition>
-<PreCondition>Available ( MA.MA )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition><PreCondition>Available ( MA.MA )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S25</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S25</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4288,8 +3830,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4303,8 +3844,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4314,9 +3854,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S21.MARequestSent</Action>
-</Actions>
+<Action>EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action>THIS &lt;- HandleModeChange.StartOfMission.S21.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4342,8 +3880,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S22"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4351,11 +3888,9 @@
  Name="Display driver ack request"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSNMode(Kernel.NationalSystemId)</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSNMode(Kernel.NationalSystemId)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4380,8 +3915,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S23"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4389,11 +3923,9 @@
  Name="Display driver ack request"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfUNMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfUNMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4419,8 +3951,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D7.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4428,11 +3959,9 @@
  Name="Terminal registered to network"
 >
 <PreConditions>
-<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A31</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A31</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4443,8 +3972,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.D7.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4452,11 +3980,9 @@
  Name="Terminal not registered to network"
 >
 <PreConditions>
-<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.False</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.MobileTerminalRegisteredToNetwork == Boolean.False</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.A29</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.A29</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4482,8 +4008,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.A29"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4493,9 +4018,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-<Action>DMI.MasterDMI().DisplayRadioNetworkRegistrationFailed()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action><Action>DMI.MasterDMI().DisplayRadioNetworkRegistrationFailed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4509,8 +4032,7 @@
 <ReqRef
  Id="5.4.3.2.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4536,11 +4058,9 @@
  Name="Transition to a mode different from SB"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode != Default.Mode.SB</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Mode != Default.Mode.SB</PreCondition></PreConditions>
 <Actions>
-<Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4557,79 +4077,58 @@
 <ReqRef
  Id="Condition 3.A3.4.1.3.1.34.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.37.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.11.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.13.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.14.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.25.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.29.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.38.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.39.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.41.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.42.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.49.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.50.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.51.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.A3.4.1.2.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.5.1.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CloseRBCSession()</Action>
-<Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action>
-<Action>HandlingOfAcceptedAndStoredInformation.DeskClosedDuringSoM &lt;- True</Action>
-</Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action><Action>HandlingOfAcceptedAndStoredInformation.DeskClosedDuringSoM &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4641,8 +4140,7 @@
 <ReqRef
  Id="5.4.5.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4650,13 +4148,9 @@
  Name="After D11"
 >
 <PreConditions>
-<PreCondition>THIS in [ S11, S20, S21, S22, S23, S24, S25 ]</PreCondition>
-<PreCondition>EURORADIO.SessionState != SessionState.Established</PreCondition>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>THIS in [ S11, S20, S21, S22, S23, S24, S25 ]</PreCondition><PreCondition>EURORADIO.SessionState != SessionState.Established</PreCondition><PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- S10</Action>
-</Actions>
+<Action>THIS &lt;- S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4666,12 +4160,10 @@
 <ReqRef
  Id="5.4.5.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.3.20"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4679,9 +4171,7 @@
  Name="Allow override for states S10 and S20"
 >
 <PreConditions>
-<PreCondition>THIS in [S10, S20] </PreCondition>
-<PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>THIS in [S10, S20] </PreCondition><PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -4699,11 +4189,9 @@
  Name="Override not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateOverrideRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateOverrideRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4715,8 +4203,7 @@
 <ReqRef
  Id="5.4.5.3.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4724,8 +4211,7 @@
  Name="Allow reenter driver ID for states S10 and S20"
 >
 <PreConditions>
-<PreCondition>THIS in [S10, S20] </PreCondition>
-</PreConditions>
+<PreCondition>THIS in [S10, S20] </PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -4743,27 +4229,22 @@
  Name="Reenter driver ID not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateDriverIdRequest(
   Id =&gt; DriverId.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected to reenter its driver ID"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DriverId.Value &lt;- DMI.MasterDMI().In_DriverId.Id</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4775,8 +4256,7 @@
 <ReqRef
  Id="5.4.5.3.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4784,8 +4264,7 @@
  Name="Allow reenter train running number for states S10 and S20"
 >
 <PreConditions>
-<PreCondition>THIS in [S10, S20] </PreCondition>
-</PreConditions>
+<PreCondition>THIS in [S10, S20] </PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -4803,27 +4282,22 @@
  Name="Reenter train running number not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().InitiateTrainRunningNumberRequest(
   Number =&gt; TrainRunningNumber.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected to reenter the train runnning number"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>TrainRunningNumber.Value &lt;- DMI.MasterDMI().In_TrainRunningNumber.Number</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4835,8 +4309,7 @@
 <ReqRef
  Id="5.4.5.3.5"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4844,8 +4317,7 @@
  Name="Allow reenter level for states S10 and S20"
 >
 <PreConditions>
-<PreCondition>THIS in [S10, S20] </PreCondition>
-</PreConditions>
+<PreCondition>THIS in [S10, S20] </PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -4863,23 +4335,18 @@
  Name="Reenter level not yet proposed to driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateLevelEntryRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateLevelEntryRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected to reenter the level"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- S2</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>THIS &lt;- S2</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -4889,8 +4356,7 @@
 <ReqRef
  Id="Entry 5.4.3.3.25"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4898,11 +4364,9 @@
  Name="Valid level"
 >
 <PreConditions>
-<PreCondition>Level.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>Level.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4912,8 +4376,7 @@
 <ReqRef
  Id="Entry 5.4.3.3.25"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4921,11 +4384,9 @@
  Name="Valid RBC ID / Phone number"
 >
 <PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4943,8 +4404,7 @@
 <ReqRef
  Id="5.11"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="S010"
  NeedsRequirement="FALSE"
 >
@@ -4960,8 +4420,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S010"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -4974,8 +4433,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S010"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -4984,8 +4442,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A025</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A025</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4999,8 +4456,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A025"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5014,8 +4470,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A025"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5026,9 +4481,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.D020</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.TR</Action><Action>THIS &lt;- HandleModeChange.TrainTrip.D020</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5043,8 +4496,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A030"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5057,8 +4509,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A030.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5067,8 +4518,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A035</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A035</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5082,8 +4532,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5097,8 +4546,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5108,15 +4556,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S050</Action>
-<Action>MA.MA &lt;- EMPTY</Action>
-<Action>TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action>
-<Action>TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>TrackDescription.AxleLoad.ASP.ALs &lt;- []</Action>
-<Action>TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- []</Action>
-<Action>TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action>
-<Action>TrackDescription.ReversingArea.ReversingAreaProfile &lt;- EMPTY</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S050</Action><Action>MA.MA &lt;- EMPTY</Action><Action>TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action><Action>TrackDescription.Gradient.Gradients &lt;- []</Action><Action>TrackDescription.AxleLoad.ASP.ALs &lt;- []</Action><Action>TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- []</Action><Action>TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action><Action>TrackDescription.ReversingArea.ReversingAreaProfile &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5131,8 +4571,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S050"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5145,35 +4584,28 @@
 <ReqRef
  Id="Entry 5.11.2.2.S050.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.66"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.61"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.62"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.8"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="E055"
 >
 <PreConditions>
-<PreCondition>Odometry.EstimatedSpeed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>Odometry.EstimatedSpeed == 0.0</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S060</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S060</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5188,16 +4620,14 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="RequestDriverAck"
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="Entry 5.11.2.2.S060"
 >
-</ReqRef>
-<States>
+</ReqRef><States>
 <State
  X="30"
  Y="30"
@@ -5209,8 +4639,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5224,8 +4653,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5236,9 +4664,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfTrainTrip()</Action>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S060.DriverAckRequested</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfTrainTrip()</Action><Action>THIS &lt;- HandleModeChange.TrainTrip.S060.DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5252,8 +4678,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5267,24 +4692,19 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.66"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.61"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.62"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.8"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5293,12 +4713,9 @@
  Name="E065"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.D080</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action>THIS &lt;- HandleModeChange.TrainTrip.D080</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5314,8 +4731,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5329,8 +4745,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -5350,23 +4765,19 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.8"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Level 1, 2, 3"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A105</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A105</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5377,12 +4788,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.66"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5391,11 +4800,9 @@
  Name="Level 0, NTC"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L0, Level.LNTC]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.D085</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.D085</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5411,8 +4818,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A150"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5427,8 +4833,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A105"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5444,8 +4849,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5460,8 +4864,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5483,8 +4886,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5493,11 +4895,9 @@
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5508,8 +4908,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5518,11 +4917,9 @@
  Name="Level 2, Level 3"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A115</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A115</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5539,8 +4936,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S120"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5561,13 +4957,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S120.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.RECOGNITION_OF_EXIT_FROM_TRIP_MODE )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.RECOGNITION_OF_EXIT_FROM_TRIP_MODE )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.D130</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.D130</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order received, maximum number of requests reached"
@@ -5575,19 +4968,13 @@
 <ReqRef
  Id="A1.1.17.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.11.4.1.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition>
-<PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CloseRBCSession()</Action>
-<Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- 0</Action>
-</Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- 0</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order received, a new request can be sent"
@@ -5595,16 +4982,10 @@
 <ReqRef
  Id="5.11.4.1.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.PositionReport.SendPositionReport()</Action>
-<Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.SendPositionReport()</Action><Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5619,8 +5000,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5635,8 +5015,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5658,8 +5037,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5668,11 +5046,9 @@
  Name="No emergency stop"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyStops == []</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.EmergencyStops == []</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5683,8 +5059,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5693,11 +5068,9 @@
  Name="Pending emergency stop"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyStops != []</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.EmergencyStops != []</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S130</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S130</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5714,8 +5087,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5729,8 +5101,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S130"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5739,11 +5110,9 @@
  Name="E135"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyStops == []</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.EmergencyStops == []</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5758,16 +5127,14 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="RequestDriverSelection"
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="Entry 5.11.2.2.S140"
 >
-</ReqRef>
-<States>
+</ReqRef><States>
 <State
  X="100"
  Y="60"
@@ -5779,8 +5146,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5794,8 +5160,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5806,9 +5171,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().InitiateShuntingRequest()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action>DMI.MasterDMI().InitiateShuntingRequest()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -5819,8 +5182,7 @@
 <ReqRef
  Id="A1.1.4.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5829,11 +5191,9 @@
  Name="Valid Train data"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateStartRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateStartRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5849,16 +5209,13 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S140.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S140.4"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -5872,8 +5229,7 @@
 <ReqRef
  Id="A1.1.4.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -5893,8 +5249,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5903,14 +5258,9 @@
  Name="E155"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S150</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S150</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5921,8 +5271,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5931,14 +5280,9 @@
  Name="E150"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.L1</PreCondition>
-<PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L1</PreCondition><PreCondition>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S160</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S160</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5949,16 +5293,13 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5967,13 +5308,9 @@
  Name="E145: Shunting selected by driver"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5991,16 +5328,14 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="SendMARequest"
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="Entry 5.11.2.2.S150"
 >
-</ReqRef>
-<States>
+</ReqRef><States>
 <State
  X="110"
  Y="60"
@@ -6012,8 +5347,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6027,8 +5361,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6039,9 +5372,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-</Actions>
+<Action>EURORADIO.SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action>THIS &lt;- HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6055,16 +5386,13 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S150.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S150.4"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6085,13 +5413,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>SR.SRAuthorised()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>SR.SRAuthorised()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E175"
@@ -6099,26 +5424,19 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.5.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( MA.MA )</PreCondition>
-<PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( MA.MA )</PreCondition><PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6134,20 +5452,17 @@
 <ReqRef
  Id="Entry 5.11.2.2.S160"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S160"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="RequestDriverAck"
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="Entry 5.11.2.2.S160"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -6156,12 +5471,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S160.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.9"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6169,11 +5482,9 @@
  Name="Request driver ack"
 >
 <PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSRMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSRMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6188,12 +5499,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.S170"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState="RequestDriverAck"
  NeedsRequirement="FALSE"
 >
@@ -6209,8 +5518,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6224,12 +5532,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.16"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6240,8 +5546,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S170.DriverAckRequested</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -6253,12 +5558,10 @@
 <ReqRef
  Id="5.9.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6267,11 +5570,9 @@
  Name="OS"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfOSMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6283,12 +5584,10 @@
 <ReqRef
  Id="5.19.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6297,11 +5596,9 @@
  Name="LS"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfLSMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6313,12 +5610,10 @@
 <ReqRef
  Id="5.7.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6327,11 +5622,9 @@
  Name="SH"
 >
 <PreConditions>
-<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition>
-</PreConditions>
+<PreCondition>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateAcknOfSHMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6347,8 +5640,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170.2"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6365,8 +5657,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6380,8 +5671,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6403,19 +5693,16 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Level 0, 1, NTC"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A035</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A035</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6426,19 +5713,16 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Level 2, 3"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A030</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A030</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6455,8 +5739,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6471,8 +5754,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6494,16 +5776,13 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.61"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.62"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6512,11 +5791,9 @@
  Name="Valid data"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.D090</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.D090</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6527,12 +5804,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.66"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6541,11 +5816,9 @@
  Name="No valid data"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.DataState != Default.DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.DataState != Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A140</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A140</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6562,8 +5835,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6578,8 +5850,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6601,12 +5872,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.61"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6615,11 +5884,9 @@
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Default.Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Default.Level.L0</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A145</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A145</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6630,12 +5897,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.62"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6644,11 +5909,9 @@
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Default.Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.A150</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.A150</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6664,8 +5927,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A140"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6680,8 +5942,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A145"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6697,8 +5958,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A115"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
@@ -6712,8 +5972,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A115.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6724,8 +5983,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S120</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S120</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6738,21 +5996,16 @@
 <ReqRef
  Id="5.11.4.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="RBC session is lost"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-<PreCondition>NOT EURORADIO.HasActiveSession()</PreCondition>
-<PreCondition>Mode == Mode.PT</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition>Mode == Mode.PT</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().InitiateOverrideRequest()</Action>
-</Actions>
+<Action>DMI.MasterDMI().InitiateOverrideRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6771,8 +6024,7 @@
 <ReqRef
  Id="5.6"
 >
-</ReqRef>
-<States>
+</ReqRef><States>
 <State
  X="60"
  Y="180"
@@ -6803,13 +6055,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D020.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- ShuntingInitiatedByDriver.A050</Action>
-</Actions>
+<Action>THIS &lt;- ShuntingInitiatedByDriver.A050</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Level 2 or 3"
@@ -6817,13 +6066,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D020.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- ShuntingInitiatedByDriver.A045</Action>
-</Actions>
+<Action>THIS &lt;- ShuntingInitiatedByDriver.A045</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6837,8 +6083,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A050"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6852,12 +6097,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.A050.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.6.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6867,8 +6110,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.D040</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.D040</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -6878,8 +6120,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A050"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6887,11 +6128,9 @@
  Name="New list of balises received"
 >
 <PreConditions>
-<PreCondition>Available ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) )</PreCondition></PreConditions>
 <Actions>
-<Action>Shunting.HandleNewListOfBaliseGroups ( ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action>
-</Actions>
+<Action>Shunting.HandleNewListOfBaliseGroups ( ( FIRST_IN EURORADIO.EuroradioMessageIn.SH_AUTHORISED.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6900,8 +6139,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.Shunting.BaliseGroupsForShArea &lt;- []</Action>
-</Actions>
+<Action>Kernel.Shunting.BaliseGroupsForShArea &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -6917,8 +6155,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A045"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StateMachine
  InitialState=""
  Implemented="TRUE"
@@ -6933,20 +6170,16 @@
 <ReqRef
  Id="Entry 5.6.2.2.A045"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.A045.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.6.4.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.6.4.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6956,11 +6189,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.S050</Action>
-<Action>EURORADIO.SendRequestForShunting()</Action>
-<Action>Shunting.NumberOfSentRequestRepetitions &lt;- 0</Action>
-<Action>Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action>EURORADIO.SendRequestForShunting()</Action><Action>Shunting.NumberOfSentRequestRepetitions &lt;- 0</Action><Action>Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6974,8 +6203,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6989,8 +6217,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6999,13 +6226,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_AUTHORISED )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_AUTHORISED )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A050</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A050</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E215: SH refused"
@@ -7013,13 +6237,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_REFUSED )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_REFUSED )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A220</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No answer, maximum number of requests reached"
@@ -7027,16 +6248,11 @@
 <ReqRef
  Id="5.6.4.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition>
-<PreCondition>Shunting.NumberOfSentRequestRepetitions == 3</PreCondition>
-</PreConditions>
+<PreCondition>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition>Shunting.NumberOfSentRequestRepetitions == 3</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayShuntingRequestNotAnsweredByRbc()</Action>
-<Action>EURORADIO.CloseRBCSession()</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplayShuntingRequestNotAnsweredByRbc()</Action><Action>EURORADIO.CloseRBCSession()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No answer, a new request can be sent"
@@ -7044,16 +6260,10 @@
 <ReqRef
  Id="5.6.4.1.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.SendRequestForShunting()</Action>
-<Action>Shunting.NumberOfSentRequestRepetitions &lt;- Shunting.NumberOfSentRequestRepetitions + 1</Action>
-<Action>Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action>
-</Actions>
+<Action>EURORADIO.SendRequestForShunting()</Action><Action>Shunting.NumberOfSentRequestRepetitions &lt;- Shunting.NumberOfSentRequestRepetitions + 1</Action><Action>Shunting.TimeOfTheLastSentRequest &lt;- CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No answer, no communication session"
@@ -7061,13 +6271,10 @@
 <ReqRef
  Id="5.6.4.1.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.NoSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.NoSession()</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.Override</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.Override</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7081,8 +6288,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A220"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7096,8 +6302,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A220"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7107,8 +6312,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayShuntingRefusedByRbc()</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplayShuntingRefusedByRbc()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -7124,17 +6328,13 @@
 <ReqRef
  Id="Entry 5.4.3.2.S10.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.4.5.3.7.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Mode == Mode.SB</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Mode == Mode.SB</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E165: Shunting refused"
@@ -7142,13 +6342,10 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Mode == Mode.PT</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Mode == Mode.PT</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="End procedure"
@@ -7156,12 +6353,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.A220.1"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7196,13 +6391,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D040.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>MissionIsOnGoing</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>MissionIsOnGoing</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- ShuntingInitiatedByDriver.A100</Action>
-</Actions>
+<Action>THIS &lt;- ShuntingInitiatedByDriver.A100</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No on-going mission"
@@ -7210,13 +6402,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D040.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>NOT MissionIsOnGoing</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>NOT MissionIsOnGoing</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- ShuntingInitiatedByDriver.D080</Action>
-</Actions>
+<Action>THIS &lt;- ShuntingInitiatedByDriver.D080</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7230,8 +6419,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.S100"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StateMachine
  InitialState=""
  Implemented="TRUE"
@@ -7246,12 +6434,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.S100"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.S100.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7259,11 +6445,9 @@
  Name="E055: RBC order to terminate session"
 >
 <PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A115</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order received, maximum number of requests reached"
@@ -7271,20 +6455,13 @@
 <ReqRef
  Id="5.6.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.17.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition>
-<PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.CloseRBCSession()</Action>
-<Action>THIS &lt;- HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- 0</Action>
-</Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>THIS &lt;- HandleModeChange.NoProcedure</Action><Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- 0</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order received, a new request can be sent"
@@ -7292,16 +6469,10 @@
 <ReqRef
  Id="5.6.4.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.PositionReport.SendPositionReport()</Action>
-<Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.SendPositionReport()</Action><Action>EURORADIO.PositionReport.NumberOfSentReportRepetitions &lt;- EURORADIO.PositionReport.NumberOfSentReportRepetitions + 1</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;- CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7315,8 +6486,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A115"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7330,12 +6500,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.A115"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.A115.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7345,9 +6513,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.CloseRBCSession()</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.NoProcedure</Action><Action>EURORADIO.CloseRBCSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7361,8 +6527,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A100"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7376,8 +6541,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A100"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7387,8 +6551,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.EndOfMission</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.EndOfMission</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7421,13 +6584,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D080.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- ShuntingInitiatedByDriver.A095</Action>
-</Actions>
+<Action>THIS &lt;- ShuntingInitiatedByDriver.A095</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Level 0, 1 or NTC"
@@ -7435,13 +6595,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.D080.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
-<Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7455,8 +6612,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A095.1"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -7470,8 +6626,7 @@
 <ReqRef
  Id="Entry 5.6.2.2.A095.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7481,8 +6636,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.S100</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.S100</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7508,12 +6662,10 @@
 <ReqRef
  Id="Entry 5.6.2.2.E015"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.E015.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7523,8 +6675,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-</Actions>
+<Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7542,8 +6693,7 @@
 <ReqRef
  Id="5.8"
 >
-</ReqRef>
-</StateMachine></State><State
+</ReqRef></StateMachine></State><State
  X="30"
  Y="60"
  Width="380"
@@ -7554,16 +6704,14 @@
 <ReqRef
  Id="5.5"
 >
-</ReqRef>
-<StateMachine
+</ReqRef><StateMachine
  InitialState=""
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="5.5"
 >
-</ReqRef>
-</StateMachine></State><State
+</ReqRef></StateMachine></State><State
  X="550"
  Y="690"
  Width="100"
@@ -7608,11 +6756,9 @@
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( Odometry.Message )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Odometry.Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Odometry.StoreOdometerMessage ( Odometry.Message )</Action>
-</Actions>
+<Action>Odometry.StoreOdometerMessage ( Odometry.Message )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7629,11 +6775,9 @@
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( BTM.Message )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( BTM.Message )</PreCondition></PreConditions>
 <Actions>
-<Action>BTM.StoreBaliseGroupMessage ( BTM.Message )</Action>
-</Actions>
+<Action>BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7649,11 +6793,9 @@
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( EURORADIO.EuroradioMessageIn )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn )</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.HandleEuroradioMessage ( EURORADIO.EuroradioMessageIn )</Action>
-</Actions>
+<Action>EURORADIO.HandleEuroradioMessage ( EURORADIO.EuroradioMessageIn )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7669,8 +6811,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>ModeTransitions.UpdateMode()</Action>
-</Actions>
+<Action>ModeTransitions.UpdateMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7686,8 +6827,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TrainPosition.UpdatePositionState()</Action>
-</Actions>
+<Action>TrainPosition.UpdatePositionState()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7703,8 +6843,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>SpeedAndDistanceMonitoring.UpdateMonitoring()</Action>
-</Actions>
+<Action>SpeedAndDistanceMonitoring.UpdateMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -7726,11 +6865,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- True</Action>
-<Action>DMI.DMI1.IsMaster &lt;- True</Action>
-<Action>DMI.DMI2.DeskOpen &lt;- False</Action>
-<Action>DMI.DMI2.IsMaster &lt;- False</Action>
-</Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- True</Action><Action>DMI.DMI1.IsMaster &lt;- True</Action><Action>DMI.DMI2.DeskOpen &lt;- False</Action><Action>DMI.DMI2.IsMaster &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7756,8 +6891,7 @@
     },
     NID =&gt; 1986,
     Orientation =&gt; Orientation.Nominal
-}</Action>
-<Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+}</Action><Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
 {
     DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
     {
@@ -7766,17 +6900,13 @@
         TrainRunningDirection =&gt; Orientation.Nominal
     },
     DataState =&gt; Default.DataState.Valid
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 150.0</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.NominalDistance &lt;- 150.0</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 12.0,
     D_ora =&gt; 14.0,
     V_ora =&gt; 1.0,
     V_ura =&gt; 2.0
-}</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-</Actions>
+}</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7792,8 +6922,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TrainData.Initialize()</Action>
-</Actions>
+<Action>TrainData.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7811,8 +6940,7 @@
 <Actions>
 <Action>EURORADIO.CurrentRadioSession &lt;- EURORADIO.RadioSession{
 SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7829,8 +6957,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7846,8 +6973,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>PowerOn &lt;- True</Action>
-</Actions>
+<Action>PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -7862,12 +6988,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.1.1"
 >
-</ReqRef>
-<Comment>The data state and the value of the driver id.</Comment>
+</ReqRef><Comment>The data state and the value of the driver id.</Comment>
 </Variable><Variable
  Type="Kernel.LevelData"
  DefaultValue=""
@@ -7878,13 +7002,11 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="2.6.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
+</ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
 </Variable><Variable
  Type="InhibitedLevels"
  DefaultValue=""
@@ -7895,8 +7017,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.15.9.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Mode"
  DefaultValue="Mode.NP"
@@ -7907,8 +7028,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="4.3.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"
@@ -7919,8 +7039,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.6.3.5"
 >
-</ReqRef>
-<Comment>Indicates whether the EVC is On or Off.</Comment>
+</ReqRef><Comment>Indicates whether the EVC is On or Off.</Comment>
 </Variable><Variable
  Type="TrainRunningNumber"
  DefaultValue=""
@@ -7932,16 +7051,13 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="5.4.2.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.7.2.2.12"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Kernel.EmergencyStops"
  DefaultValue=""
@@ -7952,12 +7068,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.10.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.10.3.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -7968,12 +7082,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.10.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A105"
 >
-</ReqRef>
-<Comment>Indicates the status of emergency brake of the train.</Comment>
+</ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue=""
@@ -7984,12 +7096,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.15.10.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.7.2.2.45"
 >
-</ReqRef>
-<Comment>Represents the first target at zero speed.</Comment>
+</ReqRef><Comment>Represents the first target at zero speed.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  VariableMode="Internal"
@@ -7999,12 +7109,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.7.2.2.44"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.15.10.1"
 >
-</ReqRef>
-<Comment>The indication location at MRSP speed.</Comment>
+</ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
  Type="Kernel.SupervisionStatus"
  DefaultValue=""
@@ -8015,12 +7123,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.7.2.2.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="0.0"
@@ -8032,8 +7138,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.7.2.2.6"
 >
-</ReqRef>
-<Comment>The target distance of the train.</Comment>
+</ReqRef><Comment>The target distance of the train.</Comment>
 </Variable><Variable
  Type="TrainIntegrity"
  DefaultValue=""
@@ -8044,8 +7149,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.6.5.2.3"
 >
-</ReqRef>
-<Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
+</ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
 </Variable><Variable
  Type="Kernel.NationalValues.NationalDefaultData"
  DefaultValue=""
@@ -8056,12 +7160,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Table 3.A3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.2.5"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="String"
  DefaultValue=""
@@ -8072,8 +7174,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.15.6.1"
 >
-</ReqRef>
-<Comment>Represents the id of the current national system.</Comment>
+</ReqRef><Comment>Represents the id of the current national system.</Comment>
 </Variable><Variable
  Type="OperatedSystemVersion"
  DefaultValue=""
@@ -8085,8 +7186,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="3.17.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The version of the ERTMS/ETCS system.</Comment>
+</ReqRef><Comment>The version of the ERTMS/ETCS system.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -8097,8 +7197,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.6.3.2"
 >
-</ReqRef>
-<Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
+</ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -8109,36 +7208,28 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 5.4.3.2.S10.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S22.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S23.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S24.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S25.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.4.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.4.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S21.3"
 >
-</ReqRef>
-<Comment>Indicates if the train has started a mission.</Comment>
+</ReqRef><Comment>Indicates if the train has started a mission.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
@@ -8149,8 +7240,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="3.18.5.1"
 >
-</ReqRef>
-<Comment>Represents the current time of the EVC. Its value increases each cycle by the value of the constant CycleDuration.</Comment>
+</ReqRef><Comment>Represents the current time of the EVC. Its value increases each cycle by the value of the constant CycleDuration.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="0.34"
@@ -8179,8 +7269,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.7.2.2.9"
 >
-</ReqRef>
-<Comment>Represents the trip raison, if any.</Comment>
+</ReqRef><Comment>Represents the trip raison, if any.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -8191,8 +7280,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.6.3.47"
 >
-</ReqRef>
-<Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
+</ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -8203,12 +7291,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <ReqRef
  Id="Entry 4.6.3.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.6.3.15"
 >
-</ReqRef>
-<Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
+</ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
 </Variable><Variable
  Type="Kernel.HandleModeChangeSM"
  VariableMode="Internal"
@@ -8232,8 +7318,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>HandleInputs()</Action>
-</Actions>
+<Action>HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -8252,8 +7337,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>CurrentTime &lt;- CurrentTime + CycleDuration</Action>
-</Actions>
+<Action>CurrentTime &lt;- CurrentTime + CycleDuration</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

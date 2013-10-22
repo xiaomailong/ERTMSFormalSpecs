@@ -25,17 +25,14 @@
 <ReqRef
  Id="3.11.2.2.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.11.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.11.2"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>packets 65 and 141 are relevant? NO
+</ReqRef><Comment>packets 65 and 141 are relevant? NO
 we need packet number 52
 pbd sr</Comment>
 <Steps>
@@ -54,8 +51,7 @@ pbd sr</Comment>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -82,8 +78,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -145,8 +140,7 @@ pbd sr</Comment>
             }
         }
        ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -219,12 +213,10 @@ pbd sr</Comment>
 <ReqRef
  Id="3.11.2.2.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.11.7"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -241,8 +233,7 @@ pbd sr</Comment>
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -292,8 +283,7 @@ pbd sr</Comment>
 <ReqRef
  Id="3.7.3.1.d"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -309,8 +299,7 @@ pbd sr</Comment>
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -349,8 +338,7 @@ pbd sr</Comment>
      Length =&gt; 30000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -406,8 +394,7 @@ pbd sr</Comment>
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -417,8 +404,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -464,8 +450,7 @@ pbd sr</Comment>
 <ReqRef
  Id="3.7.3.1.d"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -482,8 +467,7 @@ pbd sr</Comment>
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -522,8 +506,7 @@ pbd sr</Comment>
      Length =&gt; 30000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -579,8 +562,7 @@ pbd sr</Comment>
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -590,8 +572,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -652,8 +633,7 @@ pbd sr</Comment>
 <ReqRef
  Id="3.7.3.1.d"
 >
-</ReqRef>
-<Comment>Since we are pushing preexisting values directly into the kernel (step2) we cannot verify if a balise message with the same N_PIG actually overwrites values of an old message with the same N_PIG. But it can be shown that old values are kept and new ones are simply added.</Comment>
+</ReqRef><Comment>Since we are pushing preexisting values directly into the kernel (step2) we cannot verify if a balise message with the same N_PIG actually overwrites values of an old message with the same N_PIG. But it can be shown that old values are kept and new ones are simply added.</Comment>
 <Steps>
 <Step
  IO="NA"
@@ -671,8 +651,7 @@ pbd sr</Comment>
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -711,8 +690,7 @@ pbd sr</Comment>
      Length =&gt; 3000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -768,8 +746,7 @@ pbd sr</Comment>
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -779,8 +756,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

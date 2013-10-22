@@ -19,11 +19,9 @@
  Name="Ack level change"
 >
 <PreConditions>
-<PreCondition>ReportLevelChange.Request == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>ReportLevelChange.Request == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>ReportLevelChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>ReportLevelChange.Request &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -36,11 +34,9 @@
  Name="Ack mode change"
 >
 <PreConditions>
-<PreCondition>ReportModeChange.Request == Request.Response</PreCondition>
-</PreConditions>
+<PreCondition>ReportModeChange.Request == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -49,21 +45,16 @@
 <ReqRef
  Id="Entry 3.A3.3.1.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Report level change"
 >
 <PreConditions>
-<PreCondition>LoggedState.Level != Kernel.Level.Value</PreCondition>
-</PreConditions>
+<PreCondition>LoggedState.Level != Kernel.Level.Value</PreCondition></PreConditions>
 <Actions>
-<Action>ReportLevelChange.Request &lt;- Request.Request</Action>
-<Action>ReportLevelChange.Level &lt;- Kernel.Level.Value</Action>
-<Action>LoggedState.Level &lt;- Kernel.Level.Value</Action>
-</Actions>
+<Action>ReportLevelChange.Request &lt;- Request.Request</Action><Action>ReportLevelChange.Level &lt;- Kernel.Level.Value</Action><Action>LoggedState.Level &lt;- Kernel.Level.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -72,21 +63,16 @@
 <ReqRef
  Id="Entry 3.A3.3.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Report mode change"
 >
 <PreConditions>
-<PreCondition>LoggedState.Mode != Kernel.Mode</PreCondition>
-</PreConditions>
+<PreCondition>LoggedState.Mode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
-<Action>ReportModeChange.Request &lt;- Request.Request</Action>
-<Action>ReportModeChange.Mode &lt;- Kernel.Mode</Action>
-<Action>LoggedState.Mode &lt;- Kernel.Mode</Action>
-</Actions>
+<Action>ReportModeChange.Request &lt;- Request.Request</Action><Action>ReportModeChange.Mode &lt;- Kernel.Mode</Action><Action>LoggedState.Mode &lt;- Kernel.Mode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -147,8 +133,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- State2</Action>
-</Actions>
+<Action>THIS &lt;- State2</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -164,8 +149,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- State3</Action>
-</Actions>
+<Action>THIS &lt;- State3</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -205,8 +189,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- State4</Action>
-</Actions>
+<Action>THIS &lt;- State4</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State

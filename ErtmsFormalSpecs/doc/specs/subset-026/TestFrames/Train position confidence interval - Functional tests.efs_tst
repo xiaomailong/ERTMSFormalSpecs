@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61,17 +60,13 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;1.0
   }
-}</Action>
-<Action>BTM.BGLocationDetectionError &lt;- 4.0</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>BTM.BGLocationDetectionError &lt;- 4.0</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 10.0,
     D_ora =&gt; 12.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -84,8 +79,7 @@
 <ReqRef
  Id="3.6.4.2.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -105,8 +99,7 @@
   {
     LocationAccuracy =&gt; 14.0
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -125,14 +118,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 13</Action>
-<Action>BTM.Linking.Linkings &lt;- []</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 3</Action><Action>BTM.Linking.Linkings &lt;- []</Action><Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->BTM.BGLocationAccuracy() == 13.0</Expectation></Expectations>
+>BTM.BGLocationAccuracy() == 3.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -147,9 +137,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.Linking.Linkings &lt;- []</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action>
-</Actions>
+<Action>BTM.Linking.Linkings &lt;- []</Action><Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -168,8 +156,7 @@
 <ReqRef
  Id="3.6.4.2.a"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -183,9 +170,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Position.OverReadingAmountOdo &lt;- 1.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
-</Actions>
+<Action>BTM.LRBG.Position.OverReadingAmountOdo &lt;- 1.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -202,8 +187,7 @@
 <ReqRef
  Id="3.6.4.2.a"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -217,9 +201,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Position.UnderReadingAmountOdo &lt;- 1.0</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 5.0</Action>
-</Actions>
+<Action>BTM.LRBG.Position.UnderReadingAmountOdo &lt;- 1.0</Action><Action>Odometry.Accuracy.D_ura &lt;- 5.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -236,16 +218,13 @@
 <ReqRef
  Id="3.6.4.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.2.b"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -310,9 +289,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 200.0</Action>
-<Action>BTM.LRBG.Position.Position &lt;- 40.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action><Action>BTM.LRBG.Position.Position &lt;- 40.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -329,16 +306,13 @@
 <ReqRef
  Id="3.6.4.4.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.c"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -352,8 +326,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1800.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 1800.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -408,8 +381,7 @@
 <ReqRef
  Id="3.6.4.7.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -423,8 +395,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.UnlinkedBGPosition.OverReadingAmountOdo &lt;- 2.0</Action>
-</Actions>
+<Action>BTM.UnlinkedBGPosition.OverReadingAmountOdo &lt;- 2.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -441,8 +412,7 @@
 <ReqRef
  Id="3.6.4.7.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -456,8 +426,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.UnlinkedBGPosition.UnderReadingAmountOdo &lt;- 2.0</Action>
-</Actions>
+<Action>BTM.UnlinkedBGPosition.UnderReadingAmountOdo &lt;- 2.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -474,8 +443,7 @@
 <ReqRef
  Id="3.6.4.7.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

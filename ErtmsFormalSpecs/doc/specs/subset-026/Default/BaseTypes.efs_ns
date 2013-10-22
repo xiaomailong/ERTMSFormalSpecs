@@ -175,16 +175,13 @@
  Name="Valid length"
 >
 <PreConditions>
-<PreCondition>Distance &lt; 32768.0</PreCondition>
-<PreCondition>Distance &gt;= 0.0</PreCondition>
-</PreConditions>
+<PreCondition>Distance &lt; 32768.0</PreCondition><PreCondition>Distance &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Length(Distance)</Expression>
 </Case><Case
  Name="SpecialValue_Infinity"
 >
 <PreConditions>
-<PreCondition>Distance == 2147483648.0</PreCondition>
-</PreConditions>
+<PreCondition>Distance == 2147483648.0</PreCondition></PreConditions>
 <Expression>32768.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -203,16 +200,13 @@
  Name="SpecialValue_Infinity"
 >
 <PreConditions>
-<PreCondition>Length &gt;= Length.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>Length &gt;= Length.Infinity</PreCondition></PreConditions>
 <Expression>Distance.Infinity</Expression>
 </Case><Case
  Name="Valid distance"
 >
 <PreConditions>
-<PreCondition>Length &gt;= 0.0</PreCondition>
-<PreCondition>Length &lt; 32768.0</PreCondition>
-</PreConditions>
+<PreCondition>Length &gt;= 0.0</PreCondition><PreCondition>Length &lt; 32768.0</PreCondition></PreConditions>
 <Expression>Distance(Length)</Expression>
 </Case></Cases>
 </Function><Function
@@ -231,9 +225,7 @@
  Name="ValidQualifier"
 >
 <PreConditions>
-<PreCondition>Qualifier &gt;= 0</PreCondition>
-<PreCondition>Qualifier &lt; 32768</PreCondition>
-</PreConditions>
+<PreCondition>Qualifier &gt;= 0</PreCondition><PreCondition>Qualifier &lt; 32768</PreCondition></PreConditions>
 <Expression>Length(Qualifier)</Expression>
 </Case></Cases>
 </Function><Function
@@ -276,22 +268,19 @@
  Name="g1 is indefinite"
 >
 <PreConditions>
-<PreCondition>g1 == Gradient.Indefinite</PreCondition>
-</PreConditions>
+<PreCondition>g1 == Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>g2</Expression>
 </Case><Case
  Name="g2 is indefinite"
 >
 <PreConditions>
-<PreCondition>g2 == Gradient.Indefinite</PreCondition>
-</PreConditions>
+<PreCondition>g2 == Gradient.Indefinite</PreCondition></PreConditions>
 <Expression>g1</Expression>
 </Case><Case
  Name="g1 &lt; g2"
 >
 <PreConditions>
-<PreCondition>g1 &lt; g2</PreCondition>
-</PreConditions>
+<PreCondition>g1 &lt; g2</PreCondition></PreConditions>
 <Expression>g1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -320,22 +309,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Speed.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Speed.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -383,22 +369,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -426,8 +409,7 @@
  Name="X1 or X2 equal Infinity"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity OR X2 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Distance.Infinity OR X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
@@ -456,22 +438,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Length.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Length.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -500,22 +479,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
@@ -544,22 +520,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Speed.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Speed.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Speed.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
@@ -588,22 +561,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Time.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Time.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Time.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Time.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
@@ -632,22 +602,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Acceleration.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Acceleration.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Acceleration.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Acceleration.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"
@@ -676,22 +643,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Distance.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Distance.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -715,8 +679,7 @@
  Name="X is positive"
 >
 <PreConditions>
-<PreCondition>X &gt;= 0.0</PreCondition>
-</PreConditions>
+<PreCondition>X &gt;= 0.0</PreCondition></PreConditions>
 <Expression>X</Expression>
 </Case><Case
  Name="X is negative"
@@ -745,22 +708,19 @@
  Name="X1 infinite"
 >
 <PreConditions>
-<PreCondition>X1 == Length.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X1 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 infinite"
 >
 <PreConditions>
-<PreCondition>X2 == Length.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>X2 == Length.Infinity</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="X1 &lt; X2"
 >
 <PreConditions>
-<PreCondition>X1 &lt; X2</PreCondition>
-</PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition></PreConditions>
 <Expression>X2</Expression>
 </Case><Case
  Name="Otherwise"

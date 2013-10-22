@@ -18,8 +18,7 @@
 <ReqRef
  Id="3.5.7.1"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="NoConnection"
@@ -46,24 +45,19 @@
 <ReqRef
  Id="7.5.1.113"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.4.a"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="1"
  Name="MaxSafeFrontEnd"
@@ -219,20 +213,16 @@
 <ReqRef
  Id="Entry 4.7.2.1.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 4.7.2.2.13"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.3.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.3.5.3"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="EURORADIO.RadioNetworkId"
  Default=""
  Mode="Internal"
@@ -281,8 +271,7 @@
 <ReqRef
  Id="3.6.5.1.5.c"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
@@ -292,8 +281,7 @@
 <ReqRef
  Id="7.5.1.11"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrainEnd"
  Default=""
  Mode="Incoming"
@@ -303,8 +291,7 @@
 <ReqRef
  Id="7.5.1.113"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RbcRiuSystemVersion"
@@ -312,8 +299,7 @@
 <ReqRef
  Id="Entry 3.A3.4.1.3.1.49"
 >
-</ReqRef>
-<Comment>Data state and the value of the RBC/RIU system version.</Comment>
+</ReqRef><Comment>Data state and the value of the RBC/RIU system version.</Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -339,8 +325,7 @@
 <ReqRef
  Id="3.5.2.1"
 >
-</ReqRef>
-<Procedures>
+</ReqRef><Procedures>
 <Procedure
  NeedsRequirement="FALSE"
  Name="SendTerminationOfCommunicationSessionMessage"
@@ -433,8 +418,7 @@
  Id="3.5.3.4.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -450,13 +434,9 @@
  Name="Connect"
 >
 <PreConditions>
-<PreCondition>Connect</PreCondition>
-</PreConditions>
+<PreCondition>Connect</PreCondition></PreConditions>
 <Actions>
-<Action>EuroradioConnection.Connect()</Action>
-<Action>THIS &lt;- Connecting</Action>
-<Action>Connect &lt;- False</Action>
-</Actions>
+<Action>EuroradioConnection.Connect()</Action><Action>THIS &lt;- Connecting</Action><Action>Connect &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -479,8 +459,7 @@
 <ReqRef
  Id="3.5.3.8"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -489,13 +468,10 @@
 <ReqRef
  Id="3.5.3.8.a"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Initialized</Action>
-<Action>SendVersionMessage(SystemVersion.Matching)</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Initialized</Action><Action>SendVersionMessage(SystemVersion.Matching)</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="SystemVersionMismatch"
@@ -503,17 +479,13 @@
 <ReqRef
  Id="3.5.3.8.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.5.1.2"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-<Action>SendVersionMessage(SystemVersion.NonMatching)</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action><Action>SendVersionMessage(SystemVersion.NonMatching)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -542,14 +514,10 @@
 <ReqRef
  Id="3.5.4.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Subset37Connection.ConnectionLost == True</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Subset37Connection.ConnectionLost == True</PreCondition></PreConditions>
 <Actions>
-<Action>ConnectionLostTime &lt;- Kernel.CurrentTime</Action>
-<Action>THIS &lt;- RadioSessionState.ConnectionLost</Action>
-</Actions>
+<Action>ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action>THIS &lt;- RadioSessionState.ConnectionLost</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Terminate"
@@ -557,15 +525,10 @@
 <ReqRef
  Id="3.5.5.2.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Terminate == True</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Terminate == True</PreCondition></PreConditions>
 <Actions>
-<Action>RadioSession.SendTerminationOfCommunicationSessionMessage()</Action>
-<Action>THIS &lt;- RadioSessionState.Terminating</Action>
-<Action>Terminate &lt;- False</Action>
-</Actions>
+<Action>RadioSession.SendTerminationOfCommunicationSessionMessage()</Action><Action>THIS &lt;- RadioSessionState.Terminating</Action><Action>Terminate &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Otherwise"
@@ -573,8 +536,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.ProcessAllMessages()</Action>
-</Actions>
+<Action>RadioSession.ProcessAllMessages()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -597,8 +559,7 @@
 <ReqRef
  Id="3.5.3.7"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -608,19 +569,13 @@
 <ReqRef
  Id="3.5.3.4.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.4.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</PreCondition></PreConditions>
 <Actions>
-<Action>RadioSession.Subset37Connection.Connect()</Action>
-<Action>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action>
-<Action>THIS &lt;- RadioSessionState.Connecting</Action>
-</Actions>
+<Action>RadioSession.Subset37Connection.Connect()</Action><Action>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action><Action>THIS &lt;- RadioSessionState.Connecting</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -643,20 +598,16 @@
 <ReqRef
  Id="3.5.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="EuroradioConnected"
 >
 <PreConditions>
-<PreCondition>Subset37Connection.Connected</PreCondition>
-</PreConditions>
+<PreCondition>Subset37Connection.Connected</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSession.RadioSessionState.Initializing</Action>
-<Action>SendInitiationOfComSessionMessage()</Action>
-</Actions>
+<Action>THIS &lt;- RadioSession.RadioSessionState.Initializing</Action><Action>SendInitiationOfComSessionMessage()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="TerminateRequest"
@@ -664,13 +615,10 @@
 <ReqRef
  Id="3.5.5.7"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.Subset37Connection.Disconnect()</Action>
-<Action>THIS &lt;- RadioSessionState.Inactive</Action>
-</Actions>
+<Action>RadioSession.Subset37Connection.Disconnect()</Action><Action>THIS &lt;- RadioSessionState.Inactive</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="RequestTimeout"
@@ -678,13 +626,10 @@
 <ReqRef
  Id="3.5.4.2.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -724,13 +669,10 @@
 <ReqRef
  Id="3.5.5.2.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Terminate</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Terminate</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="ProcessAcks"
@@ -738,12 +680,10 @@
 <ReqRef
  Id="3.5.5.6"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.ProcessAckMessages()</Action>
-</Actions>
+<Action>RadioSession.ProcessAckMessages()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -800,8 +740,7 @@
 <ReqRef
  Id="5.10.2.4.1"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <StateMachines>
 <StateMachine
  InitialState="Inactive"
@@ -872,8 +811,7 @@
  Name="Establish"
 >
 <PreConditions>
-<PreCondition>Q_RBC == Messages.Q_RBC.Establish_communication_session</PreCondition>
-</PreConditions>
+<PreCondition>Q_RBC == Messages.Q_RBC.Establish_communication_session</PreCondition></PreConditions>
 <Expression>SessionAction.Establish</Expression>
 </Case><Case
  Name="Terminate"
@@ -938,16 +876,13 @@
 <ReqRef
  Id="3.5.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.3.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.3.5.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -963,11 +898,9 @@
  Name="NoActiveSession"
 >
 <PreConditions>
-<PreCondition>NoSession()</PreCondition>
-</PreConditions>
+<PreCondition>NoSession()</PreCondition></PreConditions>
 <Actions>
-<Action>CurrentRadioSession.Connect &lt;- True</Action>
-</Actions>
+<Action>CurrentRadioSession.Connect &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -976,14 +909,10 @@
 <ReqRef
  Id="3.5.3.5.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition>
-<PreCondition>HasActiveSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition><PreCondition>HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>NewRadioSession.Connect &lt;- True</Action>
-</Actions>
+<Action>NewRadioSession.Connect &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -992,15 +921,10 @@
 <ReqRef
  Id="3.5.3.5.2"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>HasActiveSession()</PreCondition>
-<PreCondition>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>HasActiveSession()</PreCondition><PreCondition>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition></PreConditions>
 <Actions>
-<Action>NewRadioSession.Connect &lt;- True</Action>
-<Action>CurrentRadioSession.Terminate &lt;- True</Action>
-</Actions>
+<Action>NewRadioSession.Connect &lt;- True</Action><Action>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1021,16 +945,14 @@
 <ReqRef
  Id="8.4.4.4.1.5"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="GeneralMessage"
 >
 <PreConditions>
-<PreCondition>Available ( Message.GENERAL_MESSAGE )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.GENERAL_MESSAGE )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1042,8 +964,7 @@
 <ReqRef
  Id="3.6.5.1.7"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1052,16 +973,13 @@
 <ReqRef
  Id="7.4.2.15.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
 <Actions>
 <Action>PositionReport.UpdatePositionReportParameters
 (
   ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1071,19 +989,16 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1094,24 +1009,20 @@
 <ReqRef
  Id="8.4.4.4.1.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="InfillMA"
 >
 <PreConditions>
-<PreCondition>Available (Message.INFILL_MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available (Message.INFILL_MA )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1123,19 +1034,16 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1145,18 +1053,15 @@
 <ReqRef
  Id="5.9.2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1167,16 +1072,13 @@
 <ReqRef
  Id="8.4.4.4.1.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1184,8 +1086,7 @@
  Name="MAWithShiftedLocationReference"
 >
 <PreConditions>
-<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1197,18 +1098,15 @@
 <ReqRef
  Id="5.9.2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1218,18 +1116,15 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1239,8 +1134,7 @@
 <ReqRef
  Id="3.6.5.1.7"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1249,17 +1143,13 @@
 <ReqRef
  Id="7.4.2.15.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-<PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
 <Actions>
 <Action>PositionReport.UpdatePositionReportParameters
 (
    ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1271,31 +1161,26 @@
 <ReqRef
  Id="8.4.4.4.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="MovementAuthority"
 >
 <PreConditions>
-<PreCondition>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; Message.MOVEMENT_AUTHORITY.NID_LRBG
-)</Action>
-</Actions>
+)</Action></Actions>
 <SubRules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -1305,8 +1190,7 @@
 <ReqRef
  Id="3.6.5.1.7"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1315,17 +1199,12 @@
 <ReqRef
  Id="7.4.2.15.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition>
-<PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
 <Actions>
 <Action>PositionReport.UpdatePositionReportParameters(
   (FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1335,18 +1214,15 @@
 <ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="List of balises for SH area received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA)</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA)</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action>
-</Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1356,19 +1232,16 @@
 <ReqRef
  Id="5.10.1.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1378,18 +1251,15 @@
 <ReqRef
  Id="5.9.2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1400,24 +1270,20 @@
 <ReqRef
  Id="8.4.4.4.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="RequestToShortenMA"
 >
 <PreConditions>
-<PreCondition>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1429,22 +1295,18 @@
 <ReqRef
  Id="5.9.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.2.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Mode profile received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1455,16 +1317,14 @@
 <ReqRef
  Id="8.4.4.4.1.6"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SHAuthorised"
 >
 <PreConditions>
-<PreCondition>Available ( Message.SH_AUTHORISED )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.SH_AUTHORISED )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 </RuleCondition></Conditions>
@@ -1475,19 +1335,16 @@
 <ReqRef
  Id="8.4.4.4.1.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SRAuthorisation"
 >
 <PreConditions>
-<PreCondition>Available ( Message.SR_AUTHORISATION )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.SR_AUTHORISATION )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action>
-</Actions>
+<Action>Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1498,8 +1355,7 @@
 <ReqRef
  Id="3.5.3.4.b"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Name="Packet"
@@ -1520,8 +1376,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>StoreSessionInformation(Packet)</Action>
-</Actions>
+<Action>StoreSessionInformation(Packet)</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1538,13 +1393,10 @@
 <ReqRef
  Id="3.5.3.4.b"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>RadioSessionOrder.Action == SessionAction.Establish</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>RadioSessionOrder.Action == SessionAction.Establish</PreCondition></PreConditions>
 <Actions>
-<Action>OpenRBCSession()</Action>
-</Actions>
+<Action>OpenRBCSession()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="HandleTerminate"
@@ -1552,13 +1404,10 @@
 <ReqRef
  Id="3.5.5.1.1"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition></PreConditions>
 <Actions>
-<Action>CloseRBCSession()</Action>
-</Actions>
+<Action>CloseRBCSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1571,8 +1420,7 @@
 <ReqRef
  Id="3.5.3.5"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Name="Packet"
@@ -1604,8 +1452,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
   Id =&gt; Concat(Packet.NID_C, Packet.NID_RBC),
   PhoneNumber =&gt; ToString(Packet.NID_RADIO)
 }
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1641,8 +1488,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>CurrentRadioSession.Terminate &lt;- True</Action>
-</Actions>
+<Action>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1656,8 +1502,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="3.8.2.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.Q_MARQSTREASON"
  Name="aReason"
@@ -1686,8 +1531,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
     NID_ENGINE =&gt; Kernel.NidEngine,
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1697,8 +1541,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="Entry 5.6.2.2.A045"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1721,8 +1564,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
     T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1781,8 +1623,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="Entry 5.4.3.2.S3.1"
 >
-</ReqRef>
-<Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
+</ReqRef><Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
 <SubVariables>
 <Variable
  Type="EURORADIO.NetworkIDs"
@@ -1802,8 +1643,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="3.5.7.1"
 >
-</ReqRef>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  DefaultValue=""
  VariableMode="Incoming"
@@ -1829,8 +1669,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="Entry 3.A3.4.1.3.1.49"
 >
-</ReqRef>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="EURORADIO.RadioSessionInformation"
  DefaultValue=""
  VariableMode="Internal"
@@ -1868,8 +1707,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="Entry 3.A3.1.1.3"
 >
-</ReqRef>
-<Comment>Represents the waiting time before radio message repetition.</Comment>
+</ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
 </Variable><Variable
  Type="Integer"
  DefaultValue="3"
@@ -1880,8 +1718,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <ReqRef
  Id="Entry 3.A3.1.1.2"
 >
-</ReqRef>
-<Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
+</ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
  Type="EURORADIO.RegisterMobileTerminalSM"
  VariableMode="Internal"
@@ -1908,11 +1745,9 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available(EuroradioMessageIn)</PreCondition>
-</PreConditions>
+<PreCondition>Available(EuroradioMessageIn)</PreCondition></PreConditions>
 <Actions>
-<Action>EuroradioMessageIn &lt;- EMPTY</Action>
-</Actions>
+<Action>EuroradioMessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1949,8 +1784,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
     TRACK_AHEAD_FREE_GRANTED=&gt;EMPTY,
     TRAIN_POSITION_REPORT=&gt;EMPTY,
     VALIDATED_TRAIN_DATA=&gt;EMPTY
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

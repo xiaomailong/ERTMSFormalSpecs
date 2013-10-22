@@ -12,20 +12,16 @@
 <ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.69"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="DoNotSend"
@@ -57,12 +53,10 @@
 <ReqRef
  Id="3.6.5.1.4.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.d"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Internal"
@@ -73,8 +67,7 @@
 <ReqRef
  Id="3.6.5.1.4.a"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.Level"
  Default=""
  Mode="Internal"
@@ -85,8 +78,7 @@
 <ReqRef
  Id="3.6.5.1.4.g"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.Mode"
  Default=""
  Mode="Internal"
@@ -97,8 +89,7 @@
 <ReqRef
  Id="3.6.5.1.4.b"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -112,16 +103,13 @@
 <ReqRef
  Id="7.4.2.15.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<Comment>Parameters of position reporting given by RBC.</Comment>
+</ReqRef><Comment>Parameters of position reporting given by RBC.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Time"
  Default="0.0"
@@ -133,8 +121,7 @@
 <ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -145,8 +132,7 @@
 <ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="PositionReportSpecialLocation"
  Default=""
@@ -158,17 +144,14 @@
 <ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.1"
 >
 <Comment>This requirement is always satisfied because the value of the field PositionReportSpecialLocation can be either LRBG or Now and never the both together.</Comment>
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="PositionReportLocations"
  Default=""
  Mode="Incoming"
@@ -179,8 +162,7 @@
 <ReqRef
  Id="3.6.5.1.5.c"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  NeedsRequirement="FALSE"
  Name="PositionReportParameters"
 >
@@ -214,12 +196,10 @@
 <ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.6.4.2"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -230,8 +210,7 @@
 <ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="BTM.BaliseGroup"
  Default=""
  Mode="Internal"
@@ -242,8 +221,7 @@
 <ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="PositionLocation"
@@ -254,8 +232,7 @@
 <ReqRef
  Id="3.6.5.1.5.c"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -266,8 +243,7 @@
 <ReqRef
  Id="3.6.5.1.4.h"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -282,8 +258,7 @@
 <ReqRef
  Id="3.6.5.1.4.g"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -293,8 +268,7 @@
  Name="DoNotSend"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.Level == Kernel.Level.Value</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -306,8 +280,7 @@
 <ReqRef
  Id="3.6.5.1.4.d"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -324,24 +297,19 @@
  Id="3.6.5.1.4.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A030.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A115.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.A095"
 >
-</ReqRef>
-<Comment>Determines if the train has to send a position report to the RBC due to the mode change. If the report has to be sent, the function returns the mode to be sent with the report. In not, the function returns EMPTY.</Comment>
+</ReqRef><Comment>Determines if the train has to send a position report to the RBC due to the mode change. If the report has to be sent, the function returns the mode to be sent with the report. In not, the function returns EMPTY.</Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -357,8 +325,7 @@
 <ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -373,8 +340,7 @@
 <ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -390,8 +356,7 @@
 <ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -406,8 +371,7 @@
 <ReqRef
  Id="3.6.5.1.4.a"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -422,8 +386,7 @@
 <ReqRef
  Id="3.6.5.1.4.c"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -442,8 +405,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.k"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -459,12 +421,10 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -478,8 +438,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.e"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -493,8 +452,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.j"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -508,8 +466,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.f"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Condition"
 >
@@ -523,8 +480,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -540,80 +496,61 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.g"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.h"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A030.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A115.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.A095"
 >
-</ReqRef>
-<Comment>Determines if the train has to send a position report to the RBC now.</Comment>
+</ReqRef><Comment>Determines if the train has to send a position report to the RBC now.</Comment>
 <Cases>
 <Case
  Name="Condition"
@@ -657,22 +594,19 @@ Kernel.TrainIntegrity.Status in [
  Name="Now"
 >
 <PreConditions>
-<PreCondition>M_LOC == 0</PreCondition>
-</PreConditions>
+<PreCondition>M_LOC == 0</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.Now</Expression>
 </Case><Case
  Name="LRBG"
 >
 <PreConditions>
-<PreCondition>M_LOC == 1</PreCondition>
-</PreConditions>
+<PreCondition>M_LOC == 1</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.LRBG</Expression>
 </Case><Case
  Name="DoNotSend"
 >
 <PreConditions>
-<PreCondition>M_LOC == 2</PreCondition>
-</PreConditions>
+<PreCondition>M_LOC == 2</PreCondition></PreConditions>
 <Expression>PositionReportSpecialLocation.DoNotSend</Expression>
 </Case></Cases>
 </Function><Function
@@ -684,21 +618,18 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="LevelChanged"
 >
 <PreConditions>
-<PreCondition>SendReportDueToLevelChange()</PreCondition>
-</PreConditions>
+<PreCondition>SendReportDueToLevelChange()</PreCondition></PreConditions>
 <Expression>Default.EFSLevelConverter ( Kernel.Level.Value )</Expression>
 </Case><Case
  Name="LevelUnchanged"
 >
 <PreConditions>
-<PreCondition>NOT SendReportDueToLevelChange()</PreCondition>
-</PreConditions>
+<PreCondition>NOT SendReportDueToLevelChange()</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
@@ -710,21 +641,18 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="ModeChanged"
 >
 <PreConditions>
-<PreCondition>SendReportDueToModeChange()</PreCondition>
-</PreConditions>
+<PreCondition>SendReportDueToModeChange()</PreCondition></PreConditions>
 <Expression>Default.EFSModeConverter ( Kernel.Mode )</Expression>
 </Case><Case
  Name="ModeUnchanged"
 >
 <PreConditions>
-<PreCondition>NOT SendReportDueToModeChange()</PreCondition>
-</PreConditions>
+<PreCondition>NOT SendReportDueToModeChange()</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
@@ -736,16 +664,13 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.3.2.1"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="TrainIntegrityConfirmed"
 >
@@ -753,8 +678,7 @@ Kernel.TrainIntegrity.Status in [
 <PreCondition>Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
-]</PreCondition>
-</PreConditions>
+]</PreCondition></PreConditions>
 <Expression>Kernel.TrainIntegrity.SafeTrainLength</Expression>
 </Case><Case
  Name="TrainIntegrityNotConfirmed"
@@ -764,8 +688,7 @@ Kernel.TrainIntegrity.Status in [
   Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]
-</PreCondition>
-</PreConditions>
+</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
@@ -776,23 +699,19 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.3.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="One BG"
 >
 <PreConditions>
-<PreCondition>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
 {
     POSITION_REPORT=&gt; Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message
@@ -845,33 +764,28 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="Entry 5.4.3.2.A33.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A34.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Valid"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Valid</Expression>
 </Case><Case
  Name="Invalid"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Invalid</Expression>
 </Case><Case
  Name="Unknown"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Unknown</Expression>
 </Case></Cases>
 </Function><Function
@@ -882,14 +796,12 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="Entry 5.6.2.2.A045"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Distance unknown"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.DistanceUnknown</Expression>
 </Case><Case
  Name="Distance known"
@@ -904,8 +816,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.7"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
@@ -920,8 +831,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="7.4.2.15.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="UpdatePositionReportParameters"
@@ -929,11 +839,7 @@ Kernel.TrainIntegrity.Status in [
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action>
-<Action>PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action>
-<Action>PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action>
-<Action>PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action>
-</Actions>
+<Action>PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action><Action>PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action><Action>PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action><Action>PositionReportParameters.Values.SpecialLocation &lt;- ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -943,12 +849,10 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="Entry 5.4.3.2.A33.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.4.3.2.A34.1"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Name="Send SOM position report"
@@ -970,8 +874,7 @@ Kernel.TrainIntegrity.Status in [
     POSITION_REPORT =&gt; CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
     T_TRAIN =&gt; EMPTY
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1004,8 +907,7 @@ Kernel.TrainIntegrity.Status in [
     POSITION_REPORT =&gt; CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
     T_TRAIN =&gt; EMPTY
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1020,12 +922,10 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<Comment>This variable contains the position report parameters given by the RBC.</Comment>
+</ReqRef><Comment>This variable contains the position report parameters given by the RBC.</Comment>
 </Variable><Variable
  Type="PositionReportEventsTracker"
  DefaultValue=""
@@ -1036,24 +936,19 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.4.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.g"
 >
-</ReqRef>
-<Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
+</ReqRef><Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
 </Variable><Variable
  Type="LastPositionReportInformation"
  DefaultValue=""
@@ -1064,16 +959,13 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<Comment>Indicates when and where the last position report was sent.</Comment>
+</ReqRef><Comment>Indicates when and where the last position report was sent.</Comment>
 </Variable><Variable
  Type="Integer"
  DefaultValue="0"
@@ -1084,8 +976,7 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="5.6.4.3"
 >
-</ReqRef>
-<Comment>Indicates the number of sent position report repetitions.</Comment>
+</ReqRef><Comment>Indicates the number of sent position report repetitions.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -1118,11 +1009,9 @@ Kernel.TrainIntegrity.Status in [
  Name="CommunicationSessionState"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.HasActiveSession &lt;- EURORADIO.HasActiveSession()</Action>
-</Actions>
+<Action>PositionReportEventsTracker.HasActiveSession &lt;- EURORADIO.HasActiveSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1138,11 +1027,9 @@ Kernel.TrainIntegrity.Status in [
  Name="Level"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action>
-</Actions>
+<Action>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1158,11 +1045,9 @@ Kernel.TrainIntegrity.Status in [
  Name="Mode"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Mode != Kernel.Mode</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.Mode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Mode &lt;- Kernel.Mode</Action>
-</Actions>
+<Action>PositionReportEventsTracker.Mode &lt;- Kernel.Mode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1178,11 +1063,9 @@ Kernel.TrainIntegrity.Status in [
  Name="TrainIntegrity"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.TrainIntegrityStatus != Kernel.TrainIntegrity.Status</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.TrainIntegrityStatus &lt;- Kernel.TrainIntegrity.Status</Action>
-</Actions>
+<Action>PositionReportEventsTracker.TrainIntegrityStatus &lt;- Kernel.TrainIntegrity.Status</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1198,11 +1081,9 @@ Kernel.TrainIntegrity.Status in [
  Name="Speed"
 >
 <PreConditions>
-<PreCondition>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action>
-</Actions>
+<Action>PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1218,13 +1099,9 @@ Kernel.TrainIntegrity.Status in [
  Name="SpecialLocation"
 >
 <PreConditions>
-<PreCondition>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</PreCondition>
-</PreConditions>
+<PreCondition>PositionReportParameters.Values.SpecialLocation == PositionReportSpecialLocation.Now</PreCondition></PreConditions>
 <Actions>
-<Action>PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action>
-<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action>
-<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action>
-</Actions>
+<Action>PositionReportParameters.Values.SpecialLocation &lt;- PositionReportSpecialLocation.DoNotSend</Action><Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action><Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1240,11 +1117,9 @@ Kernel.TrainIntegrity.Status in [
  Name="PositionReportTimeInterval"
 >
 <PreConditions>
-<PreCondition>SendReportDueToPositionReportTimeReached()</PreCondition>
-</PreConditions>
+<PreCondition>SendReportDueToPositionReportTimeReached()</PreCondition></PreConditions>
 <Actions>
-<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action>
-</Actions>
+<Action>LastPositionReport.Time &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -1260,11 +1135,9 @@ Kernel.TrainIntegrity.Status in [
  Name="PositionReportDistanceInterval"
 >
 <PreConditions>
-<PreCondition>SendReportDueToPositionReportDistanceReached()</PreCondition>
-</PreConditions>
+<PreCondition>SendReportDueToPositionReportDistanceReached()</PreCondition></PreConditions>
 <Actions>
-<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action>
-</Actions>
+<Action>LastPositionReport.Position &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1276,24 +1149,19 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.6.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A030.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A115.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.6.2.2.A095"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1302,11 +1170,9 @@ Kernel.TrainIntegrity.Status in [
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>SendReportNow()</PreCondition>
-</PreConditions>
+<PreCondition>SendReportNow()</PreCondition></PreConditions>
 <Actions>
-<Action>SendPositionReport()</Action>
-</Actions>
+<Action>SendPositionReport()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1317,22 +1183,16 @@ Kernel.TrainIntegrity.Status in [
 <ReqRef
  Id="3.5.3.4.c"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Send report due to mode change"
 >
 <PreConditions>
-<PreCondition>SendReportDueToModeChange()</PreCondition>
-<PreCondition>NOT HasActiveSession()</PreCondition>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition>
-<PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition>
-</PreConditions>
+<PreCondition>SendReportDueToModeChange()</PreCondition><PreCondition>NOT HasActiveSession()</PreCondition><PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>Kernel.HandleModeChange not in Kernel.HandleModeChange.EndOfMission</PreCondition></PreConditions>
 <Actions>
-<Action>OpenRBCSession()</Action>
-</Actions>
+<Action>OpenRBCSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
