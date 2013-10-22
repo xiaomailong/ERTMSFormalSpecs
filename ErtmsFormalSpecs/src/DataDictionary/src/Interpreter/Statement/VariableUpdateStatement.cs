@@ -168,6 +168,14 @@ namespace DataDictionary.Interpreter.Statement
                                 Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName + ") does not match variable [" + VariableIdentification.ToString() + "] type (" + targetType.FullName + ")");
                             }
                         }
+
+                        if (Expression.Ref == EFSSystem.EmptyValue)
+                        {
+                            if (targetType is Types.Collection)
+                            {
+                                Root.AddError("Assignation of " + Expression.Ref.Name + " cannot be performed on variables of type collection. Use [] instead.");
+                            }
+                        }
                     }
                     else
                     {

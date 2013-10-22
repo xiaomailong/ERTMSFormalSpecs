@@ -1042,6 +1042,14 @@ namespace DataDictionary.Interpreter
                 {
                     AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
                 }
+
+                if (Right.Ref == EFSSystem.EmptyValue)
+                {
+                    if (leftType is Types.Collection)
+                    {
+                        AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
+                    }
+                }
             }
 
             Left.checkExpression();
