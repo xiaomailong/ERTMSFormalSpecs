@@ -885,7 +885,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition>
 </PreConditions>
 <Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
 </Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1059,6 +1059,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </ReqRef>
 <ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef>
+<ReqRef
+ Id="5.9.2.1"
 >
 </ReqRef>
 <PreConditions>

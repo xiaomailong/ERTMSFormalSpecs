@@ -47,7 +47,7 @@
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
- Name="aPacket"
+ Name="Packet"
 >
 </Parameter></Parameters>
 <Rules>
@@ -63,7 +63,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>BaliseGroupsForShArea &lt;- MAP aPacket.Sequence1 USING CreateBaliseGroup ( X )</Action>
+<Action>BaliseGroupsForShArea &lt;- MAP Packet.Sequence1 USING CreateBaliseGroup ( X )</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
