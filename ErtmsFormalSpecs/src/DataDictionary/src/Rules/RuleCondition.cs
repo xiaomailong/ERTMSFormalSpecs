@@ -409,6 +409,13 @@ namespace DataDictionary.Rules
                     appendActions(item);
                 }
             }
+            {
+                Rule item = element as Rule;
+                if (item != null)
+                {
+                    appendSubRules(item);
+                }
+            }
 
             base.AddModelElement(element);
         }
