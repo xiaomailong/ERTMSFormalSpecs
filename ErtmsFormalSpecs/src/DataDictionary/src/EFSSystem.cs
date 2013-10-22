@@ -933,7 +933,7 @@ namespace DataDictionary
             /// <summary>
             /// The references found
             /// </summary>
-            public SortedSet<Usage> Usages { get; private set; }
+            public List<Usage> Usages { get; private set; }
 
             /// <summary>
             /// The element to be found
@@ -946,7 +946,7 @@ namespace DataDictionary
             /// <param name="model"></param>
             public ReferenceVisitor(ModelElement model)
             {
-                Usages = new SortedSet<Usage>();
+                Usages = new List<Usage>();
                 Model = model;
             }
 
@@ -1118,7 +1118,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public SortedSet<Usage> FindReferences(ModelElement model)
+        public List<Usage> FindReferences(ModelElement model)
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(model);
@@ -1130,6 +1130,7 @@ namespace DataDictionary
                 {
                     visitor.visit(dictionary, true);
                 }
+                visitor.Usages.Sort();
             }
             finally
             {
