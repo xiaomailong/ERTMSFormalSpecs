@@ -168,6 +168,21 @@ namespace DataDictionary.Interpreter.Statement
                                 Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName + ") does not match variable [" + VariableIdentification.ToString() + "] type (" + targetType.FullName + ")");
                             }
                         }
+                        else
+                        {
+                            Types.Range rangeType = targetType as Types.Range;
+                            if (rangeType != null)
+                            {
+                                Values.IValue value = Expression.Ref as Values.IValue;
+                                if (value != null)
+                                {
+                                    if (rangeType.convert(value) == null)
+                                    {
+                                        Root.AddError("Cannot set " + value.LiteralName + " in variable of type " + rangeType.Name);
+                                    }
+                                }
+                            }
+                        }
 
                         if (Expression.Ref == EFSSystem.EmptyValue)
                         {
