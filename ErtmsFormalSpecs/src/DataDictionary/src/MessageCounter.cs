@@ -46,6 +46,9 @@ namespace DataDictionary
         /// <param name="system"></param>
         public MessageCounter(EFSSystem system)
         {
+            Info = 0;
+            Warning = 0;
+            Error = 0;
             foreach (Dictionary dictionary in system.Dictionaries)
             {
                 visit(dictionary, true);
