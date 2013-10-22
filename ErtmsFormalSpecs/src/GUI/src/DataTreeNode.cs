@@ -742,6 +742,27 @@ namespace GUI
                 try
                 {
                     DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    Utils.INamable namable = copy as Utils.INamable;
+                    if (namable != null && SourceNode.Model.EnclosingCollection != null)
+                    {
+                        int previousIndex = 0;
+                        int index = 1;
+                        while (previousIndex != index)
+                        {
+                            previousIndex = index;
+                            foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
+                            {
+                                if (other.Name.Equals(namable.Name + "_" + index))
+                                {
+                                    index += 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        namable.Name = namable.Name + "_" + index;
+                    }
+
                     Model.AddModelElement(copy);
                     MainWindow.RefreshModel();
                 }
