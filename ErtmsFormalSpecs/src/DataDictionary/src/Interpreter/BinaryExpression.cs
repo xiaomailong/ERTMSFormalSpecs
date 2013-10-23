@@ -1050,6 +1050,12 @@ namespace DataDictionary.Interpreter
                         AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
                     }
                 }
+
+                if (!leftType.ValidBinaryOperation(Operation, rightType)
+                    && !rightType.ValidBinaryOperation(Operation, leftType))
+                {
+                    AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType + ") and " + Right + "(" + rightType + ")");
+                }
             }
 
             Left.checkExpression();

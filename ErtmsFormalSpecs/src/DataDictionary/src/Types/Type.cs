@@ -344,6 +344,16 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public virtual bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
+        {
+            return Match(otherType);
+        }
+
+        /// <summary>
         /// Indicates if the type is double
         /// </summary>
         /// <param name="root"></param>
