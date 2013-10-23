@@ -12,8 +12,7 @@
 <ReqRef
  Id="8.5.3.2"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="Default.BaseTypes.Distance.Unknown"
  Mode="Internal"
@@ -24,8 +23,7 @@
 <ReqRef
  Id="8.7.1.8"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="BaliseGroups"
  Default="[]"
  Mode="Internal"
@@ -45,8 +43,7 @@
 <ReqRef
  Id="7.4.2.16"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="BaliseGroups"
@@ -64,8 +61,7 @@
  Name="NoBaliseGroupsSent"
 >
 <PreConditions>
-<PreCondition>BaliseGroups == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>BaliseGroups == []</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="BaliseGroupsSent"
@@ -102,8 +98,7 @@
 <ReqRef
  Id="Entry 5.4.3.2.S21.1"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -120,12 +115,10 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 <ReqRef
  Id="Entry 5.4.3.2.S21.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="8.5.3.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Message"
  Name="Packet"
@@ -148,8 +141,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -164,7 +156,6 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 <ReqRef
  Id="Entry 5.4.3.2.S21.1"
 >
-</ReqRef>
-<Comment>Contains information about the SR authorisation.</Comment>
+</ReqRef><Comment>Contains information about the SR authorisation.</Comment>
 </Variable></Variables>
 </NameSpace>

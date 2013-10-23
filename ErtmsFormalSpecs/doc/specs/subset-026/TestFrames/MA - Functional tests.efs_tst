@@ -26,20 +26,16 @@
 <ReqRef
  Id="3.8.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -53,8 +49,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -117,9 +112,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -129,15 +122,13 @@
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 35.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 51.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -209,9 +200,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -248,24 +237,19 @@
 <ReqRef
  Id="3.8.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.e"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -279,8 +263,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -343,9 +326,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -355,15 +336,13 @@
         Position =&gt; 2500.0,
         UnderReadingAmountOdo =&gt; 44.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 49.0,
     D_ora =&gt; 48.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -371,7 +350,7 @@
  Kind="Instantaneous"
 >Kernel.MA.SignallingRelatedSpeedRestriction == 80.0</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.MA.MA.Sections == EMPTY</Expectation><Expectation
+>Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.MA.MA.TargetSpeed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
@@ -464,15 +443,13 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
 >Available ( Kernel.MA.MA )</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.MA.MA.Sections == EMPTY</Expectation><Expectation
+>Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.MA.MA.TargetSpeed == 25.0</Expectation><Expectation
  Kind="Instantaneous"
@@ -530,16 +507,13 @@
 <ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -553,8 +527,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -617,9 +590,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9622,
     Orientation =&gt; Orientation.Nominal,
@@ -629,15 +600,13 @@
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 64.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 88.0,
     D_ora =&gt; 75.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -709,9 +678,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -747,12 +714,10 @@
 <ReqRef
  Id="3.8.1.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -766,8 +731,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -830,8 +794,7 @@
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9628,
     Orientation =&gt; Orientation.Nominal,
@@ -841,15 +804,13 @@
         Position =&gt; 4500.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 27.0,
     D_ora =&gt; 26.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -915,8 +876,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -982,8 +942,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1050,8 +1009,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1082,40 +1040,31 @@
 <ReqRef
  Id="3.8.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.f.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.f.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1129,8 +1078,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1223,9 +1171,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9626,
     Orientation =&gt; Orientation.Nominal,
@@ -1235,15 +1181,13 @@
         Position =&gt; 4000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 15.0,
     D_ora =&gt; 20.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1361,9 +1305,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1419,20 +1361,16 @@
 <ReqRef
  Id="3.8.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1446,8 +1384,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1510,9 +1447,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9624,
     Orientation =&gt; Orientation.Nominal,
@@ -1522,15 +1457,13 @@
         Position =&gt; 3500.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 41.0,
     D_ora =&gt; 36.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1604,9 +1537,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1644,12 +1575,10 @@
 <ReqRef
  Id="3.11.2.2.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.6.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1663,8 +1592,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1727,9 +1655,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9630,
     Orientation =&gt; Orientation.Nominal,
@@ -1739,15 +1665,13 @@
         Position =&gt; 5000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 15.0,
     D_ora =&gt; 17.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1766,8 +1690,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1797,8 +1720,7 @@
 <ReqRef
  Id="3.8.3.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1812,8 +1734,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1886,8 +1807,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1932,8 +1852,7 @@
 <ReqRef
  Id="3.8.4.5.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1947,8 +1866,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2012,8 +1930,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2094,8 +2011,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2176,8 +2092,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2206,8 +2121,7 @@
 <ReqRef
  Id="3.8.4.5.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2270,8 +2184,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2308,12 +2221,10 @@
 <ReqRef
  Id="3.8.3.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2327,8 +2238,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2354,8 +2264,7 @@
         Position =&gt; 4000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action>
-<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+}</Action><Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -2409,8 +2318,7 @@
 
   
             
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2515,8 +2423,7 @@
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 2120,
     Orientation =&gt; Orientation.Nominal,
@@ -2526,8 +2433,7 @@
         Position =&gt; 4000.0,
         UnderReadingAmountOdo =&gt; 12.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2564,16 +2470,13 @@
 <ReqRef
  Id="3.8.4.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.4.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.4.6.4"
 >
-</ReqRef>
-<Comment>In the steps 3 and 4 it is possible to see that the OBU receives Infill MA when there is Linking information ( step 4 ). If there is not Linking information, there is not Infill MA ( step 3). This is the requirement 3.8.4.6.4. </Comment>
+</ReqRef><Comment>In the steps 3 and 4 it is possible to see that the OBU receives Infill MA when there is Linking information ( step 4 ). If there is not Linking information, there is not Infill MA ( step 3). This is the requirement 3.8.4.6.4. </Comment>
 <Steps>
 <Step
  IO="NA"
@@ -2589,8 +2492,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2607,10 +2509,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2701,8 +2600,7 @@
             }
          }
                 ]
-}</Action>
-<Action>INSERT
+}</Action><Action>INSERT
 BTM.Linking.LinkingData
 {
 Distance =&gt; 1000.0,
@@ -2713,8 +2611,7 @@ Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction
 
 }
 IN
-BTM.Linking.Linkings</Action>
-</Actions>
+BTM.Linking.Linkings</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2745,8 +2642,7 @@ BTM.Linking.Linkings</Action>
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2809,8 +2705,7 @@ BTM.Linking.Linkings</Action>
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2846,8 +2741,7 @@ BTM.Linking.Linkings</Action>
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2910,8 +2804,7 @@ BTM.Linking.Linkings</Action>
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -2939,8 +2832,7 @@ BTM.Linking.Linkings</Action>
  Name="SubStep1"
 >
 <Actions>
-<Action>BTM.Linking.Linkings &lt;- []</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action>BTM.Linking.Linkings &lt;- []</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -3003,8 +2895,7 @@ BTM.Linking.Linkings</Action>
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >

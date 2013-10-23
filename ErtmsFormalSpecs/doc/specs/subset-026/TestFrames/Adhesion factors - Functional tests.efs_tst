@@ -26,8 +26,7 @@
 <ReqRef
  Id="3.18.4.6.2.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -41,8 +40,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -67,11 +65,7 @@
         Position =&gt; 500.0,
         UnderReadingAmountOdo =&gt; 2.0
     }
-}</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-<Action>Odometry.NominalDistance &lt;- 600.0</Action>
-</Actions>
+}</Action><Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action><Action>Odometry.NominalDistance &lt;- 600.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -149,8 +143,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -163,12 +156,10 @@
 <ReqRef
  Id="3.13.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -213,20 +204,16 @@
 <ReqRef
  Id="3.7.3.1.l"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -271,8 +258,7 @@
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 2100,
     Orientation =&gt; Orientation.Nominal,
@@ -282,9 +268,7 @@
         Position =&gt; 1000.0,
         UnderReadingAmountOdo =&gt; 7.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 1100.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -324,12 +308,10 @@
 <ReqRef
  Id="3.18.4.6.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -360,10 +342,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Slippery_rail</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action><Action>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Slippery_rail</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -378,8 +357,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Not_allowed</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Not_allowed</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

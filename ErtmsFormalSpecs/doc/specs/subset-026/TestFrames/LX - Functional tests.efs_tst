@@ -25,20 +25,16 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -52,8 +48,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -103,9 +98,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9621,
     Orientation =&gt; Orientation.Nominal,
@@ -115,17 +108,13 @@
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 24.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3500.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
+}</Action><Action>Odometry.NominalDistance &lt;- 3500.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
     D_ura =&gt; 42.0,
     D_ora =&gt; 38.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -187,8 +176,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -252,8 +240,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -287,8 +274,7 @@
 <ReqRef
  Id="3.12.5.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -302,8 +288,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -353,9 +338,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9621,
     Orientation =&gt; Orientation.Nominal,
@@ -365,9 +348,7 @@
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 4.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3500.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 3500.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -425,8 +406,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -463,24 +443,19 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -494,8 +469,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -545,10 +519,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>Odometry.NominalDistance &lt;- 2500.0</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2500.0</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9618,
     Orientation=&gt;Orientation.Nominal,
@@ -558,16 +529,13 @@
         Position=&gt;2000.0,
         UnderReadingAmountOdo=&gt;2.0
     }
-}</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
+}</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
     D_ura =&gt; 15.0,
     D_ora =&gt; 14.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -649,24 +617,19 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -680,8 +643,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -731,9 +693,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9619,
     Orientation=&gt;Orientation.Nominal,
@@ -743,17 +703,13 @@
         Position=&gt;2200.0,
         UnderReadingAmountOdo=&gt;14.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 2700.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
+}</Action><Action>Odometry.NominalDistance &lt;- 2700.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
     D_ura =&gt; 24.0,
     D_ora =&gt; 29.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -841,20 +797,16 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -868,8 +820,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -919,9 +870,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -931,17 +880,13 @@
         Position =&gt; 2600.0,
         UnderReadingAmountOdo =&gt; 41.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3100.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
+}</Action><Action>Odometry.NominalDistance &lt;- 3100.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
     D_ura =&gt; 54.0,
     D_ora =&gt; 52.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1017,12 +962,10 @@
 <ReqRef
  Id="3.12.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1036,8 +979,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1053,8 +995,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-</Actions>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1104,8 +1045,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1156,8 +1096,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1212,20 +1151,16 @@
 <ReqRef
  Id="3.12.5.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.6.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.6.b"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1239,8 +1174,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1256,8 +1190,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-</Actions>
+<Action>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1308,8 +1241,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1385,9 +1317,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.LX.LevelCrossings &lt;- []</Action>
-</Actions>
+}</Action><Action>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

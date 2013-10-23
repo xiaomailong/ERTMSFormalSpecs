@@ -26,48 +26,37 @@
 <ReqRef
  Id="3.11.12.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.4.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.37.0"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -81,8 +70,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -97,10 +85,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSR &lt;- EMPTY</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 5.0</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+<Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSR &lt;- EMPTY</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 5.0</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -108,10 +93,7 @@
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -175,8 +157,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -359,8 +340,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -424,8 +404,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.11.12.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -439,8 +418,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -463,8 +441,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;17000.0,
     UnderReadingAmountOdo=&gt;18.0
   }
-}</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+}</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -476,21 +453,13 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     NID_C=&gt;140,
     NID_BG=&gt;2124,
     Q_LINK=&gt;Messages.Q_LINK.Linked
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 20000.0</Action>
-<Action>Kernel.TSR.TSRs &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 5.0</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSR &lt;- EMPTY</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.NominalDistance &lt;- 20000.0</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 5.0</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSR &lt;- EMPTY</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 28.0,
     D_ora =&gt; 21.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0 </Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0 </Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -534,8 +503,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -571,8 +539,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.13.4.1.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -598,8 +565,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     NID_C=&gt;140,
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -647,8 +613,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -667,8 +632,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.11.12.6"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -711,8 +675,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -744,12 +707,10 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.7.3.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -764,8 +725,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -780,8 +740,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -789,8 +748,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -855,8 +813,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -922,8 +879,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -946,12 +902,10 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.7.3.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -965,8 +919,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -981,8 +934,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -990,8 +942,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1056,8 +1007,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1123,8 +1073,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1147,12 +1096,10 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <ReqRef
  Id="3.7.3.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.12"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -1167,8 +1114,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1183,8 +1129,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1192,8 +1137,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1258,8 +1202,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1325,8 +1268,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

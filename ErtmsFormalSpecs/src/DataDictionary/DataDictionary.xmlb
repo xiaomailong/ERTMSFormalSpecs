@@ -73,7 +73,7 @@
   <!-- --------------- -->
   <!-- Data dictionary -->
   <!-- --------------- -->
-  <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
       <FIELD NAME="Specification"         REFTYPE="Specification" />
       <FIELD NAME="RuleDisablings"        REFTYPE="RuleDisabling" />
@@ -252,7 +252,7 @@
   <!-- -------------------------- -->
   <!-- Reference to a requirement -->
   <!-- -------------------------- -->
-  <ELEMENT NAME="ReqRef" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="ReqRef" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
       <FIELD NAME="Id"       TYPE="PCHAR">
         <META NAME="DoNotTranslate"/>
@@ -668,7 +668,7 @@
   <!-- ------------- -->
   <!-- Pre-Condition -->
   <!-- ------------- -->
-  <ELEMENT NAME="PreCondition" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="PreCondition" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
     <FIELDS>
       <FIELD NAME="Condition" TYPE="PCHAR"/>
@@ -681,7 +681,7 @@
   <!-- ------ -->
   <!-- Action -->
   <!-- ------ -->
-  <ELEMENT NAME="Action" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="Action" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
     <FIELDS>
       <FIELD NAME="Expression" TYPE="PCHAR"/>
@@ -1646,7 +1646,7 @@
   <!-- ------------------ -->
   <!-- Paragraph Revision -->
   <!-- ------------------ -->
-  <ELEMENT NAME="ParagraphRevision" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="ParagraphRevision" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="DoNotTranslate" />
     <FIELDS>
       <FIELD NAME="Text" TYPE="PCHAR"/>

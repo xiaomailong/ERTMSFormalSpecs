@@ -102,7 +102,10 @@ namespace GUI.SearchDialog
                 element.AddInfo("Found " + searchString);
             }
 
-            MessageBox.Show(occurences.Count + " occurence(s) of " + searchString + " found", "Search complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (occurences.Count == 0)
+            {
+                MessageBox.Show("Cannot find " + searchString, "Search complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             Close();
         }
 

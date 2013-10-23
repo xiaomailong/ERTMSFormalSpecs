@@ -11,8 +11,7 @@
 <ReqRef
  Id="3.9.1.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
  Name="Packet"
@@ -38,8 +37,7 @@
     NID_BG =&gt; Packet.NID_BG,
     NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( Packet.Q_NEWCOUNTRY ),
     NID_C =&gt; Packet.NID_C
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -54,8 +52,7 @@
 <ReqRef
  Id="3.4.3.2.c"
 >
-</ReqRef>
-<Comment>Indicates the infill location reference.</Comment>
+</ReqRef><Comment>Indicates the infill location reference.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.True"
@@ -66,7 +63,6 @@
 <ReqRef
  Id="3.9.1.3"
 >
-</ReqRef>
-<Comment>Indicates if the on-board system is equipped with the infill transmission media (otherwise the infill information will be ignored).</Comment>
+</ReqRef><Comment>Indicates if the on-board system is equipped with the infill transmission media (otherwise the infill information will be ignored).</Comment>
 </Variable></Variables>
 </NameSpace>

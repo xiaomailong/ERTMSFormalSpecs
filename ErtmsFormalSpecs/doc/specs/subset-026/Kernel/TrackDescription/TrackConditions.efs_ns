@@ -11,12 +11,10 @@
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.20.1"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -26,8 +24,7 @@
 <ReqRef
  Id="7.5.1.33"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -37,8 +34,7 @@
 <ReqRef
  Id="7.5.1.55"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrackCondition"
  Default=""
  Mode="Internal"
@@ -48,8 +44,7 @@
 <ReqRef
  Id="7.5.1.77"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -63,8 +58,7 @@
 <ReqRef
  Id="7.5.1.77"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -74,8 +68,7 @@
 <ReqRef
  Id="3.12.1.3.d"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -85,8 +78,7 @@
 <ReqRef
  Id="3.12.1.3.e"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -96,8 +88,7 @@
 <ReqRef
  Id="3.12.1.3.c"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -107,8 +98,7 @@
 <ReqRef
  Id="3.12.1.3.a"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -118,8 +108,7 @@
 <ReqRef
  Id="3.12.1.3.i"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -129,8 +118,7 @@
 <ReqRef
  Id="3.12.1.3.b"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -140,8 +128,7 @@
 <ReqRef
  Id="3.12.1.3.j"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -151,8 +138,7 @@
 <ReqRef
  Id="3.12.1.3.k"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -162,8 +148,7 @@
 <ReqRef
  Id="3.12.1.3.m"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -173,8 +158,7 @@
 <ReqRef
  Id="3.12.1.3.a"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -184,16 +168,14 @@
 <ReqRef
  Id="3.12.1.3.l"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrackConditionProfile"
 >
 <ReqRef
  Id="3.13.2.3.1.1.c"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="TrackConditions"
  Default=""
@@ -213,8 +195,7 @@
 <ReqRef
  Id="7.5.1.32"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_TRACKINIT"
  Default=""
  Mode="Internal"
@@ -225,8 +206,7 @@
 <ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="TrackConditionInformation"
@@ -238,12 +218,10 @@
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.11.9"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Boolean"
@@ -253,8 +231,7 @@
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aCondition"
@@ -269,22 +246,19 @@
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForEB == False</Expression>
 </Case><Case
  Name="MagneticShoe"
 >
 <PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe</PreCondition>
-</PreConditions>
+<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
 <Expression>aCondition.Value.SwitchOffMagneticShoeBrake == False</Expression>
 </Case></Cases>
 </Function><Function
@@ -295,8 +269,7 @@
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aCondition"
@@ -311,15 +284,13 @@
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForSB == False</Expression>
 </Case></Cases>
 </Function><Function
@@ -330,20 +301,16 @@
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.4.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrainData.BrakingParameters.SpecialBrakeName"
  Name="aBrake"
@@ -372,8 +339,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aCondition"
@@ -393,20 +359,16 @@ INITIAL_VALUE
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.4.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrainData.BrakingParameters.SpecialBrakeName"
  Name="aBrake"
@@ -445,8 +407,7 @@ INITIAL_VALUE
  Name="AirTightness"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Air_tightness__Initial_state__no_request_for_air_tightness</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Air_tightness__Initial_state__no_request_for_air_tightness</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     AirTightness =&gt; True
@@ -455,8 +416,7 @@ INITIAL_VALUE
  Name="NonStoppingArea"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Non_stopping_area___tunnel__Initial_state__stopping_permitted__no_tunnel</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Non_stopping_area___tunnel__Initial_state__stopping_permitted__no_tunnel</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     NonStoppingArea =&gt; True
@@ -465,8 +425,7 @@ INITIAL_VALUE
  Name="PowerlessSection_LowerPantograph"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     PowerlessSection_LowerPantograph =&gt; True
@@ -475,8 +434,7 @@ INITIAL_VALUE
  Name="PowerlessSection_SwitchOffTheMainPowerSwitch"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; True
@@ -485,8 +443,7 @@ INITIAL_VALUE
  Name="RadioHole"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     RadioHole =&gt; True
@@ -495,8 +452,7 @@ INITIAL_VALUE
  Name="SoundHorn"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     SoundHorn =&gt; True
@@ -505,8 +461,7 @@ INITIAL_VALUE
  Name="SwitchOffEddyCurrentBrakeForEB"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     SwitchOffEddyCurrentBrakeForEB =&gt; True
@@ -515,8 +470,7 @@ INITIAL_VALUE
  Name="SwitchOffEddyCurrentBrakeForSB"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     SwitchOffEddyCurrentBrakeForSB=&gt; True
@@ -525,8 +479,7 @@ INITIAL_VALUE
  Name="SwitchOffMagneticShoeBrake"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     SwitchOffMagneticShoeBrake=&gt; True
@@ -535,8 +488,7 @@ INITIAL_VALUE
  Name="SwitchOffRegenerativeBrake"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_regenerative_brake__Initial_state__regenerative_brake_on</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Switch_off_regenerative_brake__Initial_state__regenerative_brake_on</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     SwitchOffRegenerativeBrake =&gt; True
@@ -545,8 +497,7 @@ INITIAL_VALUE
  Name="TunnelStoppingArea"
 >
 <PreConditions>
-<PreCondition>TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area</PreCondition>
-</PreConditions>
+<PreCondition>TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area</PreCondition></PreConditions>
 <Expression>TrackCondition
 {
     TunnelStoppingArea =&gt; True
@@ -560,8 +511,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.12.1.2.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aTrackCondition"
@@ -572,8 +522,7 @@ INITIAL_VALUE
  Name="True"
 >
 <PreConditions>
-<PreCondition>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; aTrackCondition.Distance</PreCondition>
-</PreConditions>
+<PreCondition>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; aTrackCondition.Distance</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="False"
@@ -617,12 +566,10 @@ INITIAL_VALUE
 <ReqRef
  Id="3.12.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.5"
 >
-</ReqRef>
-<Comment>This procedure is called when a new axle load profile is received. There are two cases:
+</ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
   - If no initial states have to be resumed, the axle load profile is updated (done by the HandleNewAxleLoadProfile procedure)</Comment>
 <Parameters>
@@ -648,12 +595,9 @@ INITIAL_VALUE
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
-<Action>TCProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action>
-<Action>TCProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action>
-</Actions>
+<Action>TCProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action>TCProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -661,11 +605,9 @@ INITIAL_VALUE
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewTrackCondition ( Packet )</Action>
-</Actions>
+<Action>HandleNewTrackCondition ( Packet )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -690,8 +632,7 @@ INITIAL_VALUE
 <ReqRef
  Id="3.7.3.1.g"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -702,12 +643,10 @@ INITIAL_VALUE
 <ReqRef
  Id="7.5.1.33"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKCOND, scale =&gt; Packet.Q_SCALE) IN TCProfile.Conditions</Action>
-</Actions>
+<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKCOND, scale =&gt; Packet.Q_SCALE) IN TCProfile.Conditions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -726,20 +665,16 @@ INITIAL_VALUE
 <ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.33"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.55"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.77"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -750,9 +685,7 @@ INITIAL_VALUE
         Value =&gt; CreateTCValue ( Packet.M_TRACKCOND )
     }
 IN
-    TCProfile.Conditions</Action>
-<Action>TCProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action>
-</Actions>
+    TCProfile.Conditions</Action><Action>TCProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -781,13 +714,10 @@ IN
 <ReqRef
  Id="3.5.4.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>aTrackCondition.Value.RadioHole</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>aTrackCondition.Value.RadioHole</PreCondition></PreConditions>
 <Actions>
-<Action>InsideRadioHole &lt;- True</Action>
-</Actions>
+<Action>InsideRadioHole &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -817,17 +747,13 @@ IN
 <ReqRef
  Id="3.5.3.4.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.5.4.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>aTrackCondition.Value.RadioHole</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>aTrackCondition.Value.RadioHole</PreCondition></PreConditions>
 <Actions>
-<Action>InsideRadioHole &lt;- False</Action>
-</Actions>
+<Action>InsideRadioHole &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -853,13 +779,9 @@ IN
  Name="&lt;RuleCondition1&gt;"
 >
 <PreConditions>
-<PreCondition>ConditionEntersApplicabilityNow(aTrackCondition)</PreCondition>
-<PreCondition>NOT aTrackCondition.Applied</PreCondition>
-</PreConditions>
+<PreCondition>ConditionEntersApplicabilityNow(aTrackCondition)</PreCondition><PreCondition>NOT aTrackCondition.Applied</PreCondition></PreConditions>
 <Actions>
-<Action>ApplyTrackCondition(aTrackCondition)</Action>
-<Action>aTrackCondition.Applied &lt;- True</Action>
-</Actions>
+<Action>ApplyTrackCondition(aTrackCondition)</Action><Action>aTrackCondition.Applied &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -885,11 +807,9 @@ IN
  Name="RevokeWhenExitApplicability"
 >
 <PreConditions>
-<PreCondition>ConditionExitsApplicability ( aTrackCondition )</PreCondition>
-</PreConditions>
+<PreCondition>ConditionExitsApplicability ( aTrackCondition )</PreCondition></PreConditions>
 <Actions>
-<Action>RevokeTrackCondition ( aTrackCondition )</Action>
-</Actions>
+<Action>RevokeTrackCondition ( aTrackCondition )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -904,32 +824,25 @@ IN
 <ReqRef
  Id="3.13.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.5"
 >
-</ReqRef>
-<Comment>The list of track conditions received from the trackside.</Comment>
+</ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
 </Variable><Variable
  Type="Boolean"
  VariableMode="Internal"
@@ -948,8 +861,7 @@ IN
 <ReqRef
  Id="3.5.3.4.e"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -957,13 +869,9 @@ IN
  Name="TrackConditionMonitor"
 >
 <PreConditions>
-<PreCondition>TCProfile != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TCProfile != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY ApplyWhenEntersApplicability(aTrackCondition =&gt; X) ON TCProfile.Conditions</Action>
-<Action>APPLY RevokeWhenExitApplicability(X) ON TCProfile.Conditions</Action>
-<Action>TCProfile.Conditions &lt;- MAP TCProfile.Conditions | (NOT ConditionIsObsolete(X)) USING X</Action>
-</Actions>
+<Action>APPLY ApplyWhenEntersApplicability(aTrackCondition =&gt; X) ON TCProfile.Conditions</Action><Action>APPLY RevokeWhenExitApplicability(X) ON TCProfile.Conditions</Action><Action>TCProfile.Conditions &lt;- MAP TCProfile.Conditions | (NOT ConditionIsObsolete(X)) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
