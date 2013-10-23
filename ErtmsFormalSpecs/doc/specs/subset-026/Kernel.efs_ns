@@ -68,9 +68,8 @@
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="Entry 4.7.2.2.9"
 >
-<Comment></Comment>
 </ReqRef><Comment>The status of speed and distance monitoring supervision.</Comment>
 <Values>
 <EnumValue
@@ -100,7 +99,7 @@
  Name="BrakeReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="Entry 4.7.2.2.47"
 >
 </ReqRef><Values>
 <EnumValue
@@ -227,7 +226,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Id"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="Entry 4.7.2.2.47"
 >
 </ReqRef><Comment>The id of the emergency stop.</Comment>
 </StructureElement><StructureElement
@@ -7055,7 +7054,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="3.18.4.5.1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.12"
+ Id="Entry 4.7.2.2.13"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7096,7 +7095,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="3.15.10.1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.45"
+ Id="Entry 4.7.2.2.46"
 >
 </ReqRef><Comment>Represents the first target at zero speed.</Comment>
 </Variable><Variable
@@ -7105,10 +7104,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.44"
+ Id="3.15.10.1"
 >
 </ReqRef><ReqRef
- Id="3.15.10.1"
+ Id="Entry 4.7.2.2.45"
 >
 </ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
@@ -7119,10 +7118,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="SupervisionStatus"
 >
 <ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="3.13.10.1.1"
 >
 </ReqRef><ReqRef
- Id="3.13.10.1.1"
+ Id="Entry 4.7.2.2.9"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7134,7 +7133,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TargetDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.2.6"
+ Id="Entry 4.7.2.2.7"
 >
 </ReqRef><Comment>The target distance of the train.</Comment>
 </Variable><Variable
@@ -7265,7 +7264,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TripReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="Entry 4.7.2.2.10"
 >
 </ReqRef><Comment>Represents the trip raison, if any.</Comment>
 </Variable><Variable
