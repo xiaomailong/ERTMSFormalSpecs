@@ -489,21 +489,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateLevelInhibitionRequest"
->
-<Parameters>
-<Parameter
- Type="Boolean"
- Name="InhibitLevel"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="RemoveExistingInhibition"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Check mode change"
@@ -525,24 +510,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>In_LevelInhibition.InhibitionAction.InhibitLevel &lt;- InhibitLevel</Action><Action>In_LevelInhibition.InhibitionAction.RemoveExistingInhibition &lt;- RemoveExistingInhibition</Action><Action>In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Request</Action><Action>In_LevelInhibition.InhibitedLevels &lt;- Kernel.InhibitedLevels.Levels</Action><Action>In_LevelInhibition.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="InitiateStartRequest"
 >
 <Rules>
@@ -773,13 +740,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="InitiateAcknForLevelTransitionNotPossible"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Check mode change"
 >
 <ReqRef
@@ -799,23 +759,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="InitiateRequest"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>In_AcknForLevelTransitionNotPossible.InputInformation.RequestStatus &lt;- Request.Request</Action><Action>In_AcknForLevelTransitionNotPossible.InputInformation.DriverAnswered &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitiateAcknOfSHMode"
@@ -4603,16 +4546,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Id="Entry 4.7.2.1.6"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="DMI.IN.LevelInhibition"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- Name="In_LevelInhibition"
->
-<ReqRef
- Id="Entry 4.7.2.1.7"
->
-</ReqRef></StructureElement><StructureElement
  TypeName="DMI.IN.RBCContactInformationRadioNetworkId"
  Default=""
  Mode="InOut"
@@ -4861,16 +4794,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >
 <ReqRef
  Id="Entry 4.7.2.1.32"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="DMI.IN.Acknowledgement"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- Name="In_AcknForLevelTransitionNotPossible"
->
-<ReqRef
- Id="Entry 4.7.2.1.33"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="DMI.IN.TrackAheadFree"
