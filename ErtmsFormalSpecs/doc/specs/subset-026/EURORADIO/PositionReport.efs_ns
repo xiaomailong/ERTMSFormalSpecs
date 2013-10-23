@@ -101,13 +101,13 @@
  Name="PositionReportParametersValues"
 >
 <ReqRef
- Id="7.4.2.15.1"
->
-</ReqRef><ReqRef
  Id="3.6.5.1.4"
 >
 </ReqRef><ReqRef
  Id="3.6.5.1.5"
+>
+</ReqRef><ReqRef
+ Id="7.4.2.15.bis"
 >
 </ReqRef><Comment>Parameters of position reporting given by RBC.</Comment>
 <StructureElement
@@ -665,10 +665,10 @@ Kernel.TrainIntegrity.Status in [
  Id="3.6.5.1.4.1"
 >
 </ReqRef><ReqRef
- Id="7.4.3.1.1"
+ Id="7.4.3.1.bis"
 >
 </ReqRef><ReqRef
- Id="7.4.3.2.1"
+ Id="7.4.3.2.bis"
 >
 </ReqRef><Cases>
 <Case
@@ -703,7 +703,7 @@ Kernel.TrainIntegrity.Status in [
  Id="3.6.5.1.4.1"
 >
 </ReqRef><ReqRef
- Id="7.4.3.1.1"
+ Id="7.4.3.1.bis"
 >
 </ReqRef><Comment></Comment>
 <Cases>
@@ -829,7 +829,7 @@ Kernel.TrainIntegrity.Status in [
  Name="UpdatePositionReportParameters"
 >
 <ReqRef
- Id="7.4.2.15.1"
+ Id="7.4.2.15.bis"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -970,6 +970,7 @@ Kernel.TrainIntegrity.Status in [
  Type="Integer"
  DefaultValue="0"
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="NumberOfSentReportRepetitions"
 >
 <ReqRef
