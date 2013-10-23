@@ -1563,5 +1563,19 @@ namespace GUI
                 Refresh();
             }
         }
+
+        /// <summary>
+        /// Refreshes all graph views
+        /// </summary>
+        public void RefreshGraphViews()
+        {
+            foreach (IBaseForm form in SubWindows)
+            {
+                if (form is GraphView.GraphView)
+                {
+                    form.Refresh();
+                }
+            }
+        }
     }
 }
