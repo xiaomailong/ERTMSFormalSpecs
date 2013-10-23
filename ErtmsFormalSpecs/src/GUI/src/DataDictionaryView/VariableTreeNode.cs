@@ -127,8 +127,8 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private bool IsASubVariable;
-        private SubVariablesTreeNode subVariables;
+        public bool IsASubVariable;
+        public SubVariablesTreeNode subVariables;
 
         /// <summary>
         /// Constructor

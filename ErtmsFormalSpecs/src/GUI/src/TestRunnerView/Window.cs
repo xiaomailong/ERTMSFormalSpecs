@@ -285,6 +285,7 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
+                MDIWindow.RefreshAfterStep();
             }
         }
 
@@ -299,6 +300,7 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
+                MDIWindow.RefreshAfterStep();
             }
             Clear();
         }
@@ -342,6 +344,7 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.StepBack();
+                MDIWindow.RefreshAfterStep();
             }
         }
 

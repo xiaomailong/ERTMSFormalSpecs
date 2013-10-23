@@ -187,6 +187,15 @@ namespace GUI
         }
 
         /// <summary>
+        /// Stop the synchronizer when the form is closed
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosed(EventArgs e)
+        {
+            FormSynchronizer.Synchronize = false;
+        }
+
+        /// <summary>
         /// Synchronizes the form with its model
         /// </summary>
         public virtual void SynchronizeForm()
