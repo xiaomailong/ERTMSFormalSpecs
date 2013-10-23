@@ -178,5 +178,13 @@ namespace GUI.DataDictionaryView
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
         }
+
+        /// <summary>
+        /// Refreshes the window after a step (=> variable changes) has been performed
+        /// </summary>
+        public void RefreshAfterStep()
+        {
+            dataDictTree.RefreshAfterStep();
+        }
     }
 }
