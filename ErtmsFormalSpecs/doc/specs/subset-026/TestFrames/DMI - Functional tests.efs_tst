@@ -2488,390 +2488,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Level inhibition"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Level inhibition"
->
-<ReqRef
- Id="Entry 4.7.2.1.7"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.ProcedureIn in DMI.IN.LevelInhibition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="IN RBC contact information - Network ID"
 >
 <TestCases>
@@ -2918,7 +2534,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN RBC contact information"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="Entry 4.7.2.1.7"
 >
 </ReqRef><Steps>
 <Step
@@ -3300,6 +2916,390 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="IN Train integrity"
+>
+<ReqRef
+ Id="Entry 4.7.2.1.8"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Start"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IN Start"
 >
 <ReqRef
  Id="Entry 4.7.2.1.9"
@@ -3322,7 +3322,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3341,7 +3341,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3360,7 +3360,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3379,7 +3379,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3398,7 +3398,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3417,7 +3417,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3436,7 +3436,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3455,7 +3455,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3474,7 +3474,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3493,7 +3493,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3512,7 +3512,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3531,7 +3531,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3550,7 +3550,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3569,7 +3569,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3588,7 +3588,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3607,7 +3607,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3626,7 +3626,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_TrainIntegrity.ProcedureIn in DMI.IN.TrainIntegrity.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -3640,7 +3640,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Start"
+ Name="IN Override request"
 >
 <TestCases>
 <TestCase
@@ -3683,7 +3683,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Start"
+ Name="IN Override request"
 >
 <ReqRef
  Id="Entry 4.7.2.1.10"
@@ -3706,7 +3706,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3725,7 +3725,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3744,7 +3744,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3763,7 +3763,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3782,7 +3782,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3801,7 +3801,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3820,7 +3820,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3839,7 +3839,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3858,7 +3858,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3877,7 +3877,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3896,7 +3896,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3915,7 +3915,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3934,7 +3934,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3953,7 +3953,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3972,7 +3972,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3991,7 +3991,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4010,7 +4010,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_Start.ProcedureIn in DMI.IN.Start.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -4024,7 +4024,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Override request"
+ Name="IN Shunting request"
 >
 <TestCases>
 <TestCase
@@ -4067,7 +4067,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Override request"
+ Name="IN Shunting request"
 >
 <ReqRef
  Id="Entry 4.7.2.1.11"
@@ -4090,7 +4090,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4109,7 +4109,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4128,7 +4128,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4147,7 +4147,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4166,7 +4166,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4185,7 +4185,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4204,7 +4204,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4223,7 +4223,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4242,7 +4242,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4261,7 +4261,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4280,7 +4280,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4299,7 +4299,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4318,7 +4318,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4337,7 +4337,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4356,7 +4356,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4375,7 +4375,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4394,7 +4394,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_OverrideRequest.ProcedureIn in DMI.IN.OverrideRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -4408,7 +4408,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Shunting request"
+ Name="IN Continue shunting on desk closure request"
 >
 <TestCases>
 <TestCase
@@ -4451,394 +4451,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Shunting request"
+ Name="IN Continue shunting on desk closure request"
 >
 <ReqRef
  Id="Entry 4.7.2.1.12"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_ShuntingRequest.ProcedureIn in DMI.IN.ShuntingRequest.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="IN Continue shunting on desk closure request"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Continue shunting on desk closure request"
->
-<ReqRef
- Id="Entry 4.7.2.1.13"
 >
 </ReqRef><Steps>
 <Step
@@ -5222,7 +4838,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Exit of shunting request"
 >
 <ReqRef
- Id="Entry 4.7.2.1.14"
+ Id="Entry 4.7.2.1.13"
 >
 </ReqRef><Steps>
 <Step
@@ -5606,7 +5222,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Non leading request"
 >
 <ReqRef
- Id="Entry 4.7.2.1.15"
+ Id="Entry 4.7.2.1.14"
 >
 </ReqRef><Steps>
 <Step
@@ -5988,6 +5604,390 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="IN Ackn of fixed text information"
+>
+<ReqRef
+ Id="Entry 4.7.2.1.15"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Ackn of plain text information"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IN Ackn of plain text information"
 >
 <ReqRef
  Id="Entry 4.7.2.1.16"
@@ -6010,7 +6010,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6029,7 +6029,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6048,7 +6048,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6067,7 +6067,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6086,7 +6086,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6105,7 +6105,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6124,7 +6124,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6143,7 +6143,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6162,7 +6162,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6181,7 +6181,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6200,7 +6200,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6219,7 +6219,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6238,7 +6238,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6257,7 +6257,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6276,7 +6276,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6295,7 +6295,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6314,7 +6314,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.ProcedureIn in DMI.IN.AcknOfFixedTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -6328,7 +6328,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Ackn of plain text information"
+ Name="IN Ackn of level transition"
 >
 <TestCases>
 <TestCase
@@ -6371,7 +6371,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Ackn of plain text information"
+ Name="IN Ackn of level transition"
 >
 <ReqRef
  Id="Entry 4.7.2.1.17"
@@ -6394,7 +6394,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6413,7 +6413,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6432,7 +6432,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6451,7 +6451,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6470,7 +6470,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6489,7 +6489,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6508,7 +6508,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6527,7 +6527,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6546,7 +6546,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6565,7 +6565,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6584,7 +6584,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6603,7 +6603,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6622,7 +6622,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6641,7 +6641,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6660,7 +6660,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6679,7 +6679,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6698,7 +6698,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.ProcedureIn in DMI.IN.AcknOfPlainTextInformation.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -6712,7 +6712,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Ackn of level transition"
+ Name="IN Ackn of Limited Supervision mode"
 >
 <TestCases>
 <TestCase
@@ -6755,394 +6755,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Ackn of level transition"
+ Name="IN Ackn of Limited Supervision mode"
 >
 <ReqRef
  Id="Entry 4.7.2.1.18"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfLevelTransition.ProcedureIn in DMI.IN.AcknOfLevelTransition.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="IN Ackn of Limited Supervision mode"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Ackn of Limited Supervision mode"
->
-<ReqRef
- Id="Entry 4.7.2.1.19"
 >
 </ReqRef><Steps>
 <Step
@@ -7526,7 +7142,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn of On Sight mode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.20"
+ Id="Entry 4.7.2.1.19"
 >
 </ReqRef><Steps>
 <Step
@@ -7908,6 +7524,390 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="IN Ackn of Shunting mode"
+>
+<ReqRef
+ Id="Entry 4.7.2.1.20"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Ackn of Staff Resp. mode"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IN Ackn of Staff Resp. mode"
 >
 <ReqRef
  Id="Entry 4.7.2.1.21"
@@ -7930,7 +7930,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -7949,7 +7949,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -7968,7 +7968,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -7987,7 +7987,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8006,7 +8006,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8025,7 +8025,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8044,7 +8044,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8063,7 +8063,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8082,7 +8082,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8101,7 +8101,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8120,7 +8120,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8139,7 +8139,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8158,7 +8158,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8177,7 +8177,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8196,7 +8196,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8215,7 +8215,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8234,7 +8234,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSHMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -8248,7 +8248,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Ackn of Staff Resp. mode"
+ Name="IN Ackn of Unfitted mode"
 >
 <TestCases>
 <TestCase
@@ -8291,394 +8291,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Ackn of Staff Resp. mode"
+ Name="IN Ackn of Unfitted mode"
 >
 <ReqRef
  Id="Entry 4.7.2.1.22"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknOfSRMode.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="IN Ackn of Unfitted mode"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Ackn of Unfitted mode"
->
-<ReqRef
- Id="Entry 4.7.2.1.23"
 >
 </ReqRef><Steps>
 <Step
@@ -9062,7 +8678,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn of Reversing mode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.24"
+ Id="Entry 4.7.2.1.23"
 >
 </ReqRef><Steps>
 <Step
@@ -9446,7 +9062,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn of SN mode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.25"
+ Id="Entry 4.7.2.1.24"
 >
 </ReqRef><Steps>
 <Step
@@ -9830,7 +9446,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn of Train Trip"
 >
 <ReqRef
- Id="Entry 4.7.2.1.26"
+ Id="Entry 4.7.2.1.25"
 >
 </ReqRef><Steps>
 <Step
@@ -10214,6 +9830,390 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn for Roll Away Protection"
 >
 <ReqRef
+ Id="Entry 4.7.2.1.26"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="IN Ackn for Reverse Movement Protection"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IN Ackn for Reverse Movement Protection"
+>
+<ReqRef
  Id="Entry 4.7.2.1.27"
 >
 </ReqRef><Steps>
@@ -10234,7 +10234,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10253,7 +10253,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10272,7 +10272,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10291,7 +10291,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10310,7 +10310,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10329,7 +10329,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10348,7 +10348,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10367,7 +10367,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10386,7 +10386,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10405,7 +10405,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10424,7 +10424,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10443,7 +10443,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10462,7 +10462,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10481,7 +10481,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10500,7 +10500,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10519,7 +10519,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10538,7 +10538,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForRollAwayProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -10552,7 +10552,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Ackn for Reverse Movement Protection"
+ Name="IN Ackn for Standstill Supervision"
 >
 <TestCases>
 <TestCase
@@ -10595,394 +10595,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="IN Ackn for Reverse Movement Protection"
+ Name="IN Ackn for Standstill Supervision"
 >
 <ReqRef
  Id="Entry 4.7.2.1.28"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="IN Ackn for Standstill Supervision"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Ackn for Standstill Supervision"
->
-<ReqRef
- Id="Entry 4.7.2.1.29"
 >
 </ReqRef><Steps>
 <Step
@@ -11366,7 +10982,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn for Post Trip distance exceeded"
 >
 <ReqRef
- Id="Entry 4.7.2.1.30"
+ Id="Entry 4.7.2.1.29"
 >
 </ReqRef><Steps>
 <Step
@@ -11750,7 +11366,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn of Train Data change from source different from the driver"
 >
 <ReqRef
- Id="Entry 4.7.2.1.31"
+ Id="Entry 4.7.2.1.30"
 >
 </ReqRef><Steps>
 <Step
@@ -12134,7 +11750,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Ackn for reversing distance exceeded"
 >
 <ReqRef
- Id="Entry 4.7.2.1.32"
+ Id="Entry 4.7.2.1.31"
 >
 </ReqRef><Steps>
 <Step
@@ -12472,390 +12088,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="IN Ackn for level transition not possible (due to level inhibition)"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
->
-<Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IN Ackn for level transition not possible (due to level inhibition)"
->
-<ReqRef
- Id="Entry 4.7.2.1.33"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - NP"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NP</Action><Action>Kernel.PowerOn &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - SB"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SB</Action><Action>Kernel.PowerOn &lt;- True</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - PS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - SH"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SH</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - FS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.FS</Action><Action>Kernel.Level.Value &lt;- Level.L1  </Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - LS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - SR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - OS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step9 - SL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- False</Action><Action>Kernel.SleepingSignalIsReceived &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step10 - NL"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.NL</Action><Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step11 - UN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step12 - TR"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step13 - PT"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step14 - SF"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step15 - IS"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotApplicable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step16 - SN"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SN</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.Available</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step17 - RV"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_AcknForLevelTransitionNotPossible.ProcedureIn in DMI.IN.Acknowledgement.ProcedureIn.NotAvailable</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="IN Track ahead free"
 >
 <TestCases>
@@ -12902,7 +12134,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Track ahead free"
 >
 <ReqRef
- Id="Entry 4.7.2.1.34"
+ Id="Entry 4.7.2.1.32"
 >
 </ReqRef><Steps>
 <Step
@@ -13286,7 +12518,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN SR mode speed limit and distance"
 >
 <ReqRef
- Id="Entry 4.7.2.1.35"
+ Id="Entry 4.7.2.1.33"
 >
 </ReqRef><Steps>
 <Step
@@ -13670,7 +12902,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN Isolation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.36"
+ Id="Entry 4.7.2.1.35"
 >
 </ReqRef><Steps>
 <Step
@@ -33555,7 +32787,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IN RBC contact information"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="Entry 4.7.2.1.7"
 >
 </ReqRef><Steps>
 <Step
