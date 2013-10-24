@@ -98,12 +98,6 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.a"
->
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.b"
->
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
@@ -122,9 +116,6 @@ STOP_CONDITION
  Name="Vdelta0rsob"
 >
 <ReqRef
- Id="3.13.9.4.8.1.b"
->
-</ReqRef><ReqRef
  Id="3.13.2.3.7.9"
 >
 </ReqRef><ReqRef
@@ -406,27 +397,6 @@ INITIAL_VALUE
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Default.BaseTypes.Speed"
- DefaultValue="2.0"
- VariableMode="Internal"
- Name="Vdelta0rsob"
->
-<ReqRef
- Id="Entry 3.A3.1.1.21"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.b"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
->
-</ReqRef><ReqRef
- Id="3.13.2.2.12.1"
->
-</ReqRef><Comment>Compensation of the speed measurement inaccuracy used for the on-board calculation of the release speed.</Comment>
-</Variable><Variable
  Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
  VariableMode="Constant"
