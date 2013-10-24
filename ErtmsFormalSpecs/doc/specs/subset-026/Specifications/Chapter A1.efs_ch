@@ -149,7 +149,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  version="3.0.0"
  functionalBlockName=""
  Name=""
->We assume that the structures Messages.EUROBALISE.SubStructure1 received by the BTM contain at most one packet, otherwise the order of packets withing a balise message wouldn&apos;t be respected.</Paragraph></Sub>
+>We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.4"
  type="TITLE"
@@ -240,7 +240,22 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Deleted</Paragraph></Sub>
+>Deleted</Paragraph><Paragraph
+ id="A1.1.6.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><ReqRef
+ Id="3.7.2.3"
+>
+</ReqRef>
+An MA is always considered after all other packets of a message have been processed.
+This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated. #morido, 13/10/23</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.7"
  type="TITLE"

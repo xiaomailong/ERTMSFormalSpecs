@@ -1342,11 +1342,20 @@ USING
 >
 </ReqRef>
 <Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
 >
-<Expression>FullTrackDescriptionAvailable()
+<PreConditions>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition>
+</PreConditions>
+<Expression>FullTrackDescriptionAvailable( Packet =&gt; Packet )
   AND
 Mode != Mode.TR
   AND
@@ -1363,15 +1372,53 @@ Mode != Mode.TR
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="FullTrackDescriptionAvailable"
 >
 <ReqRef
  Id="3.7.2.3"
 >
 </ReqRef>
+<ReqRef
+ Id="A1.1.6.2"
+>
+</ReqRef>
+<Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="SSP does not cover required length"
+>
+<PreConditions>
+<PreCondition>SUM Kernel.TrackDescription.StaticSpeedProfile.SSP USING X.Distance &lt; 
+Default.BaseTypes.LengthToDistance(
+   Default.MessageTypes.QScaleLength(
+      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+      scale =&gt; Packet.Q_SCALE
+      )
+   )</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Gradient information does not cover required length"
+>
+<PreConditions>
+<PreCondition>Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients) &lt;
+Default.BaseTypes.LengthToDistance(
+   Default.MessageTypes.QScaleLength(
+      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+      scale =&gt; Packet.Q_SCALE
+      )
+   )</PreCondition>
+</PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -1418,7 +1465,7 @@ Mode != Mode.TR
  Name="Store MA information"
 >
 <PreConditions>
-<PreCondition>FullTrackDescriptionAvailable()</PreCondition>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt;  ConvertMALvl2or3_to_MALvl1 ( Packet ))</PreCondition>
 </PreConditions>
 <Actions>
 <Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action>
@@ -1481,7 +1528,7 @@ Mode != Mode.TR
 </ReqRef>
 <Comment></Comment>
 <PreConditions>
-<PreCondition>AcceptMA()</PreCondition>
+<PreCondition>AcceptMA( Packet =&gt; Packet )</PreCondition>
 </PreConditions>
 <Actions>
 <Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action>
