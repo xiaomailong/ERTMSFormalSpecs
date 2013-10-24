@@ -316,9 +316,6 @@
  Id="3.13.2.2.6.2"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
  Id="3.13.6.3.1.2.d"
 >
 </ReqRef><Comment>Indicates if this special brake is active.</Comment>
@@ -1438,13 +1435,10 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Id="3.13.2.2.9.1.3"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.g"
->
-</ReqRef><ReqRef
  Id="7.5.1.75.1"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.f"
 >
 </ReqRef><Comment>Selects the appropriate Kdry_rst value according to the given value of confidence level of emergency brake safe deceleration (provided by the trackside in National Values.ConfLevelForEmergBrakeSafeDecelerationOnDryRails) and a speed value.</Comment>
 <Parameters>
@@ -2105,15 +2099,6 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Id="3.13.6.2.1.4"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.g"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.h"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.k"
->
-</ReqRef><ReqRef
  Id="3.13.2.3.7.6"
 >
 </ReqRef><ReqRef
@@ -2121,9 +2106,6 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 >
 </ReqRef><ReqRef
  Id="3.13.2.3.7.10"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.i"
 >
 </ReqRef><ReqRef
  Id="3.13.3.2.2"
@@ -2139,6 +2121,18 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 >
 </ReqRef><ReqRef
  Id="3.13.2.3.1.1.g"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.f"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.g"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.h"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.j"
 >
 </ReqRef><Comment>Computes the safe emergency brake deceleration. Its value can be computed from the information provided by the Train Data or from the Conversion Model.</Comment>
 <Parameters>
@@ -2305,9 +2299,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><ReqRef
  Id="3.13.6.2.1.2.f"
 >
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.g"
->
 </ReqRef><Comment>Selects the appropriate Kwet_rst value according to a given speed.</Comment>
 <Parameters>
 <Parameter
@@ -2343,9 +2334,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_brk_emergency"
 >
 <ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
  Id="3.13.6.2.1.2.a"
 >
 <Comment></Comment>
@@ -2639,9 +2627,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="3.13.6.2.1.2.a"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
 >
 </ReqRef><Comment>Provides the default value for A_brake_emergency (when the use of special brakes was not inhibited by track conditions).</Comment>
 <Parameters>

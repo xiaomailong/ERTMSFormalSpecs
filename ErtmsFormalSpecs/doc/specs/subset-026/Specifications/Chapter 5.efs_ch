@@ -506,16 +506,16 @@
 >If no Mobile Terminal is registered to a Radio Network, the process shall go to A29</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 5.4.3.2.S2"
- type="REQUIREMENT"
+ type="TITLE"
  scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall offer the possibility to the driver to inhibit a level or to remove an existing inhibition.<Sub>
+><Sub>
 <Paragraph
  id="Entry 5.4.3.2.S2.1"
  type="REQUIREMENT"
@@ -527,7 +527,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the driver inhibits the current level, the status of the Level data shall be set to &quot;unknown&quot;.</Paragraph><Paragraph
+>If the status of the Level data is &quot;unknown&quot;, the ERTMS/ETCS on-board equipment shall request the driver to enter it.</Paragraph><Paragraph
  id="Entry 5.4.3.2.S2.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -538,7 +538,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the status of the Level data is &quot;unknown&quot;, the ERTMS/ETCS on-board equipment shall request the driver to enter it.</Paragraph><Paragraph
+>If the status of the Level data is &quot;invalid&quot;, the ERTMS/ETCS on-board equipment shall request the driver to re-validate or re-enter the ERTMS/ETCS level.</Paragraph><Paragraph
  id="Entry 5.4.3.2.S2.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -549,19 +549,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the status of the Level data is &quot;invalid&quot;, the ERTMS/ETCS on-board equipment shall request the driver to re-validate or re-enter the ERTMS/ETCS level.</Paragraph><Paragraph
- id="Entry 5.4.3.2.S2.4"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >If the entered / re-validated level is 2 or 3, the process shall go to S3</Paragraph><Paragraph
- id="Entry 5.4.3.2.S2.5"
+ id="Entry 5.4.3.2.S2.4"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
