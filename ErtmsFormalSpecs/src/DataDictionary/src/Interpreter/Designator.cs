@@ -99,8 +99,8 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="enclosing">the enclosing tree node</param>
         /// <param name="image">The designator image</param>
-        public Designator(ModelElement root, string image)
-            : base(root)
+        public Designator(ModelElement root, ModelElement log, string image)
+            : base(root, log)
         {
             Image = image;
         }

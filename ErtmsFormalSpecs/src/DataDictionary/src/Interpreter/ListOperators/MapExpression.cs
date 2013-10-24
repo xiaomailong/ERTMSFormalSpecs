@@ -31,8 +31,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="condition"></param>
         /// <param name="function"></param>
         /// <param name="enclosing">the root element for which this expression should be parsed</param>
-        public MapExpression(ModelElement root, Expression listExpression, Expression condition, Expression function)
-            : base(root, listExpression, condition, function)
+        public MapExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression function)
+            : base(root, log, listExpression, condition, function)
         {
         }
 

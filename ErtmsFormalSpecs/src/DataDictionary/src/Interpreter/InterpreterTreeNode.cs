@@ -28,9 +28,14 @@ namespace DataDictionary.Interpreter
         static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The root element for which this interpreter tree node is created
+        /// The root element for which this interpreter tree node is created and interpreted
         /// </summary>
         public ModelElement Root { get; private set; }
+
+        /// <summary>
+        /// The root element for which errors should be raised
+        /// </summary>
+        public ModelElement RootLog { get; private set; }
 
         /// <summary>
         /// The enclosing interpreter tree node
@@ -47,9 +52,10 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this interpreter tree node is created</param>
         /// <param name="enclosingNode">The enclosing expression node</param>
-        public InterpreterTreeNode(ModelElement root)
+        public InterpreterTreeNode(ModelElement root, ModelElement log)
         {
             Root = root;
+            RootLog = log;
             StaticUsage = null;
         }
 
@@ -72,9 +78,9 @@ namespace DataDictionary.Interpreter
         /// <param name="message"></param>
         public void AddError(string message)
         {
-            if (Root != null)
+            if (RootLog != null)
             {
-                Root.AddError(message);
+                RootLog.AddError(message);
             }
         }
 
@@ -84,9 +90,9 @@ namespace DataDictionary.Interpreter
         /// <param name="message"></param>
         public void AddWarning(string message)
         {
-            if (Root != null)
+            if (RootLog != null)
             {
-                Root.AddWarning(message);
+                RootLog.AddWarning(message);
             }
         }
 

@@ -80,8 +80,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public BinaryExpression(ModelElement root, Expression left, OPERATOR op, Expression right)
-            : base(root)
+        public BinaryExpression(ModelElement root, ModelElement log, Expression left, OPERATOR op, Expression right)
+            : base(root, log)
         {
             Left = left;
             Left.Enclosing = this;
@@ -1054,7 +1054,7 @@ namespace DataDictionary.Interpreter
                 if (!leftType.ValidBinaryOperation(Operation, rightType)
                     && !rightType.ValidBinaryOperation(Operation, leftType))
                 {
-                    AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType + ") and " + Right + "(" + rightType + ")");
+                    AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
                 }
             }
 

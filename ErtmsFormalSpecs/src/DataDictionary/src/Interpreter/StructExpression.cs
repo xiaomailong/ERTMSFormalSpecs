@@ -33,8 +33,8 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="root"></param>
-        public StructExpression(ModelElement root, Expression structure, Dictionary<string, Expression> associations)
-            : base(root)
+        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<string, Expression> associations)
+            : base(root, log)
         {
             Structure = structure;
             Associations = associations;
@@ -100,11 +100,18 @@ namespace DataDictionary.Interpreter
                 foreach (KeyValuePair<string, Expression> pair in Associations)
                 {
                     Values.IValue val = pair.Value.GetValue(new InterpretationContext(context));
-                    Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
-                    var.Name = pair.Key;
-                    var.Value = val;
-                    var.Enclosing = retVal;
-                    retVal.set(var);
+                    if (val != null)
+                    {
+                        Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+                        var.Name = pair.Key;
+                        var.Value = val;
+                        var.Enclosing = retVal;
+                        retVal.set(var);
+                    }
+                    else
+                    {
+                        AddError("Cannot evaluate value for " + pair.Value);
+                    }
                 }
             }
             else

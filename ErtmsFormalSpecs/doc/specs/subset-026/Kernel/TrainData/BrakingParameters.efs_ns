@@ -20,7 +20,7 @@
 </Range></Ranges>
 <Enumerations>
 <Enum
- Default="BrakePosition.PassengerTrainInP"
+ Default="PassengerTrainInP"
  Implemented="TRUE"
  Verified="TRUE"
  Name="BrakePositions"
@@ -44,7 +44,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="SpecialBrake.Regenerative"
+ Default="Regenerative"
  Implemented="TRUE"
  Verified="TRUE"
  Name="SpecialBrakeName"
@@ -129,7 +129,7 @@
 <Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingModelValue"
- Default="Kernel.TrainData.BrakingParameters.BrakingModelValue{SpeedStep=&gt;0, Acceleration=&gt;0}"
+ Default="Kernel.TrainData.BrakingParameters.BrakingModelValue{SpeedStep=&gt;0.0, Acceleration=&gt;0.0}"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
