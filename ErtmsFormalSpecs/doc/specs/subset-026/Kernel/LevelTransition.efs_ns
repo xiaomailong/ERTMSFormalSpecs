@@ -166,7 +166,7 @@
 <PreConditions>
 <PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition>
 </PreConditions>
-<Expression> Default.Level.LNTC</Expression>
+<Expression>Default.Level.LNTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -249,7 +249,7 @@
  Name="Q_SCALE"
 >
 </Parameter><Parameter
- Type="Default.NID_NTC"
+ Type="Messages.NID_NTC"
  Name="NID_NTC"
 >
 </Parameter></Parameters>
@@ -262,10 +262,10 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="NewLevelTransition"
+ Name="NewLevelTransitionToNTC"
 >
 <PreConditions>
+<PreCondition>ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) == Default.Level.LNTC</PreCondition>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -274,7 +274,26 @@ LevelTransition
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
     TRLevel =&gt; Default.LevelData {
        Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
-       NTC =&gt; NID_NTC
+       NTC =&gt; Default.NID_NTC(NID_NTC)
+    }
+}
+IN  LevelTransitionOrder.LevelandLength</Action>
+</Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="NewLevelTransition"
+>
+<PreConditions>
+<PreCondition>ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) != Default.Level.LNTC</PreCondition>
+</PreConditions>
+<Actions>
+<Action>INSERT
+LevelTransition
+{
+    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
+    TRLevel =&gt; Default.LevelData {
+       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+       NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
     }
 }
 IN  LevelTransitionOrder.LevelandLength</Action>
@@ -360,7 +379,7 @@ AddNewLTO
    Q_SCALE=&gt; Packet.Q_SCALE
 )
 ON 
-Packet.Sequence1 </Action>
+Packet.Sequence1</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -441,7 +460,7 @@ AddNewLTO
    L_ACKLEVELTR =&gt; EMPTY 
 )
 ON 
-Packet.Sequence1 </Action>
+Packet.Sequence1</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
