@@ -309,32 +309,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Value of the ERTMS/ETCS operated system.</Comment>
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
- Name="InhibitedLevels"
->
-<ReqRef
- Id="3.15.9.2"
->
-</ReqRef><Comment>Represents the list of currently inhibited levels and its data state.</Comment>
-<StructureElement
- TypeName="Default.DataState"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DataState"
->
-<Comment>Data state of the list of inhibited levels.</Comment>
-</StructureElement><StructureElement
- TypeName="Default.Levels"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Levels"
->
-<Comment>The list of inhibited levels.</Comment>
-</StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="BaliseGroup"
 >
@@ -1048,48 +1022,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Driver has selected inhibition"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.1"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver has selected inhibition"
->
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.SelectLevel</Action><Action>Kernel.InhibitedLevels.Levels &lt;- DMI.MasterDMI().In_LevelInhibition.InhibitedLevels</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Inhibition active"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Inhibition active"
->
-<ReqRef
- Id="Entry 5.4.3.3.8"
->
-</ReqRef><PreConditions>
-<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X.Value == Kernel.Level.Value</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7007,16 +6939,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
-</Variable><Variable
- Type="InhibitedLevels"
- DefaultValue=""
- VariableMode="Internal"
- Name="InhibitedLevels"
->
-<ReqRef
- Id="3.15.9.2"
->
-</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Mode"
  DefaultValue="Mode.NP"
