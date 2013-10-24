@@ -25075,7 +25075,8 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The basic brake build up time for the emergency brake with the brake position in passenger trains in P shall be calculated as:
+><Comment>Was implemented</Comment>
+The basic brake build up time for the emergency brake with the brake position in passenger trains in P shall be calculated as:
 	T_brake_basic_eb = a + b * (L/100) + c * (L/100)^2
 	where
 	L = MAX (400m; train length in m)
@@ -25088,18 +25089,46 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The basic brake build up time for the emergency brake with the brake position in freight trains in G shall be calculated as:
+>The basic brake build up time for the emergency brake with the brake position in freight trains in P shall be calculated as:
+	T_brake_basic_eb = a + b * (L/100) + c * (L/100)^2
+	where
+	L = MAX (400m; train length in m)
+	If train length &lt;= 900m:
+	a = 2.30
+	b = 0.00
+	c = 0.17
+	If 900m &lt; train length &lt;= 1500m:
+	a = -0.40
+	b = 1.60
+	c = 0.03</Paragraph><Paragraph
+ id="3.A3.8.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Was implemented</Comment>
+The basic brake build up time for the emergency brake with the brake position in freight trains in G shall be calculated as:
 	T_brake_basic_eb = am + bm * (L/100) + cm * (L/100)^2
 	where
 	L = train length in m
-	am = 12.00
-	bm = 0.00
-	cm = 0.05</Paragraph><Paragraph
- id="3.A3.8.3"
+	If train length&lt;= 900m:
+	a = 12.00
+	b = 0.00
+	c = 0.05 
+	If 900m &lt; train length &lt;= 1500m:
+	a = -0.40
+	b = 1.60
+	c = 0.03</Paragraph><Paragraph
+ id="3.A3.8.4"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -25114,7 +25143,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
 	T_brake_emergency_cmt = kto * T_brake_basic_eb when V_target &gt; 0
 	where
 	V_target is the target speed</Paragraph><Paragraph
- id="3.A3.8.4"
+ id="3.A3.8.5"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
