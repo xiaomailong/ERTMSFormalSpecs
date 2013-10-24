@@ -9,6 +9,17 @@
  Name="TrainData"
 >
 </NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="1"
+ MaxValue="2"
+ Precision="IntegerPrecision"
+ Default="1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalID"
+>
+</Range></Ranges>
 <Enumerations>
 <Enum
  Default="SafeRadioConnection.NoConnection"
@@ -109,20 +120,6 @@
 </EnumValue><EnumValue
  Value=""
  Name="NonMatching"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="NOT_AVAILABLE"
- Name="MobileTerminalState"
->
-<Values>
-<EnumValue
- Value=""
- Name="AVAILABLE"
->
-</EnumValue><EnumValue
- Value=""
- Name="NOT_AVAILABLE"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -792,10 +789,12 @@
  Name="RadioSessions"
 >
 </Collection><Collection
- TypeName="MobileTerminalState"
+ TypeName="MobileTerminalID"
  MaxSize="2"
- Default="[MobileTerminalState.NOT_AVAILABLE, MobileTerminalState.NOT_AVAILABLE]"
- Name="MobileTerminalsState"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalIDs"
 >
 <Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
 </Collection></Collections>
@@ -940,7 +939,7 @@
  Name="AtLeastOneIsAvailable"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN EURORADIO.MobileTerminals | X == EURORADIO.MobileTerminalState.AVAILABLE</PreCondition>
+<PreCondition>EURORADIO.MobileTerminals != []</PreCondition>
 </PreConditions>
 <Expression>True</Expression>
 </Case><Case
@@ -1820,8 +1819,9 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="RegisterMobileTerminal"
 >
 </Variable><Variable
- Type="EURORADIO.MobileTerminalsState"
+ Type="EURORADIO.MobileTerminalIDs"
  VariableMode="Internal"
+ Implemented="TRUE"
  Name="MobileTerminals"
 >
 </Variable></Variables>
