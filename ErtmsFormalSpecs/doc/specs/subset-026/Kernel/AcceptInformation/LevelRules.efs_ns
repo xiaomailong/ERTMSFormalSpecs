@@ -10,7 +10,7 @@
  Name="AcceptLevelCrossingInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.122"
+ Id="Entry 4.8.3.1.1.2.120"
 >
 </ReqRef><Cases>
 <Case
@@ -50,7 +50,7 @@
  Name="AcceptEOLMInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.65"
+ Id="Entry 4.8.3.1.1.2.63"
 >
 </ReqRef><Cases>
 <Case
@@ -90,7 +90,7 @@
  Name="AcceptSessionManagementWithNeighbouringRIU"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.63"
+ Id="Entry 4.8.3.1.1.2.61"
 >
 </ReqRef><Cases>
 <Case
@@ -130,7 +130,7 @@
  Name="AcceptInfillLocationReference"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.69"
+ Id="Entry 4.8.3.1.1.2.67"
 >
 </ReqRef><Cases>
 <Case
@@ -170,7 +170,7 @@
  Name="AcceptLocationIdentity"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.75"
+ Id="Entry 4.8.3.1.1.2.73"
 >
 </ReqRef><Cases>
 <Case
@@ -210,7 +210,7 @@
  Name="AcceptTrackConditionsBigMetalMasses"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.73"
+ Id="Entry 4.8.3.1.1.2.71"
 >
 </ReqRef><Cases>
 <Case
@@ -250,7 +250,7 @@
  Name="AcceptTrackConditionsExcludingBigMetalMasses"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.71"
+ Id="Entry 4.8.3.1.1.2.69"
 >
 </ReqRef><Cases>
 <Case
@@ -290,7 +290,7 @@
  Name="AcceptReversingSupervisionInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.113"
+ Id="Entry 4.8.3.1.1.2.111"
 >
 </ReqRef><Cases>
 <Case
@@ -330,7 +330,7 @@
  Name="AcceptReversingAreaInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.111"
+ Id="Entry 4.8.3.1.1.2.109"
 >
 </ReqRef><Cases>
 <Case
@@ -370,7 +370,7 @@
  Name="AcceptDefaultBaliseLoopRIUInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.115"
+ Id="Entry 4.8.3.1.1.2.113"
 >
 </ReqRef><Cases>
 <Case
@@ -410,7 +410,7 @@
  Name="AcceptLevelCrossingInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.121"
+ Id="Entry 4.8.3.1.1.2.119"
 >
 </ReqRef><Cases>
 <Case
@@ -450,7 +450,7 @@
  Name="AcceptPermittedBrakingDistanceInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.119"
+ Id="Entry 4.8.3.1.1.2.117"
 >
 </ReqRef><Cases>
 <Case
@@ -490,7 +490,7 @@
  Name="AcceptTrackAheadFreeUpToLevel2_3TransitionLocation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.117"
+ Id="Entry 4.8.3.1.1.2.115"
 >
 </ReqRef><Cases>
 <Case
@@ -530,7 +530,7 @@
  Name="AcceptSystemVersionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.95"
+ Id="Entry 4.8.3.1.1.2.93"
 >
 </ReqRef><Cases>
 <Case
@@ -570,7 +570,7 @@
  Name="AcceptTracksideConstituentSystemVersion"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.93"
+ Id="Entry 4.8.3.1.1.2.91"
 >
 </ReqRef><Cases>
 <Case
@@ -610,47 +610,7 @@
  Name="AcceptAcknowledgementOfSessionTermination"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.103"
->
-</ReqRef><Cases>
-<Case
- Name="Level 0"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level NTC"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 1"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 2"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 3"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="AcceptLevelInhibitionOrder"
->
-<ReqRef
- Id="Entry 4.8.3.1.1.2.21"
+ Id="Entry 4.8.3.1.1.2.101"
 >
 </ReqRef><Cases>
 <Case
@@ -770,7 +730,7 @@
  Name="AcceptSessionManagement"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.23"
+ Id="Entry 4.8.3.1.1.2.21"
 >
 </ReqRef><Cases>
 <Case
@@ -810,7 +770,7 @@
  Name="AcceptRadioNetworkRegistration"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.25"
+ Id="Entry 4.8.3.1.1.2.23"
 >
 </ReqRef><Cases>
 <Case
@@ -1170,7 +1130,7 @@
  Name="AcceptGeographicalPosition"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.53"
+ Id="Entry 4.8.3.1.1.2.51"
 >
 </ReqRef><Cases>
 <Case
@@ -1210,7 +1170,7 @@
  Name="AcceptFixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.51"
+ Id="Entry 4.8.3.1.1.2.49"
 >
 </ReqRef><Cases>
 <Case
@@ -1250,7 +1210,7 @@
  Name="AcceptPlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.49"
+ Id="Entry 4.8.3.1.1.2.47"
 >
 </ReqRef><Cases>
 <Case
@@ -1290,7 +1250,7 @@
  Name="AcceptRBCTransitionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.55"
+ Id="Entry 4.8.3.1.1.2.53"
 >
 </ReqRef><Cases>
 <Case
@@ -1330,7 +1290,7 @@
  Name="AcceptRadioInfillAreaInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.61"
+ Id="Entry 4.8.3.1.1.2.59"
 >
 </ReqRef><Cases>
 <Case
@@ -1370,7 +1330,7 @@
  Name="AcceptStopShuntingOnDeskOpening"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.59"
+ Id="Entry 4.8.3.1.1.2.57"
 >
 </ReqRef><Cases>
 <Case
@@ -1410,7 +1370,7 @@
  Name="AcceptDangerForSHInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.57"
+ Id="Entry 4.8.3.1.1.2.55"
 >
 </ReqRef><Cases>
 <Case
@@ -1450,7 +1410,7 @@
  Name="AcceptAdhesionFactor"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.47"
+ Id="Entry 4.8.3.1.1.2.45"
 >
 </ReqRef><Cases>
 <Case
@@ -1490,7 +1450,7 @@
  Name="AcceptTemporarySpeedRestriction"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.37"
+ Id="Entry 4.8.3.1.1.2.35"
 >
 </ReqRef><Cases>
 <Case
@@ -1530,7 +1490,7 @@
  Name="AcceptSRDistanceInformationFromLoop"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.35"
+ Id="Entry 4.8.3.1.1.2.33"
 >
 </ReqRef><Cases>
 <Case
@@ -1570,7 +1530,7 @@
  Name="AcceptStopIfInSRMode"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.33"
+ Id="Entry 4.8.3.1.1.2.31"
 >
 </ReqRef><Cases>
 <Case
@@ -1610,7 +1570,7 @@
  Name="AcceptTemporarySpeedRestrictionRevocation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.39"
+ Id="Entry 4.8.3.1.1.2.37"
 >
 </ReqRef><Cases>
 <Case
@@ -1650,7 +1610,7 @@
  Name="AcceptRouteSuitabilityData"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.45"
+ Id="Entry 4.8.3.1.1.2.43"
 >
 </ReqRef><Cases>
 <Case
@@ -1690,7 +1650,7 @@
  Name="AcceptDefaultGradientForTSR"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.43"
+ Id="Entry 4.8.3.1.1.2.41"
 >
 </ReqRef><Cases>
 <Case
@@ -1730,7 +1690,7 @@
  Name="AcceptTrainRejectedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.106"
+ Id="Entry 4.8.3.1.1.2.104"
 >
 </ReqRef><Cases>
 <Case
@@ -1770,7 +1730,7 @@
  Name="AcceptInitiationOfSessionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.102"
+ Id="Entry 4.8.3.1.1.2.100"
 >
 </ReqRef><Cases>
 <Case
@@ -1810,7 +1770,7 @@
  Name="AcceptTrackAheadFreeRequestFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.98"
+ Id="Entry 4.8.3.1.1.2.96"
 >
 </ReqRef><Cases>
 <Case
@@ -1850,7 +1810,7 @@
  Name="AcceptTrainRunningNumberFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.100"
+ Id="Entry 4.8.3.1.1.2.98"
 >
 </ReqRef><Cases>
 <Case
@@ -1890,7 +1850,7 @@
  Name="AcceptPermittedBrakingDistanceInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.120"
+ Id="Entry 4.8.3.1.1.2.118"
 >
 </ReqRef><Cases>
 <Case
@@ -1930,7 +1890,7 @@
  Name="AcceptReversingSupervisionInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.114"
+ Id="Entry 4.8.3.1.1.2.112"
 >
 </ReqRef><Cases>
 <Case
@@ -1970,7 +1930,7 @@
  Name="AcceptTrainAcceptedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.108"
+ Id="Entry 4.8.3.1.1.2.106"
 >
 </ReqRef><Cases>
 <Case
@@ -2010,7 +1970,7 @@
  Name="AcceptSoMPositionReportConfirmedByRBCFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.110"
+ Id="Entry 4.8.3.1.1.2.108"
 >
 </ReqRef><Cases>
 <Case
@@ -2050,7 +2010,7 @@
  Name="AcceptReversingAreaInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.112"
+ Id="Entry 4.8.3.1.1.2.110"
 >
 </ReqRef><Cases>
 <Case
@@ -2090,7 +2050,7 @@
  Name="AcceptPositionReportParametersFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.30"
+ Id="Entry 4.8.3.1.1.2.28"
 >
 </ReqRef><Cases>
 <Case
@@ -2130,7 +2090,7 @@
  Name="AcceptSRAuthorisationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.32"
+ Id="Entry 4.8.3.1.1.2.30"
 >
 </ReqRef><Cases>
 <Case
@@ -2170,7 +2130,7 @@
  Name="AcceptSessionManagementFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.24"
+ Id="Entry 4.8.3.1.1.2.22"
 >
 </ReqRef><Cases>
 <Case
@@ -2210,7 +2170,7 @@
  Name="AcceptRadioNetworkRegistrationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.26"
+ Id="Entry 4.8.3.1.1.2.24"
 >
 </ReqRef><Cases>
 <Case
@@ -2250,7 +2210,7 @@
  Name="AcceptMARequestParametersFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.28"
+ Id="Entry 4.8.3.1.1.2.26"
 >
 </ReqRef><Cases>
 <Case
@@ -2290,7 +2250,7 @@
  Name="AcceptInhibitionOfRevocableTSRsFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.42"
+ Id="Entry 4.8.3.1.1.2.40"
 >
 </ReqRef><Cases>
 <Case
@@ -2330,7 +2290,7 @@
  Name="AcceptRouteSuitabilityDataFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.46"
+ Id="Entry 4.8.3.1.1.2.44"
 >
 </ReqRef><Cases>
 <Case
@@ -2370,7 +2330,7 @@
  Name="AcceptTemporarySpeedRestrictionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.38"
+ Id="Entry 4.8.3.1.1.2.36"
 >
 </ReqRef><Cases>
 <Case
@@ -2410,7 +2370,7 @@
  Name="AcceptTemporarySpeedRestrictionRevocationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.40"
+ Id="Entry 4.8.3.1.1.2.38"
 >
 </ReqRef><Cases>
 <Case
@@ -2730,7 +2690,7 @@
  Name="AcceptAdhesionFactorFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.48"
+ Id="Entry 4.8.3.1.1.2.46"
 >
 </ReqRef><Cases>
 <Case
@@ -2770,7 +2730,7 @@
  Name="AcceptAcknowledgementOfTrainDataFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.80"
+ Id="Entry 4.8.3.1.1.2.78"
 >
 </ReqRef><Cases>
 <Case
@@ -2810,7 +2770,7 @@
  Name="AcceptSHRefusedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.90"
+ Id="Entry 4.8.3.1.1.2.88"
 >
 </ReqRef><Cases>
 <Case
@@ -2850,7 +2810,7 @@
  Name="AcceptRevocationOfEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.88"
+ Id="Entry 4.8.3.1.1.2.86"
 >
 </ReqRef><Cases>
 <Case
@@ -2890,7 +2850,7 @@
  Name="AcceptRBCTransitionOrderFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.56"
+ Id="Entry 4.8.3.1.1.2.54"
 >
 </ReqRef><Cases>
 <Case
@@ -2930,7 +2890,7 @@
  Name="AcceptAssignmentOfCoOrdinateSystemFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.68"
+ Id="Entry 4.8.3.1.1.2.66"
 >
 </ReqRef><Cases>
 <Case
@@ -2970,7 +2930,7 @@
  Name="AcceptFixedTextInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.52"
+ Id="Entry 4.8.3.1.1.2.50"
 >
 </ReqRef><Cases>
 <Case
@@ -3010,7 +2970,7 @@
  Name="AcceptPlainTextInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.50"
+ Id="Entry 4.8.3.1.1.2.48"
 >
 </ReqRef><Cases>
 <Case
@@ -3050,7 +3010,7 @@
  Name="AcceptGeographicalPositionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.54"
+ Id="Entry 4.8.3.1.1.2.52"
 >
 </ReqRef><Cases>
 <Case
@@ -3090,7 +3050,7 @@
  Name="AcceptTrackConditionsExcludingBigMetalMassesFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.72"
+ Id="Entry 4.8.3.1.1.2.70"
 >
 </ReqRef><Cases>
 <Case
@@ -3130,7 +3090,7 @@
  Name="AcceptConditionalEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.86"
+ Id="Entry 4.8.3.1.1.2.84"
 >
 </ReqRef><Cases>
 <Case
@@ -3170,7 +3130,7 @@
  Name="AcceptTracksideConstituentSystemVersionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.94"
+ Id="Entry 4.8.3.1.1.2.92"
 >
 </ReqRef><Cases>
 <Case
@@ -3210,7 +3170,7 @@
  Name="AcceptSHAuthorisedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.92"
+ Id="Entry 4.8.3.1.1.2.90"
 >
 </ReqRef><Cases>
 <Case
@@ -3250,7 +3210,7 @@
  Name="AcceptUnconditionalEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.84"
+ Id="Entry 4.8.3.1.1.2.82"
 >
 </ReqRef><Cases>
 <Case
@@ -3290,7 +3250,7 @@
  Name="AcceptRecognitionOfExitFromTRIPModeFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.78"
+ Id="Entry 4.8.3.1.1.2.76"
 >
 </ReqRef><Cases>
 <Case
@@ -3330,7 +3290,7 @@
  Name="AcceptCoOperativeShorteningOfMAFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.82"
+ Id="Entry 4.8.3.1.1.2.80"
 >
 </ReqRef><Cases>
 <Case
@@ -3363,46 +3323,6 @@
 <PreConditions>
 <PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3() AND Exceptions.LevelException4() AND Exceptions.LevelException5()</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="AcceptLevelInhibitionOrderFromRBC"
->
-<ReqRef
- Id="Entry 4.8.3.1.1.2.22"
->
-</ReqRef><Cases>
-<Case
- Name="Level 0"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level NTC"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 1"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 2"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 3"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
-<Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -3410,7 +3330,7 @@
  Name="AcceptAcknowledgementOfSessionTerminationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.104"
+ Id="Entry 4.8.3.1.1.2.102"
 >
 </ReqRef><Cases>
 <Case
