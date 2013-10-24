@@ -8585,7 +8585,6 @@ The following tables shall be applied assuming that:<Sub>
 >Regarding 4.8.2.1 a): In case a balise is missed or a balise telegram cannot be decoded, the information &quot;Inhibition of balise group message consistency reaction&quot; is only used by the on-board equipment to inhibit the service brake reaction, while the balise group message is rejected. If all the telegrams from a balise group are correctly read, the information &quot;Inhibition of balise group message consistency reaction&quot;, if received, shall be ignored by the on-board equipment. Therefore this information need not to be referred to in the following tables.</Paragraph><Paragraph
  id="4.8.2.3"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8594,7 +8593,7 @@ The following tables shall be applied assuming that:<Sub>
  version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous revision status was </Comment>
+><Comment></Comment>
 In case a balise telegram contains the information VBC marker and a country/region identity that both match a stored VBC, the whole balise telegram is ignored and any further check in relation to this balise telegram is irrelevant (refer to 3.15.9.3 b)). Otherwise the information VBC marker, if included in a consistent balise group message, shall always be ignored by the ERTMS/ETCS on-board equipment and need not to be referred to in the following tables.</Paragraph><Paragraph
  id="4.8.2.4"
  type="REQUIREMENT"
@@ -8888,7 +8887,7 @@ Note: with the exception of the data that is forwarded to a National System thro
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Conditional Level Transition Order; Yes; ; ; ; ; </Paragraph><Paragraph
+>Conditional Level Transition Order; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.21"
  type="REQUIREMENT"
  scope="OBU"
@@ -8943,7 +8942,7 @@ Note: with the exception of the data that is forwarded to a National System thro
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MA Request Parameters; No; ; ; ; ; </Paragraph><Paragraph
+>MA Request Parameters; No; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.26"
  type="REQUIREMENT"
  scope="OBU"
@@ -8987,7 +8986,7 @@ Note: with the exception of the data that is forwarded to a National System thro
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR Authorisation + (optional) List of Balises in SR mode; No; ; ; ; ; </Paragraph><Paragraph
+>SR Authorisation + (optional) List of Balises in SR mode; No; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.30"
  type="REQUIREMENT"
  scope="OBU"
@@ -9020,7 +9019,7 @@ Note: with the exception of the data that is forwarded to a National System thro
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Stop if in SR mode; Yes; ; ; ; ; </Paragraph><Paragraph
+>Stop if in SR mode; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.33"
  type="REQUIREMENT"
  scope="OBU"
