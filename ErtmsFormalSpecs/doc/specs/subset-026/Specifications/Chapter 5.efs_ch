@@ -1007,7 +1007,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall send an MA request to the RBC and wait. <Sub>
+>The ERTMS/ETCS on-board equipment shall send an MA request to the RBC and wait.<Sub>
 <Paragraph
  id="Entry 5.4.3.2.S21.1"
  type="REQUIREMENT"
@@ -1132,7 +1132,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall require an acknowledgement from the driver for running in Staff Responsible mode. <Sub>
+>The ERTMS/ETCS on-board equipment shall require an acknowledgement from the driver for running in Staff Responsible mode.<Sub>
 <Paragraph
  id="Entry 5.4.3.2.S24.1"
  type="REQUIREMENT"
@@ -1170,7 +1170,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall require an acknowledgement from the driver for running in On Sight/Limited Supervision/Shunting mode. <Sub>
+>The ERTMS/ETCS on-board equipment shall require an acknowledgement from the driver for running in On Sight/Limited Supervision/Shunting mode.<Sub>
 <Paragraph
  id="Entry 5.4.3.2.S25.1"
  type="REQUIREMENT"
@@ -1197,7 +1197,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall open the session with the RBC. </Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall open the session with the RBC.</Paragraph><Paragraph
  id="Entry 5.4.3.2.D31"
  type="REQUIREMENT"
  scope="OBU"
@@ -8703,7 +8703,7 @@ Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.2.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  status="NA"
@@ -8714,18 +8714,17 @@ Intentionally deleted.</Paragraph></Sub>
 <Paragraph
  id="5.18.2.2.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.
-</Paragraph><Paragraph
+>This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
  id="5.18.2.2.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  status="NA"
@@ -8738,7 +8737,7 @@ Intentionally deleted.</Paragraph></Sub>
 <Paragraph
  id="5.18.2.2.2.1"
  type="NOTE"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  reviewed="TRUE"
@@ -8751,7 +8750,7 @@ Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.2.3"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
@@ -8789,7 +8788,7 @@ Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.2.5"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
@@ -8803,7 +8802,7 @@ When the min safe front end of the train reaches the Powerless section end locat
 <Paragraph
  id="5.18.2.5.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  status="NA"
@@ -8816,7 +8815,7 @@ When the min safe front end of the train reaches the Powerless section end locat
 <Paragraph
  id="5.18.2.5.1.1"
  type="NOTE"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  name=""
  reviewed="TRUE"
@@ -8841,7 +8840,7 @@ The Raise pantograph information shall remain displayed for a fixed time (see Ap
 <Paragraph
  id="5.18.2.6.1"
  type="NOTE"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
@@ -8849,7 +8848,7 @@ The Raise pantograph information shall remain displayed for a fixed time (see Ap
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Note: The train front end position when this information disappears is shown as point G in the Figure 13. </Paragraph></Sub>
+>Note: The train front end position when this information disappears is shown as point G in the Figure 13.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.18.3"
@@ -8905,7 +8904,7 @@ This procedure is dealing with the announcement and indication to the driver of 
 This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
  id="5.18.3.2.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8915,12 +8914,12 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  Name=""
 ><Comment></Comment>
 The displayed Neutral section announcement information shall also indicate if the related functionality is executed
-automatically, or
-if the driver is requested to act.<Sub>
+- automatically, or
+- if the driver is requested to act.<Sub>
 <Paragraph
  id="5.18.3.2.2.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8934,7 +8933,7 @@ Note: Whether the operation is automatic or manual is application dependent.</Pa
 </Paragraph><Paragraph
  id="5.18.3.3"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
@@ -8947,7 +8946,7 @@ When the max safe front end of the train reaches the starting location (point D)
 - &quot;Neutral section&quot; information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.3.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
@@ -8960,8 +8959,8 @@ When the min safe front end of the train reaches the Powerless section end locat
 - &quot;End of Neutral section&quot; information shall be displayed to the driver.<Sub>
 <Paragraph
  id="5.18.3.4.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
+ type="REQUIREMENT"
+ scope="OBU"
  bl="3.2.0"
  name=""
  status="NA"
@@ -8975,7 +8974,7 @@ The displayed End of Neutral section information shall also indicate if the rela
 <Paragraph
  id="5.18.3.4.1.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8989,7 +8988,7 @@ Note: Whether the operation is automatic or manual is application dependent.</Pa
 </Paragraph><Paragraph
  id="5.18.3.5"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9581,7 +9580,7 @@ Changing the traction system<Sub>
 This procedure is dealing with the announcement and indication to the driver of a change of traction system.</Paragraph><Paragraph
  id="5.18.10.2"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9593,7 +9592,7 @@ This procedure is dealing with the announcement and indication to the driver of 
 Change of traction system announcement shall be displayed to the driver when the max safe front end of the train reaches a location (point C) in rear of the location of change of traction system (point F).</Paragraph><Paragraph
  id="5.18.10.3"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9605,7 +9604,7 @@ Change of traction system announcement shall be displayed to the driver when the
 This location (point C) shall be determined by the ERTMS/ETCS on-board equipment taking into account the time necessary for performing the required actions and the current train speed.</Paragraph><Paragraph
  id="5.18.10.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9615,12 +9614,12 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  Name=""
 ><Comment></Comment>
 The displayed Change of traction system announcement information shall also indicate if the related functionality is executed
-automatically, or
-if the driver is requested to act.<Sub>
+- automatically, or
+- if the driver is requested to act.<Sub>
 <Paragraph
  id="5.18.10.4.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9633,7 +9632,7 @@ Note: Whether the operation is automatic or manual is application dependent.</Pa
 </Paragraph><Paragraph
  id="5.18.10.5"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -9643,11 +9642,11 @@ Note: Whether the operation is automatic or manual is application dependent.</Pa
  Name=""
 ><Comment></Comment>
 When the max safe front end of the train reaches the Change of traction system location (point F):
-the Change of traction system announcement information shall no longer be displayed to the driver,
-the New traction system information shall be displayed to the driver.</Paragraph><Paragraph
+- the Change of traction system announcement information shall no longer be displayed to the driver,
+- the New traction system information shall be displayed to the driver.</Paragraph><Paragraph
  id="5.18.10.6"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""

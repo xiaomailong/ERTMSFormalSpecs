@@ -4417,11 +4417,11 @@ Active Functions Table<Sub>
  Name=""
 >Command Emergency Brake; 4; NP, TR, SF</Paragraph><Paragraph
  id="4.5.2.1.60"
- type="TITLE"
+ type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4650,7 +4650,7 @@ Active Functions Table<Sub>
 Manage &quot;Stop Shunting on desk opening&quot; information; 4.4.20.1.8 4.4.20.1.9; PS</Paragraph><Paragraph
  id="4.5.2.1.83"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -4659,7 +4659,7 @@ Manage &quot;Stop Shunting on desk opening&quot; information; 4.4.20.1.8 4.4.20.
  version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous revision status was </Comment>
+><Comment></Comment>
 Manage &quot;Virtual Balise Covers&quot;; 3.15.9; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.84"
  type="REQUIREMENT"
@@ -4691,8 +4691,7 @@ Advance display of route related information; 3.15.10; FS</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->2 Exception: the transition PS =&gt; SH shall not be reported
-</Paragraph><Paragraph
+>2 Exception: the transition PS =&gt; SH shall not be reported</Paragraph><Paragraph
  id="4.5.2.1.86"
  type="NOTE"
  scope="OBU"
@@ -4702,8 +4701,7 @@ Advance display of route related information; 3.15.10; FS</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->3 In case the ERTMS on-board equipment is interfaced to the National System through an STM, refer to SUBSET-035 for details
-</Paragraph><Paragraph
+>3 In case the ERTMS on-board equipment is interfaced to the National System through an STM, refer to SUBSET-035 for details</Paragraph><Paragraph
  id="4.5.2.1.87"
  type="NOTE"
  scope="OBU"
@@ -8585,6 +8583,7 @@ The following tables shall be applied assuming that:<Sub>
 >Regarding 4.8.2.1 a): In case a balise is missed or a balise telegram cannot be decoded, the information &quot;Inhibition of balise group message consistency reaction&quot; is only used by the on-board equipment to inhibit the service brake reaction, while the balise group message is rejected. If all the telegrams from a balise group are correctly read, the information &quot;Inhibition of balise group message consistency reaction&quot;, if received, shall be ignored by the on-board equipment. Therefore this information need not to be referred to in the following tables.</Paragraph><Paragraph
  id="4.8.2.3"
  type="REQUIREMENT"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8597,7 +8596,7 @@ The following tables shall be applied assuming that:<Sub>
 In case a balise telegram contains the information VBC marker and a country/region identity that both match a stored VBC, the whole balise telegram is ignored and any further check in relation to this balise telegram is irrelevant (refer to 3.15.9.3 b)). Otherwise the information VBC marker, if included in a consistent balise group message, shall always be ignored by the ERTMS/ETCS on-board equipment and need not to be referred to in the following tables.</Paragraph><Paragraph
  id="4.8.2.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  optional="FALSE"
  name=""
@@ -8606,7 +8605,7 @@ In case a balise telegram contains the information VBC marker and a country/regi
  version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous revision status was </Comment>
+><Comment></Comment>
 Note: with the exception of the data that is forwarded to a National System through the STM interface (see 3.15.6 and SUBSET-035), what will happen to the data to be used by applications outside ERTMS/ETCS (e.g. whether it is discarded, forwarded to an external application, processed by a national function...) is outside the scope of this specification and is assumed as not being part of the ERTMS/ETCS on-board functionality.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.8.3"
