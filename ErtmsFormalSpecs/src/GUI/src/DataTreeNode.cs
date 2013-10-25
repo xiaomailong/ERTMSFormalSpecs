@@ -20,6 +20,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Utils;
 using DataDictionary;
+using DataDictionary.Specification;
 
 namespace GUI
 {
@@ -250,7 +251,7 @@ namespace GUI
                 string requirements = "";
 
                 ReqRef reqRef = Model as ReqRef;
-                if (reqRef != null)
+                if (reqRef != null && reqRef.Paragraph != null)
                 {
                     if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
                     {
@@ -263,15 +264,29 @@ namespace GUI
                 }
                 else
                 {
+                    List<Paragraph> relatedParagraphs = new List<Paragraph>();
                     IModelElement current = Model;
                     while (current != null)
                     {
                         ReqRelated reqRelated = current as ReqRelated;
                         if (reqRelated != null)
                         {
-                            requirements += reqRelated.getRequirements();
+                            reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
                         }
                         current = current.Enclosing as IModelElement;
+                    }
+
+                    relatedParagraphs.Sort();
+                    foreach (Paragraph paragraph in relatedParagraphs)
+                    {
+                        if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                        {
+                            requirements += paragraph.FullId + ", ";
+                        }
+                        else
+                        {
+                            requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
+                        }
                     }
                 }
 
