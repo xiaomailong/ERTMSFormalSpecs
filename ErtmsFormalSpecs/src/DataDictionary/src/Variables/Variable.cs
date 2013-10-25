@@ -352,13 +352,13 @@ namespace DataDictionary.Variables
             {
                 if (!Utils.Utils.isEmpty(Type.Comment))
                 {
-                    retVal = retVal + Type.Comment + "\n";
+                    retVal = retVal + TextualExplainUtilities.Comment(Type.Comment, 0) + "\n";
                 }
             }
 
             if (!Utils.Utils.isEmpty(Comment))
             {
-                retVal = retVal + Comment + "\n";
+                retVal = retVal + TextualExplainUtilities.Comment(Comment, 0) + "\n";
             }
 
             if (Value != null)
