@@ -65,7 +65,7 @@ namespace GUI.Converters
         {
             string retVal = "<unknown>";
             DataDictionary.Variables.IVariable variable = value as DataDictionary.Variables.IVariable;
-            if (variable != null)
+            if (variable != null && variable.Value != null)
             {
                 retVal = variable.Value.LiteralName;
                 if (retVal != null)
