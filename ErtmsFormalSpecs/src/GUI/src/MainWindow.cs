@@ -192,7 +192,7 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.9.8.4";
+        private string versionNumber = "0.9.8.5";
 
         /// <summary>
         /// The thread used to synchronize node names with their model
@@ -664,7 +664,7 @@ namespace GUI
                 {
                     activeDictionary.FilePath = saveFileDialog.FileName;
                     SaveOperation saveOperation = new SaveOperation(this, activeDictionary);
-                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation);
+                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation, false);
                     dialog.ShowDialog();
                 }
             }
@@ -675,7 +675,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -685,7 +685,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -707,7 +707,7 @@ namespace GUI
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:
-                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem));
+                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem), false);
                         dialog.ShowDialog();
                         break;
 
