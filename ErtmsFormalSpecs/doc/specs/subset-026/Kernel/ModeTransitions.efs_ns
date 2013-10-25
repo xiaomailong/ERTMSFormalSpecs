@@ -1755,26 +1755,6 @@ NLSignalReceived</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level 2/3"
->
-<ReqRef
- Id="Entry 5.4.3.2.S10.2.2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 2/3"
->
-<PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition>HandleModeChange in HandleModeChange.StartOfMission.S10</PreCondition></PreConditions>
-<Actions>
-<Action>DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Handle train position data state"
 >
 <ReqRef

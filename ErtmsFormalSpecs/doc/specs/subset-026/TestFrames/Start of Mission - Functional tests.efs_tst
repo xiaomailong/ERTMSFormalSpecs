@@ -2717,9 +2717,6 @@
  Id="Entry 5.4.3.2.S10.2.1"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S10.2.2"
->
-</ReqRef><ReqRef
  Id="5.4.6.1"
 >
 </ReqRef><ReqRef
@@ -2838,8 +2835,6 @@
  Kind="Instantaneous"
 >Kernel.Mode == Mode.NL</Expectation><Expectation
  Kind="Instantaneous"
->DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.MissionIsOnGoing</Expectation></Expectations>
@@ -2868,8 +2863,6 @@
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.Mode == Mode.NL</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
  Kind="Instantaneous"
