@@ -424,10 +424,6 @@ namespace GUI
                                 DisplayComboBox();
                                 break;
 
-                            case Keys.A:
-                                EditionTextBox.SelectAll();
-                                break;
-
                             default:
                                 break;
                         }
@@ -436,6 +432,25 @@ namespace GUI
             }
             catch (Exception)
             {
+            }
+
+            if (!e.Handled)
+            {
+                if (e.Control)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.A:
+                            EditionTextBox.SelectAll();
+                            e.Handled = true;
+                            break;
+
+                        case Keys.C:
+                            EditionTextBox.Copy();
+                            e.Handled = true;
+                            break;
+                    }
+                }
             }
         }
 
