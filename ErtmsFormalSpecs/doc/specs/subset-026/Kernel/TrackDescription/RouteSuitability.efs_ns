@@ -12,8 +12,7 @@
 <ReqRef
  Id="7.4.2.21.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -24,8 +23,7 @@
 <ReqRef
  Id="7.5.1.32"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_TRACKINIT"
  Default=""
  Mode="Internal"
@@ -35,8 +33,7 @@
 <ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="RouteSuitability.RouteSuitabilityItems"
  Default="[]"
@@ -60,20 +57,16 @@
 <ReqRef
  Id="3.12.2.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.135"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -83,8 +76,7 @@
 <ReqRef
  Id="7.5.1.29"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_LINEGAUGE"
  Default=""
  Mode="Internal"
@@ -94,12 +86,10 @@
 <ReqRef
  Id="7.5.1.67.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.a"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_AXLELOAD"
  Default=""
@@ -110,12 +100,10 @@
 <ReqRef
  Id="3.12.2.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.62"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_VOLTAGE"
  Default=""
  Mode="Internal"
@@ -125,12 +113,10 @@
 <ReqRef
  Id="7.5.1.78"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.b"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.NID_CTRACTION"
  Default=""
  Mode="Internal"
@@ -140,12 +126,10 @@
 <ReqRef
  Id="7.5.1.86.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.b"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -155,8 +139,7 @@
 <ReqRef
  Id="3.12.2.3"
 >
-</ReqRef>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="RouteSuitability.RouteSuitabilityItem"
@@ -175,8 +158,7 @@
 <ReqRef
  Id="3.12.2.3"
 >
-</ReqRef>
-<Comment>Creates an EFS axle load structure from the first ERTMS axle load element provided by the trackside.</Comment>
+</ReqRef><Comment>Creates an EFS axle load structure from the first ERTMS axle load element provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -226,20 +208,16 @@
 <ReqRef
  Id="3.12.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.3.c"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_SUITABILITY"
@@ -267,22 +245,19 @@
  Name="Line gauge"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition>
-</PreConditions>
+<PreCondition>aType == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.LoadingGauge != aLineGauge</Expression>
 </Case><Case
  Name="Axle load"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Max_axle_load</PreCondition>
-</PreConditions>
+<PreCondition>aType == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
 <Expression>aMaxAxleLoad &lt; TrainData.TrainData.Value.AxleLoadCategory</Expression>
 </Case><Case
  Name="Traction system"
 >
 <PreConditions>
-<PreCondition>aType == Messages.Q_SUITABILITY.Traction_system</PreCondition>
-</PreConditions>
+<PreCondition>aType == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Expression>NOT ( THERE_IS_IN TrainData.TrainData.Value.TractionSystems | X.Voltage == aTractionSystem AND X.Country == aNidCTraction )</Expression>
 </Case></Cases>
 </Function><Function
@@ -293,12 +268,10 @@
 <ReqRef
  Id="3.12.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.10"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="EOA defined"
 >
@@ -307,8 +280,7 @@
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition>
-</PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
@@ -330,12 +302,10 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <ReqRef
  Id="3.12.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.10"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="SvL defined"
 >
@@ -344,8 +314,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition>
-</PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
@@ -368,16 +337,13 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <ReqRef
  Id="3.12.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
@@ -402,20 +368,14 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <ReqRef
  Id="7.5.1.32"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action>
-<Action>RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action>
-</Actions>
+<Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action>RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -423,12 +383,9 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewRouteSuitabilityProfile ( Packet )</Action>
-</Actions>
+<Action>HandleNewRouteSuitabilityProfile ( Packet )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -452,8 +409,7 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <ReqRef
  Id="3.7.3.1.h"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -464,11 +420,9 @@ THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability == True</PreCondit
 <PreConditions>
 <PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition>
-</PreConditions>
+THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile IN RouteSuitabilityProfile.Items</Action>
-</Actions>
+<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -478,8 +432,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading
 <ReqRef
  Id="3.7.3.1.i"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -488,11 +441,9 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading
 <PreConditions>
 <PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system</PreCondition>
-</PreConditions>
+THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Traction_system IN RouteSuitabilityProfile.Items</Action>
-</Actions>
+<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Traction_system IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -502,8 +453,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Tractio
 <ReqRef
  Id="3.7.3.1.j"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Remove old axle load information"
@@ -511,11 +461,9 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Tractio
 <PreConditions>
 <PreCondition>Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load</PreCondition>
-</PreConditions>
+THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Max_axle_load IN RouteSuitabilityProfile.Items</Action>
-</Actions>
+<Action>REMOVE ALL X.Type == Messages.Q_SUITABILITY.Max_axle_load IN RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -534,20 +482,16 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
 <ReqRef
  Id="7.5.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.109"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.42"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -558,9 +502,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
                                                  aTractionSystem =&gt; Packet.M_VOLTAGE,
                                                  aNidCTraction =&gt; Packet.NID_CTRACTION )
 IN
-    RouteSuitabilityProfile.Items</Action>
-<Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action>
-</Actions>
+    RouteSuitabilityProfile.Items</Action><Action>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -571,8 +513,7 @@ IN
 <ReqRef
  Id="7.5.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -587,8 +528,7 @@ IN
     AddRouteSuitability ( aRouteSuitability =&gt; X,
                                      Scale =&gt; Packet.Q_SCALE )
 ON
-    Packet.Sequence1</Action>
-</Actions>
+    Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -598,18 +538,15 @@ ON
 <ReqRef
  Id="3.12.2.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Display route unsuitabilities"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN RouteSuitabilityProfile.Items | X.IsUnsuitability</PreCondition></PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayRouteUnsuitabilities()</Action>
-</Actions>
+<Action>DMI.MasterDMI().DisplayRouteUnsuitabilities()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -654,8 +591,7 @@ ON
                                                  aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
                                                  aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
 IN
-    RouteSuitabilityProfile.Items</Action>
-</Actions>
+    RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -671,12 +607,10 @@ IN
  Id="3.12.2.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.6"
 >
-</ReqRef>
-<Comment>Represents the route suitability information received from the trackside.</Comment>
+</ReqRef><Comment>Represents the route suitability information received from the trackside.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -689,12 +623,10 @@ IN
  Id="7.5.1.141"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.32"
 >
-</ReqRef>
-<Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
+</ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -704,13 +636,9 @@ IN
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>BTM.TravelledDistanceFromLRBG() &gt;= RouteSuitabilityProfile.EmptyProfileDistance</PreCondition>
-<PreCondition>RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition>
-</PreConditions>
+<PreCondition>BTM.TravelledDistanceFromLRBG() &gt;= RouteSuitabilityProfile.EmptyProfileDistance</PreCondition><PreCondition>RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
-<Action>RouteSuitabilityProfile.Items &lt;- []</Action>
-<Action>RouteSuitabilityProfile.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action>
-</Actions>
+<Action>RouteSuitabilityProfile.Items &lt;- []</Action><Action>RouteSuitabilityProfile.InitialState &lt;- Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

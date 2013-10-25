@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -53,8 +52,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -263,8 +261,7 @@
             }
         }
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -277,24 +274,19 @@
 <ReqRef
  Id="3.13.2.2.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.7"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -312,18 +304,15 @@
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -384,8 +373,7 @@ Speed =&gt; 50.0 ) == 0.9</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -470,13 +458,11 @@ Speed =&gt; 70.0 ) == 0.6</Expectation></Expectations>
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -537,8 +523,7 @@ Speed =&gt; 0.0 ) == 0.99</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -623,18 +608,15 @@ Speed =&gt; 0.0 ) == 0.7</Expectation></Expectations>
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -671,8 +653,7 @@ Speed =&gt; 120.0 ) == 0.5</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -725,13 +706,11 @@ Speed =&gt; 0.0 ) == 0.16</Expectation></Expectations>
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -768,8 +747,7 @@ Speed =&gt; 0.0 ) == 0.9</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -841,8 +819,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -857,23 +834,19 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
 {
     TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel
     {
@@ -1066,8 +1039,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
     },
     A_SB01 =&gt; 0.4,
     A_SB12 =&gt; 0.7
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -1253,8 +1225,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
             }
         }
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1267,20 +1238,16 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
 <ReqRef
  Id="3.13.2.2.3.1.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.9.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.11"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1294,8 +1261,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1340,8 +1306,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.2</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1384,8 +1349,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.27</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.27</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1430,20 +1394,16 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
 <ReqRef
  Id="3.13.2.2.3.1.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.9.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.11"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1457,8 +1417,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1477,8 +1436,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1497,9 +1455,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.4</Action>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.6</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.4</Action><Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.6</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1540,8 +1496,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.1</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt;- 0.1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1590,8 +1545,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.21</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt;- 0.21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1651,8 +1605,7 @@ Speed =&gt; 250.0 ) == 0.04</Expectation></Expectations>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1822,9 +1775,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     }
                 }
             }
-        }</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-</Actions>
+        }</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1837,24 +1788,19 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 <ReqRef
  Id="3.13.2.2.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.7"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1872,18 +1818,15 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1920,8 +1863,7 @@ Speed =&gt; 170.0 ) == 0.6</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1982,13 +1924,11 @@ BrakingModel =&gt; Kernel.TrainData.BrakingParameters.SelectBrakingModel (
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2049,8 +1989,7 @@ Speed =&gt; 0.0 ) == 0.99</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2135,18 +2074,15 @@ Speed =&gt; 0.0 ) == 0.7</Expectation></Expectations>
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2207,8 +2143,7 @@ Speed =&gt; 0.0 ) == 0.8</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2261,13 +2196,11 @@ Speed =&gt; 0.0 ) == 0.75</Expectation></Expectations>
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2304,8 +2237,7 @@ Speed =&gt; 0.0 ) == 0.9</Expectation></Expectations>
 {
     IsActive =&gt; False,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

@@ -65,14 +65,27 @@ namespace GUI
         /// </summary>
         /// <param name="reason"></param>
         /// <param name="work"></param>
-        public ProgressDialog(string reason, ProgressHandler work)
+        public ProgressDialog(string reason, ProgressHandler work, bool allowCancel = true)
         {
             InitializeComponent();
+
+            btnCancel.Enabled = allowCancel;
+            KeyUp += new KeyEventHandler(ProgressDialog_KeyUp);
 
             Work = work;
             Text = reason;
             label1.Text = reason;
             backgroundWorker1.DoWork += new DoWorkEventHandler(ManageCancel);
+        }
+
+        void ProgressDialog_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    e.Handled = true;
+                    break;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

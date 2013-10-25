@@ -20,6 +20,14 @@ using DataDictionary.Interpreter;
 namespace DataDictionary.Types
 {
     /// <summary>
+    /// This is an element which has a default value
+    /// </summary>
+    public interface IDefaultValueElement
+    {
+        string Default { get; set; }
+    }
+
+    /// <summary>
     /// This is an element which has a type
     /// </summary>
     public interface ITypedElement : Utils.INamable, Utils.IEnclosed, Utils.IModelElement
@@ -73,7 +81,7 @@ namespace DataDictionary.Types
     /// <summary>
     /// A type. All types must inherit from this class
     /// </summary>
-    public class Type : Generated.Type
+    public class Type : Generated.Type, IDefaultValueElement
     {
         /// <summary>
         /// Provides the enclosing namespace
@@ -333,6 +341,16 @@ namespace DataDictionary.Types
             {
                 return this == otherType;
             }
+        }
+
+        /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public virtual bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
+        {
+            return Match(otherType);
         }
 
         /// <summary>

@@ -19,8 +19,50 @@ namespace DataDictionary.Interpreter
 {
     public class ParseErrorException : Exception
     {
-        public ParseErrorException(string message)
-            : base(message)
+        /// <summary>
+        /// The size of the context to provide
+        /// </summary>
+        private static int CONTEXT_SIZE = 20;
+
+        /// <summary>
+        /// Builds the context messag
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="index"></param>
+        /// <param name="buffer"></param>
+        /// <returns></returns>
+        private static string buildContext(string message, int index, char[] buffer)
+        {
+            string retVal = message + " near ...";
+
+            int i = Math.Max(0, index - CONTEXT_SIZE);
+            while (i < index)
+            {
+                retVal += buffer[i];
+                i += 1;
+            }
+
+            retVal += "^";
+
+            while (i < index + CONTEXT_SIZE && i < buffer.Length)
+            {
+                retVal += buffer[i];
+                i += 1;
+            }
+
+            retVal += "...";
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="index"></param>
+        /// <param name="buffer"></param>
+        public ParseErrorException(string message, int index, char[] buffer)
+            : base(buildContext(message, index, buffer))
         {
         }
     }

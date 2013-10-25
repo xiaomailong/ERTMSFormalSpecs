@@ -21,6 +21,11 @@ namespace DataDictionary.Interpreter.Statement
     public class ProcedureCallStatement : Statement
     {
         /// <summary>
+        /// The Logger
+        /// </summary>
+        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
         /// The designator which identifies the procedure to call
         /// </summary>
         public Call Call { get; private set; }
@@ -31,8 +36,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
         /// <param name="parameters">The expressions used to compute the parameters</param>
-        public ProcedureCallStatement(ModelElement root, Call call)
-            : base(root)
+        public ProcedureCallStatement(ModelElement root, ModelElement log, Call call)
+            : base(root, log)
         {
             Call = call;
             Call.Enclosing = this;
@@ -286,11 +291,15 @@ namespace DataDictionary.Interpreter.Statement
                     explanation.SubExplanations.Add(conditionExplanation);
                 }
 
-                if (condition.EvaluatePreConditions(ctxt, conditionExplanation))
+                if (condition.EvaluatePreConditions(ctxt, conditionExplanation, log))
                 {
                     if (conditionExplanation != null)
                     {
                         conditionExplanation.Message = "SATISIFIED " + rule.Name + "." + condition.Name;
+                    }
+                    if (log)
+                    {
+                        Log.Info("SATISIFIED " + rule.Name + "." + condition.Name);
                     }
                     foreach (Rules.Action action in condition.Actions)
                     {

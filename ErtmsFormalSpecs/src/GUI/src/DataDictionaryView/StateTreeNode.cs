@@ -157,42 +157,5 @@ namespace GUI.DataDictionaryView
 
             return retVal;
         }
-
-        /// <summary>
-        /// Called before the selection changes
-        /// </summary>
-        public override void BeforeSelectionChange()
-        {
-            if (BaseTreeView != null)
-            {
-                Window window = BaseTreeView.ParentForm as Window;
-                if (window != null)
-                {
-                    window.ruleExplainTextBox.Visible = true;
-                    // window.stateDiagramPanel.Visible = false;
-                }
-            }
-
-            base.BeforeSelectionChange();
-        }
-
-        /// <summary>
-        /// Handles a selection change event
-        /// </summary>
-        public override void SelectionChanged()
-        {
-            if (BaseTreeView.RefreshNodeContent)
-            {
-                Window window = BaseTreeView.ParentForm as Window;
-                if (window != null)
-                {
-                    // window.stateDiagramPanel.StateMachine = Item.StateMachine;
-                    // window.ruleExplainTextBox.Visible = false;
-                    // window.stateDiagramPanel.Visible = true;
-                }
-            }
-
-            base.SelectionChanged();
-        }
     }
 }

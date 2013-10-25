@@ -134,15 +134,18 @@ namespace GUI.DataDictionaryView.UsageTreeView
             return retVal;
         }
 
+        ModelElement previousModel = null;
+
         protected override void BuildModel()
         {
-            Nodes.Clear();
-            ModelNode = null;
-            TestNode = null;
-
             ModelElement model = Root as ModelElement;
-            if (model != null)
+            if (model != null && model != previousModel)
             {
+                previousModel = model;
+
+                Nodes.Clear();
+                ModelNode = null;
+                TestNode = null;
                 foreach (Usage usage in model.EFSSystem.FindReferences(model))
                 {
                     UsageTreeNode current = new UsageTreeNode(usage);
@@ -161,12 +164,12 @@ namespace GUI.DataDictionaryView.UsageTreeView
                         Nodes.Add(current);
                     }
                 }
-            }
 
-            Sort();
-            if (__models != null)
-            {
-                ModelNode.ExpandAll();
+                Sort();
+                if (__models != null)
+                {
+                    ModelNode.ExpandAll();
+                }
             }
         }
     }

@@ -22,9 +22,9 @@ using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
@@ -34,32 +34,32 @@ namespace GUI.SpecificationView
             get { return specBrowserTextView.TextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get { return messagesRichTextBox.TextBox; }
         }
 
-        public EditorTextBox RequirementsTextBox
+        public override EditorTextBox RequirementsTextBox
         {
             get { return null; }
         }
 
-        public EditorTextBox ExpressionEditorTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
             get { return null; }
         }
 
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
         }
 
-        public BaseTreeView subTreeView
+        public override BaseTreeView subTreeView
         {
             get { return null; }
         }
 
-        public ExplainTextBox ExplainTextBox
+        public override ExplainTextBox ExplainTextBox
         {
             get { return null; }
         }
@@ -150,17 +150,9 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             specBrowserTreeView.RefreshModel();
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
         }
 
         /// <summary>
@@ -191,24 +183,6 @@ namespace GUI.SpecificationView
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
     }
 }

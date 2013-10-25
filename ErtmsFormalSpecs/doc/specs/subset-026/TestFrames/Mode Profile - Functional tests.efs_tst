@@ -25,12 +25,10 @@
 <ReqRef
  Id="3.12.4.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.4.6"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -45,8 +43,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -62,10 +59,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -92,8 +86,7 @@
     Length=&gt;200.0,
     Mode=&gt;Default.Mode.ModeProfile.LS  
 }
-IN Kernel.MA.ModeProfile.Profile</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+IN Kernel.MA.ModeProfile.Profile</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -126,8 +119,7 @@ IN Kernel.MA.ModeProfile.Profile</Action>
     TargetSpeedTimeOut =&gt; 0.0,
     ReferenceBG =&gt; 0,
     ReferenceBGLocation =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -181,8 +173,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 167.0 </Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 167.0 </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -207,8 +198,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 170.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 170.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -233,8 +223,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 396.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 396.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -259,8 +248,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 397.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 397.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -295,8 +283,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <ReqRef
  Id="3.12.4.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -311,8 +298,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -328,10 +314,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -421,8 +404,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                            ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -459,8 +441,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <ReqRef
  Id="3.12.4.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -475,8 +456,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -566,8 +546,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                            ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -618,8 +597,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <ReqRef
  Id="3.12.4.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -634,8 +612,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -651,10 +628,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -766,9 +740,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                 ]
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 250.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 250.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -819,8 +791,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <ReqRef
  Id="3.12.4.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -835,8 +806,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -852,8 +822,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -960,10 +929,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                 ]
-}</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1016,8 +982,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <ReqRef
  Id="3.12.4.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1032,8 +997,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1140,8 +1104,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1213,8 +1176,7 @@ Messages.EUROBALISE.SubStructure1
             }
         }             
    ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1245,8 +1207,7 @@ Messages.EUROBALISE.SubStructure1
 <ReqRef
  Id="3.12.4.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1352,8 +1313,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1446,8 +1406,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1495,8 +1454,7 @@ Messages.EUROBALISE.SubStructure1
 <ReqRef
  Id="3.12.4.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1511,8 +1469,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1528,8 +1485,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1614,10 +1570,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                            ]
-}</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1670,8 +1623,10 @@ Messages.EUROBALISE.SubStructure1
 <ReqRef
  Id="3.12.4.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><ReqRef
+ Id="5.9.2.1"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1686,8 +1641,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1703,8 +1657,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1789,10 +1742,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                            ]
-}</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+}</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1845,8 +1795,7 @@ Messages.EUROBALISE.SubStructure1
 <ReqRef
  Id="3.12.4.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1861,8 +1810,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1878,10 +1826,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1989,8 +1934,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2109,8 +2053,7 @@ NID_BG =&gt; 1212
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2148,8 +2091,7 @@ NID_BG =&gt; 1313
 <ReqRef
  Id="3.12.4.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2164,8 +2106,7 @@ NID_BG =&gt; 1313
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2181,10 +2122,7 @@ NID_BG =&gt; 1313
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2207,8 +2145,7 @@ NID_BG =&gt; 1313
     Orientation =&gt; Orientation.Nominal,
     LocationAccuracy =&gt; 5.0
 }
-IN BTM.Linking.Linkings</Action>
-<Action>BTM.LRBG &lt;- 
+IN BTM.Linking.Linkings</Action><Action>BTM.LRBG &lt;- 
 BTM.BaliseGroup {
     NID=&gt;2124,
     Orientation=&gt;Orientation.Nominal,
@@ -2218,8 +2155,7 @@ BTM.BaliseGroup {
             Position=&gt;1000.0,
             UnderReadingAmountOdo=&gt;2.0
         }
-}</Action>
-<Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+}</Action><Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
 {
     DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
 {
@@ -2228,16 +2164,13 @@ BTM.BaliseGroup {
         TrainRunningDirection =&gt; Orientation.Nominal
     },
     DataState =&gt; Default.DataState.Valid
-}</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
-<Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
+}</Action><Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action><Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
 { 
     Distance=&gt;100.0,
     Length=&gt;1000.0,
     Mode=&gt;Default.Mode.ModeProfile.OS
 }
-IN Kernel.MA.ModeProfile.Profile</Action>
-</Actions>
+IN Kernel.MA.ModeProfile.Profile</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2349,8 +2282,7 @@ IN Kernel.MA.ModeProfile.Profile</Action>
                }
     
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

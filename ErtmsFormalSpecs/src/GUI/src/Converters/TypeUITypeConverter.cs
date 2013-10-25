@@ -28,6 +28,39 @@ namespace GUI.Converters
     /// </summary>
     public class TypeUITypeConverter : StringConverter
     {
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return true;
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            BaseTreeNode.BaseEditor editor = context.Instance as BaseTreeNode.BaseEditor;
+            string text = value as string;
+            if (editor != null && text != null)
+            {
+                DataDictionary.Types.ITypedElement typedElement = editor.Model as DataDictionary.Types.ITypedElement;
+                if (typedElement != null)
+                {
+                    typedElement.TypeName = text;
+                    return typedElement;
+                }
+                else
+                {
+                    return base.ConvertFrom(context, culture, value);
+                }
+            }
+            else
+            {
+                return base.ConvertFrom(context, culture, value);
+            }
+        }
+
+        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        {
+            return true;
+        }
+
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             string retVal = "<unknown>";
@@ -50,16 +83,6 @@ namespace GUI.Converters
             }
 
             return retVal;
-        }
-
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            return false;
-        }
-
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-        {
-            return true;
         }
     }
 }

@@ -37,9 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 10.0</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Odometry.EstimatedSpeed &lt;- 10.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -51,8 +49,7 @@
 <ReqRef
  Id="3.11.4.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -66,8 +63,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 200.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -91,20 +87,16 @@
 <ReqRef
  Id="3.11.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.4.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.4.6"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -245,10 +237,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -311,8 +300,7 @@
 <ReqRef
  Id="3.7.3.1.c"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -419,8 +407,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -474,8 +461,7 @@
 <ReqRef
  Id="7.5.1.32"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -524,8 +510,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -563,8 +548,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 550.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 550.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -597,8 +581,7 @@
 <ReqRef
  Id="3.11.4.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -739,9 +722,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.A</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.A</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -807,12 +788,10 @@
 <ReqRef
  Id="3.11.4.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -826,9 +805,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -970,9 +947,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

@@ -12,16 +12,13 @@
 <ReqRef
  Id="3.13.9.5.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.4"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -42,8 +39,7 @@
 <ReqRef
  Id="3.13.9.5.4"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI2.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -64,16 +60,13 @@
 <ReqRef
  Id="3.13.9.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
@@ -93,8 +86,7 @@
 <ReqRef
  Id="3.13.9.5.8"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -106,8 +98,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
@@ -122,20 +113,16 @@
 <ReqRef
  Id="3.13.9.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TargetSupervision.Target"
  Name="MRSPn"
@@ -146,18 +133,13 @@
  Name="EOA, first case"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-<PreCondition>MA.IsEOA ( MRSPn )</PreCondition>
-</PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition><PreCondition>MA.IsEOA ( MRSPn )</PreCondition></PreConditions>
 <Expression>d_I_EOA ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Other target, first case"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-</PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_I ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Second case"
@@ -171,9 +153,7 @@
         BaseTypes.MinDistance ( X.Location, RESULT )
     INITIAL_VALUE
         BaseTypes.Distance.Infinity
-) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-</PreConditions>
+) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) - MRSPn.Speed * T_preindication</Expression>
 </Case></Cases>
 </Function><Function
@@ -184,8 +164,7 @@
 <ReqRef
  Id="3.13.9.5.8"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
@@ -205,8 +184,7 @@
 <ReqRef
  Id="3.13.9.5.4"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -218,8 +196,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
@@ -234,20 +211,16 @@
 <ReqRef
  Id="3.13.9.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.8"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -266,19 +239,15 @@
  Id="Entry 3.A3.1.1.18"
 >
 <Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.12.1"
 >
-</ReqRef>
-<Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
+</ReqRef><Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
 </Variable></Variables>
 </NameSpace>

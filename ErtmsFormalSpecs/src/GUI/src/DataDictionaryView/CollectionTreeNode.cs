@@ -69,16 +69,18 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The default value of the variable
+            /// The structure element default value
             /// </summary>
             [Category("Description")]
-            public string DefaultValue
+            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
+            public DataDictionary.Types.Collection DefaultValue
             {
-                get { return Item.getDefault(); }
+                get { return Item; }
                 set
                 {
-                    Item.Default = null;
-                    Item.setDefault(value);
+                    Item = value;
+                    RefreshNode();
                 }
             }
 

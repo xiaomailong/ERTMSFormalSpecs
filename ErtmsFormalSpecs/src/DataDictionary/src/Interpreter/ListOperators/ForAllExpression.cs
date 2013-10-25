@@ -29,8 +29,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public ForAllExpression(ModelElement root, Expression listExpression, Expression condition)
-            : base(root, listExpression, condition)
+        public ForAllExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition)
+            : base(root, log, listExpression, condition)
         {
         }
 

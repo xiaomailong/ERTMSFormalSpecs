@@ -38,23 +38,6 @@ namespace GUI
         {
             MDIWindow.Invoke((MethodInvoker)delegate
             {
-                // Refresh the node which corresponds to the model that has been changed
-                foreach (IBaseForm form in MDIWindow.SubWindows)
-                {
-                    if (form.TreeView != null)
-                    {
-                        BaseTreeNode node = form.TreeView.FindNode(model);
-                        if (node != null)
-                        {
-                            node.RefreshNode();
-                            if (form.Properties != null)
-                            {
-                                form.Properties.Refresh();
-                            }
-                        }
-                    }
-                }
-
                 foreach (EditorForm editor in MDIWindow.Editors)
                 {
                     if (editor.Instance == model)

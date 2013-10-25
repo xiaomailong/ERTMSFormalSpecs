@@ -20,6 +20,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Utils;
 using DataDictionary;
+using DataDictionary.Specification;
 
 namespace GUI
 {
@@ -184,62 +185,126 @@ namespace GUI
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
                 {
-                    if (baseForm.MessagesTextBox != null)
-                    {
-                        baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
-                        baseForm.MessagesTextBox.ReadOnly = true;
-                    }
+                    RefreshViewAccordingToModel(baseForm, false);
+                }
+            }
+        }
 
-                    if (baseForm.subTreeView != null)
+        /// <summary>
+        /// Refreshes the view according to the model
+        /// </summary>
+        /// <param name="baseForm"></param>
+        /// <param name="ignoreFocused"></param>
+        public void RefreshViewAccordingToModel(IBaseForm baseForm, bool ignoreFocused)
+        {
+            if (baseForm.MessagesTextBox != null)
+            {
+                if (!(baseForm.MessagesTextBox.ContainsFocus && ignoreFocused))
+                {
+                    IModelElement current = Model;
+                    List<ElementLog> messages = new List<ElementLog>();
+                    while (current != null)
                     {
-                        baseForm.subTreeView.SetRoot(Model);
-                    }
+                        if (current.Messages != null)
+                        {
+                            messages.AddRange(current.Messages);
+                        }
 
-                    // By default, the explain text box is visible
-                    if (baseForm.ExplainTextBox != null)
+                        if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
+                        {
+                            current = current.Enclosing as IModelElement;
+                        }
+                        else
+                        {
+                            current = null;
+                        }
+                    }
+                    baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
+                    baseForm.MessagesTextBox.ReadOnly = true;
+                }
+            }
+
+            if (baseForm.subTreeView != null)
+            {
+                baseForm.subTreeView.SetRoot(Model);
+            }
+
+            // By default, the explain text box is visible
+            if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
+            {
+                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
+                {
+                    baseForm.ExplainTextBox.SetModel(Model);
+                    if (!baseForm.ExplainTextBox.Visible)
                     {
-                        baseForm.ExplainTextBox.SetModel(Model);
                         baseForm.ExplainTextBox.Visible = true;
                         if (baseForm.ExpressionEditorTextBox != null)
                         {
                             baseForm.ExpressionEditorTextBox.Visible = false;
                         }
                     }
+                }
+            }
 
-                    if (baseForm.RequirementsTextBox != null)
+            if (baseForm.RequirementsTextBox != null && !ignoreFocused)
+            {
+                string requirements = "";
+
+                ReqRef reqRef = Model as ReqRef;
+                if (reqRef != null && reqRef.Paragraph != null)
+                {
+                    if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
                     {
-                        string requirements = "";
-
-                        ReqRef reqRef = Model as ReqRef;
-                        if (reqRef != null)
+                        requirements = reqRef.Paragraph.FullId + ", ";
+                    }
+                    else
+                    {
+                        requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                    }
+                }
+                else
+                {
+                    List<Paragraph> relatedParagraphs = new List<Paragraph>();
+                    IModelElement current = Model;
+                    while (current != null)
+                    {
+                        ReqRelated reqRelated = current as ReqRelated;
+                        if (reqRelated != null)
                         {
-                            requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                            reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
+                        }
+                        current = current.Enclosing as IModelElement;
+                    }
+
+                    relatedParagraphs.Sort();
+                    foreach (Paragraph paragraph in relatedParagraphs)
+                    {
+                        if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                        {
+                            requirements += paragraph.FullId + ", ";
                         }
                         else
                         {
-                            IModelElement current = Model;
-                            while (current != null)
-                            {
-                                ReqRelated reqRelated = current as ReqRelated;
-                                if (reqRelated != null)
-                                {
-                                    requirements += reqRelated.getRequirements();
-                                }
-                                current = current.Enclosing as IModelElement;
-                            }
+                            requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
                         }
-
-                        baseForm.RequirementsTextBox.Text = requirements;
                     }
+                }
 
-                    // Display the expression editor instead of the explain text box when the element can hold an expression
-                    if (baseForm.ExpressionEditorTextBox != null)
+                baseForm.RequirementsTextBox.Text = requirements;
+            }
+
+            // Display the expression editor instead of the explain text box when the element can hold an expression
+            if (baseForm.ExpressionEditorTextBox != null)
+            {
+                if (!(baseForm.ExpressionEditorTextBox.ContainsFocus && ignoreFocused))
+                {
+                    IExpressionable expressionable = Model as IExpressionable;
+                    if (expressionable != null)
                     {
-                        IExpressionable expressionable = Model as IExpressionable;
-                        if (expressionable != null)
+                        baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
+                        baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
+                        if (!baseForm.ExpressionEditorTextBox.Visible)
                         {
-                            baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
-                            baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
                             baseForm.ExpressionEditorTextBox.Visible = true;
                             baseForm.ExplainTextBox.Visible = false;
                         }
@@ -326,42 +391,70 @@ namespace GUI
             return retVal;
         }
 
-
         /// <summary>
         /// Updates the node color according to the associated messages
         /// </summary>
-        protected virtual void UpdateColor()
+        public virtual void UpdateColor()
         {
-            System.Drawing.Color color = System.Drawing.Color.Black;
+            System.Drawing.Color color = ComputedColor;
+
+            if (color != ForeColor)
+            {
+                ForeColor = color;
+            }
+
+            foreach (BaseTreeNode node in Nodes)
+            {
+                node.UpdateColor();
+            }
+        }
+
+        /// <summary>
+        /// Provides the computed color
+        /// </summary>
+        private System.Drawing.Color ComputedColor { get; set; }
+
+        /// <summary>
+        /// Computes the color for this node
+        /// </summary>
+        /// <returns></returns>
+        public System.Drawing.Color ComputeColor()
+        {
+            ComputedColor = System.Drawing.Color.Black;
 
             if (Model != null)
             {
                 // Compute the color associated to sub elements
                 foreach (BaseTreeNode node in Nodes)
                 {
-                    color = max(color, node.ForeColor);
+                    ComputedColor = max(ComputedColor, node.ComputeColor());
                 }
 
-                if (color == ERROR_COLOR)
+                if (ComputedColor == ERROR_COLOR)
                 {
-                    color = ERROR_COLOR_PATH;
+                    ComputedColor = ERROR_COLOR_PATH;
                 }
-                else if (color == WARNING_COLOR)
+                else if (ComputedColor == WARNING_COLOR)
                 {
-                    color = WARNING_COLOR_PATH;
+                    ComputedColor = WARNING_COLOR_PATH;
                 }
-                else if (color == INFO_COLOR)
+                else if (ComputedColor == INFO_COLOR)
                 {
-                    color = INFO_COLOR_PATH;
+                    ComputedColor = INFO_COLOR_PATH;
                 }
 
-                color = max(color, ColorByErrorLevel());
+                BaseTreeNode parent = Parent as BaseTreeNode;
+                if (parent != null && parent.Model != Model)
+                {
+                    // If the parent node is the same as the current node, the color does not count
+                    // since it has already been reported in the enclosing node. Just consider subnodes 
+                    // for this node's color
+
+                    ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                }
             }
 
-            if (color != ForeColor)
-            {
-                ForeColor = color;
-            }
+            return ComputedColor;
         }
 
         /// <summary>
@@ -395,7 +488,7 @@ namespace GUI
         /// <summary>
         /// Updates the node name text according to the modelized item
         /// </summary>
-        protected virtual void UpdateText()
+        public virtual void UpdateText()
         {
             string name = "";
             if (DefaultName != null)
@@ -599,7 +692,7 @@ namespace GUI
         public virtual void RefreshNode()
         {
             UpdateText();
-            UpdateColor();
+
             if (BaseForm != null && BaseForm.MessagesTextBox != null)
             {
                 if (BaseForm.Selected == Model)
@@ -664,6 +757,27 @@ namespace GUI
                 try
                 {
                     DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    Utils.INamable namable = copy as Utils.INamable;
+                    if (namable != null && SourceNode.Model.EnclosingCollection != null)
+                    {
+                        int previousIndex = 0;
+                        int index = 1;
+                        while (previousIndex != index)
+                        {
+                            previousIndex = index;
+                            foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
+                            {
+                                if (other.Name.Equals(namable.Name + "_" + index))
+                                {
+                                    index += 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        namable.Name = namable.Name + "_" + index;
+                    }
+
                     Model.AddModelElement(copy);
                     MainWindow.RefreshModel();
                 }
@@ -903,17 +1017,6 @@ namespace GUI
         {
             Item = item;
             RefreshNode();
-        }
-
-        /// <summary>
-        /// refreshes the node text
-        /// </summary>
-        public override void RefreshNode()
-        {
-            base.RefreshNode();
-
-            UpdateText();
-            UpdateColor();
         }
 
         /// <summary>

@@ -305,6 +305,7 @@ namespace GUI.TestRunnerView
             {
                 DataDictionary.Tests.Runner.Runner runner = window.getRunner(Item.TestCase.SubSequence);
 
+                SynchronizerList.SuspendSynchronization();
                 runner.RunUntilStep(Item);
                 foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
                 {
@@ -314,7 +315,7 @@ namespace GUI.TestRunnerView
                         runner.RunForBlockingExpectations(true);
                     }
                 }
-                window.MDIWindow.Refresh();
+                SynchronizerList.ResumeSynchronization();
             }
         }
 

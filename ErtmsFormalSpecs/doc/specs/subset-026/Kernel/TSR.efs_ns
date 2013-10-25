@@ -12,22 +12,18 @@
  Id="3.11.5.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.17"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.17.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents a temporary speed restriction.</Comment>
+</ReqRef><Comment>Represents a temporary speed restriction.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -39,8 +35,7 @@
  Id="7.5.1.35"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Distance to beginning of temporary speed restriction.</Comment>
+</ReqRef><Comment>Distance to beginning of temporary speed restriction.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -51,8 +46,7 @@
 <ReqRef
  Id="7.5.1.58"
 >
-</ReqRef>
-<Comment>The length of the temporary speed restriction.</Comment>
+</ReqRef><Comment>The length of the temporary speed restriction.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0"
@@ -64,8 +58,7 @@
 <ReqRef
  Id="7.5.1.173"
 >
-</ReqRef>
-<Comment>Permitted speed for the temporary speed restriction.</Comment>
+</ReqRef><Comment>Permitted speed for the temporary speed restriction.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_TSR"
  Default=""
@@ -77,12 +70,10 @@
  Id="3.11.5.5"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.99"
 >
-</ReqRef>
-<Comment>Represents the identity number of a temporary speed restriction. If id == 255 the temporary speed restriction in not revocable.</Comment>
+</ReqRef><Comment>Represents the identity number of a temporary speed restriction. If id == 255 the temporary speed restriction in not revocable.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.Q_FRONT"
  Default="Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element"
@@ -93,17 +84,14 @@
 <ReqRef
  Id="3.11.5.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.4"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.109"
 >
-</ReqRef>
-<Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
+</ReqRef><Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -125,12 +113,10 @@
 <ReqRef
  Id="3.11.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.11.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -141,12 +127,10 @@
 <ReqRef
  Id="3.11.5.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.4"
 >
-</ReqRef>
-<Comment>Provides the length of the TSR together with the train length, if needed.</Comment>
+</ReqRef><Comment>Provides the length of the TSR together with the train length, if needed.</Comment>
 <Parameters>
 <Parameter
  Type="TemporarySpeedRestriction"
@@ -158,8 +142,7 @@
  Name="TrainLengthDelay"
 >
 <PreConditions>
-<PreCondition>aTSR.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition>
-</PreConditions>
+<PreCondition>aTSR.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
 <Expression>aTSR.Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
@@ -188,9 +171,7 @@
  Name="During TSR"
 >
 <PreConditions>
-<PreCondition>aTSR.Location &lt;= Distance</PreCondition>
-<PreCondition>Distance &lt; aTSR.Location + Default.BaseTypes.LengthToDistance(TSRLength (aTSR))</PreCondition>
-</PreConditions>
+<PreCondition>aTSR.Location &lt;= Distance</PreCondition><PreCondition>Distance &lt; aTSR.Location + Default.BaseTypes.LengthToDistance(TSRLength (aTSR))</PreCondition></PreConditions>
 <Expression>aTSR.Speed</Expression>
 </Case><Case
  Name="Outside TSR"
@@ -205,24 +186,19 @@
 <ReqRef
  Id="3.11.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.a"
 >
-</ReqRef>
-<Comment>Provides the speed restrictions profile due to TSR.</Comment>
+</ReqRef><Comment>Provides the speed restrictions profile due to TSR.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -248,8 +224,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.13.4.1.3"
 >
-</ReqRef>
-<Comment>Indicates that the current target takes a TSR in consideration</Comment>
+</ReqRef><Comment>Indicates that the current target takes a TSR in consideration</Comment>
 <Cases>
 <Case
  Name="Always"
@@ -265,16 +240,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.11.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.5.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.6"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
@@ -301,8 +273,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Id == Packet.NID_TSR  IN TSRs</Action>
-</Actions>
+<Action>REMOVE ALL X.Id == Packet.NID_TSR  IN TSRs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -312,12 +283,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.11.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.5.9"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
@@ -338,20 +307,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="7.5.1.99"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.58"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.35"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.173"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -360,15 +325,11 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.11.5.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.99"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN TSRs | X.Id == Packet.NID_TSR</PreCondition>
-<PreCondition>Packet.NID_TSR != Messages.NID_TSR.Non_revocable_speed_restriction__applicable_for_all_transmission_media</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN TSRs | X.Id == Packet.NID_TSR</PreCondition><PreCondition>Packet.NID_TSR != Messages.NID_TSR.Non_revocable_speed_restriction__applicable_for_all_transmission_media</PreCondition></PreConditions>
 <Actions>
 <Action>REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
@@ -378,8 +339,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     LRBG =&gt; NID_BG,
     Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
     TrainLengthDelay =&gt; Packet.Q_FRONT
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewRestriction"
@@ -387,12 +347,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.11.5.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.5.2"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT TemporarySpeedRestriction
@@ -404,8 +362,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
     TrainLengthDelay =&gt; Packet.Q_FRONT
 }
-IN TSRs</Action>
-</Actions>
+IN TSRs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -420,12 +377,10 @@ IN TSRs</Action>
 <ReqRef
  Id="3.11.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.c"
 >
-</ReqRef>
-<Comment>Represents the temporary speed restrictions received from the trackside.</Comment>
+</ReqRef><Comment>Represents the temporary speed restrictions received from the trackside.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -436,8 +391,7 @@ IN TSRs</Action>
 <ReqRef
  Id="3.11.2.6"
 >
-</ReqRef>
-<Comment>Revokes TSRs that have been passed by the train.</Comment>
+</ReqRef><Comment>Revokes TSRs that have been passed by the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -447,11 +401,9 @@ IN TSRs</Action>
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>THERE_IS_IN TSRs | X.Location + BaseTypes.LengthToDistance (TSRLength (X)) &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Nom )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN TSRs | X.Location + BaseTypes.LengthToDistance (TSRLength (X)) &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Nom )</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Location + BaseTypes.LengthToDistance (TSRLength (X)) &lt;= Odometry.NominalDistance IN TSRs</Action>
-</Actions>
+<Action>REMOVE ALL X.Location + BaseTypes.LengthToDistance (TSRLength (X)) &lt;= Odometry.NominalDistance IN TSRs</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

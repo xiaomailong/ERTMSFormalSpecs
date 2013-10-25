@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -82,16 +81,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.TR</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -104,8 +99,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A115"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -119,9 +113,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A115</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A115</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -167,9 +159,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -182,8 +172,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -197,10 +186,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -217,8 +203,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D090.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -232,10 +217,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -277,16 +259,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -299,8 +277,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A030"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -314,9 +291,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A030</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A030</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -362,9 +337,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -408,9 +381,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -423,8 +394,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S050.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -438,9 +408,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S050</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S050</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -482,9 +450,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -497,8 +463,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -512,10 +477,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -534,10 +496,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -556,10 +515,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -576,8 +532,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D020.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -591,10 +546,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -613,10 +565,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -658,9 +607,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -673,8 +620,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A105"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -688,8 +634,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A105</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A105</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -735,9 +680,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -750,8 +693,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A140"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -765,8 +707,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A140</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A140</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -810,9 +751,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -825,8 +764,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -840,9 +778,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -861,9 +797,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -880,8 +814,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D085.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -895,9 +828,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -939,9 +870,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -954,8 +883,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -969,10 +897,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -991,10 +916,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1013,10 +935,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1033,8 +952,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D80.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1048,10 +966,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1070,10 +985,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1115,9 +1027,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1130,8 +1040,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A145"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1145,8 +1054,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A145</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A145</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1190,9 +1098,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1205,8 +1111,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A150"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1220,8 +1125,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A150</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A150</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1265,9 +1169,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1280,8 +1182,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1295,10 +1196,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1315,8 +1213,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D110.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1330,10 +1227,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1352,10 +1246,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1397,8 +1288,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1411,8 +1301,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.A025"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1426,8 +1315,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A025</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.A025</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1471,9 +1359,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1486,8 +1372,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1501,8 +1386,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1521,8 +1405,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S060.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1536,9 +1419,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1582,9 +1463,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1597,8 +1476,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1619,9 +1497,7 @@
     IsConditional =&gt; True,
     StopLocation =&gt; 1040.0
   }
-]</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action>
-</Actions>
+]</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1638,8 +1514,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.D130.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1653,9 +1528,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action>
-<Action>Kernel.EmergencyStops &lt;- []</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D130</Action><Action>Kernel.EmergencyStops &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1697,9 +1570,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1712,8 +1583,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S120.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1727,8 +1597,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     RECOGNITION_OF_EXIT_FROM_TRIP_MODE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message
     {
@@ -1738,8 +1607,7 @@
         NID_MESSAGE =&gt; 6,
         T_TRAIN =&gt; 200
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1787,9 +1655,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1802,8 +1668,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S130"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1817,9 +1682,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S130</Action>
-<Action>Kernel.EmergencyStops &lt;- []</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S130</Action><Action>Kernel.EmergencyStops &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1861,9 +1724,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1876,8 +1737,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1891,11 +1751,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1918,11 +1774,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Invalid</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.RequestDriverSelection</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Invalid</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1943,8 +1795,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1958,11 +1809,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1981,8 +1828,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1996,11 +1842,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2021,11 +1863,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2044,8 +1882,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S140.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2059,9 +1896,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2103,9 +1938,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2118,8 +1951,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2133,8 +1965,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -2145,8 +1976,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2167,8 +1997,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -2179,8 +2008,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2201,8 +2029,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.RequestDriverAck</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -2213,8 +2040,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2233,8 +2059,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S170.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2248,10 +2073,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2274,10 +2096,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
-<Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2300,10 +2119,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action>
-<Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2349,9 +2165,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2364,8 +2178,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S160.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2379,8 +2192,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2397,8 +2209,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S160.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2412,9 +2223,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2460,9 +2269,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.PT</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2475,8 +2282,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2490,8 +2296,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.SendMARequest</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.SendMARequest</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2512,8 +2317,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2531,10 +2335,7 @@
 {
     Distance =&gt; 0.0,
     BGs =&gt; []
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2551,8 +2352,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.3"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2566,8 +2366,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -2578,11 +2377,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+]</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action><Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2601,8 +2396,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -2613,10 +2407,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-</Actions>
+]</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2646,11 +2437,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-</Actions>
+]</Action><Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2667,8 +2454,7 @@
 <ReqRef
  Id="Entry 5.11.2.2.S150.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2682,19 +2468,14 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action><Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
         Gradient =&gt; -0.1,
         Location =&gt; 0.0
     }
-]</Action>
-<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+]</Action><Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
 [
     Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
     {
@@ -2703,8 +2484,7 @@
         Distance =&gt; 0.0,
         TrainLengthDelay =&gt;Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

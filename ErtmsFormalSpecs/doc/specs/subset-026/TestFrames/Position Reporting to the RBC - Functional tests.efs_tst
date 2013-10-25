@@ -37,21 +37,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 6.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 5.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 6.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 5.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -62,8 +53,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -71,8 +61,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;4.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -85,20 +74,16 @@
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -112,15 +97,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action>
-<Action>Odometry.CurrentTime &lt;- 1390.0</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action><Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action><Action>Odometry.CurrentTime &lt;- 1390.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -135,8 +112,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.CurrentTime &lt;- 1400.0</Action>
-</Actions>
+<Action>Kernel.CurrentTime &lt;- 1400.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -163,15 +139,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action>
-<Action>Odometry.CurrentTime &lt;- 1490.0</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.TimeInterval &lt;- 200.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action><Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action><Action>Odometry.CurrentTime &lt;- 1490.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -186,8 +154,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.CurrentTime &lt;- 1500.0</Action>
-</Actions>
+<Action>Kernel.CurrentTime &lt;- 1500.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -212,20 +179,16 @@
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -239,14 +202,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action>
-<Action>Odometry.NominalDistance &lt;- 795.0</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action><Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 700.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1200.0</Action><Action>Odometry.NominalDistance &lt;- 795.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -261,8 +217,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 800.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 800.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -289,14 +244,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action>
-<Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action>
-<Action>Odometry.NominalDistance &lt;- 895.0</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- 100.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.LRBG &lt;- EMPTY</Action><Action>EURORADIO.PositionReport.LastPositionReport.Position &lt;- 800.0</Action><Action>EURORADIO.PositionReport.LastPositionReport.Time &lt;-1300.0</Action><Action>Odometry.NominalDistance &lt;- 895.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -311,8 +259,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 900.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 900.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -336,20 +283,16 @@
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-</TestCase><TestCase
+</ReqRef></TestCase><TestCase
  Feature="0"
  Case="0"
  NeedsRequirement="FALSE"
@@ -358,24 +301,19 @@
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.1"
 >
-</ReqRef>
-</TestCase><TestCase
+</ReqRef></TestCase><TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
@@ -385,24 +323,19 @@
 <ReqRef
  Id="3.6.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.5.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -416,9 +349,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -433,11 +364,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
-<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
-<Action>Kernel.CurrentTime &lt;- 2000.0</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action><Action>Odometry.NominalDistance &lt;- 1000.0</Action><Action>Kernel.CurrentTime &lt;- 2000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -470,9 +397,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -487,11 +412,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
-<Action>Odometry.NominalDistance &lt;- 1400.0</Action>
-<Action>Kernel.CurrentTime &lt;- 2400.0</Action>
-</Actions>
+<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action><Action>Odometry.NominalDistance &lt;- 1400.0</Action><Action>Kernel.CurrentTime &lt;- 2400.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -547,21 +468,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 11.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 14.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 11.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 14.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -572,8 +484,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -581,8 +492,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;6.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -595,16 +505,13 @@
 <ReqRef
  Id="3.6.5.1.4.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -618,9 +525,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-</Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -635,8 +540,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-</Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -661,9 +565,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 1.0</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -678,8 +580,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-</Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -727,18 +628,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 38.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 38.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -749,8 +644,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -758,11 +652,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;14.0
   }
-}</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 50.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-</Actions>
+}</Action><Action>Odometry.Accuracy.D_ora &lt;- 50.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -775,16 +665,13 @@
 <ReqRef
  Id="3.6.5.1.4.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -798,9 +685,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -815,8 +700,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -843,10 +727,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StandBy</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StandBy</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -861,8 +742,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.TR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.TR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -912,21 +792,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 18.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 18.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -937,8 +808,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -946,8 +816,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;2.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -960,16 +829,13 @@
 <ReqRef
  Id="3.6.5.1.4.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -983,10 +849,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1001,9 +864,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 115.0</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action><Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 115.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1032,9 +893,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.No_train_integrity_information_available</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1049,9 +908,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action><Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1103,19 +960,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1126,8 +976,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1135,8 +984,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;17.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1152,9 +1000,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1167,16 +1013,13 @@
 <ReqRef
  Id="3.6.5.1.4.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1190,10 +1033,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1208,8 +1048,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1236,9 +1075,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1253,8 +1090,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action>
-</Actions>
+<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_lost</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1304,21 +1140,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 1084.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 1078.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 1084.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 1078.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1329,8 +1156,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1338,8 +1164,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;1084.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1351,16 +1176,13 @@
 <ReqRef
  Id="3.6.5.1.4.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-</TestCase></TestCases>
+</ReqRef></TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
  Level=""
@@ -1395,21 +1217,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 14.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 14.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1420,8 +1233,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1429,8 +1241,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;11.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1442,16 +1253,13 @@
 <ReqRef
  Id="3.6.5.1.4.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-</TestCase></TestCases>
+</ReqRef></TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
  Level=""
@@ -1494,22 +1302,12 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;81.0
   }
-}</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+}</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 92.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 97.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 92.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 97.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1520,8 +1318,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1534,16 +1331,13 @@
 <ReqRef
  Id="3.6.5.1.4.g"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1557,10 +1351,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1575,8 +1366,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1603,9 +1393,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1620,8 +1408,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1671,20 +1458,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 15.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 15.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 15.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1695,8 +1474,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1704,8 +1482,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;11.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1718,16 +1495,13 @@
 <ReqRef
  Id="3.6.5.1.4.h"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1741,9 +1515,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Nominal</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1758,8 +1530,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1784,9 +1555,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
-</Actions>
+<Action>BTM.LRBG.Orientation &lt;- Orientation.Unknown</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1801,8 +1570,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1851,14 +1619,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1869,9 +1635,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>Odometry.Accuracy.D_ora &lt;- 20.0</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1879,14 +1643,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;11.0
   }
-}</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>Odometry.Accuracy.D_ura &lt;- 22.0</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1899,16 +1656,13 @@
 <ReqRef
  Id="3.6.5.1.4.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-</TestCase></TestCases>
+</ReqRef></TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
  Level=""
@@ -1943,20 +1697,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 41.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 44.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Odometry.Accuracy.D_ura &lt;- 41.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 44.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -1967,8 +1713,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1976,9 +1721,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;22.0
   }
-}</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1990,16 +1733,13 @@
 <ReqRef
  Id="3.6.5.1.4.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-</TestCase></TestCases>
+</ReqRef></TestCase></TestCases>
 </SubSequence><SubSequence
  D_LRBG=""
  Level=""
@@ -2034,21 +1774,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 16.0</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>BTM.PreviousLRBGs &lt;- 
+<Action>Odometry.Accuracy.D_ura &lt;- 17.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 16.0</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- Default.DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>BTM.PreviousLRBGs &lt;- 
 [
   BTM.BaliseGroup{
     NID=&gt;9614,
@@ -2059,8 +1790,7 @@
       UnderReadingAmountOdo=&gt;1042.0
     }
   }
-]</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup{
+]</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -2068,8 +1798,7 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;11.0
   }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2082,48 +1811,37 @@
 <ReqRef
  Id="3.6.5.1.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.g"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.h"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.5.1.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2137,12 +1855,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 114.0</Action>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-<Action>BTM.LRBG &lt;- 
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 114.0</Action><Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action><Action>BTM.LRBG &lt;- 
 BTM.BaliseGroup {
     NID=&gt;1290,
     Orientation=&gt;Orientation.Nominal,
@@ -2152,17 +1865,7 @@ BTM.BaliseGroup {
             Position=&gt;1030.0,
             UnderReadingAmountOdo=&gt;1034.0
         }
-}</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 84.0</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 1028.0</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 1034.0</Action>
-<Action>Odometry.NominalDistance &lt;- 2500.0</Action>
-</Actions>
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 84.0</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action><Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action><Action>Odometry.Accuracy.D_ora &lt;- 1028.0</Action><Action>Odometry.Accuracy.D_ura &lt;- 1034.0</Action><Action>Odometry.NominalDistance &lt;- 2500.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2205,12 +1908,7 @@ BTM.BaliseGroup {
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action>
-<Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action>
-<Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device</Action>
-<Action>BTM.LRBG &lt;- 
+<Action>EURORADIO.PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- EURORADIO.PositionReport.PositionReportSpecialLocation.Now</Action><Action>EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainIntegrity.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainIntegrity.SafeTrainLength &lt;- 117.0</Action><Action>Kernel.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device</Action><Action>BTM.LRBG &lt;- 
 BTM.BaliseGroup {
     NID=&gt;1296,
     Orientation =&gt; Orientation.Unknown,
@@ -2220,12 +1918,7 @@ BTM.BaliseGroup {
             Position=&gt;1050.0,
             UnderReadingAmountOdo=&gt;1052.0
         }
-}</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 87.0</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action>
-<Action>BTM.PreviousLRBGs &lt;-
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 87.0</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection &lt;- Orientation.Nominal</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action>BTM.PreviousLRBGs &lt;-
 [BTM.BaliseGroup {
     NID=&gt;1292,
     Orientation=&gt;Orientation.Nominal,
@@ -2235,11 +1928,7 @@ BTM.BaliseGroup {
             Position=&gt;1026.0,
             UnderReadingAmountOdo=&gt;1028.0
         }
-}]</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 1047.0</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 1052.0</Action>
-</Actions>
+}]</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Reverse</Action><Action>Odometry.Accuracy.D_ora &lt;- 1047.0</Action><Action>Odometry.Accuracy.D_ura &lt;- 1052.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

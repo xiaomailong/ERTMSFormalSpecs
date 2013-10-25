@@ -62,10 +62,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Loads the namespace which corresponds to this namespace ref
         /// </summary>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public NameSpace LoadNameSpace()
+        public NameSpace LoadNameSpace(bool lockFiles)
         {
-            return Util.loadNameSpace(FileName, Enclosing as ModelElement);
+            return Util.loadNameSpace(FileName, Enclosing as ModelElement, lockFiles);
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ all: bin/$(META).dll
 $(META).xmlb : $(SAMPLES)
 	@-$(XMLB_CALL) -GBE $@ $(SAMPLES) 
 	 
-bin/$(META).dll : $(META).xmlb 
+bin/$(META).dll : $(META).xmlb $(ADDITIONAL_BUILD_TARGET)
 	@banner $(META)
 	@make clean
 	@-mkdir generated

@@ -85,13 +85,19 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The default value for this variable
+            /// The variable default value
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalValuesConverter))]
-            public string DefaultValue
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
+            public DataDictionary.Variables.Variable DefaultValue
             {
-                get { return Item.getDefaultValue(); }
-                set { Item.setDefaultValue(value); }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>
@@ -108,25 +114,21 @@ namespace GUI.DataDictionaryView
             /// The variable value
             /// </summary>
             [Category("Description")]
-            public string Value
+            [System.ComponentModel.Editor(typeof(Converters.VariableValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.VariableValueUITypeConverter))]
+            public DataDictionary.Variables.Variable Value
             {
-                get
+                get { return Item; }
+                set
                 {
-                    if (Item.Value != null)
-                    {
-                        return Item.Value.Name;
-                    }
-                    else
-                    {
-                        return "<unknown>";
-                    }
+                    Item = value;
+                    RefreshNode();
                 }
-                set { Item.Value = Item.Type.getValue(value); }
             }
         }
 
-        private bool IsASubVariable;
-        private SubVariablesTreeNode subVariables;
+        public bool IsASubVariable;
+        public SubVariablesTreeNode subVariables;
 
         /// <summary>
         /// Constructor

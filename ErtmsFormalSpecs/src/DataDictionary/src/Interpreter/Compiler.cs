@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System.Threading;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -27,7 +28,7 @@ namespace DataDictionary.Interpreter
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void dispatch(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            public override void visit(XmlBooster.IXmlBBase obj, bool visitSubNodes)
             {
                 Utils.ISubDeclarator subDeclarator = obj as Utils.ISubDeclarator;
                 if (subDeclarator != null)
@@ -35,7 +36,13 @@ namespace DataDictionary.Interpreter
                     subDeclarator.InitDeclaredElements();
                 }
 
-                base.dispatch(obj, visitSubNodes);
+                Utils.IFinder finder = obj as Utils.IFinder;
+                if (finder != null)
+                {
+                    finder.ClearCache();
+                }
+
+                base.visit(obj, visitSubNodes);
             }
 
             /// <summary>
@@ -54,34 +61,103 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates that everything should be recompiled
-        /// </summary>
-        public bool Rebuild { get; set; }
-
-        /// <summary>
         /// The EFS system that need to be compiled
         /// </summary>
         public EFSSystem System { get; set; }
 
         /// <summary>
+        /// Indicates that the compilation should be performed
+        /// </summary>
+        public bool DoCompile { get; set; }
+
+        /// <summary>
+        /// The compilation options needed for the next compile
+        /// </summary>
+        private class CompilationOptions
+        {
+            /// <summary>
+            /// Indicates that everything should be recompiled
+            /// </summary>
+            public bool Rebuild { get; set; }
+
+            /// <summary>
+            /// Indicates that compilation should be silent (or not)
+            /// </summary>
+            public bool SilentCompile { get; set; }
+
+            /// <summary>
+            /// Indicates that the compilation has been performed
+            /// </summary>
+            public bool CompilationDone { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="rebuild"></param>
+            /// <param name="silent"></param>
+            public CompilationOptions(bool rebuild, bool silent)
+            {
+                Rebuild = rebuild;
+                SilentCompile = silent;
+            }
+        }
+
+        /// <summary>
+        /// The next compile session options
+        /// </summary>
+        private CompilationOptions NextCompile { get; set; }
+
+        /// <summary>
+        /// The current compilation session options
+        /// </summary>
+        private CompilationOptions CurrentCompile { get; set; }
+
+        /// <summary>
+        /// The compiler thread
+        /// </summary>
+        private Thread CompilerThread { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="rebuild"></param>
-        public Compiler(EFSSystem system, bool rebuild = false)
+        public Compiler(EFSSystem system)
         {
-            Rebuild = rebuild;
             System = system;
+
+            DoCompile = true;
+            CompilerThread = new Thread(CompileContinuously);
+            CompilerThread.Start();
         }
 
-        #region Compilation
+        /// <summary>
+        /// Perform continuous compilation
+        /// </summary>
+        /// <param name="obj"></param>
+        private void CompileContinuously(object obj)
+        {
+            while (DoCompile)
+            {
+                CurrentCompile = NextCompile;
+                if (CurrentCompile != null)
+                {
+                    NextCompile = null;
+                    PerformCompile();
+                    CurrentCompile.CompilationDone = true;
+                }
+
+                Thread.Sleep(100);
+            }
+        }
+
         /// <summary>
         /// Compiles or recompiles everything
         /// </summary>
-        public void Compile(bool silent = false)
+        private void PerformCompile()
         {
             try
             {
-                ModelElement.BeSilent = silent;
+                ModelElement.BeSilent = CurrentCompile.SilentCompile;
 
                 // Initialises the declared eleemnts
                 InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
@@ -98,11 +174,61 @@ namespace DataDictionary.Interpreter
             }
         }
 
+        /// <summary>
+        /// Setups the NextCompile option
+        /// </summary>
+        /// <param name="rebuild"></param>
+        /// <param name="silent"></param>
+        /// <returns></returns>
+        private CompilationOptions SetupCompilationOptions(bool rebuild, bool silent)
+        {
+            CompilationOptions options = NextCompile;
+
+            if (options != null)
+            {
+                options.Rebuild = options.Rebuild || rebuild;
+                options.SilentCompile = options.SilentCompile || silent;
+            }
+            else
+            {
+                options = new CompilationOptions(rebuild, silent);
+                NextCompile = options;
+            }
+
+            return options;
+        }
+
+        /// <summary>
+        /// Performs a synchronous compilation
+        /// </summary>
+        /// <param name="retbuild"></param>
+        /// <param name="silent"></param>
+        public void Compile_Synchronous(bool rebuild, bool silent = false)
+        {
+            CompilationOptions options = SetupCompilationOptions(rebuild, silent);
+
+            while (!options.CompilationDone)
+            {
+                Thread.Sleep(100);
+            }
+        }
+
+        /// <summary>
+        /// Performs an asynchronous compilation
+        /// </summary>
+        /// <param name="rebuild"></param>
+        /// <param name="silent"></param>
+        public void Compile_Asynchronous(bool rebuild, bool silent = false)
+        {
+            SetupCompilationOptions(rebuild, silent);
+        }
+
+        #region Compilation
         public override void visit(Generated.Action obj, bool visitSubNodes)
         {
             Rules.Action action = (Rules.Action)obj;
 
-            if (Rebuild)
+            if (CurrentCompile.Rebuild)
             {
                 action.Statement = null;
             }
@@ -117,7 +243,7 @@ namespace DataDictionary.Interpreter
         {
             Rules.PreCondition preCondition = (Rules.PreCondition)obj;
 
-            if (Rebuild)
+            if (CurrentCompile.Rebuild)
             {
                 preCondition.ExpressionTree = null;
             }
@@ -132,7 +258,7 @@ namespace DataDictionary.Interpreter
         {
             Tests.Expectation expectation = (Tests.Expectation)obj;
 
-            if (Rebuild)
+            if (CurrentCompile.Rebuild)
             {
                 expectation.ExpressionTree = null;
                 expectation.ConditionTree = null;
@@ -149,7 +275,7 @@ namespace DataDictionary.Interpreter
         {
             Tests.Frame frame = (Tests.Frame)obj;
 
-            if (Rebuild)
+            if (CurrentCompile.Rebuild)
             {
                 frame.CycleDuration = null;
             }
