@@ -536,9 +536,16 @@ namespace DataDictionary
                     if (expect.getCondition() != null && !expect.getCondition().Contains("%"))
                     {
                         Interpreter.Expression expression = checkExpression(expect, expect.getCondition());
-                        if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                        if (expression != null)
                         {
-                            expect.AddError("Condition type should be Boolean");
+                            if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                            {
+                                expect.AddError("Condition type should be Boolean");
+                            }
+                        }
+                        else
+                        {
+                            expect.AddError("Cannot parse condition " + expect.getCondition());
                         }
                     }
                 }
