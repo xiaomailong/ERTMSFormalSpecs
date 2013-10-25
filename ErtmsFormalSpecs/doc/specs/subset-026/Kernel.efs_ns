@@ -979,153 +979,30 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
  Name="S2"
 >
-<StateMachine
- InitialState="SelectLevelAndOfferInhibitionPossibility"
+<ReqRef
+ Id="Entry 5.4.3.2.S2"
+>
+</ReqRef><StateMachine
+ InitialState="OfferLevelSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
 >
 <States>
 <State
  X="80"
- Y="170"
- Width="140"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InhibitionPossibilityAndLevelSelectionOffered"
->
-<StateMachine
- InitialState=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Driver has selected a level"
->
-<ReqRef
- Id="Entry 5.4.3.3.8"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.3.9"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver has selected a level"
->
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="80"
- Y="280"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="SelectLevel"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
->
-</ReqRef><StateMachine
- InitialState=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Invalid level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.3"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Invalid level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
-  Level =&gt; Kernel.Level.Value, 
-  Enter =&gt; True, 
-  ReValidate =&gt; True
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unknown level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Unknown level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
-  Level =&gt; Level.Unknown, 
-  Enter =&gt; True, 
-  ReValidate =&gt; False
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Valid level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Valid level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="80"
  Y="390"
  Width="140"
  Height="50"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="LevelSelectionOffered"
 >
-<StateMachine
+<ReqRef
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.2"
+>
+</ReqRef><StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1142,7 +1019,19 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Implemented="TRUE"
  Name="Driver has selected a level"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.2"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.8"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.9"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1164,7 +1053,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ExitState"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.5"
+ Id="Entry 5.4.3.2.S2.3"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.4"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1175,12 +1067,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Exit state"
 >
-<ReqRef
- Id="Entry 5.4.3.2.S2.5"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1197,7 +1087,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Implemented="TRUE"
  Name="Level 2 or 3"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.3"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1214,7 +1107,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Implemented="TRUE"
  Name="Level 0, 1 or LNTC"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.4"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1235,10 +1131,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Width="140"
  Height="50"
  Implemented="TRUE"
- Name="SelectLevelAndOfferInhibitionPossibility"
+ Name="OfferLevelSelection"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2"
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1249,7 +1148,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Select level and offer inhibition possibility"
+ Name="Select level"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1269,7 +1168,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Unknown level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="Entry 5.4.3.2.S2.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1281,13 +1180,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Level.Unknown, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1296,7 +1192,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1308,13 +1204,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1323,10 +1216,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="Entry 5.4.3.2.S2.3"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1341,29 +1234,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Offer inhibition possibility"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Offer inhibition possibility"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; True
-)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

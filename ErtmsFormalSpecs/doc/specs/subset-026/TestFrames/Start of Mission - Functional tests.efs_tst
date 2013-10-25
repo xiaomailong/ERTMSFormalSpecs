@@ -727,7 +727,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="S2 : Level inhibition"
+ Name="S2 : Level selection"
 >
 <TestCases>
 <TestCase
@@ -817,7 +817,7 @@
  Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.1"
 >
 </ReqRef><Steps>
 <Step
@@ -833,7 +833,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action></Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -858,7 +858,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -883,7 +883,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -898,13 +898,13 @@
  Name="Selected level is L2 or L3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.4"
->
-</ReqRef><ReqRef
  Id="Entry 5.4.3.3.8"
 >
 </ReqRef><ReqRef
  Id="Entry 5.4.3.3.9"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.3"
 >
 </ReqRef><Steps>
 <Step
@@ -958,13 +958,13 @@
  Name="Selected level is L0, L1 or NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.5"
->
-</ReqRef><ReqRef
  Id="Entry 5.4.3.3.8"
 >
 </ReqRef><ReqRef
  Id="Entry 5.4.3.3.9"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.4"
 >
 </ReqRef><Steps>
 <Step
