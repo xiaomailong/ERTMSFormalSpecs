@@ -310,13 +310,11 @@
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Constant"
+ Implemented="TRUE"
  Name="IsActive"
 >
 <ReqRef
  Id="3.13.2.2.6.2"
->
-</ReqRef><ReqRef
- Id="3.13.6.3.1.2.d"
 >
 </ReqRef><Comment>Indicates if this special brake is active.</Comment>
 </StructureElement><StructureElement
@@ -1425,6 +1423,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 </Case></Cases>
 </Function><Function
  Type="CorrectionFactor"
+ Implemented="TRUE"
  Name="Kdry_rst"
 >
 <ReqRef
@@ -1825,6 +1824,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
  Name="T_brake_emergency"
 >
 <ReqRef
@@ -2093,6 +2093,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
+ Implemented="TRUE"
  Name="A_brake_safe"
 >
 <ReqRef
@@ -2291,6 +2292,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorrectionFactor"
+ Implemented="TRUE"
  Name="Kwet_rst"
 >
 <ReqRef
@@ -2712,6 +2714,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
+ Implemented="TRUE"
  Name="T_be"
 >
 <ReqRef
@@ -2782,9 +2785,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >
 </ReqRef><ReqRef
  Id="3.13.2.3.4.1"
->
-</ReqRef><ReqRef
- Id="3.13.2.3.1.1.c"
 >
 </ReqRef><ReqRef
  Id="3.13.2.3.1.1.c"
