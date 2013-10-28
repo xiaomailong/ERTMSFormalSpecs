@@ -1,0 +1,497 @@
+<<<<<<< HEAD
+<NameSpace
+ Name="TrainData"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
+ Implemented="TRUE"
+ Name="CreateTrainData"
+>
+<ReqRef
+ Id="3.12.2.9"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+{
+    L_PACKET =&gt; 114,
+    L_TRAIN =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.TrainData.TrainData.Value.TrainLength, scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+    M_AIRTIGHT =&gt; FillAirtightSystem(),
+    M_AXLELOAD =&gt; Kernel.TrainData.TrainData.Value.AxleLoadCategory,
+    M_LOADINGGAUGE =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge,
+    N_AXLE =&gt; Kernel.TrainData.TrainData.Value.AxleNumber,
+    NC_CDTRAIN =&gt; Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,
+    NC_TRAIN =&gt; FillOtherInternationalTrainCategories(),
+    NID_PACKET =&gt; 11,
+    V_MAXTRAIN =&gt; MessageTypes.UnResolveSpeed ( speed =&gt; Kernel.TrainData.TrainData.Value.MaximumSpeed, resolution =&gt; 5.0 ),
+    N_ITER_0 =&gt; COUNT ( Kernel.TrainData.TrainData.Value.TractionSystems ),
+    Sequence1 =&gt; MAP Kernel.TrainData.TrainData.Value.TractionSystems USING CreateTractionSystem ( X ),
+    N_ITER_1 =&gt; COUNT Kernel.TrainData.TrainDataValues.LevelsSupportedOnBoard | X.Value == Default.Level.LNTC,
+    Sequence2 =&gt; MAP Kernel.TrainData.TrainDataValues.LevelsSupportedOnBoard | X .Value == Default.Level.LNTC USING CreateNationalSystem ( X.NTC )
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_AIRTIGHT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillAirtightSystem"
+>
+<Cases>
+<Case
+ Name="Train is fitted with an airtight system"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition>
+</PreConditions>
+<Expression>Messages.M_AIRTIGHT.Fitted</Expression>
+</Case><Case
+ Name="Train is not fitted with an airtight system"
+>
+<Expression>Messages.M_AIRTIGHT.Not_fitted</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_LOADINGGAUGE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillLaudingGauge"
+>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateTractionSystem"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.TractionSystem"
+ Name="aTractionSystem"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure1
+{
+    M_VOLTAGE =&gt; aTractionSystem.Voltage,
+    NID_CTRACTION =&gt; aTractionSystem.Country
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.NC_TRAIN"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillOtherInternationalTrainCategories"
+>
+<ReqRef
+ Id="7.5.1.84"
+>
+</ReqRef>
+<Cases>
+<Case
+ Name="Freight in P, freight in G, passanger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
+</PreConditions>
+<Expression>7</Expression>
+</Case><Case
+ Name="Freight in P, freight in G"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
+</PreConditions>
+<Expression>3</Expression>
+</Case><Case
+ Name="Freight in P, passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
+</PreConditions>
+<Expression>5</Expression>
+</Case><Case
+ Name="Freight in G, passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
+</PreConditions>
+<Expression>6</Expression>
+</Case><Case
+ Name="Freight in P"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
+</PreConditions>
+<Expression>1</Expression>
+</Case><Case
+ Name="Freight in G"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
+</PreConditions>
+<Expression>2</Expression>
+</Case><Case
+ Name="Passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
+</PreConditions>
+<Expression>4</Expression>
+</Case><Case
+ Name="No category"
+>
+<Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateNationalSystem"
+>
+<Comment>we have to explicitly cast back to the &quot;base range&quot; of Default.NID_NTC (Messges.NID_NTC without the special value) so the data can be sent out again properly. #morido, 13/10/17</Comment>
+<Parameters>
+<Parameter
+ Type="Default.NID_NTC"
+ Name="aNationalSystem"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<PreConditions>
+<PreCondition>aNationalSystem != Default.NID_NTC.NOT_APPLICABLE</PreCondition>
+</PreConditions>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2
+{
+    NID_NTC =&gt; Messages.NID_NTC(aNationalSystem)
+}</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="SendTrainData"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S11"
+>
+</ReqRef>
+<ReqRef
+ Id="3.12.2.9"
+>
+</ReqRef>
+<Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Send train data"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send train data"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EURORADIO.EuroradioMessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+{
+    L_MESSAGE =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    NID_MESSAGE =&gt; 129,
+    T_TRAIN =&gt; 0,
+    VALIDATED_TRAIN_DATA =&gt; CreateTrainData()
+}</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+</NameSpace>
+=======
+<NameSpace
+ Name="TrainData"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
+ Implemented="TRUE"
+ Name="CreateTrainData"
+>
+<ReqRef
+ Id="3.12.2.9"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+{
+    L_PACKET =&gt; 114,
+    L_TRAIN =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.TrainData.TrainData.Value.TrainLength, scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+    M_AIRTIGHT =&gt; FillAirtightSystem(),
+    M_AXLELOAD =&gt; Kernel.TrainData.TrainData.Value.AxleLoadCategory,
+    M_LOADINGGAUGE =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge,
+    N_AXLE =&gt; Kernel.TrainData.TrainData.Value.AxleNumber,
+    NC_CDTRAIN =&gt; Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,
+    NC_TRAIN =&gt; FillOtherInternationalTrainCategories(),
+    NID_PACKET =&gt; 11,
+    V_MAXTRAIN =&gt; MessageTypes.UnResolveSpeed ( speed =&gt; Kernel.TrainData.TrainData.Value.MaximumSpeed, resolution =&gt; 5.0 ),
+    N_ITER_0 =&gt; COUNT ( Kernel.TrainData.TrainData.Value.TractionSystems ),
+    Sequence1 =&gt; MAP Kernel.TrainData.TrainData.Value.TractionSystems USING CreateTractionSystem ( X ),
+    N_ITER_1 =&gt; COUNT ( Kernel.TrainData.TrainData.Value.NationalSystemsAvailableOnBoard ),
+    Sequence2 =&gt; MAP Kernel.TrainData.TrainData.Value.NationalSystemsAvailableOnBoard USING CreateNationalSystem ( X )
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_AIRTIGHT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillAirtightSystem"
+>
+<Cases>
+<Case
+ Name="Train is fitted with an airtight system"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition></PreConditions>
+<Expression>Messages.M_AIRTIGHT.Fitted</Expression>
+</Case><Case
+ Name="Train is not fitted with an airtight system"
+>
+<Expression>Messages.M_AIRTIGHT.Not_fitted</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_LOADINGGAUGE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillLaudingGauge"
+>
+<Cases>
+</Cases>
+</Function><Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateTractionSystem"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.TractionSystem"
+ Name="aTractionSystem"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure1
+{
+    M_VOLTAGE =&gt; aTractionSystem.Voltage,
+    NID_CTRACTION =&gt; aTractionSystem.Country
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.NC_TRAIN"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillOtherInternationalTrainCategories"
+>
+<ReqRef
+ Id="7.5.1.84"
+>
+</ReqRef><Cases>
+<Case
+ Name="Freight in P, freight in G, passanger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition><PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
+<Expression>7</Expression>
+</Case><Case
+ Name="Freight in P, freight in G"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
+<Expression>3</Expression>
+</Case><Case
+ Name="Freight in P, passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition><PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
+<Expression>5</Expression>
+</Case><Case
+ Name="Freight in G, passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
+<Expression>6</Expression>
+</Case><Case
+ Name="Freight in P"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
+<Expression>1</Expression>
+</Case><Case
+ Name="Freight in G"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition></PreConditions>
+<Expression>2</Expression>
+</Case><Case
+ Name="Passenger"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN
+  Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
+|
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
+<Expression>4</Expression>
+</Case><Case
+ Name="No category"
+>
+<Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CreateNationalSystem"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_NTC"
+ Name="aNationalSystem"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.SubStructure2
+{
+    NID_NTC =&gt; aNationalSystem
+}</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="SendTrainData"
+>
+<ReqRef
+ Id="Entry 5.4.3.2.S11"
+>
+</ReqRef><ReqRef
+ Id="3.12.2.9"
+>
+</ReqRef><Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Send train data"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send train data"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EURORADIO.EuroradioMessageOut.VALIDATED_TRAIN_DATA &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message
+{
+    L_MESSAGE =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    NID_MESSAGE =&gt; 129,
+    T_TRAIN =&gt; 0,
+    VALIDATED_TRAIN_DATA =&gt; CreateTrainData()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+</NameSpace>
+>>>>>>> refs/remotes/motherERTMS/master

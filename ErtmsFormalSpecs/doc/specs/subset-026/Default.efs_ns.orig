@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <NameSpace
  Name="Default"
 >
@@ -39,10 +40,12 @@
 <ReqRef
  Id="3.11.5.5"
 >
-</ReqRef><ReqRef
+</ReqRef>
+<ReqRef
  Id="3.11.5.6"
 >
-</ReqRef><Comment></Comment>
+</ReqRef>
+<Comment></Comment>
 <SpecialValues>
 <EnumValue
  Value="255"
@@ -75,7 +78,8 @@
 <ReqRef
  Id="7.5.1.98"
 >
-</ReqRef><Comment>This is a copy of Messages.NID_NTC enhanced by a special value for Levels != LNTC #morido, 13/10/17</Comment>
+</ReqRef>
+<Comment>This is a copy of Messages.NID_NTC enhanced by a special value for Levels != LNTC #morido, 13/10/17</Comment>
 <SpecialValues>
 <EnumValue
  Value="-1"
@@ -92,10 +96,12 @@
 <ReqRef
  Id="2.6.2.1"
 >
-</ReqRef><ReqRef
+</ReqRef>
+<ReqRef
  Id="2.6.2.3"
 >
-</ReqRef><Values>
+</ReqRef>
+<Values>
 <EnumValue
  Value="0"
  Name="L0"
@@ -128,7 +134,8 @@
 <ReqRef
  Id="4.3.2.1"
 >
-</ReqRef><Comment>Represents the possible modes of an ERTMS/ETCS train.</Comment>
+</ReqRef>
+<Comment>Represents the possible modes of an ERTMS/ETCS train.</Comment>
 <Values>
 <EnumValue
  Value="0"
@@ -212,10 +219,12 @@
 <ReqRef
  Id="7.5.1.70"
 >
-</ReqRef><ReqRef
+</ReqRef>
+<ReqRef
  Id="3.12.4.1"
 >
-</ReqRef><Values>
+</ReqRef>
+<Values>
 <EnumValue
  Value="0"
  Name="OS"
@@ -237,7 +246,8 @@
 <ReqRef
  Id="5.4.2.1"
 >
-</ReqRef><Values>
+</ReqRef>
+<Values>
 <EnumValue
  Value="0"
  Name="Valid"
@@ -472,6 +482,1365 @@
 <ReqRef
  Id="3.6.4.2"
 >
+</ReqRef>
+<Values>
+<EnumValue
+ Value="0"
+ Name="L_DOUBTOVER"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="L_DOUBTUNDER"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="TrainEnd.FrontEnd"
+ Name="TrainEnd"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="FrontEnd"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="RearEnd"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="DataDirection.Reverse"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DataDirection"
+>
+<ReqRef
+ Id="7.5.1.103"
+>
+</ReqRef>
+<Comment>Indicates the validity direction of transmitted data.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="BothDirections"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="LevelData"
+>
+<ReqRef
+ Id="2.6.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="2.6.2.3"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="Default.NID_NTC"
+ Default="Default.NID_NTC.NOT_APPLICABLE"
+ Mode="Internal"
+ Name="NTC"
+>
+<Comment>only applicable if Value == Level.LNTC #morido, 13/10/10</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Level"
+ Default="Default.Level.Unknown"
+ Mode="Internal"
+ Name="Value"
+>
+<Comment></Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="DriverSelection"
+ Default="[]"
+ Name="DriverSelectionSet"
+>
+</Collection><Collection
+ TypeName="RbcIdPhoneNumberChoice"
+ Default="[]"
+ Name="RBCIDChoiceSet"
+>
+</Collection><Collection
+ TypeName="LevelData"
+ Default="EMPTY"
+ Implemented="TRUE"
+ Name="Levels"
+>
+<ReqRef
+ Id="2.6.2.1"
+>
+</ReqRef>
+<ReqRef
+ Id="2.6.2.3"
+>
+</ReqRef>
+<ReqRef
+ Id="A1.1.11.14"
+>
+</ReqRef>
+<Comment>#designchoice MaxSize is an arbitrarily chosen value. #morido, 13/10/09</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Messages.M_LEVEL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EFSLevelConverter"
+>
+<ReqRef
+ Id="7.5.1.65"
+>
+</ReqRef>
+<Comment>Converts an EFS level to the corresponding ERTMS level.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.Level"
+ Name="Level"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="L0"
+>
+<PreConditions>
+<PreCondition>Level == Default.Level.L0</PreCondition>
+</PreConditions>
+<Expression>Messages.M_LEVEL.Level_0</Expression>
+</Case><Case
+ Name="L1"
+>
+<PreConditions>
+<PreCondition>Level == Default.Level.L1</PreCondition>
+</PreConditions>
+<Expression>Messages.M_LEVEL.Level_1</Expression>
+</Case><Case
+ Name="L2"
+>
+<PreConditions>
+<PreCondition>Level == Default.Level.L2</PreCondition>
+</PreConditions>
+<Expression>Messages.M_LEVEL.Level_2</Expression>
+</Case><Case
+ Name="L3"
+>
+<PreConditions>
+<PreCondition>Level == Default.Level.L3</PreCondition>
+</PreConditions>
+<Expression>Messages.M_LEVEL.Level_3</Expression>
+</Case><Case
+ Name="LNTC"
+>
+<PreConditions>
+<PreCondition>Level == Default.Level.LNTC</PreCondition>
+</PreConditions>
+<Expression>Messages.M_LEVEL.Level_NTC_specified_by_NID_NTC</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_MODE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EFSModeConverter"
+>
+<ReqRef
+ Id="7.5.1.72"
+>
+</ReqRef>
+<Comment>Converts an EFS mode to the corresponding ERTMS mode. The values of NP and PS are not defined so these modes are mapped to the &quot;Spare&quot; value.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.Mode"
+ Name="Mode"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="FS"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.FS</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SB</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Stand_By</Expression>
+</Case><Case
+ Name="SF"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SF</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.System_Failure</Expression>
+</Case><Case
+ Name="SH"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SH</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Shunting</Expression>
+</Case><Case
+ Name="SL"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SL</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Sleeping</Expression>
+</Case><Case
+ Name="SN"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SN</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.National_System</Expression>
+</Case><Case
+ Name="SR"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.SR</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Staff_Responsible</Expression>
+</Case><Case
+ Name="TR"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.TR</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Trip</Expression>
+</Case><Case
+ Name="UN"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.UN</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Unfitted</Expression>
+</Case><Case
+ Name="IS"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.IS</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Isolation</Expression>
+</Case><Case
+ Name="LS"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.LS</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Limited_Supervision</Expression>
+</Case><Case
+ Name="NL"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.NL</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Non_Leading</Expression>
+</Case><Case
+ Name="OS"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.OS</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.On_Sight</Expression>
+</Case><Case
+ Name="PT"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.PT</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Post_Trip</Expression>
+</Case><Case
+ Name="RV"
+>
+<PreConditions>
+<PreCondition>Mode == Default.Mode.RV</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Reversing</Expression>
+</Case><Case
+ Name="NP, PS, Unknown"
+>
+<PreConditions>
+<PreCondition>Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.Unknown]</PreCondition>
+</PreConditions>
+<Expression>Messages.M_MODE.Spare</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_DIRTRAIN"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRTRAIN"
+>
+<ReqRef
+ Id="7.5.1.104"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.105"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.106"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.Orientation"
+ Name="Orientation"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Nominal</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRTRAIN.Nominal</Expression>
+</Case><Case
+ Name="Reverse"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Reverse</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRTRAIN.Reverse</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRTRAIN.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_DIR"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EFSOrientationConverter"
+>
+<ReqRef
+ Id="7.5.1.104"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.105"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.106"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.Orientation"
+ Name="Orientation"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Nominal</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIR.Nominal</Expression>
+</Case><Case
+ Name="Reverse"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Reverse</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIR.Reverse</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIR.Spare</Expression>
+</Case><Case
+ Name="Both"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Both</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIR.Both_directions</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_DIRLRBG"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+<ReqRef
+ Id="7.5.1.104"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.105"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.106"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.Orientation"
+ Name="Orientation"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Nominal</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRLRBG.Nominal</Expression>
+</Case><Case
+ Name="Reverse"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Reverse</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRLRBG.Reverse</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DIRLRBG.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_DLRBG"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+<ReqRef
+ Id="7.5.1.104"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.105"
+>
+</ReqRef>
+<ReqRef
+ Id="7.5.1.106"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Default.Orientation"
+ Name="Orientation"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Nominal</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DLRBG.Nominal</Expression>
+</Case><Case
+ Name="Reverse"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Reverse</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DLRBG.Reverse</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>Orientation == Default.Orientation.Unknown</PreCondition>
+</PreConditions>
+<Expression>Messages.Q_DLRBG.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.NID_LRBG"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BG_To_LRBG"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="Nid_BG"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.NID_LRBG(Nid_BG)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.NC_CDDIFF"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NC_CTRAIN_to_NC_CDDIFF_Converter"
+>
+<Parameters>
+<Parameter
+ Type="Messages.NC_CDTRAIN"
+ Name="Category"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="80mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_80_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_80_mm</Expression>
+</Case><Case
+ Name="100mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_100_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_100_mm</Expression>
+</Case><Case
+ Name="130mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_130_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm</Expression>
+</Case><Case
+ Name="150mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_150_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm</Expression>
+</Case><Case
+ Name="165mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_165_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_165_mm</Expression>
+</Case><Case
+ Name="180mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_180_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_180_mm</Expression>
+</Case><Case
+ Name="210mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_210_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm</Expression>
+</Case><Case
+ Name="225mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_225_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_225_mm</Expression>
+</Case><Case
+ Name="245mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_245_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_245_mm</Expression>
+</Case><Case
+ Name="275mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_275_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_275_mm</Expression>
+</Case><Case
+ Name="300mm"
+>
+<PreConditions>
+<PreCondition>Category == Messages.NC_CDTRAIN.Cant_Deficiency_300_mm</PreCondition>
+</PreConditions>
+<Expression>Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_300_mm</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Length"
+ Implemented="TRUE"
+ Name="KrIntLengthConverter"
+>
+<ReqRef
+ Id="7.5.1.48.1.0"
+>
+</ReqRef>
+<Parameters>
+<Parameter
+ Type="Messages.L_NVKRINT"
+ Name="length"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="0m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._0mC</PreCondition>
+</PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="25m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._25mC</PreCondition>
+</PreConditions>
+<Expression>25.0</Expression>
+</Case><Case
+ Name="50m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._50mC</PreCondition>
+</PreConditions>
+<Expression>50.0</Expression>
+</Case><Case
+ Name="75m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._75mC</PreCondition>
+</PreConditions>
+<Expression>75.0</Expression>
+</Case><Case
+ Name="100m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._100mC</PreCondition>
+</PreConditions>
+<Expression>100.0</Expression>
+</Case><Case
+ Name="150m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._150mC</PreCondition>
+</PreConditions>
+<Expression>150.0</Expression>
+</Case><Case
+ Name="200m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._200mC</PreCondition>
+</PreConditions>
+<Expression>200.0</Expression>
+</Case><Case
+ Name="300m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._300mC</PreCondition>
+</PreConditions>
+<Expression>300.0</Expression>
+</Case><Case
+ Name="400m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._400mC</PreCondition>
+</PreConditions>
+<Expression>400.0</Expression>
+</Case><Case
+ Name="500m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._500mC</PreCondition>
+</PreConditions>
+<Expression>500.0</Expression>
+</Case><Case
+ Name="600m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._600mC</PreCondition>
+</PreConditions>
+<Expression>600.0</Expression>
+</Case><Case
+ Name="700m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._700mC</PreCondition>
+</PreConditions>
+<Expression>700.0</Expression>
+</Case><Case
+ Name="800m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._800mC</PreCondition>
+</PreConditions>
+<Expression>800.0</Expression>
+</Case><Case
+ Name="900m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._900mC</PreCondition>
+</PreConditions>
+<Expression>900.0</Expression>
+</Case><Case
+ Name="1000m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1000mC</PreCondition>
+</PreConditions>
+<Expression>1000.0</Expression>
+</Case><Case
+ Name="1100m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1100mC</PreCondition>
+</PreConditions>
+<Expression>1100.0</Expression>
+</Case><Case
+ Name="1200m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1200mC</PreCondition>
+</PreConditions>
+<Expression>1200.0</Expression>
+</Case><Case
+ Name="1300m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1300mC</PreCondition>
+</PreConditions>
+<Expression>1300.0</Expression>
+</Case><Case
+ Name="1400m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1400mC</PreCondition>
+</PreConditions>
+<Expression>1400.0</Expression>
+</Case><Case
+ Name="1500m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1500mC</PreCondition>
+</PreConditions>
+<Expression>1500.0</Expression>
+</Case><Case
+ Name="1600m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1600mC</PreCondition>
+</PreConditions>
+<Expression>1600.0</Expression>
+</Case><Case
+ Name="1700m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1700mC</PreCondition>
+</PreConditions>
+<Expression>1700.0</Expression>
+</Case><Case
+ Name="1800m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1800mC</PreCondition>
+</PreConditions>
+<Expression>1800.0</Expression>
+</Case><Case
+ Name="1900m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._1900mC</PreCondition>
+</PreConditions>
+<Expression>1900.0</Expression>
+</Case><Case
+ Name="2000m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2000mC</PreCondition>
+</PreConditions>
+<Expression>2000.0</Expression>
+</Case><Case
+ Name="2100m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2100mC</PreCondition>
+</PreConditions>
+<Expression>2100.0</Expression>
+</Case><Case
+ Name="2200m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2200mC</PreCondition>
+</PreConditions>
+<Expression>2200.0</Expression>
+</Case><Case
+ Name="2300m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2300mC</PreCondition>
+</PreConditions>
+<Expression>2300.0</Expression>
+</Case><Case
+ Name="2400m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2400mC</PreCondition>
+</PreConditions>
+<Expression>2400.0</Expression>
+</Case><Case
+ Name="2500m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2500mC</PreCondition>
+</PreConditions>
+<Expression>2500.0</Expression>
+</Case><Case
+ Name="2600m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2600mC</PreCondition>
+</PreConditions>
+<Expression>2600.0</Expression>
+</Case><Case
+ Name="2700m"
+>
+<PreConditions>
+<PreCondition>length == Messages.L_NVKRINT._2700C</PreCondition>
+</PreConditions>
+<Expression>2700.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.Percentage"
+ NeedsRequirement="FALSE"
+ Name="MinPercentage"
+>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.Percentage"
+ Name="X1"
+>
+</Parameter><Parameter
+ Type="Default.Percentage"
+ Name="X2"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="X1 NA"
+>
+<PreConditions>
+<PreCondition>X1 == Percentage.NA</PreCondition>
+</PreConditions>
+<Expression>X2</Expression>
+</Case><Case
+ Name="X2 NA"
+>
+<PreConditions>
+<PreCondition>X2 == Percentage.NA</PreCondition>
+</PreConditions>
+<Expression>X1</Expression>
+</Case><Case
+ Name="X1 &lt; X2"
+>
+<PreConditions>
+<PreCondition>X1 &lt; X2</PreCondition>
+</PreConditions>
+<Expression>X1</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>X2</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ NeedsRequirement="FALSE"
+ Name="Q_NEWCOUNTRY_To_Bool"
+>
+<Parameters>
+<Parameter
+ Type="Messages.Q_NEWCOUNTRY"
+ Name="Qualifier"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Qualifier == Messages.Q_NEWCOUNTRY.Not_the_same_country___railway_administration__NID_C_follows</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Orientation"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LinkingOrientationConverter"
+>
+<Parameters>
+<Parameter
+ Type="Messages.Q_LINKORIENTATION"
+ Name="Orientation"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+>
+<PreConditions>
+<PreCondition>Orientation == Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_nominal_direction</PreCondition>
+</PreConditions>
+<Expression>Orientation.Nominal</Expression>
+</Case><Case
+ Name="Reverse"
+>
+<PreConditions>
+<PreCondition>Orientation == Messages.Q_LINKORIENTATION.The_balise_group_is_seen_by_the_train_in_reverse_direction</PreCondition>
+</PreConditions>
+<Expression>Orientation.Reverse</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>
+=======
+<NameSpace
+ Name="Default"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="BaseTypes"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="MessageTypes"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ERA_BrakingCurvesVerification"
+>
+</NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ Name="RBC_ID"
+>
+<Comment></Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="9999"
+ Precision="IntegerPrecision"
+ Default="0"
+ Name="PositionConfidenceInterval"
+>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ Name="NID_TSR"
+>
+<ReqRef
+ Id="3.11.5.5"
+>
+</ReqRef><ReqRef
+ Id="3.11.5.6"
+>
+</ReqRef><Comment></Comment>
+<SpecialValues>
+<EnumValue
+ Value="255"
+ Name="NonRevocable"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="251"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Percentage"
+>
+<SpecialValues>
+<EnumValue
+ Value="251.0"
+ Name="NA"
+>
+</EnumValue></SpecialValues>
+</Range></Ranges>
+<Enumerations>
+<Enum
+ Default="L0"
+ Implemented="TRUE"
+ Name="Level"
+>
+<ReqRef
+ Id="2.6.2.1"
+>
+</ReqRef><ReqRef
+ Id="2.6.2.3"
+>
+</ReqRef><Values>
+<EnumValue
+ Value="0"
+ Name="L0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="L1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="L2"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="L3"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="LNTC"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Unknown"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="NP"
+ Name="Mode"
+>
+<ReqRef
+ Id="4.3.2.1"
+>
+</ReqRef><Comment>Represents the possible modes of an ERTMS/ETCS train.</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="NP"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SB"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="FS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="OS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SH"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NL"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SR"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SN"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="UN"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="LS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="TR"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="PT"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="PS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SL"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="IS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="RV"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="SF"
+>
+</EnumValue></Values>
+<SubEnums>
+<Enum
+ Default="ModeProfile.LS"
+ Implemented="TRUE"
+ Name="ModeProfile"
+>
+<ReqRef
+ Id="7.5.1.70"
+>
+</ReqRef><ReqRef
+ Id="3.12.4.1"
+>
+</ReqRef><Values>
+<EnumValue
+ Value="0"
+ Name="OS"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="LS"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="SH"
+>
+</EnumValue></Values>
+</Enum></SubEnums>
+</Enum><Enum
+ Default="DataState.Unknown"
+ Name="DataState"
+>
+<ReqRef
+ Id="5.4.2.1"
+>
+</ReqRef><Values>
+<EnumValue
+ Value="0"
+ Name="Valid"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Invalid"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Closed"
+ Name="SessionState"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Closed"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Established"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Failed"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Establishing"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Request.Disabled"
+ Name="Request"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Disabled"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Request"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Response"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Unknown"
+ Name="LeadingOrSlaveMode"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Leading"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Slave"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Unknown"
+ Name="SlaveEngineMode"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="SL"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="PS"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NL"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="STM.Unknown"
+ Name="STM"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="STM1"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="STM2"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="STM3"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="STM4"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Orientation.Unknown"
+ Name="Orientation"
+>
+<Values>
+<EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Both"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="NumberOfEVC.SingleEVC"
+ Name="NumberOfEVC"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="SingleEVC"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="DualEVC"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="Language.EN"
+ Name="Language"
+>
+<Values>
+<EnumValue
+ Value="0"
+ Name="EN"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="FR"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="NL"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="DistanceInterval.Nom"
+ Name="DistanceInterval"
+>
+<Comment>Used to represent some nominal distance and its associated max and min values. For example, to represent the safe front end of a train we use:
+- DistanceInterval.Nom to represent the estimated front end
+- DistanceInterval.Min to represent the min safe front end
+- DistanceInterval.Max to represent the max safe front end</Comment>
+<Values>
+<EnumValue
+ Value="0"
+ Name="Nom"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Max"
+>
+</EnumValue><EnumValue
+ Value="0"
+ Name="Min"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="ConfidenceInterval.L_DOUBTOVER"
+ Implemented="TRUE"
+ Verified="TRUE"
+ Name="ConfidenceInterval"
+>
+<ReqRef
+ Id="3.6.4.2"
+>
 </ReqRef><Values>
 <EnumValue
  Value="0"
@@ -521,60 +1890,19 @@
 >
 </EnumValue></Values>
 </Enum></Enumerations>
-<Structures>
-<Structure
- Implemented="TRUE"
- Name="LevelData"
->
-<ReqRef
- Id="2.6.2.1"
->
-</ReqRef><ReqRef
- Id="2.6.2.3"
->
-</ReqRef><Comment></Comment>
-<StructureElement
- TypeName="Default.NID_NTC"
- Default="Default.NID_NTC.NOT_APPLICABLE"
- Mode="Internal"
- Name="NTC"
->
-<Comment>only applicable if Value == Level.LNTC #morido, 13/10/10</Comment>
-</StructureElement><StructureElement
- TypeName="Default.Level"
- Default="Default.Level.Unknown"
- Mode="Internal"
- Name="Value"
->
-<Comment></Comment>
-</StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="DriverSelection"
+ TypeName="Level"
  Default="[]"
- Name="DriverSelectionSet"
->
-</Collection><Collection
- TypeName="RbcIdPhoneNumberChoice"
- Default="[]"
- Name="RBCIDChoiceSet"
->
-</Collection><Collection
- TypeName="LevelData"
- Default="EMPTY"
- Implemented="TRUE"
  Name="Levels"
 >
-<ReqRef
- Id="2.6.2.1"
+</Collection><Collection
+ TypeName="Messages.NID_NTC"
+ MaxSize="256"
+ Default="[]"
+ NeedsRequirement="FALSE"
+ Name="NationalSystems"
 >
-</ReqRef><ReqRef
- Id="2.6.2.3"
->
-</ReqRef><ReqRef
- Id="A1.1.11.14"
->
-</ReqRef><Comment>#designchoice MaxSize is an arbitrarily chosen value. #morido, 13/10/09</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -1300,3 +2628,4 @@
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
+>>>>>>> refs/remotes/motherERTMS/master

@@ -16,27 +16,22 @@
  Id="3.8.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1"
 >
 <Comment>EOA is computed based on the sections defined in the MA (see function EOA)</Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.3.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.4.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="BaseTypes.Speed"
  Default=""
@@ -49,16 +44,13 @@
  Id="3.8.1.1.b"
 >
 <Comment>In this model, there is no distinction between EOA and LOA</Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
-</ReqRef>
-<Comment>The target speed represents the permitted speed at the EOA.</Comment>
+</ReqRef><Comment>The target speed represents the permitted speed at the EOA.</Comment>
 </StructureElement><StructureElement
  TypeName="Sections"
  Default="[]"
@@ -70,13 +62,11 @@
 <ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the sections of the MA.</Comment>
+</ReqRef><Comment>Represents the sections of the MA.</Comment>
 </StructureElement><StructureElement
  TypeName="EndSection"
  Default=""
@@ -88,12 +78,10 @@
 <ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<Comment>Represents the end section of this MA.</Comment>
+</ReqRef><Comment>Represents the end section of this MA.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
  Default=""
@@ -105,12 +93,10 @@
 <ReqRef
  Id="3.8.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.146"
 >
-</ReqRef>
-<Comment>The time-out associated to the target speed, if any.</Comment>
+</ReqRef><Comment>The time-out associated to the target speed, if any.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -121,12 +107,10 @@
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.9"
 >
-</ReqRef>
-<Comment>Represents the LRBG to which refers the first section.</Comment>
+</ReqRef><Comment>Represents the LRBG to which refers the first section.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -138,12 +122,10 @@
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.9"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="Section"
@@ -151,8 +133,7 @@
 <ReqRef
  Id="3.8.3.2"
 >
-</ReqRef>
-<Comment>Represents a MA section.</Comment>
+</ReqRef><Comment>Represents a MA section.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -164,12 +145,10 @@
 <ReqRef
  Id="3.8.3.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.51"
 >
-</ReqRef>
-<Comment>Represents the length of the section.</Comment>
+</ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
  TypeName="SectionTimeOut"
  Default=""
@@ -181,20 +160,16 @@
 <ReqRef
  Id="3.8.1.1.f.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.130"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.4"
 >
-</ReqRef>
-<Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
+</ReqRef><Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Verified="TRUE"
@@ -203,12 +178,10 @@
 <ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.f.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="BaseTypes.Time"
  Default=""
@@ -219,12 +192,10 @@
 <ReqRef
  Id="7.5.1.151"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.145"
 >
-</ReqRef>
-<Comment>The section time-out value, if any.</Comment>
+</ReqRef><Comment>The section time-out value, if any.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -235,12 +206,10 @@
 <ReqRef
  Id="7.5.1.24"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.6"
 >
-</ReqRef>
-<Comment>Represents the distance from beginning of section to section timer stop location (if there is a time-out associated to this section).</Comment>
+</ReqRef><Comment>Represents the distance from beginning of section to section timer stop location (if there is a time-out associated to this section).</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="EndSection"
@@ -248,12 +217,10 @@
 <ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="SectionTimeOut"
  Default=""
@@ -266,17 +233,14 @@
  Id="3.8.1.1.f.2"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.108"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the end section time-out, if any.</Comment>
+</ReqRef><Comment>Represents the end section time-out, if any.</Comment>
 </StructureElement><StructureElement
  TypeName="SectionTimeOut"
  Default=""
@@ -288,17 +252,14 @@
 <ReqRef
  Id="3.8.1.1.f.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.130"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
+</ReqRef><Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -310,12 +271,10 @@
 <ReqRef
  Id="3.8.3.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.45"
 >
-</ReqRef>
-<Comment>Represents the length of the section.</Comment>
+</ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
  TypeName="DangerPoint"
  Default=""
@@ -328,17 +287,14 @@
  Id="3.8.3.3.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.c"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.102"
 >
-</ReqRef>
-<Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
+</ReqRef><Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 </StructureElement><StructureElement
  TypeName="Overlap"
  Default=""
@@ -350,16 +306,13 @@
 <ReqRef
  Id="3.8.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.126"
 >
-</ReqRef>
-<Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
+</ReqRef><Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Verified="TRUE"
@@ -368,12 +321,10 @@
 <ReqRef
  Id="3.8.3.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.c"
 >
-</ReqRef>
-<Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
+</ReqRef><Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -384,8 +335,7 @@
 <ReqRef
  Id="7.5.1.4"
 >
-</ReqRef>
-<Comment>The distance from end of section to danger point.</Comment>
+</ReqRef><Comment>The distance from end of section to danger point.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0.0"
@@ -397,12 +347,10 @@
  Id="3.8.1.1.e"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.168"
 >
-</ReqRef>
-<Comment>The release speed related to danger point.</Comment>
+</ReqRef><Comment>The release speed related to danger point.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Verified="TRUE"
@@ -412,13 +360,11 @@
  Id="3.8.3.3.c"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.d"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
+</ReqRef><Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -429,8 +375,7 @@
 <ReqRef
  Id="7.5.1.19"
 >
-</ReqRef>
-<Comment>Distance from end of section to end of overlap.</Comment>
+</ReqRef><Comment>Distance from end of section to end of overlap.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -441,8 +386,7 @@
 <ReqRef
  Id="7.5.1.26"
 >
-</ReqRef>
-<Comment>Distance from Overlap timer start location to end of section.</Comment>
+</ReqRef><Comment>Distance from Overlap timer start location to end of section.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
@@ -454,12 +398,10 @@
  Id="3.8.1.1.e"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.169"
 >
-</ReqRef>
-<Comment>Release speed related to overlap.</Comment>
+</ReqRef><Comment>Release speed related to overlap.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
  Default=""
@@ -470,8 +412,7 @@
 <ReqRef
  Id="7.5.1.150"
 >
-</ReqRef>
-<Comment>The validity time of the overlap.</Comment>
+</ReqRef><Comment>The validity time of the overlap.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="MaShorteningHandler"
@@ -479,12 +420,10 @@
 <ReqRef
  Id="3.8.5.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.4"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -511,16 +450,13 @@
 <ReqRef
  Id="3.8.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.11.1"
 >
-</ReqRef>
-<Comment>Represents MA sections.</Comment>
+</ReqRef><Comment>Represents MA sections.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -533,59 +469,47 @@
  Id="3.8.1.1.a"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.12.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.3.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.3.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.3.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.4"
 >
-</ReqRef>
-<Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
+</ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
 <Cases>
 <Case
  Name="Route suitability EOA defined"
 >
 <PreConditions>
-<PreCondition>TrackDescription.RouteSuitability.EOA() != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrackDescription.RouteSuitability.EOA() != EMPTY</PreCondition></PreConditions>
 <Expression>TrackDescription.RouteSuitability.EOA()</Expression>
 </Case><Case
  Name="Mode Profile EOA defined"
 >
 <PreConditions>
-<PreCondition>ModeProfile.EOA() != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>ModeProfile.EOA() != EMPTY</PreCondition></PreConditions>
 <Expression>ModeProfile.EOA()</Expression>
 </Case><Case
  Name="Sections are defined in the MA"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>THERE_IS_IN MA.Sections | X != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>THERE_IS_IN MA.Sections | X != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Speed =&gt; MA.TargetSpeed,
@@ -596,9 +520,7 @@
  Name="No sections are defined in the MA"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>FORALL_IN MA.Sections | X == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>FORALL_IN MA.Sections | X == EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Speed =&gt; MA.TargetSpeed,
@@ -624,28 +546,22 @@
 <ReqRef
  Id="7.5.1.130"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.24"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.4"
 >
-</ReqRef>
-<Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
+</ReqRef><Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1"
@@ -661,8 +577,7 @@
  Name="TimeOutAvailable"
 >
 <PreConditions>
-<PreCondition>ERTMSSection.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition>
-</PreConditions>
+<PreCondition>ERTMSSection.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition></PreConditions>
 <Expression>Section
 {
     Length =&gt; MessageTypes.QScaleLength ( length =&gt; ERTMSSection.L_SECTION, scale =&gt; Scale),
@@ -676,8 +591,7 @@
  Name="NoTimeOut"
 >
 <PreConditions>
-<PreCondition>ERTMSSection.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition>
-</PreConditions>
+<PreCondition>ERTMSSection.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition></PreConditions>
 <Expression>Section
 {
     Length =&gt; MessageTypes.QScaleLength ( length =&gt; ERTMSSection.L_SECTION, scale =&gt; Scale),
@@ -693,12 +607,10 @@
 <ReqRef
  Id="7.5.1.130"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.24"
 >
-</ReqRef>
-<Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
+</ReqRef><Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1"
@@ -730,8 +642,7 @@
  Name="Danger Point available"
 >
 <PreConditions>
-<PreCondition>Available ( MA.EndSection.DangerPoint )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA.EndSection.DangerPoint )</PreCondition></PreConditions>
 <Expression>EndOfMovementAuthority().Location + MA.EndSection.DangerPoint.Distance</Expression>
 </Case><Case
  Name="Danger point not available"
@@ -751,8 +662,7 @@
  Name="Overlap available"
 >
 <PreConditions>
-<PreCondition>Available ( MA.EndSection.Overlap )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA.EndSection.Overlap )</PreCondition></PreConditions>
 <Expression>EndOfMovementAuthority().Location + MA.EndSection.Overlap.Distance</Expression>
 </Case><Case
  Name="Overlap not available"
@@ -771,16 +681,13 @@
  Name="SectionsAvailable"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>MA.Sections != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>MA.Sections != EMPTY</PreCondition></PreConditions>
 <Expression>(FIRST_IN MA.Sections).Length</Expression>
 </Case><Case
  Name="EndSection"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition></PreConditions>
 <Expression>MA.EndSection.Length</Expression>
 </Case></Cases>
 </Function><Function
@@ -791,20 +698,16 @@
 <ReqRef
  Id="3.11.2.2.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.158"
 >
-</ReqRef>
-<Comment>Provides the speed profile due to signalling related speed restrictions. Only applicable for level 1.</Comment>
+</ReqRef><Comment>Provides the speed profile due to signalling related speed restrictions. Only applicable for level 1.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -816,8 +719,7 @@
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>SignallingRelatedSpeedRestriction</Expression>
 </Case><Case
  Name="Otherwise"
@@ -832,28 +734,22 @@
 <ReqRef
  Id="3.13.8.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.6.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.2.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.2.2"
 >
-</ReqRef>
-<Comment>Provides speed restriction for EOA (if applicable). Used to calculate the SBD curve.</Comment>
+</ReqRef><Comment>Provides speed restriction for EOA (if applicable). Used to calculate the SBD curve.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -865,10 +761,7 @@
  Name="EOA"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-<PreCondition>Distance &lt; EndOfMovementAuthority().Location</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>MA.TargetSpeed == 0.0</PreCondition><PreCondition>Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -896,16 +789,13 @@
 <ReqRef
  Id="3.13.2.3.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.6.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.8.2.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -917,23 +807,19 @@
  Name="No MA available"
 >
 <PreConditions>
-<PreCondition>MA == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>MA == EMPTY</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Before end of movement authority"
 >
 <PreConditions>
-<PreCondition>Distance &lt; EndOfMovementAuthority().Location</PreCondition>
-</PreConditions>
+<PreCondition>Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="After LOA"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed != 0.0</PreCondition>
-<PreCondition>EndOfMovementAuthority().Location &lt;= Distance</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed != 0.0</PreCondition><PreCondition>EndOfMovementAuthority().Location &lt;= Distance</PreCondition></PreConditions>
 <Expression>MA.TargetSpeed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -950,8 +836,7 @@
  Id="3.13.9.3.3.9"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Provides speed restriction for SvL. Used to compute the Most Restrictive Target amongst the EBD based targets.</Comment>
+</ReqRef><Comment>Provides speed restriction for SvL. Used to compute the Most Restrictive Target amongst the EBD based targets.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -963,18 +848,13 @@
  Name="No SvL defined"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>MA.TargetSpeed != 0.0</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>MA.TargetSpeed != 0.0</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Before SvL"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-<PreCondition>Distance &lt; SvL().Location</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition><PreCondition>MA.TargetSpeed == 0.0</PreCondition><PreCondition>Distance &lt; SvL().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="After SvL"
@@ -989,20 +869,16 @@
 <ReqRef
  Id="7.5.1.168"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.168.0"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.169.0"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.MessageTypes.Speed"
@@ -1014,15 +890,13 @@
  Name="ComputeOnBoard"
 >
 <PreConditions>
-<PreCondition>Speed == 126</PreCondition>
-</PreConditions>
+<PreCondition>Speed == 126</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.ComputeReleaseSpeedOnBoard</Expression>
 </Case><Case
  Name="UseNationalValue"
 >
 <PreConditions>
-<PreCondition>Speed == 127</PreCondition>
-</PreConditions>
+<PreCondition>Speed == 127</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.UseNVForReleaseSpeed</Expression>
 </Case><Case
  Name="ReleaseSpeedValue"
@@ -1037,8 +911,7 @@
 <ReqRef
  Id="3.13.10.4.2"
 >
-</ReqRef>
-<Comment>Indicates if a target is a supervision limit.</Comment>
+</ReqRef><Comment>Indicates if a target is a supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
@@ -1050,27 +923,19 @@
  Name="EOA"
 >
 <PreConditions>
-<PreCondition>MA.EndSection.DangerPoint == EMPTY</PreCondition>
-<PreCondition>MA.EndSection.Overlap == EMPTY</PreCondition>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>MA.EndSection.DangerPoint == EMPTY</PreCondition><PreCondition>MA.EndSection.Overlap == EMPTY</PreCondition><PreCondition>MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Expression>aTarget.Location == EndOfMovementAuthority().Location AND aTarget.Speed == 0.0</Expression>
 </Case><Case
  Name="Danger point"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-<PreCondition>MA.EndSection.DangerPoint != EMPTY</PreCondition>
-<PreCondition>MA.EndSection.Overlap == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed == 0.0</PreCondition><PreCondition>MA.EndSection.DangerPoint != EMPTY</PreCondition><PreCondition>MA.EndSection.Overlap == EMPTY</PreCondition></PreConditions>
 <Expression>aTarget.Location == DangerPointLocation() AND aTarget.Speed == 0.0</Expression>
 </Case><Case
  Name="Overlap"
 >
 <PreConditions>
-<PreCondition>MA.EndSection.Overlap != EMPTY</PreCondition>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>MA.EndSection.Overlap != EMPTY</PreCondition><PreCondition>MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Expression>aTarget.Location == OverlapLocation() AND aTarget.Speed == 0.0</Expression>
 </Case><Case
  Name="No SvL defined"
@@ -1085,8 +950,7 @@
 <ReqRef
  Id="3.13.10.4.2"
 >
-</ReqRef>
-<Comment>Indicates if a target is an end of authority.</Comment>
+</ReqRef><Comment>Indicates if a target is an end of authority.</Comment>
 <Parameters>
 <Parameter
  Type="SpeedAndDistanceMonitoring.TargetSupervision.Target"
@@ -1098,8 +962,7 @@
  Name="EOA defined"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Expression>aTarget.Speed == 0.0 AND aTarget.Location == EndOfMovementAuthority().Location</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1114,54 +977,43 @@
 <ReqRef
  Id="3.8.4.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.4.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.9.3.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.3.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.3.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.10"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Route suitability SvL defined"
 >
 <PreConditions>
-<PreCondition>TrackDescription.RouteSuitability.SvL() != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrackDescription.RouteSuitability.SvL() != EMPTY</PreCondition></PreConditions>
 <Expression>TrackDescription.RouteSuitability.SvL()</Expression>
 </Case><Case
  Name="Mode Profile SvL defined"
 >
 <PreConditions>
-<PreCondition>ModeProfile.SvL() != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>ModeProfile.SvL() != EMPTY</PreCondition></PreConditions>
 <Expression>ModeProfile.SvL()</Expression>
 </Case><Case
  Name="SvL defined, overlap"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-<PreCondition>MA.EndSection.Overlap != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed == 0.0</PreCondition><PreCondition>MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Location =&gt; OverlapLocation(),
@@ -1172,9 +1024,7 @@
  Name="SvL defined, danger point"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-<PreCondition>MA.EndSection.DangerPoint != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed == 0.0</PreCondition><PreCondition>MA.EndSection.DangerPoint != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Location =&gt; DangerPointLocation(),
@@ -1185,8 +1035,7 @@
  Name="SvL defined, end of authority"
 >
 <PreConditions>
-<PreCondition>MA.TargetSpeed == 0.0</PreCondition>
-</PreConditions>
+<PreCondition>MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSupervision.Target
 {
     Location =&gt; EndOfMovementAuthority().Location,
@@ -1206,8 +1055,7 @@
 <ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef>
-<Comment>This function decides if the current section shall be removed when an infill MA is received. There is three possible cases:
+</ReqRef><Comment>This function decides if the current section shall be removed when an infill MA is received. There is three possible cases:
  - The section is situated before the infill location, in this case it is kept;
  - The section is situated after the infill location, in this case it is removed;
  - The infill location is situated on the section, in this case the section is cut at the infill location.</Comment>
@@ -1226,16 +1074,13 @@
  Name="Section before infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) &lt;= InfillDistance</PreCondition>
-</PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) &lt;= InfillDistance</PreCondition></PreConditions>
 <Expression>aSection</Expression>
 </Case><Case
  Name="Section on infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) - BaseTypes.LengthToDistance ( aSection.Length ) &lt; InfillDistance</PreCondition>
-<PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection )</PreCondition>
-</PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) - BaseTypes.LengthToDistance ( aSection.Length ) &lt; InfillDistance</PreCondition><PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection )</PreCondition></PreConditions>
 <Expression>Section
 {
     Length =&gt; BaseTypes.LengthToDistance ( AbsoluteDistance ( aSection ) - InfillDistance ),
@@ -1254,8 +1099,7 @@
 <ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef>
-<Comment>Provides the absolute distance (from the LRBG) to the end of the given section.</Comment>
+</ReqRef><Comment>Provides the absolute distance (from the LRBG) to the end of the given section.</Comment>
 <Parameters>
 <Parameter
  Type="Section"
@@ -1280,12 +1124,10 @@ USING
 <ReqRef
  Id="7.4.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.4.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
@@ -1332,16 +1174,13 @@ USING
 <ReqRef
  Id="3.8.4.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.4.6.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1353,8 +1192,7 @@ USING
  Name="Value"
 >
 <PreConditions>
-<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition>
-</PreConditions>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition></PreConditions>
 <Expression>FullTrackDescriptionAvailable( Packet =&gt; Packet )
   AND
 Mode != Mode.TR
@@ -1378,12 +1216,10 @@ Mode != Mode.TR
 <ReqRef
  Id="3.7.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.6.2"
 >
-</ReqRef>
-<Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
+</ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1401,8 +1237,7 @@ Default.BaseTypes.LengthToDistance(
       length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
       scale =&gt; Packet.Q_SCALE
       )
-   )</PreCondition>
-</PreConditions>
+   )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Gradient information does not cover required length"
@@ -1414,13 +1249,43 @@ Default.BaseTypes.LengthToDistance(
       length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
       scale =&gt; Packet.Q_SCALE
       )
-   )</PreCondition>
-</PreConditions>
+   )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
 >
 <Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="AcceptMA_test"
+>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="YES"
+>
+<PreConditions>
+<PreCondition>FullTrackDescriptionAvailable( Packet =&gt; Packet )</PreCondition><PreCondition>Mode != Mode.TR</PreCondition><PreCondition>(
+  Infill.Data == EMPTY
+    OR
+    ( Infill.Data != EMPTY
+      AND
+    Kernel.Mode in [ Mode.FS, Mode.LS ] 
+      AND
+    BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ) != BaseTypes.Distance.Unknown
+  )
+)</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="NO"
+>
+<Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1433,12 +1298,10 @@ Default.BaseTypes.LengthToDistance(
  Id="7.4.2.4"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
+</ReqRef><Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
@@ -1465,11 +1328,9 @@ Default.BaseTypes.LengthToDistance(
  Name="Store MA information"
 >
 <PreConditions>
-<PreCondition>FullTrackDescriptionAvailable(Packet =&gt;  ConvertMALvl2or3_to_MALvl1 ( Packet ))</PreCondition>
-</PreConditions>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt;  ConvertMALvl2or3_to_MALvl1 ( Packet ))</PreCondition></PreConditions>
 <Actions>
-<Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action>
-</Actions>
+<Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1480,20 +1341,16 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.4.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
+</ReqRef><Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1521,19 +1378,14 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.158"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>AcceptMA( Packet =&gt; Packet )</PreCondition>
-</PreConditions>
+<PreCondition>AcceptMA( Packet =&gt; Packet )</PreCondition></PreConditions>
 <Actions>
-<Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action>
-<Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action>
-</Actions>
+<Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action><Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1543,12 +1395,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.158.0"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.6.5"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1557,12 +1407,9 @@ Default.BaseTypes.LengthToDistance(
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.V_MAIN == 0</PreCondition>
-<PreCondition>Infill.Data == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Packet.V_MAIN == 0</PreCondition><PreCondition>Infill.Data == EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action>
-</Actions>
+<Action>SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1573,20 +1420,16 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.4.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1610,15 +1453,13 @@ Default.BaseTypes.LengthToDistance(
  Name="Store previous information"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition></PreConditions>
 <Actions>
 <Action>ShorteningHandler &lt;- MaShorteningHandler
 {
     Location =&gt; EndOfMovementAuthority().Location,
     IsSvL =&gt; IsSvL ( EndOfMovementAuthority() )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1628,12 +1469,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.4.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.1.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1643,16 +1482,13 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.157"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1660,8 +1496,7 @@ Default.BaseTypes.LengthToDistance(
 {
     TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
     TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
-}</Action>
-</Actions>
+}</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1677,21 +1512,16 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.4.6.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>UpdateSectionsForInfill ( InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ), Packet =&gt; Packet )</Action>
-</Actions>
+<Action>UpdateSectionsForInfill ( InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ), Packet =&gt; Packet )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No infill"
@@ -1699,13 +1529,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.5.1.a"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>MA.ReferenceBG &lt;- NID_BG</Action>
-<Action>MA.ReferenceBGLocation &lt;- Odometry.NominalDistance</Action>
-</Actions>
+<Action>MA.ReferenceBG &lt;- NID_BG</Action><Action>MA.ReferenceBGLocation &lt;- Odometry.NominalDistance</Action></Actions>
 <SubRules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -1716,12 +1543,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1730,22 +1555,18 @@ Default.BaseTypes.LengthToDistance(
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.N_ITER != 0</PreCondition>
-</PreConditions>
+<PreCondition>Packet.N_ITER != 0</PreCondition></PreConditions>
 <Actions>
-<Action>MA.Sections &lt;- MAP Packet.Sequence1 USING CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action>
-</Actions>
+<Action>MA.Sections &lt;- MAP Packet.Sequence1 USING CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SectionsNotAvailable"
 >
 <PreConditions>
-<PreCondition>Packet.N_ITER == 0</PreCondition>
-</PreConditions>
+<PreCondition>Packet.N_ITER == 0</PreCondition></PreConditions>
 <Actions>
-<Action>MA.Sections &lt;- EMPTY</Action>
-</Actions>
+<Action>MA.Sections &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1759,12 +1580,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.45"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -1773,8 +1592,7 @@ Default.BaseTypes.LengthToDistance(
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>MA.EndSection.Length &lt;- MessageTypes.QScaleLength ( Packet.L_ENDSECTION, Packet.Q_SCALE )</Action>
-</Actions>
+<Action>MA.EndSection.Length &lt;- MessageTypes.QScaleLength ( Packet.L_ENDSECTION, Packet.Q_SCALE )</Action></Actions>
 <SubRules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -1785,12 +1603,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.3.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.108"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1800,28 +1616,23 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.6"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition></PreConditions>
 <Actions>
 <Action>MA.EndSection.EndSectionTimeOut &lt;- SectionTimeOut
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ENDTIMERSTARTLOC, scale =&gt; Packet.Q_SCALE ),
     TimeOut =&gt; BaseTypes.Time ( Packet.T_ENDTIMER )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="EndSectionTimeOutNotAvailable"
 >
 <PreConditions>
-<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.No_End_section_timer_information</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.No_End_section_timer_information</PreCondition></PreConditions>
 <Actions>
-<Action>MA.EndSection.EndSectionTimeOut &lt;- EMPTY</Action>
-</Actions>
+<Action>MA.EndSection.EndSectionTimeOut &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1832,16 +1643,13 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.130"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1851,28 +1659,23 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.24"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition></PreConditions>
 <Actions>
 <Action>MA.EndSection.TimeOut &lt;- SectionTimeOut
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SECTIONTIMERSTOPLOC, scale =&gt; Packet.Q_SCALE ),
     TimeOut =&gt; BaseTypes.Time ( Packet.T_SECTIONTIMER )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TimeOutNotAvailable"
 >
 <PreConditions>
-<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.No_Section_Timer_information</PreCondition></PreConditions>
 <Actions>
-<Action>MA.EndSection.TimeOut &lt;- EMPTY</Action>
-</Actions>
+<Action>MA.EndSection.TimeOut &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1883,16 +1686,13 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.102"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1903,36 +1703,29 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.168"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition></PreConditions>
 <Actions>
 <Action>MA.EndSection.DangerPoint &lt;- DangerPoint
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_DP, scale =&gt; Packet.Q_SCALE ),
     ReleaseSpeed =&gt; CreateReleaseSpeed ( Packet.V_RELEASEDP )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DangerPointNotAvailable"
 >
 <PreConditions>
-<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.No_danger_point_information</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.No_danger_point_information</PreCondition></PreConditions>
 <Actions>
-<Action>MA.EndSection.DangerPoint &lt;- EMPTY</Action>
-</Actions>
+<Action>MA.EndSection.DangerPoint &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1943,20 +1736,16 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.3.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.126"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1966,19 +1755,15 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="7.5.1.26"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.169"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.19"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow</PreCondition></PreConditions>
 <Actions>
 <Action>MA.EndSection.Overlap &lt;- Overlap
 {
@@ -1986,19 +1771,16 @@ Default.BaseTypes.LengthToDistance(
     ReleaseSpeed =&gt; CreateReleaseSpeed ( Packet.V_RELEASEOL ),
     TimerDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STARTOL, scale =&gt; Packet.Q_SCALE ),
     TimeOut =&gt; BaseTypes.Time ( Packet.T_OL )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OverlapNotAvailable"
 >
 <PreConditions>
-<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.No_overlap_information</PreCondition>
-</PreConditions>
+<PreCondition>Packet.Q_OVERLAP == Messages.Q_OVERLAP.No_overlap_information</PreCondition></PreConditions>
 <Actions>
-<Action>MA.EndSection.Overlap &lt;- EMPTY</Action>
-</Actions>
+<Action>MA.EndSection.Overlap &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2017,8 +1799,7 @@ Default.BaseTypes.LengthToDistance(
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2028,12 +1809,10 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.A3.4.1.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.2.4"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2042,19 +1821,16 @@ Default.BaseTypes.LengthToDistance(
 <ReqRef
  Id="3.8.5.1.4"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition>ShorteningHandler != EMPTY
   AND
 ShorteningHandler.Location &gt; MA.EndOfMovementAuthority().Location
   AND
 ShorteningHandler.IsSvL
   AND
-NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition>
-</PreConditions>
+NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
 <Actions>
-<Action>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL &lt;- True</Action>
-</Actions>
+<Action>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceivedRegardlessOfSvL &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="TestMaShortening"
@@ -2062,19 +1838,16 @@ NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition>
 <ReqRef
  Id="3.8.5.1.3"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition>ShorteningHandler != EMPTY
   AND
 ShorteningHandler.Location &gt; MA.EndOfMovementAuthority().Location
   AND
 ShorteningHandler.IsSvL
   AND
-IsSvL ( MA.EndOfMovementAuthority() )</PreCondition>
-</PreConditions>
+IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
 <Actions>
-<Action>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived &lt;- True</Action>
-</Actions>
+<Action>HandlingOfAcceptedAndStoredInformation.ShortenedMaReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2084,8 +1857,7 @@ IsSvL ( MA.EndOfMovementAuthority() )</PreCondition>
 <ReqRef
  Id="3.8.5.1.2"
 >
-</ReqRef>
-<Comment>This function updates the MA&apos;s sections when an infill MA is received. The following steps are executed:
+</ReqRef><Comment>This function updates the MA&apos;s sections when an infill MA is received. The following steps are executed:
  - The end section of the previous MA is inserted to the list of the sections;
  - All sections situated after the infill locations are removed (if the infill location is situated in the middle of one of sections, the section is cut at that point);
  - The sections of the infill MA are insterted after the sections of the previous MA.</Comment>
@@ -2121,8 +1893,7 @@ Section
     Length =&gt; MA.EndSection.Length,
     TimeOut =&gt; MA.EndSection.TimeOut
 }
-IN MA.Sections</Action>
-</Actions>
+IN MA.Sections</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2140,8 +1911,7 @@ IN MA.Sections</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>MA.Sections &lt;- MAP MA.Sections USING ConsiderSectionForInfill ( aSection =&gt; X, InfillDistance =&gt; InfillDistance )</Action>
-</Actions>
+<Action>MA.Sections &lt;- MAP MA.Sections USING ConsiderSectionForInfill ( aSection =&gt; X, InfillDistance =&gt; InfillDistance )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2158,8 +1928,7 @@ IN MA.Sections</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY ExtendSections ( aSection =&gt; X, Scale =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action>
-</Actions>
+<Action>APPLY ExtendSections ( aSection =&gt; X, Scale =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2169,8 +1938,7 @@ IN MA.Sections</Action>
 <ReqRef
  Id="3.8.3.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1"
@@ -2199,8 +1967,7 @@ IN MA.Sections</Action>
 <Action>INSERT
   CreateEFSSection ( ERTMSSection =&gt; aSection, Scale =&gt; Scale )
 IN
-  MA.Sections</Action>
-</Actions>
+  MA.Sections</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2210,12 +1977,10 @@ IN
 <ReqRef
  Id="3.8.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.2.4"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Message"
@@ -2242,24 +2007,19 @@ IN
 <ReqRef
  Id="3.8.5.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( MA ) AND MA.Sections != []</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA ) AND MA.Sections != []</PreCondition></PreConditions>
 <Actions>
-<Action>(FIRST_IN MA.Sections).Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action>
-</Actions>
+<Action>(FIRST_IN MA.Sections).Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="One section available"
 >
 <PreConditions>
-<PreCondition>Available ( MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( MA )</PreCondition></PreConditions>
 <Actions>
-<Action>MA.EndSection.Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action>
-</Actions>
+<Action>MA.EndSection.Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2274,8 +2034,7 @@ IN
 <ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<Comment>Represents the Movement Authority.</Comment>
+</ReqRef><Comment>Represents the Movement Authority.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Speed"
  DefaultValue="Default.BaseTypes.Speed.MaxSpeed"
@@ -2287,22 +2046,18 @@ IN
  Id="3.11.6"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.6.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.e"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<Comment>Represents the signalling related speed restriction. Value = 0 corresponds to train trip.</Comment>
+</ReqRef><Comment>Represents the signalling related speed restriction. Value = 0 corresponds to train trip.</Comment>
 </Variable><Variable
  Type="MA.MaShorteningHandler"
  DefaultValue="EMPTY"
@@ -2313,11 +2068,9 @@ IN
 <ReqRef
  Id="3.8.5.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.1.4"
 >
-</ReqRef>
-<Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
+</ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable></Variables>
 </NameSpace>

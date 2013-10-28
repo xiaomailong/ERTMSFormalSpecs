@@ -14,8 +14,7 @@
 <ReqRef
  Id="3.6.1.3"
 >
-</ReqRef>
-<Comment> Represents the information about the Last Relevant Balise Group.</Comment>
+</ReqRef><Comment> Represents the information about the Last Relevant Balise Group.</Comment>
 <StructureElement
  TypeName="Position"
  Default=""
@@ -44,16 +43,13 @@
 <ReqRef
  Id="3.4.2.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.2"
 >
-</ReqRef>
-<Comment>Indicates of the orientation of the LRBG can be determined.</Comment>
+</ReqRef><Comment>Indicates of the orientation of the LRBG can be determined.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -105,8 +101,7 @@
 <ReqRef
  Id="3.4.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -118,30 +113,25 @@
 <ReqRef
  Id="3.6.4.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 3.A3.2.1.23"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
 >
 <PreConditions>
-<PreCondition>Available ( Linking.CurrentLinking() )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Linking.CurrentLinking() )</PreCondition></PreConditions>
 <Expression>Linking.CurrentLinking().LocationAccuracy</Expression>
 </Case><Case
  Name="NationalValuesAvailable"
 >
 <PreConditions>
-<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Length(Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case><Case
  Name="DefaultValue"
@@ -155,19 +145,16 @@
 <ReqRef
  Id="3.6.4.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.3.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="LinkingAvailable"
 >
 <PreConditions>
-<PreCondition>Available ( Linking.CurrentLinking )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Linking.CurrentLinking )</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="LinkingNotAvailable"
@@ -183,8 +170,7 @@
  Id="3.6.5.1.2.i"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Provides the previous LRBG, if any.</Comment>
+</ReqRef><Comment>Provides the previous LRBG, if any.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -201,8 +187,7 @@
 <ReqRef
  Id="3.6.4.4.a"
 >
-</ReqRef>
-<Comment>Current position, relative to the LRBG.</Comment>
+</ReqRef><Comment>Current position, relative to the LRBG.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -231,54 +216,43 @@
  Name="Unknown train orientation"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Empty bg1"
 >
 <PreConditions>
-<PreCondition>NOT Available ( bg1 )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Available ( bg1 )</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Empty bg2"
 >
 <PreConditions>
-<PreCondition>NOT Available ( bg2 )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Available ( bg2 )</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="Nominal and bg1.Position &lt;= bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition>
-<PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="Nominal and bg1.Position &gt; bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition>
-<PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Reverse and bg1.Position &lt;= bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition>
-<PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Reverse and bg1.Position &gt; bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition>
-<PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
@@ -303,54 +277,43 @@
  Name="Unknown train orientation"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Empty bg1"
 >
 <PreConditions>
-<PreCondition>NOT Available ( bg1 )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Available ( bg1 )</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Empty bg2"
 >
 <PreConditions>
-<PreCondition>NOT Available ( bg2 )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Available ( bg2 )</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="Nominal and bg1.Position &gt; bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition>
-<PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="Nominal and bg1.Position &lt;= bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition>
-<PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Reverse and bg1.Position &gt; bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition>
-<PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition>bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
 </Case><Case
  Name="Reverse and bg1.Position &lt;= bg2.Position"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition>
-<PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition>bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
@@ -362,8 +325,7 @@
  Id="3.6.5.1.2.i"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Provides the previous LRBG, if any.</Comment>
+</ReqRef><Comment>Provides the previous LRBG, if any.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -397,42 +359,34 @@
 <ReqRef
  Id="3.4.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.5"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Less than two balises in the balise group, valid linking information"
 >
 <PreConditions>
-<PreCondition>( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition>
-<PreCondition>Linking.CurrentLinking().NID_BG == ( FIRST_IN CurrentBaliseGroup ).NID_BG</PreCondition>
-</PreConditions>
+<PreCondition>( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition><PreCondition>Linking.CurrentLinking().NID_BG == ( FIRST_IN CurrentBaliseGroup ).NID_BG</PreCondition></PreConditions>
 <Expression>Linking.CurrentLinking().Orientation</Expression>
 </Case><Case
  Name="Less than two balises in the balise group, invalid linking information"
 >
 <PreConditions>
-<PreCondition>( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition>
-</PreConditions>
+<PreCondition>( COUNT CurrentBaliseGroup ) &lt; 2</PreCondition></PreConditions>
 <Expression>Orientation.Unknown</Expression>
 </Case><Case
  Name="First balise is the number 0"
 >
 <PreConditions>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG == 0</PreCondition>
-</PreConditions>
+<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG == 0</PreCondition></PreConditions>
 <Expression>Orientation.Nominal</Expression>
 </Case><Case
  Name="Otherwise"
@@ -446,13 +400,11 @@
 <ReqRef
  Id="3.6.2.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.16.2.3.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Indicates whether the Current Balise Group is a candidate for LRBG</Comment>
+</ReqRef><Comment>Indicates whether the Current Balise Group is a candidate for LRBG</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -482,8 +434,7 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  Id="A1.1.3.2.3"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Provides the weight of a balise : a duplicate balise counts for two balises, whereas a non duplicated balise counts for one.</Comment>
+</ReqRef><Comment>Provides the weight of a balise : a duplicate balise counts for two balises, whereas a non duplicated balise counts for one.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -495,8 +446,7 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  Name="Not a duplicate"
 >
 <PreConditions>
-<PreCondition>balise.M_DUP == Messages.M_DUP.No_duplicates</PreCondition>
-</PreConditions>
+<PreCondition>balise.M_DUP == Messages.M_DUP.No_duplicates</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="Otherwise"
@@ -512,12 +462,10 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  Id="A1.1.3.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.3.2.3"
 >
-</ReqRef>
-<Comment>This function indicates whether a single balise need be stored for further processing. Duplicate balises for wich the other balise of the pair has already been received does not need be stored.</Comment>
+</ReqRef><Comment>This function indicates whether a single balise need be stored for further processing. Duplicate balises for wich the other balise of the pair has already been received does not need be stored.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -529,31 +477,25 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  Name="Not a duplicate"
 >
 <PreConditions>
-<PreCondition>Message.M_DUP == Messages.M_DUP.No_duplicates</PreCondition>
-</PreConditions>
+<PreCondition>Message.M_DUP == Messages.M_DUP.No_duplicates</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="No balise has been received yet"
 >
 <PreConditions>
-<PreCondition>CurrentBaliseGroup == []</PreCondition>
-</PreConditions>
+<PreCondition>CurrentBaliseGroup == []</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Not a duplicate of the next balise in the nominal direction"
 >
 <PreConditions>
-<PreCondition>(LAST_IN CurrentBaliseGroup).N_PIG != Message.N_PIG + 1</PreCondition>
-<PreCondition>Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition>
-</PreConditions>
+<PreCondition>(LAST_IN CurrentBaliseGroup).N_PIG != Message.N_PIG + 1</PreCondition><PreCondition>Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Not a duplicate of the previous balise in the nominal direction"
 >
 <PreConditions>
-<PreCondition>(LAST_IN CurrentBaliseGroup).N_PIG != Message.N_PIG - 1</PreCondition>
-<PreCondition>Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition>
-</PreConditions>
+<PreCondition>(LAST_IN CurrentBaliseGroup).N_PIG != Message.N_PIG - 1</PreCondition><PreCondition>Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -569,28 +511,22 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
  Id="3.6.3.1.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.3.1.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.9.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.3.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.3.2.c"
 >
-</ReqRef>
-<Comment>Returns true if the packet has to be considered, that is 
+</ReqRef><Comment>Returns true if the packet has to be considered, that is 
   - if the packet is available (hence its orientation is also available),
   - this is not an infill information, or the infill transmission media is available on-board and 
   - its information is valid for the current orientation of the train or for both directions). 
@@ -606,15 +542,13 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Empty orientation"
 >
 <PreConditions>
-<PreCondition>NOT Available ( PacketOrientation )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Available ( PacketOrientation )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Infill information but no infill transmission media"
 >
 <PreConditions>
-<PreCondition>Kernel.Infill.Data != EMPTY AND NOT Kernel.Infill.InfillTransmissionMediaAvailable</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Infill.Data != EMPTY AND NOT Kernel.Infill.InfillTransmissionMediaAvailable</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Value"
@@ -629,8 +563,7 @@ If the train direction is unknown, this function returns true only if the packet
 <ReqRef
  Id="3.13.10.2.7"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.DistanceInterval"
@@ -673,8 +606,7 @@ If the train direction is unknown, this function returns true only if the packet
 <ReqRef
  Id="A1.1.3.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -684,17 +616,13 @@ If the train direction is unknown, this function returns true only if the packet
 <ReqRef
  Id="3.18.2.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.NationalValues.NationalValuesReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.NATIONAL_VALUES, NID_C=&gt;NID_C )</Action>
-</Actions>
+<Action>Kernel.NationalValues.NationalValuesReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.NATIONAL_VALUES, NID_C=&gt;NID_C )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Linking available"
@@ -702,17 +630,13 @@ If the train direction is unknown, this function returns true only if the packet
 <ReqRef
  Id="3.4.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.4"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LINKING.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LINKING.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action>
-</Actions>
+<Action>Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Repositioning information available"
@@ -720,23 +644,18 @@ If the train direction is unknown, this function returns true only if the packet
 <ReqRef
  Id="3.8.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.8"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition>Linking.CurrentBGAcceptableUnknown ()
   AND
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition>
-</PreConditions>
+ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action>
-</Actions>
+<Action>Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Gradient available"
@@ -744,21 +663,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.12.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.9"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.ProfileReceived ( Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.Gradient.ProfileReceived ( Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Static Speed Profile available"
@@ -766,35 +680,27 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.10"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Level Transition available"
 >
 <ReqRef
  Id="7.4.1.1.13"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
-</PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Session management available"
@@ -802,13 +708,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="7.4.1.1.14"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>EURORADIO.TracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action>
-</Actions>
+<Action>EURORADIO.TracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="List of balises for SH available"
@@ -816,17 +719,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="7.4.1.1.19"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.1.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action>
-</Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Axle Load available"
@@ -834,21 +733,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.20"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Permitted Braking Distance Information available"
@@ -856,21 +750,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.11.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.21"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.PermittedBrakingDistance.PermittedBrakingDistanceReceived ( Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.PermittedBrakingDistance.PermittedBrakingDistanceReceived ( Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Temporary Speed Restriction available"
@@ -878,17 +767,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.26"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TSR.TemporarySpeedRestrictionsReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION,NID_BG=&gt;NID_BG )</Action>
-</Actions>
+<Action>Kernel.TSR.TemporarySpeedRestrictionsReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION,NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Temporary Speed Restriction Revocation available"
@@ -896,17 +781,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.27"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action>
-</Actions>
+<Action>Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Track Condition available"
@@ -914,21 +795,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.12.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.29"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.TrackConditions.TrackConditionReceived ( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TrackConditionReceived ( Packet.TRACK_TO_TRAIN.TRACK_CONDITION )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Route Suitability available"
@@ -936,21 +812,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.12.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.31"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Adhesion Factor available"
@@ -958,29 +829,22 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.18.4.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.32"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.AdhesionFactors.AdhesionFactorReceived ( Packet.TRACK_TO_TRAIN.ADHESION_FACTOR )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.AdhesionFactors.AdhesionFactorReceived ( Packet.TRACK_TO_TRAIN.ADHESION_FACTOR )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Mode Profile available"
@@ -988,25 +852,19 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="7.4.1.1.36"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.7.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.19.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Level Crossing available"
@@ -1014,17 +872,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.37"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action>
-</Actions>
+<Action>Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1033,22 +887,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.9.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.9.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.44"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Q_DIR )</PreCondition>
-<PreCondition>Kernel.Infill.InfillTransmissionMediaAvailable</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Q_DIR )</PreCondition><PreCondition>Kernel.Infill.InfillTransmissionMediaAvailable</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Infill.InfillReceived ( Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action>
-</Actions>
+<Action>Kernel.Infill.InfillReceived ( Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Reversing area information available"
@@ -1056,34 +904,26 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.15.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.13.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.13.1.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.46"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
 (
     RVAreaPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION,
     RVSupervisionPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Reversing supervision information available"
@@ -1091,25 +931,19 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.15.4.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="5.13.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.47"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition>
-<PreCondition>NOT ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition>NOT ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived
 (
     RVSupervisionPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Default gradient for TSR available"
@@ -1117,26 +951,20 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.11.12.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.49"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action>
-</Actions>
+<Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Conditional Level Transition Order"
 >
 <PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition>
-</PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1146,8 +974,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.6.4.2.2"
 >
-</ReqRef>
-<Comment>This procedure is used when the train detects a new LRBG, in order to update information relative to its LRBG.</Comment>
+</ReqRef><Comment>This procedure is used when the train detects a new LRBG, in order to update information relative to its LRBG.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_LRBG"
@@ -1172,12 +999,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( LRBG )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( LRBG )</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT LRBG IN PreviousLRBGs
-  WHEN FULL REPLACE SelectFartherBG()</Action>
-</Actions>
+  WHEN FULL REPLACE SelectFartherBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1189,8 +1014,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.6.4.2.2"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The LRBG position is updated with the current values of the odometer.</Comment>
+</ReqRef><Comment>The LRBG position is updated with the current values of the odometer.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1206,9 +1030,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
   NID =&gt; Nid_BG,
   Position =&gt; FirstBalisePosition,
   Orientation =&gt; BaliseGroupOrientation()
-}</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- BaliseGroupOrientation()</Action>
-</Actions>
+}</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- BaliseGroupOrientation()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1218,12 +1040,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.6.4.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.7.2.1"
 >
-</ReqRef>
-<Comment>This procedure is used when the train detects an unlinked balise group, in order to update information relative to the last detected unlinked balise group.</Comment>
+</ReqRef><Comment>This procedure is used when the train detects an unlinked balise group, in order to update information relative to the last detected unlinked balise group.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -1239,12 +1059,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.6.4.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.6.4.7.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1255,8 +1073,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>UnlinkedBGPosition &lt;- PositionFromOdometry()</Action>
-</Actions>
+<Action>UnlinkedBGPosition &lt;- PositionFromOdometry()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1268,8 +1085,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.4.4.2.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Handles a new complete balise group message (when all its balise messages have been received). There are several steps:
+</ReqRef><Comment>Handles a new complete balise group message (when all its balise messages have been received). There are several steps:
 - Test if the new BG is linked and has to be considered as a new LRBG
 - If the new BG is not linked and is marked as unlinked, its information has to be considered
 - After that all the packets of this BG are handled</Comment>
@@ -1295,8 +1111,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Linking.CleanLinkingInfo()</Action>
-</Actions>
+<Action>Linking.CleanLinkingInfo()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1314,19 +1129,14 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.4.2.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition>
-<PreCondition>Message.N_PIG == 0</PreCondition>
-<PreCondition>LRBGCandidate( )</PreCondition>
-</PreConditions>
+<PreCondition>LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition>Message.N_PIG == 0</PreCondition><PreCondition>LRBGCandidate( )</PreCondition></PreConditions>
 <Actions>
 <Action>HandleNewLRBG(
   Nid_BG=&gt;BG_To_LRBG(Message.NID_BG), 
   TravelledDistance=&gt;TravelledDistanceFromLRBG()
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1342,11 +1152,9 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="Unlinked BG"
 >
 <PreConditions>
-<PreCondition>Message.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition>
-</PreConditions>
+<PreCondition>Message.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
 <Actions>
-<Action>HandleUnlinkedBG(Message)</Action>
-</Actions>
+<Action>HandleUnlinkedBG(Message)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1356,16 +1164,13 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.12.4.3"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Clear mode profile if MA received"
 >
 <PreConditions>
-<PreCondition>Linking.ConsiderBG()</PreCondition>
-<PreCondition>THERE_IS_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) )</PreCondition>
-</PreConditions>
+<PreCondition>Linking.ConsiderBG()</PreCondition><PreCondition>THERE_IS_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1377,41 +1182,34 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.12.4.3.1"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Infill available, before MA"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition>
-<PreCondition>Before
+<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition><PreCondition>Before
 (
     ExpectedFirst=&gt; FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ),
     ExpectedSecond=&gt; FIRST_IN Message.Sequence1 | ( Available ( X.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY ) OR Available ( X.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY ) ),
     Collection=&gt; Message.Sequence1
-)</PreCondition>
-</PreConditions>
+)</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; ( FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ) ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; ( FIRST_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ) ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Infill available, after MA"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action></Actions>
 </RuleCondition><RuleCondition
  Name="No infill available"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action>
-</Actions>
+<Action>Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1424,8 +1222,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <ReqRef
  Id="3.16.2.3.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1435,25 +1232,20 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Linking.ConsiderBG()</PreCondition>
-</PreConditions>
+<PreCondition>Linking.ConsiderBG()</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY HandleNewPacket(
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG,
   NID_C=&gt;Message.NID_C
 ) 
-ON Message.Sequence1</Action>
-</Actions>
+ON Message.Sequence1</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="ApplyLinkingReaction"
 >
 <PreConditions>
-<PreCondition>NOT Linking.CurrentBGWithinFrame()</PreCondition>
-<PreCondition>Message.Q_LINK == Messages.Q_LINK.Linked</PreCondition>
-<PreCondition>Available ( Linking.CurrentLinking() )</PreCondition>
-</PreConditions>
+<PreCondition>NOT Linking.CurrentBGWithinFrame()</PreCondition><PreCondition>Message.Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition>Available ( Linking.CurrentLinking() )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1469,11 +1261,9 @@ ON Message.Sequence1</Action>
  Name="ServiceBrake"
 >
 <PreConditions>
-<PreCondition>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition>
-</PreConditions>
+<PreCondition>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="TrainTrip"
@@ -1481,13 +1271,10 @@ ON Message.Sequence1</Action>
 <ReqRef
  Id="Entry 4.6.3.18"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>(FIRST_IN BTM.Linking.Linkings).Reaction == Linking.LinkingReaction.TrainTrip</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.TR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1499,23 +1286,20 @@ ON Message.Sequence1</Action>
 <ReqRef
  Id="A1.1.6.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="HandleBaliseMessage"
 >
 <Comment>This is structurally equal to BTM.HandleBaliseMessage.HandleBaliseMessage.HandleBaliseMessage but only considers MAs #morido, 13/10/24</Comment>
 <PreConditions>
-<PreCondition>Linking.ConsiderBG()</PreCondition>
-</PreConditions>
+<PreCondition>Linking.ConsiderBG()</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY HandleNewPacketMA(
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG
 ) 
-ON Message.Sequence1</Action>
-</Actions>
+ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1525,8 +1309,7 @@ ON Message.Sequence1</Action>
 <ReqRef
  Id="3.9.1.2"
 >
-</ReqRef>
-<Comment>Since the same infill information will be used by each infill device, the handling of infill information shouldn&apos;t have any influence to the handling of the infill information by the other infill devices =&gt; once the balise message is read, its infill information is erased.</Comment>
+</ReqRef><Comment>Since the same infill information will be used by each infill device, the handling of infill information shouldn&apos;t have any influence to the handling of the infill information by the other infill devices =&gt; once the balise message is read, its infill information is erased.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1537,8 +1320,7 @@ ON Message.Sequence1</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.Infill.Data &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.Infill.Data &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1549,12 +1331,10 @@ ON Message.Sequence1</Action>
 <ReqRef
  Id="3.4.1.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.2.4.1"
 >
-</ReqRef>
-<Comment>Stores the balise group message in the list of balise messages of the current balise group.
+</ReqRef><Comment>Stores the balise group message in the list of balise messages of the current balise group.
 Do not store duplicate balise messages.
 If all the messages of the current balise group have been received, calls HandleBaliseMessage() procedure to manage the information of the new BG.</Comment>
 <Parameters>
@@ -1577,11 +1357,9 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Not a duplicate"
 >
 <PreConditions>
-<PreCondition>BaliseNeedBeStored (Message)</PreCondition>
-</PreConditions>
+<PreCondition>BaliseNeedBeStored (Message)</PreCondition></PreConditions>
 <Actions>
-<Action>INSERT Message IN CurrentBaliseGroup </Action>
-</Actions>
+<Action>INSERT Message IN CurrentBaliseGroup </Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1596,11 +1374,9 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Keep position of balise 1"
 >
 <PreConditions>
-<PreCondition>Message.N_PIG == 0</PreCondition>
-</PreConditions>
+<PreCondition>Message.N_PIG == 0</PreCondition></PreConditions>
 <Actions>
-<Action>FirstBalisePosition &lt;- PositionFromOdometry()</Action>
-</Actions>
+<Action>FirstBalisePosition &lt;- PositionFromOdometry()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1616,12 +1392,9 @@ If all the messages of the current balise group have been received, calls Handle
 >
 <Comment>N_TOTAL is the number of balises - 1</Comment>
 <PreConditions>
-<PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition>
-<PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition>
-</PreConditions>
+<PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition><PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>
-</Actions>
+<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1631,8 +1404,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="A1.1.3.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
  Name="Packet"
@@ -1656,29 +1428,23 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.5"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl1Received
 (
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="MA Lvl2or3 available"
@@ -1686,29 +1452,23 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.7"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1724,12 +1484,10 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.6.4.2.a"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.3.1"
 >
-</ReqRef>
-<Comment>This variable represents the error in detection of balise group location by the train.</Comment>
+</ReqRef><Comment>This variable represents the error in detection of balise group location by the train.</Comment>
 </Variable><Variable
  Type="Messages.EUROBALISE.Message"
  DefaultValue="EMPTY"
@@ -1741,8 +1499,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.16.2.1.1"
 >
-</ReqRef>
-<Comment>This variable holds the balise message to be processed.</Comment>
+</ReqRef><Comment>This variable holds the balise message to be processed.</Comment>
 </Variable><Variable
  Type="BaliseGroup"
  DefaultValue="EMPTY"
@@ -1753,8 +1510,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.6.1.3"
 >
-</ReqRef>
-<Comment>This variable holds information about the LRBG</Comment>
+</ReqRef><Comment>This variable holds information about the LRBG</Comment>
 </Variable><Variable
  Type="Position"
  DefaultValue=""
@@ -1767,8 +1523,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.6.4.7.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Saves the information provided by the odometry at the moment where an unlinked balise group is passed. Used to compute the position, over and under reading amount relative to that unlinked balise. Can be deleted by setting its State sub variable to DataState.Unknown.</Comment>
+</ReqRef><Comment>Saves the information provided by the odometry at the moment where an unlinked balise group is passed. Used to compute the position, over and under reading amount relative to that unlinked balise. Can be deleted by setting its State sub variable to DataState.Unknown.</Comment>
 </Variable><Variable
  Type="BaliseGroups"
  DefaultValue="[]"
@@ -1780,8 +1535,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.6.1.3.4"
 >
 <Comment>Even if in the requiremets, the previous LRBG are decribed in the train position, it seemed more structured to place this list in the BTM namespace, near the LRBG</Comment>
-</ReqRef>
-<Comment>Holds the LRBG that have been processed before</Comment>
+</ReqRef><Comment>Holds the LRBG that have been processed before</Comment>
 </Variable><Variable
  Type="BaliseGroupMessages"
  DefaultValue="[]"
@@ -1801,8 +1555,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.4.2.2.1"
 >
-</ReqRef>
-<Comment>This is the position of the first balise (N_PIG == 1) in the balise group</Comment>
+</ReqRef><Comment>This is the position of the first balise (N_PIG == 1) in the balise group</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="0.0"
@@ -1813,8 +1566,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.13.10.2.7"
 >
-</ReqRef>
-<Comment>Distance between the front end of the train and the active Eurobalise antenna.
+</ReqRef><Comment>Distance between the front end of the train and the active Eurobalise antenna.
 [stan@ertmssolutions.com] We assume that ActiveAntennaPosition &gt; 0</Comment>
 </Variable></Variables>
 <Rules>
@@ -1833,11 +1585,9 @@ If all the messages of the current balise group have been received, calls Handle
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( Message )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Message &lt;- EMPTY</Action>
-</Actions>
+<Action>Message &lt;- EMPTY</Action></Actions>
 <SubRules>
 <Rule
  Priority="CleanUp"
@@ -1853,11 +1603,9 @@ If all the messages of the current balise group have been received, calls Handle
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>( COUNT CurrentBaliseGroup ) == Message.N_TOTAL + 1</PreCondition>
-</PreConditions>
+<PreCondition>( COUNT CurrentBaliseGroup ) == Message.N_TOTAL + 1</PreCondition></PreConditions>
 <Actions>
-<Action>CurrentBaliseGroup &lt;- []</Action>
-</Actions>
+<Action>CurrentBaliseGroup &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1874,13 +1622,9 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Incomplete balise group received"
 >
 <PreConditions>
-<PreCondition>Available ( Message )</PreCondition>
-<PreCondition>(COUNT CurrentBaliseGroup ) &gt; 0 </PreCondition>
-<PreCondition>Message.NID_BG != (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message )</PreCondition><PreCondition>(COUNT CurrentBaliseGroup ) &gt; 0 </PreCondition><PreCondition>Message.NID_BG != (FIRST_IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
 <Actions>
-<Action>CurrentBaliseGroup &lt;- [] </Action>
-</Actions>
+<Action>CurrentBaliseGroup &lt;- [] </Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
