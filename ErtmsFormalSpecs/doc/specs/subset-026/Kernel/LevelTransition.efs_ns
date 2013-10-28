@@ -171,6 +171,7 @@
 >
 <PreConditions>
 <PreCondition>Level.Value in [Default.Level.L0, Default.Level.L1]</PreCondition>
+</PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level NTC"
@@ -178,6 +179,7 @@
 <PreConditions>
 <PreCondition>Level.Value == Default.Level.LNTC</PreCondition>
 <PreCondition>THERE_IS_IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition>
+</PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level 2,3"
@@ -185,6 +187,7 @@
 <PreConditions>
 <PreCondition>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition>
 <PreCondition>EURORADIO.OneMobileTerminalIsAvailable()</PreCondition>
+</PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -283,9 +286,13 @@ IN  LevelTransitionOrder.LevelandLength</Action>
 <ReqRef
  Id="5.10.1.1"
 >
+</ReqRef>
+<ReqRef
  Id="5.10.1.2"
 >
 <Comment></Comment>
+</ReqRef>
+<ReqRef
  Id="5.10.2.1"
 >
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
@@ -350,6 +357,7 @@ AddNewLTO
 )
 ON 
 Packet.Sequence1</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -364,6 +372,7 @@ Packet.Sequence1</Action>
 </PreConditions>
 <Actions>
 <Action>ProcessLTOGeneric()</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -373,7 +382,7 @@ Packet.Sequence1</Action>
 <ReqRef
  Id="5.10.1.4"
 >
-</ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
+</ReqRef>
 <ReqRef
  Id="7.4.1.1.17"
 >
@@ -396,6 +405,7 @@ Packet.Sequence1</Action>
  Name="NewConditionalLevelTransition"
 >
 <PreConditions>
+</PreConditions>
 <Actions>
 <Action>LevelTransitionOrder &lt;- LevelTransitionOrder
 {
@@ -403,6 +413,7 @@ Packet.Sequence1</Action>
    Distance =&gt; EMPTY,
    LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
 }</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -427,6 +438,7 @@ AddNewLTO
 )
 ON 
 Packet.Sequence1</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -447,7 +459,7 @@ Packet.Sequence1</Action>
 </ReqRef><ReqRef
  Id="5.10.3.14.3"
 >
-</ReqRef><ReqRef
+</ReqRef>
 <Comment>If this precondition is met, dont carry out a level transition #morido, 13/10/15</Comment>
 <PreConditions>
 <PreCondition>NOT (THERE_IS_IN LevelTransitionOrder.LevelandLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition>
@@ -461,9 +473,10 @@ Packet.Sequence1</Action>
  NeedsRequirement="FALSE"
  Name="ProcessLTOSpecific"
 >
+<ReqRef
  Id="5.10.3"
 >
-</ReqRef><Parameters>
+</ReqRef>
 <Comment>Wrapper to call the individual procedures in order to execute specific level transitions #morido, 13/10/15</Comment>
 <Rules>
 <Rule
@@ -488,6 +501,7 @@ Packet.Sequence1</Action>
 </PreConditions>
 <Actions>
 <Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -497,7 +511,7 @@ Packet.Sequence1</Action>
 <ReqRef
  Id="5.10.2"
 >
-</ReqRef><ReqRef
+</ReqRef>
 <Comment>This does all general stuff required for a level transition independent from the source and target level It is therefore a preliminary step for ProcessLTOSpecific. #morido, 13/10/15</Comment>
 <Rules>
 <Rule
@@ -505,12 +519,14 @@ Packet.Sequence1</Action>
  Implemented="TRUE"
  Name="ReduceLTOtoOne"
 >
+<ReqRef
  Id="5.10.2.5"
 >
 </ReqRef><ReqRef
  Id="5.10.2.4"
 >
 <Comment></Comment>
+</ReqRef>
 <Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -548,6 +564,7 @@ Packet.Sequence1</Action>
 </PreConditions>
 <Actions>
 <Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -560,7 +577,7 @@ Packet.Sequence1</Action>
 </ReqRef><ReqRef
  Id="5.10.2.6"
 >
-</ReqRef><Parameters>
+</ReqRef>
 <ReqRef
  Id="5.10.1.3"
 >
@@ -575,6 +592,7 @@ Packet.Sequence1</Action>
 </PreConditions>
 <Actions>
 <Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel.Value)</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -591,6 +609,7 @@ Packet.Sequence1</Action>
 </PreConditions>
 <Actions>
 <Action>ProcessLTOSpecific()</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -654,10 +673,13 @@ Packet.Sequence1</Action>
 >
 <Comment>NTC-part not functional for now (Kernel.NationalSystemId). Requirement for this is missing. Is it needed? #morido, 13/10/14</Comment>
 <PreConditions>
-<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition></PreConditions>
+<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition>
+<PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition>
 <PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True</PreCondition>
+</PreConditions>
 <Actions>
 <Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel.Value</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

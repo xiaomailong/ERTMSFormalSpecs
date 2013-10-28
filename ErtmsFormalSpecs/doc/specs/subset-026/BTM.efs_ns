@@ -1281,6 +1281,9 @@ ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="HandleMAofBaliseMessage"
 >
 <ReqRef
@@ -1304,9 +1307,6 @@ ON Message.Sequence1</Action></Actions>
 ON Message.Sequence1</Action>
 </Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -1381,7 +1381,7 @@ If all the messages of the current balise group have been received, calls Handle
   (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
   OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
+<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>
 </Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1469,6 +1469,7 @@ If all the messages of the current balise group have been received, calls Handle
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
 )</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

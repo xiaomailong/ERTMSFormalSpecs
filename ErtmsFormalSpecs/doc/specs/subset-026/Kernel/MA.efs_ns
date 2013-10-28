@@ -1217,7 +1217,7 @@ Mode != Mode.TR
 <ReqRef
  Id="3.7.2.3"
 >
-</ReqRef><Cases>
+</ReqRef>
 <ReqRef
  Id="A1.1.6.2"
 >
@@ -1229,6 +1229,7 @@ Mode != Mode.TR
  Name="Packet"
 >
 </Parameter></Parameters>
+<Cases>
 <Case
  Name="SSP does not cover required length"
 >
@@ -1302,8 +1303,10 @@ Default.BaseTypes.LengthToDistance(
 >
 <PreConditions>
 <PreCondition>FullTrackDescriptionAvailable(Packet =&gt;  ConvertMALvl2or3_to_MALvl1 ( Packet ))</PreCondition>
+</PreConditions>
 <Actions>
-<Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action></Actions>
+<Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1357,6 +1360,7 @@ Default.BaseTypes.LengthToDistance(
 </ReqRef><Comment></Comment>
 <PreConditions>
 <PreCondition>AcceptMA( Packet =&gt; Packet )</PreCondition>
+</PreConditions>
 <Actions>
 <Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action><Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action></Actions>
 </RuleCondition></Conditions>
