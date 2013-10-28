@@ -347,8 +347,8 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="root">The root for which this expression should be evaluated</param>
-        public Expression(ModelElement root)
-            : base(root)
+        public Expression(ModelElement root, ModelElement log)
+            : base(root, log)
         {
         }
 

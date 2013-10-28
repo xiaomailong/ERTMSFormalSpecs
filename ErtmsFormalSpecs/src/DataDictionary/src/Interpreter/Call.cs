@@ -103,8 +103,8 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="called">The called function</param>
-        public Call(ModelElement root, Expression called)
-            : base(root)
+        public Call(ModelElement root, ModelElement log, Expression called)
+            : base(root, log)
         {
             Called = called;
             Called.Enclosing = this;

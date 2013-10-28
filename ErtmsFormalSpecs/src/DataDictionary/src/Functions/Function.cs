@@ -42,6 +42,7 @@ namespace DataDictionary.Functions
             }
             set
             {
+                returnType = null;
                 setTypeName(value);
             }
         }

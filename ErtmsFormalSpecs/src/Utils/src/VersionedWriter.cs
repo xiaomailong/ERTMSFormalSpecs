@@ -96,6 +96,7 @@ namespace Utils
         {
             // Replace the original file with the new file
             StreamReader newFile = new StreamReader(tempFilePath);
+            Directory.CreateDirectory(Path.GetDirectoryName(TargetPath));
             StreamWriter original = new StreamWriter(TargetPath);
             while (!newFile.EndOfStream)
             {

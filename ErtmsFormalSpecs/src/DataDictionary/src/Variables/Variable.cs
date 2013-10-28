@@ -227,15 +227,15 @@ namespace DataDictionary.Variables
         {
             get
             {
+                Dictionary<string, IVariable> retVal = retVal = new Dictionary<string, IVariable>();
+
                 Values.StructureValue structureValue = Value as Values.StructureValue;
                 if (structureValue != null)
                 {
-                    return structureValue.SubVariables;
+                    retVal = structureValue.SubVariables;
                 }
-                else
-                {
-                    return new Dictionary<string, IVariable>();
-                }
+
+                return retVal;
             }
         }
 
@@ -252,23 +252,20 @@ namespace DataDictionary.Variables
                 {
                     if (Utils.Utils.isEmpty(getDefaultValue()))
                     {
+                        // The variable does not define a default value, get the one from the type
                         retVal = Type.DefaultValue;
                     }
                     else
                     {
-                        retVal = Type.getValue(getDefaultValue());
-
-                        if (retVal == null)
+                        // The variable defines a default value, try to interpret it
+                        Interpreter.Expression expression = EFSSystem.Parser.Expression(Type, getDefaultValue(), null, true, this);
+                        if (expression != null)
                         {
-                            Interpreter.Expression expression = EFSSystem.Parser.Expression(this, getDefaultValue());
-                            if (expression != null)
+                            retVal = expression.GetValue(new Interpreter.InterpretationContext(Type));
+                            if (retVal != null && !Type.Match(retVal.Type))
                             {
-                                retVal = expression.GetValue(new Interpreter.InterpretationContext(this));
-                                if (retVal != null && !Type.Match(retVal.Type))
-                                {
-                                    AddError("Default value type does not match variable type");
-                                    retVal = null;
-                                }
+                                AddError("Default value type does not match variable type");
+                                retVal = null;
                             }
                         }
                     }
@@ -355,13 +352,13 @@ namespace DataDictionary.Variables
             {
                 if (!Utils.Utils.isEmpty(Type.Comment))
                 {
-                    retVal = retVal + Type.Comment + "\n";
+                    retVal = retVal + TextualExplainUtilities.Comment(Type.Comment, 0) + "\n";
                 }
             }
 
             if (!Utils.Utils.isEmpty(Comment))
             {
-                retVal = retVal + Comment + "\n";
+                retVal = retVal + TextualExplainUtilities.Comment(Comment, 0) + "\n";
             }
 
             if (Value != null)

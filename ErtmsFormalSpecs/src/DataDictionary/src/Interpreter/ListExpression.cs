@@ -31,8 +31,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public ListExpression(ModelElement root, List<Expression> elements)
-            : base(root)
+        public ListExpression(ModelElement root, ModelElement log, List<Expression> elements)
+            : base(root, log)
         {
             ListElements = elements;
 

@@ -271,6 +271,11 @@ namespace DataDictionary
                 {
                     variable.AddInfo("Missing variable semantics. Update the 'Comment' associated to the variable or to the corresponding type");
                 }
+
+                if (!Utils.Utils.isEmpty(variable.getDefaultValue()))
+                {
+                    checkExpression(variable, variable.getDefaultValue());
+                }
             }
 
             base.visit(obj, visitSubNodes);
@@ -295,6 +300,10 @@ namespace DataDictionary
                                 element.AddWarning("Invalid mode for " + subElement.Name);
                             }
                         }
+                    }
+                    if (!Utils.Utils.isEmpty(element.getDefault()))
+                    {
+                        checkExpression(element, element.getDefault());
                     }
                 }
             }
@@ -527,9 +536,16 @@ namespace DataDictionary
                     if (expect.getCondition() != null && !expect.getCondition().Contains("%"))
                     {
                         Interpreter.Expression expression = checkExpression(expect, expect.getCondition());
-                        if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                        if (expression != null)
                         {
-                            expect.AddError("Condition type should be Boolean");
+                            if (!expect.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                            {
+                                expect.AddError("Condition type should be Boolean");
+                            }
+                        }
+                        else
+                        {
+                            expect.AddError("Cannot parse condition " + expect.getCondition());
                         }
                     }
                 }
@@ -644,6 +660,11 @@ namespace DataDictionary
                     {
                         declaredTypes[type.Name] = type;
                     }
+                }
+
+                if (!Utils.Utils.isEmpty(type.getDefault()))
+                {
+                    checkExpression(type, type.getDefault());
                 }
             }
 

@@ -297,7 +297,7 @@ namespace GUI
                         // Create a fake foreach expression to hold the list expression and the current expression
                         Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
                         Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
-                        Expression foreachExpression = new ForAllExpression(Instance, listExpression, currentExpression);
+                        Expression foreachExpression = new ForAllExpression(Instance, Instance, listExpression, currentExpression);
                         foreachExpression.SemanticAnalysis();
                         if (currentExpression.Ref != null)
                         {
@@ -424,10 +424,6 @@ namespace GUI
                                 DisplayComboBox();
                                 break;
 
-                            case Keys.A:
-                                EditionTextBox.SelectAll();
-                                break;
-
                             default:
                                 break;
                         }
@@ -436,6 +432,25 @@ namespace GUI
             }
             catch (Exception)
             {
+            }
+
+            if (!e.Handled)
+            {
+                if (e.Control)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.A:
+                            EditionTextBox.SelectAll();
+                            e.Handled = true;
+                            break;
+
+                        case Keys.C:
+                            EditionTextBox.Copy();
+                            e.Handled = true;
+                            break;
+                    }
+                }
             }
         }
 

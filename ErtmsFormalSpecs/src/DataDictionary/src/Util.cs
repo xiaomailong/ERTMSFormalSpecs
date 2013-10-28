@@ -330,9 +330,9 @@ namespace DataDictionary
                     Generated.ControllersManager.ActivateAllNotifications();
                 }
 
-                if (efsSystem != null)
+                if (retVal != null && efsSystem != null)
                 {
-                    efsSystem.Compiler.Compile_Asynchronous(false);
+                    retVal.CheckRules();
                 }
             }
 
