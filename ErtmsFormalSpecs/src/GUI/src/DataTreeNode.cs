@@ -259,7 +259,10 @@ namespace GUI
                     }
                     else
                     {
-                        requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                        if (reqRef.Paragraph != null)
+                        {
+                            requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                        }
                     }
                 }
                 else
