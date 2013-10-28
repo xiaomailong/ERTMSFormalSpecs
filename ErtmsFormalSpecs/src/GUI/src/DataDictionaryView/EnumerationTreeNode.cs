@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -46,13 +47,19 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The default value
+            /// The enumeration default value
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalValuesConverter))]
-            public string DefaultValue
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
+            public DataDictionary.Types.Enum DefaultValue
             {
-                get { return Item.Default; }
-                set { Item.Default = value; }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             [Category("Description"), Editor(@"System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]

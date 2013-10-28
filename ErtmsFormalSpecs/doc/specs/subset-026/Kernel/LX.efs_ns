@@ -11,25 +11,20 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.26.1"
 >
-</ReqRef>
-<Comment>Represents a level crossing received from the trackside.</Comment>
+</ReqRef><Comment>Represents a level crossing received from the trackside.</Comment>
 <StructureElement
  TypeName="Messages.NID_LX"
  Default=""
@@ -40,12 +35,10 @@
 <ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.90.2"
 >
-</ReqRef>
-<Comment>The identity number of the level crossing.</Comment>
+</ReqRef><Comment>The identity number of the level crossing.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -65,12 +58,10 @@
 <ReqRef
  Id="3.12.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.13.1"
 >
-</ReqRef>
-<Comment>Distance to level crossing start location.</Comment>
+</ReqRef><Comment>Distance to level crossing start location.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -81,12 +72,10 @@
 <ReqRef
  Id="3.12.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.46.1"
 >
-</ReqRef>
-<Comment>Length of the level crossing area.</Comment>
+</ReqRef><Comment>Length of the level crossing area.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.Q_LXSTATUS"
  Default=""
@@ -97,20 +86,16 @@
 <ReqRef
  Id="3.12.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.9.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.118.1"
 >
-</ReqRef>
-<Comment>Level crossing protection status.</Comment>
+</ReqRef><Comment>Level crossing protection status.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
@@ -121,12 +106,10 @@
 <ReqRef
  Id="3.12.5.6.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157.1"
 >
-</ReqRef>
-<Comment>Permitted speed for the level crossing speed restriction.</Comment>
+</ReqRef><Comment>Permitted speed for the level crossing speed restriction.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.Q_STOPLX"
  Default=""
@@ -137,12 +120,10 @@
 <ReqRef
  Id="3.12.5.6.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.134.1"
 >
-</ReqRef>
-<Comment>Indicates whether stopping the train in rear of a non protected level crossing is required.</Comment>
+</ReqRef><Comment>Indicates whether stopping the train in rear of a non protected level crossing is required.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
@@ -153,12 +134,10 @@
 <ReqRef
  Id="3.12.5.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.51.1"
 >
-</ReqRef>
-<Comment>Length of the stopping area in rear of the start location of the level crossing area.</Comment>
+</ReqRef><Comment>Length of the stopping area in rear of the start location of the level crossing area.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -171,12 +150,10 @@
 <ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.1"
 >
-</ReqRef>
-<Comment>Represents the level crossings received from the trackside.</Comment>
+</ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -188,20 +165,16 @@
  Id="3.11.2.2.i"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.2.1"
 >
-</ReqRef>
-<Comment>Provides the speed profile due to the level crossing restrictions.</Comment>
+</ReqRef><Comment>Provides the speed profile due to the level crossing restrictions.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -226,24 +199,19 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.12.5.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.6.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.6.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.7"
 >
-</ReqRef>
-<Comment>Provides the speed profile due to a level crossing.</Comment>
+</ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
@@ -259,17 +227,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Stopping area"
 >
 <PreConditions>
-<PreCondition>aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition>
-<PreCondition>Distance &lt; aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) + 0.1</PreCondition>
-</PreConditions>
+<PreCondition>aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition><PreCondition>Distance &lt; aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) + 0.1</PreCondition></PreConditions>
 <Expression>StoppingAreaSpeed(aLX)</Expression>
 </Case><Case
  Name="During LX"
 >
 <PreConditions>
-<PreCondition>aLX.Location &lt;= Distance</PreCondition>
-<PreCondition>Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition>
-</PreConditions>
+<PreCondition>aLX.Location &lt;= Distance</PreCondition><PreCondition>Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
 <Expression>NonProtectedSpeed(aLX)</Expression>
 </Case><Case
  Name="Outside LX"
@@ -284,8 +248,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.12.5.6.a"
 >
-</ReqRef>
-<Comment>Provides the speed value during the level crossing. If the current LX is protected, the speed is not limited, if the current LX is not protected, the speed is limited to the value given by the LX.</Comment>
+</ReqRef><Comment>Provides the speed value during the level crossing. If the current LX is protected, the speed is not limited, if the current LX is not protected, the speed is limited to the value given by the LX.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
@@ -297,8 +260,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="LX is not protected"
 >
 <PreConditions>
-<PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition>
-</PreConditions>
+<PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>aLX.Speed</Expression>
 </Case><Case
  Name="LX is protected"
@@ -313,8 +275,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.12.5.6.b"
 >
-</ReqRef>
-<Comment>Provides the speed value for the stopping area of a given LX. There are three possible cases:
+</ReqRef><Comment>Provides the speed value for the stopping area of a given LX. There are three possible cases:
 1. The LX is not protected and the stopping is required =&gt; the speed equals 0
 2. The LX is not protected, no stopping is required and the stopping area equals 0 (that means that the stopping area and the LX interval overlap) =&gt; the speed is limited to the value given by the LX
 3. Otherwise =&gt; there is no speed limit</Comment>
@@ -329,17 +290,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Stopping required"
 >
 <PreConditions>
-<PreCondition>aLX.StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition>
-<PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition>
-</PreConditions>
+<PreCondition>aLX.StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition><PreCondition>aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="No stopping required, stopping area is 0"
 >
 <PreConditions>
-<PreCondition>aLX.StoppingAreaLength == 0.0</PreCondition>
-<PreCondition>aLX.IsProtected ==  Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition>
-</PreConditions>
+<PreCondition>aLX.StoppingAreaLength == 0.0</PreCondition><PreCondition>aLX.IsProtected ==  Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
 <Expression>aLX.Speed</Expression>
 </Case><Case
  Name="No stopping required, stopping area is != 0"
@@ -355,20 +312,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="7.5.1.13.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.46.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.51.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157.1"
 >
-</ReqRef>
-<Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same TSR.</Comment>
+</ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same TSR.</Comment>
 <Parameters>
 <Parameter
  Type="LevelCrossing"
@@ -388,8 +341,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="SameId"
 >
 <PreConditions>
-<PreCondition>aLevelCrossing.Id == Packet.NID_LX</PreCondition>
-</PreConditions>
+<PreCondition>aLevelCrossing.Id == Packet.NID_LX</PreCondition></PreConditions>
 <Expression>LevelCrossing
 {
     Id =&gt; Packet.NID_LX,
@@ -405,8 +357,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="DifferentId"
 >
 <PreConditions>
-<PreCondition>aLevelCrossing.Id != Packet.NID_LX</PreCondition>
-</PreConditions>
+<PreCondition>aLevelCrossing.Id != Packet.NID_LX</PreCondition></PreConditions>
 <Expression>aLevelCrossing</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -418,8 +369,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.11.9.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
@@ -446,13 +396,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.12.5.3"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
 <Actions>
-<Action>LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action>
-</Actions>
+<Action>LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelCrossing"
@@ -460,24 +407,19 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.46.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.13.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.51.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -493,8 +435,7 @@ LevelCrossing
     StoppingAreaLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE ),
     LRBG=&gt;NID_BG
 }
-IN LevelCrossings</Action>
-</Actions>
+IN LevelCrossings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -509,11 +450,9 @@ IN LevelCrossings</Action>
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.5.2"
 >
-</ReqRef>
-<Comment>Represents the level crossings received from the trackside.</Comment>
+</ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
 </Variable></Variables>
 </NameSpace>

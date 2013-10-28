@@ -25,8 +25,7 @@
 <ReqRef
  Id="3.5.3.4.b"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -41,11 +40,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Kernel.TrainData.Initialize()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>BTM.LRBG &lt;- EMPTY</Action><Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -71,8 +66,7 @@
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 20.0
     }
-}</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+}</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -104,16 +98,13 @@
             }
         }
     ]
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 25.0,
     D_ora =&gt; 22.2,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -143,8 +134,7 @@
 <ReqRef
  Id="3.5.3.4.c"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -161,8 +151,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
@@ -181,10 +170,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>Kernel.Mode &lt;- Mode.UN</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Mode &lt;- Mode.UN</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -218,8 +204,7 @@
 <ReqRef
  Id="3.5.3.4.e"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -234,15 +219,7 @@
  Name="Setup"
 >
 <Actions>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 10.0</Action>
-<Action>Kernel.TrainIntegrity.Status &lt;-Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action>
-</Actions>
+<Action>BTM.LRBG &lt;- EMPTY</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>BTM.PreviousLRBGs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 10.0</Action><Action>Kernel.TrainIntegrity.Status &lt;-Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -268,8 +245,7 @@
         Position =&gt; 3800.0,
         UnderReadingAmountOdo =&gt; 17.0
     }
-}</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+}</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -302,16 +278,13 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 4000.0</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.NominalDistance &lt;- 4000.0</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 16.0,
     D_ora =&gt; 17.2,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -327,9 +300,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 4301.0</Action>
-<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 4301.0</Action><Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -351,8 +322,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 4450.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 4450.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -385,8 +355,7 @@ N_ITER=&gt;0
 <ReqRef
  Id="3.5.3.4.f"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -401,10 +370,7 @@ N_ITER=&gt;0
  Name="Setup"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -420,9 +386,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 4301.0</Action>
-<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 4301.0</Action><Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -470,8 +434,7 @@ N_ITER=&gt;0
 <ReqRef
  Id="3.5.3.4.g"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -486,19 +449,12 @@ N_ITER=&gt;0
  Name="Setup"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.NLSignalReceived &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.NLSignalReceived &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -530,8 +486,7 @@ N_ITER=&gt;0
 <ReqRef
  Id="3.5.3.5.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -546,8 +501,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

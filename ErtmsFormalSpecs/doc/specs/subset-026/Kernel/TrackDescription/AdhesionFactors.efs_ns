@@ -11,12 +11,10 @@
 <ReqRef
  Id="3.13.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.2.22.1"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -33,8 +31,7 @@
 <ReqRef
  Id="7.5.1.41"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_ADHESION"
  Default="Messages.M_ADHESION.Non_slippery_rail"
  Mode="Internal"
@@ -44,16 +41,13 @@
 <ReqRef
  Id="7.5.1.60"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.4"
 >
-</ReqRef>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="AdhesionFactor"
@@ -64,8 +58,7 @@
 <ReqRef
  Id="3.13.5.2"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Length"
@@ -75,8 +68,7 @@
 <ReqRef
  Id="3.13.5.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="AdhesionFactor"
@@ -97,19 +89,16 @@
 <ReqRef
  Id="3.18.4.6.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7"
 >
-</ReqRef>
-<Comment>Indicates if the modification of adhesion factor by driver is allowed (according to national values (if available) or default data).</Comment>
+</ReqRef><Comment>Indicates if the modification of adhesion factor by driver is allowed (according to national values (if available) or default data).</Comment>
 <Cases>
 <Case
  Name="National values available"
 >
 <PreConditions>
-<PreCondition>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver == Messages.Q_NVDRIVER_ADHES.Allowed</Expression>
 </Case><Case
  Name="Default values"
@@ -125,20 +114,16 @@
 <ReqRef
  Id="3.18.4.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef>
-<Comment>This procedure is called when a new axle load profile is received. There are two cases:
+</ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
   - If no initial states have to be resumed, the axle load profile is updated (done by the HandleNewAxleLoadProfile procedure)</Comment>
 <Parameters>
@@ -162,11 +147,9 @@
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>HandleNewAdhesionFactor(Packet)</Action>
-</Actions>
+<Action>HandleNewAdhesionFactor(Packet)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -191,8 +174,7 @@
 <ReqRef
  Id="3.7.3.1.l"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -203,12 +185,10 @@
 <ReqRef
  Id="7.5.1.33"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action>
-</Actions>
+<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -227,20 +207,16 @@
 <ReqRef
  Id="7.5.1.141"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.33"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.55"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.77"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -251,8 +227,7 @@
         Value =&gt; Packet.M_ADHESION
     }
 IN
-    AdhFactors</Action>
-</Actions>
+    AdhFactors</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -267,25 +242,20 @@ IN
 <ReqRef
  Id="3.13.5.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.c"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.1.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.c.8"
 >
-</ReqRef>
-<Comment>The list of adhesion factors received from the trackside.</Comment>
+</ReqRef><Comment>The list of adhesion factors received from the trackside.</Comment>
 </Variable><Variable
  Type="Messages.M_ADHESION"
  DefaultValue="Messages.M_ADHESION.Non_slippery_rail"
@@ -297,21 +267,17 @@ IN
  Id="3.13.5.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.4.6.4"
 >
-</ReqRef>
-<Comment>Indicates the &quot;Slippery rail&quot; value selected by driver.</Comment>
+</ReqRef><Comment>Indicates the &quot;Slippery rail&quot; value selected by driver.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -322,8 +288,7 @@ IN
 <ReqRef
  Id="3.18.4.6.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -331,12 +296,9 @@ IN
  Name="AdhFactorTracker"
 >
 <PreConditions>
-<PreCondition>NOT AdhFactorModificationAllowed()</PreCondition>
-<PreCondition>SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition>
-</PreConditions>
+<PreCondition>NOT AdhFactorModificationAllowed()</PreCondition><PreCondition>SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Actions>
-<Action>SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Non_slippery_rail</Action>
-</Actions>
+<Action>SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Non_slippery_rail</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

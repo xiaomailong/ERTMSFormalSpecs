@@ -25,12 +25,10 @@
 <ReqRef
  Id="3.16.2.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.2.1.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -44,11 +42,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Odometry.NominalDistance &lt;- 0.0</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Odometry.NominalDistance &lt;- 0.0</Action><Action>BTM.LRBG &lt;- EMPTY</Action><Action>BTM.PreviousLRBGs &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -102,8 +96,7 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -113,9 +106,7 @@ N_ITER=&gt;0
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 4.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -145,8 +136,7 @@ N_ITER=&gt;0
         Position =&gt; 3100.0,
         UnderReadingAmountOdo =&gt; 7.0
     }
-}</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+}</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -173,9 +163,7 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3200.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 3200.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -195,8 +183,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 12600.0</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action>Odometry.NominalDistance &lt;- 12600.0</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 10001,
     Orientation =&gt; Orientation.Nominal,
@@ -206,8 +193,7 @@ N_ITER=&gt;0
         Position =&gt; 9000.0,
         UnderReadingAmountOdo =&gt; 10.0
     }
-}</Action>
-<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+}</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -234,8 +220,7 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -265,8 +250,7 @@ N_ITER=&gt;0
 <ReqRef
  Id="3.7.3.1.m"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -280,11 +264,7 @@ N_ITER=&gt;0
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Odometry.NominalDistance &lt;- 0.0</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-<Action>BTM.PreviousLRBGs &lt;- []</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Odometry.NominalDistance &lt;- 0.0</Action><Action>BTM.LRBG &lt;- EMPTY</Action><Action>BTM.PreviousLRBGs &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -348,8 +328,7 @@ Q_LOCACC=&gt;1
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -359,9 +338,7 @@ Q_LOCACC=&gt;1
         Position =&gt; 2000.0,
         UnderReadingAmountOdo =&gt; 4.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 3000.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -422,8 +399,7 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

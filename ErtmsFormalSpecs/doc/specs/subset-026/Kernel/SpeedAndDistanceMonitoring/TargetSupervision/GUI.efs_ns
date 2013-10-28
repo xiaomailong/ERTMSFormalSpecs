@@ -12,20 +12,16 @@
 <ReqRef
  Id="3.13.9.3.5.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.9.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.9.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.9"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -46,8 +42,7 @@
 <ReqRef
  Id="3.13.9.3.5.10"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vtarget"
@@ -58,8 +53,7 @@
  Name="Value"
 >
 <PreConditions>
-<PreCondition>NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>GUI.d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -70,8 +64,7 @@
 <ReqRef
  Id="3.13.8.5.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -82,8 +75,7 @@
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition>
-</PreConditions>
+<PreCondition>TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction ) != []</PreCondition></PreConditions>
 <Expression>(REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; MA.SpeedRestrictions, Targets3 =&gt; NationalValues.MaxDistInSRSpeedRestriction )
  USING  
@@ -103,8 +95,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="3.13.8.5.2"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TargetSupervision.Target"
  Name="aTarget"
@@ -119,18 +110,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="During target (SvL)"
 >
 <PreConditions>
-<PreCondition>aTarget.Location &lt;= Distance</PreCondition>
-<PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition>
-<PreCondition>MA.IsSvL ( aTarget )</PreCondition>
-</PreConditions>
+<PreCondition>aTarget.Location &lt;= Distance</PreCondition><PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition>MA.IsSvL ( aTarget )</PreCondition></PreConditions>
 <Expression>aTarget.Speed</Expression>
 </Case><Case
  Name="During target (other)"
 >
 <PreConditions>
-<PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition>
-<PreCondition>GUI.d_P ( aTarget.Speed ) &lt;= Distance</PreCondition>
-</PreConditions>
+<PreCondition>Distance &lt; aTarget.Location + BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition>GUI.d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Outside"

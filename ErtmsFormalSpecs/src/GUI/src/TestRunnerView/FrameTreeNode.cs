@@ -187,11 +187,13 @@ namespace GUI.TestRunnerView
             {
                 DateTime start = DateTime.Now;
 
+                SynchronizerList.SuspendSynchronization();
                 if (Window != null)
                 {
                     Window.setFrame(Frame);
                     Failed = Frame.ExecuteAllTests();
                 }
+                SynchronizerList.ResumeSynchronization();
 
                 Span = DateTime.Now.Subtract(start);
             }
@@ -211,7 +213,6 @@ namespace GUI.TestRunnerView
             ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
             dialog.ShowDialog();
 
-            MainWindow.RefreshModel();
             string runtimeErrors = "";
             if (Utils.ModelElement.Errors.Values.Count > 0)
             {

@@ -24,8 +24,8 @@ namespace DataDictionary.Interpreter.Statement
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
-        public Statement(ModelElement root)
-            : base(root)
+        public Statement(ModelElement root, ModelElement log)
+            : base(root, log)
         {
         }
 

@@ -19,19 +19,17 @@
 <ReqRef
  Id="7.5.1.86.1"
 >
-</ReqRef>
-</Range></Ranges>
+</ReqRef></Range></Ranges>
 <Enumerations>
 <Enum
- Default="TrainCategories.FreightTrainInG"
+ Default="FreightTrainInG"
  Implemented="TRUE"
  Name="TrainCategory"
 >
 <ReqRef
  Id="3.11.3.3.1"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="FreightTrainInP"
@@ -55,12 +53,10 @@
 <ReqRef
  Id="3.11.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.3.2"
 >
-</ReqRef>
-<Comment>Contains information about train categories.</Comment>
+</ReqRef><Comment>Contains information about train categories.</Comment>
 <StructureElement
  TypeName="Messages.NC_CDTRAIN"
  Default="Messages.NC_CDTRAIN.Cant_Deficiency_130_mm"
@@ -71,20 +67,16 @@
 <ReqRef
  Id="3.11.3.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.2.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.82.2"
 >
-</ReqRef>
-<Comment>Represents the &quot;Cant Deficiency&quot; category of the train.</Comment>
+</ReqRef><Comment>Represents the &quot;Cant Deficiency&quot; category of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="OtherInternationalCategories"
  Default="[]"
@@ -96,20 +88,16 @@
 <ReqRef
  Id="3.11.3.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.84"
 >
-</ReqRef>
-<Comment>Represents other specific categories to which possibly belongs the train.</Comment>
+</ReqRef><Comment>Represents other specific categories to which possibly belongs the train.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainDataValues"
@@ -117,12 +105,10 @@
 <ReqRef
  Id="3.18.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
+</ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 <StructureElement
  TypeName="TrainCategories"
  Default=""
@@ -133,16 +119,13 @@
 <ReqRef
  Id="3.11.3.3.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.3.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.a"
 >
-</ReqRef>
-<Comment>Represents categories to which belongs the train.</Comment>
+</ReqRef><Comment>Represents categories to which belongs the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="400.0"
@@ -153,28 +136,22 @@
 <ReqRef
  Id="3.18.3.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.11.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.i"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Represents the length of the train.</Comment>
+</ReqRef><Comment>Represents the length of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="150.0"
@@ -185,28 +162,22 @@
 <ReqRef
  Id="3.18.3.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.13.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.k"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.8.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Maximum train speed.</Comment>
+</ReqRef><Comment>Maximum train speed.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_LOADINGGAUGE"
  Default="Messages.M_LOADINGGAUGE.G1"
@@ -217,8 +188,7 @@
 <ReqRef
  Id="3.18.3.2.e"
 >
-</ReqRef>
-<Comment>Train loading gauge.</Comment>
+</ReqRef><Comment>Train loading gauge.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.N_AXLE"
  Default="200"
@@ -230,8 +200,7 @@
  Id="3.18.3.2.k"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The axle number of the train.</Comment>
+</ReqRef><Comment>The axle number of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_AXLELOAD"
  Default="Messages.M_AXLELOAD.E5"
@@ -243,8 +212,7 @@
  Id="3.18.3.2.f"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The axle load category of the train.</Comment>
+</ReqRef><Comment>The axle load category of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -255,8 +223,7 @@
 <ReqRef
  Id="3.18.3.2.h"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="TractionSystems"
  Default="[]"
@@ -267,8 +234,7 @@
 <ReqRef
  Id="3.18.3.2.g"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="TractionModel"
  Default=""
@@ -280,20 +246,16 @@
 <ReqRef
  Id="3.13.2.2.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
  Default="Default.Percentage.NA"
@@ -305,24 +267,19 @@
 <ReqRef
  Id="3.13.4.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.h"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.10.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.EBModelSet"
  Default="EMPTY"
@@ -334,35 +291,28 @@
  Id="3.13.2.2.1.1.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.6"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.7"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.7.1"
 >
-</ReqRef>
-<Comment>The speed dependent deceleration models for the emergency brake.</Comment>
+</ReqRef><Comment>The speed dependent deceleration models for the emergency brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SBModelSet"
  Default="EMPTY"
@@ -373,36 +323,28 @@
 <ReqRef
  Id="3.13.2.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.7.1"
 >
-</ReqRef>
-<Comment>The speed dependent deceleration models for the service brake.</Comment>
+</ReqRef><Comment>The speed dependent deceleration models for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.BNSModelSet"
  Default=""
@@ -414,28 +356,22 @@
  Id="3.18.3.2.c"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Represents the set of normal service brake models when the brake position is in &quot;Freigth train in G&quot;.</Comment>
+</ReqRef><Comment>Represents the set of normal service brake models when the brake position is in &quot;Freigth train in G&quot;.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.T_brake_build_upSet"
  Default=""
@@ -446,36 +382,28 @@
 <ReqRef
  Id="3.13.2.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Represents the equivalent brake build up time (T_brake_build_up) for the emergency brake.</Comment>
+</ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the emergency brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.T_brake_build_upSet"
  Default=""
@@ -486,36 +414,28 @@
 <ReqRef
  Id="3.13.2.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
+</ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
  Default="Default.Percentage.NA"
@@ -526,20 +446,16 @@
 <ReqRef
  Id="3.13.2.2.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.3.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.2.2"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="BrakingParameters.BrakePositions"
  Default="Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP"
  Mode="Internal"
@@ -549,36 +465,28 @@
 <ReqRef
  Id="3.13.2.2.1.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.1.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -589,24 +497,19 @@
 <ReqRef
  Id="3.13.2.2.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -617,24 +520,19 @@
 <ReqRef
  Id="3.13.2.2.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -645,24 +543,19 @@
 <ReqRef
  Id="3.13.2.2.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.1.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.1.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -673,16 +566,13 @@
 <ReqRef
  Id="3.13.2.2.1.1.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.6.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -693,20 +583,16 @@
 <ReqRef
  Id="3.13.2.2.1.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -717,16 +603,13 @@
 <ReqRef
  Id="3.13.2.2.1.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.7.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -737,16 +620,13 @@
 <ReqRef
  Id="3.13.2.2.1.1.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.8.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Levels"
  Default="[
@@ -787,12 +667,10 @@
 <ReqRef
  Id="3.18.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default="Default.DataState.Unknown"
@@ -804,8 +682,7 @@
 <ReqRef
  Id="5.4.2.2"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrainData.TrainDataValues"
  Default=""
  Mode="Internal"
@@ -820,8 +697,7 @@
 <ReqRef
  Id="3.18.3.2.g"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Messages.M_VOLTAGE"
  Default=""
@@ -833,8 +709,7 @@
 <ReqRef
  Id="7.5.1.78"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default=""
  Mode="Internal"
@@ -845,8 +720,7 @@
 <ReqRef
  Id="7.5.1.86.1"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TractionModel"
 >
@@ -854,12 +728,10 @@
  Id="3.13.2.2.2.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.1.1.a"
 >
-</ReqRef>
-<Comment>We assume that the traction model is given as a linear function of the form time = a*A_traction + b, where:
+</ReqRef><Comment>We assume that the traction model is given as a linear function of the form time = a*A_traction + b, where:
 - a: Coefficient
 - b: Constant</Comment>
 <StructureElement
@@ -891,8 +763,7 @@
 <ReqRef
  Id="3.11.3.3.2"
 >
-</ReqRef>
-<Comment>Represents a list of other specific train categories.</Comment>
+</ReqRef><Comment>Represents a list of other specific train categories.</Comment>
 </Collection><Collection
  TypeName="TractionSystem"
  MaxSize="20"
@@ -903,8 +774,7 @@
 <ReqRef
  Id="3.18.3.2.g"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Procedures>
 <Procedure
  NeedsRequirement="FALSE"
@@ -1339,8 +1209,7 @@
                     CF6 =&gt; 0.85
                 }
             }
-        }</Action>
-<Action>TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+        }</Action><Action>TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,
@@ -1357,8 +1226,7 @@
     Magnetic =&gt; 2.9,
     Regenerative =&gt; 3.7,
     Ep =&gt; 4.5
-}</Action>
-<Action>TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
         {
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
             {
@@ -1573,8 +1441,7 @@
                     }
                 }
             }
-        }</Action>
-<Action>TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+        }</Action><Action>TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.1,
     EddyCurrent_Magnetic =&gt; 5.6,
@@ -1591,8 +1458,7 @@
     Magnetic =&gt; 12.4,
     Regenerative =&gt; 12.1,
     Ep =&gt; 11.0
-}</Action>
-<Action>TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
+}</Action><Action>TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
             TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel{
                 BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
@@ -1743,28 +1609,23 @@
             },
             A_SB01 =&gt; 0.4,
             A_SB12 =&gt; 0.7
-        }</Action>
-<Action>TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
+        }</Action><Action>TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1786,8 +1647,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InitializeTrainData()</Action>
-</Actions>
+<Action>InitializeTrainData()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1803,8 +1663,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TrainData.BrakingParameters.Initialize()</Action>
-</Actions>
+<Action>TrainData.BrakingParameters.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1820,8 +1679,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1837,8 +1695,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1853,11 +1710,9 @@
 <ReqRef
  Id="3.18.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.18.3.2"
 >
-</ReqRef>
-<Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
+</ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 </Variable></Variables>
 </NameSpace>

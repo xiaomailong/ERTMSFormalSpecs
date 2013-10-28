@@ -741,8 +741,7 @@ If, in level 2 or 3, the RBC rejects the request for Shunting (E13), the process
 ><ReqRef
  Id="A1.2.1.1.1"
 >
-</ReqRef>
-<Comment>According to the Condition 46 of the Table 4.6 describing the conditions to pass from the mode SB to the mode NL, three following conditions have to be satisfied:
+</ReqRef><Comment>According to the Condition 46 of the Table 4.6 describing the conditions to pass from the mode SB to the mode NL, three following conditions have to be satisfied:
 1. Driver selects Non Leading.
 2. Train is at standstill.
 3. The &quot;non leading&quot; input signal is received.
@@ -1056,8 +1055,7 @@ Following E10, E12,  if the position is still invalid, the ERTMS/ETCS on-board s
 ><ReqRef
  Id="A1.2.1.1.3"
 >
-</ReqRef>
-If an MA allowing FS is received from RBC (E29), the mission starts in Full Supervision mode (refer to SRS chapter 4, transitions between modes: transition from SB to FS)</Paragraph></Sub>
+</ReqRef>If an MA allowing FS is received from RBC (E29), the mission starts in Full Supervision mode (refer to SRS chapter 4, transitions between modes: transition from SB to FS)</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 5.4.3.2.S22"
  type="REQUIREMENT"
@@ -1084,8 +1082,7 @@ If an MA allowing FS is received from RBC (E29), the mission starts in Full Supe
 ><ReqRef
  Id="A1.2.1.1.5"
 >
-</ReqRef>
-When the driver acknowledges (E30) , the mission starts in SN mode  (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
+</ReqRef>When the driver acknowledges (E30) , the mission starts in SN mode  (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
  id="Entry 5.4.3.2.S22.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -1123,8 +1120,7 @@ When the driver acknowledges (E30) , the mission starts in SN mode  (refer to SR
 ><ReqRef
  Id="A1.2.1.1.6"
 >
-</ReqRef>
-When the driver acknowledges (E31), the mission starts in Unfitted mode (refer to SRS chapter 4, transitions between modes: transition from SB to UN) </Paragraph><Paragraph
+</ReqRef>When the driver acknowledges (E31), the mission starts in Unfitted mode (refer to SRS chapter 4, transitions between modes: transition from SB to UN) </Paragraph><Paragraph
  id="Entry 5.4.3.2.S23.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -1162,8 +1158,7 @@ When the driver acknowledges (E31), the mission starts in Unfitted mode (refer t
 ><ReqRef
  Id="A1.2.1.1.2"
 >
-</ReqRef>
-When the driver acknowledges (E32), the mission starts in SR mode (refer to SRS chapter 4, transitions between modes: transition from SB to SR) </Paragraph><Paragraph
+</ReqRef>When the driver acknowledges (E32), the mission starts in SR mode (refer to SRS chapter 4, transitions between modes: transition from SB to SR) </Paragraph><Paragraph
  id="Entry 5.4.3.2.S24.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -1201,8 +1196,7 @@ When the driver acknowledges (E32), the mission starts in SR mode (refer to SRS 
 ><ReqRef
  Id="A1.2.1.1.4"
 >
-</ReqRef>
-When the driver acknowledges (E33), the mission starts in On Sight/Limited Supervision/Shunting mode (refer to SRS chapter 4, transitions between modes: transition from SB to OS, LS or SH)</Paragraph></Sub>
+</ReqRef>When the driver acknowledges (E33), the mission starts in On Sight/Limited Supervision/Shunting mode (refer to SRS chapter 4, transitions between modes: transition from SB to OS, LS or SH)</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 5.4.3.2.A31"
  type="REQUIREMENT"
@@ -1396,8 +1390,7 @@ If the stored position is invalid, the process shall go to A34</Paragraph><Parag
 ><ReqRef
  Id="A1.1.16.1"
 >
-</ReqRef>
-<Sub>
+</ReqRef><Sub>
 <Paragraph
  id="Entry 5.4.3.2.D33.1"
  type="REQUIREMENT"
@@ -1458,8 +1451,7 @@ If the stored position is invalid, the process shall go to A34</Paragraph><Parag
 ><ReqRef
  Id="A1.1.16.1"
 >
-</ReqRef>
-The RBC shall inform the ERTMS/ETCS onboard equipment that the reported position is valid. 
+</ReqRef>The RBC shall inform the ERTMS/ETCS onboard equipment that the reported position is valid. 
 When this message is received by the ERTMS/ETCS on-board equipment, the status of the position shall be set to &quot;valid&quot;
 The process shall go to S10.</Paragraph><Paragraph
  id="Entry 5.4.3.2.D22"
@@ -1475,8 +1467,7 @@ The process shall go to S10.</Paragraph><Paragraph
 ><ReqRef
  Id="A1.1.16.1"
 >
-</ReqRef>
-<Sub>
+</ReqRef><Sub>
 <Paragraph
  id="Entry 5.4.3.2.D22.1"
  type="REQUIREMENT"
@@ -1526,8 +1517,7 @@ If no, the process shall go to A38 </Paragraph><Paragraph
 ><ReqRef
  Id="A1.1.16.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 The RBC shall inform the ERTMS/ETCS on-board equipment that it accepts the train although the on-board has no &quot;valid&quot; position information.</Paragraph><Paragraph
  id="Entry 5.4.3.2.A24"
  type="REQUIREMENT"
@@ -1554,8 +1544,7 @@ This condition leads to S10.</Paragraph><Paragraph
 ><ReqRef
  Id="A1.1.16.1"
 >
-</ReqRef>
-<Comment>This requirement is already implemented in D22</Comment>
+</ReqRef><Comment>This requirement is already implemented in D22</Comment>
 The RBC shall inform the ERTMS/ETCS on-board equipment that it rejects the train</Paragraph><Paragraph
  id="Entry 5.4.3.2.A39"
  type="REQUIREMENT"
@@ -2300,8 +2289,7 @@ Procedure End of Mission<Sub>
 ><ReqRef
  Id="5.7.1.5"
 >
-</ReqRef>
-The entry of the ERTMS/ETCS on-board equipment into the Shunting mode, from FS, LS, OS, SR, SN or UN mode, is considered as an End of Mission.</Paragraph><Paragraph
+</ReqRef>The entry of the ERTMS/ETCS on-board equipment into the Shunting mode, from FS, LS, OS, SR, SN or UN mode, is considered as an End of Mission.</Paragraph><Paragraph
  id="5.5.2.3.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -2315,8 +2303,7 @@ The entry of the ERTMS/ETCS on-board equipment into the Shunting mode, from FS, 
 ><ReqRef
  Id="5.7.1.5"
 >
-</ReqRef>
-The entry of the ERTMS/ETCS on-board equipment into the Shunting mode, from PT mode, is only considered as an End of Mission if there was an on-going mission.</Paragraph><Paragraph
+</ReqRef>The entry of the ERTMS/ETCS on-board equipment into the Shunting mode, from PT mode, is only considered as an End of Mission if there was an on-going mission.</Paragraph><Paragraph
  id="5.5.2.3.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -3009,8 +2996,7 @@ The process shall END.</Paragraph></Sub>
  Id="A1.1.17.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should be process end? or remain in the same state?</Comment>
+</ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should be process end? or remain in the same state?</Comment>
 After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the last sending of the mode change report, the ERTMS/ETCS onboard equipment shall terminate the session.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
@@ -3142,8 +3128,7 @@ After a defined number of repetitions (see appendix to chapter 3, List of Fixed 
 ><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-The ERTMS/ETCS on-board equipment shall switch immediately to SH mode and a request for acknowledgement shall be displayed to the driver (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
+</ReqRef>The ERTMS/ETCS on-board equipment shall switch immediately to SH mode and a request for acknowledgement shall be displayed to the driver (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
  id="5.7.2.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -3194,8 +3179,7 @@ The ERTMS/ETCS on-board equipment shall switch immediately to SH mode and a requ
 ><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-A request for acknowledgement shall be displayed to the driver, when the following two conditions are fulfilled:<Sub>
+</ReqRef>A request for acknowledgement shall be displayed to the driver, when the following two conditions are fulfilled:<Sub>
 <Paragraph
  id="5.7.3.2.a"
  type="REQUIREMENT"
@@ -3268,8 +3252,7 @@ A request for acknowledgement shall be displayed to the driver, when the followi
 ><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-If the max safe front end of the train reaches the beginning of the shunting area according the mode profile and the driver has not yet acknowledged, the ERTMS/ETCS on-board equipment shall switch immediately to SH mode and a request for acknowledgement shall be displayed to the driver (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
+</ReqRef>If the max safe front end of the train reaches the beginning of the shunting area according the mode profile and the driver has not yet acknowledged, the ERTMS/ETCS on-board equipment shall switch immediately to SH mode and a request for acknowledgement shall be displayed to the driver (refer to SRS chapter 4, transitions between modes).</Paragraph><Paragraph
  id="5.7.3.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -3307,8 +3290,7 @@ If the max safe front end of the train reaches the beginning of the shunting are
 ><ReqRef
  Id="5.7.1.4"
 >
-</ReqRef>
-When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an Shunting area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
+</ReqRef>When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an Shunting area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
  id="5.7.4.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -3839,8 +3821,7 @@ An acknowledgement for running in On Sight mode shall be requested from the driv
 ><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-The driver must acknowledge the On Sight mode. A request of acknowledgement shall be displayed to the driver.</Paragraph><Paragraph
+</ReqRef>The driver must acknowledge the On Sight mode. A request of acknowledgement shall be displayed to the driver.</Paragraph><Paragraph
  id="5.9.2.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -3948,8 +3929,7 @@ The driver must acknowledge the On Sight mode. A request of acknowledgement shal
 ><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-A request for acknowledgement shall be displayed to the driver when the following conditions are fulfilled:<Sub>
+</ReqRef>A request for acknowledgement shall be displayed to the driver when the following conditions are fulfilled:<Sub>
 <Paragraph
  id="5.9.3.2.a"
  type="REQUIREMENT"
@@ -4058,8 +4038,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
 ><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-If, in this case, the driver does not acknowledge within the driver acknowledgement time (refer to Appendix A3.1) after the change to OS mode, the service brake command shall be triggered. The command shall be released as soon as the driver acknowledges (unless the command was triggered also for other reasons).</Paragraph></Sub>
+</ReqRef>If, in this case, the driver does not acknowledge within the driver acknowledgement time (refer to Appendix A3.1) after the change to OS mode, the service brake command shall be triggered. The command shall be released as soon as the driver acknowledges (unless the command was triggered also for other reasons).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.9.4"
  type="TITLE"
@@ -4087,8 +4066,7 @@ On Sight from Unfitted or SN mode<Sub>
 ><ReqRef
  Id="A1.1.15.1"
 >
-</ReqRef>
-The mode profile with regards to an OS area is only evaluated in levels 1,2,3, although the mode profile may have been received in level 0 (Unfitted mode) or NTC (SN mode). A transition to On Sight mode can therefore earliest occur at a transition of level: from level 0 or NTC to level 1 or 2 or 3.</Paragraph><Paragraph
+</ReqRef>The mode profile with regards to an OS area is only evaluated in levels 1,2,3, although the mode profile may have been received in level 0 (Unfitted mode) or NTC (SN mode). A transition to On Sight mode can therefore earliest occur at a transition of level: from level 0 or NTC to level 1 or 2 or 3.</Paragraph><Paragraph
  id="5.9.4.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4102,8 +4080,7 @@ The mode profile with regards to an OS area is only evaluated in levels 1,2,3, a
 ><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-Specifications of chapters 5.9.2 and 5.9.3 about the acknowledgement shall apply here.</Paragraph></Sub>
+</ReqRef>Specifications of chapters 5.9.2 and 5.9.3 about the acknowledgement shall apply here.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.9.5"
  type="TITLE"
@@ -4130,8 +4107,7 @@ Specifications of chapters 5.9.2 and 5.9.3 about the acknowledgement shall apply
 ><ReqRef
  Id="5.9.1.2"
 >
-</ReqRef>
-When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an On Sight area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
+</ReqRef>When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an On Sight area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
  id="5.9.5.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -6092,8 +6068,7 @@ The process shall go to D110.</Paragraph><Paragraph
 ><ReqRef
  Id="A1.2.1.2.1"
 >
-</ReqRef>
-The mode shall change to SH and the process shall END.;</Paragraph><Paragraph
+</ReqRef>The mode shall change to SH and the process shall END.;</Paragraph><Paragraph
  id="Entry 5.11.2.2.D090"
  type="TITLE"
  scope="OBU"
@@ -6142,8 +6117,7 @@ The mode shall change to SH and the process shall END.;</Paragraph><Paragraph
 ><ReqRef
  Id="A1.2.1.2.2"
 >
-</ReqRef>
-The mode shall change to UN and the process shall END.;</Paragraph><Paragraph
+</ReqRef>The mode shall change to UN and the process shall END.;</Paragraph><Paragraph
  id="Entry 5.11.2.2.A150"
  type="REQUIREMENT"
  scope="OBU"
@@ -6157,8 +6131,7 @@ The mode shall change to UN and the process shall END.;</Paragraph><Paragraph
 ><ReqRef
  Id="A1.2.1.2.3"
 >
-</ReqRef>
-The mode shall change to SN and the process shall END.;
+</ReqRef>The mode shall change to SN and the process shall END.;
 0,NTC</Paragraph><Paragraph
  id="Entry 5.11.2.2.D110"
  type="TITLE"
@@ -6443,8 +6416,7 @@ c) If the driver selects SH (E145), the process shall continue in the same ways 
 ><ReqRef
  Id="A1.2.1.2.5"
 >
-</ReqRef>
-c) If an MA allowing FS is received from RBC (E170), the mode shall change to FS (refer to SRS chapter 4, transitions between modes: transition from PT to FS) and the process shal END.</Paragraph></Sub>
+</ReqRef>c) If an MA allowing FS is received from RBC (E170), the mode shall change to FS (refer to SRS chapter 4, transitions between modes: transition from PT to FS) and the process shal END.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 5.11.2.2.S160"
  type="TITLE"
@@ -6483,8 +6455,7 @@ c) If an MA allowing FS is received from RBC (E170), the mode shall change to FS
 ><ReqRef
  Id="A1.2.1.2.4"
 >
-</ReqRef>
-When the driver acknowledges (E180), the mode shall change to SR (refer to SRS chapter 4, transitions between modes: transition from PT to SR) and the process shall END.;
+</ReqRef>When the driver acknowledges (E180), the mode shall change to SR (refer to SRS chapter 4, transitions between modes: transition from PT to SR) and the process shall END.;
 1,2,3</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 5.11.2.2.S170"
@@ -6524,8 +6495,7 @@ When the driver acknowledges (E180), the mode shall change to SR (refer to SRS c
 ><ReqRef
  Id="A1.2.1.2.8"
 >
-</ReqRef>
-When the driver acknowledges (E185), the mode shall change to OS/LS/SH (refer to SRS chapter 4, transitions between modes: transition from PT to OS/LS/SH) and the process shall END.;
+</ReqRef>When the driver acknowledges (E185), the mode shall change to OS/LS/SH (refer to SRS chapter 4, transitions between modes: transition from PT to OS/LS/SH) and the process shall END.;
 2,3</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
@@ -9657,8 +9627,7 @@ ID #; Requirements<Sub>
 ><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-The driver must acknowledge the Limited Supervision mode. A request of acknowledgement shall be displayed to the driver.</Paragraph><Paragraph
+</ReqRef>The driver must acknowledge the Limited Supervision mode. A request of acknowledgement shall be displayed to the driver.</Paragraph><Paragraph
  id="5.19.2.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9766,8 +9735,7 @@ The driver must acknowledge the Limited Supervision mode. A request of acknowled
 ><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-A request for acknowledgement shall be displayed to the driver when the following conditions are fulfilled:<Sub>
+</ReqRef>A request for acknowledgement shall be displayed to the driver when the following conditions are fulfilled:<Sub>
 <Paragraph
  id="5.19.3.2.a"
  type="REQUIREMENT"
@@ -9874,8 +9842,7 @@ A request for acknowledgement shall be displayed to the driver when the followin
 ><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-If, in this case, the driver does not acknowledge within the driver acknowledgement time (refer to Appendix A3.1) after the change to LS mode, the service brake command shall be triggered. The command shall be released as soon as the driver acknowledges (unless the command was triggered also for other reasons).</Paragraph></Sub>
+</ReqRef>If, in this case, the driver does not acknowledge within the driver acknowledgement time (refer to Appendix A3.1) after the change to LS mode, the service brake command shall be triggered. The command shall be released as soon as the driver acknowledges (unless the command was triggered also for other reasons).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.19.4"
  type="TITLE"
@@ -9913,8 +9880,7 @@ If, in this case, the driver does not acknowledge within the driver acknowledgem
 ><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-Specifications of chapters 5.19.2 and 5.19.3 about the acknowledgement shall apply here.</Paragraph></Sub>
+</ReqRef>Specifications of chapters 5.19.2 and 5.19.3 about the acknowledgement shall apply here.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="5.19.5"
  type="TITLE"
@@ -9941,8 +9907,7 @@ Specifications of chapters 5.19.2 and 5.19.3 about the acknowledgement shall app
 ><ReqRef
  Id="5.19.1.2"
 >
-</ReqRef>
-When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an Limited Supervision area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
+</ReqRef>When performing a SoM or a Train Trip procedure and when the current level is 2 or 3, the ERTMS/ETCS on-board equipment can receive a mode profile giving an Limited Supervision area which the train has already entered with its max safe front end. In this case, the ERTMS/ETCS on-board equipment shall first require an acknowledgement from the driver.</Paragraph><Paragraph
  id="5.19.5.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"

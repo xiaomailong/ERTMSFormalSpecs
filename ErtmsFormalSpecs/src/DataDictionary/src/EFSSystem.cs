@@ -19,6 +19,7 @@ namespace DataDictionary
     using DataDictionary.Types;
     using DataDictionary.Interpreter;
     using DataDictionary.Rules;
+    using System;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -79,6 +80,11 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The compiler used to compile the system
+        /// </summary>
+        public Compiler Compiler { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EFSSystem()
@@ -86,6 +92,7 @@ namespace DataDictionary
             Dictionaries = new List<Dictionary>();
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
+            Compiler = new Interpreter.Compiler(this);
 
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
@@ -890,15 +897,7 @@ namespace DataDictionary
         /// <returns></returns>
         public Interpreter.Statement.Statement ParseStatement(ModelElement root, string expression)
         {
-            try
-            {
-                return Parser.Statement(root, expression);
-            }
-            catch (Interpreter.ParseErrorException exception)
-            {
-                root.AddException(exception);
-                return null;
-            }
+            return Parser.Statement(root, expression);
         }
 
         /// <summary>
@@ -934,7 +933,7 @@ namespace DataDictionary
             /// <summary>
             /// The references found
             /// </summary>
-            public SortedSet<Usage> Usages { get; private set; }
+            public List<Usage> Usages { get; private set; }
 
             /// <summary>
             /// The element to be found
@@ -947,7 +946,7 @@ namespace DataDictionary
             /// <param name="model"></param>
             public ReferenceVisitor(ModelElement model)
             {
-                Usages = new SortedSet<Usage>();
+                Usages = new List<Usage>();
                 Model = model;
             }
 
@@ -958,7 +957,7 @@ namespace DataDictionary
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Action obj, bool visitSubNodes)
             {
-                Action action = (Action)obj;
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
 
                 if (action.Statement != null && action.Statement.StaticUsage != null)
                 {
@@ -1119,16 +1118,41 @@ namespace DataDictionary
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public SortedSet<Usage> FindReferences(ModelElement model)
+        public List<Usage> FindReferences(ModelElement model)
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(model);
-            foreach (Dictionary dictionary in Dictionaries)
+            bool prev = ModelElement.BeSilent;
+            try
             {
-                visitor.visit(dictionary, true);
+                ModelElement.BeSilent = true;
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    visitor.visit(dictionary, true);
+                }
+                visitor.Usages.Sort();
+            }
+            finally
+            {
+                ModelElement.BeSilent = prev;
             }
 
             return visitor.Usages;
+        }
+
+        /// <summary>
+        /// Indicates whether enclosing messages should be displayed
+        /// </summary>
+        public bool DisplayEnclosingMessages { get; set; }
+
+        public bool DisplayRequirementsAsList { get; set; }
+
+        /// <summary>
+        /// Stops the system
+        /// </summary>
+        public void Stop()
+        {
+            Compiler.DoCompile = false;
         }
     }
 }

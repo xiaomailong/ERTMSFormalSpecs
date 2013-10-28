@@ -17,27 +17,23 @@
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
- Default="SupervisionType.Ceiling"
+ Default="Ceiling"
  Implemented="TRUE"
  Name="MonitoringType"
 >
 <ReqRef
  Id="3.13.10.1.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.1.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.1.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.1.2"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="Ceiling"
@@ -59,8 +55,7 @@
 <ReqRef
  Id="3.13.10.1.1"
 >
-</ReqRef>
-<Comment>Indicates the current supervision status of the train.</Comment>
+</ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
 <Values>
 <EnumValue
  Value="0"
@@ -93,45 +88,36 @@
 <ReqRef
  Id="A1.1.10.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.4.6.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.10.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.10.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.11.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.5.3.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.9.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="A1.1.10.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.9"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
+</ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -143,16 +129,13 @@
  Name="Speed lower than 30km/h"
 >
 <PreConditions>
-<PreCondition>V &lt; 30.0</PreCondition>
-<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition>
-</PreConditions>
+<PreCondition>V &lt; 30.0</PreCondition><PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>2.0</Expression>
 </Case><Case
  Name="Speed upper than 30km/h"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition>
-</PreConditions>
+<PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>V / 47.0 + 7.0 - 265.0 / 47.0</Expression>
 </Case><Case
  Name="Compensation of inaccuracy inhibited"
@@ -167,12 +150,10 @@
 <ReqRef
  Id="3.13.10.4.9"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.3.7.1"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -186,20 +167,16 @@
 <ReqRef
  Id="3.13.10.3.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.3.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.4"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -210,31 +187,25 @@
  Name="CeilingSpeedMonitoring_P"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition>
-<PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition>
-</PreConditions>
+<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition><PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>CeilingSupervision.P ( Distance )</Expression>
 </Case><Case
  Name="CeilingSpeedMonitoring_SBI"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition>
-</PreConditions>
+<PreCondition>Monitoring == MonitoringType.Ceiling</PreCondition></PreConditions>
 <Expression>CeilingSupervision.SBI ( Distance )</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_P"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Target</PreCondition>
-<PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition>
-</PreConditions>
+<PreCondition>Monitoring == MonitoringType.Target</PreCondition><PreCondition>Supervision not in [ SupervisionStatus.Overspeed, SupervisionStatus.Warning, SupervisionStatus.Intervention ]</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_P_DMI()</Expression>
 </Case><Case
  Name="TargetSpeedMonitoring_FLOI"
 >
 <PreConditions>
-<PreCondition>Monitoring == MonitoringType.Target</PreCondition>
-</PreConditions>
+<PreCondition>Monitoring == MonitoringType.Target</PreCondition></PreConditions>
 <Expression>TargetSupervision.V_FLOI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -258,16 +229,12 @@
 <ReqRef
  Id="3.13.9.4.6"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
 AND
-ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
-<PreCondition>Monitoring != MonitoringType.ReleaseSpeed</PreCondition>
-</PreConditions>
+ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monitoring != MonitoringType.ReleaseSpeed</PreCondition></PreConditions>
 <Actions>
-<Action>Monitoring &lt;- MonitoringType.ReleaseSpeed</Action>
-</Actions>
+<Action>Monitoring &lt;- MonitoringType.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -292,8 +259,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EBTriggered &lt;- True</Action>
-</Actions>
+<Action>EBTriggered &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -304,12 +270,10 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.2.3.7.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.2.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -326,12 +290,9 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
  Name="SBIsAvailableForUse"
 >
 <PreConditions>
-<PreCondition>SBIsAvailableForUse()</PreCondition>
-</PreConditions>
+<PreCondition>SBIsAvailableForUse()</PreCondition></PreConditions>
 <Actions>
-<Action>SBTriggered &lt;- True</Action>
-<Action>SBSpecified &lt;- True</Action>
-</Actions>
+<Action>SBTriggered &lt;- True</Action><Action>SBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -340,9 +301,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TriggerEBCommand()</Action>
-<Action>SBSpecified &lt;- True</Action>
-</Actions>
+<Action>TriggerEBCommand()</Action><Action>SBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -357,8 +316,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.2.3.7.1"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
@@ -371,12 +329,9 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
  Name="SBIsAvailableForUse"
 >
 <PreConditions>
-<PreCondition>SBIsAvailableForUse()</PreCondition>
-</PreConditions>
+<PreCondition>SBIsAvailableForUse()</PreCondition></PreConditions>
 <Actions>
-<Action>SBTriggered &lt;- False</Action>
-<Action>SBSpecified &lt;- False</Action>
-</Actions>
+<Action>SBTriggered &lt;- False</Action><Action>SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Otherwise"
@@ -384,9 +339,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RevokeEBCommand()</Action>
-<Action>SBSpecified &lt;- False</Action>
-</Actions>
+<Action>RevokeEBCommand()</Action><Action>SBSpecified &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -401,8 +354,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.1.2"
 >
-</ReqRef>
-<Comment>Indicates the current monitoring of the train.</Comment>
+</ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -413,16 +365,13 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.3.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.2.3"
 >
-</ReqRef>
-<Comment>Indicates if SB was triggered.</Comment>
+</ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -433,16 +382,13 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.3.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.10"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.2.3"
 >
-</ReqRef>
-<Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
+</ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -453,12 +399,10 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.3.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.10.4.10"
 >
-</ReqRef>
-<Comment>Indicates if the traction cuf-off command was triggered.</Comment>
+</ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
  Type="SpeedAndDistanceMonitoring.SupervisionStatus"
  DefaultValue="SupervisionStatus.Normal"
@@ -469,8 +413,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.1.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -481,8 +424,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.3.5"
 >
-</ReqRef>
-<Comment>Indicates if the speed and distance monitoring function is active.</Comment>
+</ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -502,8 +444,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition>
 <ReqRef
  Id="3.13.10.2.4"
 >
-</ReqRef>
-<Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
+</ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"

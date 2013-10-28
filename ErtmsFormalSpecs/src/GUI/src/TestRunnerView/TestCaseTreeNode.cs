@@ -165,12 +165,14 @@ namespace GUI.TestRunnerView
             {
                 if (Window != null)
                 {
+                    SynchronizerList.SuspendSynchronization();
                     DataDictionary.Tests.SubSequence subSequence = TestCase.Enclosing as DataDictionary.Tests.SubSequence;
                     if (subSequence != null)
                     {
                         DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false);
                         runner.RunUntilStep(null);
                     }
+                    SynchronizerList.ResumeSynchronization();
                 }
             }
         }
@@ -188,8 +190,6 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestsHandler);
             dialog.ShowDialog();
-
-            MainWindow.RefreshModel();
         }
         #endregion
 

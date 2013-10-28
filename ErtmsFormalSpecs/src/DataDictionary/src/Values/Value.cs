@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Values
 {
@@ -39,7 +40,7 @@ namespace DataDictionary.Values
         IValue RightSide(Variables.IVariable variable, bool duplicate);
     }
 
-    public abstract class Value : IValue
+    public abstract class Value : IValue, IEnclosed
     {
         public virtual string Name
         {

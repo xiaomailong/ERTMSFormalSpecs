@@ -44,22 +44,44 @@ namespace GUI
         }
 
         /// <summary>
+        /// The explanation last time
+        /// </summary>
+        private string LastExplanation = "";
+
+        /// <summary>
         /// Refreshes the data
         /// </summary>
         public virtual void RefreshData()
         {
+            SuspendLayout();
+
             DataDictionary.TextualExplain explainable = Model as DataDictionary.TextualExplain;
 
-            Rtf = "";
             if (explainable != null)
             {
                 string explanation = explainable.getExplain(true);
 
                 if (explanation != null)
                 {
-                    Rtf = explanation;
+                    if (explanation != LastExplanation)
+                    {
+                        LastExplanation = explanation;
+                        Rtf = explanation;
+                    }
+                }
+                else
+                {
+                    LastExplanation = "";
+                    Rtf = "";
                 }
             }
+            else
+            {
+                LastExplanation = "";
+                Rtf = "";
+            }
+
+            ResumeLayout();
         }
     }
 }

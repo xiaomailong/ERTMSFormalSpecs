@@ -12,16 +12,13 @@
 <ReqRef
  Id="3.13.9.3.5.12"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.11.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.11.b"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -42,8 +39,7 @@
 <ReqRef
  Id="3.13.9.3.5.12"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI2.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -64,8 +60,7 @@
 <ReqRef
  Id="3.13.9.3.5.12"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -77,8 +72,7 @@
  Name="First case"
 >
 <PreConditions>
-<PreCondition>LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition>
-</PreConditions>
+<PreCondition>LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition></PreConditions>
 <Expression>d_SBI1 ( Vlx )</Expression>
 </Case><Case
  Name="Second case"
@@ -93,12 +87,10 @@
 <ReqRef
  Id="3.13.2.3.7.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.9.3.5.12"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -110,8 +102,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"

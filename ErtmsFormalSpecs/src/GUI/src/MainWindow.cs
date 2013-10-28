@@ -20,6 +20,9 @@ using System.Linq;
 using System.Windows.Forms;
 using DataDictionary;
 using Utils;
+using System.Threading;
+using LibGit2Sharp;
+using System.Diagnostics;
 
 namespace GUI
 {
@@ -189,65 +192,46 @@ namespace GUI
         /// <summary>
         /// The application version number
         /// </summary>
-        private string versionNumber = "0.9.8";
-
+        private string versionNumber = "0.9.8.5";
 
         /// <summary>
-        /// Listener to model changes
+        /// The thread used to synchronize node names with their model
         /// </summary>
-        public class ModelChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
+        private class Synchronizer : GenericSynchronizationHandler<MainWindow>
         {
-            /// <summary>
-            /// The main window for which this listener listens
-            /// </summary>
-            private MainWindow MainWindow { get; set; }
-
-            /// <summary>
-            /// Last time refresh was done
-            /// </summary>
-            private DateTime LastRefresh { get; set; }
-
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="system"></param>
-            public ModelChangeListener(MainWindow window)
+            /// <param name="instance"></param>
+            public Synchronizer(MainWindow instance, int cycleTime)
+                : base(instance, cycleTime)
             {
-                MainWindow = window;
-                LastRefresh = DateTime.MinValue;
             }
 
-            #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
             {
-                RefreshModel(sender);
-            }
-
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
-            {
-                RefreshModel(sender);
-            }
-
-            private void RefreshModel(DataDictionary.Generated.BaseModelElement model)
-            {
-                DateTime now = DateTime.Now;
-                TimeSpan span = now - LastRefresh;
-
-                GUIUtils.RefreshViewAccordingToModel(model);
-
-                // Refresh the main window title (but not too often)
-                if (span > TimeSpan.FromSeconds(1))
+                instance.Invoke((MethodInvoker)delegate
                 {
-                    MainWindow.Invoke((MethodInvoker)delegate
+                    instance.UpdateTitle();
+                    foreach (EditorForm editor in instance.Editors)
                     {
-                        MainWindow.UpdateTitle();
-                    });
-                    LastRefresh = now;
-                }
+                        if (!editor.EditorTextBoxHasFocus())
+                        {
+                            editor.RefreshText();
+                        }
+                    }
+                });
             }
-
-            #endregion
         }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private Synchronizer WindowSynchronizer { get; set; }
 
         /// <summary>
         /// Constructor
@@ -259,9 +243,28 @@ namespace GUI
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
 
-            DataDictionary.Generated.ControllersManager.BaseModelElementController.Listeners.Add(new ModelChangeListener(this));
-
+            WindowSynchronizer = new Synchronizer(this, 300);
+            KeyUp += new KeyEventHandler(MainWindow_KeyUp);
             Refresh();
+        }
+
+        /// <summary>
+        /// Handles specific key actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W:
+                        CheckSaveThenClose();
+                        e.Handled = true;
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -454,7 +457,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System);
+                Dictionary = DataDictionary.Util.load(FileName, System, false);
             }
         }
 
@@ -661,7 +664,7 @@ namespace GUI
                 {
                     activeDictionary.FilePath = saveFileDialog.FileName;
                     SaveOperation saveOperation = new SaveOperation(this, activeDictionary);
-                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation);
+                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation, false);
                     dialog.ShowDialog();
                 }
             }
@@ -672,7 +675,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -682,7 +685,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -690,13 +693,21 @@ namespace GUI
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
+            CheckSaveThenClose();
+        }
+
+        /// <summary>
+        /// Checks that save oeprations should be performed, if not, close the window
+        /// </summary>
+        private void CheckSaveThenClose()
+        {
             if (EFSSystem.ShouldSave)
             {
                 DialogResult result = MessageBox.Show("Model has been changed, do you want to save it", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:
-                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem));
+                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem), false);
                         dialog.ShowDialog();
                         break;
 
@@ -837,7 +848,9 @@ namespace GUI
             CheckModelHandler checkModelHandler = new CheckModelHandler(EFSSystem);
             ProgressDialog dialog = new ProgressDialog("Check model", checkModelHandler);
             dialog.ShowDialog();
-            Refresh();
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
@@ -1309,8 +1322,7 @@ namespace GUI
         {
             // Ensure the system has been compiled
             EFSSystem efsSystem = EFSSystem.INSTANCE;
-            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(efsSystem, efsSystem.ShouldRebuild);
-            compiler.Compile();
+            efsSystem.Compiler.Compile_Synchronous(efsSystem.ShouldRebuild);
             efsSystem.ShouldRebuild = false;
 
             RefreshModel();
@@ -1439,6 +1451,135 @@ namespace GUI
             {
                 Report.ERTMSAcademyReport aReport = new Report.ERTMSAcademyReport(dictionary);
                 aReport.ShowDialog(this);
+            }
+        }
+
+        private void compareWithToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open ERTMS Formal Spec file";
+            openFileDialog.Filter = "EFS Files (*.efs)|*.efs|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // Open the dictionary but do not store it in the EFS System
+                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
+                ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
+                dialog.ShowDialog();
+
+                // Compare the files
+                if (openFileOperation.Dictionary != null)
+                {
+                    DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                    DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                    DataDictionary.Compare.Comparer.compareDictionary(dictionary, openFileOperation.Dictionary, versionDiff);
+                    versionDiff.markVersionChanges(dictionary);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                Refresh();
+            }
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Options.Options optionForm = new Options.Options();
+            optionForm.Setup(EFSSystem);
+            optionForm.ShowDialog(this);
+            optionForm.UpdateSystem(EFSSystem);
+        }
+
+        private void compareWithGitRevisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Compares with the active dictionary
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            string workingDir = Path.GetDirectoryName(dictionary.FilePath);
+
+            // Retrieve the hash tag
+            VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.ShowDialog();
+            Commit selected = selector.Selected;
+            if (selected != null)
+            {
+                // Create the temp directory to store alternate version of the subset file
+                string tempDirectory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                Directory.CreateDirectory(tempDirectory);
+                try
+                {
+                    // Retrieve the archive of the selected version
+                    {
+                        ProcessStartInfo _processStartInfo = new ProcessStartInfo();
+                        // _processStartInfo.WorkingDirectory = "c:\\ertms-repositories\\ERTMSFormalSpecs";
+                        _processStartInfo.WorkingDirectory = workingDir;
+                        _processStartInfo.FileName = "git";
+                        _processStartInfo.Arguments = "archive -o " + tempDirectory + "\\specs.zip " + selected.Id.Sha + " .";
+                        _processStartInfo.CreateNoWindow = true;
+                        _processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        Process myProcess = Process.Start(_processStartInfo);
+                        myProcess.WaitForExit();
+                    }
+
+                    // Unzip the archive
+                    {
+                        ICSharpCode.SharpZipLib.Zip.FastZip zip = new ICSharpCode.SharpZipLib.Zip.FastZip();
+                        zip.ExtractZip(tempDirectory + "\\specs.zip", tempDirectory, null);
+                    }
+
+                    // Open the dictionary but do not store it in the EFS System
+                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null);
+                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
+                    dialog.ShowDialog();
+
+                    // Compare the files
+                    if (openFileOperation.Dictionary != null)
+                    {
+                        DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                        DataDictionary.Compare.Comparer.compareDictionary(dictionary, openFileOperation.Dictionary, versionDiff);
+                        versionDiff.markVersionChanges(dictionary);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    try
+                    {
+                        Directory.Delete(tempDirectory, true);
+                    }
+                    catch (Exception exception2)
+                    {
+                        MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Refreshes all graph views
+        /// </summary>
+        public void RefreshAfterStep()
+        {
+            foreach (IBaseForm form in SubWindows)
+            {
+                if (form is GraphView.GraphView)
+                {
+                    form.Refresh();
+                }
+
+                if (form is DataDictionaryView.Window)
+                {
+                    ((DataDictionaryView.Window)form).RefreshAfterStep();
+                }
             }
         }
     }

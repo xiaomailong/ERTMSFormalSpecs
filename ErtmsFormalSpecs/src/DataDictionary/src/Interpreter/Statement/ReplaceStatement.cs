@@ -47,8 +47,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="value">The value to insert in the list</param>
         /// <param name="listExpression">The list affected by the replace statement</param>
         /// <param name="condition">The condition which indicates the value to be replaced</param>
-        public ReplaceStatement(ModelElement root, Expression value, Expression listExpression, Expression condition)
-            : base(root)
+        public ReplaceStatement(ModelElement root, ModelElement log, Expression value, Expression listExpression, Expression condition)
+            : base(root, log)
         {
             Value = value;
             Value.Enclosing = this;

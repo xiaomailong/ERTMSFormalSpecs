@@ -187,7 +187,20 @@ namespace GUI
                                 {
                                     if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type)
                                     {
-                                        retVal.Add(subElem);
+                                        if (ConsiderOnlyTypes)
+                                        {
+                                            if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
+                                            {
+                                                if (!(namable is DataDictionary.Functions.Function))
+                                                {
+                                                    retVal.Add(subElem);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            retVal.Add(subElem);
+                                        }
                                         break;
                                     }
                                 }
@@ -238,8 +251,9 @@ namespace GUI
         {
             List<string> retVal = new List<string>();
 
-            DataDictionary.Interpreter.Compiler compiler = new DataDictionary.Interpreter.Compiler(EFSSystem, false);
-            compiler.Compile(true);
+            bool rebuild = false;
+            bool silent = true;
+            EFSSystem.Compiler.Compile_Asynchronous(rebuild, silent);
 
             // Also use the default namespace
             List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
@@ -283,7 +297,7 @@ namespace GUI
                         // Create a fake foreach expression to hold the list expression and the current expression
                         Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
                         Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
-                        Expression foreachExpression = new ForAllExpression(Instance, listExpression, currentExpression);
+                        Expression foreachExpression = new ForAllExpression(Instance, Instance, listExpression, currentExpression);
                         foreachExpression.SemanticAnalysis();
                         if (currentExpression.Ref != null)
                         {
@@ -322,23 +336,6 @@ namespace GUI
                 possibleInstances.Add(Instance);
                 enclosingName = null;
                 prefix = currentText;
-            }
-
-            // Filter the namables
-            if (ConsiderOnlyTypes)
-            {
-                List<Utils.INamable> tmp = new List<Utils.INamable>();
-                foreach (Utils.INamable namable in possibleInstances)
-                {
-                    if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
-                    {
-                        if (!(namable is DataDictionary.Functions.Function))
-                        {
-                            tmp.Add(namable);
-                        }
-                    }
-                }
-                possibleInstances = tmp;
             }
 
             foreach (Utils.INamable namable in possibleInstances)
@@ -435,6 +432,25 @@ namespace GUI
             }
             catch (Exception)
             {
+            }
+
+            if (!e.Handled)
+            {
+                if (e.Control)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.A:
+                            EditionTextBox.SelectAll();
+                            e.Handled = true;
+                            break;
+
+                        case Keys.C:
+                            EditionTextBox.Copy();
+                            e.Handled = true;
+                            break;
+                    }
+                }
             }
         }
 
@@ -731,6 +747,7 @@ namespace GUI
             return retVal;
         }
 
+        private string lastRtf = "";
         public string Rtf
         {
             get
@@ -739,8 +756,12 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
-                EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value);
+                if (value != lastRtf)
+                {
+                    lastRtf = value;
+                    EditionTextBox.Rtf = InitialRTF;
+                    EditionTextBox.Rtf = TextualExplainUtilities.Encapsule(value);
+                }
             }
         }
 
@@ -764,10 +785,11 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
                 EditionTextBox.Lines = value;
             }
         }
+
+        private string LastText = "";
         public override string Text
         {
             get
@@ -776,8 +798,12 @@ namespace GUI
             }
             set
             {
-                EditionTextBox.Rtf = InitialRTF;
-                EditionTextBox.Text = value.Trim();
+                if (value != LastText)
+                {
+                    LastText = value;
+                    EditionTextBox.Rtf = InitialRTF;
+                    EditionTextBox.Text = value.Trim();
+                }
             }
         }
     }

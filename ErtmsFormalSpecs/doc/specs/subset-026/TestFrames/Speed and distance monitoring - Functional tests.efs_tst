@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61,24 +60,12 @@
     Position=&gt;0.0,
     UnderReadingAmountOdo=&gt;2.0
   }
-}</Action>
-<Action>Kernel.TSR.TSRs &lt;- []</Action>
-<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+}</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid
- </Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid
+ </Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -96,8 +83,7 @@
 <ReqRef
  Id="3.11.2.2.e"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -189,8 +175,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -214,8 +199,7 @@
 <ReqRef
  Id="3.11.2.2.f"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -363,8 +347,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -388,8 +371,7 @@
 <ReqRef
  Id="3.11.2.2.c"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -436,8 +418,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -459,8 +440,7 @@
 <ReqRef
  Id="3.11.2.2.i"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -509,8 +489,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -534,12 +513,10 @@
 <ReqRef
  Id="3.11.2.2.j"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.10.1"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -553,8 +530,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -572,12 +548,10 @@
 <ReqRef
  Id="3.11.2.2.g"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.g"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -591,9 +565,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>STM.MaxSpeed.Speed &lt;- 50.0</Action>
-<Action>STM.MaxSpeed.HasToBeSupervised &lt;- True</Action>
-</Actions>
+<Action>STM.MaxSpeed.Speed &lt;- 50.0</Action><Action>STM.MaxSpeed.HasToBeSupervised &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -611,12 +583,10 @@
 <ReqRef
  Id="3.11.2.2.h"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.11.2.2.h"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -630,9 +600,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>STM.SystemSpeed.Speed &lt;- 45.0</Action>
-<Action>STM.SystemSpeed.HasToBeSupervised &lt;- True</Action>
-</Actions>
+<Action>STM.SystemSpeed.Speed &lt;- 45.0</Action><Action>STM.SystemSpeed.HasToBeSupervised &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -650,8 +618,7 @@
 <ReqRef
  Id="3.11.2.2.b"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -758,8 +725,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -837,8 +803,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -973,8 +938,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1443,8 +1407,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
             }
         }
     }
-}</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
+}</Action><Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
 [
     Kernel.TrackDescription.AdhesionFactors.AdhesionFactor
     {
@@ -1458,8 +1421,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         Length =&gt; 50.0,
         Value =&gt; Messages.M_ADHESION.Slippery_rail
     }
-]</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+]</Action><Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
@@ -1472,8 +1434,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         MaxDecelValueUnderReducedAdhesionCond3 =&gt; 0.7,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.2
     }
-}</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+}</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
@@ -1485,8 +1446,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         Gradient =&gt; 0.0,
         Location =&gt; 1600.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1523,8 +1483,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1539,8 +1498,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedAcceleration &lt;- 1.2</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+<Action>Odometry.EstimatedAcceleration &lt;- 1.2</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
@@ -1552,18 +1510,11 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         Gradient =&gt; 0.0,
         Location =&gt; 1600.0
     }
-]</Action>
-<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+]</Action><Action>Odometry.NominalDistance &lt;- 1000.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
 {
     Coefficient =&gt; 14.0,
     Constant =&gt; 2.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.0</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+}</Action><Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.0</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection{
@@ -1590,8 +1541,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     TargetSpeedTimeOut =&gt; 0.0,
     ReferenceBG =&gt; 0,
     ReferenceBGLocation =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1604,12 +1554,10 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 <ReqRef
  Id="3.13.2.2.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.2.2"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1642,8 +1590,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1500.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 1500.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1664,56 +1611,43 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 <ReqRef
  Id="3.13.2.2.3.2.8"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.7"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.5"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.3.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.2.2.3.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.2.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.2.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.2.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.2.2.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.2.3.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.2.3.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.3.2.4"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1744,8 +1678,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     Magnetic =&gt; 1.82,
     Regenerative =&gt; 0.96,
     Ep =&gt; 0.85
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 1.16,
     EddyCurrent_Magnetic =&gt; 0.48,
@@ -1762,29 +1695,23 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     Magnetic =&gt; 0.55,
     Regenerative =&gt; 1.15,
     Ep =&gt; 0.46
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1813,8 +1740,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1843,8 +1769,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1870,12 +1795,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- EMPTY</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 160.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- EMPTY</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 160.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1890,8 +1810,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.Initialize()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.Initialize()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

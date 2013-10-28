@@ -16,6 +16,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace GUI
 {
@@ -50,6 +52,88 @@ namespace GUI
         public static int CallImageIndex;
         public static int TypeImageIndex;
 
+
+        /// <summary>
+        /// The thread used to synchronize node names with their model
+        /// </summary>
+        private class ColorSynchronizer : GenericSynchronizationHandler<BaseTreeView>
+        {
+            /// <summary>
+            /// The last count of errors
+            /// </summary>
+            private int LastErrorCount { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="instance"></param>
+            public ColorSynchronizer(BaseTreeView instance, int cycleTime)
+                : base(instance, cycleTime)
+            {
+                LastErrorCount = 0;
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(BaseTreeView instance)
+            {
+                foreach (BaseTreeNode node in instance.Nodes)
+                {
+                    node.ComputeColor();
+                }
+
+                instance.Invoke((MethodInvoker)delegate
+                {
+                    instance.SuspendLayout();
+                    foreach (BaseTreeNode node in instance.Nodes)
+                    {
+                        node.UpdateColor();
+                    }
+                    instance.ResumeLayout();
+                });
+            }
+        }
+
+        /// <summary>
+        /// The thread used to synchronize node names with their model
+        /// </summary>
+        private class NameSynchronizer : GenericSynchronizationHandler<BaseTreeView>
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="instance"></param>
+            public NameSynchronizer(BaseTreeView instance, int cycleTime)
+                : base(instance, cycleTime)
+            {
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(BaseTreeView instance)
+            {
+                instance.Invoke((MethodInvoker)delegate
+                {
+                    instance.SuspendLayout();
+                    if (instance.Selected != null)
+                    {
+                        instance.Selected.UpdateText();
+                    }
+                    instance.ResumeLayout();
+                });
+            }
+        }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private ColorSynchronizer NodeColorSynchronizer { get; set; }
+        private NameSynchronizer NodeNameSynchronizer { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -66,7 +150,7 @@ namespace GUI
 
             BeforeExpand += new TreeViewCancelEventHandler(BeforeExpandHandler);
             BeforeCollapse += new TreeViewCancelEventHandler(BeforeCollapseHandler);
-
+            KeyUp += new KeyEventHandler(BaseTreeView_KeyUp);
             AfterLabelEdit += new NodeLabelEditEventHandler(LabelEditHandler);
             LabelEdit = true;
             HideSelection = false;
@@ -94,6 +178,23 @@ namespace GUI
             WriteAccessImageIndex = 7;
             CallImageIndex = 8;
             TypeImageIndex = 9;
+
+            NodeColorSynchronizer = new ColorSynchronizer(this, 300);
+            NodeNameSynchronizer = new NameSynchronizer(this, 5000);
+        }
+
+        void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    if (Selected != null)
+                    {
+                        Selected.BeginEdit();
+                    }
+                    e.Handled = true;
+                    break;
+            }
         }
 
         /// <summary>
@@ -187,9 +288,19 @@ namespace GUI
         /// </summary>
         public virtual void RefreshNodes()
         {
-            foreach (TreeNode node in Nodes)
+            foreach (BaseTreeNode node in Nodes)
             {
                 RefreshNode(node as BaseTreeNode);
+            }
+            RefreshNodeColors();
+        }
+
+        private void RefreshNodeColors()
+        {
+            foreach (BaseTreeNode node in Nodes)
+            {
+                node.ComputeColor();
+                node.UpdateColor();
             }
         }
 

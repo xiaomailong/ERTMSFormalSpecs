@@ -70,8 +70,8 @@ namespace Utils
                 StreamReader newFile = new StreamReader(tempFilePath);
                 while (retVal && !original.EndOfStream && !newFile.EndOfStream)
                 {
-                    string originalLine = original.ReadLine();
-                    string newLine = newFile.ReadLine();
+                    string originalLine = original.ReadLine().Replace("\r", "");
+                    string newLine = newFile.ReadLine().Replace("\r", "");
 
                     retVal = originalLine.Equals(newLine);
                 }
@@ -96,6 +96,7 @@ namespace Utils
         {
             // Replace the original file with the new file
             StreamReader newFile = new StreamReader(tempFilePath);
+            Directory.CreateDirectory(Path.GetDirectoryName(TargetPath));
             StreamWriter original = new StreamWriter(TargetPath);
             while (!newFile.EndOfStream)
             {

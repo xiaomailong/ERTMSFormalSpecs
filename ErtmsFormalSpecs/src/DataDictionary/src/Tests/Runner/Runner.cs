@@ -46,7 +46,7 @@ namespace DataDictionary.Tests.Runner
         {
             get
             {
-                return SubSequence.EFSSystem;
+                return EFSSystem.INSTANCE;
             }
         }
 
@@ -157,8 +157,26 @@ namespace DataDictionary.Tests.Runner
             LogEvents = logEvents;
 
             // Compile everything
-            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
-            compiler.Compile();
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+            EFSSystem.ShouldRebuild = false;
+
+            Setup();
+        }
+
+        /// <summary>
+        /// A simple runner
+        /// </summary>
+        public Runner(bool logEvents = false, int step = 100, int storeEventCount = 0)
+        {
+            EventTimeLine = new Events.EventTimeLine();
+            SubSequence = null;
+            Step = 100;
+            EventTimeLine.MaxNumberOfEvents = storeEventCount;
+            EFSSystem.Runner = this;
+            LogEvents = logEvents;
+
+            // Compile everything
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
 
             Setup();
@@ -372,24 +390,7 @@ namespace DataDictionary.Tests.Runner
 
                 foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
-                    if (LogEvents)
-                    {
-                        Log.Info("Priority=" + priority);
-                    }
-                    // Clears the cache of functions
-                    FunctionCacheCleaner.ClearCaches();
-
-                    // Activates the processing engine
-                    HashSet<Activation> activations = new HashSet<Activation>();
-                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
-                    {
-                        foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
-                        {
-                            SetupNameSpaceActivations(priority, activations, nameSpace, null);
-                        }
-                    }
-
-                    ApplyActivations(activations);
+                    innerExecuteOnePriority(priority);
                 }
                 // Clears the cache of functions
                 FunctionCacheCleaner.ClearCaches();
@@ -424,28 +425,87 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
+        /// Executes a single rule priority (shared version of the method)
+        /// </summary>
+        /// <param name="priority"></param>
+        private void innerExecuteOnePriority(Generated.acceptor.RulePriority priority)
+        {
+            if (LogEvents)
+            {
+                Log.Info("Priority=" + priority);
+            }
+            // Clears the cache of functions
+            FunctionCacheCleaner.ClearCaches();
+
+            // Activates the processing engine
+            HashSet<Activation> activations = new HashSet<Activation>();
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
+                {
+                    SetupNameSpaceActivations(priority, activations, nameSpace, null, LogEvents);
+                }
+            }
+
+            ApplyActivations(activations);
+        }
+        /// <summary>
+        /// Executes the interpretation machine for one priority
+        /// </summary>
+        /// <param name="priority"></param>
+        public void ExecuteOnePriority(DataDictionary.Generated.acceptor.RulePriority priority)
+        {
+            try
+            {
+                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                LastActivationTime = Time;
+
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+
+                // Executes a single rule priority
+                innerExecuteOnePriority(priority);
+
+                // Clears the cache of functions
+                FunctionCacheCleaner.ClearCaches();
+                EventTimeLine.GarbageCollect();
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+            }
+
+            EventTimeLine.CurrentTime += Step;
+        }
+
+        /// <summary>
         /// Determines the set of rules in a specific namespace to be applied.
         /// </summary>
         /// <param name="priority">The priority for which this activation is requested</param>
         /// <param name="activations">The set of activations to be filled</param>
         /// <param name="nameSpace">The namespace to consider</param>
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that a log should be performed</param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation)
+        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation, bool log)
         {
             // Finds all activations in sub namespaces
             foreach (Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
             {
-                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation);
+                SetupNameSpaceActivations(priority, activations, subNameSpace, explanation, log);
             }
 
             List<Rules.RuleCondition> rules = new List<Rules.RuleCondition>();
             foreach (Rule rule in nameSpace.Rules)
             {
                 rules.Clear();
-                rule.Evaluate(this, priority, rule, rules, explanation);
+                rule.Evaluate(this, priority, rule, rules, explanation, log);
                 Activation.RegisterRules(activations, rules, nameSpace);
             }
 
+            // BUG : This is irrelevant now. Check that and remove
             foreach (Functions.Procedure procedure in nameSpace.Procedures)
             {
                 rules.Clear();
@@ -454,17 +514,19 @@ namespace DataDictionary.Tests.Runner
 
             foreach (Variables.IVariable variable in nameSpace.Variables)
             {
-                EvaluateVariable(priority, activations, variable, explanation);
+                EvaluateVariable(priority, activations, variable, explanation, log);
             }
         }
 
         /// <summary>
         /// Evaluates the rules associated to a single variable
         /// </summary>
-        /// <param name="priority"></param>
-        /// <param name="activations"></param>
-        /// <param name="variable"></param>
-        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation)
+        /// <param name="priority">The priority in which this variable is evaluated</param>
+        /// <param name="activations">The activation list result of this evaluation</param>
+        /// <param name="variable">The variable to evaluate</param>
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that events should be logged</param>
+        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation, bool log)
         {
             if (variable != null)
             {
@@ -474,7 +536,7 @@ namespace DataDictionary.Tests.Runner
                     Types.Structure structure = variable.Type as Types.Structure;
                     foreach (Rule rule in structure.Rules)
                     {
-                        rule.Evaluate(this, priority, variable, rules, explanation);
+                        rule.Evaluate(this, priority, variable, rules, explanation, log);
                     }
                     Activation.RegisterRules(activations, rules, variable);
 
@@ -483,14 +545,14 @@ namespace DataDictionary.Tests.Runner
                     {
                         foreach (Variables.IVariable subVariable in value.SubVariables.Values)
                         {
-                            EvaluateVariable(priority, activations, subVariable, explanation);
+                            EvaluateVariable(priority, activations, subVariable, explanation, log);
                         }
                     }
                 }
                 else if (variable.Type is Types.StateMachine)
                 {
                     List<Rules.RuleCondition> rules = new List<RuleCondition>();
-                    EvaluateStateMachine(rules, priority, variable, explanation);
+                    EvaluateStateMachine(rules, priority, variable, explanation, log);
                     Activation.RegisterRules(activations, rules, variable);
                 }
                 else if (variable.Type is Types.Collection)
@@ -509,7 +571,7 @@ namespace DataDictionary.Tests.Runner
                                 tmp.Name = variable.Name + '[' + i + ']';
                                 tmp.Type = collectionType.Type;
                                 tmp.Value = subVal;
-                                EvaluateVariable(priority, activations, tmp, explanation);
+                                EvaluateVariable(priority, activations, tmp, explanation, log);
                                 i = i + 1;
                             }
                         }
@@ -534,10 +596,12 @@ namespace DataDictionary.Tests.Runner
         /// Try to find a rule, in this state machine, or in a sub state machine 
         /// which 
         /// </summary>
-        /// <param name="ruleConditions"></param>
-        /// <param name="priority"></param>
+        /// <param name="ruleConditions">The rule conditions activated during the evaluation of this state machine</param>
+        /// <param name="priority">The priority when this evaluation occurs</param>
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
-        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation)
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that events should be logged</param>
+        private void EvaluateStateMachine(List<Rules.RuleCondition> ruleConditions, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, bool log)
         {
             if (currentStateVariable != null)
             {
@@ -547,7 +611,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     foreach (Rule rule in currentStateMachine.Rules)
                     {
-                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation);
+                        rule.Evaluate(this, priority, currentStateVariable, ruleConditions, explanation, log);
                     }
                     currentStateMachine = currentStateMachine.EnclosingStateMachine;
                 }

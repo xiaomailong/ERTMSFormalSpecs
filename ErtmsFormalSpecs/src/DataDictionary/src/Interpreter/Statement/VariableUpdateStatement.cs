@@ -34,8 +34,8 @@ namespace DataDictionary.Interpreter.Statement
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
-        public VariableUpdateStatement(ModelElement root, Expression variableIdentification, Expression expression)
-            : base(root)
+        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification, Expression expression)
+            : base(root, log)
         {
             VariableIdentification = variableIdentification;
             VariableIdentification.Enclosing = this;
@@ -166,6 +166,29 @@ namespace DataDictionary.Interpreter.Statement
                             else
                             {
                                 Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName + ") does not match variable [" + VariableIdentification.ToString() + "] type (" + targetType.FullName + ")");
+                            }
+                        }
+                        else
+                        {
+                            Types.Range rangeType = targetType as Types.Range;
+                            if (rangeType != null)
+                            {
+                                Values.IValue value = Expression.Ref as Values.IValue;
+                                if (value != null)
+                                {
+                                    if (rangeType.convert(value) == null)
+                                    {
+                                        Root.AddError("Cannot set " + value.LiteralName + " in variable of type " + rangeType.Name);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (Expression.Ref == EFSSystem.EmptyValue)
+                        {
+                            if (targetType is Types.Collection)
+                            {
+                                Root.AddError("Assignation of " + Expression.Ref.Name + " cannot be performed on variables of type collection. Use [] instead.");
                             }
                         }
                     }

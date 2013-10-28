@@ -92,7 +92,7 @@ ctxt.accept('>');
 } else {
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</BaseModelElement>");
+ctxt.acceptString(endingTag);
 // If formula empty
 } // If
 }
@@ -109,8 +109,12 @@ ctxt.acceptString ("</BaseModelElement>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<BaseModelElement";
+  endingTag = "</BaseModelElement>";
+}
 
-pw.Write("<BaseModelElement");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"BaseModelElement\"");
 } // If
@@ -556,7 +560,7 @@ base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 fl107 = null;
 while(ctxt.lookAheadOpeningTag ("<ReqRef")) {
-fl107 = acceptor.lAccept_ReqRef(ctxt, null);
+fl107 = acceptor.lAccept_ReqRef(ctxt, "</ReqRef>");
 appendRequirements(fl107);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -711,7 +715,7 @@ int i;
 base.unParseBody(pw);
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getRequirements(), false, null, null);
+unParse(pw, this.getRequirements(), false, "<ReqRef", "</ReqRef>");
 // Unparsing Enclosed
 // Testing for empty content: Comment
 if (this.getComment() != null){
@@ -1986,6 +1990,7 @@ aXsiLocation=(null);
 
 public void copyTo(Dictionary other)
 {
+base.copyTo(other);
 other.aSpecification = aSpecification;
 other.aRuleDisablings = aRuleDisablings;
 other.aNameSpaces = aNameSpaces;
@@ -2020,6 +2025,7 @@ Frame fl175;
 FrameRef fl187;
 
 ctxt.skipWhiteSpace();
+base.parseBody(ctxt);
 // Element Ref : Specification
 ctxt.skipWhiteSpace();
 // If optional...
@@ -2301,7 +2307,7 @@ break;
 ctxt.skipWhiteSpace();
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</Dictionary>");
+ctxt.acceptString(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -2316,8 +2322,12 @@ ctxt.acceptString ("</Dictionary>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<Dictionary";
+  endingTag = "</Dictionary>";
+}
 
-pw.Write("<Dictionary");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"Dictionary\"");
 } // If
@@ -2333,8 +2343,7 @@ pw.Write('\n');
 pw.Write('>');
 pw.Write('\n');
 unParseBody(pw);
-pw.Write("</Dictionary>");
-pw.Write('\n');
+pw.Write(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -2347,6 +2356,7 @@ pw.Write('\n');
 int i;
 #pragma warning restore 0168, 0219
 
+base.unParseBody(pw);
 // Unparsing ElementRef
 if (this.getSpecification() != null){
 unParse(pw, this.getSpecification(),false,"<Specification","</Specification>");
@@ -2412,6 +2422,7 @@ public  override  void dispatch(XmlBBaseVisitor v, bool visitSubNodes)
 /// or even disappear in the future.</remarks>
 public  override void subElements(ArrayList l)
 {
+ base.subElements(l);
 l.Add(this.getSpecification());
 for (int i = 0; i < countRuleDisablings(); i++) {
   l.Add(getRuleDisablings(i));
@@ -5546,6 +5557,7 @@ aComment=(null);
 
 public void copyTo(ReqRef other)
 {
+base.copyTo(other);
 other.aId = aId;
 other.aComment = aComment;
 }
@@ -5565,6 +5577,7 @@ char quoteChar;
 bool fl370;
 
 ctxt.skipWhiteSpace();
+base.parseBody(ctxt);
 ctxt.skipWhiteSpace();
 // Optional Enclosed
 if (ctxt.lookAheadOpeningTag("<Comment")){
@@ -5666,7 +5679,7 @@ ctxt.accept('>');
 } else {
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</ReqRef>");
+ctxt.acceptString(endingTag);
 // If formula empty
 } // If
 }
@@ -5683,8 +5696,12 @@ ctxt.acceptString ("</ReqRef>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<ReqRef";
+  endingTag = "</ReqRef>";
+}
 
-pw.Write("<ReqRef");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"ReqRef\"");
 } // If
@@ -5696,8 +5713,7 @@ pw.Write('\n');
 pw.Write('>');
 pw.Write('\n');
 unParseBody(pw);
-pw.Write("</ReqRef>");
-pw.Write('\n');
+pw.Write(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -5710,6 +5726,7 @@ pw.Write('\n');
 int i;
 #pragma warning restore 0168, 0219
 
+base.unParseBody(pw);
 // Unparsing Enclosed
 // Testing for empty content: Comment
 if (this.getComment() != null){
@@ -5737,6 +5754,7 @@ public  override  void dispatch(XmlBBaseVisitor v, bool visitSubNodes)
 /// or even disappear in the future.</remarks>
 public  override void subElements(ArrayList l)
 {
+ base.subElements(l);
 }
 
 }
@@ -11190,7 +11208,7 @@ ctxt.accept('>');
 ctxt.skipWhiteSpace();
 fl624 = null;
 while(ctxt.lookAheadOpeningTag ("<PreCondition")) {
-fl624 = acceptor.lAccept_PreCondition(ctxt, null);
+fl624 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
 appendPreConditions(fl624);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -11351,7 +11369,7 @@ pw.Write("<PreConditions>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getPreConditions(), false, null, null);
+unParse(pw, this.getPreConditions(), false, "<PreCondition", "</PreCondition>");
 pw.Write("</PreConditions>");
 // Father is not a mixed
 pw.Write('\n');
@@ -15361,7 +15379,7 @@ ctxt.accept('>');
 ctxt.skipWhiteSpace();
 fl803 = null;
 while(ctxt.lookAheadOpeningTag ("<PreCondition")) {
-fl803 = acceptor.lAccept_PreCondition(ctxt, null);
+fl803 = acceptor.lAccept_PreCondition(ctxt, "</PreCondition>");
 appendPreConditions(fl803);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -15399,7 +15417,7 @@ ctxt.accept('>');
 ctxt.skipWhiteSpace();
 fl816 = null;
 while(ctxt.lookAheadOpeningTag ("<Action")) {
-fl816 = acceptor.lAccept_Action(ctxt, null);
+fl816 = acceptor.lAccept_Action(ctxt, "</Action>");
 appendActions(fl816);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -15694,7 +15712,7 @@ pw.Write("<PreConditions>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getPreConditions(), false, null, null);
+unParse(pw, this.getPreConditions(), false, "<PreCondition", "</PreCondition>");
 pw.Write("</PreConditions>");
 // Father is not a mixed
 pw.Write('\n');
@@ -15703,7 +15721,7 @@ pw.Write("<Actions>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getActions(), false, null, null);
+unParse(pw, this.getActions(), false, "<Action", "</Action>");
 pw.Write("</Actions>");
 // Father is not a mixed
 pw.Write('\n');
@@ -15782,6 +15800,7 @@ aCondition=(null);
 
 public void copyTo(PreCondition other)
 {
+base.copyTo(other);
 other.aCondition = aCondition;
 }
 
@@ -15798,6 +15817,7 @@ char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
 
+base.parseBody(ctxt);
 // Indicator
 // Parse PC data
 this.setCondition(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
@@ -15839,7 +15859,7 @@ fl852 = false ;
 ctxt.skipWhiteSpace();
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</PreCondition>");
+ctxt.acceptString(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -15854,15 +15874,18 @@ ctxt.acceptString ("</PreCondition>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<PreCondition";
+  endingTag = "</PreCondition>";
+}
 
-pw.Write("<PreCondition");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"PreCondition\"");
 } // If
 pw.Write('>');
 unParseBody(pw);
-pw.Write("</PreCondition>");
-pw.Write('\n');
+pw.Write(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -15875,6 +15898,7 @@ pw.Write('\n');
 int i;
 #pragma warning restore 0168, 0219
 
+base.unParseBody(pw);
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getCondition());
 }
@@ -15893,6 +15917,7 @@ public  override  void dispatch(XmlBBaseVisitor v, bool visitSubNodes)
 /// or even disappear in the future.</remarks>
 public  override void subElements(ArrayList l)
 {
+ base.subElements(l);
 }
 
 }
@@ -15929,6 +15954,7 @@ aExpression=(null);
 
 public void copyTo(Action other)
 {
+base.copyTo(other);
 other.aExpression = aExpression;
 }
 
@@ -15945,6 +15971,7 @@ char quoteChar;
  string  tempStr;
 #pragma warning restore 0168, 0219
 
+base.parseBody(ctxt);
 // Indicator
 // Parse PC data
 this.setExpression(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
@@ -15986,7 +16013,7 @@ fl853 = false ;
 ctxt.skipWhiteSpace();
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</Action>");
+ctxt.acceptString(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -16001,15 +16028,18 @@ ctxt.acceptString ("</Action>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<Action";
+  endingTag = "</Action>";
+}
 
-pw.Write("<Action");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"Action\"");
 } // If
 pw.Write('>');
 unParseBody(pw);
-pw.Write("</Action>");
-pw.Write('\n');
+pw.Write(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -16022,6 +16052,7 @@ pw.Write('\n');
 int i;
 #pragma warning restore 0168, 0219
 
+base.unParseBody(pw);
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getExpression());
 }
@@ -16040,6 +16071,7 @@ public  override  void dispatch(XmlBBaseVisitor v, bool visitSubNodes)
 /// or even disappear in the future.</remarks>
 public  override void subElements(ArrayList l)
 {
+ base.subElements(l);
 }
 
 }
@@ -19972,7 +20004,7 @@ ctxt.accept('>');
 ctxt.skipWhiteSpace();
 fl1005 = null;
 while(ctxt.lookAheadOpeningTag ("<Action")) {
-fl1005 = acceptor.lAccept_Action(ctxt, null);
+fl1005 = acceptor.lAccept_Action(ctxt, "</Action>");
 appendActions(fl1005);
 ctxt.skipWhiteSpace();
 } // -- monomorphic Loop
@@ -20191,7 +20223,7 @@ pw.Write("<Actions>");
 pw.Write('\n');
 // Unparsing Repeat
 // Unparsing repetition
-unParse(pw, this.getActions(), false, null, null);
+unParse(pw, this.getActions(), false, "<Action", "</Action>");
 pw.Write("</Actions>");
 // Father is not a mixed
 pw.Write('\n');
@@ -27693,7 +27725,7 @@ ctxt.skipWhiteSpace();
 // If optional...
 if (ctxt.lookAheadOpeningTag("<ParagraphRevision")){
 // Parsing sub element
-this.setRevision(acceptor.lAccept_ParagraphRevision(ctxt,null));
+this.setRevision(acceptor.lAccept_ParagraphRevision(ctxt,"</ParagraphRevision>"));
 setSon(this.getRevision());
 // Endif optional...
 } // If
@@ -28349,7 +28381,7 @@ unParse(pw, this.getMessage(), false, null, null);
 } // If
 // Unparsing ElementRef
 if (this.getRevision() != null){
-unParse(pw, this.getRevision(), false, null, null);
+unParse(pw, this.getRevision(),false,"<ParagraphRevision","</ParagraphRevision>");
 } // If
 // Unparsing Enclosed
 // Testing for empty content: Paragraphs
@@ -32614,6 +32646,7 @@ aVersion=(null);
 
 public void copyTo(ParagraphRevision other)
 {
+base.copyTo(other);
 other.aText = aText;
 other.aVersion = aVersion;
 }
@@ -32632,6 +32665,7 @@ char quoteChar;
 #pragma warning restore 0168, 0219
 
 ctxt.skipWhiteSpace();
+base.parseBody(ctxt);
 // Indicator
 // Parse PC data
 this.setText(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
@@ -32705,7 +32739,7 @@ break;
 ctxt.skipWhiteSpace();
 ctxt.accept('>');
 parseBody(ctxt);
-ctxt.acceptString ("</ParagraphRevision>");
+ctxt.acceptString(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -32720,8 +32754,12 @@ ctxt.acceptString ("</ParagraphRevision>");
 #pragma warning disable 0168, 0219
 int i;
 #pragma warning restore 0168, 0219
+if (headingTag == null) {
+  headingTag = "<ParagraphRevision";
+  endingTag = "</ParagraphRevision>";
+}
 
-pw.Write("<ParagraphRevision");
+pw.Write(headingTag);
 if (typeId){
 pw.Write(" xsi:type=\"ParagraphRevision\"");
 } // If
@@ -32732,8 +32770,7 @@ pw.Write('"');
 pw.Write('\n');
 pw.Write('>');
 unParseBody(pw);
-pw.Write("</ParagraphRevision>");
-pw.Write('\n');
+pw.Write(endingTag);
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -32746,6 +32783,7 @@ pw.Write('\n');
 int i;
 #pragma warning restore 0168, 0219
 
+base.unParseBody(pw);
 // Unparsing PcData
 acceptor.unParsePcData(pw, this.getText());
 }
@@ -32764,6 +32802,7 @@ public  override  void dispatch(XmlBBaseVisitor v, bool visitSubNodes)
 /// or even disappear in the future.</remarks>
 public  override void subElements(ArrayList l)
 {
+ base.subElements(l);
 }
 
 }
@@ -36591,6 +36630,92 @@ return res;
 /// internally. Please refrain from using it, as it
 /// might produce unexpected results, and might change
 /// or even disappear in the future.</remarks>
+public static BaseModelElement lAccept_Poly_BaseModelElement (XmlBContext ctxt, 
+                          string  endingTag)
+
+  {
+    char quoteChar;
+    BaseModelElement res = null;
+ctxt.skipWhiteSpace();
+ctxt.acceptString ("xsi:type=");
+quoteChar = ctxt.acceptQuote();
+switch (ctxt.current()) {
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("eqRef")){
+ctxt.accept(quoteChar);
+res = lAccept_ReqRef(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+case 'P':
+{
+ctxt.advance();
+switch (ctxt.current()) {
+case 'r':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("eCondition")){
+ctxt.accept(quoteChar);
+res = lAccept_PreCondition(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+case 'a':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ragraphRevision")){
+ctxt.accept(quoteChar);
+res = lAccept_ParagraphRevision(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+default:
+res = null;
+break;
+} // Switch
+break;
+} // Case
+case 'D':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ictionary")){
+ctxt.accept(quoteChar);
+res = lAccept_Dictionary(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+case 'A':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("ction")){
+ctxt.accept(quoteChar);
+res = lAccept_Action(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+default:
+res = null;
+break;
+} // Switch
+  return res;
+  }
+
+/// <remarks>This method is used by XMLBooster-generated code
+/// internally. Please refrain from using it, as it
+/// might produce unexpected results, and might change
+/// or even disappear in the future.</remarks>
 public static Namable lAccept_Poly_Namable (XmlBContext ctxt, 
                           string  endingTag)
 
@@ -37665,6 +37790,7 @@ public static Dictionary lAccept_Dictionary (XmlBContext ctxt,
                           string  endingTag)
 
   {
+if (endingTag == null) endingTag = "</Dictionary>";
   Dictionary res = aFactory.createDictionary();
   res.parse(ctxt, endingTag);
   return res;
@@ -37720,6 +37846,7 @@ public static ReqRef lAccept_ReqRef (XmlBContext ctxt,
                           string  endingTag)
 
   {
+if (endingTag == null) endingTag = "</ReqRef>";
   ReqRef res = aFactory.createReqRef();
   res.parse(ctxt, endingTag);
   return res;
@@ -38044,6 +38171,7 @@ public static PreCondition lAccept_PreCondition (XmlBContext ctxt,
                           string  endingTag)
 
   {
+if (endingTag == null) endingTag = "</PreCondition>";
   PreCondition res = aFactory.createPreCondition();
   res.parse(ctxt, endingTag);
   return res;
@@ -38057,6 +38185,7 @@ public static Action lAccept_Action (XmlBContext ctxt,
                           string  endingTag)
 
   {
+if (endingTag == null) endingTag = "</Action>";
   Action res = aFactory.createAction();
   res.parse(ctxt, endingTag);
   return res;
@@ -38533,6 +38662,7 @@ public static ParagraphRevision lAccept_ParagraphRevision (XmlBContext ctxt,
                           string  endingTag)
 
   {
+if (endingTag == null) endingTag = "</ParagraphRevision>";
   ParagraphRevision res = aFactory.createParagraphRevision();
   res.parse(ctxt, endingTag);
   return res;
@@ -38551,28 +38681,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 1894;
+indicator = 1900;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 1893;
+indicator = 1899;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1891;
+indicator = 1897;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1892;
+indicator = 1898;
 break;
 } // Case
 case 'a':
@@ -38583,18 +38713,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 1895;
+indicator = 1901;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 1890;
+indicator = 1896;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1903)");
+ctxt.recoverableFail ("Other character expected (1909)");
 break;
 } // Switch
 break;
@@ -38603,39 +38733,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 1896;
+indicator = 1902;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1905)");
+ctxt.recoverableFail ("Other character expected (1911)");
 break;
 } // Switch
 switch (indicator) {
-case 1890: {
+case 1896: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 1891: {
+case 1897: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 1892: {
+case 1898: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 1893: {
+case 1899: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 1894: {
+case 1900: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 1895: {
+case 1901: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 1896: {
+case 1902: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -40159,7 +40289,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1913)");
+ctxt.recoverableFail ("Other character expected (1919)");
 break;
 } // Switch
 break;
@@ -40188,7 +40318,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1918)");
+ctxt.recoverableFail ("Other character expected (1924)");
 break;
 } // Switch
 break;
@@ -40247,7 +40377,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1925)");
+ctxt.recoverableFail ("Other character expected (1931)");
 break;
 } // Switch
 break;
@@ -40298,7 +40428,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1931)");
+ctxt.recoverableFail ("Other character expected (1937)");
 break;
 } // Switch
 break;
@@ -40342,7 +40472,7 @@ case 'e':
 {
 ctxt.advance();
 ctxt.acceptString ("qRef");
-  res =  lAccept_ReqRef(ctxt, null);
+  res =  lAccept_ReqRef(ctxt, "</ReqRef>");
 break;
 } // Case
 case 'a':
@@ -40353,7 +40483,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1938)");
+ctxt.recoverableFail ("Other character expected (1944)");
 break;
 } // Switch
 break;
@@ -40377,11 +40507,11 @@ case 'e':
 {
 ctxt.advance();
 ctxt.acceptString ("Condition");
-  res =  lAccept_PreCondition(ctxt, null);
+  res =  lAccept_PreCondition(ctxt, "</PreCondition>");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1943)");
+ctxt.recoverableFail ("Other character expected (1949)");
 break;
 } // Switch
 break;
@@ -40407,7 +40537,7 @@ case 'R':
 {
 ctxt.advance();
 if (ctxt.lookAheadString("evision")){
-  res =  lAccept_ParagraphRevision(ctxt, null);
+  res =  lAccept_ParagraphRevision(ctxt, "</ParagraphRevision>");
 } else {
   res =  lAccept_Paragraph(ctxt, "</Paragraph>");
 } // If
@@ -40420,13 +40550,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1948)");
+ctxt.recoverableFail ("Other character expected (1954)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1949)");
+ctxt.recoverableFail ("Other character expected (1955)");
 break;
 } // Switch
 break;
@@ -40492,7 +40622,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1957)");
+ctxt.recoverableFail ("Other character expected (1963)");
 break;
 } // Switch
 break;
@@ -40530,7 +40660,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1962)");
+ctxt.recoverableFail ("Other character expected (1968)");
 break;
 } // Switch
 break;
@@ -40543,7 +40673,7 @@ case 'i':
 {
 ctxt.advance();
 ctxt.acceptString ("ctionary");
-  res =  lAccept_Dictionary(ctxt, null);
+  res =  lAccept_Dictionary(ctxt, "</Dictionary>");
 break;
 } // Case
 case 'B':
@@ -40572,13 +40702,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1969)");
+ctxt.recoverableFail ("Other character expected (1975)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1970)");
+ctxt.recoverableFail ("Other character expected (1976)");
 break;
 } // Switch
 break;
@@ -40623,7 +40753,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1976)");
+ctxt.recoverableFail ("Other character expected (1982)");
 break;
 } // Switch
 break;
@@ -40632,17 +40762,17 @@ case 'A':
 {
 ctxt.advance();
 ctxt.acceptString ("ction");
-  res =  lAccept_Action(ctxt, null);
+  res =  lAccept_Action(ctxt, "</Action>");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1978)");
+ctxt.recoverableFail ("Other character expected (1984)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1979)");
+ctxt.recoverableFail ("Other character expected (1985)");
 break;
 } // Switch
 return res;
@@ -40832,7 +40962,7 @@ public virtual void visit(Dictionary obj)
 
 public virtual void visit(Dictionary obj, bool visitSubNodes)
 {
-visit ((IXmlBBase)obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
@@ -40904,7 +41034,7 @@ public virtual void visit(ReqRef obj)
 
 public virtual void visit(ReqRef obj, bool visitSubNodes)
 {
-visit ((IXmlBBase)obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
@@ -41210,7 +41340,7 @@ public virtual void visit(PreCondition obj)
 
 public virtual void visit(PreCondition obj, bool visitSubNodes)
 {
-visit ((IXmlBBase)obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
@@ -41228,7 +41358,7 @@ public virtual void visit(Action obj)
 
 public virtual void visit(Action obj, bool visitSubNodes)
 {
-visit ((IXmlBBase)obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
@@ -41858,7 +41988,7 @@ public virtual void visit(ParagraphRevision obj)
 
 public virtual void visit(ParagraphRevision obj, bool visitSubNodes)
 {
-visit ((IXmlBBase)obj, false);
+visit ((BaseModelElement) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){

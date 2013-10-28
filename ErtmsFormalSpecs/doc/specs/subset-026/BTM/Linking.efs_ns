@@ -12,8 +12,7 @@
 <ReqRef
  Id="3.4.4.2.3"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="1"
  Name="TrainTrip"
@@ -36,8 +35,7 @@
 <ReqRef
  Id="3.4.4.2.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="Default.BaseTypes.Length.NA"
@@ -49,12 +47,10 @@
  Id="3.6.4.2.b"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.2.1.c"
 >
-</ReqRef>
-<Comment>Represents the location accuracy of balise groups.</Comment>
+</ReqRef><Comment>Represents the location accuracy of balise groups.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
  Default="Default.Orientation.Unknown"
@@ -65,8 +61,7 @@
 <ReqRef
  Id="3.4.4.2.1.d"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="LinkingReaction"
  Default=""
@@ -77,15 +72,13 @@
 <ReqRef
  Id="3.4.4.2.1.e"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.2.3"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default="Default.BaseTypes.Distance.NA"
+ Default="Default.BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
@@ -93,8 +86,7 @@
 <ReqRef
  Id="3.4.4.2.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -105,8 +97,7 @@
 <ReqRef
  Id="3.4.4.2.1.a"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -170,28 +161,23 @@
  Id="3.4.4.4.3"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.3.1"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.3.2"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Linking information available"
 >
 <PreConditions>
-<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition>
-<PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
-(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition>
-</PreConditions>
+(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
@@ -206,8 +192,7 @@ AND
 <ReqRef
  Id="3.4.4.4.5"
 >
-</ReqRef>
-<Comment>Provides the linking info currently active</Comment>
+</ReqRef><Comment>Provides the linking info currently active</Comment>
 <Cases>
 <Case
  Name="Always"
@@ -222,39 +207,28 @@ AND
 <ReqRef
  Id="3.4.4.4.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.2.1.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.2.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.8.5.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.2.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.5"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Acceptable"
 >
 <PreConditions>
-<PreCondition>Available ( CurrentLinking() )</PreCondition>
-<PreCondition> (FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition>
-<PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition>
-<PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition>
-</PreConditions>
+<PreCondition>Available ( CurrentLinking() )</PreCondition><PreCondition>(FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition><PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
@@ -271,8 +245,7 @@ AND
  Name="IsNominal"
 >
 <PreConditions>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition>
-</PreConditions>
+<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -283,12 +256,10 @@ AND
 <ReqRef
  Id="3.4.4.4.2.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.2.1.b"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -301,7 +272,6 @@ AND
 >
 <PreConditions>
 <PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition>
-</PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -320,8 +290,7 @@ AND
  Name="Information available"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition></PreConditions>
 <Expression>( FIRST_IN Linkings | X.NID_BG == NID_BG ).Distance</Expression>
 </Case><Case
  Name="No information available"
@@ -336,8 +305,7 @@ AND
 <ReqRef
  Id="3.4.4.2.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Reaction"
@@ -348,22 +316,19 @@ AND
  Name="No reaction"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition></PreConditions>
 <Expression>LinkingReaction.NoReaction</Expression>
 </Case><Case
  Name="Train trip"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition></PreConditions>
 <Expression>LinkingReaction.TrainTrip</Expression>
 </Case><Case
  Name=" Command service brake"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition></PreConditions>
 <Expression>LinkingReaction.CommandServiceBrake</Expression>
 </Case></Cases>
 </Function><Function
@@ -374,16 +339,13 @@ AND
 <ReqRef
  Id="3.4.4.4.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.2"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.4.4.4.5"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -425,22 +387,18 @@ AND
 <ReqRef
  Id="3.7.3.1.m"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>Linkings &lt;- []</Action>
-</Actions>
+<Action>Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Infill"
 >
 <ReqRef
  Id="3.7.3.1.n"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 </Actions>
@@ -469,8 +427,7 @@ AND
   Q_LOCACC =&gt; Packet.Q_LOCACC,
   Q_SCALE =&gt; Packet.Q_SCALE
 )
-IN Linkings </Action>
-</Actions>
+IN Linkings </Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -486,8 +443,7 @@ IN Linkings </Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1 </Action>
-</Actions>
+<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1 </Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -529,8 +485,7 @@ IN Linkings </Action>
   Q_LOCACC =&gt; Info.Q_LOCACC,
   Q_SCALE =&gt; Q_SCALE
 ) 
-IN Linkings</Action>
-</Actions>
+IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -542,8 +497,7 @@ IN Linkings</Action>
  Id="3.4.4.2.1.1"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
+</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -560,8 +514,7 @@ IN Linkings</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action>
-</Actions>
+<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

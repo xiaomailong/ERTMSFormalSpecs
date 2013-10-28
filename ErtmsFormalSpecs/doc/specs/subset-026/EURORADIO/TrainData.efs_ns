@@ -12,8 +12,7 @@
 <ReqRef
  Id="3.12.2.9"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -46,8 +45,7 @@
  Name="Train is fitted with an airtight system"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value.TrainFittedWithAirtightSystem</PreCondition></PreConditions>
 <Expression>Messages.M_AIRTIGHT.Fitted</Expression>
 </Case><Case
  Name="Train is not fitted with an airtight system"
@@ -93,8 +91,7 @@
 <ReqRef
  Id="7.5.1.84"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Freight in P, freight in G, passanger"
 >
@@ -102,16 +99,13 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
-<PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition><PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
-<PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>7</Expression>
 </Case><Case
  Name="Freight in P, freight in G"
@@ -120,12 +114,10 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
-<PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>3</Expression>
 </Case><Case
  Name="Freight in P, passenger"
@@ -134,12 +126,10 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
-<PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition><PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>5</Expression>
 </Case><Case
  Name="Freight in G, passenger"
@@ -148,12 +138,10 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
-<PreCondition>THERE_IS_IN
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition><PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>6</Expression>
 </Case><Case
  Name="Freight in P"
@@ -162,8 +150,7 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.FreightTrainInP</PreCondition></PreConditions>
 <Expression>1</Expression>
 </Case><Case
  Name="Freight in G"
@@ -172,8 +159,7 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.FreightTrainInG</PreCondition></PreConditions>
 <Expression>2</Expression>
 </Case><Case
  Name="Passenger"
@@ -182,8 +168,7 @@
 <PreCondition>THERE_IS_IN
   Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational
 |
-  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition>
-</PreConditions>
+  X == Kernel.TrainData.TrainCategory.PassengerTrain</PreCondition></PreConditions>
 <Expression>4</Expression>
 </Case><Case
  Name="No category"
@@ -224,12 +209,10 @@
 <ReqRef
  Id="Entry 5.4.3.2.S11"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.12.2.9"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -250,8 +233,7 @@
     NID_MESSAGE =&gt; 129,
     T_TRAIN =&gt; 0,
     VALIDATED_TRAIN_DATA =&gt; CreateTrainData()
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

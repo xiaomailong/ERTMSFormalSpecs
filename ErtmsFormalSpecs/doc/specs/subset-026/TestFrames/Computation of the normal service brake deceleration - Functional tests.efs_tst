@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -91,25 +90,19 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 140.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 140.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -246,8 +239,7 @@
             }
         }
     }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
 {
     A_SB01 =&gt; 0.71,
     A_SB12 =&gt; 0.96,
@@ -394,14 +386,12 @@
             }
         }
     }
-}</Action>
-<Action>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
+}</Action><Action>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
 {
     Status =&gt; Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
     SafeTrainLength =&gt; 600.0,
     DataState =&gt; DataState.Valid
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -414,28 +404,22 @@
 <ReqRef
  Id="3.13.6.4.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.g"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -449,8 +433,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -566,28 +549,22 @@
 <ReqRef
  Id="3.13.6.4.4"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.d"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.f"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.g"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -601,8 +578,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -656,8 +632,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -710,26 +685,19 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 140.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 140.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
     {
@@ -866,8 +834,7 @@
             }
         }
     }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
 {
     A_SB01 =&gt; 0.71,
     A_SB12 =&gt; 0.96,
@@ -1014,14 +981,12 @@
             }
         }
     }
-}</Action>
-<Action>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
+}</Action><Action>Kernel.TrainIntegrity &lt;- Kernel.TrainIntegrity
 {
     Status =&gt; Messages.Q_LENGTH.Train_integrity_confirmed_by_driver,
     SafeTrainLength =&gt; 700.0,
     DataState =&gt; DataState.Valid
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1034,16 +999,13 @@
 <ReqRef
  Id="3.13.6.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.c"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.e"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1074,8 +1036,7 @@
         Gradient =&gt; BaseTypes.Gradient.Indefinite,
         Location =&gt; 1600.0
     }
-]</Action>
-<Action>Kernel.TrackDescription.Gradient.KnMin &lt;- Kernel.TrackDescription.Gradient.CorFact
+]</Action><Action>Kernel.TrackDescription.Gradient.KnMin &lt;- Kernel.TrackDescription.Gradient.CorFact
 {
     Val0 =&gt; Kernel.TrackDescription.Gradient.CorFactValue
     {
@@ -1102,8 +1063,7 @@
         Factor =&gt; 0.49,
         SpeedStep =&gt; 240.0
     }
-}</Action>
-<Action>Kernel.TrackDescription.Gradient.KnPlus &lt;- Kernel.TrackDescription.Gradient.CorFact
+}</Action><Action>Kernel.TrackDescription.Gradient.KnPlus &lt;- Kernel.TrackDescription.Gradient.CorFact
 {
     Val0 =&gt; Kernel.TrackDescription.Gradient.CorFactValue
     {
@@ -1130,8 +1090,7 @@
         Factor =&gt; 0.52,
         SpeedStep =&gt; 250.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1267,12 +1226,10 @@
 <ReqRef
  Id="3.13.6.4.3"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.13.6.4.2.c"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

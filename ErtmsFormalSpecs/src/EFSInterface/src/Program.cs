@@ -162,7 +162,7 @@ namespace EFSInterface
                 foreach (string arg in args)
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
-                    Dictionary dictionary = Util.load(arg, efsSystem);
+                    Dictionary dictionary = Util.load(arg, efsSystem, false);
                     if (dictionary == null)
                     {
                         Console.Out.WriteLine("Cannot load dictionary " + arg);
