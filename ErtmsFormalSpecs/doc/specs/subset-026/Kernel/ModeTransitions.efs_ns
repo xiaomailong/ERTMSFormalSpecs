@@ -1721,7 +1721,7 @@ NLSignalReceived</Expression>
 </ReqRef><PreConditions>
 <PreCondition>Condition14()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SL</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.SL</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SB -&gt; NL"
@@ -2161,10 +2161,13 @@ NLSignalReceived</Expression>
 <ReqRef
  Id="Entry 4.6.2.19"
 >
+</ReqRef><ReqRef
+ Id="5.5.2.2.1"
+>
 </ReqRef><PreConditions>
 <PreCondition>Condition14()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SL</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.SL</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -2346,48 +2349,7 @@ NLSignalReceived</Expression>
 </ReqRef><PreConditions>
 <PreCondition>Condition28()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="FS -&gt; SH"
