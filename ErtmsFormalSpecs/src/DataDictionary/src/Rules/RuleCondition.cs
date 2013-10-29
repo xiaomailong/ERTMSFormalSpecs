@@ -303,7 +303,7 @@ namespace DataDictionary.Rules
                 }
                 catch (Exception e)
                 {
-                    preCondition.AddException(e);
+                    preCondition.AddError(e.Message);
                     retVal = false;
                     break;
                 }

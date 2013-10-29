@@ -326,6 +326,15 @@ namespace DataDictionary.Interpreter
             try
             {
                 leftValue = Left.GetValue(context);
+            }
+            catch (Exception e)
+            {
+                AddError("Cannot evaluate " + Left + ". Reason is " + e.Message);
+                throw new Exception("inner evaluation failed");
+            }
+
+            try
+            {
                 if (leftValue != null)
                 {
                     switch (Operation)
@@ -542,12 +551,15 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddError(e.Message);
+                AddError("Cannot evaluate " + Right + ". Reason is " + e.Message);
+                throw new Exception("inner evaluation failed");
             }
-
-            if (explain)
+            finally
             {
-                CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                if (explain)
+                {
+                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                }
             }
 
             return retVal;
