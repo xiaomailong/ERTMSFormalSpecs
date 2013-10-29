@@ -39,7 +39,8 @@
 </ReqRef><ReqRef
  Id="7.5.1.98"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef><Comment></Comment>
+</StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelTransitionOrder"
 >
@@ -630,7 +631,7 @@ Packet.Sequence1</Action></Actions>
 >
 <Comment>NTC-part not functional for now (Kernel.NationalSystemId). Requirement for this is missing. Is it needed? #morido, 13/10/14</Comment>
 <PreConditions>
-<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True</PreCondition></PreConditions>
+<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel.Value</Action></Actions>
 </RuleCondition></Conditions>

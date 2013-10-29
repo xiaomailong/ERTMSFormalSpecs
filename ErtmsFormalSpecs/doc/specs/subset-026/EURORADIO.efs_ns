@@ -22,7 +22,7 @@
 </Range></Ranges>
 <Enumerations>
 <Enum
- Default="SafeRadioConnection.NoConnection"
+ Default="SafeRadioConnectionStatus.NoConnection"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatus"
 >
@@ -957,14 +957,10 @@
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- Implemented="TRUE"
  Name="GeneralMessage"
 >
 <ReqRef
  Id="8.4.4.4.1.5"
->
-</ReqRef><ReqRef
- Id="5.10.1.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -980,7 +976,7 @@
 <Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="3.6.5.1.7"
@@ -989,7 +985,7 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="7.4.2.15.1"
@@ -1005,7 +1001,7 @@
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <ReqRef
  Id="5.10.1.1"
@@ -1014,7 +1010,7 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
@@ -1036,9 +1032,6 @@
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef><ReqRef
- Id="5.10.1.1"
->
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1053,7 +1046,7 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <ReqRef
  Id="5.10.1.1"
@@ -1062,18 +1055,35 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition></PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="5.9.2.2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
- Implemented="TRUE"
  Name="MAWithShiftedLocationReference"
 >
 <ReqRef
@@ -1084,9 +1094,6 @@
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
->
-</ReqRef><ReqRef
- Id="5.10.1.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1101,9 +1108,45 @@
 </Actions>
 <SubRules>
 <Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="5.9.2.2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level transition order received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="ReportParemetersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="3.6.5.1.7"
@@ -1112,7 +1155,7 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="7.4.2.15.1"
@@ -1124,23 +1167,6 @@
 (
    ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
 )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="LevelTransitionOrderReceived"
->
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="LevelTransitionOrderReceived"
->
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1157,9 +1183,6 @@
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.a"
->
-</ReqRef><ReqRef
- Id="5.10.1.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1179,7 +1202,7 @@
 <Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="Report Parameters received"
+ Name="Report parameters received"
 >
 <ReqRef
  Id="3.6.5.1.7"
@@ -1209,21 +1232,51 @@
  Id="3.7.1.1.b"
 >
 </ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="List of balises for SH area received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA)</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="5.10.1.1"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition></PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="5.9.2.2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1250,6 +1303,29 @@
 <PreCondition>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
 <Actions>
 </Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="5.9.2.2"
+>
+</ReqRef><ReqRef
+ Id="5.9.2.2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"

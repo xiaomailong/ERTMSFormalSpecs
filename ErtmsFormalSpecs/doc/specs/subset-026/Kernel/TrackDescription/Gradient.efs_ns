@@ -181,7 +181,9 @@
 <ReqRef
  Id="3.11.12.2"
 >
-</ReqRef><Comment>Provides the end of the gradient information</Comment>
+</ReqRef><Comment>Provides the end of the gradient information
+
+we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/10/29</Comment>
 <Parameters>
 <Parameter
  Type="Gradient.GradientInfo"
@@ -190,7 +192,13 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Always"
+ Name="No Information present"
+>
+<PreConditions>
+<PreCondition>Gradients == []</PreCondition></PreConditions>
+<Expression>MaxGradientLength</Expression>
+</Case><Case
+ Name="Otherwise"
 >
 <Expression>REDUCE Gradients | X.Location &gt; Current.Location
   USING BaseTypes.MinDistance ( X.Location, RESULT )

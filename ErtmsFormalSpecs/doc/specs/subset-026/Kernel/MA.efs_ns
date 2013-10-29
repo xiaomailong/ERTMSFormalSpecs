@@ -1169,7 +1169,7 @@ USING
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="AcceptMA"
+ Name="AcceptMA_orig"
 >
 <ReqRef
  Id="3.8.4.6.2"
@@ -1191,8 +1191,6 @@ USING
 <Case
  Name="Value"
 >
-<PreConditions>
-<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition></PreConditions>
 <Expression>FullTrackDescriptionAvailable( Packet =&gt; Packet )
   AND
 Mode != Mode.TR
@@ -1258,7 +1256,7 @@ Default.BaseTypes.LengthToDistance(
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Name="AcceptMA_test"
+ Name="AcceptMA"
 >
 <Parameters>
 <Parameter
@@ -1271,7 +1269,7 @@ Default.BaseTypes.LengthToDistance(
  Name="YES"
 >
 <PreConditions>
-<PreCondition>FullTrackDescriptionAvailable( Packet =&gt; Packet )</PreCondition><PreCondition>Mode != Mode.TR</PreCondition><PreCondition>(
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition><PreCondition>Mode != Mode.TR</PreCondition><PreCondition>(
   Infill.Data == EMPTY
     OR
     ( Infill.Data != EMPTY
@@ -1566,7 +1564,7 @@ Default.BaseTypes.LengthToDistance(
 <PreConditions>
 <PreCondition>Packet.N_ITER == 0</PreCondition></PreConditions>
 <Actions>
-<Action>MA.Sections &lt;- EMPTY</Action></Actions>
+<Action>MA.Sections &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1878,14 +1876,16 @@ IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
  NeedsRequirement="FALSE"
  Name="Add end section to the list of sections"
 >
+<Comment>The end section, if non empty, is added to the list of sections: that allows the automatic handling of all the sections.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="Add end section to the list of sections"
 >
+<Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition>MA.EndSection.Length &gt; 0.0</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT
 Section
@@ -1899,14 +1899,14 @@ IN MA.Sections</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Remove sections before infill location"
+ Name="Remove sections after infill location"
 >
-<Comment></Comment>
+<Comment>The sections after the infill location are removed (will be replaced by the information from the infill MA).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="Remove sections before infill location"
+ Name="Remove sections after infill location"
 >
 <PreConditions>
 </PreConditions>

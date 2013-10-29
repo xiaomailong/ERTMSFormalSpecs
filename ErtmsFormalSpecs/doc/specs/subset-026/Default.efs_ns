@@ -205,7 +205,7 @@
 </EnumValue></Values>
 <SubEnums>
 <Enum
- Default="Mode.MA.ModeProfile.LS"
+ Default="ModeProfile.LS"
  Implemented="TRUE"
  Name="ModeProfile"
 >
@@ -271,36 +271,6 @@
 </EnumValue><EnumValue
  Value="0"
  Name="Establishing"
->
-</EnumValue></Values>
-</Enum><Enum
- Default="Unknown"
- Name="DriverLevelSelection"
->
-<Values>
-<EnumValue
- Value="0"
- Name="L3"
->
-</EnumValue><EnumValue
- Value="0"
- Name="LNTC"
->
-</EnumValue><EnumValue
- Value="0"
- Name="L2"
->
-</EnumValue><EnumValue
- Value="0"
- Name="L0"
->
-</EnumValue><EnumValue
- Value="0"
- Name="L1"
->
-</EnumValue><EnumValue
- Value="0"
- Name="Unknown"
 >
 </EnumValue></Values>
 </Enum><Enum
@@ -550,16 +520,6 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="DriverSelection"
- Default="[]"
- Name="DriverSelectionSet"
->
-</Collection><Collection
- TypeName="RbcIdPhoneNumberChoice"
- Default="[]"
- Name="RBCIDChoiceSet"
->
-</Collection><Collection
  TypeName="LevelData"
  Default="EMPTY"
  Implemented="TRUE"

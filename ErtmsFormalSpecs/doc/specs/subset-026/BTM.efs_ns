@@ -725,7 +725,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( aPacket =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Axle Load available"
@@ -860,6 +860,9 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef><ReqRef
+ Id="5.9.2.1"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -1301,27 +1304,6 @@ ON Message.Sequence1</Action></Actions>
 ) 
 ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="ClearInfillInfo"
->
-<ReqRef
- Id="3.9.1.2"
->
-</ReqRef><Comment>Since the same infill information will be used by each infill device, the handling of infill information shouldn&apos;t have any influence to the handling of the infill information by the other infill devices =&gt; once the balise message is read, its infill information is erased.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="ClearInfillInfo"
->
-<Comment></Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>Kernel.Infill.Data &lt;- EMPTY</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -1392,7 +1374,9 @@ If all the messages of the current balise group have been received, calls Handle
 >
 <Comment>N_TOTAL is the number of balises - 1</Comment>
 <PreConditions>
-<PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition><PreCondition>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT</PreCondition></PreConditions>
+<PreCondition>CountBalises() == Message.N_TOTAL + 1</PreCondition><PreCondition>FORALL_IN CurrentBaliseGroup |  
+  (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
+  OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
@@ -1573,24 +1557,27 @@ If all the messages of the current balise group have been received, calls Handle
 <Rule
  Priority="CleanUp"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Clean Up"
 >
-<Comment>After processing the new telegram its content is deleted.</Comment>
+<ReqRef
+ Id="3.9.1.2"
+>
+</ReqRef><Comment>After processing the new telegram its content is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Clear just received balise telegram"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition>Available ( Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Message &lt;- EMPTY</Action></Actions>
+<Action>Message &lt;- EMPTY</Action><Action>Kernel.Infill.Data &lt;- EMPTY</Action></Actions>
 <SubRules>
 <Rule
  Priority="CleanUp"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear current balises from current balise group"
 >
