@@ -1289,23 +1289,20 @@ ON Message.Sequence1</Action></Actions>
 <ReqRef
  Id="A1.1.6.2"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="HandleBaliseMessage"
 >
 <Comment>This is structurally equal to BTM.HandleBaliseMessage.HandleBaliseMessage.HandleBaliseMessage but only considers MAs #morido, 13/10/24</Comment>
 <PreConditions>
-<PreCondition>Linking.ConsiderBG()</PreCondition>
-</PreConditions>
+<PreCondition>Linking.ConsiderBG()</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY HandleNewPacketMA(
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG
 ) 
-ON Message.Sequence1</Action>
-</Actions>
+ON Message.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1381,8 +1378,7 @@ If all the messages of the current balise group have been received, calls Handle
   (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
   OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action>
-</Actions>
+<Action>APPLY HandleBaliseMessage(X) ON CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1392,8 +1388,7 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="A1.1.3.3"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.EUROBALISE.SubStructure1"
  Name="Packet"
@@ -1417,29 +1412,23 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.5"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl1Received
 (
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="MA Lvl2or3 available"
@@ -1447,29 +1436,23 @@ If all the messages of the current balise group have been received, calls Handle
 <ReqRef
  Id="3.8.3.6"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="3.7.1.1.b"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.4.1.1.7"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; NID_BG
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

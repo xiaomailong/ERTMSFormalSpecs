@@ -176,12 +176,10 @@
 <ReqRef
  Id="3.18.4.5.1"
 >
-</ReqRef>
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.92"
 >
-</ReqRef>
-<Comment>Represents the train running number.
+</ReqRef><Comment>Represents the train running number.
 
 The bcd notation as required by 7.5.92 is not possible in the model. Hence we stick with a simple string here. As there are no operations performed based on this value, this is uncritical. #morido, 13/10/11</Comment>
 <StructureElement
@@ -392,8 +390,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <ReqRef
  Id="Entry 5.6.2.2.S050.1"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -1089,10 +1086,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <ReqRef
  Id="Entry 5.4.3.3.8"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X.Value == Kernel.Level.Value</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X.Value == Kernel.Level.Value</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>

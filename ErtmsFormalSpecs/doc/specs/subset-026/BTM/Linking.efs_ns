@@ -271,8 +271,7 @@ AND
  Name="Checks"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
