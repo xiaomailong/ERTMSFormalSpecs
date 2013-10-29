@@ -430,7 +430,10 @@ namespace GUI
                 // Compute the color associated to sub elements
                 foreach (BaseTreeNode node in Nodes)
                 {
-                    ComputedColor = max(ComputedColor, node.ComputeColor());
+                    if (node != null)
+                    {
+                        ComputedColor = max(ComputedColor, node.ComputeColor());
+                    }
                 }
 
                 if (ComputedColor == ERROR_COLOR)
