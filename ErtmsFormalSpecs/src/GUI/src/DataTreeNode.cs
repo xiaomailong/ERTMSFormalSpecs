@@ -766,22 +766,37 @@ namespace GUI
                     Utils.INamable namable = copy as Utils.INamable;
                     if (namable != null && SourceNode.Model.EnclosingCollection != null)
                     {
-                        int previousIndex = 0;
-                        int index = 1;
+                        int previousIndex = -1;
+                        int index = 0;
                         while (previousIndex != index)
                         {
                             previousIndex = index;
                             foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
                             {
-                                if (other.Name.Equals(namable.Name + "_" + index))
+                                if (index > 0)
                                 {
-                                    index += 1;
-                                    break;
+                                    if (other.Name.Equals(namable.Name + "_" + index))
+                                    {
+                                        index += 1;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (other.Name.Equals(namable.Name))
+                                    {
+                                        index += 1;
+                                        break;
+                                    }
                                 }
                             }
                         }
 
-                        namable.Name = namable.Name + "_" + index;
+                        // Renaming is mandatory
+                        if (index > 0)
+                        {
+                            namable.Name = namable.Name + "_" + index;
+                        }
                     }
 
                     Model.AddModelElement(copy);
