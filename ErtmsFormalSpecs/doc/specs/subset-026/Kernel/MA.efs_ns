@@ -1169,46 +1169,6 @@ USING
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
- Name="AcceptMA_orig"
->
-<ReqRef
- Id="3.8.4.6.2"
->
-</ReqRef><ReqRef
- Id="3.8.4.6.4"
->
-</ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
->
-</ReqRef><Comment></Comment>
-<Parameters>
-<Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
- Name="Packet"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
->
-<Expression>FullTrackDescriptionAvailable( Packet =&gt; Packet )
-  AND
-Mode != Mode.TR
-  AND
-(
-  Infill.Data == EMPTY
-    OR
-    ( Infill.Data != EMPTY
-      AND
-    Kernel.Mode in [ Mode.FS, Mode.LS ] 
-      AND
-    BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ) != BaseTypes.Distance.Unknown
-  )
-)</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
  Name="FullTrackDescriptionAvailable"
 >
 <ReqRef
@@ -1256,9 +1216,19 @@ Default.BaseTypes.LengthToDistance(
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="AcceptMA"
 >
-<Parameters>
+<ReqRef
+ Id="3.8.4.6.2"
+>
+</ReqRef><ReqRef
+ Id="3.8.4.6.4"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.11.2.2.A035"
+>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
  Name="Packet"
