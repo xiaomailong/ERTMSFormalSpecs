@@ -100,7 +100,7 @@ BEGIN
 `                    }
 `                    while ( i < obj.count`field.NAME`() )
 `                    {
-`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+`                        diff.Diffs.Add ( new Diff(obj.get`field.NAME`(i), Diff.ActionEnum.Add) );
 `                        i += 1;
 `                    }
 `                    while ( i < other.count`field.NAME`() )
