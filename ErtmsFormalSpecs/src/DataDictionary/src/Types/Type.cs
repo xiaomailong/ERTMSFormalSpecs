@@ -442,6 +442,11 @@ namespace DataDictionary.Types
             Enclosing = efsSystem;
         }
 
+        public override Values.IValue PerformArithmericOperation(InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)
+        {
+            throw new Exception("Cannot perform arithmetic operation between " + left.LiteralName + " and " + right.LiteralName);
+        }
+
         /// <summary>
         /// Indicates that the other type can be placed in variables of this type
         /// </summary>
