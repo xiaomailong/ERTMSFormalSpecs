@@ -512,5 +512,10 @@ namespace GUI.GraphView
                 Refresh();
             }
         }
+
+        public void RefreshAfterStep()
+        {
+            Refresh();
+        }
     }
 }
