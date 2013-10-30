@@ -72,11 +72,6 @@ namespace GUI
             RefreshNode();
         }
 
-        public void AddHandler(object sender, EventArgs args)
-        {
-            CreateReqRef("<Requirement" + (GetNodeCount(false) + 1) + ">");
-        }
-
         /// <summary>
         /// Handles a drop event
         /// </summary>
@@ -95,8 +90,6 @@ namespace GUI
             }
         }
 
-
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -104,8 +97,6 @@ namespace GUI
         protected override List<MenuItem> GetMenuItems()
         {
             List<MenuItem> retVal = new List<MenuItem>();
-
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }

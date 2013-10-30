@@ -24,7 +24,7 @@ namespace DataDictionary
         public override string Name
         {
             get { return getId(); }
-            set { setId(value); }
+            set { }
         }
 
         /// <summary>

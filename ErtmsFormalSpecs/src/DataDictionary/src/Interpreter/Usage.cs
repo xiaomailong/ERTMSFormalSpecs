@@ -134,14 +134,14 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The usages
         /// </summary>
-        private List<Usage> AllUsages { get; set; }
+        private SortedSet<Usage> AllUsages { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public Usages()
         {
-            AllUsages = new List<Usage>();
+            AllUsages = new SortedSet<Usage>();
         }
 
         /// <summary>

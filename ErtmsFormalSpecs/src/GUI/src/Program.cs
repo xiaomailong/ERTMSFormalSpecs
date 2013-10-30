@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace ERTMSFormalSpecs
 {
-    static class ErtmsFormalSpecGui
+    public static class ErtmsFormalSpecGui
     {
         /// <summary>
         /// The main entry point for the application.

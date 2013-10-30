@@ -87,7 +87,7 @@ namespace DataDictionary
         /// <summary>
         /// Constructor
         /// </summary>
-        public EFSSystem()
+        private EFSSystem()
         {
             Dictionaries = new List<Dictionary>();
 

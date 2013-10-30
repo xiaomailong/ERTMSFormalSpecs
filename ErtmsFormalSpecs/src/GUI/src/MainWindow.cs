@@ -23,6 +23,7 @@ using Utils;
 using System.Threading;
 using LibGit2Sharp;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace GUI
 {
@@ -190,11 +191,6 @@ namespace GUI
         }
 
         /// <summary>
-        /// The application version number
-        /// </summary>
-        private string versionNumber = "0.9.8.5";
-
-        /// <summary>
         /// The thread used to synchronize node names with their model
         /// </summary>
         private class Synchronizer : GenericSynchronizationHandler<MainWindow>
@@ -288,6 +284,10 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string versionNumber = fvi.FileVersion;
+
             String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
 
             if (EFSSystem != null && EFSSystem.ShouldSave)

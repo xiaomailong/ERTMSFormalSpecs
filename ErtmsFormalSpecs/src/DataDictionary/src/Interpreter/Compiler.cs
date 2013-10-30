@@ -142,7 +142,7 @@ namespace DataDictionary.Interpreter
                 if (CurrentCompile != null)
                 {
                     NextCompile = null;
-                    PerformCompile();
+                    PerformCompile(CurrentCompile);
                     CurrentCompile.CompilationDone = true;
                 }
 
@@ -153,11 +153,11 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Compiles or recompiles everything
         /// </summary>
-        private void PerformCompile()
+        private void PerformCompile(CompilationOptions options)
         {
             try
             {
-                ModelElement.BeSilent = CurrentCompile.SilentCompile;
+                ModelElement.BeSilent = options.SilentCompile;
 
                 // Initialises the declared eleemnts
                 InitDeclaredElements initDeclaredElements = new InitDeclaredElements(System);
@@ -205,11 +205,19 @@ namespace DataDictionary.Interpreter
         /// <param name="silent"></param>
         public void Compile_Synchronous(bool rebuild, bool silent = false)
         {
-            CompilationOptions options = SetupCompilationOptions(rebuild, silent);
-
-            while (!options.CompilationDone)
+            if (DoCompile)
             {
-                Thread.Sleep(100);
+                // Background compilation process is running
+                CompilationOptions options = SetupCompilationOptions(rebuild, silent);
+                while (!options.CompilationDone)
+                {
+                    Thread.Sleep(100);
+                }
+            }
+            else
+            {
+                CurrentCompile = new CompilationOptions(rebuild, silent);
+                PerformCompile(CurrentCompile);
             }
         }
 

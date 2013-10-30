@@ -120,33 +120,40 @@ namespace DataDictionary.Specification
         /// <returns></returns>
         public Paragraph FindParagraph(String id, bool create = false)
         {
-            if (!TheCache.ContainsKey(id))
-            {
-                Paragraph tmp = null;
+            Paragraph retVal = null;
 
-                foreach (Chapter chapter in Chapters)
+            if (id != null)
+            {
+                if (!TheCache.ContainsKey(id))
                 {
-                    if (id.StartsWith(chapter.getId()) || !create)
+                    Paragraph tmp = null;
+
+                    foreach (Chapter chapter in Chapters)
                     {
-                        tmp = chapter.FindParagraph(id, create);
-                        if (tmp != null)
+                        if (id.StartsWith(chapter.getId()) || !create)
                         {
-                            break;
+                            tmp = chapter.FindParagraph(id, create);
+                            if (tmp != null)
+                            {
+                                break;
+                            }
                         }
+                    }
+
+                    if (tmp != null)
+                    {
+                        TheCache[id] = tmp;
+                    }
+                    else
+                    {
+                        return null;
                     }
                 }
 
-                if (tmp != null)
-                {
-                    TheCache[id] = tmp;
-                }
-                else
-                {
-                    return null;
-                }
+                retVal = TheCache[id];
             }
 
-            return TheCache[id];
+            return retVal;
         }
 
 
