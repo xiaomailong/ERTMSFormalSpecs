@@ -1189,10 +1189,14 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
+ Name="TrainIntegrity"
+>
+<ReqRef
+ Id="Entry 4.7.2.1.8"
+>
 </ReqRef><Procedures>
 <Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="GoToAvailable"
 >
 <Comment>Puts the state machine in Available state and updates the variables</Comment>
@@ -1212,32 +1216,6 @@
 <Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- Y="60"
- Y="180"
- Y="180"
- Y="300"
- Y="300"
- InitialState="Idle"
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="TrainIntegrity"
-<ReqRef
- Id="Entry 4.7.2.1.8"
->
-</ReqRef><Procedures>
-<Procedure
- Implemented="TRUE"
- Name="GoToAvailable"
-<Comment>Puts the state machine in Available state and updates the variables</Comment>
- Priority="Processing"
- Name="GoToAvailable"
- Name="GoToAvailable"
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
 </Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
@@ -1619,7 +1597,7 @@
  Name="Start"
 >
 <ReqRef
- Id="Entry 4.7.2.1.10"
+ Id="Entry 4.7.2.1.9"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -2018,7 +1996,7 @@
  Name="OverrideRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.11"
+ Id="Entry 4.7.2.1.10"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -2417,7 +2395,7 @@
  Name="ShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.12"
+ Id="Entry 4.7.2.1.11"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -2816,7 +2794,7 @@
  Name="ContinueShuntingOnDeskClosureRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.13"
+ Id="Entry 4.7.2.1.12"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -3222,7 +3200,7 @@
  Name="ExitOfShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.14"
+ Id="Entry 4.7.2.1.13"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -3621,7 +3599,7 @@
  Name="NonLeadingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.15"
+ Id="Entry 4.7.2.1.14"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -4046,6 +4024,15 @@
 </ReqRef><ReqRef
  Id="Entry 4.7.2.1.23"
 >
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.18"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.25"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.31"
+>
 </ReqRef><Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4444,7 +4431,7 @@
  Name="AcknOfFixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.16"
+ Id="Entry 4.7.2.1.15"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -4843,7 +4830,7 @@
  Name="AcknOfLevelTransition"
 >
 <ReqRef
- Id="Entry 4.7.2.1.18"
+ Id="Entry 4.7.2.1.17"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -5242,7 +5229,7 @@
  Name="AcknOfPlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.17"
+ Id="Entry 4.7.2.1.16"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -5641,7 +5628,7 @@
  Name="AcknOfTrainDataChangeFromOtherSource"
 >
 <ReqRef
- Id="Entry 4.7.2.1.31"
+ Id="Entry 4.7.2.1.30"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6040,7 +6027,7 @@
  Name="TrackAheadFree"
 >
 <ReqRef
- Id="Entry 4.7.2.1.34"
+ Id="Entry 4.7.2.1.32"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6446,7 +6433,7 @@
  Name="SRModeSpeedLimitAndDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.1.35"
+ Id="Entry 4.7.2.1.33"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6859,7 +6846,7 @@
  Name="Isolation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.36"
+ Id="Entry 4.7.2.1.35"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -8499,7 +8486,7 @@
  Name="AcknOfSNMode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.25"
+ Id="Entry 4.7.2.1.24"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -9762,10 +9749,10 @@
  Name="ErtmsEtcsLevelEntryRequest"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="Entry 4.7.2.1.5"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.1.5"
+ Id="5.4.5.3.e"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -10191,7 +10178,6 @@
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
- Id="Entry 4.7.2.2.11"
  TypeName="DMI.InputInformation"
  Default=""
  Mode="InOut"
