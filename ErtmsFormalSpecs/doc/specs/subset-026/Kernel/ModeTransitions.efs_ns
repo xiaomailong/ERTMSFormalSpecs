@@ -2,7 +2,10 @@
  Name="ModeTransitions"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="ModeRules"
+>
+</NameSpaceRef></NameSpaces>
 <Functions>
 <Function
  Type="Boolean"
@@ -1727,7 +1730,7 @@ NLSignalReceived</Expression>
 </ReqRef><PreConditions>
 <PreCondition>Condition14()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SL</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission</Action><Action>EoMexecuted &lt;- True</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.SL</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="SB -&gt; NL"

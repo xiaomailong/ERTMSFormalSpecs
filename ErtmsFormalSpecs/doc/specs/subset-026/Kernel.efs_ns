@@ -6737,22 +6737,6 @@
  NeedsRequirement="FALSE"
 >
 </StateMachine></State></States>
-<Rules>
-<Rule
- Priority="Processing"
- Name="EoM executed"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="EoM executed"
->
-<PreConditions>
-<PreCondition>Kernel.ModeTransitions.PrevMode == Default.Mode.SL AND Kernel.Mode == Mode.SB AND EoMexecuted == False</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.EndOfMission</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </StateMachine></StateMachines>
 <Procedures>
 <Procedure
@@ -7318,11 +7302,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Type="Kernel.HandleModeChangeSM"
  VariableMode="Internal"
  Name="HandleModeChange"
->
-</Variable><Variable
- Type="Boolean"
- VariableMode="Internal"
- Name="EoMexecuted"
 >
 </Variable></Variables>
 <Rules>
