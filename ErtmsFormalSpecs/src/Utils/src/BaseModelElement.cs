@@ -205,7 +205,7 @@ namespace Utils
         /// Logs associated to this model element
         /// </summary>
         private List<ElementLog> messages = new List<ElementLog>();
-        public List<ElementLog> Messages
+        public virtual List<ElementLog> Messages
         {
             get { return messages; }
             private set { messages = value; }

@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Constants
 {
@@ -31,6 +32,25 @@ namespace DataDictionary.Constants
                 {
                     retVal = stt.Name + "." + retVal;
                     stt = stt.EnclosingState;
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// State machines are not displayed in the tree view. 
+        /// </summary>
+        public override List<ElementLog> Messages
+        {
+            get
+            {
+                List<ElementLog> retVal = new List<ElementLog>();
+
+                retVal.AddRange(base.Messages);
+                if (StateMachine != null)
+                {
+                    retVal.AddRange(StateMachine.Messages);
                 }
 
                 return retVal;
