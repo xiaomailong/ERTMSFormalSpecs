@@ -1,15 +1,15 @@
 .phony: Comparer
 
 META=DataDictionary
-ADDITIONAL_BUILD_TARGET=src/Comparer.cs
+ADDITIONAL_BUILD_TARGET=src/Compare/Comparer.cs
 
 include ../etc/makefile.shared
 include ../etc/makefile.xmlb
 
 
-Comparer: src/Comparer.cs
+Comparer: src/Compare/Comparer.cs
 
-src/Comparer.cs: $(META).xmlb 
+src/Compare/Comparer.cs: $(META).xmlb 
 	$(XMLB_CALL) -SCRIPT generate_comparer.rcs $<
 
 
