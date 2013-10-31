@@ -264,7 +264,7 @@ namespace DataDictionary.Variables
                             retVal = expression.GetValue(new Interpreter.InterpretationContext(Type));
                             if (retVal != null && !Type.Match(retVal.Type))
                             {
-                                AddError("Default value type does not match variable type");
+                                AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
                                 retVal = null;
                             }
                         }
@@ -272,7 +272,7 @@ namespace DataDictionary.Variables
                 }
                 else
                 {
-                    AddError("Cannot find type of variable");
+                    AddError("Cannot find type of variable (" + getTypeName() + ")");
                 }
 
                 if (retVal == null)
