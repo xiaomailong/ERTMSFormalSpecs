@@ -1,0 +1,111 @@
+<NameSpace
+ Name="ModeRules"
+>
+<NameSpaces>
+</NameSpaces>
+<Procedures>
+<Procedure
+ Name="HandleGradientProfile"
+>
+<ReqRef
+ Id="4.10.1.3.8"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleGradientProfile"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleGradientProfile"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="HandelSSP"
+>
+<ReqRef
+ Id="4.10.1.3.9"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleSSP"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleSSP"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="HandelAxleLoadSpeed"
+>
+<ReqRef
+ Id="4.10.1.3.10"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleAxleLoadSpeed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleAxleLoadSpeed"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.AxleLoad.ASP &lt;- Kernel.TrackDescription.AxleLoad.AxleLoadProfile{
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+    EmptyProfileDistance =&gt; 0.0,
+    ALs =&gt; []
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="HandleRouteSuitability"
+>
+<ReqRef
+ Id="4.10.1.3.23"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleRouteSuitability"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleRouteSuitability"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation{
+    EmptyProfileDistance =&gt; 0.0,
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+    Items =&gt; []
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+>
+<SubRules></SubRules>
+</Rule></Rules>
+</NameSpace>
