@@ -1275,7 +1275,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getValues(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countValues() )
@@ -1421,7 +1421,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countSpecialValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getSpecialValues(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countSpecialValues() )
@@ -1849,7 +1849,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countCases() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getCases(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countCases() )
@@ -1936,7 +1936,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getPreConditions(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
@@ -2495,7 +2495,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getPreConditions(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
@@ -2536,7 +2536,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getActions(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
@@ -3171,7 +3171,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getActions(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
@@ -3212,7 +3212,7 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countExpectations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                        diff.Diffs.Add ( new Diff(obj.getExpectations(i), Diff.ActionEnum.Add) );
                         i += 1;
                     }
                     while ( i < other.countExpectations() )

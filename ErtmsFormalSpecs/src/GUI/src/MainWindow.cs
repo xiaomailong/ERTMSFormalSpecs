@@ -23,34 +23,56 @@ using Utils;
 using System.Threading;
 using LibGit2Sharp;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace GUI
 {
     public partial class MainWindow : Form
     {
         /// <summary>
+        /// The sub forms for this window
+        /// </summary>
+        public HashSet<Form> SubForms { get; set; }
+
+        /// <summary>
         /// The sub IBaseForms handled in this MDI
         /// </summary>
-        private HashSet<IBaseForm> subWindows = new HashSet<IBaseForm>();
-
         public HashSet<IBaseForm> SubWindows
         {
             get
             {
-                return subWindows;
+                HashSet<IBaseForm> retVal = new HashSet<IBaseForm>();
+
+                foreach (Form form in SubForms)
+                {
+                    if (form is IBaseForm)
+                    {
+                        retVal.Add((IBaseForm)form);
+                    }
+                }
+
+                return retVal;
             }
         }
 
         /// <summary>
-        /// The Editors handled in this MDI
+        /// The editors opened in the MDI
         /// </summary>
-        private HashSet<EditorForm> editors = new HashSet<EditorForm>();
-
         public HashSet<EditorForm> Editors
         {
             get
             {
-                return editors;
+                HashSet<EditorForm> retVal = new HashSet<EditorForm>();
+
+                foreach (Form form in SubForms)
+                {
+                    if (form is EditorForm)
+                    {
+                        retVal.Add((EditorForm)form);
+                    }
+                }
+
+                return retVal;
             }
         }
 
@@ -76,14 +98,7 @@ namespace GUI
 
         public void HandleSubWindowClosed(Form form)
         {
-            if (form is IBaseForm)
-            {
-                SubWindows.Remove((IBaseForm)form);
-            }
-            if (form is EditorForm)
-            {
-                Editors.Remove((EditorForm)form);
-            }
+            SubForms.Remove(form);
         }
 
         /// <summary>
@@ -190,11 +205,6 @@ namespace GUI
         }
 
         /// <summary>
-        /// The application version number
-        /// </summary>
-        private string versionNumber = "0.9.8.5";
-
-        /// <summary>
         /// The thread used to synchronize node names with their model
         /// </summary>
         private class Synchronizer : GenericSynchronizationHandler<MainWindow>
@@ -239,6 +249,7 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            SubForms = new HashSet<Form>();
             AllowRefresh = true;
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
@@ -288,6 +299,10 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string versionNumber = fvi.FileVersion;
+
             String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
 
             if (EFSSystem != null && EFSSystem.ShouldSave)
@@ -311,15 +326,7 @@ namespace GUI
                 window.Show();
                 window.Activate();
 
-                if (window is IBaseForm)
-                {
-                    SubWindows.Add((IBaseForm)window);
-                }
-                else if (window is EditorForm)
-                {
-                    Editors.Add((EditorForm)window);
-                }
-
+                SubForms.Add(window);
                 ActivateMdiChild(window);
             }
         }
@@ -337,16 +344,7 @@ namespace GUI
                 {
                     window.Close();
                     window.MdiParent = null;
-
-                    if (window is IBaseForm)
-                    {
-                        SubWindows.Remove((IBaseForm)window);
-                    }
-                    else if (window is EditorForm)
-                    {
-                        Editors.Remove((EditorForm)window);
-                    }
-
+                    SubForms.Remove(window);
                     RemoveOwnedForm(window);
                 }
                 catch (Exception)
@@ -1569,16 +1567,21 @@ namespace GUI
         /// </summary>
         public void RefreshAfterStep()
         {
-            foreach (IBaseForm form in SubWindows)
+            foreach (Form form in SubForms)
             {
                 if (form is GraphView.GraphView)
                 {
-                    form.Refresh();
+                    ((GraphView.GraphView)form).RefreshAfterStep();
                 }
 
                 if (form is DataDictionaryView.Window)
                 {
                     ((DataDictionaryView.Window)form).RefreshAfterStep();
+                }
+
+                if (form is StateDiagram.StateDiagramWindow)
+                {
+                    ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
                 }
             }
         }

@@ -126,6 +126,7 @@ namespace DataDictionary.Interpreter
                     {
                         current = current.PreviousElement;
                         Arguments[i].SemanticAnalysis(current.Value);
+                        StaticUsage.AddUsages(Arguments[i].StaticUsage, null);
                         StaticUsage.AddUsage(Arguments[i].Ref, Root, null);
                     }
                     Arguments[0].SemanticAnalysis();

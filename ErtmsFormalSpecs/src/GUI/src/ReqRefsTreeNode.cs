@@ -65,16 +65,11 @@ namespace GUI
         public void CreateReqRef(string refId)
         {
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
-            req.Name = refId;
+            req.setId (refId);
             Item.appendRequirements(req);
             Nodes.Add(new ReqRefTreeNode(req));
             SortSubNodes();
             RefreshNode();
-        }
-
-        public void AddHandler(object sender, EventArgs args)
-        {
-            CreateReqRef("<Requirement" + (GetNodeCount(false) + 1) + ">");
         }
 
         /// <summary>
@@ -95,8 +90,6 @@ namespace GUI
             }
         }
 
-
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -104,8 +97,6 @@ namespace GUI
         protected override List<MenuItem> GetMenuItems()
         {
             List<MenuItem> retVal = new List<MenuItem>();
-
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }

@@ -87,7 +87,7 @@ namespace DataDictionary
         /// <summary>
         /// Constructor
         /// </summary>
-        public EFSSystem()
+        private EFSSystem()
         {
             Dictionaries = new List<Dictionary>();
 
@@ -1004,6 +1004,27 @@ namespace DataDictionary
                 if (expectation.ExpressionTree != null && expectation.ExpressionTree.StaticUsage != null)
                 {
                     List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
+                    foreach (Usage usage in usages)
+                    {
+                        Usages.Add(usage);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Cases
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Case obj, bool visitSubNodes)
+            {
+                Functions.Case cas = (Functions.Case)obj;
+
+                if (cas.Expression != null && cas.Expression.StaticUsage != null)
+                {
+                    List<Usage> usages = cas.Expression.StaticUsage.Find(Model);
                     foreach (Usage usage in usages)
                     {
                         Usages.Add(usage);

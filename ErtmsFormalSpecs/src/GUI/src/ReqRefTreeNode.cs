@@ -31,7 +31,7 @@ namespace GUI
             }
         }
 
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -42,15 +42,11 @@ namespace GUI
             }
 
             [Category("Description"), TypeConverter(typeof(InternalTracesConverter))]
-            public override string Name
+            public string Name
             {
                 get
                 {
-                    return base.Name;
-                }
-                set
-                {
-                    base.Name = value;
+                    return Item.Name;
                 }
             }
 

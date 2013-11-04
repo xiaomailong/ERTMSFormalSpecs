@@ -75,6 +75,8 @@ namespace GUI.SpecificationView
             {
                 Nodes.Add(new ChapterTreeNode(chapter));
             }
+
+            SortSubNodes();
         }
 
         /// <summary>

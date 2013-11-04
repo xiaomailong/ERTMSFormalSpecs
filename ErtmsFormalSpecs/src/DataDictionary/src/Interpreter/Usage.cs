@@ -91,7 +91,7 @@ namespace DataDictionary.Interpreter
 
         public int CompareTo(Usage other)
         {
-            int retVal = other.DisplayName().CompareTo(DisplayName());
+            int retVal = other.Referenced.FullName.CompareTo(Referenced.FullName);
 
             if (retVal == 0)
             {
@@ -124,6 +124,11 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
+
+        public override string ToString()
+        {
+            return "Usage<" + Referenced.Name + " " + Mode.ToString() + ">";
+        }
     }
 
     /// <summary>
@@ -134,14 +139,14 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The usages
         /// </summary>
-        private List<Usage> AllUsages { get; set; }
+        private SortedSet<Usage> AllUsages { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public Usages()
         {
-            AllUsages = new List<Usage>();
+            AllUsages = new SortedSet<Usage>();
         }
 
         /// <summary>
@@ -199,5 +204,25 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
+
+        public override string ToString()
+        {
+            string retVal = "[";
+
+            bool first = true;
+            foreach (Usage usage in AllUsages)
+            {
+                if (!first)
+                {
+                    retVal += ", ";
+                }
+                retVal += usage.ToString();
+                first = false;
+            }
+            retVal += "]";
+
+            return retVal;
+        }
+
     }
 }

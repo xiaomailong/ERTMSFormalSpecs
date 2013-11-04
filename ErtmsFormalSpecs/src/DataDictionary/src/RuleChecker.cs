@@ -709,8 +709,8 @@ namespace DataDictionary
                         ReqRelated model = reqRef.Enclosing as ReqRelated;
                         if (!model.ImplementationCompleted)
                         {
-                            model.AddError("Requirement implementation is complete, while model element implementation is not");
-                            paragraph.AddError("Requirement implementation is complete, while model element implementation is not");
+                            model.AddWarning("Requirement implementation is complete, while model element implementation is not");
+                            paragraph.AddWarning("Requirement implementation is complete, while model element implementation is not");
                         }
                     }
                 }
