@@ -168,6 +168,9 @@ namespace DataDictionary.Interpreter
                     visit(dictionary, true);
                 }
             }
+            catch (System.Exception)
+            {
+            }
             finally
             {
                 ModelElement.BeSilent = false;
