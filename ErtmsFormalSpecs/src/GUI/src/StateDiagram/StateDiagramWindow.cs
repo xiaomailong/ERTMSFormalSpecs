@@ -34,7 +34,14 @@ namespace GUI.StateDiagram
         {
             descriptionRichTextBox = new EditorTextBox();
             InitializeComponent();
+
+            FormClosed += new FormClosedEventHandler(StateDiagramWindow_FormClosed);
             splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+        }
+
+        void StateDiagramWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -369,5 +376,9 @@ namespace GUI.StateDiagram
             return control == Selected;
         }
 
+        public void RefreshAfterStep()
+        {
+            StateContainerPanel.Refresh();
+        }
     }
 }

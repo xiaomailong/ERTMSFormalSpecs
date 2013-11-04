@@ -1,0 +1,146 @@
+\documentclass[a4paper, oneside]{scrreprt}
+\usepackage[american]{babel}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage[tablegrid]{vhistory}
+\usepackage{hyperref}
+\usepackage{scrpage2}
+
+% BEGIN title + general-stuff
+\newcommand{\docTitle}{ERTMS Formal Specs Workbench}
+\newcommand{\docSubTitle}{Coding Guidelines}
+
+\hypersetup{%
+pdftitle = {\docTitle, \docSubTitle},
+pdfkeywords = {\docTitle, Version \vhCurrentVersion from \vhCurrentDate},
+pdfauthor = {\vhAllAuthorsSet},
+colorlinks = true,
+linkcolor = black,
+citecolor = black,
+filecolor = black,
+urlcolor = black
+}
+
+\pagestyle{scrheadings}
+\chead[]{}
+\ifoot[\docTitle, \docSubTitle\ -- Version \vhCurrentVersion]{\docTitle, \docSubTitle\ -- Version \vhCurrentVersion}
+\cfoot[]{}
+\ofoot[\thepage]{\thepage}
+% END title + general stuff
+
+
+% BEGIN specific commands for this file
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\setenumerate[1]{leftmargin=*, label=\thesubsubsection.\arabic*.}
+\setenumerate[2]{label*=\arabic*.}
+\setenumerate[3]{label*=\arabic*.}
+\let\emph\textsl
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\TODO}{\colorbox{red}{\textcolor{white}{\textbf{\textsf{TODO}}}}\xspace}
+\newcommand{\TBD}{\colorbox{green}{\textcolor{white}{\textbf{\textsf{TBD}}}}\xspace}
+\newcommand{\remark}[1]{\mbox{}\newline\colorbox{yellow}{\textsf{\textbf{remark:} #1}}\xspace}
+\newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}
+% END specific commands for this file
+
+
+%BEGIN abbreviations for author names
+\newcommand{\MD}{Moritz Dorka}
+% @ALL:
+% extend as needed
+% then a \vhEntry as shown below, that's it!
+
+%END abbreviations for author names
+
+
+
+
+\begin{document}
+\title{\docTitle}
+\subtitle{\docSubTitle, Version: \vhCurrentVersion}
+\date{\vhCurrentDate}
+\author{\vhListAllAuthorsLongWithAbbrev}
+\maketitle
+
+
+\begin{versionhistory}
+\vhEntry{0.1}{31/10/2013}{MD}{initial draft}
+% @ALL:
+% add your revision information here
+\end{versionhistory}
+
+\newpage
+\tableofcontents
+\newpage
+
+\addchap{How to read this file}
+\TODO
+
+\chapter{Domain specific language}
+
+\section{General}
+\begin{enumerate}
+\item \TODO \code{EMPTY} vs. \code{NOT AVAILABLE()} vs. \code{$[\,]$} \ruleauthor{MD}{31/10/2013}
+\item \code{SUM \emph{List} USING X} shall be preferred over \code{REDUCE \emph{List} USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
+\item \code{THERE\_IS\_IN \emph{List} | \emph{Condition}} shall be preferred over \code{MAP \emph{List} | \emph{Condition} USING X}. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+\chapter{Model}
+
+\section{Functions}
+\subsection{Cases}
+
+\subsubsection{General}
+\begin{enumerate}
+\item \label{rule:functions_cases_general_trivialexpressions}\TBD Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
+\item \TBD Complex expressions and pre-conditions shall not be used together. \remark{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\subsubsection{Pre-conditions}
+\begin{enumerate}
+\item Cases with no pre-condition assigned shall always come as the very last case. \ruleauthor{MD}{31/10/2013}
+\item Cases with no pre-condition assigned shall always be named "Otherwise". \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\chapter{Tests}
+
+\section{Structure}
+\begin{enumerate}
+\item The first sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
+\begin{enumerate}
+\item There shall be no Expectation associated with this sub-step. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+\end{enumerate}
+
+\section{Naming conventions}
+\begin{enumerate}
+\item Individual test steps shall be named \code{Step \emph{n} - \emph{explanation}}.\\ \emph{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+
+\chapter{Git}
+\section{General}
+\begin{enumerate}
+\item Own edits shall always be committed into a personal fork of the EFS repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\section{Commits}
+\subsection{General}
+\begin{enumerate}
+\item numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\subsection{commit description texts}
+\begin{enumerate}
+\item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the modeling part of the tool shall begin with \emph{EA\_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the testing part of the tool shall begin with \emph{EA\_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+\end{document}

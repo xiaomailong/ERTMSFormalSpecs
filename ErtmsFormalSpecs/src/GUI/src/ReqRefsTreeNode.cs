@@ -65,7 +65,7 @@ namespace GUI
         public void CreateReqRef(string refId)
         {
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
-            req.Name = refId;
+            req.setId (refId);
             Item.appendRequirements(req);
             Nodes.Add(new ReqRefTreeNode(req));
             SortSubNodes();
