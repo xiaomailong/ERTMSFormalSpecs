@@ -77,6 +77,11 @@ namespace GUI
         public bool AutoComplete { get; set; }
 
         /// <summary>
+        /// A clean and empty RTF text
+        /// </summary>
+        private string CleanText { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EditorTextBox()
@@ -96,6 +101,73 @@ namespace GUI
             EditionTextBox.LostFocus += new EventHandler(Editor_LostFocus);
             SelectionComboBox.LostFocus += new EventHandler(SelectionComboBox_LostFocus);
             SelectionComboBox.KeyUp += new KeyEventHandler(SelectionComboBox_KeyUp);
+            SelectionComboBox.SelectedValueChanged += new EventHandler(SelectionComboBox_SelectedValueChanged);
+            SelectionComboBox.DropDownStyleChanged += new EventHandler(SelectionComboBox_DropDownStyleChanged);
+            SelectionComboBox.LocationChanged += new EventHandler(SelectionComboBox_LocationChanged);
+
+            CleanText = explainRichTextBox.Rtf;
+        }
+
+        void SelectionComboBox_LocationChanged(object sender, EventArgs e)
+        {
+            ExplainAndShow();
+        }
+
+        void SelectionComboBox_DropDownStyleChanged(object sender, EventArgs e)
+        {
+            ExplainAndShow();
+        }
+
+        void SelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ExplainAndShow();
+        }
+
+        private void ExplainAndShow()
+        {
+            ObjectReference reference = (ObjectReference)SelectionComboBox.SelectedItem;
+
+            explainRichTextBox.Rtf = CleanText;
+            if (reference != null)
+            {
+                string data = "";
+                foreach (INamable namable in reference.Models)
+                {
+                    data += "{\\b " + namable.GetType().Name + "} \\par ";
+                    ICommentable commentable = namable as ICommentable;
+                    if (commentable != null)
+                    {
+                        if (String.IsNullOrEmpty(commentable.Comment))
+                        {
+                            data += "{\\i No description available }";
+                        }
+                        else
+                        {
+                            data += commentable.Comment;
+                        }
+                    }
+                    data += "\\par\\par";
+                }
+
+                explainRichTextBox.Rtf = TextualExplainUtilities.Encapsule(data);
+
+                if (SelectionComboBox.DroppedDown)
+                {
+                    explainRichTextBox.Location = new Point(
+                        SelectionComboBox.Location.X + SelectionComboBox.Size.Width,
+                        SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
+                    );
+                }
+                else
+                {
+                    explainRichTextBox.Location = new Point(
+                        SelectionComboBox.Location.X,
+                        SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
+                    );
+
+                }
+                explainRichTextBox.Show();
+            }
         }
 
         /// <summary>
@@ -156,9 +228,9 @@ namespace GUI
         /// <param name="prefix">The prefix of the element to find</param>
         /// <param name="enclosingName">The name of the enclosing structure</param>
         /// <returns></returns>
-        private HashSet<string> getPossibilities(IModelElement element, string prefix, string enclosingName)
+        private HashSet<ObjectReference> getPossibilities(IModelElement element, string prefix, string enclosingName)
         {
-            HashSet<string> retVal = new HashSet<string>();
+            HashSet<ObjectReference> retVal = new HashSet<ObjectReference>();
 
             while (element != null)
             {
@@ -177,8 +249,9 @@ namespace GUI
                 if (subDeclarator != null)
                 {
                     subDeclarator.InitDeclaredElements();
-                    foreach (string subElem in subDeclarator.DeclaredElements.Keys)
+                    foreach (KeyValuePair<string, List<INamable>> pair in subDeclarator.DeclaredElements)
                     {
+                        string subElem = pair.Key;
                         if (subElem.StartsWith(prefix))
                         {
                             if (enclosingName != null)
@@ -193,13 +266,13 @@ namespace GUI
                                             {
                                                 if (!(namable is DataDictionary.Functions.Function))
                                                 {
-                                                    retVal.Add(subElem);
+                                                    retVal.Add(new ObjectReference(pair.Key, pair.Value));
                                                 }
                                             }
                                         }
                                         else
                                         {
-                                            retVal.Add(subElem);
+                                            retVal.Add(new ObjectReference(pair.Key, pair.Value));
                                         }
                                         break;
                                     }
@@ -207,7 +280,7 @@ namespace GUI
                             }
                             else
                             {
-                                retVal.Add(subElem);
+                                retVal.Add(new ObjectReference(pair.Key, pair.Value));
                             }
                         }
                     }
@@ -243,13 +316,62 @@ namespace GUI
         }
 
         /// <summary>
+        /// A reference to an object, displayed in the combo box
+        /// </summary>
+        private class ObjectReference : IComparable<ObjectReference>
+        {
+            /// <summary>
+            /// The display name of the object reference
+            /// </summary>
+            public string DisplayName { get; private set; }
+
+            /// <summary>
+            /// The model elements referenced by this object reference
+            /// </summary>
+            public List<INamable> Models { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="models"></param>
+            /// <param name="name"></param>
+            public ObjectReference(string name, List<INamable> models)
+            {
+                DisplayName = name;
+                Models = models;
+            }
+
+            public override string ToString()
+            {
+                return DisplayName;
+            }
+
+            // Summary:
+            //     Compares the current object with another object of the same type.
+            //
+            // Parameters:
+            //   other:
+            //     An object to compare with this object.
+            //
+            // Returns:
+            //     A value that indicates the relative order of the objects being compared.
+            //     The return value has the following meanings: Value Meaning Less than zero
+            //     This object is less than the other parameter.Zero This object is equal to
+            //     other. Greater than zero This object is greater than other.
+            public int CompareTo(ObjectReference other)
+            {
+                return DisplayName.CompareTo(other.DisplayName);
+            }
+        }
+
+        /// <summary>
         /// Provides the list of model elements which correspond to the prefix given
         /// </summary>
         /// <param name="prefix"></param>
         /// <returns></returns>
-        private List<string> AllChoices(out string prefix)
+        private List<ObjectReference> AllChoices(out string prefix)
         {
-            List<string> retVal = new List<string>();
+            List<ObjectReference> retVal = new List<ObjectReference>();
 
             bool rebuild = false;
             bool silent = true;
@@ -353,19 +475,19 @@ namespace GUI
         private void DisplayComboBox()
         {
             string prefix;
-            List<string> allChoices = AllChoices(out prefix);
+            List<ObjectReference> allChoices = AllChoices(out prefix);
 
             if (prefix.Length <= EditionTextBox.SelectionStart)
             {
                 EditionTextBox.Select(EditionTextBox.SelectionStart - prefix.Length, prefix.Length);
                 if (allChoices.Count == 1)
                 {
-                    EditionTextBox.SelectedText = allChoices[0];
+                    EditionTextBox.SelectedText = allChoices[0].DisplayName;
                 }
                 else if (allChoices.Count > 1)
                 {
                     SelectionComboBox.Items.Clear();
-                    foreach (string choice in allChoices)
+                    foreach (ObjectReference choice in allChoices)
                     {
                         SelectionComboBox.Items.Add(choice);
                     }
@@ -375,7 +497,7 @@ namespace GUI
                     }
                     else
                     {
-                        SelectionComboBox.Text = allChoices[0];
+                        SelectionComboBox.Text = allChoices[0].DisplayName;
                     }
 
                     // Try to compute the combo box location
@@ -403,6 +525,7 @@ namespace GUI
                     Point comboBoxLocation = new Point(x, y);
                     SelectionComboBox.Location = comboBoxLocation;
                     PendingSelection = true;
+                    EditionTextBox.SendToBack();
                     SelectionComboBox.Show();
                     SelectionComboBox.Focus();
                 }
@@ -519,6 +642,7 @@ namespace GUI
                 SelectionComboBox.Text = "";
                 SelectionComboBox.Items.Clear();
                 SelectionComboBox.Hide();
+                explainRichTextBox.Hide();
                 PendingSelection = false;
             }
         }
@@ -531,6 +655,7 @@ namespace GUI
                 SelectionComboBox.Text = "";
                 SelectionComboBox.Items.Clear();
                 SelectionComboBox.Hide();
+                explainRichTextBox.Hide();
             }
         }
 
