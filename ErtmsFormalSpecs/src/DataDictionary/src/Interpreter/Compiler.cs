@@ -288,11 +288,6 @@ namespace DataDictionary.Interpreter
                 cas.Expression = null;
             }
 
-            if (cas.EnclosingFunction.Name == "GradientEnd")
-            {
-                int i = 1;
-            }
-
             // Side effect : compiles or recompiles the expressions
             DataDictionary.Interpreter.Expression expression = cas.Expression;
 
