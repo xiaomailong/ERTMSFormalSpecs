@@ -440,13 +440,19 @@ namespace GUI
             public DataDictionary.Dictionary Dictionary { get; private set; }
 
             /// <summary>
+            /// Indicates that errors can occur during load, for instance, for comparison purposes
+            /// </summary>
+            public bool AllowErrorsDuringLoad { get; private set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="fileName"></param>
-            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system)
+            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system, bool allowErrors)
             {
                 FileName = fileName;
                 System = system;
+                AllowErrorsDuringLoad = allowErrors;
             }
 
             /// <summary>
@@ -455,7 +461,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System, false);
+                Dictionary = DataDictionary.Util.load(FileName, System, false, AllowErrorsDuringLoad);
             }
         }
 
@@ -468,7 +474,8 @@ namespace GUI
             {
                 try
                 {
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem);
+                    bool allowErrors = false;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors);
                     ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
                     dialog.ShowDialog();
 
@@ -1460,7 +1467,8 @@ namespace GUI
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 // Open the dictionary but do not store it in the EFS System
-                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
+                bool allowErrors = true;
+                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null, allowErrors);
                 ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
                 dialog.ShowDialog();
 
@@ -1526,7 +1534,8 @@ namespace GUI
                     }
 
                     // Open the dictionary but do not store it in the EFS System
-                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null);
+                    bool allowErrors = true;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null, allowErrors);
                     ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
                     dialog.ShowDialog();
 
