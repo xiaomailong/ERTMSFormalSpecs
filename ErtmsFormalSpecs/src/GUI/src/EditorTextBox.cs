@@ -185,7 +185,7 @@ namespace GUI
                             {
                                 foreach (Utils.INamable namable in subDeclarator.DeclaredElements[subElem])
                                 {
-                                    if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type)
+                                    if (namable.FullName.EndsWith(enclosingName + "." + subElem) || type || subDeclarator is StructureElement)
                                     {
                                         if (ConsiderOnlyTypes)
                                         {
@@ -398,7 +398,9 @@ namespace GUI
                     }
 
                     SizeF size = GUIUtils.Graphics.MeasureString(lineData, EditionTextBox.Font);
-                    Point comboBoxLocation = new Point((int)size.Width, (line - 1) * EditionTextBox.Font.Height + 5);
+                    int x = Math.Min((int)size.Width, Location.X + Size.Width - SelectionComboBox.Width);
+                    int y = (line - 1) * EditionTextBox.Font.Height + 5;
+                    Point comboBoxLocation = new Point(x, y);
                     SelectionComboBox.Location = comboBoxLocation;
                     PendingSelection = true;
                     SelectionComboBox.Show();

@@ -279,6 +279,21 @@ namespace DataDictionary.Interpreter
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.Case obj, bool visitSubNodes)
+        {
+            Functions.Case cas = (Functions.Case)obj;
+
+            if (CurrentCompile.Rebuild)
+            {
+                cas.Expression = null;
+            }
+
+            // Side effect : compiles or recompiles the expressions
+            DataDictionary.Interpreter.Expression expression = cas.Expression;
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Frame obj, bool visitSubNodes)
         {
             Tests.Frame frame = (Tests.Frame)obj;

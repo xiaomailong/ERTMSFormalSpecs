@@ -30,13 +30,13 @@ namespace EFSTester
         {
             int retVal = 0;
 
+            EFSSystem efsSystem = EFSSystem.INSTANCE;
             try
             {
 
                 Console.Out.WriteLine("EFS Tester");
 
                 // Load the dictionaries provided as parameters
-                EFSSystem efsSystem = EFSSystem.INSTANCE;
                 DataDictionary.Util.PleaseLockFiles = false;
                 foreach (string arg in args)
                 {
@@ -106,6 +106,7 @@ namespace EFSTester
             finally
             {
                 DataDictionary.Util.UnlockAllFiles();
+                efsSystem.Stop();
             }
 
             return retVal;
