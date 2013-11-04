@@ -1,6 +1,7 @@
 \documentclass[a4paper, oneside]{scrreprt}
 \usepackage[american]{babel}
 \usepackage{enumitem}
+\usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
 \usepackage{xcolor}
 \usepackage{xspace}
 \usepackage[tablegrid]{vhistory}
@@ -31,10 +32,20 @@ urlcolor = black
 
 
 % BEGIN specific commands for this file
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
+\makeatletter
+% makes the enumeration item label start with the number
+% of the current section/subsection/etc.
+\newcommand{\thecurrentlevel}{%
+  \ifnum\c@section=0\thechapter\else
+  \ifnum\c@subsection=0\thesection\else
+  \ifnum\c@subsubsection=0\thesubsection\else
+  \thesubsubsection\fi\fi\fi}
+\makeatother
 
-\setenumerate[1]{leftmargin=*, label=\thesubsubsection.\arabic*.}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\setenumerate[1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
 \setenumerate[2]{label*=\arabic*.}
 \setenumerate[3]{label*=\arabic*.}
 \let\emph\textsl
@@ -57,6 +68,7 @@ urlcolor = black
 
 
 
+% BEGIN OF THE ACTUAL DOCUMENT
 
 \begin{document}
 \title{\docTitle}
@@ -85,7 +97,7 @@ urlcolor = black
 \begin{enumerate}
 \item \TODO \code{EMPTY} vs. \code{NOT AVAILABLE()} vs. \code{$[\,]$} \ruleauthor{MD}{31/10/2013}
 \item \code{SUM \emph{List} USING X} shall be preferred over \code{REDUCE \emph{List} USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
-\item \code{THERE\_IS\_IN \emph{List} | \emph{Condition}} shall be preferred over \code{MAP \emph{List} | \emph{Condition} USING X}. \ruleauthor{MD}{31/10/2013}
+\item \code{THERE_IS_IN \emph{List} | \emph{Condition}} shall be preferred over \code{MAP \emph{List} | \emph{Condition} USING X}. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 
@@ -116,6 +128,7 @@ urlcolor = black
 \end{enumerate}
 \end{enumerate}
 
+
 \section{Naming conventions}
 \begin{enumerate}
 \item Individual test steps shall be named \code{Step \emph{n} - \emph{explanation}}.\\ \emph{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
@@ -138,9 +151,8 @@ urlcolor = black
 \subsection{commit description texts}
 \begin{enumerate}
 \item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
-\item Commits dealing with the modeling part of the tool shall begin with \emph{EA\_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
-\item Commits dealing with the testing part of the tool shall begin with \emph{EA\_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the modeling part of the tool shall begin with \emph{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the testing part of the tool shall begin with \emph{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
-
 
 \end{document}
