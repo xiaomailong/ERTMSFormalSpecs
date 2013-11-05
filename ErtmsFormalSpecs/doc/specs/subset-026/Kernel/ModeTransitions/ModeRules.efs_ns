@@ -5,6 +5,7 @@
 </NameSpaces>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  Name="HandleGradientProfile"
 >
 <ReqRef
@@ -21,13 +22,14 @@
  Name="HandleGradientProfile"
 >
 <PreConditions>
-<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Name="HandelSSP"
+ Implemented="TRUE"
+ Name="HandleSSP"
 >
 <ReqRef
  Id="4.10.1.3.9"
@@ -43,13 +45,13 @@
  Name="HandleSSP"
 >
 <PreConditions>
-<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Name="HandelAxleLoadSpeed"
+ Name="HandleAxleLoadSpeed"
 >
 <ReqRef
  Id="4.10.1.3.10"
@@ -57,6 +59,7 @@
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="HandleAxleLoadSpeed"
 >
 <SubRules></SubRules>
@@ -65,7 +68,7 @@
  Name="HandleAxleLoadSpeed"
 >
 <PreConditions>
-<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.AxleLoad.ASP &lt;- Kernel.TrackDescription.AxleLoad.AxleLoadProfile{
     InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
@@ -75,6 +78,7 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="HandleRouteSuitability"
 >
 <ReqRef
@@ -100,12 +104,216 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleAdhesionFactors"
+>
+<ReqRef
+ Id="4.10.1.3.24"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleAdhesionFactors"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleAdhesionFactor"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTrackConditions1"
+>
+<ReqRef
+ Id="4.10.1.3.32"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrackConditions1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrackConditions1"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.UN, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TrackCondition.AirTightness  &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.PowerlessSection_LowerPantograph &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.PowerlessSection_SwitchOffTheMainPowerSwitch &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.RadioHole &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.SwitchOffEddyCurrentBrakeForEB &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.SwitchOffEddyCurrentBrakeForSB &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.SwitchOffMagneticShoeBrake &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.SwitchOffRegenerativeBrake &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleReversingArea"
+>
+<ReqRef
+ Id="4.10.1.3.46"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleReversingArea"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleReversingArea"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaInformation{
+    Distance =&gt; 0.0,
+    Length =&gt; 0.0,
+    MaxDistance =&gt; 0.0,
+    Speed =&gt; 0.0
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandlePermittedBrakingDistance"
+>
+<ReqRef
+ Id="4.10.1.3.49"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandlePermittedBrakingDistance"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandlePermittedBrakingDistance"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.BrakeType &lt;- Messages.Q_PBDSR.EB_intervention_requested</Action><Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.BrakingDistance&lt;-0.0</Action><Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.Gradient &lt;-0.0</Action><Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.Length &lt;- 0.0</Action><Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.Location&lt;- 0.0</Action><Action>Kernel.TrackDescription.PermittedBrakingDistance.SRPB.Speed&lt;- 0.0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTrackConditions2"
+>
+<ReqRef
+ Id="4.10.1.3.33"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrackConditions2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrackConditions2"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TrackCondition.SoundHorn &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.NonStoppingArea &lt;- False</Action><Action>Kernel.TrackDescription.TrackConditions.TrackCondition.TunnelStoppingArea &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="HandleTrackConditions3"
+>
+<ReqRef
+ Id="4.10.1.3.34"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrackConditions3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrackConditions3"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleMA"
+>
+<ReqRef
+ Id="4.10.1.3.7"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleMA"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleMA"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        EndSectionTimeOut =&gt; Kernel.MA.SectionTimeOut{
+            TimeOut =&gt; 0.0,
+            Distance =&gt; 0.0
+        },
+        TimeOut =&gt; Kernel.MA.SectionTimeOut{
+            TimeOut =&gt; 0.0,
+            Distance =&gt; 0.0
+        },
+        Length =&gt; 0.0,
+        DangerPoint =&gt; Kernel.MA.DangerPoint{
+            Distance =&gt; 0.0,
+            ReleaseSpeed =&gt; 0.0
+        },
+        Overlap =&gt; Kernel.MA.Overlap{
+            Distance =&gt; 0.0,
+            TimerDistance =&gt; 0.0,
+            ReleaseSpeed =&gt; 0.0,
+            TimeOut =&gt; 0.0
+        }
+    },
+    TargetSpeedTimeOut =&gt; 0.0,
+    ReferenceBG =&gt; 0,
+    ReferenceBGLocation =&gt; 0.0
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Rules>
 <Rule
  Priority="Processing"
- Name="&lt;Rule1&gt;"
+ Name="ModeHasChanged"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="4.10.1.3"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ModeHasChanged"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode</PreCondition></PreConditions>
+<Actions>
+<Action>HandleGradientProfile()</Action><Action>HandleAxleLoadSpeed()</Action><Action>HandleSSP()</Action><Action>HandleAdhesionFactors()</Action><Action>HandleMA()</Action><Action>HandlePermittedBrakingDistance()</Action><Action>HandleReversingArea()</Action><Action>HandleRouteSuitability()</Action><Action>HandleTrackConditions1()</Action><Action>HandleTrackConditions2()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
