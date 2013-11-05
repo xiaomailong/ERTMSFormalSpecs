@@ -563,6 +563,7 @@ namespace GUI
             {
                 try
                 {
+                    HandlingSelection = true;
                     bool allowErrors = false;
                     OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors);
                     openFileOperation.ExecuteInBackgroundThread();
@@ -616,6 +617,7 @@ namespace GUI
                 }
                 finally
                 {
+                    HandlingSelection = false;
                     DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
 
