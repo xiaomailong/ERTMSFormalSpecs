@@ -23,6 +23,7 @@ using DataDictionary.Tests.Translations;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using XmlBooster;
+using Utils;
 
 namespace DataDictionary
 {
@@ -63,7 +64,12 @@ namespace DataDictionary
             /// <summary>
             /// Indicates that errors can occur during load, for instance, for comparison purposes
             /// </summary>
-            public bool AllowErrorsDuringLoad { get; private set; }
+            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+
+            /// <summary>
+            /// The errors that occured during the load of the file
+            /// </summary>
+            public List<ElementLog> ErrorsDuringLoad { get; private set; }
 
             /// <summary>
             /// Constructor
@@ -71,11 +77,11 @@ namespace DataDictionary
             /// <param name="basePath"></param>
             /// <param name="lockFiles"></param>
             /// <param name="allowErrors"></param>
-            public LoadDepends(string basePath, bool lockFiles, bool allowErrors)
+            public LoadDepends(string basePath, bool lockFiles, List<ElementLog> errors)
             {
                 BasePath = basePath;
                 LockFiles = lockFiles;
-                AllowErrorsDuringLoad = allowErrors;
+                ErrorsDuringLoad = errors;
             }
 
             public override void visit(Generated.Dictionary obj, bool visitSubNodes)
@@ -91,6 +97,10 @@ namespace DataDictionary
                         {
                             dictionary.appendNameSpaces(nameSpace);
                         }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                        }
                     }
                     dictionary.allNameSpaceRefs().Clear();
                 }
@@ -102,6 +112,10 @@ namespace DataDictionary
                         if (frame != null)
                         {
                             dictionary.appendTests(frame);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + testRef.FileName));
                         }
                     }
                     dictionary.allTestRefs().Clear();
@@ -123,6 +137,11 @@ namespace DataDictionary
                         {
                             nameSpace.appendNameSpaces(subNameSpace);
                         }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                        }
+
                     }
                     nameSpace.allNameSpaceRefs().Clear();
                 }
@@ -142,6 +161,10 @@ namespace DataDictionary
                         if (chapter != null)
                         {
                             specification.appendChapters(chapter);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + chapterRef.FileName));
                         }
                     }
                     specification.allChapterRefs().Clear();
@@ -301,9 +324,9 @@ namespace DataDictionary
         /// <param name="filePath">The path of the file which holds the dictionary data</param>
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
-        /// <param name="allowErrors">Indicates that errors shall be tolerated during load</param>
+        /// <param name="allowErrors">Provides the list used to hold errors during the load. null indicates that no errors are tolerated during load</param>
         /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, bool allowErrors)
+        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors)
         {
             Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath, null, lockFiles);
 
@@ -319,7 +342,7 @@ namespace DataDictionary
                 try
                 {
                     Generated.ControllersManager.DesactivateAllNotifications();
-                    LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, allowErrors);
+                    LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
                     loadDepends.visit(retVal);
                 }
                 catch (Exception e)
@@ -416,11 +439,7 @@ namespace DataDictionary
 
             if (retVal == null)
             {
-                if (allowErrors)
-                {
-                    enclosing.AddError("Cannot load file " + filePath);
-                }
-                else
+                if (!allowErrors)
                 {
                     throw new System.Exception("Cannot read file " + filePath);
                 }
@@ -443,12 +462,7 @@ namespace DataDictionary
 
             if (retVal == null)
             {
-
-                if (allowErrors)
-                {
-                    enclosing.AddError("Cannot load file " + filePath);
-                }
-                else
+                if (!allowErrors)
                 {
                     throw new System.Exception("Cannot read file " + filePath);
                 }
@@ -471,11 +485,7 @@ namespace DataDictionary
 
             if (retVal == null)
             {
-                if (allowErrors)
-                {
-                    enclosing.AddError("Cannot load file " + filePath);
-                }
-                else
+                if (!allowErrors)
                 {
                     throw new System.Exception("Cannot read file " + filePath);
                 }

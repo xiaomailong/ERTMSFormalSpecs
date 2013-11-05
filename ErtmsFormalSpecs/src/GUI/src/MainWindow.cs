@@ -442,7 +442,13 @@ namespace GUI
             /// <summary>
             /// Indicates that errors can occur during load, for instance, for comparison purposes
             /// </summary>
-            public bool AllowErrorsDuringLoad { get; private set; }
+            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+
+            /// <summary>
+            /// The errors encountered during load of the file. 
+            /// null indicates that no errors are tolerated
+            /// </summary>
+            public List<ElementLog> ErrorsDuringLoad { get; private set; }
 
             /// <summary>
             /// Constructor
@@ -452,7 +458,24 @@ namespace GUI
             {
                 FileName = fileName;
                 System = system;
-                AllowErrorsDuringLoad = allowErrors;
+                if (allowErrors)
+                {
+                    ErrorsDuringLoad = new List<ElementLog>();
+                }
+                else
+                {
+                    ErrorsDuringLoad = null;
+                }
+            }
+
+            /// <summary>
+            /// Executes the operation in a background thread
+            /// </summary>
+            public void ExecuteInBackgroundThread()
+            {
+                ProgressDialog dialog = new ProgressDialog("Opening file", this);
+                dialog.ShowDialog();
+                DisplayErrors();
             }
 
             /// <summary>
@@ -461,7 +484,62 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System, false, AllowErrorsDuringLoad);
+                Dictionary = DataDictionary.Util.load(FileName, System, false, ErrorsDuringLoad);
+            }
+
+            /// <summary>
+            /// Gather errors during load
+            /// </summary>
+            private class ErrorGathered : DataDictionary.Generated.Visitor
+            {
+                /// <summary>
+                /// The logs during load
+                /// </summary>
+                public List<ElementLog> Logs { get; private set; }
+
+                /// <summary>
+                /// Constructor
+                /// </summary>
+                public ErrorGathered()
+                {
+                    Logs = new List<ElementLog>();
+                }
+
+                public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+                {
+                    DataDictionary.ModelElement element = (DataDictionary.ModelElement)obj;
+
+                    Logs.AddRange(element.Messages);
+
+                    base.visit(obj, visitSubNodes);
+                }
+            }
+
+            /// <summary>
+            /// Displays errors during load, when the flag AllowErrorDuringLoad is active
+            /// </summary>
+            public void DisplayErrors()
+            {
+                if (AllowErrorsDuringLoad)
+                {
+                    if (Dictionary != null)
+                    {
+                        if (ErrorsDuringLoad.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (ElementLog log in ErrorsDuringLoad)
+                            {
+                                errors += log.Level + ": " + log.Log + "\n";
+                            }
+
+                            MessageBox.Show("Errors while opening file " + FileName + "\n\n" + errors, "Errors where encountered while opening file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file " + FileName, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -476,8 +554,7 @@ namespace GUI
                 {
                     bool allowErrors = false;
                     OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                    openFileOperation.ExecuteInBackgroundThread();
 
                     // Open the windows
                     if (openFileOperation.Dictionary != null)
@@ -1469,8 +1546,7 @@ namespace GUI
                 // Open the dictionary but do not store it in the EFS System
                 bool allowErrors = true;
                 OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null, allowErrors);
-                ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                dialog.ShowDialog();
+                openFileOperation.ExecuteInBackgroundThread();
 
                 // Compare the files
                 if (openFileOperation.Dictionary != null)
@@ -1536,8 +1612,7 @@ namespace GUI
                     // Open the dictionary but do not store it in the EFS System
                     bool allowErrors = true;
                     OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null, allowErrors);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                    openFileOperation.ExecuteInBackgroundThread();
 
                     // Compare the files
                     if (openFileOperation.Dictionary != null)
