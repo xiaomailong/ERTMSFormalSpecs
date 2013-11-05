@@ -556,6 +556,20 @@ namespace GUI
         }
 
         /// <summary>
+        /// Code templates
+        /// </summary>
+        private static string[] TEMPLATES = new string[] {
+            ForAllExpression.OPERATOR + " <collection> | <condition> ", 
+            ThereIsExpression.OPERATOR + " <collection> | <condition> ",
+            FirstExpression.OPERATOR + " <collection> | <condition>", 
+            LastExpression.OPERATOR + " <collection> | <condition>", 
+            CountExpression.OPERATOR + " <collection> | <condition>", 
+            MapExpression.OPERATOR + " <collection> | <condition> USING <map_expression>",
+            SumExpression.OPERATOR + " <collection> | <condition> USING <map_expression>", 
+            ReduceExpression.OPERATOR + " <collection> | <condition> USING <map_expression> INITIAL_VALUE <expression>" 
+        };
+
+        /// <summary>
         /// Provides the list of model elements which correspond to the prefix given
         /// </summary>
         /// <param name="prefix"></param>
@@ -567,9 +581,19 @@ namespace GUI
             string enclosingName;
             List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
 
+            // Handles references to model elements
             foreach (Utils.INamable namable in possibleInstances)
             {
                 retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
+            }
+
+            // Handles code templates
+            foreach (string template in TEMPLATES)
+            {
+                if (template.StartsWith(prefix))
+                {
+                    retVal.Add(new ObjectReference(template, new List<INamable>()));
+                }
             }
 
             retVal.Sort();
