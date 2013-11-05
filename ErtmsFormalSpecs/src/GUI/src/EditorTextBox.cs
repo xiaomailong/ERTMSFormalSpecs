@@ -31,7 +31,7 @@ namespace GUI
         /// <summary>
         /// The enclosing IBaseForm
         /// </summary>
-        IBaseForm EnclosingForm
+        private IBaseForm EnclosingForm
         {
             get
             {
@@ -42,6 +42,25 @@ namespace GUI
                 }
 
                 return current as IBaseForm;
+            }
+        }
+
+        /// <summary>
+        /// The enclosing MDI window
+        /// </summary>
+        private MainWindow MDIWindow
+        {
+            get
+            {
+                MainWindow retVal = null;
+
+                IBaseForm enclosingForm = EnclosingForm;
+                if (enclosingForm != null)
+                {
+                    retVal = enclosingForm.MDIWindow;
+                }
+
+                return retVal;
             }
         }
 
@@ -82,6 +101,16 @@ namespace GUI
         private string CleanText { get; set; }
 
         /// <summary>
+        /// Indicates that a mouse mouve event hides the explanation
+        /// </summary>
+        private bool ConsiderMouseMoveToCloseExplanation { get; set; }
+
+        /// <summary>
+        /// The location of the mouse
+        /// </summary>
+        private Point MouseLocation { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EditorTextBox()
@@ -95,7 +124,11 @@ namespace GUI
             EditionTextBox.DragDrop += new DragEventHandler(Editor_DragDropHandler);
             EditionTextBox.KeyUp += new KeyEventHandler(Editor_KeyUp);
             EditionTextBox.KeyPress += new KeyPressEventHandler(Editor_KeyPress);
+            EditionTextBox.MouseClick += new MouseEventHandler(EditionTextBox_MouseClick);
+            EditionTextBox.MouseHover += new EventHandler(EditionTextBox_MouseHover);
+            EditionTextBox.MouseDoubleClick += new MouseEventHandler(EditionTextBox_MouseDoubleClick);
             EditionTextBox.ShortcutsEnabled = true;
+            EditionTextBox.MouseMove += new MouseEventHandler(EditionTextBox_MouseMove);
 
             EditionTextBox.GotFocus += new EventHandler(Editor_GotFocus);
             EditionTextBox.LostFocus += new EventHandler(Editor_LostFocus);
@@ -108,32 +141,179 @@ namespace GUI
             CleanText = explainRichTextBox.Rtf;
         }
 
+        void EditionTextBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            List<INamable> instances = GetInstances(e.Location);
+            if (instances.Count == 1)
+            {
+                MainWindow mdiWindow = MDIWindow;
+                if (mdiWindow != null)
+                {
+                    mdiWindow.Select(instances[0] as Utils.ModelElement, true);
+                }
+            }
+        }
+
+        void EditionTextBox_MouseHover(object sender, EventArgs e)
+        {
+            DisplayHelp(MouseLocation);
+        }
+
+        /// <summary>
+        /// Displays the help associated to a location in the text box
+        /// </summary>
+        /// <param name="location"></param>
+        private void DisplayHelp(Point location)
+        {
+            List<INamable> instances = GetInstances(location);
+
+            if (instances.Count > 0)
+            {
+                location.Offset(10, 10);
+                bool considerMouseMove = true;
+                ExplainAndShow(instances, location, considerMouseMove);
+            }
+        }
+
+        /// <summary>
+        /// Provides the instances related to a location in the textbox
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        private List<INamable> GetInstances(Point location)
+        {
+            List<INamable> retVal = new List<INamable>();
+
+            int index = EditionTextBox.GetCharIndexFromPosition(location);
+
+            int start = index;
+            while (start > 0 && ValidIdentifierCharacter(EditionTextBox.Text[start]))
+            {
+                start -= 1;
+            }
+            if (start > 0)
+            {
+                start += 1;
+            }
+
+            int end = index;
+            while (end < EditionTextBox.Text.Length && ValidIdentifierCharacter(EditionTextBox.Text[end]) && EditionTextBox.Text[end] != '.')
+            {
+                end += 1;
+            }
+            if (end < EditionTextBox.Text.Length)
+            {
+                end -= 1;
+            }
+
+            if (start < end)
+            {
+                string identifier = EditionTextBox.Text.Substring(start, end - start + 1);
+                Expression expression = EFSSystem.Parser.Expression(Instance, identifier, Filter.AllMatches);
+                if (expression != null)
+                {
+                    if (expression.Ref != null)
+                    {
+                        retVal.Add(expression.Ref);
+                    }
+                    else
+                    {
+                        bool last = end == EditionTextBox.Text.Length || EditionTextBox.Text[end] != '.';
+                        ReturnValue returnValue = expression.getReferences(Instance, Filter.AllMatches, last);
+                        foreach (ReturnValueElement element in returnValue.Values)
+                        {
+                            retVal.Add(element.Value);
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Takes case of the mouse move to hide the explain text box, if needed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void EditionTextBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            MouseLocation = e.Location;
+            if (ConsiderMouseMoveToCloseExplanation && explainRichTextBox.Visible)
+            {
+                Rectangle rectangle = explainRichTextBox.DisplayRectangle;
+                rectangle.Location = explainRichTextBox.Location;
+                rectangle.Inflate(20, 20);
+                if (!rectangle.Contains(e.Location))
+                {
+                    explainRichTextBox.Hide();
+                    ConsiderMouseMoveToCloseExplanation = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the character belongs to a fully qualified identifier
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private bool ValidIdentifierCharacter(char c)
+        {
+            bool retVal = Char.IsLetterOrDigit(c) || c == '_' || c == '.';
+
+            return retVal;
+        }
+
+        void EditionTextBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            MouseLocation = e.Location;
+            DisplayHelp(e.Location);
+        }
+
         void SelectionComboBox_LocationChanged(object sender, EventArgs e)
         {
-            ExplainAndShow();
+            ExplainAndShowReference((ObjectReference)SelectionComboBox.SelectedItem, Point.Empty);
         }
 
         void SelectionComboBox_DropDownStyleChanged(object sender, EventArgs e)
         {
-            ExplainAndShow();
+            ExplainAndShowReference((ObjectReference)SelectionComboBox.SelectedItem, Point.Empty);
         }
 
         void SelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            ExplainAndShow();
+            ExplainAndShowReference((ObjectReference)SelectionComboBox.SelectedItem, Point.Empty);
         }
 
-        private void ExplainAndShow()
+        /// <summary>
+        /// Explains a reference and shows the associated textbox
+        /// </summary>
+        /// <param name="reference">The object reference to explain</param>
+        /// <param name="location">The location where the explain box should be displayed. If empty is displayed, the location is computed based on the combo box location</param>
+        /// <param name="sensibleToMouseMove">Indicates that the explain box should be closed when the mouse moves</param>
+        private void ExplainAndShowReference(ObjectReference reference, Point location, bool sensibleToMouseMove = false)
         {
-            ObjectReference reference = (ObjectReference)SelectionComboBox.SelectedItem;
-
-            explainRichTextBox.Rtf = CleanText;
             if (reference != null)
             {
+                ExplainAndShow(reference.Models, location, sensibleToMouseMove);
+            }
+        }
+
+        /// <summary>
+        /// Explains a list of namables and shows the associated textbox
+        /// </summary>
+        /// <param name="namable">The namable to explain</param>
+        /// <param name="location">The location where the explain box should be displayed. If empty is displayed, the location is computed based on the combo box location</param>
+        /// <param name="sensibleToMouseMove">Indicates that the explain box should be closed when the mouse moves</param>
+        private void ExplainAndShow(List<INamable> namables, Point location, bool sensibleToMouseMove)
+        {
+            explainRichTextBox.Rtf = CleanText;
+            if (namables != null)
+            {
                 string data = "";
-                foreach (INamable namable in reference.Models)
+                foreach (INamable namable in namables)
                 {
-                    data += "{\\b " + namable.GetType().Name + "} \\par ";
+                    data += "{\\b " + namable.GetType().Name + "} " + namable.Name + "\\par ";
                     ICommentable commentable = namable as ICommentable;
                     if (commentable != null)
                     {
@@ -151,22 +331,33 @@ namespace GUI
 
                 explainRichTextBox.Rtf = TextualExplainUtilities.Encapsule(data);
 
-                if (SelectionComboBox.DroppedDown)
+                if (location == Point.Empty)
                 {
-                    explainRichTextBox.Location = new Point(
-                        SelectionComboBox.Location.X + SelectionComboBox.Size.Width,
-                        SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
-                    );
+                    if (SelectionComboBox.DroppedDown)
+                    {
+                        explainRichTextBox.Location = new Point(
+                            SelectionComboBox.Location.X + SelectionComboBox.Size.Width,
+                            SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
+                        );
+                    }
+                    else
+                    {
+                        explainRichTextBox.Location = new Point(
+                            SelectionComboBox.Location.X,
+                            SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
+                        );
+                    }
                 }
                 else
                 {
                     explainRichTextBox.Location = new Point(
-                        SelectionComboBox.Location.X,
-                        SelectionComboBox.Location.Y + SelectionComboBox.Size.Height
-                    );
-
+                        Math.Min(location.X, EditionTextBox.Size.Width - explainRichTextBox.Size.Width),
+                        Math.Min(location.Y, EditionTextBox.Size.Height - explainRichTextBox.Size.Height));
                 }
+
+                ConsiderMouseMoveToCloseExplanation = sensibleToMouseMove;
                 explainRichTextBox.Show();
+                EditionTextBox.SendToBack();
             }
         }
 
@@ -369,25 +560,40 @@ namespace GUI
         /// </summary>
         /// <param name="prefix"></param>
         /// <returns></returns>
-        private List<ObjectReference> AllChoices(out string prefix)
+        private List<ObjectReference> AllChoices(string text, out string prefix)
         {
             List<ObjectReference> retVal = new List<ObjectReference>();
 
-            bool rebuild = false;
-            bool silent = true;
-            EFSSystem.Compiler.Compile_Asynchronous(rebuild, silent);
-
-            // Also use the default namespace
-            List<Utils.INamable> possibleInstances = new List<Utils.INamable>();
-            string currentText = CurrentPrefix().Trim();
-
             string enclosingName;
-            int lastDot = currentText.LastIndexOf('.');
+            List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
+
+            foreach (Utils.INamable namable in possibleInstances)
+            {
+                retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
+            }
+
+            retVal.Sort();
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the list of possible instances according to the text provided 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="prefix"></param>
+        /// <param name="enclosingName"></param>
+        /// <returns></returns>
+        private List<Utils.INamable> PossibleInstances(string text, out string prefix, out string enclosingName)
+        {
+            // Also use the default namespace
+            List<Utils.INamable> retVal = new List<Utils.INamable>();
+
+            int lastDot = text.LastIndexOf('.');
             if (lastDot > 0)
             {
-                enclosingName = currentText.Substring(0, lastDot);
+                enclosingName = text.Substring(0, lastDot);
 
-                if (currentText.StartsWith("X."))
+                if (text.StartsWith("X."))
                 {
                     // Computes the location of the IN keyword
                     int start = EditionTextBox.SelectionStart;
@@ -423,7 +629,7 @@ namespace GUI
                         foreachExpression.SemanticAnalysis();
                         if (currentExpression.Ref != null)
                         {
-                            possibleInstances.Add(currentExpression.Ref);
+                            retVal.Add(currentExpression.Ref);
                         }
                     }
                 }
@@ -435,37 +641,31 @@ namespace GUI
                     {
                         if (expression.Ref != null)
                         {
-                            possibleInstances.Add(expression.Ref);
+                            retVal.Add(expression.Ref);
                         }
                         else
                         {
                             foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
                             {
-                                possibleInstances.Add(element.Value);
+                                retVal.Add(element.Value);
                             }
                         }
                     }
                     else
                     {
-                        possibleInstances.Add(Instance);
+                        retVal.Add(Instance);
                     }
                 }
 
-                prefix = currentText.Substring(lastDot + 1);
+                prefix = text.Substring(lastDot + 1);
             }
             else
             {
-                possibleInstances.Add(Instance);
+                retVal.Add(Instance);
                 enclosingName = null;
-                prefix = currentText;
+                prefix = text;
             }
 
-            foreach (Utils.INamable namable in possibleInstances)
-            {
-                retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
-            }
-
-            retVal.Sort();
             return retVal;
         }
 
@@ -475,7 +675,7 @@ namespace GUI
         private void DisplayComboBox()
         {
             string prefix;
-            List<ObjectReference> allChoices = AllChoices(out prefix);
+            List<ObjectReference> allChoices = AllChoices(CurrentPrefix().Trim(), out prefix);
 
             if (prefix.Length <= EditionTextBox.SelectionStart)
             {

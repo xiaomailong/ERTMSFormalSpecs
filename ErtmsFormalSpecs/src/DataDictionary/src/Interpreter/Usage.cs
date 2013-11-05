@@ -44,14 +44,14 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the element that uses the model
         /// </summary>
-        public IModelElement User { get; private set; }
+        public DataDictionary.ModelElement User { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="referenced"></param>
         /// <param name="user"></param>
-        public Usage(INamable referenced, IModelElement user, ModeEnum? mode)
+        public Usage(INamable referenced, DataDictionary.ModelElement user, ModeEnum? mode)
         {
             Referenced = referenced;
             User = user;
@@ -172,7 +172,7 @@ namespace DataDictionary.Interpreter
         /// <param name="referenced"></param>
         /// <param name="user"></param>
         /// <param name="mode"></param>
-        public void AddUsage(INamable referenced, IModelElement user, Usage.ModeEnum? mode)
+        public void AddUsage(INamable referenced, DataDictionary.ModelElement user, Usage.ModeEnum? mode)
         {
             if (referenced != null)
             {

@@ -26,20 +26,13 @@ namespace GUI
         {
         }
 
-        private Utils.IModelElement model;
-        protected Utils.IModelElement Model
-        {
-            get { return model; }
-            private set { model = value; }
-        }
-
         /// <summary>
         /// Sets the model for this explain text box
         /// </summary>
         /// <param name="model"></param>
-        public void SetModel(Utils.IModelElement model)
+        public void SetModel(DataDictionary.ModelElement model)
         {
-            Model = model;
+            Instance = model;
             RefreshData();
         }
 
@@ -55,7 +48,7 @@ namespace GUI
         {
             SuspendLayout();
 
-            DataDictionary.TextualExplain explainable = Model as DataDictionary.TextualExplain;
+            DataDictionary.TextualExplain explainable = Instance as DataDictionary.TextualExplain;
 
             if (explainable != null)
             {
