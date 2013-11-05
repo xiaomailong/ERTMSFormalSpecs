@@ -208,7 +208,7 @@ namespace GUI
 
             if (start < end)
             {
-                string identifier = EditionTextBox.Text.Substring(start, end - start + 1);
+                string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
                 Expression expression = EFSSystem.Parser.Expression(Instance, identifier, Filter.AllMatches);
                 if (expression != null)
                 {
