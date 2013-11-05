@@ -244,6 +244,16 @@ namespace GUI
         private Synchronizer WindowSynchronizer { get; set; }
 
         /// <summary>
+        /// The maximum size of the history
+        /// </summary>
+        private const int MAX_SELECTION_HISTORY = 100;
+
+        /// <summary>
+        /// The selection history
+        /// </summary>
+        public List<DataDictionary.ModelElement> SelectionHistory { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public MainWindow()
@@ -253,6 +263,7 @@ namespace GUI
             AllowRefresh = true;
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
+            SelectionHistory = new List<DataDictionary.ModelElement>();
 
             WindowSynchronizer = new Synchronizer(this, 300);
             KeyUp += new KeyEventHandler(MainWindow_KeyUp);
@@ -1666,6 +1677,52 @@ namespace GUI
                 if (form is StateDiagram.StateDiagramWindow)
                 {
                     ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the MDI window is currently handling a selection change
+        /// </summary>
+        public bool HandlingSelection { get; set; }
+
+        /// <summary>
+        /// Keeps track of a new selection
+        /// </summary>
+        /// <param name="selected"></param>
+        public void HandleSelection(DataDictionary.ModelElement selected)
+        {
+            if (selected != null)
+            {
+                if (!HandlingSelection)
+                {
+                    try
+                    {
+                        HandlingSelection = true;
+
+                        if (SelectionHistory.Count > MAX_SELECTION_HISTORY)
+                        {
+                            SelectionHistory.RemoveAt(SelectionHistory.Count - 1);
+                        }
+
+                        if (SelectionHistory.Count == 0 || SelectionHistory[0] != selected)
+                        {
+                            SelectionHistory.Insert(0, selected);
+
+                            foreach (Form form in SubForms)
+                            {
+                                Shortcuts.Window shortcutWindow = form as Shortcuts.Window;
+                                if (shortcutWindow != null)
+                                {
+                                    shortcutWindow.RefreshModel();
+                                }
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        HandlingSelection = false;
+                    }
                 }
             }
         }

@@ -18,6 +18,15 @@ namespace GUI.Shortcuts
     public partial class ShortcutTreeView : TypedTreeView<DataDictionary.Shortcuts.ShortcutDictionary>
     {
         /// <summary>
+        /// Constructor
+        /// </summary>
+        public ShortcutTreeView()
+            : base()
+        {
+            KeepTrackOfSelection = false;
+        }
+
+        /// <summary>
         /// Builds the tree model according to the root node
         /// </summary>
         protected override void BuildModel()
@@ -26,6 +35,11 @@ namespace GUI.Shortcuts
             foreach (DataDictionary.Dictionary dictionary in Root.EFSSystem.Dictionaries)
             {
                 Nodes.Add(new ShortcutDictionaryTreeNode(dictionary.ShortcutsDictionary));
+            }
+
+            foreach (BaseTreeNode node in Nodes)
+            {
+                node.Expand();
             }
         }
     }

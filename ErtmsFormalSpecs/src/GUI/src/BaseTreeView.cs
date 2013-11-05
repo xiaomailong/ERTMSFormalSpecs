@@ -41,6 +41,24 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Provides the enclosing MDI window
+        /// </summary>
+        public MainWindow MDIWindow
+        {
+            get
+            {
+                MainWindow retVal = null;
+
+                if (ParentForm != null)
+                {
+                    retVal = ParentForm.MDIWindow;
+                }
+
+                return retVal;
+            }
+        }
+
         public static int FileImageIndex;
         public static int ClosedFolderImageIndex;
         public static int ExpandedFolderImageIndex;
@@ -135,6 +153,11 @@ namespace GUI
         private NameSynchronizer NodeNameSynchronizer { get; set; }
 
         /// <summary>
+        /// Indicates that selection should be taken into account while considering history
+        /// </summary>
+        protected bool KeepTrackOfSelection { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         protected BaseTreeView()
@@ -181,6 +204,8 @@ namespace GUI
 
             NodeColorSynchronizer = new ColorSynchronizer(this, 300);
             NodeNameSynchronizer = new NameSynchronizer(this, 5000);
+
+            KeepTrackOfSelection = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -204,8 +229,16 @@ namespace GUI
         /// <param name="e"></param>
         void BeforeExpandHandler(object sender, TreeViewCancelEventArgs e)
         {
-            Selected = e.Node as BaseTreeNode;
-            Selected.HandleExpand();
+            try
+            {
+                MDIWindow.HandlingSelection = true;
+                Selected = e.Node as BaseTreeNode;
+                Selected.HandleExpand();
+            }
+            finally
+            {
+                MDIWindow.HandlingSelection = false;
+            }
         }
 
         /// <summary>
@@ -215,8 +248,16 @@ namespace GUI
         /// <param name="e"></param>
         void BeforeCollapseHandler(object sender, TreeViewCancelEventArgs e)
         {
-            Selected = e.Node as BaseTreeNode;
-            Selected.HandleCollapse();
+            try
+            {
+                MDIWindow.HandlingSelection = true;
+                Selected = e.Node as BaseTreeNode;
+                Selected.HandleCollapse();
+            }
+            finally
+            {
+                MDIWindow.HandlingSelection = false;
+            }
         }
 
         /// <summary>
@@ -353,6 +394,10 @@ namespace GUI
             Selected = e.Node as BaseTreeNode;
             if (Selected != null)
             {
+                if (KeepTrackOfSelection)
+                {
+                    MDIWindow.HandleSelection(Selected.Model);
+                }
                 Selected.SelectionChanged();
             }
             currentSelection = Selected;
