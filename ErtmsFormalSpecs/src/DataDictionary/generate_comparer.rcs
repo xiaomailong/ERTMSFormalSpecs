@@ -302,7 +302,7 @@ BEGIN
 END;
 
 -- Indicates that elements of this type are ordered in their enclosing list
-TRACE PROCEDURE Ordered ( TypeName )
+PROCEDURE Ordered ( TypeName )
 BEGIN
   RESULT := FALSE;
   FOR meta IN Elements[TypeName].RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
