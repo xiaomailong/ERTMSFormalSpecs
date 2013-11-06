@@ -286,8 +286,10 @@ namespace DataDictionary
             {
                 T retVal = null;
 
-                XmlBFileContext ctxt = new XmlBFileContext();
-                ctxt.readFile(filePath);
+                // Do not rely on XmlBFileContext since it does not care about encoding. 
+                // File encoding is UTF-8
+                StreamReader file = new StreamReader(filePath);
+                XmlBStringContext ctxt = new XmlBStringContext(file.ReadToEnd());
                 try
                 {
                     Generated.ControllersManager.DesactivateAllNotifications();

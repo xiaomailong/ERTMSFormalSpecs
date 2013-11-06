@@ -17,6 +17,7 @@ namespace Utils
 {
     using System;
     using System.IO;
+    using System.Text;
 
     /// <summary>
     /// The class versioned writer overwrites a new file when the preceding contents is different from the original one
@@ -56,6 +57,32 @@ namespace Utils
         }
 
         /// <summary>
+        /// Formats the line currently read
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public string FormatLine(string line)
+        {
+            StringBuilder retVal = new StringBuilder();
+
+            for (int i = 0; i < line.Length; i++)
+            {
+                switch (line[i])
+                {
+                    case '\r':
+                        // Ignore
+                        break;
+
+                    default:
+                        retVal.Append(line[i]);
+                        break;
+                }
+            }
+
+            return retVal.ToString();
+        }
+
+        /// <summary>
         /// Checks if the file contents are the same
         /// </summary>
         /// <param name="tempFilePath"></param>
@@ -70,8 +97,8 @@ namespace Utils
                 StreamReader newFile = new StreamReader(tempFilePath);
                 while (retVal && !original.EndOfStream && !newFile.EndOfStream)
                 {
-                    string originalLine = original.ReadLine().Replace("\r", "");
-                    string newLine = newFile.ReadLine().Replace("\r", "");
+                    string originalLine = FormatLine(original.ReadLine());
+                    string newLine = FormatLine(newFile.ReadLine());
 
                     retVal = originalLine.Equals(newLine);
                 }
@@ -96,13 +123,18 @@ namespace Utils
         {
             // Replace the original file with the new file
             StreamReader newFile = new StreamReader(tempFilePath);
+
+            // To be on the safe side, ensure that the directory is present
             Directory.CreateDirectory(Path.GetDirectoryName(TargetPath));
+
+            // Read the original file and replace the contents of the target file
             StreamWriter original = new StreamWriter(TargetPath);
             while (!newFile.EndOfStream)
             {
-                String newLine = newFile.ReadLine();
+                String newLine = FormatLine(newFile.ReadLine());
                 original.WriteLine(newLine);
             }
+
             original.Close();
             newFile.Close();
         }
@@ -114,10 +146,14 @@ namespace Utils
         /// <returns></returns>
         private static FileStream CreateTempStream(string original)
         {
+            FileStream retVal;
+
             string extension = Path.GetExtension(original);
             string basename = Path.GetFileNameWithoutExtension(original);
             string fileName = Path.Combine(Path.GetTempPath(), basename + Guid.NewGuid().ToString() + extension);
-            return new FileStream(fileName, FileMode.Create);
+            retVal = new FileStream(fileName, FileMode.Create);
+
+            return retVal;
         }
     }
 }
