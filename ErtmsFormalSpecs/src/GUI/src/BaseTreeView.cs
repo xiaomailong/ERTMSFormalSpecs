@@ -564,7 +564,7 @@ namespace GUI
         {
             BaseTreeNode retVal = null;
 
-            if (considerThisOne)
+            if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
             {
                 if (node.Model.HasMessage(levelEnum) && node.Model != current)
                 {
