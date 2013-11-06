@@ -320,6 +320,7 @@
   <!-- ---------- -->
   <ELEMENT NAME="EnumValue" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">types</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Value"      TYPE="PCHAR"/>
     </FIELDS>
@@ -480,6 +481,7 @@
   <!-- ----- -->
   <ELEMENT NAME="Case" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">types</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="PreConditions" REFTYPE="PreCondition" />
       <FIELD NAME="Expression"    TYPE="PCHAR" />
@@ -670,6 +672,7 @@
   <!-- ------------- -->
   <ELEMENT NAME="PreCondition" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Condition" TYPE="PCHAR"/>
     </FIELDS>
@@ -683,6 +686,7 @@
   <!-- ------ -->
   <ELEMENT NAME="Action" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Expression" TYPE="PCHAR"/>
     </FIELDS>
@@ -903,6 +907,7 @@
   <!-- ----------- -->
   <ELEMENT NAME="Expectation" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">test</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Value"      TYPE="PCHAR">
         <META NAME="TargetName">Expression</META>
@@ -1215,7 +1220,9 @@
     <META NAME="Package">requirements</META>
     <META NAME="Class">Paragraph</META>
     <FIELDS>
-      <FIELD NAME="Id" TYPE="PCHAR"/>
+      <FIELD NAME="Id" TYPE="PCHAR">
+        <META NAME="Key"/> 
+      </FIELD>
       <FIELD NAME="Paragraphs" REFTYPE="Paragraph" MODE="DEFAULT">
         <META NAME="TargetName">SubParagraphs</META>
       </FIELD>
@@ -1243,7 +1250,9 @@
   <ELEMENT NAME="Paragraph" BASEELEMENT="ReferencesParagraph" BASECLASS="DataDictionary.ReferencesParagraph" MAIN="TRUE">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Id"                   TYPE="PCHAR" />
+      <FIELD NAME="Id"                   TYPE="PCHAR">
+        <META NAME="Key"/> 
+      </FIELD>
       <FIELD NAME="Type"                 ENUMTYPE="Paragraph_type" />
       <FIELD NAME="Scope"                ENUMTYPE="Paragraph_scope" >
         <META NAME="DoNotTranslate" />

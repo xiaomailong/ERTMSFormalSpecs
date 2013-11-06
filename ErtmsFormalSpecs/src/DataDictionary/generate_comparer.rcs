@@ -84,7 +84,7 @@ BEGIN
           END;
         ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
           IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
-            IF (field.REFTYPE IN {'Action', 'PreCondition', 'Expectation', 'Case', 'EnumValue'}) THEN
+            IF Ordered ( field.REFTYPE ) THEN 
               FILE1.WriteList({
 `            if ( obj.all`field.NAME`() != null )
 `            {
@@ -139,7 +139,7 @@ BEGIN
 `                        bool compared = false;
 `                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
 `                        {
-`                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
 `                            {
 `                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement, diff );
 `                                compared = true;
@@ -158,7 +158,7 @@ BEGIN
 `                        bool found = false;
 `                        foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
 `                        {
-`                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
 `                            {
 `                                found = true;
 `                                break;
@@ -284,6 +284,33 @@ END GenerateImporterClass;
 
 VAR
   Elements;
+
+-- Provides the identifier method or property
+PROCEDURE Identifier ( TypeName )
+BEGIN
+  FOR field IN Elements[TypeName].RecursiveGetElementChildNodes("FIELD") WHILE RESULT == VOID DO
+    FOR meta IN field.RecursiveGetElementChildNodes("META") WHILE RESULT == VOID DO
+      IF meta.NAME = "Key" THEN
+        RESULT := "get" & field.NAME & "()";
+      END;
+    END;
+  END;
+
+  IF RESULT = VOID THEN 
+    RESULT := "Name";
+  END;
+END;
+
+-- Indicates that elements of this type are ordered in their enclosing list
+TRACE PROCEDURE Ordered ( TypeName )
+BEGIN
+  RESULT := FALSE;
+  FOR meta IN Elements[TypeName].RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
+    IF meta.NAME = "Ordered" THEN
+      RESULT := TRUE;
+    END;
+  END;
+END;
 
 -- Creates the symbol table for the elements of the system
 PROCEDURE PopulateSymbols( doc )
