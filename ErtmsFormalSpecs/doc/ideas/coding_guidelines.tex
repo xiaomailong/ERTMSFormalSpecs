@@ -1,10 +1,30 @@
-\documentclass[a4paper, oneside]{scrreprt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% USAGE:
+%%
+%% 1. add your name with \addauthor{<initials>}{<full name>} below
+%% 2. make your changes
+%% 3. for every rule add a \ruleauthor{<initials>}{<date}> at the end
+%% 4. put remarks with \<initials>note{<sometext>},
+%%    \<initials>warning{<sometext>} or
+%%    \<initials>fatal{<sometext>} (in order of significance}
+%% 5. add \vhEntry{<versionnumber>}{<date>}{<initials>}{<sometext>} to the
+%%    respective section in the header
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\documentclass[draft, a4paper, oneside]{scrreprt}
 \usepackage[american]{babel}
 \usepackage{enumitem}
 \usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
-\usepackage{xcolor}
+\usepackage[usenames, dvipsnames]{xcolor}
 \usepackage{xspace}
 \usepackage[tablegrid]{vhistory}
+\usepackage{fixme}
+\usepackage[lighttt]{lmodern} %add better ttfont including a bold variant
+\usepackage{listings}
 \usepackage{hyperref}
 \usepackage{scrpage2}
 
@@ -50,16 +70,53 @@ urlcolor = black
 \setenumerate[3]{label*=\arabic*.}
 \let\emph\textsl
 
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\TODO}{\colorbox{red}{\textcolor{white}{\textbf{\textsf{TODO}}}}\xspace}
-\newcommand{\TBD}{\colorbox{green}{\textcolor{white}{\textbf{\textsf{TBD}}}}\xspace}
-\newcommand{\remark}[1]{\mbox{}\newline\colorbox{yellow}{\textsf{\textbf{remark:} #1}}\xspace}
+\fxsetup{mode=multiuser, theme=color, layout=inline}
+\colorlet{fxnote}{Green} 
+\colorlet{fxnotefg}{black}
+\colorlet{fxnotebg}{LimeGreen} %is not the same as fxnote to keep it readable
+\colorlet{fxfatal}{red}
+\colorlet{fxfatalbg}{red}
+\colorlet{fxfatalfg}{white}
+\colorlet{fxwarning}{Plum}
+\colorlet{fxwarningbg}{Plum}
+\colorlet{fxwarningfg}{White}
+% redefine the layout macro:
+\makeatletter
+\renewcommand*\FXLayoutInline[3]{%
+  \@fxdocolon {#3}{%
+    \@fxuseface {inline}%
+    \colorbox{fx#1bg}{\color {fx#1fg}\ignorespaces \sffamily #2 \textsubscript{\emph{#3}}}}}
+\makeatother
+
+\lstdefinelanguage{EFSDSL}
+{keywords={SUM, USING, REDUCE, RESULT, THERE_IS_IN, FIRST_IN, LAST_IN, MAP, NOT, EMPTY},
+morekeywords=[2]{Condition, List},
+sensitive=true}
+\lstset{%
+language=EFSDSL,
+basicstyle=\ttfamily,
+keywordstyle=\bfseries,
+keywordstyle=[2]\emph,
+breakatwhitespace=true,
+breaklines=true}
+\newcommand{\code}[1]{\lstinline$#1$}
+
 \newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}
+
+\newcommand{\addauthor}[2]{%
+%setup vhistory
+\expandafter\newcommand\csname #1\endcsname{#2}
+%setup fixme
+\FXRegisterAuthor{#1}{a#1}{#1}
+}
+
 % END specific commands for this file
 
 
 %BEGIN abbreviations for author names
-\newcommand{\MD}{Moritz Dorka}
+
+\addauthor{MD}{Moritz Dorka}
+
 % @ALL:
 % extend as needed
 % then a \vhEntry as shown below, that's it!
@@ -67,8 +124,11 @@ urlcolor = black
 %END abbreviations for author names
 
 
-
-% BEGIN OF THE ACTUAL DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% BEGIN OF THE ACTUAL DOCUMENT
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \title{\docTitle}
@@ -80,6 +140,7 @@ urlcolor = black
 
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
+
 % @ALL:
 % add your revision information here
 \end{versionhistory}
@@ -89,15 +150,20 @@ urlcolor = black
 \newpage
 
 \addchap{How to read this file}
-\TODO
+\MDfatal{TODO}
+\begin{itemize}
+\item intended audience
+\item typographical conventions
+\item \ldots
+\end{itemize}
 
 \chapter{Domain specific language}
 
 \section{General}
 \begin{enumerate}
-\item \TODO \code{EMPTY} vs. \code{NOT AVAILABLE()} vs. \code{$[\,]$} \ruleauthor{MD}{31/10/2013}
-\item \code{SUM \emph{List} USING X} shall be preferred over \code{REDUCE \emph{List} USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
-\item \code{THERE_IS_IN \emph{List} | \emph{Condition}} shall be preferred over \code{MAP \emph{List} | \emph{Condition} USING X}. \ruleauthor{MD}{31/10/2013}
+\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT AVAILABLE()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
+\item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
+\item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 
@@ -108,8 +174,8 @@ urlcolor = black
 
 \subsubsection{General}
 \begin{enumerate}
-\item \label{rule:functions_cases_general_trivialexpressions}\TBD Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
-\item \TBD Complex expressions and pre-conditions shall not be used together. \remark{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
+\item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
+\item \MDwarning{TBD} Complex expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 \subsubsection{Pre-conditions}
@@ -131,7 +197,7 @@ urlcolor = black
 
 \section{Naming conventions}
 \begin{enumerate}
-\item Individual test steps shall be named \code{Step \emph{n} - \emph{explanation}}.\\ \emph{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
+\item Individual test steps shall be named \code{Step n - explanation}.\\ \emph{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 
@@ -154,5 +220,8 @@ urlcolor = black
 \item Commits dealing with the modeling part of the tool shall begin with \emph{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the testing part of the tool shall begin with \emph{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
+
+\listoffixmes
+
 
 \end{document}
