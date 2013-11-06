@@ -73,7 +73,7 @@ namespace GUI
         {
             get
             {
-                if (__instance == null)
+                if (__instance == null && EnclosingForm != null)
                 {
                     __instance = (DataDictionary.ModelElement)EnclosingForm.Selected;
                 }
@@ -88,7 +88,12 @@ namespace GUI
         /// <summary>
         /// Provides the EFSSystem 
         /// </summary>
-        private EFSSystem EFSSystem { get { return Instance.EFSSystem; } }
+        private EFSSystem EFSSystem { 
+            get 
+            { 
+                return Instance.EFSSystem; 
+            } 
+        }
 
         /// <summary>
         /// Indicates that autocompletion is active for the text box
@@ -184,45 +189,48 @@ namespace GUI
         {
             List<INamable> retVal = new List<INamable>();
 
-            int index = EditionTextBox.GetCharIndexFromPosition(location);
+            if (Instance != null)
+            {
+                int index = EditionTextBox.GetCharIndexFromPosition(location);
 
-            int start = index;
-            while (start > 0 && ValidIdentifierCharacter(EditionTextBox.Text[start]))
-            {
-                start -= 1;
-            }
-            if (start > 0)
-            {
-                start += 1;
-            }
-
-            int end = index;
-            while (end < EditionTextBox.Text.Length && ValidIdentifierCharacter(EditionTextBox.Text[end]) && EditionTextBox.Text[end] != '.')
-            {
-                end += 1;
-            }
-            if (end < EditionTextBox.Text.Length)
-            {
-                end -= 1;
-            }
-
-            if (start < end)
-            {
-                string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                Expression expression = EFSSystem.Parser.Expression(Instance, identifier, Filter.AllMatches);
-                if (expression != null)
+                int start = index;
+                while (start > 0 && ValidIdentifierCharacter(EditionTextBox.Text[start]))
                 {
-                    if (expression.Ref != null)
+                    start -= 1;
+                }
+                if (start > 0)
+                {
+                    start += 1;
+                }
+
+                int end = index;
+                while (end < EditionTextBox.Text.Length && ValidIdentifierCharacter(EditionTextBox.Text[end]) && EditionTextBox.Text[end] != '.')
+                {
+                    end += 1;
+                }
+                if (end < EditionTextBox.Text.Length)
+                {
+                    end -= 1;
+                }
+
+                if (start < end)
+                {
+                    string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
+                    Expression expression = EFSSystem.Parser.Expression(Instance, identifier, Filter.AllMatches);
+                    if (expression != null)
                     {
-                        retVal.Add(expression.Ref);
-                    }
-                    else
-                    {
-                        bool last = end == EditionTextBox.Text.Length || EditionTextBox.Text[end] != '.';
-                        ReturnValue returnValue = expression.getReferences(Instance, Filter.AllMatches, last);
-                        foreach (ReturnValueElement element in returnValue.Values)
+                        if (expression.Ref != null)
                         {
-                            retVal.Add(element.Value);
+                            retVal.Add(expression.Ref);
+                        }
+                        else
+                        {
+                            bool last = end == EditionTextBox.Text.Length || EditionTextBox.Text[end] != '.';
+                            ReturnValue returnValue = expression.getReferences(Instance, Filter.AllMatches, last);
+                            foreach (ReturnValueElement element in returnValue.Values)
+                            {
+                                retVal.Add(element.Value);
+                            }
                         }
                     }
                 }
