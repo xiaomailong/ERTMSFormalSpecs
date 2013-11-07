@@ -195,14 +195,16 @@
  Name="AddNewLTO"
 >
 <ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef><ReqRef
  Id="7.5.1.39"
 >
 </ReqRef><ReqRef
  Id="7.5.1.67"
+>
+</ReqRef><ReqRef
  Id="5.10.1.2"
+>
+</ReqRef><ReqRef
+ Id="7.4.2.9.bis"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -299,7 +301,7 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
  Id="5.10.2.2"
 >
 </ReqRef><ReqRef
- Id="7.4.2.9.1"
+ Id="7.4.2.9.bis"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -366,7 +368,7 @@ Packet.Sequence1</Action></Actions>
  Id="5.10.1.4"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.17"
+ Id="Entry 7.4.1.1.17"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -517,7 +519,7 @@ Packet.Sequence1</Action></Actions>
  Id="5.10.2.7"
 >
 <Comment></Comment>
- Id="Entry 7.4.1.1.18"
+</ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

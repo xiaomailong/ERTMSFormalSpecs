@@ -638,8 +638,6 @@ If the train direction is unknown, this function returns true only if the packet
 <Action>Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Id="Entry 7.4.1.1.6"
- Id="Entry 7.4.1.1.8"
  Name="Repositioning information available"
 >
 <ReqRef
@@ -1420,7 +1418,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.7.1.1.b"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.5"
+ Id="Entry 7.4.1.1.6"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
@@ -1444,7 +1442,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.7.1.1.b"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.7"
+ Id="Entry 7.4.1.1.8"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>

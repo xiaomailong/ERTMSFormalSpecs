@@ -293,31 +293,6 @@
  Name="Sub-step1"
 >
 <Actions>
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L1,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.LNTC,
-        NTC =&gt; 12
-    }
-]</Action><Action>Kernel.InhibitedLevels.DataState &lt;- DataState.Valid</Action></Actions>
->Kernel.InhibitedLevels.Levels ==
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L1,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.LNTC,
-        NTC =&gt; 12
-    }
-]</Expectation></Expectations>
 <Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.DriverId.Value &lt;- &apos;Svetlana&apos;</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step

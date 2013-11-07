@@ -759,58 +759,6 @@
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
-<Action>Kernel.InhibitedLevels.Levels &lt;-
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L2,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L3,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    }
-]</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2</Action></Actions>
->DMI.MasterDMI().In_LevelInhibition.InhibitedLevels ==
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L2,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L3,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    }
-]</Expectation><Expectation
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;-
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L2,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L3,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    }
-]</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action></Actions>
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;-
-[
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L2,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    },
-    Default.LevelData
-    {
-        Value =&gt; Default.Level.L3,
-        NTC =&gt; NID_NTC.NOT_APPLICABLE
-    }
-]</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action></Actions>
  Name="Request level if unknown or invalid"
 >
 <ReqRef
@@ -4317,6 +4265,7 @@
  Kind="Instantaneous"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.ConnectionStatus == EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
