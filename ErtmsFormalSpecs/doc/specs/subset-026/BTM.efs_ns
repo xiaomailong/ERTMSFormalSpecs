@@ -504,7 +504,6 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Implemented="TRUE"
  Name="ConsiderPacket"
 >
 <ReqRef
@@ -617,7 +616,7 @@ If the train direction is unknown, this function returns true only if the packet
  Id="3.18.2.4"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.3"
+ Id="Entry 7.4.1.1.3"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
@@ -631,7 +630,7 @@ If the train direction is unknown, this function returns true only if the packet
  Id="3.4.2.3.2.1"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.4"
+ Id="Entry 7.4.1.1.4"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LINKING.Q_DIR )</PreCondition></PreConditions>
@@ -648,7 +647,7 @@ If the train direction is unknown, this function returns true only if the packet
  Id="3.8.5.2.2"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.8"
+ Id="Entry 7.4.1.1.9"
 >
 </ReqRef><PreConditions>
 <PreCondition>Linking.CurrentBGAcceptableUnknown ()
@@ -667,7 +666,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.2"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.9"
+ Id="Entry 7.4.1.1.10"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.GRADIENT_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -684,7 +683,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.1"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.10"
+ Id="Entry 7.4.1.1.11"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -694,7 +693,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="Level Transition available"
 >
 <ReqRef
- Id="7.4.1.1.13"
+ Id="Entry 7.4.1.1.14"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -706,7 +705,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="Session management available"
 >
 <ReqRef
- Id="7.4.1.1.14"
+ Id="Entry 7.4.1.1.15"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Q_DIR )</PreCondition></PreConditions>
@@ -717,10 +716,10 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="List of balises for SH available"
 >
 <ReqRef
- Id="7.4.1.1.19"
+ Id="5.7.1.3"
 >
 </ReqRef><ReqRef
- Id="5.7.1.3"
+ Id="Entry 7.4.1.1.19"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Q_DIR )</PreCondition></PreConditions>
@@ -737,7 +736,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.3"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.20"
+ Id="Entry 7.4.1.1.20"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -754,7 +753,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.4"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.21"
+ Id="Entry 7.4.1.1.21"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -768,7 +767,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.11.5.1"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.26"
+ Id="Entry 7.4.1.1.26"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
@@ -782,7 +781,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.11.5.5"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.27"
+ Id="Entry 7.4.1.1.27"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
@@ -799,7 +798,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.5"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.29"
+ Id="Entry 7.4.1.1.29"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_CONDITION.Q_DIR )</PreCondition></PreConditions>
@@ -816,7 +815,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.6"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.31"
+ Id="Entry 7.4.1.1.31"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Q_DIR )</PreCondition></PreConditions>
@@ -839,7 +838,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.8"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.32"
+ Id="Entry 7.4.1.1.32"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition></PreConditions>
@@ -850,9 +849,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Name="Mode Profile available"
 >
 <ReqRef
- Id="7.4.1.1.36"
->
-</ReqRef><ReqRef
  Id="5.7.1.3"
 >
 </ReqRef><ReqRef
@@ -863,6 +859,9 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 >
 </ReqRef><ReqRef
  Id="5.9.2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 7.4.1.1.36"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.MODE_PROFILE.Q_DIR )</PreCondition></PreConditions>
@@ -876,7 +875,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.12.5.1"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.37"
+ Id="Entry 7.4.1.1.37"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -894,7 +893,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.9.1.1.a"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.44"
+ Id="Entry 7.4.1.1.44"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Q_DIR )</PreCondition><PreCondition>Kernel.Infill.InfillTransmissionMediaAvailable</PreCondition></PreConditions>
@@ -917,7 +916,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.7.1.1.c.7"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.46"
+ Id="Entry 7.4.1.1.46"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -938,7 +937,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="5.13.1.6"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.47"
+ Id="Entry 7.4.1.1.47"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition>NOT ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition></PreConditions>
@@ -955,7 +954,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
  Id="3.11.12.5"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.49"
+ Id="Entry 7.4.1.1.49"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
@@ -1419,7 +1418,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.7.1.1.b"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.5"
+ Id="Entry 7.4.1.1.6"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>
@@ -1443,7 +1442,7 @@ If all the messages of the current balise group have been received, calls Handle
  Id="3.7.1.1.b"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.7"
+ Id="Entry 7.4.1.1.8"
 >
 </ReqRef><PreConditions>
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Q_DIR )</PreCondition></PreConditions>

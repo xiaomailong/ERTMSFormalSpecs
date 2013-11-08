@@ -12,10 +12,10 @@
  Id="5.10.1.1"
 >
 </ReqRef><ReqRef
- Id="7.4.2.9.1"
+ Id="5.10.1.2"
 >
 </ReqRef><ReqRef
- Id="5.10.1.2"
+ Id="7.4.2.9.bis"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -48,16 +48,16 @@
  Id="5.10.1.1"
 >
 </ReqRef><ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef><ReqRef
  Id="5.10.1.4"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.13"
+ Id="Entry 7.4.1.1.14"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.17"
+ Id="Entry 7.4.1.1.18"
+>
+</ReqRef><ReqRef
+ Id="7.4.2.9.bis"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -99,7 +99,7 @@
  Name="LTs"
 >
 <ReqRef
- Id="7.4.2.9.1"
+ Id="7.4.2.9.bis"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -195,9 +195,6 @@
  Name="AddNewLTO"
 >
 <ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef><ReqRef
  Id="7.5.1.39"
 >
 </ReqRef><ReqRef
@@ -205,6 +202,9 @@
 >
 </ReqRef><ReqRef
  Id="5.10.1.2"
+>
+</ReqRef><ReqRef
+ Id="7.4.2.9.bis"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -281,6 +281,9 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 </ReqRef><ReqRef
  Id="5.10.2.1"
 >
+</ReqRef><ReqRef
+ Id="7.4.2.9.bis"
+>
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
 <Parameters>
 <Parameter
@@ -298,7 +301,7 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
  Id="5.10.2.2"
 >
 </ReqRef><ReqRef
- Id="7.4.2.9.1"
+ Id="7.4.2.9.bis"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -365,7 +368,7 @@ Packet.Sequence1</Action></Actions>
  Id="5.10.1.4"
 >
 </ReqRef><ReqRef
- Id="7.4.1.1.17"
+ Id="Entry 7.4.1.1.17"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -580,16 +583,15 @@ Packet.Sequence1</Action></Actions>
  Name="LevelTransitionOrder"
 >
 <ReqRef
- Id="7.4.1.1.17"
->
-</ReqRef><ReqRef
- Id="7.4.1.1.13"
->
-<Comment></Comment>
-</ReqRef><ReqRef
  Id="5.10.1.1"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="Entry 7.4.1.1.14"
+>
+</ReqRef><ReqRef
+ Id="Entry 7.4.1.1.18"
+>
 </ReqRef><Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
  Type="Kernel.LevelTransition.LevelTransition"
@@ -614,13 +616,13 @@ Packet.Sequence1</Action></Actions>
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.4.1.1.17"
->
-</ReqRef><ReqRef
- Id="7.4.1.1.13"
->
-</ReqRef><ReqRef
  Id="5.10.1.4"
+>
+</ReqRef><ReqRef
+ Id="Entry 7.4.1.1.14"
+>
+</ReqRef><ReqRef
+ Id="Entry 7.4.1.1.18"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>

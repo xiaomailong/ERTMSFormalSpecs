@@ -1060,7 +1060,7 @@
  Name="RBCContactInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.13"
+ Id="Entry 4.7.2.2.14"
 >
 </ReqRef><Rules>
 <Rule
@@ -1404,7 +1404,7 @@
  Name="TrainRunningNumber"
 >
 <ReqRef
- Id="Entry 4.7.2.2.12"
+ Id="Entry 4.7.2.2.13"
 >
 </ReqRef><Rules>
 <Rule
@@ -2478,10 +2478,10 @@
  Name="TargetSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.5"
+ Id="3.13.10.4.2"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.2"
+ Id="Entry 4.7.2.2.6"
 >
 </ReqRef><Rules>
 <Rule
@@ -2825,7 +2825,7 @@
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.7"
+ Id="Entry 4.7.2.2.8"
 >
 </ReqRef><Rules>
 <Rule
@@ -3172,7 +3172,7 @@
  Name="SpeedAndDistanceMonitoringSupervisionStatus"
 >
 <ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="Entry 4.7.2.2.9"
 >
 </ReqRef><Rules>
 <Rule
@@ -3516,7 +3516,7 @@
  Name="TripReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="Entry 4.7.2.2.10"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -3841,7 +3841,7 @@
  Name="BrakeIndication"
 >
 <ReqRef
- Id="Entry 4.7.2.2.14"
+ Id="Entry 4.7.2.2.16"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -4158,7 +4158,7 @@
  Name="FixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.15"
+ Id="Entry 4.7.2.2.17"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -4469,7 +4469,7 @@
  Name="PlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.16"
+ Id="Entry 4.7.2.2.18"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -4781,7 +4781,7 @@
  Name="ReversingAllowed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.17"
+ Id="Entry 4.7.2.2.19"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -5098,7 +5098,7 @@
  Name="TrackConditionsWithoutSoundHorn"
 >
 <ReqRef
- Id="Entry 4.7.2.2.18"
+ Id="Entry 4.7.2.2.20"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -5409,7 +5409,7 @@
  Name="TrackConditionsWithSoundHorn"
 >
 <ReqRef
- Id="Entry 4.7.2.2.19"
+ Id="Entry 4.7.2.2.21"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -5720,7 +5720,7 @@
  Name="GeographicalPosition"
 >
 <ReqRef
- Id="Entry 4.7.2.2.20"
+ Id="Entry 4.7.2.2.22"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -6030,642 +6030,6 @@
 </Structure><Structure
  Implemented="TRUE"
  Name="OverrideStatus"
->
-<ReqRef
- Id="Entry 4.7.2.2.21"
->
-</ReqRef><StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="LXStatusNotProtected"
->
-<ReqRef
- Id="Entry 4.7.2.2.22"
->
-</ReqRef><StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="ShuntingRefusedByRbc"
 >
 <ReqRef
  Id="Entry 4.7.2.2.23"
@@ -6983,7 +6347,7 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
- Name="ShuntingRequestNotAnsweredByRbc"
+ Name="LXStatusNotProtected"
 >
 <ReqRef
  Id="Entry 4.7.2.2.24"
@@ -7301,10 +6665,646 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
- Name="AcceptedEmergencyStops"
+ Name="ShuntingRefusedByRbc"
 >
 <ReqRef
  Id="Entry 4.7.2.2.25"
+>
+</ReqRef><StructureElement
+ TypeName="DMI.OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+>
+</StructureElement><StructureElement
+ TypeName="ProcedureOutSM"
+ Default=""
+ Mode="Internal"
+ Name="ProcedureOut"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="NotAvailable"
+ Default="NotAvailable"
+ Name="ProcedureOutSM"
+>
+<States>
+<State
+ X="230"
+ Y="20"
+ Width="140"
+ Height="50"
+ Name="NotAvailable"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="120"
+ Width="140"
+ Height="50"
+ Name="NationalSystemAvailability"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="120"
+ Width="140"
+ Height="50"
+ Name="NotApplicable"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="230"
+ Width="140"
+ Height="50"
+ Name="Active"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="230"
+ Width="140"
+ Height="50"
+ Name="Available"
+>
+<StateMachine
+ InitialState="Idle"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+>
+<PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+>
+<PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ Implemented="TRUE"
+ Name="ShuntingRequestNotAnsweredByRbc"
+>
+<ReqRef
+ Id="Entry 4.7.2.2.26"
+>
+</ReqRef><StructureElement
+ TypeName="DMI.OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+>
+</StructureElement><StructureElement
+ TypeName="ProcedureOutSM"
+ Default=""
+ Mode="Internal"
+ Name="ProcedureOut"
+>
+</StructureElement><StateMachines>
+<StateMachine
+ InitialState="NotAvailable"
+ Default="NotAvailable"
+ Name="ProcedureOutSM"
+>
+<States>
+<State
+ X="230"
+ Y="20"
+ Width="140"
+ Height="50"
+ Name="NotAvailable"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="120"
+ Width="140"
+ Height="50"
+ Name="NationalSystemAvailability"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="120"
+ Width="140"
+ Height="50"
+ Name="NotApplicable"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="50"
+ Y="230"
+ Width="140"
+ Height="50"
+ Name="Active"
+>
+<StateMachine
+ InitialState="InitialState"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="InitialState"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateVariables"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UpdateVariable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="410"
+ Y="230"
+ Width="140"
+ Height="50"
+ Name="Available"
+>
+<StateMachine
+ InitialState="Idle"
+ NeedsRequirement="FALSE"
+>
+<States>
+<State
+ X="40"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Idle"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RequestActivated"
+>
+<PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="300"
+ Y="50"
+ Width="100"
+ Height="50"
+ Name="Send"
+>
+<StateMachine
+ InitialState=""
+ NeedsRequirement="FALSE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="DisableRequestActivated"
+>
+<PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></StateMachines>
+</Structure><Structure
+ Implemented="TRUE"
+ Name="AcceptedEmergencyStops"
+>
+<ReqRef
+ Id="Entry 4.7.2.2.27"
 >
 </ReqRef><Rules>
 <Rule
@@ -7642,7 +7642,7 @@
  Name="EntryInFsOs"
 >
 <ReqRef
- Id="Entry 4.7.2.2.26"
+ Id="Entry 4.7.2.2.28"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -7960,7 +7960,7 @@
  Name="LevelTransitionAnnouncement"
 >
 <ReqRef
- Id="Entry 4.7.2.2.27"
+ Id="Entry 4.7.2.2.29"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -8284,7 +8284,7 @@
  Name="TrackAheadFreeRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.2.28"
+ Id="Entry 4.7.2.2.30"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -8602,7 +8602,7 @@
  Name="AdhesionFactorSlipperyRail"
 >
 <ReqRef
- Id="Entry 4.7.2.2.29"
+ Id="Entry 4.7.2.2.31"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -8920,16 +8920,16 @@
  Name="ModeProposed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.33"
->
-</ReqRef><ReqRef
- Id="Entry 4.7.2.2.30"
->
-</ReqRef><ReqRef
  Id="Entry 4.7.2.2.32"
 >
 </ReqRef><ReqRef
  Id="Entry 4.7.2.2.34"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.2.36"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.2.35"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -9247,7 +9247,7 @@
  Name="OsLsShModeProposed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.31"
+ Id="Entry 4.7.2.2.33"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -9565,7 +9565,7 @@
  Name="TracksideMalfunction"
 >
 <ReqRef
- Id="Entry 4.7.2.2.35"
+ Id="Entry 4.7.2.2.37"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -9883,325 +9883,7 @@
  Name="NotificationOfTrainDataChangeFromOtherSource"
 >
 <ReqRef
- Id="Entry 4.7.2.2.36"
->
-</ReqRef><StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="JruFailure"
->
-<ReqRef
- Id="Entry 4.7.2.2.37"
+ Id="Entry 4.7.2.2.38"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -10519,7 +10201,7 @@
  Name="OperatedSystemVersion"
 >
 <ReqRef
- Id="Entry 4.7.2.2.38"
+ Id="Entry 4.7.2.2.39"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -10844,7 +10526,7 @@
  Name="RadioNetworkRegistrationFailed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.39"
+ Id="Entry 4.7.2.2.40"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -11162,10 +10844,10 @@
  Name="SafeRadioConnectionIndication"
 >
 <ReqRef
- Id="Entry 4.7.2.2.40"
+ Id="3.5.7.1"
 >
 </ReqRef><ReqRef
- Id="3.5.7.1"
+ Id="Entry 4.7.2.2.41"
 >
 </ReqRef><Rules>
 <Rule
@@ -11508,7 +11190,7 @@
  Name="LocalTime"
 >
 <ReqRef
- Id="Entry 4.7.2.2.41"
+ Id="Entry 4.7.2.2.42"
 >
 </ReqRef><Rules>
 <Rule
@@ -11852,7 +11534,7 @@
  Name="Gradient"
 >
 <ReqRef
- Id="Entry 4.7.2.2.42"
+ Id="Entry 4.7.2.2.43"
 >
 </ReqRef><Rules>
 <Rule
@@ -12189,7 +11871,7 @@
  Name="MRSP"
 >
 <ReqRef
- Id="Entry 4.7.2.2.43"
+ Id="Entry 4.7.2.2.44"
 >
 </ReqRef><Rules>
 <Rule
@@ -12533,7 +12215,7 @@
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.44"
+ Id="Entry 4.7.2.2.45"
 >
 </ReqRef><Rules>
 <Rule
@@ -12877,7 +12559,7 @@
  Name="FirstTargetAtZeroSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.45"
+ Id="Entry 4.7.2.2.46"
 >
 </ReqRef><Rules>
 <Rule
@@ -13221,7 +12903,7 @@
  Name="BrakeReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="Entry 4.7.2.2.47"
 >
 </ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
@@ -13236,324 +12918,6 @@
  Mode="Outgoing"
  NeedsRequirement="FALSE"
  Name="Reason"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="NoTrackConditionWillBeReceived"
->
-<ReqRef
- Id="Entry 4.7.2.2.47"
->
-</ReqRef><StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
 >
 </StructureElement><StructureElement
  TypeName="ProcedureOutSM"
@@ -14825,7 +14189,7 @@
  Name="TargetDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.2.6"
+ Id="Entry 4.7.2.2.7"
 >
 </ReqRef><Rules>
 <Rule
@@ -15169,7 +14533,7 @@
  Name="TrainData"
 >
 <ReqRef
- Id="Entry 4.7.2.2.10"
+ Id="Entry 4.7.2.2.11"
 >
 </ReqRef><Rules>
 <Rule

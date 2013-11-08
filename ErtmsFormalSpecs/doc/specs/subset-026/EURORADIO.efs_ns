@@ -208,16 +208,16 @@
  Name="RadioSessionInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
->
-</ReqRef><ReqRef
- Id="Entry 4.7.2.2.13"
->
-</ReqRef><ReqRef
  Id="3.5.3.5"
 >
 </ReqRef><ReqRef
  Id="3.5.3.5.3"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.7"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.2.14"
 >
 </ReqRef><StructureElement
  TypeName="EURORADIO.RadioNetworkId"
@@ -294,7 +294,7 @@
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.49"
+ Id="Entry 3.A3.4.1.3.1.48"
 >
 </ReqRef><Comment>Data state and the value of the RBC/RIU system version.</Comment>
 <StructureElement
@@ -960,7 +960,7 @@
  Name="GeneralMessage"
 >
 <ReqRef
- Id="8.4.4.4.1.5"
+ Id="Entry 8.4.4.4.1.1.4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -988,7 +988,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.1"
+ Id="7.4.2.15.bis"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
@@ -1024,13 +1024,13 @@
  Name="InfillMA"
 >
 <ReqRef
- Id="8.4.4.4.1.8"
->
-</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef><ReqRef
+ Id="Entry 8.4.4.4.1.1.7"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1087,13 +1087,13 @@
  Name="MAWithShiftedLocationReference"
 >
 <ReqRef
- Id="8.4.4.4.1.7"
->
-</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef><ReqRef
+ Id="Entry 8.4.4.4.1.1.6"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1158,7 +1158,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.1"
+ Id="7.4.2.15.bis"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
@@ -1176,13 +1176,13 @@
  Name="MovementAuthority"
 >
 <ReqRef
- Id="8.4.4.4.1.3"
->
-</ReqRef><ReqRef
  Id="3.8.3.9"
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.a"
+>
+</ReqRef><ReqRef
+ Id="Entry 8.4.4.4.1.1.2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1214,7 +1214,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.1"
+ Id="7.4.2.15.bis"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
@@ -1285,13 +1285,13 @@
  Name="RequestToShortenMA"
 >
 <ReqRef
- Id="8.4.4.4.1.4"
->
-</ReqRef><ReqRef
  Id="3.7.1.1.a"
 >
 </ReqRef><ReqRef
  Id="3.7.1.1.b"
+>
+</ReqRef><ReqRef
+ Id="Entry 8.4.4.4.1.1.3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1332,7 +1332,7 @@
  Name="SHAuthorised"
 >
 <ReqRef
- Id="8.4.4.4.1.6"
+ Id="Entry 8.4.4.4.1.1.5"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1350,7 +1350,7 @@
  Name="SRAuthorisation"
 >
 <ReqRef
- Id="8.4.4.4.1.2"
+ Id="Entry 8.4.4.4.1.1.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1684,7 +1684,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.49"
+ Id="Entry 3.A3.4.1.3.1.48"
 >
 </ReqRef></Variable><Variable
  Type="EURORADIO.RadioSessionInformation"

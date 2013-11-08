@@ -423,10 +423,10 @@ Available ( EURORADIO.EuroradioMessageIn.SH_AUTHORISED )</Expression>
  Id="Entry 5.4.3.2.S10.2"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.6"
+ Id="A1.2.1.1.1"
 >
 </ReqRef><ReqRef
- Id="A1.2.1.1.1"
+ Id="5.4.5.3.f"
 >
 </ReqRef><Cases>
 <Case
@@ -1483,7 +1483,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Reques
  Id="Entry 4.6.3.38"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.1"
+ Id="5.4.5.3.a"
 >
 </ReqRef><Cases>
 <Case
@@ -1739,13 +1739,13 @@ NLSignalReceived</Expression>
  Id="5.4.6.1"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.19"
->
-</ReqRef><ReqRef
- Id="5.4.5.3.6"
->
-</ReqRef><ReqRef
  Id="3.5.3.4.g"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.18"
+>
+</ReqRef><ReqRef
+ Id="5.4.5.3.f"
 >
 </ReqRef><PreConditions>
 <PreCondition>Condition46_SB()</PreCondition></PreConditions>
@@ -1755,36 +1755,16 @@ NLSignalReceived</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level 2/3"
->
-<ReqRef
- Id="Entry 5.4.3.2.S10.2.2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 2/3"
->
-<PreConditions>
-<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition>NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition>HandleModeChange in HandleModeChange.StartOfMission.S10</PreCondition></PreConditions>
-<Actions>
-<Action>DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Handle train position data state"
 >
 <ReqRef
- Id="Entry 5.4.3.3.19"
->
-</ReqRef><ReqRef
- Id="5.4.5.3.6.1"
->
-</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S10.4"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.18"
+>
+</ReqRef><ReqRef
+ Id="5.4.5.3.f.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1927,7 +1907,7 @@ NLSignalReceived</Expression>
  Id="Entry 5.4.3.2.S24.2"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="Entry 5.4.3.3.18"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1947,7 +1927,7 @@ NLSignalReceived</Expression>
  Name="Driver selected Override"
 >
 <ReqRef
- Id="5.4.5.3.1.1"
+ Id="5.4.5.3.a.1"
 >
 </ReqRef><PreConditions>
 <PreCondition>Condition37_SB()</PreCondition></PreConditions>
@@ -2025,7 +2005,7 @@ NLSignalReceived</Expression>
  Id="Entry 5.4.3.2.S23.2"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="Entry 5.4.3.3.18"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2067,7 +2047,7 @@ NLSignalReceived</Expression>
  Id="Entry 5.4.3.2.S22.2"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="Entry 5.4.3.3.18"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>

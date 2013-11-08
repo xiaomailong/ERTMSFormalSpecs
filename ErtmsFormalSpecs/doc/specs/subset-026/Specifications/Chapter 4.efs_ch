@@ -30,14 +30,15 @@
  id="4.3.1.1"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This document defines the modes of the ERTMS/ETCS on-board equipment (see chapter 4.4 &quot;Definition of the modes&quot; and chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+This document defines the modes of the ERTMS/ETCS on-board equipment (see chapter 4.4 &quot;Definition of the modes&quot; and chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.3.1.2"
  type="NOTE"
  scope="OBU"
@@ -255,7 +256,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Description<Sub>
+><Comment></Comment>
+Description<Sub>
 <Paragraph
  id="4.4.3.1.1"
  type="REQUIREMENT"
@@ -266,8 +268,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In Isolation mode, the ERTMS/ETCS on-board equipment shall be physically isolated from the brakes and can be isolated from other on-board equipments/systems depending on the specific on-board implementation.
-</Paragraph><Paragraph
+>In Isolation mode, the ERTMS/ETCS on-board equipment shall be physically isolated from the brakes and can be isolated from other on-board equipments/systems depending on the specific on-board implementation.</Paragraph><Paragraph
  id="4.4.3.1.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -277,8 +278,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->There shall be a clear indication to the driver that the ERTMS/ETCS on-board equipment is isolated.
-</Paragraph><Paragraph
+>There shall be a clear indication to the driver that the ERTMS/ETCS on-board equipment is isolated.</Paragraph><Paragraph
  id="4.4.3.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -288,19 +288,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->To leave Isolation mode, a special operating procedure is needed (no transition from Isolation is specified). This procedure shall ensure that the on-board equipment is only put back into service when it has been proven that this is safe for operation.
-</Paragraph><Paragraph
+>To leave Isolation mode, a special operating procedure is needed (no transition from Isolation is specified). This procedure shall ensure that the on-board equipment is only put back into service when it has been proven that this is safe for operation.</Paragraph><Paragraph
  id="4.4.3.1.4"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.3.2"
  type="TITLE"
@@ -418,19 +418,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall permanently command the emergency brake.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall permanently command the emergency brake.</Paragraph><Paragraph
  id="4.4.4.1.3"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.4.2"
  type="TITLE"
@@ -536,8 +536,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall switch to the System Failure mode in case of a fault, which affects safety.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall switch to the System Failure mode in case of a fault, which affects safety.</Paragraph><Paragraph
  id="4.4.5.1.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -547,19 +546,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall permanently command the Emergency Brakes.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall permanently command the Emergency Brakes.</Paragraph><Paragraph
  id="4.4.5.1.3"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.5.2"
  type="TITLE"
@@ -676,8 +675,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->As the engine is remote controlled by the leading engine, its ERTMS/ETCS on-board equipment shall not perform any train movement supervision.
-</Paragraph><Paragraph
+>As the engine is remote controlled by the leading engine, its ERTMS/ETCS on-board equipment shall not perform any train movement supervision.</Paragraph><Paragraph
  id="4.4.6.1.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -687,8 +685,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.</Paragraph><Paragraph
  id="4.4.6.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -698,8 +695,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Sleeping mode shall be automatically detected on-board via the train interface.
-</Paragraph><Paragraph
+>Sleeping mode shall be automatically detected on-board via the train interface.</Paragraph><Paragraph
  id="4.4.6.1.6"
  type="REQUIREMENT"
  scope="OBU"
@@ -709,8 +705,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If possible, the train must not be stopped due to a safety critical fault in a sleeping engine. The ERTMS/ETCS on-board equipment shall therefore try to memorise the occurrence of such fault(s), which shall be handled when the engine leaves the Sleeping mode. The ERTMS/ETCS on-board equipment shall also try to send an error information to the RBC.
-</Paragraph><Paragraph
+>If possible, the train must not be stopped due to a safety critical fault in a sleeping engine. The ERTMS/ETCS on-board equipment shall therefore try to memorise the occurrence of such fault(s), which shall be handled when the engine leaves the Sleeping mode. The ERTMS/ETCS on-board equipment shall also try to send an error information to the RBC.</Paragraph><Paragraph
  id="4.4.6.1.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -720,8 +715,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a desk of the sleeping engine is opened while the train is running (this is an abnormal operation), the ERTMS/ETCS on-board equipment shall switch to Stand-By mode.
-</Paragraph><Paragraph
+>If a desk of the sleeping engine is opened while the train is running (this is an abnormal operation), the ERTMS/ETCS on-board equipment shall switch to Stand-By mode.</Paragraph><Paragraph
  id="4.4.6.1.8"
  type="REQUIREMENT"
  scope="OBU"
@@ -731,8 +725,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the &quot;sleeping input signal&quot; is lost (no more detection of the remote control), the switch to Stand-By mode shall be made only if the train is at standstill.
-</Paragraph><Paragraph
+>If the &quot;sleeping input signal&quot; is lost (no more detection of the remote control), the switch to Stand-By mode shall be made only if the train is at standstill.</Paragraph><Paragraph
  id="4.4.6.1.9"
  type="DELETED"
  scope="OBU"
@@ -747,28 +740,65 @@
  id="4.4.6.1.10"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall open a communication session with the RBC when at least one of the following events occurs:<Sub>
+<Paragraph
+ id="4.4.6.1.10.a"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall open a communication session with the RBC when at least one of the following events occurs :
-	a) in all levels, on receipt of the order to contact the RBC.
-	b) In level 2/3, when entering or exiting Sleeping mode (to report the change of mode to the RBC).
-	c) In level 2/3, when a safety critical fault of the ERTMS/ETCS on-board equipment occurs (to report the fault to the RBC).
+>in all levels, on receipt of the order to contact the RBC.</Paragraph><Paragraph
+ id="4.4.6.1.10.b"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>In level 2/3, when entering or exiting Sleeping mode (to report the change of mode to the RBC).</Paragraph><Paragraph
+ id="4.4.6.1.10.c"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>In level 2/3, when a safety critical fault of the ERTMS/ETCS on-board equipment occurs (to report the fault to the RBC).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.6.1.11"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.6.1.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -778,8 +808,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In case of balise group message consistency error (refer to 3.16.2.4.4 and 3.16.2.5.1), the ERTMS/ETCS onboard equipment shall not command the service brake.
-</Paragraph><Paragraph
+>In case of balise group message consistency error (refer to 3.16.2.4.4 and 3.16.2.5.1), the ERTMS/ETCS onboard equipment shall not command the service brake.</Paragraph><Paragraph
  id="4.4.6.1.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -789,8 +818,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When in levels 2 or 3, if no compatible version has been established between the on-board equipment in Sleeping mode and the RBC, the ERTMS/ETCS onboard equipment shall react as specified in 3.5.3.8 b) but no driver&apos;s indication shall be given.
-</Paragraph></Sub>
+>When in levels 2 or 3, if no compatible version has been established between the on-board equipment in Sleeping mode and the RBC, the ERTMS/ETCS onboard equipment shall react as specified in 3.5.3.8 b) but no driver&apos;s indication shall be given.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.6.2"
  type="TITLE"
@@ -909,8 +937,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->It is in the Stand-By mode that the ERTMS/ETCS on-board equipment awakes.
-</Paragraph><Paragraph
+>It is in the Stand-By mode that the ERTMS/ETCS on-board equipment awakes.</Paragraph><Paragraph
  id="4.4.7.1.3"
  type="NOTE"
  scope="OBU"
@@ -923,16 +950,17 @@
  Name=""
 >Data for mission shall be collected in Stand-By (see SRS-chapter 5: &quot;Start of Mission&quot; procedure).</Paragraph><Paragraph
  id="4.4.7.1.4"
- type="DELETED"
+ type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Deleted.</Paragraph><Paragraph
+><Comment></Comment>
+In Stand-By mode, the desk of the engine can be open or closed. No interaction with the driver shall be possible as long as the desk is closed, except isolation of the ERTMS/ETCS on-board equipment.</Paragraph><Paragraph
  id="4.4.7.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -942,8 +970,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall perform the Standstill Supervision.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall perform the Standstill Supervision.</Paragraph><Paragraph
  id="4.4.7.1.6"
  type="NOTE"
  scope="OBU"
@@ -951,10 +978,11 @@
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.7.2"
  type="TITLE"
@@ -1139,11 +1167,13 @@
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When in Shunting mode, the ERTMS/ETCS on-board shall not manage level transitions. However, an immediate level transition order or a conditional level transition order shall be stored and evaluated only when another mode than Shunting or Passive Shunting has been entered (i.e. when the Shunting movement is terminated).<Sub>
+><Comment></Comment>
+When in Shunting mode, the ERTMS/ETCS on-board shall not manage level transitions. However, an immediate level transition order or a conditional level transition order shall be stored and evaluated only when another mode than Shunting or Passive Shunting has been entered (i.e. when the Shunting movement is terminated).<Sub>
 <Paragraph
  id="4.4.8.1.5.1"
  type="REQUIREMENT"
@@ -1154,8 +1184,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When receiving a communication session establishment order, the ERTMS/ETCS onboard in Shunting mode shall not establish the communication session, but shall store the RBC ID/phone number.
-</Paragraph><Paragraph
+>When receiving a communication session establishment order, the ERTMS/ETCS onboard in Shunting mode shall not establish the communication session, but shall store the RBC ID/phone number.</Paragraph><Paragraph
  id="4.4.8.1.5.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -1165,8 +1194,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When in Shunting mode, the ERTMS/ETCS on-board shall not manage RBC-RBC hand-over, except for storing the RBC ID/phone number given at the RBC/RBC border.
-</Paragraph></Sub>
+>When in Shunting mode, the ERTMS/ETCS on-board shall not manage RBC-RBC hand-over, except for storing the RBC ID/phone number given at the RBC/RBC border.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.8.1.6"
  type="REQUIREMENT"
@@ -1261,8 +1289,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall display the train speed and, only on driver request, the permitted speed. The display of the permitted speed shall also be stopped on driver request.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall display the train speed and, only on driver request, the permitted speed. The display of the permitted speed shall also be stopped on driver request.</Paragraph><Paragraph
  id="4.4.8.1.11"
  type="DELETED"
  scope="OBU"
@@ -1277,14 +1304,15 @@
  id="4.4.8.1.12"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.8.2"
  type="TITLE"
@@ -1453,14 +1481,15 @@
  id="4.4.9.1.7"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.9.2"
  type="TITLE"
@@ -1603,8 +1632,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall also supervise temporary speed restrictions.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall also supervise temporary speed restrictions.</Paragraph><Paragraph
  id="4.4.10.1.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1614,19 +1642,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall display the train speed to the driver.</Paragraph><Paragraph
  id="4.4.10.1.5"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.10.2"
  type="TITLE"
@@ -1766,8 +1794,7 @@
 	a) If the National/Default value determines the max permitted distance to run in SR mode, the starting point of this distance shall refer to the estimated position of the train front when SR mode was entered, or, already in Staff Responsible mode, when Override was activated.
 	b) If the max permitted distance to run in SR mode is determined by the value transmitted by the RBC, or entered by the driver, the start location of the distance shall refer to the estimated position of the train front when the distance information is received or entered.
 	c) If the max permitted distance to run in SR mode is determined by the value transmitted by EUROLOOP, the distance information transmitted by EUROLOOP shall be referred to one or more reference balise groups. On-board shall evaluate the distance to run in SR mode by matching the reference balise groups given with the LRBG.
-	In case the LRBG is, due to a change of orientation, in front of the train when the distance to run in SR mode is to be determined from the EUROLOOP information, the complete distance to run in SR mode shall be determined as the distance given by EUROLOOP plus the distance between the estimated train front end and the LRBG.
-</Paragraph></Sub>
+	In case the LRBG is, due to a change of orientation, in front of the train when the distance to run in SR mode is to be determined from the EUROLOOP information, the complete distance to run in SR mode shall be determined as the distance given by EUROLOOP plus the distance between the estimated train front end and the LRBG.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.11.1.4"
  type="NOTE"
@@ -1800,8 +1827,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a train movement is detected while the driver is entering the SR speed/distance limits, the ERTMS/ETCS on-board equipment shall trigger the brake command.
-</Paragraph></Sub>
+>If a train movement is detected while the driver is entering the SR speed/distance limits, the ERTMS/ETCS on-board equipment shall trigger the brake command.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.11.1.6"
  type="REQUIREMENT"
@@ -1834,8 +1860,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When entering SR mode, the value applicable for SR mode speed limit and the value applicable for SR distance shall be the corresponding National/Default values. Exception for SR distance: SR mode is authorised by RBC giving an SR distance.
-</Paragraph><Paragraph
+>When entering SR mode, the value applicable for SR mode speed limit and the value applicable for SR distance shall be the corresponding National/Default values. Exception for SR distance: SR mode is authorised by RBC giving an SR distance.</Paragraph><Paragraph
  id="4.4.11.1.6.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1845,8 +1870,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->While in SR mode, the value applicable for the SR mode speed limit shall be, if available, the last value entered by the driver.
-</Paragraph><Paragraph
+>While in SR mode, the value applicable for the SR mode speed limit shall be, if available, the last value entered by the driver.</Paragraph><Paragraph
  id="4.4.11.1.6.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1858,8 +1882,7 @@
  Name=""
 >While in SR mode, the value applicable for the SR distance shall be, if available, the last value received by the ERTMS/ETCS on-board equipment amongst:
 	a) the distance to run in SR entered by the driver;
-	b) the distance to run in SR given by trackside.
-</Paragraph><Paragraph
+	b) the distance to run in SR given by trackside.</Paragraph><Paragraph
  id="4.4.11.1.6.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1869,8 +1892,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When &quot;Override&quot; is selected, the SR mode speed limit value and the SR distance value previously entered by driver or given by trackside, if any, shall be deleted. The corresponding National/Default values shall enter in force.
-</Paragraph><Paragraph
+>When &quot;Override&quot; is selected, the SR mode speed limit value and the SR distance value previously entered by driver or given by trackside, if any, shall be deleted. The corresponding National/Default values shall enter in force.</Paragraph><Paragraph
  id="4.4.11.1.6.6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1880,8 +1902,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the train is in SR and receives a new distance to run in SR mode from the RBC, the stored list of expected balise groups, if any, shall be deleted or shall be replaced by the list of expected balise groups sent together with the distance to run in SR.
-</Paragraph><Paragraph
+>If the train is in SR and receives a new distance to run in SR mode from the RBC, the stored list of expected balise groups, if any, shall be deleted or shall be replaced by the list of expected balise groups sent together with the distance to run in SR.</Paragraph><Paragraph
  id="4.4.11.1.6.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -1891,8 +1912,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If an ERTMS/ETCS on-board equipment in SR mode, after having received from EUROLOOP max permitted distance to run in SR mode information, detects the main signal balise group being part of this information then it shall ignore any new max permitted distance to run in SR mode information from that loop.
-</Paragraph></Sub>
+>If an ERTMS/ETCS on-board equipment in SR mode, after having received from EUROLOOP max permitted distance to run in SR mode information, detects the main signal balise group being part of this information then it shall ignore any new max permitted distance to run in SR mode information from that loop.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.11.1.7"
  type="REQUIREMENT"
@@ -1903,8 +1923,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall display the train speed and the (when active) override (permission to pass a signal at danger, trip inhibited). The permitted speed, target distance and the target speed shall be displayed only on driver request, until the driver requests to stop their display.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall display the train speed and the (when active) override (permission to pass a signal at danger, trip inhibited). The permitted speed, target distance and the target speed shall be displayed only on driver request, until the driver requests to stop their display.</Paragraph><Paragraph
  id="4.4.11.1.8"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -1930,14 +1949,15 @@
  id="4.4.11.1.10"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.11.1.11"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -1948,7 +1968,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.</Paragraph></Sub>
+><Comment></Comment>
+Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.11.2"
  type="TITLE"
@@ -2065,8 +2086,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->On Sight mode cannot be selected by the driver, but shall be entered automatically when commanded by trackside and all necessary conditions are fulfilled.
-</Paragraph><Paragraph
+>On Sight mode cannot be selected by the driver, but shall be entered automatically when commanded by trackside and all necessary conditions are fulfilled.</Paragraph><Paragraph
  id="4.4.12.1.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2076,8 +2096,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall supervise train movements against a dynamic speed profile.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall supervise train movements against a dynamic speed profile.</Paragraph><Paragraph
  id="4.4.12.1.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2087,8 +2106,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver (this list is not exhaustive). The permitted speed, target distance,target speed and release speed (if any) shall be displayed only on driver request, until the driver requests to stop their display.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall display the train speed to the driver (this list is not exhaustive). The permitted speed, target distance,target speed and release speed (if any) shall be displayed only on driver request, until the driver requests to stop their display.</Paragraph><Paragraph
  id="4.4.12.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -2109,8 +2127,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->To be in On Sight mode, SSP and gradient are not required for the whole length of the train, but shall be at least available from the FRONT END of the train.
-</Paragraph><Paragraph
+>To be in On Sight mode, SSP and gradient are not required for the whole length of the train, but shall be at least available from the FRONT END of the train.</Paragraph><Paragraph
  id="4.4.12.1.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2148,14 +2165,15 @@
  id="4.4.12.1.9"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.12.2"
  type="TITLE"
@@ -2274,8 +2292,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall command the emergency brakes (no brake release is possible in Trip mode).
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall command the emergency brakes (no brake release is possible in Trip mode).</Paragraph><Paragraph
  id="4.4.13.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -2285,8 +2302,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall indicate to the driver the reason of the train trip.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall indicate to the driver the reason of the train trip.</Paragraph><Paragraph
  id="4.4.13.1.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -2313,14 +2329,28 @@
  id="4.4.13.1.5"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
+ id="4.4.13.1.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Closing the desk while being in Trip mode will not cause a mode change but no interaction with the driver shall be possible as long as the desk is closed, except isolation of the ERTMS/ETCS on-board equipment</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.13.2"
  type="TITLE"
@@ -2506,14 +2536,15 @@
  id="4.4.14.1.8"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.14.1.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -2596,7 +2627,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->NON LEADING<Sub>
+><Comment></Comment>
+NON LEADING<Sub>
 <Paragraph
  id="4.4.15.1"
  type="TITLE"
@@ -2665,8 +2697,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall not perform any train movement supervision in Non-Leading mode.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall not perform any train movement supervision in Non-Leading mode.</Paragraph><Paragraph
  id="4.4.15.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -2676,8 +2707,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.</Paragraph><Paragraph
  id="4.4.15.1.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -2687,8 +2717,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When level is 2 or 3, the ERTMS/ETCS on-board equipment shall report its position to the RBC, according to the previously received parameters.
-</Paragraph><Paragraph
+>When level is 2 or 3, the ERTMS/ETCS on-board equipment shall report its position to the RBC, according to the previously received parameters.</Paragraph><Paragraph
  id="4.4.15.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -2698,8 +2727,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If possible, the train must not be stopped due to a safety critical fault in a non-leading engine. The ERTMS/ETCS on-board equipment shall therefore try to memorise the occurrence of such fault(s), which shall be handled when the engine leaves Non Leading mode. The ERTMS/ETCS on-board equipment shall also try to send an error information to the RBC.
-</Paragraph><Paragraph
+>If possible, the train must not be stopped due to a safety critical fault in a non-leading engine. The ERTMS/ETCS on-board equipment shall therefore try to memorise the occurrence of such fault(s), which shall be handled when the engine leaves Non Leading mode. The ERTMS/ETCS on-board equipment shall also try to send an error information to the RBC.</Paragraph><Paragraph
  id="4.4.15.1.6"
  type="REQUIREMENT"
  scope="OBU"
@@ -2709,8 +2737,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver.
-</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall display the train speed to the driver.</Paragraph><Paragraph
  id="4.4.15.1.7"
  type="DELETED"
  scope="OBU"
@@ -2725,14 +2752,15 @@
  id="4.4.15.1.8"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.15.1.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -2742,8 +2770,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The supervision of linking consistency shall not be performed in Non Leading mode.
-</Paragraph><Paragraph
+>The supervision of linking consistency shall not be performed in Non Leading mode.</Paragraph><Paragraph
  id="4.4.15.1.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -2766,7 +2793,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Used in levels<Sub>
+><Comment></Comment>
+Used in levels<Sub>
 <Paragraph
  id="4.4.15.2.1"
  type="REQUIREMENT"
@@ -2852,15 +2880,16 @@
 <Paragraph
  id="4.4.17.1.1"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->In SN mode, according to the specific on-board implementation, the National System may access the following resources via the ERTMS/ETCS on-board equipment: DMI, JRU, odometer, train interface and brakes. This can be achieved through the STM interface.
-</Paragraph><Paragraph
+><Comment></Comment>
+In SN mode, according to the specific on-board implementation, the National System may access the following resources via the ERTMS/ETCS on-board equipment: DMI, Juridical Recording interface, odometer, train interface and brakes. This can be achieved through the STM interface.</Paragraph><Paragraph
  id="4.4.17.1.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2870,19 +2899,20 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A limited set of data coming from balises shall be used by the ERTMS/ETCS on-board equipment, refer to SRS chapter 4.8 &quot;Use of received information&quot;.
-</Paragraph><Paragraph
+><Comment></Comment>
+A limited set of data coming from balises shall be used by the ERTMS/ETCS on-board equipment, refer to SRS chapter 4.8 &quot;Use of received information&quot;.</Paragraph><Paragraph
  id="4.4.17.1.3"
  type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.17.2"
  type="TITLE"
@@ -2894,7 +2924,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Used in levels<Sub>
+><Comment></Comment>
+Used in levels<Sub>
 <Paragraph
  id="4.4.17.2.1"
  type="REQUIREMENT"
@@ -3166,14 +3197,15 @@
  id="4.4.18.1.9"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.18.1.10"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3361,14 +3393,15 @@
  id="4.4.19.1.7"
  type="NOTE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph></Sub>
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to 4.5 &quot;Modes and on-board functions&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.4.19.2"
  type="TITLE"
@@ -3527,12 +3560,13 @@
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When the active desk is closed, the ERTMS/ETCS on-board equipment shall switch to Passive Shunting mode if the function &quot;Continue Shunting on desk closure&quot; is active and the &quot;passive shunting input signal&quot; is received from the train interface. If the function &quot;Continue Shunting on desk closure&quot; is not active or the &quot;passive shunting input signal&quot; is not present, the ERTMS/ETCS on-board equipment shall switch to Stand-By mode instead.
-</Paragraph><Paragraph
+><Comment></Comment>
+When the active desk is closed, the ERTMS/ETCS on-board equipment shall switch to Passive Shunting mode if the function &quot;Continue Shunting on desk closure&quot; is active and the &quot;passive shunting input signal&quot; is received from the train interface. If the function &quot;Continue Shunting on desk closure&quot; is not active or the &quot;passive shunting input signal&quot; is not present, the ERTMS/ETCS on-board equipment shall switch to Stand-By mode instead.</Paragraph><Paragraph
  id="4.4.20.1.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3615,12 +3649,12 @@
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and Class 1 functions&quot;.</Paragraph><Paragraph
+><Comment></Comment>
+Note: for the list of main functions related to this mode, refer to chapter 4.5 &quot;Modes and on-board functions&quot;.</Paragraph><Paragraph
  id="4.4.20.1.15"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -3708,15 +3742,16 @@
  id="4.5"
  type="TITLE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlock="TRUE"
  functionalBlockName="4.5 Modes and Class 1 functions"
  Name=""
->Modes and Class 1 functions<Sub>
+><Comment></Comment>
+Modes and on-board functions<Sub>
 <Paragraph
  id="4.5.1"
  type="TITLE"
@@ -3773,7 +3808,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Active Functions Table<Sub>
+><Comment></Comment>
+Active Functions Table<Sub>
 <Paragraph
  id="4.5.2.1"
  type="NOTE"
@@ -3807,8 +3843,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Data Consistency
-</Paragraph><Paragraph
+>Data Consistency</Paragraph><Paragraph
  id="4.5.2.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -3818,8 +3853,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check linking consistency; 3.16.2.3 3.4.4; FS, LS, OS
-</Paragraph><Paragraph
+>Check linking consistency; 3.16.2.3 3.4.4; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -3829,8 +3863,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check Balise Group Message Consistency if linking consistency is checked; 3.16.2.4.1 3.16.2.4.3; FS, LS, OS
-</Paragraph><Paragraph
+>Check Balise Group Message Consistency if linking consistency is checked; 3.16.2.4.1 3.16.2.4.3; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -3840,8 +3873,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check Balise Group Message Consistency if no linking consistency is checked (because no linking information is available and/or because the function &quot;check linking consistency is not active); 3.16.2.4.4; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Check Balise Group Message Consistency if no linking consistency is checked (because no linking information is available and/or because the function &quot;check linking consistency is not active); 3.16.2.4.4; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.6"
  type="REQUIREMENT"
  scope="OBU"
@@ -3851,8 +3883,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check Unlinked Balise Group Message Consistency 3.16.2.5; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Check Unlinked Balise Group Message Consistency 3.16.2.5; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -3862,8 +3893,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check correctness of radio messages 3.16.3.1; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Check correctness of radio messages 3.16.3.1; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.8"
  type="REQUIREMENT"
  scope="OBU"
@@ -3873,8 +3903,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check radio sequence 3.16.3.3; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Check radio sequence 3.16.3.3; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -3884,8 +3913,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Check radio safe connection (only level 2/3); 3.16.3.4; FS, LS, OS
-</Paragraph><Paragraph
+>Check radio safe connection (only level 2/3); 3.16.3.4; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.10"
  type="TITLE"
  scope="OBU"
@@ -3895,8 +3923,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine Train Speed and Position:
-</Paragraph><Paragraph
+>Determine Train Speed and Position:</Paragraph><Paragraph
  id="4.5.2.1.11"
  type="REQUIREMENT"
  scope="OBU"
@@ -3906,8 +3933,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine train position referenced to LRBG; 3.6.1 3.6.4; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Determine train position referenced to LRBG; 3.6.1 3.6.4; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -3917,8 +3943,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine train speed, train acceleration, train standstill; None; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, IS, SN, RV
-</Paragraph><Paragraph
+>Determine train speed, train acceleration, train standstill; None; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, IS, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -3928,8 +3953,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine Geographical Position; 3.6.6; SB, FS, LS, SR, OS, NL, UN, TR, PT
-</Paragraph><Paragraph
+>Determine Geographical Position; 3.6.6; SB, FS, LS, SR, OS, NL, UN, TR, PT</Paragraph><Paragraph
  id="4.5.2.1.14"
  type="REQUIREMENT"
  scope="OBU"
@@ -3939,8 +3963,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when train reaches standstill; 3.6.5.1.4a); FS, LS, SR, OS, IS, RV
-</Paragraph><Paragraph
+>Report train position when train reaches standstill; 3.6.5.1.4a); FS, LS, SR, OS, IS, RV</Paragraph><Paragraph
  id="4.5.2.1.15"
  type="REQUIREMENT"
  scope="OBU"
@@ -3950,8 +3973,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when mode changes1; 3.6.5.1.4 b); SB, SH2, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV
-</Paragraph><Paragraph
+>Report train position when mode changes1; 3.6.5.1.4 b); SB, SH2, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.16"
  type="REQUIREMENT"
  scope="OBU"
@@ -3961,8 +3983,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when train integrity confirmed by driver; 3.6.5.1.4 c); SB, FS, LS, SR, OS, PT
-</Paragraph><Paragraph
+>Report train position when train integrity confirmed by driver; 3.6.5.1.4 c); SB, FS, LS, SR, OS, PT</Paragraph><Paragraph
  id="4.5.2.1.17"
  type="REQUIREMENT"
  scope="OBU"
@@ -3972,8 +3993,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when loss of train integrity is detected; 3.6.5.1.4 d); SB, FS, LS, SR, OS, TR, PT, RV
-</Paragraph><Paragraph
+>Report train position when loss of train integrity is detected; 3.6.5.1.4 d); SB, FS, LS, SR, OS, TR, PT, RV</Paragraph><Paragraph
  id="4.5.2.1.18"
  type="REQUIREMENT"
  scope="OBU"
@@ -3983,19 +4003,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when train has passed a RBC/RBC border; 3.6.5.1.4 e); FS, LS, SR, OS, TR
-</Paragraph><Paragraph
+>Report train position when train has passed a RBC/RBC border; 3.6.5.1.4 e); FS, LS, SR, OS, TR</Paragraph><Paragraph
  id="4.5.2.1.19"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
+ optional="FALSE"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when change of level due to trackside order 3.6.5.1.4 g); FS, LS, SR, OS, NL, TR
-</Paragraph><Paragraph
+>Report train position when train rear passes a level transition border (from level 2/3 to 0, NTC, 1); 3.6.5.1.4 f); FS, LS, SR, OS, UN, TR, SN</Paragraph><Paragraph
  id="4.5.2.1.20"
  type="REQUIREMENT"
  scope="OBU"
@@ -4005,8 +4025,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when change of level due to driver request; 3.6.5.1.4 g); SB, FS, LS, SR, OS, NL
-</Paragraph><Paragraph
+>Report train position when change of level due to trackside order 3.6.5.1.4 g); FS, LS, SR, OS, NL, TR</Paragraph><Paragraph
  id="4.5.2.1.21"
  type="REQUIREMENT"
  scope="OBU"
@@ -4016,8 +4035,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position when establishing a session with RBC; 3.6.5.1.4 h); SB, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Report train position when change of level due to driver request; 3.6.5.1.4 g); SB, FS, LS, SR, OS, NL</Paragraph><Paragraph
  id="4.5.2.1.22"
  type="REQUIREMENT"
  scope="OBU"
@@ -4027,8 +4045,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Report train position as requested by RBC..; 3.6.5.1.4 i); SB, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Report train position when establishing a session with RBC; 3.6.5.1.4 h); SB, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.23"
  type="REQUIREMENT"
  scope="OBU"
@@ -4038,20 +4055,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->.. or Report train position at every balise group passage; 3.6.5.1.4 j); FS, LS, SR, OS, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Report train position as requested by RBC..; 3.6.5.1.4 i); SB, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.24"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Manage MA
-</Paragraph><Paragraph
- id="4.5.2.1.25"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4060,8 +4065,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Request MA Cyclically respect to approach of target indication point (T_MAR) or MA timer elapsing (T_TIMEOUTRQST) (only level 2/3); 3.8.2.3 a) and b); FS, LS, OS
-</Paragraph><Paragraph
+>.. or Report train position at every balise group passage; 3.6.5.1.4 j); FS, LS, SR, OS, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
+ id="4.5.2.1.25"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Manage MA</Paragraph><Paragraph
  id="4.5.2.1.26"
  type="REQUIREMENT"
  scope="OBU"
@@ -4071,20 +4085,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Request MA Cyclically when &quot;Start&quot; is selected (only level 2/3); 4.4.11 5.4 5.11; SB, SR, PT
-</Paragraph><Paragraph
+>Request MA Cyclically respect to approach of target indication point (T_MAR) or MA timer elapsing (T_TIMEOUTRQST) (only level 2/3); 3.8.2.3 a) and b); FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.27"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Request MA on reception of &quot;track ahead free up to the level 2/3 transition location&quot; (only level 0,1,NTC); 3.8.2.7.1; SB, FS, LS, SR, OS, UN, TR, PT, SN
-</Paragraph><Paragraph
- id="4.5.2.1.28"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4093,8 +4095,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Request MA on track description deletion; 3.8.2.7.3; FS, LS, OS
-</Paragraph><Paragraph
+>Request MA Cyclically when &quot;Start&quot; is selected (only level 2/3); 4.4.11 5.4 5.11; SB, SR, PT</Paragraph><Paragraph
+ id="4.5.2.1.28"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Request MA on reception of &quot;track ahead free up to the level 2/3 transition location&quot; (only level 0,1,NTC); 3.8.2.7.1; SB, FS, LS, SR, OS, UN, TR, PT, SN</Paragraph><Paragraph
  id="4.5.2.1.29"
  type="REQUIREMENT"
  scope="OBU"
@@ -4104,8 +4115,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine EOA/LOA, SvL, Danger Point, etc..; 3.8.4 3.8.5; FS, LS, OS
-</Paragraph><Paragraph
+>Request MA on track description deletion; 3.8.2.7.3; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.30"
  type="REQUIREMENT"
  scope="OBU"
@@ -4115,8 +4125,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Handle Co-operative MA revocation; 3.8.6; FS, LS, OS
-</Paragraph><Paragraph
+>Determine EOA/LOA, SvL, Danger Point, etc..; 3.8.4 3.8.5; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.31"
  type="REQUIREMENT"
  scope="OBU"
@@ -4126,8 +4135,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Unconditional Emergency Stop; 3.10; SB, FS, LS, SR, OS, PT
-</Paragraph><Paragraph
+>Handle Co-operative MA revocation; 3.8.6; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.32"
  type="REQUIREMENT"
  scope="OBU"
@@ -4137,20 +4145,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Conditional Emergency Stop; 3.10; FS, LS, OS, PT
-</Paragraph><Paragraph
+>Manage Unconditional Emergency Stop; 3.10; SB, FS, LS, SR, OS, PT</Paragraph><Paragraph
  id="4.5.2.1.33"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Determine Most Restrictive Speed Profile, based on :
-</Paragraph><Paragraph
- id="4.5.2.1.34"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4159,8 +4155,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SSP; 3.11.3; FS, LS, OS
-</Paragraph><Paragraph
+>Manage Conditional Emergency Stop; 3.10; FS, LS, OS, PT</Paragraph><Paragraph
+ id="4.5.2.1.34"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Determine Most Restrictive Speed Profile, based on :</Paragraph><Paragraph
  id="4.5.2.1.35"
  type="REQUIREMENT"
  scope="OBU"
@@ -4170,8 +4175,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->ASP; 3.11.4; FS, LS, OS
-</Paragraph><Paragraph
+>SSP; 3.11.3; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.36"
  type="REQUIREMENT"
  scope="OBU"
@@ -4181,8 +4185,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TSR; 3.11.5; FS, LS, SR, OS, UN
-</Paragraph><Paragraph
+>ASP; 3.11.4; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.37"
  type="REQUIREMENT"
  scope="OBU"
@@ -4192,8 +4195,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Signalling related speed restriction when evaluated as a speed limit; 3.11.6; FS, LS, OS
-</Paragraph><Paragraph
+>TSR; 3.11.5; FS, LS, SR, OS, UN</Paragraph><Paragraph
  id="4.5.2.1.38"
  type="REQUIREMENT"
  scope="OBU"
@@ -4203,8 +4205,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Mode related speed restriction; 3.11.7; SH, LS, SR, OS, UN, RV
-</Paragraph><Paragraph
+>Signalling related speed restriction when evaluated as a speed limit; 3.11.6; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.39"
  type="REQUIREMENT"
  scope="OBU"
@@ -4214,8 +4215,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train related speed restriction; 3.11.8; FS, LS, SR, OS, UN, RV
-</Paragraph><Paragraph
+>Mode related speed restriction; 3.11.7; SH, LS, SR, OS, UN, RV</Paragraph><Paragraph
  id="4.5.2.1.40"
  type="REQUIREMENT"
  scope="OBU"
@@ -4225,8 +4225,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->STM max speed; 3.11.2.2 g); FS, LS, SR, OS, UN, SN
-</Paragraph><Paragraph
+>Train related speed restriction; 3.11.8; FS, LS, SR, OS, UN, RV</Paragraph><Paragraph
  id="4.5.2.1.41"
  type="REQUIREMENT"
  scope="OBU"
@@ -4236,8 +4235,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->STM system speed; 3.11.2.2 h); FS, LS, SR, OS, UN
-</Paragraph><Paragraph
+>STM max speed; 3.11.2.2 g); FS, LS, SR, OS, UN, SN</Paragraph><Paragraph
  id="4.5.2.1.42"
  type="REQUIREMENT"
  scope="OBU"
@@ -4247,8 +4245,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->LX speed; 3.12.5.6; FS, LS, OS
-</Paragraph><Paragraph
+>STM system speed; 3.11.2.2 h); FS, LS, SR, OS, UN</Paragraph><Paragraph
  id="4.5.2.1.43"
  type="REQUIREMENT"
  scope="OBU"
@@ -4258,7 +4255,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed restriction to ensure a given permitted braking distance; 3.11.11; FS, LS, OS</Paragraph><Paragraph
+>LX speed; 3.12.5.6; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.44"
  type="REQUIREMENT"
  scope="OBU"
@@ -4268,20 +4265,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Override related speed restriction; 5.8.3.6; SH, SR, UN
-</Paragraph><Paragraph
+>Speed restriction to ensure a given permitted braking distance; 3.11.11; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.45"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Supervise Train Speed
-</Paragraph><Paragraph
- id="4.5.2.1.46"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4290,8 +4275,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location; 3.13 5.9.3.5 5.7.3.4 3.12.2.8 3.12.5.4; FS, LS, OS
-</Paragraph><Paragraph
+>Override related speed restriction; 5.8.3.6; SH, SR, UN</Paragraph><Paragraph
+ id="4.5.2.1.46"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Supervise Train Speed</Paragraph><Paragraph
  id="4.5.2.1.47"
  type="REQUIREMENT"
  scope="OBU"
@@ -4301,8 +4295,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed and Distance Monitoring based on MRSP; 4.4.10.1; UN
-</Paragraph><Paragraph
+>Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location; 3.13 5.9.3.5 5.7.3.4 3.12.2.8 3.12.5.4; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.48"
  type="REQUIREMENT"
  scope="OBU"
@@ -4312,8 +4305,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed and Distance Monitoring based on MRSP, allowed distance to run in Staff Resp. mode; 4.4.11; SR
-</Paragraph><Paragraph
+>Speed and Distance Monitoring based on MRSP; 4.4.10.1; UN</Paragraph><Paragraph
  id="4.5.2.1.49"
  type="REQUIREMENT"
  scope="OBU"
@@ -4323,20 +4315,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ceiling Speed Monitoring only (no braking curve) based on MRSP; 4.4.8.1.1 a) 4.4.18.1.3 a); SH, SN3, RV
-</Paragraph><Paragraph
+>Speed and Distance Monitoring based on MRSP, allowed distance to run in Staff Resp. mode; 4.4.11; SR</Paragraph><Paragraph
  id="4.5.2.1.50"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Supervise Train Movements
-</Paragraph><Paragraph
- id="4.5.2.1.51"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4345,8 +4325,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Backwards Distance Monitoring; 4.4; PT, RV
-</Paragraph><Paragraph
+>Ceiling Speed Monitoring only (no braking curve) based on MRSP; 4.4.8.1.1 a) 4.4.18.1.3 a); SH, SN3, RV</Paragraph><Paragraph
+ id="4.5.2.1.51"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Supervise Train Movements</Paragraph><Paragraph
  id="4.5.2.1.52"
  type="REQUIREMENT"
  scope="OBU"
@@ -4356,8 +4345,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Roll Away Protection; 3.14.2; SH, FS, LS, SR, OS, UN, PT, RV
-</Paragraph><Paragraph
+>Backwards Distance Monitoring; 4.4; PT, RV</Paragraph><Paragraph
  id="4.5.2.1.53"
  type="REQUIREMENT"
  scope="OBU"
@@ -4367,8 +4355,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Reverse Movement Protection; 3.14.3; FS, LS, SR, OS, PT, RV
-</Paragraph><Paragraph
+>Roll Away Protection; 3.14.2; SH, FS, LS, SR, OS, UN, PT, RV</Paragraph><Paragraph
  id="4.5.2.1.54"
  type="REQUIREMENT"
  scope="OBU"
@@ -4378,8 +4365,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Standstill Supervision; 3.14.4 4.4.7.1.5; SB
-</Paragraph><Paragraph
+>Reverse Movement Protection; 3.14.3; FS, LS, SR, OS, PT, RV</Paragraph><Paragraph
  id="4.5.2.1.55"
  type="REQUIREMENT"
  scope="OBU"
@@ -4389,8 +4375,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Supervise &quot;danger for shunting&quot; information and list of expected balises for shunting; 4.4.8.1.1 b) and c); SH
-</Paragraph><Paragraph
+>Standstill Supervision; 3.14.4 4.4.7.1.5; SB</Paragraph><Paragraph
  id="4.5.2.1.56"
  type="REQUIREMENT"
  scope="OBU"
@@ -4400,8 +4385,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Supervise &quot;Stop if in SR&quot; information and list of expected balises for Staff Responsible; 4.4.11.1.3 c) and d); SR
-</Paragraph><Paragraph
+>Supervise &quot;danger for shunting&quot; information and list of expected balises for shunting; 4.4.8.1.1 b) and c); SH</Paragraph><Paragraph
  id="4.5.2.1.57"
  type="REQUIREMENT"
  scope="OBU"
@@ -4411,8 +4395,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Supervise signalling related speed restriction when evaluated as a trip order; 3.11.6.4; FS, LS, SR, OS
-</Paragraph><Paragraph
+>Supervise &quot;Stop if in SR&quot; information and list of expected balises for Staff Responsible; 4.4.11.1.3 c) and d); SR</Paragraph><Paragraph
  id="4.5.2.1.58"
  type="REQUIREMENT"
  scope="OBU"
@@ -4422,19 +4405,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Command Emergency Brake; 4; NP, TR, SF
-</Paragraph><Paragraph
+>Supervise signalling related speed restriction when evaluated as a trip order; 3.11.6.4; FS, LS, SR, OS</Paragraph><Paragraph
  id="4.5.2.1.59"
- type="TITLE"
+ type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine Mode and Level
-</Paragraph><Paragraph
+>Command Emergency Brake; 4; NP, TR, SF</Paragraph><Paragraph
  id="4.5.2.1.60"
  type="REQUIREMENT"
  scope="OBU"
@@ -4444,8 +4425,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine ERTMS/ETCS Mode; 3.12.4  4.6; NP, SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV
-</Paragraph><Paragraph
+>Determine Mode and Level</Paragraph><Paragraph
  id="4.5.2.1.61"
  type="REQUIREMENT"
  scope="OBU"
@@ -4455,20 +4435,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Determine ERTMS/ETCS level; 5.10; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, IS, SN, RV
-</Paragraph><Paragraph
+>Determine ERTMS/ETCS Mode; 3.12.4  4.6; NP, SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.62"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Other functions
-</Paragraph><Paragraph
- id="4.5.2.1.63"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4477,8 +4445,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->System Version Management; 3.17; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Determine ERTMS/ETCS level; 5.10; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, IS, SN, RV</Paragraph><Paragraph
+ id="4.5.2.1.63"
+ type="TITLE"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Other functions</Paragraph><Paragraph
  id="4.5.2.1.64"
  type="REQUIREMENT"
  scope="OBU"
@@ -4488,8 +4465,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Communication Session; 3.5; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>System Version Management; 3.17; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.65"
  type="REQUIREMENT"
  scope="OBU"
@@ -4499,8 +4475,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Delete Revoked TSR; 3.11.5.5; SB, FS, LS, SR, OS, UN, PT
-</Paragraph><Paragraph
+>Manage Communication Session; 3.5; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.66"
  type="REQUIREMENT"
  scope="OBU"
@@ -4510,19 +4485,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Override (Trip inhibition)4; 5.8; SH, LS, UN, SN
-</Paragraph><Paragraph
+>Delete Revoked TSR; 3.11.5.5; SB, FS, LS, SR, OS, UN, PT</Paragraph><Paragraph
  id="4.5.2.1.67"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.2.0"
+ bl=""
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Track Conditions excluding Sound Horn, Non Stopping Areas, Tunnel Stopping Areas and Big Metal Masses; 3.12.1; FS, LS OS, NL, TR, PT
-</Paragraph><Paragraph
+>Override (Trip inhibition)4; 5.8; SH, LS, UN, SN</Paragraph><Paragraph
  id="4.5.2.1.68"
  type="REQUIREMENT"
  scope="OBU"
@@ -4532,19 +4505,17 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Track Conditions Sound Horn, Non Stopping Areas, Tunnel Stopping Areas; 3.12.1; FS, LS OS
-</Paragraph><Paragraph
+>Manage Track Conditions excluding Sound Horn, Non Stopping Areas, Tunnel Stopping Areas and Big Metal Masses; 3.12.1; FS, LS OS, NL, TR, PT</Paragraph><Paragraph
  id="4.5.2.1.69"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Track Condition Big Metal Masses; 3.12.1; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, SN, RV
-</Paragraph><Paragraph
+>Manage Track Conditions Sound Horn, Non Stopping Areas, Tunnel Stopping Areas; 3.12.1; FS, LS OS</Paragraph><Paragraph
  id="4.5.2.1.70"
  type="REQUIREMENT"
  scope="OBU"
@@ -4554,8 +4525,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Route Suitability; 3.12.2; FS, LS, OS
-</Paragraph><Paragraph
+>Manage Track Condition Big Metal Masses; 3.12.1; SB PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.71"
  type="REQUIREMENT"
  scope="OBU"
@@ -4565,8 +4535,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Text Display to the driver; 3.12.3; SB, FS, LS, SR, OS, NL, UN, TR, PT, RV
-</Paragraph><Paragraph
+>Manage Route Suitability; 3.12.2; FS, LS, OS</Paragraph><Paragraph
  id="4.5.2.1.72"
  type="REQUIREMENT"
  scope="OBU"
@@ -4576,8 +4545,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage RBC/RBC Handover; 3.15.1 5.15; FS, LS, SR, OS, SL, NL, TR
-</Paragraph><Paragraph
+>Manage Text Display to the driver; 3.12.3; SB, FS, LS, SR, OS, NL, UN, TR, PT, RV</Paragraph><Paragraph
  id="4.5.2.1.73"
  type="REQUIREMENT"
  scope="OBU"
@@ -4587,8 +4555,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage Track Ahead Free Request; 3.15.5; SB, LS, SR, OS, PT
-</Paragraph><Paragraph
+>Manage RBC/RBC Handover; 3.15.1 5.15; FS, LS, SR, OS, SL, NL, TR</Paragraph><Paragraph
  id="4.5.2.1.74"
  type="REQUIREMENT"
  scope="OBU"
@@ -4598,8 +4565,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Provide Fixed Values, and Default/National Values; 3.18.1 3.18.2; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Manage Track Ahead Free Request; 3.15.5; SB, LS, SR, OS, PT</Paragraph><Paragraph
  id="4.5.2.1.75"
  type="REQUIREMENT"
  scope="OBU"
@@ -4609,19 +4575,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Capture Train Data; 3.18.3 5.4.3 5.17; SB, FS, LS, SR, OS, UN, SN
-</Paragraph><Paragraph
+>Provide Fixed Values, and Default/National Values; 3.18.1 3.18.2; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.76"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Capture Additional Data; 3.18.4 5.4.3; SB, FS, LS, SR, OS, NL, UN, SN
-</Paragraph><Paragraph
+>Manage change of Train Data from external sources; 5.17; SB, FS, LS, SR, OS, UN, TR, PT, SN</Paragraph><Paragraph
  id="4.5.2.1.77"
  type="REQUIREMENT"
  scope="OBU"
@@ -4631,8 +4596,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Provide Date and Time; 3.18.5; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV
-</Paragraph><Paragraph
+>Provide Date and Time; 3.18.5; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.78"
  type="REQUIREMENT"
  scope="OBU"
@@ -4642,8 +4606,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Record Juridical Data; 3.20; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, SN, RV
-</Paragraph><Paragraph
+>Provide Juridical Data; 3.20; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, SN, RV</Paragraph><Paragraph
  id="4.5.2.1.79"
  type="REQUIREMENT"
  scope="OBU"
@@ -4653,8 +4616,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Inhibition of revocable TSRs from balises(only level 2/3); 3.11.5.12 3.11.5.13 3.11.5.14 3.11.5.15; FS, LS, OS, TR, PT
-</Paragraph><Paragraph
+>Inhibition of revocable TSRs from balises(only level 2/3); 3.11.5.12 3.11.5.13 3.11.5.14 3.11.5.15; FS, LS, OS, TR, PT</Paragraph><Paragraph
  id="4.5.2.1.80"
  type="REQUIREMENT"
  scope="OBU"
@@ -4664,8 +4626,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Cold Movement Detection; ; NP
-</Paragraph><Paragraph
+>Cold Movement Detection; ; NP</Paragraph><Paragraph
  id="4.5.2.1.81"
  type="REQUIREMENT"
  scope="OBU"
@@ -4675,8 +4636,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Continue Shunting on desk closure (Enabling transition to Passive Shunting mode); 5.12.4; SH
-</Paragraph><Paragraph
+>Continue Shunting on desk closure (Enabling transition to Passive Shunting mode); 5.12.4; SH</Paragraph><Paragraph
  id="4.5.2.1.82"
  type="REQUIREMENT"
  scope="OBU"
@@ -4686,9 +4646,22 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Manage &quot;Stop Shunting on desk opening&quot; information; 4.4.20.1.8 4.4.20.1.9; PS
-</Paragraph><Paragraph
+><Comment></Comment>
+Manage &quot;Stop Shunting on desk opening&quot; information; 4.4.20.1.8 4.4.20.1.9; PS</Paragraph><Paragraph
  id="4.5.2.1.83"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Manage &quot;Virtual Balise Covers&quot;; 3.15.9; SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV</Paragraph><Paragraph
+ id="4.5.2.1.84"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -4697,19 +4670,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Advance display of route related information; 3.15.10; FS
-</Paragraph><Paragraph
+><Comment></Comment>
+Advance display of route related information; 3.15.10; FS</Paragraph><Paragraph
  id="4.5.2.1.84"
- type="NOTE"
+ type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->1 For ETCS level 2 and 3 this may imply establishing a radio communication session if none is established.
-</Paragraph><Paragraph
+>1 For ETCS level 2 and 3 this may imply establishing a radio communication session if none is established.</Paragraph><Paragraph
  id="4.5.2.1.85"
  type="NOTE"
  scope="OBU"
@@ -4719,8 +4691,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->2 Exception: the transition PS =&gt; SH shall not be reported
-</Paragraph><Paragraph
+>2 Exception: the transition PS =&gt; SH shall not be reported</Paragraph><Paragraph
  id="4.5.2.1.86"
  type="NOTE"
  scope="OBU"
@@ -4730,8 +4701,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->3 In case the ERTMS on-board equipment is interfaced to the National System through an STM, refer to SUBSET-035 for details
-</Paragraph><Paragraph
+>3 In case the ERTMS on-board equipment is interfaced to the National System through an STM, refer to SUBSET-035 for details</Paragraph><Paragraph
  id="4.5.2.1.87"
  type="NOTE"
  scope="OBU"
@@ -4741,8 +4711,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->4 For UN and SN mode, conditions for re-activation of transition to Trip mode (see paragraph  5.8.4.1a) &amp; b)) shall be supervised.
-</Paragraph></Sub>
+><Comment></Comment>
+4 For UN and SN mode, conditions for re-activation of transition to Trip mode (see paragraph  5.8.4.1a) &amp; b)) shall be supervised.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
@@ -6246,11 +6216,11 @@
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SN-&gt;TR 67,39,38,20 p5</Paragraph><Paragraph
+>SN-&gt;TR 67,39,38,35,20 p5</Paragraph><Paragraph
  id="Entry 4.6.2.124"
  type="REQUIREMENT"
  scope="OBU"
@@ -6739,11 +6709,12 @@
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[35]; Empty</Paragraph><Paragraph
+><Comment>Previous status was &quot;Implemented&quot;</Comment>
+[35]; (driver selects Shunting mode) AND (The ERTMS/ETCS on-board equipment is interfaced to the National System through an STM) AND (a National Trip Procedure is active, see {8} here under)</Paragraph><Paragraph
  id="Entry 4.6.3.37"
  type="REQUIREMENT"
  scope="OBU"
@@ -6754,7 +6725,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[36]; (the identity of the over-passed balise group is not in the list of expected balises related to SR mode) AND (override is not active).</Paragraph><Paragraph
+><Comment></Comment>
+[36]; (the identity of the over-passed balise group is not in the list of expected balises related to SR mode) AND (override is not active).</Paragraph><Paragraph
  id="Entry 4.6.3.38"
  type="REQUIREMENT"
  scope="OBU"
@@ -6772,11 +6744,13 @@
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[38]; (The ERTMS/ETCS on-board equipment is interfaced to the National System through an STM) AND (The ERTMS/ETCS level switches to 0,1,2 or 3) AND (Emergency Brake is commanded by this STM)</Paragraph><Paragraph
+><Comment>Previous status was &quot;N/A&quot;</Comment>
+[38]; (The ERTMS/ETCS on-board equipment is interfaced to the National System through an STM) AND (The ERTMS/ETCS level switches to 0,1,2 or 3) 
+AND (a National Trip Procedure is active) see {8} here under 	</Paragraph><Paragraph
  id="Entry 4.6.3.40"
  type="REQUIREMENT"
  scope="OBU"
@@ -6787,7 +6761,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[39]; (The ERTMS/ETCS level switches to 1,2 or 3) AND (no MA has been accepted)</Paragraph><Paragraph
+><Comment></Comment>
+[39]; (The ERTMS/ETCS level switches to 1,2 or 3) AND (no MA has been accepted)</Paragraph><Paragraph
  id="Entry 4.6.3.41"
  type="REQUIREMENT"
  scope="OBU"
@@ -7193,7 +7168,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->{2} This transition to the Unfitted mode is also a transition of level.. For further information, See the &quot;Level Transition&quot; procedure&quot; (SRS-paragraph 5) for transitions from FS/SR/OS/LS to UN and the &quot;Start Of Mission&quot; procedure&quot; (SRS-paragraph 5) for transition from SB to UN.</Paragraph><Paragraph
+><Comment></Comment>
+{2} This transition to the Unfitted mode is also a transition of level.. For further information, See the &quot;Level Transition&quot; procedure&quot; (SRS-paragraph 5) for transitions from FS/SR/OS/LS to UN and the &quot;Start Of Mission&quot; procedure&quot; (SRS-paragraph 5) for transition from SB to UN.</Paragraph><Paragraph
  id="4.6.3.75"
  type="NOTE"
  scope="OBU"
@@ -7248,7 +7224,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->{7} The request to acknowledge Limited Supervision is displayed to the driver only if certain conditions are fulfilled. These conditions are not specified here. See the &quot;Limited Supervision&quot; procedure&quot; of SRS-paragraph 5 (for transitions from FS/OS/UN to LS) and the &quot;Start of mission&quot; procedure (for transition from SB to LS).</Paragraph></Sub>
+>{7} The request to acknowledge Limited Supervision is displayed to the driver only if certain conditions are fulfilled. These conditions are not specified here. See the &quot;Limited Supervision&quot; procedure&quot; of SRS-paragraph 5 (for transitions from FS/OS/UN to LS) and the &quot;Start of mission&quot; procedure (for transition from SB to LS).</Paragraph><Paragraph
+ id="4.6.3.80"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>{8} Refer to Subset-035 for details.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.7"
@@ -7277,16 +7265,17 @@
 >Introduction<Sub>
 <Paragraph
  id="4.7.1.1"
- type="NOTE"
+ type="DEFINITION"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The DMI is made of any &quot;device&quot; that allows the direct exchange of information between the driver and the ERTMS/ETCS onboard equipment. The indirect exchange of information done via the train interface (e.g. a driver&apos;s action on the service brake used for the service brake feedback, opening/closing the desk) is not part of the DMI.</Paragraph><Paragraph
+><Comment></Comment>
+The DMI is an interface that allows the direct exchange of information between the driver and the ERTMS/ETCS onboard equipment. The indirect exchange of information done via the train interface (e.g. a drivers action on the service brake used for the service brake feedback, opening/closing the desk) is not part of the DMI.</Paragraph><Paragraph
  id="4.7.1.2"
  type="NOTE"
  scope="OBU"
@@ -7369,8 +7358,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A = available: This means that the input/output shall become active ONLY if another condition(s) is (are) fulfilled. This condition(s) are not described here.
-</Paragraph><Paragraph
+>A = available: This means that the input/output shall become active ONLY if another condition(s) is (are) fulfilled. This condition(s) are not described here.</Paragraph><Paragraph
  id="4.7.2.1.3"
  type="NOTE"
  scope="OBU"
@@ -7381,8 +7369,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Grey cells: availability and meaning defined by national system.
-</Paragraph><Paragraph
+>Grey cells: availability and meaning defined by national system.</Paragraph><Paragraph
  id="4.7.2.1.4"
  type="NOTE"
  scope="OBU"
@@ -7393,8 +7380,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->NA = Not Applicable: This concerns the modes SF and IS in which the DMI inputs and outputs cannot be determined.
-</Paragraph><Paragraph
+><Comment></Comment>
+NA = Not Applicable: This concerns the modes SF and IS in which the DMI inputs and outputs cannot be determined.</Paragraph><Paragraph
  id="Table 4.7.2.1"
  type="TABLE_HEADER"
  scope="OBU"
@@ -7428,8 +7415,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Selection of language; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Selection of language; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -7440,8 +7426,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Driver id; A: SB, SH, FS, LS, SR, OS, NL, UN, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Driver id; A: SB, SH, FS, LS, SR, OS, NL, UN, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -7452,8 +7437,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train running number; A: SB, FS, LS, SR, OS, NL, UN, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Train running number; A: SB, FS, LS, SR, OS, NL, UN, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -7471,25 +7455,13 @@
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track Adhesion factor; A: SB, FS, LS, SR, OS, NL, UN, SN; NA: SF, IS
-</Paragraph><Paragraph
+><Comment>Previous status was &quot;N/A&quot;</Comment>
+Track Adhesion factor; A: SB, FS, LS, SR, OS, UN, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.7"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Level inhibition; A: SB; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.1.8"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -7502,8 +7474,18 @@
 >RBC contact information
 	- Radio network-id
 	- RBC-id
-	- RBC phone number; A: SB, FS, LS, SR, OS, NL, PT; NA: SF, IS
-</Paragraph><Paragraph
+	- RBC phone number; A: SB, FS, LS, SR, OS, NL, PT; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.1.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Train integrity; A: SB, FS, LS, SR, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -7514,8 +7496,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train integrity; A: SB, FS, LS, SR, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Start; A: SB, SR, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -7526,8 +7507,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Start; A: SB, SR, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Override request; A: SB, SH, FS, LS, SR, OS, UN, PT, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.11"
  type="REQUIREMENT"
  scope="OBU"
@@ -7538,8 +7518,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Override request; A: SB, SH, FS, LS, SR, OS, UN, PT, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Shunting request; A: SB, FS, LS, SR, OS, UN, PT, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -7550,8 +7529,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Shunting request; A: SB, FS, LS, SR, OS, UN, PT, SN; NA: SF, IS
-</Paragraph><Paragraph
+>&quot;Continue Shunting on desk closure&quot; request;  A: SH; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -7562,8 +7540,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->&quot;Continue Shunting on desk closure&quot; request;  A: SH; NA: SF, IS
-</Paragraph><Paragraph
+>&quot;Exit of Shunting&quot; request; X: SH; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.14"
  type="REQUIREMENT"
  scope="OBU"
@@ -7574,8 +7551,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->&quot;Exit of Shunting&quot; request; X: SH; NA: SF, IS
-</Paragraph><Paragraph
+>Non Leading request; A: SB, SH, FS, LS, SR, OS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.15"
  type="REQUIREMENT"
  scope="OBU"
@@ -7586,8 +7562,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Non Leading request; A: SB, SH, FS, LS, SR, OS; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of fixed text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.16"
  type="REQUIREMENT"
  scope="OBU"
@@ -7598,8 +7573,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of fixed text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of plain text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.17"
  type="REQUIREMENT"
  scope="OBU"
@@ -7610,8 +7584,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of plain text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of level transition; A: SB, FS, LS, SR, OS, UN, TR, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.18"
  type="REQUIREMENT"
  scope="OBU"
@@ -7622,7 +7595,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of level transition; A: SB, FS, LS, SR, OS, UN, TR, SN; NA: SF, IS</Paragraph><Paragraph
+>Ackn of Limited Supervision mode; A: SB, FS, LS, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.19"
  type="REQUIREMENT"
  scope="OBU"
@@ -7633,8 +7606,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Limited Supervision mode; A: SB, FS, LS, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of On Sight mode; A: SB, FS, LS, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.20"
  type="REQUIREMENT"
  scope="OBU"
@@ -7645,20 +7617,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of On Sight mode; A: SB, FS, LS, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of Shunting mode; A: SB, SH, FS, LS, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.21"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Shunting mode; A: SB, SH, FS, LS, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+><Comment>Previous status was &quot;Implemented&quot;</Comment>
+Ackn of Staff Resp. mode; A: SB, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.22"
  type="REQUIREMENT"
  scope="OBU"
@@ -7669,8 +7640,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Staff Resp. mode; A: SB, FS, LS, UN, PT; NA: SF, IS
-</Paragraph><Paragraph
+><Comment></Comment>
+Ackn of Unfitted mode; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.23"
  type="REQUIREMENT"
  scope="OBU"
@@ -7681,21 +7652,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Unfitted mode; A: SB; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of Reversing mode; A: FS, LS, OS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.24"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Ackn of Reversing mode; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.1.25"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -7705,8 +7663,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of SN mode; A: SB; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of SN mode; A: SB; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.1.25"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Ackn of Train Trip; A: TR; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.26"
  type="REQUIREMENT"
  scope="OBU"
@@ -7717,8 +7685,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Train Trip; A: TR; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn for Roll Away Protection; A: SH, FS, LS, SR, OS, UN, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.27"
  type="REQUIREMENT"
  scope="OBU"
@@ -7729,8 +7696,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for Roll Away Protection; A: SH, FS, LS, SR, OS, UN, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn for Reverse Movement Protection; A: FS, LS, SR, OS, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.28"
  type="REQUIREMENT"
  scope="OBU"
@@ -7741,8 +7707,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for Reverse Movement Protection; A: FS, LS, SR, OS, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn for Standstill Supervision; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.29"
  type="REQUIREMENT"
  scope="OBU"
@@ -7753,8 +7718,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for Standstill Supervision; A: SB; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn for Post Trip distance exceeded; A: PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.30"
  type="REQUIREMENT"
  scope="OBU"
@@ -7765,8 +7729,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for Post Trip distance exceeded; A: PT; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn of Train Data change from source different from the driver; A: FS, LS, SR, OS, UN, TR, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.31"
  type="REQUIREMENT"
  scope="OBU"
@@ -7777,8 +7740,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn of Train Data change from source different from the driver; A: FS, LS, SR, OS, UN, TR, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Ackn for reversing distance exceeded; A: RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.32"
  type="REQUIREMENT"
  scope="OBU"
@@ -7789,8 +7751,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for reversing distance exceeded; A: RV; NA: SF, IS
-</Paragraph><Paragraph
+>Track Ahead Free; A: SB, LS, SR, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.33"
  type="REQUIREMENT"
  scope="OBU"
@@ -7801,20 +7762,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Ackn for level transition not possible (due to level inhibition); A: SB, FS, LS, SR, OS, UN, TR, SN; NA: SF, IS
-</Paragraph><Paragraph
+>SR mode speed limit and distance; A: SR; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.34"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl=""
+ optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track Ahead Free; A: SB, LS, SR, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Virtual Balise Cover; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.35"
  type="REQUIREMENT"
  scope="OBU"
@@ -7825,20 +7785,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR mode speed limit and distance; A: SR; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.1.36"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Isolation; X: NP, SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV
-</Paragraph></Sub>
+>Isolation; X: NP, SB, PS, SH, FS, LS, SR, OS, SL, NL, UN, TR, PT, SF, IS, SN, RV</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Table 4.7.2.2"
  type="TABLE_HEADER"
@@ -7862,8 +7809,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->ERTMS/ETCS Mode; A: SB, TR, SF; X: SH, FS, LS, SR, OS, NL, UN, PT, IS, SN, RV
-</Paragraph><Paragraph
+>ERTMS/ETCS Mode; A: SB, TR, SF; X: SH, FS, LS, SR, OS, NL, UN, PT, IS, SN, RV</Paragraph><Paragraph
  id="Entry 4.7.2.2.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -7874,8 +7820,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -7886,8 +7831,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train Speed; A: SB, TR, SN;  X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Train Speed; A: SB, TR, SN;  X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -7898,20 +7842,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS
-</Paragraph><Paragraph
+>Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.5"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl=""
+ optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Target Speed; A: FS, LS, SR,OS; GREYED: SN; NA: SF, IS
-</Paragraph><Paragraph
+>FLOI Speed; A: FS; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.6"
  type="REQUIREMENT"
  scope="OBU"
@@ -7922,8 +7865,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS
-</Paragraph><Paragraph
+>Target Speed; A: FS, LS, SR,OS; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -7934,8 +7876,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Release speed; A: FS, LS, OS; GREYED: SN; NA: SF, IS
-</Paragraph><Paragraph
+>Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.8"
  type="REQUIREMENT"
  scope="OBU"
@@ -7946,7 +7887,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed and distance monitoring supervision status; A: SH, FS, LS, SR, OS, UN, PT, RV; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
+>Release speed; A: FS, LS, OS; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -7957,8 +7898,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Trip reason; A: TR; NA: SF, IS
-</Paragraph><Paragraph
+>Speed and distance monitoring supervision status; A: SH, FS, LS, SR, OS, UN, PT, RV; GREYED: SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -7969,8 +7909,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train Data (refer to 3.18.3.2); A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Trip reason; A: TR; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.11"
  type="REQUIREMENT"
  scope="OBU"
@@ -7981,8 +7920,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Driver id; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Train Data (refer to 3.18.3.2); A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -7993,9 +7931,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train running number; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Driver id; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Train running number; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.14"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -8008,9 +7956,20 @@
 >RBC contact information
 	- Radio network-id
 	- RBC-id
-	- RBC phone number; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.14"
+	- RBC phone number; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Virtual Balise Covers; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.16"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -8020,33 +7979,30 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Brake indication; A: SB, SH, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.15"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Fixed text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.16"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Plain text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Brake indication; A: SB, SH, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Fixed text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.18"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Plain text information; A: SB, FS, LS, SR, OS, NL, UN, TR, PT, RV; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.19"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -8056,9 +8012,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Reversing allowed; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.18"
+>Reversing allowed; A: FS, LS, OS; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.20"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -8073,9 +8028,8 @@
 	- Pantograph control
 	- Air tightness  control
 	- Radio hole, supervision of safe radio connection stopped
-	- Brakes control; A: FS, LS, OS, NL, TR, PT; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.19"
+	- Brakes control; A: FS, LS, OS, NL, TR, PT; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.21"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -8085,9 +8039,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track conditions sound horn, non stopping areas, tunnel stopping areas; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.20"
+>Track conditions sound horn, non stopping areas, tunnel stopping areas; A: FS, LS, OS; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.22"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -8097,32 +8050,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.21"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Override status; A: SH, SR, UN, SN; NA: SF, IS
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.22"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->LX status &quot;not protected&quot;; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
+>Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.23"
  type="REQUIREMENT"
  scope="OBU"
@@ -8133,8 +8061,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Shunting refused by RBC; A: SB, FS, LS, SR, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Override status; A: SH, SR, UN, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.24"
  type="REQUIREMENT"
  scope="OBU"
@@ -8145,8 +8072,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Shunting request not answered by RBC; A: SB, FS, LS, SR, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>LX status &quot;not protected&quot;; A: FS, LS, OS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.25"
  type="REQUIREMENT"
  scope="OBU"
@@ -8157,8 +8083,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Accepted Emergency Stop(s); A: FS, LS, OS, TR, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Shunting refused by RBC; A: SB, FS, LS, SR, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.26"
  type="REQUIREMENT"
  scope="OBU"
@@ -8169,8 +8094,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Entry in FS/OS; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
+>Shunting request not answered by RBC; A: SB, FS, LS, SR, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.27"
  type="REQUIREMENT"
  scope="OBU"
@@ -8181,8 +8105,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level transition announcement; A: FS, LS, SR, OS, NL, UN, TR, PT, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Accepted Emergency Stop(s); A: FS, LS, OS, TR, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.28"
  type="REQUIREMENT"
  scope="OBU"
@@ -8193,8 +8116,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track Ahead Free request; A: SB, LS, SR, OS, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Entry in FS/OS; A: FS, OS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.29"
  type="REQUIREMENT"
  scope="OBU"
@@ -8205,8 +8127,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Adhesion factor &quot;slippery rail&quot;; A: SB, FS, LS, SR, OS, UN, TR, PT, SN; NA: SF, IS
-</Paragraph><Paragraph
+>Level transition announcement; A: FS, LS, SR, OS, NL, UN, TR, PT, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.30"
  type="REQUIREMENT"
  scope="OBU"
@@ -8217,20 +8138,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR mode proposed; A: SB, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Track Ahead Free request; A: SB, LS, SR, OS, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.31"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->OS/LS/SH mode proposed; A: SB, PT; NA: SF, IS
-</Paragraph><Paragraph
+><Comment>Previous status was &quot;Implemented&quot;</Comment>
+Adhesion factor &quot;slippery rail&quot;; A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.32"
  type="REQUIREMENT"
  scope="OBU"
@@ -8241,7 +8161,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SN mode proposed; A: SB; NA: SF, IS</Paragraph><Paragraph
+><Comment></Comment>
+SR mode proposed; A: SB, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.33"
  type="REQUIREMENT"
  scope="OBU"
@@ -8252,8 +8173,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->UN mode proposed; A: SB; NA: SF, IS
-</Paragraph><Paragraph
+>OS/LS/SH mode proposed; A: SB, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.34"
  type="REQUIREMENT"
  scope="OBU"
@@ -8264,20 +8184,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->RV mode proposed; A: FS, LS, OS; NA: SF, IS
-</Paragraph><Paragraph
+>SN mode proposed; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.35"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.2.0"
+ bl="3.1.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Trackside malfunction; A: SB, SH, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>UN mode proposed; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.36"
  type="REQUIREMENT"
  scope="OBU"
@@ -8288,19 +8206,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Notification of Train Data change from source different from the driver; A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>RV mode proposed; A: FS, LS, OS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.37"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->JRU failure; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
+>Trackside malfunction; A: SB, SH, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.38"
  type="REQUIREMENT"
  scope="OBU"
@@ -8311,20 +8228,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Operated System Version; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Notification of Train Data change from source different from the driver; A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.39"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.2.0"
+ bl="3.1.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio Network registration failed; A: SB, FS, LS, SR, OS, NL, PT; NA: SF, IS
-</Paragraph><Paragraph
+>Operated System Version; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.40"
  type="REQUIREMENT"
  scope="OBU"
@@ -8335,19 +8250,18 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Safe radio connection indication; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Radio Network registration failed; A: SB, FS, LS, SR, OS, NL, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.41"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS</Paragraph><Paragraph
+>Safe radio connection indication; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.42"
  type="REQUIREMENT"
  scope="OBU"
@@ -8358,8 +8272,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Gradient; A: FS; NA: SF, IS
-</Paragraph><Paragraph
+>Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.43"
  type="REQUIREMENT"
  scope="OBU"
@@ -8370,8 +8283,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MRSP; A: FS; NA: SF, IS
-</Paragraph><Paragraph
+>Gradient; A: FS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.44"
  type="REQUIREMENT"
  scope="OBU"
@@ -8382,9 +8294,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS
-</Paragraph><Paragraph
+>MRSP; A: FS; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.45"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS</Paragraph><Paragraph
+ id="Entry 4.7.2.2.46"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -8395,17 +8317,6 @@
  functionalBlockName=""
  Name=""
 >First target at zero speed; A: FS; NA: SF, IS</Paragraph><Paragraph
- id="Entry 4.7.2.2.46"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Brake reason; A: SB, SH, FS, LS, SR, OS, UN, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.47"
  type="REQUIREMENT"
  scope="OBU"
@@ -8416,8 +8327,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->No track condition will be received; A: NL; NA: SF, IS
-</Paragraph><Paragraph
+>Brake reason; A: SB, SH, FS, LS, SR, OS, UN, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.48"
  type="REQUIREMENT"
  scope="OBU"
@@ -8428,8 +8338,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Trackside not compatible; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS
-</Paragraph><Paragraph
+>Trackside not compatible; A: SB, SH, FS, LS, SR, OS, NL, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.49"
  type="REQUIREMENT"
  scope="OBU"
@@ -8440,8 +8349,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train is rejected; A: SB; NA: SF, IS
-</Paragraph><Paragraph
+>Train is rejected; A: SB; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.50"
  type="REQUIREMENT"
  scope="OBU"
@@ -8571,7 +8479,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Assumptions<Sub>
+><Comment></Comment>
+Assumptions<Sub>
 <Paragraph
  id="4.8.2.1"
  type="DEFINITION"
@@ -8583,7 +8492,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The following tables shall be applied assuming that:<Sub>
+><Comment></Comment>
+The following tables shall be applied assuming that:<Sub>
 <Paragraph
  id="4.8.2.1.a"
  type="REQUIREMENT"
@@ -8670,7 +8580,33 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Regarding 4.8.2.1 a): In case a balise is missed or a balise telegram cannot be decoded, the information &quot;Inhibition of balise group message consistency reaction&quot; is only used by the on-board equipment to inhibit the service brake reaction, while the balise group message is rejected. If all the telegrams from a balise group are correctly read, the information &quot;Inhibition of balise group message consistency reaction&quot;, if received, shall be ignored by the on-board equipment. Therefore this information need not to be referred to in the following tables.</Paragraph></Sub>
+>Regarding 4.8.2.1 a): In case a balise is missed or a balise telegram cannot be decoded, the information &quot;Inhibition of balise group message consistency reaction&quot; is only used by the on-board equipment to inhibit the service brake reaction, while the balise group message is rejected. If all the telegrams from a balise group are correctly read, the information &quot;Inhibition of balise group message consistency reaction&quot;, if received, shall be ignored by the on-board equipment. Therefore this information need not to be referred to in the following tables.</Paragraph><Paragraph
+ id="4.8.2.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+In case a balise telegram contains the information VBC marker and a country/region identity that both match a stored VBC, the whole balise telegram is ignored and any further check in relation to this balise telegram is irrelevant (refer to 3.15.9.3 b)). Otherwise the information VBC marker, if included in a consistent balise group message, shall always be ignored by the ERTMS/ETCS on-board equipment and need not to be referred to in the following tables.</Paragraph><Paragraph
+ id="4.8.2.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: with the exception of the data that is forwarded to a National System through the STM interface (see 3.15.6 and SUBSET-035), what will happen to the data to be used by applications outside ERTMS/ETCS (e.g. whether it is discarded, forwarded to an external application, processed by a national function...) is outside the scope of this specification and is assumed as not being part of the ERTMS/ETCS on-board functionality.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.8.3"
  type="TITLE"
@@ -8950,7 +8886,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Conditional Level Transition Order; Yes; ; ; ; ; </Paragraph><Paragraph
+>Conditional Level Transition Order; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.21"
  type="REQUIREMENT"
  scope="OBU"
@@ -8961,7 +8897,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Inhibition Order; No; A; A; A; A; A</Paragraph><Paragraph
+>Session Management; No; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.22"
  type="REQUIREMENT"
  scope="OBU"
@@ -8972,7 +8908,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Inhibition Order; Yes; A; A; A; A; A</Paragraph><Paragraph
+>Session Management; Yes; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.23"
  type="REQUIREMENT"
  scope="OBU"
@@ -8983,7 +8919,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Session Management; No; A; A; A; A; A</Paragraph><Paragraph
+>Radio Network registration; No; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.24"
  type="REQUIREMENT"
  scope="OBU"
@@ -8994,7 +8930,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Session Management; Yes; A; A; A; A; A</Paragraph><Paragraph
+>Radio Network registration; Yes; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.25"
  type="REQUIREMENT"
  scope="OBU"
@@ -9005,7 +8941,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio Network registration; No; A; A; A; A; A</Paragraph><Paragraph
+>MA Request Parameters; No; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.26"
  type="REQUIREMENT"
  scope="OBU"
@@ -9016,7 +8952,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio Network registration; Yes; A; A; A; A; A</Paragraph><Paragraph
+>MA Request Parameters; Yes; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.27"
  type="REQUIREMENT"
  scope="OBU"
@@ -9027,7 +8963,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MA Request Parameters; No; ; ; ; ; </Paragraph><Paragraph
+>Position Report parameters; No; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.28"
  type="REQUIREMENT"
  scope="OBU"
@@ -9038,7 +8974,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MA Request Parameters; Yes; A; A; A; A; A</Paragraph><Paragraph
+>Position Report parameters; Yes; A; A; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.29"
  type="REQUIREMENT"
  scope="OBU"
@@ -9049,7 +8985,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Position Report parameters; No; ; ; ; ;</Paragraph><Paragraph
+>SR Authorisation + (optional) List of Balises in SR mode; No; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.30"
  type="REQUIREMENT"
  scope="OBU"
@@ -9060,7 +8996,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Position Report parameters; Yes; A; A; A; A; A</Paragraph><Paragraph
+>SR Authorisation + (optional) List of Balises in SR mode; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.31"
  type="REQUIREMENT"
  scope="OBU"
@@ -9071,7 +9007,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR Authorisation + (optional) List of Balises in SR mode; No; ; ; ; ; </Paragraph><Paragraph
+>Stop if in SR mode; No; R; R; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.32"
  type="REQUIREMENT"
  scope="OBU"
@@ -9082,7 +9018,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR Authorisation + (optional) List of Balises in SR mode; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
+>Stop if in SR mode; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.33"
  type="REQUIREMENT"
  scope="OBU"
@@ -9093,7 +9029,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Stop if in SR mode; No; R; R; A; A; A</Paragraph><Paragraph
+>SR distance information from loop; No; R; R; A; R; R</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.34"
  type="REQUIREMENT"
  scope="OBU"
@@ -9104,7 +9040,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Stop if in SR mode; Yes; ; ; ; ; </Paragraph><Paragraph
+>SR distance information from loop; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.35"
  type="REQUIREMENT"
  scope="OBU"
@@ -9115,7 +9051,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR distance information from loop; No; R; R; A; R; R</Paragraph><Paragraph
+>Temporary Speed Restriction; No; A; R [1] [2]; A; A [8]; A [8]</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.36"
  type="REQUIREMENT"
  scope="OBU"
@@ -9126,30 +9062,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR distance information from loop; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.37"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Temporary Speed Restriction; No; A; R [1] [2]; A; A [8]; A [8]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.38"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >Temporary Speed Restriction; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.39"
+ id="Entry 4.8.3.1.1.2.37"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -9160,7 +9074,7 @@
  functionalBlockName=""
  Name=""
 >Temporary Speed Restriction Revocation; No; A; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.40"
+ id="Entry 4.8.3.1.1.2.38"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9171,7 +9085,7 @@
  functionalBlockName=""
  Name=""
 >Temporary Speed Restriction Revocation; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.41"
+ id="Entry 4.8.3.1.1.2.39"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9182,7 +9096,7 @@
  functionalBlockName=""
  Name=""
 >Inhibition of revocable TSRs from balises in L2/3; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.42"
+ id="Entry 4.8.3.1.1.2.40"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9193,7 +9107,7 @@
  functionalBlockName=""
  Name=""
 >Inhibition of revocable TSRs from balises in L2/3; Yes; R [2]; R [2]; R [2]; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.43"
+ id="Entry 4.8.3.1.1.2.41"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9204,7 +9118,7 @@
  functionalBlockName=""
  Name=""
 >Default Gradient for TSR; No; A; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.44"
+ id="Entry 4.8.3.1.1.2.42"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9215,7 +9129,7 @@
  functionalBlockName=""
  Name=""
 >Default Gradient for TSR; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.45"
+ id="Entry 4.8.3.1.1.2.43"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9226,7 +9140,7 @@
  functionalBlockName=""
  Name=""
 >Route Suitability Data; No; R [1]; R [1]; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.46"
+ id="Entry 4.8.3.1.1.2.44"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9237,7 +9151,7 @@
  functionalBlockName=""
  Name=""
 >Route Suitability Data; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.47"
+ id="Entry 4.8.3.1.1.2.45"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9248,7 +9162,7 @@
  functionalBlockName=""
  Name=""
 >Adhesion Factor; No; R[1]; R[1]; A; R; R</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.48"
+ id="Entry 4.8.3.1.1.2.46"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9260,7 +9174,7 @@
  functionalBlockName=""
  Name=""
 >Adhesion Factor; Yes; R[2]; R[2]; R[2]; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.49"
+ id="Entry 4.8.3.1.1.2.47"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9271,7 +9185,7 @@
  functionalBlockName=""
  Name=""
 >Plain Text Information; No; A; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.50"
+ id="Entry 4.8.3.1.1.2.48"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9282,7 +9196,7 @@
  functionalBlockName=""
  Name=""
 >Plain Text Information; Yes; R [2]; R [2]; R [2]; A [12]; A [12]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.51"
+ id="Entry 4.8.3.1.1.2.49"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9293,7 +9207,7 @@
  functionalBlockName=""
  Name=""
 >Fixed Text Information; No; A; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.52"
+ id="Entry 4.8.3.1.1.2.50"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9304,7 +9218,7 @@
  functionalBlockName=""
  Name=""
 >Fixed Text Information; Yes; R [2]; R [2]; R [2]; A [12]; A [12]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.53"
+ id="Entry 4.8.3.1.1.2.51"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9315,7 +9229,7 @@
  functionalBlockName=""
  Name=""
 >Geographical Position; No; A; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.54"
+ id="Entry 4.8.3.1.1.2.52"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9326,7 +9240,7 @@
  functionalBlockName=""
  Name=""
 >Geographical Position; Yes; R [2]; R [2]; R [2]; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.55"
+ id="Entry 4.8.3.1.1.2.53"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9337,7 +9251,7 @@
  functionalBlockName=""
  Name=""
 >RBC Transition Order; No; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.56"
+ id="Entry 4.8.3.1.1.2.54"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9348,29 +9262,31 @@
  functionalBlockName=""
  Name=""
 >RBC Transition Order; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.55"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Previous status was &quot;Implemented&quot;</Comment>
+Danger for SH information; No; A[13]; A[13]; A; A; A</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.56"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Danger for SH information; Yes; ; ; ; ;</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.57"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Danger for SH information; No; R; R; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.58"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Danger for SH information; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.59"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9381,7 +9297,7 @@
  functionalBlockName=""
  Name=""
 >Stop Shunting on desk opening; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.60"
+ id="Entry 4.8.3.1.1.2.58"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9392,7 +9308,7 @@
  functionalBlockName=""
  Name=""
 >Stop Shunting on desk opening; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.61"
+ id="Entry 4.8.3.1.1.2.59"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9403,7 +9319,7 @@
  functionalBlockName=""
  Name=""
 >Radio Infill Area information; No; R; R; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.62"
+ id="Entry 4.8.3.1.1.2.60"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9414,7 +9330,7 @@
  functionalBlockName=""
  Name=""
 >Radio Infill Area information; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.63"
+ id="Entry 4.8.3.1.1.2.61"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9425,7 +9341,7 @@
  functionalBlockName=""
  Name=""
 >Session Management with neighbouring RIU; No; R; R; A; R; R</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.64"
+ id="Entry 4.8.3.1.1.2.62"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9436,7 +9352,7 @@
  functionalBlockName=""
  Name=""
 >Session Management with neighbouring RIU; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.65"
+ id="Entry 4.8.3.1.1.2.63"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9447,7 +9363,7 @@
  functionalBlockName=""
  Name=""
 >EOLM information; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.66"
+ id="Entry 4.8.3.1.1.2.64"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9458,7 +9374,7 @@
  functionalBlockName=""
  Name=""
 >EOLM information; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.67"
+ id="Entry 4.8.3.1.1.2.65"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9469,7 +9385,7 @@
  functionalBlockName=""
  Name=""
 >Assignment of Co-ordinate system; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.68"
+ id="Entry 4.8.3.1.1.2.66"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9480,7 +9396,7 @@
  functionalBlockName=""
  Name=""
 >Assignment of Co-ordinate system; Yes; A [10]; A [10]; A [10]; A [10]; A [10]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.69"
+ id="Entry 4.8.3.1.1.2.67"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9491,7 +9407,7 @@
  functionalBlockName=""
  Name=""
 >Infill Location Reference; No; R; R; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.70"
+ id="Entry 4.8.3.1.1.2.68"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9502,7 +9418,7 @@
  functionalBlockName=""
  Name=""
 >Infill Location Reference; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.71"
+ id="Entry 4.8.3.1.1.2.69"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9513,7 +9429,7 @@
  functionalBlockName=""
  Name=""
 >Track Conditions excluding big metal masses; No; R [1]; R [1]; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.72"
+ id="Entry 4.8.3.1.1.2.70"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9524,7 +9440,7 @@
  functionalBlockName=""
  Name=""
 >Track Conditions excluding big metal masses; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.73"
+ id="Entry 4.8.3.1.1.2.71"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9535,7 +9451,7 @@
  functionalBlockName=""
  Name=""
 >Track condition big metal masses; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.74"
+ id="Entry 4.8.3.1.1.2.72"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9546,7 +9462,7 @@
  functionalBlockName=""
  Name=""
 >Track condition big metal masses; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.75"
+ id="Entry 4.8.3.1.1.2.73"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9557,7 +9473,7 @@
  functionalBlockName=""
  Name=""
 >Location Identity (NID_C + NID_BG transmitted in the balise telegram); No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.76"
+ id="Entry 4.8.3.1.1.2.74"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9568,7 +9484,7 @@
  functionalBlockName=""
  Name=""
 >Location Identity (NID_C + NID_BG transmitted in the balise telegram); Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.77"
+ id="Entry 4.8.3.1.1.2.75"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9579,7 +9495,7 @@
  functionalBlockName=""
  Name=""
 >Recognition of exit from TRIP mode; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.78"
+ id="Entry 4.8.3.1.1.2.76"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9590,7 +9506,7 @@
  functionalBlockName=""
  Name=""
 >Recognition of exit from TRIP mode; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.79"
+ id="Entry 4.8.3.1.1.2.77"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9601,7 +9517,7 @@
  functionalBlockName=""
  Name=""
 >Acknowledgement of Train Data; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.80"
+ id="Entry 4.8.3.1.1.2.78"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9612,7 +9528,7 @@
  functionalBlockName=""
  Name=""
 >Acknowledgement of Train Data; Yes; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.81"
+ id="Entry 4.8.3.1.1.2.79"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9623,7 +9539,7 @@
  functionalBlockName=""
  Name=""
 >Co-operative shortening of MA + (optional) Mode Profile + (optional) List of Balises for SH area; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.82"
+ id="Entry 4.8.3.1.1.2.80"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9634,7 +9550,7 @@
  functionalBlockName=""
  Name=""
 >Co-operative shortening of MA + (optional) Mode Profile + (optional) List of Balises for SH area; Yes; R; R; R; A [3] [4] [5]; A [3] [4] [5]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.83"
+ id="Entry 4.8.3.1.1.2.81"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9645,7 +9561,7 @@
  functionalBlockName=""
  Name=""
 >Unconditional Emergency Stop; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.84"
+ id="Entry 4.8.3.1.1.2.82"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9656,7 +9572,7 @@
  functionalBlockName=""
  Name=""
 >Unconditional Emergency Stop; Yes; R [2]; R [2]; R [2]; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.85"
+ id="Entry 4.8.3.1.1.2.83"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9667,7 +9583,7 @@
  functionalBlockName=""
  Name=""
 >Conditional Emergency Stop; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.86"
+ id="Entry 4.8.3.1.1.2.84"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9678,7 +9594,7 @@
  functionalBlockName=""
  Name=""
 >Conditional Emergency Stop; Yes; R [2]; R [2]; R [2]; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.87"
+ id="Entry 4.8.3.1.1.2.85"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9689,7 +9605,7 @@
  functionalBlockName=""
  Name=""
 >Revocation of Emergency Stop (Conditional or Unconditional); No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.88"
+ id="Entry 4.8.3.1.1.2.86"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9700,7 +9616,7 @@
  functionalBlockName=""
  Name=""
 >Revocation of Emergency Stop (Conditional or Unconditional); Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.89"
+ id="Entry 4.8.3.1.1.2.87"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9711,7 +9627,7 @@
  functionalBlockName=""
  Name=""
 >SH refused; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.90"
+ id="Entry 4.8.3.1.1.2.88"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9722,7 +9638,7 @@
  functionalBlockName=""
  Name=""
 >SH refused; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.91"
+ id="Entry 4.8.3.1.1.2.89"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9733,7 +9649,7 @@
  functionalBlockName=""
  Name=""
 >SH authorised + (optional) List of Balises for SH area; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.92"
+ id="Entry 4.8.3.1.1.2.90"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -9744,7 +9660,7 @@
  functionalBlockName=""
  Name=""
 >SH authorised + (optional) List of Balises for SH area; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.93"
+ id="Entry 4.8.3.1.1.2.91"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9755,7 +9671,7 @@
  functionalBlockName=""
  Name=""
 >Trackside constituent System Version; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.94"
+ id="Entry 4.8.3.1.1.2.92"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9766,7 +9682,7 @@
  functionalBlockName=""
  Name=""
 >Trackside constituent System Version; Yes; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.95"
+ id="Entry 4.8.3.1.1.2.93"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9777,7 +9693,7 @@
  functionalBlockName=""
  Name=""
 >System Version order; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.96"
+ id="Entry 4.8.3.1.1.2.94"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9788,7 +9704,7 @@
  functionalBlockName=""
  Name=""
 >System Version order; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.97"
+ id="Entry 4.8.3.1.1.2.95"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9799,7 +9715,7 @@
  functionalBlockName=""
  Name=""
 >Track Ahead Free Request; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.98"
+ id="Entry 4.8.3.1.1.2.96"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9810,7 +9726,7 @@
  functionalBlockName=""
  Name=""
 >Track Ahead Free Request; Yes; R; R; R; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.99"
+ id="Entry 4.8.3.1.1.2.97"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9821,7 +9737,7 @@
  functionalBlockName=""
  Name=""
 >Train Running Number; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.100"
+ id="Entry 4.8.3.1.1.2.98"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9832,7 +9748,7 @@
  functionalBlockName=""
  Name=""
 >Train Running Number; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.101"
+ id="Entry 4.8.3.1.1.2.99"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9843,7 +9759,7 @@
  functionalBlockName=""
  Name=""
 >Initiation of session; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.102"
+ id="Entry 4.8.3.1.1.2.100"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9854,7 +9770,7 @@
  functionalBlockName=""
  Name=""
 >Initiation of session; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.103"
+ id="Entry 4.8.3.1.1.2.101"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9865,7 +9781,7 @@
  functionalBlockName=""
  Name=""
 >Acknowledgement of session termination; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.104"
+ id="Entry 4.8.3.1.1.2.102"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9876,7 +9792,7 @@
  functionalBlockName=""
  Name=""
 >Acknowledgement of session termination; Yes; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.105"
+ id="Entry 4.8.3.1.1.2.103"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9887,7 +9803,7 @@
  functionalBlockName=""
  Name=""
 >Train Rejected; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.106"
+ id="Entry 4.8.3.1.1.2.104"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9898,7 +9814,7 @@
  functionalBlockName=""
  Name=""
 >Train Rejected; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.107"
+ id="Entry 4.8.3.1.1.2.105"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9909,7 +9825,7 @@
  functionalBlockName=""
  Name=""
 >Train Accepted; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.108"
+ id="Entry 4.8.3.1.1.2.106"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9920,7 +9836,7 @@
  functionalBlockName=""
  Name=""
 >Train Accepted; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.109"
+ id="Entry 4.8.3.1.1.2.107"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9931,7 +9847,7 @@
  functionalBlockName=""
  Name=""
 >SoM Position Report Confirmed by RBC; No; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.110"
+ id="Entry 4.8.3.1.1.2.108"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9942,7 +9858,7 @@
  functionalBlockName=""
  Name=""
 >SoM Position Report Confirmed by RBC; Yes; R; R; R; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.111"
+ id="Entry 4.8.3.1.1.2.109"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9953,7 +9869,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Area Information; No; R [1]; R [1]; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.112"
+ id="Entry 4.8.3.1.1.2.110"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9964,7 +9880,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Area Information; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.113"
+ id="Entry 4.8.3.1.1.2.111"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9975,7 +9891,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Supervision Information; No; R [1]; R [1]; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.114"
+ id="Entry 4.8.3.1.1.2.112"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -9986,7 +9902,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Supervision Information; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.115"
+ id="Entry 4.8.3.1.1.2.113"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -9997,7 +9913,7 @@
  functionalBlockName=""
  Name=""
 >Default Balise/Loop/RIU Information; No; A; A; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.116"
+ id="Entry 4.8.3.1.1.2.114"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -10008,7 +9924,7 @@
  functionalBlockName=""
  Name=""
 >Default Balise/Loop/RIU Information; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.117"
+ id="Entry 4.8.3.1.1.2.115"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10019,7 +9935,7 @@
  functionalBlockName=""
  Name=""
 >Track Ahead Free up to level 2/3 transition location; No; A [9]; A [9]; A [9]; R; R</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.118"
+ id="Entry 4.8.3.1.1.2.116"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10030,7 +9946,7 @@
  functionalBlockName=""
  Name=""
 >Track Ahead Free up to level 2/3 transition location; Yes; ; ; ; ;</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.119"
+ id="Entry 4.8.3.1.1.2.117"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10041,7 +9957,7 @@
  functionalBlockName=""
  Name=""
 >Permitted Braking Distance Information; No; R [1]; R [1]; A; R [1]; R [1]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.120"
+ id="Entry 4.8.3.1.1.2.118"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10052,7 +9968,7 @@
  functionalBlockName=""
  Name=""
 >Permitted Braking Distance Information; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.121"
+ id="Entry 4.8.3.1.1.2.119"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10063,7 +9979,7 @@
  functionalBlockName=""
  Name=""
 >Level Crossing information; No; R [1] [2]; R [1] [2]; A; A; A</Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.122"
+ id="Entry 4.8.3.1.1.2.120"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10073,7 +9989,55 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Crossing information; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph></Sub>
+>Level Crossing information; Yes; R [2]; R [2]; R [2]; A [3]; A [3]</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.121"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Virtual Balise Cover order; No; A; A; A; A; A</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.122"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Virtual Balise Cover order; Yes; ; ; ; ;</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.123"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Data to be used by applications outside ERTMS/ETCS; No; A; A; A; A; A</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.124"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Data to be used by applications outside ERTMS/ETCS; YES; A; A; A; A; A</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.8.3.1.1.3"
  type="REQUIREMENT"
@@ -10484,14 +10448,14 @@
  id="Entry 4.8.4.2.2.12"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.2.0"
+ bl=""
  name=""
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Inhibition Order; NR; A [2]; A; A; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
+>Session Management; NR; A; A [3]; A [3]; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -10502,7 +10466,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Session Management; NR; A; A [3]; A [3]; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
+>Radio Network registration; NR; A [2]; A; A; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.14"
  type="REQUIREMENT"
  scope="OBU"
@@ -10513,7 +10477,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio Network registration; NR; A [2]; A; A; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
+>MA Request Parameters; NR; A [2]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.15"
  type="REQUIREMENT"
  scope="OBU"
@@ -10524,7 +10488,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MA Request Parameters; NR; A [2]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
+>Position Report parameters; NR; A [2]; R; R; A; A; A; A; R; A; A; R; A [1]; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.16"
  type="REQUIREMENT"
  scope="OBU"
@@ -10535,7 +10499,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Position Report parameters; NR; A [2]; R; R; A; A; A; A; R; A; A; R; A [1]; NR; NR; A; A</Paragraph><Paragraph
+>SR Authorisation + (optional) List of Balises in SR mode; NR; A[2][4]; R; R; R; R; A; R; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.17"
  type="REQUIREMENT"
  scope="OBU"
@@ -10546,7 +10510,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR Authorisation + (optional) List of Balises in SR mode; NR; A[2][4]; R; R; R; R; A; R; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
+>Stop if in SR mode; NR; R; R; R; R; R; A; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.18"
  type="REQUIREMENT"
  scope="OBU"
@@ -10557,7 +10521,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Stop if in SR mode; NR; R; R; R; R; R; A; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
+>SR distance information from loop; NR; R; R; R; R; R; A[6]; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.19"
  type="REQUIREMENT"
  scope="OBU"
@@ -10568,19 +10532,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR distance information from loop; NR; R; R; R; R; R; A[6]; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.20"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >Temporary Speed Restriction; NR; A [2][4]; R; R; A; A; A; A; R; R; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.21"
+ id="Entry 4.8.4.2.2.20"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -10591,7 +10544,7 @@
  functionalBlockName=""
  Name=""
 >Temporary Speed Restriction Revocation; NR; A[2][4]; R; R; A; A; A; A; R; R; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.22"
+ id="Entry 4.8.4.2.2.21"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10602,7 +10555,7 @@
  functionalBlockName=""
  Name=""
 >Inhibition of revocable TSRs from balises in L2/3; NR; A [2]; R; R; A; A; A; A; R; R; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.23"
+ id="Entry 4.8.4.2.2.22"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10613,7 +10566,7 @@
  functionalBlockName=""
  Name=""
 >Default Gradient for TSR; NR; A[2][4]; R; R; A; A; A; A; R; R; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.24"
+ id="Entry 4.8.4.2.2.23"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10624,7 +10577,7 @@
  functionalBlockName=""
  Name=""
 >Route Suitability Data; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.25"
+ id="Entry 4.8.4.2.2.24"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10635,7 +10588,7 @@
  functionalBlockName=""
  Name=""
 >Adhesion Factor; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.26"
+ id="Entry 4.8.4.2.2.25"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10646,7 +10599,7 @@
  functionalBlockName=""
  Name=""
 >Plain Text Information; NR; A [2]; R; R; A; A; A; A; R; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.27"
+ id="Entry 4.8.4.2.2.26"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10657,7 +10610,7 @@
  functionalBlockName=""
  Name=""
 >Fixed Text Information; NR; A [2]; R; R; A; A; A; A; R; A; A; A; A [1]; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.28"
+ id="Entry 4.8.4.2.2.27"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10668,7 +10621,7 @@
  functionalBlockName=""
  Name=""
 >Geographical Position; NR; A [2]; R; R; A; A; A; A; R; A; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.29"
+ id="Entry 4.8.4.2.2.28"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10679,7 +10632,7 @@
  functionalBlockName=""
  Name=""
 >RBC Transition Order; NR; A[2][4]; A [8]; A [8]; A; A; A; A; A; A; R; A; A [1]; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.30"
+ id="Entry 4.8.4.2.2.29"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10690,7 +10643,7 @@
  functionalBlockName=""
  Name=""
 >Danger for SH information; NR; R; R; A; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.31"
+ id="Entry 4.8.4.2.2.30"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -10701,7 +10654,7 @@
  functionalBlockName=""
  Name=""
 >Stop Shunting on desk opening; NR; R; A; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.32"
+ id="Entry 4.8.4.2.2.31"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10712,7 +10665,7 @@
  functionalBlockName=""
  Name=""
 >Radio Infill Area information; NR; R; R; R; A; A; A; A; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.33"
+ id="Entry 4.8.4.2.2.32"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10723,7 +10676,7 @@
  functionalBlockName=""
  Name=""
 >Session Management with neighbouring RIU; NR; R; R; R; A; A; A; A; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.34"
+ id="Entry 4.8.4.2.2.33"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -10734,7 +10687,7 @@
  functionalBlockName=""
  Name=""
 >EOLM information; NR; R; R; A; A; A; A; A; A; A; A; A; R; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.35"
+ id="Entry 4.8.4.2.2.34"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10745,7 +10698,7 @@
  functionalBlockName=""
  Name=""
 >Assignment of Co-ordinate system; NR; A [2]; R; R; R; R; A; R; R; A; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.36"
+ id="Entry 4.8.4.2.2.35"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10756,7 +10709,7 @@
  functionalBlockName=""
  Name=""
 >Infill Location Reference; NR; R; R; R; A; A; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.37"
+ id="Entry 4.8.4.2.2.36"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -10767,7 +10720,7 @@
  functionalBlockName=""
  Name=""
 >Track Conditions excluding sound horn, non stopping areas, tunnel stopping areas and big metal masses; NR; A[2][4]; R; R; A; A; A; A; R; A; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.38"
+ id="Entry 4.8.4.2.2.37"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -10778,7 +10731,7 @@
  functionalBlockName=""
  Name=""
 >Track conditions sound horn, non stopping areas, tunnel stopping areas; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.39"
+ id="Entry 4.8.4.2.2.38"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -10789,7 +10742,7 @@
  functionalBlockName=""
  Name=""
 >Track condition big metal masses; NR; A[2][4]; A; A; A; A; A; A; A; A; A; A; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.40"
+ id="Entry 4.8.4.2.2.39"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10800,7 +10753,7 @@
  functionalBlockName=""
  Name=""
 >Location Identity (NID_C + NID_BG); NR; A [2]; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.41"
+ id="Entry 4.8.4.2.2.40"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10811,7 +10764,7 @@
  functionalBlockName=""
  Name=""
 >Recognition of exit from TRIP mode; NR; R; R; R; R; R; R; R; R; R; R; R; A; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.42"
+ id="Entry 4.8.4.2.2.41"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10822,7 +10775,7 @@
  functionalBlockName=""
  Name=""
 >Acknowledgement of Train Data; NR; A [2]; R; R; A; A; A; A; R; R; A; A; A; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.43"
+ id="Entry 4.8.4.2.2.42"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
@@ -10833,7 +10786,7 @@
  functionalBlockName=""
  Name=""
 >Co-operative shortening of MA + (optional) Mode Profile + (optional) List of Balises for SH area; NR; R; R; R; A; A; R; A; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.44"
+ id="Entry 4.8.4.2.2.43"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10844,7 +10797,7 @@
  functionalBlockName=""
  Name=""
 >Unconditional Emergency Stop; NR; A [2]; R; R; A; A; A; A; R; R; A; R; R; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.45"
+ id="Entry 4.8.4.2.2.44"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10855,7 +10808,7 @@
  functionalBlockName=""
  Name=""
 >Conditional Emergency Stop; NR; R; R; R; A; A; R; A; R; R; A; R; R; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.46"
+ id="Entry 4.8.4.2.2.45"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10866,7 +10819,7 @@
  functionalBlockName=""
  Name=""
 >Revocation of Emergency Stop (Conditional or Unconditional); NR; R; R; R; A; A; R; A; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.47"
+ id="Entry 4.8.4.2.2.46"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -10877,6 +10830,18 @@
  functionalBlockName=""
  Name=""
 >SH refused; NR; A [2]; R; R; A; A; A; A; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.47"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Previous status was &quot;Implemented&quot;</Comment>
+SH authorised + (optional) List of Balises for SH area; NR; A [2]; R; R; A; A; A; A; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.48"
  type="REQUIREMENT"
  scope="OBU"
@@ -10887,7 +10852,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SH authorised; NR; A [2]; R; R; A; A; A; A; R; R; R; R; A [1]; NR; NR; R; R</Paragraph><Paragraph
+><Comment></Comment>
+Trackside constituent System Version; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.49"
  type="REQUIREMENT"
  scope="OBU"
@@ -10898,7 +10864,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Trackside constituent System Version; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
+>System Version order; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.50"
  type="REQUIREMENT"
  scope="OBU"
@@ -10909,7 +10875,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->System Version order; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
+>Track Ahead Free Request; NR; A [2]; R; R; R; A; A; A; R; R; R; R; A[1]; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.51"
  type="REQUIREMENT"
  scope="OBU"
@@ -10920,7 +10886,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track Ahead Free Request; NR; A [2]; R; R; R; A; A; A; R; R; R; R; A[1]; NR; NR; R; R</Paragraph><Paragraph
+>Train Running Number; NR; A [2]; R; R; A; A; A; A; R; A; R; A; A; NR; NR; R; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.52"
  type="REQUIREMENT"
  scope="OBU"
@@ -10931,7 +10897,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train Running Number; NR; A [2]; R; R; A; A; A; A; R; A; R; A; A; NR; NR; R; A</Paragraph><Paragraph
+>Initiation of session; NR; A; R; R; A; A; A; A; A; A; R; A; A; NR; NR; R; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.53"
  type="REQUIREMENT"
  scope="OBU"
@@ -10942,7 +10908,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Initiation of session; NR; A; R; R; A; A; A; A; A; A; R; A; A; NR; NR; R; A</Paragraph><Paragraph
+>Acknowledgement of session termination; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.54"
  type="REQUIREMENT"
  scope="OBU"
@@ -10953,7 +10919,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Acknowledgement of session termination; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
+>Train Rejected; NR; A [2]; R; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.55"
  type="REQUIREMENT"
  scope="OBU"
@@ -10964,7 +10930,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train Rejected; NR; A [2]; R; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
+>Train Accepted; NR; A [2]; R; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
  id="Entry 4.8.4.2.2.56"
  type="REQUIREMENT"
  scope="OBU"
@@ -10975,19 +10941,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train Accepted; NR; A [2]; R; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.57"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >SoM Position Report Confirmed by RBC; NR; A [2]; R; R; R; R; R; R; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.58"
+ id="Entry 4.8.4.2.2.57"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -10998,7 +10953,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Area Information; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.59"
+ id="Entry 4.8.4.2.2.58"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -11009,7 +10964,7 @@
  functionalBlockName=""
  Name=""
 >Reversing Supervision Information; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.60"
+ id="Entry 4.8.4.2.2.59"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -11020,7 +10975,7 @@
  functionalBlockName=""
  Name=""
 >Default Balise/Loop/RIU Information; NR; A [2]; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.61"
+ id="Entry 4.8.4.2.2.60"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -11031,7 +10986,7 @@
  functionalBlockName=""
  Name=""
 >Track Ahead Free up to level 2/3 transition location; NR; A [2]; R; R; A; A; A; A; R; R; A; A; A; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.62"
+ id="Entry 4.8.4.2.2.61"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -11042,7 +10997,7 @@
  functionalBlockName=""
  Name=""
 >Permitted Braking Distance Information; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
- id="Entry 4.8.4.2.2.63"
+ id="Entry 4.8.4.2.2.62"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -11052,7 +11007,31 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Crossing information; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph></Sub>
+>Level Crossing information; NR; A[2][4]; R; R; A; A; A; A; R; R; A; R; A [1]; NR; NR; A; R</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.63"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Virtual Balise Cover order; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.64"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Data to be used by applications outside ERTMS/ETCS; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.8.4.2.3"
  type="REQUIREMENT"
@@ -11141,7 +11120,8 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[8]: only RBC transition order with null distance to execution shall be accepted (i.e., RBC transition announcement shall be rejected) for storing the RBC ID/phone number (see 4.4.8.1.5.2)</Paragraph></Sub>
+><Comment></Comment>
+[8]: only RBC transition order with null distance to execution shall be accepted (i.e., RBC transition announcement shall be rejected) for storing the RBC ID/phone number (see 4.4.8.1.5.2)</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.8.5"
@@ -11501,585 +11481,559 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->D = Deleted; TBR = To Be Revalidated; U = Unchanged; NR = Not relevant; R = Reset
-</Paragraph><Paragraph
+>D = Deleted; TBR = To Be Revalidated; U = Unchanged; NR = Not relevant; R = Reset</Paragraph><Paragraph
  id="4.10.1.3.2"
  type="TITLE"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Entered Mode
-</Paragraph><Paragraph
- id="4.10.1.3.3"
+>Entered Mode</Paragraph><Paragraph
+ id="Table 4.10.1.3.3"
  type="TITLE"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Data Stored on-board; NP; SB; PS; SH; FS; LS; SR; OS; SL; NL; UN; TR; PT; SF; IS; SN; RV
+>Data Stored on-board; NP; SB; PS; SH; FS; LS; SR; OS; SL; NL; UN; TR; PT; SF; IS; SN; RV<Sub>
+<Paragraph
+ id="Entry 4.10.1.3.3.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>National Values; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Not yet applicable National Values; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Linking; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.4"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Movement Authority; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Gradient Profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>International SSP; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Axle load speed profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.8"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>STM max speed; D; D; D; D; U; U; D; U; D; D; U; U; U; NR; NR; U; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>STM system speed/distance; D; D; D; D; U; U; D; U; D; D; U; U; U; NR; NR; U; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.10"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Level Transition Order; D; D [1] [2]; U; D [2]; U; U; D; U; D [2]; D [1]; D; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Stop Shunting on desk opening; D; D; U; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.12"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>List of balises for SH area; D; D; D; U; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.13"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>MA Request Parameters; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.14"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Position Report parameters; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.15"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>List of Balises in SR Authority + SR mode speed limit and distance; D; D; D; D; D; D; U; D; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.16"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Temporary Speed Restriction; D; D; D; D; U; U; U; U; D; D; U; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.17"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Inhibition of revocable TSRs from balises in L2/3; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.18"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Default Gradient for TSR; D; D; D; D; U; U; U; U; D; D; U; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.19"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Signalling related Speed Restriction; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.20"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Route Suitability Data; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.21"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Adhesion Factor (from trackside); R; R; R; R; U; U; U; U; R; R; U; U; U; NR; NR; R; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.22"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Adhesion Factor (from driver); R; R; R; R; U; U; U; U; R; R; U; U; U; NR; NR; R; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.23"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Plain Text Information; D; D; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.24"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Fixed Text Information; D; D; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.25"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Geographical Position; D; U; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.26"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Mode Profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.27"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>RBC Transition Order; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.28"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Radio Infill Area information; D; D; D; D; U; U; D; D; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.29"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>EOLM information; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.30"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track Conditions excluding sound horn, non stopping areas, tunnel stopping areas and big metal masses; R; R; R; R; U; U; R; U; R; U; R; U; U; NR; NR; R; R</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.31"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track conditions sound horn, non stopping areas, tunnel stopping areas; R; R; R; R; U; U; R; U; R; R; R; R; R; NR; NR; R; R</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.32"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track condition big metal masses; R; R; R; R; U; U; R; U; R; U; U; U; U; NR; NR; U; R</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.33"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Unconditional Emergency Stops; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.34"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Conditional Emergency Stops; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.35"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Train Position; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.36"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Train Data; D; TBR; U; TBR; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.37"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>ERTMS/ETCS level; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.38"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Table of priority of trackside supported levels; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.39"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Driver ID; D; TBR; D; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.40"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Radio Network ID; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.41"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>RBC ID/Phone Number; TBR; U; U; U; U; U; U; U; U; U; D; U; U; NR; NR; D; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.42"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Train Running Number; D; TBR; U; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.43"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Reversing Area Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.44"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Reversing Supervision Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.45"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Track Ahead Free Request; D; D; D; D; D; D; U; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.46"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Permitted Braking Distance Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.47"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Level Crossing information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.48"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>RBC/RIU System Version; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.49"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Operated System Version; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.50"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Virtual Balise Covers; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph><Paragraph
+ id="Entry 4.10.1.3.3.51"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Language used to display information to the driver; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.10.1.3.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->National Values; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
+>[1]: exception: &quot;U&quot; when coming from SH</Paragraph><Paragraph
  id="4.10.1.3.5"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Not yet applicable National Values; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.6"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Linking; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.7"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Movement Authority; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.8"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Gradient Profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.9"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->International SSP; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.10"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Axle load speed profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.11"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->STM max speed; D; D; D; D; U; U; D; U; D; D; U; U; U; NR; NR; U; D
-</Paragraph><Paragraph
- id="4.10.1.3.12"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->STM system speed/distance; D; D; D; D; U; U; D; U; D; D; U; U; U; NR; NR; U; D
-</Paragraph><Paragraph
- id="4.10.1.3.13"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Level Transition Order; D; D [1] [2]; U; D [2]; U; U; D; U; D [2]; D [1]; D; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.14"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Stop Shunting on desk opening; D; D; U; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.15"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->List of balises for SH area; D; D; D; U; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.16"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->MA Request Parameters; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.17"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Position Report parameters; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.18"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->List of Balises in SR Authority + SR mode speed limit and distance; D; D; D; D; D; D; U; D; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.19"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Temporary Speed Restriction; D; D; D; D; U; U; U; U; D; D; U; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.20"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Inhibition of revocable TSRs from balises in L2/3; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.21"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Default Gradient for TSR; D; D; D; D; U; U; U; U; D; D; U; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.22"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Signalling related Speed Restriction; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.23"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Route Suitability Data; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.24"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Adhesion Factor; R; R; R; R; U; U; U; U; R; R; U; U; U; NR; NR; R; U
-</Paragraph><Paragraph
- id="4.10.1.3.25"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Plain Text Information; D; D; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; U
-</Paragraph><Paragraph
- id="4.10.1.3.26"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Fixed Text Information; D; D; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; U
-</Paragraph><Paragraph
- id="4.10.1.3.27"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Geographical Position; D; U; D; D; U; U; U; U; D; U; U; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.28"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Mode Profile; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.29"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->RBC Transition Order; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.30"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Radio Infill Area information; D; D; D; D; U; U; D; D; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.31"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->EOLM information; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.32"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Track Conditions excluding sound horn, non stopping areas, tunnel stopping areas and big metal masses; R; R; R; R; U; U; R; U; R; U; R; U; U; NR; NR; R; R
-</Paragraph><Paragraph
- id="4.10.1.3.33"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Track conditions sound horn, non stopping areas, tunnel stopping areas; R; R; R; R; U; U; R; U; R; R; R; R; R; NR; NR; R; R
-</Paragraph><Paragraph
- id="4.10.1.3.34"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Track condition big metal masses; R; R; R; R; U; U; R; U; R; U; U; U; U; NR; NR; U; R
-</Paragraph><Paragraph
- id="4.10.1.3.35"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Unconditional Emergency Stops; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.36"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Conditional Emergency Stops; D; D; D; D; U; U; D; U; D; D; D; U; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.37"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Train Position; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.38"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Train Data; D; TBR; U; TBR; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.39"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->ERTMS/ETCS level; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.40"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Table of priority of trackside supported levels; TBR; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.41"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->List of Inhibited Levels; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.42"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Driver ID; D; TBR; D; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.43"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Radio Network ID; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.44"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->RBC ID/Phone Number; TBR; U; U; U; U; U; U; U; U; U; D; U; U; NR; NR; D; U
-</Paragraph><Paragraph
- id="4.10.1.3.45"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Train Running Number; D; TBR; U; U; U; U; U; U; D; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.46"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Reversing Area Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; U
-</Paragraph><Paragraph
- id="4.10.1.3.47"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Reversing Supervision Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; U
-</Paragraph><Paragraph
- id="4.10.1.3.48"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Track Ahead Free Request; D; D; D; D; D; D; U; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.49"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Permitted Braking Distance Information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.50"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Level Crossing information; D; D; D; D; U; U; D; U; D; D; D; D; U; NR; NR; D; D
-</Paragraph><Paragraph
- id="4.10.1.3.51"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->RBC/RIU System Version; D; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.52"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Operated System Version; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.53"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Language used to display information to the driver; U; U; U; U; U; U; U; U; U; U; U; U; U; NR; NR; U; U
-</Paragraph><Paragraph
- id="4.10.1.3.54"
  type="NOTE"
  scope="OBU"
  bl=""
@@ -12088,19 +12042,7 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[1]: exception: &quot;U&quot; when coming from SH
-</Paragraph><Paragraph
- id="4.10.1.3.55"
- type="NOTE"
- scope="OBU"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->[2]: exception: &quot;U&quot; when coming from PS
-</Paragraph></Sub>
+>[2]: exception: &quot;U&quot; when coming from PS</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.10.1.4"
  type="TITLE"
@@ -12160,7 +12102,8 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
 	v) SoM position report confirmed by RBC
 	w) Track Ahead Free up to level 2/3 transition location
 	x) Signalling related speed restriction value zero (i.e., train trip order)
-	y) Stop if in SR mode</Paragraph></Sub>
+	y) Stop if in SR mode
+	z) Data to be forwarded to a National System through the STM interface</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
@@ -12202,11 +12145,14 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
  id="4.11.1.3"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If a cold movement has been detected, or the Cold Movement Detection function is not able to confirm that no cold movement has taken place, no change of status of information to &quot;valid&quot; shall be made until the train position has been validated by a different means than cold movement detection.</Paragraph></Sub>
+><Comment>
+Previous revision status was NA</Comment>
+If a cold movement has been detected, or the Cold Movement Detection function is not able to confirm that no cold movement has taken place, no change of status of information to valid shall be made until it has been validated by a different means than cold movement detection.</Paragraph></Sub>
 </Paragraph></Chapter>
