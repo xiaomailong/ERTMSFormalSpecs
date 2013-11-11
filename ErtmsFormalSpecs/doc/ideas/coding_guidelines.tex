@@ -11,24 +11,56 @@
 %% 5. add \vhEntry{<versionnumber>}{<date>}{<initials>}{<sometext>} to the
 %%    respective section in the header
 %%
+%%
+%%
+%% NOTE 1
+%% Adding of glossary entries:
+%%
+%% Make sure to run
+%% "makeindex -s coding_guidelines.ist -t coding_guidelines.glg -o
+%% coding_guidelines.gls coding_guidelines.glo"
+%% after editing the glossaries list
+%%
+%%
+%% NOTE 2
+%% Adding of bibliography entries:
+%%
+%% Edit efsbibliography.bib, cite the new entry, run latex, run bibtex and run
+%% latex twice again.
+%%
+%%
+%% NOTE 3
+%% Release version:
+%%
+%% Remove the draft option from the \documentclass-line of this file. This will
+%% cause the ruleauthors, the draftwatermarkmark and all the fixme notes to
+%% dissappear. Make sure to resolve all fatal-fixmes beforehand.
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 \documentclass[draft, a4paper, oneside]{scrreprt}
 \usepackage[american]{babel}
+\usepackage[draft=false]{hyperref} %link in draft mode as well
 \usepackage{enumitem}
 \usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
 \usepackage[usenames, dvipsnames]{xcolor}
 \usepackage{xspace}
 \usepackage[tablegrid]{vhistory}
+\usepackage[nonumberlist]{glossaries}
 \usepackage{fixme}
+\usepackage{ifdraft}
 \usepackage[lighttt]{lmodern} %add better ttfont including a bold variant
 \usepackage{listings}
-\usepackage{hyperref}
+\ifdraft{\usepackage[firstpage]{draftwatermark}}{}
 \usepackage{scrpage2}
 
-% BEGIN title + general-stuff
+
+%%
+%% BEGIN title + general-stuff
+%%
+
 \newcommand{\docTitle}{ERTMS Formal Specs Workbench}
 \newcommand{\docSubTitle}{Coding Guidelines}
 
@@ -48,10 +80,16 @@ urlcolor = black
 \ifoot[\docTitle, \docSubTitle\ -- Version \vhCurrentVersion]{\docTitle, \docSubTitle\ -- Version \vhCurrentVersion}
 \cfoot[]{}
 \ofoot[\thepage]{\thepage}
-% END title + general stuff
+
+%%
+%% END title + general stuff
+%%
 
 
-% BEGIN specific commands for this file
+%%
+%%% BEGIN specific commands for this file
+%%
+
 \makeatletter
 % makes the enumeration item label start with the number
 % of the current section/subsection/etc.
@@ -64,11 +102,14 @@ urlcolor = black
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+\setlength{\parindent}{0em}
 
 \setenumerate[1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
 \setenumerate[2]{label*=\arabic*.}
 \setenumerate[3]{label*=\arabic*.}
 \let\emph\textsl
+\newcommand{\literally}[1]{\textsf{\emph{#1}}}
+\newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
 
 \fxsetup{mode=multiuser, theme=color, layout=inline}
 \colorlet{fxnote}{Green} 
@@ -89,19 +130,30 @@ urlcolor = black
 \makeatother
 
 \lstdefinelanguage{EFSDSL}
-{keywords={SUM, USING, REDUCE, RESULT, THERE_IS_IN, FIRST_IN, LAST_IN, MAP, NOT, EMPTY},
-morekeywords=[2]{Condition, List},
+{%
+keywords={SUM, AND, APPLY, COUNT, EMPTY, FIRST_IN, FORALL_IN, IN, INITIAL_VALUE, LAST_IN, MAP, NOT, ON, OR, REDUCE, RESULT, THERE_IS_IN, USING, X},
+morekeywords=[2]{AddIncrement, Allocate, Available, Before, DecelerationProfile, IntersectAt, Max, Min, MinSurface, Override, RoundToMultiple,  Targets},
+morekeywords=[3]{Boolean, Collection, Condition, double, Expression, f, List, ListExpression, ListValue, Statement, StatementList},
+morestring=[b]',
 sensitive=true}
 \lstset{%
 language=EFSDSL,
 basicstyle=\ttfamily,
 keywordstyle=\bfseries,
-keywordstyle=[2]\emph,
+keywordstyle=[2]\underline,
+keywordstyle=[3]\emph,
+stringstyle=\sffamily,
+showstringspaces=true,
 breakatwhitespace=true,
 breaklines=true}
 \newcommand{\code}[1]{\lstinline$#1$}
 
-\newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}
+\ifdraft{%
+\newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}}
+{%
+\newcommand{\ruleauthor}[2]{}
+}
+
 
 \newcommand{\addauthor}[2]{%
 %setup vhistory
@@ -110,18 +162,41 @@ breaklines=true}
 \FXRegisterAuthor{#1}{a#1}{#1}
 }
 
-% END specific commands for this file
+%%
+%% END specific commands for this file
+%%
 
 
-%BEGIN abbreviations for author names
+%%
+%% BEGIN abbreviations for author names
+%%
 
 \addauthor{MD}{Moritz Dorka}
 
 % @ALL:
 % extend as needed
-% then a \vhEntry as shown below, that's it!
 
-%END abbreviations for author names
+%%
+%% END abbreviations for author names
+%%
+
+
+%%
+%% BEGIN GLOSSARY
+%%
+
+\makeglossaries
+
+\newacronym{efs}{EFS}{ERTMS Formal Specs Workbench}
+\newacronym{dsl}{DSL}{Domain Specific Language}
+
+% @ALL: add your entries as necessary
+% Then follow the instructions from Note 1 above.
+
+%%
+%% END GLOSSARY
+%%
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,30 +213,59 @@ breaklines=true}
 \maketitle
 
 
+%%
+%% BEGIN VERSIONING
+%%
+
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
 
 % @ALL:
 % add your revision information here
+
 \end{versionhistory}
+
+%%
+%% END VERSIONING
+%%
+
 
 \newpage
 \tableofcontents
 \newpage
 
 \addchap{How to read this file}
+
+
+This document lists rules to be followed when coding in the \gls{dsl} of the \gls{efs} tool. It is targeted at both model developers and test-case designers. \ldots\\
+It will not cover the technical implementation of the underlying \gls{dsl} or give general instructions on how to use the \gls{efs}-tool. For this refer to the Technical design \cite{efstechdesign} and the user guide \cite{efsuserguide}, respectively.\\
+
 \MDfatal{TODO}
+
+
+\addsec{Typographical conventions}
+
+\subsection*{Rule texts}
+Each rule has a unique identifier composed of the current section and a running number. Words to be used verbatim within the rule texts are printed in \literally{emphasized} letters. \indraftmode{Rule texts conclude with the initials of the rule author and the date of the last change of the rule.}
+
+\subsection*{Code examples}
+Code of the \gls{dsl} used for examples within the rules is printed in \texttt{typewriter} font with 
 \begin{itemize}
-\item intended audience
-\item typographical conventions
-\item \ldots
+\item language keywords in \texttt{\textbf{bold}},
+\item pre-defined functions \texttt{\underline{underlined}},
+\item placeholders \texttt{\emph{emphasized}} and
+\item string literals in a \texttt{\textsf{sans-serif font}}.
 \end{itemize}
+
+For a documentation of the keywords and the pre-defined functions see \cite{efstechdesign}.
+
+
 
 \chapter{Domain specific language}
 
 \section{General}
 \begin{enumerate}
-\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT AVAILABLE()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
+\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
 \item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
 \item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
@@ -181,7 +285,7 @@ breaklines=true}
 \subsubsection{Pre-conditions}
 \begin{enumerate}
 \item Cases with no pre-condition assigned shall always come as the very last case. \ruleauthor{MD}{31/10/2013}
-\item Cases with no pre-condition assigned shall always be named "Otherwise". \ruleauthor{MD}{31/10/2013}
+\item Cases with no pre-condition assigned shall always be named \literally{Otherwise}. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 \chapter{Tests}
@@ -197,7 +301,7 @@ breaklines=true}
 
 \section{Naming conventions}
 \begin{enumerate}
-\item Individual test steps shall be named \code{Step n - explanation}.\\ \emph{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
+\item Individual test steps shall be named \literally{Step n - explanation}.\\ \literally{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 
@@ -205,7 +309,7 @@ breaklines=true}
 \chapter{Git}
 \section{General}
 \begin{enumerate}
-\item Own edits shall always be committed into a personal fork of the EFS repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\item Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
 \section{Commits}
@@ -217,11 +321,28 @@ breaklines=true}
 \subsection{commit description texts}
 \begin{enumerate}
 \item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
-\item Commits dealing with the modeling part of the tool shall begin with \emph{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
-\item Commits dealing with the testing part of the tool shall begin with \emph{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the modeling part of the tool shall begin with \literally{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the testing part of the tool shall begin with \literally{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
-\listoffixmes
 
+	
+
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary[style=listdotted]
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{efsbibliography}
+\bibliographystyle{plain}
+
+\indraftmode{
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Corrections}
+\listoffixmes}
 
 \end{document}
