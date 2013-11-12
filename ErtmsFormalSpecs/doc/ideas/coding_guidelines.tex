@@ -108,6 +108,9 @@ urlcolor = black
 \setenumerate[2]{label*=\arabic*.}
 \setenumerate[3]{label*=\arabic*.}
 \let\emph\textsl
+
+
+
 \newcommand{\literally}[1]{\textsf{\emph{#1}}}
 \newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
 
@@ -219,7 +222,7 @@ breaklines=true}
 
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
-
+\vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
 % @ALL:
 % add your revision information here
 
@@ -273,6 +276,14 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \chapter{Model}
 
+\section{General}
+
+\begin{enumerate}
+\item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a Function instead of a Procedure), but have an influence on the actual behavior of the model shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code%. \ruleauthor{MD}{12/11/2013}
+
+\end{enumerate}
+
+
 \section{Functions}
 \subsection{Cases}
 
@@ -292,9 +303,10 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \section{Structure}
 \begin{enumerate}
-\item The first sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
+\item \MDwarning{TBD} A Sub-step shall either contain Actions or Expectations but not both. \ruleauthor{MD}{12/11/2013}
+\item The first Sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
 \begin{enumerate}
-\item There shall be no Expectation associated with this sub-step. \ruleauthor{MD}{31/10/2013}
+\item There shall be no Expectation associated with this Sub-step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 \end{enumerate}
 
@@ -304,6 +316,16 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item Individual test steps shall be named \literally{Step n - explanation}.\\ \literally{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
+
+\chapter{Comments}
+
+\section{General}
+\begin{enumerate}
+\item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
+\item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
+\end{enumerate}
 
 
 \chapter{Git}
@@ -324,10 +346,6 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item Commits dealing with the modeling part of the tool shall begin with \literally{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the testing part of the tool shall begin with \literally{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
-
-
-	
-
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Glossary}
