@@ -182,7 +182,7 @@ namespace Reports.Model
                     report.CloseSubParagraph();
                 }
 
-                foreach (DataDictionary.Types.NameSpace nameSpace in aNameSpace.SubNameSpaces)
+                foreach (DataDictionary.Types.NameSpace nameSpace in aNameSpace.NameSpaces)
                 {
                     CreateNamespaceSection(report, nameSpace);
                 }

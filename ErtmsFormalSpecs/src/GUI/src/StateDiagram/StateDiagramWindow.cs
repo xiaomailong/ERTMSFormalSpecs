@@ -22,27 +22,82 @@ using DataDictionary.Rules;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using Utils;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.StateDiagram
 {
-    public partial class StateDiagramWindow : Form
+    public partial class StateDiagramWindow : BoxArrowWindow<State, Transition>
     {
+        /// <summary>
+        /// The state machine currently displayed
+        /// </summary>
+        public StateMachine StateMachine { get; private set; }
+
+        private System.Windows.Forms.ToolStripMenuItem addStateMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTransitionMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.addStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTransitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addStateMenuItem,
+            this.addTransitionMenuItem,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem1});
+            // 
+            // addStateMenuItem
+            // 
+            this.addStateMenuItem.Name = "addStateMenuItem";
+            this.addStateMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.addStateMenuItem.Text = "Add State";
+            this.addStateMenuItem.Click += new System.EventHandler(this.addBoxMenuItem_Click);
+            // 
+            // addTransitionMenuItem
+            // 
+            this.addTransitionMenuItem.Name = "addTransitionMenuItem";
+            this.addTransitionMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.addTransitionMenuItem.Text = "Add transition";
+            this.addTransitionMenuItem.Click += new System.EventHandler(this.addArrowMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.toolStripMenuItem1.Text = "Delete selected";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.deleteMenuItem1_Click);
+        }
+
+        /// <summary>
+        /// The state machine variable, if any
+        /// </summary>
+        public IVariable StateMachineVariable { get; private set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
         public StateDiagramWindow()
+            : base()
         {
-            descriptionRichTextBox = new EditorTextBox();
-            InitializeComponent();
-
-            FormClosed += new FormClosedEventHandler(StateDiagramWindow_FormClosed);
-            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
         }
 
-        void StateDiagramWindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            MDIWindow.HandleSubWindowClosed(this);
-        }
+        /// <summary>
+        /// The panel used to display the state diagram
+        /// </summary>
+        private StatePanel StatePanel { get { return (StatePanel)BoxArrowContainerPanel; } }
 
         /// <summary>
         /// Sets the state machine type
@@ -50,8 +105,10 @@ namespace GUI.StateDiagram
         /// <param name="stateMachine"></param>
         public void SetStateMachine(StateMachine stateMachine)
         {
-            __stateMachine = stateMachine;
-            StateContainerPanel.StateMachine = stateMachine;
+            StateMachine = stateMachine;
+
+            StatePanel.StateMachine = StateMachine;
+            StatePanel.RefreshControl();
         }
 
         /// <summary>
@@ -68,216 +125,141 @@ namespace GUI.StateDiagram
 
             if (stateMachineType != null)
             {
-                __stateMachine = stateMachineType;
-                StateContainerPanel.StateMachineVariable = stateMachine;
-                StateContainerPanel.StateMachine = stateMachineType;
+                StateMachine = stateMachineType;
+                StateMachineVariable = stateMachine;
             }
+
+            StatePanel.StateMachine = StateMachine;
+            StatePanel.StateMachineVariable = StateMachineVariable;
+            StatePanel.RefreshControl();
+        }
+
+        public override BoxArrowPanel<State, Transition> createPanel()
+        {
+            BoxArrowPanel<State, Transition> retVal = new StatePanel();
+
+            return retVal;
         }
 
         /// <summary>
-        /// The state machine currently displayed
+        /// A box editor
         /// </summary>
-        private StateMachine __stateMachine;
-        public StateMachine StateMachine
+        protected class StateEditor : BoxEditor
         {
-            get { return __stateMachine; }
-        }
-
-        /// <summary>
-        /// Provides access to the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUIUtils.EnclosingFinder<MainWindow>.find(this); }
-        }
-
-        /// <summary>
-        /// A state editor
-        /// </summary>
-        private class StateEditor
-        {
-            private StateControl control;
-
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public StateEditor(StateControl control)
+            public StateEditor(BoxControl<State, Transition> control)
+                : base(control)
             {
-                this.control = control;
-            }
-
-            [Category("Description")]
-            public string Name
-            {
-                get { return control.State.Name; }
-                set
-                {
-                    control.State.Name = value;
-                    control.RefreshControl();
-                }
-            }
-
-            [Category("Description")]
-            public Point Position
-            {
-                get { return new Point(control.State.getX(), control.State.getY()); }
-                set
-                {
-                    control.State.setX(value.X);
-                    control.State.setY(value.Y);
-                    control.RefreshControl();
-                }
-            }
-
-            [Category("Description")]
-            public Point Size
-            {
-                get { return new Point(control.State.getWidth(), control.State.getHeight()); }
-                set
-                {
-                    control.State.setWidth(value.X);
-                    control.State.setHeight(value.Y);
-                    control.RefreshControl();
-                }
             }
         }
 
-        private class InternalStateTypeConverter : Converters.StateTypeConverter
+        /// <summary>
+        /// Factory for BoxEditor
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        protected override BoxEditor createBoxEditor(BoxControl<State, Transition> control)
+        {
+            BoxEditor retVal = new StateEditor(control);
+
+            return retVal;
+        }
+
+        protected class InternalStateTypeConverter : Converters.StateTypeConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((TransitionEditor)context.Instance).control.StatePanel.StateMachine);
+                TransitionEditor instance = (TransitionEditor)context.Instance;
+                StatePanel panel = (StatePanel)instance.control.BoxArrowPanel;
+                return GetValues(panel.StateMachine);
             }
         }
 
         /// <summary>
-        /// A transition editor
+        /// An arrow editor
         /// </summary>
-        private class TransitionEditor
+        protected class TransitionEditor : ArrowEditor
         {
-            public TransitionControl control;
-
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public TransitionEditor(TransitionControl control)
+            public TransitionEditor(ArrowControl<State, Transition> control)
+                : base(control)
             {
-                this.control = control;
             }
 
-            [Category("Description")]
-            public string Name
+            [Category("Description"), TypeConverter(typeof(InternalStateTypeConverter))]
+            public string Source
             {
                 get
                 {
-                    if (control.Transition.RuleCondition != null)
+                    string retVal = "";
+
+                    if (control.Model.Source != null)
                     {
-                        return control.Transition.RuleCondition.Name;
+                        retVal = control.Model.Source.Name;
                     }
-                    return "Initial state";
+                    return retVal;
                 }
                 set
                 {
-                    if (control.Transition.RuleCondition != null)
+                    TransitionControl transitionControl = (TransitionControl)control;
+                    StatePanel statePanel = (StatePanel)transitionControl.Panel;
+                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
+                    if (state != null)
                     {
-                        control.Transition.RuleCondition.Name = value;
+                        control.SetInitialBox(state);
                         control.RefreshControl();
                     }
                 }
             }
 
             [Category("Description"), TypeConverter(typeof(InternalStateTypeConverter))]
-            public string InitialState
+            public string Target
             {
                 get
                 {
                     string retVal = "";
 
-                    if (control.Transition.InitialState != null)
+                    if (control.Model != null && control.Model.Target != null)
                     {
-                        retVal = control.Transition.InitialState.Name;
-                    }
-                    return retVal;
-                }
-                set
-                {
-                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(control.Panel.StateMachine, value);
-                    if (state != null)
-                    {
-                        control.SetInitialState(state);
-                        control.RefreshControl();
-                    }
-                }
-            }
-
-            [Category("Description"), TypeConverter(typeof(InternalStateTypeConverter))]
-            public string TargetState
-            {
-                get
-                {
-                    string retVal = "";
-
-                    if (control.Transition != null && control.Transition.TargetState != null)
-                    {
-                        retVal = control.Transition.TargetState.Name;
+                        retVal = control.Model.Target.Name;
                     }
 
                     return retVal;
                 }
                 set
                 {
-                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(control.Panel.StateMachine, value);
+                    TransitionControl transitionControl = (TransitionControl)control;
+                    StatePanel statePanel = (StatePanel)transitionControl.Panel;
+                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
                     if (state != null)
                     {
-                        control.SetTargetState(state);
+                        control.SetTargetBox(state);
                         control.RefreshControl();
                     }
                 }
             }
         }
-
-        private object Selected { get; set; }
 
         /// <summary>
-        /// Selects a model element
+        /// Factory for arrow editor
         /// </summary>
-        /// <param name="model"></param>
-        public void Select(object model)
+        /// <param name="control"></param>
+        /// <returns></returns>
+        protected override ArrowEditor createArrowEditor(ArrowControl<State, Transition> control)
         {
-            Selected = model;
-            if (model is StateControl)
-            {
-                StateControl control = model as StateControl;
-                propertyGrid.SelectedObject = new StateEditor(control);
-                descriptionRichTextBox.ResetText();
-                descriptionRichTextBox.Rtf = control.State.getExplain(false);
-                MDIWindow.Select(control.State);
-            }
-            else if (model is TransitionControl)
-            {
-                TransitionControl control = model as TransitionControl;
-                propertyGrid.SelectedObject = new TransitionEditor(control);
-                descriptionRichTextBox.ResetText();
-                if (control.Transition.RuleCondition != null)
-                {
-                    descriptionRichTextBox.Rtf = control.Transition.RuleCondition.getExplain(true);
-                }
-                else
-                {
-                    descriptionRichTextBox.Rtf = "";
-                }
-                MDIWindow.Select(control.Transition.RuleCondition);
-            }
-            else
-            {
-                propertyGrid.SelectedObject = null;
-            }
+            ArrowEditor retVal = new TransitionEditor(control);
+
+            return retVal;
         }
 
-        private void addStateMenuItem_Click(object sender, EventArgs e)
+        private void addBoxMenuItem_Click(object sender, EventArgs e)
         {
             State state = (State)DataDictionary.Generated.acceptor.getFactory().createState();
             state.Name = "State" + (StateMachine.States.Count + 1);
@@ -295,10 +277,10 @@ namespace GUI.StateDiagram
                 }
             }
 
-            StateContainerPanel.RefreshControl();
+            BoxArrowContainerPanel.RefreshControl();
         }
 
-        private void addTransitionMenuItem_Click(object sender, EventArgs e)
+        private void addArrowMenuItem_Click(object sender, EventArgs e)
         {
             if (StateMachine.States.Count > 1)
             {
@@ -320,10 +302,10 @@ namespace GUI.StateDiagram
                     DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
                 }
 
-                StateContainerPanel.RefreshControl();
-                StateContainerPanel.Refresh();
+                BoxArrowContainerPanel.RefreshControl();
+                BoxArrowContainerPanel.Refresh();
 
-                TransitionControl control = StateContainerPanel.getTransitionControl(ruleCondition);
+                ArrowControl<State, Transition> control = BoxArrowContainerPanel.getArrowControl(ruleCondition);
                 Select(control);
             }
         }
@@ -332,14 +314,14 @@ namespace GUI.StateDiagram
         {
             IModelElement model = null;
 
-            if (Selected is StateControl)
+            if (Selected is BoxControl<State, Transition>)
             {
-                model = (Selected as StateControl).State;
+                model = (Selected as BoxControl<State, Transition>).Model;
             }
-            else if (Selected is TransitionControl)
+            else if (Selected is ArrowControl<State, Transition>)
             {
-                TransitionControl control = Selected as TransitionControl;
-                RuleCondition ruleCondition = control.Transition.RuleCondition;
+                ArrowControl<State, Transition> control = Selected as ArrowControl<State, Transition>;
+                RuleCondition ruleCondition = control.Model.RuleCondition;
                 Rule rule = ruleCondition.EnclosingRule;
                 if (rule.countConditions() == 1)
                 {
@@ -362,23 +344,8 @@ namespace GUI.StateDiagram
             }
             Select(null);
 
-            StateContainerPanel.RefreshControl();
-            StateContainerPanel.Refresh();
-        }
-
-        /// <summary>
-        /// Indicates whether the control is selected
-        /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        internal bool isSelected(Control control)
-        {
-            return control == Selected;
-        }
-
-        public void RefreshAfterStep()
-        {
-            StateContainerPanel.Refresh();
+            BoxArrowContainerPanel.RefreshControl();
+            BoxArrowContainerPanel.Refresh();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace DataDictionary.Rules
     ///     which refers to a state S, this provvides the initial state of the transition. Otherwise, 
     ///     there is no initial state
     /// </summary>
-    public class Transition
+    public class Transition : IGraphicalArrow<State>
     {
         /// <summary>
         /// The pre condition associated to this transaction
@@ -72,12 +72,17 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The initial state associated to this transition
         /// </summary>
-        public State InitialState { get; private set; }
+        public State Source { get; private set; }
 
         /// <summary>
         /// The target state associated to this transition
         /// </summary>
-        public State TargetState { get; private set; }
+        public State Target { get; private set; }
+
+        /// <summary>
+        /// The model element which is referenced by this transition
+        /// </summary>
+        public ModelElement ReferencedModel { get { return RuleCondition; } }
 
         /// <summary>
         /// Constructor
@@ -90,9 +95,9 @@ namespace DataDictionary.Rules
         public Transition(PreCondition preCondition, State initialState, Interpreter.Statement.VariableUpdateStatement update, State targetState)
         {
             PreCondition = preCondition;
-            InitialState = initialState;
+            Source = initialState;
             Update = update;
-            TargetState = targetState;
+            Target = targetState;
         }
 
         public class CannotChangeRuleException : Exception
@@ -111,8 +116,10 @@ namespace DataDictionary.Rules
         /// Updates (if possible) the initial state for this transition
         /// </summary>
         /// <param name="initialState"></param>
-        public void SetInitialState(State initialState)
+        public void SetInitialBox(IGraphicalDisplay initialBox)
         {
+            State initialState = (State)initialBox;
+
             if (Action != null)
             {
                 if (PreCondition != null)
@@ -123,7 +130,7 @@ namespace DataDictionary.Rules
                         if (states.Count == 1)
                         {
                             PreCondition.ExpressionText = "THIS == " + initialState.FullName;
-                            InitialState = initialState;
+                            Source = initialState;
                         }
                         else
                         {
@@ -140,22 +147,22 @@ namespace DataDictionary.Rules
                     RuleCondition ruleCondition = Action.Enclosing as RuleCondition;
                     Rule rule = ruleCondition.EnclosingRule;
 
-                    if (Utils.EnclosingFinder<Constants.State>.find(rule) == InitialState)
+                    if (Utils.EnclosingFinder<Constants.State>.find(rule) == Source)
                     {
                         if (rule.RuleConditions.Count == 1)
                         {
-                            InitialState.StateMachine.removeRules(rule);
-                            InitialState = initialState;
-                            InitialState.StateMachine.appendRules(rule);
+                            Source.StateMachine.removeRules(rule);
+                            Source = initialState;
+                            Source.StateMachine.appendRules(rule);
                         }
                         else
                         {
                             rule.removeConditions(ruleCondition);
-                            InitialState = initialState;
+                            Source = initialState;
                             Rule newRule = (Rule)Generated.acceptor.getFactory().createRule();
                             newRule.Name = rule.Name;
                             newRule.appendConditions(ruleCondition);
-                            InitialState.StateMachine.appendRules(newRule);
+                            Source.StateMachine.appendRules(newRule);
                         }
                     }
                     else
@@ -164,20 +171,22 @@ namespace DataDictionary.Rules
                     }
                 }
             }
-            InitialState = initialState;
+            Source = initialState;
         }
 
         /// <summary>
         /// Updates (if possible) the target state of this transition
         /// </summary>
         /// <param name="targetState"></param>
-        public void SetTargetState(State targetState)
+        public void SetTargetBox(IGraphicalDisplay targetBox)
         {
+            State targetState = (State)targetBox;
+
             if (Action != null)
             {
                 Action.Expression = "THIS <- " + targetState.LiteralName;
             }
-            TargetState = targetState;
+            Target = targetState;
         }
 
         /// <summary>
@@ -188,6 +197,7 @@ namespace DataDictionary.Rules
         {
             string retVal = "<Unknown>";
 
+            State TargetState = Target;
             if (TargetState != null)
             {
                 retVal = TargetState.FullName;
@@ -202,6 +212,35 @@ namespace DataDictionary.Rules
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// The name to be displayed
+        /// </summary>
+        public string GraphicalName
+        {
+            get
+            {
+                string retVal = "";
+
+                if (RuleCondition != null)
+                {
+                    if ((RuleCondition.Name == null) || (RuleCondition.Name.Equals("")))
+                    {
+                        retVal = "unnamed transition";
+                    }
+                    else
+                    {
+                        retVal = RuleCondition.Name;
+                    }
+                }
+                else
+                {
+                    retVal = "Initial state";
+                }
+
+                return retVal;
+            }
         }
     }
 }

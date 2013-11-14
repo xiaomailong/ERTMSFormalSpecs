@@ -48,11 +48,6 @@ namespace GUI.TestRunnerView
             get { return testBrowserTreeView; }
         }
 
-        public override BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
         public override ExplainTextBox ExplainTextBox
         {
             get { return explainTextBox; }

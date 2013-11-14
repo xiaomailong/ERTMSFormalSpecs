@@ -57,6 +57,12 @@
     <Compile Include="src\BaseTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\BoxArrowDiagram\BoxArrowWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\BoxArrowWindow.Designer.cs">
+      <DependentUpon>BoxArrowWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Converters\CommentableUITypeConverter.cs" />
     <Compile Include="src\Converters\CommentableUITypedEditor.cs" />
     <Compile Include="src\Converters\VariableValueUITypeConverter.cs" />
@@ -65,6 +71,25 @@
     <Compile Include="src\Converters\DefaultValueUITypedEditor.cs" />
     <Compile Include="src\Converters\TypeUITypeConverter.cs" />
     <Compile Include="src\Converters\TypeUITypedEditor.cs" />
+    <Compile Include="src\BoxArrowDiagram\Span.cs" />
+    <Compile Include="src\BoxArrowDiagram\BoxControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\BoxControl.Designer.cs">
+      <DependentUpon>BoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\BoxArrowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\BoxArrowPanel.Designer.cs">
+      <DependentUpon>BoxArrowPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\ArrowControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\BoxArrowDiagram\ArrowControl.Designer.cs">
+      <DependentUpon>ArrowControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\DataDictionaryView\StateRulesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StateSubStatesTreeNode.cs" />
     <Compile Include="src\DataDictionaryView\StructureProceduresTreeNode.cs" />
@@ -90,6 +115,12 @@
     </Compile>
     <Compile Include="src\Converters\ExpressionableUITypeConverter.cs" />
     <Compile Include="src\Converters\ExpressionableUITypedEditor.cs" />
+    <Compile Include="src\FunctionalView\FunctionalViewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalView\FunctionalViewWindow.Designer.cs">
+      <DependentUpon>FunctionalViewWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\FunctionsPerformances\FunctionsPerformances.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,26 +295,14 @@
     <Compile Include="src\StateDiagram\StateControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\StateDiagram\StateControl.Designer.cs">
-      <DependentUpon>StateControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\StateDiagram\StateDiagramWindow.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\StateDiagram\StateDiagramWindow.Designer.cs">
-      <DependentUpon>StateDiagramWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="src\StateDiagram\StatePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\StateDiagram\StatePanel.Designer.cs">
-      <DependentUpon>StatePanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\StateDiagram\TransitionControl.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\StateDiagram\TransitionControl.Designer.cs">
-      <DependentUpon>TransitionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\SynchronizationHandler.cs" />
     <Compile Include="src\TestRunnerView\ActionsTreeNode.cs" />
@@ -390,6 +409,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\BoxArrowDiagram\BoxArrowWindow.resx">
+      <DependentUpon>BoxArrowWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\BoxArrowDiagram\ArrowControl.resx">
+      <DependentUpon>ArrowControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\DataDictionaryView\CustomAction.resx">
       <DependentUpon>CustomAction.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Excel\Frm_ExcelImport.resx">
       <DependentUpon>Frm_ExcelImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FunctionalView\FunctionalViewWindow.resx">
+      <DependentUpon>FunctionalViewWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\FunctionsPerformances\FunctionsPerformances.resx">
       <DependentUpon>FunctionsPerformances.cs</DependentUpon>

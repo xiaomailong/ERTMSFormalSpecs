@@ -349,7 +349,7 @@ namespace GUI.DataDictionaryView
         {
             List<DataDictionary.Types.NameSpace> result = new List<DataDictionary.Types.NameSpace>();
             result.Add(aNamespace);
-            foreach (DataDictionary.Types.NameSpace aSubNamespace in aNamespace.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace aSubNamespace in aNamespace.NameSpaces)
             {
                 result.AddRange(collectNamespaces(aSubNamespace));
             }

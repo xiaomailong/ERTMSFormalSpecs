@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Types
 {
-    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder
+    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces
     {
         /// <summary>
         /// Used to temporarily store the list of sub-namespaces
@@ -37,7 +37,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// The sub namespaces
         /// </summary>
-        public System.Collections.ArrayList SubNameSpaces
+        public System.Collections.ArrayList NameSpaces
         {
             get
             {
@@ -301,7 +301,7 @@ namespace DataDictionary.Types
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            foreach (NameSpace nameSpace in SubNameSpaces)
+            foreach (NameSpace nameSpace in NameSpaces)
             {
                 Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
@@ -358,7 +358,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public NameSpace findNameSpaceByName(string name)
         {
-            return (NameSpace)Utils.INamableUtils.findByName(name, SubNameSpaces);
+            return (NameSpace)Utils.INamableUtils.findByName(name, NameSpaces);
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace DataDictionary.Types
             }
             else
             {
-                NameSpace nameSpace = (NameSpace)Utils.INamableUtils.findByName(names[0], SubNameSpaces);
+                NameSpace nameSpace = (NameSpace)Utils.INamableUtils.findByName(names[0], NameSpaces);
                 if (nameSpace != null)
                 {
                     retVal = nameSpace.innerFindTypeByName(name.Substring(nameSpace.Name.Length + 1), false);
@@ -430,7 +430,7 @@ namespace DataDictionary.Types
 
                 if (EnclosingNameSpace != null)
                 {
-                    retVal = EnclosingNameSpace.SubNameSpaces;
+                    retVal = EnclosingNameSpace.NameSpaces;
                 }
                 else if (EnclosingDictionary != null)
                 {
