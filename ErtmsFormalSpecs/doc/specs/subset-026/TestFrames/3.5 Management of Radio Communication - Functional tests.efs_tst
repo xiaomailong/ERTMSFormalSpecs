@@ -306,7 +306,7 @@ N_ITER=&gt;0
  Kind="Instantaneous"
 >EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.ConnectionLost</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrackDescription.TrackConditions.InsideRadioHole == True</Expectation></Expectations>
+>Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -326,7 +326,7 @@ N_ITER=&gt;0
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</Expectation><Expectation
+>NOT Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="200"
 >EURORADIO.CurrentRadioSession.RadioSessionState in EURORADIO.RadioSession.RadioSessionState.Connecting</Expectation></Expectations>
