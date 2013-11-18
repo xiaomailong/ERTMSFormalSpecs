@@ -812,6 +812,90 @@ IN
 <Action>RevokeTrackCondition ( aTrackCondition )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTCPwhenEnteringGivenMode"
+>
+<ReqRef
+ Id="4.10.1.3.32"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="TrackCondition"
+ Name="TCPacket"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTCPwhenEnteringGivenMode"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTCPwhenEnteringGivenMode"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>TCPacket &lt;- Kernel.TrackDescription.TrackConditions.TrackCondition
+{ 
+    NonStoppingArea =&gt; TCPacket.NonStoppingArea,
+    TunnelStoppingArea =&gt; TCPacket.TunnelStoppingArea,
+    SoundHorn =&gt; TCPacket.SoundHorn,
+    PowerlessSection_LowerPantograph =&gt; False,
+    RadioHole =&gt;False ,
+    AirTightness =&gt;False ,
+    SwitchOffRegenerativeBrake =&gt;False ,
+    SwitchOffEddyCurrentBrakeForSB =&gt;False ,
+    SwitchOffMagneticShoeBrake =&gt;False ,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; False,
+    SwitchOffEddyCurrentBrakeForEB =&gt; False
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTCP2whenEnteringGivenMode"
+>
+<ReqRef
+ Id="4.10.1.3.33"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="TrackCondition"
+ Name="TCPacket"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTCP2whenEnteringGivenMode"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTCP2whenEnteringGivenMode"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>TCPacket &lt;- Kernel.TrackDescription.TrackConditions.TrackCondition
+{ 
+    NonStoppingArea =&gt; False,
+    TunnelStoppingArea =&gt; False,
+    SoundHorn =&gt; False,
+    PowerlessSection_LowerPantograph =&gt; TCPacket.PowerlessSection_LowerPantograph,
+    RadioHole =&gt;TCPacket.RadioHole ,
+    AirTightness =&gt; TCPacket.AirTightness ,
+    SwitchOffRegenerativeBrake =&gt;TCPacket.SwitchOffRegenerativeBrake ,
+    SwitchOffEddyCurrentBrakeForSB =&gt; TCPacket.SwitchOffEddyCurrentBrakeForSB ,
+    SwitchOffMagneticShoeBrake =&gt; TCPacket.SwitchOffMagneticShoeBrake ,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; TCPacket.PowerlessSection_SwitchOffTheMainPowerSwitch,
+    SwitchOffEddyCurrentBrakeForEB =&gt; TCPacket.SwitchOffEddyCurrentBrakeForSB
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
