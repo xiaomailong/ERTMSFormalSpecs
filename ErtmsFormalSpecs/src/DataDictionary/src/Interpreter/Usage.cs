@@ -56,6 +56,11 @@ namespace DataDictionary.Interpreter
             Referenced = referenced;
             User = user;
             Mode = mode;
+
+            if (Referenced == null)
+            {
+                System.Diagnostics.Debugger.Break();
+            }
         }
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The usages
         /// </summary>
-        private SortedSet<Usage> AllUsages { get; set; }
+        public SortedSet<Usage> AllUsages { get; set; }
 
         /// <summary>
         /// Constructor

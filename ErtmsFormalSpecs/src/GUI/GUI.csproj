@@ -115,11 +115,17 @@
     </Compile>
     <Compile Include="src\Converters\ExpressionableUITypeConverter.cs" />
     <Compile Include="src\Converters\ExpressionableUITypedEditor.cs" />
-    <Compile Include="src\FunctionalView\FunctionalViewWindow.cs">
+    <Compile Include="src\FunctionalView\FunctionalBlockControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalView\FunctionalAnalysisWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\FunctionalView\FunctionalViewWindow.Designer.cs">
-      <DependentUpon>FunctionalViewWindow.cs</DependentUpon>
+    <Compile Include="src\FunctionalView\FunctionalAnalysisPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\FunctionalView\FunctionCallControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\FunctionsPerformances\FunctionsPerformances.cs">
       <SubType>Form</SubType>
@@ -291,7 +297,6 @@
     <Compile Include="src\SpecificationView\SpecificationTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\StateDiagram\Span.cs" />
     <Compile Include="src\StateDiagram\StateControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -433,8 +438,11 @@
     <EmbeddedResource Include="src\Excel\Frm_ExcelImport.resx">
       <DependentUpon>Frm_ExcelImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\FunctionalView\FunctionalViewWindow.resx">
-      <DependentUpon>FunctionalViewWindow.cs</DependentUpon>
+    <EmbeddedResource Include="src\FunctionalView\FunctionalAnalysisWindow.resx">
+      <DependentUpon>FunctionalAnalysisWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FunctionalView\FunctionCallControl.resx">
+      <DependentUpon>FunctionCallControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\FunctionsPerformances\FunctionsPerformances.resx">
       <DependentUpon>FunctionsPerformances.cs</DependentUpon>

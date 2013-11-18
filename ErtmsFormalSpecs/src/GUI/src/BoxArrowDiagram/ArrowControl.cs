@@ -28,11 +28,34 @@ namespace GUI.BoxArrowDiagram
         where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
     {
         /// <summary>
+        /// The display mode the each arrow
+        /// </summary>
+        protected enum ArrowModeEnum { Full, Half, None };
+
+        /// <summary>
+        /// The display mode the each arrow
+        /// </summary>
+        protected ArrowModeEnum ArrowMode { get; set; }
+
+        /// <summary>
+        /// The way the tip of the arrow is displayed
+        /// </summary>
+        protected enum ArrowFillEnum { Fill, Line };
+
+        /// <summary>
+        /// The way the tip of the arrow is displayed
+        /// </summary>
+        protected ArrowFillEnum ArrowFill { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public ArrowControl()
         {
             InitializeComponent();
+
+            ArrowMode = ArrowModeEnum.Full;
+            ArrowFill = ArrowFillEnum.Line;
             MouseClick += new MouseEventHandler(MouseClickHandler);
             MouseDoubleClick += new MouseEventHandler(MouseDoubleClickHandler);
         }
@@ -46,6 +69,9 @@ namespace GUI.BoxArrowDiagram
             container.Add(this);
 
             InitializeComponent();
+
+            ArrowMode = ArrowModeEnum.Full;
+            ArrowFill = ArrowFillEnum.Line;
             MouseClick += new MouseEventHandler(MouseClickHandler);
             MouseDoubleClick += new MouseEventHandler(MouseDoubleClickHandler);
         }
@@ -464,15 +490,48 @@ namespace GUI.BoxArrowDiagram
 
                 // Draw the arrow
                 e.Graphics.DrawLine(pen, start, target);
+
+                // Draw the arrow tip
+                switch (ArrowFill)
                 {
-                    int x = target.X - (int)(Math.Cos(angle + ARROW_ANGLE) * ARROW_LENGTH);
-                    int y = target.Y - (int)(Math.Sin(angle + ARROW_ANGLE) * ARROW_LENGTH);
-                    e.Graphics.DrawLine(pen, target, new Point(x, y));
-                }
-                {
-                    int x = target.X - (int)(Math.Cos(angle - ARROW_ANGLE) * ARROW_LENGTH);
-                    int y = target.Y - (int)(Math.Sin(angle - ARROW_ANGLE) * ARROW_LENGTH);
-                    e.Graphics.DrawLine(pen, target, new Point(x, y));
+                    case ArrowFillEnum.Line:
+                        if (ArrowMode == ArrowModeEnum.Full || ArrowMode == ArrowModeEnum.Half)
+                        {
+                            int x = target.X - (int)(Math.Cos(angle + ARROW_ANGLE) * ARROW_LENGTH);
+                            int y = target.Y - (int)(Math.Sin(angle + ARROW_ANGLE) * ARROW_LENGTH);
+                            e.Graphics.DrawLine(pen, target, new Point(x, y));
+                        }
+                        if (ArrowMode == ArrowModeEnum.Full)
+                        {
+                            int x = target.X - (int)(Math.Cos(angle - ARROW_ANGLE) * ARROW_LENGTH);
+                            int y = target.Y - (int)(Math.Sin(angle - ARROW_ANGLE) * ARROW_LENGTH);
+                            e.Graphics.DrawLine(pen, target, new Point(x, y));
+                        }
+                        break;
+
+                    case ArrowFillEnum.Fill:
+                        Brush brush = new SolidBrush(pen.Color);
+                        int x1 = target.X - (int)(Math.Cos(angle) * ARROW_LENGTH);
+                        int y1 = target.Y - (int)(Math.Sin(angle) * ARROW_LENGTH);
+
+                        if (ArrowMode == ArrowModeEnum.Full || ArrowMode == ArrowModeEnum.Half)
+                        {
+                            int x2 = target.X - (int)(Math.Cos(angle + ARROW_ANGLE) * ARROW_LENGTH);
+                            int y2 = target.Y - (int)(Math.Sin(angle + ARROW_ANGLE) * ARROW_LENGTH);
+
+                            Point[] points = new Point[] { target, new Point(x1, y1), new Point(x2, y2) };
+                            e.Graphics.FillPolygon(brush, points);
+                        }
+                        if (ArrowMode == ArrowModeEnum.Full)
+                        {
+                            int x2 = target.X - (int)(Math.Cos(angle - ARROW_ANGLE) * ARROW_LENGTH);
+                            int y2 = target.Y - (int)(Math.Sin(angle - ARROW_ANGLE) * ARROW_LENGTH);
+
+                            Point[] points = new Point[] { target, new Point(x1, y1), new Point(x2, y2) };
+                            e.Graphics.FillPolygon(brush, points);
+                        }
+                        break;
+
                 }
 
                 if (TargetBoxControl == null)

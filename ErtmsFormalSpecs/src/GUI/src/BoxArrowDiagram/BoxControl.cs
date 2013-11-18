@@ -27,6 +27,16 @@ namespace GUI.BoxArrowDiagram
         where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
     {
         /// <summary>
+        /// The mode of displaying boxes
+        /// </summary>
+        protected enum BoxModeEnum { Rectangle, RoundedCorners };
+
+        /// <summary>
+        /// The mode of displaying boxes
+        /// </summary>
+        protected BoxModeEnum BoxMode { get; set; }
+
+        /// <summary>
         /// The size of an box control button
         /// </summary>
         public static Size DEFAULT_SIZE = new Size(100, 50);
@@ -62,7 +72,6 @@ namespace GUI.BoxArrowDiagram
             set
             {
                 __model = value;
-                RefreshControl();
             }
         }
 
@@ -123,6 +132,8 @@ namespace GUI.BoxArrowDiagram
             return false;
         }
 
+        private const int ROUND_SIZE = 10;
+
         /// <summary>
         /// Draws the box within the box-arrow panel
         /// </summary>
@@ -130,16 +141,62 @@ namespace GUI.BoxArrowDiagram
         public void PaintInBoxArrowPanel(PaintEventArgs e)
         {
             Pen pen = NORMAL_PEN;
-            e.Graphics.DrawRectangle(pen, Location.X, Location.Y, Width, Height);
+            switch (BoxMode)
+            {
+                case BoxModeEnum.Rectangle:
+                    e.Graphics.DrawRectangle(pen, Location.X, Location.Y, Width, Height);
+                    if (IsActive())
+                    {
+                        pen = ACTIVATED_PEN;
+                        SetColor(ACTIVATED_COLOR);
+                    }
+                    else
+                    {
+                        SetColor(NORMAL_COLOR);
+                    }
 
-            if (IsActive())
-            {
-                pen = ACTIVATED_PEN;
-                SetColor(ACTIVATED_COLOR);
-            }
-            else
-            {
-                SetColor(NORMAL_COLOR);
+                    break;
+
+                case BoxModeEnum.RoundedCorners:
+                    Point[] points = new Point[] {
+                        new Point (Location.X + ROUND_SIZE , Location.Y),
+                        new Point (Location.X + Width - ROUND_SIZE , Location.Y),
+                        new Point (Location.X + Width, Location.Y + ROUND_SIZE ),
+                        new Point (Location.X + Width, Location.Y + Height - ROUND_SIZE ),
+                        new Point (Location.X + Width - ROUND_SIZE , Location.Y + Height),
+                        new Point (Location.X + ROUND_SIZE , Location.Y + Height),
+                        new Point (Location.X, Location.Y + Height - ROUND_SIZE ),
+                        new Point (Location.X , Location.Y + ROUND_SIZE ),
+                    };
+
+                    Brush innerBrush = new SolidBrush(NORMAL_COLOR);
+                    e.Graphics.FillRectangle(innerBrush, new Rectangle(points[0], new Size(points[4].X - points[0].X, points[4].Y - points[0].Y)));
+                    e.Graphics.FillRectangle(innerBrush, new Rectangle(points[7], new Size(points[3].X - points[7].X, points[3].Y - points[7].Y)));
+
+                    e.Graphics.DrawLine(pen, points[0], points[1]);
+                    e.Graphics.DrawLine(pen, points[2], points[3]);
+                    e.Graphics.DrawLine(pen, points[4], points[5]);
+                    e.Graphics.DrawLine(pen, points[6], points[7]);
+
+                    Size rectangleSize = new Size(2 * ROUND_SIZE, 2 * ROUND_SIZE);
+                    Rectangle rectangle;
+                    rectangle = new Rectangle(new Point(points[0].X - ROUND_SIZE, points[0].Y), rectangleSize);
+                    e.Graphics.FillPie(innerBrush, rectangle, 180.0f, 90.0f);
+                    e.Graphics.DrawArc(pen, rectangle, 180.0f, 90.0f);
+
+                    rectangle = new Rectangle(new Point(points[2].X - 2 * ROUND_SIZE, points[2].Y - ROUND_SIZE), rectangleSize);
+                    e.Graphics.FillPie(innerBrush, rectangle, 270.0f, 90.0f);
+                    e.Graphics.DrawArc(pen, rectangle, 270.0f, 90.0f);
+
+                    rectangle = new Rectangle(new Point(points[4].X - ROUND_SIZE, points[4].Y - 2 * ROUND_SIZE), rectangleSize);
+                    e.Graphics.FillPie(innerBrush, rectangle, 0.0f, 90.0f);
+                    e.Graphics.DrawArc(pen, rectangle, 0.0f, 90.0f);
+
+                    rectangle = new Rectangle(new Point(points[6].X, points[6].Y - ROUND_SIZE), rectangleSize);
+                    e.Graphics.FillPie(innerBrush, rectangle, 90.0f, 90.0f);
+                    e.Graphics.DrawArc(pen, rectangle, 90.0f, 90.0f);
+
+                    break;
             }
         }
 
@@ -149,6 +206,8 @@ namespace GUI.BoxArrowDiagram
         public BoxControl()
         {
             InitializeComponent();
+
+            BoxMode = BoxModeEnum.Rectangle;
             MouseDown += new MouseEventHandler(HandleMouseDown);
             MouseUp += new MouseEventHandler(HandleMouseUp);
             MouseMove += new MouseEventHandler(HandleMouseMove);
@@ -163,6 +222,7 @@ namespace GUI.BoxArrowDiagram
         {
             container.Add(this);
 
+            BoxMode = BoxModeEnum.Rectangle;
             InitializeComponent();
             MouseDown += new MouseEventHandler(HandleMouseDown);
             MouseUp += new MouseEventHandler(HandleMouseUp);

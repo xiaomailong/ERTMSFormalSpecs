@@ -321,15 +321,17 @@ namespace GUI.BoxArrowDiagram
 
                 foreach (BoxModel model in getBoxes())
                 {
-                    BoxControl<BoxModel, ArrowModel> BoxControl = createBox(model);
-                    boxes[model] = BoxControl;
-                    BoxControl.Parent = this;
+                    BoxControl<BoxModel, ArrowModel> boxControl = createBox(model);
+                    boxControl.Parent = this;
+                    boxControl.RefreshControl();
+                    boxes[model] = boxControl;
                 }
                 foreach (ArrowModel model in getArrows())
                 {
                     ArrowControl<BoxModel, ArrowModel> arrowControl = createArrow(model);
-                    arrows[model] = arrowControl;
                     arrowControl.Parent = this;
+                    // arrowControl.RefreshControl();
+                    arrows[model] = arrowControl;
                 }
                 UpdateArrowPosition();
             }

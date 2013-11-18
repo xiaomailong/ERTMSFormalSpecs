@@ -117,8 +117,6 @@ namespace DataDictionary.Functions.PredefinedFunctions
             return retVal;
         }
 
-        int recursionCount = 0;
-
         /// <summary>
         /// Provides the value of the function
         /// </summary>
@@ -130,34 +128,21 @@ namespace DataDictionary.Functions.PredefinedFunctions
         {
             Values.IValue retVal = null;
 
-            try
-            {
-                recursionCount += 1;
-                if (recursionCount > 10)
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
+            int token = context.LocalScope.PushContext();
+            AssignParameters(context, actuals);
 
-                int token = context.LocalScope.PushContext();
-                AssignParameters(context, actuals);
+            Function function = (Function)Generated.acceptor.getFactory().createFunction();
+            function.Name = "MIN (" + getName(First) + ", " + getName(Second) + ")";
+            function.Enclosing = EFSSystem;
+            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            parameter.Name = "X";
+            parameter.Type = EFSSystem.DoubleType;
+            function.appendParameters(parameter);
+            function.ReturnType = EFSSystem.DoubleType;
+            function.Graph = createGraph(context, parameter);
 
-                Function function = (Function)Generated.acceptor.getFactory().createFunction();
-                function.Name = "MIN (" + getName(First) + ", " + getName(Second) + ")";
-                function.Enclosing = EFSSystem;
-                Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
-                parameter.Name = "X";
-                parameter.Type = EFSSystem.DoubleType;
-                function.appendParameters(parameter);
-                function.ReturnType = EFSSystem.DoubleType;
-                function.Graph = createGraph(context, parameter);
-
-                retVal = function;
-                context.LocalScope.PopContext(token);
-            }
-            finally
-            {
-                recursionCount -= 1;
-            }
+            retVal = function;
+            context.LocalScope.PopContext(token);
 
             return retVal;
         }
