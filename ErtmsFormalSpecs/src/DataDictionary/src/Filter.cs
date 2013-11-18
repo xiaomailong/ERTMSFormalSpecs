@@ -83,7 +83,7 @@ namespace DataDictionary
         /// <returns></returns>
         public static bool IsLeftSide(INamable value)
         {
-            return IsVariable(value) || value is Types.StructureElement;
+            return IsVariable(value) || value is Types.StructureElement || value is Parameter;
         }
 
         /// <summary>
