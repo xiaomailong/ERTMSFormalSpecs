@@ -33,7 +33,6 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
- Implemented="TRUE"
  Name="ComputeReleaseSpeedForTarget"
 >
 <ReqRef
@@ -100,12 +99,6 @@ STOP_CONDITION
 <ReqRef
  Id="3.13.9.4.8.2"
 >
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.a"
->
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.b"
->
 </ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
@@ -117,7 +110,7 @@ STOP_CONDITION
 <Case
  Name="Value"
 >
-<Expression>( Vrelease + Vdelta0rsob() ) * ( TargetSupervision.T_traction() + TargetSupervision.T_berem() )</Expression>
+<Expression>( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( TargetSupervision.T_traction() + TargetSupervision.T_berem() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -125,9 +118,6 @@ STOP_CONDITION
  Name="Vdelta0rsob"
 >
 <ReqRef
- Id="3.13.9.4.8.1.b"
->
-</ReqRef><ReqRef
  Id="3.13.2.3.7.9"
 >
 </ReqRef><ReqRef
@@ -137,13 +127,19 @@ STOP_CONDITION
  Id="3.13.2.2.12.1"
 >
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vrelease"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
- Name="Compensation of inaccuracy inhibited"
+ Name="Compensation of inaccuracy not inhibited"
 >
 <PreConditions>
 <PreCondition>NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
-<Expression>Vdelta0rsob</Expression>
+<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt;  f41 ( Vrelease) , X2 =&gt; Odometry.Accuracy.V_ura )</Expression>
 </Case><Case
  Name="Compensation of inaccuracy inhibited"
 >
@@ -151,7 +147,6 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Implemented="TRUE"
  Name="d_tripEOA"
 >
 <ReqRef
@@ -187,7 +182,6 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
- Implemented="TRUE"
  Name="VreleaseFunction"
 >
 <ReqRef
@@ -212,8 +206,8 @@ STOP_CONDITION
  Name="First case"
 >
 <PreConditions>
-<PreCondition>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition>TargetSupervision.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob() ) &gt; Vtarget</PreCondition></PreConditions>
-<Expression>TargetSupervision.EBD ( d_tripEOA () + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) ) - Vdelta0rsob()</Expression>
+<PreCondition>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSupervision.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition>TargetSupervision.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+<Expression>TargetSupervision.EBD ( d_tripEOA () + ReleaseSpeedSupervision.Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
 >
@@ -269,7 +263,6 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Implemented="TRUE"
  Name="d_EOA"
 >
 <ReqRef
@@ -413,31 +406,8 @@ INITIAL_VALUE
 <Variables>
 <Variable
  Type="Default.BaseTypes.Speed"
- DefaultValue="2.0"
- VariableMode="Internal"
- Implemented="TRUE"
- Name="Vdelta0rsob"
->
-<ReqRef
- Id="Entry 3.A3.1.1.21"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="3.13.9.4.8.1.b"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
->
-</ReqRef><ReqRef
- Id="3.13.2.2.12.1"
->
-</ReqRef><Comment>Compensation of the speed measurement inaccuracy used for the on-board calculation of the release speed.</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
  VariableMode="Constant"
- Implemented="TRUE"
  Name="epsilon"
 >
 <ReqRef

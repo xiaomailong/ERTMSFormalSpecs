@@ -244,6 +244,16 @@ namespace GUI
         private Synchronizer WindowSynchronizer { get; set; }
 
         /// <summary>
+        /// The maximum size of the history
+        /// </summary>
+        private const int MAX_SELECTION_HISTORY = 100;
+
+        /// <summary>
+        /// The selection history
+        /// </summary>
+        public List<DataDictionary.ModelElement> SelectionHistory { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public MainWindow()
@@ -253,6 +263,7 @@ namespace GUI
             AllowRefresh = true;
             GUIUtils.MDIWindow = this;
             GUIUtils.Graphics = CreateGraphics();
+            SelectionHistory = new List<DataDictionary.ModelElement>();
 
             WindowSynchronizer = new Synchronizer(this, 300);
             KeyUp += new KeyEventHandler(MainWindow_KeyUp);
@@ -440,13 +451,42 @@ namespace GUI
             public DataDictionary.Dictionary Dictionary { get; private set; }
 
             /// <summary>
+            /// Indicates that errors can occur during load, for instance, for comparison purposes
+            /// </summary>
+            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+
+            /// <summary>
+            /// The errors encountered during load of the file. 
+            /// null indicates that no errors are tolerated
+            /// </summary>
+            public List<ElementLog> ErrorsDuringLoad { get; private set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="fileName"></param>
-            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system)
+            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system, bool allowErrors)
             {
                 FileName = fileName;
                 System = system;
+                if (allowErrors)
+                {
+                    ErrorsDuringLoad = new List<ElementLog>();
+                }
+                else
+                {
+                    ErrorsDuringLoad = null;
+                }
+            }
+
+            /// <summary>
+            /// Executes the operation in a background thread
+            /// </summary>
+            public void ExecuteInBackgroundThread()
+            {
+                ProgressDialog dialog = new ProgressDialog("Opening file", this);
+                dialog.ShowDialog();
+                DisplayErrors();
             }
 
             /// <summary>
@@ -455,7 +495,62 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System, false);
+                Dictionary = DataDictionary.Util.load(FileName, System, false, ErrorsDuringLoad);
+            }
+
+            /// <summary>
+            /// Gather errors during load
+            /// </summary>
+            private class ErrorGathered : DataDictionary.Generated.Visitor
+            {
+                /// <summary>
+                /// The logs during load
+                /// </summary>
+                public List<ElementLog> Logs { get; private set; }
+
+                /// <summary>
+                /// Constructor
+                /// </summary>
+                public ErrorGathered()
+                {
+                    Logs = new List<ElementLog>();
+                }
+
+                public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+                {
+                    DataDictionary.ModelElement element = (DataDictionary.ModelElement)obj;
+
+                    Logs.AddRange(element.Messages);
+
+                    base.visit(obj, visitSubNodes);
+                }
+            }
+
+            /// <summary>
+            /// Displays errors during load, when the flag AllowErrorDuringLoad is active
+            /// </summary>
+            public void DisplayErrors()
+            {
+                if (AllowErrorsDuringLoad)
+                {
+                    if (Dictionary != null)
+                    {
+                        if (ErrorsDuringLoad.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (ElementLog log in ErrorsDuringLoad)
+                            {
+                                errors += log.Level + ": " + log.Log + "\n";
+                            }
+
+                            MessageBox.Show("Errors while opening file " + FileName + "\n\n" + errors, "Errors where encountered while opening file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file " + FileName, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -468,9 +563,10 @@ namespace GUI
             {
                 try
                 {
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                    HandlingSelection = true;
+                    bool allowErrors = false;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors);
+                    openFileOperation.ExecuteInBackgroundThread();
 
                     // Open the windows
                     if (openFileOperation.Dictionary != null)
@@ -521,6 +617,7 @@ namespace GUI
                 }
                 finally
                 {
+                    HandlingSelection = false;
                     DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
 
@@ -1460,9 +1557,9 @@ namespace GUI
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 // Open the dictionary but do not store it in the EFS System
-                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null);
-                ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                dialog.ShowDialog();
+                bool allowErrors = true;
+                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null, allowErrors);
+                openFileOperation.ExecuteInBackgroundThread();
 
                 // Compare the files
                 if (openFileOperation.Dictionary != null)
@@ -1526,9 +1623,9 @@ namespace GUI
                     }
 
                     // Open the dictionary but do not store it in the EFS System
-                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                    bool allowErrors = true;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null, allowErrors);
+                    openFileOperation.ExecuteInBackgroundThread();
 
                     // Compare the files
                     if (openFileOperation.Dictionary != null)
@@ -1582,6 +1679,52 @@ namespace GUI
                 if (form is StateDiagram.StateDiagramWindow)
                 {
                     ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the MDI window is currently handling a selection change
+        /// </summary>
+        public bool HandlingSelection { get; set; }
+
+        /// <summary>
+        /// Keeps track of a new selection
+        /// </summary>
+        /// <param name="selected"></param>
+        public void HandleSelection(DataDictionary.ModelElement selected)
+        {
+            if (selected != null)
+            {
+                if (!HandlingSelection)
+                {
+                    try
+                    {
+                        HandlingSelection = true;
+
+                        if (SelectionHistory.Count > MAX_SELECTION_HISTORY)
+                        {
+                            SelectionHistory.RemoveAt(SelectionHistory.Count - 1);
+                        }
+
+                        if (SelectionHistory.Count == 0 || SelectionHistory[0] != selected)
+                        {
+                            SelectionHistory.Insert(0, selected);
+
+                            foreach (Form form in SubForms)
+                            {
+                                Shortcuts.Window shortcutWindow = form as Shortcuts.Window;
+                                if (shortcutWindow != null)
+                                {
+                                    shortcutWindow.RefreshModel();
+                                }
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        HandlingSelection = false;
+                    }
                 }
             }
         }

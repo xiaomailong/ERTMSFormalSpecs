@@ -863,7 +863,8 @@ When no linking information is used on-board, all balise groups shall be taken i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When linking information is used on-board, only balise groups marked as linked and included in the linking information and balise groups marked as unlinked shall be taken into account.<Sub>
+><Comment></Comment>
+When linking information is used on-board, only balise groups marked as linked and included in the linking information and balise groups marked as unlinked shall be taken into account.<Sub>
 <Paragraph
  id="3.4.4.4.2.1"
  type="REQUIREMENT"
@@ -880,15 +881,16 @@ When no linking information is used on-board, all balise groups shall be taken i
  id="3.4.4.4.2.1.a"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->the train can determine the orientation of the linked balise group by information from the balise group itself (therefore excluding for example single balise groups), AND</Paragraph><Paragraph
+><Comment></Comment>
+the on-board equipment can determine the orientation of the linked balise group by information from the balise group itself (therefore excluding for example single balise groups), AND</Paragraph><Paragraph
  id="3.4.4.4.2.1.b"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -912,7 +914,8 @@ When no linking information is used on-board, all balise groups shall be taken i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->the balise group is crossed with the direction announced in the linking information.</Paragraph></Sub>
+><Comment></Comment>
+the balise group is crossed with the direction announced in the linking information.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.4.4.4.3"
@@ -1038,7 +1041,8 @@ When no linking information is used on-board, all balise groups shall be taken i
  functionalBlock="TRUE"
  functionalBlockName="3.5 Management of Radio Communication"
  Name=""
->Management of Radio Communication<Sub>
+><Comment></Comment>
+Management of Radio Communication<Sub>
 <Paragraph
  id="3.5.1.1"
  type="NOTE"
@@ -1660,7 +1664,21 @@ Contact given RBC by using RBC ID and the RBC phone number</Paragraph></Sub>
 >The attempts shall be repeated, until at least one of the following conditions is met:
 	- The safe radio connection is set-up.
 	- The session is considered as terminated.
-	- The train passes the location indicated in the RIU order &quot;Terminate the communication session&quot;</Paragraph><Paragraph
+	- The train passes the location indicated in the RIU order &quot;Terminate the communication session&quot;<Sub>
+<Paragraph
+ id="3.5.4.3.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Note: if the session is considered as terminated due to 3.5.4.2.1, the attempts will be resumed immediately according to 3.5.3.4 f).</Paragraph></Sub>
+</Paragraph><Paragraph
  id="3.5.4.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -1843,10 +1861,11 @@ c) The train is rejected by RBC during Start of Mission.</Paragraph><Paragraph
  bl="3.2.0"
  name=""
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Exception: In case a communication session is established and no acknowledgement is received within a fixed waiting time (see Appendix A.3.1) after sending the &quot;Termination of communication session&quot; message, the message shall be repeated with the fixed waiting time after each repetition.</Paragraph><Paragraph
+><Comment></Comment>
+Exception: In case a communication session is established and no acknowledgement is received within a fixed waiting time (see Appendix A.3.1) after sending the Termination of communication session message, the message shall be repeated with the fixed waiting time after each repetition.</Paragraph><Paragraph
  id="3.5.5.3.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -1856,7 +1875,8 @@ c) The train is rejected by RBC during Start of Mission.</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->After a defined number of repetitions (see Appendix A.3.1), and if no acknowledgment is received within the fixed waiting time from the time of the last sending of &quot;Termination of communication session&quot;, the ERTMS/ETCS onboard equipment shall consider the communication session terminated.</Paragraph></Sub>
+><Comment></Comment>
+After a defined number of repetitions (see Appendix A.3.1), and if no acknowledgment is received within the fixed waiting time from the time of the last sending of &quot;Termination of communication session&quot;, the ERTMS/ETCS onboard equipment shall consider the communication session terminated.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.5.5.4"
  type="REQUIREMENT"
@@ -1937,8 +1957,7 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When powered-off, ERTMS/ETCS on-board equipment shall memorize the last received Radio Network identity (from trackside or from driver) and shall use it when powered-up again.
-</Paragraph><Paragraph
+>When powered-off, ERTMS/ETCS on-board equipment shall memorize the last received Radio Network identity (from trackside or from driver) and shall use it when powered-up again.</Paragraph><Paragraph
  id="3.5.6.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -1983,20 +2002,7 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Note: for Radio Network identity data entry by driver during SoM, please refer to chapter 5 (Procedure Start of Mission).<Sub>
-<Paragraph
- id="3.5.6.4.1"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->This list shall be used to limit the selection of the Radio Network by the driver during the Start of Mission procedure.
-</Paragraph></Sub>
-</Paragraph><Paragraph
+>Note: for Radio Network identity data entry by driver during SoM, please refer to chapter 5 (Procedure Start of Mission).</Paragraph><Paragraph
  id="3.5.6.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -2010,8 +2016,7 @@ In case an order to terminate the communication session is received, while the s
 	immediately order the Radio Network registration of each Mobile Terminal that fulfils the following conditions :
 	a) it is not yet registered to the ordered Radio Network, AND
 	b) it is not used for an established communication session, AND
-	c) no safe radio connection is being set-up
-</Paragraph><Paragraph
+	c) no safe radio connection is being set-up</Paragraph><Paragraph
  id="3.5.6.6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2021,8 +2026,7 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a Mobile Terminal is not currently registered to the Radio Network ordered by trackside and if one of the conditions b) or c) is not fulfilled, ERTMS/ETCS on-board equipment shall initiate the Radio Network registration once communication session is terminated and safe radio connection is released.
-</Paragraph><Paragraph
+>If a Mobile Terminal is not currently registered to the Radio Network ordered by trackside and if one of the conditions b) or c) is not fulfilled, ERTMS/ETCS on-board equipment shall initiate the Radio Network registration once communication session is terminated and safe radio connection is released.</Paragraph><Paragraph
  id="3.5.6.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2033,8 +2037,7 @@ In case an order to terminate the communication session is received, while the s
  functionalBlockName=""
  Name=""
 >If no Mobile Terminal is duly registered to a Radio Network, any order to contact an RBC or an RIU received from trackside shall be rejected by ERTMS/ETCS on-board
-	equipment.
-</Paragraph></Sub>
+	equipment.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.5.7"
  type="TITLE"
@@ -2093,21 +2096,18 @@ In case an order to terminate the communication session is received, while the s
  Name=""
 >The ERTMS/ETCS on-board equipment shall start the &quot;connection status&quot; timer as soon as the first request to set-up a safe radio connection with the relevant RBC/RIU is sent:
 	a) for what regards the session establishment, see items b), c), d), e) in 3.5.3.4.
-	b) for what regards maintaining a communication session, see 3.5.4.2 and 3.5.4.4
-</Paragraph><Paragraph
+	b) for what regards maintaining a communication session, see 3.5.4.2 and 3.5.4.4</Paragraph><Paragraph
  id="3.5.7.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the &quot;connection status&quot; timer is ongoing, it shall be stopped if the requests to set-up a safe radio connection are stopped with the relevant RBC/RIU according to:
-	a) for what regards establishing a communication session, see all items in 3.5.3.7a).
-	b) for what regards maintaining a communication session, see 3.5.4.3 1st, 3rd bullets and 3.5.4.4.
-</Paragraph><Paragraph
+><Comment></Comment>
+If the connection status timer is ongoing, it shall be stopped if the requests to set-up a safe radio connection are stopped with the relevant RBC/RIU.</Paragraph><Paragraph
  id="3.5.7.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2117,7 +2117,8 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall execute the transitions between the different indication statuses of the safe radio connection with the relevant RBC/RIU as described in Table 1 according to the conditions in Table 2 (see section 4.6.1 for details about the symbols).<Sub>
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall execute the transitions between the different indication statuses of the safe radio connection with the relevant RBC/RIU as described in Table 1 according to the conditions in Table 2 (see section 4.6.1 for details about the symbols).<Sub>
 <Paragraph
  id="Table 3.5.7.5.1"
  type="TABLE_HEADER"
@@ -2234,7 +2235,7 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[3]; (the status has been displayed for the fixed time (see Appendix A3.1))</Paragraph><Paragraph
+>[3]; (no Start of mission procedure is on-going) AND (the requests to set-up a safe radio connection are stopped with the relevant RBC/RIU for reason other than the successful set-up)</Paragraph><Paragraph
  id="Entry 3.5.7.5.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -2264,7 +2265,7 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[6]; (the safe radio connection is lost) AND (the &quot;connection status&quot; timer is stopped according to 3.5.7.4)</Paragraph><Paragraph
+>[6]; (the safe radio connection is lost) AND (the requests to set-up a safe radio connection are stopped with the relevant RBC/RIU for reason other than the successful set-up) </Paragraph><Paragraph
  id="Entry 3.5.7.5.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -2311,23 +2312,22 @@ In case an order to terminate the communication session is received, while the s
  version="3.0.0"
  functionalBlockName=""
  Name=""
->For the case of safe radio connection with RIU&apos;s, the safe radio connection indicated to the driver shall be the one related to the current infill area.
-</Paragraph></Sub>
+>For the case of safe radio connection with RIU&apos;s, the safe radio connection indicated to the driver shall be the one related to the current infill area.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.6"
  type="TITLE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlock="TRUE"
  functionalBlockName="3.6 Location Principles,Train Position and Train Orientation"
  Name=""
 ><Comment></Comment>
-Location Principles,Train Position and Train Orientation<Sub>
+Location Principles, Train Position and Train Orientation<Sub>
 <Paragraph
  id="3.6.1"
  type="TITLE"
@@ -2339,7 +2339,8 @@ Location Principles,Train Position and Train Orientation<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->General<Sub>
+><Comment></Comment>
+General<Sub>
 <Paragraph
  id="3.6.1.1"
  type="DEFINITION"
@@ -2619,8 +2620,7 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  version="3.0.0"
  functionalBlockName=""
  Name=""
->All location and profile data transmitted from the RBC shall refer to the location reference and orientation of the LRBG given in the same message.
-</Paragraph><Paragraph
+>All location and profile data transmitted from the RBC shall refer to the location reference and orientation of the LRBG given in the same message.</Paragraph><Paragraph
  id="3.6.2.2.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -2670,8 +2670,7 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Regarding c): From the time it has reported an unknown position, or an invalid position during SoM procedure, to the time it has received from the RBC a message with an LRBG not set to &quot;unknown&quot;, the on-board equipment shall also be able to accept messages from the RBC containing LRBG &quot;unknown&quot;.
-</Paragraph></Sub>
+>Regarding c): From the time it has reported an unknown position, or an invalid position during SoM procedure, to the time it has received from the RBC a message with an LRBG not set to &quot;unknown&quot;, the on-board equipment shall also be able to accept messages from the RBC containing LRBG &quot;unknown&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.6.2.2.3"
  type="NOTE"
@@ -2852,49 +2851,55 @@ In case of an LRBG being a single balise group with no co-ordinate system assign
  id="3.6.3.1.3"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When receiving information from any transmission medium, the on-board equipment shall only take into account information valid for its orientation. Other information shall be ignored. Exception: for SL, PS and SH engines, balise group crossing direction shall be considered.<Sub>
+><Comment></Comment>
+When receiving information from any transmission medium, the ERTMS/ETCS on-board equipment shall only take into account information valid for its orientation. Other information shall be ignored. Exception: for SL, PS and SH engines, balise group crossing direction shall be considered.<Sub>
 <Paragraph
  id="3.6.3.1.3.1"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the train orientation is unknown, data received from any transmission medium valid for one direction only (nominal or reverse) shall be rejected by the onboard equipment. Data valid for both directions shall be evaluated (see section 4.8).</Paragraph></Sub>
+><Comment>Previous revision status was NA</Comment>
+If the train position is unknown, data received from any transmission medium valid for one direction only (nominal or reverse) shall be rejected by the onboard equipment. Data valid for both directions shall be evaluated (see section 4.8).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.6.3.1.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If no co-ordinate system has been assigned to a single balise group, data transmitted by trackside, which refers to that balise group requiring the co-ordinate system to be known (i.e. all data which are only valid for one direction (nominal or reverse)) shall be rejected by the on-board system.<Sub>
+><Comment></Comment>
+If no co-ordinate system has been assigned to a single balise group, data transmitted by trackside, which refers to that balise group requiring the co-ordinate system to be known (i.e. all data which are only valid for one direction (nominal or reverse)) shall be rejected by the ERTMS/ETCS on-board equipment. Data valid for both directions shall be evaluated (see section 4.8).<Sub>
 <Paragraph
  id="3.6.3.1.4.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: In case the balise group at a main signal at danger is equipped with a single balise group and the balise group is passed before the co-ordinate system has been assigned, the train will not be tripped.</Paragraph></Sub>
+><Comment></Comment>
+Exception: if not rejected due to balise group message consistency check (see 3.16.2.4.4.1 and 3.16.2.5.1.1), data to be forwarded to a National System (see section 3.15.6) shall be accepted. Justification: the co-ordinate system of the balise group might be known to the National System by other means inherent to the National System itself.
+Figure : Intentionally deleted</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.6.3.2"
@@ -4093,8 +4098,7 @@ The safe train length information shall be re-calculated for every position repo
 	- Identity of the geographical position reference balise group
 	- Distance from geographical position reference balise group to the track kilometre reference (offset)
 	- Value of the track kilometre reference
-	- Counting direction of the track kilometre in relation to the geographical position reference balise group orientation.
-</Paragraph></Sub>
+	- Counting direction of the track kilometre in relation to the geographical position reference balise group orientation.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.7"
@@ -4357,22 +4361,24 @@ The safe train length information shall be re-calculated for every position repo
 </Paragraph><Paragraph
  id="3.7.2.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="TRACK"
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be the responsibility of the trackside to send additional information when needed. The information referred to is
-	- Emergency messages (from RBC only)
-	- Request to stop earlier (from RBC only)
-	- Temporary speed restrictions
-	- National values
-	- Level transition information
-	- LX speed restrictions
-	- Inhibition of revocable TSRs from balises in L2/3 (from RBC only)
-</Paragraph></Sub>
+><Comment></Comment>
+It shall be the responsibility of the trackside to send additional information when needed. The information referred to is
+Emergency messages (from RBC only)
+Request to stop earlier (from RBC only)
+Temporary speed restrictions
+National values
+Level transition information
+LX speed restrictions
+Inhibition of revocable TSRs from balises in L2/3 (from RBC only)
+Virtual Balise Cover orders</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.7.3"
  type="TITLE"
@@ -4447,16 +4453,17 @@ The safe train length information shall be re-calculated for every position repo
 >New Speed Restriction to ensure Permitted Braking Distance information shall replace all stored Speed Restriction to ensure Permitted Braking Distance information from the start location of the first element of the new information.</Paragraph><Paragraph
  id="3.7.3.1.e"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->New track condition Change of Traction Power information shall replace all stored Change of Traction Power information.</Paragraph><Paragraph
+><Comment></Comment>
+New track condition Change of Traction System information shall replace all stored Change of Traction System information.</Paragraph><Paragraph
  id="3.7.3.1.f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -4468,7 +4475,8 @@ The safe train length information shall be re-calculated for every position repo
  version="3.0.0"
  functionalBlockName=""
  Name=""
->New track condition Big Metal Masses information shall replace all stored Big Metal Masses information from the start location of the first element of the new information.</Paragraph><Paragraph
+><Comment></Comment>
+New track condition Big Metal Masses information shall replace all stored Big Metal Masses information from the start location of the first element of the new information.</Paragraph><Paragraph
  id="3.7.3.1.g"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -5519,8 +5527,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
 >When the Overlap timer value becomes greater than the time-out value given by trackside, the following shall apply:
 	a) the overlap information shall be deleted, i.e. the Supervised Location shall be withdrawn to the Danger Point if there is any or else to the EOA. Refer to appendix A.3.4 for the exhaustive list of location based information stored on-board, which shall be deleted accordingly.
 	b) the release speed associated with the Overlap shall be deleted
-	c) if any, a non zero target speed value at the EOA/LOA shall be set to zero.
-</Paragraph><Paragraph
+	c) if any, a non zero target speed value at the EOA/LOA shall be set to zero.</Paragraph><Paragraph
  id="3.8.4.4.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -6045,8 +6052,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
 	b) The ERTMS/ETCS on-board equipment shall check the train front end position versus the indication limit of the proposed shortened MA.
 	- If it is in rear, the on-board equipment shall accept the new MA.
 	- If it is in advance, the request shall be rejected and the previously received MA remains valid
-	c) The RBC shall be informed about the decision.
-</Paragraph><Paragraph
+	c) The RBC shall be informed about the decision.</Paragraph><Paragraph
  id="3.8.6.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -6056,8 +6062,7 @@ In case the main signal is at danger in level 1, the on-board shall supervise th
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the request from the RBC is granted by the on-board, refer to appendix A.3.4 for the exhaustive list of location based information, which shall be deleted accordingly.
-</Paragraph></Sub>
+>If the request from the RBC is granted by the on-board, refer to appendix A.3.4 for the exhaustive list of location based information, which shall be deleted accordingly.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.9"
@@ -7111,14 +7116,14 @@ The Static Speed Restriction categories shall be independent of each other. This
  id="3.11.2.6"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Temporary Speed Restrictions shall be valid until the train has passed the Temporary Speed Restriction or until the Temporary Speed Restriction has been revoked by the trackside.</Paragraph></Sub>
+><Comment>Previous revision status was Implemented</Comment>
+Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.11.3"
  type="TITLE"
@@ -7591,18 +7596,20 @@ Temporary Speed Restrictions<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.11.5.12"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be possible for RBC to order an ERTMS/ETCS on-board equipment in Level 2 or 3 to reject revocable TSRs from balises.</Paragraph><Paragraph
+><Comment></Comment>
+It shall be possible for the RBC to order an ERTMS/ETCS on-board equipment in Level 2 or 3 to reject revocable TSRs from balises.</Paragraph><Paragraph
  id="3.11.5.13"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -7613,7 +7620,8 @@ Temporary Speed Restrictions<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When ERTMS/ETCS on-board equipment has accepted an order to reject revocable TSRs from balises, this inhibition shall be stored and shall be effective immediately, but only for revocable TSRs received from balises thereafter.</Paragraph><Paragraph
+><Comment></Comment>
+When ERTMS/ETCS on-board equipment has accepted an order to reject revocable TSRs from balises, this inhibition shall be stored and shall be effective immediately, but only for revocable TSRs received from balises thereafter.</Paragraph><Paragraph
  id="3.11.5.14"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -7784,14 +7792,15 @@ Temporary Speed Restrictions<Sub>
  id="3.11.7.1.1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Exception 1: For the modes On-sight, Limited Supervision and Shunting the speed limit can also be given from the trackside. The speed limit given from the trackside prevails the National value and the default value.</Paragraph><Paragraph
+><Comment></Comment>
+Exception 1: For the modes On-sight, Limited Supervision and Shunting the speed limit can also be given from the trackside. The speed limit given from the trackside shall prevail over the National value and the default value.</Paragraph><Paragraph
  id="3.11.7.1.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8257,7 +8266,8 @@ Other Profiles<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A Track Condition shall be given as profile data (e.g. non-stopping area), i.e. start and end of the data is given, or location data (e.g. change of traction system) i.e. start location given, depending on the type of track condition.<Sub>
+><Comment></Comment>
+A Track Condition shall be given as profile data (e.g. non-stopping area), i.e. start and end of the data is given, or location data (e.g. change of traction system) i.e. start location given, depending on the type of track condition.<Sub>
 <Paragraph
  id="3.12.1.2.1"
  type="REQUIREMENT"
@@ -8323,12 +8333,12 @@ The starting point of a profile type track condition shall be evaluated taking i
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The types of track conditions to be covered by this function are:<Sub>
+><Comment>Previous revision status was NotImplementable</Comment>
+The types of track conditions to be covered by this function are:<Sub>
 <Paragraph
  id="3.12.1.3.a"
  type="REQUIREMENT"
@@ -8341,19 +8351,20 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Powerless section, lower pantograph and/or switch off main power switch and/or open circuit breaker (initial state: not powerless section)</Paragraph><Paragraph
+><Comment></Comment>
+Powerless section, lower pantograph (initial state: no powerless section, i.e. pantograph not to be lowered)</Paragraph><Paragraph
  id="3.12.1.3.b"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
+ scope="OBU"
  bl=""
  optional="FALSE"
  name=""
- reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Air tightness (initial state: no request for air tightness)</Paragraph><Paragraph
+><Comment></Comment>
+Powerless section, switch off main power switch (initial state: no powerless section, i.e. main power switch not to be switched off)</Paragraph><Paragraph
  id="3.12.1.3.c"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8365,7 +8376,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Sound horn (initial state: no request for sound horn)</Paragraph><Paragraph
+><Comment></Comment>
+Air tightness (initial state: no request for air tightness)</Paragraph><Paragraph
  id="3.12.1.3.d"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8377,7 +8389,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Non stopping area (initial state: stopping permitted)</Paragraph><Paragraph
+><Comment></Comment>
+Sound horn (initial state: no request for sound horn)</Paragraph><Paragraph
  id="3.12.1.3.e"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8389,7 +8402,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Tunnel stopping area (initial state: no tunnel stopping area)</Paragraph><Paragraph
+><Comment></Comment>
+Non stopping area (initial state: stopping permitted)</Paragraph><Paragraph
  id="3.12.1.3.f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8397,11 +8411,12 @@ The starting point of a profile type track condition shall be evaluated taking i
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Change of traction system, switch traction system on-board, used for train capable of handling several traction systems (initial state: no initial state - keep the current setting)</Paragraph><Paragraph
+><Comment></Comment>
+Tunnel stopping area (initial state: no tunnel stopping area)</Paragraph><Paragraph
  id="3.12.1.3.g"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8413,7 +8428,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Change of allowed current consumption, limit current consumed by the train, used to adapt the maximum current consumption of the train to the maximum current allowed by the trackside (initial state: no initial state - keep the current setting)</Paragraph><Paragraph
+><Comment></Comment>
+Change of traction system, switch traction system on-board, used for train capable of handling several traction systems (initial state: no initial state  keep the current setting)</Paragraph><Paragraph
  id="3.12.1.3.h"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8425,7 +8441,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Big metal masses, ignore onboard integrity check alarms of balise transmission. (initial state: alarms not ignored)</Paragraph><Paragraph
+><Comment></Comment>
+Change of allowed current consumption, limit current consumed by the train, used to adapt the maximum current consumption of the train to the maximum current allowed by the trackside (initial state: no initial state  keep the current setting)</Paragraph><Paragraph
  id="3.12.1.3.i"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8433,11 +8450,12 @@ The starting point of a profile type track condition shall be evaluated taking i
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio hole, stop supervision of the loss of safe radio connection (initial state: loss of safe radio connection supervised)</Paragraph><Paragraph
+><Comment></Comment>
+Big metal masses, ignore onboard integrity check alarms of balise transmission. (initial state: alarms not ignored)</Paragraph><Paragraph
  id="3.12.1.3.j"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8449,7 +8467,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Switch off regenerative brake (initial state: regenerative brake on)</Paragraph><Paragraph
+><Comment></Comment>
+Radio hole, stop supervision of the loss of safe radio connection (initial state: loss of safe radio connection supervised)</Paragraph><Paragraph
  id="3.12.1.3.k"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8461,7 +8480,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Switch off eddy current brake for service brake (initial state: eddy current brake on for service brake)</Paragraph><Paragraph
+><Comment></Comment>
+Switch off regenerative brake (initial state: regenerative brake on)</Paragraph><Paragraph
  id="3.12.1.3.l"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8473,7 +8493,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Switch off eddy current brake for emergency brake (initial state: eddy current brake on for emergency brake)</Paragraph><Paragraph
+><Comment></Comment>
+Switch off eddy current brake for service brake (initial state: eddy current brake on for service brake)</Paragraph><Paragraph
  id="3.12.1.3.m"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -8485,8 +8506,21 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Switch off magnetic shoe brake (initial state: magnetic shoe brake on).</Paragraph><Paragraph
+>Switch off eddy current brake for emergency brake (initial state: eddy current brake on for emergency brake)</Paragraph><Paragraph
  id="3.12.1.3.n"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Switch off magnetic shoe brake (initial state: magnetic shoe brake on).</Paragraph><Paragraph
+ id="3.12.1.3.o"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -8497,7 +8531,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Station platforms, enable passenger doors with or without steps according to platform location, side and height (initial state: not enabled).</Paragraph><Paragraph
+><Comment></Comment>
+Station platforms, enable passenger doors with or without steps according to platform location, side and height (initial state: not enabled).</Paragraph><Paragraph
  id="3.12.1.3.1"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -8545,7 +8580,8 @@ The starting point of a profile type track condition shall be evaluated taking i
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.12.1.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -8945,8 +8981,7 @@ The starting point of a profile type track condition shall be evaluated taking i
 	- Plain text message or fixed message number
 	- Conditions for start of indication
 	- Conditions for end of indication
-	- If driver acknowledgement is requested or not
-</Paragraph><Paragraph
+	- If driver acknowledgement is requested or not</Paragraph><Paragraph
  id="3.12.3.1.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -9269,8 +9304,7 @@ Important operational information (e.g. information about workers on the line et
  Name=""
 >If trackside requests a report of driver acknowledgement, then it shall include:
 	- a text message identifier
-	- the identity of the RBC to which the driver acknowledgement report is to be sent.
-</Paragraph><Paragraph
+	- the identity of the RBC to which the driver acknowledgement report is to be sent.</Paragraph><Paragraph
  id="3.12.3.5.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9280,8 +9314,7 @@ Important operational information (e.g. information about workers on the line et
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the driver has acknowledged a text message with a request to report driver acknowledgement, the driver acknowledgement report, including the text message identifier, shall be sent to the RBC referenced in the request.
-</Paragraph><Paragraph
+>When the driver has acknowledged a text message with a request to report driver acknowledgement, the driver acknowledgement report, including the text message identifier, shall be sent to the RBC referenced in the request.</Paragraph><Paragraph
  id="3.12.3.5.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9291,19 +9324,7 @@ Important operational information (e.g. information about workers on the line et
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A new text message with request for report of driver acknowledgement shall be rejected by the ERTMS/ETCS on-board equipment if it has the same text message identifier as a previously received text message, which the driver has not yet acknowledged.
-</Paragraph><Paragraph
- id="3.12.3.5.3"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->If the onboard ERTMS/ETCS equipment accepts a new text message with the same identifier as one that has already been accepted, the new text message shall replace the previous one.
-</Paragraph></Sub>
+>A new text message with request for report of driver acknowledgement shall be rejected by the ERTMS/ETCS on-board equipment if it has the same text message identifier as a previously received text message, which the driver has not yet acknowledged.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.12.4"
@@ -9328,10 +9349,7 @@ Important operational information (e.g. information about workers on the line et
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><ReqRef
- Id="3.12.4.1"
->
-</ReqRef>The Mode Profile can request On Sight mode, Limited Supervision mode and Shunting mode.</Paragraph><Paragraph
+>The Mode Profile can request On Sight mode, Limited Supervision mode and Shunting mode.</Paragraph><Paragraph
  id="3.12.4.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -9411,7 +9429,8 @@ Important operational information (e.g. information about workers on the line et
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Crossings<Sub>
+><Comment></Comment>
+Level Crossings<Sub>
 <Paragraph
  id="3.12.5.1"
  type="REQUIREMENT"
@@ -9543,7 +9562,8 @@ In case the LX is not protected, ERTMS/ETCS on-board equipment shall be informed
  functionalBlock="TRUE"
  functionalBlockName="3.B Speed and distance monitoring inputs"
  Name=""
->Introduction<Sub>
+><Comment></Comment>
+Introduction<Sub>
 <Paragraph
  id="3.13.1.1"
  type="DEFINITION"
@@ -9856,7 +9876,7 @@ Inputs for speed and distance monitoring<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The speed and distance monitoring shall use braking models acquired as Train Data, unless the brake percentage is acquired as Train Data and the conversion model is applicable (see 3.13.3.2 for its validity limits). </Paragraph></Sub>
+>The speed and distance monitoring shall use braking models acquired as Train Data, unless the brake percentage is acquired as Train Data and the conversion model is applicable (see 3.13.3.2 for its validity limits).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.2.2.2"
  type="TITLE"
@@ -11125,7 +11145,7 @@ The speed and distance monitoring shall take into account the following types of
  functionalBlockName=""
  Name=""
 >the Limit of Authority (LOA), the End of Authority (EOA), the Supervised Location (SvL) and its associated release speed, if any.</Paragraph><Paragraph
- id="3.13.2.3.6.1.2"
+ id="3.13.2.3.6.1.b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -11534,14 +11554,14 @@ Applicability of the conversion models<Sub>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >The conversion models shall be used by the on-board equipment if the brake percentage is acquired as part of Train Data, and if the maximum train speed, the brake percentage and the train length are all within the following validity limits of the conversion models:
 	a) 0 &lt;= V &lt;= 200, where V is the maximum train speed in km/h
 	b) 30 &lt;= lambda &lt;= 250, where lambda is the brake percentage in %
-	c) 0 &lt;= L &lt;= 750, where L is the train length in m<Sub>
+	c) 0 &lt;= L &lt;= Lmax, where L is the train length in m and were Lmax = 900 m if the brake position is &quot;Passenger train in P&quot; or Lmax = 1500 m if the brake position is &quot;Freight train in P&quot; or &quot;Fraight train in G&quot;<Sub>
 <Paragraph
  id="3.13.3.2.1.1"
  type="NOTE"
@@ -11966,7 +11986,8 @@ T_brake_service_cmt as defined for service brake in A3.9</Paragraph></Sub>
  functionalBlock="TRUE"
  functionalBlockName="3.C Speed and distance monitoring components"
  Name=""
->Determination of locations without special brake contribution and with reduced adhesion conditions<Sub>
+><Comment></Comment>
+Determination of locations without special brake contribution and with reduced adhesion conditions<Sub>
 <Paragraph
  id="3.13.5.1"
  type="REQUIREMENT"
@@ -11974,45 +11995,75 @@ T_brake_service_cmt as defined for service brake in A3.9</Paragraph></Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->From any track condition profile given by trackside, the on-board shall consider locations without special brake contribution over a distance going from the start location of the profile to the location derived by adding the train length to the end location of the profile.</Paragraph><Paragraph
+><Comment></Comment>
+As long as it uses a track condition profile given by trackside, the on-board shall consider locations without special brake contribution over a distance going from the start location of the profile to the foot of the deceleration curve (EBD, SBD or GUI, see sections ,  and ).</Paragraph><Paragraph
  id="3.13.5.2"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->From the adhesion profile given by trackside, the on-board shall consider locations with reduced adhesion conditions over a distance going from the start location of the profile to the location derived by adding the train length to the end location of the profile.</Paragraph><Paragraph
+><Comment>Previous revision status was Implemented</Comment>
+If the status of a special brake is not active, all locations shall be considered without the contribution of this special brake.<Sub>
+<Paragraph
+ id="3.13.5.2.1"
+ type="NOTE"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Previous revision status was </Comment>
+Note: in such case, a track condition profile implying the inhibition of this special brake will have no effect.</Paragraph></Sub>
+</Paragraph><Paragraph
  id="3.13.5.3"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment></Comment>
-When slippery rail is selected by the driver, all locations shall be considered with reduced adhesion conditions.</Paragraph><Paragraph
+><Comment>Previous revision status was Implemented</Comment>
+From the adhesion profile given by trackside, the on-board shall consider locations with reduced adhesion conditions over a distance going from the start location of the profile to the location derived by adding the train length to the end location of the profile.</Paragraph><Paragraph
  id="3.13.5.4"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment></Comment>
+><Comment>Previous revision status was Implemented</Comment>
+When slippery rail is selected by the driver, all locations shall be considered with reduced adhesion conditions.</Paragraph><Paragraph
+ id="3.13.5.5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Previous revision status was </Comment>
 The speed and distance monitoring shall use, as resulting reduced adhesion conditions, the most restrictive value of the adhesion conditions selected by the driver and the adhesion conditions calculated from the trackside profile.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.6"
@@ -12112,7 +12163,8 @@ Safe deceleration<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The speed dependent deceleration model(s) for the emergency brake either acquired as part of Train Data (see 3.13.2.2.3.1) or derived from the brake percentage using the conversion model (see 3.13.3.3)</Paragraph><Paragraph
+><Comment></Comment>
+The speed dependent deceleration model(s) for the emergency brake either acquired as part of Train Data (see 3.13.2.2.3.1) or derived from the brake percentage using the conversion model (see 3.13.3.3)</Paragraph><Paragraph
  id="3.13.6.2.1.2.b"
  type="REQUIREMENT"
  scope="OBU"
@@ -12124,7 +12176,8 @@ Safe deceleration<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The acceleration/deceleration due to gradient i.e. A_gradient(d) (see 3.13.4)</Paragraph><Paragraph
+><Comment></Comment>
+The acceleration/deceleration due to gradient i.e. A_gradient(d) (see 3.13.4)</Paragraph><Paragraph
  id="3.13.6.2.1.2.c"
  type="REQUIREMENT"
  scope="OBU"
@@ -12160,79 +12213,73 @@ Safe deceleration<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The locations without special brake contribution (see 3.13.5), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
+><Comment></Comment>
+The locations without special brake contribution (see 3.13.5), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
  id="3.13.6.2.1.2.f"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The status of the regenerative, eddy current and magnetic shoe brakes (see 3.13.2.2.6), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
+><Comment></Comment>
+The rolling stock correction factors Kdry_rst(V, EBCL) and Kwet_rst(V) (see 3.13.2.2.9.1), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
  id="3.13.6.2.1.2.g"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The rolling stock correction factors Kdry_rst(V, EBCL) and Kwet_rst(V) (see 3.13.2.2.9.1), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
+><Comment></Comment>
+The National Values for confidence level on emergency brake safe deceleration and for the available wheel/rail adhesion (see 3.13.2.3.7.5 &amp; 3.13.2.3.7.6), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
  id="3.13.6.2.1.2.h"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The National Values for confidence level on emergency brake safe deceleration and for the available wheel/rail adhesion (see 3.13.2.3.7.5 &amp; 3.13.2.3.7.6), only if the speed dependent deceleration model(s) for the emergency brake are acquired as part of Train Data</Paragraph><Paragraph
+><Comment></Comment>
+The integrated correction factors Kv_int(V) (with the two pivot deceleration values for passenger trains) and Kr_int(l) (see 3.13.2.3.7), only if the conversion model is used</Paragraph><Paragraph
  id="3.13.6.2.1.2.i"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The integrated correction factors Kv_int(V) (with the two pivot deceleration values for passenger trains) and Kr_int(l) (see 3.13.2.3.7), only if the conversion model is used</Paragraph><Paragraph
+><Comment>Previous revision status was Implemented</Comment>
+The brake position (see 3.13.2.2.4)</Paragraph><Paragraph
  id="3.13.6.2.1.2.j"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The brake position (see 3.13.2.2.4)</Paragraph><Paragraph
- id="3.13.6.2.1.2.k"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The acquired train length L_TRAIN (see 3.13.2.2.11), only if the conversion model is used</Paragraph></Sub>
+><Comment></Comment>
+The acquired train length L_TRAIN (see 3.13.2.2.11), only if the conversion model is used</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.6.2.1.3"
  type="REQUIREMENT"
@@ -12244,7 +12291,8 @@ Safe deceleration<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A_safe(V,d) shall be equal to:
+><Comment></Comment>
+A_safe(V,d) shall be equal to:
 	For locations with normal adhesion conditions:
 	    A_safe(V,d) = A_brake_safe(V,d) + A_gradient(d)
 	For locations with reduced adhesion conditions:
@@ -12271,19 +12319,19 @@ A_brake_safe(V,d) shall be the safe emergency brake deceleration. A_brake_safe(V
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment></Comment>
-A_brake_emergency(V,d) shall be the emergency brake deceleration as a function of the speed, of the status of the special brakes and of the various track conditions encountered between the train front and the target location. A_brake_emergency(V,d) shall be equal to:
-	A_brake_emergency1(V) when destfront &lt;= d &lt;= d1
-	A_brake_emergency2(V) when d1 &lt; d &lt;= d2
-	A_brake_emergency3(V) when d2 &lt; d &lt;= d3
-	....
-	Where
-	d1, d2, d3,... are the locations with change of special brake(s) contribution
-	A_brake_emergencyx(V) is equal to the emergency brake model, A_brake_emergency, applicable for the concerned combination of brake.</Paragraph><Paragraph
+><Comment>Previous revision status was Implemented</Comment>
+A_brake_emergency(V,d) shall be the emergency brake deceleration as a function of the speed, of the locations with change of special brake(s) contribution encountered between the train front and the foot of the EBD curve. A_brake_emergency(V,d) shall be equal to:
+A_brake_emergency1(V) when destfront &lt;= d &lt;= d1
+A_brake_emergency2(V) when d1 &lt; d &lt;= d2
+A_brake_emergency3(V) when d2 &lt; d &lt;= d3
+....
+Where
+d1, d2, d3,... are the locations with change of special brake(s) contribution
+A_brake_emergency_x(V) is equal to the emergency brake model, A_brake_emergency, applicable for the concerned combination of brake.</Paragraph><Paragraph
  id="3.13.6.2.1.6"
  type="REQUIREMENT"
  scope="OBU"
@@ -12294,7 +12342,8 @@ A_brake_emergency(V,d) shall be the emergency brake deceleration as a function o
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A_MAXREDADH shall be the deceleration value, out of the three related National Values, applicable for this train according to:
+><Comment></Comment>
+A_MAXREDADH shall be the deceleration value, out of the three related National Values, applicable for this train according to:
 	a) its brake position
 	b) whether special/additional brakes independent from wheel/rail adhesion are active and it is allowed to take into account their contribution to the emergency braking effort.</Paragraph><Paragraph
  id="3.13.6.2.1.7"
@@ -12318,7 +12367,8 @@ A_brake_emergency(V,d) shall be the emergency brake deceleration as a function o
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Kv_int(V) shall be the integrated correction factor applicable for the train, selected according to the brake position.<Sub>
+><Comment></Comment>
+Kv_int(V) shall be the integrated correction factor applicable for the train, selected according to the brake position.<Sub>
 <Paragraph
  id="3.13.6.2.1.8.1"
  type="REQUIREMENT"
@@ -12399,15 +12449,16 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  id="3.13.6.2.2.2.a"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The values of T_brake_emergency  acquired as part of Train Data (see 3.13.2.2.3.2.8) or the value of T_brake_emergency derived from the conversion model (see 3.13.3.4) using the brake position and train length acquired as Train Data.</Paragraph><Paragraph
+><Comment></Comment>
+The values of T_brake_emergency acquired as part of Train Data (see ) or the value of T_brake_emergency derived from the conversion model (see ) using the brake position and train length acquired as Train Data.</Paragraph><Paragraph
  id="3.13.6.2.2.2.b"
  type="REQUIREMENT"
  scope="OBU"
@@ -12495,7 +12546,8 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The train and track related characteristics to be considered are:<Sub>
+><Comment></Comment>
+The train and track related characteristics to be considered are:<Sub>
 <Paragraph
  id="3.13.6.3.1.2.a"
  type="REQUIREMENT"
@@ -12536,15 +12588,16 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  id="3.13.6.3.1.2.d"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The status of the regenerative, eddy current and magnetic shoe brakes (see 3.13.2.2.6), only if the speed dependent deceleration model(s) for the full service brake are acquired as part of Train Data</Paragraph></Sub>
+><Comment>Previous revision status was Implemented</Comment>
+&lt;Removed in current release&gt;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.6.3.1.3"
  type="REQUIREMENT"
@@ -12556,7 +12609,8 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A_expected(V,d) shall be equal to:
+><Comment></Comment>
+A_expected(V,d) shall be equal to:
 	A_expected(V,d) = A_brake_service(V,d) +A_gradient(d)</Paragraph><Paragraph
  id="3.13.6.3.1.4"
  type="REQUIREMENT"
@@ -12564,18 +12618,19 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->A_brake_service(V,d) shall be the full deceleration of the service brake as a function of the speed, of the status of the special brakes and of the various track conditions encountered between the train front and the target location. A_brake_service(V,d) shall be equal to:
-	A_brake_service1(V) when destfront&lt; = d &lt;= d1
-	A_brake_service2(V) when d1 &lt; d &lt;= d2
-	A_brake_service3(V) when d2 &lt; d &lt;= d3
-	....
-	Where
-	d1, d2, d3,... are the locations with change of special brake(s) contribution
-	A_brake_servicex(V) is equal to the full service brake model, A_brake_service, applicable for the concerned combination of brake.</Paragraph></Sub>
+><Comment>Previous revision status was Implemented</Comment>
+A_brake_service(V,d) shall be the full deceleration of the service brake as a function of the speed, of the locations with change of special brake(s) contribution encountered between the train front and the foot of the SBD curve. A_brake_service(V,d) shall be equal to:
+A_brake_service1(V) when destfront &lt;= d &lt;= d1
+A_brake_service2(V) when d1 &lt; d &lt;= d2
+A_brake_service3(V) when d2 &lt; d &lt;= d3
+....
+Where
+d1, d2, d3,... are the locations with change of special brake(s) contribution
+A_brake_service_x(V) is equal to the full service brake model, A_brake_service, applicable for the concerned combination of brake.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.6.3.2"
  type="TITLE"
@@ -12621,20 +12676,22 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The train related characteristics to be considered are:<Sub>
+><Comment></Comment>
+The train related characteristics to be considered are:<Sub>
 <Paragraph
  id="3.13.6.3.2.3.a"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="Implemented"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The values of T_brake_service  acquired as part of Train Data (see 3.13.2.2.3.2.8) or the value(s) of T_brake_service derived from the conversion model (see 3.13.3.4) using the brake position and train length acquired as Train Data)</Paragraph><Paragraph
+><Comment></Comment>
+The values of T_brake_service acquired as part of Train Data (see 3.13.2.2.3.2.8) or the value(s) of T_brake_service derived from the conversion model (see 3.13.3.4) using the brake position and train length acquired as Train Data)</Paragraph><Paragraph
  id="3.13.6.3.2.3.b"
  type="REQUIREMENT"
  scope="OBU"
@@ -12772,15 +12829,16 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  id="3.13.6.4.2.g"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The status of the regenerative, eddy current and magnetic shoe brakes (see 3.13.2.2.6)</Paragraph></Sub>
+><Comment>Previous revision status was Implemented</Comment>
+&lt;Removed in current release&gt;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.6.4.3"
  type="REQUIREMENT"
@@ -12792,31 +12850,33 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The normal service brake deceleration shall be equal to:
-	For positive gradient values (uphill):
-	A_normal_service(V,d) = A_brake_normal_service(V,d) + A_gradient(d) - Kn+(V)*grad
-	For negative gradient values (downhill):
-	A_normal_service(V,d) = A_brake_normal_service(V,d) + A_gradient(d) - Kn-(V)*grad
-	Where
-	grad = gradient values in per thousand (positive = uphill)</Paragraph><Paragraph
+><Comment></Comment>
+The normal service brake deceleration shall be equal to:
+For positive gradient values (uphill):
+A_normal_service(V,d) = A_brake_normal_service(V,d) + A_gradient(d) - Kn+(V)*grad
+For negative gradient values (downhill):
+A_normal_service(V,d) = A_brake_normal_service(V,d) + A_gradient(d) - Kn-(V)*grad
+Where
+grad = gradient values in per thousand (positive = uphill)</Paragraph><Paragraph
  id="3.13.6.4.4"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->A_brake_normal_service(V,d) shall be the normal deceleration of the service brake as a function of the speed, of the status of the special brakes and of the various track conditions encountered between the train front and the target location. A_brake_normal_service(V,d) shall be equal to:
-	A_brake_normal_service1(V) when destfront &lt;= d &lt;= d1
-	A_brake_normal_service2(V) when d1 &lt; d &lt;= d2
-	A_brake_normal_service3(V) when d2 &lt; d &lt;= d3
-	....
-	Where
-	d1, d2, d3,... are the locations with change of special brake(s) contribution
-	A_brake_normal_servicex(V) is equal to the normal service brake model applicable for the concerned combination of brake position and of the value of A_brake_service(V=0) between dx-1 and dx (see 3.13.2.2.3.1.9 and 3.13.2.2.3.1.10).</Paragraph></Sub>
+><Comment></Comment>
+A_brake_normal_service(V,d) shall be the normal deceleration of the service brake as a function of the speed, of the locations with change of special brake(s) contribution encountered between the train front and the foot of the GUI curve. A_brake_normal_service(V,d) shall be equal to:
+A_brake_normal_service1(V) when destfront &lt;= d &lt;= d1
+A_brake_normal_service2(V) when d1 &lt; d &lt;= d2
+A_brake_normal_service3(V) when d2 &lt; d &lt;= d3
+....
+Where
+d1, d2, d3,... are the locations with change of special brake(s) contribution
+A_brake_normal_service_x(V) is equal to the normal service brake model applicable for the concerned combination of brake position and of the value of A_brake_service(V=0) between d_x-1 and d_x (see 3.13.2.2.3.1.9 and 3.13.2.2.3.1.10 ).</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.7"
@@ -12901,10 +12961,7 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><ReqRef
- Id="3.13.8.1.2"
->
-</ReqRef>A target is defined by a target location and a target speed, to which the train must decelerate before reaching the target location.</Paragraph><Paragraph
+>A target is defined by a target location and a target speed, to which the train must decelerate before reaching the target location.</Paragraph><Paragraph
  id="3.13.8.1.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -12915,10 +12972,7 @@ The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency be
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><ReqRef
- Id="3.13.8.1.1"
->
-</ReqRef>For that purpose, the on-board equipment shall use brake deceleration curves related to the supervised targets, from the deceleration values as specified in sections 3.13.6.2.1, 3.13.6.3.1 and 3.13.6.4.</Paragraph><Paragraph
+>For that purpose, the on-board equipment shall use brake deceleration curves related to the supervised targets, from the deceleration values as specified in sections 3.13.6.2.1, 3.13.6.3.1 and 3.13.6.4.</Paragraph><Paragraph
  id="3.13.8.1.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -13039,7 +13093,8 @@ The list of supervised targets shall be re-evaluated when any of the elements it
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A target corresponding to a speed decrease of the MRSP shall be removed from the list of supervised targets when the max safe front end of the train has passed the target location.</Paragraph></Sub>
+><Comment></Comment>
+A target corresponding to a speed decrease of the MRSP shall be removed from the list of supervised targets when the max safe front end of the train has passed the target location.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.8.3"
  type="TITLE"
@@ -13056,14 +13111,15 @@ The list of supervised targets shall be re-evaluated when any of the elements it
  id="3.13.8.3.1"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EBD curve that crosses the ceiling speed EBI supervision limit at the target location (see 3.13.9.2) and based on the safe deceleration A_safe(V,d).</Paragraph><Paragraph
+><Comment>Previous revision status was Implemented</Comment>
+If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EBD curve based on the safe deceleration A_safe(V,d), that crosses the ceiling speed EBI supervision limit (see 3.13.9.2) at the target location, and that extends up to the location where the target speed is reached (EBD foot).</Paragraph><Paragraph
  id="3.13.8.3.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -13085,7 +13141,8 @@ The list of supervised targets shall be re-evaluated when any of the elements it
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a target is the location at the end of the maximum permitted distance to run in Staff Responsible, the on-board shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration A_safe(V,d) and that reaches zero speed at this staff responsible end location.</Paragraph></Sub>
+><Comment></Comment>
+If a target is the location at the end of the maximum permitted distance to run in Staff Responsible, the on-board shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration A_safe(V,d) and that reaches zero speed at this staff responsible end location.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.8.4"
  type="TITLE"
@@ -13954,7 +14011,8 @@ With Dbec and Vbec calculated according to 3.13.9.3.2.10</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->To do so, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with V_target and V_delta0 with V_delta0t.
+><Comment></Comment>
+To do so, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with V_target and V_delta0 with V_delta0t.
 d_EBI ( Vtarget ) = d_EBD ( Vtarget + Vdelta0t ) - ( Vtarget + Vdelta0t ) * ( T_berem + T_traction )
 d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
 <Paragraph
@@ -14219,7 +14277,8 @@ Or d_FLOI(Vrelease) = d_SBI2(Vrelease) if d_SBI2(Vrelease) - d_SBI1(Vrelease) &l
  version="3.0.0"
  functionalBlockName=""
  Name=""
->When the Release Speed is calculated on-board (Figure 51 box 3), its value shall be equal to the most restrictive value, at the Trip location related to the EOA, amongst the EBI supervision limit related to the SvL (Figure 51 box 1) and, if any, the EBI supervision limits(s) related to other target(s) between the Trip location related to the EoA and the SvL (Figure 51 box 2).<Sub>
+><Comment></Comment>
+When the Release Speed is calculated on-board (Figure 51 box 3), its value shall be equal to the most restrictive value, at the Trip location related to the EOA, amongst the EBI supervision limit related to the SvL (Figure 51 box 1) and, if any, the EBI supervision limits(s) related to other target(s) between the Trip location related to the EoA and the SvL (Figure 51 box 2).<Sub>
 <Paragraph
  id="3.13.9.4.8.1"
  type="REQUIREMENT"
@@ -14227,68 +14286,51 @@ Or d_FLOI(Vrelease) = d_SBI2(Vrelease) if d_SBI2(Vrelease) - d_SBI1(Vrelease) &l
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->In order to calculate in advance the EBI supervision limit at the Trip location related to the EOA, the on-board equipment shall take into account the following assumptions:<Sub>
-<Paragraph
- id="3.13.9.4.8.1.a"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->the estimated acceleration shall be set to &quot;zero&quot;</Paragraph><Paragraph
- id="3.13.9.4.8.1.b"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->if not inhibited by National Value, the compensation of the inaccuracy of the speed measurement shall be set to a Fixed Value V_delta0rsob (see Appendix A3.1)</Paragraph></Sub>
-</Paragraph><Paragraph
+><Comment></Comment>
+In order to calculate in advance the EBI supervision limit at the Trip location related to the EOA, the on-board equipment shall take into account an estimated acceleration set to zero.</Paragraph><Paragraph
  id="3.13.9.4.8.2"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The release speed shall be iteratively calculated as follows:
-V_release^(n+1) = V_EBD ( d_tripEoA + D_bec^n ) - V_delta0rsob
-    With D_bec^n = ( V_release^n + V_delta0rsob ) x ( T_traction + T_berem)
-    and d_tripEoA = d_EoA + max { ( 5m + 5% x d_EoA ), ( d_estfront - d_minsafefront ) }
-V_release^ (n+1) = V_target if d_tripEoA + D_bec^n &gt;= d_EBD (V_target)
-                                             or if V_EBD ( d_tripEoA + D_bec^n ) - V_delta0rsob &lt;= V_target
-V_release^0 = V_target
-V_release = V_release^(n+1) as soon as ABS ( V_release^(n+1) - V_release^n ) &lt;= epsilon
-    with epsilon = 1km/h<Sub>
+><Comment></Comment>
+The release speed shall be iteratively calculated as follows:
+V^(n+1)_release = V_EBD ( d_tripEoA + D^n_bec ) - V^n_delta0rsob
+With V^n_delta0rsob = max { f_41 (V^n_release), V_ura } or V^n_delta0rsob = 0 (if compensation of speed inaccuracy is inhibited by National Value)
+With D^n_bec = (V^n_release + V^n_delta0rsob) * (T_traction + T_berem)
+With d_tripEoA = d_EoA + alpha * L_antenna-front + max { (2 * Q_locacc_refBG + 10m + 10% * d_EOA), (d_maxsafefront - d_minsafefront) }
+And withalpha = 1 if level = 1
+alpha = 0 if level = 2 or 3
+V^(n+1)_release = V_target if d_tripEoA + D^n_bec &gt;= d_EBD (V_target)
+or if V_EBD (d_tripoEoA + D^n_bec) - V^n_delta0rsob &lt;= V_target
+V^0_release = V_target
+V_release = V^(n+1)_release as soon as ABS (V^(n+1)_release - V^n_release) &lt;= epsilon
+with epsilon = 1km/h<Sub>
 <Paragraph
  id="3.13.9.4.8.2.1"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: The above approximations are intended to prevent the calculated release speed from fluctuating, according to the distance, speed and acceleration measurements. It allows calculating the release speed only once, for a given train reference location, unless the distance confidence interval exceeds the predicted distance between the EOA and the train trip location, based on SUBSET-041 odometer performance values. Whenever the train reference location is updated (e.g. new LRBG), the release speed will however be recalculated and will increase with a step. This behaviour is acceptable from an operational point of view.</Paragraph></Sub>
+><Comment>Previous revision status was NA</Comment>
+Note: The above formulas are intended to prevent the calculated release speed from fluctuating, according to the distance, speed and acceleration measurements. It allows calculating the release speed only once, for a given on-board reference location, unless
+- the distance confidence interval exceeds a predicted one, which is based on the assumption that the whole distance between the current on-board reference location and the EOA would be travelled with SUBSET-041 odometer performance values and without any update of the on-board reference location, or
+- the speed under reading amount (V_ura) exceeds the SUBSET-041 performance value
+Whenever the on-board reference location is updated (e.g. new LRBG), the release speed will however be recalculated and will increase with a step. This behaviour is acceptable from an operational point of view.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.13.9.4.9"
@@ -15159,7 +15201,8 @@ The on-board equipment shall compare the estimated speed and train position with
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Table 8: Triggering of Train Interface commands and supervision statuses in target speed monitoring, MRSP target or LOA
+><Comment></Comment>
+Table 8: Triggering of Train Interface commands and supervision statuses in target speed monitoring, MRSP target or LOA
 Triggering condition #; Estimated speed; Train front end position (estimated and max safe); TI Command triggered; Supervision status triggered<Sub>
 <Paragraph
  id="Entry 3.13.10.4.10.1.1"
@@ -16328,10 +16371,11 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the brake command was triggered due to an exceeded reversing distance related to a reversing area, the brake command shall be released at once if the reversing distance has been extended so that the reversing distance is no longer exceeded, or at standstill after driver acknowledgement.</Paragraph><Paragraph
+><Comment></Comment>
+If the brake command was triggered due to an overpassed reversing distance related to a reversing area or due to any further movement in the direction opposite to the train orientation while the reversing distance is still overpassed, the brake command shall be released if the reversing distance becomes extended so that the reversing distance is no longer overpassed, or at standstill after driver acknowledgement.</Paragraph><Paragraph
  id="3.14.1.7.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -16353,7 +16397,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If the brake command was triggered due to the detection of a train movement while modifying/revalidating train data or while entering SR speed/distance limits, the brake command shall be released at standstill and after driver acknowledgement.</Paragraph><Paragraph
+><Comment></Comment>
+If the brake command was triggered due to the detection of a train movement while modifying/revalidating train data or while entering SR speed/distance limits, the brake command shall be released at standstill and after driver acknowledgement.</Paragraph><Paragraph
  id="3.14.1.7.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -16361,10 +16406,11 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the brake command was triggered due to level inhibition (see 5.10.2.7.2) the brake command shall be released at standstill and after driver acknowledgement.</Paragraph><Paragraph
+><Comment>Previous revision status was NA</Comment>
+If the brake command was triggered due to an overpassed distance allowed for moving backwards in Post Trip mode or due to any further movement in the direction opposite to the train orientation while the distance allowed for moving backwards in Post Trip mode is still overpassed, the brake command shall be released at standstill and after driver acknowledgement.</Paragraph><Paragraph
  id="3.14.1.7.5"
  type="REQUIREMENT"
  scope="OBU"
@@ -16372,21 +16418,11 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the brake command was triggered due to an overpassed distance allowed for moving backwards in Post Trip mode, the brake command shall be released at standstill and after driver acknowledgement.</Paragraph><Paragraph
- id="3.14.1.7.6"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->If the brake command was triggered due to the driver not having acknowledged a text message, the brake command shall be released after the driver has acknowledged the text message.</Paragraph></Sub>
+><Comment>Previous revision status was NA</Comment>
+If the brake command was triggered due to the driver not having acknowledged a text message, the brake command shall be released after the driver has acknowledged the text message.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.14.1.8"
  type="REQUIREMENT"
@@ -16398,7 +16434,8 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->An indication shall be given to the driver to indicate when the brakes can be released and when an acknowledgement is requested.</Paragraph></Sub>
+><Comment></Comment>
+An indication shall be given to the driver to indicate when the brakes can be released and when an acknowledgement is requested.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.14.2"
  type="TITLE"
@@ -17103,8 +17140,7 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
 >When receiving an order to switch to another RBC at a given location, the on-board equipment shall:
 	a) Establish the communication session with the Accepting RBC;
 	b) Send a position report to the Handing Over RBC when the maximum safe front end of the train passes the given location;
-	c) Send a position report to the Handing Over RBC when the minimum safe rear end of the train passes the given location;
-</Paragraph><Paragraph
+	c) Send a position report to the Handing Over RBC when the minimum safe rear end of the train passes the given location;</Paragraph><Paragraph
  id="3.15.1.3.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -17116,8 +17152,7 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  Name=""
 >It is up to the on-board equipment to manage the establishment of one communication session and the release of the other one:
 	a) If it is able to handle two communication sessions at the same time, the radio session with the Accepting RBC shall be established as soon as it receives the RBC transition order .
-	b) If it is able to handle one communication session only at a given time, it shall wait until the session with the Handing over RBC is terminated due to crossing the border (refer to 3.5.5.1e and 3.15.1.2.7) and then establish the session with the Accepting RBC.
-</Paragraph><Paragraph
+	b) If it is able to handle one communication session only at a given time, it shall wait until the session with the Handing over RBC is terminated due to crossing the border (refer to 3.5.5.1e and 3.15.1.2.7) and then establish the session with the Accepting RBC.</Paragraph><Paragraph
  id="3.15.1.3.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -17127,8 +17162,7 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->As soon as the on-board equipment has established the session with the Accepting RBC, it shall send its Train Data unless it is in sleeping or non leading mode.
-</Paragraph><Paragraph
+>As soon as the on-board equipment has established the session with the Accepting RBC, it shall send its Train Data unless it is in sleeping or non leading mode.</Paragraph><Paragraph
  id="3.15.1.3.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -17383,8 +17417,7 @@ Condition id; Transition condition; CSM; TSM; RSM<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->ERTMS/ETCS shall allow Splitting and Joining using the normal supervision functions available (e.g. On-sight, Shunting).
-</Paragraph><Paragraph
+>ERTMS/ETCS shall allow Splitting and Joining using the normal supervision functions available (e.g. On-sight, Shunting).</Paragraph><Paragraph
  id="3.15.3.2"
  type="NOTE"
  scope="OBU"
@@ -17542,7 +17575,8 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->New distance to run and Reversing mode speed limit given from the trackside shall replace the one already available on-board.<Sub>
+><Comment></Comment>
+New distance to run and Reversing mode speed limit given from the trackside shall replace the one already available on-board.<Sub>
 <Paragraph
  id="3.15.4.3.1"
  type="REQUIREMENT"
@@ -17603,14 +17637,15 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.15.4.8"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the end location of the maximum distance to run in the opposite direction is passed by the train front end, the brake command shall be triggered.</Paragraph></Sub>
+><Comment></Comment>
+If the end location of the maximum distance to run in the opposite direction is passed by the train front end, the emergency brake command shall be triggered.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.15.5"
  type="TITLE"
@@ -17646,8 +17681,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  Name=""
 >The track ahead free request from the RBC shall indicate to the on-board
 	a) at which location the ERTMS/ETCS on-board equipment shall begin to display the request to the driver.
-	b) at which location the ERTMS/ETCS on-board equipment shall stop to display the request to the driver (in case the driver did not acknowledge).
-</Paragraph><Paragraph
+	b) at which location the ERTMS/ETCS on-board equipment shall stop to display the request to the driver (in case the driver did not acknowledge).</Paragraph><Paragraph
  id="3.15.5.3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -17660,8 +17694,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
 ><ReqRef
  Id="5.9.6.2.3"
 >
-</ReqRef>The driver shall have the possibility to acknowledge the track ahead free request (meaning the driver confirms that the track between the head of the train and the next signal or board marking signal position is free).
-</Paragraph><Paragraph
+</ReqRef>The driver shall have the possibility to acknowledge the track ahead free request (meaning the driver confirms that the track between the head of the train and the next signal or board marking signal position is free).</Paragraph><Paragraph
  id="3.15.5.4"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -17674,8 +17707,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
 ><ReqRef
  Id="5.9.6.2.3"
 >
-</ReqRef>When the driver acknowledges, the ERTMS/ETCS on-board equipment shall stop displaying the request, and shall inform the RBC that the track ahead is free.
-</Paragraph><Paragraph
+</ReqRef>When the driver acknowledges, the ERTMS/ETCS on-board equipment shall stop displaying the request, and shall inform the RBC that the track ahead is free.</Paragraph><Paragraph
  id="3.15.5.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -17709,7 +17741,8 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Handling of National Systems<Sub>
+><Comment></Comment>
+Handling of National Systems<Sub>
 <Paragraph
  id="3.15.6.1"
  type="REQUIREMENT"
@@ -17772,34 +17805,26 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The On-Board equipment shall be able to receive data from balises to be forwarded to a National System.
-</Paragraph><Paragraph
- id="3.15.6.6"
+><Comment>Previous revision status was NA</Comment>
+Amongst the data to be used by applications outside ERTMS/ETCS that can be transmitted by trackside over the ERTMS/ETCS transmission channels, it shall be possible to send from balises or RBC data to be forwarded to a National System.<Sub>
+<Paragraph
+ id="3.15.6.5.1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
+ optional="FALSE"
  name=""
- status="NA"
- version="3.0.0"
+ status="NewRevisionAvailable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->When receiving data to be forwarded to a National System, the On-Board equipment shall transmit that data to the relevant National System if part of the On-Board configuration.<Sub>
-<Paragraph
- id="3.15.6.6.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl="3.2.0"
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Note: Definition of data to be transmitted to the National System is national dependent and outside the scope of Subset 026.</Paragraph></Sub>
+><Comment>
+Previous revision status was </Comment>
+Note: Definition of what qualifies as data to be forwarded to a National System is national dependent and outside the scope of Subset 026.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.15.7"
@@ -17899,71 +17924,185 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.15.9"
  type="TITLE"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Inhibition of levels<Sub>
+><Comment></Comment>
+Virtual Balise Cover<Sub>
 <Paragraph
  id="3.15.9.1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->During a start of mission, the driver shall have the opportunity to inhibit any ERTMS/ETCS level, or to remove any existing level inhibitions.
-</Paragraph><Paragraph
- id="3.15.9.2"
- type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be possible for trackside to send a level inhibition order defining a list of inhibited levels.</Paragraph><Paragraph
- id="3.15.9.3"
+><Comment></Comment>
+It shall be possible to set and remove from balise a Virtual Balise Cover (VBC). A VBC is defined by:<Sub>
+<Paragraph
+ id="3.15.9.1.a"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
+ optional="FALSE"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->A new list of inhibited levels received from trackside shall replace the complete list of inhibited levels stored onboard.
+><Comment></Comment>
+A marker corresponding to balises to be ignored by the on-board together with the area (country or region) in which the VBC is applicable. The VBC marker and the country/region identity form the unique VBC identity.</Paragraph><Paragraph
+ id="3.15.9.1.b"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Its validity period.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="3.15.9.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+During a start of mission, the driver shall have the opportunity to set a new VBC, or to remove an existing one.</Paragraph><Paragraph
+ id="3.15.9.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+As long as a VBC is stored on-board:<Sub>
+<Paragraph
+ id="3.15.9.3.a"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall ignore any balise telegram that includes a VBC marker and a country/region identity that both match the VBC identity.</Paragraph><Paragraph
+ id="3.15.9.3.b"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+No reaction shall be applied if errors in the reading of the rest of such balise telegram occur.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.15.9.4"
  type="REQUIREMENT"
- scope="OBU_AND_TRACK"
- bl=""
+ scope="OBU"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The onboard level transition function shall take into account the stored list of inhibited levels.
-</Paragraph><Paragraph
+><Comment></Comment>
+If the ERTMS/ETCS on-board equipment receives from balise or from driver a new VBC with the same VBC identity as an already stored VBC, the new VBC shall replace the previous one, including its validity period.</Paragraph><Paragraph
  id="3.15.9.5"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the list of inhibited levels has been changed by driver or by trackside, the revised list of inhibited levels shall be effective:
-	- immediately for level selections made by the driver
-	- for trackside level transitions orders received in the same message as the inhibition order or thereafter.
+><Comment></Comment>
+A VBC shall be retained on-board when the on-board equipment is switched off (i.e. enters No Power mode) and shall remain applicable when powered on again. It shall be deleted when:<Sub>
+<Paragraph
+ id="3.15.9.5.a"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+it is ordered by trackside, or</Paragraph><Paragraph
+ id="3.15.9.5.b"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+its validity period has elapsed, or</Paragraph><Paragraph
+ id="3.15.9.5.c"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+it is removed by the driver (during Start of Mission), or</Paragraph><Paragraph
+ id="3.15.9.5.d"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+a mismatch is detected between the country/region identity read from a balise group and the country/region identity of the VBC. Note: this means that the reception of a consistent balise group message is a necessary condition for deleting a VBC due to mismatching country/region identities.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.15.10"
@@ -17983,11 +18122,13 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The ERTMS/ETCS on-board equipment shall offer the possibility to display, only on driver request, an overview of the gradient profile (as received from trackside), of the MRSP, of the track conditions, of the indication location at MRSP speed (see 3.13.10.4.11) and of the first target at zero speed, if any (e.g. the EOA or the start location of a mode profile), with the remaining distances referred to the train front end position.</Paragraph><Paragraph
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall offer the possibility to display, only on driver request, an overview of the gradient profile (as received from trackside), of the MRSP, of the track conditions (except the tunnel stopping areas), of the indication location at MRSP speed (see 3.13.10.4.11) and of the first target at zero speed, if any (e.g. the EOA or the start location of a mode profile), with the remaining distances referred to the train front end position.</Paragraph><Paragraph
  id="3.15.10.2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -18345,18 +18486,21 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.16.2.4.4.1.a"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->shall not reject the message and shall not command application of the service brake if the balise not found, or not decoded, is duplicated within the balise group, the duplicating one is correctly read and contains:
-	- directional information while the orientation of the balise group can still be evaluated, or
-	- only information valid for both directions, or
-	- neither directional information nor information valid for both directions.</Paragraph><Paragraph
+><Comment></Comment>
+shall not reject the message and shall not command application of the service brake if the balise not found, or not decoded, is duplicated within the balise group, the duplicating one is correctly read and contains:
+directional information while the orientation of the balise group can still be evaluated, or
+only information valid for both directions, or
+neither directional information nor information valid for both directions, or
+only data to be used by applications outside ERTMS/ETCS, or
+only data to be used by applications outside ERTMS/ETCS together with other information valid for both directions.</Paragraph><Paragraph
  id="3.16.2.4.4.1.b"
  type="REQUIREMENT"
  scope="OBU"
@@ -18368,7 +18512,8 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.</Paragraph></Sub>
+><Comment></Comment>
+shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.16.2.4.4.2"
  type="REQUIREMENT"
@@ -18534,9 +18679,10 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
 	a)  shall not reject the message and shall not command application of the service brake if the balise not found, or not decoded, is duplicated within the balise group, the duplicating one is correctly read and contains:
 	- directional information while the orientation of the balise group can still be evaluated, or
 	- only information valid for both directions, or
-	- neither directional information nor information valid for both directions.
-	b) shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.
-</Paragraph></Sub>
+	- neither directional information nor information valid for both directions, or
+	- only data to be used by applications outside ERTMS/ETCS, or
+	- only data to be used by applications outside ERTMS/ETCS together with other information valid for both directions. 
+	b) shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.16.2.5.2"
  type="REQUIREMENT"
@@ -18621,11 +18767,13 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If 2 consecutive linked balise groups announced by linking are not detected and the end of the expectation window of the second balise group has been passed, the ERTMS/ETCS on-board shall command the service brake and the driver shall be informed. At standstill, the location based information stored on-board shall be shortened to the current position. Refer to appendix A.3.4 for the exhaustive list of information, which shall be shortened.</Paragraph></Sub>
+><Comment></Comment>
+If 2 consecutive linked balise groups announced by linking are not detected and the end of the expectation window of the second balise group has been passed, the ERTMS/ETCS on-board shall command the service brake and the driver shall be informed. At standstill, the location based information stored on-board shall be shortened to the current position. Refer to appendix A.3.4 for the exhaustive list of information, which shall be shortened.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.16.2.7.2"
  type="TITLE"
@@ -19217,7 +19365,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
 </Paragraph><Paragraph
  id="3.17.2"
  type="TITLE"
- scope="OBU"
+ scope="OBU_AND_TRACK"
  bl=""
  name=""
  reviewed="TRUE"
@@ -19246,8 +19394,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The on-board equipment shall operate with only one system version at a time, i.e. it shall behave according to the whole set of requirements applicable to a system version (refer to chapter 6 in case the operated system version is older than the last one introduced in this release of the SRS).
-</Paragraph><Paragraph
+>The on-board equipment shall operate with only one system version at a time, i.e. it shall behave according to the whole set of requirements applicable to a system version (refer to chapter 6 in case the operated system version is older than the last one introduced in this release of the SRS).</Paragraph><Paragraph
  id="3.17.2.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -19257,29 +19404,31 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The on-board equipment shall determine the operated system version, in relation to non-RBC trackside constituents, as the system version number X transmitted by any balise, loop or RIU, if this system version number X is higher than the currently operated one.
-</Paragraph><Paragraph
+>The on-board equipment shall determine the operated system version, in relation to non-RBC trackside constituents, as the system version number X transmitted by any balise, loop or RIU, if this system version number X is higher than the currently operated one.</Paragraph><Paragraph
  id="3.17.2.4"
  type="REQUIREMENT"
- scope="OBU"
- bl=""
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be possible from balise group/loop to order the on-board equipment to operate a system version.
-</Paragraph><Paragraph
+><Comment></Comment>
+It shall be possible from balise group to order the on-board equipment to operate a system version.</Paragraph><Paragraph
  id="3.17.2.5"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->On receiving the order to operate system version from balise group/loop, the on-board equipment shall immediately operate the system version given in the order. After the order is executed, the requirement 3.17.2.3 shall be again applied for any further received balise telegram/loop message or any further contacted RIU.<Sub>
+><Comment></Comment>
+On receiving the order to operate system version from balise group, the on-board equipment shall immediately operate the system version given in the order. After the order is executed, the requirement 3.17.2.3 shall be again applied for any further received balise telegram/loop message or any further contacted RIU.<Sub>
 <Paragraph
  id="3.17.2.5.1"
  type="NOTE"
@@ -19302,34 +19451,92 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a mismatch has been detected between the country or region identifier read from a balise/loop and the corresponding identifier(s) for which a set of national values is used onboard, the on-board equipment shall consider the system version number X transmitted by this balise/loop as the operated one and shall comply again with requirement 3.17.2.3.
-</Paragraph><Paragraph
+>If a mismatch has been detected between the country or region identifier read from a balise/loop and the corresponding identifier(s) for which a set of national values is used onboard, the on-board equipment shall consider the system version number X transmitted by this balise/loop as the operated one and shall comply again with requirement 3.17.2.3.</Paragraph><Paragraph
  id="3.17.2.7"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the on-board equipment does not support the system version number X transmitted by a non-RBC trackside constituent or the one specified in the balise group/loop order, it shall consider the operated system version as unchanged.
-</Paragraph><Paragraph
+><Comment></Comment>
+If the on-board equipment does not support the system version number X transmitted by a non-RBC trackside constituent or the one specified in the balise group order, it shall consider the operated system version as unchanged.</Paragraph><Paragraph
  id="3.17.2.8"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+In case of communication session established with an RBC, the system version of the RBC shall take precedence on the operated system version in relation to non-RBC constituents and on system version ordered from balise group; the operated system version shall be determined according to the following principles:<Sub>
+<Paragraph
+ id="3.17.2.8.a"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->In case of communication session established with an RBC, the system version of the RBC shall take precedence on the operated system version in relation to non-RBC constituents and on system version ordered from balise group/loop; the operated system version shall be determined according to the following principles:
-	a) if the on-board equipment is in level 0, NTC or 1 (e.g. entrance in level 2/3 area), the RBC system version shall be operated when the transition to level 2/3 is executed;
-	b) if the on-board equipment is in level 2/3 (SoM procedure or order received from trackside), the RBC system version shall be operated immediately;
-	c) in case of session established with an accepting RBC (RBC/RBC Handover), the accepting RBC system version shall be operated as soon as the engine has passed the RBC/RBC border location with its maximum safe front end;
-	d) in case the on-board equipment switches from level 2/3 to another level (e.g. exit from a level 2/3 area), the system version control in relation to non-RBC constituents shall be again applied and the balise group/loop orders shall be again considered;
-	e) in case the engine passes the RBC/RBC border location with its maximum safe front end and no session is established with the accepting RBC, the system version control in relation to non-RBC constituents shall be again applied and the balise group/loop orders shall be again considered.
+>if the on-board equipment is in level 0, NTC or 1 (e.g. entrance in level 2/3 area), the RBC system version shall be operated when the transition to level 2/3 is executed;</Paragraph><Paragraph
+ id="3.17.2.8.b"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>if the on-board equipment is in level 2/3 (SoM procedure or order received from trackside), the RBC system version shall be operated immediately; </Paragraph><Paragraph
+ id="3.17.2.8.c"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>in case of session established with an accepting RBC (RBC/RBC Handover), the accepting RBC system version shall be operated as soon as the engine has passed the RBC/RBC border location with its maximum safe front end; </Paragraph><Paragraph
+ id="3.17.2.8.d"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>in case the on-board equipment switches from level 2/3 to another level (e.g. exit from a level 2/3 area), the system version control in relation to non-RBC constituents shall be again applied and the balise group orders shall be again considered;</Paragraph><Paragraph
+ id="3.17.2.8.e"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>in case the engine passes the RBC/RBC border location with its maximum safe front end and no session is established with the accepting RBC, the system version control in relation to non-RBC constituents shall be again applied and the balise group orders shall be again considered.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.17.2.9"
  type="REQUIREMENT"
@@ -19445,12 +19652,11 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  functionalBlockName=""
  Name=""
 >The on-board equipment shall check the ERTMS/ETCS system version number X transmitted by any balise:
-	a) In all levels, if this system version number X equals to 0, the whole balise group shall be ignored.
+	a) In all levels, if this system version number X equals to 0, the balise information shall be ignored.
 	b) In all levels, if this system version number X is different from 0 and lower than the lowest system version number X supported by the on-board equipment, it shall be able to interpret the balise information, to the extent defined for each type of information (see chapter 6 for detailed requirements). If the on-board is not able to interpret the information, this shall be considered as a message consistency error.
 	c) In all levels, if this system version number X is amongst its supported ones, the onboard equipment shall be able to interpret the balise information. See chapter 6 for detailed requirements.
 	d) In levels 1, 2 and 3, if this system version number X is greater than the highest version number X supported by the on-board equipment, the information from this balise shall be ignored, the train shall be tripped and an indication shall be given to the driver.
-	e) In levels 0 and NTC, if this system version number X is greater than the highest version number X supported by the on-board equipment, the information from this balise shall be ignored and no reaction shall be applied.
-</Paragraph><Paragraph
+	e) In levels 0 and NTC, if this system version number X is greater than the highest version number X supported by the on-board equipment, the information from this balise shall be ignored and no reaction shall be applied.</Paragraph><Paragraph
  id="3.17.3.6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -19463,8 +19669,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
 >In level 1 the on-board equipment shall check the ERTMS/ETCS system version number X transmitted by any Euroloop found:
 	a) if this system version number X is lower than the lowest system version number X supported by the on-board equipment, it shall be able to interpret the loop information, to the extent defined for each type of information (see chapter 6 for detailed requirements). If the on-board is not able to interpret the information, this shall be considered as a message consistency error.
 	b) if this system version number X is amongst its supported ones, the on-board equipment shall be able to interpret the loop information. See chapter 6 for detailed requirements.
-	c) If this system version number X is greater than the highest version number X supported by the on-board equipment, no reaction shall be applied and the information from this loop shall be ignored.
-</Paragraph><Paragraph
+	c) If this system version number X is greater than the highest version number X supported by the on-board equipment, no reaction shall be applied and the information from this loop shall be ignored.</Paragraph><Paragraph
  id="3.17.3.7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
@@ -20172,13 +20377,15 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.18.4.2.4"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->For operational fallback situations: at standstill, the onboard equipment shall allow the driver to change the ERTMS/ETCS level.<Sub>
+><Comment></Comment>
+For operational fallback situations: at standstill, the onboard equipment shall allow the driver to change the ERTMS/ETCS level..<Sub>
 <Paragraph
  id="3.18.4.2.4.1"
  type="DELETED"
@@ -20195,13 +20402,15 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.18.4.2.5"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->If the table of supported levels given by trackside is available, the selection of level by the driver shall be limited to those contained in this table, excluding levels which are inhibited. If the table of trackside supported levels is not available, the driver can select any level within a default list configured on-board, excluding levels which are inhibited.</Paragraph></Sub>
+><Comment></Comment>
+If the table of supported levels given by trackside is available, the selection of level by the driver shall be limited to those contained in this table. If the table of trackside supported levels is not available, the driver can select any level within a default list configured on-board.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.18.4.3"
  type="TITLE"
@@ -20350,8 +20559,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->It shall be possible to enter train running number also in a non-leading engine.
-</Paragraph><Paragraph
+>It shall be possible to enter train running number also in a non-leading engine.</Paragraph><Paragraph
  id="3.18.4.5.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -20530,14 +20738,15 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.18.5.2"
  type="REQUIREMENT"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The local time shall be presented to the driver, while the UTC shall be used for the juridical recording.
-</Paragraph><Paragraph
+><Comment></Comment>
+The local time shall be presented to the driver, while the UTC shall be used for the juridical data.</Paragraph><Paragraph
  id="3.18.5.3"
  type="DELETED"
  scope="OBU"
@@ -20567,12 +20776,13 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Outside the context of data entry, the ERTMS/ETCS on-board equipment shall offer the possibility to the driver to view the driver ID, the train running number, the RBC contact information and the Train Data either modifiable by the driver or modifiable by other ERTMS/ETCS external sources.
-</Paragraph><Paragraph
+><Comment></Comment>
+Outside the context of data entry, the ERTMS/ETCS on-board equipment shall offer the possibility to the driver to view the driver ID, the train running number, the RBC contact information, the Virtual Balise Cover(s) and the Train Data either modifiable by the driver or modifiable by other ERTMS/ETCS external sources.</Paragraph><Paragraph
  id="3.18.6.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -20582,8 +20792,7 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Only valid data shall be presented to the driver.
-</Paragraph></Sub>
+>Only valid data shall be presented to the driver.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.19"
@@ -20600,151 +20809,139 @@ Note: If a closer SvL is defined, see Appendix 3.4 for a complete list of situat
  id="3.20"
  type="TITLE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlock="TRUE"
  functionalBlockName="3.20 Recording of Juridical Data"
  Name=""
->Recording of Juridical Data<Sub>
-<Paragraph
- id="3.20.1"
- type="TITLE"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->On-board Recorder<Sub>
+><Comment></Comment>
+Juridical Data<Sub>
 <Paragraph
  id="3.20.1.1"
  type="NOTE"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: Appendix to chapter 3 defines which data to be recorded and when.</Paragraph><Paragraph
+><Comment></Comment>
+The on-board recording device of the train is not part of the ERTMS/ETCS on-board equipment..</Paragraph><Paragraph
  id="3.20.1.2"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Recording function is part of each ERTMS/ETCS on-board system. The juridical recorder function shall be used only to record and allow the downloading of the recorded data that may be used for legal purpose after hazardous situations.<Sub>
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall transmit to the on-board recording device the information that may be used for legal purpose after hazardous situations.<Sub>
 <Paragraph
  id="3.20.1.2.1"
- type="NOTE"
+ type="REQUIREMENT"
  scope="OBU"
- bl=""
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+For details about data messages that shall be transmitted to the on-board recording device and their related triggering events, refer to SUBSET-027.</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="3.20.1.3"
+ type="DELETED"
+ scope="OBU"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Note: The juridical recorder is not intended for maintenance purposes and hence no additional functions are included for maintenance recording</Paragraph></Sub>
-</Paragraph><Paragraph
- id="3.20.1.3"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->It shall be possible to determine the date and time (UTC), train position, train speed, driver ID, ETCS equipment ID, the ETCS level and the active mode of the on-board system for each recorded event.
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.4"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The events to store in the juridical recorder shall allow analysing the cause of an accident.
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.5"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be possible to download the recorded data via a downloading tool.
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.6"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The Juridical Recorder shall store the complete set of data (as listed in A3.3.1) for at least the last 24 hours in service.
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.7"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The Juridical Recorder shall be able to record all the relevant events produced in the worst case situations (i.e. train running at maximum train speed).
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.8"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->It shall be possible to record data from external sources, i.e. via the train interface.
-</Paragraph><Paragraph
+><Comment></Comment>
+Intentionally deleted.</Paragraph><Paragraph
  id="3.20.1.9"
- type="REQUIREMENT"
+ type="DELETED"
  scope="OBU"
- bl=""
+ bl="3.2.0"
  name=""
- status="NA"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->The Juridical Recorder shall store a reduced set of data (as listed in A3.3.2) for the last 8 days in service.
-</Paragraph><Paragraph
- id="3.20.1.10"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The ERTMS/ETCS on-board equipment shall support the detection of failure of the Juridical Recorder function. If such a failure is detected, the driver shall be informed.
-</Paragraph></Sub>
-</Paragraph></Sub>
+><Comment></Comment>
+Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.A3"
  type="TITLE"
@@ -21013,29 +21210,19 @@ Appendix to Chapter 3<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Compensation of the speed measurement inaccuracy used for the on-board calculation of the release speed; 2 km/h; V_delta0rsob</Paragraph><Paragraph
- id="Entry 3.A3.1.1.22"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
 >Compensation of the speed measurement inaccuracy used for the calculation of speed restriction to ensure given permitted braking distance; 5 km/h;</Paragraph><Paragraph
- id="Entry 3.A3.1.1.23"
+ id="Entry 3.A3.1.1.22"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >MA request repetition cycle, default value; 60 s; TCYCRQSTD</Paragraph><Paragraph
- id="Entry 3.A3.1.1.24"
+ id="Entry 3.A3.1.1.23"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -21046,91 +21233,83 @@ Appendix to Chapter 3<Sub>
  functionalBlockName=""
  Name=""
 >Mode transitions: Driver acknowledgement time; 5 s; TACK</Paragraph><Paragraph
- id="Entry 3.A3.1.1.25"
+ id="Entry 3.A3.1.1.24"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Maximum time to maintain a communication session in case of failed re-connection attempts; 5 minutes; </Paragraph><Paragraph
- id="Entry 3.A3.1.1.26"
+>Maximum time to maintain a communication session in case of failed re-connection attempts; 5 minutes;</Paragraph><Paragraph
+ id="Entry 3.A3.1.1.25"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Distance of metal immunity in Levels 0/NTC; 300 metres; D_Metal</Paragraph><Paragraph
- id="Entry 3.A3.1.1.27"
+ id="Entry 3.A3.1.1.26"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Driver reaction time before sounding the horn; 4 s; </Paragraph><Paragraph
+>Driver reaction time before sounding the horn; 4 s;</Paragraph><Paragraph
+ id="Entry 3.A3.1.1.27"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Time between minimum safe rear end of the train leaving a track condition area and on-board deleting the applicable indication; 5 s;</Paragraph><Paragraph
  id="Entry 3.A3.1.1.28"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Time between minimum safe rear end of the train leaving a track condition area and on-board deleting the applicable indication; 5 s; 
-</Paragraph><Paragraph
+>Distance to keep on-board information in rear of the min safe rear end of the train; 300 metres;</Paragraph><Paragraph
  id="Entry 3.A3.1.1.29"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Distance to keep on-board information in rear of the min safe rear end of the train; 300 metres; 
-</Paragraph><Paragraph
+>Additional delay time to disconnection on supervision of safe radio connection; 60 s;</Paragraph><Paragraph
  id="Entry 3.A3.1.1.30"
  type="REQUIREMENT"
  scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Additional delay time to disconnection on supervision of safe radio connection; 60 s; 
-</Paragraph><Paragraph
- id="Entry 3.A3.1.1.31"
- type="REQUIREMENT"
- scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->&quot;Connection status&quot; timer for safe radio connection indication; 45 s
-</Paragraph><Paragraph
- id="Entry 3.A3.1.1.32"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.2.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Display time for the &quot;Connection Lost/Set-Up failed&quot; indication status; 20 s
-</Paragraph></Sub>
+>&quot;Connection status&quot; timer for safe radio connection indication; 45 s</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.A3.2"
@@ -21256,7 +21435,7 @@ Appendix to Chapter 3<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Use service brake in target speed monitoring; Yes; Q_NVSBTSMPERM</Paragraph><Paragraph
+>Permission to use service brake in target speed monitoring; Yes; Q_NVSBTSMPERM</Paragraph><Paragraph
  id="Entry 3.A3.2.1.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -21443,7 +21622,7 @@ Appendix to Chapter 3<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Train length step used for the correction factor Kr_int; N/A; L_NVKRINT</Paragraph><Paragraph
+>Train length step used for the integrated correction factor Kr_int; N/A; L_NVKRINT</Paragraph><Paragraph
  id="Entry 3.A3.2.1.27"
  type="REQUIREMENT"
  scope="OBU"
@@ -21465,7 +21644,7 @@ Appendix to Chapter 3<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Speed step used for the correction factor Kv_int; N/A; V_NVKVINT</Paragraph><Paragraph
+>Speed step used for the integrated correction factor Kv_int; N/A; V_NVKVINT</Paragraph><Paragraph
  id="Entry 3.A3.2.1.29"
  type="REQUIREMENT"
  scope="OBU"
@@ -21567,262 +21746,7 @@ Appendix to Chapter 3<Sub>
  functionalBlock="TRUE"
  functionalBlockName="3.20 Recording of Juridical Data"
  Name=""
->List of events to be recorded in the Juridical Recorder<Sub>
-<Paragraph
- id="3.A3.3.1"
- type="NOTE"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->The following events/information shall be recorded in the juridical recorder and in the following circumstances:</Paragraph><Paragraph
- id="Table 3.A3.3.1"
- type="TABLE_HEADER"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Complete set of data
-TRIGGER; EVENT/Information<Sub>
-<Paragraph
- id="Entry 3.A3.3.1.1"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Detection of failure in the recording function; JRU failure</Paragraph><Paragraph
- id="Entry 3.A3.3.1.2"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Selection / Change of Mode; Current mode</Paragraph><Paragraph
- id="Entry 3.A3.3.1.3"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Selection / Change of Level; Current level</Paragraph><Paragraph
- id="Entry 3.A3.3.1.4"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Data Entry Completed; Data entry/Train Data and Additional Data</Paragraph><Paragraph
- id="Entry 3.A3.3.1.5"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Start up; ETCS ID</Paragraph><Paragraph
- id="Entry 3.A3.3.1.6"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Emergency Brake Command / Revocation; Emergency brake command state</Paragraph><Paragraph
- id="Entry 3.A3.3.1.7"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Service Brake Command / Revocation; Service brake command state</Paragraph><Paragraph
- id="Entry 3.A3.3.1.8"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Every 5 seconds; Current speed</Paragraph><Paragraph
- id="Entry 3.A3.3.1.9"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When received; Telegram from balise</Paragraph><Paragraph
- id="Entry 3.A3.3.1.10"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When received; Message from Euroloop</Paragraph><Paragraph
- id="Entry 3.A3.3.1.11"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When received; Message from Radio Infill Unit</Paragraph><Paragraph
- id="Entry 3.A3.3.1.12"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When received; Message from RBC</Paragraph><Paragraph
- id="Entry 3.A3.3.1.13"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When sent; Message to RBC</Paragraph><Paragraph
- id="Entry 3.A3.3.1.14"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When the driver acts on the on-board
-	system (DMI, Train Interface);
-	Driver&apos;s actions</Paragraph><Paragraph
- id="Entry 3.A3.3.1.15"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When this event occurs and it is still possible to record it.;
-	SYSTEM FAILURE</Paragraph><Paragraph
- id="Entry 3.A3.3.1.16"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Balise group error (all types of
-	reception faults); NID_C and NID_BG (if possible) and M_ERROR</Paragraph><Paragraph
- id="Entry 3.A3.3.1.17"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Radio message error; M_ERROR</Paragraph><Paragraph
- id="Entry 3.A3.3.1.18"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When changed; All the indications to the driver not mentioned in the previous fields (i.e. text messages, permitted speed, target speed)</Paragraph><Paragraph
- id="Entry 3.A3.3.1.19"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->New data at interface; Data from external sources</Paragraph></Sub>
-</Paragraph><Paragraph
- id="Table 3.A3.3.2"
- type="TABLE_HEADER"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Reduced set of data
-TRIGGER; EVENT/Information<Sub>
-<Paragraph
- id="Entry 3.A3.3.2.1"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Emergency brake command/revocation; Emergency brake command state</Paragraph><Paragraph
- id="Entry 3.A3.3.2.2"
- type="REQUIREMENT"
- scope="OBU"
- bl="3.1.0"
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->When the driver acts on the on-board system (DMI, Train Interface); Driver&apos;s actions</Paragraph></Sub>
-</Paragraph></Sub>
-</Paragraph><Paragraph
+>Intentionally deleted</Paragraph><Paragraph
  id="3.A3.4"
  type="TITLE"
  scope="OBU"
@@ -22160,8 +22084,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.2.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22198,8 +22121,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.3.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22211,8 +22133,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.3.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22224,8 +22145,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.4"
  type="TITLE"
@@ -22250,8 +22170,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1][3]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1][3]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.4.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22263,8 +22182,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10][11]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10][11]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.4.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22276,8 +22194,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D[5]
-</Paragraph></Sub>
+>k =&gt;  D[5]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.5"
  type="TITLE"
@@ -22302,8 +22219,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.5.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22315,8 +22231,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.5.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22328,8 +22243,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.6"
  type="TITLE"
@@ -22354,8 +22268,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.6.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22367,8 +22280,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.6.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22380,8 +22292,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.7"
  type="TITLE"
@@ -22406,8 +22317,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.7.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22419,8 +22329,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.7.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22432,8 +22341,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.8"
  type="TITLE"
@@ -22458,8 +22366,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.8.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22471,8 +22378,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.8.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22484,8 +22390,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.9"
  type="TITLE"
@@ -22510,8 +22415,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.9.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22523,8 +22427,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.9.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22536,8 +22439,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.10"
  type="TITLE"
@@ -22562,8 +22464,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.10.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22575,8 +22476,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.10.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22588,8 +22488,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.11"
  type="TITLE"
@@ -22614,8 +22513,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.11.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22627,8 +22525,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.11.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22640,8 +22537,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.12"
  type="TITLE"
@@ -22666,8 +22562,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.12.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22679,8 +22574,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[9]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[9]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.12.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22692,8 +22586,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D[5]
-</Paragraph></Sub>
+>k =&gt;  D[5]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.13"
  type="TITLE"
@@ -22718,8 +22611,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.13.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22731,8 +22623,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.13.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22781,8 +22672,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.14.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22819,8 +22709,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U[2]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U[2]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.15.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22832,8 +22721,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.15.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22845,8 +22733,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D[5]
-</Paragraph></Sub>
+>k =&gt;  D[5]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.16"
  type="TITLE"
@@ -22871,8 +22758,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.16.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22884,8 +22770,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.16.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22897,8 +22782,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.17"
  type="TITLE"
@@ -22923,8 +22807,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.17.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22936,8 +22819,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.17.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -22949,8 +22831,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.18"
  type="TITLE"
@@ -22975,8 +22856,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U[4]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U[4]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.18.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -22988,8 +22868,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U[4]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U[4]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.18.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23001,8 +22880,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.19"
  type="TITLE"
@@ -23027,8 +22905,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.19.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23040,8 +22917,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.19.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23053,8 +22929,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D[5]
-</Paragraph></Sub>
+>k =&gt;  D[5]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.20"
  type="TITLE"
@@ -23079,8 +22954,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.20.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23092,8 +22966,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.20.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23105,8 +22978,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.21"
  type="TITLE"
@@ -23131,8 +23003,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[8]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[8]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.21.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23144,8 +23015,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[13]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[13]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.21.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23157,8 +23027,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.22"
  type="TITLE"
@@ -23183,8 +23052,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.22.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23196,8 +23064,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.22.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23209,8 +23076,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.23"
  type="TITLE"
@@ -23235,8 +23101,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[8]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[8]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.23.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23248,8 +23113,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[13]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[13]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.23.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23261,8 +23125,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.24"
  type="TITLE"
@@ -23287,8 +23150,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.24.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23300,8 +23162,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.24.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23313,8 +23174,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.25"
  type="TITLE"
@@ -23339,8 +23199,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.25.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23352,8 +23211,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.25.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23390,8 +23248,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1] [7] [14]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1] [7] [14]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.26.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23403,8 +23260,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10] [12]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10] [12]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.26.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23416,8 +23272,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D[5]
-</Paragraph></Sub>
+>k =&gt;  D[5]</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.27"
  type="TITLE"
@@ -23442,8 +23297,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.27.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23455,8 +23309,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.27.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23468,8 +23321,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.28"
  type="TITLE"
@@ -23494,8 +23346,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.28.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23507,8 +23358,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.28.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23520,8 +23370,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.29"
  type="TITLE"
@@ -23546,8 +23395,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.29.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23559,8 +23407,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.29.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23597,8 +23444,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  R[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  R[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.30.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23610,8 +23456,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  R[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  R[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.30.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23623,8 +23468,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  R
-</Paragraph></Sub>
+>k =&gt;  R</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.31"
  type="TITLE"
@@ -23649,8 +23493,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  R[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  R[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.31.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23662,8 +23505,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  R[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  R[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.31.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23675,8 +23517,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  R
-</Paragraph></Sub>
+>k =&gt;  R</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.32"
  type="TITLE"
@@ -23701,8 +23542,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.32.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23714,8 +23554,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.32.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23727,8 +23566,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.33"
  type="TITLE"
@@ -23753,8 +23591,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.33.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23766,8 +23603,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.33.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23779,8 +23615,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.34"
  type="TITLE"
@@ -23805,8 +23640,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.34.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23818,8 +23652,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.34.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23831,8 +23664,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.35"
  type="TITLE"
@@ -23906,8 +23738,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.36.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23919,8 +23750,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.36.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23932,8 +23762,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.37"
  type="TITLE"
@@ -23958,8 +23787,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.37.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -23971,8 +23799,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.37.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -23984,8 +23811,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.38"
  type="TITLE"
@@ -24010,8 +23836,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.38.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24023,8 +23848,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.38.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24036,8 +23860,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.39"
  type="TITLE"
@@ -24049,7 +23872,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->List of Inhibited Levels<Sub>
+>Driver ID<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.39.1"
  type="REQUIREMENT"
@@ -24074,8 +23897,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.39.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24087,7 +23909,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U</Paragraph></Sub>
+>k =&gt;  TBR</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.40"
  type="TITLE"
@@ -24099,7 +23921,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Driver ID<Sub>
+>Radio Network ID<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.40.1"
  type="REQUIREMENT"
@@ -24112,8 +23934,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.40.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24125,8 +23946,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.40.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24138,7 +23958,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  TBR</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.41"
  type="TITLE"
@@ -24150,7 +23970,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Radio Network ID<Sub>
+>RBC ID/Phone Number<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.41.1"
  type="REQUIREMENT"
@@ -24163,8 +23983,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.41.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24176,8 +23995,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.41.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24189,8 +24007,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.42"
  type="TITLE"
@@ -24202,7 +24019,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->RBC ID/Phone Number<Sub>
+>Train Running Number<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.42.1"
  type="REQUIREMENT"
@@ -24215,8 +24032,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.42.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24228,61 +24044,8 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.42.3"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->k =&gt;  U
-</Paragraph></Sub>
-</Paragraph><Paragraph
- id="Entry 3.A3.4.1.3.1.43"
- type="TITLE"
- scope="OBU"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Train Running Number<Sub>
-<Paragraph
- id="Condition 3.A3.4.1.3.1.43.1"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
- id="Condition 3.A3.4.1.3.1.43.2"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- optional="FALSE"
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
- id="Condition 3.A3.4.1.3.1.43.3"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -24295,7 +24058,7 @@ TRIGGER; EVENT/Information<Sub>
  Name=""
 >k =&gt;  TBR</Paragraph></Sub>
 </Paragraph><Paragraph
- id="Entry 3.A3.4.1.3.1.44"
+ id="Entry 3.A3.4.1.3.1.43"
  type="TITLE"
  scope="OBU"
  bl="3.2.0"
@@ -24306,6 +24069,55 @@ TRIGGER; EVENT/Information<Sub>
  functionalBlockName=""
  Name=""
 >Reversing Area Information<Sub>
+<Paragraph
+ id="Condition 3.A3.4.1.3.1.43.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.43.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.43.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>k =&gt;  D</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="Entry 3.A3.4.1.3.1.44"
+ type="TITLE"
+ scope="OBU"
+ bl="3.1.0"
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Reversing Supervision Information<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.44.1"
  type="REQUIREMENT"
@@ -24318,8 +24130,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.44.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24331,8 +24142,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.44.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24344,8 +24154,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.45"
  type="TITLE"
@@ -24357,7 +24166,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Reversing Supervision Information<Sub>
+>Track Ahead Free Request<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.45.1"
  type="REQUIREMENT"
@@ -24370,8 +24179,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U[6]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.45.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24383,8 +24191,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.45.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24396,8 +24203,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.46"
  type="TITLE"
@@ -24409,7 +24215,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track Ahead Free Request<Sub>
+>Level Crossing information<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.46.1"
  type="REQUIREMENT"
@@ -24422,8 +24228,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U[6]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.46.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24435,8 +24240,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.46.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24448,20 +24252,19 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.47"
  type="TITLE"
  scope="OBU"
- bl="3.1.0"
+ bl="3.2.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Level Crossing information<Sub>
+>Permitted Braking Distance Information<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.47.1"
  type="REQUIREMENT"
@@ -24474,8 +24277,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  D[1]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.47.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24487,8 +24289,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  D[10]</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.47.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24500,20 +24301,19 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  D</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.48"
  type="TITLE"
  scope="OBU"
- bl="3.2.0"
+ bl="3.1.0"
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Permitted Braking Distance Information<Sub>
+>RBC/RIU System Version<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.48.1"
  type="REQUIREMENT"
@@ -24526,8 +24326,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  D[1]
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.48.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24539,8 +24338,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  D[10]
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.48.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24548,12 +24346,11 @@ TRIGGER; EVENT/Information<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  D
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.49"
  type="TITLE"
@@ -24565,7 +24362,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->RBC/RIU System Version<Sub>
+>Operated System Version<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.49.1"
  type="REQUIREMENT"
@@ -24578,8 +24375,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.49.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24591,8 +24387,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.49.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24616,7 +24411,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Operated System Version<Sub>
+>Language used to display information to the driver<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.50.1"
  type="REQUIREMENT"
@@ -24629,8 +24424,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.50.2"
  type="REQUIREMENT"
  scope="OBU"
@@ -24642,8 +24436,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.50.3"
  type="REQUIREMENT"
  scope="OBU"
@@ -24655,55 +24448,49 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->k =&gt;  U
-</Paragraph></Sub>
+>k =&gt;  U</Paragraph></Sub>
 </Paragraph><Paragraph
  id="Entry 3.A3.4.1.3.1.51"
  type="TITLE"
  scope="OBU"
- bl="3.1.0"
+ bl=""
  name=""
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Language used to display information to the driver<Sub>
+>Virtual Balise Covers<Sub>
 <Paragraph
  id="Condition 3.A3.4.1.3.1.51.1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->a - d, f, n =&gt;  U
-</Paragraph><Paragraph
+>a - d, f, n =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.51.2"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->e, g - j, l, m =&gt;  U
-</Paragraph><Paragraph
+>e, g - j, l, m =&gt;  U</Paragraph><Paragraph
  id="Condition 3.A3.4.1.3.1.51.3"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
- optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -24720,8 +24507,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[1]: beyond the new SvL or in case of situation a, beyond the stop location of the accepted CES
-</Paragraph><Paragraph
+>[1]: beyond the new SvL or in case of situation a, beyond the stop location of the accepted CES</Paragraph><Paragraph
  id="3.A3.4.1.3.3"
  type="NOTE"
  scope="OBU"
@@ -24732,8 +24518,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[2]: The considered situations cannot occur when a list of balises to be used in SR is available onboard. Indeed, the onboard is in SR mode and since no MA or track description are stored onboard, no new SvL may be defined.
-</Paragraph><Paragraph
+>[2]: The considered situations cannot occur when a list of balises to be used in SR is available onboard. Indeed, the onboard is in SR mode and since no MA or track description are stored onboard, no new SvL may be defined.</Paragraph><Paragraph
  id="3.A3.4.1.3.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -24744,8 +24529,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[3]: In case of reception of a new non-infill MA (situation b or f), the stored MA is fully replaced with the new one. In case of reception of a new infill MA (situation b), the stored MA is replaced beyond the infill location reference, i.e. the balise group at the next main signal
-</Paragraph><Paragraph
+>[3]: In case of reception of a new non-infill MA (situation b or f), the stored MA is fully replaced with the new one. In case of reception of a new infill MA (situation b), the stored MA is replaced beyond the infill location reference, i.e. the balise group at the next main signal</Paragraph><Paragraph
  id="3.A3.4.1.3.5"
  type="NOTE"
  scope="OBU"
@@ -24756,8 +24540,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[4]: The considered situations a-d, f, h, i cannot occur when the default gradient for a TSR is used on-board.
-</Paragraph><Paragraph
+>[4]: The considered situations a-d, f, h, i cannot occur when the default gradient for a TSR is used on-board.</Paragraph><Paragraph
  id="3.A3.4.1.3.6"
  type="NOTE"
  scope="OBU"
@@ -24768,8 +24551,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[5]: The considered situation cannot occur because acceptance of this information has led to exit from SoM procedure.
-</Paragraph><Paragraph
+>[5]: The considered situation cannot occur because acceptance of this information has led to exit from SoM procedure.</Paragraph><Paragraph
  id="3.A3.4.1.3.7"
  type="NOTE"
  scope="OBU"
@@ -24780,8 +24562,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[6]: The considered situations b-d, f cannot occur when a TAF request is stored on-board
-</Paragraph><Paragraph
+>[6]: The considered situations b-d, f cannot occur when a TAF request is stored on-board</Paragraph><Paragraph
  id="3.A3.4.1.3.8"
  type="REQUIREMENT"
  scope="OBU"
@@ -24792,8 +24573,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[7]: If the start location of the Mode Profile is beyond the new SvL, the acknowledgement window of the Mode Profile shall be deleted as well
-</Paragraph><Paragraph
+>[7]: If the start location of the Mode Profile is beyond the new SvL, the acknowledgement window of the Mode Profile shall be deleted as well</Paragraph><Paragraph
  id="3.A3.4.1.3.9"
  type="REQUIREMENT"
  scope="OBU"
@@ -24804,8 +24584,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[8]: only if the location where to start to display the text is beyond the new SvL; otherwise all the text information (i.e. including end location where to stop display, if any) shall remain unchanged
-</Paragraph><Paragraph
+>[8]: only if the location where to start to display the text is beyond the new SvL; otherwise all the text information (i.e. including end location where to stop display, if any) shall remain unchanged</Paragraph><Paragraph
  id="3.A3.4.1.3.10"
  type="REQUIREMENT"
  scope="OBU"
@@ -24816,8 +24595,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[9]: unchanged if the onboard is in SH mode
-</Paragraph><Paragraph
+>[9]: unchanged if the onboard is in SH mode</Paragraph><Paragraph
  id="3.A3.4.1.3.11"
  type="REQUIREMENT"
  scope="OBU"
@@ -24828,8 +24606,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[10]: beyond the current max safe front end position of the train
-</Paragraph><Paragraph
+>[10]: beyond the current max safe front end position of the train</Paragraph><Paragraph
  id="3.A3.4.1.3.12"
  type="REQUIREMENT"
  scope="OBU"
@@ -24840,8 +24617,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[11]: the ERTMS/ETCS on-board equipment shall consider the current estimated front end and max safe front end positions of the train, as the EOA and SvL respectively, with no release speed
-</Paragraph><Paragraph
+>[11]: the ERTMS/ETCS on-board equipment shall consider the current estimated front end and max safe front end positions of the train, as the EOA and SvL respectively, with no release speed</Paragraph><Paragraph
  id="3.A3.4.1.3.13"
  type="REQUIREMENT"
  scope="OBU"
@@ -24852,8 +24628,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[12]: If the start location of the Mode Profile is beyond the current max safe front end, the acknowledgement window of the Mode Profile shall be deleted as well
-</Paragraph><Paragraph
+>[12]: If the start location of the Mode Profile is beyond the current max safe front end, the acknowledgement window of the Mode Profile shall be deleted as well</Paragraph><Paragraph
  id="3.A3.4.1.3.14"
  type="REQUIREMENT"
  scope="OBU"
@@ -24864,8 +24639,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[13]: only if the location where to start to display the text is beyond the current max safe front end; otherwise all the text information (i.e. including end location where to stop display, if any) shall remain unchanged
-</Paragraph><Paragraph
+>[13]: only if the location where to start to display the text is beyond the current max safe front end; otherwise all the text information (i.e. including end location where to stop display, if any) shall remain unchanged</Paragraph><Paragraph
  id="3.A3.4.1.3.15"
  type="REQUIREMENT"
  scope="OBU"
@@ -24876,8 +24650,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->[14]: In case of reception of a new non-infill MA with or without Mode Profile (situation b or f), the stored Mode Profile is deleted. In case of reception of a new infill MA (situation b), the stored Mode Profile is deleted only beyond the infill location reference, i.e. the balise group at the next main signal
-</Paragraph></Sub>
+>[14]: In case of reception of a new non-infill MA with or without Mode Profile (situation b or f), the stored Mode Profile is deleted. In case of reception of a new infill MA (situation b), the stored Mode Profile is deleted only beyond the infill location reference, i.e. the balise group at the next main signal</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.A3.4.1.4"
  type="TITLE"
@@ -24901,8 +24674,7 @@ TRIGGER; EVENT/Information<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->&quot;Location&quot; contains LRBG, distance travelled from LRBG, position of the front end in relation to the LRBG, the confidence interval and the orientation in relation to the LRBG.
-</Paragraph><Paragraph
+>&quot;Location&quot; contains LRBG, distance travelled from LRBG, position of the front end in relation to the LRBG, the confidence interval and the orientation in relation to the LRBG.</Paragraph><Paragraph
  id="3.A3.4.1.4.2"
  type="NOTE"
  scope="OBU"
@@ -24939,7 +24711,7 @@ TRIGGER; EVENT/Information<Sub>
 	w) Track Ahead Free up to level 2/3 transition location
 	x) Signalling related speed restriction value zero (i.e., train trip order)
 	y) Stop if in SR mode
-</Paragraph></Sub>
+	z) Data to be forwarded to a National System through the STM interface</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
@@ -24975,7 +24747,45 @@ TRIGGER; EVENT/Information<Sub>
 	- Actions related to track condition information (see 3.12.1) with the exception of big metal masses
 	- Permission to initiate Reversing mode, i.e., limits of Reversing Area (see 3.15.4)
 	- Start and stop Track Ahead free request to driver (see 3.15.5)&quot;
-	- Start and stop calculation of geographical position (see 3.6.6)</Paragraph></Sub>
+	- Start and stop calculation of geographical position (see 3.6.6)</Paragraph><Paragraph
+ id="3.A3.5.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Once the ERTMS/ETCS on-board equipment has received a balise group message (i.e. once it has received the last balise telegram of the balise group), the action(s) resulting from its content shall take into account the train position measured at the time of reception of this last telegram and shall take precedence on any other action related to a further location that is reached before the message has been fully processed.<Sub>
+<Paragraph
+ id="3.A3.5.2.1"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Example 1: in level 1, the crossing of the EOA/LOA location with the min safe antenna, before a new extended MA (received when the min safe antenna was in rear of the EOA/LOA) has been processed, will not lead to train trip. In other terms the replacement of the EOA/LOA is considered by the on-board as happening before the min safe antenna crosses the EOA/LOA location (i.e. preventing that clause 3.13.10.2.7 applies). </Paragraph><Paragraph
+ id="3.A3.5.2.2"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ optional="FALSE"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Example 2: when the override function is active, the crossing of the former EOA location by the min safe antenna, before a &quot;Stop if in SR&quot; information (received when the min safe antenna was in rear of the former EOA) has been processed, will not lead to the end of the override procedure followed by a train trip due to &quot;Stop if in SR&quot;. In other terms, both the deletion of the former EOA and the end of override procedure (see 5.8.3.1.3 and 5.8.4.1 c)) are considered by the on-board as simultaneously happening before the min safe antenna crosses the former EOA/LOA location. </Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="3.A3.6"
  type="TITLE"
@@ -25007,6 +24817,7 @@ TRIGGER; EVENT/Information<Sub>
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -25043,6 +24854,7 @@ TRIGGER; EVENT/Information<Sub>
  scope="OBU"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -25261,35 +25073,64 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The basic brake build up time for the emergency brake with the brake position in passenger trains in P or freight trains in P shall be calculated as:
-	T_brake_basic_eb = av + bv * (L/100) + cv * (L/100)^2
+><Comment>Was implemented</Comment>
+The basic brake build up time for the emergency brake with the brake position in passenger trains in P shall be calculated as:
+	T_brake_basic_eb = a + b * (L/100) + c * (L/100)^2
 	where
 	L = MAX (400m; train length in m)
-	av = 2.30
-	bv = 0.00
-	cv = 0.17</Paragraph><Paragraph
+	a = 2.30
+	b = 0.00
+	c = 0.17</Paragraph><Paragraph
  id="3.A3.8.2"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The basic brake build up time for the emergency brake with the brake position in freight trains in G shall be calculated as:
+>The basic brake build up time for the emergency brake with the brake position in freight trains in P shall be calculated as:
+	T_brake_basic_eb = a + b * (L/100) + c * (L/100)^2
+	where
+	L = MAX (400m; train length in m)
+	If train length &lt;= 900m:
+	a = 2.30
+	b = 0.00
+	c = 0.17
+	If 900m &lt; train length &lt;= 1500m:
+	a = -0.40
+	b = 1.60
+	c = 0.03</Paragraph><Paragraph
+ id="3.A3.8.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+><Comment>Was implemented</Comment>
+The basic brake build up time for the emergency brake with the brake position in freight trains in G shall be calculated as:
 	T_brake_basic_eb = am + bm * (L/100) + cm * (L/100)^2
 	where
 	L = train length in m
-	am = 12.00
-	bm = 0.00
-	cm = 0.05</Paragraph><Paragraph
- id="3.A3.8.3"
+	If train length&lt;= 900m:
+	a = 12.00
+	b = 0.00
+	c = 0.05 
+	If 900m &lt; train length &lt;= 1500m:
+	a = -0.40
+	b = 1.60
+	c = 0.03</Paragraph><Paragraph
+ id="3.A3.8.4"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.1.0"
@@ -25304,7 +25145,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
 	T_brake_emergency_cmt = kto * T_brake_basic_eb when V_target &gt; 0
 	where
 	V_target is the target speed</Paragraph><Paragraph
- id="3.A3.8.4"
+ id="3.A3.8.5"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -25345,46 +25186,56 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  functionalBlockName=""
  Name=""
 >The basic brake build up time for full service brake for passenger trains in P shall be calculated as:
-	T_brake_basic_sb = av + bv * (L/100) + cv * (L/100)^2
+	T_brake_basic_sb = a + b * (L/100) + c * (L/100)^2
 	where
 	L = train length in m
-	av = 3.00
-	bv = 1.50
-	cv = 0.10</Paragraph><Paragraph
+	a = 3.00
+	b = 1.50
+	c = 0.10</Paragraph><Paragraph
  id="3.A3.9.2"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >The basic brake build up time for full service brake for freight trains in P shall be calculated as:
-	T_brake_basic_sb = am + bm * (L/100) + cm * (L/100)^2
+	T_brake_basic_sb = a + b * (L/100) + c * (L/100)^2
 	where
 	L = train length in m
-	am = 3.00
-	bm = 2.77
-	cm = 0.00</Paragraph><Paragraph
+	If train length &lt;= 900m:
+	a = 3.00
+	b = 2.77
+	c = 0.00
+	If 900m &lt; train length &lt;= 1500m:
+	a = 10.50
+	b = 0.32
+	c = 0.18</Paragraph><Paragraph
  id="3.A3.9.3"
  type="REQUIREMENT"
  scope="OBU"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >The basic brake build up time for full service brake for freight trains in G shall be calculated as:
-	T_brake_basic_sb = am + bm * (L/100) + cm * (L/100)^2
+	T_brake_basic_sb = a + b * (L/100) + c * (L/100)^2
 	where
 	L = MAX (400m; train length in m)
-	am = 3.00
-	bm = 2.77
-	cm = 0.00</Paragraph><Paragraph
+	If train length &lt;= 900m:
+	a = 3.00
+	b = 2.77
+	c = 0.00
+	If 900m &lt; train length &lt;= 1500m:
+	a = 10.50
+	b = 0.32
+	c = 0.18</Paragraph><Paragraph
  id="3.A3.9.4"
  type="REQUIREMENT"
  scope="OBU"
@@ -25409,7 +25260,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The correction factor kto shall be defined as in A.3.8.4</Paragraph><Paragraph
+>The correction factor kto shall be defined as in A.3.8.5</Paragraph><Paragraph
  id="3.A3.9.6"
  type="NOTE"
  scope="OBU"
@@ -25420,7 +25271,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The values of av, bv, cv, am, bm, cm and kto used in A.3.9.1, A.3.9.2, A.3.9.3 and A.3.9.4 define reference values for the equivalent brake build up time for the service brake, which shall be considered as maximum ones. If justified by the specific brake system of the train other values of these coefficients, which lead to shorter values of the equivalent brake build up time for the service brake, may be used.</Paragraph><Paragraph
+>The values of a, b, c and kto used in A.3.9.1, A.3.9.2, A.3.9.3 and A.3.9.4 define reference values for the equivalent brake build up time for the service brake, which shall be considered as maximum ones. If justified by the specific brake system of the train other values of these coefficients, which lead to shorter values of the equivalent brake build up time for the service brake, may be used.</Paragraph><Paragraph
  id="3.A3.9.7"
  type="NOTE"
  scope="OBU"
@@ -25567,7 +25418,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Q_feedback_started = a Boolean stating whereas the feedback function has started to reduce T_bs1 and T_bs2.</Paragraph><Paragraph
+>Q_feedback_started = a Boolean stating whether the feedback function has started to reduce T_bs1 and T_bs2.</Paragraph><Paragraph
  id="3.A3.10.4.7"
  type="REQUIREMENT"
  scope="OBU"
@@ -25617,13 +25468,13 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If (Q_Tbslocked) or (Q_feedback_started) or (V_est &gt; V_target and the indication	supervision limit has been exceeded) then
+>If (Q_Tbslocked) or (Q_feedback_started) or (V_est &gt; V_target and the indication supervision limit has been exceeded) then
     If Q_Tbslocked then
         T_bs1 = T_bs1_locked
         T_bs2 = T_bs2_locked
     Else
         If p &gt; p2 then
-            If Q_feedback_started or p &lt; p1 then
+            If Q_feedback_started or p &lt;= p1 then
                 Q_feedback_started = true
                 T_bs_feedback = T_bs * (p - p3) / (p0 - p3)
                 T_bs1 = T_bs2 = T_bs_feedback
@@ -25757,6 +25608,6 @@ End if</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Note: If feedback has started but T_bs1 and T_bs2 are not locked, the feedback function will remain active until the target point is reached. This avoids &quot;jumping&quot; indications in some rare situations.</Paragraph></Sub>
+>Note: If feedback has started but T_bs1 and T_bs2 are not locked, the feedback function will remain active until the target point is reached. This avoids &quot;jumpng&quot; indications in some rare situations.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Chapter>

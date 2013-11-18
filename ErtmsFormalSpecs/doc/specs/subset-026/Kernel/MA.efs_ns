@@ -29,7 +29,7 @@
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.4.2.4.1"
+ Id="7.4.2.4.bis"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -873,10 +873,10 @@
  Id="3.13.9.4.3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.168.0"
+ Id="7.5.1.169.bis"
 >
 </ReqRef><ReqRef
- Id="7.5.1.169.0"
+ Id="7.5.1.168.bis"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1074,16 +1074,16 @@
  Name="Section before infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) &lt;= InfillDistance</PreCondition></PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) + BaseTypes.LengthToDistance ( aSection.Length ) &lt;= InfillDistance</PreCondition></PreConditions>
 <Expression>aSection</Expression>
 </Case><Case
  Name="Section on infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) - BaseTypes.LengthToDistance ( aSection.Length ) &lt; InfillDistance</PreCondition><PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection )</PreCondition></PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) &lt; InfillDistance</PreCondition><PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection ) + BaseTypes.LengthToDistance  ( aSection.Length )</PreCondition></PreConditions>
 <Expression>Section
 {
-    Length =&gt; BaseTypes.LengthToDistance ( AbsoluteDistance ( aSection ) - InfillDistance ),
+    Length =&gt; BaseTypes.LengthToDistance ( InfillDistance - AbsoluteDistance ( aSection ) ),
     TimeOut =&gt; aSection.TimeOut
 }</Expression>
 </Case><Case
@@ -1099,7 +1099,7 @@
 <ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef><Comment>Provides the absolute distance (from the LRBG) to the end of the given section.</Comment>
+</ReqRef><Comment>Provides the absolute distance (from the LRBG) to the beginning of the given section.</Comment>
 <Parameters>
 <Parameter
  Type="Section"
@@ -1112,7 +1112,7 @@
 >
 <Expression>SUM
     MA.Sections |
-        Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections) OR ( X == aSection )
+        Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections)
 USING
     Default.BaseTypes.LengthToDistance ( X.Length )</Expression>
 </Case></Cases>
@@ -1125,7 +1125,7 @@ USING
  Id="7.4.2.4"
 >
 </ReqRef><ReqRef
- Id="7.4.2.4.1"
+ Id="7.4.2.4.bis"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1169,6 +1169,54 @@ USING
 </Function><Function
  Type="Boolean"
  Implemented="TRUE"
+ Name="FullTrackDescriptionAvailable"
+>
+<ReqRef
+ Id="3.7.2.3"
+>
+</ReqRef><ReqRef
+ Id="A1.1.6.2"
+>
+</ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SSP does not cover required length"
+>
+<PreConditions>
+<PreCondition>SUM Kernel.TrackDescription.StaticSpeedProfile.SSP USING X.Distance &lt; 
+Default.BaseTypes.LengthToDistance(
+   Default.MessageTypes.QScaleLength(
+      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+      scale =&gt; Packet.Q_SCALE
+      )
+   )</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Gradient information does not cover required length"
+>
+<PreConditions>
+<PreCondition>Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients) &lt;
+Default.BaseTypes.LengthToDistance(
+   Default.MessageTypes.QScaleLength(
+      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+      scale =&gt; Packet.Q_SCALE
+      )
+   )</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
  Name="AcceptMA"
 >
 <ReqRef
@@ -1180,16 +1228,18 @@ USING
 </ReqRef><ReqRef
  Id="Entry 5.11.2.2.A035"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="YES"
 >
-<Expression>FullTrackDescriptionAvailable()
-  AND
-Mode != Mode.TR
-  AND
-(
+<PreConditions>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt; Packet)</PreCondition><PreCondition>Mode != Mode.TR</PreCondition><PreCondition>(
   Infill.Data == EMPTY
     OR
     ( Infill.Data != EMPTY
@@ -1198,20 +1248,12 @@ Mode != Mode.TR
       AND
     BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ) != BaseTypes.Distance.Unknown
   )
-)</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Name="FullTrackDescriptionAvailable"
+)</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="NO"
 >
-<ReqRef
- Id="3.7.2.3"
->
-</ReqRef><Cases>
-<Case
- Name="Value"
->
-<Expression>True</Expression>
+<Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1254,7 +1296,7 @@ Mode != Mode.TR
  Name="Store MA information"
 >
 <PreConditions>
-<PreCondition>FullTrackDescriptionAvailable()</PreCondition></PreConditions>
+<PreCondition>FullTrackDescriptionAvailable(Packet =&gt;  ConvertMALvl2or3_to_MALvl1 ( Packet ))</PreCondition></PreConditions>
 <Actions>
 <Action>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1309,7 +1351,7 @@ Mode != Mode.TR
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>AcceptMA()</PreCondition></PreConditions>
+<PreCondition>AcceptMA( Packet =&gt; Packet )</PreCondition></PreConditions>
 <Actions>
 <Action>UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action><Action>SignallingRelatedSpeedRestriction &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1319,10 +1361,10 @@ Mode != Mode.TR
  Name="Train trip order"
 >
 <ReqRef
- Id="7.5.1.158.0"
+ Id="3.11.6.5"
 >
 </ReqRef><ReqRef
- Id="3.11.6.5"
+ Id="7.5.1.158.bis"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -1398,23 +1440,31 @@ Mode != Mode.TR
 </ReqRef><ReqRef
  Id="3.8.1.1.b"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update common fields"
->
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157"
 >
 </ReqRef><ReqRef
  Id="3.8.5.1.a"
 >
-</ReqRef><ReqRef
- Id="3.8.5.1.b"
->
 </ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MA was available"
+>
+<Comment>If MA was already available, we can directly modify its fields</Comment>
+<PreConditions>
+<PreCondition>MA != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action>MA.TargetSpeed &lt;- MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 )</Action><Action>MA.TargetSpeedTimeOut &lt;- BaseTypes.Time ( Packet.T_LOA )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No MA was available"
+>
+<Comment>If no MA was available, we have to create a new MA</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1423,10 +1473,9 @@ Mode != Mode.TR
     TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
     TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
 }</Action></Actions>
-<SubRules>
-<Rule
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="Handle information according to infill status"
 >
 <SubRules></SubRules>
@@ -1496,8 +1545,6 @@ Mode != Mode.TR
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1508,6 +1555,12 @@ Mode != Mode.TR
 >
 </ReqRef><ReqRef
  Id="3.8.3.3"
+>
+</ReqRef><ReqRef
+ Id="3.8.5.1.a"
+>
+</ReqRef><ReqRef
+ Id="3.8.5.1.b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>

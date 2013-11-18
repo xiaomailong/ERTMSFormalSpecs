@@ -68,6 +68,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         public UsageTreeView()
             : base()
         {
+            KeepTrackOfSelection = false;
             MouseMove += new System.Windows.Forms.MouseEventHandler(UsageTreeView_MouseMove);
         }
 

@@ -63,10 +63,11 @@ namespace DataDictionary.Specification
         /// Loads the frame which corresponds to this frame ref
         /// </summary>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
+        /// <param name="allowErrors">Indicates that errors are tolerated during load</param>
         /// <returns></returns>
-        public Chapter LoadChapter(bool lockFiles)
+        public Chapter LoadChapter(bool lockFiles, bool allowErrors)
         {
-            Chapter retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles);
+            Chapter retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles, allowErrors);
 
             return retVal;
         }

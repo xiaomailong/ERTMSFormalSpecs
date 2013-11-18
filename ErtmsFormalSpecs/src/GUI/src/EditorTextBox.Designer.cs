@@ -38,6 +38,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.explainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,11 +47,11 @@
             this.SelectionComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.SelectionComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.SelectionComboBox.FormattingEnabled = true;
-            this.SelectionComboBox.Location = new System.Drawing.Point(64, 56);
+            this.SelectionComboBox.Location = new System.Drawing.Point(76, 3);
             this.SelectionComboBox.Name = "SelectionComboBox";
             this.SelectionComboBox.Size = new System.Drawing.Size(236, 21);
             this.SelectionComboBox.Sorted = true;
-            this.SelectionComboBox.TabIndex = 0;
+            this.SelectionComboBox.TabIndex = 1;
             this.SelectionComboBox.Visible = false;
             // 
             // EditionTextBox
@@ -59,7 +60,7 @@
             this.EditionTextBox.Location = new System.Drawing.Point(0, 0);
             this.EditionTextBox.Name = "EditionTextBox";
             this.EditionTextBox.Size = new System.Drawing.Size(330, 162);
-            this.EditionTextBox.TabIndex = 1;
+            this.EditionTextBox.TabIndex = 0;
             this.EditionTextBox.Text = "";
             // 
             // contextMenuStrip1
@@ -114,10 +115,23 @@
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
+            // explainRichTextBox
+            // 
+            this.explainRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.explainRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.explainRichTextBox.Location = new System.Drawing.Point(76, 30);
+            this.explainRichTextBox.Name = "explainRichTextBox";
+            this.explainRichTextBox.ReadOnly = true;
+            this.explainRichTextBox.Size = new System.Drawing.Size(236, 78);
+            this.explainRichTextBox.TabIndex = 2;
+            this.explainRichTextBox.Text = "";
+            this.explainRichTextBox.Visible = false;
+            // 
             // EditorTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.explainRichTextBox);
             this.Controls.Add(this.SelectionComboBox);
             this.Controls.Add(this.EditionTextBox);
             this.Name = "EditorTextBox";
@@ -138,5 +152,6 @@
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox explainRichTextBox;
     }
 }

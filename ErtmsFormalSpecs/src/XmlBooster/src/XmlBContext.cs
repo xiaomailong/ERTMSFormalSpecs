@@ -194,8 +194,8 @@ public abstract class XmlBContext
       res.Append (":\n");
       res.Append (errPtr);
       res.Append (":");
-      f = errPtr - 60;
-      t = errPtr + 60;
+      f = errPtr - 200;
+      t = errPtr + 200;
       if (f < 0)
         f = 0;
        else

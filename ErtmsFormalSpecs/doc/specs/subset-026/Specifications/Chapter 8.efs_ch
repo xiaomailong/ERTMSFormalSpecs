@@ -28,13 +28,15 @@
  id="8.3.1.1"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->This chapter defines the format and content of messages necessary for ERTMS/ETCS Class 1 functions.</Paragraph><Paragraph
+><Comment></Comment>
+This chapter defines the format and content of messages necessary for ERTMS/ETCS functions.</Paragraph><Paragraph
  id="8.3.1.2"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
@@ -60,14 +62,15 @@
  id="8.3.2.1"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
- bl=""
+ bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
- version="3.0.0"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Transmission media considered hereafter are standard ERTMS/ETCS transmission media used for Class 1 (Eurobalise, Euroradio and Euroloop).
-</Paragraph><Paragraph
+><Comment></Comment>
+Transmission media considered hereafter are standard ERTMS/ETCS transmission media used for ETCS (Eurobalise, Euroradio and Euroloop).</Paragraph><Paragraph
  id="8.3.2.2"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
@@ -88,8 +91,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->A Eurobalise message is the information sent by a balise group (i.e. the message is composed of one or several telegrams, sorted by balise number in the group (telegram from balise number 1 first), each telegram is transmitted by a Eurobalise). A Eurobalise telegram contains one header and an identified and coherent set of Packets.
-</Paragraph><Paragraph
+>A Eurobalise message is the information sent by a balise group (i.e. the message is composed of one or several telegrams, sorted by balise number in the group (telegram from balise number 1 first), each telegram is transmitted by a Eurobalise). A Eurobalise telegram contains one header and an identified and coherent set of Packets.</Paragraph><Paragraph
  id="8.3.2.4"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
@@ -277,7 +279,31 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Exception 7: A message transmitted by a balise group can contain several packets 145 (Inhibition of balise group message consistency reaction).</Paragraph></Sub>
+>Exception 7: A message transmitted by a balise group can contain several packets 145 (Inhibition of balise group message consistency reaction).</Paragraph><Paragraph
+ id="8.4.1.4.8"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Exception 8: A message transmitted by a balise group can contain several packets 0 (Virtual Balise Cover marker).</Paragraph><Paragraph
+ id="8.4.1.4.9"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
+ functionalBlockName=""
+ Name=""
+><Comment></Comment>
+Exception 9: A message transmitted by a balise group can contain several packets 6 (Virtual Balise Cover order). The identities (pairs of variables NID_VBCMK and NID_C) of the corresponding VBC transmitted in the same message shall be different.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.2"
@@ -302,7 +328,7 @@
  Name=""
 >The format of the telegram to be transmitted by each balise is as follows:<Sub>
 <Paragraph
- id="8.4.2.1.1"
+ id="Table 8.4.2.1.1"
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -312,163 +338,166 @@
  functionalBlockName=""
  Name=""
 >General Format of Balise Telegram
-</Paragraph><Paragraph
- id="8.4.2.1.2"
- type="TABLE_HEADER"
+Field No.; VARIABLE; Length ( bits); Remarks<Sub>
+<Paragraph
+ id="Entry 8.4.2.1.1.1"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Field No.; VARIABLE; Length ( bits); Remarks
-</Paragraph><Paragraph
- id="8.4.2.1.3"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >1; Q_UPDOWN; 1; Defines the direction of the information: 
 	Down-link telegram (train to track) (0) 
-	Up-link telegram (track to train) (1)
-</Paragraph><Paragraph
- id="8.4.2.1.4"
- type="NOTE"
+	Up-link telegram (track to train) (1)</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.2"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->2; M_VERSION; 7; Version of the ERTMS/ETCS system.
-</Paragraph><Paragraph
- id="8.4.2.1.5"
- type="NOTE"
+>2; M_VERSION; 7; Version of the ERTMS/ETCS system.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.3"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->3; Q_MEDIA; 1; Defines the type of media: Balise (0)
-</Paragraph><Paragraph
- id="8.4.2.1.6"
- type="NOTE"
+>3; Q_MEDIA; 1; Defines the type of media: Balise (0)</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.4"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->4; N_PIG; 3; Position in the group. Defines the position of the balise in the balise group.
-</Paragraph><Paragraph
- id="8.4.2.1.7"
- type="NOTE"
+>4; N_PIG; 3; Position in the group. Defines the position of the balise in the balise group.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.5"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->5; N_TOTAL; 3; Total number of balises in the balise group
-</Paragraph><Paragraph
- id="8.4.2.1.8"
- type="NOTE"
+>5; N_TOTAL; 3; Total number of balises in the balise group</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.6"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->6; M_DUP; 2; Used to indicate whether the information of the balise is a duplicate of the balise before or after this one.
-</Paragraph><Paragraph
- id="8.4.2.1.9"
- type="NOTE"
+>6; M_DUP; 2; Used to indicate whether the information of the balise is a duplicate of the balise before or after this one.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.7"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->7; M_MCOUNT; 8; Message counter (M_MCOUNT) - 8 bits. To enable detection of a change of balise group message during passage of the balise group.
-</Paragraph><Paragraph
- id="8.4.2.1.10"
- type="NOTE"
+>7; M_MCOUNT; 8; Message counter (M_MCOUNT) - 8 bits. To enable detection of a change of balise group message during passage of the balise group.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.8"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->8; NID_C; 10; Country or region.
-</Paragraph><Paragraph
- id="8.4.2.1.11"
- type="NOTE"
+>8; NID_C; 10; Country or region.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.9"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->9; NID_BG; 14; Identity of the balise group.
-</Paragraph><Paragraph
- id="8.4.2.1.12"
- type="NOTE"
+>9; NID_BG; 14; Identity of the balise group.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.10"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->10; Q_LINK; 1; Marks the balise group as linked (Q_LINK = 1) or unlinked (Q_LINK = 0)
-</Paragraph><Paragraph
- id="8.4.2.1.13"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->; Information; Variable; This information is composed according to the rules applicable for packets.
-</Paragraph><Paragraph
- id="8.4.2.1.14"
- type="NOTE"
+>10; Q_LINK; 1; Marks the balise group as linked (Q_LINK = 1) or unlinked (Q_LINK = 0)</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.11"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->; Packet 255; 8; Finishing flag of the telegram
-</Paragraph><Paragraph
- id="8.4.2.1.15"
+><Comment></Comment>
+;Packet 0 (optional);14;Virtual Balise Cover marker</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.12"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Number of bits in balise header: 50
-</Paragraph></Sub>
+>; Information; Variable; This information is composed according to the rules applicable for packets.</Paragraph><Paragraph
+ id="Entry 8.4.2.1.1.13"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl="3.2.0"
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>; Packet 255; 8; Finishing flag of the telegram</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="8.4.2.1.bis"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Number of bits in balise header: 50</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.2.2"
  type="NOTE"
@@ -479,19 +508,19 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The user information transmitted by a balise shall contain complete packets, i.e. splitting a packet between two balises is forbidden.
-</Paragraph><Paragraph
+>The user information transmitted by a balise shall contain complete packets, i.e. splitting a packet between two balises is forbidden.</Paragraph><Paragraph
  id="8.4.2.3"
- type="DELETED"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
- version="3.0.0"
+ reviewed="TRUE"
+ status="NA"
+ version="3.2.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.
-</Paragraph></Sub>
+><Comment></Comment>
+When used, the packet 0 shall be transmitted as the first packet of the telegram (i.e. it is appended to the header).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.3"
  type="TITLE"
@@ -515,7 +544,7 @@
  Name=""
 >The format of the message to be transmitted by each loop is as follows:<Sub>
 <Paragraph
- id="8.4.3.1.1"
+ id="Table 8.4.3.1.1"
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
@@ -525,120 +554,111 @@
  functionalBlockName=""
  Name=""
 >General Format of Loop Message
-</Paragraph><Paragraph
- id="8.4.3.1.2"
- type="TABLE_HEADER"
+Field No.; VARIABLE; Length ( bits); Remarks<Sub>
+<Paragraph
+ id="Entry 8.4.3.1.1.1"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Field No.; VARIABLE; Length ( bits); Remarks
-</Paragraph><Paragraph
- id="8.4.3.1.3"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >1; Q_UPDOWN; 1; Defines the direction of the information: 
 	Down-link message (train to track) (0) 
-	Up-link message (track to train) (1)
-</Paragraph><Paragraph
- id="8.4.3.1.4"
+	Up-link message (track to train) (1)</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.2"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>2; M_VERSION; 7; Version of the ERTMS/ETCS system.</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.3"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>3; Q_MEDIA; 1; Defines the type of media: Loop   (1)</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.4"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>4; NID_C; 10; Country or region.</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.5"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>5; NID_LOOP; 14; Identity of Euroloop.</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->2; M_VERSION; 7; Version of the ERTMS/ETCS system.
-</Paragraph><Paragraph
- id="8.4.3.1.5"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->3; Q_MEDIA; 1; Defines the type of media: Loop   (1)
-</Paragraph><Paragraph
- id="8.4.3.1.6"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->4; NID_C; 10; Country or region.
-</Paragraph><Paragraph
- id="8.4.3.1.7"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->5; NID_LOOP; 14; Identity of Euroloop.
-</Paragraph><Paragraph
- id="8.4.3.1.8"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->; Information; Variable; This information is composed according to the rules applicable for packets.
-</Paragraph><Paragraph
- id="8.4.3.1.9"
- type="NOTE"
+>; Information; Variable; This information is composed according to the rules applicable for packets.</Paragraph><Paragraph
+ id="Entry 8.4.3.1.1.7"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->; Packet 255; 8; Finishing flag of the message
+>; Packet 255; 8; Finishing flag of the message</Paragraph></Sub>
 </Paragraph><Paragraph
- id="8.4.3.1.10"
- type="NOTE"
+ id="8.4.3.1.bis"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Number of bits in loop header: 33
-</Paragraph></Sub>
+>Number of bits in loop header: 33</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.3.2"
  type="DELETED"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted.
-</Paragraph></Sub>
+>Intentionally deleted.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4"
  type="TITLE"
@@ -671,8 +691,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->All currently not defined message identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11 b)).
-</Paragraph></Sub>
+>All currently not defined message identifiers are reserved for future use and shall be considered as invalid values (i.e. like spare values). Exception: reception of information only differing by Y with regards to the highest system version number X supported by on-board (refer to section 3.17.3.11 b)).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.2"
  type="NOTE"
@@ -706,8 +725,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The messages shall be composed of predefined variables and packets.
-</Paragraph><Paragraph
+>The messages shall be composed of predefined variables and packets.</Paragraph><Paragraph
  id="8.4.4.4"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -730,98 +748,103 @@
  Name=""
 >The track to train messages possibly including optional packets are listed hereafter:<Sub>
 <Paragraph
- id="8.4.4.4.1.1"
+ id="Table 8.4.4.4.1.1"
  type="TABLE_HEADER"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Track to Train message; Mess. ID; Optional packets
-</Paragraph><Paragraph
- id="8.4.4.4.1.2"
- type="NOTE"
+>Track to Train message; Mess. ID; Optional packets<Sub>
+<Paragraph
+ id="Entry 8.4.4.4.1.1.1"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SR Authorisation; 2; 63
-</Paragraph><Paragraph
- id="8.4.4.4.1.3"
- type="NOTE"
+>SR Authorisation; 2; 63</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.2"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Movement Authority; 3; 21, 27, 49, 80, plus common optional packets
-</Paragraph><Paragraph
- id="8.4.4.4.1.4"
- type="NOTE"
+>Movement Authority; 3; 21, 27, 49, 80, plus common optional packets</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.3"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Request To Shorten MA; 9; 49, 80
-</Paragraph><Paragraph
- id="8.4.4.4.1.5"
- type="NOTE"
+>Request To Shorten MA; 9; 49, 80</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.4"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >General Message; 24; From RBC: 21, 27, plus common optional packets
-	&gt;From RIU: 45, 143, 254</Paragraph><Paragraph
- id="8.4.4.4.1.6"
- type="NOTE"
+	From RIU: 45, 143, 254</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.5"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->SH authorised; 28; 3, 44, 49
-</Paragraph><Paragraph
- id="8.4.4.4.1.7"
- type="NOTE"
+>SH authorised; 28; 3, 44, 49</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.6"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->MA with Shifted Location Reference; 33; 21, 27, 49, 80, plus common optional packets
-</Paragraph><Paragraph
- id="8.4.4.4.1.8"
- type="NOTE"
+>MA with Shifted Location Reference; 33; 21, 27, 49, 80, plus common optional packets</Paragraph><Paragraph
+ id="Entry 8.4.4.4.1.1.7"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl="3.2.0"
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Infill MA; 37; 5, 21, 27, 38, 40, 41, 44, 49, 51, 65, 66, 68, 69, 70, 71, 80, 88, 138, 139</Paragraph><Paragraph
+>Infill MA; 37; 5, 21, 27, 39, 40, 41, 44, 49, 51, 65, 66, 68, 69, 70, 71, 80, 88, 138, 139</Paragraph></Sub>
+</Paragraph><Paragraph
  id="8.4.4.4.1.1"
- type="NOTE"
+ type="DELETED"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
@@ -829,27 +852,16 @@
 >The common optional packets are the following ones:<Sub>
 <Paragraph
  id="8.4.4.4.1.1.1"
- type="TABLE_HEADER"
+ type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
  name=""
- status="NotImplementable"
+ reviewed="TRUE"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Common optional packets
-</Paragraph><Paragraph
- id="8.4.4.4.1.1.1"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl="3.2.0"
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->3, 5, 38, 40, 51, 41, 42, 44, 45, 47, 52, 57, 58, 64, 65, 66, 68, 69, 70, 71, 72, 76, 79, 88, 131, 138, 139, 140
-</Paragraph></Sub>
+>Common optional packets: 3, 5, 39, 40, 51, 41, 42, 44, 45, 52, 57, 58, 64, 65, 66, 68, 69, 70, 71, 72, 76, 79, 88, 131, 138, 139, 140</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.4.2"
@@ -900,8 +912,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If needed to obtain an integer number of bytes, padding shall be added at the end of the message.
-</Paragraph><Paragraph
+>If needed to obtain an integer number of bytes, padding shall be added at the end of the message.</Paragraph><Paragraph
  id="8.4.4.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1044,8 +1055,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Note: In section 8.7 giving the contents of the messages, the padding information is intentionally omitted.
-</Paragraph><Paragraph
+>Note: In section 8.7 giving the contents of the messages, the padding information is intentionally omitted.</Paragraph><Paragraph
  id="8.4.4.6.3"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1055,8 +1065,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->The track to train message 39 (Acknowledgement of termination of a communication session) shall include the variable M_ACK set to 0. Justification: see 3.5.5.3.
-</Paragraph></Sub>
+>The track to train message 39 (Acknowledgement of termination of a communication session) shall include the variable M_ACK set to 0. Justification: see 3.5.5.3.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.4.4.7"
  type="NOTE"
@@ -1206,8 +1215,7 @@
 	c) Message 155 (Initiation of a communication session),
 	d) Message 156 (Termination of a communication session),
 	e) Intentionally deleted
-	f) Message 159 (Session Established).
-</Paragraph><Paragraph
+	f) Message 159 (Session Established).</Paragraph><Paragraph
  id="8.4.4.7.3"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1217,8 +1225,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Note: In section 8.6 giving the contents of the messages, the padding information is intentionally omitted.
-</Paragraph></Sub>
+>Note: In section 8.6 giving the contents of the messages, the padding information is intentionally omitted.</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
@@ -1288,8 +1295,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Mes. Id.; Message Name; Type; Invariant; Transmitted to
-</Paragraph><Paragraph
+>Mes. Id.; Message Name; Type; Invariant; Transmitted to</Paragraph><Paragraph
  id="8.5.2.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1299,8 +1305,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->129; Validated Train Data; N; No; RBC
-</Paragraph><Paragraph
+>129; Validated Train Data; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.3"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1310,8 +1315,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->130; Request for Shunting; N; No; RBC
-</Paragraph><Paragraph
+>130; Request for Shunting; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.4"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1321,8 +1325,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->132; MA Request; N; No; RBC
-</Paragraph><Paragraph
+>132; MA Request; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.5"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1332,8 +1335,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->136; Train Position Report; N; No; RBC, RIU
-</Paragraph><Paragraph
+>136; Train Position Report; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1343,8 +1345,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->137; Request to shorten MA is granted; N; No; RBC
-</Paragraph><Paragraph
+>137; Request to shorten MA is granted; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.7"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1364,8 +1365,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->146; Acknowledgement; N; No; RBC, RIU
-</Paragraph><Paragraph
+>146; Acknowledgement; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.9"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1375,8 +1375,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->147; Acknowledgement of Emergency Stop; N; No; RBC
-</Paragraph><Paragraph
+>147; Acknowledgement of Emergency Stop; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.10"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1396,8 +1395,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->150; End of Mission; N; No; RBC
-</Paragraph><Paragraph
+>150; End of Mission; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.12"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1407,8 +1405,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->153; Radio infill request; N; No; RIU
-</Paragraph><Paragraph
+>153; Radio infill request; N; No; RIU</Paragraph><Paragraph
  id="8.5.2.13"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1418,8 +1415,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->154; No compatible version supported; N; Yes; RBC, RIU
-</Paragraph><Paragraph
+>154; No compatible version supported; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.14"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1439,8 +1435,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->156; Termination of a communication session; N; Yes; RBC, RIU
-</Paragraph><Paragraph
+>156; Termination of a communication session; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.2.16"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1450,8 +1445,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->157; SoM Position Report; N; No; RBC
-</Paragraph><Paragraph
+>157; SoM Position Report; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.17"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1461,8 +1455,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->158; Text message acknowledged by driver; N; No; RBC
-</Paragraph><Paragraph
+>158; Text message acknowledged by driver; N; No; RBC</Paragraph><Paragraph
  id="8.5.2.18"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1472,8 +1465,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->159; Session Established; N; No; RBC, RIU
-</Paragraph></Sub>
+>159; Session Established; N; No; RBC, RIU</Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.5.3"
  type="TITLE"
@@ -1495,8 +1487,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Mes. Id.; Message Name; Type; Invariant; Transmitted by
-</Paragraph><Paragraph
+>Mes. Id.; Message Name; Type; Invariant; Transmitted by</Paragraph><Paragraph
  id="8.5.3.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1516,8 +1507,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->3; Movement Authority; N; No; RBC
-</Paragraph><Paragraph
+>3; Movement Authority; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.4"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1527,8 +1517,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->6; Recognition of exit from TRIP mode; N; No; RBC
-</Paragraph><Paragraph
+>6; Recognition of exit from TRIP mode; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.5"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1538,8 +1527,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->8; Acknowledgement of Train Data; N; No; RBC
-</Paragraph><Paragraph
+>8; Acknowledgement of Train Data; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.6"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1549,8 +1537,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->9; Request to Shorten MA; N; No; RBC
-</Paragraph><Paragraph
+>9; Request to Shorten MA; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.7"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1560,8 +1547,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->15; Conditional Emergency Stop; E or N; No; RBC
-</Paragraph><Paragraph
+>15; Conditional Emergency Stop; E or N; No; RBC</Paragraph><Paragraph
  id="8.5.3.8"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1571,8 +1557,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->16; Unconditional Emergency Stop; E or N; No; RBC
-</Paragraph><Paragraph
+>16; Unconditional Emergency Stop; E or N; No; RBC</Paragraph><Paragraph
  id="8.5.3.9"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1582,8 +1567,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->18; Revocation of Emergency Stop; N; No; RBC
-</Paragraph><Paragraph
+>18; Revocation of Emergency Stop; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.10"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1593,8 +1577,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->24; General message; N; No; RBC, RIU
-</Paragraph><Paragraph
+>24; General message; N; No; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.11"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1604,8 +1587,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->27; SH Refused; N; No; RBC
-</Paragraph><Paragraph
+>27; SH Refused; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.12"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1615,8 +1597,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->28; SH Authorised; N; No; RBC
-</Paragraph><Paragraph
+>28; SH Authorised; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.13"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1626,8 +1607,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->33; MA with Shifted Location Reference; N; No; RBC
-</Paragraph><Paragraph
+>33; MA with Shifted Location Reference; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.14"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1637,8 +1617,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->34; Track Ahead Free Request; N; No; RBC
-</Paragraph><Paragraph
+>34; Track Ahead Free Request; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.15"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1648,8 +1627,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->37; Infill MA; N; No; RIU
-</Paragraph><Paragraph
+>37; Infill MA; N; No; RIU</Paragraph><Paragraph
  id="8.5.3.16"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1659,8 +1637,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->40; Train Rejected; N; No; RBC
-</Paragraph><Paragraph
+>40; Train Rejected; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.17"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1670,8 +1647,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->32; RBC/RIU System Version; N; Yes; RBC, RIU
-</Paragraph><Paragraph
+>32; RBC/RIU System Version; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.18"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1681,8 +1657,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->38; Initiation of a communication session; N; Yes; RBC
-</Paragraph><Paragraph
+>38; Initiation of a communication session; N; Yes; RBC</Paragraph><Paragraph
  id="8.5.3.19"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1692,8 +1667,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->39; Acknowledgement of termination of a communication session; N; Yes; RBC, RIU
-</Paragraph><Paragraph
+>39; Acknowledgement of termination of a communication session; N; Yes; RBC, RIU</Paragraph><Paragraph
  id="8.5.3.20"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1703,8 +1677,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->41; Train Accepted; N; No; RBC
-</Paragraph><Paragraph
+>41; Train Accepted; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.21"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1714,8 +1687,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->43; SoM position report confirmed by RBC; N; No; RBC
-</Paragraph><Paragraph
+>43; SoM position report confirmed by RBC; N; No; RBC</Paragraph><Paragraph
  id="8.5.3.22"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -1725,8 +1697,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->45; Assignment of coordinate system; N; No; RBC
-</Paragraph></Sub>
+>45; Assignment of coordinate system; N; No; RBC</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="8.6"
@@ -1928,8 +1899,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Field No.; VARIABLE/ PACKET; Remarks
-</Paragraph><Paragraph
+>Field No.; VARIABLE/ PACKET; Remarks</Paragraph><Paragraph
  id="8.6.3.2"
  type="NOTE"
  scope="OBU_AND_TRACK"
@@ -5026,84 +4996,6 @@
 >5; NID_LRBG; 
 </Paragraph></Sub>
 </Paragraph><Paragraph
- id="8.7.19"
- type="TITLE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Message 41: Train Accepted<Sub>
-<Paragraph
- id="8.7.19.1"
- type="TABLE_HEADER"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Field No.; VARIABLE; Remarks
-</Paragraph><Paragraph
- id="8.7.19.2"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->1; NID_MESSAGE; 
-</Paragraph><Paragraph
- id="8.7.19.3"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->2; L_MESSAGE; 
-</Paragraph><Paragraph
- id="8.7.19.4"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->3; T_TRAIN; 
-</Paragraph><Paragraph
- id="8.7.19.5"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->4; M_ACK; 
-</Paragraph><Paragraph
- id="8.7.19.6"
- type="NOTE"
- scope="OBU_AND_TRACK"
- bl=""
- name=""
- status="NotImplementable"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->5; NID_LRBG; 
-</Paragraph></Sub>
-</Paragraph><Paragraph
  id="8.7.20"
  type="DELETED"
  scope="OBU_AND_TRACK"
@@ -5113,8 +5005,7 @@
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Intentionally deleted
-</Paragraph><Paragraph
+>Intentionally deleted</Paragraph><Paragraph
  id="8.7.21"
  type="TITLE"
  scope="OBU_AND_TRACK"

@@ -1189,428 +1189,14 @@
 </StateMachine></StateMachines>
 </Structure><Structure
  Implemented="TRUE"
- Name="LevelInhibition"
->
-<ReqRef
- Id="Entry 4.7.2.1.7"
->
-</ReqRef><Procedures>
-<Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="GoToAvailable"
->
-<Comment>Puts the state machine in Available state and updates the variables</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Name="GoToAvailable"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="GoToAvailable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="DMI.InputInformation"
- Default=""
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="InputInformation"
->
-</StructureElement><StructureElement
- TypeName="Default.Levels"
- Default=""
- Mode="Incoming"
- NeedsRequirement="FALSE"
- Name="InhibitedLevels"
->
-</StructureElement><StructureElement
- TypeName="DMI.InhibitionAction"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="InhibitionAction"
->
-</StructureElement><StructureElement
- TypeName="ProcedureInSM"
- Default=""
- Mode="Internal"
- Name="ProcedureIn"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureInSM"
->
-<States>
-<State
- X="230"
- Y="60"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="180"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="180"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="300"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="300"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="560"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="430"
- Y="170"
- Width="100"
- Height="50"
- Name="Response"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="CleanUp"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
->
-<PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
  Name="TrainIntegrity"
 >
 <ReqRef
- Id="Entry 4.7.2.1.9"
+ Id="Entry 4.7.2.1.8"
 >
 </ReqRef><Procedures>
 <Procedure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="GoToAvailable"
 >
 <Comment>Puts the state machine in Available state and updates the variables</Comment>
@@ -2011,7 +1597,7 @@
  Name="Start"
 >
 <ReqRef
- Id="Entry 4.7.2.1.10"
+ Id="Entry 4.7.2.1.9"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -2410,7 +1996,7 @@
  Name="OverrideRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.11"
+ Id="Entry 4.7.2.1.10"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -2809,7 +2395,7 @@
  Name="ShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.12"
+ Id="Entry 4.7.2.1.11"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -3208,7 +2794,7 @@
  Name="ContinueShuntingOnDeskClosureRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.13"
+ Id="Entry 4.7.2.1.12"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -3614,7 +3200,7 @@
  Name="ExitOfShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.14"
+ Id="Entry 4.7.2.1.13"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -4013,7 +3599,7 @@
  Name="NonLeadingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.15"
+ Id="Entry 4.7.2.1.14"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -4412,16 +3998,7 @@
  Name="Acknowledgement"
 >
 <ReqRef
- Id="Entry 4.7.2.1.33"
->
-</ReqRef><ReqRef
- Id="Entry 4.7.2.1.30"
->
-</ReqRef><ReqRef
  Id="Entry 4.7.2.1.28"
->
-</ReqRef><ReqRef
- Id="Entry 4.7.2.1.32"
 >
 </ReqRef><ReqRef
  Id="Entry 4.7.2.1.27"
@@ -4436,9 +4013,6 @@
  Id="Entry 4.7.2.1.20"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.1.24"
->
-</ReqRef><ReqRef
  Id="Entry 4.7.2.1.21"
 >
 </ReqRef><ReqRef
@@ -4449,6 +4023,15 @@
 >
 </ReqRef><ReqRef
  Id="Entry 4.7.2.1.23"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.18"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.25"
+>
+</ReqRef><ReqRef
+ Id="Entry 4.7.2.1.31"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -4848,7 +4431,7 @@
  Name="AcknOfFixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.16"
+ Id="Entry 4.7.2.1.15"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -5247,7 +4830,7 @@
  Name="AcknOfLevelTransition"
 >
 <ReqRef
- Id="Entry 4.7.2.1.18"
+ Id="Entry 4.7.2.1.17"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -5646,7 +5229,7 @@
  Name="AcknOfPlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.17"
+ Id="Entry 4.7.2.1.16"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6045,7 +5628,7 @@
  Name="AcknOfTrainDataChangeFromOtherSource"
 >
 <ReqRef
- Id="Entry 4.7.2.1.31"
+ Id="Entry 4.7.2.1.30"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6444,7 +6027,7 @@
  Name="TrackAheadFree"
 >
 <ReqRef
- Id="Entry 4.7.2.1.34"
+ Id="Entry 4.7.2.1.32"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -6850,7 +6433,7 @@
  Name="SRModeSpeedLimitAndDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.1.35"
+ Id="Entry 4.7.2.1.33"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -7263,7 +6846,7 @@
  Name="Isolation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.36"
+ Id="Entry 4.7.2.1.35"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -8090,7 +7673,7 @@
  Id="Entry 5.4.3.2.S10"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.4"
+ Id="5.4.5.3.d"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -8903,7 +8486,7 @@
  Name="AcknOfSNMode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.25"
+ Id="Entry 4.7.2.1.24"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -9311,7 +8894,7 @@
  Name="RBCContactInformationRadioNetworkId"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="Entry 4.7.2.1.7"
 >
 </ReqRef><Comment>This structure can be used to confirm the Network id OR the RBC id or phone number, depending on the value of the field InformationToConfirm. In the case where InformationToConfirm == RBCIdOrPhoneNumber, the field RBCIdNumberChoice precises the possible actions to perform (enter a new value, re-enter a value, use eirene of use last stored value).</Comment>
 <Procedures>
@@ -10166,10 +9749,10 @@
  Name="ErtmsEtcsLevelEntryRequest"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="Entry 4.7.2.1.5"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.1.5"
+ Id="5.4.5.3.e"
 >
 </ReqRef><Procedures>
 <Procedure

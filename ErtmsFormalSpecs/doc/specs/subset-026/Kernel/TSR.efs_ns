@@ -20,9 +20,8 @@
  Id="3.11.2.2.c"
 >
 </ReqRef><ReqRef
- Id="7.4.2.17.1"
+ Id="7.4.2.17.bis"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents a temporary speed restriction.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -234,7 +233,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- Implemented="TRUE"
  Name="TemporarySpeedRestrictionRevocationReceived"
 >
 <ReqRef
@@ -385,7 +383,6 @@ IN TSRs</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- Implemented="TRUE"
  Name="RevokeTSR"
 >
 <ReqRef

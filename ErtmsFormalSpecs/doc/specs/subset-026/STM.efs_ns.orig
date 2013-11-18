@@ -1,0 +1,314 @@
+<<<<<<< HEAD
+<NameSpace
+ Name="STM"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="SpeedSupervision"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef>
+<ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef>
+<Comment></Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HasToBeSupervised"
+>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="MaxSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SuperviseMaxSpeed"
+>
+<PreConditions>
+<PreCondition>MaxSpeed.HasToBeSupervised</PreCondition>
+</PreConditions>
+<Expression>MaxSpeed.Speed</Expression>
+</Case><Case
+ Name="DoNotSuperviseMaxSpeed"
+>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SystemSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef>
+<ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef>
+<Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SuperviseSystemSpeed"
+>
+<PreConditions>
+<PreCondition>SystemSpeed.HasToBeSupervised</PreCondition>
+</PreConditions>
+<Expression>SystemSpeed.Speed</Expression>
+</Case><Case
+ Name="DoNotSuperviseSystemSpeed"
+>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="SpeedSupervision"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="MaxSpeed"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef>
+<Comment>Allows the STM, for national reasons unknown to the ETCS On-board or ERTMS Trackside, to request a given train speed at the level transition border in order to have a smooth transition.</Comment>
+</Variable><Variable
+ Type="SpeedSupervision"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="SystemSpeed"
+>
+<ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef>
+<Comment>This speed together with the &quot;STM system distance&quot; is to allow the STM, to request a given train speed at a given position (&quot;STM system distance&quot;) before the level transition border in order to be able to detect its national trackside.</Comment>
+</Variable></Variables>
+</NameSpace>
+=======
+<NameSpace
+ Name="STM"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="SpeedSupervision"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef><ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef><Comment></Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="Boolean.False"
+ Mode="Incoming"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HasToBeSupervised"
+>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="MaxSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef><ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef><ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SuperviseMaxSpeed"
+>
+<PreConditions>
+<PreCondition>MaxSpeed.HasToBeSupervised</PreCondition></PreConditions>
+<Expression>MaxSpeed.Speed</Expression>
+</Case><Case
+ Name="DoNotSuperviseMaxSpeed"
+>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="SystemSpeedRestrictions"
+>
+<ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef><ReqRef
+ Id="3.13.2.3.1.1.a"
+>
+</ReqRef><ReqRef
+ Id="3.13.2.3.2.1"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SuperviseSystemSpeed"
+>
+<PreConditions>
+<PreCondition>SystemSpeed.HasToBeSupervised</PreCondition></PreConditions>
+<Expression>SystemSpeed.Speed</Expression>
+</Case><Case
+ Name="DoNotSuperviseSystemSpeed"
+>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Name="Available"
+>
+<ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Default.STM"
+ Name="STMid"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="STM1"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM1</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM2"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM2</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM3"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM3</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="STM4"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.STM4</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Unknown"
+>
+<PreConditions>
+<PreCondition>STMid == Default.STM.Unknown</PreCondition></PreConditions>
+<Expression>Boolean.False</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Boolean.False</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="SpeedSupervision"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="MaxSpeed"
+>
+<ReqRef
+ Id="3.11.2.2.g"
+>
+</ReqRef><Comment>Allows the STM, for national reasons unknown to the ETCS On-board or ERTMS Trackside, to request a given train speed at the level transition border in order to have a smooth transition.</Comment>
+</Variable><Variable
+ Type="SpeedSupervision"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="SystemSpeed"
+>
+<ReqRef
+ Id="3.11.2.2.h"
+>
+</ReqRef><Comment>This speed together with the &quot;STM system distance&quot; is to allow the STM, to request a given train speed at a given position (&quot;STM system distance&quot;) before the level transition border in order to be able to detect its national trackside.</Comment>
+</Variable></Variables>
+</NameSpace>
+>>>>>>> refs/remotes/motherERTMS/master

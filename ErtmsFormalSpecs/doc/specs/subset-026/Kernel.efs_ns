@@ -68,9 +68,8 @@
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="Entry 4.7.2.2.9"
 >
-<Comment></Comment>
 </ReqRef><Comment>The status of speed and distance monitoring supervision.</Comment>
 <Values>
 <EnumValue
@@ -100,7 +99,7 @@
  Name="BrakeReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="Entry 4.7.2.2.47"
 >
 </ReqRef><Values>
 <EnumValue
@@ -176,7 +175,12 @@
 <ReqRef
  Id="3.18.4.5.1"
 >
-</ReqRef><Comment>Represents the train running number.</Comment>
+</ReqRef><ReqRef
+ Id="7.5.1.92"
+>
+</ReqRef><Comment>Represents the train running number.
+
+The bcd notation as required by 7.5.92 is not possible in the model. Hence we stick with a simple string here. As there are no operations performed based on this value, this is uncritical. #morido, 13/10/11</Comment>
 <StructureElement
  TypeName="String"
  Default="&apos;&apos;"
@@ -222,7 +226,7 @@
  Name="Id"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="Entry 4.7.2.2.47"
 >
 </ReqRef><Comment>The id of the emergency stop.</Comment>
 </StructureElement><StructureElement
@@ -306,33 +310,6 @@
 <Comment>Value of the ERTMS/ETCS operated system.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InhibitedLevels"
->
-<ReqRef
- Id="3.15.9.2"
->
-</ReqRef><Comment>Represents the list of currently inhibited levels and its data state.</Comment>
-<StructureElement
- TypeName="Default.DataState"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DataState"
->
-<Comment>Data state of the list of inhibited levels.</Comment>
-</StructureElement><StructureElement
- TypeName="Default.Levels"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Levels"
->
-<Comment>The list of inhibited levels.</Comment>
-</StructureElement></Structure><Structure
- Implemented="TRUE"
  Name="BaliseGroup"
 >
 <ReqRef
@@ -385,7 +362,8 @@
 <ReqRef
  Id="Entry 5.6.2.2.S050.1"
 >
-</ReqRef></Collection></Collections>
+</ReqRef><Comment></Comment>
+</Collection></Collections>
 <StateMachines>
 <StateMachine
  InitialState="NoProcedure"
@@ -535,10 +513,10 @@
  Id="Entry 5.4.3.2.A39"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.18"
+ Id="3.5.5.1.3"
 >
 </ReqRef><ReqRef
- Id="3.5.5.1.3"
+ Id="Entry 5.4.3.3.17"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -600,10 +578,10 @@
  Name="Session established"
 >
 <ReqRef
- Id="Entry 5.4.3.3.14"
+ Id="Entry 5.4.3.3.13"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.15"
+ Id="Entry 5.4.3.3.14"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.RequestOpenRbcSession.SessionState == SessionState.Established</PreCondition></PreConditions>
@@ -1004,195 +982,30 @@
  NeedsRequirement="FALSE"
  Name="S2"
 >
-<StateMachine
- InitialState="SelectLevelAndOfferInhibitionPossibility"
+<ReqRef
+ Id="Entry 5.4.3.2.S2"
+>
+</ReqRef><StateMachine
+ InitialState="OfferLevelSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
 >
 <States>
 <State
  X="80"
- Y="170"
+ Y="310"
  Width="140"
  Height="50"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InhibitionPossibilityAndLevelSelectionOffered"
->
-<StateMachine
- InitialState=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Driver has selected a level"
->
-<ReqRef
- Id="Entry 5.4.3.3.10"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.3.9"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver has selected a level"
->
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- DMI.MasterDMI().In_ErtmsEtcsLevel.Level</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Driver has selected inhibition"
+ Name="LevelSelectionOffered"
 >
 <ReqRef
  Id="Entry 5.4.3.2.S2.1"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver has selected inhibition"
->
-<PreConditions>
-<PreCondition>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.SelectLevel</Action><Action>Kernel.InhibitedLevels.Levels &lt;- DMI.MasterDMI().In_LevelInhibition.InhibitedLevels</Action><Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Inhibition active"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Inhibition active"
->
-<ReqRef
- Id="Entry 5.4.3.3.8"
->
-</ReqRef><PreConditions>
-<PreCondition>THERE_IS_IN DMI.MasterDMI().In_LevelInhibition.InhibitedLevels | X == Kernel.Level.Value</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="80"
- Y="280"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="SelectLevel"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><StateMachine
- InitialState=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Invalid level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.3"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Invalid level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
-  Level =&gt; Kernel.Level.Value, 
-  Enter =&gt; True, 
-  ReValidate =&gt; True
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unknown level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Unknown level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
-  Level =&gt; Level.Unknown, 
-  Enter =&gt; True, 
-  ReValidate =&gt; False
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Valid level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.2"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Valid level"
->
-<PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="80"
- Y="390"
- Width="140"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LevelSelectionOffered"
->
-<StateMachine
  InitialState=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1209,7 +1022,19 @@
  Implemented="TRUE"
  Name="Driver has selected a level"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.2"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.8"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.9"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1223,15 +1048,18 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="390"
- Y="280"
+ X="370"
+ Y="310"
  Width="140"
  Height="50"
  Implemented="TRUE"
  Name="ExitState"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.5"
+ Id="Entry 5.4.3.2.S2.3"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.4"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1242,12 +1070,10 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Exit state"
 >
-<ReqRef
- Id="Entry 5.4.3.2.S2.5"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1264,7 +1090,10 @@
  Implemented="TRUE"
  Name="Level 2 or 3"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.3"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1281,7 +1110,10 @@
  Implemented="TRUE"
  Name="Level 0, 1 or LNTC"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="Entry 5.4.3.2.S2.4"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1302,10 +1134,13 @@
  Width="140"
  Height="50"
  Implemented="TRUE"
- Name="SelectLevelAndOfferInhibitionPossibility"
+ Name="OfferLevelSelection"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2"
+ Id="Entry 5.4.3.2.S2.1"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1316,7 +1151,7 @@
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Select level and offer inhibition possibility"
+ Name="Select level"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -1336,7 +1171,7 @@
  Name="Unknown level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="Entry 5.4.3.2.S2.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1348,13 +1183,10 @@
 <PreConditions>
 <PreCondition>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Level.Unknown, 
   Enter =&gt; True, 
   ReValidate =&gt; False
-)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1363,7 +1195,7 @@
  Name="Invalid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1375,13 +1207,10 @@
 <PreConditions>
 <PreCondition>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
+<Action>THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action>DMI.MasterDMI().InitiateLevelRequest(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
-)</Action><Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1390,10 +1219,10 @@
  Name="Valid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="Entry 5.4.3.2.S2.3"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="Entry 5.4.3.2.S2.4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1408,29 +1237,6 @@
 <Action>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Offer inhibition possibility"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Offer inhibition possibility"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>DMI.MasterDMI().InitiateLevelInhibitionRequest(
-  InhibitLevel =&gt; True, 
-  RemoveExistingInhibition =&gt; True
-)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1556,7 +1362,7 @@
  Id="Entry 5.4.3.2.S3.1.2"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.11"
+ Id="Entry 5.4.3.3.10"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1770,10 +1576,10 @@
  Name="RBC Id Changed"
 >
 <ReqRef
- Id="Entry 5.4.3.3.11"
+ Id="Entry 5.4.3.3.10"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.12"
+ Id="Entry 5.4.3.3.11"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId</PreCondition></PreConditions>
@@ -2087,13 +1893,13 @@
  Name="Handle train position data state"
 >
 <ReqRef
- Id="5.4.5.3.7.1"
->
-</ReqRef><ReqRef
- Id="Entry 5.4.3.3.19"
->
-</ReqRef><ReqRef
  Id="Entry 5.4.3.2.S10.4"
+>
+</ReqRef><ReqRef
+ Id="Entry 5.4.3.3.18"
+>
+</ReqRef><ReqRef
+ Id="5.4.5.3.g.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2117,7 +1923,7 @@
  Name="Allow start"
 >
 <ReqRef
- Id="5.4.5.3.8"
+ Id="5.4.5.3.h"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2407,10 +2213,10 @@
  Name="Receive driver response"
 >
 <ReqRef
- Id="Entry 5.4.3.3.23"
+ Id="Entry 5.4.3.3.22"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.24"
+ Id="Entry 5.4.3.3.23"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2615,7 +2421,7 @@
  Name="Allow reenter train data"
 >
 <ReqRef
- Id="5.4.5.3.4"
+ Id="5.4.5.3.d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2664,10 +2470,10 @@
  Name="Allow non leading"
 >
 <ReqRef
- Id="5.4.5.3.6"
+ Id="Entry 5.4.3.3.19"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.20"
+ Id="5.4.5.3.f"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2707,10 +2513,10 @@
  Name="Allow shunting"
 >
 <ReqRef
- Id="5.4.5.3.7"
+ Id="Entry 5.4.3.3.19"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.20"
+ Id="5.4.5.3.g"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2758,7 +2564,7 @@
  Name="Check position validity"
 >
 <ReqRef
- Id="5.4.5.3.7.1"
+ Id="5.4.5.3.g.1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3364,7 +3170,7 @@
  Id="Entry 5.4.3.2.A24"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.17"
+ Id="Entry 5.4.3.3.16"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3538,10 +3344,10 @@
  Name="E16"
 >
 <ReqRef
- Id="Entry 5.4.3.3.21"
+ Id="Entry 5.4.3.3.20"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.22"
+ Id="Entry 5.4.3.3.21"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
@@ -4105,28 +3911,28 @@
  Id="Condition 3.A3.4.1.3.1.38.3"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.39.3"
+ Id="3.A3.4.1.2.k"
+>
+</ReqRef><ReqRef
+ Id="3.5.5.1.4"
+>
+</ReqRef><ReqRef
+ Id="Condition 3.A3.4.1.3.1.40.3"
+>
+</ReqRef><ReqRef
+ Id="Entry 3.A3.4.1.3.1.41"
 >
 </ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.41.3"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.42.3"
+ Id="Condition 3.A3.4.1.3.1.48.3"
 >
 </ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.49.3"
 >
 </ReqRef><ReqRef
  Id="Condition 3.A3.4.1.3.1.50.3"
->
-</ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.51.3"
->
-</ReqRef><ReqRef
- Id="3.A3.4.1.2.k"
->
-</ReqRef><ReqRef
- Id="3.5.5.1.4"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition></PreConditions>
@@ -4161,10 +3967,10 @@
  Name="Allow override"
 >
 <ReqRef
- Id="5.4.5.3.1"
+ Id="Entry 5.4.3.3.19"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.20"
+ Id="5.4.5.3.a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4204,7 +4010,7 @@
  Name="Allow reenter driver ID"
 >
 <ReqRef
- Id="5.4.5.3.2"
+ Id="5.4.5.3.b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4257,7 +4063,7 @@
  Name="Allow reenter train running number"
 >
 <ReqRef
- Id="5.4.5.3.3"
+ Id="5.4.5.3.c"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4310,7 +4116,7 @@
  Name="Allow reenter level"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="5.4.5.3.e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4357,7 +4163,7 @@
  Name="Handle change of level validity"
 >
 <ReqRef
- Id="Entry 5.4.3.3.25"
+ Id="Entry 5.4.3.3.24"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4377,7 +4183,7 @@
  Name="Handle change of RBC ID / Phone number validity"
 >
 <ReqRef
- Id="Entry 5.4.3.3.25"
+ Id="Entry 5.4.3.3.24"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6332,7 +6138,7 @@
  Id="Entry 5.4.3.2.S10.1.1"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.7.2"
+ Id="5.4.5.3.g.2"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Mode == Mode.SB</PreCondition></PreConditions>
@@ -6452,7 +6258,6 @@
 <Actions>
 <Action>THIS &lt;- HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
 </RuleCondition><RuleCondition
- Implemented="TRUE"
  Name="No order received, maximum number of requests reached"
 >
 <ReqRef
@@ -7011,17 +6816,6 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 <Comment></Comment>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
 </Variable><Variable
- Type="InhibitedLevels"
- DefaultValue=""
- VariableMode="Internal"
- Implemented="TRUE"
- Name="InhibitedLevels"
->
-<ReqRef
- Id="3.15.9.2"
->
-</ReqRef><Comment></Comment>
-</Variable><Variable
  Type="Mode"
  DefaultValue="Mode.NP"
  VariableMode="Internal"
@@ -7058,7 +6852,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="3.18.4.5.1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.12"
+ Id="Entry 4.7.2.2.13"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7100,7 +6894,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Id="3.15.10.1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.45"
+ Id="Entry 4.7.2.2.46"
 >
 </ReqRef><Comment>Represents the first target at zero speed.</Comment>
 </Variable><Variable
@@ -7110,10 +6904,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.44"
+ Id="3.15.10.1"
 >
 </ReqRef><ReqRef
- Id="3.15.10.1"
+ Id="Entry 4.7.2.2.45"
 >
 </ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
@@ -7124,10 +6918,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="SupervisionStatus"
 >
 <ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="3.13.10.1.1"
 >
 </ReqRef><ReqRef
- Id="3.13.10.1.1"
+ Id="Entry 4.7.2.2.9"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7139,7 +6933,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TargetDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.2.6"
+ Id="Entry 4.7.2.2.7"
 >
 </ReqRef><Comment>The target distance of the train.</Comment>
 </Variable><Variable
@@ -7270,7 +7064,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TripReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="Entry 4.7.2.2.10"
 >
 </ReqRef><Comment>Represents the trip raison, if any.</Comment>
 </Variable><Variable

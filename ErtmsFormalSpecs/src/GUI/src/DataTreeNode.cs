@@ -62,12 +62,7 @@ namespace GUI
         /// <summary>
         /// The model represented by this node
         /// </summary>
-        private Utils.IModelElement model;
-        public Utils.IModelElement Model
-        {
-            get { return model; }
-            private set { model = value; }
-        }
+        public DataDictionary.ModelElement Model { get; set; }
 
         /// <summary>
         /// Provides the base tree view which holds this node
@@ -104,7 +99,7 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public BaseTreeNode(Utils.IModelElement value, string name = null, bool isFolder = false)
+        public BaseTreeNode(DataDictionary.ModelElement value, string name = null, bool isFolder = false)
             : base(name)
         {
             Model = value;
@@ -525,9 +520,9 @@ namespace GUI
                 parent.Nodes.Remove(this);
                 Model.Delete();
 
-                if (model is DataDictionary.ReqRelated)
+                if (Model is DataDictionary.ReqRelated)
                 {
-                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)model;
+                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)Model;
                     reqRelated.setVerified(false);
                 }
 
@@ -884,7 +879,7 @@ namespace GUI
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class DataTreeNode<T> : BaseTreeNode
-        where T : class, Utils.IModelElement
+        where T : DataDictionary.ModelElement
     {
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 

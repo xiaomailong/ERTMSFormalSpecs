@@ -13,7 +13,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="List of inhibited levels"
+ Name="Driver ID"
 >
 <TestCases>
 <TestCase
@@ -278,321 +278,6 @@
 >
 <ReqRef
  Id="Condition 3.A3.4.1.3.1.39.3"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="k) Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InhibitedLevels.Levels &lt;- [Default.Level.L1, Default.Level.LNTC]</Action><Action>Kernel.InhibitedLevels.DataState &lt;- DataState.Valid</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="k) Step2 - Driver closes the desk during SoM"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.InhibitedLevels.DataState == DataState.Valid</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.InhibitedLevels.Levels == [Default.Level.L1, Default.Level.LNTC]</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Driver ID"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Setup"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Situations a-d, f, n"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.40.1"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="a) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="a) Step2 -  Execution of a conditional emergency stop"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="b) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="b) Step2 -  Reception of a shortened MA"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="c) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="c) Step2 -  Stored MA is shortened due to a section time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="d) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="d) Step2 -  SvL is shifted due to an overlap time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="f) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="n) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
->
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Situations e, g-j, l, m"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.40.2"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="e) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="e) Step2 - Stored MA is shortened due to an end section time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="g) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="h) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="i) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="j) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="l) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="m) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
->
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Situation k"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.40.3"
 >
 </ReqRef><Steps>
 <Step
@@ -1299,7 +984,7 @@
  Name="Situations a-d, f, n"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.41.1"
+ Id="Condition 3.A3.4.1.3.1.40.1"
 >
 </ReqRef><Steps>
 <Step
@@ -1406,7 +1091,7 @@
  Name="Situations e, g-j, l, m"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.41.2"
+ Id="Condition 3.A3.4.1.3.1.40.2"
 >
 </ReqRef><Steps>
 <Step
@@ -1530,7 +1215,7 @@
  Name="Situation k"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.41.3"
+ Id="Condition 3.A3.4.1.3.1.40.3"
 >
 </ReqRef><Steps>
 <Step
@@ -1582,6 +1267,321 @@
  RBC_ID=""
  RBCPhone=""
  Name="RBC/RIU System Version"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations a-d, f, n"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.48.1"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="a) Step2 -  Execution of a conditional emergency stop"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="b) Step2 -  Reception of a shortened MA"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="c) Step2 -  Stored MA is shortened due to a section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="d) Step2 -  SvL is shifted due to an overlap time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Situations e, g-j, l, m"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.48.2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="e) Step2 - Stored MA is shortened due to an end section time-out"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step1 - Setup"
+>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
+>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Situation k"
+>
+<ReqRef
+ Id="Condition 3.A3.4.1.3.1.48.3"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.RbcRiuSystemVersion.Value &lt;- &apos;RBC RIU system version&apos;</Action><Action>EURORADIO.RbcRiuSystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="k) Step2 - Driver closes the desk during SoM"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>EURORADIO.RbcRiuSystemVersion.DataState == DataState.Valid</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.RbcRiuSystemVersion.Value == &apos;RBC RIU system version&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Operated System Version"
 >
 <TestCases>
 <TestCase
@@ -1861,7 +1861,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.RbcRiuSystemVersion.Value &lt;- &apos;RBC RIU system version&apos;</Action><Action>EURORADIO.RbcRiuSystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;147&apos;</Action><Action>Kernel.OperatedSystemVersion.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1880,9 +1880,9 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->EURORADIO.RbcRiuSystemVersion.DataState == DataState.Valid</Expectation><Expectation
+>Kernel.OperatedSystemVersion.Value == &apos;147&apos;</Expectation><Expectation
  Kind="Instantaneous"
->EURORADIO.RbcRiuSystemVersion.Value == &apos;RBC RIU system version&apos;</Expectation></Expectations>
+>Kernel.OperatedSystemVersion.DataState == DataState.Valid</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1896,7 +1896,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Operated System Version"
+ Name="RBC ID/Phone number"
 >
 <TestCases>
 <TestCase
@@ -1929,7 +1929,7 @@
  Name="Situations a-d, f, n"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.50.1"
+ Id="Condition 3.A3.4.1.3.1.41.1"
 >
 </ReqRef><Steps>
 <Step
@@ -2036,7 +2036,7 @@
  Name="Situations e, g-j, l, m"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.50.2"
+ Id="Condition 3.A3.4.1.3.1.41.2"
 >
 </ReqRef><Steps>
 <Step
@@ -2160,7 +2160,7 @@
  Name="Situation k"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.50.3"
+ Id="Condition 3.A3.4.1.3.1.41.3"
 >
 </ReqRef><Steps>
 <Step
@@ -2176,7 +2176,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;147&apos;</Action><Action>Kernel.OperatedSystemVersion.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2195,9 +2195,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.OperatedSystemVersion.Value == &apos;147&apos;</Expectation><Expectation
+>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.OperatedSystemVersion.DataState == DataState.Valid</Expectation></Expectations>
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;RBC_Id&apos;</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2211,7 +2213,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="RBC ID/Phone number"
+ Name="Train Running Number"
 >
 <TestCases>
 <TestCase
@@ -2476,323 +2478,6 @@
 >
 <ReqRef
  Id="Condition 3.A3.4.1.3.1.42.3"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="k) Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;RBC_Id&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;123456789&apos;</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="k) Step2 - Driver closes the desk during SoM"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</Expectation><Expectation
- Kind="Instantaneous"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber == &apos;123456789&apos;</Expectation><Expectation
- Kind="Instantaneous"
->EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id == &apos;RBC_Id&apos;</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Train Running Number"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Setup"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Situations a-d, f, n"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.43.1"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="a) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="a) Step2 -  Execution of a conditional emergency stop"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="b) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="b) Step2 -  Reception of a shortened MA"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="c) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="c) Step2 -  Stored MA is shortened due to a section time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="d) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="d) Step2 -  SvL is shifted due to an overlap time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="f) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="f) Step2 -  A cooperative MA revocation is granted by the onboard"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="n) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="n) Step2 -  LOA becomes EOA and the on-board consisders an SvL"
->
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Situations e, g-j, l, m"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.43.2"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="e) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="e) Step2 - Stored MA is shortened due to an end section time-out"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="g) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="g) Step2 - Inconsistency in a BG marked as unlinked and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="h) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="h) Step2 -  A linking reaction led to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="i) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="i) Step2 -  Reaction due to the supervision of the safe radio connection let to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="j) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="j) Step2 -  The train category, axle load category, loading gauge or traction system is changed and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="l) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="l) Step2 -  RAMS related supervision functions led to a SB and the train is at standstill"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="m) Step1 - Setup"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="m) Step2 -  Inconsistency in a BG marked as linked and no linking is used onboard and the train is at standstill"
->
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Situation k"
->
-<ReqRef
- Id="Condition 3.A3.4.1.3.1.43.3"
 >
 </ReqRef><Steps>
 <Step
@@ -3492,7 +3177,7 @@
  Name="Situations a-d, f, n"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.51.1"
+ Id="Condition 3.A3.4.1.3.1.50.1"
 >
 </ReqRef><Steps>
 <Step
@@ -3599,7 +3284,7 @@
  Name="Situations e, g-j, l, m"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.51.2"
+ Id="Condition 3.A3.4.1.3.1.50.2"
 >
 </ReqRef><Steps>
 <Step
@@ -3723,7 +3408,7 @@
  Name="Situation k"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.51.3"
+ Id="Condition 3.A3.4.1.3.1.50.3"
 >
 </ReqRef><Steps>
 <Step

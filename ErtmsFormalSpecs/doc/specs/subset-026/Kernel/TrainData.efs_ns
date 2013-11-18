@@ -143,13 +143,13 @@
  Id="3.13.2.2.1.1.i"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.k"
->
-</ReqRef><ReqRef
  Id="3.13.3.4.1.1"
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.1.2"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.j"
 >
 </ReqRef><Comment>Represents the length of the train.</Comment>
 </StructureElement><StructureElement
@@ -222,17 +222,6 @@
 >
 <ReqRef
  Id="3.18.3.2.h"
->
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
- TypeName="Default.NationalSystems"
- Default="[]"
- Mode="Internal"
- Implemented="TRUE"
- Name="NationalSystemsAvailableOnBoard"
->
-<ReqRef
- Id="3.18.3.2.i"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -486,9 +475,6 @@
  Id="3.13.3.4.1.1"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.j"
->
-</ReqRef><ReqRef
  Id="3.13.6.4.2.d"
 >
 </ReqRef><ReqRef
@@ -496,6 +482,9 @@
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.1.2"
+>
+</ReqRef><ReqRef
+ Id="3.13.6.2.1.2.i"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -510,12 +499,6 @@
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.6.1"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
- Id="3.13.6.3.1.2.d"
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.1.2"
@@ -535,12 +518,6 @@
  Id="3.13.2.2.6.1"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
- Id="3.13.6.3.1.2.d"
->
-</ReqRef><ReqRef
  Id="3.13.2.2.1.2"
 >
 </ReqRef><Comment></Comment>
@@ -556,12 +533,6 @@
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.6.1"
->
-</ReqRef><ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef><ReqRef
- Id="3.13.6.3.1.2.d"
 >
 </ReqRef><ReqRef
  Id="3.13.2.2.1.2"
@@ -638,6 +609,37 @@
  Id="3.13.2.2.1.2"
 >
 </ReqRef><Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Levels"
+ Default="[
+  Default.LevelData {
+     Value =&gt; Level.L1,
+     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.L2,
+     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 0
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 1
+  }
+]"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LevelsSupportedOnBoard"
+>
+<ReqRef
+ Id="3.18.3.2.i"
+>
+</ReqRef><ReqRef
+ Id="5.10.2.4.1"
+>
+</ReqRef><Comment>DefaultValue is set arbitrarily. #morido, 13/10/09</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainData"

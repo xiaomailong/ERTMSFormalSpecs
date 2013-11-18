@@ -288,6 +288,7 @@ IN
  NeedsRequirement="FALSE"
  Name="Verify output"
 >
+<Comment>Warning: values for SBD for 185 km/h and 190 km/h and value for A_brake_service for 180 km/h were incorrect in ERA excel sheet =&gt; they were corrected to avoid test failure.</Comment>
 <Steps>
 <Step
  IO="NA"
@@ -1009,7 +1010,7 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
     (
-        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1380.71 )
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1403.94 )
     ),
     Val2 =&gt; 185.0
 )</Expectation><Expectation
@@ -1018,7 +1019,7 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
     (
-        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1450.31 )
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1500.31 )
     ),
     Val2 =&gt; 190.0
 )</Expectation></Expectations>

@@ -4275,7 +4275,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Chapter otherElement in other.allChapters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 compareChapter ( subElement, otherElement, diff );
                                 compared = true;
@@ -4294,7 +4294,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Chapter subElement in obj.allChapters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 found = true;
                                 break;
@@ -4431,7 +4431,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 compareParagraph ( subElement, otherElement, diff );
                                 compared = true;
@@ -4450,7 +4450,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 found = true;
                                 break;
@@ -4543,7 +4543,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 compareParagraph ( subElement, otherElement, diff );
                                 compared = true;
@@ -4562,7 +4562,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
                             {
                                 found = true;
                                 break;

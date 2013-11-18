@@ -168,6 +168,9 @@ namespace DataDictionary.Interpreter
                     visit(dictionary, true);
                 }
             }
+            catch (System.Exception)
+            {
+            }
             finally
             {
                 ModelElement.BeSilent = false;
@@ -286,11 +289,6 @@ namespace DataDictionary.Interpreter
             if (CurrentCompile.Rebuild)
             {
                 cas.Expression = null;
-            }
-
-            if (cas.EnclosingFunction.Name == "GradientEnd")
-            {
-                int i = 1;
             }
 
             // Side effect : compiles or recompiles the expressions

@@ -1,0 +1,37 @@
+<NameSpace
+ Name="SpecificTransitions"
+>
+<NameSpaces>
+</NameSpaces>
+<Procedures>
+<Procedure
+ NeedsRequirement="FALSE"
+ Name="L0ToL1"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="PreconditionsForTransition"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="preconditions_not_met"
+>
+<ReqRef
+ Id="5.10.3.4.1"
+>
+</ReqRef>
+<PreConditions>
+<PreCondition>Kernel.MA.MA == EMPTY</PreCondition>
+<PreCondition>Kernel.TrackDescription.TrackDescriptionAvailable() == False</PreCondition>
+</PreConditions>
+<Actions>
+<Action>SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+</NameSpace>
