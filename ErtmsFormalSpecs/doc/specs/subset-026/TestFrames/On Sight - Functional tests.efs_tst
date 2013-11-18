@@ -417,6 +417,9 @@ Messages.EUROBALISE.SubStructure1
 </ReqRef><ReqRef
  Id="5.9.2.7"
 >
+</ReqRef><ReqRef
+ Id="5.9.2.5"
+>
 </ReqRef><Steps>
 <Step
  IO="NA"
@@ -572,6 +575,16 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step2"
 >
 <Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 60.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step3"
+>
+<Actions>
 <Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
@@ -645,7 +658,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+>Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -672,6 +685,9 @@ Messages.EUROBALISE.SubStructure1
 </ReqRef><ReqRef
  Id="5.9.2.7"
 >
+</ReqRef><ReqRef
+ Id="5.9.2.5"
+>
 </ReqRef><Steps>
 <Step
  IO="NA"
@@ -695,7 +711,7 @@ Messages.EUROBALISE.SubStructure1
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 Level 1 + Mode SR"
+ Name="Step2 Level 1 + Mode OS"
 >
 <SubSteps>
 <SubStep
@@ -814,7 +830,7 @@ Messages.EUROBALISE.SubStructure1
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step4 BTM.Message + Mode SR"
+ Name="Step4 BTM.Message + Mode SR + Speed limit surpassed"
 >
 <SubSteps>
 <SubStep
@@ -901,12 +917,41 @@ Messages.EUROBALISE.SubStructure1
            }
                }
                            ]
-}</Action></Actions>
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 60.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step3"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Speed == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Permitted Speed surpassed"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
