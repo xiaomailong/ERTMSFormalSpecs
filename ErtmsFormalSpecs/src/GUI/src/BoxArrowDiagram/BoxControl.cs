@@ -263,7 +263,6 @@ namespace GUI.BoxArrowDiagram
             moving = true;
             moveStartLocation = e.Location;
             positionBeforeMove = new Point(Model.X, Model.Y);
-
         }
 
         /// <summary>
@@ -313,10 +312,10 @@ namespace GUI.BoxArrowDiagram
         /// <param name="y"></param>
         private void SetPosition(int x, int y)
         {
-            int posX = x / GRID_SIZE;
+            int posX = (x) / GRID_SIZE;
             posX = posX * GRID_SIZE;
 
-            int posY = y / GRID_SIZE;
+            int posY = (y) / GRID_SIZE;
             posY = posY * GRID_SIZE;
 
             Model.X = posX;

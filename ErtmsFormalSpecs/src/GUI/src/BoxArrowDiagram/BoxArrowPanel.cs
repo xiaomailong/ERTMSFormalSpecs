@@ -575,6 +575,7 @@ namespace GUI.BoxArrowDiagram
         {
             base.OnPaint(e);
 
+            SuspendLayout();
             foreach (BoxControl<BoxModel, ArrowModel> control in boxes.Values)
             {
                 control.PaintInBoxArrowPanel(e);
@@ -584,11 +585,12 @@ namespace GUI.BoxArrowDiagram
             {
                 control.PaintInBoxArrowPanel(e);
             }
+            ResumeLayout(true);
         }
 
-        internal void ControlHasMoved()
+        public void ControlHasMoved()
         {
-            RefreshControl();
+            UpdateArrowPosition();
         }
 
         /// <summary>
