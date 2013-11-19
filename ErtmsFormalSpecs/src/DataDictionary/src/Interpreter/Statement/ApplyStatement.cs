@@ -162,6 +162,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            if (ListExpression.Ref is Parameter)
+            {
+                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+            }
+
             InterpretationContext context = new InterpretationContext(Root);
             Types.Collection listExpressionType = ListExpression.GetExpressionType() as Types.Collection;
             if (listExpressionType == null)
