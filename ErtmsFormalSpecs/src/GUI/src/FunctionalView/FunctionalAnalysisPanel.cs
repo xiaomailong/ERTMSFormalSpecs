@@ -68,7 +68,7 @@ namespace GUI.FunctionalView
         /// <returns></returns>
         public override ArrowControl<NameSpace, AccessMode> createArrow(AccessMode model)
         {
-            ArrowControl<NameSpace, AccessMode> retVal = new FunctionCallControl();
+            ArrowControl<NameSpace, AccessMode> retVal = new AccessToControl();
             retVal.Model = model;
 
             return retVal;

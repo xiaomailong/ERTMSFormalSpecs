@@ -53,6 +53,7 @@ namespace GUI.BoxArrowDiagram
         public ArrowControl()
         {
             InitializeComponent();
+            InitializeColors();
 
             ArrowMode = ArrowModeEnum.Full;
             ArrowFill = ArrowFillEnum.Line;
@@ -69,11 +70,33 @@ namespace GUI.BoxArrowDiagram
             container.Add(this);
 
             InitializeComponent();
+            InitializeColors();
 
             ArrowMode = ArrowModeEnum.Full;
             ArrowFill = ArrowFillEnum.Line;
             MouseClick += new MouseEventHandler(MouseClickHandler);
             MouseDoubleClick += new MouseEventHandler(MouseDoubleClickHandler);
+        }
+
+        /// <summary>
+        /// Initializes the colors of the pens
+        /// </summary>
+        private void InitializeColors()
+        {
+            NORMAL_COLOR = Color.Black;
+            NORMAL_PEN = new Pen(NORMAL_COLOR);
+
+            DEDUCED_CASE_COLOR = Color.MediumPurple;
+            DEDUCED_CASE_PEN = new Pen(DEDUCED_CASE_COLOR);
+
+            DISABLED_COLOR = Color.Red;
+            DISABLED_PEN = new Pen(DISABLED_COLOR);
+
+            ACTIVATED_COLOR = Color.Blue;
+            ACTIVATED_PEN = new Pen(ACTIVATED_COLOR, 4);
+
+            EXTERNAL_BOX_COLOR = Color.Green;
+            EXTERNAL_BOX_PEN = new Pen(EXTERNAL_BOX_COLOR, 2);
         }
 
         /// <summary>
@@ -132,7 +155,7 @@ namespace GUI.BoxArrowDiagram
         /// The Model
         /// </summary>
         private ArrowModel __model;
-        public ArrowModel Model
+        public virtual ArrowModel Model
         {
             get { return __model; }
             set
@@ -392,32 +415,32 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// A normal pen
         /// </summary>
-        public static Color NORMAL_COLOR = Color.Black;
-        public static Pen NORMAL_PEN = new Pen(NORMAL_COLOR);
+        public Color NORMAL_COLOR;
+        public Pen NORMAL_PEN;
 
         /// <summary>
         /// A degraded case pen
         /// </summary>
-        public static Color DEDUCED_CASE_COLOR = Color.MediumPurple;
-        public static Pen DEDUCED_CASE_PEN = new Pen(DEDUCED_CASE_COLOR);
+        public Color DEDUCED_CASE_COLOR;
+        public Pen DEDUCED_CASE_PEN;
 
         /// <summary>
         /// A pen indicating that the arrow is disabled
         /// </summary>
-        public static Color DISABLED_COLOR = Color.Red;
-        public static Pen DISABLED_PEN = new Pen(DISABLED_COLOR);
+        public Color DISABLED_COLOR;
+        public Pen DISABLED_PEN;
 
         /// <summary>
         /// A activated pen
         /// </summary>
-        public static Color ACTIVATED_COLOR = Color.Blue;
-        public static Pen ACTIVATED_PEN = new Pen(ACTIVATED_COLOR, 4);
+        public Color ACTIVATED_COLOR;
+        public Pen ACTIVATED_PEN;
 
         /// <summary>
         /// An external box
         /// </summary>
-        public static Color EXTERNAL_BOX_COLOR = Color.Green;
-        public static Pen EXTERNAL_BOX_PEN = new Pen(EXTERNAL_BOX_COLOR, 2);
+        public Color EXTERNAL_BOX_COLOR;
+        public Pen EXTERNAL_BOX_PEN;
 
         /// <summary>
         /// Indicates that the arrow should be displayed in the DISABLED color

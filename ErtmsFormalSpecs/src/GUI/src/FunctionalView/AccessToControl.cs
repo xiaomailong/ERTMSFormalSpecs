@@ -25,12 +25,12 @@ using DataDictionary.Types.AccessMode;
 
 namespace GUI.FunctionalView
 {
-    public partial class FunctionCallControl : ArrowControl<NameSpace, AccessMode>
+    public partial class AccessToControl : ArrowControl<NameSpace, AccessMode>
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public FunctionCallControl()
+        public AccessToControl()
             : base()
         {
             ArrowMode = ArrowModeEnum.Half;
@@ -41,10 +41,43 @@ namespace GUI.FunctionalView
         /// Constructor
         /// </summary>
         /// <param name="container"></param>
-        public FunctionCallControl(IContainer container)
+        public AccessToControl(IContainer container)
             : base()
         {
             container.Add(this);
+        }
+
+        public override AccessMode Model
+        {
+            get
+            {
+                return base.Model;
+            }
+            set
+            {
+                base.Model = value;
+                AccessToVariable accessToVariable = value as AccessToVariable;
+                if (accessToVariable != null)
+                {
+                    switch (accessToVariable.AccessMode)
+                    {
+                        case DataDictionary.Interpreter.Usage.ModeEnum.Read:
+                            NORMAL_COLOR = Color.Green;
+                            NORMAL_PEN = new Pen(NORMAL_COLOR);
+                            break;
+
+                        case DataDictionary.Interpreter.Usage.ModeEnum.ReadAndWrite:
+                            NORMAL_COLOR = Color.Orange;
+                            NORMAL_PEN = new Pen(NORMAL_COLOR);
+                            break;
+
+                        case DataDictionary.Interpreter.Usage.ModeEnum.Write:
+                            NORMAL_COLOR = Color.Red;
+                            NORMAL_PEN = new Pen(NORMAL_COLOR);
+                            break;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -62,6 +95,5 @@ namespace GUI.FunctionalView
 
             return retVal;
         }
-
     }
 }
