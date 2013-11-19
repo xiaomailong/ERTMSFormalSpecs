@@ -62,11 +62,6 @@ namespace DataDictionary
                 NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container);
                 NameSpace targetNameSpace = getCorrespondingNameSpace(target, container);
 
-                if (functionCall.Referenced.Name == "BG_To_LRBG")
-                {
-                    //    System.Diagnostics.Debugger.Break();
-                }
-
                 if (considerCall(functionCall, container, sourceNameSpace, targetNameSpace))
                 {
                     retVal.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, target));
