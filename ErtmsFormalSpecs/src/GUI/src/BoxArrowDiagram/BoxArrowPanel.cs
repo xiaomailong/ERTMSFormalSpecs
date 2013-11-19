@@ -361,7 +361,7 @@ namespace GUI.BoxArrowDiagram
                 }
                 foreach (ArrowModel model in getArrows())
                 {
-                    if (!model.Source.Hidden && !model.Target.Hidden)
+                    if (model.Source != null && !model.Source.Hidden && model.Target != null && !model.Target.Hidden)
                     {
                         ArrowControl<BoxModel, ArrowModel> arrowControl = createArrow(model);
                         arrowControl.Parent = this;
