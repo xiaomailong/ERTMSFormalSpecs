@@ -45,8 +45,18 @@ namespace GUI.BoxArrowDiagram
         {
             components = new System.ComponentModel.Container();
             AutoScroll = true;
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenu.SuspendLayout();
+            this.ContextMenuStrip = this.contextMenu;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(154, 98);
+            this.contextMenu.ResumeLayout(false);
         }
 
+        protected System.Windows.Forms.ContextMenuStrip contextMenu;
         #endregion
     }
 }

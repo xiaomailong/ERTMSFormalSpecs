@@ -48,7 +48,6 @@ namespace GUI.BoxArrowDiagram
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.BoxArrowContainerPanel = createPanel();
-            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.descriptionRichTextBox = new EditorTextBox();
@@ -56,7 +55,6 @@ namespace GUI.BoxArrowDiagram
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -85,18 +83,12 @@ namespace GUI.BoxArrowDiagram
             // StateContainerPanel
             // 
             this.BoxArrowContainerPanel.AutoScroll = true;
-            this.BoxArrowContainerPanel.ContextMenuStrip = this.contextMenu;
             this.BoxArrowContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoxArrowContainerPanel.Location = new System.Drawing.Point(0, 0);
             this.BoxArrowContainerPanel.Margin = new System.Windows.Forms.Padding(2);
             this.BoxArrowContainerPanel.Name = "StateContainerPanel";
             this.BoxArrowContainerPanel.Size = new System.Drawing.Size(403, 341);
             this.BoxArrowContainerPanel.TabIndex = 0;
-            // 
-            // contextMenu
-            // 
-            this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(154, 98);
             // 
             // splitContainer2
             // 
@@ -149,7 +141,6 @@ namespace GUI.BoxArrowDiagram
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.contextMenu.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -163,7 +154,6 @@ namespace GUI.BoxArrowDiagram
         protected BoxArrowPanel<BoxModel, ArrowModel> BoxArrowContainerPanel;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PropertyGrid propertyGrid;
-        protected System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private EditorTextBox descriptionRichTextBox;
     }

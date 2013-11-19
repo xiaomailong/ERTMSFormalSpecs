@@ -53,6 +53,11 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
+        /// The selected object
+        /// </summary>
+        public object Selected { get; set; }
+
+        /// <summary>
         /// Method used to create a box
         /// </summary>
         /// <param name="model"></param>
@@ -508,6 +513,15 @@ namespace GUI.BoxArrowDiagram
         private void ComputeArrowTextPosition()
         {
             AllocatedBoxes = new BoxAllocation();
+
+            // Allocate all boxes as non available
+            foreach (BoxControl<BoxModel, ArrowModel> box in boxes.Values)
+            {
+                Rectangle rectangle = box.DisplayRectangle;
+                rectangle.Offset(box.Location);
+                AllocatedBoxes.Allocate(rectangle);
+            }
+
             foreach (ArrowControl<BoxModel, ArrowModel> arrow in arrows.Values)
             {
                 Point center = arrow.getCenter();

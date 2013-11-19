@@ -175,6 +175,7 @@ namespace GUI.BoxArrowDiagram
         public void Select(object model)
         {
             Selected = model;
+            BoxArrowContainerPanel.Selected = model;
             if (model is BoxControl<BoxModel, ArrowModel>)
             {
                 BoxControl<BoxModel, ArrowModel> control = model as BoxControl<BoxModel, ArrowModel>;
