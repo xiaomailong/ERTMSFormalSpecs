@@ -21,10 +21,11 @@ using DataDictionary.Rules;
 using DataDictionary.Types;
 using GUI.BoxArrowDiagram;
 using DataDictionary.Constants;
+using DataDictionary.Types.AccessMode;
 
 namespace GUI.FunctionalView
 {
-    public partial class FunctionCallControl : ArrowControl<NameSpace, ProcedureOrFunctionCall>
+    public partial class FunctionCallControl : ArrowControl<NameSpace, AccessMode>
     {
         /// <summary>
         /// Constructor

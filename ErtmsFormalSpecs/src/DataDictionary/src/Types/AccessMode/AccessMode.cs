@@ -19,42 +19,59 @@ namespace DataDictionary.Types.AccessMode
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using DataDictionary.Interpreter;
 
     /// <summary>
-    /// This class represents a procedure or function call
+    /// References an access to a model element, referencing the source and target namespaces
     /// </summary>
-    public class ProcedureOrFunctionCall : AccessMode, IComparable<ProcedureOrFunctionCall>
+    public abstract class AccessMode : IGraphicalArrow<NameSpace>, IComparable<AccessMode>
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
-        /// <param name="call"></param>
-        public ProcedureOrFunctionCall(NameSpace source, NameSpace target, ICallable call)
-            : base(source, target)
+        public AccessMode(NameSpace source, NameSpace target)
         {
-            Called = call;
+            Source = source;
+            Target = target;
+        }
+        /// <summary>
+        /// The source of the arrow
+        /// </summary>
+        public NameSpace Source { get; private set; }
+
+        /// <summary>
+        /// Sets the source box for this arrow
+        /// </summary>
+        /// <param name="initialBox"></param>
+        public void SetInitialBox(IGraphicalDisplay initialBox)
+        {
+            // We cannot change a call through this
         }
 
         /// <summary>
-        /// The model element which is referenced by this arrow
+        /// The target of the arrow
         /// </summary>
-        public ICallable Called { get; private set; }
+        public NameSpace Target { get; private set; }
 
         /// <summary>
-        /// The referenced model 
+        /// Sets the target box for this arrow
         /// </summary>
-        public override ModelElement ReferencedModel
+        /// <param name="targetBox"></param>
+        public void SetTargetBox(IGraphicalDisplay targetBox)
         {
-            get { return (ModelElement)Called; }
+            // We cannot change a call through this
         }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public override string GraphicalName { get { return Called.Name; } }
+        public abstract string GraphicalName { get; }
+
+        /// <summary>
+        /// The referenced model element
+        /// </summary>
+        public abstract ModelElement ReferencedModel { get; }
 
         // Summary:
         //     Compares the current object with another object of the same type.
@@ -68,13 +85,18 @@ namespace DataDictionary.Types.AccessMode
         //     The return value has the following meanings: Value Meaning Less than zero
         //     This object is less than the other parameter.Zero This object is equal to
         //     other. Greater than zero This object is greater than other.
-        public int CompareTo(ProcedureOrFunctionCall other)
+        public int CompareTo(AccessMode other)
         {
-            int retVal = base.CompareTo((AccessMode)other);
+            int retVal = 0;
 
             if (retVal == 0)
             {
-                retVal = Called.FullName.CompareTo(other.Called.FullName);
+                retVal = Source.CompareTo(other.Source);
+            }
+
+            if (retVal == 0)
+            {
+                retVal = Target.CompareTo(other.Target);
             }
 
             return retVal;

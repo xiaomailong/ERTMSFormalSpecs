@@ -24,10 +24,11 @@ using DataDictionary.Variables;
 using Utils;
 using GUI.BoxArrowDiagram;
 using DataDictionary;
+using DataDictionary.Types.AccessMode;
 
 namespace GUI.FunctionalView
 {
-    public partial class FunctionalAnalysisWindow : BoxArrowWindow<NameSpace, ProcedureOrFunctionCall>
+    public partial class FunctionalAnalysisWindow : BoxArrowWindow<NameSpace, AccessMode>
     {
         /// <summary>
         /// The namespace currently displayed
@@ -67,9 +68,9 @@ namespace GUI.FunctionalView
             FunctionalAnalysisPanel.RefreshControl();
         }
 
-        public override BoxArrowPanel<NameSpace, ProcedureOrFunctionCall> createPanel()
+        public override BoxArrowPanel<NameSpace, AccessMode> createPanel()
         {
-            BoxArrowPanel<NameSpace, ProcedureOrFunctionCall> retVal = new FunctionalAnalysisPanel();
+            BoxArrowPanel<NameSpace, AccessMode> retVal = new FunctionalAnalysisPanel();
 
             return retVal;
         }
@@ -83,7 +84,7 @@ namespace GUI.FunctionalView
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public NameSpaceEditor(BoxControl<NameSpace, ProcedureOrFunctionCall> control)
+            public NameSpaceEditor(BoxControl<NameSpace, AccessMode> control)
                 : base(control)
             {
             }
@@ -94,7 +95,7 @@ namespace GUI.FunctionalView
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override BoxEditor createBoxEditor(BoxControl<NameSpace, ProcedureOrFunctionCall> control)
+        protected override BoxEditor createBoxEditor(BoxControl<NameSpace, AccessMode> control)
         {
             BoxEditor retVal = new NameSpaceEditor(control);
 
@@ -104,13 +105,13 @@ namespace GUI.FunctionalView
         /// <summary>
         /// An arrow editor
         /// </summary>
-        protected class FunctionCallEditor : ArrowEditor
+        protected class AccessModeEditor : ArrowEditor
         {
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="control"></param>
-            public FunctionCallEditor(ArrowControl<NameSpace, ProcedureOrFunctionCall> control)
+            public AccessModeEditor(ArrowControl<NameSpace, AccessMode> control)
                 : base(control)
             {
             }
@@ -121,9 +122,9 @@ namespace GUI.FunctionalView
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected override ArrowEditor createArrowEditor(ArrowControl<NameSpace, ProcedureOrFunctionCall> control)
+        protected override ArrowEditor createArrowEditor(ArrowControl<NameSpace, AccessMode> control)
         {
-            ArrowEditor retVal = new FunctionCallEditor(control);
+            ArrowEditor retVal = new AccessModeEditor(control);
 
             return retVal;
         }

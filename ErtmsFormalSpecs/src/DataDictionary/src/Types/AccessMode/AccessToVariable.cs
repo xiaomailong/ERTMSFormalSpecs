@@ -20,41 +20,49 @@ namespace DataDictionary.Types.AccessMode
     using System.Linq;
     using System.Text;
     using DataDictionary.Interpreter;
+    using DataDictionary.Variables;
 
     /// <summary>
-    /// This class represents a procedure or function call
+    /// This class represents an access to a variable
     /// </summary>
-    public class ProcedureOrFunctionCall : AccessMode, IComparable<ProcedureOrFunctionCall>
+    public class AccessToVariable : AccessMode, IComparable<AccessToVariable>
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
-        /// <param name="call"></param>
-        public ProcedureOrFunctionCall(NameSpace source, NameSpace target, ICallable call)
+        /// <param name="variable"></param>
+        /// <param name="accessMode"></param>
+        public AccessToVariable(NameSpace source, NameSpace target, IVariable variable, Usage.ModeEnum accessMode)
             : base(source, target)
         {
-            Called = call;
+            Variable = variable;
+            AccessMode = accessMode;
         }
 
         /// <summary>
         /// The model element which is referenced by this arrow
         /// </summary>
-        public ICallable Called { get; private set; }
+        public IVariable Variable { get; private set; }
 
         /// <summary>
         /// The referenced model 
         /// </summary>
         public override ModelElement ReferencedModel
         {
-            get { return (ModelElement)Called; }
+            get { return (ModelElement)Variable; }
         }
+
+        /// <summary>
+        /// Indicates the way the variable has been accessed
+        /// </summary>
+        public Usage.ModeEnum AccessMode { get; private set; }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public override string GraphicalName { get { return Called.Name; } }
+        public override string GraphicalName { get { return Variable.Name; } }
 
         // Summary:
         //     Compares the current object with another object of the same type.
@@ -68,13 +76,41 @@ namespace DataDictionary.Types.AccessMode
         //     The return value has the following meanings: Value Meaning Less than zero
         //     This object is less than the other parameter.Zero This object is equal to
         //     other. Greater than zero This object is greater than other.
-        public int CompareTo(ProcedureOrFunctionCall other)
+        public int CompareTo(AccessToVariable other)
         {
             int retVal = base.CompareTo((AccessMode)other);
 
             if (retVal == 0)
             {
-                retVal = Called.FullName.CompareTo(other.Called.FullName);
+                retVal = Variable.FullName.CompareTo(other.Variable.FullName);
+            }
+
+            if (retVal == 0)
+            {
+                if (AccessMode != other.AccessMode)
+                {
+                    // Different access modes
+                    if (AccessMode == Usage.ModeEnum.Read)
+                    {
+                        retVal = -1;
+                    }
+                    else if (AccessMode == Usage.ModeEnum.ReadAndWrite)
+                    {
+                        if (other.AccessMode == Usage.ModeEnum.Read)
+                        {
+                            retVal = 1;
+                        }
+                        else
+                        {
+                            retVal = -1;
+                        }
+                    }
+                    else
+                    {
+                        // AccessMode == Write
+                        retVal = 1;
+                    }
+                }
             }
 
             return retVal;

@@ -22,10 +22,11 @@ using DataDictionary.Variables;
 using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
 using DataDictionary.Types;
+using DataDictionary.Types.AccessMode;
 
 namespace GUI.FunctionalView
 {
-    public partial class FunctionalBlockControl : BoxControl<NameSpace, ProcedureOrFunctionCall>
+    public partial class FunctionalBlockControl : BoxControl<NameSpace, AccessMode>
     {
         /// <summary>
         /// Constructor

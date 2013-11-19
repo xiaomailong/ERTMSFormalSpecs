@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
 using Utils;
+using DataDictionary.Types.AccessMode;
 
 namespace DataDictionary.Types
 {
@@ -570,72 +571,6 @@ namespace DataDictionary.Types
         public string getExplain(bool inner)
         {
             string retVal = getExplain(0);
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Provides all the function calls related to this namespace
-        /// </summary>
-        /// <returns></returns>
-        public SortedSet<ProcedureOrFunctionCall> getProcedureOrFunctionCalls()
-        {
-            SortedSet<ProcedureOrFunctionCall> retVal = new SortedSet<ProcedureOrFunctionCall>();
-
-            foreach (Usage functionCall in EFSSystem.FindReferences(Filter.IsCallable))
-            {
-                ModelElement target = (ModelElement)functionCall.Referenced;
-                ModelElement source = functionCall.User;
-
-                NameSpace sourceNameSpace = getCorrespondingNameSpace(source);
-                NameSpace targetNameSpace = getCorrespondingNameSpace(target);
-
-                // Only display things that are relevant namespacewise
-                if (sourceNameSpace != null && targetNameSpace != null)
-                {
-                    // Do not consider internal calls
-                    if (sourceNameSpace != targetNameSpace)
-                    {
-                        // Only display things that can be displayed in this functional view
-                        // TODO : also consider sub namespaces in the diagram
-                        if (NameSpaces.Contains(sourceNameSpace) || NameSpaces.Contains(targetNameSpace))
-                        {
-                            retVal.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, target));
-                        }
-                    }
-                }
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Provides the namespace of the element provided at the same level of this namespace
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        private NameSpace getCorrespondingNameSpace(ModelElement source)
-        {
-            NameSpace retVal = null;
-
-            ModelElement current = source;
-            while (current != null && retVal == null)
-            {
-                retVal = current as NameSpace;
-
-                if (retVal == null)
-                {
-                    IEnclosed enclosed = current as IEnclosed;
-                    if (enclosed != null)
-                    {
-                        current = enclosed.Enclosing as ModelElement;
-                    }
-                    else
-                    {
-                        current = null;
-                    }
-                }
-            }
 
             return retVal;
         }

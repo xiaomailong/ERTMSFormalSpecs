@@ -24,10 +24,11 @@ using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
 using DataDictionary.Variables;
 using DataDictionary;
+using DataDictionary.Types.AccessMode;
 
 namespace GUI.FunctionalView
 {
-    public class FunctionalAnalysisPanel : BoxArrowPanel<NameSpace, ProcedureOrFunctionCall>
+    public class FunctionalAnalysisPanel : BoxArrowPanel<NameSpace, AccessMode>
     {
         /// <summary>
         /// Constructor
@@ -52,9 +53,9 @@ namespace GUI.FunctionalView
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override BoxControl<NameSpace, ProcedureOrFunctionCall> createBox(NameSpace model)
+        public override BoxControl<NameSpace, AccessMode> createBox(NameSpace model)
         {
-            BoxControl<NameSpace, ProcedureOrFunctionCall> retVal = new FunctionalBlockControl();
+            BoxControl<NameSpace, AccessMode> retVal = new FunctionalBlockControl();
             retVal.Model = model;
 
             return retVal;
@@ -65,9 +66,9 @@ namespace GUI.FunctionalView
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override ArrowControl<NameSpace, ProcedureOrFunctionCall> createArrow(ProcedureOrFunctionCall model)
+        public override ArrowControl<NameSpace, AccessMode> createArrow(AccessMode model)
         {
-            ArrowControl<NameSpace, ProcedureOrFunctionCall> retVal = new FunctionCallControl();
+            ArrowControl<NameSpace, AccessMode> retVal = new FunctionCallControl();
             retVal.Model = model;
 
             return retVal;
@@ -98,13 +99,9 @@ namespace GUI.FunctionalView
         /// Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
-        public override List<ProcedureOrFunctionCall> getArrows()
+        public override List<AccessMode> getArrows()
         {
-            List<ProcedureOrFunctionCall> retVal = new List<ProcedureOrFunctionCall>();
-
-            retVal.AddRange(IEnclosesNameSpacesUtils.getProcedureOrFunctionCalls(NameSpaceContainer));
-
-            return retVal;
+            return IEnclosesNameSpacesUtils.getAccesses(NameSpaceContainer);
         }
     }
 }

@@ -137,6 +137,16 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Indicates that the namable is a callable or a variable
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsCallableOrIsVariable(INamable value)
+        {
+            return IsCallable(value) || IsVariable(value);
+        }
+
+        /// <summary>
         /// Predicate which indicates that the namable can be called
         /// </summary>
         /// <param name="value"></param>

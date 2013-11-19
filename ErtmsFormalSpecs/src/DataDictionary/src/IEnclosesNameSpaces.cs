@@ -22,6 +22,8 @@ namespace DataDictionary
     using DataDictionary.Types;
     using DataDictionary.Interpreter;
     using Utils;
+    using DataDictionary.Types.AccessMode;
+    using DataDictionary.Variables;
 
     /// <summary>
     /// Holds several namespaces
@@ -50,23 +52,70 @@ namespace DataDictionary
         /// </summary>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static SortedSet<ProcedureOrFunctionCall> getProcedureOrFunctionCalls(IEnclosesNameSpaces container)
+        public static List<AccessMode> getAccesses(IEnclosesNameSpaces container)
         {
-            SortedSet<ProcedureOrFunctionCall> retVal = new SortedSet<ProcedureOrFunctionCall>();
-
-            foreach (Usage functionCall in container.EFSSystem.FindReferences(Filter.IsCallable))
+            SortedSet<ProcedureOrFunctionCall> procedureCalls = new SortedSet<ProcedureOrFunctionCall>();
+            SortedSet<AccessToVariable> accessesToVariables = new SortedSet<AccessToVariable>();
+            foreach (Usage usage in container.EFSSystem.FindReferences(Filter.IsCallableOrIsVariable))
             {
-                ModelElement target = (ModelElement)functionCall.Referenced;
-                ModelElement source = functionCall.User;
+                ModelElement target = (ModelElement)usage.Referenced;
+                ModelElement source = usage.User;
 
                 NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container);
                 NameSpace targetNameSpace = getCorrespondingNameSpace(target, container);
 
-                if (considerCall(functionCall, container, sourceNameSpace, targetNameSpace))
+                if (Filter.IsCallable(usage.Referenced))
                 {
-                    retVal.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, target));
+                    if (considerCall(usage, container, sourceNameSpace, targetNameSpace))
+                    {
+                        procedureCalls.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, (ICallable)target));
+                    }
+                }
+                else
+                {
+                    // IsVariable(usage.Referenced)
+                    if (considerVariableReference(usage, container, sourceNameSpace, targetNameSpace))
+                    {
+                        Usage.ModeEnum mode = (Usage.ModeEnum)usage.Mode;
+
+                        // Find a corresponding access to variable (same source and target namespaces, and same variable
+                        AccessToVariable otherAccess = null;
+                        foreach (AccessToVariable access in accessesToVariables)
+                        {
+                            if (access.Target == usage.Referenced && access.Source == sourceNameSpace && access.Target == targetNameSpace)
+                            {
+                                otherAccess = access;
+                                break;
+                            }
+                        }
+
+                        if (otherAccess != null)
+                        {
+                            if (otherAccess.AccessMode != mode)
+                            {
+                                // Since the access mode is different, one of them is either Read or ReadWrite and the other is ReadWrite or Write. 
+                                // So, in any case, the resulting access mode is ReadWrite
+                                accessesToVariables.Remove(otherAccess);
+                                accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable)target, Usage.ModeEnum.ReadAndWrite));
+                            }
+                            else
+                            {
+                                // Already exists, do nothing
+                            }
+                        }
+                        else
+                        {
+                            // Does not already exists, insert it in the list
+                            accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable)target, mode));
+                        }
+                    }
                 }
             }
+
+            // Build the results based on the intermediate results
+            List<AccessMode> retVal = new List<AccessMode>();
+            retVal.AddRange(procedureCalls);
+            retVal.AddRange(accessesToVariables);
 
             return retVal;
         }
@@ -81,15 +130,54 @@ namespace DataDictionary
         /// <returns></returns>
         private static bool considerCall(Usage functionCall, IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
         {
-            bool retVal = true;
+            bool retVal = considerCommon(container, sourceNameSpace, targetNameSpace);
+
+            // Only consider callables
+            retVal = retVal && functionCall.Referenced is ICallable;
 
             // Ignore casting
             retVal = retVal && !(functionCall.Referenced is Range);
 
+            return retVal;
+        }
+
+        /// <summary>
+        /// Indicates whether a call should be considered in the ProcedureOrFunctionCalls
+        /// </summary>
+        /// <param name="variableReference"></param>
+        /// <param name="container"></param>
+        /// <param name="sourceNameSpace"></param>
+        /// <param name="targetNameSpace"></param>
+        /// <returns></returns>
+        private static bool considerVariableReference(Usage variableReference, IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
+        {
+            bool retVal = considerCommon(container, sourceNameSpace, targetNameSpace);
+
+            // Only consider variables
+            retVal = retVal && variableReference.Referenced is IVariable;
+
+            // Only consider variable accesses when the mode is known
+            retVal = retVal && variableReference.Mode != null;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Common part of the consideration of an access
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="sourceNameSpace"></param>
+        /// <param name="targetNameSpace"></param>
+        /// <param name="retVal"></param>
+        /// <returns></returns>
+        private static bool considerCommon(IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
+        {
+            bool retVal = true;
+
             // Only display things that are relevant namespacewise
             retVal = retVal && sourceNameSpace != null && targetNameSpace != null;
 
-            // Do not consider internal calls
+            // Do not consider internal accesses 
             retVal = retVal && sourceNameSpace != targetNameSpace;
             // Only display things that can be displayed in this functional view
             // TODO : also consider sub namespaces in the diagram
