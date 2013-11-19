@@ -44,7 +44,7 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// The grid size used to place boxes
         /// </summary>
-        public static int GRID_SIZE = 10;
+        public int GRID_SIZE = 10;
 
         /// <summary>
         /// Provides the enclosing box-arrow panel
@@ -95,8 +95,19 @@ namespace GUI.BoxArrowDiagram
             }
             SetPosition(Model.X, Model.Y);
 
-            this.TextAlign = ContentAlignment.MiddleCenter;
-            Text = Model.GraphicalName;
+            TextAlign = ContentAlignment.MiddleCenter;
+            if (Model.Hidden)
+            {
+                Text = Model.GraphicalName + "\n(Hidden)";
+                Font = new Font(Font, FontStyle.Italic);
+                ForeColor = Color.Gray;
+            }
+            else
+            {
+                Text = Model.GraphicalName;
+                Font = new Font(Font, FontStyle.Regular);
+                ForeColor = Color.Black;
+            }
         }
 
         /// <summary>
@@ -105,6 +116,12 @@ namespace GUI.BoxArrowDiagram
         /// <param name="color"></param>
         private void SetColor(Color color)
         {
+            if (BoxMode == BoxModeEnum.RoundedCorners)
+            {
+                // The background color is handled manually
+                color = Color.Transparent;
+            }
+
             if (color != BackColor)
             {
                 BackColor = color;
@@ -114,14 +131,20 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// A normal pen
         /// </summary>
-        public static Color NORMAL_COLOR = Color.LightGray;
-        public static Pen NORMAL_PEN = new Pen(Color.Black);
+        public Color NORMAL_COLOR = Color.LightGray;
+        public Pen NORMAL_PEN = new Pen(Color.Black);
+
+        /// <summary>
+        /// A normal pen
+        /// </summary>
+        public Color HIDDEN_COLOR = Color.Transparent;
+        public Pen HIDDEN_PEN = new Pen(Color.Gray);
 
         /// <summary>
         /// A activated pen
         /// </summary>
-        public static Color ACTIVATED_COLOR = Color.Blue;
-        public static Pen ACTIVATED_PEN = new Pen(Color.Black, 4);
+        public Color ACTIVATED_COLOR = Color.Blue;
+        public Pen ACTIVATED_PEN = new Pen(Color.Black, 4);
 
         /// <summary>
         /// Indicates that the box should be displayed in the ACTIVE color
@@ -132,7 +155,19 @@ namespace GUI.BoxArrowDiagram
             return false;
         }
 
-        private const int ROUND_SIZE = 10;
+        /// <summary>
+        /// Indicates that the box should be displayed in the HIDDEN color
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsHidden()
+        {
+            return Model.Hidden;
+        }
+
+        /// <summary>
+        /// The size of a round corner
+        /// </summary>
+        private int ROUND_SIZE = 10;
 
         /// <summary>
         /// Draws the box within the box-arrow panel
@@ -140,20 +175,29 @@ namespace GUI.BoxArrowDiagram
         /// <param name="e"></param>
         public void PaintInBoxArrowPanel(PaintEventArgs e)
         {
-            Pen pen = NORMAL_PEN;
+            // Select the right pen, according to the model
+            Pen pen;
+            if (IsActive())
+            {
+                pen = ACTIVATED_PEN;
+                SetColor(ACTIVATED_COLOR);
+            }
+            else if (IsHidden())
+            {
+                pen = HIDDEN_PEN;
+                SetColor(HIDDEN_COLOR);
+            }
+            else
+            {
+                pen = NORMAL_PEN;
+                SetColor(NORMAL_COLOR);
+            }
+
+            // Draw the box
             switch (BoxMode)
             {
                 case BoxModeEnum.Rectangle:
                     e.Graphics.DrawRectangle(pen, Location.X, Location.Y, Width, Height);
-                    if (IsActive())
-                    {
-                        pen = ACTIVATED_PEN;
-                        SetColor(ACTIVATED_COLOR);
-                    }
-                    else
-                    {
-                        SetColor(NORMAL_COLOR);
-                    }
 
                     break;
 
@@ -195,7 +239,6 @@ namespace GUI.BoxArrowDiagram
                     rectangle = new Rectangle(new Point(points[6].X, points[6].Y - ROUND_SIZE), rectangleSize);
                     e.Graphics.FillPie(innerBrush, rectangle, 90.0f, 90.0f);
                     e.Graphics.DrawArc(pen, rectangle, 90.0f, 90.0f);
-
                     break;
             }
         }

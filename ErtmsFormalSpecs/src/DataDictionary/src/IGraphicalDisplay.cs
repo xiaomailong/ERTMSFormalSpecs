@@ -49,6 +49,11 @@ namespace DataDictionary
         /// The name to be displayed
         /// </summary>
         string GraphicalName { get; }
+
+        /// <summary>
+        /// Indicates that the element is hiddent
+        /// </summary>
+        bool Hidden { get; set; }
     }
 
     /// <summary>

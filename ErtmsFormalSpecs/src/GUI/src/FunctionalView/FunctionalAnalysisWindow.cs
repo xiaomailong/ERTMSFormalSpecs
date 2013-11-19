@@ -88,6 +88,13 @@ namespace GUI.FunctionalView
                 : base(control)
             {
             }
+
+            [Category("Description")]
+            [ReadOnly(true)]
+            public override string Name
+            {
+                get { return control.Model.GraphicalName; }
+            }
         }
 
         /// <summary>

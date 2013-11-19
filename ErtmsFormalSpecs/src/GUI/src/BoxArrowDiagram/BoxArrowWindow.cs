@@ -66,7 +66,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         protected class BoxEditor
         {
-            private BoxControl<BoxModel, ArrowModel> control;
+            public BoxControl<BoxModel, ArrowModel> control;
 
             /// <summary>
             /// Constructor
@@ -78,7 +78,7 @@ namespace GUI.BoxArrowDiagram
             }
 
             [Category("Description")]
-            public string Name
+            public virtual string Name
             {
                 get { return control.Model.GraphicalName; }
                 set
@@ -97,6 +97,10 @@ namespace GUI.BoxArrowDiagram
                     control.Model.X = value.X;
                     control.Model.Y = value.Y;
                     control.RefreshControl();
+                    if (control.Panel != null)
+                    {
+                        control.Panel.UpdateArrowPosition();
+                    }
                 }
             }
 
@@ -109,6 +113,24 @@ namespace GUI.BoxArrowDiagram
                     control.Model.Width = value.X;
                     control.Model.Height = value.Y;
                     control.RefreshControl();
+                    if (control.Panel != null)
+                    {
+                        control.Panel.UpdateArrowPosition();
+                    }
+                }
+            }
+
+            [Category("Hidden")]
+            public bool Hidden
+            {
+                get { return control.Model.Hidden; }
+                set
+                {
+                    control.Model.Hidden = value;
+                    if (control.Panel != null)
+                    {
+                        control.Panel.RefreshControl();
+                    }
                 }
             }
         }

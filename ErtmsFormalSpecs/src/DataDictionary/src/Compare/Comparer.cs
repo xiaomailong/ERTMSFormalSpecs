@@ -1216,6 +1216,10 @@ namespace DataDictionary.Compare
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Y", "Previously was [" + other.getY() + "]") );
             }
+            if ( obj.getHidden() != other.getHidden() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Hidden", "Previously was [" + other.getHidden() + "]") );
+            }
         }
 
         /// <summary>

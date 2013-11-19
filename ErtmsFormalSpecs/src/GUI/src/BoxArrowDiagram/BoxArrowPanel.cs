@@ -27,16 +27,44 @@ namespace GUI.BoxArrowDiagram
         where BoxModel : class, DataDictionary.IGraphicalDisplay
         where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
     {
+        private System.Windows.Forms.ToolStripMenuItem refreshMenuItem;
+
+        private void InitializeStartMenu()
+        {
+            // 
+            // Refresh
+            // 
+            refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            refreshMenuItem.Name = "refreshMenuItem";
+            refreshMenuItem.Size = new System.Drawing.Size(161, 22);
+            refreshMenuItem.Text = "Refresh";
+            refreshMenuItem.Click += new System.EventHandler(refreshBoxMenuItem_Click);
+
+            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                refreshMenuItem});
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
         public BoxArrowPanel()
         {
             InitializeComponent();
+            InitializeStartMenu();
 
             MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
             MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
             MouseUp += new MouseEventHandler(BoxArrowPanel_MouseUp);
+        }
+
+        /// <summary>
+        /// Refreshes the panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void refreshBoxMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshControl();
         }
 
         /// <summary>
@@ -333,10 +361,12 @@ namespace GUI.BoxArrowDiagram
                 }
                 foreach (ArrowModel model in getArrows())
                 {
-                    ArrowControl<BoxModel, ArrowModel> arrowControl = createArrow(model);
-                    arrowControl.Parent = this;
-                    // arrowControl.RefreshControl();
-                    arrows[model] = arrowControl;
+                    if (!model.Source.Hidden && !model.Target.Hidden)
+                    {
+                        ArrowControl<BoxModel, ArrowModel> arrowControl = createArrow(model);
+                        arrowControl.Parent = this;
+                        arrows[model] = arrowControl;
+                    }
                 }
                 UpdateArrowPosition();
             }

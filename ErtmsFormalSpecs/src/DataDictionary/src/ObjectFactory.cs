@@ -30,6 +30,17 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+        {
+            obj.setX(0);
+            obj.setY(0);
+            obj.setWidth(0);
+            obj.setHeight(0);
+            obj.setHidden(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.EnumValue obj, bool visitSubNodes)
         {
             obj.setValue("0");

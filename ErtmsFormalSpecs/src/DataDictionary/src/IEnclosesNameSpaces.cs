@@ -183,29 +183,6 @@ namespace DataDictionary
             // TODO : also consider sub namespaces in the diagram
             retVal = retVal && (container.NameSpaces.Contains(sourceNameSpace) || container.NameSpaces.Contains(targetNameSpace));
 
-            // Ignore default namespaces
-            retVal = retVal && !DefaultNameSpace(sourceNameSpace);
-            retVal = retVal && !DefaultNameSpace(targetNameSpace);
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Indicates whether the namespace belongs to the namespace "Default"
-        /// </summary>
-        /// <param name="sourceNameSpace"></param>
-        /// <returns></returns>
-        private static bool DefaultNameSpace(NameSpace sourceNameSpace)
-        {
-            bool retVal = false;
-
-            NameSpace current = sourceNameSpace;
-            while (!retVal && current != null)
-            {
-                retVal = retVal || current.Name == "Default";
-                current = current.EnclosingNameSpace;
-            }
-
             return retVal;
         }
 

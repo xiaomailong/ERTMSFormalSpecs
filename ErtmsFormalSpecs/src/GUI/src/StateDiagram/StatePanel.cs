@@ -31,50 +31,50 @@ namespace GUI.StateDiagram
     {
         private System.Windows.Forms.ToolStripMenuItem addStateMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTransitionMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem deleteMenuItem;
 
         /// <summary>
         /// Initializes the start menu
         /// </summary>
         public void InitializeStartMenu()
         {
-            this.addStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTransitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            addStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addTransitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            deleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             // 
             // addStateMenuItem
             // 
-            this.addStateMenuItem.Name = "addStateMenuItem";
-            this.addStateMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.addStateMenuItem.Text = "Add State";
-            this.addStateMenuItem.Click += new System.EventHandler(this.addBoxMenuItem_Click);
+            addStateMenuItem.Name = "addStateMenuItem";
+            addStateMenuItem.Size = new System.Drawing.Size(161, 22);
+            addStateMenuItem.Text = "Add State";
+            addStateMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
             // 
             // addTransitionMenuItem
             // 
-            this.addTransitionMenuItem.Name = "addTransitionMenuItem";
-            this.addTransitionMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.addTransitionMenuItem.Text = "Add transition";
-            this.addTransitionMenuItem.Click += new System.EventHandler(this.addArrowMenuItem_Click);
+            addTransitionMenuItem.Name = "addTransitionMenuItem";
+            addTransitionMenuItem.Size = new System.Drawing.Size(161, 22);
+            addTransitionMenuItem.Text = "Add transition";
+            addTransitionMenuItem.Click += new System.EventHandler(addArrowMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            toolStripSeparator.Name = "toolStripSeparator1";
+            toolStripSeparator.Size = new System.Drawing.Size(158, 6);
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem1.Text = "Delete selected";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.deleteMenuItem1_Click);
+            deleteMenuItem.Name = "toolStripMenuItem1";
+            deleteMenuItem.Size = new System.Drawing.Size(153, 22);
+            deleteMenuItem.Text = "Delete selected";
+            deleteMenuItem.Click += new System.EventHandler(deleteMenuItem1_Click);
 
-            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this.addStateMenuItem,
-                this.addTransitionMenuItem,
-                this.toolStripSeparator1,
-                this.toolStripMenuItem1});
+            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                addStateMenuItem,
+                addTransitionMenuItem,
+                toolStripSeparator,
+                deleteMenuItem});
         }
 
         /// <summary>

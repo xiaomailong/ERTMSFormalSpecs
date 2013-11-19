@@ -217,6 +217,11 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
+        /// Indicates whether the state is hidden
+        /// </summary>
+        public bool Hidden { get { return false; } set { } }
+
+        /// <summary>
         /// The enclosing state machine
         /// </summary>
         public Types.StateMachine EnclosingStateMachine

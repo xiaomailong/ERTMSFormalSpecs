@@ -550,6 +550,15 @@ namespace DataDictionary.Types
         public string GraphicalName { get { return Name; } }
 
         /// <summary>
+        /// Indicates whether the namespace is hidden
+        /// </summary>
+        public bool Hidden
+        {
+            get { return getHidden(); }
+            set { setHidden(value); }
+        }
+
+        /// <summary>
         /// Provides an explanation of the namespace
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
