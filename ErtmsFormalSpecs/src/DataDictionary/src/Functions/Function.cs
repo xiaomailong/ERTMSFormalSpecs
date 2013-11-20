@@ -745,12 +745,6 @@ namespace DataDictionary.Functions
                 }
                 else if (Yparameter != null)
                 {
-                    // TODO : Remove check code
-                    if ((Yparameter.Enclosing != this))
-                    {
-                        System.Diagnostics.Debugger.Break();
-                    }
-
                     // Function with 1 parameter that ranges over the Yaxis
                     retVal = new Surface(Xparameter, Yparameter);
                     Graph graph = createGraphForParameter(context, Yparameter);

@@ -142,6 +142,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            if (VariableIdentification.Ref is Parameter)
+            {
+                Root.AddError("Cannot assign a value to a parameter (" + VariableIdentification.ToString() + ")");
+            }
+
             Types.Type targetType = VariableIdentification.GetExpressionType();
             if (targetType == null)
             {

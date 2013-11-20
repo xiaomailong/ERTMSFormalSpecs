@@ -488,7 +488,7 @@ namespace DataDictionary.Types
 
                 foreach (Rules.Transition t in Transitions)
                 {
-                    if (t.RuleCondition == condition && t.InitialState == initialState && t.TargetState == targetState)
+                    if (t.RuleCondition == condition && t.Source == initialState && t.Target  == targetState)
                     {
                         retVal = true;
                         break;

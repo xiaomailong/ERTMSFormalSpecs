@@ -29,7 +29,7 @@ namespace GUI.DataDictionaryView
         public NameSpaceSubNameSpacesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Namespaces", true)
         {
-            foreach (DataDictionary.Types.NameSpace nameSpace in item.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace nameSpace in item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace));
             }
@@ -77,7 +77,7 @@ namespace GUI.DataDictionaryView
         {
             base.SelectionChanged();
             List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace aNamespace in Item.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace aNamespace in Item.NameSpaces)
             {
                 namespaces.Add(aNamespace);
             }

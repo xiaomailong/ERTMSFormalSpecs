@@ -77,27 +77,42 @@ namespace GUI
         Utils.IModelElement Selected { get; }
     }
 
-    public abstract class BaseForm : Form, IBaseForm
+    public class BaseForm : Form, IBaseForm
     {
         /// <summary>
         /// The property grid used to edit elements properties
         /// </summary>
-        public abstract MyPropertyGrid Properties { get; }
+        public virtual MyPropertyGrid Properties { get { return null; } }
 
         /// <summary>
         /// The text editor for messages
         /// </summary>
-        public abstract RichTextBox MessagesTextBox { get; }
+        public virtual RichTextBox MessagesTextBox { get { return null; } }
 
         /// <summary>
         /// The requirements text box used to display the associated requirements
         /// </summary>
-        public abstract EditorTextBox RequirementsTextBox { get; }
+        public virtual EditorTextBox RequirementsTextBox { get { return null; } }
 
         /// <summary>
         /// The text box used to edit expression
         /// </summary>
-        public abstract EditorTextBox ExpressionEditorTextBox { get; }
+        public virtual EditorTextBox ExpressionEditorTextBox { get { return null; } }
+
+        /// <summary>
+        /// The main tree view of the form
+        /// </summary>
+        public virtual BaseTreeView TreeView { get { return null; } }
+
+        /// <summary>
+        /// The sub tree view of the form
+        /// </summary>
+        public virtual BaseTreeView subTreeView { get { return null; } }
+
+        /// <summary>
+        /// The explain text box
+        /// </summary>
+        public virtual ExplainTextBox ExplainTextBox { get { return null; } }
 
         /// <summary>
         /// The enclosing MDI Window
@@ -108,24 +123,11 @@ namespace GUI
         }
 
         /// <summary>
-        /// The main tree view of the form
-        /// </summary>
-        public abstract BaseTreeView TreeView { get; }
-
-        /// <summary>
-        /// The sub tree view of the form
-        /// </summary>
-        public abstract BaseTreeView subTreeView { get; }
-
-        /// <summary>
-        /// The explain text box
-        /// </summary>
-        public abstract ExplainTextBox ExplainTextBox { get; }
-
-        /// <summary>
         /// Allows to refresh the view, according to the fact that the structure for the model could change
         /// </summary>
-        public abstract void RefreshModel();
+        public virtual void RefreshModel()
+        {
+        }
 
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm

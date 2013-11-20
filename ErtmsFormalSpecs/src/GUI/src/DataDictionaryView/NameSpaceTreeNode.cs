@@ -209,6 +209,19 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Shows the functional view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected void ShowFunctionalViewHandler(object sender, EventArgs args)
+        {
+            FunctionalView.FunctionalAnalysisWindow window = new FunctionalView.FunctionalAnalysisWindow();
+            BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+            window.SetNameSpaceContainer(Item);
+            window.Text = Item.Name + " functional view";
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -225,6 +238,8 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Add variable", new EventHandler(AddVariableHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
 
             return retVal;
         }
@@ -349,7 +364,7 @@ namespace GUI.DataDictionaryView
         {
             List<DataDictionary.Types.NameSpace> result = new List<DataDictionary.Types.NameSpace>();
             result.Add(aNamespace);
-            foreach (DataDictionary.Types.NameSpace aSubNamespace in aNamespace.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace aSubNamespace in aNamespace.NameSpaces)
             {
                 result.AddRange(collectNamespaces(aSubNamespace));
             }

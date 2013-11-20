@@ -20,6 +20,7 @@ namespace DataDictionary
     using DataDictionary.Interpreter;
     using DataDictionary.Rules;
     using System;
+    using DataDictionary.Interpreter.Statement;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -941,13 +942,114 @@ namespace DataDictionary
             private ModelElement Model { get; set; }
 
             /// <summary>
+            /// The filter to apply to the selection
+            /// </summary>
+            private Filter.AcceptableChoice Filter { get; set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="model"></param>
+            /// <param name="model">The model element to be found</param>
             public ReferenceVisitor(ModelElement model)
             {
                 Usages = new List<Usage>();
                 Model = model;
+                Filter = null;
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="filter">The filter to apply to the search</param>
+            public ReferenceVisitor(Filter.AcceptableChoice filter)
+            {
+                Usages = new List<Usage>();
+                Model = null;
+                Filter = filter;
+            }
+
+            /// <summary>
+            /// Takes the statement into consideration
+            /// </summary>
+            /// <param name="statement"></param>
+            private void ConsiderStatement(Statement statement)
+            {
+                if (statement != null && statement.StaticUsage != null)
+                {
+                    if (Model != null)
+                    {
+                        List<Usage> usages = statement.StaticUsage.Find(Model);
+                        foreach (Usage usage in usages)
+                        {
+                            Usages.Add(usage);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Usage usage in statement.StaticUsage.AllUsages)
+                        {
+                            if (Filter(usage.Referenced))
+                            {
+                                Usages.Add(usage);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Takes the expression into consideration
+            /// </summary>
+            /// <param name="expression"></param>
+            private void ConsiderExpression(Expression expression)
+            {
+                if (expression != null && expression.StaticUsage != null)
+                {
+                    if (Model != null)
+                    {
+                        List<Usage> usages = expression.StaticUsage.Find(Model);
+                        foreach (Usage usage in usages)
+                        {
+                            Usages.Add(usage);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Usage usage in expression.StaticUsage.AllUsages)
+                        {
+                            if (Filter(usage.Referenced))
+                            {
+                                Usages.Add(usage);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Considers the type of the element provided as parameter
+            /// </summary>
+            /// <param name="element">The element which uses this type</param>
+            private void ConsiderTypeOfElement(ITypedElement element)
+            {
+                ModelElement modelElement = element as ModelElement;
+                if (modelElement != null)
+                {
+                    if (Model != null)
+                    {
+                        if ((element.Type == Model) && (element != Model))
+                        {
+                            Usages.Add(new Usage(Model, modelElement, Usage.ModeEnum.Type));
+                        }
+                    }
+                    else
+                    {
+                        if (Filter(element.Type))
+                        {
+                            Usages.Add(new Usage(element.Type, modelElement, Usage.ModeEnum.Type));
+                        }
+                    }
+                }
             }
 
             /// <summary>
@@ -959,14 +1061,7 @@ namespace DataDictionary
             {
                 DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
 
-                if (action.Statement != null && action.Statement.StaticUsage != null)
-                {
-                    List<Usage> usages = action.Statement.StaticUsage.Find(Model);
-                    foreach (Usage usage in usages)
-                    {
-                        Usages.Add(usage);
-                    }
-                }
+                ConsiderStatement(action.Statement);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -980,14 +1075,7 @@ namespace DataDictionary
             {
                 PreCondition preCondition = (PreCondition)obj;
 
-                if (preCondition.ExpressionTree != null && preCondition.ExpressionTree.StaticUsage != null)
-                {
-                    List<Usage> usages = preCondition.ExpressionTree.StaticUsage.Find(Model);
-                    foreach (Usage usage in usages)
-                    {
-                        Usages.Add(usage);
-                    }
-                }
+                ConsiderExpression(preCondition.ExpressionTree);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1001,14 +1089,7 @@ namespace DataDictionary
             {
                 Tests.Expectation expectation = (Tests.Expectation)obj;
 
-                if (expectation.ExpressionTree != null && expectation.ExpressionTree.StaticUsage != null)
-                {
-                    List<Usage> usages = expectation.ExpressionTree.StaticUsage.Find(Model);
-                    foreach (Usage usage in usages)
-                    {
-                        Usages.Add(usage);
-                    }
-                }
+                ConsiderExpression(expectation.ExpressionTree);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1022,14 +1103,7 @@ namespace DataDictionary
             {
                 Functions.Case cas = (Functions.Case)obj;
 
-                if (cas.Expression != null && cas.Expression.StaticUsage != null)
-                {
-                    List<Usage> usages = cas.Expression.StaticUsage.Find(Model);
-                    foreach (Usage usage in usages)
-                    {
-                        Usages.Add(usage);
-                    }
-                }
+                ConsiderExpression(cas.Expression);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1043,10 +1117,7 @@ namespace DataDictionary
             {
                 Types.Collection collection = (Types.Collection)obj;
 
-                if (collection.Type == Model)
-                {
-                    Usages.Add(new Usage(Model, collection, Usage.ModeEnum.Type));
-                }
+                ConsiderTypeOfElement(collection);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1060,10 +1131,7 @@ namespace DataDictionary
             {
                 Variables.Variable variable = (Variables.Variable)obj;
 
-                if (variable.Type == Model)
-                {
-                    Usages.Add(new Usage(Model, variable, Usage.ModeEnum.Type));
-                }
+                ConsiderTypeOfElement(variable);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -1077,17 +1145,11 @@ namespace DataDictionary
             {
                 Functions.Function function = (Functions.Function)obj;
 
-                if (function.Type == Model && Model != function)
-                {
-                    Usages.Add(new Usage(Model, function, Usage.ModeEnum.Type));
-                }
+                ConsiderTypeOfElement(function);
 
                 foreach (Parameter parameter in function.FormalParameters)
                 {
-                    if (parameter.Type == Model)
-                    {
-                        Usages.Add(new Usage(Model, parameter, Usage.ModeEnum.Type));
-                    }
+                    ConsiderTypeOfElement(parameter);
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -1104,10 +1166,7 @@ namespace DataDictionary
 
                 foreach (Parameter parameter in procedure.FormalParameters)
                 {
-                    if (parameter.Type == Model)
-                    {
-                        Usages.Add(new Usage(Model, parameter, Usage.ModeEnum.Type));
-                    }
+                    ConsiderTypeOfElement(parameter);
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -1124,10 +1183,7 @@ namespace DataDictionary
 
                 foreach (StructureElement element in structure.Elements)
                 {
-                    if (element.Type == Model)
-                    {
-                        Usages.Add(new Usage(Model, element, Usage.ModeEnum.Type));
-                    }
+                    ConsiderTypeOfElement(element);
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -1143,6 +1199,34 @@ namespace DataDictionary
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(model);
+            bool prev = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    visitor.visit(dictionary, true);
+                }
+                visitor.Usages.Sort();
+            }
+            finally
+            {
+                ModelElement.BeSilent = prev;
+            }
+
+            return visitor.Usages;
+        }
+
+
+        /// <summary>
+        ///  Provides the list of references for a given filter
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public List<Usage> FindReferences(Filter.AcceptableChoice filter)
+        {
+            // Find references
+            ReferenceVisitor visitor = new ReferenceVisitor(filter);
             bool prev = ModelElement.BeSilent;
             try
             {

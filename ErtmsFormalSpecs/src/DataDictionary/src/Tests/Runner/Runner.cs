@@ -492,7 +492,7 @@ namespace DataDictionary.Tests.Runner
         protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, ExplanationPart explanation, bool log)
         {
             // Finds all activations in sub namespaces
-            foreach (Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
+            foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
                 SetupNameSpaceActivations(priority, activations, subNameSpace, explanation, log);
             }

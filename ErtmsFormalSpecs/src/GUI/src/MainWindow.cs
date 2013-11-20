@@ -1728,5 +1728,15 @@ namespace GUI
                 }
             }
         }
+
+        private void generateFunctionalAnalysisReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                Report.FunctionalAnalysisReport aReport = new Report.FunctionalAnalysisReport(dictionary);
+                aReport.ShowDialog(this);
+            }
+        }
     }
 }

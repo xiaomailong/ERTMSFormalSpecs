@@ -187,7 +187,19 @@
       <FIELD NAME="Variables"           REFTYPE="Variable"      MODE="DEFAULT">
       </FIELD>
       <FIELD NAME="Rules"               REFTYPE="Rule"          MODE="DEFAULT"/>
+      <FIELD NAME="Width"               TYPE="INTEGER" />
+      <FIELD NAME="Height"              TYPE="INTEGER" />
+      <FIELD NAME="X"                   TYPE="INTEGER" />
+      <FIELD NAME="Y"                   TYPE="INTEGER" />
+      <FIELD NAME="Hidden"              TYPE="BOOLEAN" />
     </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Y"      TARGET="Y"      OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Width"  TARGET="Width"  OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Height" TARGET="Height" OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Hidden" TARGET="Hidden" OPTIONAL="TRUE" DEFAULT="FALSE" />
+    </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="NameSpaces" OPTIONAL="TRUE">
