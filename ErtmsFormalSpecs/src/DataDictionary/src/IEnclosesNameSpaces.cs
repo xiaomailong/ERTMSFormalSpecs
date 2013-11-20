@@ -62,8 +62,8 @@ namespace DataDictionary
                 ModelElement target = (ModelElement)usage.Referenced;
                 ModelElement source = usage.User;
 
-                NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container);
-                NameSpace targetNameSpace = getCorrespondingNameSpace(target, container);
+                NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container, true);
+                NameSpace targetNameSpace = getCorrespondingNameSpace(target, container, false);
 
                 if (Filter.IsCallable(usage.Referenced))
                 {
@@ -196,21 +196,28 @@ namespace DataDictionary
         /// </summary>
         /// <param name="source">The element from which the namespace should be found</param>
         /// <param name="container">The container which contains the namespace</param>
+        /// <param name="allowOutsideContainer">Indicaes that namespace can be found outside of the container</param>
         /// <returns></returns>
-        private static NameSpace getCorrespondingNameSpace(ModelElement source, IEnclosesNameSpaces container)
+        private static NameSpace getCorrespondingNameSpace(ModelElement source, IEnclosesNameSpaces container, bool allowOutsideContainer)
         {
             NameSpace retVal = null;
 
-            object current = source;
+            IEnclosed current = source;
             while (current != null && retVal == null)
             {
-                NameSpace nameSpace = EnclosingNameSpaceFinder.find(source);
+                NameSpace nameSpace = EnclosingNameSpaceFinder.find(current);
                 if (container == null || container.NameSpaces.Contains(nameSpace))
                 {
                     retVal = nameSpace;
                 }
 
                 current = nameSpace;
+            }
+
+            // If no name space has been found in the container, take the first one
+            if (retVal == null && allowOutsideContainer)
+            {
+                retVal = EnclosingNameSpaceFinder.find(source);
             }
 
             return retVal;
