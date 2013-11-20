@@ -19,7 +19,7 @@ using Utils;
 
 namespace DataDictionary.Constants
 {
-    public class State : Generated.State, Values.IValue, Utils.ISubDeclarator, TextualExplain
+    public class State : Generated.State, Values.IValue, Utils.ISubDeclarator, TextualExplain, IGraphicalDisplay
     {
         public string LiteralName
         {
@@ -198,6 +198,28 @@ namespace DataDictionary.Constants
             get { return getY(); }
             set { setY(value); }
         }
+
+        /// <summary>
+        /// The name to be displayed on the graphical view
+        /// </summary>
+        public string GraphicalName
+        {
+            get
+            {
+                string retVal = Name;
+
+                if (StateMachine.States.Count > 0)
+                {
+                    retVal += "*";
+                }
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether the state is hidden
+        /// </summary>
+        public bool Hidden { get { return false; } set { } }
 
         /// <summary>
         /// The enclosing state machine

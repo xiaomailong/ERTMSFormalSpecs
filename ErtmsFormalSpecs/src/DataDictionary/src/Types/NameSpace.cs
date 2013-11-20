@@ -15,10 +15,13 @@
 // ------------------------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
+using Utils;
+using DataDictionary.Types.AccessMode;
 
 namespace DataDictionary.Types
 {
-    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder
+    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IGraphicalDisplay
     {
         /// <summary>
         /// Used to temporarily store the list of sub-namespaces
@@ -37,7 +40,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// The sub namespaces
         /// </summary>
-        public System.Collections.ArrayList SubNameSpaces
+        public System.Collections.ArrayList NameSpaces
         {
             get
             {
@@ -301,7 +304,7 @@ namespace DataDictionary.Types
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
-            foreach (NameSpace nameSpace in SubNameSpaces)
+            foreach (NameSpace nameSpace in NameSpaces)
             {
                 Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
@@ -358,7 +361,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public NameSpace findNameSpaceByName(string name)
         {
-            return (NameSpace)Utils.INamableUtils.findByName(name, SubNameSpaces);
+            return (NameSpace)Utils.INamableUtils.findByName(name, NameSpaces);
         }
 
         /// <summary>
@@ -388,7 +391,7 @@ namespace DataDictionary.Types
             }
             else
             {
-                NameSpace nameSpace = (NameSpace)Utils.INamableUtils.findByName(names[0], SubNameSpaces);
+                NameSpace nameSpace = (NameSpace)Utils.INamableUtils.findByName(names[0], NameSpaces);
                 if (nameSpace != null)
                 {
                     retVal = nameSpace.innerFindTypeByName(name.Substring(nameSpace.Name.Length + 1), false);
@@ -430,7 +433,7 @@ namespace DataDictionary.Types
 
                 if (EnclosingNameSpace != null)
                 {
-                    retVal = EnclosingNameSpace.SubNameSpaces;
+                    retVal = EnclosingNameSpace.NameSpaces;
                 }
                 else if (EnclosingDictionary != null)
                 {
@@ -503,6 +506,82 @@ namespace DataDictionary.Types
                     appendVariables(item);
                 }
             }
+        }
+
+        /// <summary>
+        /// The X position
+        /// </summary>
+        public int X
+        {
+            get { return getX(); }
+            set { setX(value); }
+        }
+
+        /// <summary>
+        /// The Y position
+        /// </summary>
+        public int Y
+        {
+            get { return getY(); }
+            set { setY(value); }
+        }
+
+        /// <summary>
+        /// The width
+        /// </summary>
+        public int Width
+        {
+            get { return getWidth(); }
+            set { setWidth(value); }
+        }
+
+        /// <summary>
+        /// The height
+        /// </summary>
+        public int Height
+        {
+            get { return getHeight(); }
+            set { setHeight(value); }
+        }
+
+        /// <summary>
+        /// The name to be displayed
+        /// </summary>
+        public string GraphicalName { get { return Name; } }
+
+        /// <summary>
+        /// Indicates whether the namespace is hidden
+        /// </summary>
+        public bool Hidden
+        {
+            get { return getHidden(); }
+            set { setHidden(value); }
+        }
+
+        /// <summary>
+        /// Provides an explanation of the namespace
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel)
+        {
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
+
+            retVal += TextualExplainUtilities.Pad("{{\\b NAMESPACE} " + Name, indentLevel);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// An explanation of the namespace
+        /// </summary>
+        /// <param name="inner"></param>
+        /// <returns></returns>
+        public string getExplain(bool inner)
+        {
+            string retVal = getExplain(0);
+
+            return retVal;
         }
     }
 }

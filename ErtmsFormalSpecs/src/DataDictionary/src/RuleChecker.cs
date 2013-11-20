@@ -671,12 +671,29 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
+
+        /// <summary>
+        /// The sets of defined paragraphs
+        /// </summary>
+        private Dictionary<string, Specification.Paragraph> Paragraphs = new Dictionary<string, Specification.Paragraph>();
+
         public override void visit(Generated.Paragraph obj, bool visitSubNodes)
         {
             Specification.Paragraph paragraph = obj as Specification.Paragraph;
 
             if (paragraph != null)
             {
+                Specification.Paragraph otherParagraph;
+                if (Paragraphs.TryGetValue(paragraph.Name, out otherParagraph))
+                {
+                    paragraph.AddError("Duplicate paragraph id " + paragraph.Name);
+                    otherParagraph.AddError("Duplicate paragraph id " + paragraph.Name);
+                }
+                else
+                {
+                    Paragraphs.Add(paragraph.Name, paragraph);
+                }
+
                 switch (paragraph.getImplementationStatus())
                 {
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:

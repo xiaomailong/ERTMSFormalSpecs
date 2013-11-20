@@ -1,4 +1,8 @@
 <NameSpace
+ X="600"
+ Y="1600"
+ Width="700"
+ Height="1000"
  Name="EURORADIO"
 >
 <NameSpaces>
@@ -570,7 +574,7 @@
  Id="3.5.4.2"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</PreCondition></PreConditions>
+<PreCondition>NOT  Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
 <Action>RadioSession.Subset37Connection.Connect()</Action><Action>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action><Action>THIS &lt;- RadioSessionState.Connecting</Action></Actions>
 </RuleCondition></Conditions>

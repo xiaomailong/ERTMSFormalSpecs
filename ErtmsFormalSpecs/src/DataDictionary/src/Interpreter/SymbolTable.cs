@@ -71,11 +71,6 @@ namespace DataDictionary.Interpreter
         /// <param name="variable"></param>
         public void setVariable(Variables.IVariable variable)
         {
-            if (variable == null)
-            {
-                System.Diagnostics.Debugger.Break();
-            }
-
             Values.Add(variable);
         }
 

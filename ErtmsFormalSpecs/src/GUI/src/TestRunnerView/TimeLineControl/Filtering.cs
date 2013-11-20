@@ -126,7 +126,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             treeNode.Nodes.Add(nameSpaceTreeNode);
 
             List<DataDictionary.Types.NameSpace> subNameSpaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace otherNameSpace in nameSpace.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace otherNameSpace in nameSpace.NameSpaces)
             {
                 subNameSpaces.Add(otherNameSpace);
             }

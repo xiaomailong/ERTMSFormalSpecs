@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace GUI.StateDiagram
+namespace GUI.BoxArrowDiagram
 {
     public class Span
     {

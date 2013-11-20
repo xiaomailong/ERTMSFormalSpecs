@@ -1318,6 +1318,21 @@ namespace DataDictionary.Functions
             return retVal;
         }
 
+        private const double EPSILON = 0.0000001;
+
+        /// <summary>
+        /// Performs double equality, with a margin of epsilon
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
+        public bool Equals(double d1, double d2)
+        {
+            bool retVal = Math.Abs(d1 - d2) < EPSILON;
+
+            return retVal;
+        }
+
         /// <summary>
         /// Provides the first X coordinate where the Y corresponds to the parameter.
         /// In other words, we need to find the first x for which f(x) = y where 
@@ -1336,7 +1351,7 @@ namespace DataDictionary.Functions
             foreach (Segment segment in Segments)
             {
                 double up = segment.Val(segment.Start);
-                if (up < upY && up >= Y)
+                if (up < upY && (up > Y || Equals(up, Y)))
                 {
                     upY = up;
                     upX = segment.Start;
@@ -1345,7 +1360,7 @@ namespace DataDictionary.Functions
                 if (segment.End < double.MaxValue)
                 {
                     down = segment.Val(segment.End - 0.0001);
-                    if (down > downY && down <= Y)
+                    if (down > downY && (down < Y || Equals(down, Y)))
                     {
                         downY = down;
                         downX = segment.End;
@@ -1358,7 +1373,7 @@ namespace DataDictionary.Functions
                     down = tmp;
                 }
 
-                if (Y <= up && Y >= down)
+                if ((Y < up || Equals(Y, up)) && ((Y > down) || Equals(Y, down)))
                 {
                     retVal = segment.IntersectsAt(Y);
                     break;
@@ -1367,11 +1382,8 @@ namespace DataDictionary.Functions
 
             if (retVal == double.MaxValue)
             {
-                if (upY != double.MaxValue && downY != double.MinValue)
-                {
-                    retVal = (upX + downX) / 2;
-                }
-                Log.ErrorFormat("Impossible to compute the solution X for the graph");
+                // TODO : check and activate
+                // throw new Exception("Impossible to compute the solution X for the graph");
             }
 
             return retVal;

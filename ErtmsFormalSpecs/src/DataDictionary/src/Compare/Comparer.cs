@@ -1200,6 +1200,26 @@ namespace DataDictionary.Compare
                     }
                 }
             }
+            if ( obj.getWidth() != other.getWidth() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Width", "Previously was [" + other.getWidth() + "]") );
+            }
+            if ( obj.getHeight() != other.getHeight() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Height", "Previously was [" + other.getHeight() + "]") );
+            }
+            if ( obj.getX() != other.getX() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "X", "Previously was [" + other.getX() + "]") );
+            }
+            if ( obj.getY() != other.getY() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Y", "Previously was [" + other.getY() + "]") );
+            }
+            if ( obj.getHidden() != other.getHidden() )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Hidden", "Previously was [" + other.getHidden() + "]") );
+            }
         }
 
         /// <summary>

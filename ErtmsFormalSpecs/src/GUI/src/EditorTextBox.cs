@@ -88,11 +88,12 @@ namespace GUI
         /// <summary>
         /// Provides the EFSSystem 
         /// </summary>
-        private EFSSystem EFSSystem { 
-            get 
-            { 
-                return Instance.EFSSystem; 
-            } 
+        private EFSSystem EFSSystem
+        {
+            get
+            {
+                return Instance.EFSSystem;
+            }
         }
 
         /// <summary>
@@ -129,8 +130,7 @@ namespace GUI
             EditionTextBox.DragDrop += new DragEventHandler(Editor_DragDropHandler);
             EditionTextBox.KeyUp += new KeyEventHandler(Editor_KeyUp);
             EditionTextBox.KeyPress += new KeyPressEventHandler(Editor_KeyPress);
-            EditionTextBox.MouseClick += new MouseEventHandler(EditionTextBox_MouseClick);
-            EditionTextBox.MouseHover += new EventHandler(EditionTextBox_MouseHover);
+            EditionTextBox.MouseUp += new MouseEventHandler(EditionTextBox_MouseClick);
             EditionTextBox.MouseDoubleClick += new MouseEventHandler(EditionTextBox_MouseDoubleClick);
             EditionTextBox.ShortcutsEnabled = true;
             EditionTextBox.MouseMove += new MouseEventHandler(EditionTextBox_MouseMove);
@@ -157,11 +157,6 @@ namespace GUI
                     mdiWindow.Select(instances[0] as Utils.ModelElement, true);
                 }
             }
-        }
-
-        void EditionTextBox_MouseHover(object sender, EventArgs e)
-        {
-            DisplayHelp(MouseLocation);
         }
 
         /// <summary>
@@ -274,8 +269,11 @@ namespace GUI
 
         void EditionTextBox_MouseClick(object sender, MouseEventArgs e)
         {
-            MouseLocation = e.Location;
-            DisplayHelp(e.Location);
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                MouseLocation = e.Location;
+                DisplayHelp(e.Location);
+            }
         }
 
         void SelectionComboBox_LocationChanged(object sender, EventArgs e)

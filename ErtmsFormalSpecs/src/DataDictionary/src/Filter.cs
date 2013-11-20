@@ -83,7 +83,7 @@ namespace DataDictionary
         /// <returns></returns>
         public static bool IsLeftSide(INamable value)
         {
-            return IsVariable(value) || value is Types.StructureElement;
+            return IsVariable(value) || value is Types.StructureElement || value is Parameter;
         }
 
         /// <summary>
@@ -134,6 +134,16 @@ namespace DataDictionary
         public static bool IsCallable(INamable value)
         {
             return (value is Interpreter.ICallable) || (value is Types.Range);
+        }
+
+        /// <summary>
+        /// Indicates that the namable is a callable or a variable
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsCallableOrIsVariable(INamable value)
+        {
+            return IsCallable(value) || IsVariable(value);
         }
 
         /// <summary>
