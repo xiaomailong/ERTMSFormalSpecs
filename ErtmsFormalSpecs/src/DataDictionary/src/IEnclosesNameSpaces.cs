@@ -50,13 +50,14 @@ namespace DataDictionary
         /// <summary>
         /// Provides all the function calls related to this namespace
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="system">The system in which the calls should be gathered</param>
+        /// <param name="container">If provided, indicates that the calls should be limited to a given container</param>
         /// <returns></returns>
-        public static List<AccessMode> getAccesses(IEnclosesNameSpaces container)
+        public static List<AccessMode> getAccesses(EFSSystem system, IEnclosesNameSpaces container = null)
         {
             SortedSet<ProcedureOrFunctionCall> procedureCalls = new SortedSet<ProcedureOrFunctionCall>();
             SortedSet<AccessToVariable> accessesToVariables = new SortedSet<AccessToVariable>();
-            foreach (Usage usage in container.EFSSystem.FindReferences(Filter.IsCallableOrIsVariable))
+            foreach (Usage usage in system.FindReferences(Filter.IsCallableOrIsVariable))
             {
                 ModelElement target = (ModelElement)usage.Referenced;
                 ModelElement source = usage.User;
@@ -179,9 +180,13 @@ namespace DataDictionary
 
             // Do not consider internal accesses 
             retVal = retVal && sourceNameSpace != targetNameSpace;
-            // Only display things that can be displayed in this functional view
-            // TODO : also consider sub namespaces in the diagram
-            retVal = retVal && (container.NameSpaces.Contains(sourceNameSpace) || container.NameSpaces.Contains(targetNameSpace));
+
+            if (container != null)
+            {
+                // Only display things that can be displayed in this functional view
+                // TODO : also consider sub namespaces in the diagram
+                retVal = retVal && (container.NameSpaces.Contains(sourceNameSpace) || container.NameSpaces.Contains(targetNameSpace));
+            }
 
             return retVal;
         }
@@ -199,28 +204,13 @@ namespace DataDictionary
             object current = source;
             while (current != null && retVal == null)
             {
-                // Retrieves the namespace in which the source belong
-                // This namespace should belong to the container
-                NameSpace nameSpace = current as NameSpace;
-                if (container.NameSpaces.Contains(nameSpace))
+                NameSpace nameSpace = EnclosingNameSpaceFinder.find(source);
+                if (container == null || container.NameSpaces.Contains(nameSpace))
                 {
                     retVal = nameSpace;
                 }
 
-                // If no result has been found, go one step further 
-                // in the parent hierarchy
-                if (retVal == null)
-                {
-                    IEnclosed enclosed = current as IEnclosed;
-                    if (enclosed != null)
-                    {
-                        current = enclosed.Enclosing;
-                    }
-                    else
-                    {
-                        current = null;
-                    }
-                }
+                current = nameSpace;
             }
 
             return retVal;

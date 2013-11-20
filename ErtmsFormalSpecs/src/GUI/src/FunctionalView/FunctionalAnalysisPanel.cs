@@ -101,7 +101,7 @@ namespace GUI.FunctionalView
         /// <returns></returns>
         public override List<AccessMode> getArrows()
         {
-            return IEnclosesNameSpacesUtils.getAccesses(NameSpaceContainer);
+            return IEnclosesNameSpacesUtils.getAccesses(NameSpaceContainer.EFSSystem, NameSpaceContainer);
         }
     }
 }
