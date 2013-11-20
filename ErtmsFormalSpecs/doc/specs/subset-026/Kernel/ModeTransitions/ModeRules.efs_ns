@@ -125,7 +125,7 @@
  Name="HandleAdhesionFactor"
 >
 <PreConditions>
-<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SL, Mode.NL ]</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SL, Mode.NL, Mode.SN]</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
@@ -150,8 +150,7 @@
 <PreConditions>
 <PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.UN, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode(Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode.TCPacket
-)</Action></Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile.Conditions &lt;- MAP Kernel.TrackDescription.TrackConditions.TCProfile.Conditions  USING Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode1 ( X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -220,8 +219,7 @@
 <PreConditions>
 <PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.TrackDescription.TrackConditions.HandleTCP2whenEnteringGivenMode(Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode.TCPacket
-)</Action></Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile.Conditions &lt;- MAP Kernel.TrackDescription.TrackConditions.TCProfile.Conditions  USING Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode2 ( X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -267,6 +265,13 @@
 <PreCondition>Kernel.Mode in [ Mode.NP ]</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="HandleTrainData2"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.SB, Mode.SH ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
