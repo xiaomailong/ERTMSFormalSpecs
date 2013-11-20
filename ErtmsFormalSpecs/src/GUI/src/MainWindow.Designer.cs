@@ -118,6 +118,7 @@ namespace GUI
             this.generateDynamicCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compareWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareWithGitRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateERTMSAcademyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +149,7 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.compareWithGitRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateFunctionalAnalysisReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -570,6 +571,7 @@ namespace GUI
             this.verificationRequiredToolStripMenuItem,
             this.toolStripSeparator18,
             this.generateDataDictionaryReportToolStripMenuItem,
+            this.generateFunctionalAnalysisReportToolStripMenuItem,
             this.toolStripSeparator21,
             this.resetCountersToolStripMenuItem,
             this.showRulePerformancesToolStripMenuItem,
@@ -581,7 +583,7 @@ namespace GUI
             // showModelViewToolStripMenuItem
             // 
             this.showModelViewToolStripMenuItem.Name = "showModelViewToolStripMenuItem";
-            this.showModelViewToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showModelViewToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showModelViewToolStripMenuItem.Text = "Show model view";
             this.showModelViewToolStripMenuItem.Click += new System.EventHandler(this.showModelViewToolStripMenuItem_Click);
             // 
@@ -589,64 +591,64 @@ namespace GUI
             // 
             this.showShortcutsViewToolStripMenuItem.Name = "showShortcutsViewToolStripMenuItem";
             this.showShortcutsViewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.showShortcutsViewToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showShortcutsViewToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showShortcutsViewToolStripMenuItem.Text = "Show shortcuts view";
             this.showShortcutsViewToolStripMenuItem.Click += new System.EventHandler(this.showShortcutsViewToolStripMenuItem_Click);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(254, 6);
             // 
             // implementationRequiredToolStripMenuItem
             // 
             this.implementationRequiredToolStripMenuItem.Name = "implementationRequiredToolStripMenuItem";
-            this.implementationRequiredToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.implementationRequiredToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.implementationRequiredToolStripMenuItem.Text = "Mark implementation required";
             this.implementationRequiredToolStripMenuItem.Click += new System.EventHandler(this.implementationRequiredToolStripMenuItem_Click);
             // 
             // verificationRequiredToolStripMenuItem
             // 
             this.verificationRequiredToolStripMenuItem.Name = "verificationRequiredToolStripMenuItem";
-            this.verificationRequiredToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.verificationRequiredToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.verificationRequiredToolStripMenuItem.Text = "Mark verification required";
             this.verificationRequiredToolStripMenuItem.Click += new System.EventHandler(this.verificationRequiredToolStripMenuItem_Click);
             // 
             // toolStripSeparator18
             // 
             this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator18.Size = new System.Drawing.Size(254, 6);
             // 
             // generateDataDictionaryReportToolStripMenuItem
             // 
             this.generateDataDictionaryReportToolStripMenuItem.Name = "generateDataDictionaryReportToolStripMenuItem";
-            this.generateDataDictionaryReportToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.generateDataDictionaryReportToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.generateDataDictionaryReportToolStripMenuItem.Text = "Generate data dictionary report...";
             this.generateDataDictionaryReportToolStripMenuItem.Click += new System.EventHandler(this.generateDataDictionaryReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator21
             // 
             this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator21.Size = new System.Drawing.Size(254, 6);
             // 
             // resetCountersToolStripMenuItem
             // 
             this.resetCountersToolStripMenuItem.Name = "resetCountersToolStripMenuItem";
-            this.resetCountersToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.resetCountersToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.resetCountersToolStripMenuItem.Text = "Reset counters";
             this.resetCountersToolStripMenuItem.Click += new System.EventHandler(this.resetCountersToolStripMenuItem_Click);
             // 
             // showRulePerformancesToolStripMenuItem
             // 
             this.showRulePerformancesToolStripMenuItem.Name = "showRulePerformancesToolStripMenuItem";
-            this.showRulePerformancesToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showRulePerformancesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showRulePerformancesToolStripMenuItem.Text = "Show rule performances";
             this.showRulePerformancesToolStripMenuItem.Click += new System.EventHandler(this.showRulePerformancesToolStripMenuItem_Click);
             // 
             // showFunctionsPerformancesToolStripMenuItem
             // 
             this.showFunctionsPerformancesToolStripMenuItem.Name = "showFunctionsPerformancesToolStripMenuItem";
-            this.showFunctionsPerformancesToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showFunctionsPerformancesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showFunctionsPerformancesToolStripMenuItem.Text = "Show functions performances";
             this.showFunctionsPerformancesToolStripMenuItem.Click += new System.EventHandler(this.showFunctionsPerformancesToolStripMenuItem_Click);
             // 
@@ -755,6 +757,13 @@ namespace GUI
             this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.compareWithToolStripMenuItem.Text = "Compare with local file...";
             this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
+            // 
+            // compareWithGitRevisionToolStripMenuItem
+            // 
+            this.compareWithGitRevisionToolStripMenuItem.Name = "compareWithGitRevisionToolStripMenuItem";
+            this.compareWithGitRevisionToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.compareWithGitRevisionToolStripMenuItem.Text = "Compare with git revision...";
+            this.compareWithGitRevisionToolStripMenuItem.Click += new System.EventHandler(this.compareWithGitRevisionToolStripMenuItem_Click);
             // 
             // generateERTMSAcademyReportToolStripMenuItem
             // 
@@ -982,12 +991,12 @@ namespace GUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // compareWithGitRevisionToolStripMenuItem
+            // generateFunctionalAnalysisReportToolStripMenuItem
             // 
-            this.compareWithGitRevisionToolStripMenuItem.Name = "compareWithGitRevisionToolStripMenuItem";
-            this.compareWithGitRevisionToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.compareWithGitRevisionToolStripMenuItem.Text = "Compare with git revision...";
-            this.compareWithGitRevisionToolStripMenuItem.Click += new System.EventHandler(this.compareWithGitRevisionToolStripMenuItem_Click);
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Name = "generateFunctionalAnalysisReportToolStripMenuItem";
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Text = "Generate functional analysis report";
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Click += new System.EventHandler(this.generateFunctionalAnalysisReportToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -1120,6 +1129,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compareWithToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compareWithGitRevisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateFunctionalAnalysisReportToolStripMenuItem;
     }
 }
 

@@ -23,7 +23,7 @@ using Utils;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder
+    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces
     {
         /// <summary>
         /// The file path associated to the dictionary

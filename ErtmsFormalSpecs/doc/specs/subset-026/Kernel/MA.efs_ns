@@ -1074,16 +1074,16 @@
  Name="Section before infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) &lt;= InfillDistance</PreCondition></PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) + BaseTypes.LengthToDistance ( aSection.Length ) &lt;= InfillDistance</PreCondition></PreConditions>
 <Expression>aSection</Expression>
 </Case><Case
  Name="Section on infill distance"
 >
 <PreConditions>
-<PreCondition>AbsoluteDistance ( aSection ) - BaseTypes.LengthToDistance ( aSection.Length ) &lt; InfillDistance</PreCondition><PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection )</PreCondition></PreConditions>
+<PreCondition>AbsoluteDistance ( aSection ) &lt; InfillDistance</PreCondition><PreCondition>InfillDistance &lt; AbsoluteDistance ( aSection ) + BaseTypes.LengthToDistance  ( aSection.Length )</PreCondition></PreConditions>
 <Expression>Section
 {
-    Length =&gt; BaseTypes.LengthToDistance ( AbsoluteDistance ( aSection ) - InfillDistance ),
+    Length =&gt; BaseTypes.LengthToDistance ( InfillDistance - AbsoluteDistance ( aSection ) ),
     TimeOut =&gt; aSection.TimeOut
 }</Expression>
 </Case><Case
@@ -1099,7 +1099,7 @@
 <ReqRef
  Id="3.8.5.1.b"
 >
-</ReqRef><Comment>Provides the absolute distance (from the LRBG) to the end of the given section.</Comment>
+</ReqRef><Comment>Provides the absolute distance (from the LRBG) to the beginning of the given section.</Comment>
 <Parameters>
 <Parameter
  Type="Section"
@@ -1112,7 +1112,7 @@
 >
 <Expression>SUM
     MA.Sections |
-        Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections) OR ( X == aSection )
+        Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections)
 USING
     Default.BaseTypes.LengthToDistance ( X.Length )</Expression>
 </Case></Cases>
@@ -1176,6 +1176,9 @@ USING
 >
 </ReqRef><ReqRef
  Id="A1.1.6.2"
+>
+</ReqRef><ReqRef
+ Id="A1.1.6.3"
 >
 </ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
 <Parameters>
@@ -1440,23 +1443,31 @@ Default.BaseTypes.LengthToDistance(
 </ReqRef><ReqRef
  Id="3.8.1.1.b"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update common fields"
->
-<ReqRef
+</ReqRef><ReqRef
  Id="7.5.1.157"
 >
 </ReqRef><ReqRef
  Id="3.8.5.1.a"
 >
-</ReqRef><ReqRef
- Id="3.8.5.1.b"
->
 </ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MA was available"
+>
+<Comment>If MA was already available, we can directly modify its fields</Comment>
+<PreConditions>
+<PreCondition>MA != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action>MA.TargetSpeed &lt;- MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 )</Action><Action>MA.TargetSpeedTimeOut &lt;- BaseTypes.Time ( Packet.T_LOA )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No MA was available"
+>
+<Comment>If no MA was available, we have to create a new MA</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1465,10 +1476,9 @@ Default.BaseTypes.LengthToDistance(
     TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
     TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
 }</Action></Actions>
-<SubRules>
-<Rule
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="Handle information according to infill status"
 >
 <SubRules></SubRules>
@@ -1538,8 +1548,6 @@ Default.BaseTypes.LengthToDistance(
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1550,6 +1558,12 @@ Default.BaseTypes.LengthToDistance(
 >
 </ReqRef><ReqRef
  Id="3.8.3.3"
+>
+</ReqRef><ReqRef
+ Id="3.8.5.1.a"
+>
+</ReqRef><ReqRef
+ Id="3.8.5.1.b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>

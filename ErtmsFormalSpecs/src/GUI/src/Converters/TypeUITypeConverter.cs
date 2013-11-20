@@ -42,7 +42,7 @@ namespace GUI.Converters
                 DataDictionary.Types.ITypedElement typedElement = editor.Model as DataDictionary.Types.ITypedElement;
                 if (typedElement != null)
                 {
-                    typedElement.TypeName = text;
+                    typedElement.TypeName = text.Trim();
                     return typedElement;
                 }
                 else

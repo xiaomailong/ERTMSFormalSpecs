@@ -525,17 +525,6 @@ INITIAL_VALUE
 </Function><Function
  Type="Boolean"
  NeedsRequirement="FALSE"
- Name="ConditionIsObsolete"
->
-<Cases>
-<Case
- Name="Default"
->
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- NeedsRequirement="FALSE"
  Name="ConditionExitsApplicability"
 >
 <Parameters>
@@ -549,6 +538,21 @@ INITIAL_VALUE
  Name="RearEndPosition after TrackCond"
 >
 <Expression>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt; (aCondition.Distance + BaseTypes.LengthToDistance(aCondition.Length))</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="IsInsideRadioHole"
+>
+<ReqRef
+ Id="3.5.4.4"
+>
+</ReqRef><Comment>Indicates if there is an applicable track condition for radio hole</Comment>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>THERE_IS_IN TCProfile.Conditions | ( X.Applied AND X.Value.RadioHole == True )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -683,74 +687,6 @@ IN
 </Rule></Rules>
 </Procedure><Procedure
  NeedsRequirement="FALSE"
- Name="ApplyTrackCondition"
->
-<Comment></Comment>
-<Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aTrackCondition"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="&lt;Rule1&gt;"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="&lt;RuleCondition1&gt;"
->
-<ReqRef
- Id="3.5.4.4"
->
-</ReqRef><PreConditions>
-<PreCondition>aTrackCondition.Value.RadioHole</PreCondition></PreConditions>
-<Actions>
-<Action>InsideRadioHole &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- NeedsRequirement="FALSE"
- Name="RevokeTrackCondition"
->
-<Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aTrackCondition"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RadioHole"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RadioHoleCase"
->
-<ReqRef
- Id="3.5.3.4.e"
->
-</ReqRef><ReqRef
- Id="3.5.4.4"
->
-</ReqRef><PreConditions>
-<PreCondition>aTrackCondition.Value.RadioHole</PreCondition></PreConditions>
-<Actions>
-<Action>InsideRadioHole &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- NeedsRequirement="FALSE"
  Name="ApplyWhenEntersApplicability"
 >
 <Parameters>
@@ -763,46 +699,18 @@ IN
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="&lt;Rule1&gt;"
+ Name="Apply when enters applicability"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
- Name="&lt;RuleCondition1&gt;"
+ Name="Apply when enters applicability"
 >
 <PreConditions>
 <PreCondition>ConditionEntersApplicabilityNow(aTrackCondition)</PreCondition><PreCondition>NOT aTrackCondition.Applied</PreCondition></PreConditions>
 <Actions>
-<Action>ApplyTrackCondition(aTrackCondition)</Action><Action>aTrackCondition.Applied &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- NeedsRequirement="FALSE"
- Name="RevokeWhenExitApplicability"
->
-<Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aTrackCondition"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="RevokeWhenExitApplicability"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RevokeWhenExitApplicability"
->
-<PreConditions>
-<PreCondition>ConditionExitsApplicability ( aTrackCondition )</PreCondition></PreConditions>
-<Actions>
-<Action>RevokeTrackCondition ( aTrackCondition )</Action></Actions>
+<Action>aTrackCondition.Applied &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -836,13 +744,6 @@ IN
  Id="3.7.1.1.c.5"
 >
 </ReqRef><Comment>The list of track conditions received from the trackside.</Comment>
-</Variable><Variable
- Type="Boolean"
- VariableMode="Internal"
- NeedsRequirement="FALSE"
- Name="InsideRadioHole"
->
-<Comment></Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -864,7 +765,7 @@ IN
 <PreConditions>
 <PreCondition>TCProfile != EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>APPLY ApplyWhenEntersApplicability(aTrackCondition =&gt; X) ON TCProfile.Conditions</Action><Action>APPLY RevokeWhenExitApplicability(X) ON TCProfile.Conditions</Action><Action>TCProfile.Conditions &lt;- MAP TCProfile.Conditions | (NOT ConditionIsObsolete(X)) USING X</Action></Actions>
+<Action>APPLY ApplyWhenEntersApplicability(aTrackCondition =&gt; X) ON TCProfile.Conditions</Action><Action>REMOVE ALL ConditionExitsApplicability ( X ) IN TCProfile.Conditions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

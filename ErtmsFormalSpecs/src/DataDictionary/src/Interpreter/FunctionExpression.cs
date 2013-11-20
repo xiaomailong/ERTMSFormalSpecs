@@ -147,6 +147,7 @@ namespace DataDictionary.Interpreter
         {
             Values.IValue retVal = null;
 
+            ExplanationPart previous = SetupExplanation();
             try
             {
                 if (Parameters.Count == 1)
@@ -177,6 +178,13 @@ namespace DataDictionary.Interpreter
                 /// TODO Ugly hack, because functions & function types are merged.
                 /// This provides an empty function as the type of this
                 retVal = GetExpressionType() as Values.IValue;
+            }
+            finally
+            {
+                if (explain)
+                {
+                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                }
             }
 
             return retVal;

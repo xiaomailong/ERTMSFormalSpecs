@@ -39,29 +39,9 @@ namespace GUI.SpecificationView
             get { return messagesRichTextBox.TextBox; }
         }
 
-        public override EditorTextBox RequirementsTextBox
-        {
-            get { return null; }
-        }
-
-        public override EditorTextBox ExpressionEditorTextBox
-        {
-            get { return null; }
-        }
-
         public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
-        }
-
-        public override BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public override ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
         }
 
         /// <summary>
