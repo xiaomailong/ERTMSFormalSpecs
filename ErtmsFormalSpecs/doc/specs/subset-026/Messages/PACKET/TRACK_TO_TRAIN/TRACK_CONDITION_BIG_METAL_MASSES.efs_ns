@@ -5,92 +5,130 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>The packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside.</Comment>
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef><Comment>The packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="67"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_TRACKCOND"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_TRACKCOND"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_TRACKCOND"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_TRACKCOND"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef><StructureElement
+ TypeName="D_TRACKCOND"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_TRACKCOND"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_TRACKCOND"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_TRACKCOND"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="7.4.2.19"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

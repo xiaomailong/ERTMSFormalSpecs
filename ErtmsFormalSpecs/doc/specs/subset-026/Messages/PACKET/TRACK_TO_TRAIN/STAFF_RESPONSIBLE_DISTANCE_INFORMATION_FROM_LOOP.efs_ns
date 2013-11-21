@@ -5,141 +5,191 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Information for trains in staff responsible mode</Comment>
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef><Comment>Information for trains in staff responsible mode</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="13"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY_1"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG_1"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_SR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SR"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_SR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SR"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="7.4.2.3.1"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

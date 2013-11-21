@@ -1,0 +1,38 @@
+<NameSpace
+ Name="SR_SPEED_DISTANCE_ENTERED_BY_DRIVER"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains the change of the SR Speed or Distance entered by the driver</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="D_SR"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_SR"
+>
+</StructureElement><StructureElement
+ TypeName="V_SR"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_SR"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

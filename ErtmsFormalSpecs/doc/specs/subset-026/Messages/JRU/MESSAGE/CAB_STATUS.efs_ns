@@ -1,0 +1,62 @@
+<NameSpace
+ Name="CAB_STATUS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message allows to transmit the cab status that the ERTMS/ETCS on-board received from the train interface</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_CAB_A_STATUS"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_CAB_A_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="Q_CAB_B"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_CAB_B"
+>
+</StructureElement><StructureElement
+ TypeName="M_CAB_B_STATUS"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_CAB_B_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SINGLE_DESK"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SINGLE_DESK"
+>
+</StructureElement><StructureElement
+ TypeName="M_TRAIN_ORIENTATION"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TRAIN_ORIENTATION"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

@@ -5,218 +5,274 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Transmission of a movement authority for level 1.</Comment>
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef><Comment>Transmission of a movement authority for level 1.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="12"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_MAIN"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_MAIN"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_LOA"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_LOA"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_LOA"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_LOA"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_ENDSECTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_ENDSECTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SECTIONTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SECTIONTIMER"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_SECTIONTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_SECTIONTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_SECTIONTIMERSTOPLOC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SECTIONTIMERSTOPLOC"
 >
 </StructureElement><StructureElement
  TypeName="Q_ENDTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_ENDTIMER"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_ENDTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_ENDTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_ENDTIMERSTARTLOC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_ENDTIMERSTARTLOC"
 >
 </StructureElement><StructureElement
  TypeName="Q_DANGERPOINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DANGERPOINT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_DP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_DP"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_RELEASEDP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_RELEASEDP"
 >
 </StructureElement><StructureElement
  TypeName="Q_OVERLAP"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_OVERLAP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_STARTOL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_STARTOL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_OL"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_OL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_OL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_OL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_RELEASEOL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_RELEASEOL"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef><StructureElement
+ TypeName="L_SECTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_SECTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SECTIONTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SECTIONTIMER"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_SECTIONTIMER"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_SECTIONTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_SECTIONTIMERSTOPLOC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SECTIONTIMERSTOPLOC"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="7.4.2.3"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

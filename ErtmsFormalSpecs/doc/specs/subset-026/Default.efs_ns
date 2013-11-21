@@ -698,11 +698,9 @@
 <PreCondition>Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Reversing</Expression>
 </Case><Case
- Name="NP, PS, Unknown"
+ Name="PS"
 >
-<PreConditions>
-<PreCondition>Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.Unknown]</PreCondition></PreConditions>
-<Expression>Messages.M_MODE.Spare</Expression>
+<Expression>Messages.M_MODE.Passive_Shunting</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.Q_DIRTRAIN"

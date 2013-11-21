@@ -1,0 +1,30 @@
+<NameSpace
+ Name="DMI_SOUND_STATUS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains the status of the sounds that are used to draw the driver&apos;s attention from the outside to the display</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SOUND_STATUS"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SOUND_STATUS"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

@@ -5,30 +5,42 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.</Comment>
+<ReqRef
+ Id="7.4.2.38"
+>
+</ReqRef><Comment>Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="254"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.38"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.38"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.38"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

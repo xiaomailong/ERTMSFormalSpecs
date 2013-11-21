@@ -1,0 +1,30 @@
+<NameSpace
+ Name="PASSIVE_SHUNTTING_INPUT"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message allows to transmit the state of the passive shunting input</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_PASSIVE_SHUNTTING"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_PASSIVE_SHUNTTING"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

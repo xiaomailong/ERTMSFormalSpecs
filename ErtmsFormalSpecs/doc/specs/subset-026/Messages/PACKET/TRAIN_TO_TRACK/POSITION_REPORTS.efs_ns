@@ -5,36 +5,22 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT"
 >
 </StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
 >
 </StructureElement></Structure></Structures>
-<Variables>
-<Variable
- Type="Default.MessageTypes.Distance"
- DefaultValue="32767"
- VariableMode="Constant"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DistanceUnknown"
->
-<ReqRef
- Id="7.5.1.13.bis"
->
-</ReqRef><Comment>Predefined value representing an unknown distance.</Comment>
-</Variable></Variables>
 </NameSpace>

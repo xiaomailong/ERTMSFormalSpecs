@@ -1,0 +1,500 @@
+<NameSpace
+ Name="MESSAGE"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="GENERAL_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRAIN_DATA"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="EMERGENCY_BRAKE_COMMAND_STATE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SERVICE_BRAKE_COMMAND_STATE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TELEGRAM_FROM_BALISE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="FROM_EUROLOOP"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="FROM_RADIO_INFILL_UNIT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TO_RADIO_INFILL_UNIT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="FROM_RBC"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TO_RBC"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DRIVER_S_ACTIONS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="BALISE_GROUP_ERROR"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="RADIO_ERROR"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="STM_INFORMATION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="INFORMATION_FROM_COLD_MOVEMENT_DETECTOR"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="START_DISPLAYING_FIXED_TEXT_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="STOP_DISPLAYING_FIXED_TEXT_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="START_DISPLAYING_PLAIN_TEXT_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="STOP_DISPLAYING_PLAIN_TEXT_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SPEED_AND_DISTANCE_MONITORING_INFORMATION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DMI_SYMBOL_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DMI_SYMB_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DMI_SOUND_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DMI_SYSTEM_STATUS_MESSAGE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ADDITIONAL_DATA"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SR_SPEED_DISTANCE_ENTERED_BY_DRIVER"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="NTC_SELECTED"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="VIRTUAL_BALISE_COVER_SET_BY_DRIVER"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="SLEEPING_INPUT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="PASSIVE_SHUNTTING_INPUT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="NON_LEADING_INPUT"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="REGENERATIVE_BRAKE_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="MAGNETIC_SHOE_BRAKE_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="EDDY_CURRENT_BRAKE_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ELECTRO_PNEUMATIC_BRAKE_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ADDITIONAL_BRAKE_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="CAB_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="DIRECTION_CONTROLLER_POSITION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRACTION_STATUS"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TYPE_OF_TRAIN_DATA_ENTRY"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="NATIONAL_SYSTEM_ISOLATION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRACTION_CUT_OFF_COMMAND_STATE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA"
+>
+</NameSpaceRef></NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<StructureElement
+ TypeName="MESSAGE.GENERAL_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GENERAL_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRAIN_DATA.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TRAIN_DATA"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.EMERGENCY_BRAKE_COMMAND_STATE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EMERGENCY_BRAKE_COMMAND_STATE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.SERVICE_BRAKE_COMMAND_STATE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SERVICE_BRAKE_COMMAND_STATE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TO_RADIO_INFILL_UNIT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TO_RADIO_INFILL_UNIT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TELEGRAM_FROM_BALISE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TELEGRAM_FROM_BALISE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.FROM_EUROLOOP.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FROM_EUROLOOP"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.FROM_RADIO_INFILL_UNIT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FROM_RADIO_INFILL_UNIT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.FROM_RBC.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FROM_RBC"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TO_RBC.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TO_RBC"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DRIVER_S_ACTIONS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DRIVER_S_ACTIONS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.BALISE_GROUP_ERROR.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BALISE_GROUP_ERROR"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.RADIO_ERROR.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RADIO_ERROR"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.STM_INFORMATION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="STM_INFORMATION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.INFORMATION_FROM_COLD_MOVEMENT_DETECTOR.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="INFORMATION_FROM_COLD_MOVEMENT_DETECTOR"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.START_DISPLAYING_FIXED_TEXT_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="START_DISPLAYING_FIXED_TEXT_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.STOP_DISPLAYING_FIXED_TEXT_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="STOP_DISPLAYING_FIXED_TEXT_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.START_DISPLAYING_PLAIN_TEXT_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="START_DISPLAYING_PLAIN_TEXT_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.STOP_DISPLAYING_PLAIN_TEXT_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="STOP_DISPLAYING_PLAIN_TEXT_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SPEED_AND_DISTANCE_MONITORING_INFORMATION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DMI_SYMB_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DMI_SOUND_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SOUND_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DMI_SYSTEM_STATUS_MESSAGE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYSTEM_STATUS_MESSAGE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.ADDITIONAL_DATA.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ADDITIONAL_DATA"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.SR_SPEED_DISTANCE_ENTERED_BY_DRIVER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR_SPEED_DISTANCE_ENTERED_BY_DRIVER"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.NTC_SELECTED.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NTC_SELECTED"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.VIRTUAL_BALISE_COVER_SET_BY_DRIVER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="VIRTUAL_BALISE_COVER_SET_BY_DRIVER"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.SLEEPING_INPUT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SLEEPING_INPUT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.PASSIVE_SHUNTTING_INPUT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PASSIVE_SHUNTTING_INPUT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.NON_LEADING_INPUT.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NON_LEADING_INPUT"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.REGENERATIVE_BRAKE_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="REGENERATIVE_BRAKE_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.MAGNETIC_SHOE_BRAKE_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MAGNETIC_SHOE_BRAKE_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.EDDY_CURRENT_BRAKE_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EDDY_CURRENT_BRAKE_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.ELECTRO_PNEUMATIC_BRAKE_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ELECTRO_PNEUMATIC_BRAKE_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.ADDITIONAL_BRAKE_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ADDITIONAL_BRAKE_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.CAB_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CAB_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DIRECTION_CONTROLLER_POSITION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DIRECTION_CONTROLLER_POSITION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRACTION_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TRACTION_STATUS"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TYPE_OF_TRAIN_DATA_ENTRY.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TYPE_OF_TRAIN_DATA_ENTRY"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.NATIONAL_SYSTEM_ISOLATION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NATIONAL_SYSTEM_ISOLATION"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.TRACTION_CUT_OFF_COMMAND_STATE.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TRACTION_CUT_OFF_COMMAND_STATE"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

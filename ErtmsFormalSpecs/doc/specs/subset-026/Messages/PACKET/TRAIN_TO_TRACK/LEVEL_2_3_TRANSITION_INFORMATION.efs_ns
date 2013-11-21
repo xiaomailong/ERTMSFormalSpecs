@@ -5,30 +5,42 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Identity of the level 2/3 transition balise group</Comment>
+<ReqRef
+ Id="7.4.3.4.2"
+>
+</ReqRef><Comment>Identity of the level 2/3 transition balise group</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="9"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.3.4.2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.3.4.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LTRBG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LTRBG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.3.4.2"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

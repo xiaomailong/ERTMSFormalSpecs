@@ -5,51 +5,69 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location</Comment>
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef><Comment>Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="90"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.26.2"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

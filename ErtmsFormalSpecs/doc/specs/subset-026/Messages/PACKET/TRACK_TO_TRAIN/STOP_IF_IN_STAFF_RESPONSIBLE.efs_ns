@@ -5,37 +5,52 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Information to stop a train in staff responsible.</Comment>
+<ReqRef
+ Id="7.4.2.33"
+>
+</ReqRef><Comment>Information to stop a train in staff responsible.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="137"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.33"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.33"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.33"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SRSTOP"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SRSTOP"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.33"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

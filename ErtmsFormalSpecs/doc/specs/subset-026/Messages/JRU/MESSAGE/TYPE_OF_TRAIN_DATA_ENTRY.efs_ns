@@ -1,0 +1,30 @@
+<NameSpace
+ Name="TYPE_OF_TRAIN_DATA_ENTRY"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message allows to transmit the type of the train data entry</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_TRAIN_DATA_ENTRY"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TRAIN_DATA_ENTRY"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>
