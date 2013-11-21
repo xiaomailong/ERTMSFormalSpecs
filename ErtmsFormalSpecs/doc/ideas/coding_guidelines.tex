@@ -8,7 +8,9 @@
 %% 4. put remarks with \<initials>note{<sometext>},
 %%    \<initials>warning{<sometext>} or
 %%    \<initials>fatal{<sometext>} (in order of significance}
-%% 5. add \vhEntry{<versionnumber>}{<date>}{<initials>}{<sometext>} to the
+%% 5. for longer texts use a combination of 4. plus
+%%    \<initials>explain{<sometext>}
+%% 6. add \vhEntry{<versionnumber>}{<date>}{<initials>}{<sometext>} to the
 %%    respective section in the header
 %%
 %%
@@ -42,7 +44,8 @@
 
 \documentclass[draft, a4paper, oneside]{scrreprt}
 \usepackage[american]{babel}
-\usepackage[draft=false]{hyperref} %link in draft mode as well
+\usepackage{hyperref}
+\usepackage{pdfcomment}
 \usepackage{enumitem}
 \usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
 \usepackage[usenames, dvipsnames]{xcolor}
@@ -65,6 +68,7 @@
 \newcommand{\docSubTitle}{Coding Guidelines}
 
 \hypersetup{%
+draft = false,  %link in draft mode as well
 pdftitle = {\docTitle, \docSubTitle},
 pdfkeywords = {\docTitle, Version \vhCurrentVersion from \vhCurrentDate},
 pdfauthor = {\vhAllAuthorsSet},
@@ -108,6 +112,9 @@ urlcolor = black
 \setenumerate[2]{label*=\arabic*.}
 \setenumerate[3]{label*=\arabic*.}
 \let\emph\textsl
+
+
+
 \newcommand{\literally}[1]{\textsf{\emph{#1}}}
 \newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
 
@@ -126,8 +133,11 @@ urlcolor = black
 \renewcommand*\FXLayoutInline[3]{%
   \@fxdocolon {#3}{%
     \@fxuseface {inline}%
-    \colorbox{fx#1bg}{\color {fx#1fg}\ignorespaces \sffamily #2 \textsubscript{\emph{#3}}}}}
+    \colorbox{fx#1bg}{\color {fx#1fg}\ignorespaces \sffamily #2\textsubscript{\emph{#3}}}}   
+    }
 \makeatother
+
+\setliststyle{AuthorComment} %alter the appearance of the pdfcomments list
 
 \lstdefinelanguage{EFSDSL}
 {%
@@ -160,6 +170,12 @@ breaklines=true}
 \expandafter\newcommand\csname #1\endcsname{#2}
 %setup fixme
 \FXRegisterAuthor{#1}{a#1}{#1}
+%setup personal PDF Comment
+\ifdraft{%
+\expandafter\newcommand\csname #1explain\endcsname[1]{\pdfcomment[author=#2, color=yellow, icon=Comment, subject=Comment, open=true]{##1}}}
+{%
+\expandafter\newcommand\csname #1explain\endcsname[1]{}
+}
 }
 
 %%
@@ -219,7 +235,7 @@ breaklines=true}
 
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
-
+\vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
 % @ALL:
 % add your revision information here
 
@@ -273,6 +289,14 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \chapter{Model}
 
+\section{General}
+
+\begin{enumerate}
+\item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a Function instead of a Procedure), but have an influence on the actual behavior of the model shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code. \ruleauthor{MD}{12/11/2013}
+
+\end{enumerate}
+
+
 \section{Functions}
 \subsection{Cases}
 
@@ -292,9 +316,10 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 
 \section{Structure}
 \begin{enumerate}
-\item The first sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
+\item \MDwarning{TBD}\MDexplain{Unfortunately this is not possible in all cases. Require justification if rule cannot be obeyed?} A Sub-step shall either contain Actions or Expectations but not both. \ruleauthor{MD}{12/11/2013}
+\item The first Sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
 \begin{enumerate}
-\item There shall be no Expectation associated with this sub-step. \ruleauthor{MD}{31/10/2013}
+\item There shall be no Expectation associated with this Sub-step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 \end{enumerate}
 
@@ -304,6 +329,16 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \item Individual test steps shall be named \literally{Step n - explanation}.\\ \literally{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
 \end{enumerate}
 
+
+\chapter{Comments}
+
+\section{General}
+\begin{enumerate}
+\item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
+\item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
+\end{enumerate}
 
 
 \chapter{Git}
@@ -326,8 +361,6 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \end{enumerate}
 
 
-	
-
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Glossary}
@@ -343,6 +376,8 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Corrections}
-\listoffixmes}
+\listoffixmes\newpage
+\listofpdfcomments[heading=List of PDF comments]
+}
 
 \end{document}
