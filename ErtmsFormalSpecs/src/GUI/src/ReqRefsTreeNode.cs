@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Specification;
 
 namespace GUI
 {
@@ -61,11 +62,11 @@ namespace GUI
         /// <summary>
         /// Creates are reference to a requirement
         /// </summary>
-        /// <param name="refId"></param>
-        public void CreateReqRef(string refId)
+        /// <param name="paragraph"></param>
+        public void CreateReqRef(Paragraph paragraph)
         {
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
-            req.setId (refId);
+            req.Paragraph = paragraph;
             Item.appendRequirements(req);
             Nodes.Add(new ReqRefTreeNode(req));
             SortSubNodes();
@@ -81,12 +82,12 @@ namespace GUI
             if (SourceNode is SpecificationView.ParagraphTreeNode)
             {
                 SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
-                CreateReqRef(paragraphTreeNode.Item.FullId);
+                CreateReqRef(paragraphTreeNode.Item);
             }
             else if (SourceNode is ReqRefTreeNode)
             {
                 ReqRefTreeNode reqRefTreeNode = (ReqRefTreeNode)SourceNode;
-                CreateReqRef(reqRefTreeNode.Item.Paragraph.FullId);
+                CreateReqRef(reqRefTreeNode.Item.Paragraph);
             }
         }
 

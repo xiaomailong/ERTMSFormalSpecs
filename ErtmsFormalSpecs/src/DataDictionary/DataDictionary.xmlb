@@ -1306,9 +1306,13 @@
       <FIELD NAME="FunctionalBlockName"  TYPE="PCHAR" >
         <META NAME="DoNotTranslate" />
       </FIELD>
+      <FIELD NAME="Guid"                 TYPE="PCHAR">
+        <META NAME="Key"/> 
+      </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="id"                  TARGET="Id"/>
+      <ATTR NAME="guid"                TARGET="Guid" OPTIONAL="TRUE" DEFAULT=""/>
       <ATTR NAME="type"                TARGET="Type" OPTIONAL="TRUE" DEFAULT="REQUIREMENT" />
       <ATTR NAME="scope"               TARGET="Scope" OPTIONAL="TRUE" DEFAULT="OBU_AND_TRACK" />
       <ATTR NAME="bl"                  TARGET="Bl" OPTIONAL="TRUE" DEFAULT=""/>

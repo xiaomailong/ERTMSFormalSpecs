@@ -122,7 +122,7 @@ namespace GUI
                 if (ReqReferences != null)
                 {
                     SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
-                    ReqReferences.CreateReqRef(paragraphTreeNode.Item.FullId);
+                    ReqReferences.CreateReqRef(paragraphTreeNode.Item);
                 }
             }
         }

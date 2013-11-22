@@ -186,6 +186,7 @@ namespace DataDictionary
 
         public override void visit(Generated.Paragraph obj, bool visitSubNodes)
         {
+            obj.setGuid("");
             obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
             obj.setScope(Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK);
             obj.setBl("");

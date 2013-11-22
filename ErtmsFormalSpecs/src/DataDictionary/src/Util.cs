@@ -44,6 +44,41 @@ namespace DataDictionary
         /// </summary>
         private class Updater : Generated.Visitor
         {
+            /// <summary>
+            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                // Side effect : creates a new Guid if it is empty
+                string guid = paragraph.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Update references to paragraphs
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.ReqRef obj, bool visitSubNodes)
+            {
+                ReqRef reqRef = (ReqRef)obj;
+
+                Paragraph paragraph = reqRef.Paragraph;
+                if (paragraph != null)
+                {
+                    if (paragraph.Guid != reqRef.getId())
+                    {
+                        reqRef.setId(paragraph.getGuid());
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>
@@ -371,10 +406,6 @@ namespace DataDictionary
                     Generated.ControllersManager.DesactivateAllNotifications();
                     Updater updater = new Updater();
                     updater.visit(retVal);
-                    if (retVal.Specifications != null)
-                    {
-                        retVal.Specifications.ManageTypeSpecs();
-                    }
                 }
                 catch (Exception e)
                 {

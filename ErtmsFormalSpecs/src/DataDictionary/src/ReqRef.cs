@@ -13,7 +13,6 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
 namespace DataDictionary
 {
     public class ReqRef : Generated.ReqRef, ICommentable
@@ -23,7 +22,18 @@ namespace DataDictionary
         /// </summary>
         public override string Name
         {
-            get { return getId(); }
+            get
+            {
+                string retVal = "<Cannot find paragraph>";
+
+                if (Paragraph != null)
+                {
+                    Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(Paragraph);
+                    retVal = specification.Name + " § " + Paragraph.getId();
+                }
+
+                return retVal;
+            }
             set { }
         }
 
@@ -104,10 +114,19 @@ namespace DataDictionary
 
                 if (Specifications != null)
                 {
-                    retVal = Specifications.FindParagraph(getId());
+                    retVal = Specifications.FindParagraphByGuid(getId());
+
+                    if (retVal == null)
+                    {
+                        retVal = Specifications.FindParagraphByNumber(getId());
+                    }
                 }
 
                 return retVal;
+            }
+            set
+            {
+                setId(value.Guid);
             }
         }
 

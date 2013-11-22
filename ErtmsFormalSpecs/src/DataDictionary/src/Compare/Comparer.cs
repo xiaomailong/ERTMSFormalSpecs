@@ -4640,6 +4640,10 @@ namespace DataDictionary.Compare
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlockName", "Previously was [" + other.getFunctionalBlockName() + "]") );
             }
+            if ( !CompareUtil.canonicalStringEquality(obj.getGuid(), other.getGuid()) )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Guid", "Previously was [" + other.getGuid() + "]") );
+            }
         }
 
         /// <summary>
@@ -5893,6 +5897,10 @@ namespace DataDictionary.Compare
                 searchParagraphRevision ( obj.getRevision(), searchString, occurences );
             }
             if ( obj.getFunctionalBlockName() != null && obj.getFunctionalBlockName().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getGuid() != null && obj.getGuid().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }

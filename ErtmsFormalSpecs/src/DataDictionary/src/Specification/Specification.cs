@@ -113,12 +113,66 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
+        /// The Guid cache
+        /// </summary>
+        Dictionary<string, Paragraph> GuidCache = new Dictionary<string, Paragraph>();
+
+        private class GuidParagraphVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// The cache to update
+            /// </summary>
+            private Dictionary<string, Paragraph> GuidCache { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="guidCache">The cache to update</param>
+            public GuidParagraphVisitor(Dictionary<string, Paragraph> guidCache)
+            {
+                GuidCache = guidCache;
+            }
+
+            /// <summary>
+            /// Updates the cache
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                GuidCache[paragraph.getGuid()] = paragraph;
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Looks for the specific paragraph in the specification using its Guid for identification
+        /// </summary>
+        /// <param name="guid">The guid of the paragraph to find</param>
+        /// <returns></returns>
+        public Paragraph FindParagraphByGuid(String guid)
+        {
+            Paragraph retVal;
+            if (!GuidCache.TryGetValue(guid, out retVal))
+            {
+                GuidParagraphVisitor cacheUpdater = new GuidParagraphVisitor(GuidCache);
+                cacheUpdater.visit(this);
+            }
+
+            GuidCache.TryGetValue(guid, out retVal);
+            return retVal;
+        }
+
+        /// <summary>
         /// Looks for the specific paragraph in the specification
         /// </summary>
         /// <param name="id">The id of the paragraph to find</param>
         /// <param name="create">If true, creates the paragraph tree if needed</param>
         /// <returns></returns>
-        public Paragraph FindParagraph(String id, bool create = false)
+        public Paragraph FindParagraphByNumber(String id, bool create = false)
         {
             Paragraph retVal = null;
 
@@ -191,25 +245,6 @@ namespace DataDictionary.Specification
             {
                 chapter.SubParagraphs(id, retVal);
             }
-        }
-
-        /**
-         * Looks for the specific paragraphs in the specification
-         */
-        public List<Paragraph> FindParagraphs(List<string> refs)
-        {
-            List<Paragraph> retVal = new List<Paragraph>();
-
-            foreach (string reference in refs)
-            {
-                Paragraph p = FindParagraph(reference);
-                if (p != null)
-                {
-                    retVal.Add(p);
-                }
-            }
-
-            return retVal;
         }
 
         /// <summary>
@@ -390,73 +425,6 @@ namespace DataDictionary.Specification
             Dictionary.ClearMessages();
             NiewRevisionVisitor visitor = new NiewRevisionVisitor();
             visitor.visit(this);
-        }
-
-        /// <summary>
-        /// If a chapter has a type spec, it is placed into a paragraph
-        /// </summary>
-        public void ManageTypeSpecs()
-        {
-            foreach (Chapter chapter in Chapters)
-            {
-                foreach (TypeSpec typeSpec in chapter.TypeSpecs)
-                {
-                    if (typeSpec.getReference() != null)  // the type spec has an Id that will be used for the new paragraph
-                    {
-                        string[] fullId = typeSpec.getReference().Split('.');
-                        string currentId = fullId[0];
-
-                        Chapter chap = FindChapter(currentId);  // we search the chapter of this type spec
-                        if (chap == null)
-                        {
-                            chap = (DataDictionary.Specification.Chapter)DataDictionary.Generated.acceptor.getFactory().createChapter();
-                            chap.setId(currentId);
-                        }
-
-                        if (fullId.Length > 1)
-                        {
-                            Paragraph temp, enclosingParagraph, currentParagraph = null;
-                            currentId += "." + fullId[1];
-                            temp = FindParagraph(currentId);
-                            if (temp == null)
-                            {
-                                currentParagraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
-                                currentParagraph.FullId = currentId;
-                                chap.appendParagraphs(currentParagraph);
-                            }
-                            else
-                            {
-                                currentParagraph = temp;
-                            }
-
-                            for (int i = 2; i < fullId.Length; i++)
-                            {
-                                currentId += "." + fullId[i];
-                                enclosingParagraph = currentParagraph;
-                                temp = FindParagraph(currentId);
-
-                                if (temp != null)
-                                {
-                                    currentParagraph = temp;
-                                }
-                                else
-                                {
-                                    currentParagraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
-                                    currentParagraph.FullId = currentId;
-                                    currentParagraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aDEFINITION);
-                                    currentParagraph.Text = "";
-                                    enclosingParagraph.appendParagraphs(currentParagraph);
-                                }
-                            }
-
-                            currentParagraph.AddTypeSpec(typeSpec);
-
-                        }
-                    }
-                }
-
-                chapter.TypeSpecs = null;
-            }
         }
 
         private class ApplicableParagraphsVisitor : Generated.Visitor
