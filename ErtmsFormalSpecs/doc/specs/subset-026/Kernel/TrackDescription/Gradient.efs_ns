@@ -13,7 +13,7 @@
  Name="CorrectionFactor"
 >
 <ReqRef
- Id="3.13.2.2.9.2.1"
+ Id="6968018c-94a2-4347-be4e-79b2187f2c5a"
 >
 </ReqRef></Range></Ranges>
 <Structures>
@@ -80,7 +80,7 @@
  Name="CorFact"
 >
 <ReqRef
- Id="3.13.2.2.9.2.2"
+ Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -139,7 +139,7 @@
  Name="Gradients"
 >
 <ReqRef
- Id="A1.1.11.4"
+ Id="80268ed0-b391-4741-8200-f28c5bffebf6"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -179,7 +179,7 @@
  Name="GradientEnd"
 >
 <ReqRef
- Id="3.11.12.2"
+ Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
 >
 </ReqRef><Comment>Provides the end of the gradient information
 
@@ -210,10 +210,10 @@ we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/1
  Name="GradientInfoProfile_NonCompensated"
 >
 <ReqRef
- Id="3.13.4.2.1"
+ Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.3"
+ Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
@@ -256,16 +256,16 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="CreateGradient"
 >
 <ReqRef
- Id="3.11.12.3"
+ Id="50b6b08d-a88c-4621-8123-19cf47ec3cf1"
 >
 </ReqRef><ReqRef
- Id="3.11.12.4"
+ Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
 >
 </ReqRef><ReqRef
- Id="7.5.1.110"
+ Id="e9675d44-de8d-42cb-806e-6c5e0ac6a326"
 >
 </ReqRef><ReqRef
- Id="7.5.1.37.bis"
+ Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
 >
 </ReqRef><Comment>Creates a gradient based on the gradient orientation( uphill or downhill) and the corresponding gradient value</Comment>
 <Parameters>
@@ -336,19 +336,19 @@ USING
  Name="CompensateGradientWithRotatingMass"
 >
 <ReqRef
- Id="3.13.4.3.2"
+ Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
 >
 </ReqRef><ReqRef
- Id="3.13.4.1.1"
+ Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
 >
 </ReqRef><ReqRef
- Id="3.13.4.3.1"
+ Id="748112e3-d318-4847-94da-e417e95dfa88"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.12.1"
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
 >
 </ReqRef><Comment>Compensates the gradient with the rotating mass of the train.
 The formulae are easier than in subset 26 since the values of grad and M_rotating_xxx are expressed as % : e.g. 1% = 0.01</Comment>
@@ -390,22 +390,22 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="A_gradient"
 >
 <ReqRef
- Id="3.13.6.2.1.2.b"
+ Id="f9c0f0b7-0cba-4cee-ba0c-25c654215c74"
 >
 </ReqRef><ReqRef
- Id="3.13.6.3.1.2.b"
+ Id="adca4bed-139a-44a3-b605-a7e58f68066f"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.2.c"
+ Id="35a07bde-ebad-4140-ac2a-4fe3c0b6b8e3"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.3.1"
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.b"
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
 >
 </ReqRef><ReqRef
- Id="3.13.4.3.2"
+ Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -426,10 +426,10 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="GradientInfoProfileSummary_NonCompensated"
 >
 <ReqRef
- Id="3.13.4.2.1"
+ Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.3"
+ Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
@@ -453,14 +453,14 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="GradientProfile"
 >
 <ReqRef
- Id="3.13.4.1.3"
+ Id="5388dd34-33be-4b31-90c1-ec3bc653ccd4"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.13.2.3.3.1"
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.b"
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
 >
 </ReqRef><Comment>Takes into account the default values for the gradient </Comment>
 <Parameters>
@@ -488,13 +488,13 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="GradientInfoProfile"
 >
 <ReqRef
- Id="3.13.4.2.1"
+ Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
 >
 </ReqRef><ReqRef
- Id="3.13.4.1.1"
+ Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
 >
 </ReqRef><ReqRef
- Id="3.13.4.1.2"
+ Id="c8787b49-ee97-4460-b52b-1a690c6b12e2"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
@@ -537,7 +537,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="GradientInfoProfileSummary"
 >
 <ReqRef
- Id="3.13.4.2.1"
+ Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients</Comment>
 <Parameters>
@@ -560,22 +560,22 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="GradientProfile_NonCompensated"
 >
 <ReqRef
- Id="3.13.6.4.3"
+ Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.2.e"
+ Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.9.2.4"
+ Id="7110ff23-b408-45d5-98da-7385e6fbf210"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.9.2.5"
+ Id="18eb1a25-7998-43b3-8e76-63ddccc5baf0"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.b"
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.3.1"
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
@@ -612,10 +612,10 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="CorrectionFactorFunction"
 >
 <ReqRef
- Id="3.13.2.2.9.2.6"
+ Id="d9d8aa6f-c16b-4873-b6b9-8cb4c566117d"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.9.2.2"
+ Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
 >
 </ReqRef><Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
 <Parameters>
@@ -666,7 +666,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="KnPlus"
 >
 <ReqRef
- Id="3.13.6.4.2.e"
+ Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn+(V).</Comment>
 <Parameters>
@@ -687,7 +687,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="KnMin"
 >
 <ReqRef
- Id="3.13.6.4.2.e"
+ Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn-(V).</Comment>
 <Parameters>
@@ -709,16 +709,16 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="ProfileReceived"
 >
 <ReqRef
- Id="3.11.12.1"
+ Id="d96e7170-b578-4e28-bb03-82d0b7cc6a6d"
 >
 </ReqRef><ReqRef
- Id="3.11.12.4"
+ Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.2"
+ Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -734,7 +734,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Remove previous values"
 >
 <ReqRef
- Id="3.7.3.1.b"
+ Id="d8ccf575-2703-40a1-8aac-bf3fe6714fd5"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -835,10 +835,10 @@ ON Packet.Sequence1</Action></Actions>
  Name="DefaultGradientForTSRReceived"
 >
 <ReqRef
- Id="3.11.12.5"
+ Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
 >
 </ReqRef><ReqRef
- Id="3.11.12.6"
+ Id="ca53e2c7-6148-4023-8a27-3d8b94de964c"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -885,7 +885,7 @@ ON Packet.Sequence1</Action></Actions>
  Name="Gradients"
 >
 <ReqRef
- Id="3.7.1.1.c.2"
+ Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
 >
 </ReqRef><Comment>Holds the gradient information received from trackside</Comment>
 </Variable><Variable
@@ -897,13 +897,13 @@ ON Packet.Sequence1</Action></Actions>
  Name="M_rotating_max"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.19"
+ Id="a8139931-9d04-4b5e-8e2f-e681748fc57d"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.12.1"
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
 >
 </ReqRef><Comment>Maximum possible rotating mass as a percentage of the total weight of the train: 15 %</Comment>
 </Variable><Variable
@@ -915,13 +915,13 @@ ON Packet.Sequence1</Action></Actions>
  Name="M_rotating_min"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.20"
+ Id="f3ca37d9-b093-479e-92d7-31517627da99"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.12.1"
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
 >
 </ReqRef><Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
 </Variable><Variable
@@ -933,7 +933,7 @@ ON Packet.Sequence1</Action></Actions>
  Name="DefaultGradientForTSR"
 >
 <ReqRef
- Id="3.11.12.5"
+ Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
 >
 </ReqRef><Comment>Represents the default gradient for TSR supervision.</Comment>
 </Variable><Variable
@@ -944,10 +944,10 @@ ON Packet.Sequence1</Action></Actions>
  Name="KnMin"
 >
 <ReqRef
- Id="3.13.2.2.9.2.2"
+ Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.2.e"
+ Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
@@ -959,10 +959,10 @@ ON Packet.Sequence1</Action></Actions>
  Name="KnPlus"
 >
 <ReqRef
- Id="3.13.2.2.9.2.2"
+ Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
 >
 </ReqRef><ReqRef
- Id="3.13.6.4.2.e"
+ Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable><Variable

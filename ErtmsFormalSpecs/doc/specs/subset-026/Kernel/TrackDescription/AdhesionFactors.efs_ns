@@ -8,10 +8,10 @@
  Name="AdhesionFactor"
 >
 <ReqRef
- Id="3.13.5.2"
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
 >
 </ReqRef><ReqRef
- Id="7.4.2.22.bis"
+ Id="4d70e8b6-9e84-4816-bfe8-565433e79731"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -28,7 +28,7 @@
  Name="Length"
 >
 <ReqRef
- Id="7.5.1.41"
+ Id="665f9555-a334-4d13-b5eb-ee0c9f55a8a1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.M_ADHESION"
@@ -38,13 +38,13 @@
  Name="Value"
 >
 <ReqRef
- Id="7.5.1.60"
+ Id="d21bb69f-7c66-4b3e-9618-3f97c16a306d"
 >
 </ReqRef><ReqRef
- Id="3.18.4.6.3"
+ Id="315cffca-d457-4d11-91a0-59af0514973c"
 >
 </ReqRef><ReqRef
- Id="3.18.4.6.4"
+ Id="8c94001e-944c-4e4c-9425-db637f743011"
 >
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
@@ -54,7 +54,7 @@
  Name="AdhesionFactors"
 >
 <ReqRef
- Id="3.13.5.2"
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -63,7 +63,7 @@
  Name="AdhFactorLength"
 >
 <ReqRef
- Id="3.13.5.2"
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -84,10 +84,10 @@
  Name="AdhFactorModificationAllowed"
 >
 <ReqRef
- Id="3.18.4.6.2.1"
+ Id="115b09d2-66f8-4553-9085-6484d37ec385"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.7"
+ Id="685b2380-f60d-4d5d-8493-1edeaaf2869b"
 >
 </ReqRef><Comment>Indicates if the modification of adhesion factor by driver is allowed (according to national values (if available) or default data).</Comment>
 <Cases>
@@ -109,16 +109,16 @@
  Name="AdhesionFactorReceived"
 >
 <ReqRef
- Id="3.18.4.6.1"
+ Id="edb711e6-2b8c-4c00-88b8-563ee23ec94b"
 >
 </ReqRef><ReqRef
- Id="3.18.4.6.2"
+ Id="24260651-d1c0-4755-bba9-09153737ca10"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.8"
+ Id="ed2472a1-ec6f-4b94-b43e-a0b17ee7080c"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
@@ -169,7 +169,7 @@
  Name="RemoveOldAdhesionFactors"
 >
 <ReqRef
- Id="3.7.3.1.l"
+ Id="7d335a9b-a371-42e5-aaba-0565884b8283"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -180,7 +180,7 @@
  Name="RemoveOldAdhesionFactors"
 >
 <ReqRef
- Id="7.5.1.33"
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -202,16 +202,16 @@
  Name="InsertNewAdhesionFactor"
 >
 <ReqRef
- Id="7.5.1.141"
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >
 </ReqRef><ReqRef
- Id="7.5.1.33"
+ Id="c514bd3c-cce6-498e-97b5-6418e2ac6fcf"
 >
 </ReqRef><ReqRef
- Id="7.5.1.55"
+ Id="d93685bd-18ea-422e-8641-3e9ed6427e66"
 >
 </ReqRef><ReqRef
- Id="7.5.1.77"
+ Id="b95a22fb-0a06-4d2a-b9f8-73a082712d4c"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -237,20 +237,20 @@ IN
  Name="AdhFactors"
 >
 <ReqRef
- Id="3.13.5.2"
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
 >
 </ReqRef><ReqRef
- Id="3.13.6.2.1.2.c"
+ Id="9479529b-7ed6-4961-b08a-7bcb18714d1a"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.13.2.3.5.1"
+ Id="7398172b-264c-4ff9-8f60-3b1e043f2033"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.e"
+ Id="9321d0a2-9ea3-4834-adc7-1f1fb0ec70db"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.8"
+ Id="ed2472a1-ec6f-4b94-b43e-a0b17ee7080c"
 >
 </ReqRef><Comment>The list of adhesion factors received from the trackside.</Comment>
 </Variable><Variable
@@ -261,18 +261,18 @@ IN
  Name="SlipperyRailSelectedByDriver"
 >
 <ReqRef
- Id="3.13.5.3"
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.18.4.6.2.1"
+ Id="115b09d2-66f8-4553-9085-6484d37ec385"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.18.4.6.3"
+ Id="315cffca-d457-4d11-91a0-59af0514973c"
 >
 </ReqRef><ReqRef
- Id="3.18.4.6.4"
+ Id="8c94001e-944c-4e4c-9425-db637f743011"
 >
 </ReqRef><Comment>Indicates the &quot;Slippery rail&quot; value selected by driver.</Comment>
 </Variable></Variables>
@@ -283,7 +283,7 @@ IN
  Name="AdhFactorTracker"
 >
 <ReqRef
- Id="3.18.4.6.2.1"
+ Id="115b09d2-66f8-4553-9085-6484d37ec385"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>

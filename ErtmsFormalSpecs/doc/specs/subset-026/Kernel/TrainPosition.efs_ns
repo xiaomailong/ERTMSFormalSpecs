@@ -9,11 +9,11 @@
  Name="TrainPosition"
 >
 <ReqRef
- Id="3.6.1.3"
+ Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.6.1.3.4"
+ Id="4147b6c6-84d8-452d-b38e-8479cb6dc795"
 >
 <Comment>Even if the requirement is related to the train position, it seems more consistent to place the previous LRBGs in the BTM namespace</Comment>
 </ReqRef><Comment>Represents the current position of the train, as described in 3.6.1.3.
@@ -28,7 +28,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="DirectionalPositionInformation"
 >
 <ReqRef
- Id="3.6.1.3.3"
+ Id="4f6dd5a0-a24c-40f0-8757-8c0c86cc2c43"
 >
 </ReqRef><Comment>The directional position information of the train (the train front end position, the train orientation and the train running direction).</Comment>
 </StructureElement><StructureElement
@@ -40,7 +40,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><Comment>The data state of the train position.</Comment>
 </StructureElement></Structure><Structure
@@ -48,7 +48,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="DirectionalTrainPositionInformation"
 >
 <ReqRef
- Id="3.6.1.3.3"
+ Id="4f6dd5a0-a24c-40f0-8757-8c0c86cc2c43"
 >
 </ReqRef><Comment>This structure represents the directional train position information, in reference to the balise group orientation.</Comment>
 <StructureElement
@@ -59,7 +59,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="TrainFrontEndPosition"
 >
 <ReqRef
- Id="3.6.1.3.3.1"
+ Id="18585bb5-dc2f-4e24-bb2e-10c77305d565"
 >
 </ReqRef><Comment>Position of the train front end, corresponds to Q_DLRBG.</Comment>
 </StructureElement><StructureElement
@@ -70,7 +70,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="TrainOrientation"
 >
 <ReqRef
- Id="3.6.1.3.3.2"
+ Id="2a8febe6-f85b-423c-bc63-60828f11aa62"
 >
 </ReqRef><Comment>Train orientation, corresponds to Q_DIRLRBG.</Comment>
 </StructureElement><StructureElement
@@ -81,7 +81,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="TrainRunningDirection"
 >
 <ReqRef
- Id="3.6.1.3.3.3"
+ Id="1ca933ce-9114-4bbd-b4fa-25bea496671c"
 >
 </ReqRef><Comment>Train running direction, corresponds to Q_DIRTRAIN.</Comment>
 </StructureElement></Structure></Structures>
@@ -92,10 +92,10 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="FrontEndPosition"
 >
 <ReqRef
- Id="3.6.1.3.1"
+ Id="6e85df81-278a-4eb5-8ce0-b773e472f711"
 >
 </ReqRef><ReqRef
- Id="3.6.4.4"
+ Id="dfd8a050-ad00-42a4-969a-1da448625473"
 >
 </ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
@@ -136,7 +136,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="RearEndPosition"
 >
 <ReqRef
- Id="3.6.4.4.1"
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
 >
 </ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
@@ -194,7 +194,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="Update position state"
 >
 <ReqRef
- Id="3.6.1.3"
+ Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -225,11 +225,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="Position"
 >
 <ReqRef
- Id="3.6.1.3"
+ Id="3dbd1b48-23b6-40f9-a38e-77df9cc1ed68"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><Comment></Comment>
 </Variable></Variables>

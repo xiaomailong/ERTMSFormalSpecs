@@ -9,13 +9,13 @@
  Name="AxleLoadProfile"
 >
 <ReqRef
- Id="7.4.2.13.1"
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
 >
 </ReqRef><ReqRef
- Id="3.11.2.2.b"
+ Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
 >
 </ReqRef><ReqRef
- Id="3.11.4.1"
+ Id="0bc77f7e-62ac-42cc-bf02-051522a4d11a"
 >
 </ReqRef><Comment>Represents the speed restrictions due to axle load.</Comment>
 <StructureElement
@@ -27,7 +27,7 @@
  Name="InitialState"
 >
 <ReqRef
- Id="7.5.1.141"
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates if the initial state has to be resumed. In that case there will be no speed restrictions due to axle load profile.</Comment>
@@ -40,7 +40,7 @@
  Name="EmptyProfileDistance"
 >
 <ReqRef
- Id="7.5.1.32"
+ Id="35ef498a-1c12-4203-b283-26436d281f11"
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates when the initial state has to be resumed.</Comment>
@@ -58,7 +58,7 @@
  Name="AxleLoadValue"
 >
 <ReqRef
- Id="3.11.4.2"
+ Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
 >
 </ReqRef><Comment>Represents an axle load value: a couple Axle Load Category x Speed.</Comment>
 <StructureElement
@@ -69,7 +69,7 @@
  Name="Category"
 >
 <ReqRef
- Id="7.5.1.62"
+ Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -81,7 +81,7 @@
  Name="Speed"
 >
 <ReqRef
- Id="7.5.1.155"
+ Id="4947d3fc-1665-47ff-a945-9900318dce54"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
@@ -98,7 +98,7 @@
  Name="Length"
 >
 <ReqRef
- Id="7.5.1.42"
+ Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
 >
 </ReqRef><Comment>The length of the axle load speed profile.</Comment>
 </StructureElement><StructureElement
@@ -109,13 +109,13 @@
  Name="TrainLengthDelay"
 >
 <ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><ReqRef
- Id="3.11.4.6"
+ Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
 >
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 </ReqRef><Comment>Indicates if the train length has to be considered for the computation of the speed restrictions due to axle load profile.</Comment>
 </StructureElement><StructureElement
@@ -127,7 +127,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.2"
+ Id="0b4c179e-a381-412e-bdad-451bda6066e4"
 >
 </ReqRef><Comment>The distance to the next axle load speed profile.</Comment>
 </StructureElement><StructureElement
@@ -138,13 +138,13 @@
  Name="Values"
 >
 <ReqRef
- Id="7.5.1.155"
+ Id="4947d3fc-1665-47ff-a945-9900318dce54"
 >
 </ReqRef><ReqRef
- Id="7.5.1.62"
+ Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
 >
 </ReqRef><ReqRef
- Id="3.11.4.2"
+ Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
 >
 </ReqRef><Comment>Speed restrictions associated to the different axle load categories.</Comment>
 </StructureElement></Structure></Structures>
@@ -157,7 +157,7 @@
  Name="AxleLoadValues"
 >
 <ReqRef
- Id="3.11.4.2"
+ Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
 >
 </ReqRef><Comment>Represents a set of axle load values.</Comment>
 </Collection><Collection
@@ -169,7 +169,7 @@
  Name="AxleLoads"
 >
 <ReqRef
- Id="A1.1.11.11"
+ Id="e0ecf6c6-baf4-4601-a121-23e3946830d7"
 >
 </ReqRef><Comment>Represents a set of axle load informations.</Comment>
 </Collection></Collections>
@@ -180,16 +180,16 @@
  Name="SpeedRestrictions"
 >
 <ReqRef
- Id="3.11.2.2.b"
+ Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.a"
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.2.1"
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
 >
 </ReqRef><ReqRef
- Id="3.11.4.5"
+ Id="fd20f88d-92bb-420d-b66e-a56c331b36a0"
 >
 </ReqRef><Comment>Provides the speed restrictions profile due to axle loads.</Comment>
 <Parameters>
@@ -214,16 +214,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="CreateAxleLoad"
 >
 <ReqRef
- Id="7.5.1.42"
+ Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
 >
 </ReqRef><ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><ReqRef
- Id="7.5.1.62"
+ Id="0fb117ff-1235-410b-998a-c63b1d3a86ed"
 >
 </ReqRef><ReqRef
- Id="7.5.1.155"
+ Id="4947d3fc-1665-47ff-a945-9900318dce54"
 >
 </ReqRef><Comment>Creates an EFS axle load structure from an element of the collection of ERTMS axle loads provided by the trackside.</Comment>
 <Parameters>
@@ -359,10 +359,10 @@ USING
  Name="AxleLoadSpeedRestriction"
 >
 <ReqRef
- Id="3.11.4.3"
+ Id="0aceff75-cd35-48b0-8d5a-4bc8277d35c4"
 >
 </ReqRef><ReqRef
- Id="3.11.4.4"
+ Id="9682d65d-131e-40e8-9f59-eee5815bf874"
 >
 </ReqRef><Comment>Provides the speed restriction for a given level crossing. The speed restriction is applicable after the distance specified in the level crossing information and during its length. From all categories specified in the level crossing, only the categories lower than or equal to the train&apos;s category are chosen and among these categories the minimum speed value is chosen. In case when there is no category lower that or equal to the train&apos;s category, the maximum speed value is returned.</Comment>
 <Parameters>
@@ -406,11 +406,11 @@ USING
  Name="AxleLoadLength"
 >
 <ReqRef
- Id="3.11.4.6"
+ Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 <Comment></Comment>
 </ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
@@ -439,14 +439,14 @@ USING
  Name="AxleLoadProfileReceived"
 >
 <ReqRef
- Id="3.11.4.1"
+ Id="0bc77f7e-62ac-42cc-bf02-051522a4d11a"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.7.1.1.c.3"
+ Id="6a6eebd7-7178-4712-b7fa-135df10c5a4c"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><Comment>This procedure is called when a new axle load profile is received. There are two cases:
   - If the initial states have to be resumed, the distance to where they have to be resumed is saved
@@ -473,10 +473,10 @@ USING
  Name="InitialStatesToBeResumed"
 >
 <ReqRef
- Id="7.5.1.32"
+ Id="35ef498a-1c12-4203-b283-26436d281f11"
 >
 </ReqRef><ReqRef
- Id="7.5.1.141"
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -560,7 +560,7 @@ IN
  Name="RemoveOldAxleLoads"
 >
 <ReqRef
- Id="3.7.3.1.c"
+ Id="d12121cf-b42b-4840-8d4d-20d47f70a1aa"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -590,16 +590,16 @@ IN
  Name="InsertFirstAxleLoad"
 >
 <ReqRef
- Id="7.5.1.2"
+ Id="0b4c179e-a381-412e-bdad-451bda6066e4"
 >
 </ReqRef><ReqRef
- Id="7.5.1.141"
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >
 </ReqRef><ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><ReqRef
- Id="7.5.1.42"
+ Id="1a02feaa-c003-44ae-bbc0-6685c3aab8d7"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -619,7 +619,7 @@ IN
  Name="InsertFollowingAxleLoads"
 >
 <ReqRef
- Id="7.5.1.2"
+ Id="0b4c179e-a381-412e-bdad-451bda6066e4"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -655,10 +655,10 @@ ON
  Name="ASP"
 >
 <ReqRef
- Id="3.11.2.2.b"
+ Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.3"
+ Id="6a6eebd7-7178-4712-b7fa-135df10c5a4c"
 >
 </ReqRef><Comment>Contains the axle load speed restrictions provided by the trackside.</Comment>
 </Variable></Variables>
@@ -670,10 +670,10 @@ ON
  Name="InitialStatesToBeResumed"
 >
 <ReqRef
- Id="7.5.1.141"
+ Id="13a5ea24-0fd2-4281-99df-f3585e1e8e67"
 >
 </ReqRef><ReqRef
- Id="7.5.1.32"
+ Id="35ef498a-1c12-4203-b283-26436d281f11"
 >
 </ReqRef><Comment>If the train reached the distance where the initial states have to be resumed, the axle load profile is deleted.</Comment>
 <SubRules></SubRules>

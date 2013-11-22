@@ -10,7 +10,7 @@
  Name="LinkingReaction"
 >
 <ReqRef
- Id="3.4.4.2.3"
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
 >
 </ReqRef><Values>
 <EnumValue
@@ -33,7 +33,7 @@
  Name="LinkingData"
 >
 <ReqRef
- Id="3.4.4.2.1"
+ Id="3da69521-ffba-42ec-9ded-f9c719a2f4b8"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -44,11 +44,11 @@
  Name="LocationAccuracy"
 >
 <ReqRef
- Id="3.6.4.2.b"
+ Id="9e4c5ab1-4454-4b08-9df1-666cf07b17ca"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.4.4.2.1.c"
+ Id="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
 >
 </ReqRef><Comment>Represents the location accuracy of balise groups.</Comment>
 </StructureElement><StructureElement
@@ -59,7 +59,7 @@
  Name="Orientation"
 >
 <ReqRef
- Id="3.4.4.2.1.d"
+ Id="c15a755a-0bef-44a2-b2b4-43d8f1bbf0ac"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -70,10 +70,10 @@
  Name="Reaction"
 >
 <ReqRef
- Id="3.4.4.2.1.e"
+ Id="a58464f1-c74b-420f-ad30-03d671b764c8"
 >
 </ReqRef><ReqRef
- Id="3.4.4.2.3"
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -84,7 +84,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="3.4.4.2.1.b"
+ Id="54049463-080e-41b3-a9aa-83124d1f6471"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -95,7 +95,7 @@
  Name="NID_BG"
 >
 <ReqRef
- Id="3.4.4.2.1.a"
+ Id="091b5a23-8a4f-49d0-b23d-9a839b16be15"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
@@ -158,15 +158,15 @@
  Name="CurrentBGWithinFrame"
 >
 <ReqRef
- Id="3.4.4.4.3"
+ Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.4.4.4.3.1"
+ Id="75b64f27-a0f0-421e-a6c1-37f2dd27860f"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.4.4.4.3.2"
+ Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
 >
 <Comment></Comment>
 </ReqRef><Comment></Comment>
@@ -190,7 +190,7 @@ AND
  Name="CurrentLinking"
 >
 <ReqRef
- Id="3.4.4.4.5"
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
 >
 </ReqRef><Comment>Provides the linking info currently active</Comment>
 <Cases>
@@ -205,22 +205,22 @@ AND
  Name="CurrentBGAcceptableUnknown"
 >
 <ReqRef
- Id="3.4.4.4.2.1"
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.2.1.c"
+ Id="203ab365-30f2-4d89-bf31-72cc5c007972"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.2.1.a"
+ Id="81bbc248-7c0b-473e-a3ec-e9178c2ce88d"
 >
 </ReqRef><ReqRef
- Id="3.8.5.2.2"
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
 >
 </ReqRef><ReqRef
- Id="3.4.4.2.2"
+ Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.5"
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
 >
 </ReqRef><Comment></Comment>
 <Cases>
@@ -254,10 +254,10 @@ AND
  Name="BaliseHasReposPacketValidForDirection"
 >
 <ReqRef
- Id="3.4.4.4.2.1"
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.2.1.b"
+ Id="e5ef2878-8ec2-4b95-9b91-af8274b231b1"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -303,7 +303,7 @@ AND
  Name="ConvertLinkingReaction"
 >
 <ReqRef
- Id="3.4.4.2.3"
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -337,13 +337,13 @@ AND
  Name="ConsiderBG"
 >
 <ReqRef
- Id="3.4.4.4.1"
+ Id="22b29a34-8fe5-4ccc-9aec-f79479570714"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.2"
+ Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
 >
 </ReqRef><ReqRef
- Id="3.4.4.4.5"
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
 >
 </ReqRef><Cases>
 <Case
@@ -385,7 +385,7 @@ AND
  Name="No infill"
 >
 <ReqRef
- Id="3.7.3.1.m"
+ Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -396,7 +396,7 @@ AND
  Name="Infill"
 >
 <ReqRef
- Id="3.7.3.1.n"
+ Id="f0ea8f90-356c-47de-a7fd-4827ae488f00"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -494,7 +494,7 @@ IN Linkings</Action></Actions>
  Name="CleanLinkingInfo"
 >
 <ReqRef
- Id="3.4.4.2.1.1"
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
 >
 <Comment></Comment>
 </ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>

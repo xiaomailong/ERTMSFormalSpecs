@@ -27,7 +27,7 @@
  Name="SafeRadioConnectionStatus"
 >
 <ReqRef
- Id="3.5.7.1"
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
 >
 </ReqRef><Values>
 <EnumValue
@@ -54,19 +54,19 @@
  Name="TrainEnd"
 >
 <ReqRef
- Id="7.5.1.113"
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
 >
 </ReqRef><ReqRef
- Id="3.6.4.4.b"
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
 >
 </ReqRef><ReqRef
- Id="3.6.4.4.c"
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
 >
 </ReqRef><ReqRef
- Id="3.6.4.4.1"
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
 >
 </ReqRef><ReqRef
- Id="3.6.4.4.a"
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
 >
 </ReqRef><Values>
 <EnumValue
@@ -208,16 +208,16 @@
  Name="RadioSessionInformation"
 >
 <ReqRef
- Id="3.5.3.5"
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
 >
 </ReqRef><ReqRef
- Id="3.5.3.5.3"
+ Id="711a8f6b-f758-4405-bb80-f9b331940c39"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.1.7"
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.14"
+ Id="f6cda523-6b70-489d-a6dd-e29b33d2a772"
 >
 </ReqRef><StructureElement
  TypeName="EURORADIO.RadioNetworkId"
@@ -266,7 +266,7 @@
  Name="PositionLocation"
 >
 <ReqRef
- Id="3.6.5.1.5.c"
+ Id="12080437-12c5-47ab-9aec-ceced6bba68f"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -276,7 +276,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.11"
+ Id="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="TrainEnd"
@@ -286,7 +286,7 @@
  Name="TrainEnd"
 >
 <ReqRef
- Id="7.5.1.113"
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
 >
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
@@ -294,7 +294,7 @@
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.48"
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
 >
 </ReqRef><Comment>Data state and the value of the RBC/RIU system version.</Comment>
 <StructureElement
@@ -320,7 +320,7 @@
  Name="RadioSession"
 >
 <ReqRef
- Id="3.5.2.1"
+ Id="becb430f-a4f2-4817-ad08-3672ed05f855"
 >
 </ReqRef><Procedures>
 <Procedure
@@ -412,7 +412,7 @@
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="3.5.3.4.1"
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
 >
 <Comment></Comment>
 </ReqRef><Rules>
@@ -454,7 +454,7 @@
  Name="&lt;Rule1&gt;"
 >
 <ReqRef
- Id="3.5.3.8"
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -463,7 +463,7 @@
  Name="SystemVersionMatch"
 >
 <ReqRef
- Id="3.5.3.8.a"
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -474,10 +474,10 @@
  Name="SystemVersionMismatch"
 >
 <ReqRef
- Id="3.5.3.8.b"
+ Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
 >
 </ReqRef><ReqRef
- Id="3.5.5.1.2"
+ Id="21b52bea-13d1-437e-9aec-4d66149f68d5"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -509,7 +509,7 @@
  Name="ConnectionLost"
 >
 <ReqRef
- Id="3.5.4.1"
+ Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
 >
 </ReqRef><PreConditions>
 <PreCondition>Subset37Connection.ConnectionLost == True</PreCondition></PreConditions>
@@ -520,7 +520,7 @@
  Name="Terminate"
 >
 <ReqRef
- Id="3.5.5.2.1"
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
 >
 </ReqRef><PreConditions>
 <PreCondition>Terminate == True</PreCondition></PreConditions>
@@ -554,7 +554,7 @@
  Name="Reconnect"
 >
 <ReqRef
- Id="3.5.3.7"
+ Id="fff58fab-5102-4a71-bbc4-ce7f2e1ea7d2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -564,10 +564,10 @@
  Name="ReconnectIfOutOfRadioHole"
 >
 <ReqRef
- Id="3.5.3.4.f"
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
 >
 </ReqRef><ReqRef
- Id="3.5.4.2"
+ Id="529343f5-9881-4318-8dcc-53dade4fe1df"
 >
 </ReqRef><PreConditions>
 <PreCondition>NOT  Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
@@ -593,7 +593,7 @@
  Name="Connecting"
 >
 <ReqRef
- Id="3.5.4.3"
+ Id="5342093f-7355-4153-b42e-b0eb8bb14b89"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -610,7 +610,7 @@
  Name="TerminateRequest"
 >
 <ReqRef
- Id="3.5.5.7"
+ Id="e1848200-b260-492c-a722-3b64311cb97f"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -621,7 +621,7 @@
  Name="RequestTimeout"
 >
 <ReqRef
- Id="3.5.4.2.1"
+ Id="249d841a-1bca-4d29-8e4c-51ce7db07de4"
 >
 </ReqRef><PreConditions>
 <PreCondition>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition></PreConditions>
@@ -664,7 +664,7 @@
  Name="TerminationAckedByTrackside"
 >
 <ReqRef
- Id="3.5.5.2.3"
+ Id="e094e23a-bd94-4440-8632-705782494f35"
 >
 </ReqRef><PreConditions>
 <PreCondition>Terminate</PreCondition></PreConditions>
@@ -675,7 +675,7 @@
  Name="ProcessAcks"
 >
 <ReqRef
- Id="3.5.5.6"
+ Id="e65c9779-618e-4a55-97c9-4038b3410eaf"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -870,7 +870,7 @@
  Name="OneMobileTerminalIsAvailable"
 >
 <ReqRef
- Id="5.10.2.4.1"
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
 >
 </ReqRef><Cases>
 <Case
@@ -891,13 +891,13 @@
  Name="OpenRBCSession"
 >
 <ReqRef
- Id="3.5.3.1"
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
 >
 </ReqRef><ReqRef
- Id="3.5.3.4.1"
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
 >
 </ReqRef><ReqRef
- Id="3.5.3.5.2"
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
 >
 </ReqRef><Comment></Comment>
 <Rules>
@@ -924,7 +924,7 @@
  Name="HandingOver"
 >
 <ReqRef
- Id="3.5.3.5.2"
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition><PreCondition>HasActiveSession()</PreCondition></PreConditions>
@@ -936,7 +936,7 @@
  Name="ConnectToAnotherRBC"
 >
 <ReqRef
- Id="3.5.3.5.2"
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
 >
 </ReqRef><PreConditions>
 <PreCondition>HasActiveSession()</PreCondition><PreCondition>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition></PreConditions>
@@ -960,7 +960,7 @@
  Name="GeneralMessage"
 >
 <ReqRef
- Id="Entry 8.4.4.4.1.1.4"
+ Id="4dea631e-f3ef-4f67-8232-6d867ebc7c34"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -979,7 +979,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="3.6.5.1.7"
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -988,7 +988,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.bis"
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
@@ -1004,7 +1004,7 @@
  Name="Level transition order received"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1024,13 +1024,13 @@
  Name="InfillMA"
 >
 <ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><ReqRef
- Id="Entry 8.4.4.4.1.1.7"
+ Id="eca6c9fc-15bb-4b61-8142-88af3b8e685f"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1049,7 +1049,7 @@
  Name="Level transition order received"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1068,7 +1068,7 @@
  Name="Mode profile received"
 >
 <ReqRef
- Id="5.9.2.2"
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1087,13 +1087,13 @@
  Name="MAWithShiftedLocationReference"
 >
 <ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><ReqRef
- Id="Entry 8.4.4.4.1.1.6"
+ Id="17ca4691-52af-4571-83b8-d4e345bcc557"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1113,7 +1113,7 @@
  Name="Mode profile received"
 >
 <ReqRef
- Id="5.9.2.2"
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1131,7 +1131,7 @@
  Name="Level transition order received"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1149,7 +1149,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="3.6.5.1.7"
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1158,7 +1158,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.bis"
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
@@ -1176,13 +1176,13 @@
  Name="MovementAuthority"
 >
 <ReqRef
- Id="3.8.3.9"
+ Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><ReqRef
- Id="Entry 8.4.4.4.1.1.2"
+ Id="34124e11-dd20-40b4-8914-44b6b7397ff1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1205,7 +1205,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="3.6.5.1.7"
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1214,7 +1214,7 @@
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.bis"
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
@@ -1229,7 +1229,7 @@
  Name="List of balises for SH area received"
 >
 <ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1247,7 +1247,7 @@
  Name="Level transition order received"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1266,7 +1266,7 @@
  Name="Mode profile received"
 >
 <ReqRef
- Id="5.9.2.2"
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1285,13 +1285,13 @@
  Name="RequestToShortenMA"
 >
 <ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><ReqRef
- Id="Entry 8.4.4.4.1.1.3"
+ Id="8430bb84-5228-4341-b64b-f578dfc94604"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1310,10 +1310,10 @@
  Name="Mode profile received"
 >
 <ReqRef
- Id="5.9.2.2"
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
 >
 </ReqRef><ReqRef
- Id="5.9.2.2"
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1332,7 +1332,7 @@
  Name="SHAuthorised"
 >
 <ReqRef
- Id="Entry 8.4.4.4.1.1.5"
+ Id="a9c3b99f-ed94-4e53-9926-e303c3898b8a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1350,7 +1350,7 @@
  Name="SRAuthorisation"
 >
 <ReqRef
- Id="Entry 8.4.4.4.1.1.1"
+ Id="6dc87cd2-d3b8-4d7f-a8f0-26e60b30a71e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1370,7 +1370,7 @@
  Name="TracksideOrderedSession"
 >
 <ReqRef
- Id="3.5.3.4.b"
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -1408,7 +1408,7 @@
  Name="HandleEstablish"
 >
 <ReqRef
- Id="3.5.3.4.b"
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
 >
 </ReqRef><PreConditions>
 <PreCondition>RadioSessionOrder.Action == SessionAction.Establish</PreCondition></PreConditions>
@@ -1419,7 +1419,7 @@
  Name="HandleTerminate"
 >
 <ReqRef
- Id="3.5.5.1.1"
+ Id="e4addba5-4948-4054-b3dc-0e7eeabd6768"
 >
 </ReqRef><PreConditions>
 <PreCondition>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition></PreConditions>
@@ -1435,7 +1435,7 @@
  Name="StoreSessionInformation"
 >
 <ReqRef
- Id="3.5.3.5"
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -1517,7 +1517,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SendMARequest"
 >
 <ReqRef
- Id="3.8.2.1"
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -1556,7 +1556,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SendRequestForShunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
 >
 </ReqRef><Rules>
 <Rule
@@ -1638,7 +1638,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="AcquireListOfAvailableNetworks"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
 <SubVariables>
@@ -1658,7 +1658,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SafeRadioConnectionStatus"
 >
 <ReqRef
- Id="3.5.7.1"
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
 >
 </ReqRef></Variable><Variable
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -1684,7 +1684,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.48"
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
 >
 </ReqRef></Variable><Variable
  Type="EURORADIO.RadioSessionInformation"
@@ -1722,7 +1722,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="TimeBeforeMessageRepetition"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.3"
+ Id="0f9b05dd-7dd5-408f-94d8-e94d2b283f7c"
 >
 </ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
 </Variable><Variable
@@ -1733,7 +1733,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="NumberOfMessageRepetitions"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.2"
+ Id="023bb134-975d-4e3e-9294-8f3644763d4f"
 >
 </ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable

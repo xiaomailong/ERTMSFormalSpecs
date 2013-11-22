@@ -9,14 +9,14 @@
  Name="StaticSpeedRestriction"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.4.2.7"
+ Id="9e0c6d45-0f4a-482d-9a28-dbe1f41746ed"
 >
 </ReqRef><ReqRef
- Id="7.4.2.7.bis"
+ Id="a3ac36c4-3d89-44f1-81b7-c601a5576fc2"
 >
 </ReqRef><Comment>Represents one of the static speed restrictions of the static speed profile.</Comment>
 <StructureElement
@@ -27,7 +27,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -38,7 +38,7 @@
  Name="BasicSpeed"
 >
 <ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -49,13 +49,13 @@
  Name="TrainLengthDelay"
 >
 <ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><ReqRef
- Id="3.11.3.1.3"
+ Id="ac670d16-d189-473e-b200-ded164824365"
 >
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="SSPCategories"
@@ -70,7 +70,7 @@
  Name="SSPCategory"
 >
 <ReqRef
- Id="3.11.3.2.1"
+ Id="7ba0f65c-e1b5-422f-a1fb-e947e73cd4f9"
 >
 </ReqRef><Comment>Represents a speed limitation for a specific train category. The qualifier indicates the type of the current category (Cant Deficiency or Other Specific) and in the case of Other Specific category it indicates if its value replaces that of the Cant Deficiency category.</Comment>
 <StructureElement
@@ -81,10 +81,10 @@
  Name="CantDeficiency"
 >
 <ReqRef
- Id="3.11.3.2.1.1.a"
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
 >
 </ReqRef><ReqRef
- Id="7.5.1.82.1"
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="TrainData.TrainCategory"
@@ -94,10 +94,10 @@
  Name="OtherSpecific"
 >
 <ReqRef
- Id="3.11.3.2.1.1.b"
+ Id="acaf62ba-5b8e-4cf3-82a2-c81ae54cd1ed"
 >
 </ReqRef><ReqRef
- Id="7.5.1.83"
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_DIFF"
@@ -108,7 +108,7 @@
  Name="Qualifier"
 >
 <ReqRef
- Id="7.5.1.102.1"
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -118,10 +118,10 @@
  Name="Speed"
 >
 <ReqRef
- Id="7.5.1.156"
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
 >
 </ReqRef><ReqRef
- Id="3.11.3.2.1.1.a"
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
@@ -143,11 +143,11 @@
  Name="StaticSpeedRestrictions"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="A1.1.11.2"
+ Id="70632e82-a390-4696-a790-49fc7e83e650"
 >
 </ReqRef><Comment>A collection of static speed restrictions of the static speed profile, received from the trackside.</Comment>
 </Collection></Collections>
@@ -158,10 +158,10 @@
  Name="SSPLength"
 >
 <ReqRef
- Id="3.11.3.1.3"
+ Id="ac670d16-d189-473e-b200-ded164824365"
 >
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 </ReqRef><Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
 <Parameters>
@@ -188,13 +188,13 @@
  Name="SelectCantDeficiencyCategory"
 >
 <ReqRef
- Id="3.11.3.2.1.1.a"
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
 >
 </ReqRef><ReqRef
- Id="3.11.3.2.3"
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
 >
 </ReqRef><ReqRef
- Id="3.11.3.2.3"
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
 >
 </ReqRef><Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
 <Parameters>
@@ -261,7 +261,7 @@ INITIAL_VALUE
  Name="CantDeficiencySpeedRestriction"
 >
 <ReqRef
- Id="3.11.3.2.3"
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
 >
 </ReqRef><Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
 <Parameters>
@@ -289,16 +289,16 @@ INITIAL_VALUE
  Name="CreateFirstSSP"
 >
 <ReqRef
- Id="7.5.1.156"
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
 >
 </ReqRef><ReqRef
- Id="7.5.1.102.1"
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
 >
 </ReqRef><ReqRef
- Id="7.5.1.82.1"
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
 >
 </ReqRef><ReqRef
- Id="7.5.1.83"
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
 >
 </ReqRef><Comment>Creates an EFS static speed restriction structure from the first ERTMS static speed restriction element provided by the trackside.</Comment>
 <Parameters>
@@ -405,13 +405,13 @@ USING
  Name="SpeedRestrictions"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.a"
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.2.1"
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
 >
 </ReqRef><Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
 <Parameters>
@@ -436,10 +436,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="StaticSpeedRestriction"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
 >
 </ReqRef><ReqRef
- Id="A1.1.8.1"
+ Id="7b939cca-c775-4101-b7dd-1944169ceeb2"
 >
 </ReqRef><Comment>Provides the speed profile due to a static speed restriction.</Comment>
 <Parameters>
@@ -477,7 +477,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="SSPEnd"
 >
 <ReqRef
- Id="3.11.12.2"
+ Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
 >
 </ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
@@ -503,7 +503,7 @@ INITIAL_VALUE
  Name="SSPSpeed"
 >
 <ReqRef
- Id="3.11.3.2.6"
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
 >
 </ReqRef><Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
 <Parameters>
@@ -535,10 +535,10 @@ INITIAL_VALUE
  Name="FindOSC"
 >
 <ReqRef
- Id="3.11.3.2.5"
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
 >
 </ReqRef><ReqRef
- Id="3.11.3.2.6"
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
 >
 </ReqRef><Comment>Indicates if the train belongs to the other specific category provided as parameter. Used to match the corresponding categories received by the trackside.</Comment>
 <Parameters>
@@ -559,10 +559,10 @@ INITIAL_VALUE
  Name="OtherSpecificSpeedRestriction"
 >
 <ReqRef
- Id="3.11.3.2.5"
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
 >
 </ReqRef><ReqRef
- Id="3.11.3.2.6"
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
 >
 </ReqRef><Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
 <Parameters>
@@ -619,13 +619,13 @@ INITIAL_VALUE
  Name="StaticSpeedProfileReceived"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.1"
+ Id="beb70c99-c336-489a-a97e-b8236a026061"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><Comment>This procedure is called when a new static speed profile is received. If an other static speed profile has already been received, all the information from the start location of the new information is deleted.</Comment>
 <Parameters>
@@ -641,10 +641,10 @@ INITIAL_VALUE
  Name="RemoveOldInformation"
 >
 <ReqRef
- Id="3.7.3.1.a"
+ Id="066c1468-0f45-4978-bc8d-a3cec1f01661"
 >
 </ReqRef><ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -669,13 +669,13 @@ IN
  Name="InsertFirstSSR"
 >
 <ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
 >
 </ReqRef><ReqRef
- Id="7.5.1.171.bis"
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -701,13 +701,13 @@ IN
  Name="Otherwise"
 >
 <ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
 >
 </ReqRef><ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -749,22 +749,22 @@ ON
  Name="AddSSP"
 >
 <ReqRef
- Id="7.5.1.102.1"
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
 >
 </ReqRef><ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><ReqRef
- Id="7.5.1.156"
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
 >
 </ReqRef><ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.82.1"
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
 >
 </ReqRef><ReqRef
- Id="7.5.1.83"
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
 >
 </ReqRef><Comment>Adds a new static speed restriction to the axle load profile.</Comment>
 <Parameters>
@@ -810,7 +810,7 @@ IN
  Name="AddLastSSR"
 >
 <ReqRef
- Id="7.5.1.171.bis"
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -837,13 +837,13 @@ IN
  Name="SSP"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
 >
 </ReqRef><ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.c.1"
+ Id="beb70c99-c336-489a-a97e-b8236a026061"
 >
 </ReqRef><Comment>Represent the set of static speed restrictions.</Comment>
 </Variable></Variables>

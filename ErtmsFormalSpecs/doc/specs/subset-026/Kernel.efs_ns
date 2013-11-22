@@ -64,11 +64,11 @@
  Name="SupervisionStatus"
 >
 <ReqRef
- Id="3.13.10.1.1"
+ Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
 >
 </ReqRef><Comment>The status of speed and distance monitoring supervision.</Comment>
 <Values>
@@ -99,7 +99,7 @@
  Name="BrakeReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.47"
+ Id="ce7d1ef1-5c76-4031-a912-dd0416fd0924"
 >
 </ReqRef><Values>
 <EnumValue
@@ -114,7 +114,7 @@
  Name="DriverId"
 >
 <ReqRef
- Id="3.18.4.1.1"
+ Id="20057b5b-4d7d-471b-8b22-6034d8be03a7"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -133,7 +133,7 @@
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><Comment>The data state of the driver id.</Comment>
 </StructureElement></Structure><Structure
@@ -141,11 +141,11 @@
  Name="LevelData"
 >
 <ReqRef
- Id="2.6.1.1"
+ Id="c64d2c76-dc3a-4e50-b17f-68b3482d0a85"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="2.6.2.1"
+ Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
 >
 </ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
@@ -164,7 +164,7 @@
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 <Comment></Comment>
 </ReqRef><Comment>The data state of the current ERTMS/ETCS level.</Comment>
@@ -173,10 +173,10 @@
  Name="TrainRunningNumber"
 >
 <ReqRef
- Id="3.18.4.5.1"
+ Id="07bfd145-efdd-4512-b930-b761213e0377"
 >
 </ReqRef><ReqRef
- Id="7.5.1.92"
+ Id="dac86bcd-dbc3-4022-866e-6ede3aa58dbd"
 >
 </ReqRef><Comment>Represents the train running number.
 
@@ -197,7 +197,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><Comment>Data state of the train running number.</Comment>
 </StructureElement></Structure><Structure
@@ -205,7 +205,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="EmergencyStop"
 >
 <ReqRef
- Id="3.10.2.1"
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
 >
 </ReqRef><Comment>Represents a received emergency stop (conditional or unconditional).</Comment>
 <StructureElement
@@ -226,7 +226,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Id"
 >
 <ReqRef
- Id="Entry 4.7.2.2.47"
+ Id="ce7d1ef1-5c76-4031-a912-dd0416fd0924"
 >
 </ReqRef><Comment>The id of the emergency stop.</Comment>
 </StructureElement><StructureElement
@@ -243,7 +243,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="TrainIntegrity"
 >
 <ReqRef
- Id="3.6.5.2.3"
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
 >
 </ReqRef><Comment>Train integrity information.</Comment>
 <StructureElement
@@ -255,7 +255,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Status"
 >
 <ReqRef
- Id="3.6.5.2.3.1"
+ Id="0d7b3630-948f-424b-9a71-0e04aa754bd1"
 >
 </ReqRef><Comment>Status of the train integrity information.</Comment>
 </StructureElement><StructureElement
@@ -267,7 +267,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="SafeTrainLength"
 >
 <ReqRef
- Id="3.6.5.2.3.2"
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
 >
 </ReqRef><Comment>Safe train length.</Comment>
 </StructureElement><StructureElement
@@ -279,7 +279,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DataState"
 >
 <ReqRef
- Id="3.6.5.2.3.2"
+ Id="84654558-6cb7-46d9-a984-7fb0aa823724"
 >
 </ReqRef><Comment>Data state of the train integrity information.</Comment>
 </StructureElement></Structure><Structure
@@ -287,7 +287,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OperatedSystemVersion"
 >
 <ReqRef
- Id="3.17.2.1"
+ Id="a32b885e-f73e-44f1-9cba-50faee55ee28"
 >
 </ReqRef><Comment>Represesnts the version of the ERTMS/ETCS operated system.</Comment>
 <StructureElement
@@ -313,7 +313,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="BaliseGroup"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.1"
+ Id="61faae76-f226-4744-a4a6-06512a75b891"
 >
 </ReqRef><StructureElement
  TypeName="Boolean"
@@ -345,11 +345,11 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="EmergencyStops"
 >
 <ReqRef
- Id="3.10.2.1"
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.10.3.1"
+ Id="19082c8b-d1cc-4d23-a9da-8581737a0760"
 >
 </ReqRef><Comment>Represents the set of received emergency stops (conditional or unconditional).</Comment>
 </Collection><Collection
@@ -360,7 +360,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="BaliseGroups"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.1"
+ Id="61faae76-f226-4744-a4a6-06512a75b891"
 >
 </ReqRef><Comment></Comment>
 </Collection></Collections>
@@ -371,7 +371,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="HandleModeChangeSM"
 >
 <ReqRef
- Id="5.5.2.2.1.1"
+ Id="9b24f0d9-f04e-410d-8c0f-8c2ea840f4c9"
 >
 </ReqRef><Comment></Comment>
 <States>
@@ -393,13 +393,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="StartOfMission Initiation"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S0"
+ Id="abbd517e-8b49-43b4-8dfa-117c8988fa86"
 >
 </ReqRef><ReqRef
- Id="5.12.2.4"
+ Id="e989d863-8cfc-455e-a8bb-4bec3452097c"
 >
 </ReqRef><ReqRef
- Id="5.12.3.4.3"
+ Id="aab5fe51-ccd2-4951-92ec-b9a6a5d04dd3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -418,10 +418,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ShuntingInitiatedByDriver Initiation"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015.1"
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -444,7 +444,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="StartOfMission"
 >
 <ReqRef
- Id="5.4"
+ Id="8208d384-8400-46e8-98be-8183f5b72238"
 >
 </ReqRef><StateMachine
  InitialState="S0"
@@ -472,7 +472,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A31"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A31"
+ Id="0d5816be-e0d4-4b39-8132-11cda5f264fc"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -482,7 +482,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Open session with RBC"
 >
 <ReqRef
- Id="3.5.3.4.a"
+ Id="c5b2c3fe-0dae-4997-bf3e-be2b4e554072"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -510,13 +510,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A39"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A39"
+ Id="78724a43-92f8-4ff3-9e8d-7ebf03afa832"
 >
 </ReqRef><ReqRef
- Id="3.5.5.1.3"
+ Id="ae649b47-cdfc-4223-b13d-4b1efaef612d"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.17"
+ Id="aba36681-0247-4508-92d9-1560c959b360"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -551,7 +551,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D31"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D31"
+ Id="5f727ae2-223d-4876-bd7a-f73476ce38ed"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -578,10 +578,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Session established"
 >
 <ReqRef
- Id="Entry 5.4.3.3.13"
+ Id="c961b910-b446-49da-a71a-a1e8b2a4719d"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.14"
+ Id="bd791945-c05a-4d4d-932c-75ef1341b032"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.RequestOpenRbcSession.SessionState == SessionState.Established</PreCondition></PreConditions>
@@ -620,7 +620,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D32"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D32"
+ Id="c1fbe808-07a9-45cc-aca9-3ad7ce44ca51"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -691,7 +691,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S0"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S0"
+ Id="abbd517e-8b49-43b4-8dfa-117c8988fa86"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -729,10 +729,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="AskDriverId"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.1"
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S1.2"
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -764,7 +764,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid or Unknown train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.2"
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -828,7 +828,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid or Unknown driver ID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.1"
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -910,10 +910,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Receive Driver Id"
 >
 <ReqRef
- Id="Entry 5.4.3.3.2"
+ Id="fdd34be2-081f-4fd2-81c7-d31750a434b6"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.3"
+ Id="4498594e-f543-4aac-a645-51b5961b91b3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -933,10 +933,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Receive Train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.3.4"
+ Id="ab1d5732-e882-44e5-82c4-b3366adc105e"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.5"
+ Id="b603ef8b-509e-4363-8527-cab39ee0f193"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -959,7 +959,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E1 : Valid ID &amp; Train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.3"
+ Id="7ef55f6e-2855-44c2-9bf0-ba1f05c5574c"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -983,7 +983,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S2"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2"
+ Id="570f9d96-ff82-4196-84c4-f4622f65c734"
 >
 </ReqRef><StateMachine
  InitialState="OfferLevelSelection"
@@ -1000,10 +1000,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="LevelSelectionOffered"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.1"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1011,10 +1011,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.4.3.3.9"
+ Id="523a3c43-b684-4928-848b-d441b5baa961"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.10"
+ Id="5e931954-f188-4190-90e1-fde9d2d2ee5b"
 >
 </ReqRef><Rules>
 <Rule
@@ -1023,16 +1023,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Driver has selected a level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.1"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.8"
+ Id="35f74cc7-ac90-49d9-bf55-8c7c4445ca05"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.9"
+ Id="523a3c43-b684-4928-848b-d441b5baa961"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1056,10 +1056,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ExitState"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.4"
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1091,7 +1091,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2 or 3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1111,7 +1111,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, 1 or LNTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.4"
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1137,10 +1137,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OfferLevelSelection"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.1"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1171,7 +1171,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Unknown level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.1"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1195,7 +1195,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1219,10 +1219,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.3"
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S2.4"
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1263,7 +1263,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ReceiveNetworkIDs"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1277,7 +1277,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OfferChangeNetworkID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1298,7 +1298,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1.1"
+ Id="aaf6ac64-c5bf-4e56-9ed9-2cc794042907"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1319,7 +1319,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="List not empty"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1.2"
+ Id="5cc3aa7d-2f29-448d-ba8a-4b26df4678b0"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1345,7 +1345,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RadioNetworkIdchangeOffered"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1.2"
+ Id="5cc3aa7d-2f29-448d-ba8a-4b26df4678b0"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1359,10 +1359,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ReceiveNetworkIDResponse"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1.2"
+ Id="5cc3aa7d-2f29-448d-ba8a-4b26df4678b0"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.10"
+ Id="5e931954-f188-4190-90e1-fde9d2d2ee5b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1405,7 +1405,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OfferChangeRBCID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2"
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1419,7 +1419,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OfferChangeRBCID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2"
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1439,7 +1439,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid RBCID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2.2"
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1466,10 +1466,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Unknown RBCID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2.2"
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S3.2.3"
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1496,13 +1496,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid RBCID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2.1"
+ Id="1ab51773-764d-4fc1-b533-351222363321"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S3.2.2"
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S3.2.3"
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1535,7 +1535,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ChangeRBCIDOffered"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.3"
+ Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1549,7 +1549,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ReceiveRBCIDResponse"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.3"
+ Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1576,10 +1576,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RBC Id Changed"
 >
 <ReqRef
- Id="Entry 5.4.3.3.10"
+ Id="5e931954-f188-4190-90e1-fde9d2d2ee5b"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.11"
+ Id="65c1baf8-73ca-4e1d-a95b-6371966bfa95"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId</PreCondition></PreConditions>
@@ -1598,7 +1598,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ExitState"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.3"
+ Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1612,7 +1612,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E5"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.3"
+ Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1636,7 +1636,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DriverResponse1"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1651,7 +1651,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Acquire network IDs"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1704,7 +1704,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="InitialState"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1719,7 +1719,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="OfferReEnterNetworkID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1792,7 +1792,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestDriverSelection"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10"
+ Id="50de839c-3618-4979-b91c-f620d58a32ad"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -1807,7 +1807,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request Driver selection"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10"
+ Id="50de839c-3618-4979-b91c-f620d58a32ad"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1843,7 +1843,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E11"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.3"
+ Id="6fd0322c-1f7c-44ab-9b8d-3964217e243e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1863,16 +1863,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E12"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.1"
+ Id="84e4bf85-c73c-4fd2-a440-bc180869ec08"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015.1"
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
 >
 </ReqRef><ReqRef
- Id="3.5.3.4.g"
+ Id="7c5af2d3-aa45-4d2e-b19d-ad71aaf624a2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1893,13 +1893,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Handle train position data state"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.4"
+ Id="42a6f10f-1298-4815-a950-88ff26725dd5"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.18"
+ Id="ebe785eb-406c-4459-b678-43e24f9ace82"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.g.1"
+ Id="306aeada-d0ba-4101-bb87-96fc5db2a745"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1923,7 +1923,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow start"
 >
 <ReqRef
- Id="5.4.5.3.h"
+ Id="28015708-3b6f-4bfb-87a2-4901cf481c50"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2028,7 +2028,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="SendTrainData"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S11"
+ Id="8b735562-2ede-429c-940c-7f53b0f6f675"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2042,7 +2042,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Send train data"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S11"
+ Id="8b735562-2ede-429c-940c-7f53b0f6f675"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2066,7 +2066,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="TrainDataSent"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S11.1"
+ Id="ae08f54c-5656-462e-9c38-46eec850f45a"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2080,7 +2080,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E14"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S11.1"
+ Id="ae08f54c-5656-462e-9c38-46eec850f45a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2119,7 +2119,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="AskTrainRunningNumber"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S13"
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2213,10 +2213,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Receive driver response"
 >
 <ReqRef
- Id="Entry 5.4.3.3.22"
+ Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.23"
+ Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2239,7 +2239,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E18"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S13.1"
+ Id="f4b839b3-d1ea-4c3b-8a2b-8bda94f934c3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2277,7 +2277,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ProposeStart"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2291,7 +2291,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Start proposed"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2315,16 +2315,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="StartProposed"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20.1"
+ Id="eae06a67-b3dd-4f7a-9192-5393b3e88155"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S20.2"
+ Id="77e79e6f-9bfd-4470-b548-0d714c901a83"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S20.3"
+ Id="f83b0295-446e-4191-b73b-dc8da983ead7"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S20.4"
+ Id="f8b0528a-9c12-4ef5-9509-bcb0bff33a6e"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2338,7 +2338,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E20"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20.1"
+ Id="eae06a67-b3dd-4f7a-9192-5393b3e88155"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2358,7 +2358,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E21"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20.2"
+ Id="77e79e6f-9bfd-4470-b548-0d714c901a83"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2378,7 +2378,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E22"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20.3"
+ Id="f83b0295-446e-4191-b73b-dc8da983ead7"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2398,7 +2398,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E24"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20.4"
+ Id="f8b0528a-9c12-4ef5-9509-bcb0bff33a6e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2421,7 +2421,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow reenter train data"
 >
 <ReqRef
- Id="5.4.5.3.d"
+ Id="5aca3d45-a3d1-4286-a5a4-f451779e43d4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2470,10 +2470,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow non leading"
 >
 <ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.f"
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2513,10 +2513,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow shunting"
 >
 <ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.g"
+ Id="60a884ee-664d-4031-988d-f9da13132152"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2564,7 +2564,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Check position validity"
 >
 <ReqRef
- Id="5.4.5.3.g.1"
+ Id="306aeada-d0ba-4101-bb87-96fc5db2a745"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2603,7 +2603,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S24"
+ Id="b993b468-098e-45b6-9120-8f3a2608780a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2639,13 +2639,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request for LS"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25"
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
 >
 </ReqRef><ReqRef
- Id="5.19.5.1"
+ Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
 >
 </ReqRef><ReqRef
- Id="5.19.1.2"
+ Id="8c7eb4ff-2716-4d9f-a6f2-bd52aacc416b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2666,13 +2666,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request for OS"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25"
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
 >
 </ReqRef><ReqRef
- Id="5.9.1.2"
+ Id="4ebd4845-9d08-4721-8788-6991ab66d3eb"
 >
 </ReqRef><ReqRef
- Id="5.9.5.1"
+ Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2693,13 +2693,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request for SH"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25"
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
 >
 </ReqRef><ReqRef
- Id="5.7.4.1"
+ Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
 >
 </ReqRef><ReqRef
- Id="5.7.1.4"
+ Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2734,14 +2734,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D2"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2"
+ Id="fd55504d-dcad-435b-b30f-48a7a37ff251"
 >
 </ReqRef><ReqRef
- Id="5.12.2.5"
+ Id="2e3eda46-b060-4164-9dc4-05e853b23a11"
 >
 <Comment>Closing the desk does not invalidates the train position stored in the engine</Comment>
 </ReqRef><ReqRef
- Id="5.12.4.3"
+ Id="2716843f-aeab-4fa3-8b17-006bff38ba9a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2751,7 +2751,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid stored position and level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.1"
+ Id="6fdea10b-a5c0-4096-87cd-95798603eed3"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
@@ -2763,7 +2763,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Invalid stored position or level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.2"
+ Id="07046c6a-c307-4f22-82f0-ebe5cfc912d8"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -2784,10 +2784,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level was valid"
 >
 <ReqRef
- Id="Entry 5.4.3.3.6"
+ Id="5ffd63ff-4c11-496d-9401-99006c03df8c"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.7"
+ Id="72d0b26b-453c-43da-811b-bb300e22a117"
 >
 </ReqRef><PreConditions>
 <PreCondition>Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
@@ -2808,7 +2808,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Phone ID was valid"
 >
 <ReqRef
- Id="Entry 5.4.3.3.6"
+ Id="5ffd63ff-4c11-496d-9401-99006c03df8c"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.CurrentRadioSession.SessionInfo.DataState == DataState.Valid</PreCondition></PreConditions>
@@ -2839,10 +2839,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D3.2"
+ Id="b3c23b39-6eae-4cf8-b2b1-8c9ee868368c"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.D3.1"
+ Id="3d01119c-9a06-4fe4-8e31-dcced163ddc9"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2852,7 +2852,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, 1, NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D3.2"
+ Id="b3c23b39-6eae-4cf8-b2b1-8c9ee868368c"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
@@ -2864,7 +2864,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2, 3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D3.1"
+ Id="3d01119c-9a06-4fe4-8e31-dcced163ddc9"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
@@ -2892,19 +2892,19 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A32"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A32.1"
+ Id="56576e5f-6491-43ac-bb6d-439d660b8baf"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.A32.2"
+ Id="97f97df2-7ec4-48d8-a999-6068f0d43b01"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.A32.2.1"
+ Id="f7f64285-3893-4d88-a8cc-f1648cd075cc"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.A32.2.2"
+ Id="2a24f59d-dee8-4d3d-abc7-cb4d05ba118d"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.A32.3"
+ Id="c304ce24-e48e-45dd-b7a6-264940ebbb40"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2939,10 +2939,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A33"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A33.1"
+ Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.A33.2"
+ Id="ca2f6d51-ace7-440e-8348-3cf6fa973ffe"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -2979,7 +2979,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ReportPositionToRBC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A34.1"
+ Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -2993,7 +2993,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Report invalid or unknown position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A34.1"
+ Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3017,7 +3017,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="WaitForRBCResponse"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A34.2"
+ Id="55fef314-9384-40f6-ab17-5880cc15474b"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -3031,7 +3031,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Analyze RBC response"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A34.2"
+ Id="55fef314-9384-40f6-ab17-5880cc15474b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3040,7 +3040,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RBC reports valid position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D33.2"
+ Id="14a1f1dd-6b8c-4693-bfb6-d34586f029de"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.SOM_POSITION_REPORT_CONFIRMED_BY_RBC )</PreCondition></PreConditions>
@@ -3051,7 +3051,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RBC reports train accepted"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D22.2"
+ Id="605de9cc-4900-46af-9c8f-c8b14126696e"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_ACCEPTED )</PreCondition></PreConditions>
@@ -3062,7 +3062,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RBC reports train rejected"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D22.2"
+ Id="605de9cc-4900-46af-9c8f-c8b14126696e"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.TRAIN_REJECTED )</PreCondition></PreConditions>
@@ -3085,7 +3085,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.4.3.3.16"
+ Id="36c2465e-e5e2-46dd-b60a-a01ee7032c51"
 >
 </ReqRef><Rules>
 <Rule
@@ -3094,7 +3094,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A35"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A35"
+ Id="4db9aa98-3d77-411b-8528-257702a16967"
 >
 <Comment>The position report has been received while leaving D33</Comment>
 </ReqRef><SubRules></SubRules>
@@ -3130,7 +3130,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A23"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A23"
+ Id="1494c427-572b-4bfa-bfea-2aa68994f26e"
 >
 </ReqRef><Comment>The acceptation message has already been received in D22</Comment>
 <SubRules></SubRules>
@@ -3167,10 +3167,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A24"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A24"
+ Id="b0a496b8-7273-4f49-8da4-0d91a260e5ba"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.16"
+ Id="36c2465e-e5e2-46dd-b60a-a01ee7032c51"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3205,7 +3205,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A38"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A38"
+ Id="28f4ed40-a3e4-43f7-b9c4-0bdb249e27bd"
 >
 </ReqRef><Comment>The message that indicates that the train is rejected by the RBC has been recevied in D22</Comment>
 <SubRules></SubRules>
@@ -3242,7 +3242,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A40"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A40"
+ Id="eb19f005-dc60-4a70-82ac-33c7a4d74922"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3280,7 +3280,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestTrainData"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S12"
+ Id="92ebef6e-9acb-432c-8a1c-932271343aec"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -3295,7 +3295,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestTrainData"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S12"
+ Id="92ebef6e-9acb-432c-8a1c-932271343aec"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3319,7 +3319,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="TrainDataRequested"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S12.1"
+ Id="47f6b9b0-cb96-4c74-a411-82cd5d418626"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -3334,7 +3334,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E16"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S12.1"
+ Id="47f6b9b0-cb96-4c74-a411-82cd5d418626"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3344,10 +3344,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E16"
 >
 <ReqRef
- Id="Entry 5.4.3.3.20"
+ Id="3fe59c76-6a3c-4709-8caa-9700dc06cd90"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.3.21"
+ Id="57063dee-6c81-4684-9575-1957646474ab"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
@@ -3394,7 +3394,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Train running number is unknown or invalid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D12.2"
+ Id="885747bc-9ec2-456a-8a96-9c54af37246b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3414,7 +3414,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Train running number is valid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D12.1"
+ Id="eb92da4b-0617-4b51-a599-d01aebed2eb2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3469,7 +3469,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level2 or Level3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.1"
+ Id="9e3ba5d0-8241-4037-a570-8b0cedd629f1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3489,7 +3489,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level0, Level1, Level NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.2"
+ Id="4f058292-dd24-489c-bbc9-498c1d9a0e38"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3526,7 +3526,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D11"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D11"
+ Id="a2f8c5d0-9029-4c1f-b5bf-fee1dca550f7"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3573,13 +3573,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="MARequestSent"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.1"
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S21.2"
+ Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S21.3"
+ Id="9055a6b1-6135-49e8-a779-622b3270c280"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -3600,7 +3600,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E26: SR mode"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.1"
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
 >
 </ReqRef><PreConditions>
 <PreCondition>SR.SRAuthorised()</PreCondition></PreConditions>
@@ -3611,16 +3611,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E27: OS/LS/SH mode"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.2"
+ Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
 >
 </ReqRef><ReqRef
- Id="5.9.5.1"
+ Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
 >
 </ReqRef><ReqRef
- Id="5.7.4.1"
+ Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
 >
 </ReqRef><ReqRef
- Id="5.19.5.1"
+ Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
 >
 </ReqRef><PreConditions>
 <PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition><PreCondition>Available ( MA.MA )</PreCondition></PreConditions>
@@ -3637,7 +3637,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="SendMARequest"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -3651,7 +3651,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Send MA request"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3687,7 +3687,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S22"
+ Id="195e2b98-7877-4e7a-850f-134fe5fac373"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3722,7 +3722,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Display driver ack request"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S23"
+ Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3758,7 +3758,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Terminal registered to network"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D7.1"
+ Id="65314800-5286-475e-b755-60e19e8cb01d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3779,7 +3779,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Terminal not registered to network"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D7.2"
+ Id="25c7ba02-1985-488d-b506-b24eef2b11b4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3815,7 +3815,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A29"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A29"
+ Id="251b9c82-1dc9-4d99-8648-7a96b0526d5b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3839,7 +3839,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="End of SoM"
 >
 <ReqRef
- Id="5.4.3.2.1"
+ Id="4a239d79-5277-403e-b678-13601d0dec4e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3884,55 +3884,55 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Desk is closed"
 >
 <ReqRef
- Id="Condition 3.A3.4.1.3.1.34.3"
+ Id="608406fc-a153-4f2f-926d-023b26c6965b"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.37.3"
+ Id="826a1ea7-693d-4abb-9475-72996312573e"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.1.3"
+ Id="62447353-db71-4da7-ae7c-c93316af9ecd"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.11.3"
+ Id="adc2c38e-7f74-4a2a-8cf4-5f8966540e5b"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.13.3"
+ Id="e03c410e-3ebf-44e4-9c9e-bf1a71f283e8"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.14.3"
+ Id="ed3df83d-be18-41a0-98f2-30f3879fdf96"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.25.3"
+ Id="00f5d4b3-3539-4dee-a16b-8445554306d2"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.29.3"
+ Id="5964ef59-e4aa-4ee3-bb6a-f1056fa3b656"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.38.3"
+ Id="ab0153d8-5c2f-4e9a-b689-74694042a017"
 >
 </ReqRef><ReqRef
- Id="3.A3.4.1.2.k"
+ Id="fe20e6f0-0c95-465f-86a8-bfa2963de515"
 >
 </ReqRef><ReqRef
- Id="3.5.5.1.4"
+ Id="83709cd5-3863-48a0-8264-34f65a482b28"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.40.3"
+ Id="00ea92e0-e83e-498f-ae22-9c7c39f07162"
 >
 </ReqRef><ReqRef
- Id="Entry 3.A3.4.1.3.1.41"
+ Id="51668b83-2011-4cfe-b5d6-d55503b8349d"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.41.3"
+ Id="d6a971ed-2255-4bd4-851b-bf9a20c6697c"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.48.3"
+ Id="43f7bd10-27ce-491f-83f9-b80556c00900"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.49.3"
+ Id="84ba275c-56ed-4a57-9fa7-83653416a2da"
 >
 </ReqRef><ReqRef
- Id="Condition 3.A3.4.1.3.1.50.3"
+ Id="804ec746-0da5-4425-83ca-696c55289bc0"
 >
 </ReqRef><PreConditions>
 <PreCondition>DMI.DriverClosedTheDesk(DMI.MasterDMI())</PreCondition></PreConditions>
@@ -3947,7 +3947,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Loss of open session"
 >
 <ReqRef
- Id="5.4.5.1"
+ Id="0e26286f-b4f4-4ca9-82ab-e0db75aadf0b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -3967,10 +3967,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow override"
 >
 <ReqRef
- Id="Entry 5.4.3.3.19"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.a"
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4010,7 +4010,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow reenter driver ID"
 >
 <ReqRef
- Id="5.4.5.3.b"
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4063,7 +4063,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow reenter train running number"
 >
 <ReqRef
- Id="5.4.5.3.c"
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4116,7 +4116,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Allow reenter level"
 >
 <ReqRef
- Id="5.4.5.3.e"
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4163,7 +4163,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Handle change of level validity"
 >
 <ReqRef
- Id="Entry 5.4.3.3.24"
+ Id="0e06c751-a7a2-4c82-9441-dfc783509c2a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4183,7 +4183,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Handle change of RBC ID / Phone number validity"
 >
 <ReqRef
- Id="Entry 5.4.3.3.24"
+ Id="0e06c751-a7a2-4c82-9441-dfc783509c2a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4211,7 +4211,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="TrainTrip"
 >
 <ReqRef
- Id="5.11"
+ Id="dc6e23b7-6b64-46ae-8eff-b7bc7d636a3a"
 >
 </ReqRef><StateMachine
  InitialState="S010"
@@ -4227,7 +4227,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S010"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S010"
+ Id="7a800db1-0312-49df-8a67-3d61c0b8c37b"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4240,7 +4240,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E015"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S010"
+ Id="7a800db1-0312-49df-8a67-3d61c0b8c37b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4263,7 +4263,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A025"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A025"
+ Id="eb5aeb5a-ad87-4472-bf20-a249e1f525d2"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4277,7 +4277,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A025"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A025"
+ Id="eb5aeb5a-ad87-4472-bf20-a249e1f525d2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4303,7 +4303,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A030"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A030"
+ Id="21b9d8d4-21b1-4c6d-a127-d82c90e0fdd8"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4316,7 +4316,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A030"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A030.2"
+ Id="570307dd-e817-45d9-b3d0-1400a19b04f2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4339,7 +4339,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A035"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4353,7 +4353,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A035"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4378,7 +4378,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S050"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S050"
+ Id="faeb30d5-16e6-44fb-95d1-4045678c6c60"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4391,19 +4391,19 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E055"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S050.2"
+ Id="69bdfec5-14ae-43a8-9b36-15d441915044"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.66"
+ Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.61"
+ Id="5922076b-396c-4635-a3bc-dd00149b3647"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.62"
+ Id="baa74e49-0452-49c0-a452-f75558625db1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.8"
+ Id="3d8929cd-3036-4ab6-a142-7e62115e9f72"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4427,14 +4427,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S060"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060"
+ Id="0bae6856-8d5d-4916-83a0-b8fa4be991ae"
 >
 </ReqRef><StateMachine
  InitialState="RequestDriverAck"
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060"
+ Id="0bae6856-8d5d-4916-83a0-b8fa4be991ae"
 >
 </ReqRef><States>
 <State
@@ -4446,7 +4446,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestDriverAck"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060.1"
+ Id="8df0e2ea-eb7f-40b5-b72c-11d3fc2ee7b4"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4460,7 +4460,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request driver ack"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060.1"
+ Id="8df0e2ea-eb7f-40b5-b72c-11d3fc2ee7b4"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4485,7 +4485,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DriverAckRequested"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060.2"
+ Id="c08c4dd4-2d01-4cfc-ae12-f6e093ce97f9"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4499,19 +4499,19 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E065"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S060.2"
+ Id="c08c4dd4-2d01-4cfc-ae12-f6e093ce97f9"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.66"
+ Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.61"
+ Id="5922076b-396c-4635-a3bc-dd00149b3647"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.62"
+ Id="baa74e49-0452-49c0-a452-f75558625db1"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.8"
+ Id="3d8929cd-3036-4ab6-a142-7e62115e9f72"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4538,7 +4538,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D080"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D80"
+ Id="9cef3130-290c-46a6-af7c-07e1df0ea3f3"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4552,7 +4552,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D080"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D80"
+ Id="9cef3130-290c-46a6-af7c-07e1df0ea3f3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4572,10 +4572,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 1, 2, 3"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D80.1"
+ Id="7364d3c3-544e-4eea-adda-1d2b6461aaac"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.8"
+ Id="3d8929cd-3036-4ab6-a142-7e62115e9f72"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4595,10 +4595,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, NTC"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D80.2"
+ Id="20a77818-d458-4cc3-a579-79971189457e"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.66"
+ Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4625,7 +4625,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A150"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A150"
+ Id="c66d9504-6139-4a0b-b411-04a20973be2e"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4640,7 +4640,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A105"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A105"
+ Id="458c52b6-b128-424e-b29e-05cf4a057a91"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4656,7 +4656,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D110"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D110"
+ Id="4985c0db-75ef-450e-b5e1-2b9b3de3503e"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4671,7 +4671,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D110"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D110"
+ Id="4985c0db-75ef-450e-b5e1-2b9b3de3503e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4693,7 +4693,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 1"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D110.1"
+ Id="781ffdfe-d64c-4a5b-8759-e92aa9394b13"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4715,7 +4715,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2, Level 3"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D110.2"
+ Id="7c644530-c702-4fd9-a9a1-a73f90a2bdf8"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4743,7 +4743,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S120"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S120"
+ Id="d66a7056-b379-4f68-842b-d83ef90bf4bc"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4764,7 +4764,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E125"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S120.1"
+ Id="03e81fdf-21c4-4670-be56-584116d35c0d"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.RECOGNITION_OF_EXIT_FROM_TRIP_MODE )</PreCondition></PreConditions>
@@ -4775,10 +4775,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No order received, maximum number of requests reached"
 >
 <ReqRef
- Id="A1.1.17.1"
+ Id="c4552b18-7c1b-4778-a53c-1272271bb392"
 >
 </ReqRef><ReqRef
- Id="5.11.4.1.2"
+ Id="84b1f605-4265-4bb8-965e-ea245a16e6d0"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
@@ -4789,7 +4789,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No order received, a new request can be sent"
 >
 <ReqRef
- Id="5.11.4.1.1"
+ Id="f4b1a027-643a-48c1-a840-1735e19ae661"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
@@ -4807,7 +4807,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D130"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D130"
+ Id="a2fcf695-a724-4a9e-850c-aa791e0d2403"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4822,7 +4822,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D130"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D130"
+ Id="a2fcf695-a724-4a9e-850c-aa791e0d2403"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4844,7 +4844,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No emergency stop"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D130.2"
+ Id="3991569f-53ae-4c85-ae2e-22ccdea80ca5"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4866,7 +4866,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Pending emergency stop"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D130.1"
+ Id="0bf0ab9d-7ce3-46d5-a104-d59dbbcf8e4a"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4894,7 +4894,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S130"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D130"
+ Id="a2fcf695-a724-4a9e-850c-aa791e0d2403"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4908,7 +4908,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E135"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S130"
+ Id="d0b99ecd-1992-4aae-9fe2-9ea2b7873292"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4934,14 +4934,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S140"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140"
+ Id="05d0b794-9069-41fe-b9f7-f7085e32d535"
 >
 </ReqRef><StateMachine
  InitialState="RequestDriverSelection"
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140"
+ Id="05d0b794-9069-41fe-b9f7-f7085e32d535"
 >
 </ReqRef><States>
 <State
@@ -4953,7 +4953,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestDriverSelection"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.1"
+ Id="dfdc851b-0f50-470e-8cbc-c7d0ae012b9d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -4967,7 +4967,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestDriverSelection"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.1"
+ Id="dfdc851b-0f50-470e-8cbc-c7d0ae012b9d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -4989,7 +4989,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid train data"
 >
 <ReqRef
- Id="A1.1.4.1"
+ Id="9f33f81f-8311-4e08-b43d-80816d35a690"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5016,13 +5016,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DriverSelectionRequested"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.2"
+ Id="8ed924c8-449b-49e3-b97b-9d9bac584781"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S140.3"
+ Id="a4b631e4-9069-4f56-b3ab-340f8ec68908"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S140.4"
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5036,7 +5036,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Driver has answered"
 >
 <ReqRef
- Id="A1.1.4.2"
+ Id="6114bfb9-055b-4951-93ea-75d62541b167"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5056,7 +5056,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E155"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.3"
+ Id="a4b631e4-9069-4f56-b3ab-340f8ec68908"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5078,7 +5078,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E150"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.2"
+ Id="8ed924c8-449b-49e3-b97b-9d9bac584781"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5100,13 +5100,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E145"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.4"
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015.1"
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5135,14 +5135,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S150"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150"
+ Id="79973edc-1e31-489a-82f9-9c7f7b894493"
 >
 </ReqRef><StateMachine
  InitialState="SendMARequest"
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150"
+ Id="79973edc-1e31-489a-82f9-9c7f7b894493"
 >
 </ReqRef><States>
 <State
@@ -5154,7 +5154,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="SendMARequest"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150.1"
+ Id="b490aef9-44fa-4043-a130-aa1a33c15e0c"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5168,7 +5168,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Send MA request"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150.1"
+ Id="b490aef9-44fa-4043-a130-aa1a33c15e0c"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5193,13 +5193,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="MARequestSent"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150.2"
+ Id="a54617b4-525f-472d-9e22-cd671feaee3b"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S150.3"
+ Id="c5dfe3ed-6a84-4f83-a94d-2d2859aa42fc"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S150.4"
+ Id="6ed812c6-f711-468a-8c0f-0843bf2384be"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5220,7 +5220,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E26"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150.2"
+ Id="a54617b4-525f-472d-9e22-cd671feaee3b"
 >
 </ReqRef><PreConditions>
 <PreCondition>SR.SRAuthorised()</PreCondition></PreConditions>
@@ -5231,16 +5231,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E175"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S150.3"
+ Id="c5dfe3ed-6a84-4f83-a94d-2d2859aa42fc"
 >
 </ReqRef><ReqRef
- Id="5.9.5.1"
+ Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
 >
 </ReqRef><ReqRef
- Id="5.7.4.1"
+ Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
 >
 </ReqRef><ReqRef
- Id="5.19.5.1"
+ Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( MA.MA )</PreCondition><PreCondition>MA.ModeProfile.ModeProfileIsApplicable()</PreCondition></PreConditions>
@@ -5259,17 +5259,17 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S160"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S160"
+ Id="d20ca54f-b973-4b49-9923-a3eaf4c2d07e"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S160"
+ Id="d20ca54f-b973-4b49-9923-a3eaf4c2d07e"
 >
 </ReqRef><StateMachine
  InitialState="RequestDriverAck"
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S160"
+ Id="d20ca54f-b973-4b49-9923-a3eaf4c2d07e"
 >
 </ReqRef><Rules>
 <Rule
@@ -5278,10 +5278,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request driver ack"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S160.1"
+ Id="da598b1f-9157-4e9a-8888-5cfc296ac2a3"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.9"
+ Id="67821ca1-b727-417d-bd7e-38b05017910c"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5306,10 +5306,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S170"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S170"
+ Id="607f77f2-dd97-4b41-bd65-683352dfdfc9"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.S170"
+ Id="607f77f2-dd97-4b41-bd65-683352dfdfc9"
 >
 </ReqRef><StateMachine
  InitialState="RequestDriverAck"
@@ -5325,7 +5325,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RequestDriverAck"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S170.1"
+ Id="24c07d7e-5637-4dfa-8ad0-b07595006ea3"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5339,10 +5339,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request driver ack"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S170.1"
+ Id="24c07d7e-5637-4dfa-8ad0-b07595006ea3"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.16"
+ Id="7a006572-8e75-4e6b-be5e-b096bfa7f855"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5365,10 +5365,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request ack for OS"
 >
 <ReqRef
- Id="5.9.5.1"
+ Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
 >
 </ReqRef><ReqRef
- Id="5.9.1.2"
+ Id="4ebd4845-9d08-4721-8788-6991ab66d3eb"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5391,10 +5391,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request ack for LS"
 >
 <ReqRef
- Id="5.19.5.1"
+ Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
 >
 </ReqRef><ReqRef
- Id="5.19.1.2"
+ Id="8c7eb4ff-2716-4d9f-a6f2-bd52aacc416b"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5417,10 +5417,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Request ack for SH"
 >
 <ReqRef
- Id="5.7.4.1"
+ Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
 >
 </ReqRef><ReqRef
- Id="5.7.1.4"
+ Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5447,7 +5447,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="DriverAckRequested"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S170.2"
+ Id="af1d067a-7dc9-45dc-9ce8-dcbd2fe36941"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5464,7 +5464,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D020"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D020"
+ Id="708eaaf1-04ba-46c2-aa01-47d2ddd20b8d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5478,7 +5478,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D020"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D020"
+ Id="708eaaf1-04ba-46c2-aa01-47d2ddd20b8d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5500,7 +5500,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, 1, NTC"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D020.1"
+ Id="4ab254b6-4bbf-464c-9170-75905b61adcb"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5520,7 +5520,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2, 3"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D020.2"
+ Id="34640ebd-9a29-4cc2-9bfc-c11616a1eac8"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5546,7 +5546,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D085"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D085"
+ Id="8a4ca614-e3bc-4aa4-ad33-afce78253af2"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5561,7 +5561,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D085"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D085"
+ Id="8a4ca614-e3bc-4aa4-ad33-afce78253af2"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5583,13 +5583,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Valid data"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D085.2"
+ Id="ad21fa53-6db5-4bf3-af13-6d90389c9bdb"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.61"
+ Id="5922076b-396c-4635-a3bc-dd00149b3647"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.62"
+ Id="baa74e49-0452-49c0-a452-f75558625db1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5611,10 +5611,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No valid data"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D085.1"
+ Id="68b4d5bd-48d1-4e00-b91b-a41dc51986be"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.66"
+ Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5642,7 +5642,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D090"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D090"
+ Id="2aca08c0-e2e9-4d56-93f8-31654c48705d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5657,7 +5657,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="D090"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D090"
+ Id="2aca08c0-e2e9-4d56-93f8-31654c48705d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5679,10 +5679,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D090.1"
+ Id="e7bdf687-c54b-4d32-a5c6-00cd7f6bd21e"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.61"
+ Id="5922076b-396c-4635-a3bc-dd00149b3647"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5704,10 +5704,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level NTC"
 >
 <ReqRef
- Id="Entry 5.11.2.2.D090.2"
+ Id="602dc383-9138-403a-ac74-13e9cb2047eb"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.62"
+ Id="baa74e49-0452-49c0-a452-f75558625db1"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5734,7 +5734,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A140"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A140"
+ Id="97a651d7-2517-48ce-8d06-d2c205c7cc1d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5749,7 +5749,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A145"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A145"
+ Id="ad5e8878-4a8a-4a39-9072-970084488dfa"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5765,7 +5765,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A115"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A115"
+ Id="9e235c11-59a2-4259-80f0-b5b1a76e3673"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5779,7 +5779,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A115"
 >
 <ReqRef
- Id="Entry 5.11.2.2.A115.2"
+ Id="b1fe97fd-7b59-47e6-b2b5-b1ae367f3a0c"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5803,7 +5803,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="RBC session is lost"
 >
 <ReqRef
- Id="5.11.4.2"
+ Id="988a3e55-0b0a-467b-a0e7-398bad5bf268"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5831,7 +5831,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="5.6"
+ Id="20733b5e-b944-4ff3-ba02-861e2acb6911"
 >
 </ReqRef><States>
 <State
@@ -5862,7 +5862,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, 1 or NTC"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.1"
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
 >
 </ReqRef><PreConditions>
 <PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
@@ -5873,7 +5873,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2 or 3"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.2"
+ Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
 >
 </ReqRef><PreConditions>
 <PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
@@ -5890,7 +5890,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A050"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050"
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -5904,10 +5904,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A050"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050.1"
+ Id="122422ab-96f8-41c0-9965-09ccffc8b79f"
 >
 </ReqRef><ReqRef
- Id="5.6.4.3"
+ Id="0df24273-c216-4ef5-8d1d-23e83f6d6c2d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5927,7 +5927,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Handle new balises"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050"
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -5962,7 +5962,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A045"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
 >
 </ReqRef><Comment></Comment>
 <StateMachine
@@ -5977,16 +5977,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A045"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.A045.1"
+ Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
 >
 </ReqRef><ReqRef
- Id="5.6.4.1.1"
+ Id="58b99381-a184-4b10-8c25-d125705b5194"
 >
 </ReqRef><ReqRef
- Id="5.6.4.1.2"
+ Id="1b8d900f-c280-48ab-867c-7a40ffdaaea3"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6010,7 +6010,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S050"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050"
+ Id="431525e9-6114-43ef-a6c4-f75462a54f16"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -6024,7 +6024,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S050"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050"
+ Id="431525e9-6114-43ef-a6c4-f75462a54f16"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6033,7 +6033,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E090: SH authorised"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.1"
+ Id="61faae76-f226-4744-a4a6-06512a75b891"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_AUTHORISED )</PreCondition></PreConditions>
@@ -6044,7 +6044,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E215: SH refused"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.2"
+ Id="f966dba5-db59-4c31-b423-6ec37205dcf2"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( EURORADIO.EuroradioMessageIn.SH_REFUSED )</PreCondition></PreConditions>
@@ -6055,7 +6055,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No answer, maximum number of requests reached"
 >
 <ReqRef
- Id="5.6.4.1.2"
+ Id="1b8d900f-c280-48ab-867c-7a40ffdaaea3"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -6067,7 +6067,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No answer, a new request can be sent"
 >
 <ReqRef
- Id="5.6.4.1.1"
+ Id="58b99381-a184-4b10-8c25-d125705b5194"
 >
 </ReqRef><PreConditions>
 <PreCondition>Shunting.TimeOfTheLastSentRequest + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
@@ -6078,7 +6078,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No answer, no communication session"
 >
 <ReqRef
- Id="5.6.4.1.3"
+ Id="24ae765e-d289-46fa-a044-79cf087add58"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.NoSession()</PreCondition></PreConditions>
@@ -6095,7 +6095,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A220"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -6109,7 +6109,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A220"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6135,10 +6135,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E13: Shunting refused"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.1.1"
+ Id="2e9f9917-e8f9-49b1-89ca-a25dc8ef2e05"
 >
 </ReqRef><ReqRef
- Id="5.4.5.3.g.2"
+ Id="d973b79d-a502-4a1d-bb38-c759e6101d62"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Mode == Mode.SB</PreCondition></PreConditions>
@@ -6149,7 +6149,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E165: Shunting refused"
 >
 <ReqRef
- Id="Entry 5.11.2.2.S140.4"
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Mode == Mode.PT</PreCondition></PreConditions>
@@ -6160,7 +6160,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="End procedure"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220.1"
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -6198,7 +6198,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Mission is on-going"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D040.1"
+ Id="5aeb9959-1698-4ea4-a60e-da2bb3797ccf"
 >
 </ReqRef><PreConditions>
 <PreCondition>MissionIsOnGoing</PreCondition></PreConditions>
@@ -6209,7 +6209,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No on-going mission"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D040.2"
+ Id="68435f48-b3c4-4b8d-ae9d-1d5a4a33dd0b"
 >
 </ReqRef><PreConditions>
 <PreCondition>NOT MissionIsOnGoing</PreCondition></PreConditions>
@@ -6226,7 +6226,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S100"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S100"
+ Id="8a2197b0-8bfc-49a1-a13f-20909b2be98c"
 >
 </ReqRef><Comment></Comment>
 <StateMachine
@@ -6241,10 +6241,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="S100"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S100"
+ Id="8a2197b0-8bfc-49a1-a13f-20909b2be98c"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.S100.1"
+ Id="dd7c262e-fb20-4039-bbc5-e87aeac2d131"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6261,10 +6261,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No order received, maximum number of requests reached"
 >
 <ReqRef
- Id="5.6.4.3"
+ Id="0df24273-c216-4ef5-8d1d-23e83f6d6c2d"
 >
 </ReqRef><ReqRef
- Id="A1.1.17.1"
+ Id="c4552b18-7c1b-4778-a53c-1272271bb392"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.PositionReport.NumberOfSentReportRepetitions == 3</PreCondition></PreConditions>
@@ -6275,7 +6275,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="No order received, a new request can be sent"
 >
 <ReqRef
- Id="5.6.4.2"
+ Id="60acc0ca-e056-4297-ae12-7f37389323d3"
 >
 </ReqRef><PreConditions>
 <PreCondition>EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition><PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
@@ -6292,7 +6292,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A115"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A115"
+ Id="27f88b30-f620-4d1c-aae4-860de3b3a7df"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -6306,10 +6306,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A115"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A115"
+ Id="27f88b30-f620-4d1c-aae4-860de3b3a7df"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.A115.1"
+ Id="29c239c8-dea5-47f0-9916-581993980f9f"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6333,7 +6333,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A100"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A100"
+ Id="7ca0878c-f3b5-45ba-ad1f-001f5cf3180d"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -6347,7 +6347,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A100"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A100"
+ Id="7ca0878c-f3b5-45ba-ad1f-001f5cf3180d"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6390,7 +6390,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 2 or 3"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.1"
+ Id="0cd426d1-35bd-4be9-be23-a5f473998d40"
 >
 </ReqRef><PreConditions>
 <PreCondition>Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
@@ -6401,7 +6401,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Level 0, 1 or NTC"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.2"
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
 >
 </ReqRef><PreConditions>
 <PreCondition>Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
@@ -6418,7 +6418,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A095"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A095.1"
+ Id="6f5b08a4-6fc6-431d-926a-e1b6bfaa34e7"
 >
 </ReqRef><StateMachine
  InitialState=""
@@ -6432,7 +6432,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="A095"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A095.1"
+ Id="6f5b08a4-6fc6-431d-926a-e1b6bfaa34e7"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6468,10 +6468,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E015"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
 >
 </ReqRef><ReqRef
- Id="Entry 5.6.2.2.E015.1"
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -6499,7 +6499,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="5.8"
+ Id="4327460f-edc2-4267-8dc2-70ca734e4df9"
 >
 </ReqRef></StateMachine></State><State
  X="30"
@@ -6510,14 +6510,14 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="EndOfMission"
 >
 <ReqRef
- Id="5.5"
+ Id="5f9152b9-260e-437e-a7d1-b6acb37d9dba"
 >
 </ReqRef><StateMachine
  InitialState="Step1"
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="5.5"
+ Id="5f9152b9-260e-437e-a7d1-b6acb37d9dba"
 >
 </ReqRef><States>
 <State
@@ -6525,7 +6525,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Step1"
 >
 <ReqRef
- Id="5.5.3.1.1"
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><StateMachine
  InitialState="Step1"
@@ -6965,10 +6965,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="DriverId"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><ReqRef
- Id="3.18.4.1.1"
+ Id="20057b5b-4d7d-471b-8b22-6034d8be03a7"
 >
 </ReqRef><Comment>The data state and the value of the driver id.</Comment>
 </Variable><Variable
@@ -6979,10 +6979,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Level"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 </ReqRef><ReqRef
- Id="2.6.2.1"
+ Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
 >
 <Comment></Comment>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
@@ -6994,7 +6994,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Mode"
 >
 <ReqRef
- Id="4.3.2.1"
+ Id="9a35843b-0036-48f7-adce-1bd6c052fe69"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7005,7 +7005,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="PowerOn"
 >
 <ReqRef
- Id="Entry 4.6.3.5"
+ Id="b144cb88-77c8-4ba0-96b6-b83f713905dd"
 >
 </ReqRef><Comment>Indicates whether the EVC is On or Off.</Comment>
 </Variable><Variable
@@ -7016,14 +7016,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TrainRunningNumber"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.18.4.5.1"
+ Id="07bfd145-efdd-4512-b930-b761213e0377"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.13"
+ Id="47e76500-ce7e-48be-9414-97b01bbaaf74"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7034,10 +7034,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="EmergencyStops"
 >
 <ReqRef
- Id="3.10.2.1"
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
 >
 </ReqRef><ReqRef
- Id="3.10.3.1"
+ Id="19082c8b-d1cc-4d23-a9da-8581737a0760"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7048,10 +7048,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="EmergencyBrakeApplied"
 >
 <ReqRef
- Id="3.10.2.1"
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A105"
+ Id="458c52b6-b128-424e-b29e-05cf4a057a91"
 >
 </ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
 </Variable><Variable
@@ -7062,10 +7062,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="FirstTargetAtZeroSpeed"
 >
 <ReqRef
- Id="3.15.10.1"
+ Id="615ccbef-ab0a-4f6f-9624-9ace6361ea83"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="2cd466ba-aedb-4f3e-8661-ae10ee1737c9"
 >
 </ReqRef><Comment>Represents the first target at zero speed.</Comment>
 </Variable><Variable
@@ -7075,10 +7075,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef
- Id="3.15.10.1"
+ Id="615ccbef-ab0a-4f6f-9624-9ace6361ea83"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.45"
+ Id="abc0e167-3d30-443d-b62a-963a5228be72"
 >
 </ReqRef><Comment>The indication location at MRSP speed.</Comment>
 </Variable><Variable
@@ -7089,10 +7089,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="SupervisionStatus"
 >
 <ReqRef
- Id="3.13.10.1.1"
+ Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
 >
 </ReqRef><ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7104,7 +7104,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TargetDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.2.7"
+ Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
 >
 </ReqRef><Comment>The target distance of the train.</Comment>
 </Variable><Variable
@@ -7115,7 +7115,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TrainIntegrity"
 >
 <ReqRef
- Id="3.6.5.2.3"
+ Id="2b2ed08d-1183-4018-b0cc-3b454b2f8c4d"
 >
 </ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
 </Variable><Variable
@@ -7126,10 +7126,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="DefaultValues"
 >
 <ReqRef
- Id="Table 3.A3.2.1"
+ Id="24c3f669-e8b2-4f88-9cee-d6cbd5a7c513"
 >
 </ReqRef><ReqRef
- Id="3.18.2.5"
+ Id="18962f3c-7beb-4506-837c-10c871272cc9"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -7140,7 +7140,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="NationalSystemId"
 >
 <ReqRef
- Id="3.15.6.1"
+ Id="25de9975-544f-48ba-8ed8-aa2ade8433e7"
 >
 </ReqRef><Comment>Represents the id of the current national system.</Comment>
 </Variable><Variable
@@ -7151,7 +7151,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="OperatedSystemVersion"
 >
 <ReqRef
- Id="3.17.2.1"
+ Id="a32b885e-f73e-44f1-9cba-50faee55ee28"
 >
 <Comment></Comment>
 </ReqRef><Comment>The version of the ERTMS/ETCS system.</Comment>
@@ -7163,7 +7163,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="EquipmentIsolated"
 >
 <ReqRef
- Id="Entry 4.6.3.2"
+ Id="df71d1ef-a7ee-44b4-839b-8a08ebe2e1c9"
 >
 </ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
 </Variable><Variable
@@ -7174,28 +7174,28 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="MissionIsOnGoing"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.2"
+ Id="2df20d0d-1f50-4e04-aa20-f8d1ab4e0945"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S22.1"
+ Id="9a711b7c-ff6b-448c-a9cd-2aa9669899ad"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S23.1"
+ Id="64b644e8-aaed-41c9-ab84-f81ea4041d54"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S24.1"
+ Id="588364b4-1c15-454c-a0f1-3235f2130fc5"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S25.1"
+ Id="66ed413a-6b6e-4b23-b847-4b1870c4d831"
 >
 </ReqRef><ReqRef
- Id="5.4.6.1"
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
 >
 </ReqRef><ReqRef
- Id="5.4.6.2"
+ Id="31c44e96-e029-418d-b715-af8b375bf89b"
 >
 </ReqRef><ReqRef
- Id="Entry 5.4.3.2.S21.3"
+ Id="9055a6b1-6135-49e8-a779-622b3270c280"
 >
 </ReqRef><Comment>Indicates if the train has started a mission.</Comment>
 </Variable><Variable
@@ -7206,7 +7206,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="CurrentTime"
 >
 <ReqRef
- Id="3.18.5.1"
+ Id="c786347b-7daa-4026-94f2-b1dfc195823c"
 >
 </ReqRef><Comment>Represents the current time of the EVC. Its value increases each cycle by the value of the constant CycleDuration.</Comment>
 </Variable><Variable
@@ -7235,7 +7235,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="TripReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.10"
+ Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
 >
 </ReqRef><Comment>Represents the trip raison, if any.</Comment>
 </Variable><Variable
@@ -7246,7 +7246,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="NLSignalReceived"
 >
 <ReqRef
- Id="Entry 4.6.3.47"
+ Id="d0507ada-5b0f-4754-b198-46988a339561"
 >
 </ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
 </Variable><Variable
@@ -7257,10 +7257,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="SleepingSignalIsReceived"
 >
 <ReqRef
- Id="Entry 4.6.3.4"
+ Id="b1cc8b5b-794d-474f-a00b-f1ae16b9be7f"
 >
 </ReqRef><ReqRef
- Id="Entry 4.6.3.15"
+ Id="fcc9f8c8-ec5c-4e6e-a905-d17b3e6c2a14"
 >
 </ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
 </Variable><Variable

@@ -37,10 +37,10 @@
  Name="NID_TSR"
 >
 <ReqRef
- Id="3.11.5.5"
+ Id="1c1c2dc5-c171-456d-9a54-a4480effe5a4"
 >
 </ReqRef><ReqRef
- Id="3.11.5.6"
+ Id="1c03e6a2-328c-4a04-83b6-be1892d19f38"
 >
 </ReqRef><Comment></Comment>
 <SpecialValues>
@@ -73,7 +73,7 @@
  Name="NID_NTC"
 >
 <ReqRef
- Id="7.5.1.98"
+ Id="957132d4-ee44-447a-8bae-75d858cd1963"
 >
 </ReqRef><Comment>This is a copy of Messages.NID_NTC enhanced by a special value for Levels != LNTC #morido, 13/10/17</Comment>
 <SpecialValues>
@@ -90,10 +90,10 @@
  Name="Level"
 >
 <ReqRef
- Id="2.6.2.1"
+ Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
 >
 </ReqRef><ReqRef
- Id="2.6.2.3"
+ Id="c6a55f53-ee54-4d28-9c6b-0dd95c649129"
 >
 </ReqRef><Values>
 <EnumValue
@@ -126,7 +126,7 @@
  Name="Mode"
 >
 <ReqRef
- Id="4.3.2.1"
+ Id="9a35843b-0036-48f7-adce-1bd6c052fe69"
 >
 </ReqRef><Comment>Represents the possible modes of an ERTMS/ETCS train.</Comment>
 <Values>
@@ -210,10 +210,10 @@
  Name="ModeProfile"
 >
 <ReqRef
- Id="7.5.1.70"
+ Id="8f6cbd01-6f4a-4a45-9b12-053cfa6bbf95"
 >
 </ReqRef><ReqRef
- Id="3.12.4.1"
+ Id="cbef1165-fc33-4ac1-994e-5f8a83f5e225"
 >
 </ReqRef><Values>
 <EnumValue
@@ -235,7 +235,7 @@
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.1"
+ Id="59f60ac8-7441-422b-b662-f6ef71aae203"
 >
 </ReqRef><Values>
 <EnumValue
@@ -440,7 +440,7 @@
  Name="ConfidenceInterval"
 >
 <ReqRef
- Id="3.6.4.2"
+ Id="d7a377d0-4389-4441-8bda-036db6e7805a"
 >
 </ReqRef><Values>
 <EnumValue
@@ -473,7 +473,7 @@
  Name="DataDirection"
 >
 <ReqRef
- Id="7.5.1.103"
+ Id="377174b6-5ade-4ea3-ab23-4c7f1eae2570"
 >
 </ReqRef><Comment>Indicates the validity direction of transmitted data.</Comment>
 <Values>
@@ -497,10 +497,10 @@
  Name="LevelData"
 >
 <ReqRef
- Id="2.6.2.1"
+ Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
 >
 </ReqRef><ReqRef
- Id="2.6.2.3"
+ Id="c6a55f53-ee54-4d28-9c6b-0dd95c649129"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -526,13 +526,13 @@
  Name="Levels"
 >
 <ReqRef
- Id="2.6.2.1"
+ Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
 >
 </ReqRef><ReqRef
- Id="2.6.2.3"
+ Id="c6a55f53-ee54-4d28-9c6b-0dd95c649129"
 >
 </ReqRef><ReqRef
- Id="A1.1.11.14"
+ Id="c08f77bf-5b9d-4ae0-a1c2-eb3a2d07fc64"
 >
 </ReqRef><Comment>#designchoice MaxSize is an arbitrarily chosen value. #morido, 13/10/09</Comment>
 </Collection></Collections>
@@ -544,7 +544,7 @@
  Name="EFSLevelConverter"
 >
 <ReqRef
- Id="7.5.1.65"
+ Id="be6c26b3-7f04-451a-9f8e-2fd45f315471"
 >
 </ReqRef><Comment>Converts an EFS level to the corresponding ERTMS level.</Comment>
 <Parameters>
@@ -592,7 +592,7 @@
  Name="EFSModeConverter"
 >
 <ReqRef
- Id="7.5.1.72"
+ Id="4b16c6e2-9016-4309-b040-e13423bcf8ce"
 >
 </ReqRef><Comment>Converts an EFS mode to the corresponding ERTMS mode. The values of NP and PS are not defined so these modes are mapped to the &quot;Spare&quot; value.</Comment>
 <Parameters>
@@ -704,13 +704,13 @@
  Name="Q_DIRTRAIN"
 >
 <ReqRef
- Id="7.5.1.104"
+ Id="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.105"
+ Id="eeda2a87-ac48-4626-8f06-27870112f7ea"
 >
 </ReqRef><ReqRef
- Id="7.5.1.106"
+ Id="e5c1e056-6432-4e22-aa13-0daf77e8639a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -745,13 +745,13 @@
  Name="EFSOrientationConverter"
 >
 <ReqRef
- Id="7.5.1.104"
+ Id="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.105"
+ Id="eeda2a87-ac48-4626-8f06-27870112f7ea"
 >
 </ReqRef><ReqRef
- Id="7.5.1.106"
+ Id="e5c1e056-6432-4e22-aa13-0daf77e8639a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -792,13 +792,13 @@
  Name="Q_DIRLRBG"
 >
 <ReqRef
- Id="7.5.1.104"
+ Id="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.105"
+ Id="eeda2a87-ac48-4626-8f06-27870112f7ea"
 >
 </ReqRef><ReqRef
- Id="7.5.1.106"
+ Id="e5c1e056-6432-4e22-aa13-0daf77e8639a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -833,13 +833,13 @@
  Name="Q_DLRBG"
 >
 <ReqRef
- Id="7.5.1.104"
+ Id="c9768b2a-a9de-41d1-b3e9-2d4ad2ba3b9b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.105"
+ Id="eeda2a87-ac48-4626-8f06-27870112f7ea"
 >
 </ReqRef><ReqRef
- Id="7.5.1.106"
+ Id="e5c1e056-6432-4e22-aa13-0daf77e8639a"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -971,7 +971,7 @@
  Name="KrIntLengthConverter"
 >
 <ReqRef
- Id="7.5.1.48.1.bis"
+ Id="2116a507-f6d4-42d8-bf4d-4624c66e0ecf"
 >
 </ReqRef><Parameters>
 <Parameter

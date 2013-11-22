@@ -10,7 +10,7 @@
  Name="d_FLOI"
 >
 <ReqRef
- Id="3.13.9.4.7"
+ Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
 >
 </ReqRef><Comment>Provides the location of the FLOI supervision limit.</Comment>
 <Parameters>
@@ -36,11 +36,11 @@
  Name="ComputeReleaseSpeedForTarget"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.13.9.4.8.1"
+ Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
 >
 </ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
 <Parameters>
@@ -66,13 +66,13 @@ STOP_CONDITION
  Name="d_EBI"
 >
 <ReqRef
- Id="3.13.9.4.6.a"
+ Id="7d29645c-18cf-4661-9edb-e3fcb091bc29"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.6.b"
+ Id="0e91b525-553f-4f68-8970-8bed83e88948"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.7"
+ Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
 >
 </ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
@@ -97,7 +97,7 @@ STOP_CONDITION
  Name="Dbec"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -118,13 +118,13 @@ STOP_CONDITION
  Name="Vdelta0rsob"
 >
 <ReqRef
- Id="3.13.2.3.7.9"
+ Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.1.1.j"
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
 >
 </ReqRef><ReqRef
- Id="3.13.2.2.12.1"
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
 >
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
 <Parameters>
@@ -150,7 +150,7 @@ STOP_CONDITION
  Name="d_tripEOA"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 </ReqRef><Comment>Computes the trip location related to the EOA.</Comment>
 <Cases>
@@ -165,7 +165,7 @@ STOP_CONDITION
  Name="d_SBI2"
 >
 <ReqRef
- Id="3.13.9.4.7"
+ Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
 >
 </ReqRef><Comment>Provides the location of the SBI2 supervision limit.</Comment>
 <Parameters>
@@ -185,10 +185,10 @@ STOP_CONDITION
  Name="VreleaseFunction"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.8.1"
+ Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
 >
 </ReqRef><Comment>Used to compute the release speed on-board.</Comment>
 <Parameters>
@@ -219,7 +219,7 @@ STOP_CONDITION
  Name="ReleaseSpeedSupervisionApplicable"
 >
 <ReqRef
- Id="3.13.9.4.1"
+ Id="88ab50b9-74b8-45a8-b956-3f0754ac2824"
 >
 </ReqRef><Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
 <Parameters>
@@ -246,7 +246,7 @@ STOP_CONDITION
  Name="StartRSM"
 >
 <ReqRef
- Id="3.13.9.4.6"
+ Id="a387bd06-4306-436c-ae73-a3faa509f059"
 >
 </ReqRef><Comment>Provides the start location of the release speed monitoring for the release speed received as parameter.</Comment>
 <Parameters>
@@ -266,7 +266,7 @@ STOP_CONDITION
  Name="d_EOA"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 </ReqRef><Comment>Gives the distance between the estimated front end of the train and the location of EOA.</Comment>
 <Cases>
@@ -287,10 +287,10 @@ STOP_CONDITION
  Name="ReleaseSpeedValue"
 >
 <ReqRef
- Id="3.13.2.3.7.8"
+ Id="84fba645-57ac-4105-828a-2d06de564e67"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.9"
+ Id="e5364c1f-ad1b-41da-a26e-1153431ce5b8"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -331,10 +331,10 @@ INITIAL_VALUE
  Name="ComputeReleaseSpeed"
 >
 <ReqRef
- Id="3.8.1.1.e"
+ Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.8"
+ Id="d2f07368-a40f-4418-bf3c-74e928e6bbcf"
 >
 </ReqRef><Comment>Computes the value of the release speed for all the EBI targets situated between d_tripEOA and the SvL.</Comment>
 <Cases>
@@ -372,7 +372,7 @@ INITIAL_VALUE
  Name="Overlap"
 >
 <ReqRef
- Id="3.8.1.1.e"
+ Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
@@ -383,7 +383,7 @@ INITIAL_VALUE
  Name="DangerPoint"
 >
 <ReqRef
- Id="3.8.1.1.e"
+ Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.DangerPoint != EMPTY</PreCondition></PreConditions>
@@ -394,7 +394,7 @@ INITIAL_VALUE
  Name="NoReleaseSpeed"
 >
 <ReqRef
- Id="3.13.9.4.4"
+ Id="478a5f6d-b653-4cda-931d-e01ddaac2803"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -411,7 +411,7 @@ INITIAL_VALUE
  Name="epsilon"
 >
 <ReqRef
- Id="3.13.9.4.8.2"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 <Comment></Comment>
 </ReqRef><Comment>Used for stabilization of release speed computation.</Comment>
@@ -423,7 +423,7 @@ INITIAL_VALUE
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="3.13.10.5.1"
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
 >
 </ReqRef></Variable></Variables>
 </NameSpace>

@@ -9,18 +9,18 @@
  Name="TemporarySpeedRestriction"
 >
 <ReqRef
- Id="3.11.5.1"
+ Id="0ef0898e-cf23-489a-a1ec-efefda2bff98"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.4.2.17"
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.11.2.2.c"
+ Id="d925afa7-0975-42ee-8f81-820493dda041"
 >
 </ReqRef><ReqRef
- Id="7.4.2.17.bis"
+ Id="b5f18a88-808f-47eb-8d48-7a9e213ab086"
 >
 </ReqRef><Comment>Represents a temporary speed restriction.</Comment>
 <StructureElement
@@ -31,7 +31,7 @@
  Name="Location"
 >
 <ReqRef
- Id="7.5.1.35"
+ Id="ff58fb6c-9219-4719-b50b-d1e185f06137"
 >
 <Comment></Comment>
 </ReqRef><Comment>Distance to beginning of temporary speed restriction.</Comment>
@@ -43,7 +43,7 @@
  Name="Length"
 >
 <ReqRef
- Id="7.5.1.58"
+ Id="33595950-84c6-4825-bcab-bfdc5c53742c"
 >
 </ReqRef><Comment>The length of the temporary speed restriction.</Comment>
 </StructureElement><StructureElement
@@ -55,7 +55,7 @@
  Name="Speed"
 >
 <ReqRef
- Id="7.5.1.173"
+ Id="c6f1fbe8-ebe1-4587-95c7-5eefd09cf5cb"
 >
 </ReqRef><Comment>Permitted speed for the temporary speed restriction.</Comment>
 </StructureElement><StructureElement
@@ -66,11 +66,11 @@
  Name="Id"
 >
 <ReqRef
- Id="3.11.5.5"
+ Id="1c1c2dc5-c171-456d-9a54-a4480effe5a4"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.5.1.99"
+ Id="791d81bb-d47e-4805-901f-1ced394ba425"
 >
 </ReqRef><Comment>Represents the identity number of a temporary speed restriction. If id == 255 the temporary speed restriction in not revocable.</Comment>
 </StructureElement><StructureElement
@@ -81,14 +81,14 @@
  Name="TrainLengthDelay"
 >
 <ReqRef
- Id="3.11.5.3"
+ Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
 >
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
 >
 </ReqRef><Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
 </StructureElement><StructureElement
@@ -110,10 +110,10 @@
  Name="TemporarySpeedRestrictions"
 >
 <ReqRef
- Id="3.11.5.2"
+ Id="3b4583a1-b075-4b17-875f-25dea9123397"
 >
 </ReqRef><ReqRef
- Id="A1.1.11.3"
+ Id="2b873c77-fe37-4efb-bbb9-7f6570ed6a6f"
 >
 </ReqRef><Comment></Comment>
 </Collection></Collections>
@@ -124,10 +124,10 @@
  Name="TSRLength"
 >
 <ReqRef
- Id="3.11.5.3"
+ Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
 >
 </ReqRef><ReqRef
- Id="3.11.2.4"
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
 >
 </ReqRef><Comment>Provides the length of the TSR together with the train length, if needed.</Comment>
 <Parameters>
@@ -183,19 +183,19 @@
  Name="SpeedRestrictions"
 >
 <ReqRef
- Id="3.11.5.2"
+ Id="3b4583a1-b075-4b17-875f-25dea9123397"
 >
 </ReqRef><ReqRef
- Id="3.11.5.4"
+ Id="92457ea4-c640-4322-bf2c-027115a572b4"
 >
 </ReqRef><ReqRef
- Id="3.11.2.2.c"
+ Id="d925afa7-0975-42ee-8f81-820493dda041"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.2.1"
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.a"
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
 >
 </ReqRef><Comment>Provides the speed restrictions profile due to TSR.</Comment>
 <Parameters>
@@ -221,7 +221,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="CurrentTargetDueToTSR"
 >
 <ReqRef
- Id="3.13.4.1.3"
+ Id="5388dd34-33be-4b31-90c1-ec3bc653ccd4"
 >
 </ReqRef><Comment>Indicates that the current target takes a TSR in consideration</Comment>
 <Cases>
@@ -236,13 +236,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="TemporarySpeedRestrictionRevocationReceived"
 >
 <ReqRef
- Id="3.11.5.5"
+ Id="1c1c2dc5-c171-456d-9a54-a4480effe5a4"
 >
 </ReqRef><ReqRef
- Id="3.11.5.8"
+ Id="609c3b11-43bc-4419-aaad-ec6b332308ba"
 >
 </ReqRef><ReqRef
- Id="3.11.2.6"
+ Id="55013479-ab89-4e12-969f-5efd86c44e17"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -279,10 +279,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="TemporarySpeedRestrictionsReceived"
 >
 <ReqRef
- Id="3.11.5.1"
+ Id="0ef0898e-cf23-489a-a1ec-efefda2bff98"
 >
 </ReqRef><ReqRef
- Id="3.11.5.9"
+ Id="0b1bccdc-d6e1-4297-8b07-8f17f74db4cd"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -303,16 +303,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="UpdateTSRInformation"
 >
 <ReqRef
- Id="7.5.1.99"
+ Id="791d81bb-d47e-4805-901f-1ced394ba425"
 >
 </ReqRef><ReqRef
- Id="7.5.1.58"
+ Id="33595950-84c6-4825-bcab-bfdc5c53742c"
 >
 </ReqRef><ReqRef
- Id="7.5.1.35"
+ Id="ff58fb6c-9219-4719-b50b-d1e185f06137"
 >
 </ReqRef><ReqRef
- Id="7.5.1.173"
+ Id="c6f1fbe8-ebe1-4587-95c7-5eefd09cf5cb"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -321,10 +321,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="ExistingRestriction"
 >
 <ReqRef
- Id="3.11.5.9"
+ Id="0b1bccdc-d6e1-4297-8b07-8f17f74db4cd"
 >
 </ReqRef><ReqRef
- Id="7.5.1.99"
+ Id="791d81bb-d47e-4805-901f-1ced394ba425"
 >
 </ReqRef><PreConditions>
 <PreCondition>THERE_IS_IN TSRs | X.Id == Packet.NID_TSR</PreCondition><PreCondition>Packet.NID_TSR != Messages.NID_TSR.Non_revocable_speed_restriction__applicable_for_all_transmission_media</PreCondition></PreConditions>
@@ -343,10 +343,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="NewRestriction"
 >
 <ReqRef
- Id="3.11.5.7"
+ Id="f7e20aa8-abb8-4da2-bb20-5ff57e4a56b9"
 >
 </ReqRef><ReqRef
- Id="3.11.5.2"
+ Id="3b4583a1-b075-4b17-875f-25dea9123397"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -373,10 +373,10 @@ IN TSRs</Action></Actions>
  Name="TSRs"
 >
 <ReqRef
- Id="3.11.5.2"
+ Id="3b4583a1-b075-4b17-875f-25dea9123397"
 >
 </ReqRef><ReqRef
- Id="3.11.2.2.c"
+ Id="d925afa7-0975-42ee-8f81-820493dda041"
 >
 </ReqRef><Comment>Represents the temporary speed restrictions received from the trackside.</Comment>
 </Variable></Variables>
@@ -386,7 +386,7 @@ IN TSRs</Action></Actions>
  Name="RevokeTSR"
 >
 <ReqRef
- Id="3.11.2.6"
+ Id="55013479-ab89-4e12-969f-5efd86c44e17"
 >
 </ReqRef><Comment>Revokes TSRs that have been passed by the train.</Comment>
 <SubRules></SubRules>

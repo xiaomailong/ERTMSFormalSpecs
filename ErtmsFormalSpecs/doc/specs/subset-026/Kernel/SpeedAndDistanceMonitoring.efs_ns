@@ -22,16 +22,16 @@
  Name="MonitoringType"
 >
 <ReqRef
- Id="3.13.10.1.2.1"
+ Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
 >
 </ReqRef><ReqRef
- Id="3.13.10.1.2.2"
+ Id="61609105-e374-4561-8058-cd995e0cac1a"
 >
 </ReqRef><ReqRef
- Id="3.13.10.1.2.3"
+ Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
 >
 </ReqRef><ReqRef
- Id="3.13.10.1.2"
+ Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
 >
 </ReqRef><Values>
 <EnumValue
@@ -53,7 +53,7 @@
  Name="SupervisionStatus"
 >
 <ReqRef
- Id="3.13.10.1.1"
+ Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
 >
 </ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
 <Values>
@@ -86,35 +86,35 @@
  Name="f41"
 >
 <ReqRef
- Id="A1.1.10.1"
+ Id="4e10c5a1-f415-44fc-b597-8b1a359c2c25"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.6.b"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="A1.1.10.2"
->
-</ReqRef><ReqRef
- Id="A1.1.10.3"
->
-</ReqRef><ReqRef
- Id="3.13.9.3.5.11.b"
+ Id="0e91b525-553f-4f68-8970-8bed83e88948"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.13.9.5.3.b"
+ Id="ae24dcec-0c75-48cd-b842-4d34ef229a22"
+>
+</ReqRef><ReqRef
+ Id="92e9a363-c16c-40c0-9622-49031126869d"
+>
+</ReqRef><ReqRef
+ Id="4ba91473-9e38-449c-87e0-203353bc7bcb"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.13.9.3.5.9.b"
+ Id="528dbfd7-4b7d-4b1d-a596-153aec151d71"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="A1.1.10.4"
+ Id="0a156077-932d-4831-b7d8-8cb0350879e1"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="14b50fc8-d11d-4f00-a819-56def9d260b0"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.7.9"
+ Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
 >
 <Comment></Comment>
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
@@ -148,10 +148,10 @@
  Name="SBIsAvailableForUse"
 >
 <ReqRef
- Id="3.13.10.4.9"
+ Id="00747c30-1c6d-4751-8e5f-6d65f3085d3a"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.7.1"
+ Id="0f223275-ff77-4025-a194-a347f5ef0542"
 >
 </ReqRef><Cases>
 <Case
@@ -165,16 +165,16 @@
  Name="PermittedSpeed"
 >
 <ReqRef
- Id="3.13.10.3.1"
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
 >
 </ReqRef><ReqRef
- Id="3.13.10.3.2"
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.3"
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.4"
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -227,7 +227,7 @@
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="3.13.9.4.6"
+ Id="a387bd06-4306-436c-ae73-a3faa509f059"
 >
 </ReqRef><PreConditions>
 <PreCondition>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
@@ -268,10 +268,10 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="TriggerSBCommand"
 >
 <ReqRef
- Id="3.13.2.3.7.1"
+ Id="0f223275-ff77-4025-a194-a347f5ef0542"
 >
 </ReqRef><ReqRef
- Id="3.13.10.2.3"
+ Id="b19b213b-b887-4ef8-b210-439b95753041"
 >
 </ReqRef><Comment></Comment>
 <Rules>
@@ -314,7 +314,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="RevokeSBCommand"
 >
 <ReqRef
- Id="3.13.2.3.7.1"
+ Id="0f223275-ff77-4025-a194-a347f5ef0542"
 >
 </ReqRef><Rules>
 <Rule
@@ -352,7 +352,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="Monitoring"
 >
 <ReqRef
- Id="3.13.10.1.2"
+ Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
@@ -363,13 +363,13 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="SBTriggered"
 >
 <ReqRef
- Id="3.13.10.3.3"
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.10"
+ Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
 >
 </ReqRef><ReqRef
- Id="3.13.10.2.3"
+ Id="b19b213b-b887-4ef8-b210-439b95753041"
 >
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
@@ -380,13 +380,13 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="EBTriggered"
 >
 <ReqRef
- Id="3.13.10.3.3"
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.10"
+ Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
 >
 </ReqRef><ReqRef
- Id="3.13.10.2.3"
+ Id="b19b213b-b887-4ef8-b210-439b95753041"
 >
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
@@ -397,10 +397,10 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="TractionCutOffTriggered"
 >
 <ReqRef
- Id="3.13.10.3.3"
+ Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
 >
 </ReqRef><ReqRef
- Id="3.13.10.4.10"
+ Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
@@ -411,7 +411,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="Supervision"
 >
 <ReqRef
- Id="3.13.10.1.1"
+ Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -422,7 +422,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="SpeedAndDistanceMonitoringIsActive"
 >
 <ReqRef
- Id="3.13.10.3.5"
+ Id="8468de24-42eb-4959-a546-99c00cccb22a"
 >
 </ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
 </Variable><Variable
@@ -442,7 +442,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
  Name="SBSpecified"
 >
 <ReqRef
- Id="3.13.10.2.4"
+ Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
 >
 </ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable

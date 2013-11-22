@@ -3,6 +3,7 @@
 >
 <Paragraph
  id="A1.1"
+ guid="dc369175-6dd9-47b3-b8a0-a21aa91fdb5e"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -15,6 +16,7 @@
 Design choices<Sub>
 <Paragraph
  id="A1.1.1"
+ guid="750e9130-01ae-4988-a364-e8ebcf67eb84"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -27,6 +29,7 @@ Design choices<Sub>
 Intelligent DMI<Sub>
 <Paragraph
  id="A1.1.1.1"
+ guid="8b8ea3a5-12ac-4d39-a0c7-11e4836910a0"
  type="NOTE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -38,6 +41,7 @@ Intelligent DMI<Sub>
 >The DMI shall only send information that alter the DMI display. If the same information is provided over the cycles, it shall only be provided once.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.2"
+ guid="c8b2a526-dacf-4793-9763-58aa85180ac2"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -51,6 +55,7 @@ Intelligent DMI<Sub>
 >Odometry messages specification<Sub>
 <Paragraph
  id="A1.1.2.1"
+ guid="b774cb9b-3ed7-4270-b69a-b81066add7a1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -63,6 +68,7 @@ Intelligent DMI<Sub>
 >The messages provided by the Odometry are specified by the Subset 58 v 211 (STM Application Layer).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.3"
+ guid="93f379fa-c236-4752-9ffd-9ea61694202d"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -77,6 +83,7 @@ Intelligent DMI<Sub>
 Balise groups<Sub>
 <Paragraph
  id="A1.1.3.1"
+ guid="29095085-0fb7-4b73-9d32-ae4ead9cd37e"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -89,6 +96,7 @@ Balise groups<Sub>
 ><Comment></Comment>
 The balise group location detection error (required by the paragraph 3.6.4.2.a for the computation of confidence interval) is a constant value given by the BTM.</Paragraph><Paragraph
  id="A1.1.3.2"
+ guid="36513693-3b8c-4f23-855d-81c89d6c4038"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -102,6 +110,7 @@ The balise group location detection error (required by the paragraph 3.6.4.2.a f
 Duplicate balises<Sub>
 <Paragraph
  id="A1.1.3.2.1"
+ guid="4e07491f-516f-4494-87d7-96cf0ecef9d8"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -114,6 +123,7 @@ Duplicate balises<Sub>
  Name=""
 >N_PIG given in each balise of a balise group are uniques, even for duplicate balises</Paragraph><Paragraph
  id="A1.1.3.2.2"
+ guid="959db099-bb83-4fab-ad64-7f985d306fb6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -127,6 +137,7 @@ Duplicate balises<Sub>
 ><Comment></Comment>
 N_TOTAL indicates the total number of balises in the balise group. Duplicates balises are considered as distinct balises in this count.</Paragraph><Paragraph
  id="A1.1.3.2.3"
+ guid="55ed41db-cdd9-49da-80a2-b84fd2b4c659"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -140,6 +151,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 >The first balise of a pair of duplicate balise contains the information &quot;duplicate next balise in the nominal direction&quot;. The second duplicated balise in the group contains the information &quot;duplicate previous balise in the nominal direction&quot;</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.3.3"
+ guid="88930fd0-2a41-48f8-ac88-35d8c1d60f47"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -152,6 +164,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 >We assume that each Messages.EUROBALISE.SubStructure1 received by the BTM contains at most one packet. Otherwise the order of packets within a balise message would not be respected (a case which is pointless).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.4"
+ guid="ae62b461-7ceb-4376-860a-80ae021abda6"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -165,6 +178,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 >Train Trip<Sub>
 <Paragraph
  id="A1.1.4.1"
+ guid="9f33f81f-8311-4e08-b43d-80816d35a690"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -177,6 +191,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
  Name=""
 >In the state S140, we assume that &quot;train data has been previously entered&quot; means that the train data is Valid.</Paragraph><Paragraph
  id="A1.1.4.2"
+ guid="6114bfb9-055b-4951-93ea-75d62541b167"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -190,6 +205,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 >In the state S140, we assume that when a START is received, the Shunting request to the driver is no more relevant, and vice versa : when the SHUNTING is received, the Start request is no more relevant.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.5 Handling of Accepted and Stored Information in specific Situations"
+ guid="79acd98b-df28-4996-a288-17a07893f875"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -202,6 +218,7 @@ N_TOTAL indicates the total number of balises in the balise group. Duplicates ba
 ><Sub>
 <Paragraph
  id="A1.1.5.1"
+ guid="10cc3f12-c2b4-45a6-b67a-18195d3de671"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -219,6 +236,7 @@ c) &quot;data status is unchanged&quot; means that the corresponding data doesn&
 d) &quot;data is to be revalidated&quot; means that the status of the corresponding data becomes &quot;Invalid&quot; while the its other values don&apos;t change.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.6"
+ guid="bedfe719-99c8-418f-9ac1-2ac180810fe3"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -231,6 +249,7 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
 >MA<Sub>
 <Paragraph
  id="A1.1.6.1"
+ guid="53112051-c9a4-48b5-8dac-6447ef865504"
  type="DELETED"
  scope="OBU_AND_TRACK"
  bl=""
@@ -242,6 +261,7 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  Name=""
 >Deleted</Paragraph><Paragraph
  id="A1.1.6.2"
+ guid="5fff9a06-3432-4ce9-b8e0-9b36de116805"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -251,12 +271,13 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
  functionalBlockName=""
  Name=""
 ><ReqRef
- Id="3.7.2.3"
+ Id="63f87a6b-8c3e-4333-b97e-9e417e3623d8"
 >
 </ReqRef><Comment> #morido, 13/10/23</Comment>
 An MA is always considered after all other packets of a message have been processed.
 This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated.</Paragraph><Paragraph
  id="A1.1.6.3"
+ guid="ce639b26-fec6-4218-86a0-c7449b82eafd"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -268,10 +289,10 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  functionalBlockName=""
  Name=""
 ><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.2"
+ Id="9c420bdc-a561-406b-a479-9d6cbde196a6"
 >
 </ReqRef><Comment>#morido, 13/11/13
 
@@ -279,6 +300,7 @@ How about: Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpee
 Signalling related speed restrictions and Mode profiles are not considered as part of an MA. Hence, they are accepted irrespectively of the acceptance of the MA.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.7"
+ guid="152eb75f-a1f5-48c9-862a-298dd3f11fdf"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -291,6 +313,7 @@ Signalling related speed restrictions and Mode profiles are not considered as pa
 >Braking models<Sub>
 <Paragraph
  id="A1.1.7.1"
+ guid="d4425f99-d283-4faf-ba1a-eef44feb9002"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -304,6 +327,7 @@ Signalling related speed restrictions and Mode profiles are not considered as pa
 The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistend. EFS offers the possibility to define individual models of A_brake_emergency(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_emergency(V).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.8"
+ guid="f11ae94f-cee2-4043-9354-0747027cc50c"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -317,6 +341,7 @@ The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A
 Static speed profile<Sub>
 <Paragraph
  id="A1.1.8.1"
+ guid="7b939cca-c775-4101-b7dd-1944169ceeb2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -329,6 +354,7 @@ Static speed profile<Sub>
 >The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restriction due to the static speed profile.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.9"
+ guid="ecdb4977-6495-4924-bf35-d373cd3235d1"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -342,6 +368,7 @@ Static speed profile<Sub>
 A_brake_service<Sub>
 <Paragraph
  id="A1.1.9.1"
+ guid="60ba4e77-5948-4505-83fc-e13ee0244e31"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -354,6 +381,7 @@ A_brake_service<Sub>
 >According to Paragraph 3.13.6.3.1.3, the value of A_expected(V, d) equals A_brake_service(V, d) + A_gradient(d). We assume that if the conversion model is used, the value of A_expected(V, d) will be equal to A_brake_service(V) + A_gradient(d), with A_brake_service(V) provided by the conversion model (according to Paragraph 3.13.6.3.2.a).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.10"
+ guid="f5390da9-a84a-47ff-bb66-4a0e3ad8477b"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -367,6 +395,7 @@ A_brake_service<Sub>
 Supervision limits<Sub>
 <Paragraph
  id="A1.1.10.1"
+ guid="4e10c5a1-f415-44fc-b597-8b1a359c2c25"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -378,6 +407,7 @@ Supervision limits<Sub>
  Name=""
 >The computation of V_delta0rs is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).</Paragraph><Paragraph
  id="A1.1.10.2"
+ guid="ae24dcec-0c75-48cd-b842-4d34ef229a22"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -390,6 +420,7 @@ Supervision limits<Sub>
  Name=""
 >The computation of V_delta0int is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).</Paragraph><Paragraph
  id="A1.1.10.3"
+ guid="92e9a363-c16c-40c0-9622-49031126869d"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -402,6 +433,7 @@ Supervision limits<Sub>
  Name=""
 >The computation of V_delta0lx is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).</Paragraph><Paragraph
  id="A1.1.10.4"
+ guid="14b50fc8-d11d-4f00-a819-56def9d260b0"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -414,6 +446,7 @@ Supervision limits<Sub>
 >The computation of V_delta0t is done based on the Paragraph 5.3.1.2 of the Subset-041 v 2.1.0 (&quot;+/-2km/h for speed lower than 30km/h, then increasing linearly up to +/-12km/h at 500km/h&quot;).</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.11"
+ guid="6b855f0a-214a-4315-b8b7-bd807ba6acc1"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -426,6 +459,7 @@ Supervision limits<Sub>
 >Data memorised on-board<Sub>
 <Paragraph
  id="A1.1.11.1"
+ guid="d701e3bf-8b71-4b6f-84c0-9b64aa641498"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -437,6 +471,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.a of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of MA sections memorised on-board is 6. In addition the MA includes an End Section which is not included in the above numbers.</Paragraph><Paragraph
  id="A1.1.11.2"
+ guid="70632e82-a390-4696-a790-49fc7e83e650"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -448,6 +483,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.d of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of locations with changes of SSP memorised on-board is 50.</Paragraph><Paragraph
  id="A1.1.11.3"
+ guid="2b873c77-fe37-4efb-bbb9-7f6570ed6a6f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -459,6 +495,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.e of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of TSRs memorised on-board is 30.</Paragraph><Paragraph
  id="A1.1.11.4"
+ guid="80268ed0-b391-4741-8200-f28c5bffebf6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -470,6 +507,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.f of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of changes of gradient memorised on-board is 50.</Paragraph><Paragraph
  id="A1.1.11.5"
+ guid="50c53fbd-5b3e-40cd-a4f2-75801157fd7d"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -481,6 +519,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.g of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of text messages memorised on-board is 5 plain text + 5 fixed text.</Paragraph><Paragraph
  id="A1.1.11.6"
+ guid="4ab4eb51-5945-4fe4-aa12-eac7e8138282"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -492,6 +531,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.i of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of linked balise groups memorised on-board is 30.</Paragraph><Paragraph
  id="A1.1.11.7"
+ guid="2edc3825-0958-45be-b7ba-c2498d0c660e"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -503,6 +543,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.j of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions Change of traction power memorised on-board is 1.</Paragraph><Paragraph
  id="A1.1.11.8"
+ guid="d1a6e54f-d79f-4ea4-b672-c9aaff6a76ba"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -514,6 +555,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.k of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions Big Metal masses memorised on-board is 5.</Paragraph><Paragraph
  id="A1.1.11.9"
+ guid="7dc8d485-8ec6-42c9-8941-24c0652f1455"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -525,6 +567,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.l of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Track Conditions memorised on-board is 20.</Paragraph><Paragraph
  id="A1.1.11.10"
+ guid="c2a337ec-7eae-46cc-8650-55616fe47b86"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -536,6 +579,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.m of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of Route suitability data memorised on-board is 3, however not more than one of each type (loading gauge, axle load, traction system type).</Paragraph><Paragraph
  id="A1.1.11.11"
+ guid="e0ecf6c6-baf4-4601-a121-23e3946830d7"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -547,6 +591,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.o of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Axle load speed profile segments memorised on-board is 30.</Paragraph><Paragraph
  id="A1.1.11.12"
+ guid="8a3c6fed-4035-4e98-8c91-d62ad50c9ef2"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -558,6 +603,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.q of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of adhesion profiles memorised on-board is 10.</Paragraph><Paragraph
  id="A1.1.11.13"
+ guid="65b30702-1fb1-4a4a-9f95-15a687c5840a"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -569,6 +615,7 @@ Supervision limits<Sub>
  Name=""
 >Requirement 4.3.2.1.r of the Subset-040 v230 &quot;Dimensioning and Engineering Rules&quot;: The minimum number of Numbers of reversing area memorised on-board is 1.</Paragraph><Paragraph
  id="A1.1.11.14"
+ guid="c08f77bf-5b9d-4ae0-a1c2-eb3a2d07fc64"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -580,6 +627,7 @@ Supervision limits<Sub>
 >Requirement 2.6.2.1 of the Subset-026 v320: The number of storable values of Levels/NTCs onboard is limited to 10</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.12"
+ guid="e7b793cf-d95e-422b-a606-7d382b70a384"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -592,6 +640,7 @@ Supervision limits<Sub>
 >Train passes the EOA/LOA location before receiving an MA.<Sub>
 <Paragraph
  id="A1.1.12.1"
+ guid="9a2c09f8-7df9-4251-9530-ae098d435bc9"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -605,6 +654,7 @@ Supervision limits<Sub>
 Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be tripped if its minimum safe antenna position passes the EOA/LOA. But if the train has not yet received an MA, we suppose that the location of EOA/LOA is infinite. In this case the train will not be tripped due to these requirement if it has not yet received an MA.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.13"
+ guid="83fd5859-d5fa-4744-a441-47f1cf01b8c2"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -617,6 +667,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Current ERTMS/ETCS level is always displayed on DMI in modes SB,TR and SF when it is valid.<Sub>
 <Paragraph
  id="A1.1.13.1"
+ guid="c94b2902-c098-481b-bf05-b0bed5a2c1c6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -629,6 +680,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >The Step 49 of Feature 262, Test Case 3 of the Subset-076 v2.3.0 states that the level shall be displayed on DMI (while the train is SB mode). We assume that the level will always be displayed if its value is valid and if its display is Active or Available (see Requirement 4.7.2 of Subset-026 v3.2.0)</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.14"
+ guid="c630cd1e-fd64-4925-a407-90b3ef73ed47"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -641,6 +693,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Missing verification of the train data consistency<Sub>
 <Paragraph
  id="A1.1.14.1"
+ guid="ff8c90f4-4cde-43ef-83cf-5ff2d392c194"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -653,6 +706,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >A verification process should be executed after initialization of the train data. If one of the tests fails, the system should go to Failure state. The following tests need to be done:<Sub>
 <Paragraph
  id="A1.1.14.1.a"
+ guid="cebd434e-de63-4765-a196-95e72be91d23"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -666,6 +720,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.15"
+ guid="c5e9631b-7e16-4817-a2bd-848b9a4eaebf"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -678,6 +733,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Mode transitions<Sub>
 <Paragraph
  id="A1.1.15.1"
+ guid="68290e3a-68aa-485c-9b80-ad0a6da08d3f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -690,6 +746,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Conditions 34 and 40 of the Section 4.6 are implemented in the same way due to the Paragraph 5.9.4.1 which states that the mode profile with regards to an OS area is only evaluated in levels 1, 2 and 3. Thus, the test on the level was included directly to the function DistanceIsWithinAModeProfile, called by the function ModeProfileIsApplicable. Note: the condition 40 is triggered only from the modes FS or SR, and according to the parapgraps 4.4.9.2 and 4.4.11.2, these modes are used only in levels 1, 2 or 3, this why the level is not explicitely tested for that case.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.16"
+ guid="27ffe239-90ae-4c0c-b69a-171a48481101"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -702,6 +759,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Start of Mission state machine<Sub>
 <Paragraph
  id="A1.1.16.1"
+ guid="bf37b119-5096-4de9-ab78-802635ad57c3"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -714,6 +772,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >The state machine of the procedure Start of Mission contains several states related to the trackside (D33, D22, A35, A23 and A38). Since we are only interested in implementation of the on-board, these states weren&apos;t implemented. The state A34 implements the behavoir of the states D33, D22, A35, A23 and A38 from the on-board point of view. The &quot;decision&quot; states D33 and D22 are not present on the state diagram (since the decision to select the outgoing transition from these states can only be taken by the trackside), and the &quot;action&quot; states are present but only implement the actions taken by the on-board.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.17"
+ guid="a66270ab-2733-4daa-8ac9-0fde1637dafd"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -726,6 +785,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Shunting Initiated by Driver degraded situation<Sub>
 <Paragraph
  id="A1.1.17.1"
+ guid="c4552b18-7c1b-4778-a53c-1272271bb392"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -739,6 +799,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2"
+ guid="aa320f83-b634-4d58-b98a-22db6c8ac764"
  type="TITLE"
  scope="OBU_AND_TRACK"
  bl=""
@@ -751,6 +812,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Hypothesis to prove<Sub>
 <Paragraph
  id="A1.2.1"
+ guid="e36e003a-a532-420f-b4e1-13080dc0ae64"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -763,6 +825,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Mode transitions vs procedures<Sub>
 <Paragraph
  id="A1.2.1.1"
+ guid="27b5d611-8fd6-4f2a-9391-595a9844dab3"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -775,6 +838,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Start of mission<Sub>
 <Paragraph
  id="A1.2.1.1.1"
+ guid="8d4bca45-40ed-4ff2-9225-d87067e371b6"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -786,6 +850,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >SB -&gt; NL: Prove that the transition E10 of Start of Mission corresponds to the Condition 46.</Paragraph><Paragraph
  id="A1.2.1.1.2"
+ guid="96acedcb-697b-4a9f-8c62-b01df8f31f77"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -797,6 +862,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >SB -&gt; SR: Prove that the transition E32 of Start of Mission corresponds to the Condition 8.</Paragraph><Paragraph
  id="A1.2.1.1.3"
+ guid="1ddf180b-6ef1-4795-94bd-116943f8ce63"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -808,6 +874,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >SB -&gt; FS: Prove that the transition E29 of Start of Mission corresponds to the Condition 10.</Paragraph><Paragraph
  id="A1.2.1.1.4"
+ guid="bc849108-dc17-4e38-aafd-be4995db9f82"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -819,6 +886,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >SB -&gt; OS/LS/SH: Prove that the transition E33 of Start of Mission corresponds either to the Condition 15, or Condition 70 or Condition 50.</Paragraph><Paragraph
  id="A1.2.1.1.5"
+ guid="e4ffa67a-4fa2-4956-8893-7e3626e80e04"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -830,6 +898,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >SB -&gt; SN: Prove that the transition E30 of Start of Mission corresponds to the Condition 58.</Paragraph><Paragraph
  id="A1.2.1.1.6"
+ guid="bdc170e3-e586-41a7-9483-e63ba019c92f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -842,6 +911,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >SB -&gt; UN: Prove that the transition E31 of Start of Mission corresponds to the Condition 60.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.2.1.2"
+ guid="5bfc43b6-76b7-4755-8878-6d0671574ff0"
  type="DEFINITION"
  scope="OBU_AND_TRACK"
  bl=""
@@ -854,6 +924,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
 >Train trip<Sub>
 <Paragraph
  id="A1.2.1.2.1"
+ guid="c07f87bc-9695-4de2-9711-0785c2be5e0f"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -865,6 +936,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >TR -&gt; SH: Prove that being in the state A140 corresponds to the Condition 68.</Paragraph><Paragraph
  id="A1.2.1.2.2"
+ guid="3201c894-f04f-4c57-97c5-2f8a5c33cad1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -876,6 +948,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >TR -&gt; UN: Prove that being in the state A145 corresponds to the Condition 62.</Paragraph><Paragraph
  id="A1.2.1.2.3"
+ guid="36a5f675-e085-4644-a66e-482120cab435"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -887,6 +960,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >TR -&gt; SN: Prove that being in the state A150 corresponds to the Condition 63.</Paragraph><Paragraph
  id="A1.2.1.2.4"
+ guid="9061a410-98ec-4e01-86db-9e1ca5b8f777"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -898,6 +972,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >PT -&gt; SR: Prove that the transition E180 of Train Trip corresponds to the Condition 8.</Paragraph><Paragraph
  id="A1.2.1.2.5"
+ guid="9b0bf055-ffec-4417-b3b2-6ad55ca298d1"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""
@@ -909,6 +984,7 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Name=""
 >PT -&gt; FS: Prove that the transition E170 corresponds to the Condition 31.</Paragraph><Paragraph
  id="A1.2.1.2.8"
+ guid="5f9b351d-def6-4d69-bd03-588e8929f683"
  type="REQUIREMENT"
  scope="OBU_AND_TRACK"
  bl=""

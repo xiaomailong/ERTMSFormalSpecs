@@ -13,23 +13,23 @@
  Name="MovementAuthority"
 >
 <ReqRef
- Id="3.8.1"
+ Id="65a9a63b-024f-499e-9066-6149846269f5"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.3"
+ Id="cc872c83-b7ef-45da-b511-6237904b6423"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.1.1"
+ Id="9396972e-8fb4-49d1-9c8f-e2cd2efb6005"
 >
 <Comment>EOA is computed based on the sections defined in the MA (see function EOA)</Comment>
 </ReqRef><ReqRef
- Id="7.4.2.3.1"
+ Id="82d5bd61-4bef-4cfb-a68a-312446d79df1"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.4.2.4.bis"
+ Id="e63ca8af-18f8-432f-9c22-f989952a9561"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -41,14 +41,14 @@
  Name="TargetSpeed"
 >
 <ReqRef
- Id="3.8.1.1.b"
+ Id="9d444c1e-f8ce-44ed-adb0-f81c08abac75"
 >
 <Comment>In this model, there is no distinction between EOA and LOA</Comment>
 </ReqRef><ReqRef
- Id="7.5.1.157"
+ Id="03cd0321-724a-4dbf-ae18-99839cda8019"
 >
 </ReqRef><ReqRef
- Id="3.13.3.4.1.1"
+ Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
 >
 </ReqRef><Comment>The target speed represents the permitted speed at the EOA.</Comment>
 </StructureElement><StructureElement
@@ -60,10 +60,10 @@
  Name="Sections"
 >
 <ReqRef
- Id="3.8.1.1.f"
+ Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
 >
 </ReqRef><ReqRef
- Id="3.8.3.1"
+ Id="173067d8-3484-4ec9-81e4-7275c3374764"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the sections of the MA.</Comment>
@@ -76,10 +76,10 @@
  Name="EndSection"
 >
 <ReqRef
- Id="3.8.1.1.f"
+ Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3"
+ Id="21d0760f-a057-466a-bdf0-41f316e4721c"
 >
 </ReqRef><Comment>Represents the end section of this MA.</Comment>
 </StructureElement><StructureElement
@@ -91,10 +91,10 @@
  Name="TargetSpeedTimeOut"
 >
 <ReqRef
- Id="3.8.1.1.b"
+ Id="9d444c1e-f8ce-44ed-adb0-f81c08abac75"
 >
 </ReqRef><ReqRef
- Id="7.5.1.146"
+ Id="a774525d-0597-4d00-a2f5-3148dcf359bd"
 >
 </ReqRef><Comment>The time-out associated to the target speed, if any.</Comment>
 </StructureElement><StructureElement
@@ -105,10 +105,10 @@
  Name="ReferenceBG"
 >
 <ReqRef
- Id="3.8.3.6"
+ Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
 >
 </ReqRef><ReqRef
- Id="3.8.3.9"
+ Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
 >
 </ReqRef><Comment>Represents the LRBG to which refers the first section.</Comment>
 </StructureElement><StructureElement
@@ -120,10 +120,10 @@
  Name="ReferenceBGLocation"
 >
 <ReqRef
- Id="3.8.3.6"
+ Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
 >
 </ReqRef><ReqRef
- Id="3.8.3.9"
+ Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
@@ -131,7 +131,7 @@
  Name="Section"
 >
 <ReqRef
- Id="3.8.3.2"
+ Id="4b2c7641-4724-45e9-ac46-acb185e386b0"
 >
 </ReqRef><Comment>Represents a MA section.</Comment>
 <StructureElement
@@ -143,10 +143,10 @@
  Name="Length"
 >
 <ReqRef
- Id="3.8.3.2.a"
+ Id="51578cd7-a50a-46d9-b7a5-11e24eee2f49"
 >
 </ReqRef><ReqRef
- Id="7.5.1.51"
+ Id="71df462f-9b71-4b35-add6-5ded11f964a3"
 >
 </ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
@@ -158,16 +158,16 @@
  Name="TimeOut"
 >
 <ReqRef
- Id="3.8.1.1.f.1"
+ Id="9e1096f7-cf79-4ff5-8dcf-ac3a8bc775e6"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2.b"
+ Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.130"
+ Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >
 </ReqRef><ReqRef
- Id="3.8.3.4"
+ Id="e5896680-5ea9-4749-b01e-599ab85abe84"
 >
 </ReqRef><Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
 </StructureElement></Structure><Structure
@@ -176,10 +176,10 @@
  Name="SectionTimeOut"
 >
 <ReqRef
- Id="3.8.3.2.b"
+ Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
 >
 </ReqRef><ReqRef
- Id="3.8.1.1.f.1"
+ Id="9e1096f7-cf79-4ff5-8dcf-ac3a8bc775e6"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -190,10 +190,10 @@
  Name="TimeOut"
 >
 <ReqRef
- Id="7.5.1.151"
+ Id="7482e58a-6251-4406-8216-75bed0eec39a"
 >
 </ReqRef><ReqRef
- Id="7.5.1.145"
+ Id="9e5ace3a-6786-4a54-925a-cf334ff92a80"
 >
 </ReqRef><Comment>The section time-out value, if any.</Comment>
 </StructureElement><StructureElement
@@ -204,10 +204,10 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.24"
+ Id="b796c06e-efd9-4a35-abfc-9983a477fc35"
 >
 </ReqRef><ReqRef
- Id="7.5.1.6"
+ Id="00bf308a-22d5-43c9-9211-8f761f8ae624"
 >
 </ReqRef><Comment>Represents the distance from beginning of section to section timer stop location (if there is a time-out associated to this section).</Comment>
 </StructureElement></Structure><Structure
@@ -215,10 +215,10 @@
  Name="EndSection"
 >
 <ReqRef
- Id="3.8.1.1.f"
+ Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3"
+ Id="21d0760f-a057-466a-bdf0-41f316e4721c"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -230,14 +230,14 @@
  Name="EndSectionTimeOut"
 >
 <ReqRef
- Id="3.8.1.1.f.2"
+ Id="5fa277c4-02a9-47ea-b645-f1473c0617ae"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.3.3.a"
+ Id="8d09ca53-1394-4843-b8d6-829a86336ca3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.108"
+ Id="86b0e1e8-53c9-4a9f-9b60-1863f04939ec"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the end section time-out, if any.</Comment>
@@ -250,13 +250,13 @@
  Name="TimeOut"
 >
 <ReqRef
- Id="3.8.1.1.f.1"
+ Id="9e1096f7-cf79-4ff5-8dcf-ac3a8bc775e6"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2.b"
+ Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
 >
 </ReqRef><ReqRef
- Id="7.5.1.130"
+ Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the section time-out (if no time-out is available for this section, this field is EMPTY).</Comment>
@@ -269,10 +269,10 @@
  Name="Length"
 >
 <ReqRef
- Id="3.8.3.2.a"
+ Id="51578cd7-a50a-46d9-b7a5-11e24eee2f49"
 >
 </ReqRef><ReqRef
- Id="7.5.1.45"
+ Id="6429b85c-2e6f-4225-8997-9701a98eacd4"
 >
 </ReqRef><Comment>Represents the length of the section.</Comment>
 </StructureElement><StructureElement
@@ -284,15 +284,15 @@
  Name="DangerPoint"
 >
 <ReqRef
- Id="3.8.3.3.b"
+ Id="48fba67a-8f19-4715-92e7-aea531d01881"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.1.1.c"
+ Id="53a5391c-db43-4e26-95c4-26b8316d77a8"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.5.1.102"
+ Id="30dda18a-b11e-4bbe-a761-8fe4113de2e5"
 >
 </ReqRef><Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 </StructureElement><StructureElement
@@ -304,13 +304,13 @@
  Name="Overlap"
 >
 <ReqRef
- Id="3.8.1.1.d"
+ Id="7fa6af9c-023d-474c-a0f7-8f72181a8fee"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3.c"
+ Id="4777cb40-cb40-4257-8324-c515327a0152"
 >
 </ReqRef><ReqRef
- Id="7.5.1.126"
+ Id="b3845192-4c2b-4425-bdb0-c0a568c940ea"
 >
 </ReqRef><Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 </StructureElement></Structure><Structure
@@ -319,10 +319,10 @@
  Name="DangerPoint"
 >
 <ReqRef
- Id="3.8.3.3.b"
+ Id="48fba67a-8f19-4715-92e7-aea531d01881"
 >
 </ReqRef><ReqRef
- Id="3.8.1.1.c"
+ Id="53a5391c-db43-4e26-95c4-26b8316d77a8"
 >
 </ReqRef><Comment>Represents a location beyond the EOA that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
 <StructureElement
@@ -333,7 +333,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.4"
+ Id="1b773b1d-8ba0-43bd-abfb-9c45b0550e35"
 >
 </ReqRef><Comment>The distance from end of section to danger point.</Comment>
 </StructureElement><StructureElement
@@ -344,11 +344,11 @@
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="3.8.1.1.e"
+ Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.5.1.168"
+ Id="530b6e5d-9ed2-460a-bc4f-9e158ad1c0b1"
 >
 </ReqRef><Comment>The release speed related to danger point.</Comment>
 </StructureElement></Structure><Structure
@@ -357,11 +357,11 @@
  Name="Overlap"
 >
 <ReqRef
- Id="3.8.3.3.c"
+ Id="4777cb40-cb40-4257-8324-c515327a0152"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.1.1.d"
+ Id="7fa6af9c-023d-474c-a0f7-8f72181a8fee"
 >
 <Comment></Comment>
 </ReqRef><Comment>Location beyond the danger point that can be reached by the front end of the train without a risk for a hazardous situation.</Comment>
@@ -373,7 +373,7 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.19"
+ Id="326cbd94-a19c-4b09-941b-6c0795e922f2"
 >
 </ReqRef><Comment>Distance from end of section to end of overlap.</Comment>
 </StructureElement><StructureElement
@@ -384,7 +384,7 @@
  Name="TimerDistance"
 >
 <ReqRef
- Id="7.5.1.26"
+ Id="747d021b-8bdf-43c7-8a0a-a3f568408c72"
 >
 </ReqRef><Comment>Distance from Overlap timer start location to end of section.</Comment>
 </StructureElement><StructureElement
@@ -395,11 +395,11 @@
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="3.8.1.1.e"
+ Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="7.5.1.169"
+ Id="887d1614-89c2-401e-8b28-d47db2b19981"
 >
 </ReqRef><Comment>Release speed related to overlap.</Comment>
 </StructureElement><StructureElement
@@ -410,7 +410,7 @@
  Name="TimeOut"
 >
 <ReqRef
- Id="7.5.1.150"
+ Id="1a00d073-a908-4fc4-9ec3-4652a955b351"
 >
 </ReqRef><Comment>The validity time of the overlap.</Comment>
 </StructureElement></Structure><Structure
@@ -418,10 +418,10 @@
  Name="MaShorteningHandler"
 >
 <ReqRef
- Id="3.8.5.1.3"
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.4"
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -448,13 +448,13 @@
  Name="Sections"
 >
 <ReqRef
- Id="3.8.3.1"
+ Id="173067d8-3484-4ec9-81e4-7275c3374764"
 >
 </ReqRef><ReqRef
- Id="3.8.1.1.f"
+ Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
 >
 </ReqRef><ReqRef
- Id="A1.1.11.1"
+ Id="d701e3bf-8b71-4b6f-84c0-9b64aa641498"
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
 </Collection></Collections>
@@ -466,30 +466,30 @@
  Name="EndOfMovementAuthority"
 >
 <ReqRef
- Id="3.8.1.1.a"
+ Id="e0b44a69-1080-47e9-80b7-b635996f4239"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.8.3.1"
+ Id="173067d8-3484-4ec9-81e4-7275c3374764"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="A1.1.12.1"
+ Id="9a2c09f8-7df9-4251-9530-ae098d435bc9"
 >
 </ReqRef><ReqRef
- Id="5.9.3.5"
+ Id="81828a4c-73e2-440d-8353-e050603f323f"
 >
 </ReqRef><ReqRef
- Id="5.7.3.4"
+ Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
 >
 </ReqRef><ReqRef
- Id="5.19.3.5"
+ Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
 >
 </ReqRef><ReqRef
- Id="3.12.2.10"
+ Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
 >
 </ReqRef><ReqRef
- Id="3.12.2.4"
+ Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
 >
 </ReqRef><Comment>Gives the target corresponding to the End (or Limit) Of Authority. The distance of the target is obtained by adding lenghts of all the sections of the current MA. If no MA is defined, the distance is infinite to avoid the train to be tripped before receivin an MA.</Comment>
 <Cases>
@@ -544,22 +544,22 @@
  Name="CreateEFSSection"
 >
 <ReqRef
- Id="7.5.1.130"
+ Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >
 </ReqRef><ReqRef
- Id="7.5.1.24"
+ Id="b796c06e-efd9-4a35-abfc-9983a477fc35"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2"
+ Id="4b2c7641-4724-45e9-ac46-acb185e386b0"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2.a"
+ Id="51578cd7-a50a-46d9-b7a5-11e24eee2f49"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2.b"
+ Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
 >
 </ReqRef><ReqRef
- Id="3.8.3.4"
+ Id="e5896680-5ea9-4749-b01e-599ab85abe84"
 >
 </ReqRef><Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
 <Parameters>
@@ -605,10 +605,10 @@
  Name="ConvertSectionLvl2or3_to_SectionLvl1"
 >
 <ReqRef
- Id="7.5.1.130"
+ Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >
 </ReqRef><ReqRef
- Id="7.5.1.24"
+ Id="b796c06e-efd9-4a35-abfc-9983a477fc35"
 >
 </ReqRef><Comment>Creates an EFSSection from a section received from a balise of RBC (level 1).</Comment>
 <Parameters>
@@ -696,16 +696,16 @@
  Name="SignallingRelatedSpeedRestrictions"
 >
 <ReqRef
- Id="3.11.2.2.e"
+ Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.a"
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.2.1"
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
 >
 </ReqRef><ReqRef
- Id="7.5.1.158"
+ Id="40e65850-da07-4c7a-bd9f-43c30f8a20a5"
 >
 </ReqRef><Comment>Provides the speed profile due to signalling related speed restrictions. Only applicable for level 1.</Comment>
 <Parameters>
@@ -732,22 +732,22 @@
  Name="EOASpeedRestriction"
 >
 <ReqRef
- Id="3.13.8.4.1"
+ Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.1.1.f"
+ Id="02854410-9ddb-4b94-993c-b26498a498bf"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.6.1.a"
+ Id="50a11b55-dc19-4427-b0fd-d81384417f79"
 >
 </ReqRef><ReqRef
- Id="3.13.8.2.1.c"
+ Id="cb22befd-4969-4fdf-9f68-f6b39ec1abe3"
 >
 </ReqRef><ReqRef
- Id="3.13.8.2.1"
+ Id="5e616edd-93b3-48b1-9e3c-e0c863f4a609"
 >
 </ReqRef><ReqRef
- Id="3.13.8.2.2"
+ Id="3db576cb-65c4-4a7c-b6a3-7092c89448db"
 >
 </ReqRef><Comment>Provides speed restriction for EOA (if applicable). Used to calculate the SBD curve.</Comment>
 <Parameters>
@@ -787,13 +787,13 @@
  Name="SpeedRestrictions"
 >
 <ReqRef
- Id="3.13.2.3.1.1.f"
+ Id="02854410-9ddb-4b94-993c-b26498a498bf"
 >
 </ReqRef><ReqRef
- Id="3.13.2.3.6.1.a"
+ Id="50a11b55-dc19-4427-b0fd-d81384417f79"
 >
 </ReqRef><ReqRef
- Id="3.13.8.2.1.b"
+ Id="68cdb140-3c4e-4bdc-a122-88e2b2e22f7f"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -833,7 +833,7 @@
  Name="SvLSpeedRestriction"
 >
 <ReqRef
- Id="3.13.9.3.3.9"
+ Id="d542f99e-9462-4bb6-9087-35da9a233e06"
 >
 <Comment></Comment>
 </ReqRef><Comment>Provides speed restriction for SvL. Used to compute the Most Restrictive Target amongst the EBD based targets.</Comment>
@@ -867,16 +867,16 @@
  Name="CreateReleaseSpeed"
 >
 <ReqRef
- Id="7.5.1.168"
+ Id="530b6e5d-9ed2-460a-bc4f-9e158ad1c0b1"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.3"
+ Id="646fea43-0ea3-400a-89a4-02268d193745"
 >
 </ReqRef><ReqRef
- Id="7.5.1.169.bis"
+ Id="76f867cd-faea-4765-a0a3-22abe280a92c"
 >
 </ReqRef><ReqRef
- Id="7.5.1.168.bis"
+ Id="fd8ad766-e2af-4dec-8c00-61b7e5d9b49c"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -909,7 +909,7 @@
  Name="IsSvL"
 >
 <ReqRef
- Id="3.13.10.4.2"
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
 >
 </ReqRef><Comment>Indicates if a target is a supervision limit.</Comment>
 <Parameters>
@@ -948,7 +948,7 @@
  Name="IsEOA"
 >
 <ReqRef
- Id="3.13.10.4.2"
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
 >
 </ReqRef><Comment>Indicates if a target is an end of authority.</Comment>
 <Parameters>
@@ -975,25 +975,25 @@
  Name="SvL"
 >
 <ReqRef
- Id="3.8.4.5.1"
+ Id="dc0bc969-44fc-43da-bc2e-a002f4c15435"
 >
 </ReqRef><ReqRef
- Id="3.8.4.5.2"
+ Id="8ab7aafb-d8cf-4c4d-bafc-08a1f658decd"
 >
 </ReqRef><ReqRef
- Id="5.9.3.5"
+ Id="81828a4c-73e2-440d-8353-e050603f323f"
 >
 </ReqRef><ReqRef
- Id="5.7.3.4"
+ Id="6b1f5744-6c85-45eb-a7de-1eba5bad0131"
 >
 </ReqRef><ReqRef
- Id="5.19.3.5"
+ Id="f2ddac1e-eea7-4f30-ade6-5ace543c21ae"
 >
 </ReqRef><ReqRef
- Id="3.12.2.4"
+ Id="beedf65d-aba6-4017-83dd-0fe57bc88e85"
 >
 </ReqRef><ReqRef
- Id="3.12.2.10"
+ Id="f7dd0ecc-078c-4434-8d46-4ebb4b1f44f2"
 >
 </ReqRef><Comment></Comment>
 <Cases>
@@ -1053,7 +1053,7 @@
  Name="ConsiderSectionForInfill"
 >
 <ReqRef
- Id="3.8.5.1.b"
+ Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
 >
 </ReqRef><Comment>This function decides if the current section shall be removed when an infill MA is received. There is three possible cases:
  - The section is situated before the infill location, in this case it is kept;
@@ -1097,7 +1097,7 @@
  Name="AbsoluteDistance"
 >
 <ReqRef
- Id="3.8.5.1.b"
+ Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
 >
 </ReqRef><Comment>Provides the absolute distance (from the LRBG) to the beginning of the given section.</Comment>
 <Parameters>
@@ -1122,10 +1122,10 @@ USING
  Name="ConvertMALvl2or3_to_MALvl1"
 >
 <ReqRef
- Id="7.4.2.4"
+ Id="9f918f6f-f470-4613-ab97-374dc595ce7c"
 >
 </ReqRef><ReqRef
- Id="7.4.2.4.bis"
+ Id="e63ca8af-18f8-432f-9c22-f989952a9561"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1172,13 +1172,13 @@ USING
  Name="FullTrackDescriptionAvailable"
 >
 <ReqRef
- Id="3.7.2.3"
+ Id="63f87a6b-8c3e-4333-b97e-9e417e3623d8"
 >
 </ReqRef><ReqRef
- Id="A1.1.6.2"
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
 >
 </ReqRef><ReqRef
- Id="A1.1.6.3"
+ Id="ce639b26-fec6-4218-86a0-c7449b82eafd"
 >
 </ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function #morido, 13/10/23</Comment>
 <Parameters>
@@ -1223,13 +1223,13 @@ Default.BaseTypes.LengthToDistance(
  Name="AcceptMA"
 >
 <ReqRef
- Id="3.8.4.6.2"
+ Id="ddf1106f-1c68-46d4-bb66-180ab706aa8e"
 >
 </ReqRef><ReqRef
- Id="3.8.4.6.4"
+ Id="ee4976a9-43b5-48a3-83fa-b4b49e47c1a8"
 >
 </ReqRef><ReqRef
- Id="Entry 5.11.2.2.A035"
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -1266,11 +1266,11 @@ Default.BaseTypes.LengthToDistance(
  Name="MALvl2or3Received"
 >
 <ReqRef
- Id="7.4.2.4"
+ Id="9f918f6f-f470-4613-ab97-374dc595ce7c"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
 <Parameters>
@@ -1310,16 +1310,16 @@ Default.BaseTypes.LengthToDistance(
  Name="MALvl1Received"
 >
 <ReqRef
- Id="7.4.2.3"
+ Id="20241a08-e360-4144-b573-5a0e657dd9a2"
 >
 </ReqRef><ReqRef
- Id="3.11.6.3"
+ Id="13aed33d-db2d-43fb-a5bf-be02674ae095"
 >
 </ReqRef><ReqRef
- Id="3.8.3.8"
+ Id="7f3ae822-7b90-4352-9369-c4e3ce05a91e"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><Comment>Determines for which direction is applicable the received MA and calls the appropriate procedure to update the appropriate MA.</Comment>
 <Parameters>
@@ -1347,10 +1347,10 @@ Default.BaseTypes.LengthToDistance(
  Name="Store MA information"
 >
 <ReqRef
- Id="7.5.1.158"
+ Id="40e65850-da07-4c7a-bd9f-43c30f8a20a5"
 >
 </ReqRef><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -1364,10 +1364,10 @@ Default.BaseTypes.LengthToDistance(
  Name="Train trip order"
 >
 <ReqRef
- Id="3.11.6.5"
+ Id="e8d016fe-f419-450e-a7e5-261b1035e3cc"
 >
 </ReqRef><ReqRef
- Id="7.5.1.158.bis"
+ Id="8c086287-3454-4b36-8382-3b59a0debda0"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -1389,16 +1389,16 @@ Default.BaseTypes.LengthToDistance(
  Name="UpdateMA"
 >
 <ReqRef
- Id="7.4.2.3"
+ Id="20241a08-e360-4144-b573-5a0e657dd9a2"
 >
 </ReqRef><ReqRef
- Id="7.4.2.3.1"
+ Id="82d5bd61-4bef-4cfb-a68a-312446d79df1"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1"
+ Id="c579a0d5-fcc0-4564-bbf3-599cd68b9344"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.1"
+ Id="76a67f0f-9afc-46c4-80b9-b7a211017100"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1438,16 +1438,16 @@ Default.BaseTypes.LengthToDistance(
  Name="Update common fields"
 >
 <ReqRef
- Id="7.4.2.3"
+ Id="20241a08-e360-4144-b573-5a0e657dd9a2"
 >
 </ReqRef><ReqRef
- Id="3.8.1.1.b"
+ Id="9d444c1e-f8ce-44ed-adb0-f81c08abac75"
 >
 </ReqRef><ReqRef
- Id="7.5.1.157"
+ Id="03cd0321-724a-4dbf-ae18-99839cda8019"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.a"
+ Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -1488,13 +1488,13 @@ Default.BaseTypes.LengthToDistance(
  Name="Infill"
 >
 <ReqRef
- Id="3.8.5.1.b"
+ Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.2"
+ Id="9c420bdc-a561-406b-a479-9d6cbde196a6"
 >
 </ReqRef><ReqRef
- Id="3.8.4.6.3"
+ Id="55512f96-4453-4790-88cb-a4324c3a4a22"
 >
 </ReqRef><PreConditions>
 <PreCondition>Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
@@ -1505,7 +1505,7 @@ Default.BaseTypes.LengthToDistance(
  Name="No infill"
 >
 <ReqRef
- Id="3.8.5.1.a"
+ Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -1519,10 +1519,10 @@ Default.BaseTypes.LengthToDistance(
  Name="Update sections"
 >
 <ReqRef
- Id="3.8.1.1.f"
+ Id="cfc4df94-c1ee-4d42-b8ab-44f37ef4a6ba"
 >
 </ReqRef><ReqRef
- Id="3.8.3.1"
+ Id="173067d8-3484-4ec9-81e4-7275c3374764"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1554,16 +1554,16 @@ Default.BaseTypes.LengthToDistance(
  Name="Update end section"
 >
 <ReqRef
- Id="7.5.1.45"
+ Id="6429b85c-2e6f-4225-8997-9701a98eacd4"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3"
+ Id="21d0760f-a057-466a-bdf0-41f316e4721c"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.a"
+ Id="5aa1fa8e-68c3-4f4f-83d8-b6d2b462a508"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.b"
+ Id="4f9e6037-be46-477d-bbca-3122bd9ad940"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1583,10 +1583,10 @@ Default.BaseTypes.LengthToDistance(
  Name="EndSectionTimeOutAvailable"
 >
 <ReqRef
- Id="3.8.3.3.a"
+ Id="8d09ca53-1394-4843-b8d6-829a86336ca3"
 >
 </ReqRef><ReqRef
- Id="7.5.1.108"
+ Id="86b0e1e8-53c9-4a9f-9b60-1863f04939ec"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1596,7 +1596,7 @@ Default.BaseTypes.LengthToDistance(
  Name="EndSectionTimeOutAvailable"
 >
 <ReqRef
- Id="7.5.1.6"
+ Id="00bf308a-22d5-43c9-9211-8f761f8ae624"
 >
 </ReqRef><PreConditions>
 <PreCondition>Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow</PreCondition></PreConditions>
@@ -1623,13 +1623,13 @@ Default.BaseTypes.LengthToDistance(
  Name="TimeOutAvailable"
 >
 <ReqRef
- Id="7.5.1.130"
+ Id="3ea65cb2-f46e-4d0e-885e-8ae8c75b4a06"
 >
 </ReqRef><ReqRef
- Id="3.8.3.2.b"
+ Id="b4e8a739-839a-4e55-80ab-4cabb887e47b"
 >
 </ReqRef><ReqRef
- Id="3.8.3.4"
+ Id="e5896680-5ea9-4749-b01e-599ab85abe84"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1639,7 +1639,7 @@ Default.BaseTypes.LengthToDistance(
  Name="TimeOutAvailable"
 >
 <ReqRef
- Id="7.5.1.24"
+ Id="b796c06e-efd9-4a35-abfc-9983a477fc35"
 >
 </ReqRef><PreConditions>
 <PreCondition>Packet.Q_SECTIONTIMER == Messages.Q_SECTIONTIMER.Section_Timer_information_to_follow</PreCondition></PreConditions>
@@ -1666,13 +1666,13 @@ Default.BaseTypes.LengthToDistance(
  Name="DangerPointAvailable"
 >
 <ReqRef
- Id="3.8.1.1.c"
+ Id="53a5391c-db43-4e26-95c4-26b8316d77a8"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3.b"
+ Id="48fba67a-8f19-4715-92e7-aea531d01881"
 >
 </ReqRef><ReqRef
- Id="7.5.1.102"
+ Id="30dda18a-b11e-4bbe-a761-8fe4113de2e5"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -1683,13 +1683,13 @@ Default.BaseTypes.LengthToDistance(
  Name="DangerPointAvailable"
 >
 <ReqRef
- Id="7.5.1.168"
+ Id="530b6e5d-9ed2-460a-bc4f-9e158ad1c0b1"
 >
 </ReqRef><ReqRef
- Id="7.5.1.4"
+ Id="1b773b1d-8ba0-43bd-abfb-9c45b0550e35"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.3"
+ Id="646fea43-0ea3-400a-89a4-02268d193745"
 >
 </ReqRef><PreConditions>
 <PreCondition>Packet.Q_DANGERPOINT == Messages.Q_DANGERPOINT.Danger_point_information_to_follow</PreCondition></PreConditions>
@@ -1716,16 +1716,16 @@ Default.BaseTypes.LengthToDistance(
  Name="OverlapAvailable"
 >
 <ReqRef
- Id="3.8.1.1.d"
+ Id="7fa6af9c-023d-474c-a0f7-8f72181a8fee"
 >
 </ReqRef><ReqRef
- Id="3.8.3.3.c"
+ Id="4777cb40-cb40-4257-8324-c515327a0152"
 >
 </ReqRef><ReqRef
- Id="7.5.1.126"
+ Id="b3845192-4c2b-4425-bdb0-c0a568c940ea"
 >
 </ReqRef><ReqRef
- Id="3.13.9.4.3"
+ Id="646fea43-0ea3-400a-89a4-02268d193745"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1735,13 +1735,13 @@ Default.BaseTypes.LengthToDistance(
  Name="OverlapAvailable"
 >
 <ReqRef
- Id="7.5.1.26"
+ Id="747d021b-8bdf-43c7-8a0a-a3f568408c72"
 >
 </ReqRef><ReqRef
- Id="7.5.1.169"
+ Id="887d1614-89c2-401e-8b28-d47db2b19981"
 >
 </ReqRef><ReqRef
- Id="7.5.1.19"
+ Id="326cbd94-a19c-4b09-941b-6c0795e922f2"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -1789,10 +1789,10 @@ Default.BaseTypes.LengthToDistance(
  Name="TestMaShortening"
 >
 <ReqRef
- Id="3.A3.4.1.2.b"
+ Id="426e405f-a69a-4fd6-b4cb-f0b3e7808f5e"
 >
 </ReqRef><ReqRef
- Id="3.8.5.2.4"
+ Id="21484fd2-8698-4d7f-8846-76057374f929"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -1801,7 +1801,7 @@ Default.BaseTypes.LengthToDistance(
  Name="TestMaShorteningRegardlessOfSvL"
 >
 <ReqRef
- Id="3.8.5.1.4"
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
 >
 </ReqRef><PreConditions>
 <PreCondition>ShorteningHandler != EMPTY
@@ -1818,7 +1818,7 @@ NOT IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
  Name="TestMaShortening"
 >
 <ReqRef
- Id="3.8.5.1.3"
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
 >
 </ReqRef><PreConditions>
 <PreCondition>ShorteningHandler != EMPTY
@@ -1837,7 +1837,7 @@ IsSvL ( MA.EndOfMovementAuthority() )</PreCondition></PreConditions>
  Name="UpdateSectionsForInfill"
 >
 <ReqRef
- Id="3.8.5.1.2"
+ Id="9c420bdc-a561-406b-a479-9d6cbde196a6"
 >
 </ReqRef><Comment>This function updates the MA&apos;s sections when an infill MA is received. The following steps are executed:
  - The end section of the previous MA is inserted to the list of the sections;
@@ -1920,7 +1920,7 @@ IN MA.Sections</Action></Actions>
  Name="ExtendSections"
 >
 <ReqRef
- Id="3.8.3.2"
+ Id="4b2c7641-4724-45e9-ac46-acb185e386b0"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1959,10 +1959,10 @@ IN
  Name="RepositioningInformationReceived"
 >
 <ReqRef
- Id="3.8.5.2"
+ Id="d68a643a-2faa-429a-a1d6-2724d7c3ccbc"
 >
 </ReqRef><ReqRef
- Id="3.8.5.2.4"
+ Id="21484fd2-8698-4d7f-8846-76057374f929"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -1989,7 +1989,7 @@ IN
  Name="Several sections available"
 >
 <ReqRef
- Id="3.8.5.2.1"
+ Id="734f0ed2-d7d1-4a42-8fe8-058ea4441252"
 >
 </ReqRef><Comment></Comment>
 <PreConditions>
@@ -2016,7 +2016,7 @@ IN
  Name="MA"
 >
 <ReqRef
- Id="3.7.1.1.a"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
 >
 </ReqRef><Comment>Represents the Movement Authority.</Comment>
 </Variable><Variable
@@ -2027,19 +2027,19 @@ IN
  Name="SignallingRelatedSpeedRestriction"
 >
 <ReqRef
- Id="3.11.6"
+ Id="6d40cd91-a858-435e-83bf-8b5fd647e114"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.11.6.1"
+ Id="5d3380ae-3cb4-4f42-a7ba-d37280d33119"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.11.2.2.e"
+ Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
 >
 </ReqRef><Comment>Represents the signalling related speed restriction. Value = 0 corresponds to train trip.</Comment>
 </Variable><Variable
@@ -2050,10 +2050,10 @@ IN
  Name="ShorteningHandler"
 >
 <ReqRef
- Id="3.8.5.1.3"
+ Id="d8e470e4-30ad-41be-8c8d-9828fc218d73"
 >
 </ReqRef><ReqRef
- Id="3.8.5.1.4"
+ Id="0c39084a-19e8-4784-962f-8dd4ba8a2aee"
 >
 </ReqRef><Comment>Allows to verify if the MA was shortened (possibly regardless of SvL location).</Comment>
 </Variable></Variables>
