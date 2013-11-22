@@ -291,7 +291,11 @@ namespace DataDictionary.Rules
 
                 if (EnclosingRequirements.Count == 0)
                 {
-                    retVal = Dictionary.Specifications.AllParagraphs;
+                    retVal = new List<Paragraph>();
+                    foreach (Specification.Specification specification in Dictionary.Specifications)
+                    {
+                        retVal.AddRange(specification.AllParagraphs);
+                    }
                 }
                 else
                 {
@@ -299,7 +303,10 @@ namespace DataDictionary.Rules
 
                     foreach (ReqRef req in EnclosingRequirements)
                     {
-                        Dictionary.Specifications.SubParagraphs(req.Name, retVal);
+                        foreach (Specification.Specification specification in Dictionary.Specifications)
+                        {
+                            specification.SubParagraphs(req.Name, retVal);
+                        }
                     }
                 }
                 return retVal;

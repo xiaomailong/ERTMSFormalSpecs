@@ -575,7 +575,7 @@ namespace GUI
                         DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                         // Only open the specification window if specifications are available in the opened file
-                        if (dictionary.Specifications != null && dictionary.Specifications.AllParagraphs.Count > 0)
+                        if (dictionary.Specifications != null && dictionary.AllParagraphs.Count > 0)
                         {
                             AddChildWindow(new SpecificationView.Window(dictionary));
                         }
@@ -953,7 +953,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckImplementation();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckImplementation();
+                }
             }
             Refresh();
         }
@@ -980,7 +983,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckReview();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckReview();
+                }
                 Refresh();
             }
         }
@@ -1004,7 +1010,10 @@ namespace GUI
             {
                 if (dictionary.Specifications != null)
                 {
-                    dictionary.Specifications.CheckMoreInfo();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckMoreInfo();
+                    }
                 }
             }
             Refresh();
@@ -1014,9 +1023,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckImplementedWithNoFunctionalTest();
+                    specification.CheckImplementedWithNoFunctionalTest();
                 }
             }
             Refresh();
@@ -1026,9 +1035,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckNotImplementedButImplementationExists();
+                    specification.CheckNotImplementedButImplementationExists();
                 }
             }
             Refresh();
@@ -1038,9 +1047,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckApplicable();
+                    specification.CheckApplicable();
                 }
             }
             Refresh();
@@ -1080,9 +1089,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckNonApplicable();
+                    specification.CheckNonApplicable();
                 }
             }
             Refresh();
@@ -1092,84 +1101,12 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckSpecIssues();
+                    specification.CheckSpecIssues();
                 }
             }
             Refresh();
-        }
-
-        /// ------------------------------------------------------
-        ///    IMPORT SPEC OPERATIONS
-        /// ------------------------------------------------------
-
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Title = "Open original specification file";
-                openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-                if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    string OriginalFileName = openFileDialog.FileName;
-                    openFileDialog.Title = "Open new specification file";
-                    openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-                    if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-                    {
-                        string NewFileName = openFileDialog.FileName;
-
-                        string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
-
-                        /// Perform the importation
-                        Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, dictionary.Specifications);
-                        ProgressDialog dialog = new ProgressDialog("Opening file", importer);
-                        dialog.ShowDialog();
-
-                        /// Creates the report based on the importation result
-                        Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(dictionary, importer.NewDocument, baseFileName);
-                        dialog = new ProgressDialog("Opening file", reportHandler);
-                        dialog.ShowDialog();
-
-                        RefreshModel();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates the base file name for the report
-        /// </summary>
-        /// <param name="OriginalFileName"></param>
-        /// <param name="NewFileName"></param>
-        /// <returns></returns>
-        private string createBaseFileName(string OriginalFileName, string NewFileName)
-        {
-            string baseFileName = "";
-            for (int i = 0; i < OriginalFileName.Length && i < NewFileName.Length; i++)
-            {
-                if (OriginalFileName[i] == NewFileName[i])
-                {
-                    baseFileName += OriginalFileName[i];
-                }
-                else
-                {
-                    break;
-                }
-            }
-            if (baseFileName.IndexOf("\\") > 0)
-            {
-                baseFileName = baseFileName.Substring(baseFileName.LastIndexOf("\\") + 1);
-            }
-
-            if (baseFileName.IndexOf("v") > 0)
-            {
-                baseFileName = baseFileName.Substring(0, baseFileName.LastIndexOf("v"));
-            }
-
-            return baseFileName;
         }
 
         #region Import test database
@@ -1427,8 +1364,11 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(dictionary.Specifications);
-                fbExporter.Export("../FunctionalBlocks.csv");
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(specification);
+                    fbExporter.Export("../" + specification.Name + "FunctionalBlocks.csv");
+                }
             }
         }
 
@@ -1534,7 +1474,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckNewRevision();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckNewRevision();
+                }
                 Refresh();
             }
         }

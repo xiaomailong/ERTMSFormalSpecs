@@ -115,7 +115,7 @@ namespace Reports.Specs
             HashSet<ReqRelated> implementedTypes = new HashSet<ReqRelated>();
             HashSet<ReqRelated> implementedVariables = new HashSet<ReqRelated>();
 
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aReportConfig.Dictionary.Specifications.ApplicableParagraphs;
+            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aReportConfig.Dictionary.ApplicableParagraphs;
             HashSet<DataDictionary.Specification.Paragraph> modeledParagraphs = new HashSet<DataDictionary.Specification.Paragraph>();
             foreach (ReqRelated reqRelated in implementedReqRelated)
             {
@@ -181,14 +181,14 @@ namespace Reports.Specs
             AddTable(new string[] { "Statistics" }, new int[] { 70, 70 });
             if (allParagraphs)
             {
-                AddRow("Total number of paragraphs", aDictionary.Specifications.AllParagraphs.Count.ToString());
+                AddRow("Total number of paragraphs", aDictionary.AllParagraphs.Count.ToString());
             }
             if (applicableParagraphs)
             {
-                AddRow("Number of applicable paragraphs", aDictionary.Specifications.ApplicableParagraphs.Count.ToString());
+                AddRow("Number of applicable paragraphs", aDictionary.ApplicableParagraphs.Count.ToString());
             }
 
-            double applicableParagraphsCount = aDictionary.Specifications.ApplicableParagraphs.Count;
+            double applicableParagraphsCount = aDictionary.ApplicableParagraphs.Count;
             double coveredParagraphsCount = CoveredRequirements(aDictionary, true).Count;
             double coveredPercentage = (coveredParagraphsCount / applicableParagraphsCount) * 100;
             double nonCoveredParagraphsCount = applicableParagraphsCount - coveredParagraphsCount;
@@ -215,7 +215,7 @@ namespace Reports.Specs
         {
             HashSet<DataDictionary.Specification.Paragraph> retVal = new HashSet<DataDictionary.Specification.Paragraph>();
 
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.Specifications.ApplicableParagraphs;
+            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
             Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
             foreach (DataDictionary.Specification.Paragraph paragraph in applicableParagraphs)
             {
@@ -258,7 +258,7 @@ namespace Reports.Specs
         {
             AddTable(new string[] { "Model information" }, new int[] { 40, 40, 30, 30 });
             AddTableHeader("Requirement", "Target", "Type", "Implementation status");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.Specifications.AllParagraphs)
+            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.AllParagraphs)
             {
                 AddRow(paragraph.FullId, paragraph.getScope_AsString(), paragraph.getType_AsString(), paragraph.getImplementationStatus_AsString());
             }

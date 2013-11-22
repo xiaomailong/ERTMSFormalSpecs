@@ -75,7 +75,7 @@
   <!-- --------------- -->
   <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
-      <FIELD NAME="Specification"         REFTYPE="Specification" />
+      <FIELD NAME="Specifications"        REFTYPE="Specification" />
       <FIELD NAME="RuleDisablings"        REFTYPE="RuleDisabling" />
       <FIELD NAME="NameSpaces"            REFTYPE="NameSpace" >
         <META NAME="TargetName">Namespaces</META>
@@ -102,7 +102,10 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
-        <ELEMENTREF NAME="Specification" TARGET="Specification" OPTIONAL="TRUE" />
+        <!-- No enclosing element for backward compatibility -->
+        <REPEAT TARGET="Specifications">
+          <ELEMENTREF NAME="Specification"/>
+        </REPEAT>
         <ENCLOSED NAME="RuleDisabling" OPTIONAL="TRUE">
           <REPEAT TARGET="RuleDisablings">
             <ELEMENTREF NAME="RuleDisabling"/>

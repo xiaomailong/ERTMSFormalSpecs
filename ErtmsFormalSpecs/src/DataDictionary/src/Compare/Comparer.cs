@@ -160,16 +160,64 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            if ( obj.getSpecification() == null )
+            if ( obj.allSpecifications() != null )
             {
-                if ( other.getSpecification() != null )
+                if ( other.allSpecifications() != null ) 
                 {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Specification", "" ) );
+                    foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                compareSpecification ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        }
+                    }
+
+                    foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                    {
+                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                    }
                 }
             }
-            else
+            else 
             {
-                compareSpecification ( obj.getSpecification(), other.getSpecification(), diff );
+                if ( other.allSpecifications() != null ) 
+                {
+                    foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                    {
+                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                    }
+                }
             }
             if ( obj.allRuleDisablings() != null )
             {
@@ -4730,9 +4778,12 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchDictionary(Generated.Dictionary obj, string searchString, List<ModelElement> occurences)
         {
-            if ( obj.getSpecification() != null )
+            if ( obj.allSpecifications() != null )
             {
-                searchSpecification ( obj.getSpecification(), searchString, occurences );
+                foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                {
+                    searchSpecification ( subElement, searchString, occurences );
+                }
             }
             if ( obj.allRuleDisablings() != null )
             {

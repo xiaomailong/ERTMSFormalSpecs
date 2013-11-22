@@ -321,10 +321,19 @@ namespace DataDictionary
         /// <summary>
         /// The specifications related to this rule set
         /// </summary>
-        public Specification.Specification Specifications
+        public ArrayList Specifications
         {
-            get { return (DataDictionary.Specification.Specification)getSpecification(); }
-            set { setSpecification(value); }
+            get
+            {
+                ArrayList retVal = allSpecifications();
+
+                if (retVal == null)
+                {
+                    retVal = new ArrayList();
+                }
+
+                return retVal;
+            }
         }
 
         /// <summary>
@@ -1028,6 +1037,78 @@ namespace DataDictionary
                 {
                     appendTests(item);
                 }
+            }
+        }
+
+        public ICollection<Paragraph> AllParagraphs
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.AllParagraphs)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> ApplicableParagraphs
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.ApplicableParagraphs)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> SpecIssues
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.SpecIssues)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> DesignChoices
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.DesignChoices)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
             }
         }
     }

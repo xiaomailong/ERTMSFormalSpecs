@@ -55,23 +55,6 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The specification document
-        /// </summary>
-        public Specification.Specification Specifications
-        {
-            get
-            {
-                Specification.Specification retVal = null;
-                if (Dictionary != null)
-                {
-                    retVal = Dictionary.Specifications;
-                }
-
-                return retVal;
-            }
-        }
-
-        /// <summary>
         /// The implementation of this trace
         /// </summary>
         public Utils.IModelElement Model
@@ -112,13 +95,18 @@ namespace DataDictionary
             {
                 Specification.Paragraph retVal = null;
 
-                if (Specifications != null)
+                foreach (Specification.Specification specification in Dictionary.Specifications)
                 {
-                    retVal = Specifications.FindParagraphByGuid(getId());
+                    retVal = specification.FindParagraphByGuid(getId());
 
                     if (retVal == null)
                     {
-                        retVal = Specifications.FindParagraphByNumber(getId());
+                        retVal = specification.FindParagraphByNumber(getId());
+                    }
+
+                    if (retVal != null)
+                    {
+                        break;
                     }
                 }
 

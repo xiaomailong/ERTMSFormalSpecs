@@ -64,16 +64,16 @@ namespace Reports.Tests
 
             if (allParagraphs)
             {
-                AddRow("Total number of paragraphs", aDictionary.Specifications.AllParagraphs.Count.ToString());
+                AddRow("Total number of paragraphs", aDictionary.AllParagraphs.Count.ToString());
             }
 
 
             if (applicableParagraphs)
             {
-                AddRow("Number of applicable paragraphs", aDictionary.Specifications.ApplicableParagraphs.Count.ToString());
+                AddRow("Number of applicable paragraphs", aDictionary.ApplicableParagraphs.Count.ToString());
             }
 
-            double applicableParagraphsCount = aDictionary.Specifications.ApplicableParagraphs.Count;
+            double applicableParagraphsCount = aDictionary.ApplicableParagraphs.Count;
             double coveredParagraphsCount = CoveredRequirements(aDictionary).Count;
             double coveredPercentage = (coveredParagraphsCount / applicableParagraphsCount) * 100;
             double nonCoveredParagraphsCount = applicableParagraphsCount - coveredParagraphsCount;
@@ -305,7 +305,7 @@ namespace Reports.Tests
         public static HashSet<DataDictionary.Specification.Paragraph> CoveredRequirements(DataDictionary.Dictionary aDictionary)
         {
             HashSet<DataDictionary.Specification.Paragraph> retVal = new HashSet<DataDictionary.Specification.Paragraph>();
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.Specifications.ApplicableParagraphs;
+            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
             Dictionary<DataDictionary.Specification.Paragraph, List<DataDictionary.ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
 
             foreach (DataDictionary.Specification.Paragraph paragraph in applicableParagraphs)

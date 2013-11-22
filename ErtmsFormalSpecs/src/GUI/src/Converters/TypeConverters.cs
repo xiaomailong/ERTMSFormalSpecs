@@ -156,9 +156,15 @@ namespace GUI.Converters
             }
             else
             {
-                foreach (string paragraph in req.Specifications.ParagraphList())
+                foreach (DataDictionary.Dictionary dictionary in req.EFSSystem.Dictionaries)
                 {
-                    retVal.Add(paragraph);
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        foreach (string paragraph in specification.ParagraphList())
+                        {
+                            retVal.Add(paragraph);
+                        }
+                    }
                 }
             }
 

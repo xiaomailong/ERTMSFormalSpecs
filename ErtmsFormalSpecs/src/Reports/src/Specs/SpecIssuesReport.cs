@@ -32,6 +32,23 @@ namespace Reports.Specs
         }
 
         /// <summary>
+        /// Counts the number of spec issues in a dictionary
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private static int CountSpecIssues(Dictionary dictionary)
+        {
+            int retVal = 0;
+
+            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            {
+                retVal += specification.SpecIssues.Count;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Creates an article with informations about all the paragraphs of the specification
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
@@ -39,9 +56,26 @@ namespace Reports.Specs
         public void CreateSpecIssuesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Specification issues report");
-            AddParagraph("This report describes the specification " + aReportConfig.Dictionary.Specifications.SpecIssues.Count + " issues encountered during modeling. ");
+            AddParagraph("This report describes the specification " + CountSpecIssues(aReportConfig.Dictionary) + " issues encountered during modeling. ");
             GenerateSpecIssues(aReportConfig.Dictionary);
             CloseSubParagraph();
+        }
+
+        /// <summary>
+        /// Counts the number of design choices in a dictionary
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private static int CountDesignChoices(Dictionary dictionary)
+        {
+            int retVal = 0;
+
+            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            {
+                retVal += specification.DesignChoices.Count;
+            }
+
+            return retVal;
         }
 
         /// <summary>
@@ -52,7 +86,7 @@ namespace Reports.Specs
         public void CreateDesignChoicesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Design choices report");
-            AddParagraph("This report describes the " + aReportConfig.Dictionary.Specifications.SpecIssues.Count + " design choices made during modeling. ");
+            AddParagraph("This report describes the " + CountDesignChoices(aReportConfig.Dictionary) + " design choices made during modeling. ");
             GenerateDesignChoices(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -65,7 +99,7 @@ namespace Reports.Specs
         private void GenerateSpecIssues(Dictionary aDictionary)
         {
             AddSubParagraph("Specification issues");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.Specifications.SpecIssues)
+            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.SpecIssues)
             {
                 AddSubParagraph("Issue on " + paragraph.FullId);
                 AddTable(new string[] { "Issue on " + paragraph.FullId }, new int[] { 30, 100 });
@@ -84,7 +118,7 @@ namespace Reports.Specs
         private void GenerateDesignChoices(Dictionary aDictionary)
         {
             AddSubParagraph("Design choices");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.Specifications.DesignChoices)
+            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.DesignChoices)
             {
                 AddSubParagraph("Design choice " + paragraph.FullId);
                 AddTable(new string[] { "Design choice " + paragraph.FullId }, new int[] { 30, 100 });

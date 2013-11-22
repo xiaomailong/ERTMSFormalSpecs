@@ -116,6 +116,8 @@ namespace GUI.SpecificationView
             List<MenuItem> retVal = base.GetMenuItems();
 
             retVal.Add(new MenuItem("Add chapter", new EventHandler(AddChapterHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Import new specification release", new EventHandler(ImportNewSpecificationReleaseHandler)));
 
             return retVal;
         }
@@ -144,5 +146,75 @@ namespace GUI.SpecificationView
                 window.toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
             }
         }
+
+
+        /// ------------------------------------------------------
+        ///    IMPORT SPEC OPERATIONS
+        /// ------------------------------------------------------
+
+        private void ImportNewSpecificationReleaseHandler(object sender, EventArgs args)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open original specification file";
+            openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(MainWindow) == DialogResult.OK)
+            {
+                string OriginalFileName = openFileDialog.FileName;
+                openFileDialog.Title = "Open new specification file";
+                openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
+                if (openFileDialog.ShowDialog(MainWindow) == DialogResult.OK)
+                {
+                    string NewFileName = openFileDialog.FileName;
+
+                    string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
+
+                    /// Perform the importation
+                    Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, Item);
+                    ProgressDialog dialog = new ProgressDialog("Opening file", importer);
+                    dialog.ShowDialog();
+
+                    /// Creates the report based on the importation result
+                    Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(Item.Dictionary, importer.NewDocument, baseFileName);
+                    dialog = new ProgressDialog("Opening file", reportHandler);
+                    dialog.ShowDialog();
+
+                    MainWindow.RefreshModel();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates the base file name for the report
+        /// </summary>
+        /// <param name="OriginalFileName"></param>
+        /// <param name="NewFileName"></param>
+        /// <returns></returns>
+        private string createBaseFileName(string OriginalFileName, string NewFileName)
+        {
+            string baseFileName = "";
+            for (int i = 0; i < OriginalFileName.Length && i < NewFileName.Length; i++)
+            {
+                if (OriginalFileName[i] == NewFileName[i])
+                {
+                    baseFileName += OriginalFileName[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (baseFileName.IndexOf("\\") > 0)
+            {
+                baseFileName = baseFileName.Substring(baseFileName.LastIndexOf("\\") + 1);
+            }
+
+            if (baseFileName.IndexOf("v") > 0)
+            {
+                baseFileName = baseFileName.Substring(0, baseFileName.LastIndexOf("v"));
+            }
+
+            return baseFileName;
+        }
+
     }
 }

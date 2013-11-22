@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using Reports.Specs;
 using Reports.Tests;
 using DataDictionary.Specification;
+using System.Collections;
 
 namespace GUI.SpecificationView
 {
@@ -42,21 +43,6 @@ namespace GUI.SpecificationView
         public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
-        }
-
-        /// <summary>
-        /// The specifications handled by this window
-        /// </summary>
-        public DataDictionary.Specification.Specification Specification
-        {
-            get
-            {
-                if (Dictionary != null)
-                {
-                    return Dictionary.Specifications;
-                }
-                return null;
-            }
         }
 
         /// <summary>
@@ -117,7 +103,7 @@ namespace GUI.SpecificationView
         public override void Refresh()
         {
             specBrowserTreeView.Refresh();
-            int applicableCounter = Specification.ApplicableParagraphs.Count;
+            int applicableCounter = Dictionary.ApplicableParagraphs.Count;
             int implementedCounter = SpecCoverageReport.CoveredRequirements(Dictionary, true).Count;
             int testedCounter = TestsCoverageReport.CoveredRequirements(Dictionary).Count;
 
