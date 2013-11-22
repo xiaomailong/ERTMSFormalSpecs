@@ -5,72 +5,102 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>This packet announces a loop.</Comment>
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef><Comment>This packet announces a loop.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="134"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LOOP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LOOP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_LOOP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_LOOP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_LOOP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_LOOP"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_LOOPDIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_LOOPDIR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SSCODE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SSCODE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.30"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

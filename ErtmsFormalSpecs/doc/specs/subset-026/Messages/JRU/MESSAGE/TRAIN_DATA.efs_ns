@@ -1,0 +1,456 @@
+<NameSpace
+ Name="TRAIN_DATA"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>this message records the emergency brake application command state</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="V_MAXTRAIN"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_MAXTRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="NC_CDTRAIN"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NC_CDTRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="NC_TRAIN"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NC_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="L_TRAIN"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_TRAIN"
+>
+</StructureElement><StructureElement
+ TypeName="T_TRACTION_CUT_OFF"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_TRACTION_CUT_OFF"
+>
+</StructureElement><StructureElement
+ TypeName="M_BRAKE_POSITION"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_POSITION"
+>
+</StructureElement><StructureElement
+ TypeName="M_NOM_ROT_MASS"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_NOM_ROT_MASS"
+>
+</StructureElement><StructureElement
+ TypeName="M_REGENERATIVEBRAKE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_REGENERATIVEBRAKE"
+>
+</StructureElement><StructureElement
+ TypeName="M_EDDYCURRENTBRAKE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_EDDYCURRENTBRAKE"
+>
+</StructureElement><StructureElement
+ TypeName="M_MAGNETICSHOEBRAKE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_MAGNETICSHOEBRAKE"
+>
+</StructureElement><StructureElement
+ TypeName="M_ELECTROPNEUMATICBRAKE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_ELECTROPNEUMATICBRAKE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TRACTIONCUTOFFINTERFACE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACTIONCUTOFFINTERFACE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SERVICEBRAKEINTERFACE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SERVICEBRAKEINTERFACE"
+>
+</StructureElement><StructureElement
+ TypeName="Q_SERVICEBRAKEFEEDBACK"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SERVICEBRAKEFEEDBACK"
+>
+</StructureElement><StructureElement
+ TypeName="Q_BRAKE_CAPT_TYPE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_BRAKE_CAPT_TYPE"
+>
+</StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence1"
+>
+</StructureElement><StructureElement
+ TypeName="M_BRAKE_GAMMA_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_GAMMA_CONF"
+>
+</StructureElement><StructureElement
+ TypeName="T_BRAKE_EMERGENCY"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_EMERGENCY"
+>
+</StructureElement><StructureElement
+ TypeName="N_BRAKE_SECTIONS"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_SECTIONS_0"
+>
+</StructureElement><StructureElement
+ TypeName="V_BRAKE_EMERGENCY_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_EMERGENCY_COMP"
+>
+</StructureElement><StructureElement
+ TypeName="A_BRAKE_EMERGENCY_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_EMERGENCY_COMP"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_50"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_90"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_9"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_99"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_999"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_9999"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_99999"
+>
+</StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_999999"
+>
+</StructureElement><StructureElement
+ TypeName="M_KWET_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KWET_RST"
+>
+</StructureElement><StructureElement
+ TypeName="T_BRAKE_SERVICE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_SERVICE"
+>
+</StructureElement><StructureElement
+ TypeName="N_BRAKE_SECTIONS"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_SECTIONS_1"
+>
+</StructureElement><StructureElement
+ TypeName="V_BRAKE_SERVICE_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_SERVICE_COMP"
+>
+</StructureElement><StructureElement
+ TypeName="A_BRAKE_SERVICE_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_SERVICE_COMP"
+>
+</StructureElement><StructureElement
+ TypeName="M_LOADINGGAUGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_LOADINGGAUGE"
+>
+</StructureElement><StructureElement
+ TypeName="N_AXLE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_AXLE"
+>
+</StructureElement><StructureElement
+ TypeName="N_AXLELOADCAT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_AXLELOADCAT"
+>
+</StructureElement><StructureElement
+ TypeName="N_ITER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_0"
+>
+</StructureElement><StructureElement
+ TypeName="M_VOLTAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_VOLTAGE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_CTRACTION"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_CTRACTION"
+>
+</StructureElement><StructureElement
+ TypeName="N_ITER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_1"
+>
+</StructureElement><StructureElement
+ TypeName="Collection2"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence2"
+>
+</StructureElement><StructureElement
+ TypeName="M_AIRTIGHT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_AIRTIGHT"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="M_BRAKE_PERCENTAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_PERCENTAGE"
+>
+</StructureElement><StructureElement
+ TypeName="M_BRAKE_PERCENTAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_PERCENTAGE"
+>
+</StructureElement><StructureElement
+ TypeName="N_BRAKE_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_CONF"
+>
+</StructureElement><StructureElement
+ TypeName="M_BRAKE_LAMBDA_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_LAMBDA_CONF"
+>
+</StructureElement><StructureElement
+ TypeName="T_BRAKE_SERVICE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_SERVICE"
+>
+</StructureElement><StructureElement
+ TypeName="N_BRAKE_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_CONF"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure2"
+>
+<StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection1"
+>
+</Collection><Collection
+ TypeName="SubStructure2"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection2"
+>
+</Collection></Collections>
+</NameSpace>

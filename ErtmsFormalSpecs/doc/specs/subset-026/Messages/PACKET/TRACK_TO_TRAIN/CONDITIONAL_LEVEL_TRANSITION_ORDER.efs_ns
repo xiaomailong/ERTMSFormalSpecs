@@ -5,86 +5,114 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet for a conditional level transition. The successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.</Comment>
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef><Comment>Packet for a conditional level transition. The successive M_LEVELTR&apos;s go from the highest priority level to the lowest one.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="46"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-<Comment></Comment>
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_LEVELTR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_LEVELTR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_NTC"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef><StructureElement
  TypeName="M_LEVELTR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_LEVELTR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_NTC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_NTC"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="7.4.2.11.2"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

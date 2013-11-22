@@ -1,0 +1,30 @@
+<NameSpace
+ Name="MAGNETIC_SHOE_BRAKE_STATUS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message allows to transmit the magnetic shoe brake status</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_MSB_STATUS"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_MSB_STATUS"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

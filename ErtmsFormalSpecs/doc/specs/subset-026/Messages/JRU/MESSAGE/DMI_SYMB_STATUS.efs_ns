@@ -1,0 +1,30 @@
+<NameSpace
+ Name="DMI_SYMB_STATUS"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains the status of the set of symbols that can be displayed on the DMI (except planning, navigation and settings related symbols that are not considering for juridical recording)</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="MESSAGE.DMI_SYMBOL_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMBOL_STATUS"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

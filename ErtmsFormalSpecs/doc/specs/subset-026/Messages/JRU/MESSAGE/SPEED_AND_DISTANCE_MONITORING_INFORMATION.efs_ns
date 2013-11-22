@@ -1,0 +1,78 @@
+<NameSpace
+ Name="SPEED_AND_DISTANCE_MONITORING_INFORMATION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains speed and distance monitoring data, in relation to the information displayed to the driver</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_SDMTYPE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_SDMTYPE"
+>
+</StructureElement><StructureElement
+ TypeName="M_SDMSUPSTAT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_SDMSUPSTAT"
+>
+</StructureElement><StructureElement
+ TypeName="V_PERM"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_PERM"
+>
+</StructureElement><StructureElement
+ TypeName="V_FLOI"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_FLOI"
+>
+</StructureElement><StructureElement
+ TypeName="V_TARGET"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_TARGET"
+>
+</StructureElement><StructureElement
+ TypeName="D_TARGET"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_TARGET"
+>
+</StructureElement><StructureElement
+ TypeName="V_RELEASE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_RELEASE"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

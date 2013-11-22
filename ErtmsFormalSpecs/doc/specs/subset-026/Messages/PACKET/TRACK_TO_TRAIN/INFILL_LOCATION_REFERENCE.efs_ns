@@ -5,51 +5,69 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.</Comment>
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef><Comment>Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="136"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.32"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

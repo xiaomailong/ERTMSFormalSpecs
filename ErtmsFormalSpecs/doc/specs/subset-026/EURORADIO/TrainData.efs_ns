@@ -1,7 +1,4 @@
 <NameSpace
- X="110"
- Width="100"
- Height="50"
  Name="TrainData"
 >
 <NameSpaces>
@@ -24,7 +21,7 @@
     L_PACKET =&gt; 114,
     L_TRAIN =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.TrainData.TrainData.Value.TrainLength, scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
     M_AIRTIGHT =&gt; FillAirtightSystem(),
-    M_AXLELOAD =&gt; Kernel.TrainData.TrainData.Value.AxleLoadCategory,
+    M_AXLELOADCAT =&gt; Kernel.TrainData.TrainData.Value.AxleLoadCategory,
     M_LOADINGGAUGE =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge,
     N_AXLE =&gt; Kernel.TrainData.TrainData.Value.AxleNumber,
     NC_CDTRAIN =&gt; Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,

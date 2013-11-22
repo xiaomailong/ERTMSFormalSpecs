@@ -5,72 +5,102 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet to order an RBC transition</Comment>
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef><Comment>Packet to order an RBC transition</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="131"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_RBCTR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_RBCTR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RBC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RBC"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RADIO"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RADIO"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SLEEPSESSION"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SLEEPSESSION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.27"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -5,38 +5,52 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>This packet is used to tell the on-board which is the operated system version</Comment>
+<ReqRef
+ Id="7.4.2.1"
+>
+</ReqRef><Comment>This packet is used to tell the on-board which is the operated system version</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="2"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-<Comment></Comment>
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_VERSION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.1"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

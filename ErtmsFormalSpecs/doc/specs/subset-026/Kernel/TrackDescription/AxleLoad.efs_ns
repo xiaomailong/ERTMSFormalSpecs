@@ -1,8 +1,4 @@
 <NameSpace
- X="250"
- Y="40"
- Width="100"
- Height="50"
  Name="AxleLoad"
 >
 <NameSpaces>
@@ -66,8 +62,8 @@
 >
 </ReqRef><Comment>Represents an axle load value: a couple Axle Load Category x Speed.</Comment>
 <StructureElement
- TypeName="Messages.M_AXLELOAD"
- Default="Messages.M_AXLELOAD.A"
+ TypeName="Messages.M_AXLELOADCAT"
+ Default="Messages.M_AXLELOADCAT.A"
  Mode="Internal"
  NeedsRequirement="FALSE"
  Name="Category"
@@ -253,7 +249,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Distance =&gt; Distance,
     Length =&gt; Default.MessageTypes.QScaleLength (anAxleLoad.L_AXLELOAD, Scale),
     TrainLengthDelay =&gt; anAxleLoad.Q_FRONT,
-    Values =&gt; MAP anAxleLoad.Sequence2 USING CreateAxleLoadValue(Category =&gt; X.M_AXLELOAD, Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
+    Values =&gt; MAP anAxleLoad.Sequence2 
+                     USING CreateAxleLoadValue(
+                                Category =&gt; X.M_AXLELOADCAT, 
+                                Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -265,7 +264,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Comment>Creates an EFS axle load value from an ERMS axle load value provided by the trackside.</Comment>
 <Parameters>
 <Parameter
- Type="Messages.M_AXLELOAD"
+ Type="Messages.M_AXLELOADCAT"
  Name="Category"
 >
 </Parameter><Parameter
@@ -317,7 +316,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Distance =&gt; NextDistance,
     Length =&gt; AxleLoadLength,
     TrainLengthDelay =&gt; TrainLengthDelay,
-    Values =&gt; MAP AxleLoadValues USING CreateAxleLoadValue(Category =&gt; X.M_AXLELOAD, Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
+    Values =&gt; MAP AxleLoadValues 
+                     USING CreateAxleLoadValue(
+                           Category =&gt; X.M_AXLELOADCAT, 
+                           Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
 </Case></Cases>
 </Function><Function

@@ -5,30 +5,42 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Error reporting to the RBC</Comment>
+<ReqRef
+ Id="7.4.3.4"
+>
+</ReqRef><Comment>Error reporting to the RBC</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="4"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.3.4"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.3.4"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ERROR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_ERROR"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.3.4"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -5,85 +5,112 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Level Crossing information</Comment>
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef><Comment>Level Crossing information</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="88"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LX"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LX"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_LX"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_LX"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_LX"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_LX"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_LXSTATUS"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_LXSTATUS"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="7.4.2.26.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_LX"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_LX"
 >
 </StructureElement><StructureElement
  TypeName="Q_STOPLX"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_STOPLX"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_STOPLX"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_STOPLX"
 >
 </StructureElement></Structure></Structures>

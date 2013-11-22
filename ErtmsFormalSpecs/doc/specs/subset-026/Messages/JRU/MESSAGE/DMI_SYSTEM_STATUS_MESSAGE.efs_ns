@@ -1,0 +1,30 @@
+<NameSpace
+ Name="DMI_SYSTEM_STATUS_MESSAGE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains which system status messages are displayed to the driver</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="SYSTEM_STATUS_MESSAGE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SYSTEM_STATUS_MESSAGE"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

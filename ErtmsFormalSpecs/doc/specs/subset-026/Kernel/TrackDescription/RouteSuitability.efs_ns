@@ -1,8 +1,4 @@
 <NameSpace
- X="110"
- Y="40"
- Width="100"
- Height="50"
  Name="RouteSuitability"
 >
 <NameSpaces>
@@ -95,7 +91,7 @@
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
- TypeName="Messages.M_AXLELOAD"
+ TypeName="Messages.M_AXLELOADCAT"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -177,7 +173,7 @@
  Name="aLineGauge"
 >
 </Parameter><Parameter
- Type="Messages.M_AXLELOAD"
+ Type="Messages.M_AXLELOADCAT"
  Name="aMaxAxleLoad"
 >
 </Parameter><Parameter
@@ -232,7 +228,7 @@
  Name="aLineGauge"
 >
 </Parameter><Parameter
- Type="Messages.M_AXLELOAD"
+ Type="Messages.M_AXLELOADCAT"
  Name="aMaxAxleLoad"
 >
 </Parameter><Parameter
@@ -502,7 +498,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axl
     CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
                                                  aType =&gt; Packet.Q_SUITABILITY,
                                                  aLineGauge =&gt; Packet.M_LINEGAUGE,
-                                                 aMaxAxleLoad =&gt; Packet.M_AXLELOAD,
+                                                 aMaxAxleLoad =&gt; Packet.M_AXLELOADCAT,
                                                  aTractionSystem =&gt; Packet.M_VOLTAGE,
                                                  aNidCTraction =&gt; Packet.NID_CTRACTION )
 IN
@@ -591,7 +587,7 @@ ON
     CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
                                                  aType =&gt; aRouteSuitability.Q_SUITABILITY,
                                                  aLineGauge =&gt; aRouteSuitability.M_LINEGAUGE,
-                                                 aMaxAxleLoad =&gt; aRouteSuitability.M_AXLELOAD,
+                                                 aMaxAxleLoad =&gt; aRouteSuitability.M_AXLELOADCAT,
                                                  aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
                                                  aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
 IN

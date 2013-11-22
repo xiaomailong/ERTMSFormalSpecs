@@ -1,0 +1,70 @@
+<NameSpace
+ Name="TRAIN_POSITION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This field contains the position of the train when the event recorded has occured.  This position is calculated with the distance to the last LRBG (Identity of Last Relevant Balise Group).</Comment>
+<StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+</StructureElement><StructureElement
+ TypeName="NID_LRBG"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_LRBG"
+>
+</StructureElement><StructureElement
+ TypeName="D_LRBG"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_LRBG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DIRLRBG"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+</StructureElement><StructureElement
+ TypeName="Q_DLRBG"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+</StructureElement><StructureElement
+ TypeName="L_DOUBTOVER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTOVER"
+>
+</StructureElement><StructureElement
+ TypeName="L_DOUBTUNDER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTUNDER"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

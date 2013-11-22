@@ -5,58 +5,82 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet to give the identity and telephone number of the neighbouring Radio Infill Unit with which a session shall be established or terminated.</Comment>
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef><Comment>Packet to give the identity and telephone number of the neighbouring Radio Infill Unit with which a session shall be established or terminated.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="143"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_RIU"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_RIU"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RIU"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RIU"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RADIO"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RADIO"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.37.1"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

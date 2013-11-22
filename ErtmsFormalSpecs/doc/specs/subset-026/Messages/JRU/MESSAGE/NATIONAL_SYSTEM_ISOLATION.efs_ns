@@ -1,0 +1,30 @@
+<NameSpace
+ Name="NATIONAL_SYSTEM_ISOLATION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message allows to transmit the indication that a National System, which is interfaced to the on-board through an STM, is isolated or not.</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_NATIONAL_SYSTEM_ISOLATION"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_NATIONAL_SYSTEM_ISOLATION"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

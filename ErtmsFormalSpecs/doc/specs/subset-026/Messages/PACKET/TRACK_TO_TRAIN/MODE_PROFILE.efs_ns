@@ -5,148 +5,210 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Mode profile associated to an MA</Comment>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef><Comment>Mode profile associated to an MA</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="80"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_MAMODE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_MAMODE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_MAMODE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_MAMODE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_MAMODE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_MAMODE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MAMODE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MAMODE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_ACKMAMODE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_ACKMAMODE"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="N_ITER"
+<ReqRef
+ Id="7.4.2.26"
 >
-</StructureElement><StructureElement
- TypeName="Collection1"
- Default=""
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="Sequence1"
->
-</StructureElement><StructureElement
- TypeName="Messages.Q_MAMODE"
- Default="Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="Q_MAMODE"
->
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
- Name="SubStructure1"
->
-<StructureElement
- TypeName="MessageTypes.Distance"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="D_MAMODE"
->
-</StructureElement><StructureElement
- TypeName="M_MAMODE"
- Default=""
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_MAMODE"
->
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="V_MAMODE"
->
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="L_MAMODE"
->
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="L_ACKMAMODE"
->
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_MAMODE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_MAMODE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="N_ITER"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Sequence1"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="SubStructure1"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef><StructureElement
+ TypeName="D_MAMODE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="D_MAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_MAMODE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="M_MAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_MAMODE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="V_MAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MAMODE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="L_MAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_ACKMAMODE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="L_ACKMAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_MAMODE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Q_MAMODE"
+>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="7.4.2.26"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -5,30 +5,42 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Train running number</Comment>
+<ReqRef
+ Id="7.4.3.4.1"
+>
+</ReqRef><Comment>Train running number</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="5"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7.4.3.4.1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7.4.3.4.1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_OPERATIONAL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_OPERATIONAL"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7.4.3.4.1"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

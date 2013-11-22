@@ -1,0 +1,30 @@
+<NameSpace
+ Name="START_DISPLAYING_FIXED_TEXT_MESSAGE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<Comment>This message contains a fixed text message that is currently being shown to the driver</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="Q_TEXT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXT"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

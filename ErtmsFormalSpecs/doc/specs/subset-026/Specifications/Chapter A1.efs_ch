@@ -253,8 +253,30 @@ d) &quot;data is to be revalidated&quot; means that the status of the correspond
 ><ReqRef
  Id="3.7.2.3"
 >
-</ReqRef>An MA is always considered after all other packets of a message have been processed.
-This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated. #morido, 13/10/23</Paragraph></Sub>
+</ReqRef><Comment> #morido, 13/10/23</Comment>
+An MA is always considered after all other packets of a message have been processed.
+This is mandatory to ensure that all preconditions for an MA (which may have been transmitted within this message as well) can be evaluated.</Paragraph><Paragraph
+ id="A1.1.6.3"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ infoRequired="TRUE"
+ specIssue="TRUE"
+ functionalBlockName=""
+ Name=""
+><ReqRef
+ Id="3.7.1.1.b"
+>
+</ReqRef><ReqRef
+ Id="3.8.5.1.2"
+>
+</ReqRef><Comment>#morido, 13/11/13
+
+How about: Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed? #morido, 13/11/13</Comment>
+Signalling related speed restrictions and Mode profiles are not considered as part of an MA. Hence, they are accepted irrespectively of the acceptance of the MA.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="A1.1.7"
  type="TITLE"
