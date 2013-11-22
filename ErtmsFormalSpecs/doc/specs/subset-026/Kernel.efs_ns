@@ -6513,13 +6513,184 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Id="5.5"
 >
 </ReqRef><StateMachine
- InitialState=""
+ InitialState="Step1"
  NeedsRequirement="FALSE"
 >
 <ReqRef
  Id="5.5"
 >
-</ReqRef></StateMachine></State><State
+</ReqRef><States>
+<State
+ Implemented="TRUE"
+ Name="Step1"
+>
+<ReqRef
+ Id="5.5.3.1.1"
+>
+</ReqRef><StateMachine
+ InitialState="Step1"
+>
+<States>
+<State
+ Name="Step1"
+>
+<StateMachine
+ InitialState=""
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleInformation"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleInformation"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Kernel.ModeTransitions.ModeRules.HandleAdhesionFactors()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleAxleLoadSpeed()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleGradientProfile()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleMA()</Action><Action>Kernel.ModeTransitions.ModeRules.HandlePermittedBrakingDistance()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleReversingArea()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleRouteSuitability()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleSSP()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrackConditions1()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrackConditions2()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrainData()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="EndOfProcedure"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="EndOfProcedure"
+>
+<PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- NoProcedure</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ Name="Step2"
+>
+<StateMachine
+ InitialState="Step2"
+>
+<States>
+<State
+ Name="Step2"
+>
+<StateMachine
+ InitialState=""
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Step2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Step2"
+>
+<PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection</PreCondition></PreConditions>
+<Actions>
+<Action>EURORADIO.EuroradioMessageOut.END_OF_MISSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
+{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+
+ }</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="No com session"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No com session"
+>
+<PreConditions>
+<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection AND EURORADIO.EuroradioMessageOut.END_OF_MISSION == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- NoProcedure</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Step3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Step3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message
+{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 0
+}</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="No message received"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No message received"
+>
+<PreConditions>
+<PreCondition>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Step2</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="After repetition"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="After repetition"
+>
+<PreConditions>
+<PreCondition>COUNT</PreCondition></PreConditions>
+<Actions>
+<Action>EURORADIO.CurrentRadioSession.Status &lt;- EURORADIO.SafeRadioConnectionStatus.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Steo4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Steo4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- NoProcedure</Action><Action>EURORADIO.CurrentRadioSession.Status &lt;- EURORADIO.SafeRadioConnectionStatus.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State></States>
+</StateMachine></State><State
  X="550"
  Y="690"
  Width="100"
