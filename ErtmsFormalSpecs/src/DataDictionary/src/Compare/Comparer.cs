@@ -1283,10 +1283,6 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
-            }
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
@@ -4687,10 +4683,6 @@ namespace DataDictionary.Compare
             if ( !CompareUtil.canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlockName", "Previously was [" + other.getFunctionalBlockName() + "]") );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getGuid(), other.getGuid()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Guid", "Previously was [" + other.getGuid() + "]") );
             }
         }
 

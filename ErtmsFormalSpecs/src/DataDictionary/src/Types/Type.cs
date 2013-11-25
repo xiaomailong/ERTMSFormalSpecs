@@ -241,66 +241,69 @@ namespace DataDictionary.Types
             Functions.Function leftFunction = left as Functions.Function;
             Functions.Function rigthFunction = right as Functions.Function;
 
-            if (rigthFunction == null)
+            if (leftFunction != null)
             {
+                if (rigthFunction == null)
+                {
+                    if (leftFunction.Graph != null)
+                    {
+                        Functions.Graph graph = Functions.Graph.createGraph(Functions.Function.getDoubleValue(right));
+                        rigthFunction = graph.Function;
+                    }
+                    else
+                    {
+                        Functions.Surface surface = Functions.Surface.createSurface(Functions.Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                        rigthFunction = surface.Function;
+                    }
+                }
+
                 if (leftFunction.Graph != null)
                 {
-                    Functions.Graph graph = Functions.Graph.createGraph(Functions.Function.getDoubleValue(right));
-                    rigthFunction = graph.Function;
+                    Functions.Graph tmp = null;
+                    switch (Operation)
+                    {
+                        case BinaryExpression.OPERATOR.ADD:
+                            tmp = leftFunction.Graph.AddGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.SUB:
+                            tmp = leftFunction.Graph.SubstractGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.MULT:
+                            tmp = leftFunction.Graph.MultGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.DIV:
+                            tmp = leftFunction.Graph.DivGraph(rigthFunction.Graph);
+                            break;
+                    }
+                    retVal = tmp.Function;
                 }
                 else
                 {
-                    Functions.Surface surface = Functions.Surface.createSurface(Functions.Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
-                    rigthFunction = surface.Function;
+                    Functions.Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                    Functions.Surface tmp = null;
+                    switch (Operation)
+                    {
+                        case BinaryExpression.OPERATOR.ADD:
+                            tmp = leftFunction.Surface.AddSurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.SUB:
+                            tmp = leftFunction.Surface.SubstractSurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.MULT:
+                            tmp = leftFunction.Surface.MultiplySurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.DIV:
+                            tmp = leftFunction.Surface.DivideSurface(rightSurface);
+                            break;
+                    }
+                    retVal = tmp.Function;
                 }
-            }
-
-            if (leftFunction.Graph != null)
-            {
-                Functions.Graph tmp = null;
-                switch (Operation)
-                {
-                    case BinaryExpression.OPERATOR.ADD:
-                        tmp = leftFunction.Graph.AddGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.SUB:
-                        tmp = leftFunction.Graph.SubstractGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.MULT:
-                        tmp = leftFunction.Graph.MultGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.DIV:
-                        tmp = leftFunction.Graph.DivGraph(rigthFunction.Graph);
-                        break;
-                }
-                retVal = tmp.Function;
-            }
-            else
-            {
-                Functions.Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
-                Functions.Surface tmp = null;
-                switch (Operation)
-                {
-                    case BinaryExpression.OPERATOR.ADD:
-                        tmp = leftFunction.Surface.AddSurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.SUB:
-                        tmp = leftFunction.Surface.SubstractSurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.MULT:
-                        tmp = leftFunction.Surface.MultiplySurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.DIV:
-                        tmp = leftFunction.Surface.DivideSurface(rightSurface);
-                        break;
-                }
-                retVal = tmp.Function;
             }
 
             return retVal;
@@ -401,6 +404,17 @@ namespace DataDictionary.Types
     /// </summary>
     public class AnyType : Type
     {
+        public override string Name
+        {
+            get { return "AnyType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
@@ -434,6 +448,17 @@ namespace DataDictionary.Types
     /// </summary>
     public class NoType : Type
     {
+        public override string Name
+        {
+            get { return "NoType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
