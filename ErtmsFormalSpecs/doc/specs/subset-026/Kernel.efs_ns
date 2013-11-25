@@ -6571,7 +6571,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StateMachine></State><State
  Name="Step2"
 >
-<StateMachine
+<ReqRef
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+>
+</ReqRef><StateMachine
  InitialState="Step2"
 >
 <States>
@@ -6592,7 +6595,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Step2"
 >
 <PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection</PreCondition></PreConditions>
+<PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
 <Action>EURORADIO.EuroradioMessageOut.END_OF_MISSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
 {
@@ -6603,22 +6606,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
     POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
 
  }</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="No com session"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="No com session"
->
-<PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection AND EURORADIO.EuroradioMessageOut.END_OF_MISSION == EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- NoProcedure</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6640,38 +6627,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
     M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
     NID_LRBG =&gt; 0
 }</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="No message received"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="No message received"
->
-<PreConditions>
-<PreCondition>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION == EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- Step2</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="After repetition"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="After repetition"
->
-<PreConditions>
-<PreCondition>COUNT</PreCondition></PreConditions>
-<Actions>
-<Action>EURORADIO.CurrentRadioSession.Status &lt;- EURORADIO.SafeRadioConnectionStatus.NoConnection</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7267,6 +7222,11 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Type="Kernel.HandleModeChangeSM"
  VariableMode="Internal"
  Name="HandleModeChange"
+>
+</Variable><Variable
+ Type="Integer"
+ VariableMode="Internal"
+ Name="NumberOfMessagesSent"
 >
 </Variable></Variables>
 <Rules>
