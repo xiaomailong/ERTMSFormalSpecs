@@ -67,20 +67,22 @@ BEGIN
 
       FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
         IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
-          IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
-            FILE1.WriteList ({
-`            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
-`            {
-`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
-`            }
-            });
-          ELSE
-            FILE1.WriteList ({
-`            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
-`            {
-`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
-`            }
-            });
+          IF NOT IgnoreFromComparison (field) THEN
+            IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+              FILE1.WriteList ({
+   `            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
+   `            {
+   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `            }
+              });
+            ELSE
+              FILE1.WriteList ({
+   `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
+   `            {
+   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `            }
+              });
+            END;
           END;
         ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
           IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
@@ -307,6 +309,17 @@ BEGIN
   RESULT := FALSE;
   FOR meta IN Elements[TypeName].RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
     IF meta.NAME = "Ordered" THEN
+      RESULT := TRUE;
+    END;
+  END;
+END;
+
+-- Indicates that elements of this type are ordered in their enclosing list
+PROCEDURE IgnoreFromComparison( Field )
+BEGIN
+  RESULT := FALSE;
+  FOR meta IN Field.RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
+    IF meta.NAME = "DoNotCompare" THEN
       RESULT := TRUE;
     END;
   END;

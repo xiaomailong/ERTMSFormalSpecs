@@ -15,6 +15,7 @@
 // --
 // ------------------------------------------------------------------------------
 using Utils;
+using System;
 namespace DataDictionary.Specification
 {
     public class ChapterRef : Generated.ChapterRef
@@ -49,6 +50,27 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
+        /// The file name which corresponds to this chapter ref
+        /// </summary>
+        public string PreviousFileName
+        {
+            get
+            {
+                string retVal = Name + ".efs_ch";
+                IModelElement current = Enclosing as IModelElement;
+                while (current != null && !(current is Specification))
+                {
+                    retVal = current.Name + Path.DirectorySeparatorChar + retVal;
+                    current = current.Enclosing as IModelElement;
+                }
+
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
         /// Saves the chapter provided associated to this chapter ref
         /// </summary>
         /// <param name="chapter"></param>
@@ -69,7 +91,17 @@ namespace DataDictionary.Specification
         /// <returns></returns>
         public Chapter LoadChapter(bool lockFiles, bool allowErrors)
         {
-            Chapter retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles, allowErrors);
+            Chapter retVal;
+
+            try
+            {
+                retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles, allowErrors);
+            }
+            catch (Exception)
+            {
+                // Maybe the other naming  ?
+                retVal = Util.loadChapter(PreviousFileName, Enclosing as ModelElement, lockFiles, allowErrors);
+            }
 
             return retVal;
         }
