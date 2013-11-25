@@ -36,13 +36,15 @@ namespace DataDictionary.Specification
             {
                 string retVal = Name + ".efs_ch";
                 IModelElement current = Enclosing as IModelElement;
-                while (current != null && !(current is Specification))
+                while (current != null && !(current is Dictionary))
                 {
                     retVal = current.Name + Path.DirectorySeparatorChar + retVal;
                     current = current.Enclosing as IModelElement;
                 }
 
-                return Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+
+                return retVal;
             }
         }
 
