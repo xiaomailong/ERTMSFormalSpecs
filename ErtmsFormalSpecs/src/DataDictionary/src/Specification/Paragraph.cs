@@ -60,6 +60,23 @@ namespace DataDictionary.Specification
                 }
                 return id;
             }
+            set
+            {
+                string tmp = "";
+
+                bool first = true;
+                foreach (int i in value)
+                {
+                    if (!first)
+                    {
+                        tmp += ".";
+                    }
+                    tmp += i;
+                    first = false;
+                }
+
+                setId(tmp);
+            }
         }
 
         /// <summary>
