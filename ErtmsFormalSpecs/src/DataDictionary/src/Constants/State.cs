@@ -39,6 +39,28 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
+        /// Adds a new element log attached to this model element
+        /// </summary>
+        /// <param name="log"></param>
+        public override void AddElementLog(ElementLog log)
+        {
+            bool add = true;
+
+            foreach (ElementLog other in base.Messages)
+            {
+                if (other.CompareTo(log) == 0)
+                {
+                    add = false;
+                }
+            }
+
+            if (add)
+            {
+                base.Messages.Add(log);
+            }
+        }
+
+        /// <summary>
         /// State machines are not displayed in the tree view. 
         /// </summary>
         public override List<ElementLog> Messages
