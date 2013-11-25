@@ -29,7 +29,12 @@ namespace DataDictionary.Interpreter.ListOperators
         public Variables.Variable AccumulatorVariable { get; private set; }
 
         /// <summary>
-        /// The accumulator expression
+        /// The accumulation expression, as defined in the statement
+        /// </summary>
+        private Expression DefinedAccumulator { get; set; }
+
+        /// <summary>
+        /// The accumulator expression to be used for evaluation 
         /// </summary>
         public Expression Accumulator { get; private set; }
 
@@ -48,7 +53,10 @@ namespace DataDictionary.Interpreter.ListOperators
             AccumulatorVariable.Name = "RESULT";
             Utils.ISubDeclaratorUtils.AppendNamable(this, AccumulatorVariable);
 
-            Accumulator = new BinaryExpression(Root, RootLog, expression, BinaryExpression.OPERATOR.ADD, new UnaryExpression(Root, RootLog, new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT"))));
+            DefinedAccumulator = expression;
+            DefinedAccumulator.Enclosing = this;
+
+            Accumulator = new BinaryExpression(Root, RootLog, DefinedAccumulator, BinaryExpression.OPERATOR.ADD, new UnaryExpression(Root, RootLog, new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT"))));
             Accumulator.Enclosing = this;
         }
 
@@ -65,7 +73,9 @@ namespace DataDictionary.Interpreter.ListOperators
             if (retVal)
             {
                 // Accumulator
-                AccumulatorVariable.Type = IteratorExpression.GetExpressionType();
+                AccumulatorVariable.Type = GetExpressionType();
+
+                DefinedAccumulator.SemanticAnalysis(instance, Filter.AllMatches);
 
                 Accumulator.SemanticAnalysis(instance, Filter.AllMatches);
                 StaticUsage.AddUsages(Accumulator.StaticUsage, Usage.ModeEnum.Read);
@@ -155,6 +165,12 @@ namespace DataDictionary.Interpreter.ListOperators
             if (listExpressionType != null)
             {
                 IteratorExpression.checkExpression();
+            }
+
+            Accumulator.checkExpression();
+            if (!(DefinedAccumulator.GetExpressionType() is Types.Range))
+            {
+                AddError("Accumulator expression should be a range");
             }
         }
     }
