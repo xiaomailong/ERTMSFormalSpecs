@@ -6532,6 +6532,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <States>
 <State
+ Implemented="TRUE"
  Name="Step1"
 >
 <StateMachine
@@ -6540,6 +6541,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="HandleInformation"
 >
 <SubRules></SubRules>
@@ -6554,6 +6556,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="EndOfProcedure"
 >
 <SubRules></SubRules>
@@ -6569,6 +6572,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
+ Implemented="TRUE"
  Name="Step2"
 >
 <ReqRef
@@ -6579,6 +6583,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <States>
 <State
+ Implemented="TRUE"
  Name="Step2"
 >
 <StateMachine
@@ -6587,11 +6592,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Step2"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Step2"
 >
 <PreConditions>
@@ -6609,11 +6619,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Step3"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Step3"
 >
 <PreConditions>
@@ -6630,17 +6645,87 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Steo4"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Steo4"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action>THIS &lt;- NoProcedure</Action><Action>EURORADIO.CurrentRadioSession.Status &lt;- EURORADIO.SafeRadioConnectionStatus.NoConnection</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="No request to terminate the CS, new message sent"
+>
+<ReqRef
+ Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No request to terminate the CS is received"
+>
+<PreConditions>
+<PreCondition>EURORADIO.HasActiveSession()</PreCondition><PreCondition>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION == EMPTY</PreCondition><PreCondition>Kernel.LastMessageSentTime  + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LastMessageSentTime &lt;- CurrentTime</Action><Action>Kernel.NumberOfMessagesSent&lt;- Kernel.NumberOfMessagesSent + 1</Action><Action>EURORADIO.EuroradioMessageOut.END_OF_MISSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
+{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+
+ }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="No request to terminate the CS, messages limit reached"
+>
+<ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No request to terminate the CS, message reached limit"
+>
+<PreConditions>
+<PreCondition>Kernel.NumberOfMessagesSent == 3</PreCondition><PreCondition>Kernel.LastMessageSentTime  + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>Kernel.NumberOfMessagesSent &lt;- 0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="No com session is opened"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No com session"
+>
+<ReqRef
+ Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
+>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.NoSession()</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7228,6 +7313,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  VariableMode="Internal"
  Name="NumberOfMessagesSent"
 >
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ NeedsRequirement="FALSE"
+ Name="LastMessageSentTime"
+>
+<Comment>Variable to know the time of the sent message</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
