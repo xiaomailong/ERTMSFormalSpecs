@@ -401,6 +401,17 @@ namespace DataDictionary.Types
     /// </summary>
     public class AnyType : Type
     {
+        public override string Name
+        {
+            get { return "AnyType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
@@ -434,6 +445,17 @@ namespace DataDictionary.Types
     /// </summary>
     public class NoType : Type
     {
+        public override string Name
+        {
+            get { return "NoType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
