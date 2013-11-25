@@ -155,14 +155,19 @@ namespace DataDictionary.Specification
         /// <returns></returns>
         public Paragraph FindParagraphByGuid(String guid)
         {
-            Paragraph retVal;
-            if (!GuidCache.TryGetValue(guid, out retVal))
+            Paragraph retVal = null;
+
+            if (guid != null)
             {
-                GuidParagraphVisitor cacheUpdater = new GuidParagraphVisitor(GuidCache);
-                cacheUpdater.visit(this);
+                if (!GuidCache.TryGetValue(guid, out retVal))
+                {
+                    GuidParagraphVisitor cacheUpdater = new GuidParagraphVisitor(GuidCache);
+                    cacheUpdater.visit(this);
+                }
+
+                GuidCache.TryGetValue(guid, out retVal);
             }
 
-            GuidCache.TryGetValue(guid, out retVal);
             return retVal;
         }
 
