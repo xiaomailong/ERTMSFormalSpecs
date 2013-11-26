@@ -24,11 +24,11 @@
 >
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default="0"
+ Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Location"
+ Name="Distance"
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Gradient"
@@ -184,9 +184,9 @@
 </ReqRef><ReqRef
  Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
 >
-</ReqRef><Comment>Provides the end of the gradient information
-
-we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/10/29</Comment>
+</ReqRef><Comment>Provides the end of the current gradient element. If the current element is the last element of the gradient profile, we have two cases:
+1. Gradient value is equal to 255 =&gt; this is the end of gradient information
+2. Gradient value is different from 255 =&gt; the gradient end will be infinite</Comment>
 <Parameters>
 <Parameter
  Type="Gradient.GradientInfo"
@@ -199,13 +199,16 @@ we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/1
 >
 <PreConditions>
 <PreCondition>Current.Gradient == 255.0</PreCondition></PreConditions>
-<Expression>Current.Location</Expression>
+<Expression>Current.Distance</Expression>
 </Case><Case
  Name="Otherwise"
 >
-<Expression>REDUCE Gradients | X.Location &gt; Current.Location
-  USING BaseTypes.MinDistance ( X.Location, RESULT )
-  INITIAL_VALUE Current.Location + MaxGradientLength</Expression>
+<Expression>REDUCE
+    Gradients | X.Distance &gt; Current.Distance
+USING
+    BaseTypes.MinDistance ( X.Distance, RESULT )
+INITIAL_VALUE
+    BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"
@@ -239,7 +242,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Before gradient info (considering train length)"
 >
 <PreConditions>
-<PreCondition>Distance &lt; GradientInfo.Location</PreCondition></PreConditions>
+<PreCondition>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
@@ -526,7 +529,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Before gradient info (considering train length)"
 >
 <PreConditions>
-<PreCondition>Distance &lt; GradientInfo.Location</PreCondition></PreConditions>
+<PreCondition>Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
@@ -755,7 +758,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
-<Action>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
+<Action>REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -775,7 +778,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Actions>
 <Action>StoreSingleProfileInfo ( 
   GradientInfo {
-    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
+    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
     Gradient =&gt; CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_A )
   }
 )</Action></Actions>
@@ -801,7 +804,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
   ( 
     GradientInfo
     {
-      Location =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
+      Distance =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
       Gradient =&gt; CreateGradient ( Q_GDIR =&gt; X.Q_GDIR, G_A =&gt; X.G_A )
     }
   )
@@ -974,14 +977,5 @@ ON Packet.Sequence1</Action></Actions>
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
 >
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Length"
- DefaultValue="10000.0"
- VariableMode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MaxGradientLength"
->
-<Comment>Represents the maximum length of the gradient. Used to compute the end of the last gradient in the gradient profile.</Comment>
 </Variable></Variables>
 </NameSpace>
