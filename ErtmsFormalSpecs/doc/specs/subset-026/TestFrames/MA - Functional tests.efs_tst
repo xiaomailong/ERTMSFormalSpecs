@@ -46,10 +46,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -260,10 +265,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -524,10 +534,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -728,10 +743,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1075,10 +1095,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1381,10 +1406,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1589,10 +1619,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1731,10 +1766,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1863,10 +1903,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2235,10 +2280,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2489,10 +2539,15 @@
 <Comment>Setup of the enviroment</Comment>
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2735,13 +2790,13 @@ BTM.Linking.Linkings</Action></Actions>
  TranslationRequired="FALSE"
  Name="Step5 - BTM.Message + Mode LS"
 >
-<Comment>Same as step 4 but for LS</Comment>
+<Comment>Same as step 4 but for LS. The train is tripped otherwise kernel changes the mode to FS (condition 32 of Table 4.6)</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.LS</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+<Action>Kernel.Mode &lt;- Default.Mode.LS</Action><Action>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -2930,12 +2985,17 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="SubStep1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3204,12 +3264,17 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="SubStep1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3492,12 +3557,17 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3901,12 +3971,17 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4307,12 +4382,17 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
 )</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

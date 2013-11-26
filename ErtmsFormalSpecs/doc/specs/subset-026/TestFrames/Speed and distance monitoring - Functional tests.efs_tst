@@ -34,7 +34,7 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment()</Action></Actions>
@@ -60,12 +60,42 @@
     Position=&gt;0.0,
     UnderReadingAmountOdo=&gt;2.0
   }
-}</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+}</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Location =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Location =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
 }</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid
- </Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action></Actions>
+ </Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action><Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 180.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 180.0
+            }
+        ]
+    }
+]</Action><Action>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
