@@ -181,6 +181,9 @@
 <ReqRef
  Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
 >
+</ReqRef><ReqRef
+ Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
+>
 </ReqRef><Comment>Provides the end of the gradient information
 
 we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/10/29</Comment>
@@ -192,11 +195,11 @@ we always assume it covers an infinite length (=MaxGradientLength) #morido, 13/1
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="No Information present"
+ Name="Gradient information stops at current location"
 >
 <PreConditions>
-<PreCondition>Gradients == []</PreCondition></PreConditions>
-<Expression>MaxGradientLength</Expression>
+<PreCondition>Current.Gradient == 255.0</PreCondition></PreConditions>
+<Expression>Current.Location</Expression>
 </Case><Case
  Name="Otherwise"
 >
@@ -284,7 +287,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <PreConditions>
 <PreCondition>G_A == 255</PreCondition></PreConditions>
-<Expression>0.0</Expression>
+<Expression>255.0</Expression>
 </Case><Case
  Name="Q_GDIR is uphill"
 >
@@ -514,6 +517,12 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Last element"
+>
+<PreConditions>
+<PreCondition>GradientInfo.Gradient == 255.0</PreCondition></PreConditions>
+<Expression>BaseTypes.Gradient.Indefinite</Expression>
+</Case><Case
  Name="Before gradient info (considering train length)"
 >
 <PreConditions>

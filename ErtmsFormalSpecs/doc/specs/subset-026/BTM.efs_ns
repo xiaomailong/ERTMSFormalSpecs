@@ -1241,7 +1241,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
   NID_BG=&gt;Message.NID_BG,
   NID_C=&gt;Message.NID_C
 ) 
-ON Message.Sequence1</Action></Actions>
+ON Message.Sequence1</Action><Action>BGIsConsidered &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="ApplyLinkingReaction"
@@ -1295,13 +1295,13 @@ ON Message.Sequence1</Action></Actions>
 >
 <Comment>This is structurally equal to BTM.HandleBaliseMessage.HandleBaliseMessage.HandleBaliseMessage but only considers MAs #morido, 13/10/24</Comment>
 <PreConditions>
-<PreCondition>Linking.ConsiderBG()</PreCondition></PreConditions>
+<PreCondition>BGIsConsidered</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY HandleNewPacketMA(
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG
 ) 
-ON Message.Sequence1</Action></Actions>
+ON Message.Sequence1</Action><Action>BGIsConsidered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1551,6 +1551,15 @@ If all the messages of the current balise group have been received, calls Handle
 >
 </ReqRef><Comment>Distance between the front end of the train and the active Eurobalise antenna.
 [stan@ertmssolutions.com] We assume that ActiveAntennaPosition &gt; 0</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BGIsConsidered"
+>
+<Comment>Used to indicate if the current balise group has to be considered.4</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

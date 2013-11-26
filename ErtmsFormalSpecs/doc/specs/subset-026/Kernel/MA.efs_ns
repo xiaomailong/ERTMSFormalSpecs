@@ -1,4 +1,7 @@
 <NameSpace
+ X="110"
+ Width="100"
+ Height="50"
  Name="MA"
 >
 <NameSpaces>
@@ -1192,7 +1195,8 @@ USING
  Name="SSP does not cover required length"
 >
 <PreConditions>
-<PreCondition>SUM Kernel.TrackDescription.StaticSpeedProfile.SSP USING X.Distance &lt; 
+<PreCondition>( SUM Kernel.TrackDescription.StaticSpeedProfile.SSP USING X.Distance )
+&lt; 
 Default.BaseTypes.LengthToDistance(
    Default.MessageTypes.QScaleLength(
       length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,

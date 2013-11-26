@@ -223,26 +223,26 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 12000.0,
+  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 20000.0, 
   TrainLength =&gt; 100.0
-) == 0.0</Expectation><Expectation
+) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 12000.0,
+  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 12000.0, 
   TrainLength =&gt; 100.0
-) == 0.0</Expectation><Expectation
+) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 12000.0,
+  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 11000.0, 
   TrainLength =&gt; 100.0
-) == BaseTypes.Gradient.Indefinite </Expectation><Expectation
+) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrackDescription.Gradient.GradientEnd ( 
-  Current =&gt; FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Location == 12000.0 
-) == 12000.0 + Kernel.TrackDescription.Gradient.MaxGradientLength</Expectation></Expectations>
+  Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients
+) == 12000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

@@ -817,70 +817,73 @@ namespace DataDictionary.Interpreter
                 Match(listOp);
                 Expression listExpression = Expression(0);
 
-                Expression condition = null;
-                if (LookAhead("|"))
+                if (listExpression != null)
                 {
-                    Match("|");
-                    condition = Expression(0);
-                }
-
-                if (listOp.CompareTo(ListOperators.MapExpression.OPERATOR) == 0
-                    || listOp.CompareTo(ListOperators.ReduceExpression.OPERATOR) == 0
-                    || listOp.CompareTo(ListOperators.SumExpression.OPERATOR) == 0)
-                {
-                    Match("USING");
-                    Expression iteratorExpression = Expression(0);
-                    if (iteratorExpression != null)
+                    Expression condition = null;
+                    if (LookAhead("|"))
                     {
-                        if (ListOperators.MapExpression.OPERATOR.CompareTo(listOp) == 0)
+                        Match("|");
+                        condition = Expression(0);
+                    }
+
+                    if (listOp.CompareTo(ListOperators.MapExpression.OPERATOR) == 0
+                        || listOp.CompareTo(ListOperators.ReduceExpression.OPERATOR) == 0
+                        || listOp.CompareTo(ListOperators.SumExpression.OPERATOR) == 0)
+                    {
+                        Match("USING");
+                        Expression iteratorExpression = Expression(0);
+                        if (iteratorExpression != null)
                         {
-                            retVal = new ListOperators.MapExpression(Root, RootLog, listExpression, condition, iteratorExpression);
-                        }
-                        else if (ListOperators.SumExpression.OPERATOR.CompareTo(listOp) == 0)
-                        {
-                            retVal = new ListOperators.SumExpression(Root, RootLog, listExpression, condition, iteratorExpression);
-                        }
-                        else if (ListOperators.ReduceExpression.OPERATOR.CompareTo(listOp) == 0)
-                        {
-                            Match("INITIAL_VALUE");
-                            Expression initialValue = Expression(0);
-                            if (initialValue != null)
+                            if (ListOperators.MapExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                retVal = new ListOperators.ReduceExpression(Root, RootLog, listExpression, condition, iteratorExpression, initialValue);
+                                retVal = new ListOperators.MapExpression(Root, RootLog, listExpression, condition, iteratorExpression);
                             }
-                            else
+                            else if (ListOperators.SumExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                throw new ParseErrorException("REDUCE requires an initial value", Index, Buffer);
+                                retVal = new ListOperators.SumExpression(Root, RootLog, listExpression, condition, iteratorExpression);
                             }
+                            else if (ListOperators.ReduceExpression.OPERATOR.CompareTo(listOp) == 0)
+                            {
+                                Match("INITIAL_VALUE");
+                                Expression initialValue = Expression(0);
+                                if (initialValue != null)
+                                {
+                                    retVal = new ListOperators.ReduceExpression(Root, RootLog, listExpression, condition, iteratorExpression, initialValue);
+                                }
+                                else
+                                {
+                                    throw new ParseErrorException("REDUCE requires an initial value", Index, Buffer);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            throw new ParseErrorException("Function designator expected", Index, Buffer);
                         }
                     }
                     else
                     {
-                        throw new ParseErrorException("Function designator expected", Index, Buffer);
-                    }
-                }
-                else
-                {
-                    // Create the right class for this list operation
-                    if (ListOperators.ThereIsExpression.OPERATOR.CompareTo(listOp) == 0)
-                    {
-                        retVal = new ListOperators.ThereIsExpression(Root, RootLog, listExpression, condition);
-                    }
-                    else if (ListOperators.ForAllExpression.OPERATOR.CompareTo(listOp) == 0)
-                    {
-                        retVal = new ListOperators.ForAllExpression(Root, RootLog, listExpression, condition);
-                    }
-                    else if (ListOperators.FirstExpression.OPERATOR.CompareTo(listOp) == 0)
-                    {
-                        retVal = new ListOperators.FirstExpression(Root, RootLog, listExpression, condition);
-                    }
-                    else if (ListOperators.LastExpression.OPERATOR.CompareTo(listOp) == 0)
-                    {
-                        retVal = new ListOperators.LastExpression(Root, RootLog, listExpression, condition);
-                    }
-                    else if (ListOperators.CountExpression.OPERATOR.CompareTo(listOp) == 0)
-                    {
-                        retVal = new ListOperators.CountExpression(Root, RootLog, listExpression, condition);
+                        // Create the right class for this list operation
+                        if (ListOperators.ThereIsExpression.OPERATOR.CompareTo(listOp) == 0)
+                        {
+                            retVal = new ListOperators.ThereIsExpression(Root, RootLog, listExpression, condition);
+                        }
+                        else if (ListOperators.ForAllExpression.OPERATOR.CompareTo(listOp) == 0)
+                        {
+                            retVal = new ListOperators.ForAllExpression(Root, RootLog, listExpression, condition);
+                        }
+                        else if (ListOperators.FirstExpression.OPERATOR.CompareTo(listOp) == 0)
+                        {
+                            retVal = new ListOperators.FirstExpression(Root, RootLog, listExpression, condition);
+                        }
+                        else if (ListOperators.LastExpression.OPERATOR.CompareTo(listOp) == 0)
+                        {
+                            retVal = new ListOperators.LastExpression(Root, RootLog, listExpression, condition);
+                        }
+                        else if (ListOperators.CountExpression.OPERATOR.CompareTo(listOp) == 0)
+                        {
+                            retVal = new ListOperators.CountExpression(Root, RootLog, listExpression, condition);
+                        }
                     }
                 }
             }
