@@ -479,6 +479,9 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <ReqRef
  Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
 >
+</ReqRef><ReqRef
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
+>
 </ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
@@ -488,6 +491,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="SSP information stops at current location"
+>
+<PreConditions>
+<PreCondition>Current.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<Expression>Current.Distance</Expression>
+</Case><Case
  Name="Always"
 >
 <Expression>REDUCE
