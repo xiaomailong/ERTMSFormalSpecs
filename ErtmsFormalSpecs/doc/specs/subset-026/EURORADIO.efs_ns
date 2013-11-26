@@ -1574,13 +1574,47 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
+<Action>EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
 {
     NID_MESSAGE =&gt; 130,
     L_MESSAGE =&gt; 0,
     T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendEoMReport"
+>
+<ReqRef
+ Id="3f735818-2dc8-4e4a-a842-9112c3e053a9"
+>
+</ReqRef><ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send EoM report"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send EoM report"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EuroradioMessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>

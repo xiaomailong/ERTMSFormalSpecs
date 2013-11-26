@@ -6521,6 +6521,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><States>
 <State
+ X="60"
+ Y="50"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Step1"
 >
@@ -6542,49 +6546,95 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="HandleInformation"
+ Name="Check communcation sessions"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="HandleInformation"
+ Name="RIU session exists"
 >
-<PreConditions>
-</PreConditions>
+<ReqRef
+ Id="76ba8efa-4749-4010-974a-06666af596e4"
+>
+</ReqRef><PreConditions>
+<PreCondition>False</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.ModeTransitions.ModeRules.HandleAdhesionFactors()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleAxleLoadSpeed()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleGradientProfile()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleMA()</Action><Action>Kernel.ModeTransitions.ModeRules.HandlePermittedBrakingDistance()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleReversingArea()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleRouteSuitability()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleSSP()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrackConditions1()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrackConditions2()</Action><Action>Kernel.ModeTransitions.ModeRules.HandleTrainData()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+<Action>THIS &lt;- Step2_RIU</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="EndOfProcedure"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="EndOfProcedure"
->
-<PreConditions>
-<PreCondition>EURORADIO.CurrentRadioSession.Status == EURORADIO.SafeRadioConnectionStatus.NoConnection</PreCondition></PreConditions>
-<Actions>
-<Action>THIS &lt;- NoProcedure</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- Implemented="TRUE"
- Name="Step2"
+ Name="Euroradio session exists"
 >
 <ReqRef
  Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
 >
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Step2_Euroradio</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No communication sessions"
+>
+<ReqRef
+ Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
+>
+</ReqRef><ReqRef
+ Id="f31f1b65-224b-4941-9951-eebbd7994a51"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="690"
+ Y="50"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Step2_Euroradio"
+>
+<ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+>
 </ReqRef><StateMachine
  InitialState="Step2"
 >
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Send End of Mission"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send End of Mission"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EURORADIO.SendEoMReport()</Action><Action>THIS &lt;- Step3</Action><Action>LastEoMRequestTime &lt;- CurrentTime</Action><Action>NumberOfSentEoMRequestRepetitions  &lt;- 0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="370"
+ Y="160"
+ Width="100"
+ Height="50"
+ Name="Step2_RIU"
+>
+<StateMachine
+ InitialState="CloseSession"
+>
 <States>
 <State
- Implemented="TRUE"
- Name="Step2"
+ X="50"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="CloseSession"
 >
 <StateMachine
  InitialState=""
@@ -6592,143 +6642,185 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rules>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="Step2"
+ Name="Close the session"
 >
-<ReqRef
- Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="Step2"
->
-<PreConditions>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
-<Actions>
-<Action>EURORADIO.EuroradioMessageOut.END_OF_MISSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
-{
-    NID_MESSAGE =&gt; 0,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; 0,
-    NID_ENGINE =&gt; 0,
-    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
-
- }</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Step3"
->
-<ReqRef
- Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Step3"
+ Name="Close the session"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message
-{
-    NID_MESSAGE =&gt; 0,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; 0,
-    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
-    NID_LRBG =&gt; 0
-}</Action></Actions>
+<Action>THIS &lt;- CheckEuroradio</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+</Rule></Rules>
+</StateMachine></State><State
+ X="290"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
- Name="Steo4"
+ Name="CheckEuroradio"
 >
 <ReqRef
- Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
+ Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
+</ReqRef><StateMachine
+ InitialState=""
  Implemented="TRUE"
- Name="Steo4"
 >
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NoProcedure</Action><Action>EURORADIO.CurrentRadioSession.Status &lt;- EURORADIO.SafeRadioConnectionStatus.NoConnection</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
+<Rules>
+<Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="No request to terminate the CS, new message sent"
->
-<ReqRef
- Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="No request to terminate the CS is received"
->
-<PreConditions>
-<PreCondition>EURORADIO.HasActiveSession()</PreCondition><PreCondition>EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION == EMPTY</PreCondition><PreCondition>Kernel.LastMessageSentTime  + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.LastMessageSentTime &lt;- CurrentTime</Action><Action>Kernel.NumberOfMessagesSent&lt;- Kernel.NumberOfMessagesSent + 1</Action><Action>EURORADIO.EuroradioMessageOut.END_OF_MISSION &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message
-{
-    NID_MESSAGE =&gt; 0,
-    L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; 0,
-    NID_ENGINE =&gt; 0,
-    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
-
- }</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="No request to terminate the CS, messages limit reached"
->
-<ReqRef
- Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="No request to terminate the CS, message reached limit"
->
-<PreConditions>
-<PreCondition>Kernel.NumberOfMessagesSent == 3</PreCondition><PreCondition>Kernel.LastMessageSentTime  + EURORADIO.TimeBeforeMessageRepetition &gt;= CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action>EURORADIO.CloseRBCSession()</Action><Action>Kernel.NumberOfMessagesSent &lt;- 0</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="No com session is opened"
+ Name="Check Euroradio session"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="No com session"
+ Name="Euroradio session exists"
 >
 <ReqRef
- Id="219ceefb-8943-4c10-a74d-b6ef703ec766"
+ Id="0a55611b-2936-44a8-89fb-8b7fa083a761"
 >
 </ReqRef><PreConditions>
-<PreCondition>EURORADIO.NoSession()</PreCondition></PreConditions>
+<PreCondition>EURORADIO.HasActiveSession()</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Step2_Euroradio</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No Euroradio session"
+>
+<ReqRef
+ Id="6cb672e1-5b1b-46b0-86fb-2ea853009bd5"
+>
+</ReqRef><PreConditions>
+</PreConditions>
+<Actions>
+<Action>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
+</StateMachine></State><State
+ X="690"
+ Y="160"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Step3"
+>
+<ReqRef
+ Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
+>
+</ReqRef><StateMachine
+ InitialState=""
+ Implemented="TRUE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Wait the RBC acknowledgement"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Wait the RBC acknowledgement"
+>
+<ReqRef
+ Id="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
+>
+</ReqRef><PreConditions>
+<PreCondition>Available ( EURORADIO.EuroradioMessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Step4</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="No answer, maximum number of requests reached"
+>
+<ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+>
+</ReqRef><PreConditions>
+<PreCondition>LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition><PreCondition>NumberOfSentEoMRequestRepetitions == 3</PreCondition></PreConditions>
+<Actions>
+<Action>THIS &lt;- Step4</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="No answer, a new request can be sent"
+>
+<ReqRef
+ Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
+>
+</ReqRef><PreConditions>
+<PreCondition>LastEoMRequestTime + EURORADIO.TimeBeforeMessageRepetition &lt;= CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action>EURORADIO.SendEoMReport()</Action><Action>NumberOfSentEoMRequestRepetitions  &lt;- NumberOfSentEoMRequestRepetitions  + 1</Action><Action>LastEoMRequestTime &lt;- CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="690"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Step4"
+>
+<ReqRef
+ Id="e86b435b-86a1-4af1-a9af-e87aaca847d9"
+>
+</ReqRef><ReqRef
+ Id="c55df22b-a932-48aa-9c94-b034916ab339"
+>
+</ReqRef><StateMachine
+ InitialState=""
+ Implemented="TRUE"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Terminate the communication session"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Terminate the communication session"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EURORADIO.CloseRBCSession()</Action><Action>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="60"
+ Y="270"
+ Width="100"
+ Height="50"
+ Name="ExitState"
+>
+<StateMachine
+ InitialState=""
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Go to NoProcedure"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Go to NoProcedure"
+>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action>THIS &lt;- NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State></States>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="550"
@@ -6993,6 +7085,55 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 </PreConditions>
 <Actions>
 <Action>PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="InitializeElementsForMA"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Initialize SSP + Gradients"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Initialize SSP + Gradients"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Location =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Location =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 70.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 70.0
+            }
+        ]
+    }
+]</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -7310,17 +7451,29 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 >
 </Variable><Variable
  Type="Integer"
+ DefaultValue="0"
  VariableMode="Internal"
- Name="NumberOfMessagesSent"
+ Implemented="TRUE"
+ Name="NumberOfSentEoMRequestRepetitions"
 >
+<ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+>
+</ReqRef><Comment>Represents the number of already sent EOM requests</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
  VariableMode="Internal"
- NeedsRequirement="FALSE"
- Name="LastMessageSentTime"
+ Implemented="TRUE"
+ Name="LastEoMRequestTime"
 >
-<Comment>Variable to know the time of the sent message</Comment>
+<ReqRef
+ Id="4d7758a5-c99b-4537-8da4-a51b99dafd40"
+>
+</ReqRef><ReqRef
+ Id="f9f81d1e-22c3-429b-b29b-0c828790dce4"
+>
+</ReqRef><Comment>Represents the time when the last EoM request was sent</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
