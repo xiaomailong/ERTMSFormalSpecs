@@ -1195,7 +1195,9 @@ USING
  Name="SSP does not cover required length"
 >
 <PreConditions>
-<PreCondition>( SUM Kernel.TrackDescription.StaticSpeedProfile.SSP USING X.Distance )
+<PreCondition>Kernel.TrackDescription.StaticSpeedProfile.SSP == []
+OR
+( Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) )
 &lt; 
 Default.BaseTypes.LengthToDistance(
    Default.MessageTypes.QScaleLength(
@@ -1208,7 +1210,9 @@ Default.BaseTypes.LengthToDistance(
  Name="Gradient information does not cover required length"
 >
 <PreConditions>
-<PreCondition>Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients) &lt;
+<PreCondition>Kernel.TrackDescription.Gradient.Gradients == []
+OR
+Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients) &lt;
 Default.BaseTypes.LengthToDistance(
    Default.MessageTypes.QScaleLength(
       length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
