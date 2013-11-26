@@ -354,11 +354,12 @@ namespace GUI.SpecificationView
         /// <returns></returns>
         public static string CreateStatMessage(List<DataDictionary.Specification.Paragraph> paragraphs)
         {
-            int subParagraphCount = paragraphs.Count;
-            int implementableCount = 0;
-            int implementedCount = 0;
-            int unImplementedCount = 0;
-            int notImplementable = 0;
+            int subParagraphCount    = paragraphs.Count;
+            int implementableCount   = 0;
+            int implementedCount     = 0;
+            int unImplementedCount   = 0;
+            int notImplementable     = 0;
+            int newRevisionAvailable = 0;
 
             foreach (DataDictionary.Specification.Paragraph p in paragraphs)
             {
@@ -378,12 +379,18 @@ namespace GUI.SpecificationView
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
                         notImplementable += 1;
                         break;
+
+                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable:
+                        implementableCount += 1;
+                        newRevisionAvailable += 1;
+                        break;
                 }
             }
             return subParagraphCount + " selected, "
                 + implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), "
                 + implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), "
-                + unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%) ";
+                + unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%), "
+                + newRevisionAvailable + " with new revision (" + Math.Round(((float)newRevisionAvailable / implementableCount * 100), 2) + "%)";
         }
     }
 }
