@@ -95,18 +95,21 @@ namespace DataDictionary
             {
                 Specification.Paragraph retVal = null;
 
-                foreach (Specification.Specification specification in Dictionary.Specifications)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
-                    retVal = specification.FindParagraphByGuid(getId());
-
-                    if (retVal == null)
+                    foreach (Specification.Specification specification in dictionary.Specifications)
                     {
-                        retVal = specification.FindParagraphByNumber(getId());
-                    }
+                        retVal = specification.FindParagraphByGuid(getId());
 
-                    if (retVal != null)
-                    {
-                        break;
+                        if (retVal == null)
+                        {
+                            retVal = specification.FindParagraphByNumber(getId());
+                        }
+
+                        if (retVal != null)
+                        {
+                            break;
+                        }
                     }
                 }
 
