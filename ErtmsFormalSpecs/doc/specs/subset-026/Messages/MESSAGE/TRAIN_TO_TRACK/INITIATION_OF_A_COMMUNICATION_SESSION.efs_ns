@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Initiation of a communication session</Comment>
@@ -16,26 +17,38 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="193e4ff3-c085-4881-89f4-4bba951aae20"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="974dafe8-70ad-409f-a13c-435c0f1b8be1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="4faba43d-d002-4947-afce-02a4abef7460"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

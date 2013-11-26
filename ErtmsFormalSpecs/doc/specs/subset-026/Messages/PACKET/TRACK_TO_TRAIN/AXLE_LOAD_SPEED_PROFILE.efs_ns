@@ -125,7 +125,10 @@
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef><StructureElement
  TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
@@ -143,7 +146,10 @@
  Implemented="TRUE"
  Name="SubStructure2"
 >
-<StructureElement
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef><StructureElement
  TypeName="D_AXLELOAD"
  Default="0"
  Mode="InOut"
@@ -182,7 +188,10 @@
  Implemented="TRUE"
  Name="SubStructure3"
 >
-<StructureElement
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef><StructureElement
  TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
@@ -204,17 +213,26 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection><Collection
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure3"
  Default="[]"
  Implemented="TRUE"
  Name="Collection2"
 >
-</Collection><Collection
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure2"
  Default="[]"
  Implemented="TRUE"
  Name="Collection3"
 >
-</Collection></Collections>
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

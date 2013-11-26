@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>MA Request</Comment>
@@ -16,60 +17,87 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8de66288-ba8b-49f2-a9cc-e1cd1b848fa3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="562e9d9d-f160-4726-9fdd-0192ae0ac13a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="422bfd78-6a90-4d9b-8000-8670a93a76db"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="00db9178-25bc-425f-9d84-def8931cd919"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_MARQSTREASON"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_MARQSTREASON"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="706d4b2b-fef4-4426-a33a-c820303c26bd"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="60fb8ae5-aecd-4fcf-aa69-ec41649b9c2f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="c127eb4e-6c45-4dbe-8365-8279e347b15c"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="c127eb4e-6c45-4dbe-8365-8279e347b15c"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.LEVEL_2_3_TRANSITION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_2_3_TRANSITION_INFORMATION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="c127eb4e-6c45-4dbe-8365-8279e347b15c"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -77,5 +105,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="c127eb4e-6c45-4dbe-8365-8279e347b15c"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Configuration Determination</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="479f1579-c6c4-4d37-bca6-65c2fa12bb97"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="22e91507-5c0f-42f8-9dab-1349ee87c523"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="607a3a22-f47d-4067-b5de-64b67056c023"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7654ffdb-f6fc-418e-a613-6aff3e5da4f9"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a649082f-fada-4d44-8eaf-dcdec5c4fa59"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_VERSION"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_VERSION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="298115e2-18d6-4747-8158-9c5ddf32a8c0"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

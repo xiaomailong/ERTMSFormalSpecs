@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Request to Shorten MA</Comment>
@@ -16,60 +17,87 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="b42e44cb-53b4-478a-b1fb-db5b5aefcbe3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="83a87141-eea5-4cd9-bb89-9849ed4c644e"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6dc8487f-7d73-4fc0-870c-0050b6678ba4"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="973f9ef1-d90e-4e03-8a97-5ba862847988"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5712d3b0-7b0f-49aa-babe-aa622c859e7a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_2_3_MOVEMENT_AUTHORITY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="57d61b1c-3b97-4a2b-9885-bcf7d03e30fb"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="MODE_PROFILE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -77,5 +105,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="d175558d-2bb2-4e19-aba0-4c4a8ee41667"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>SoM position report confirmed by RBC</Comment>
@@ -16,33 +17,48 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0b531e78-3531-49ff-9047-bdb1d79716cd"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="99ce84ee-4b3e-4cb8-937c-230f6d35dc3c"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f6710b9a-fd34-4ba5-bd93-ed44f5bd4650"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="806423e8-08f3-4d5f-9255-15dc00d6dc8e"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="9078dde0-d7bc-485c-9cdf-f8111a31ad3b"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

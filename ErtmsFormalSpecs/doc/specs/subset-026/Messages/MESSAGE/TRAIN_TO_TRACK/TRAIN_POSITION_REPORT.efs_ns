@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Train Position Report</Comment>
@@ -16,53 +17,77 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7a161d4e-9daf-4632-afbc-9c0ba1b37e6c"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8512700f-a6d7-4b0c-a289-782c95b3ff9c"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="57f6f903-9f6e-4b2c-8772-6ba6ca0aec3f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1ad3279a-9643-4da5-9373-74edaa89c5fb"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2cede8a1-5372-48a2-b195-db43cc0d3c3f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="6133d02d-e7a6-49f8-b647-7da1e187169e"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="6133d02d-e7a6-49f8-b647-7da1e187169e"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ERROR_REPORTING"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="6133d02d-e7a6-49f8-b647-7da1e187169e"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -70,5 +95,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="6133d02d-e7a6-49f8-b647-7da1e187169e"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

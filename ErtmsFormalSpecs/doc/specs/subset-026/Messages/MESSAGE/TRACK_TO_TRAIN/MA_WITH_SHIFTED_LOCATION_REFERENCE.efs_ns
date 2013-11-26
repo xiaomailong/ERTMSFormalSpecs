@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>MA with Shifted Location Reference</Comment>
@@ -16,242 +17,347 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0123c08b-279e-4b7a-83ba-538a77d3f2c6"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="4a3f40b4-9ecf-48d4-aa65-82156d5d1704"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="58db2e34-781f-4cf7-a190-e9735078853a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1eac02a7-f65f-491c-b129-64af269dda72"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6d4f4840-da84-41cf-a910-29f79bd5a91d"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="419d10d3-b696-49ee-9a6c-6815c48a59a1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_REF"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_REF"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e01dd30e-e06e-4bf6-a4ea-64228e0ff0c6"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_2_3_MOVEMENT_AUTHORITY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f642eb96-8b1e-40fe-bd75-33c93ec8f0f8"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="GRADIENT_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="INTERNATIONAL_STATIC_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LIST_OF_BALISES_FOR_SH_AREA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="MODE_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="NATIONAL_VALUES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LINKING.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LINKING"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="AXLE_LOAD_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="SESSION_MANAGEMENT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="RADIO_NETWORK_REGISTRATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ROUTE_SUITABILITY_DATA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ADHESION_FACTOR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="GEOGRAPHICAL_POSITION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="RBC_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_AREA_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_SUPERVISION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRAIN_RUNNING_NUMBER_FROM_RBC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -259,5 +365,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="d5c0f1d1-38f6-4156-abfa-d510c2dd761a"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>SR Authorisation</Comment>
@@ -16,67 +17,97 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f2e193e-66b4-4dcf-9a50-b6e963e9c732"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="231451ee-7b28-4033-9fbd-5d6a8545e926"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="388712c2-fe27-4991-a909-304753dbaa70"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="98e62c6d-a6f1-4f99-af53-6d0ec0259a41"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f516cf0b-ccbd-47ba-835e-74361fcc3c42"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f10f8728-1e96-49c1-bc72-2a7ed7dca14a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_SR"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_SR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="f281a173-764d-4113-9c05-01d56d592fee"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="f281a173-764d-4113-9c05-01d56d592fee"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LIST_OF_BALISES_IN_SR_AUTHORITY"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="f281a173-764d-4113-9c05-01d56d592fee"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -84,5 +115,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="f281a173-764d-4113-9c05-01d56d592fee"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

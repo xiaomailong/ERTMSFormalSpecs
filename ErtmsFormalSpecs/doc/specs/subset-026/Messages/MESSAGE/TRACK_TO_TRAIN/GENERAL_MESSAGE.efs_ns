@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>General message</Comment>
@@ -16,214 +17,307 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="fc2b0d6b-8022-4c97-896c-1dfbf82fc1d8"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="96bce90f-dea0-4c7e-8202-faac9770b7f9"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6e8f4323-2b4b-4d94-b604-8a5b082a9bfc"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f5555eef-435e-40bf-a703-0a51fce09fd0"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="fe5b6f60-a8a9-4847-b47e-c864ee470f7b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="GRADIENT_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="INTERNATIONAL_STATIC_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="NATIONAL_VALUES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LINKING.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LINKING"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="AXLE_LOAD_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="LEVEL_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="SESSION_MANAGEMENT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="RADIO_NETWORK_REGISTRATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_CONDITION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ROUTE_SUITABILITY_DATA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ADHESION_FACTOR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="GEOGRAPHICAL_POSITION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="RBC_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_AREA_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="REVERSING_SUPERVISION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRAIN_RUNNING_NUMBER_FROM_RBC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -231,5 +325,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="c990aff2-1386-4c14-b420-3a11c78ae887"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

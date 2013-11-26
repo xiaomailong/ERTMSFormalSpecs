@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Text Message Acknowledged by Driver</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="26e127ec-3ecd-43a3-ae47-c2704005b4a4"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a3ce8670-24f4-4e73-bd2f-994f7a301d88"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="eae00cc5-369e-42f3-93f9-359ac766060d"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d0240bd3-94f2-46e9-82b8-06962f660f26"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_TEXTMESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_TEXTMESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="252f27c1-d5e8-4400-b26b-ae4c8ed381f3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="c431d34d-e06e-4a5a-b181-1d1dcc4aca3b"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

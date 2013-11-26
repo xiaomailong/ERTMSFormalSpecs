@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>No compatible version</Comment>
@@ -16,26 +17,38 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="180abffc-1e69-479f-9d27-b361a511b724"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="771097a5-70ee-4e32-ad57-cc3370e9c2df"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5fa92a17-4bdd-45f7-af50-8fb767b1f5df"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="be83abf1-33e3-48e8-81f5-7272786632ac"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

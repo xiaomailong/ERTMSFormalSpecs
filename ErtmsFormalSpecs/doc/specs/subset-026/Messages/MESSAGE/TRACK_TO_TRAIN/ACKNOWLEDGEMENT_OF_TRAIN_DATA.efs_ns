@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Acknowledgement of Train Data</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="30f9a54a-7f8f-420c-a389-ab8e98e1629a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d1c0f221-242a-484c-b275-a23081cb8295"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5017a53b-9228-4e75-89f0-2b9ce47d67e3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="24e6f3b7-b31d-4630-9361-82a2e8240aa2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="4408ebe1-8134-4a83-94bb-635fddc70dc5"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN_1"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="5a7dbbbc-5fc9-418e-a4cc-5856cfd41bf5"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

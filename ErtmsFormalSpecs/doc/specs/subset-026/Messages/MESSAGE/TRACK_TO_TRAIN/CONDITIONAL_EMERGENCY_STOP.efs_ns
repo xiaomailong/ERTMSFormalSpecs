@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Conditional Emergency Stop</Comment>
@@ -16,68 +17,98 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="00d90111-8cf5-4205-9605-58e3b735e252"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0374f1f1-0f73-46da-9cee-b3d8f5b9fbe5"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="3b6d4d7a-c1c6-45a1-9a13-2f58f543ffce"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="81be1455-8b57-4735-9d15-0a2d9cc22723"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7ba7ff83-7ac6-4bfc-866a-832356f678cd"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_EM"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_EM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="ba99fd87-1d73-40cd-b9e7-163c1a5b7f68"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d9c316ae-8c31-49c3-9189-ed83e1563e90"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_REF"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_REF"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c0a0302c-ec2f-45fa-abf1-9eb80ba59d58"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8fd9bb19-c087-475c-9925-1135b7e2523a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_EMERGENCYSTOP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_EMERGENCYSTOP"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="074e011d-e0b6-4a3d-bb02-9e4d5de7934a"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

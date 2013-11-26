@@ -8,7 +8,19 @@
  Implemented="TRUE"
  Name="Message"
 >
-<Comment>Euroloop</Comment>
+<ReqRef
+ Id="e00ffa97-a3af-4524-83fb-4a3ef625993e"
+>
+</ReqRef><ReqRef
+ Id="f04469fb-5e57-4620-98bc-67d0e9bd38b2"
+>
+</ReqRef><ReqRef
+ Id="04373058-2f44-4857-a462-2da1803b8e71"
+>
+</ReqRef><ReqRef
+ Id="1de7ad35-581e-4823-902b-05cc061064ae"
+>
+</ReqRef><Comment>Euroloop</Comment>
 <StructureElement
  TypeName="Q_UPDOWN"
  Default=""
@@ -16,53 +28,80 @@
  Implemented="TRUE"
  Name="Q_UPDOWN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5fded786-bbc1-4823-a302-1e77340f4c90"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_VERSION"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_VERSION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8a9c92c5-28ec-4d69-b3f8-03d287f3841c"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_MEDIA"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_MEDIA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e1b9482b-f530-4463-b277-57b4776563fd"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8066b640-2b8d-4a84-a081-ca21cfc9a7e6"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LOOP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LOOP"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="de28839f-fea0-4119-86b2-b44e47275671"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
+>
+</ReqRef><ReqRef
+ Id="c61a86a9-6322-4213-bc4a-eadebd7388cc"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="TRACK_TO_TRAIN"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -70,5 +109,11 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="a421cda3-4eb0-41d2-a06f-d4f9b7b9c9f6"
+>
+</ReqRef><ReqRef
+ Id="c61a86a9-6322-4213-bc4a-eadebd7388cc"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Assignment of coordinate system</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="904eea23-8183-44f2-bc1a-9cd164e6a7d2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7fd481cf-6829-4a1b-8148-dab4e4144a2b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="b766d982-24ee-47d9-b7c4-a661d0ec79dc"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1a3f73ad-aa94-4e0b-ab3f-1d85a74ab67a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0079b85c-7fb3-43a0-aafb-c38c573c0803"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_ORIENTATION"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_ORIENTATION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="433922ed-3175-4da4-894c-6789ebddbffd"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Track Ahead Free Request</Comment>
@@ -16,68 +17,98 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a8e1749b-687c-4f1f-9a0a-0d0a57a57753"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a4864287-79ef-4dc8-8557-29df87f10031"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1e61e20d-a6d4-48b9-85e2-9ed7fb895367"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="03b2263d-8a37-4293-99be-e6e4eb8f74a0"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f45a7b6-8329-4a07-81b6-9adaec8d94bf"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="33dde37a-3f1e-483b-a868-d015ef1bac56"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_REF"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_REF"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="29f36dd7-c647-40cf-9030-9f463cf415a7"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="edaf3b97-1fa8-4cac-9444-ef095299ccfe"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="D_TAFDISPLAY"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_TAFDISPLAY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="53054485-2282-4b77-af7c-25fdf2c537b5"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_TAFDISPLAY"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_TAFDISPLAY"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="0cfa9536-6121-4619-a303-0054dd38ccbc"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

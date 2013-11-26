@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>SH Refused</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c1921f01-652a-43a0-90fb-a6c43b15c41d"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f19b89ce-b2ff-42a6-a420-f8bfa90c1373"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="533aef01-a7b0-47c3-9657-ee1ae797a0f6"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a24929c8-0101-4521-824f-265e13107369"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="544c55b8-4adb-437d-a42f-10c3d86a172a"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN_1"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="92c02ed3-64c4-4254-8066-3505ec5dadfb"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

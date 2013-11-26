@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Revocation of Emergency Stop</Comment>
@@ -16,40 +17,58 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="38476b93-c284-4743-b820-5a32db31deeb"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="59631027-3100-4b17-8b0f-9b4c25f2280c"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9734bf29-4783-41c8-a83d-b5dd1f9e59ff"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="70b07924-a97c-4387-a658-118ee1e11735"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="3c021d46-d475-455d-89f1-964a18cf302b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_EM"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_EM"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="e4525d99-e97d-4e9a-9e3c-ae8524b5ba6a"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

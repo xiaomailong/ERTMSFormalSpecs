@@ -6,6 +6,7 @@
 <Structures>
 <Structure
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Message"
 >
 <Comment>Session Established</Comment>
@@ -16,46 +17,67 @@
  Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6d607aea-ecdf-49ba-94cf-820077be16f5"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da48d790-6e99-4ede-b382-33683f89734e"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="034e6081-8324-46a4-8701-9547536400ac"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="81482df6-4bcd-4d73-987a-cd90bcffe361"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
  Name="ONBOARD_TELEPHONE_NUMBERS"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -63,5 +85,8 @@
  Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="f5760847-4b49-4c61-8ca9-da687dc787ac"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>
