@@ -2504,7 +2504,7 @@ Procedure End of Mission<Sub>
  id="5.5.3.1"
  guid="570c8a11-7b83-4328-891d-b5c901359dda"
  type="DEFINITION"
- scope="OBU"
+ scope="OBU_AND_TRACK"
  bl=""
  name=""
  reviewed="TRUE"
@@ -2521,12 +2521,25 @@ Procedure End of Mission<Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Step 1 - MA, Track Description Data and Train Data may be deleted (mode dependent, see Chapter 4, section &quot;What happens to accepted and stored information when Entering a Mode&quot;).<Sub>
+<Paragraph
+ id="5.5.3.1.1.1"
+ guid="f31f1b65-224b-4941-9951-eebbd7994a51"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Step 1 - MA, Track Description Data and Train Data may be deleted (mode dependent, see Chapter 4, section &quot;What happens to accepted and stored information when Entering a Mode&quot;).
-End of Procedure, if there is no existing communication session.&quot;</Paragraph><Paragraph
+>End of Procedure, if there is no existing communication session.&quot;</Paragraph></Sub>
+</Paragraph><Paragraph
  id="5.5.3.1.2"
  guid="76ba8efa-4749-4010-974a-06666af596e4"
  type="REQUIREMENT"
@@ -2538,9 +2551,33 @@ End of Procedure, if there is no existing communication session.&quot;</Paragrap
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a communication session with an RIU exists:
-Step 2 - The ERTMS/ETCS on-board equipment shall terminate the communication session
-End of procedure</Paragraph><Paragraph
+>If a communication session with an RIU exists:<Sub>
+<Paragraph
+ id="5.5.3.1.2.Step2"
+ guid="afd0107b-e36b-4b26-a0f0-1071084bc3e7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Step 2 - The ERTMS/ETCS on-board equipment shall terminate the communication session</Paragraph><Paragraph
+ id="5.5.3.1.2.Step3"
+ guid="6cb672e1-5b1b-46b0-86fb-2ea853009bd5"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>End of procedure</Paragraph></Sub>
+</Paragraph><Paragraph
  id="5.5.3.1.3"
  guid="0a55611b-2936-44a8-89fb-8b7fa083a761"
  type="REQUIREMENT"
@@ -2552,12 +2589,53 @@ End of procedure</Paragraph><Paragraph
  version="3.0.0"
  functionalBlockName=""
  Name=""
->If a communication session with an RBC exists:
-Step 2 - The end of mission shall be reported to the RBC by means of the message &quot;End of Mission&quot;.
-Step 3 - The RBC shall request to terminate the communication session.
-Step 4 - The ERTMS/ETCS on-board equipment shall terminate the communication session
-End of procedure<Sub>
+>If a communication session with an RBC exists:<Sub>
 <Paragraph
+ id="5.5.3.1.3.Step2"
+ guid="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The end of mission shall be reported to the RBC by means of the message &quot;End of Mission&quot;.</Paragraph><Paragraph
+ id="5.5.3.1.3.Step3"
+ guid="d59dd844-f144-4d73-a4eb-ba5f21dd2958"
+ type="REQUIREMENT"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The RBC shall request to terminate the communication session.</Paragraph><Paragraph
+ id="5.5.3.1.3.Step4"
+ guid="e86b435b-86a1-4af1-a9af-e87aaca847d9"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>The ERTMS/ETCS on-board equipment shall terminate the communication session</Paragraph><Paragraph
+ id="5.5.3.1.3.Step5"
+ guid="c55df22b-a932-48aa-9c94-b034916ab339"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>End of procedure</Paragraph><Paragraph
  id="5.5.3.1.3.1"
  guid="a2a45b72-8c2f-4ac4-a8b9-6fcfc9451b54"
  type="NOTE"
