@@ -11,6 +11,9 @@
 <ReqRef
  Id="2f2df53c-e717-4abf-bcd7-995bdf07a8bc"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -34,6 +37,9 @@
 <ReqRef
  Id="f5d2b12f-7119-4063-9f34-c47c3f83ccdf"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -55,6 +61,9 @@
 >
 <ReqRef
  Id="29c38dc0-760e-489c-b451-a83537cb9e44"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><Rules>
 <Rule
@@ -83,6 +92,9 @@
 >
 <ReqRef
  Id="ed33eb7f-8b9e-4485-9e25-62147cd368ff"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><Rules>
 <Rule
@@ -114,6 +126,9 @@
 </ReqRef><ReqRef
  Id="2cc71448-b090-4455-95e4-1d187ca9debe"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -136,6 +151,9 @@
 >
 <ReqRef
  Id="c1c2e72d-abfa-40cc-ab4e-10dd67d304e9"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><Rules>
 <Rule
@@ -160,6 +178,9 @@
 <ReqRef
  Id="c73c1fbd-5f6c-419c-a6c2-1a8c81cca57b"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -182,6 +203,9 @@
 >
 <ReqRef
  Id="038f5c97-bc09-46ad-b0e4-501cc3a9893a"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><Rules>
 <Rule
@@ -206,6 +230,9 @@
 <ReqRef
  Id="81e057d0-016b-449f-8994-c2a6d7b34729"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -229,6 +256,9 @@
 <ReqRef
  Id="9d4797ea-78a8-430b-95ff-ab8ccf427197"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><Rules>
 <Rule
  Priority="Processing"
@@ -250,6 +280,9 @@
 >
 <ReqRef
  Id="d73b7418-d053-4ed9-a4a8-f4d09322825b"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
 >
 </ReqRef><Rules>
 <Rule
@@ -283,6 +316,9 @@
 <ReqRef
  Id="f1a72111-334b-4c63-9709-ceaeefe93df9"
 >
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -291,23 +327,7 @@
 <PreConditions>
 <PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
-<Action>HandleGradientProfile()</Action><Action>HandleAxleLoadSpeed()</Action><Action>HandleSSP()</Action><Action>HandleAdhesionFactors()</Action><Action>HandleMA()</Action><Action>HandlePermittedBrakingDistance()</Action><Action>HandleReversingArea()</Action><Action>HandleRouteSuitability()</Action><Action>HandleTrackConditions1()</Action><Action>HandleTrackConditions2()</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Name="Updatedmode"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Updatedmode"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>Kernel.Mode &lt;- Kernel.ModeTransitions.PrevMode</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+<Action>HandleGradientProfile()</Action><Action>HandleAxleLoadSpeed()</Action><Action>HandleSSP()</Action><Action>HandleAdhesionFactors()</Action><Action>HandleMA()</Action><Action>HandlePermittedBrakingDistance()</Action><Action>HandleReversingArea()</Action><Action>HandleRouteSuitability()</Action><Action>HandleTrackConditions1()</Action><Action>HandleTrackConditions2()</Action><Action>Kernel.Mode &lt;- Kernel.ModeTransitions.PrevMode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
