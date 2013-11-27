@@ -24,7 +24,15 @@
  Name="ConversionModelIsUsed"
 >
 <PreConditions>
-<PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.MaximumSpeed</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition><PreCondition>TrainData.Value.BrakePercentage != Percentage.NA</PreCondition><PreCondition>30.0 &lt;= TrainData.Value.BrakePercentage</PreCondition><PreCondition>TrainData.Value.BrakePercentage &lt;= 250.0</PreCondition><PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.TrainLength</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 750.0</PreCondition></PreConditions>
+<PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.MaximumSpeed
+  AND
+Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition><PreCondition>TrainData.Value.BrakePercentage != Percentage.NA
+  AND
+30.0 &lt;= TrainData.Value.BrakePercentage
+  AND
+TrainData.Value.BrakePercentage &lt;= 250.0</PreCondition><PreCondition>0.0 &lt;= Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="ConversionModelIsNotUsed"
@@ -350,6 +358,27 @@
  Name="Value"
 >
 <Expression>BrakingModelFunction ( BrakingModel =&gt; A_brake_service, Speed =&gt; V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Implemented="TRUE"
+ Name="Lmax"
+>
+<ReqRef
+ Id="c4a82032-36c3-4bf2-b9f1-7beadd359a45"
+>
+</ReqRef><Comment>Computes Lmax, as described in point c of 3.13.3.2.1.</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>900.0</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>1500.0</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
