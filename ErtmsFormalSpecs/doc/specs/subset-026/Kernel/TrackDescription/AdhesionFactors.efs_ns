@@ -9,10 +9,10 @@
  Name="AdhesionFactor"
 >
 <ReqRef
- Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+ Id="4d70e8b6-9e84-4816-bfe8-565433e79731"
 >
 </ReqRef><ReqRef
- Id="4d70e8b6-9e84-4816-bfe8-565433e79731"
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -52,19 +52,21 @@
 <Collection
  TypeName="AdhesionFactor"
  Default="[]"
+ Implemented="TRUE"
  Name="AdhesionFactors"
 >
 <ReqRef
- Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
 >
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Length"
+ Implemented="TRUE"
  Name="AdhFactorLength"
 >
 <ReqRef
- Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -238,9 +240,6 @@ IN
  Name="AdhFactors"
 >
 <ReqRef
- Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
->
-</ReqRef><ReqRef
  Id="9479529b-7ed6-4961-b08a-7bcb18714d1a"
 >
 <Comment></Comment>
@@ -256,6 +255,9 @@ IN
 </ReqRef><ReqRef
  Id="7ee3b877-7ff2-4541-aa86-6af70c0cb7c6"
 >
+</ReqRef><ReqRef
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
+>
 </ReqRef><Comment>The list of adhesion factors received from the trackside.</Comment>
 </Variable><Variable
  Type="Messages.M_ADHESION"
@@ -265,10 +267,6 @@ IN
  Name="SlipperyRailSelectedByDriver"
 >
 <ReqRef
- Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
->
-<Comment></Comment>
-</ReqRef><ReqRef
  Id="115b09d2-66f8-4553-9085-6484d37ec385"
 >
 <Comment></Comment>
@@ -277,6 +275,9 @@ IN
 >
 </ReqRef><ReqRef
  Id="8c94001e-944c-4e4c-9425-db637f743011"
+>
+</ReqRef><ReqRef
+ Id="3a290d20-7245-41fa-a2ae-84a3585ce63b"
 >
 </ReqRef><Comment>Indicates the &quot;Slippery rail&quot; value selected by driver.</Comment>
 </Variable></Variables>
