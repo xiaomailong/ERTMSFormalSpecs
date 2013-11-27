@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.SpecificationView
 {
@@ -354,20 +355,52 @@ namespace GUI.SpecificationView
         /// <returns></returns>
         public static string CreateStatMessage(List<DataDictionary.Specification.Paragraph> paragraphs)
         {
-            int subParagraphCount    = paragraphs.Count;
-            int implementableCount   = 0;
-            int implementedCount     = 0;
-            int unImplementedCount   = 0;
-            int notImplementable     = 0;
+            int subParagraphCount = paragraphs.Count;
+            int implementableCount = 0;
+            int implementedCount = 0;
+            int unImplementedCount = 0;
+            int notImplementable = 0;
             int newRevisionAvailable = 0;
 
+            Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
             foreach (DataDictionary.Specification.Paragraph p in paragraphs)
             {
+                if (paragraphsReqRefDictionary == null)
+                {
+                    paragraphsReqRefDictionary = p.Dictionary.ParagraphsReqRefs;
+                }
+
                 switch (p.getImplementationStatus())
                 {
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
                         implementableCount += 1;
-                        implementedCount += 1;
+
+                        bool implemented = true;
+                        if (paragraphsReqRefDictionary.ContainsKey(p))
+                        {
+                            List<ReqRef> implementations = paragraphsReqRefDictionary[p];
+                            for (int i = 0; i < implementations.Count; i++)
+                            {
+                                // the implementation may be also a ReqRef
+                                if (implementations[i].Enclosing is ReqRelated)
+                                {
+                                    ReqRelated reqRelated = implementations[i].Enclosing as ReqRelated;
+                                    // Do not consider tests
+                                    if (Utils.EnclosingFinder<DataDictionary.Tests.Frame>.find(reqRelated) == null)
+                                    {
+                                        implemented = implemented && reqRelated.ImplementationCompleted;
+                                    }
+                                }
+                            }
+                        }
+                        if (implemented)
+                        {
+                            implementedCount += 1;
+                        }
+                        else
+                        {
+                            unImplementedCount += 1;
+                        }
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
