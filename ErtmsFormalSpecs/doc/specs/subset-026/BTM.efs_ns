@@ -694,6 +694,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Actions>
 <Action>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedProfileReceived ( Packet.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Level Transition available"
 >
 <ReqRef
@@ -715,6 +716,17 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>EURORADIO.TracksideOrderedSession(Packet.TRACK_TO_TRAIN.SESSION_MANAGEMENT)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Conditional Level Transition Order"
+>
+<ReqRef
+ Id="51ddbc44-360a-4339-9b7c-fc91347a5da2"
+>
+</ReqRef><PreConditions>
+<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="List of balises for SH available"
@@ -964,13 +976,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <PreCondition>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action></Actions>
-</RuleCondition><RuleCondition
- Name="Conditional Level Transition Order"
->
-<PreConditions>
-<PreCondition>ConsiderPacket ( PacketOrientation=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Q_DIR )</PreCondition></PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.CLTOReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
