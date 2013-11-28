@@ -56,7 +56,7 @@ namespace GUI.BoxArrowDiagram
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
-         /// <summary>
+        /// <summary>
         /// A box editor
         /// </summary>
         protected class BoxEditor
@@ -189,7 +189,8 @@ namespace GUI.BoxArrowDiagram
         /// Selects a model element
         /// </summary>
         /// <param name="model"></param>
-        public void Select(object model)
+        /// <param name="alsoSelectInOtherWindows">Indicates that the element should also be selected in the other windows + get focus</param>
+        public void Select(object model, bool alsoSelectInOtherWindows)
         {
             Selected = model;
             BoxArrowContainerPanel.Selected = model;
@@ -199,7 +200,10 @@ namespace GUI.BoxArrowDiagram
                 propertyGrid.SelectedObject = createBoxEditor(control);
                 descriptionRichTextBox.ResetText();
                 descriptionRichTextBox.Rtf = control.Model.getExplain(false);
-                GUIUtils.MDIWindow.Select(control.Model);
+                if (alsoSelectInOtherWindows)
+                {
+                    GUIUtils.MDIWindow.Select(control.Model);
+                }
             }
             else if (model is ArrowControl<BoxModel, ArrowModel>)
             {
@@ -222,7 +226,10 @@ namespace GUI.BoxArrowDiagram
                 {
                     descriptionRichTextBox.Rtf = "";
                 }
-                GUIUtils.MDIWindow.Select(control.Model.ReferencedModel);
+                if (alsoSelectInOtherWindows)
+                {
+                    GUIUtils.MDIWindow.Select(control.Model.ReferencedModel);
+                }
             }
             else
             {

@@ -206,7 +206,7 @@ namespace GUI.StateDiagram
                 Refresh();
 
                 ArrowControl<State, Transition> control = getArrowControl(ruleCondition);
-                Select(control);
+                Select(control, false);
             }
         }
 
@@ -242,7 +242,7 @@ namespace GUI.StateDiagram
                     node.Delete();
                 }
             }
-            Select(null);
+            Select(null, false);
 
             RefreshControl();
             Refresh();

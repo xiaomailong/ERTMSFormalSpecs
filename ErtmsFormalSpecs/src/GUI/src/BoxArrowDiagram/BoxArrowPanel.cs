@@ -640,13 +640,14 @@ namespace GUI.BoxArrowDiagram
         /// Selects a model element
         /// </summary>
         /// <param name="model"></param>
-        public void Select(object model)
+        /// <param name="alsoSelectInOtherWindows">Indicates that the element should also be selected in the other windows + get focus</param>
+        public void Select(object model, bool alsoSelectInOtherWindows)
         {
             if (EnclosingWindow != null)
             {
-                EnclosingWindow.Select(model);
+                EnclosingWindow.Select(model, alsoSelectInOtherWindows);
             }
-            else
+            else if (alsoSelectInOtherWindows)
             {
                 if (model is BoxControl<BoxModel, ArrowModel>)
                 {

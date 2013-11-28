@@ -140,7 +140,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         public void SelectArrow()
         {
-            BoxArrowPanel.Select(this);
+            BoxArrowPanel.Select(this, Control.ModifierKeys == Keys.Control);
         }
 
         /// <summary>

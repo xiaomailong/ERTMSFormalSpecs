@@ -278,7 +278,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         public void SelectBox()
         {
-            Panel.Select(this);
+            Panel.Select(this, Control.ModifierKeys == Keys.Control);
         }
 
         /// <summary>
