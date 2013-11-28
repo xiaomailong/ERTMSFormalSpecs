@@ -86,7 +86,13 @@ namespace GUI.SpecificationView
             public virtual DataDictionary.Generated.acceptor.Paragraph_scope Scope
             {
                 get { return Item.getScope(); }
-                set { Item.SetScope(value); }
+                set {
+                    if (value == DataDictionary.Generated.acceptor.Paragraph_scope.defaultParagraph_scope)
+                    {
+                        value = DataDictionary.Generated.acceptor.Paragraph_scope.aOBU;
+                    }
+
+                    Item.SetScope(value); }
             }
 
             /// <summary>
