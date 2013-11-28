@@ -573,6 +573,19 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        protected void Check(object sender, EventArgs e)
+        {
+            MainWindow.ClearMarks();
+            RuleCheckerVisitor visitor = new RuleCheckerVisitor(Model.Dictionary);
+
+            visitor.visit(Model, true);
+        }
+
+        /// <summary>
+        /// Recursively marks all model elements as implemented
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void MarkAsImplemented(object sender, EventArgs e)
         {
             MarkAsImplementedVisitor visitor = new MarkAsImplementedVisitor(Model);
@@ -646,6 +659,8 @@ namespace GUI
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            retVal.Add(new MenuItem("Check", new EventHandler(Check)));
+            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Recursively mark as implemented", new EventHandler(MarkAsImplemented)));
             retVal.Add(new MenuItem("Recursively mark as verified", new EventHandler(MarkAsVerified)));
             retVal.Add(new MenuItem("-"));

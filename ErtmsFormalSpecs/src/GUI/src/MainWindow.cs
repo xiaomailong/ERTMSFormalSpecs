@@ -997,6 +997,14 @@ namespace GUI
 
         private void clearMarksToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ClearMarks();
+        }
+
+        /// <summary>
+        /// Clears all marks from the model/spec/tests/...
+        /// </summary>
+        public void ClearMarks()
+        {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
