@@ -6767,7 +6767,7 @@ Advance display of route related information; 3.15.10; FS</Paragraph><Paragraph
  bl=""
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -7303,11 +7303,11 @@ Advance display of route related information; 3.15.10; FS</Paragraph><Paragraph
  bl=""
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous status was &quot;Implemented&quot;</Comment>
+><Comment></Comment>
 [35]; (driver selects Shunting mode) AND (The ERTMS/ETCS on-board equipment is interfaced to the National System through an STM) AND (a National Trip Procedure is active, see {8} here under)</Paragraph><Paragraph
  id="Entry 4.6.3.37"
  guid="4194dc47-a12e-4906-99ac-3f43ccf3b796"
@@ -8112,11 +8112,11 @@ NA = Not Applicable: This concerns the modes SF and IS in which the DMI inputs a
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous status was &quot;N/A&quot;</Comment>
+><Comment></Comment>
 Track Adhesion factor; A: SB, FS, LS, SR, OS, UN, SN; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.7"
  guid="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
@@ -8296,11 +8296,11 @@ Track Adhesion factor; A: SB, FS, LS, SR, OS, UN, SN; NA: SF, IS</Paragraph><Par
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous status was &quot;Implemented&quot;</Comment>
+><Comment></Comment>
 Ackn of Staff Resp. mode; A: SB, PT; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.1.22"
  guid="a8974387-814c-4e26-a7a4-5001e32c4554"
@@ -8863,11 +8863,11 @@ Ackn of Unfitted mode; A: SB; NA: SF, IS</Paragraph><Paragraph
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous status was &quot;Implemented&quot;</Comment>
+><Comment></Comment>
 Adhesion factor &quot;slippery rail&quot;; A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS</Paragraph><Paragraph
  id="Entry 4.7.2.2.32"
  guid="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
@@ -10085,11 +10085,11 @@ Note: with the exception of the data that is forwarded to a National System thro
  bl=""
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
-><Comment>Previous status was &quot;Implemented&quot;</Comment>
+><Comment></Comment>
 Danger for SH information; No; A[13]; A[13]; A; A; A</Paragraph><Paragraph
  id="Entry 4.8.3.1.1.2.56"
  guid="335c0427-1b50-455d-bfb4-3f7daa2f6892"
@@ -11046,6 +11046,17 @@ Danger for SH information; Yes; ; ; ; ;</Paragraph><Paragraph
  Name=""
 >[12] exception: rejected if the text message is sent with a request for report of driver acknowledgement with the same text message identifier as a previously received text message, which the driver has not yet acknowledged</Paragraph><Paragraph
  id="4.8.3.1.1.13"
+ guid="e69ee80f-57f5-4fe7-ae46-ae1b7094b2b6"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>[13] exception: rejected if not received together with an immediate level transition order to L1/2/3</Paragraph><Paragraph
+ id="4.8.3.1.1.14"
  guid="6d7d42c7-3fb4-4732-9872-32eaab694a5e"
  type="REQUIREMENT"
  scope="OBU"
@@ -11057,7 +11068,7 @@ Danger for SH information; Yes; ; ; ; ;</Paragraph><Paragraph
  functionalBlockName=""
  Name=""
 >[6] exception: stored by ETCS onboard if an order to switch to level NTC X at a further location has been received.</Paragraph><Paragraph
- id="4.8.3.1.1.14"
+ id="4.8.3.1.1.15"
  guid="e5997cc1-c3be-4bdf-bd0c-02e8e042a54f"
  type="REQUIREMENT"
  scope="OBU"
@@ -13223,11 +13234,10 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="NA"
  version="3.2.0"
  functionalBlockName=""
  Name=""
-><Comment>
-Previous revision status was NA</Comment>
+><Comment></Comment>
 If a cold movement has been detected, or the Cold Movement Detection function is not able to confirm that no cold movement has taken place, no change of status of information to valid shall be made until it has been validated by a different means than cold movement detection.</Paragraph></Sub>
 </Paragraph></Chapter>

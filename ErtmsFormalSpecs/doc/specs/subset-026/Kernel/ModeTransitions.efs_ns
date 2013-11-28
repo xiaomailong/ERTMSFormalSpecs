@@ -1027,7 +1027,6 @@ Level.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Implemented="TRUE"
  Name="Condition35"
 >
 <ReqRef
@@ -1037,7 +1036,7 @@ Level.Value in [Level.L2, Level.L3]</Expression>
 <Case
  Name="Value"
 >
-<Expression>True</Expression>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -4183,7 +4182,7 @@ NLSignalReceived</Expression>
  Id="7a800db1-0312-49df-8a67-3d61c0b8c37b"
 >
 </ReqRef><PreConditions>
-<PreCondition>Condition67() OR Condition39() OR Condition38() OR Condition20()</PreCondition></PreConditions>
+<PreCondition>Condition67() OR Condition39() OR Condition38() OR Condition35() OR Condition20()</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.Mode &lt;- Mode.TR</Action><Action>HandleModeChange &lt;- HandleModeChange.TrainTrip</Action></Actions>
 </RuleCondition><RuleCondition
