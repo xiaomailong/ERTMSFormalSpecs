@@ -233,7 +233,9 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
                 changes.Add(change, apply, log);
-                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                ExplanationPart part = new ExplanationPart(Root, change);
+                part.SubExplanations.Add(Expression.Explain(context));
+                explanation.SubExplanations.Add(part);
             }
             else
             {
