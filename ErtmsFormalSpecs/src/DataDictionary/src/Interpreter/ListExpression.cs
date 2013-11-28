@@ -99,6 +99,17 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Checks the expression
+        /// </summary>
+        public override void checkExpression()
+        {
+            foreach (Expression expr in ListElements)
+            {
+                expr.checkExpression();
+            }
+        }
+
+        /// <summary>
         /// Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>

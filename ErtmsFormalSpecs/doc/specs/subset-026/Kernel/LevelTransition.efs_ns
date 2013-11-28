@@ -316,7 +316,16 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 {
   IsLTO=&gt; True,
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
-  LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
+  LevelandLength =&gt; 
+  [ 
+      LevelTransition { 
+          AcknLength =&gt; MessageTypes.QScaleLength( length=&gt;Packet.L_ACKLEVELTR,  scale=&gt;Packet.Q_SCALE ),
+          TRLevel =&gt; Default.LevelData {
+             Value =&gt; ERTMS_to_EFS_Level ( Packet.M_LEVELTR ) ,
+             NTC =&gt; Packet.NID_NTC
+         }
+      }
+  ]
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -390,7 +399,15 @@ Packet.Sequence1</Action></Actions>
 {
    IsLTO=&gt; False,
    Distance =&gt; EMPTY,
-   LevelandLength =&gt; [ LevelTransition { Length =&gt;EMPTY, Level =&gt; Packet.M_LEVELTR } ]
+   LevelandLength =&gt; [ 
+      LevelTransition { 
+         AcknLength =&gt;EMPTY, 
+         TRLevel =&gt; Default.LevelData {
+             Value =&gt; ERTMS_to_EFS_Level( LevelT =&gt;Packet.M_LEVELTR ),
+             NTC =&gt; Packet.NID_NTC
+         }
+      }
+   ]
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
