@@ -131,7 +131,6 @@ namespace GUI
             EditionTextBox.KeyUp += new KeyEventHandler(Editor_KeyUp);
             EditionTextBox.KeyPress += new KeyPressEventHandler(Editor_KeyPress);
             EditionTextBox.MouseUp += new MouseEventHandler(EditionTextBox_MouseClick);
-            EditionTextBox.MouseDoubleClick += new MouseEventHandler(EditionTextBox_MouseDoubleClick);
             EditionTextBox.ShortcutsEnabled = true;
             EditionTextBox.MouseMove += new MouseEventHandler(EditionTextBox_MouseMove);
 
@@ -144,19 +143,6 @@ namespace GUI
             SelectionComboBox.LocationChanged += new EventHandler(SelectionComboBox_LocationChanged);
 
             CleanText = explainRichTextBox.Rtf;
-        }
-
-        void EditionTextBox_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            List<INamable> instances = GetInstances(e.Location);
-            if (instances.Count == 1)
-            {
-                MainWindow mdiWindow = MDIWindow;
-                if (mdiWindow != null)
-                {
-                    mdiWindow.Select(instances[0] as Utils.ModelElement, true);
-                }
-            }
         }
 
         /// <summary>
@@ -273,6 +259,19 @@ namespace GUI
             {
                 MouseLocation = e.Location;
                 DisplayHelp(e.Location);
+            }
+
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                List<INamable> instances = GetInstances(e.Location);
+                if (instances.Count == 1)
+                {
+                    MainWindow mdiWindow = MDIWindow;
+                    if (mdiWindow != null)
+                    {
+                        mdiWindow.Select(instances[0] as Utils.ModelElement, true);
+                    }
+                }
             }
         }
 
