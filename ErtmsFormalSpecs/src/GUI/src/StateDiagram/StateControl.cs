@@ -81,7 +81,7 @@ namespace GUI.StateDiagram
                 StateDiagramWindow window = new StateDiagramWindow();
                 GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(panel.StateMachineVariable, Model.StateMachine);
-                window.Text = Model.StateMachine.Name + " state diagram";
+                window.Text = Model.Name + " state diagram";
             }
         }
     }
