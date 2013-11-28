@@ -61,7 +61,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 {
                     Runner.RunUntilTime(Runner.Time + steps * Runner.Step);
                 }
-                MDIWindow.Refresh();
+                GUIUtils.MDIWindow.Refresh();
             }
         }
     }

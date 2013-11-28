@@ -16,6 +16,7 @@
 using System.Windows.Forms;
 using System.Threading;
 using System;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI
 {
@@ -40,11 +41,6 @@ namespace GUI
         /// The text box used to edit expression
         /// </summary>
         EditorTextBox ExpressionEditorTextBox { get; }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        MainWindow MDIWindow { get; }
 
         /// <summary>
         /// The main tree view of the form
@@ -77,7 +73,7 @@ namespace GUI
         Utils.IModelElement Selected { get; }
     }
 
-    public class BaseForm : Form, IBaseForm
+    public class BaseForm : WeifenLuo.WinFormsUI.Docking.DockContent, IBaseForm
     {
         /// <summary>
         /// The property grid used to edit elements properties
@@ -113,14 +109,6 @@ namespace GUI
         /// The explain text box
         /// </summary>
         public virtual ExplainTextBox ExplainTextBox { get { return null; } }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
 
         /// <summary>
         /// Allows to refresh the view, according to the fact that the structure for the model could change
@@ -185,7 +173,30 @@ namespace GUI
         public BaseForm()
             : base()
         {
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             FormSynchronizer = new Synchronizer(this, 300);
+            ParentChanged += new EventHandler(BaseForm_ParentChanged);
+        }
+
+        void BaseForm_ParentChanged(object sender, EventArgs e)
+        {
+            FloatWindow window = ParentForm as FloatWindow;
+            if (window != null)
+            {
+                ParentForm.Move += new EventHandler(ParentForm_Move);
+            }
+        }
+
+        void ParentForm_Move(object sender, EventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                Hide();
+                DockAreas = DockAreas.Document;
+                DockState = DockState.Document;
+                Show(GUIUtils.MDIWindow.dockPanel, DockState.Document);
+
+            }
         }
 
         /// <summary>
@@ -214,6 +225,19 @@ namespace GUI
             {
                 ((BaseTreeNode)TreeView.SelectedNode).RefreshViewAccordingToModel(this, true);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "BaseForm";
+            this.ResumeLayout(false);
+
         }
     }
 

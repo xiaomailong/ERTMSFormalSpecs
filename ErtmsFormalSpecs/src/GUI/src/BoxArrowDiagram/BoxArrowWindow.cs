@@ -22,10 +22,11 @@ using DataDictionary.Rules;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using Utils;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.BoxArrowDiagram
 {
-    public abstract partial class BoxArrowWindow<BoxModel, ArrowModel> : Form
+    public abstract partial class BoxArrowWindow<BoxModel, ArrowModel> : DockContent
         where BoxModel : class, DataDictionary.IGraphicalDisplay
         where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
     {
@@ -39,6 +40,8 @@ namespace GUI.BoxArrowDiagram
 
             FormClosed += new FormClosedEventHandler(BoxArrowDiagramWindow_FormClosed);
             splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
         }
 
         /// <summary>
@@ -50,18 +53,10 @@ namespace GUI.BoxArrowDiagram
 
         void BoxArrowDiagramWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
-        /// <summary>
-        /// Provides access to the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUIUtils.EnclosingFinder<MainWindow>.find(this); }
-        }
-
-        /// <summary>
+         /// <summary>
         /// A box editor
         /// </summary>
         protected class BoxEditor
@@ -204,7 +199,7 @@ namespace GUI.BoxArrowDiagram
                 propertyGrid.SelectedObject = createBoxEditor(control);
                 descriptionRichTextBox.ResetText();
                 descriptionRichTextBox.Rtf = control.Model.getExplain(false);
-                MDIWindow.Select(control.Model);
+                GUIUtils.MDIWindow.Select(control.Model);
             }
             else if (model is ArrowControl<BoxModel, ArrowModel>)
             {
@@ -227,7 +222,7 @@ namespace GUI.BoxArrowDiagram
                 {
                     descriptionRichTextBox.Rtf = "";
                 }
-                MDIWindow.Select(control.Model.ReferencedModel);
+                GUIUtils.MDIWindow.Select(control.Model.ReferencedModel);
             }
             else
             {

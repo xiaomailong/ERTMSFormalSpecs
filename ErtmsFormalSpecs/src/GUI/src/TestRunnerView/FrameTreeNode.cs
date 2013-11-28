@@ -98,8 +98,8 @@ namespace GUI.TestRunnerView
         {
             ApplyRulesOperation applyRulesOperation = new ApplyRulesOperation(Item);
             ProgressDialog progress = new ProgressDialog("Applying translation rules", applyRulesOperation);
-            progress.ShowDialog(MainWindow);
-            MainWindow.RefreshModel();
+            progress.ShowDialog(GUIUtils.MDIWindow);
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         #region Apply rules

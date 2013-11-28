@@ -126,7 +126,7 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
-                MDIWindow.RefreshAfterStep();
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
         }
 
@@ -295,7 +295,7 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
-                MDIWindow.RefreshAfterStep();
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
             Clear();
         }
@@ -339,7 +339,7 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.StepBack();
-                MDIWindow.RefreshAfterStep();
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
         }
 
@@ -372,7 +372,7 @@ namespace GUI.TestRunnerView
                 DataDictionary.Tests.Step step = EFSSystem.Runner.CurrentStep();
                 if (step != null)
                 {
-                    MDIWindow.Select(step);
+                    GUIUtils.MDIWindow.Select(step);
                 }
             }
         }
@@ -389,7 +389,7 @@ namespace GUI.TestRunnerView
                 DataDictionary.Tests.SubSequence subSequence = EFSSystem.Runner.SubSequence;
                 if (subSequence != null)
                 {
-                    MDIWindow.Select(subSequence);
+                    GUIUtils.MDIWindow.Select(subSequence);
                 }
             }
         }

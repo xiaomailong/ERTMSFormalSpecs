@@ -208,7 +208,7 @@ namespace GUI.TestRunnerView
             {
                 ExcelImport.Frm_ExcelImport excelImport = new ExcelImport.Frm_ExcelImport(this.Item);
                 excelImport.ShowDialog();
-                MainWindow.RefreshModel();
+                GUIUtils.MDIWindow.RefreshModel();
             }
         }
     }

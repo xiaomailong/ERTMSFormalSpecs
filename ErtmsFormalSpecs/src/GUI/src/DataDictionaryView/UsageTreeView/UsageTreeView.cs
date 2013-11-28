@@ -74,7 +74,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
 
         private void UsageTreeView_MouseMove(object sender, MouseEventArgs e)
         {
-            ToolTip toolTip = ParentForm.MDIWindow.ToolTip;
+            ToolTip toolTip = GUIUtils.MDIWindow.ToolTip;
 
             TreeNode theNode = GetNodeAt(e.X, e.Y);
             if ((theNode != null))

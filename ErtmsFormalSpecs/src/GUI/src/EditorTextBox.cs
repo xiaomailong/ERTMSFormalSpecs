@@ -45,25 +45,6 @@ namespace GUI
             }
         }
 
-        /// <summary>
-        /// The enclosing MDI window
-        /// </summary>
-        private MainWindow MDIWindow
-        {
-            get
-            {
-                MainWindow retVal = null;
-
-                IBaseForm enclosingForm = EnclosingForm;
-                if (enclosingForm != null)
-                {
-                    retVal = enclosingForm.MDIWindow;
-                }
-
-                return retVal;
-            }
-        }
-
         private DataDictionary.ModelElement __instance = null;
 
         /// <summary>
@@ -266,7 +247,7 @@ namespace GUI
                 List<INamable> instances = GetInstances(e.Location);
                 if (instances.Count == 1)
                 {
-                    MainWindow mdiWindow = MDIWindow;
+                    MainWindow mdiWindow = GUIUtils.MDIWindow;
                     if (mdiWindow != null)
                     {
                         mdiWindow.Select(instances[0] as Utils.ModelElement, true);
@@ -912,17 +893,17 @@ namespace GUI
 
         void Editor_LostFocus(object sender, EventArgs e)
         {
-            if (EnclosingForm != null && EnclosingForm.MDIWindow != null)
+            if (GUIUtils.MDIWindow != null)
             {
-                EnclosingForm.MDIWindow.SelectedRichTextBox = null;
+                GUIUtils.MDIWindow.SelectedRichTextBox = null;
             }
         }
 
         void Editor_GotFocus(object sender, EventArgs e)
         {
-            if (EnclosingForm != null && EnclosingForm.MDIWindow != null)
+            if (GUIUtils.MDIWindow != null)
             {
-                EnclosingForm.MDIWindow.SelectedRichTextBox = this;
+                GUIUtils.MDIWindow.SelectedRichTextBox = this;
             }
         }
 

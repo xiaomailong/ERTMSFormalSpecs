@@ -16,10 +16,11 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.RulePerformances
 {
-    public partial class RulesPerformances : Form
+    public partial class RulesPerformances : DockContent
     {
         /// <summary>
         /// The EFS System for which this view is built
@@ -32,6 +33,8 @@ namespace GUI.RulePerformances
         public RulesPerformances()
         {
             InitializeComponent();
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
         }
 
         /// <summary>

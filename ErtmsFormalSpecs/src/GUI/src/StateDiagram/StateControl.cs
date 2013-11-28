@@ -79,7 +79,7 @@ namespace GUI.StateDiagram
             if (panel != null)
             {
                 StateDiagramWindow window = new StateDiagramWindow();
-                panel.MDIWindow.AddChildWindow(window);
+                GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(panel.StateMachineVariable, Model.StateMachine);
                 window.Text = Model.StateMachine.Name + " state diagram";
             }

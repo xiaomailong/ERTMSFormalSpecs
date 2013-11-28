@@ -216,7 +216,7 @@ namespace GUI.DataDictionaryView
         protected void ShowFunctionalViewHandler(object sender, EventArgs args)
         {
             FunctionalView.FunctionalAnalysisWindow window = new FunctionalView.FunctionalAnalysisWindow();
-            BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+            GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetNameSpaceContainer(Item);
             window.Text = Item.Name + " functional view";
         }

@@ -78,7 +78,7 @@ namespace GUI.Shortcuts
             DataDictionary.Namable element = Item.GetReference();
             if (element != null)
             {
-                MainWindow mainWindow = BaseForm.MDIWindow;
+                MainWindow mainWindow = GUIUtils.MDIWindow;
 
                 if (mainWindow.DataDictionaryWindow != null)
                 {

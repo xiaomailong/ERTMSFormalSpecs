@@ -41,24 +41,6 @@ namespace GUI
             }
         }
 
-        /// <summary>
-        /// Provides the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get
-            {
-                MainWindow retVal = null;
-
-                if (ParentForm != null)
-                {
-                    retVal = ParentForm.MDIWindow;
-                }
-
-                return retVal;
-            }
-        }
-
         public static int FileImageIndex;
         public static int ClosedFolderImageIndex;
         public static int ExpandedFolderImageIndex;
@@ -231,13 +213,13 @@ namespace GUI
         {
             try
             {
-                MDIWindow.HandlingSelection = true;
+                GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
                 Selected.HandleExpand();
             }
             finally
             {
-                MDIWindow.HandlingSelection = false;
+                GUIUtils.MDIWindow.HandlingSelection = false;
             }
         }
 
@@ -250,13 +232,13 @@ namespace GUI
         {
             try
             {
-                MDIWindow.HandlingSelection = true;
+                GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
                 Selected.HandleCollapse();
             }
             finally
             {
-                MDIWindow.HandlingSelection = false;
+                GUIUtils.MDIWindow.HandlingSelection = false;
             }
         }
 
@@ -396,7 +378,7 @@ namespace GUI
             {
                 if (KeepTrackOfSelection)
                 {
-                    MDIWindow.HandleSelection(Selected.Model);
+                    GUIUtils.MDIWindow.HandleSelection(Selected.Model);
                 }
                 Selected.SelectionChanged();
             }

@@ -122,7 +122,7 @@ namespace GUI.DataDictionaryView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         public override void Refresh()

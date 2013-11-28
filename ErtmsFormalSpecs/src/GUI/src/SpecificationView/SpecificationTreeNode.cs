@@ -157,12 +157,12 @@ namespace GUI.SpecificationView
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Open original specification file";
             openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(MainWindow) == DialogResult.OK)
+            if (openFileDialog.ShowDialog(GUIUtils.MDIWindow) == DialogResult.OK)
             {
                 string OriginalFileName = openFileDialog.FileName;
                 openFileDialog.Title = "Open new specification file";
                 openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-                if (openFileDialog.ShowDialog(MainWindow) == DialogResult.OK)
+                if (openFileDialog.ShowDialog(GUIUtils.MDIWindow) == DialogResult.OK)
                 {
                     string NewFileName = openFileDialog.FileName;
 
@@ -178,7 +178,7 @@ namespace GUI.SpecificationView
                     dialog = new ProgressDialog("Opening file", reportHandler);
                     dialog.ShowDialog();
 
-                    MainWindow.RefreshModel();
+                    GUIUtils.MDIWindow.RefreshModel();
                 }
             }
         }

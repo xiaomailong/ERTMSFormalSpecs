@@ -87,7 +87,7 @@ namespace GUI
         {
             base.DoubleClickHandler();
 
-            MainWindow mainWindow = BaseForm.MDIWindow;
+            MainWindow mainWindow = GUIUtils.MDIWindow;
 
             if (mainWindow.DataDictionaryWindow != null)
             {

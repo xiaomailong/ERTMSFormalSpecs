@@ -125,7 +125,7 @@ namespace GUI.TestRunnerView
         {
             Utils.FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
-            MainWindow.RefreshModel();
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         #region Execute tests
@@ -225,7 +225,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void Extract(object sender, EventArgs args)
         {
-            MainWindow mainWindow = MainWindow;
+            MainWindow mainWindow = GUIUtils.MDIWindow;
             mainWindow.AllowRefresh = false;
 
             try

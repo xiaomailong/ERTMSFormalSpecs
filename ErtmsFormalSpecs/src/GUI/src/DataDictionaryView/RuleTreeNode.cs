@@ -89,12 +89,12 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public void DisableHandler(object sender, EventArgs args)
         {
-            DataDictionary.Dictionary dictionary = MainWindow.GetActiveDictionary();
+            DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
 
             if (dictionary != null)
             {
                 dictionary.AppendRuleDisabling(Item);
-                MainWindow.RefreshModel();
+                GUIUtils.MDIWindow.RefreshModel();
             }
         }
 

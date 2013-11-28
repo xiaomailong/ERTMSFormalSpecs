@@ -23,10 +23,11 @@ using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.GraphView
 {
-    public partial class GraphView : Form, IBaseForm
+    public partial class GraphView : DockContent, IBaseForm
     {
         /// <summary>
         /// The functions to be displayed in this graph view
@@ -57,6 +58,8 @@ namespace GUI.GraphView
             DragDrop += new DragEventHandler(GraphView_DragDrop);
 
             Functions = new List<DataDictionary.Functions.Function>();
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
         }
 
         void GraphView_DragEnter(object sender, DragEventArgs e)

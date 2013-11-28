@@ -24,6 +24,8 @@ using System.Threading;
 using LibGit2Sharp;
 using System.Diagnostics;
 using System.Reflection;
+using WeifenLuo.WinFormsUI.Docking;
+using System.Drawing;
 
 namespace GUI
 {
@@ -85,12 +87,20 @@ namespace GUI
         {
             if (model != null)
             {
-                foreach (IBaseForm form in SubWindows)
+                foreach (IBaseForm iBaseForm in SubWindows)
                 {
-                    BaseTreeView treeView = form.TreeView;
+                    BaseTreeView treeView = iBaseForm.TreeView;
                     if (treeView != null)
                     {
-                        treeView.Select(model, getFocus);
+                        BaseTreeNode node = treeView.Select(model, getFocus);
+                        if (node != null)
+                        {
+                            Form form = iBaseForm as Form;
+                            if (form != null)
+                            {
+                                form.Focus();
+                            }
+                        }
                     }
                 }
             }
@@ -324,6 +334,8 @@ namespace GUI
             Text = windowTitle;
         }
 
+        Dictionary<Form, Rectangle> InitialRectangle = new Dictionary<Form, Rectangle>();
+
         /// <summary>
         /// Adds a child window to this parent MDI
         /// </summary>
@@ -331,14 +343,37 @@ namespace GUI
         /// <returns></returns>
         public void AddChildWindow(Form window)
         {
-            if (window != null)
-            {
-                window.MdiParent = this;
-                window.Show();
-                window.Activate();
+            InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
 
-                SubForms.Add(window);
-                ActivateMdiChild(window);
+            DockContent docContent = window as DockContent;
+            if (docContent != null)
+            {
+                SubForms.Add(docContent);
+
+                if (docContent.DockAreas == DockAreas.DockLeft)
+                {
+                    docContent.Show(dockPanel, DockState.DockLeftAutoHide);
+                }
+                else if (docContent.DockAreas == DockAreas.DockRight)
+                {
+                    docContent.Show(dockPanel, DockState.DockRightAutoHide);
+                }
+                else
+                {
+                    docContent.Show(dockPanel);
+                }
+            }
+            else
+            {
+                if (window != null)
+                {
+                    SubForms.Add(window);
+                    window.MdiParent = this;
+                    window.Show();
+
+                    window.Activate();
+                    ActivateMdiChild(window);
+                }
             }
         }
 
@@ -1242,51 +1277,6 @@ namespace GUI
         }
         #endregion
 
-        private void showTranslationRulesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddChildWindow(TranslationWindow);
-        }
-
-
-        private void showShortcutsViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddChildWindow(ShortcutsWindow);
-        }
-
-        private void showTestsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (EFSSystem != null)
-            {
-                Form testWindow = TestWindow;
-                if (testWindow == null)
-                {
-                    AddChildWindow(new TestRunnerView.Window(EFSSystem));
-                }
-                else
-                {
-                    testWindow.Select();
-                }
-            }
-        }
-
-        private void showModelViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                AddChildWindow(new DataDictionaryView.Window(dictionary));
-            }
-        }
-
-        private void showSpecificationViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                AddChildWindow(new SpecificationView.Window(dictionary));
-            }
-        }
-
         /// ------------------------------------------------------
         ///    CREATE REPORT OPERATIONS
         /// ------------------------------------------------------
@@ -1689,5 +1679,87 @@ namespace GUI
                 aReport.ShowDialog(this);
             }
         }
+
+        private void dockedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DockContent dockContent = SelectedForm() as DockContent;
+            if (dockContent != null)
+            {
+                if (dockContent.DockAreas == DockAreas.Document)
+                {
+                    dockContent.Hide();
+                    Rectangle rectangle = InitialRectangle[dockContent];
+                    dockContent.DockAreas = DockAreas.Float;
+                    dockContent.DockState = DockState.Float;
+                    dockContent.Show(dockPanel, rectangle);
+                    dockContent.ParentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Provides the selected form
+        /// </summary>
+        /// <returns></returns>
+        private Form SelectedForm()
+        {
+            Form retVal = null;
+
+            foreach (DockContent dockContent in dockPanel.Contents)
+            {
+                if (dockContent.IsActivated)
+                {
+                    retVal = dockContent;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        private void showSpecificationViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                AddChildWindow(new SpecificationView.Window(dictionary));
+            }
+        }
+
+        private void showModelViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                AddChildWindow(new DataDictionaryView.Window(dictionary));
+            }
+        }
+
+        private void showShortcutsViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            AddChildWindow(ShortcutsWindow);
+        }
+
+        private void showTestsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (EFSSystem != null)
+            {
+                Form testWindow = TestWindow;
+                if (testWindow == null)
+                {
+                    AddChildWindow(new TestRunnerView.Window(EFSSystem));
+                }
+                else
+                {
+                    testWindow.Select();
+                }
+            }
+        }
+
+        private void showTranslationViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChildWindow(TranslationWindow);
+        }
     }
+
 }

@@ -76,6 +76,8 @@ namespace GUI.SpecificationView
             Visible = false;
             Dictionary = dictionary;
             Refresh();
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
         }
 
         void TextBox_TextChanged(object sender, EventArgs e)
@@ -97,7 +99,7 @@ namespace GUI.SpecificationView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         public override void Refresh()

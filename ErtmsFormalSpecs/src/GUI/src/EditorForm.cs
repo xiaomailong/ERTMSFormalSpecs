@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DataDictionary;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI
 {
-    public partial class EditorForm : Form
+    public partial class EditorForm : DockContent
     {
         /// <summary>
         /// Indicates the actions to be performed to get the text from the instance and to set it into the instance
@@ -62,6 +63,8 @@ namespace GUI
             editorTextBox.TextBox.TextChanged += new EventHandler(TextChangedHandler);
             editorTextBox.TextBox.KeyUp += new KeyEventHandler(TextBox_KeyUp);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+
+            DockState = WeifenLuo.WinFormsUI.Docking.DockState.Float;
         }
 
         void TextBox_KeyUp(object sender, KeyEventArgs e)

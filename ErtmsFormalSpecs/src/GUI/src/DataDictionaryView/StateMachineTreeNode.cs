@@ -110,7 +110,7 @@ namespace GUI.DataDictionaryView
         public void ViewDiagram()
         {
             StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
-            BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+            GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetStateMachine(Item);
             window.Text = Item.Name + " state diagram";
         }

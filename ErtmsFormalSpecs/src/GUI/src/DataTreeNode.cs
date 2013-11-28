@@ -575,7 +575,7 @@ namespace GUI
         /// <param name="e"></param>
         protected void Check(object sender, EventArgs e)
         {
-            MainWindow.ClearMarks();
+            GUIUtils.MDIWindow.ClearMarks();
             RuleCheckerVisitor visitor = new RuleCheckerVisitor(Model.Dictionary);
 
             visitor.visit(Model, true);
@@ -810,7 +810,7 @@ namespace GUI
                     }
 
                     Model.AddModelElement(copy);
-                    MainWindow.RefreshModel();
+                    GUIUtils.MDIWindow.RefreshModel();
                 }
                 catch (Exception)
                 {
@@ -838,18 +838,8 @@ namespace GUI
                     ThisCollection.Remove(SourceNode.Model);
                     thisIndex = ThisCollection.IndexOf(Model);
                     ThisCollection.Insert(thisIndex, SourceNode.Model);
-                    MainWindow.RefreshModel();
+                    GUIUtils.MDIWindow.RefreshModel();
                 }
-            }
-        }
-        /// <summary>
-        /// Provides the main window wich holds this tree node
-        /// </summary>
-        public MainWindow MainWindow
-        {
-            get
-            {
-                return (TreeView as BaseTreeView).ParentForm.MDIWindow;
             }
         }
 

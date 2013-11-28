@@ -179,7 +179,7 @@ namespace GUI.DataDictionaryView
             if (Item.Type is StateMachine)
             {
                 StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
-                BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+                GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(Item);
                 window.Text = Item.Name + " state diagram";
             }
@@ -250,7 +250,7 @@ namespace GUI.DataDictionaryView
             if (function != null)
             {
                 GraphView.GraphView view = new GraphView.GraphView();
-                MainWindow.AddChildWindow(view);
+                GUIUtils.MDIWindow.AddChildWindow(view);
                 view.Functions.Add(function);
                 view.Refresh();
             }

@@ -64,7 +64,7 @@ namespace GUI.FunctionalView
             if (panel != null)
             {
                 FunctionalAnalysisWindow window = new FunctionalAnalysisWindow();
-                panel.MDIWindow.AddChildWindow(window);
+                GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetNameSpaceContainer(Model);
                 window.Text = Model.Name + " functional analysis";
             }

@@ -112,8 +112,8 @@ namespace GUI.TestRunnerView
         {
             ApplyTranslationRulesHandler applyTranslationRulesHandler = new ApplyTranslationRulesHandler(Item);
             ProgressDialog progress = new ProgressDialog("Applying translation rules", applyTranslationRulesHandler);
-            progress.ShowDialog(MainWindow);
-            MainWindow.RefreshModel();
+            progress.ShowDialog(GUIUtils.MDIWindow);
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         public void AddHandler(object sender, EventArgs args)

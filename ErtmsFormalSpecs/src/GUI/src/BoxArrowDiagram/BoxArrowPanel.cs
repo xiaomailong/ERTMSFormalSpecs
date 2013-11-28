@@ -215,26 +215,6 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides access to the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get
-            {
-                MainWindow retVal = null;
-
-                Control current = this;
-                while (current != null && retVal == null)
-                {
-                    retVal = current as MainWindow;
-                    current = current.Parent;
-                }
-
-                return retVal;
-            }
-        }
-
-        /// <summary>
         /// The dictionary used to keep the relation between boxe controls and their model
         /// </summary>
         private Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>> boxes = new Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>>();
@@ -671,12 +651,12 @@ namespace GUI.BoxArrowDiagram
                 if (model is BoxControl<BoxModel, ArrowModel>)
                 {
                     BoxControl<BoxModel, ArrowModel> control = model as BoxControl<BoxModel, ArrowModel>;
-                    MDIWindow.Select(control.Model);
+                    GUIUtils.MDIWindow.Select(control.Model);
                 }
                 else if (model is ArrowControl<BoxModel, ArrowModel>)
                 {
                     ArrowControl<BoxModel, ArrowModel> control = model as ArrowControl<BoxModel, ArrowModel>;
-                    MDIWindow.Select(control.Model.ReferencedModel);
+                    GUIUtils.MDIWindow.Select(control.Model.ReferencedModel);
                 }
             }
 

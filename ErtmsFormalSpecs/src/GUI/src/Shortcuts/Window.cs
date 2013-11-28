@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System.Windows.Forms;
 using System.Collections.Generic;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.Shortcuts
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : DockContent, IBaseForm
     {
         /// <summary>
         /// Constructor
@@ -34,6 +35,8 @@ namespace GUI.Shortcuts
             Visible = false;
             shortcutTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " shortcuts view";
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
             Refresh();
         }
 

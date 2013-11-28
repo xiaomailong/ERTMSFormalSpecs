@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TranslationRules
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : DockContent, IBaseForm
     {
         public MyPropertyGrid Properties
         {

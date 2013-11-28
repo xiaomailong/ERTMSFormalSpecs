@@ -164,9 +164,9 @@ namespace GUI.StateDiagram
             State state = (State)DataDictionary.Generated.acceptor.getFactory().createState();
             state.Name = "State" + (StateMachine.States.Count + 1);
 
-            if (MDIWindow.DataDictionaryWindow != null)
+            if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
             {
-                DataDictionaryView.StateMachineTreeNode node = MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as DataDictionaryView.StateMachineTreeNode;
+                DataDictionaryView.StateMachineTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as DataDictionaryView.StateMachineTreeNode;
                 if (node != null)
                 {
                     node.AddState(state);
@@ -196,9 +196,9 @@ namespace GUI.StateDiagram
                 action.Expression = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
                 ruleCondition.appendActions(action);
 
-                if (MDIWindow.DataDictionaryWindow != null)
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
-                    DataDictionaryView.StateTreeNode stateNode = MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
+                    DataDictionaryView.StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
                     DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
                 }
 
@@ -234,9 +234,9 @@ namespace GUI.StateDiagram
 
             }
 
-            if (MDIWindow.DataDictionaryWindow != null)
+            if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
             {
-                BaseTreeNode node = MDIWindow.DataDictionaryWindow.FindNode(model);
+                BaseTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(model);
                 if (node != null)
                 {
                     node.Delete();

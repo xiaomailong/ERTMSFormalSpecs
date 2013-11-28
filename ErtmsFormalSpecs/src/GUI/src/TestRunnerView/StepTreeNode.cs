@@ -220,7 +220,7 @@ namespace GUI.TestRunnerView
         {
             Utils.FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
-            MainWindow.RefreshModel();
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace GUI.TestRunnerView
                         runner.Cycle();
                     }
                 }
-                window.MDIWindow.Refresh();
+                GUIUtils.MDIWindow.Refresh();
             }
         }
 

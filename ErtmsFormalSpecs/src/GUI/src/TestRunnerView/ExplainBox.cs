@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System.Windows.Forms;
 using DataDictionary.Interpreter;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TestRunnerView
 {
-    public partial class ExplainBox : Form
+    public partial class ExplainBox : DockContent
     {
         /// <summary>
         /// A node of the tree

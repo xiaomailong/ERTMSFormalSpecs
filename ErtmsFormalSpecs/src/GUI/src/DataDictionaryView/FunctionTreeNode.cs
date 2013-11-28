@@ -158,7 +158,7 @@ namespace GUI.DataDictionaryView
         public void DisplayHandler(object sender, EventArgs args)
         {
             GraphView.GraphView view = new GraphView.GraphView();
-            MainWindow.AddChildWindow(view);
+            GUIUtils.MDIWindow.AddChildWindow(view);
             view.Functions.Add(Item);
             view.Refresh();
         }

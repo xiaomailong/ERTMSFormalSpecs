@@ -132,7 +132,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         {
             if (Item != null)
             {
-                BaseForm.MDIWindow.Select(Item, true);
+                GUIUtils.MDIWindow.Select(Item, true);
             }
         }
 
