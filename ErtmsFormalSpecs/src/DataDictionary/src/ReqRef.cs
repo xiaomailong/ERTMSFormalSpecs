@@ -111,6 +111,11 @@ namespace DataDictionary
                             break;
                         }
                     }
+
+                    if (retVal != null)
+                    {
+                        break;
+                    }
                 }
 
                 return retVal;
