@@ -567,22 +567,35 @@ namespace GUI
             string enclosingName;
             List<Utils.INamable> possibleInstances = PossibleInstances(text, out prefix, out enclosingName);
 
-            // Handles references to model elements
-            foreach (Utils.INamable namable in possibleInstances)
+            int value;
+            bool isANumber = false;
+            if (!string.IsNullOrEmpty(enclosingName))
             {
-                retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
+                isANumber = int.TryParse(enclosingName.Substring(0, enclosingName.Length - 1), out value);
             }
 
-            // Handles code templates
-            foreach (string template in TEMPLATES)
+            if (!isANumber)
             {
-                if (template.StartsWith(prefix))
+                // Handles references to model elements
+                foreach (Utils.INamable namable in possibleInstances)
                 {
-                    retVal.Add(new ObjectReference(template, new List<INamable>()));
+                    retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
                 }
+
+                // Handles code templates
+                if (string.IsNullOrEmpty(enclosingName))
+                {
+                    foreach (string template in TEMPLATES)
+                    {
+                        if (template.StartsWith(prefix))
+                        {
+                            retVal.Add(new ObjectReference(template, new List<INamable>()));
+                        }
+                    }
+                }
+                retVal.Sort();
             }
 
-            retVal.Sort();
             return retVal;
         }
 
@@ -979,18 +992,25 @@ namespace GUI
 
         private void createCallableParameters(StringBuilder text, DataDictionary.Interpreter.ICallable callable)
         {
-            text.Append("(\n");
-            bool first = true;
-            foreach (DataDictionary.Parameter parameter in callable.FormalParameters)
+            if (callable.FormalParameters.Count > 0)
             {
-                if (!first)
+                text.Append("(\n");
+                bool first = true;
+                foreach (DataDictionary.Parameter parameter in callable.FormalParameters)
                 {
-                    text.Append(",\n");
+                    if (!first)
+                    {
+                        text.Append(",\n");
+                    }
+                    text.Append(TextualExplainUtilities.Pad(parameter.Name + "=>" + parameter.Type.Default, 4));
+                    first = false;
                 }
-                text.Append(TextualExplainUtilities.Pad(parameter.Name + "=>" + parameter.Type.Default, 4));
-                first = false;
+                text.Append("\n)");
             }
-            text.Append("\n)");
+            else
+            {
+                text.Append("()");
+            }
         }
 
         private void insertElement(DataDictionary.Types.ITypedElement element, StringBuilder text, int indent)
