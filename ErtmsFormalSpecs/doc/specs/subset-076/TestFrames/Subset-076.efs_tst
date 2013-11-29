@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.Initialize()</Action>
-</Actions>
+<Action>Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -54,16 +53,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;1515&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.DMI1.IsMaster &lt;- True</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;1515&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;1234 FFFF FFFF FFFF&apos;</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.DMI1.IsMaster &lt;- True</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -80,10 +70,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Mode &lt;- Mode.NP</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Mode &lt;- Mode.NP</Action><Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -110,8 +97,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.PowerOn &lt;- Boolean.True</Action>
-</Actions>
+<Action>Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -147,8 +133,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -175,8 +160,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -321,8 +305,7 @@ There is NO initial Driver ID value displayed</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="13"
@@ -364,8 +347,7 @@ There is NO initial Driver ID value displayed</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -449,8 +431,7 @@ Triggered by : Data Entry completed</Comment>
  Name="Sub-step2"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="22"
@@ -496,8 +477,7 @@ The On-Board equipment still allows the driver to validate it.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -701,8 +681,7 @@ The drivers? validation is recorded on the JRU</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="39"
@@ -775,9 +754,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="45"
@@ -885,8 +862,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="51"
@@ -934,8 +910,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="54"
@@ -1027,8 +1002,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1182,7 +1156,6 @@ Other packets can be included.</Comment>
     SESSION_MANAGEMENT =&gt; EMPTY, 
     RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
     CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
-    LEVEL_INHIBITION_ORDER =&gt; EMPTY, 
     LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
     AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
     PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
@@ -1221,8 +1194,7 @@ Other packets can be included.</Comment>
     END_OF_INFORMATION =&gt; EMPTY
 }
 }]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1289,7 +1261,6 @@ Other packets can be included.</Comment>
     SESSION_MANAGEMENT =&gt; EMPTY, 
     RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
     CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
-    LEVEL_INHIBITION_ORDER =&gt; EMPTY, 
     LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
     AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
     PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
@@ -1328,8 +1299,7 @@ Other packets can be included.</Comment>
     END_OF_INFORMATION =&gt; EMPTY
 }
 }]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 <Messsages>
 <DBMessage
@@ -1854,8 +1824,7 @@ The driver is informed on the DMI of the change to FS mode.</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3813,7 +3782,6 @@ Other packets can be included.</Comment>
     SESSION_MANAGEMENT =&gt; EMPTY, 
     RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
     CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
-    LEVEL_INHIBITION_ORDER =&gt; EMPTY, 
     LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
     AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
     PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
@@ -3852,8 +3820,7 @@ Other packets can be included.</Comment>
     END_OF_INFORMATION =&gt; EMPTY
 }
 }]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3920,7 +3887,6 @@ Other packets can be included.</Comment>
     SESSION_MANAGEMENT =&gt; EMPTY, 
     RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
     CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
-    LEVEL_INHIBITION_ORDER =&gt; EMPTY, 
     LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
     AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
     PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
@@ -3959,8 +3925,7 @@ Other packets can be included.</Comment>
     END_OF_INFORMATION =&gt; EMPTY
 }
 }]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 <Messsages>
 <DBMessage
@@ -8643,8 +8608,7 @@ The new current mode is not indicated on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.Initialize()</Action>
-</Actions>
+<Action>Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8660,16 +8624,7 @@ The new current mode is not indicated on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;-1&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;Unknown&apos;</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.DMI1.IsMaster &lt;- True</Action>
-<Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;-1&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;Unknown&apos;</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.DMI1.IsMaster &lt;- True</Action><Action>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -8686,10 +8641,7 @@ The new current mode is not indicated on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Mode &lt;- Mode.NP</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.NP</Action><Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -8716,8 +8668,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.PowerOn &lt;- Boolean.True</Action>
-</Actions>
+<Action>Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -8753,8 +8704,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -8781,8 +8731,7 @@ The on-board equipment changes to SB mode.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="6"
@@ -8927,8 +8876,7 @@ There is NO initial Driver ID value displayed</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="13"
@@ -8970,8 +8918,7 @@ There is NO initial Driver ID value displayed</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9108,8 +9055,7 @@ Triggered by : Data Entry completed</Comment>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9287,8 +9233,7 @@ The drivers? validation is recorded on the JRU</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="41"
@@ -9392,8 +9337,7 @@ The drivers? validation is recorded on the JRU</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="49"
@@ -9501,8 +9445,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="55"
@@ -9562,8 +9505,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="59"
@@ -9628,8 +9570,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="62"
@@ -10967,8 +10908,7 @@ Other packets can be included.</Comment>
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_0</Action>
-</Actions>
+<Action>BTM.Message &lt;- %Step_Messages_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10978,8 +10918,7 @@ Other packets can be included.</Comment>
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_1</Action>
-</Actions>
+<Action>BTM.Message &lt;- %Step_Messages_1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="101"
@@ -13127,8 +13066,7 @@ The on-board equipment allows the driver to simply revalidate it.</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13404,8 +13342,7 @@ Triggered by : Data Entry completed</Comment>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="228"
@@ -13518,8 +13455,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="234"
@@ -13581,8 +13517,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="238"
@@ -13650,8 +13585,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI</Description>
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  TCS_Order="241"
