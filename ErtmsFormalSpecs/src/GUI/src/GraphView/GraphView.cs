@@ -151,7 +151,7 @@ namespace GUI.GraphView
         void GraphView_FormClosed(object sender, FormClosedEventArgs e)
         {
             CleanUp();
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -177,14 +177,6 @@ namespace GUI.GraphView
         public EditorTextBox RequirementsTextBox { get { return null; } }
 
         public EditorTextBox ExpressionEditorTextBox { get { return null; } }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
 
         /// <summary>
         /// The main tree view of the form

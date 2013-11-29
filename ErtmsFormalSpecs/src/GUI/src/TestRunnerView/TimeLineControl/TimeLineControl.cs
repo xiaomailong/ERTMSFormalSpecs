@@ -108,22 +108,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Provides the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get
-            {
-                Control current = Parent;
-                while (current != null && !(current is MainWindow))
-                {
-                    current = current.Parent;
-                }
-                return current as MainWindow;
-            }
-        }
-
-        /// <summary>
         /// The time line filtering configuration
         /// </summary>
         public FilterConfiguration FilterConfiguration { get; private set; }
@@ -136,7 +120,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         private void OpenFilter(object sender, EventArgs e)
         {
             Filtering filtering = new Filtering();
-            filtering.Configure(MDIWindow.EFSSystem, FilterConfiguration);
+            filtering.Configure(GUIUtils.MDIWindow.EFSSystem, FilterConfiguration);
             filtering.ShowDialog(this);
             filtering.UpdateConfiguration(FilterConfiguration);
             Clear();

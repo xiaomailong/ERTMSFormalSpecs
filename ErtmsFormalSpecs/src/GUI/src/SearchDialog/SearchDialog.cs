@@ -35,14 +35,6 @@ namespace GUI.SearchDialog
             InitializeComponent();
         }
 
-        public MainWindow MDIWindow
-        {
-            get
-            {
-                return Owner as MainWindow;
-            }
-        }
-
         /// <summary>
         /// Initialises the dialog
         /// </summary>

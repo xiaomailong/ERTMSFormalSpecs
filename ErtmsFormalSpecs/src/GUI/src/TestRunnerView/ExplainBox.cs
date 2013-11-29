@@ -53,24 +53,13 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Provides the MDI window enclosing this tree node
-            /// </summary>
-            private MainWindow MDIWindow
-            {
-                get
-                {
-                    return GUIUtils.EnclosingFinder<MainWindow>.find(TreeView); ;
-                }
-            }
-
-            /// <summary>
             /// Selects the corresponding model element
             /// </summary>
             public void SelectModel()
             {
                 if (Explanation.Element != null)
                 {
-                    MDIWindow.Select(Explanation.Element, true);
+                    GUIUtils.MDIWindow.Select(Explanation.Element, true);
                     ExplainBox.explainRichTextBox.Text = Explanation.Message;
                 }
             }

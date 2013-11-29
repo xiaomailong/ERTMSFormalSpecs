@@ -51,14 +51,14 @@ namespace GUI.Shortcuts
 
             if (selected != null)
             {
-                int i = MDIWindow.SelectionHistory.IndexOf(selected);
+                int i = GUIUtils.MDIWindow.SelectionHistory.IndexOf(selected);
                 while (i > 0)
                 {
-                    MDIWindow.SelectionHistory.RemoveAt(0);
+                    GUIUtils.MDIWindow.SelectionHistory.RemoveAt(0);
                     i -= 1;
                 }
 
-                MDIWindow.Select(selected, true);
+                GUIUtils.MDIWindow.Select(selected, true);
                 RefreshModel();
             }
         }
@@ -70,15 +70,7 @@ namespace GUI.Shortcuts
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -88,11 +80,11 @@ namespace GUI.Shortcuts
         {
             shortcutTreeView.RefreshModel();
 
-            if (MDIWindow != null)
+            if (GUIUtils.MDIWindow != null)
             {
                 List<HistoryObject> history = new List<HistoryObject>();
 
-                foreach (DataDictionary.ModelElement element in MDIWindow.SelectionHistory)
+                foreach (DataDictionary.ModelElement element in GUIUtils.MDIWindow.SelectionHistory)
                 {
                     history.Add(new HistoryObject(element));
                 }

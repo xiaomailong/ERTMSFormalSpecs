@@ -80,7 +80,7 @@ namespace GUI.TranslationRules
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
         /// <summary>
         /// Refreshes the display
@@ -94,20 +94,12 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
-        /// <summary>
         /// Clears messages for the element stored in the tree view in the window
         /// </summary>
         public void Clear()
         {
             translationTreeView.ClearMessages();
-            MDIWindow.Refresh();
+            GUIUtils.MDIWindow.Refresh();
         }
 
         /// <summary>
