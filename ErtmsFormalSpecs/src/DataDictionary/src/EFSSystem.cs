@@ -179,6 +179,13 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Clears the messages associated to the system
+        /// </summary>
+        public void ClearMessages()
+        {
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="other"></param>

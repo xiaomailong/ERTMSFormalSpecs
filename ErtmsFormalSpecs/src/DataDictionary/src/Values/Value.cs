@@ -160,6 +160,11 @@ namespace DataDictionary.Values
         public List<Utils.ElementLog> Messages { get { return null; } }
 
         /// <summary>
+        /// Nothing to do
+        /// </summary>
+        public void ClearMessages() { }
+
+        /// <summary>
         /// Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>

@@ -80,6 +80,15 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
+        /// Clears the messages associated to this model element
+        /// </summary>
+        public override void ClearMessages()
+        {
+            base.Messages.Clear();
+        }
+
+
+        /// <summary>
         /// Provides the full name path to this element in the model structure
         /// </summary>
         public override string FullName

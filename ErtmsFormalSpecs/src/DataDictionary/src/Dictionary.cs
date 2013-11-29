@@ -825,17 +825,12 @@ namespace DataDictionary
 
                 if (element != null)
                 {
-                    element.Messages.Clear();
+                    element.ClearMessages();
                 }
+
+                base.visit(obj, visitSubNodes);
             }
         }
-
-
-        public void ExportFunctionalBlocks()
-        {
-
-        }
-
 
         /// <summary>
         /// Creates a dictionary with pairs paragraph - list of its implementations

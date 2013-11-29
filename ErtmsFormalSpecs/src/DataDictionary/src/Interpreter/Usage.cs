@@ -56,11 +56,6 @@ namespace DataDictionary.Interpreter
             Referenced = referenced;
             User = user;
             Mode = mode;
-
-            if (Referenced == null)
-            {
-                System.Diagnostics.Debugger.Break();
-            }
         }
 
         /// <summary>

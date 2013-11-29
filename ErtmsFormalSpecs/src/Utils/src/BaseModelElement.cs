@@ -58,6 +58,11 @@ namespace Utils
         List<ElementLog> Messages { get; }
 
         /// <summary>
+        /// Clears the messages associated to this model element
+        /// </summary>
+        void ClearMessages();
+
+        /// <summary>
         /// Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
@@ -209,6 +214,14 @@ namespace Utils
         {
             get { return messages; }
             private set { messages = value; }
+        }
+
+        /// <summary>
+        /// Clears the messages associated to this model element
+        /// </summary>
+        public virtual void ClearMessages()
+        {
+            Messages.Clear();
         }
 
         /// <summary>
