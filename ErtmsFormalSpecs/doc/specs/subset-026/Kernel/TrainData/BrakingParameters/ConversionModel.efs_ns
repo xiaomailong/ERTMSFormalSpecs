@@ -172,30 +172,12 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 </ReqRef><Comment>Provides the value of the basic brake build up time for full service brake.</Comment>
 <Cases>
 <Case
- Name="Passenger train"
+ Name="Value"
 >
-<PreConditions>
-<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
-<Expression>BaseTypes.Time ( 3.0 +
-                             1.5 * ( TrainData.Value.TrainLength / 100.0 ) +
-                             0.1 * ( TrainData.Value.TrainLength / 100.0 ) *
-                                     ( TrainData.Value.TrainLength / 100.0 ) )</Expression>
-</Case><Case
- Name="Freight train in G"
->
-<PreConditions>
-<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition></PreConditions>
-<Expression>BaseTypes.Time ( 3.0 +
-                              2.77 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) +
-                              0.00 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) *
-                                         ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) )</Expression>
-</Case><Case
- Name="Freight train in P"
->
-<Expression>BaseTypes.Time ( 3.0 +
-                              2.77 * ( TrainData.Value.TrainLength / 100.0 ) +
-                              0.00 * ( TrainData.Value.TrainLength / 100.0 ) *
-                                         (TrainData.Value.TrainLength / 100.0 ) )</Expression>
+<Expression>BaseTypes.Time ( a_sb() +
+                             b_sb() * ( L_sb() / 100.0 ) +
+                             c_sb() * ( L_sb() / 100.0 ) *
+                                          ( L_sb() / 100.0 ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="CorrectionFactor"
@@ -248,26 +230,20 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Id="d4abd686-74e0-4be7-8850-63b0d76f32da"
 >
 </ReqRef><ReqRef
+ Id="43053639-5bc0-45bc-8272-51a946091b24"
+>
+</ReqRef><ReqRef
  Id="89c7e8a1-cd28-4e0b-9205-da3ef355ccc9"
 >
 </ReqRef><Comment>Provides the value of basic brake build up time for the emergency brake.</Comment>
 <Cases>
 <Case
- Name="Train in P"
+ Name="Value"
 >
-<PreConditions>
-<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP OR TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></PreConditions>
-<Expression>BaseTypes.Time ( 2.3 +
-                             0.0 *   ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) +
-                             0.17 * ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) *
-                                        ( BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 ) / 100.0 ) )</Expression>
-</Case><Case
- Name="Freight train in G"
->
-<Expression>BaseTypes.Time ( 12.0 +
-                              0.0 *   ( TrainData.Value.TrainLength / 100.0 ) +
-                              0.05 * ( TrainData.Value.TrainLength / 100.0 ) *
-                                         ( TrainData.Value.TrainLength / 100.0 ) )</Expression>
+<Expression>BaseTypes.Time ( a_eb() +
+                              b_eb() * ( L_eb() / 100.0 ) +
+                              c_eb() * ( L_eb() / 100.0 ) *
+                                           ( L_eb() / 100.0 ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -379,6 +355,370 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="Otherwise"
 >
 <Expression>1500.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="a_eb"
+>
+<ReqRef
+ Id="d3fdbd20-c758-4243-b160-53d57b78386c"
+>
+</ReqRef><ReqRef
+ Id="43053639-5bc0-45bc-8272-51a946091b24"
+>
+</ReqRef><ReqRef
+ Id="89c7e8a1-cd28-4e0b-9205-da3ef355ccc9"
+>
+</ReqRef><Comment>Represents the coefficient a for computation of the emergency brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>2.3</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>2.3</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>-0.4</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>12.0</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>-0.4</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="b_eb"
+>
+<ReqRef
+ Id="d3fdbd20-c758-4243-b160-53d57b78386c"
+>
+</ReqRef><ReqRef
+ Id="43053639-5bc0-45bc-8272-51a946091b24"
+>
+</ReqRef><ReqRef
+ Id="89c7e8a1-cd28-4e0b-9205-da3ef355ccc9"
+>
+</ReqRef><Comment>Represents the coefficient b for computation of the emergency brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>1.6</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>1.6</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="c_eb"
+>
+<ReqRef
+ Id="d3fdbd20-c758-4243-b160-53d57b78386c"
+>
+</ReqRef><ReqRef
+ Id="43053639-5bc0-45bc-8272-51a946091b24"
+>
+</ReqRef><ReqRef
+ Id="89c7e8a1-cd28-4e0b-9205-da3ef355ccc9"
+>
+</ReqRef><Comment>Represents the coefficient c for computation of the emergency brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>0.17</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.17</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.03</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.05</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.03</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="L_eb"
+>
+<ReqRef
+ Id="d3fdbd20-c758-4243-b160-53d57b78386c"
+>
+</ReqRef><ReqRef
+ Id="43053639-5bc0-45bc-8272-51a946091b24"
+>
+</ReqRef><ReqRef
+ Id="89c7e8a1-cd28-4e0b-9205-da3ef355ccc9"
+>
+</ReqRef><Comment>Represents the length used to compute the emergency brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger or freight train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP
+  OR
+TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition></PreConditions>
+<Expression>BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 )</Expression>
+</Case><Case
+ Name="Freight train in G"
+>
+<Expression>Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="a_sb"
+>
+<ReqRef
+ Id="250265ac-337b-4b32-a643-1747ce3b4e07"
+>
+</ReqRef><ReqRef
+ Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
+>
+</ReqRef><ReqRef
+ Id="ec2ba601-e516-4d94-8029-ff236db067bc"
+>
+</ReqRef><Comment>Represents the coefficient a for computation of the full service brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>3.0</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>3.0</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>10.5</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>3.0</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>10.5</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="b_sb"
+>
+<ReqRef
+ Id="250265ac-337b-4b32-a643-1747ce3b4e07"
+>
+</ReqRef><ReqRef
+ Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
+>
+</ReqRef><ReqRef
+ Id="ec2ba601-e516-4d94-8029-ff236db067bc"
+>
+</ReqRef><Comment>Represents the coefficient b for computation of the full service brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>1.5</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>2.77</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.32</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>2.77</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.32</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="c_sb"
+>
+<ReqRef
+ Id="250265ac-337b-4b32-a643-1747ce3b4e07"
+>
+</ReqRef><ReqRef
+ Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
+>
+</ReqRef><ReqRef
+ Id="ec2ba601-e516-4d94-8029-ff236db067bc"
+>
+</ReqRef><Comment>Represents the coefficient c for computation of the full service brake equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP</PreCondition></PreConditions>
+<Expression>0.1</Expression>
+</Case><Case
+ Name="Freight train in P, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Freight train in P, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.18</Expression>
+</Case><Case
+ Name="Freight train in G, train length &lt;= 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>Kernel.TrainData.TrainData.Value.TrainLength &lt;= 900.0</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Freight train in G, train length &gt; 900m"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.FreightTrainInG</PreCondition><PreCondition>900.0 &lt; Kernel.TrainData.TrainData.Value.TrainLength
+  AND
+Kernel.TrainData.TrainData.Value.TrainLength &lt;= 1500.0</PreCondition></PreConditions>
+<Expression>0.18</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="L_sb"
+>
+<ReqRef
+ Id="250265ac-337b-4b32-a643-1747ce3b4e07"
+>
+</ReqRef><ReqRef
+ Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
+>
+</ReqRef><ReqRef
+ Id="ec2ba601-e516-4d94-8029-ff236db067bc"
+>
+</ReqRef><Comment>Represents the length used to compute the full service equivalent equivalent time</Comment>
+<Cases>
+<Case
+ Name="Passenger or freight train in P"
+>
+<PreConditions>
+<PreCondition>TrainData.Value.BrakePosition == BrakePositions.PassengerTrainInP
+  OR
+TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></PreConditions>
+<Expression>Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+</Case><Case
+ Name="Freight train in G"
+>
+<Expression>BaseTypes.MaxLength ( X1 =&gt; TrainData.Value.TrainLength, X2 =&gt; 400.0 )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -541,7 +881,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 <PreConditions>
 <PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Actions>
-<Action>T_brake_service_cm0 &lt;- T_brake_basic_sb ()</Action></Actions>
+<Action>T_brake_service_cm0 &lt;- T_brake_basic_sb ()</Action><Action>T_brake_service_cmt &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Target speed different from 0"
@@ -549,7 +889,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>T_brake_service_cmt &lt;- T_brake_basic_sb () * BaseTypes.Time ( kto () )</Action></Actions>
+<Action>T_brake_service_cmt &lt;- T_brake_basic_sb () * BaseTypes.Time ( kto () )</Action><Action>T_brake_service_cm0 &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -588,7 +928,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 <PreConditions>
 <PreCondition>MA.MA.TargetSpeed == 0.0</PreCondition></PreConditions>
 <Actions>
-<Action>T_brake_emergency_cm0 &lt;- T_brake_basic_eb ()</Action></Actions>
+<Action>T_brake_emergency_cm0 &lt;- T_brake_basic_eb ()</Action><Action>T_brake_emergency_cmt &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Target speed different from 0"
@@ -596,7 +936,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>T_brake_emergency_cmt &lt;- T_brake_basic_eb () * BaseTypes.Time ( kto () )</Action></Actions>
+<Action>T_brake_emergency_cmt &lt;- T_brake_basic_eb () * BaseTypes.Time ( kto () )</Action><Action>T_brake_emergency_cm0 &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -752,5 +1092,44 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Id="891e7b23-96e6-451f-87b3-bc04b9eb0bdf"
 >
 </ReqRef><Comment>The speed dependent deceleration model for the service brake, derived from the brake percentage using the conversion model (if no speed dependent deceleration model for service brake was acquired as part of Train Data).</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ConversionModelWasUsed"
+>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Conversion model initializer"
+>
+<Comment>Verifies if the conditions to use the conversion model are satisfied and in this case launches the computation of braking parameters from the conversion model.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Conversion model will be used"
+>
+<PreConditions>
+<PreCondition>ConversionModelIsUsed()
+  AND
+ConversionModelIsUsed() != ConversionModelWasUsed</PreCondition></PreConditions>
+<Actions>
+<Action>ConversionModel.Initialize()</Action><Action>ConversionModelWasUsed &lt;- ConversionModelIsUsed()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Conversion model will no more be used"
+>
+<PreConditions>
+<PreCondition>ConversionModelIsUsed() != ConversionModelWasUsed</PreCondition></PreConditions>
+<Actions>
+<Action>ConversionModelWasUsed &lt;- ConversionModelIsUsed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

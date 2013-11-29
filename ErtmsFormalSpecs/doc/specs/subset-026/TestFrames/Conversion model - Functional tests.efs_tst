@@ -13,7 +13,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Brake position conversion model"
+ Name="Brake position conversion model - emergency brake equivalent time"
 >
 <TestCases>
 <TestCase
@@ -42,7 +42,7 @@
  Name="Sub-step2"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 800.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1200.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
         {
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
             {
@@ -746,20 +746,23 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Setup"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action></Actions>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 6.024</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 6.024</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -767,86 +770,189 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3 - Freight train in P,  target speed different from 0"
+ Name="Step3 - Freight train in P, train length &lt; 900m,  target speed different from 0"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Setup"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 6.024</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - Freight train in G,  target speed different from 0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 12.2</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 14.152</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - Target speed changes"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt &lt;- Default.BaseTypes.Time.NA</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - Passenger train in P,  target speed equals"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 780.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
 >
 <Actions>
 <Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 12.6428</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 15.17136</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Freight train in P, train length &gt; 900m,  target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1200.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 23.12</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 27.744</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Freight train in G, train length &lt; 900m,  target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 600.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 13.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 16.008</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Freight train in G, train length &gt; 900m,  target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 20.83</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 24.1628</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - Target speed changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - Passenger train in P,  target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 400.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 5.02</Expectation><Expectation
  Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - Freight train in P, train length &lt; 900m,  target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 500.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 6.55</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 6.55</Expectation><Expectation
+ Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -855,20 +961,25 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step7 - Freight train in P,  target speed equals 0"
+ Name="Step10 - Freight train in P, train length &gt; 900m,  target speed equals 0"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Setup"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1300.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 25.47</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 5.02</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 25.47</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -878,241 +989,55 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step8 - Freight train in G,  target speed equals 0"
+ Name="Step11 - Freight train in G, train length &lt; 900m, target speed equals 0"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Setup"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 700.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 12.2</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 14.45</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 12.2</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 14.45</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Computation of the service brake equivalent time"
->
-<ReqRef
- Id="250265ac-337b-4b32-a643-1747ce3b4e07"
->
-</ReqRef><ReqRef
- Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
->
-</ReqRef><ReqRef
- Id="ec2ba601-e516-4d94-8029-ff236db067bc"
->
-</ReqRef><ReqRef
- Id="2a16c4e1-5fbe-4cc3-be52-bcf5134b0d62"
->
-</ReqRef><ReqRef
- Id="1675d177-2698-4b49-8446-3fcebff8a2ee"
->
-</ReqRef><ReqRef
- Id="d976cc75-6166-4358-ad82-737ce3000aeb"
->
-</ReqRef><ReqRef
- Id="a611b24a-cae4-4c3a-abe1-f83752cce43f"
->
-</ReqRef><ReqRef
- Id="c1352e10-31a1-42f0-91d6-9607590f3cd7"
->
-</ReqRef><ReqRef
- Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
->
-</ReqRef><ReqRef
- Id="cc6b11e9-5928-4e32-8541-d493ac66d126"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 20.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 450.0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Passenger train in P,  target speed different from 0"
+ Name="Step12 - Freight train in G, train length &gt; 900m, target speed equals 0"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Setup"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1000.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeEmergencyBrakeEquivalentTime()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 11.775</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 18.6</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 18.6</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 14.13</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - Freight train in P,  target speed different from 0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 18.558</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - Freight train in G,  target speed different from 0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 17.9394</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step5 - Target speed changes"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt &lt;- Default.BaseTypes.Time.NA</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step6 - Passenger train in P,  target speed equals"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 11.775</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 11.775</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step7 - Freight train in P,  target speed equals 0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step8 - Freight train in G,  target speed equals 0"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 15.465</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1459,6 +1384,1051 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val5.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val6.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Brake position conversion model - service brake equivalent time"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1200.0</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+        {
+            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
+            {
+                NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.32
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.28
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 65.0,
+                        Acceleration =&gt; 0.23
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 105.0,
+                        Acceleration =&gt; 0.21
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 125.0,
+                        Acceleration =&gt; 0.17
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 160.0,
+                        Acceleration =&gt; 0.12
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.07
+                    }
+                },
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.65
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.49
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.38
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.31
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.27
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 240.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 25.0,
+                        Acceleration =&gt; 0.75
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.92
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.81
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.46
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.27
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 190.0,
+                        Acceleration =&gt; 0.22
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.11
+                    }
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.84
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 45.0,
+                        Acceleration =&gt; 0.82
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 90.0,
+                        Acceleration =&gt; 0.76
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.68
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.61
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.54
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 260.0,
+                        Acceleration =&gt; 0.47
+                    }
+                },
+                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.72
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.65
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 85.0,
+                        Acceleration =&gt; 0.62
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.53
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 160.0,
+                        Acceleration =&gt; 0.46
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 210.0,
+                        Acceleration =&gt; 0.41
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.33
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.87
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 170.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 270.0,
+                        Acceleration =&gt; 0.2
+                    }
+                }
+            }
+        }</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+{
+    IsActive =&gt; Boolean.True,
+    InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
+}</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
+                NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.2
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.18
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.14
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.11
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.08
+                    }
+                },
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 30.0,
+                        Acceleration =&gt; 0.21
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 60.0,
+                        Acceleration =&gt; 0.18
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 100.0,
+                        Acceleration =&gt; 0.11
+                    }
+                },
+                Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 50.0,
+                        Acceleration =&gt; 0.41
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.29
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 140.0,
+                        Acceleration =&gt; 0.22
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.14
+                    }
+                },
+                Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 45.0,
+                        Acceleration =&gt; 0.45
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 70.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.35
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.21
+                    }
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 25.0,
+                        Acceleration =&gt; 0.75
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.4
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 180.0,
+                        Acceleration =&gt; 0.3
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.2
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.99
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 150.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 190.0,
+                        Acceleration =&gt; 0.5
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.45
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.999
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.95
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 80.0,
+                        Acceleration =&gt; 0.9
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 120.0,
+                        Acceleration =&gt; 0.8
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 170.0,
+                        Acceleration =&gt; 0.7
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 220.0,
+                        Acceleration =&gt; 0.6
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 270.0,
+                        Acceleration =&gt; 0.4
+                    }
+                },
+                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
+                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 0.0,
+                        Acceleration =&gt; 0.88
+                    },
+                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 40.0,
+                        Acceleration =&gt; 0.82
+                    },
+                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 90.0,
+                        Acceleration =&gt; 0.74
+                    },
+                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 130.0,
+                        Acceleration =&gt; 0.61
+                    },
+                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 160.0,
+                        Acceleration =&gt; 0.52
+                    },
+                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 200.0,
+                        Acceleration =&gt; 0.43
+                    },
+                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
+                        SpeedStep =&gt; 250.0,
+                        Acceleration =&gt; 0.39
+                    }
+                }
+            },
+            Kdry_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValuesSet{
+                NoBrake =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.02,
+                        CF1 =&gt; 0.07,
+                        CF2 =&gt; 0.13,
+                        CF3 =&gt; 0.16,
+                        CF4 =&gt; 0.19,
+                        CF5 =&gt; 0.21,
+                        CF6 =&gt; 0.29
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.04,
+                        CF1 =&gt; 0.8,
+                        CF2 =&gt; 0.17,
+                        CF3 =&gt; 0.22,
+                        CF4 =&gt; 0.27,
+                        CF5 =&gt; 0.31,
+                        CF6 =&gt; 0.38
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.06,
+                        CF1 =&gt; 0.11,
+                        CF2 =&gt; 0.18,
+                        CF3 =&gt; 0.25,
+                        CF4 =&gt; 0.32,
+                        CF5 =&gt; 0.41,
+                        CF6 =&gt; 0.51
+                    }
+                },
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.12,
+                        CF1 =&gt; 0.17,
+                        CF2 =&gt; 0.28,
+                        CF3 =&gt; 0.35,
+                        CF4 =&gt; 0.49,
+                        CF5 =&gt; 0.68,
+                        CF6 =&gt; 0.9
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.08,
+                        CF1 =&gt; 0.14,
+                        CF2 =&gt; 0.2,
+                        CF3 =&gt; 0.25,
+                        CF4 =&gt; 0.43,
+                        CF5 =&gt; 0.65,
+                        CF6 =&gt; 0.8
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.09,
+                        CF1 =&gt; 0.15,
+                        CF2 =&gt; 0.19,
+                        CF3 =&gt; 0.25,
+                        CF4 =&gt; 0.3,
+                        CF5 =&gt; 0.4,
+                        CF6 =&gt; 0.55
+                    }
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.1,
+                        CF1 =&gt; 0.17,
+                        CF2 =&gt; 0.24,
+                        CF3 =&gt; 0.37,
+                        CF4 =&gt; 0.45,
+                        CF5 =&gt; 0.69,
+                        CF6 =&gt; 0.92
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.02,
+                        CF1 =&gt; 0.07,
+                        CF2 =&gt; 0.2,
+                        CF3 =&gt; 0.28,
+                        CF4 =&gt; 0.4,
+                        CF5 =&gt; 0.67,
+                        CF6 =&gt; 0.81
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.03,
+                        CF1 =&gt; 0.08,
+                        CF2 =&gt; 0.12,
+                        CF3 =&gt; 0.17,
+                        CF4 =&gt; 0.24,
+                        CF5 =&gt; 0.38,
+                        CF6 =&gt; 0.52
+                    }
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.04,
+                        CF1 =&gt; 0.05,
+                        CF2 =&gt; 0.08,
+                        CF3 =&gt; 0.19,
+                        CF4 =&gt; 0.24,
+                        CF5 =&gt; 0.35,
+                        CF6 =&gt; 0.42
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.01,
+                        CF1 =&gt; 0.04,
+                        CF2 =&gt; 0.1,
+                        CF3 =&gt; 0.19,
+                        CF4 =&gt; 0.28,
+                        CF5 =&gt; 0.43,
+                        CF6 =&gt; 0.69
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.01,
+                        CF1 =&gt; 0.02,
+                        CF2 =&gt; 0.04,
+                        CF3 =&gt; 0.09,
+                        CF4 =&gt; 0.18,
+                        CF5 =&gt; 0.22,
+                        CF6 =&gt; 0.35
+                    }
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
+                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.1,
+                        CF1 =&gt; 0.24,
+                        CF2 =&gt; 0.32,
+                        CF3 =&gt; 0.47,
+                        CF4 =&gt; 0.58,
+                        CF5 =&gt; 0.74,
+                        CF6 =&gt; 0.92
+                    },
+                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.07,
+                        CF1 =&gt; 0.12,
+                        CF2 =&gt; 0.19,
+                        CF3 =&gt; 0.28,
+                        CF4 =&gt; 0.37,
+                        CF5 =&gt; 0.58,
+                        CF6 =&gt; 0.64
+                    },
+                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                        CF0 =&gt; 0.02,
+                        CF1 =&gt; 0.07,
+                        CF2 =&gt; 0.12,
+                        CF3 =&gt; 0.15,
+                        CF4 =&gt; 0.22,
+                        CF5 =&gt; 0.37,
+                        CF6 =&gt; 0.42
+                    }
+                }
+            },
+            Kwet_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet{
+                NoBrake =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.01,
+                    CF1 =&gt; 0.07,
+                    CF2 =&gt; 0.09,
+                    CF3 =&gt; 0.12,
+                    CF4 =&gt; 0.14,
+                    CF5 =&gt; 0.17,
+                    CF6 =&gt; 0.21
+                },
+                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.04,
+                    CF1 =&gt; 0.11,
+                    CF2 =&gt; 0.3,
+                    CF3 =&gt; 0.49,
+                    CF4 =&gt; 0.54,
+                    CF5 =&gt; 0.59,
+                    CF6 =&gt; 0.76
+                },
+                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.07,
+                    CF1 =&gt; 0.12,
+                    CF2 =&gt; 0.2,
+                    CF3 =&gt; 0.4,
+                    CF4 =&gt; 0.47,
+                    CF5 =&gt; 0.55,
+                    CF6 =&gt; 0.71
+                },
+                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.1,
+                    CF1 =&gt; 0.18,
+                    CF2 =&gt; 0.24,
+                    CF3 =&gt; 0.33,
+                    CF4 =&gt; 0.4,
+                    CF5 =&gt; 0.5,
+                    CF6 =&gt; 0.81
+                },
+                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.13,
+                    CF1 =&gt; 0.19,
+                    CF2 =&gt; 0.23,
+                    CF3 =&gt; 0.38,
+                    CF4 =&gt; 0.39,
+                    CF5 =&gt; 0.44,
+                    CF6 =&gt; 0.62
+                },
+                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
+                    CF0 =&gt; 0.21,
+                    CF1 =&gt; 0.32,
+                    CF2 =&gt; 0.4,
+                    CF3 =&gt; 0.48,
+                    CF4 =&gt; 0.62,
+                    CF5 =&gt; 0.74,
+                    CF6 =&gt; 0.85
+                }
+            }
+        }</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 114.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 45.0,
+    Sections =&gt; []
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Computation of the service brake equivalent time"
+>
+<ReqRef
+ Id="250265ac-337b-4b32-a643-1747ce3b4e07"
+>
+</ReqRef><ReqRef
+ Id="eb5ac6d4-0103-4d01-9710-5d256b480f6a"
+>
+</ReqRef><ReqRef
+ Id="ec2ba601-e516-4d94-8029-ff236db067bc"
+>
+</ReqRef><ReqRef
+ Id="2a16c4e1-5fbe-4cc3-be52-bcf5134b0d62"
+>
+</ReqRef><ReqRef
+ Id="1675d177-2698-4b49-8446-3fcebff8a2ee"
+>
+</ReqRef><ReqRef
+ Id="d976cc75-6166-4358-ad82-737ce3000aeb"
+>
+</ReqRef><ReqRef
+ Id="a611b24a-cae4-4c3a-abe1-f83752cce43f"
+>
+</ReqRef><ReqRef
+ Id="c1352e10-31a1-42f0-91d6-9607590f3cd7"
+>
+</ReqRef><ReqRef
+ Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
+>
+</ReqRef><ReqRef
+ Id="cc6b11e9-5928-4e32-8541-d493ac66d126"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 20.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Passenger train in P,  target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 550.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeBasicDeceleration()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 17.13</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.275</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Freight train in P, train length &lt; 900m, target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 400.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.08</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 16.896</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Freight train in P, train length &gt; 900m, target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.2</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 35.8</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 42.96</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Freight train in G, train length &lt; 900m, target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 600.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 22.7592</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 19.62</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - Freight train in G, train length &gt; 900m, target speed different from 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1200.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 46.7016</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 40.26</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - Target speed changes"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.MA.MA.TargetSpeed &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - Passenger train in P,  target speed equals"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 700.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 18.4</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 18.4</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - Freight train in P, train length &lt; 900m, target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 5.77</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 5.77</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - Freight train in P, train length &gt; 900m, target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1400.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 50.26</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 50.26</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - Freight train in G, train length &lt; 900m, target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 300.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 14.08</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.08</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - Freight train in G, train length &gt; 900m, target speed equals 0"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Setup"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 1300.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Data check"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.ComputeServiceBrakeEquivalentTime()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 45.08</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 45.08</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
