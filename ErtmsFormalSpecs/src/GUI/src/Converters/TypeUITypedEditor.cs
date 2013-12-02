@@ -110,7 +110,7 @@ namespace GUI.Converters
                     form.ConsiderOnlyTypes = true;
                     TextChangeHandler handler = new TextChangeHandler(typedElement as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form);
+                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
                 }
             }
 
