@@ -173,6 +173,7 @@ namespace GUI.TestRunnerView
                         runner.RunUntilStep(null);
                     }
                     SynchronizerList.ResumeSynchronization();
+                    Window.tabControl1.SelectedTab = Window.timeLineTabPage;
                 }
             }
         }

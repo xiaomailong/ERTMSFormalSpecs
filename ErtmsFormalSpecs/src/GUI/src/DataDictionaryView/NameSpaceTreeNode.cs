@@ -290,13 +290,15 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected namespace
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
+
             List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
             namespaces.Add(Item);
 
-            (BaseForm as Window).toolStripStatusLabel.Text = CreateStatMessage(namespaces, false);
+            GUIUtils.MDIWindow.SetStatus(CreateStatMessage(namespaces, false));
         }
 
 

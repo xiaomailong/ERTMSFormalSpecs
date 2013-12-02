@@ -26,6 +26,8 @@ using System.Diagnostics;
 using System.Reflection;
 using WeifenLuo.WinFormsUI.Docking;
 using System.Drawing;
+using DataDictionary.Specification;
+using GUI.SpecificationView;
 
 namespace GUI
 {
@@ -644,6 +646,8 @@ namespace GUI
                                 shortcutsWindow.RefreshModel();
                             }
                         }
+
+                        SetDefaultStatus();
                     }
                     else
                     {
@@ -1759,6 +1763,37 @@ namespace GUI
         private void showTranslationViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddChildWindow(TranslationWindow);
+        }
+
+        /// <summary>
+        /// Sets the status of the window
+        /// </summary>
+        /// <param name="statusText"></param>
+        public void SetStatus(string statusText)
+        {
+            toolStripStatusLabel.Text = statusText;
+        }
+
+        /// <summary>
+        /// Sets the default status
+        /// </summary>
+        public void SetDefaultStatus()
+        {
+            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+            foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+            {
+                foreach (Specification specification in dictionary.Specifications)
+                {
+                    foreach (DataDictionary.Specification.Chapter chapter in specification.Chapters)
+                    {
+                        foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                        {
+                            paragraphs.AddRange(paragraph.getSubParagraphs());
+                        }
+                    }
+                }
+            }
+            SetStatus(ParagraphTreeNode.CreateStatMessage(EFSSystem.INSTANCE, paragraphs, false));
         }
     }
 

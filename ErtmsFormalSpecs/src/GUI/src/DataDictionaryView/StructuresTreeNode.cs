@@ -193,10 +193,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Structures.Count + (Item.Structures.Count > 1 ? " structures " : " structure ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Structures.Count + (Item.Structures.Count > 1 ? " structures " : " structure ") + "selected.");
         }
     }
 }

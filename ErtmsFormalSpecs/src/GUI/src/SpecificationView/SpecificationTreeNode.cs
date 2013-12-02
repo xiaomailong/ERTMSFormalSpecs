@@ -125,9 +125,10 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Update counts according to the selected chapter
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
 
             Window window = BaseForm as Window;
             if (window != null)
@@ -143,7 +144,7 @@ namespace GUI.SpecificationView
                         paragraphs.AddRange(paragraph.getSubParagraphs());
                     }
                 }
-                window.toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
+                GUIUtils.MDIWindow.SetStatus(ParagraphTreeNode.CreateStatMessage(Item.EFSSystem, paragraphs, true));
             }
         }
 

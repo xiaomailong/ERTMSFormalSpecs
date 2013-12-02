@@ -177,6 +177,7 @@ namespace GUI.TestRunnerView
                     EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
                     EFSSystem.Runner.RunUntilStep(null);
                     SynchronizerList.ResumeSynchronization();
+                    Window.tabControl1.SelectedTab = Window.timeLineTabPage;
                 }
             }
         }

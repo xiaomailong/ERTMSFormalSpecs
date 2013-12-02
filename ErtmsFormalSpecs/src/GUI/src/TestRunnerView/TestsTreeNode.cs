@@ -211,5 +211,16 @@ namespace GUI.TestRunnerView
                 GUIUtils.MDIWindow.RefreshModel();
             }
         }
+
+        /// <summary>
+        /// Display the number of frames
+        /// </summary>
+        /// <param name="displayStatistics"></param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Tests.Count + " test frames");
+        }
     }
 }

@@ -120,7 +120,8 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// <summary>
         /// Don't do anything when the selection changed
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
             setImageIndex(false);
         }

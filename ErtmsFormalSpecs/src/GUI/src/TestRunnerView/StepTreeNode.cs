@@ -316,6 +316,7 @@ namespace GUI.TestRunnerView
                     }
                 }
                 SynchronizerList.ResumeSynchronization();
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
             }
         }
 

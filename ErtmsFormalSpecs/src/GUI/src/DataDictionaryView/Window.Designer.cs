@@ -66,8 +66,6 @@ namespace GUI.DataDictionaryView
             this.usageTreeView = new GUI.DataDictionaryView.UsageTreeView.UsageTreeView();
             this.messagesGroupBox = new System.Windows.Forms.GroupBox();
             this.messagesRichTextBox = new GUI.EditorTextBox();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,7 +87,6 @@ namespace GUI.DataDictionaryView
             this.splitContainer3.SuspendLayout();
             this.usageTabPage.SuspendLayout();
             this.messagesGroupBox.SuspendLayout();
-            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -167,7 +164,7 @@ namespace GUI.DataDictionaryView
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer1.Size = new System.Drawing.Size(926, 526);
+            this.splitContainer1.Size = new System.Drawing.Size(926, 548);
             this.splitContainer1.SplitterDistance = 221;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
@@ -184,7 +181,7 @@ namespace GUI.DataDictionaryView
             this.dataDictTree.Root = null;
             this.dataDictTree.Selected = null;
             this.dataDictTree.SelectedImageIndex = 0;
-            this.dataDictTree.Size = new System.Drawing.Size(221, 526);
+            this.dataDictTree.Size = new System.Drawing.Size(221, 548);
             this.dataDictTree.TabIndex = 3;
             // 
             // splitContainer4
@@ -201,8 +198,8 @@ namespace GUI.DataDictionaryView
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.messagesGroupBox);
-            this.splitContainer4.Size = new System.Drawing.Size(702, 526);
-            this.splitContainer4.SplitterDistance = 441;
+            this.splitContainer4.Size = new System.Drawing.Size(702, 548);
+            this.splitContainer4.SplitterDistance = 459;
             this.splitContainer4.TabIndex = 6;
             // 
             // splitContainer2
@@ -220,8 +217,8 @@ namespace GUI.DataDictionaryView
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer2.Size = new System.Drawing.Size(702, 441);
-            this.splitContainer2.SplitterDistance = 219;
+            this.splitContainer2.Size = new System.Drawing.Size(702, 459);
+            this.splitContainer2.SplitterDistance = 227;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 5;
             // 
@@ -232,7 +229,7 @@ namespace GUI.DataDictionaryView
             this.dataDictPropertyGrid.Location = new System.Drawing.Point(0, 0);
             this.dataDictPropertyGrid.Name = "dataDictPropertyGrid";
             this.dataDictPropertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.dataDictPropertyGrid.Size = new System.Drawing.Size(702, 219);
+            this.dataDictPropertyGrid.Size = new System.Drawing.Size(702, 227);
             this.dataDictPropertyGrid.TabIndex = 4;
             // 
             // tabControl
@@ -244,7 +241,7 @@ namespace GUI.DataDictionaryView
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(702, 219);
+            this.tabControl.Size = new System.Drawing.Size(702, 229);
             this.tabControl.TabIndex = 1;
             // 
             // descriptionTabPage
@@ -254,7 +251,7 @@ namespace GUI.DataDictionaryView
             this.descriptionTabPage.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionTabPage.Name = "descriptionTabPage";
             this.descriptionTabPage.Padding = new System.Windows.Forms.Padding(2);
-            this.descriptionTabPage.Size = new System.Drawing.Size(694, 193);
+            this.descriptionTabPage.Size = new System.Drawing.Size(694, 203);
             this.descriptionTabPage.TabIndex = 4;
             this.descriptionTabPage.Text = "Description";
             this.descriptionTabPage.UseVisualStyleBackColor = true;
@@ -274,7 +271,7 @@ namespace GUI.DataDictionaryView
             // 
             this.splitContainer3.Panel2.Controls.Add(this.ruleExplainTextBox);
             this.splitContainer3.Panel2.Controls.Add(this.expressionEditorTextBox);
-            this.splitContainer3.Size = new System.Drawing.Size(690, 189);
+            this.splitContainer3.Size = new System.Drawing.Size(690, 199);
             this.splitContainer3.SplitterDistance = 345;
             this.splitContainer3.SplitterWidth = 3;
             this.splitContainer3.TabIndex = 0;
@@ -286,23 +283,13 @@ namespace GUI.DataDictionaryView
             this.requirementsTextBox.ConsiderOnlyTypes = false;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementsTextBox.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requirementsTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.requirementsTextBox.Instance = null;
+            this.requirementsTextBox.Lines = new string[] {};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
             this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
-            this.requirementsTextBox.Size = new System.Drawing.Size(345, 189);
+            this.requirementsTextBox.Size = new System.Drawing.Size(345, 199);
             this.requirementsTextBox.TabIndex = 0;
             // 
             // ruleExplainTextBox
@@ -310,33 +297,13 @@ namespace GUI.DataDictionaryView
             this.ruleExplainTextBox.AutoComplete = true;
             this.ruleExplainTextBox.ConsiderOnlyTypes = false;
             this.ruleExplainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ruleExplainTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.ruleExplainTextBox.Instance = null;
+            this.ruleExplainTextBox.Lines = new string[] {};
             this.ruleExplainTextBox.Location = new System.Drawing.Point(0, 0);
             this.ruleExplainTextBox.Name = "ruleExplainTextBox";
             this.ruleExplainTextBox.ReadOnly = true;
             this.ruleExplainTextBox.Rtf = resources.GetString("ruleExplainTextBox.Rtf");
-            this.ruleExplainTextBox.Size = new System.Drawing.Size(342, 189);
+            this.ruleExplainTextBox.Size = new System.Drawing.Size(342, 199);
             this.ruleExplainTextBox.TabIndex = 24;
             // 
             // expressionEditorTextBox
@@ -345,33 +312,13 @@ namespace GUI.DataDictionaryView
             this.expressionEditorTextBox.ConsiderOnlyTypes = false;
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expressionEditorTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.expressionEditorTextBox.Instance = null;
+            this.expressionEditorTextBox.Lines = new string[] {};
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
             this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
-            this.expressionEditorTextBox.Size = new System.Drawing.Size(342, 189);
+            this.expressionEditorTextBox.Size = new System.Drawing.Size(342, 199);
             this.expressionEditorTextBox.TabIndex = 0;
             this.expressionEditorTextBox.Visible = false;
             // 
@@ -409,7 +356,7 @@ namespace GUI.DataDictionaryView
             this.messagesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.messagesGroupBox.Location = new System.Drawing.Point(0, 0);
             this.messagesGroupBox.Name = "messagesGroupBox";
-            this.messagesGroupBox.Size = new System.Drawing.Size(702, 81);
+            this.messagesGroupBox.Size = new System.Drawing.Size(702, 85);
             this.messagesGroupBox.TabIndex = 0;
             this.messagesGroupBox.TabStop = false;
             this.messagesGroupBox.Text = "Messages";
@@ -419,58 +366,15 @@ namespace GUI.DataDictionaryView
             this.messagesRichTextBox.AutoComplete = true;
             this.messagesRichTextBox.ConsiderOnlyTypes = false;
             this.messagesRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messagesRichTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.messagesRichTextBox.Instance = null;
+            this.messagesRichTextBox.Lines = new string[] {};
             this.messagesRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messagesRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.messagesRichTextBox.Name = "messagesRichTextBox";
             this.messagesRichTextBox.ReadOnly = false;
             this.messagesRichTextBox.Rtf = resources.GetString("messagesRichTextBox.Rtf");
-            this.messagesRichTextBox.Size = new System.Drawing.Size(696, 62);
+            this.messagesRichTextBox.Size = new System.Drawing.Size(696, 66);
             this.messagesRichTextBox.TabIndex = 1;
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 551);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(926, 22);
-            this.statusStrip.TabIndex = 6;
-            this.statusStrip.Text = "statusStrip";
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // Window
             // 
@@ -480,8 +384,8 @@ namespace GUI.DataDictionaryView
             this.ClientSize = new System.Drawing.Size(926, 573);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip);
-            this.Controls.Add(this.statusStrip);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -508,8 +412,6 @@ namespace GUI.DataDictionaryView
             this.splitContainer3.ResumeLayout(false);
             this.usageTabPage.ResumeLayout(false);
             this.messagesGroupBox.ResumeLayout(false);
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,8 +437,6 @@ namespace GUI.DataDictionaryView
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
         private System.Windows.Forms.ToolStripButton nextWarningToolStripButton;
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private EditorTextBox messagesRichTextBox;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.GroupBox messagesGroupBox;

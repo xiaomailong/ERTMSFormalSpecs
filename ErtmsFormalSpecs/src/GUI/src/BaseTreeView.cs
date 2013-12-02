@@ -345,7 +345,10 @@ namespace GUI
         public BaseTreeNode Selected
         {
             get { return SelectedNode as BaseTreeNode; }
-            set { SelectedNode = value; }
+            set
+            {
+                SelectedNode = value;
+            }
         }
 
         /// <summary>
@@ -380,7 +383,7 @@ namespace GUI
                 {
                     GUIUtils.MDIWindow.HandleSelection(Selected.Model);
                 }
-                Selected.SelectionChanged();
+                Selected.SelectionChanged(true);
             }
             currentSelection = Selected;
         }

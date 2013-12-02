@@ -47,23 +47,22 @@ namespace GUI.TestRunnerView
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.testBrowserStatusLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.nextErrortoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTimeTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.rewindButton = new System.Windows.Forms.ToolStripButton();
-            this.RestartButton = new System.Windows.Forms.ToolStripButton();
-            this.StepOnceButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.frameToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.subSequenceSelectorComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.rewindButton = new System.Windows.Forms.ToolStripButton();
+            this.RestartButton = new System.Windows.Forms.ToolStripButton();
+            this.StepOnceButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTimeTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripCurrentStepTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -109,23 +108,22 @@ namespace GUI.TestRunnerView
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel3,
             this.toolStripSeparator1,
-            this.testBrowserStatusLabel,
-            this.toolStripSeparator2,
             this.nextErrortoolStripButton,
             this.nextWarningToolStripButton,
             this.nextInfoToolStripButton,
             this.toolStripSeparator4,
-            this.toolStripLabel1,
-            this.toolStripTimeTextBox,
-            this.toolStripSeparator5,
-            this.rewindButton,
-            this.RestartButton,
-            this.StepOnceButton,
-            this.toolStripSeparator3,
             this.toolStripLabel5,
             this.frameToolStripComboBox,
             this.toolStripLabel2,
             this.subSequenceSelectorComboBox,
+            this.toolStripSeparator5,
+            this.rewindButton,
+            this.RestartButton,
+            this.StepOnceButton,
+            this.toolStripSeparator2,
+            this.toolStripLabel1,
+            this.toolStripTimeTextBox,
+            this.toolStripSeparator3,
             this.toolStripLabel4,
             this.toolStripCurrentStepTextBox});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
@@ -144,17 +142,6 @@ namespace GUI.TestRunnerView
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // testBrowserStatusLabel
-            // 
-            this.testBrowserStatusLabel.Name = "testBrowserStatusLabel";
-            this.testBrowserStatusLabel.Size = new System.Drawing.Size(86, 22);
-            this.testBrowserStatusLabel.Text = "toolStripLabel1";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // nextErrortoolStripButton
             // 
@@ -191,19 +178,32 @@ namespace GUI.TestRunnerView
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripLabel1
+            // toolStripLabel5
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(34, 22);
-            this.toolStripLabel1.Text = "Time";
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel5.Text = "Frame";
             // 
-            // toolStripTimeTextBox
+            // frameToolStripComboBox
             // 
-            this.toolStripTimeTextBox.Name = "toolStripTimeTextBox";
-            this.toolStripTimeTextBox.ReadOnly = true;
-            this.toolStripTimeTextBox.Size = new System.Drawing.Size(68, 25);
-            this.toolStripTimeTextBox.Text = "0";
-            this.toolStripTimeTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.frameToolStripComboBox.DropDownWidth = 400;
+            this.frameToolStripComboBox.Name = "frameToolStripComboBox";
+            this.frameToolStripComboBox.Size = new System.Drawing.Size(121, 25);
+            this.frameToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.frameSelectorComboBox_SelectionChanged);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(80, 22);
+            this.toolStripLabel2.Text = "Sub sequence";
+            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
+            // 
+            // subSequenceSelectorComboBox
+            // 
+            this.subSequenceSelectorComboBox.DropDownWidth = 400;
+            this.subSequenceSelectorComboBox.Name = "subSequenceSelectorComboBox";
+            this.subSequenceSelectorComboBox.Size = new System.Drawing.Size(201, 25);
+            this.subSequenceSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.testCaseSelectorComboBox_SelectionChanged);
             // 
             // toolStripSeparator5
             // 
@@ -240,35 +240,29 @@ namespace GUI.TestRunnerView
             this.StepOnceButton.Text = "Step once";
             this.StepOnceButton.Click += new System.EventHandler(this.stepOnce_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(34, 22);
+            this.toolStripLabel1.Text = "Time";
+            // 
+            // toolStripTimeTextBox
+            // 
+            this.toolStripTimeTextBox.Name = "toolStripTimeTextBox";
+            this.toolStripTimeTextBox.ReadOnly = true;
+            this.toolStripTimeTextBox.Size = new System.Drawing.Size(68, 25);
+            this.toolStripTimeTextBox.Text = "0";
+            this.toolStripTimeTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel5
-            // 
-            this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel5.Text = "Frame";
-            // 
-            // frameToolStripComboBox
-            // 
-            this.frameToolStripComboBox.Name = "frameToolStripComboBox";
-            this.frameToolStripComboBox.Size = new System.Drawing.Size(121, 25);
-            this.frameToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.frameSelectorComboBox_SelectionChanged);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(80, 22);
-            this.toolStripLabel2.Text = "Sub sequence";
-            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
-            // 
-            // subSequenceSelectorComboBox
-            // 
-            this.subSequenceSelectorComboBox.Name = "subSequenceSelectorComboBox";
-            this.subSequenceSelectorComboBox.Size = new System.Drawing.Size(201, 25);
-            this.subSequenceSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.testCaseSelectorComboBox_SelectionChanged);
             // 
             // toolStripLabel4
             // 
@@ -411,31 +405,25 @@ namespace GUI.TestRunnerView
             // requirementsTextBox
             // 
             this.requirementsTextBox.AutoComplete = true;
+            this.requirementsTextBox.ConsiderOnlyTypes = false;
             this.requirementsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requirementsTextBox.Lines = new string[] {
-        "",
-        "",
-        "",
-        "",
-        ""};
+            this.requirementsTextBox.Instance = null;
+            this.requirementsTextBox.Lines = new string[] {};
             this.requirementsTextBox.Location = new System.Drawing.Point(0, 0);
             this.requirementsTextBox.Name = "requirementsTextBox";
             this.requirementsTextBox.ReadOnly = false;
-            this.requirementsTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
-    "\n\\par\r\n\\par\r\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.requirementsTextBox.Rtf = resources.GetString("requirementsTextBox.Rtf");
             this.requirementsTextBox.Size = new System.Drawing.Size(490, 263);
             this.requirementsTextBox.TabIndex = 0;
             // 
             // expressionEditorTextBox
             // 
             this.expressionEditorTextBox.AutoComplete = true;
+            this.expressionEditorTextBox.ConsiderOnlyTypes = false;
             this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expressionEditorTextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expressionEditorTextBox.Lines = new string[] {
-        "",
-        "",
-        ""};
+            this.expressionEditorTextBox.Instance = null;
+            this.expressionEditorTextBox.Lines = new string[] {};
             this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.expressionEditorTextBox.Name = "expressionEditorTextBox";
             this.expressionEditorTextBox.ReadOnly = false;
@@ -447,18 +435,15 @@ namespace GUI.TestRunnerView
             // explainTextBox
             // 
             this.explainTextBox.AutoComplete = true;
+            this.explainTextBox.ConsiderOnlyTypes = false;
             this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explainTextBox.Lines = new string[] {
-        "",
-        "",
-        ""};
+            this.explainTextBox.Instance = null;
+            this.explainTextBox.Lines = new string[] {};
             this.explainTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.explainTextBox.Name = "explainTextBox";
             this.explainTextBox.ReadOnly = false;
-            this.explainTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
-    "\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
             this.explainTextBox.Size = new System.Drawing.Size(487, 263);
             this.explainTextBox.TabIndex = 3;
             // 
@@ -500,17 +485,14 @@ namespace GUI.TestRunnerView
             // messageRichTextBox
             // 
             this.messageRichTextBox.AutoComplete = true;
+            this.messageRichTextBox.ConsiderOnlyTypes = false;
             this.messageRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageRichTextBox.Lines = new string[] {
-        "",
-        "",
-        ""};
+            this.messageRichTextBox.Instance = null;
+            this.messageRichTextBox.Lines = new string[] {};
             this.messageRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.messageRichTextBox.Name = "messageRichTextBox";
             this.messageRichTextBox.ReadOnly = false;
-            this.messageRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
-    "\n\\par\r\n\\cf1\\fs17\\par\r\n}\r\n";
+            this.messageRichTextBox.Rtf = resources.GetString("messageRichTextBox.Rtf");
             this.messageRichTextBox.Size = new System.Drawing.Size(989, 78);
             this.messageRichTextBox.TabIndex = 4;
             // 
@@ -522,6 +504,7 @@ namespace GUI.TestRunnerView
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -557,8 +540,6 @@ namespace GUI.TestRunnerView
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripLabel testBrowserStatusLabel;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private TimeLineControl.TimeLineControl evcTimeLineControl;
@@ -567,8 +548,6 @@ namespace GUI.TestRunnerView
         private MyPropertyGrid propertyGrid;
         private System.Windows.Forms.ToolStripTextBox toolStripTimeTextBox;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage timeLineTabPage;
         public GUI.ExplainTextBox explainTextBox;
         private System.Windows.Forms.ToolStripButton StepOnceButton;
         private System.Windows.Forms.ToolStripButton RestartButton;
@@ -586,13 +565,16 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
         private System.Windows.Forms.ToolStripComboBox frameToolStripComboBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.TabPage descriptionTabPage;
         private EditorTextBox messageRichTextBox;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private EditorTextBox requirementsTextBox;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox messagesGroupBox;
         private EditorTextBox expressionEditorTextBox;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage timeLineTabPage;
+        public System.Windows.Forms.TabPage descriptionTabPage;
 
     }
 }
