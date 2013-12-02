@@ -287,6 +287,8 @@ namespace GUI.TestRunnerView
                         runner.Cycle();
                     }
                 }
+
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
                 GUIUtils.MDIWindow.Refresh();
             }
         }
@@ -316,7 +318,6 @@ namespace GUI.TestRunnerView
                     }
                 }
                 SynchronizerList.ResumeSynchronization();
-                window.tabControl1.SelectedTab = window.timeLineTabPage;
             }
         }
 

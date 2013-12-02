@@ -173,7 +173,6 @@ namespace GUI.TestRunnerView
                         runner.RunUntilStep(null);
                     }
                     SynchronizerList.ResumeSynchronization();
-                    Window.tabControl1.SelectedTab = Window.timeLineTabPage;
                 }
             }
         }
@@ -191,6 +190,12 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestsHandler);
             dialog.ShowDialog();
+
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
+            }
         }
         #endregion
 
