@@ -15455,7 +15455,7 @@ In order to calculate in advance the EBI supervision limit at the Trip location 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.2.0"
  functionalBlockName=""
  Name=""
@@ -15465,7 +15465,7 @@ V^(n+1)_release = V_EBD ( d_tripEoA + D^n_bec ) - V^n_delta0rsob
 With V^n_delta0rsob = max { f_41 (V^n_release), V_ura } or V^n_delta0rsob = 0 (if compensation of speed inaccuracy is inhibited by National Value)
 With D^n_bec = (V^n_release + V^n_delta0rsob) * (T_traction + T_berem)
 With d_tripEoA = d_EoA + alpha * L_antenna-front + max { (2 * Q_locacc_refBG + 10m + 10% * d_EOA), (d_maxsafefront - d_minsafefront) }
-And withalpha = 1 if level = 1
+And with alpha = 1 if level = 1
 alpha = 0 if level = 2 or 3
 V^(n+1)_release = V_target if d_tripEoA + D^n_bec &gt;= d_EBD (V_target)
 or if V_EBD (d_tripoEoA + D^n_bec) - V^n_delta0rsob &lt;= V_target
