@@ -260,7 +260,6 @@ namespace GUI.TestRunnerView
                     }
 
                     subSequenceSelectorComboBox.ToolTipText = subSequenceSelectorComboBox.Text;
-                    testBrowserStatusLabel.Text = frames.Count + " frame(s) loaded";
                 }
                 finally
                 {
@@ -286,6 +285,7 @@ namespace GUI.TestRunnerView
 
         private void stepOnce_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = timeLineTabPage;
             StepOnce();
         }
 
@@ -297,6 +297,7 @@ namespace GUI.TestRunnerView
                 EFSSystem.Runner = null;
                 GUIUtils.MDIWindow.RefreshAfterStep();
             }
+            tabControl1.SelectedTab = timeLineTabPage;
             Clear();
         }
 
@@ -330,6 +331,7 @@ namespace GUI.TestRunnerView
 
         private void rewindButton_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = timeLineTabPage;
             StepBack();
         }
 

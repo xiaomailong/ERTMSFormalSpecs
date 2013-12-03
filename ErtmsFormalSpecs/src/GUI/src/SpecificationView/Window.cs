@@ -106,12 +106,6 @@ namespace GUI.SpecificationView
         {
             specBrowserTreeView.Refresh();
             int applicableCounter = Dictionary.ApplicableParagraphs.Count;
-            int implementedCounter = SpecCoverageReport.CoveredRequirements(Dictionary, true).Count;
-            int testedCounter = TestsCoverageReport.CoveredRequirements(Dictionary).Count;
-
-            double percentageImplemented = (double)implementedCounter / (double)applicableCounter;
-            double percentageTested = (double)testedCounter / (double)applicableCounter;
-            specBrowserStatusLabel.Text = string.Format("{0} applicable paragraphs loaded. {1} ({2:P2}) implemented, {3} ({4:P2}) tested.", new object[] { applicableCounter, implementedCounter, percentageImplemented, testedCounter, percentageTested });
             base.Refresh();
         }
 

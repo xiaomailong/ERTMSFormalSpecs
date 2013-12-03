@@ -50,9 +50,10 @@ namespace GUI.Shortcuts
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(displayStatistics);
 
             RefreshNode();
         }

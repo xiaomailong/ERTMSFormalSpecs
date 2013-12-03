@@ -21,6 +21,7 @@ using System.Windows.Forms;
 using Utils;
 using DataDictionary;
 using DataDictionary.Specification;
+using GUI.SpecificationView;
 
 namespace GUI
 {
@@ -173,7 +174,8 @@ namespace GUI
         /// <summary>
         /// Handles a selection change event
         /// </summary>
-        public virtual void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public virtual void SelectionChanged(bool displayStatistics)
         {
             if (Model != null && BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
@@ -182,6 +184,11 @@ namespace GUI
                 {
                     RefreshViewAccordingToModel(baseForm, false);
                 }
+            }
+
+            if (displayStatistics)
+            {
+                GUIUtils.MDIWindow.SetDefaultStatus();
             }
         }
 
@@ -1050,9 +1057,10 @@ namespace GUI
         /// <summary>
         /// Handles a selection change event
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(displayStatistics);
 
             if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
@@ -1067,10 +1075,6 @@ namespace GUI
                         baseForm.Properties.SelectedObject = editor;
                     }
                 }
-            }
-            if (BaseForm is GUI.DataDictionaryView.Window)
-            {
-                (BaseForm as GUI.DataDictionaryView.Window).toolStripStatusLabel.Text = "";
             }
         }
     }

@@ -26,6 +26,8 @@ using System.Diagnostics;
 using System.Reflection;
 using WeifenLuo.WinFormsUI.Docking;
 using System.Drawing;
+using DataDictionary.Specification;
+using GUI.SpecificationView;
 
 namespace GUI
 {
@@ -180,7 +182,7 @@ namespace GUI
                 if (dictionary != null)
                 {
                     retVal = new TranslationRules.Window(dictionary.TranslationDictionary);
-                    AddChildWindow(retVal);
+                    AddChildWindow(retVal, DockAreas.Document);
                 }
                 return retVal;
             }
@@ -206,7 +208,7 @@ namespace GUI
                 {
                     Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
                     newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                    AddChildWindow(newWindow);
+                    AddChildWindow(newWindow, DockAreas.DockRight);
                     return newWindow;
                 }
 
@@ -340,8 +342,9 @@ namespace GUI
         /// Adds a child window to this parent MDI
         /// </summary>
         /// <param name="window"></param>
+        /// <param name="dockArea">where to place the window</param>
         /// <returns></returns>
-        public void AddChildWindow(Form window)
+        public void AddChildWindow(Form window, DockAreas dockArea = DockAreas.Document)
         {
             InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
 
@@ -350,13 +353,18 @@ namespace GUI
             {
                 SubForms.Add(docContent);
 
-                if (docContent.DockAreas == DockAreas.DockLeft)
+
+                if (dockArea == DockAreas.DockLeft)
                 {
                     docContent.Show(dockPanel, DockState.DockLeftAutoHide);
                 }
-                else if (docContent.DockAreas == DockAreas.DockRight)
+                else if (dockArea == DockAreas.DockRight)
                 {
                     docContent.Show(dockPanel, DockState.DockRightAutoHide);
+                }
+                else if (dockArea == DockAreas.Float)
+                {
+                    docContent.Show(dockPanel, DockState.Float);
                 }
                 else
                 {
@@ -612,13 +620,13 @@ namespace GUI
                         // Only open the specification window if specifications are available in the opened file
                         if (dictionary.Specifications != null && dictionary.AllParagraphs.Count > 0)
                         {
-                            AddChildWindow(new SpecificationView.Window(dictionary));
+                            AddChildWindow(new SpecificationView.Window(dictionary), DockAreas.DockLeft);
                         }
 
                         // Only open the model view window if model elements are available in the opened file
                         if (dictionary.NameSpaces.Count > 0)
                         {
-                            AddChildWindow(new DataDictionaryView.Window(dictionary));
+                            AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
                         }
 
                         // Only shold the tests window if tests are defined in the opened file
@@ -627,7 +635,7 @@ namespace GUI
                             IBaseForm testWindow = TestWindow;
                             if (testWindow == null)
                             {
-                                AddChildWindow(new TestRunnerView.Window(EFSSystem));
+                                AddChildWindow(new TestRunnerView.Window(EFSSystem), DockAreas.Document);
                             }
                             else
                             {
@@ -644,6 +652,8 @@ namespace GUI
                                 shortcutsWindow.RefreshModel();
                             }
                         }
+
+                        SetDefaultStatus();
                     }
                     else
                     {
@@ -1373,7 +1383,7 @@ namespace GUI
         private void showRulePerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RulePerformances.RulesPerformances rulePerformances = new RulePerformances.RulesPerformances(EFSSystem);
-            AddChildWindow(rulePerformances);
+            AddChildWindow(rulePerformances, DockAreas.Document);
         }
 
         /// <summary>
@@ -1430,7 +1440,7 @@ namespace GUI
         private void showFunctionsPerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FunctionsPerformances.FunctionsPerformances functionsPerformances = new FunctionsPerformances.FunctionsPerformances(EFSSystem);
-            AddChildWindow(functionsPerformances);
+            AddChildWindow(functionsPerformances, DockAreas.Document);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1463,7 +1473,7 @@ namespace GUI
 
                 if (!found)
                 {
-                    AddChildWindow(new DataDictionaryView.Window(dictionary));
+                    AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
                 }
             }
         }
@@ -1722,7 +1732,7 @@ namespace GUI
             DataDictionary.Dictionary dictionary = GetActiveDictionary();
             if (dictionary != null)
             {
-                AddChildWindow(new SpecificationView.Window(dictionary));
+                AddChildWindow(new SpecificationView.Window(dictionary), DockAreas.DockLeft);
             }
         }
 
@@ -1731,13 +1741,13 @@ namespace GUI
             DataDictionary.Dictionary dictionary = GetActiveDictionary();
             if (dictionary != null)
             {
-                AddChildWindow(new DataDictionaryView.Window(dictionary));
+                AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
             }
         }
 
         private void showShortcutsViewToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            AddChildWindow(ShortcutsWindow);
+            AddChildWindow(ShortcutsWindow, DockAreas.DockRight);
         }
 
         private void showTestsToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1747,7 +1757,7 @@ namespace GUI
                 Form testWindow = TestWindow;
                 if (testWindow == null)
                 {
-                    AddChildWindow(new TestRunnerView.Window(EFSSystem));
+                    AddChildWindow(new TestRunnerView.Window(EFSSystem), DockAreas.Document);
                 }
                 else
                 {
@@ -1758,7 +1768,38 @@ namespace GUI
 
         private void showTranslationViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddChildWindow(TranslationWindow);
+            AddChildWindow(TranslationWindow, DockAreas.Document);
+        }
+
+        /// <summary>
+        /// Sets the status of the window
+        /// </summary>
+        /// <param name="statusText"></param>
+        public void SetStatus(string statusText)
+        {
+            toolStripStatusLabel.Text = statusText;
+        }
+
+        /// <summary>
+        /// Sets the default status
+        /// </summary>
+        public void SetDefaultStatus()
+        {
+            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+            foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+            {
+                foreach (Specification specification in dictionary.Specifications)
+                {
+                    foreach (DataDictionary.Specification.Chapter chapter in specification.Chapters)
+                    {
+                        foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                        {
+                            paragraphs.AddRange(paragraph.getSubParagraphs());
+                        }
+                    }
+                }
+            }
+            SetStatus(ParagraphTreeNode.CreateStatMessage(EFSSystem.INSTANCE, paragraphs, false));
         }
     }
 

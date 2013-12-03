@@ -86,13 +86,15 @@ namespace GUI.SpecificationView
             public virtual DataDictionary.Generated.acceptor.Paragraph_scope Scope
             {
                 get { return Item.getScope(); }
-                set {
+                set
+                {
                     if (value == DataDictionary.Generated.acceptor.Paragraph_scope.defaultParagraph_scope)
                     {
                         value = DataDictionary.Generated.acceptor.Paragraph_scope.aOBU;
                     }
 
-                    Item.SetScope(value); }
+                    Item.SetScope(value);
+                }
             }
 
             /// <summary>
@@ -187,9 +189,13 @@ namespace GUI.SpecificationView
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
+        /// <summary>
+        /// Update counts according to the selected chapter
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
 
             Window window = BaseForm as Window;
             if (window != null)
@@ -205,7 +211,7 @@ namespace GUI.SpecificationView
 
             List<DataDictionary.Specification.Paragraph> paragraphs = Item.getSubParagraphs();
             paragraphs.Add(Item);
-            (BaseForm as Window).toolStripStatusLabel.Text = CreateStatMessage(paragraphs);
+            GUIUtils.MDIWindow.SetStatus(CreateStatMessage(Item.EFSSystem, paragraphs, true));
         }
 
         public void ImplementedHandler(object sender, EventArgs args)
@@ -357,9 +363,11 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Creates the stat message according to the list of paragraphs provided
         /// </summary>
+        /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
+        /// <param name="indicateSelected">Indicates that there are selected requirements</param>
         /// <returns></returns>
-        public static string CreateStatMessage(List<DataDictionary.Specification.Paragraph> paragraphs)
+        public static string CreateStatMessage(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs, bool indicateSelected)
         {
             int subParagraphCount = paragraphs.Count;
             int implementableCount = 0;
@@ -367,6 +375,7 @@ namespace GUI.SpecificationView
             int unImplementedCount = 0;
             int notImplementable = 0;
             int newRevisionAvailable = 0;
+            int testedCount = 0;
 
             Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
             foreach (DataDictionary.Specification.Paragraph p in paragraphs)
@@ -425,11 +434,42 @@ namespace GUI.SpecificationView
                         break;
                 }
             }
-            return subParagraphCount + " selected, "
-                + implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), "
-                + implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), "
-                + unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%), "
-                + newRevisionAvailable + " with new revision (" + Math.Round(((float)newRevisionAvailable / implementableCount * 100), 2) + "%)";
+
+            // Count the tested paragraphs
+            HashSet<DataDictionary.Specification.Paragraph> testedParagraphs = new HashSet<DataDictionary.Specification.Paragraph>();
+            foreach (DataDictionary.Dictionary dictionary in efsSystem.Dictionaries)
+            {
+                foreach (DataDictionary.Specification.Paragraph p in Reports.Tests.TestsCoverageReport.CoveredRequirements(dictionary))
+                {
+                    testedParagraphs.Add(p);
+                }
+            }
+
+            foreach (DataDictionary.Specification.Paragraph p in paragraphs)
+            {
+                if (testedParagraphs.Contains(p))
+                {
+                    testedCount += 1;
+                }
+            }
+
+            string retVal = "Statistics : ";
+
+            if (subParagraphCount > 0 && implementableCount > 0)
+            {
+                retVal += subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
+                retVal += +implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), ";
+                retVal += implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), ";
+                retVal += +unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%), ";
+                retVal += newRevisionAvailable + " with new revision (" + Math.Round(((float)newRevisionAvailable / implementableCount * 100), 2) + "%), ";
+                retVal += testedCount + " tested (" + Math.Round(((float)testedCount / implementableCount * 100), 2) + "%)";
+            }
+            else
+            {
+                retVal += "No implementable requirement selected";
+            }
+
+            return retVal;
         }
     }
 }

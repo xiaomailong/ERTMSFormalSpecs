@@ -287,6 +287,8 @@ namespace GUI.TestRunnerView
                         runner.Cycle();
                     }
                 }
+
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
                 GUIUtils.MDIWindow.Refresh();
             }
         }

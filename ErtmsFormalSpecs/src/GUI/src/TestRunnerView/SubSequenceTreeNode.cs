@@ -192,6 +192,12 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
             dialog.ShowDialog();
+
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
+            }
         }
         #endregion
 
