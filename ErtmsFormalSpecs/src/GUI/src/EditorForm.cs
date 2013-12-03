@@ -63,8 +63,6 @@ namespace GUI
             editorTextBox.TextBox.TextChanged += new EventHandler(TextChangedHandler);
             editorTextBox.TextBox.KeyUp += new KeyEventHandler(TextBox_KeyUp);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-
-            DockState = WeifenLuo.WinFormsUI.Docking.DockState.Float;
         }
 
         void TextBox_KeyUp(object sender, KeyEventArgs e)
