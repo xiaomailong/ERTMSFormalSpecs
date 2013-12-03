@@ -225,12 +225,17 @@
 <Functions>
 <Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="UseBrakeFor_A_brake_emergency_FromSelectedCondition"
 >
 <ReqRef
  Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
 >
-</ReqRef><Parameters>
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+>
+</ReqRef><Comment>Indicates if the given special brake has to be used for A_brake_emergency, for a given track condition. A brake has to be used if it is active and if it is not inhibited by this track condition.</Comment>
+<Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aCondition"
@@ -246,28 +251,39 @@
 >
 <PreConditions>
 <PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
+<Expression>TrainData.TrainData.Value.RegenerativeBrake.IsActive
+  AND
+aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
 <PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForEB == False</Expression>
+<Expression>TrainData.TrainData.Value.EddyCurrentBrake.IsActive
+  AND
+aCondition.Value.SwitchOffEddyCurrentBrakeForEB == False</Expression>
 </Case><Case
  Name="MagneticShoe"
 >
 <PreConditions>
 <PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffMagneticShoeBrake == False</Expression>
+<Expression>TrainData.TrainData.Value.MagneticShoeBrake.IsActive
+  AND
+aCondition.Value.SwitchOffMagneticShoeBrake == False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="UseBrakeFor_A_brake_service_FromSelectedCondition"
 >
 <ReqRef
  Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
 >
-</ReqRef><Parameters>
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+>
+</ReqRef><Comment>Indicates if the given special brake has to be used for A_brake_service, for a given track condition. A brake has to be used if it is active and if it is not inhibited by this track condition.</Comment>
+<Parameters>
 <Parameter
  Type="TrackConditionInformation"
  Name="aCondition"
@@ -283,13 +299,17 @@
 >
 <PreConditions>
 <PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
+<Expression>TrainData.TrainData.Value.RegenerativeBrake.IsActive
+  AND
+aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
 <PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForSB == False</Expression>
+<Expression>TrainData.TrainData.Value.EddyCurrentBrake.IsActive
+  AND
+aCondition.Value.SwitchOffEddyCurrentBrakeForSB == False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -307,7 +327,8 @@
 </ReqRef><ReqRef
  Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Indicates if the given special brake has to be used for A_brake_emergency. A brake has to be used if it is active and if it is not inhibited by track conditions.</Comment>
+<Parameters>
 <Parameter
  Type="TrainData.BrakingParameters.SpecialBrakeName"
  Name="aBrake"
@@ -363,7 +384,8 @@ INITIAL_VALUE
 </ReqRef><ReqRef
  Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Indicates if the given special brake has to be used for A_brake_service. A brake has to be used if it is active and if it is not inhibited by track conditions.</Comment>
+<Parameters>
 <Parameter
  Type="TrainData.BrakingParameters.SpecialBrakeName"
  Name="aBrake"
