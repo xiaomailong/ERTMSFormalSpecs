@@ -44,7 +44,13 @@ namespace GUI.TestRunnerView
         public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Tests.TestCase testCase in item.TestCases)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.TestCase testCase in Item.TestCases)
             {
                 Nodes.Add(new TestCaseTreeNode(testCase));
             }

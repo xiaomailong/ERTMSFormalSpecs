@@ -71,7 +71,13 @@ namespace GUI.SpecificationView
         public SpecificationTreeNode(DataDictionary.Specification.Specification item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Specification.Chapter chapter in item.Chapters)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
             {
                 Nodes.Add(new ChapterTreeNode(chapter));
             }

@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public NameSpacesTreeNode(DataDictionary.Dictionary item)
             : base(item, "Name spaces", true)
         {
-            foreach (DataDictionary.Types.NameSpace nameSpace in item.NameSpaces)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace));
             }

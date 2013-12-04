@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public StateMachinesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "State Machines", true)
         {
-            foreach (DataDictionary.Types.StateMachine stateMachine in item.StateMachines)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.StateMachine stateMachine in Item.StateMachines)
             {
                 Nodes.Add(new StateMachineTreeNode(stateMachine));
             }

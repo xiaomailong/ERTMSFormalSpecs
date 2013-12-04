@@ -40,7 +40,13 @@ namespace GUI.TestRunnerView
         public TestsTreeNode(DataDictionary.Dictionary item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Tests.Frame frame in item.Tests)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Frame frame in Item.Tests)
             {
                 Nodes.Add(new FrameTreeNode(frame));
             }

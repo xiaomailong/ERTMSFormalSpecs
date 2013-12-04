@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public FunctionsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Functions", true)
         {
-            foreach (DataDictionary.Functions.Function function in item.Functions)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Functions.Function function in Item.Functions)
             {
                 Nodes.Add(new FunctionTreeNode(function));
             }

@@ -39,7 +39,13 @@ namespace GUI.DataDictionaryView
         public RuleConditionsTreeNode(DataDictionary.Rules.Rule item)
             : base(item, "Conditions", true)
         {
-            foreach (DataDictionary.Rules.RuleCondition ruleCondition in item.RuleConditions)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.RuleCondition ruleCondition in Item.RuleConditions)
             {
                 Nodes.Add(new RuleConditionTreeNode(ruleCondition));
             }

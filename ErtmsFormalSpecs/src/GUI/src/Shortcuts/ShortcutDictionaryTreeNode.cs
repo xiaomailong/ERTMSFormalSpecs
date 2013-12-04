@@ -40,12 +40,18 @@ namespace GUI.Shortcuts
         public ShortcutDictionaryTreeNode(DataDictionary.Shortcuts.ShortcutDictionary item)
             : base(item, item.Name, true)
         {
-            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in item.Folders)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in Item.Folders)
             {
                 Nodes.Add(new ShortcutFolderTreeNode(folder));
             }
 
-            foreach (DataDictionary.Shortcuts.Shortcut shortcut in item.Shortcuts)
+            foreach (DataDictionary.Shortcuts.Shortcut shortcut in Item.Shortcuts)
             {
                 Nodes.Add(new ShortcutTreeNode(shortcut));
             }

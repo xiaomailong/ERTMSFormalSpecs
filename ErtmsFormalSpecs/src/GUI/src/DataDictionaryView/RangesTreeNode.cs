@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public RangesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Ranges", true)
         {
-            foreach (DataDictionary.Types.Range range in item.Ranges)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Range range in Item.Ranges)
             {
                 Nodes.Add(new RangeTreeNode(range));
             }

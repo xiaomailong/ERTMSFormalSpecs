@@ -46,7 +46,6 @@ namespace GUI.DataDictionaryView
                     RefreshNode();
                 }
             }
-
         }
 
 
@@ -59,15 +58,26 @@ namespace GUI.DataDictionaryView
         public CaseTreeNode(Case aCase)
             : base(aCase)
         {
-            PreConditions = new PreConditionsTreeNode(aCase);
+        }
+
+        /// <summary>
+        /// Builds the sub nodes of this node
+        /// </summary>
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            PreConditions = new PreConditionsTreeNode(Item);
             Nodes.Add(PreConditions);
         }
 
         /// <summary>
-        /// Constructor
+        /// Protected contstructor for Precondition folder
         /// </summary>
-        /// <param name="item"></param>
-        public CaseTreeNode(Case aCase, string name, bool isFolder)
+        /// <param name="aCase"></param>
+        /// <param name="name"></param>
+        /// <param name="isFolder"></param>
+        protected CaseTreeNode(Case aCase, string name, bool isFolder)
             : base(aCase, name, isFolder)
         {
         }

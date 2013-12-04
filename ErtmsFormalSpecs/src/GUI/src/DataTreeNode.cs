@@ -114,6 +114,10 @@ namespace GUI
             RefreshNode();
         }
 
+        protected virtual void BuildSubNodes()
+        {
+        }
+
         /// <summary>
         /// Changes the image index
         /// </summary>
@@ -817,7 +821,8 @@ namespace GUI
                     }
 
                     Model.AddModelElement(copy);
-                    GUIUtils.MDIWindow.RefreshModel();
+                    Nodes.Clear();
+                    BuildSubNodes();
                 }
                 catch (Exception)
                 {
@@ -1044,6 +1049,7 @@ namespace GUI
             : base(item, name, isFolder)
         {
             Item = item;
+            BuildSubNodes();
             RefreshNode();
         }
 

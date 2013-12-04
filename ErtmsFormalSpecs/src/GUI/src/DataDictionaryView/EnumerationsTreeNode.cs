@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public EnumerationsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Enumerations", true)
         {
-            foreach (DataDictionary.Types.Enum enumeration in item.Enumerations)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Enum enumeration in Item.Enumerations)
             {
                 Nodes.Add(new EnumerationTreeNode(enumeration));
             }

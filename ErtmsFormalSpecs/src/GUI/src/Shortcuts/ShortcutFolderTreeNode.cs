@@ -42,26 +42,21 @@ namespace GUI.Shortcuts
         public ShortcutFolderTreeNode(DataDictionary.Shortcuts.ShortcutFolder item)
             : base(item, null, true)
         {
+        }
 
-            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in item.Folders)
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in Item.Folders)
             {
                 Nodes.Add(new ShortcutFolderTreeNode(folder));
             }
 
-            foreach (DataDictionary.Shortcuts.Shortcut shortcut in item.Shortcuts)
+            foreach (DataDictionary.Shortcuts.Shortcut shortcut in Item.Shortcuts)
             {
                 Nodes.Add(new ShortcutTreeNode(shortcut));
             }
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="name"></param>
-        public ShortcutFolderTreeNode(string name, DataDictionary.Shortcuts.ShortcutFolder item)
-            : base(item, name)
-        {
         }
 
         /// <summary>
