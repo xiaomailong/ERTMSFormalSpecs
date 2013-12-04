@@ -14,246 +14,313 @@
 <Rules>
 <Rule
  Priority="Processing"
- Name="Ack level change"
+ Name="SendPeriodically"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
- Name="Ack level change"
+ Name="SendPeriodically"
 >
 <PreConditions>
-<PreCondition>ReportLevelChange.Request == Request.Response</PreCondition></PreConditions>
+<PreCondition>PreviousTime + 5.0 &lt; Kernel.CurrentTime</PreCondition></PreConditions>
 <Actions>
-<Action>ReportLevelChange.Request &lt;- Request.Disabled</Action></Actions>
+<Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action><Action>PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
- Name="Ack mode change"
+ Priority="UpdateINTERNAL"
+ Name="Create default JRU message"
 >
+<Comment>Creates an empty JRU message; to be filled later</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
- Name="Ack mode change"
+ Name="Create default JRU message"
 >
 <PreConditions>
-<PreCondition>ReportModeChange.Request == Request.Response</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
-<Action>ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Report level change"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Report level change"
->
-<PreConditions>
-<PreCondition>LoggedState.Level != Kernel.Level.Value</PreCondition></PreConditions>
-<Actions>
-<Action>ReportLevelChange.Request &lt;- Request.Request</Action><Action>ReportLevelChange.Level &lt;- Kernel.Level.Value</Action><Action>LoggedState.Level &lt;- Kernel.Level.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Report mode change"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Report mode change"
->
-<PreConditions>
-<PreCondition>LoggedState.Mode != Kernel.Mode</PreCondition></PreConditions>
-<Actions>
-<Action>ReportModeChange.Request &lt;- Request.Request</Action><Action>ReportModeChange.Mode &lt;- Kernel.Mode</Action><Action>LoggedState.Mode &lt;- Kernel.Mode</Action></Actions>
+<Action>Message &lt;- Messages.JRU.MESSAGE.Message { }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
- TypeName="ReportLevelChange"
- Default=""
- Mode="InOut"
- Name="ReportLevelChange"
->
-</StructureElement><StructureElement
- TypeName="LoggedState"
- Default=""
+ TypeName="Default.BaseTypes.Time"
+ Default="0.0"
  Mode="Internal"
- Name="LoggedState"
+ Name="PreviousTime"
 >
+<Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
 </StructureElement><StructureElement
- TypeName="ReportModeChange"
- Default=""
- Mode="InOut"
- Name="ReportModeChange"
->
-</StructureElement><StructureElement
- TypeName="Procedure1SM"
- Default=""
- Mode="Internal"
- Name="Procedure1"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="State1"
- Default="State1"
- NeedsRequirement="FALSE"
- Name="Procedure1SM"
->
-<States>
-<State
- X="200"
- Y="120"
- Width="100"
- Height="50"
- Name="State1"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="Rule1"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Rule1"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- State2</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="Rule2"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Rule2"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- State3</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="210"
- Y="250"
- Width="100"
- Height="50"
- Name="State2"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State><State
- X="410"
- Y="190"
- Width="100"
- Height="50"
- Name="State3"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="Rule3"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Rule3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- State4</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="290"
- Y="380"
- Width="100"
- Height="50"
- Name="State4"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Name="ReportLevelChange"
->
-<StructureElement
- TypeName="Level"
- Default="Level.Unknown"
+ TypeName="Messages.JRU.MESSAGE.Message"
+ Default="EMPTY"
  Mode="Outgoing"
- Name="Level"
+ Name="Message"
 >
-</StructureElement><StructureElement
- TypeName="Request"
- Default="Request.Disabled"
- Mode="InOut"
- Name="Request"
->
-</StructureElement></Structure><Structure
- Name="LoggedState"
->
-<StructureElement
- TypeName="Mode"
- Default="Mode.Unknown"
- Mode="Internal"
- Name="Mode"
->
-</StructureElement><StructureElement
- TypeName="Level"
- Default="Level.Unknown"
- Mode="Internal"
- Name="Level"
->
-</StructureElement></Structure><Structure
- Name="ReportModeChange"
->
-<StructureElement
- TypeName="Mode"
- Default="Mode.Unknown"
- Mode="Outgoing"
- Name="Mode"
->
-</StructureElement><StructureElement
- TypeName="Request"
- Default="Request.Disabled"
- Mode="InOut"
- Name="Request"
->
+<Comment>Represent a JRU message.</Comment>
 </StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message"
+ Name="CreateGeneralMessage"
+>
+<Comment>It will fill a Genera Message in JRU</Comment>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message{
+    HEADER =&gt; CreateHeader(1)
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.HEADER.Message"
+ Name="CreateHeader"
+>
+<Parameters>
+<Parameter
+ Type="Integer"
+ Name="MessageId"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="JRUHeader"
+>
+<Expression>Messages.JRU.HEADER.Message
+     {
+        NID_MESSAGE =&gt; MessageId,
+        L_MESSAGE =&gt; 0,
+        DATE =&gt; Messages.JRU.DATE.Message{
+            YEAR =&gt; Kernel.DateAndTime.Year,
+            MONTH =&gt; Kernel.DateAndTime.Month,
+            DAY =&gt; Kernel.DateAndTime.Day
+        },
+        TIME =&gt; Messages.JRU.TIME.Message{
+            HOUR =&gt; Kernel.DateAndTime.Hour,
+            MINUTES =&gt; Kernel.DateAndTime.Min,
+            SECONDS =&gt; Kernel.DateAndTime.Sec,
+            TTS =&gt; Kernel.DateAndTime.TTS
+        },
+        TRAIN_POSITION =&gt; Messages.JRU.TRAIN_POSITION.Message{
+            Q_SCALE =&gt; Messages.JRU.Q_SCALE._1_m_scaleC,
+            NID_LRBG =&gt;0,
+            D_LRBG =&gt; 0,
+            Q_DIRLRBG =&gt; 0,
+            Q_DLRBG =&gt; 0,
+            L_DOUBTOVER =&gt; 0,
+            L_DOUBTUNDER =&gt; 0
+        },
+        V_TRAIN =&gt; ToJruVtrain(),
+        DRIVER_ID =&gt; Kernel.DriverId.Value,
+        NID_ENGINE =&gt; Kernel.NidEngine,
+        SYSTEM_VERSION =&gt; ToJruSystemVersion(Kernel.OperatedSystemVersion),
+        LEVEL =&gt; ToJruLevel(Kernel.LevelData.Value),
+        MODE =&gt; ToJruMode(Kernel.Mode)
+    }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.LEVEL"
+ Name="ToJruLevel"
+>
+<Comment>It will transform a Kernel.Level int a JRU.Level</Comment>
+<Parameters>
+<Parameter
+ Type="Default.Level"
+ Name="LevelInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Messages.JRU.LEVEL.Level_0"
+>
+<PreConditions>
+<PreCondition>LevelInKernel == Default.Level.L0</PreCondition></PreConditions>
+<Expression>Messages.JRU.LEVEL.Level_0</Expression>
+</Case><Case
+ Name="Messages.JRU.LEVEL.Level_1"
+>
+<PreConditions>
+<PreCondition>LevelInKernel == Default.Level.L1</PreCondition></PreConditions>
+<Expression>Messages.JRU.LEVEL.Level_1</Expression>
+</Case><Case
+ Name="Messages.JRU.LEVEL.Level_2"
+>
+<PreConditions>
+<PreCondition>LevelInKernel == Default.Level.L2</PreCondition></PreConditions>
+<Expression>Messages.JRU.LEVEL.Level_2</Expression>
+</Case><Case
+ Name="Messages.JRU.LEVEL.Level_3"
+>
+<PreConditions>
+<PreCondition>LevelInKernel == Default.Level.L3</PreCondition></PreConditions>
+<Expression>Messages.JRU.LEVEL.Level_3</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.M_MODE"
+ Name="ToJruMode"
+>
+<Parameters>
+<Parameter
+ Type="Default.Mode"
+ Name="ModeInkernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="JruModeStaffResponsible"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.SR</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Staff_Responsible</Expression>
+</Case><Case
+ Name="JruModeOnSight"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.OS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.On_Sight</Expression>
+</Case><Case
+ Name="JruModeIsolation"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.IS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Isolation</Expression>
+</Case><Case
+ Name="JruModeLimitedSupervision"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.LS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Limited_Supervision</Expression>
+</Case><Case
+ Name="JruModeNationalSystem"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.Unknown</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.National_System</Expression>
+</Case><Case
+ Name="JruModeNonLeading"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.NL</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Non_Leading</Expression>
+</Case><Case
+ Name="JruModePassiveShunting"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Passive_Shunting</Expression>
+</Case><Case
+ Name="JruModePosttrip"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.PT</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Post_Trip</Expression>
+</Case><Case
+ Name="JruModeReversing"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.RV</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Reversing</Expression>
+</Case><Case
+ Name="JruModeFullsupervision_2"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="JruModeFullsupervision_3"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="JruModeFullsupervision_4"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="JruModeFullsupervision_5"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="JruModeStandBy"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.SB</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Stand_By</Expression>
+</Case><Case
+ Name="JruModeFullsupervision"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Full_Supervision</Expression>
+</Case><Case
+ Name="JruModeStaffResponsible_2"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.SR</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Staff_Responsible</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.V_TRAIN"
+ Name="ToJruVtrain"
+>
+<Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
+<Cases>
+<Case
+ Name="StandStill"
+>
+<PreConditions>
+<PreCondition>Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+<Expression>Messages.JRU.V_TRAIN.standstill</Expression>
+</Case><Case
+ Name="NotStandStill"
+>
+<Expression>Default.MessageTypes.UnResolveSpeed( Odometry.EstimatedSpeed, 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.SYSTEM_VERSION"
+ Name="ToJruSystemVersion"
+>
+<Comment>This will convert the info from a Kernel.OperatedSystemVersion to a JRU SYSTEM_VERSION type</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.OperatedSystemVersion"
+ Name="SystemVersion"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Version_1_1__introduced_in_SRS_3_0_0"
+>
+<PreConditions>
+<PreCondition>SystemVersion.Value == &apos;Version_1_1__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+<Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_1_1__introduced_in_SRS_3_0_0</Expression>
+</Case><Case
+ Name="Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
+>
+<PreConditions>
+<PreCondition>SystemVersion.Value == &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</PreCondition></PreConditions>
+<Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
+</Case><Case
+ Name="Version_2_0__introduced_in_SRS_3_0_0"
+>
+<PreConditions>
+<PreCondition>SystemVersion.Value == &apos;Version_2_0__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+<Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
+</Case><Case
+ Name="Default"
+>
+<Expression>Messages.JRU.SYSTEM_VERSION.Unknown</Expression>
+</Case></Cases>
+</Function></Functions>
 <Variables>
 <Variable
- Type="JRU"
- VariableMode="InOut"
- Name="jru1"
+ Type="JRU.JRU"
+ VariableMode="Outgoing"
+ Name="JRU1"
 >
+<Comment>Represents an instance of a JRU structure</Comment>
 </Variable></Variables>
 </NameSpace>

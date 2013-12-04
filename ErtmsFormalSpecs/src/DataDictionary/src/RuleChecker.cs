@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Functions;
 
 namespace DataDictionary
 {
@@ -741,6 +742,18 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.Function obj, bool visitSubNodes)
+        {
+            Function function = (Function)obj;
+
+            if (function.ReturnType == null)
+            {
+                function.AddError("Cannot determine function return type");
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Case obj, bool visitSubNodes)
         {
             Functions.Case cas = obj as Functions.Case;
@@ -752,7 +765,7 @@ namespace DataDictionary
                 {
                     expression.checkExpression();
                     Types.Type expressionType = cas.Expression.GetExpressionType();
-                    if (expressionType != null)
+                    if (expressionType != null && cas.EnclosingFunction != null && cas.EnclosingFunction.ReturnType != null)
                     {
                         if (!cas.EnclosingFunction.ReturnType.Match(expressionType))
                         {
