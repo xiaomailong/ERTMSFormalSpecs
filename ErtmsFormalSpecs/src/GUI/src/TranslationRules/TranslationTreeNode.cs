@@ -69,10 +69,16 @@ namespace GUI.TranslationRules
         public TranslationTreeNode(Translation item)
             : base(item)
         {
-            sources = new SourceTextsTreeNode(item);
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            sources = new SourceTextsTreeNode(Item);
             Nodes.Add(sources);
 
-            foreach (SubStep subStep in item.SubSteps)
+            foreach (SubStep subStep in Item.SubSteps)
             {
                 Nodes.Add(new TestRunnerView.SubStepTreeNode(subStep));
             }

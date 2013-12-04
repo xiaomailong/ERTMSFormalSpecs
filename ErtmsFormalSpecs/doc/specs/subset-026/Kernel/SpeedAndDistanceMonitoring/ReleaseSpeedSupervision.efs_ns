@@ -1,4 +1,8 @@
 <NameSpace
+ X="90"
+ Y="180"
+ Width="200"
+ Height="400"
  Name="ReleaseSpeedSupervision"
 >
 <NameSpaces>
@@ -33,6 +37,7 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
  Name="ComputeReleaseSpeedForTarget"
 >
 <ReqRef
@@ -121,10 +126,7 @@ STOP_CONDITION
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
 >
 </ReqRef><ReqRef
- Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
->
-</ReqRef><ReqRef
- Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
 >
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
 <Parameters>
@@ -147,6 +149,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
  Name="d_tripEOA"
 >
 <ReqRef
@@ -157,7 +160,14 @@ STOP_CONDITION
 <Case
  Name="Value"
 >
-<Expression>d_EOA() + BaseTypes.MaxDistance ( ( 5.0 + d_EOA() * 0.05 ), ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
+<Expression>d_EOA()
+  +
+alpha() * BTM.AntennaPosition ( DistanceInterval.Nom )
+  +
+BaseTypes.MaxDistance
+(
+    X1 =&gt; ( 2.0 * BTM.BGLocationAccuracy() + 10.0 + 0.1 * d_EOA() ),
+    X2 =&gt; ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -182,6 +192,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
  Name="VreleaseFunction"
 >
 <ReqRef
@@ -260,6 +271,7 @@ STOP_CONDITION
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
+ Implemented="TRUE"
  Name="d_EOA"
 >
 <ReqRef
@@ -346,6 +358,29 @@ USING
 INITIAL_VALUE
     BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Double"
+ Implemented="TRUE"
+ Name="alpha"
+>
+<ReqRef
+ Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+>
+</ReqRef><Comment>Represents the alpha value used to compute d_tripEOA.</Comment>
+<Cases>
+<Case
+ Name="Level 1"
+>
+<PreConditions>
+<PreCondition>Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
+<Expression>1.0</Expression>
+</Case><Case
+ Name="Level 2 or 3"
+>
+<PreConditions>
+<PreCondition>Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -405,6 +440,7 @@ INITIAL_VALUE
  Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
  VariableMode="Constant"
+ Implemented="TRUE"
  Name="epsilon"
 >
 <ReqRef

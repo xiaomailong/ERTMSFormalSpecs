@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceProceduresTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Procedures", true)
         {
-            foreach (DataDictionary.Functions.Procedure procedure in item.Procedures)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Functions.Procedure procedure in Item.Procedures)
             {
                 Nodes.Add(new ProcedureTreeNode(procedure));
             }

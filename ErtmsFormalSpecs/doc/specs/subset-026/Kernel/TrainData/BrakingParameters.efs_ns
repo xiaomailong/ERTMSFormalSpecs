@@ -1114,6 +1114,9 @@
 </ReqRef><ReqRef
  Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
 >
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+>
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_service_emergency(V).</Comment>
 <Parameters>
 <Parameter
@@ -1193,6 +1196,9 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
 >
 </ReqRef><ReqRef
  Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+>
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
 >
 </ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_brake_emergency(V).</Comment>
 <Parameters>
@@ -2343,6 +2349,9 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><ReqRef
  Id="e9f3c524-003a-46d9-9da3-3f615e1b5c74"
 >
+</ReqRef><ReqRef
+ Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
+>
 </ReqRef><Comment>Provides the value of A_brake_emergency by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
@@ -2394,9 +2403,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >
 </ReqRef><ReqRef
  Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
->
-</ReqRef><ReqRef
- Id="444d11ee-84f0-4837-8c17-f111d045857d"
 >
 </ReqRef><Comment>Computes the service brake full deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
@@ -2539,9 +2545,6 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >
 </ReqRef><ReqRef
  Id="597cfdc2-80f1-4a68-807f-b6173d958e91"
->
-</ReqRef><ReqRef
- Id="444d11ee-84f0-4837-8c17-f111d045857d"
 >
 </ReqRef><ReqRef
  Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
@@ -2975,10 +2978,10 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_brk_service"
 >
 <ReqRef
- Id="87fa2278-dfa8-42af-8e69-00efefd1268c"
+ Id="3a9da096-1d10-4e79-b034-4e42c821929e"
 >
 </ReqRef><ReqRef
- Id="3a9da096-1d10-4e79-b034-4e42c821929e"
+ Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
 >
 </ReqRef><Comment>Provides the value of A_brake_service by taking into account one particular Track Condition.</Comment>
 <Parameters>

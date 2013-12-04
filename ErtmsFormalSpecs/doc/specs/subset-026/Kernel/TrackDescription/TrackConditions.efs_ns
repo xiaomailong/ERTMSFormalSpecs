@@ -1,4 +1,8 @@
 <NameSpace
+ X="480"
+ Y="650"
+ Width="100"
+ Height="50"
  Name="TrackConditions"
 >
 <NameSpaces>
@@ -224,111 +228,6 @@
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
- Type="Boolean"
- Name="UseBrakeFor_A_brake_emergency_FromSelectedCondition"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
->
-</ReqRef><Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aCondition"
->
-</Parameter><Parameter
- Type="TrainData.BrakingParameters.SpecialBrakeName"
- Name="aBrake"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Regenerative"
->
-<PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
-</Case><Case
- Name="EddyCurrent"
->
-<PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForEB == False</Expression>
-</Case><Case
- Name="MagneticShoe"
->
-<PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffMagneticShoeBrake == False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Name="UseBrakeFor_A_brake_service_FromSelectedCondition"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
->
-</ReqRef><Parameters>
-<Parameter
- Type="TrackConditionInformation"
- Name="aCondition"
->
-</Parameter><Parameter
- Type="TrainData.BrakingParameters.SpecialBrakeName"
- Name="aBrake"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Regenerative"
->
-<PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.Regenerative</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffRegenerativeBrake == False</Expression>
-</Case><Case
- Name="EddyCurrent"
->
-<PreConditions>
-<PreCondition>aBrake == TrainData.BrakingParameters.SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
-<Expression>aCondition.Value.SwitchOffEddyCurrentBrakeForSB == False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Name="UseBrakeFor_A_brake_emergency"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
->
-</ReqRef><ReqRef
- Id="8306ee07-3124-4992-96a3-0cf3c84e47b7"
->
-</ReqRef><ReqRef
- Id="444d11ee-84f0-4837-8c17-f111d045857d"
->
-</ReqRef><ReqRef
- Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
->
-</ReqRef><Parameters>
-<Parameter
- Type="TrainData.BrakingParameters.SpecialBrakeName"
- Name="aBrake"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="aDistance"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
->
-<Expression>REDUCE
-    TCProfile.Conditions | X.Distance &lt;= aDistance AND aDistance &lt; X.Distance + BaseTypes.LengthToDistance ( ConditionLength ( X ) )
-USING
-    UseBrakeFor_A_brake_emergency_FromSelectedCondition ( X, aBrake ) AND RESULT
-INITIAL_VALUE
-    True</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Length"
  Name="ConditionLength"
 >
@@ -346,43 +245,6 @@ INITIAL_VALUE
  Name="Value"
 >
 <Expression>aCondition.Length + TrainData.TrainData.Value.TrainLength</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Name="UseBrakeFor_A_brake_service"
->
-<ReqRef
- Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
->
-</ReqRef><ReqRef
- Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
->
-</ReqRef><ReqRef
- Id="444d11ee-84f0-4837-8c17-f111d045857d"
->
-</ReqRef><ReqRef
- Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
->
-</ReqRef><Parameters>
-<Parameter
- Type="TrainData.BrakingParameters.SpecialBrakeName"
- Name="aBrake"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="aDistance"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
->
-<Expression>REDUCE
-    TCProfile.Conditions | X.Distance &lt;= aDistance AND aDistance &lt; X.Distance + BaseTypes.LengthToDistance ( ConditionLength ( X ) )
-USING
-    UseBrakeFor_A_brake_service_FromSelectedCondition ( X, aBrake ) AND RESULT
-INITIAL_VALUE
-    True</Expression>
 </Case></Cases>
 </Function><Function
  Type="TrackCondition"

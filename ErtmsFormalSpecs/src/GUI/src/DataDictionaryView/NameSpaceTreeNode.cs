@@ -53,6 +53,12 @@ namespace GUI.DataDictionaryView
         public NameSpaceTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, null, false)
         {
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
             subNameSpaces = new NameSpaceSubNameSpacesTreeNode(Item);
             ranges = new RangesTreeNode(Item);
             enumerations = new EnumerationsTreeNode(Item);
@@ -81,7 +87,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceTreeNode(DataDictionary.Types.NameSpace item, string name, bool isFolder)
+        protected NameSpaceTreeNode(DataDictionary.Types.NameSpace item, string name, bool isFolder)
             : base(item, name, isFolder)
         {
             isDirectory = true;

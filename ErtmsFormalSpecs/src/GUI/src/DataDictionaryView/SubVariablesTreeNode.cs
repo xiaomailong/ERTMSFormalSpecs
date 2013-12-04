@@ -41,7 +41,7 @@ namespace GUI.DataDictionaryView
         public SubVariablesTreeNode(DataDictionary.Variables.Variable item, HashSet<DataDictionary.Types.Type> encounteredTypes)
             : base(item, "Sub variables", true)
         {
-            foreach (DataDictionary.Variables.IVariable ivariable in item.SubVariables.Values)
+            foreach (DataDictionary.Variables.IVariable ivariable in Item.SubVariables.Values)
             {
                 DataDictionary.Variables.Variable variable = ivariable as DataDictionary.Variables.Variable;
                 if (variable != null)

@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceVariablesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Variables", true)
         {
-            foreach (DataDictionary.Variables.Variable variable in item.Variables)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Variables.Variable variable in Item.Variables)
             {
                 Nodes.Add(new VariableTreeNode(variable, new HashSet<DataDictionary.Types.Type>()));
             }

@@ -107,10 +107,16 @@ namespace GUI.DataDictionaryView
         public FunctionTreeNode(Function item)
             : base(item)
         {
-            Cases = new CasesTreeNode(item);
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            Cases = new CasesTreeNode(Item);
             Nodes.Add(Cases);
 
-            Parameters = new ParametersTreeNode(item);
+            Parameters = new ParametersTreeNode(Item);
             Nodes.Add(Parameters);
         }
 

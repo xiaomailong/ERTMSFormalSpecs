@@ -43,7 +43,13 @@ namespace GUI
         public ReqRefsTreeNode(DataDictionary.ReferencesParagraph item)
             : base(item, "Requirements", true)
         {
-            foreach (DataDictionary.ReqRef req in item.Requirements)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.ReqRef req in Item.Requirements)
             {
                 Nodes.Add(new ReqRefTreeNode(req));
             }

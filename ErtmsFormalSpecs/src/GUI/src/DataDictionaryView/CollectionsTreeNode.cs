@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public CollectionsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Collections", true)
         {
-            foreach (DataDictionary.Types.Collection collection in item.Collections)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Collection collection in Item.Collections)
             {
                 Nodes.Add(new CollectionTreeNode(collection));
             }

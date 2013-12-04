@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceRulesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Rules", true)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.Rules)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
             {
                 Nodes.Add(new RuleTreeNode(rule));
             }

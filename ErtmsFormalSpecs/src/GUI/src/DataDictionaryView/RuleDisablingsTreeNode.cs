@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public RuleDisablingsTreeNode(DataDictionary.Dictionary item)
             : base(item, "Disabled rules", true)
         {
-            foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in item.RuleDisablings)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in Item.RuleDisablings)
             {
                 Nodes.Add(new RuleDisablingTreeNode(ruleDisabling));
             }

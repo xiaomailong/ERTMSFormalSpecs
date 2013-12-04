@@ -508,6 +508,7 @@ NOT Available ( Linking.CurrentLinking() ) AND THERE_IS_IN CurrentBaliseGroup | 
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="ConsiderPacket"
 >
 <ReqRef
@@ -556,7 +557,9 @@ If the train direction is unknown, this function returns true only if the packet
 </Case><Case
  Name="Value"
 >
-<Expression>PacketOrientation == EFSOrientationConverter ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ) OR PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
+<Expression>PacketOrientation == EFSOrientationConverter ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation )
+  OR
+PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"

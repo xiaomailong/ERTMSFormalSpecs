@@ -53,8 +53,14 @@ namespace GUI.TestRunnerView
         public SubStepTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, null, true)
         {
-            actions = new ActionsTreeNode(item);
-            expectations = new ExpectationsTreeNode(item);
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            actions = new ActionsTreeNode(Item);
+            expectations = new ExpectationsTreeNode(Item);
 
             Nodes.Add(actions);
             Nodes.Add(expectations);
