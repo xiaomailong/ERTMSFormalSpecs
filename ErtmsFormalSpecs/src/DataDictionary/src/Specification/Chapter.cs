@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Specification
 {
-    public class Chapter : Generated.Chapter
+    public class Chapter : Generated.Chapter, IHoldsParagraphs
     {
         /// <summary>
         /// The chapter name
@@ -230,7 +230,7 @@ namespace DataDictionary.Specification
         /// Adds all the paragraphs in the set provided as parameter
         /// </summary>
         /// <param name="retVal"></param>
-        internal void AddAllParagraphs(List<Paragraph> retVal)
+        public void GetParagraphs(List<Paragraph> retVal)
         {
             foreach (Paragraph paragraph in Paragraphs)
             {

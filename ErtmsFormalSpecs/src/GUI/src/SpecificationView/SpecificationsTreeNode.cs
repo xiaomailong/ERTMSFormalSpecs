@@ -104,18 +104,7 @@ namespace GUI.SpecificationView
                 window.specBrowserTextView.Text = Item.Name;
                 window.specBrowserTextView.Enabled = false;
 
-                List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-                foreach (DataDictionary.Specification.Specification specification in Item.Specifications)
-                {
-                    foreach (DataDictionary.Specification.Chapter chapter in specification.Chapters)
-                    {
-                        foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
-                        {
-                            paragraphs.AddRange(paragraph.getSubParagraphs());
-                        }
-                    }
-                }
-                GUIUtils.MDIWindow.SetStatus(ParagraphTreeNode.CreateStatMessage(Item.EFSSystem, paragraphs, true));
+                GUIUtils.MDIWindow.SetCoverageStatus(Item);
             }
         }
     }

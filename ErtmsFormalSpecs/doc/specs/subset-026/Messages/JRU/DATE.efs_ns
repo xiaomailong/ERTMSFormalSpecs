@@ -9,7 +9,10 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>It contains the date the event recorded has occured</Comment>
+<ReqRef
+ Id="e52688db-b556-49fa-adc7-5872de3f1038"
+>
+</ReqRef><Comment>It contains the date the event recorded has occured</Comment>
 <StructureElement
  TypeName="YEAR"
  Default="0"
@@ -18,7 +21,13 @@
  NeedsRequirement="FALSE"
  Name="YEAR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a641ebfc-0a9c-443c-a4df-9a134cae8199"
+>
+</ReqRef><ReqRef
+ Id="ce578d9d-bc39-4f4a-85c9-18615261f639"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MONTH"
  Default="0"
  Mode="InOut"
@@ -26,7 +35,13 @@
  NeedsRequirement="FALSE"
  Name="MONTH"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="01149433-eb64-4471-8e84-ba520c1635d5"
+>
+</ReqRef><ReqRef
+ Id="e18fc4cc-6fbb-4086-a842-dff260294b1f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="DAY"
  Default="0"
  Mode="InOut"
@@ -34,5 +49,11 @@
  NeedsRequirement="FALSE"
  Name="DAY"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="0742d599-3812-48fe-be0f-79a01bd63bbc"
+>
+</ReqRef><ReqRef
+ Id="de697d55-84b5-4e6c-9e4f-b25b32821180"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

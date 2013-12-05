@@ -21,11 +21,12 @@ namespace DataDictionary
     using DataDictionary.Rules;
     using System;
     using DataDictionary.Interpreter.Statement;
+    using DataDictionary.Specification;
 
     /// <summary>
     /// A complete system, along with all dictionaries
     /// </summary>
-    public class EFSSystem : Utils.IModelElement, Utils.ISubDeclarator
+    public class EFSSystem : Utils.IModelElement, Utils.ISubDeclarator, IHoldsParagraphs
     {
         /// <summary>
         /// The dictionaries used in the system
@@ -1265,6 +1266,18 @@ namespace DataDictionary
         public void Stop()
         {
             Compiler.DoCompile = false;
+        }
+
+        /// <summary>
+        /// Gets all paragraphs from EFS System
+        /// </summary>
+        /// <returns></returns>
+        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        {
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                dictionary.GetParagraphs(paragraphs);
+            }
         }
     }
 }

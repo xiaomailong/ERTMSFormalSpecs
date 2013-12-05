@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Specification
 {
-    public class Specification : Generated.Specification, Utils.IFinder
+    public class Specification : Generated.Specification, Utils.IFinder, IHoldsParagraphs
     {
         /// <summary>
         /// Used to temporarily store the list of chapters
@@ -166,6 +166,7 @@ namespace DataDictionary.Specification
                 }
 
                 GuidCache.TryGetValue(guid, out retVal);
+                GuidCache[guid] = retVal;
             }
 
             return retVal;
@@ -351,10 +352,22 @@ namespace DataDictionary.Specification
 
                 foreach (Chapter chapter in Chapters)
                 {
-                    chapter.AddAllParagraphs(retVal);
+                    chapter.GetParagraphs(retVal);
                 }
 
                 return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Gets all paragraphs from a specification
+        /// </summary>
+        /// <param name="paragraphs"></param>
+        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        {
+            foreach (DataDictionary.Specification.Chapter chapter in Chapters)
+            {
+                chapter.GetParagraphs(paragraphs);
             }
         }
 

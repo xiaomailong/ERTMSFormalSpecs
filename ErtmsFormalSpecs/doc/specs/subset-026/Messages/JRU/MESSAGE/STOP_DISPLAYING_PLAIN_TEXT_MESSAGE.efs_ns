@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains a plain text message that is not shown to the driver anymore</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="0cdea006-f974-48b2-9462-be3e9a5e2f65"
+>
+</ReqRef><Comment>This message contains a plain text message that is not shown to the driver anymore</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,7 +32,10 @@
  NeedsRequirement="FALSE"
  Name="L_TEXT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="59b2e502-a5e5-41d8-9098-cf4d8939030b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
@@ -34,7 +43,10 @@
  NeedsRequirement="FALSE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="25fc216e-fc4b-4f5a-b72c-070ffcbcff5a"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
@@ -56,5 +68,8 @@
  NeedsRequirement="FALSE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="25fc216e-fc4b-4f5a-b72c-070ffcbcff5a"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

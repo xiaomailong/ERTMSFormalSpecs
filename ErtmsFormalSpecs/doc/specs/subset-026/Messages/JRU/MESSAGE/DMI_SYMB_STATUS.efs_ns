@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains the status of the set of symbols that can be displayed on the DMI (except planning, navigation and settings related symbols that are not considering for juridical recording)</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="ab27f58b-6aaf-4a89-addc-8ba7947449d2"
+>
+</ReqRef><Comment>This message contains the status of the set of symbols that can be displayed on the DMI (except planning, navigation and settings related symbols that are not considering for juridical recording)</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,5 +32,8 @@
  NeedsRequirement="FALSE"
  Name="DMI_SYMBOL_STATUS"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="44c3230d-cbf7-40f5-9717-9bc3001a24d8"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

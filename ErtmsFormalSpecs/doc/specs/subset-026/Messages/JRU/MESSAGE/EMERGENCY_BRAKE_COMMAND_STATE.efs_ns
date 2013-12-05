@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>this message records the emergency brake application command state</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="305621ce-db50-4071-8677-ecfbc11f4a25"
+>
+</ReqRef><Comment>this message records the emergency brake application command state</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,5 +32,11 @@
  NeedsRequirement="FALSE"
  Name="M_BRAKE_COMMAND_STATE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="c0338e33-b830-45e7-ba2b-5420e8ec3dba"
+>
+</ReqRef><ReqRef
+ Id="c0338e33-b830-45e7-ba2b-5420e8ec3dba"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

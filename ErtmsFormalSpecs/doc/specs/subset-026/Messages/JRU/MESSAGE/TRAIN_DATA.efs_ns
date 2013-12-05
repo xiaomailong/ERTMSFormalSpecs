@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>this message records the emergency brake application command state</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="8623ab63-7b21-4ea0-8ae5-1f6cbb90a9b5"
+>
+</ReqRef><Comment>this message records the emergency brake application command state</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,7 +32,10 @@
  NeedsRequirement="FALSE"
  Name="V_MAXTRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9988fed6-030e-46c5-bc1b-f0cf5b8f3543"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NC_CDTRAIN"
  Default=""
  Mode="InOut"
@@ -34,7 +43,10 @@
  NeedsRequirement="FALSE"
  Name="NC_CDTRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="81ac6c57-2fb0-47df-8ad3-2a6cb88b8af1"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NC_TRAIN"
  Default=""
  Mode="InOut"
@@ -42,7 +54,10 @@
  NeedsRequirement="FALSE"
  Name="NC_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="3d1802a3-5497-4db2-a943-202965c29421"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="L_TRAIN"
  Default="0"
  Mode="InOut"
@@ -50,7 +65,10 @@
  NeedsRequirement="FALSE"
  Name="L_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8200d54e-d157-4b9a-b050-aa147d0fa939"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_TRACTION_CUT_OFF"
  Default="0"
  Mode="InOut"
@@ -58,7 +76,10 @@
  NeedsRequirement="FALSE"
  Name="T_TRACTION_CUT_OFF"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d3bda0c7-97a3-4a4b-a1de-8e694953eb3d"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_BRAKE_POSITION"
  Default=""
  Mode="InOut"
@@ -66,7 +87,10 @@
  NeedsRequirement="FALSE"
  Name="M_BRAKE_POSITION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2b523498-4c29-482c-b698-a5f37aeb9812"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_NOM_ROT_MASS"
  Default=""
  Mode="InOut"
@@ -74,7 +98,10 @@
  NeedsRequirement="FALSE"
  Name="M_NOM_ROT_MASS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="223d5049-935f-4eda-9fbe-88cfcf309eb2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_REGENERATIVEBRAKE"
  Default=""
  Mode="InOut"
@@ -82,7 +109,10 @@
  NeedsRequirement="FALSE"
  Name="M_REGENERATIVEBRAKE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e436e8a4-9fce-4fc0-8083-1ecff0fb881e"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_EDDYCURRENTBRAKE"
  Default=""
  Mode="InOut"
@@ -90,7 +120,10 @@
  NeedsRequirement="FALSE"
  Name="M_EDDYCURRENTBRAKE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="45cbef68-7973-4da2-9ad4-27f760d5a67f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_MAGNETICSHOEBRAKE"
  Default=""
  Mode="InOut"
@@ -98,7 +131,10 @@
  NeedsRequirement="FALSE"
  Name="M_MAGNETICSHOEBRAKE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d973b24c-fef0-4dd2-a313-cece1b4f7dca"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ELECTROPNEUMATICBRAKE"
  Default=""
  Mode="InOut"
@@ -106,7 +142,10 @@
  NeedsRequirement="FALSE"
  Name="M_ELECTROPNEUMATICBRAKE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="879e2b9e-d58d-43d1-adc8-c1fe5778e80b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACTIONCUTOFFINTERFACE"
  Default=""
  Mode="InOut"
@@ -114,7 +153,10 @@
  NeedsRequirement="FALSE"
  Name="Q_TRACTIONCUTOFFINTERFACE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c5b26d13-d547-4d89-9011-6a7aae1a74eb"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEINTERFACE"
  Default=""
  Mode="InOut"
@@ -122,7 +164,10 @@
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEINTERFACE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="ff072fc9-7dfe-44c3-a827-dad988874775"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SERVICEBRAKEFEEDBACK"
  Default=""
  Mode="InOut"
@@ -130,7 +175,10 @@
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEFEEDBACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="971218b4-b6bb-4751-854f-ebb6d604c176"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_BRAKE_CAPT_TYPE"
  Default=""
  Mode="InOut"
@@ -138,7 +186,10 @@
  NeedsRequirement="FALSE"
  Name="Q_BRAKE_CAPT_TYPE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e40f7505-d893-412e-aa27-68a5a1d23afb"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
@@ -162,7 +213,10 @@
  NeedsRequirement="FALSE"
  Name="T_BRAKE_EMERGENCY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5626b0f1-9f44-4fed-bba1-8625f5e5bba6"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
  Mode="InOut"
@@ -274,7 +328,10 @@
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="abe0f66f-fa68-49a7-8865-94f4697926f3"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_BRAKE_SECTIONS"
  Default="0"
  Mode="InOut"
@@ -306,7 +363,10 @@
  NeedsRequirement="FALSE"
  Name="M_LOADINGGAUGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="11f2dc0e-7509-4c6c-8ca0-1b6323fb41e5"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_AXLE"
  Default=""
  Mode="InOut"
@@ -314,7 +374,10 @@
  NeedsRequirement="FALSE"
  Name="N_AXLE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="58c86228-d16a-4611-b62e-2608428d9cda"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_AXLELOADCAT"
  Default=""
  Mode="InOut"
@@ -338,7 +401,10 @@
  NeedsRequirement="FALSE"
  Name="M_VOLTAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="53d8ce5f-17b9-4ab7-a9cf-1f35476af1ec"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
  Mode="InOut"
@@ -346,7 +412,10 @@
  NeedsRequirement="FALSE"
  Name="NID_CTRACTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="aed3787e-59d5-4500-92f0-674ad7997248"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
  Mode="InOut"
@@ -370,7 +439,10 @@
  NeedsRequirement="FALSE"
  Name="M_AIRTIGHT"
 >
-</StructureElement></Structure><Structure
+<ReqRef
+ Id="a1bfa3e4-5afd-4845-a414-ec001070d6ed"
+>
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
@@ -428,7 +500,10 @@
  NeedsRequirement="FALSE"
  Name="SubStructure2"
 >
-<StructureElement
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><StructureElement
  TypeName="NID_NTC"
  Default="0"
  Mode="InOut"

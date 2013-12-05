@@ -39,7 +39,13 @@ One value of this variable represents the identity of an STM reflecting each com
  NeedsRequirement="FALSE"
  Name="NID_MESSAGE"
 >
-<Comment>Message identifier
+<ReqRef
+ Id="3c64ae3c-8549-4e30-a019-5eb9b8c965e7"
+>
+</ReqRef><ReqRef
+ Id="cc3d45f4-d90b-4e96-9049-1701e7aa7cf3"
+>
+</ReqRef><Comment>Message identifier
 Identifier of the message.</Comment>
 </Range><Range
  MinValue="0"
@@ -50,7 +56,13 @@ Identifier of the message.</Comment>
  NeedsRequirement="FALSE"
  Name="L_MESSAGE"
 >
-<Comment>Message length
+<ReqRef
+ Id="6f3aac9c-7ea4-4a24-9098-8401aa8b22f9"
+>
+</ReqRef><ReqRef
+ Id="e1abd747-9c54-43d2-b647-4633ce3e4e3b"
+>
+</ReqRef><Comment>Message length
 L_MESSAGE indicates the length of the message in bytes, 
          including all variables in the message header (L_MESSAGE also).</Comment>
 </Range><Range
@@ -185,7 +197,16 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
  NeedsRequirement="FALSE"
  Name="V_TRAIN"
 >
-<Comment>This field contains the current speed of the train.</Comment>
+<ReqRef
+ Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
+>
+</ReqRef><ReqRef
+ Id="fbdccb80-301b-4431-a470-97e66ae1ef6c"
+>
+</ReqRef><ReqRef
+ Id="2a15b46d-5611-4053-974b-182b0436ce24"
+>
+</ReqRef><Comment>This field contains the current speed of the train.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1023"
@@ -201,7 +222,13 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
  NeedsRequirement="FALSE"
  Name="NID_ENGINE"
 >
-<Comment>This field contains the on board ETCS identity
+<ReqRef
+ Id="498726b7-6f35-4b72-909e-32d4995241ba"
+>
+</ReqRef><ReqRef
+ Id="9e76d22c-dd18-4697-8aaa-2d37c2608b67"
+>
+</ReqRef><Comment>This field contains the on board ETCS identity
 This field contains the on board ETCS identity.</Comment>
 </Range><Range
  MinValue="0"
@@ -212,7 +239,13 @@ This field contains the on board ETCS identity.</Comment>
  NeedsRequirement="FALSE"
  Name="SYSTEM_VERSION"
 >
-<Comment>Version of the ETCS system
+<ReqRef
+ Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
+>
+</ReqRef><ReqRef
+ Id="8aa4a2d0-f0af-4e25-b00f-ae42f0a9c0ba"
+>
+</ReqRef><Comment>Version of the ETCS system
 Gives the version of the ETCS system. Each part indicates the first and second number of the version. The first part distinguishes the not compatible version (MSB&apos;s). -	The second number indicates compatibility within a version X. (The four LSB’s)</Comment>
 <SpecialValues>
 <EnumValue
@@ -567,7 +600,13 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
  NeedsRequirement="FALSE"
  Name="L_TRAIN"
 >
-<Comment>Train length
+<ReqRef
+ Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
+>
+</ReqRef><ReqRef
+ Id="45e25e11-fae5-4e6c-bb31-76de6e847cdb"
+>
+</ReqRef><Comment>Train length
 This is the absolute real length of the train.</Comment>
 </Range><Range
  MinValue="0"
@@ -1282,7 +1321,13 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
  NeedsRequirement="FALSE"
  Name="M_BRAKE_COMMAND_STATE"
 >
-<Comment>Brake command state
+<ReqRef
+ Id="be2c4bda-9cbc-42ba-b3f9-48e0867b8f53"
+>
+</ReqRef><ReqRef
+ Id="cb3458d8-a8bd-47d7-b410-3cd6789a56cd"
+>
+</ReqRef><Comment>Brake command state
 It contains the command state of the brakes</Comment>
 <SpecialValues>
 <EnumValue
@@ -1701,7 +1746,10 @@ Code used to identify the country or region in which the balise group is situate
  NeedsRequirement="FALSE"
  Name="NID_ERRORBG"
 >
-<Comment>Identity number of the balise group which triggered the error.
+<ReqRef
+ Id="85571c61-c62b-4499-ae83-df5dba7d9c7f"
+>
+</ReqRef><Comment>Identity number of the balise group which triggered the error.
 It contains the identity number of the balise group to which the error is related. NID_ERRORBG is identical to NID_BG except for the NID_ERRORBG Special value 16383 which has the meaning &quot;unknown&quot; and covers the case that, due to error, the balise group identity is unknown.</Comment>
 </Range><Range
  MinValue="0"
@@ -1712,7 +1760,10 @@ It contains the identity number of the balise group to which the error is relate
  NeedsRequirement="FALSE"
  Name="NID_STMX"
 >
-<Comment>STM identification
+<ReqRef
+ Id="0fae287c-ec3d-45e6-bd37-dd90fc39be24"
+>
+</ReqRef><Comment>STM identification
 STM relevant for the event. For STM-packets or disconect request sentr from an STM or to a single STM, its value is given by the NID_STM as identified in Subset-58</Comment>
 <SpecialValues>
 <EnumValue
@@ -1729,7 +1780,10 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
  NeedsRequirement="FALSE"
  Name="NID_STMEVENT"
 >
-<Comment>STM event type.</Comment>
+<ReqRef
+ Id="1794d8ed-2b89-4280-a497-a5d2126c637f"
+>
+</ReqRef><Comment>STM event type.</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
@@ -1757,7 +1811,10 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
  NeedsRequirement="FALSE"
  Name="M_DISCSENDER"
 >
-<Comment>Sender of disconnect request
+<ReqRef
+ Id="19f38286-767b-433a-8bd2-981d51acf46a"
+>
+</ReqRef><Comment>Sender of disconnect request
 Sender of disconnect request (STM or STM control Function)</Comment>
 <SpecialValues>
 <EnumValue
@@ -1778,7 +1835,10 @@ Sender of disconnect request (STM or STM control Function)</Comment>
  NeedsRequirement="FALSE"
  Name="M_DISCTYPE"
 >
-<Comment>Type of disconnection
+<ReqRef
+ Id="a7aa1cdf-ad7a-415c-9d68-aaa4883b1e19"
+>
+</ReqRef><Comment>Type of disconnection
 Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
 <SpecialValues>
 <EnumValue
@@ -1799,7 +1859,10 @@ Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
  NeedsRequirement="FALSE"
  Name="STM_SYSTEM_STATUS_MESSAGE"
 >
-<Comment>STM system status message
+<ReqRef
+ Id="e573b5aa-409b-409f-a9e7-65709733913d"
+>
+</ReqRef><Comment>STM system status message
 System status messages displayed to the driver. A bit set to 1 means tgat tge cirresoponding systems status is displayed</Comment>
 <SpecialValues>
 <EnumValue
@@ -1824,7 +1887,10 @@ System status messages displayed to the driver. A bit set to 1 means tgat tge ci
  NeedsRequirement="FALSE"
  Name="NID_STMPACKET"
 >
-<Comment>STM packet identification.
+<ReqRef
+ Id="9d7bf318-e590-4a4e-b92e-0aac575c829d"
+>
+</ReqRef><Comment>STM packet identification.
 STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Comment>
 <SpecialValues>
 <EnumValue
@@ -1937,7 +2003,10 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
  NeedsRequirement="FALSE"
  Name="L_STMPACKET"
 >
-<Comment>Length of the STM packet.</Comment>
+<ReqRef
+ Id="0e78f9c8-b63a-4899-a5c9-2ad2a29439e8"
+>
+</ReqRef><Comment>Length of the STM packet.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="255"
@@ -1995,7 +2064,10 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
  NeedsRequirement="FALSE"
  Name="M_COLD_MVT"
 >
-<Comment>Cold movement detector information.
+<ReqRef
+ Id="cff4f20a-e083-4240-a1c6-acb8332718a6"
+>
+</ReqRef><Comment>Cold movement detector information.
 Indicates whetehr no cold movement has ocurred or if a cold movement has been detected or if no cold movement is available.</Comment>
 <SpecialValues>
 <EnumValue
@@ -2046,7 +2118,10 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
  NeedsRequirement="FALSE"
  Name="M_SDMTYPE"
 >
-<Comment>Speed and distance monitoring type
+<ReqRef
+ Id="d78b5d9b-a778-4992-922f-a1bfa907c33a"
+>
+</ReqRef><Comment>Speed and distance monitoring type
 Type of the speed and distance monitoring</Comment>
 <SpecialValues>
 <EnumValue
@@ -2075,7 +2150,10 @@ Type of the speed and distance monitoring</Comment>
  NeedsRequirement="FALSE"
  Name="M_SDMSUPSTAT"
 >
-<Comment>Speed and distance monitoring supervision status
+<ReqRef
+ Id="e0d596d2-c164-4d5b-bc28-5a2988c7db8e"
+>
+</ReqRef><Comment>Speed and distance monitoring supervision status
 Supervision status of the speed and distance monitoring</Comment>
 <SpecialValues>
 <EnumValue
@@ -2108,7 +2186,10 @@ Supervision status of the speed and distance monitoring</Comment>
  NeedsRequirement="FALSE"
  Name="V_PERM"
 >
-<Comment>Permitted speed
+<ReqRef
+ Id="6b567e14-e137-4612-a782-45e646e87d7c"
+>
+</ReqRef><Comment>Permitted speed
 Permited speed displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
@@ -2125,7 +2206,10 @@ Permited speed displayed to the driver</Comment>
  NeedsRequirement="FALSE"
  Name="V_FLOI"
 >
-<Comment>First line of intervention speed
+<ReqRef
+ Id="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
+>
+</ReqRef><Comment>First line of intervention speed
 FLOI speed displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
@@ -2176,7 +2260,10 @@ Target speed displayed to the driver</Comment>
  NeedsRequirement="FALSE"
  Name="V_RELEASE"
 >
-<Comment>Release speed
+<ReqRef
+ Id="7e5aaa18-69c4-471f-8580-c19a54d18408"
+>
+</ReqRef><Comment>Release speed
 Release speed displayed to the driver.</Comment>
 <SpecialValues>
 <EnumValue
@@ -3913,7 +4000,10 @@ Release speed displayed to the driver.</Comment>
  NeedsRequirement="FALSE"
  Name="DMI_SOUND_STATUS"
 >
-<Comment>Status of the audible information played to the driver. A bit set to 1 means that the corresponding sound is generated.</Comment>
+<ReqRef
+ Id="fc7394cf-4565-4758-8c81-0e446549e1ef"
+>
+</ReqRef><Comment>Status of the audible information played to the driver. A bit set to 1 means that the corresponding sound is generated.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1"
@@ -3937,7 +4027,10 @@ Release speed displayed to the driver.</Comment>
  NeedsRequirement="FALSE"
  Name="SYSTEM_STATUS_MESSAGE"
 >
-<Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
+<ReqRef
+ Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
+>
+</ReqRef><Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
 <SpecialValues>
 <EnumValue
  Value="1"
@@ -4041,7 +4134,10 @@ Release speed displayed to the driver.</Comment>
  NeedsRequirement="FALSE"
  Name="Q_RBCENTRY"
 >
-<Comment>Qualifier for the RBC contact information.
+<ReqRef
+ Id="eeff373a-c4c9-4758-81b5-3b7ce7bdd2f0"
+>
+</ReqRef><Comment>Qualifier for the RBC contact information.
 This variable indicates the type of the driver&apos;s selection for the RBC data.</Comment>
 <SpecialValues>
 <EnumValue
