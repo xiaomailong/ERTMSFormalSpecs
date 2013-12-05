@@ -23,7 +23,7 @@ using Utils;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces
+    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs
     {
         /// <summary>
         /// The file path associated to the dictionary
@@ -1050,6 +1050,17 @@ namespace DataDictionary
                 }
 
                 return retVal;
+            }
+        }
+        /// <summary>
+        /// Gets all paragraphs from a dictionary
+        /// </summary>
+        /// <param name="paragraphs"></param>
+        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        {
+            foreach (Specification.Specification specification in Specifications)
+            {
+                specification.GetParagraphs(paragraphs);
             }
         }
 

@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains a fixed text message that is not shown to the driver anymore</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="658cb69e-5b0f-455f-8b4d-f9cdf3a8ee6a"
+>
+</ReqRef><Comment>This message contains a fixed text message that is not shown to the driver anymore</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,5 +32,8 @@
  NeedsRequirement="FALSE"
  Name="Q_TEXT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="f3dc92e6-4948-4fcd-b175-1774c15b0d9d"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

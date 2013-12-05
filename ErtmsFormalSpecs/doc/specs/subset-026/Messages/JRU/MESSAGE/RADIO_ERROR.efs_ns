@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains an error related to communication with an RBC as identified by M_ERROR.</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="42a82eba-bc6b-4d6a-abba-2a6daea941be"
+>
+</ReqRef><Comment>This message contains an error related to communication with an RBC as identified by M_ERROR.</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,7 +32,10 @@
  NeedsRequirement="FALSE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="dcbc1e0e-ff0a-4e56-bb66-f7de099f424e"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RBC"
  Default="0"
  Mode="InOut"
@@ -34,7 +43,10 @@
  NeedsRequirement="FALSE"
  Name="NID_RBC"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="63f79475-6a3b-4269-a26c-0950763a5638"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ERROR"
  Default=""
  Mode="InOut"
@@ -42,5 +54,8 @@
  NeedsRequirement="FALSE"
  Name="M_ERROR"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="2807fbec-b481-45e4-be12-e95d7aa182da"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

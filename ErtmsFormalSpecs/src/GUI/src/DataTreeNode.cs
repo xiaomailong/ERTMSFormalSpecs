@@ -192,7 +192,7 @@ namespace GUI
 
             if (displayStatistics)
             {
-                GUIUtils.MDIWindow.SetDefaultStatus();
+                GUIUtils.MDIWindow.SetCoverageStatus(EFSSystem.INSTANCE);
             }
         }
 

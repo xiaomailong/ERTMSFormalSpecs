@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
+using System.Threading;
 
 namespace GUI.SpecificationView
 {
@@ -209,9 +210,7 @@ namespace GUI.SpecificationView
                 }
             }
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = Item.getSubParagraphs();
-            paragraphs.Add(Item);
-            GUIUtils.MDIWindow.SetStatus(CreateStatMessage(Item.EFSSystem, paragraphs, true));
+            GUIUtils.MDIWindow.SetCoverageStatus(Item);
         }
 
         public void ImplementedHandler(object sender, EventArgs args)

@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains which system status messages are displayed to the driver</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="5ebc8464-ea72-426f-9d36-3891fb49f575"
+>
+</ReqRef><Comment>This message contains which system status messages are displayed to the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,5 +32,8 @@
  NeedsRequirement="FALSE"
  Name="SYSTEM_STATUS_MESSAGE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="fe171800-34b8-4d6b-8a0e-e519f273ac49"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

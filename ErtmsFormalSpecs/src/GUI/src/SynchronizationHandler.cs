@@ -83,7 +83,7 @@ namespace GUI
         /// <summary>
         /// The instance that is currently synchronized
         /// </summary>
-        private T Instance { get; set; }
+        protected T Instance { get; set; }
 
         /// <summary>
         /// The thread handling the synchronization

@@ -9,7 +9,13 @@
  NeedsRequirement="FALSE"
  Name="Message"
 >
-<Comment>This message contains a fixed text message that is currently being shown to the driver</Comment>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+>
+</ReqRef><ReqRef
+ Id="2ff7fe69-7ba7-4e29-9c09-dd1a97e10e5c"
+>
+</ReqRef><Comment>This message contains a fixed text message that is currently being shown to the driver</Comment>
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
@@ -26,5 +32,8 @@
  NeedsRequirement="FALSE"
  Name="Q_TEXT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="d62ce08f-20aa-491d-a448-02ef1c5e981f"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

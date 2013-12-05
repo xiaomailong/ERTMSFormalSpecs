@@ -253,7 +253,79 @@ namespace GUI
         /// <summary>
         /// Indicates that synchronization is required
         /// </summary>
-        private Synchronizer WindowSynchronizer { get; set; }
+        private Synchronizer WindowSynchronizerTask { get; set; }
+
+
+        /// <summary>
+        /// The class that is used to update the status
+        /// </summary>
+        private class StatusSynchronizer : GenericSynchronizationHandler<MainWindow>
+        {
+            /// <summary>
+            /// The model element used to update the status bar
+            /// </summary>
+            private IHoldsParagraphs Model { get; set; }
+
+            /// <summary>
+            /// Indicates that the model has changed
+            /// </summary>
+            private bool ModelChanged { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            public StatusSynchronizer(MainWindow window)
+                : base(window, 100)
+            {
+                Model = null;
+                ModelChanged = false;
+            }
+
+            /// <summary>
+            /// Sets the instance to display
+            /// </summary>
+            /// <param name="model"></param>
+            public void SetModel(IHoldsParagraphs model)
+            {
+                Model = model;
+                ModelChanged = true;
+                Instance.Invoke((MethodInvoker)delegate
+                {
+                    Instance.SetStatus("Computing coverage...");
+                });
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
+            {
+                if (ModelChanged)
+                {
+                    ModelChanged = false;
+                    List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+                    Model.GetParagraphs(paragraphs);
+                    Paragraph p = Model as Paragraph;
+                    if (p != null)
+                    {
+                        paragraphs.Add(p);
+                    }
+
+                    string message = ParagraphTreeNode.CreateStatMessage(EFSSystem.INSTANCE, paragraphs, false);
+                    instance.Invoke((MethodInvoker)delegate
+                    {
+                        instance.SetStatus(message);
+                    });
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private StatusSynchronizer StatusSynchronizerTask { get; set; }
 
         /// <summary>
         /// The maximum size of the history
@@ -277,7 +349,8 @@ namespace GUI
             GUIUtils.Graphics = CreateGraphics();
             SelectionHistory = new List<DataDictionary.ModelElement>();
 
-            WindowSynchronizer = new Synchronizer(this, 300);
+            WindowSynchronizerTask = new Synchronizer(this, 300);
+            StatusSynchronizerTask = new StatusSynchronizer(this);
             KeyUp += new KeyEventHandler(MainWindow_KeyUp);
             Refresh();
         }
@@ -653,7 +726,7 @@ namespace GUI
                             }
                         }
 
-                        SetDefaultStatus();
+                        SetCoverageStatus(EFSSystem);
                     }
                     else
                     {
@@ -1783,24 +1856,9 @@ namespace GUI
         /// <summary>
         /// Sets the default status
         /// </summary>
-        public void SetDefaultStatus()
+        public void SetCoverageStatus(IHoldsParagraphs model)
         {
-            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-            foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
-            {
-                foreach (Specification specification in dictionary.Specifications)
-                {
-                    foreach (DataDictionary.Specification.Chapter chapter in specification.Chapters)
-                    {
-                        foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
-                        {
-                            paragraphs.AddRange(paragraph.getSubParagraphs());
-                        }
-                    }
-                }
-            }
-            SetStatus(ParagraphTreeNode.CreateStatMessage(EFSSystem.INSTANCE, paragraphs, false));
+            StatusSynchronizerTask.SetModel(model);
         }
     }
-
 }
