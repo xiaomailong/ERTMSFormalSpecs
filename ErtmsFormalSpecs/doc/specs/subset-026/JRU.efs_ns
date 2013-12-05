@@ -16,7 +16,10 @@
  Priority="Processing"
  Name="SendPeriodically"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="SendPeriodically"
@@ -41,6 +44,62 @@
 <Actions>
 <Action>Message &lt;- Messages.JRU.MESSAGE.Message { }</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SendWhenSystemVersionChanges"
+>
+<ReqRef
+ Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+>
+</ReqRef><Comment>A general message will be sent when the system version changes</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SendWhenSystemVersionChanges"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</PreCondition></PreConditions>
+<Actions>
+<Action>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send General Message When Mode Changes"
+>
+<Comment>SendWhenKernleModeChanges</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send General Message When Mode Changes"
+>
+<PreConditions>
+<PreCondition>PreviousKernelMode != Kernel.Mode</PreCondition></PreConditions>
+<Actions>
+<Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action><Action>PreviousKernelMode &lt;- Kernel.Mode</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send JRU Message when level change"
+>
+<Comment>A General Message will be sent to the JRU when the Level changes or a Message 26 when the new level is NTC</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send General Message when level change"
+>
+<PreConditions>
+<PreCondition>PreviousKernelLevel != Kernel.Level.Value</PreCondition><PreCondition>Kernel.Level.Value != Default.Level.LNTC</PreCondition><PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Send NTC Selected Message when level change to NTC"
+>
+<PreConditions>
+<PreCondition>&lt;empty&gt;</PreCondition><PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition>PreviousKernelLevel != Kernel.Level.Value</PreCondition><PreCondition>Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
+<Actions>
+<Action>Message.NTC_SELECTED &lt;- CreateNtcSelected()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
  TypeName="Default.BaseTypes.Time"
@@ -48,7 +107,10 @@
  Mode="Internal"
  Name="PreviousTime"
 >
-<Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
+<ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+>
+</ReqRef><Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.JRU.MESSAGE.Message"
  Default="EMPTY"
@@ -56,7 +118,35 @@
  Name="Message"
 >
 <Comment>Represent a JRU message.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><StructureElement
+ TypeName="String"
+ Default=""
+ Mode="Internal"
+ Name="PreviousSystemVersion"
+>
+<ReqRef
+ Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+>
+</ReqRef><Comment>It will reflex the previous System Version</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default=""
+ Mode="Internal"
+ Name="PreviousKernelMode"
+>
+<ReqRef
+ Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Internal"
+ Name="PreviousKernelLevel"
+>
+<ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
  Type="Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message"
@@ -113,7 +203,7 @@
         DRIVER_ID =&gt; Kernel.DriverId.Value,
         NID_ENGINE =&gt; Kernel.NidEngine,
         SYSTEM_VERSION =&gt; ToJruSystemVersion(Kernel.OperatedSystemVersion),
-        LEVEL =&gt; ToJruLevel(Kernel.LevelData.Value),
+        LEVEL =&gt; ToJruLevel(Kernel.Level.Value),
         MODE =&gt; ToJruMode(Kernel.Mode)
     }</Expression>
 </Case></Cases>
@@ -153,6 +243,12 @@
 <PreConditions>
 <PreCondition>LevelInKernel == Default.Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.LEVEL.Level_3</Expression>
+</Case><Case
+ Name="Level_STM_specified_by_NID_NTC"
+>
+<PreConditions>
+<PreCondition>LevelInKernel == Default.Level.LNTC</PreCondition></PreConditions>
+<Expression>Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.M_MODE"
@@ -220,29 +316,23 @@
 <PreCondition>ModeInkernel == Default.Mode.RV</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Reversing</Expression>
 </Case><Case
- Name="JruModeFullsupervision_2"
+ Name="JruModeUnfitted"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.UN</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.Unfitted</Expression>
+</Case><Case
+ Name="JruModeShunting"
+>
+<PreConditions>
+<PreCondition>ModeInkernel == Default.Mode.SH</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Full_Supervision</Expression>
 </Case><Case
- Name="JruModeFullsupervision_3"
+ Name="JruModeSystemFailure"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
-<Expression>Messages.M_MODE.Full_Supervision</Expression>
-</Case><Case
- Name="JruModeFullsupervision_4"
->
-<PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
-<Expression>Messages.M_MODE.Full_Supervision</Expression>
-</Case><Case
- Name="JruModeFullsupervision_5"
->
-<PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
-<Expression>Messages.M_MODE.Full_Supervision</Expression>
+<PreCondition>ModeInkernel == Default.Mode.SF</PreCondition></PreConditions>
+<Expression>Messages.M_MODE.System_Failure</Expression>
 </Case><Case
  Name="JruModeStandBy"
 >
@@ -253,14 +343,8 @@
  Name="JruModeFullsupervision"
 >
 <PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.FS</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode == Default.Mode.FS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Full_Supervision</Expression>
-</Case><Case
- Name="JruModeStaffResponsible_2"
->
-<PreConditions>
-<PreCondition>ModeInkernel == Default.Mode.SR</PreCondition></PreConditions>
-<Expression>Messages.M_MODE.Staff_Responsible</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.V_TRAIN"
@@ -313,6 +397,40 @@
  Name="Default"
 >
 <Expression>Messages.JRU.SYSTEM_VERSION.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.NTC_SELECTED"
+ Name="CreateNTCSelectedMessage"
+>
+<Cases>
+<Case
+ Name="Value"
+>
+<Expression>Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message{
+    HEADER =&gt; CreateHeader(26)
+    THIS.NID_NTC =&gt; ToJruNidNtc()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.NID_NTC"
+ Name="ToJruNidNtc"
+>
+<ReqRef
+ Id="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Default.NID_NTC"
+ Name="KernelNidNtc"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Applicable"
+>
+<PreConditions>
+<PreCondition>KernelNidNtc != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+<Expression>Messages.NID_NTC</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

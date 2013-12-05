@@ -13,13 +13,16 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence1"
+ Name="Send a JRU General Message every 5 seconds"
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send a message every 5 seconds"
 >
-<Steps>
+<ReqRef
+ Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -65,6 +68,346 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - Ensure that the first JRU GENERAL message is no more present after it has been sent"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure that the first JRU GENERAL message is sent after 5 secs"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Send a JRU General Message after System Version has changed"
+>
+<TestCases>
+<TestCase
+ Name="Send a JRU General Message when the System Version Changes"
+>
+<ReqRef
+ Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data_1_1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Ensure that there is no JRU messages"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Change System Version"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure that the first JRU GENERAL message is no more present after it has been sent"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
+    SystemVersion=&gt; Kernel.OperatedSystemVersion
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Send General Message When Mode Changes"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Ensure that there is no JRU messages"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Mode Changes"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousKernelMode == Kernel.Mode</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure that the first JRU GENERAL message has been sent"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE== JRU.ToJruMode(
+    ModeInkernel=&gt;Kernel.Mode
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Send JRU Message when Level changes"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Ensure that there is no JRU messages"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level changes"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure that the first JRU GENERAL message has been sent"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Level changes again"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure that no JRU GENERAL message has been sent"
 >
 <SubSteps>
 <SubStep
