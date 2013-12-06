@@ -1489,7 +1489,10 @@ Record the events for train safety which take place on board during normal train
  NeedsRequirement="FALSE"
  Name="M_DRIVERACTIONS"
 >
-<Comment>Driver&apos;s actions
+<ReqRef
+ Id="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
+>
+</ReqRef><Comment>Driver&apos;s actions
 This variable contains the driver&apos;s action</Comment>
 <SpecialValues>
 <EnumValue
@@ -2189,6 +2192,9 @@ Supervision status of the speed and distance monitoring</Comment>
 <ReqRef
  Id="6b567e14-e137-4612-a782-45e646e87d7c"
 >
+</ReqRef><ReqRef
+ Id="752a7f7c-3b26-4deb-b950-a92c5a32fa72"
+>
 </ReqRef><Comment>Permitted speed
 Permited speed displayed to the driver</Comment>
 <SpecialValues>
@@ -2208,6 +2214,9 @@ Permited speed displayed to the driver</Comment>
 >
 <ReqRef
  Id="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
+>
+</ReqRef><ReqRef
+ Id="ecba5d6f-0d27-4108-b60c-672a1db4e53c"
 >
 </ReqRef><Comment>First line of intervention speed
 FLOI speed displayed to the driver</Comment>
@@ -4177,7 +4186,10 @@ This is the operational train running number. The NID_OPERATIONAL consists of up
  NeedsRequirement="FALSE"
  Name="V_SR"
 >
-<Comment>Staff responsible speed
+<ReqRef
+ Id="20ff7bf0-f074-4e91-a8c6-a8f7a2d48b2e"
+>
+</ReqRef><Comment>Staff responsible speed
 Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
 </Range><Range
  MinValue="0"
@@ -4188,7 +4200,10 @@ Speed allowed running in Staff Responsible, modified by the driver through the D
  NeedsRequirement="FALSE"
  Name="D_SR"
 >
-<Comment>Staff Responsible distance
+<ReqRef
+ Id="724fead6-ff94-4cca-ba1c-94ead297e6cb"
+>
+</ReqRef><Comment>Staff Responsible distance
 Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
 </Range><Range
  MinValue="0"
@@ -4219,7 +4234,10 @@ Distance allowed running in Staff responsible, modified by the driver through th
  NeedsRequirement="FALSE"
  Name="M_SLEEPING"
 >
-<Comment>Sleeping input
+<ReqRef
+ Id="78be0579-c844-4e19-86b2-33b5020846e4"
+>
+</ReqRef><Comment>Sleeping input
 This variable contains the state if the sleeping input.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4240,7 +4258,10 @@ This variable contains the state if the sleeping input.</Comment>
  NeedsRequirement="FALSE"
  Name="M_PASSIVE_SHUNTTING"
 >
-<Comment>Passive shunting input
+<ReqRef
+ Id="25d08e04-94ca-4697-8ad8-7e741b13661f"
+>
+</ReqRef><Comment>Passive shunting input
 This variable contains the state if the passive shunting input.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4261,7 +4282,10 @@ This variable contains the state if the passive shunting input.</Comment>
  NeedsRequirement="FALSE"
  Name="M_NON_LEADING"
 >
-<Comment>Non leading input state
+<ReqRef
+ Id="ff93b26b-ebdc-4f1e-846d-f4991f753b7e"
+>
+</ReqRef><Comment>Non leading input state
 This variable contains the state of the non leading input</Comment>
 <SpecialValues>
 <EnumValue
@@ -4282,7 +4306,10 @@ This variable contains the state of the non leading input</Comment>
  NeedsRequirement="FALSE"
  Name="M_RB_STATUS"
 >
-<Comment>Status of regenerative brake.
+<ReqRef
+ Id="de020c80-db0c-45db-855e-ae27cffc7437"
+>
+</ReqRef><Comment>Status of regenerative brake.
 This variable contains the status of the regenerative brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4303,7 +4330,10 @@ This variable contains the status of the regenerative brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_MSB_STATUS"
 >
-<Comment>Status of magnetic shoe brake.
+<ReqRef
+ Id="4a9ce77d-31fb-4220-a7ff-e6e79157ca6f"
+>
+</ReqRef><Comment>Status of magnetic shoe brake.
 This variable contains the status of the magnetic shoe brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4324,7 +4354,10 @@ This variable contains the status of the magnetic shoe brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_ECB_STATUS"
 >
-<Comment>Status of eddy current brake.
+<ReqRef
+ Id="8b09420a-4f06-43d3-aada-ea5751a960ec"
+>
+</ReqRef><Comment>Status of eddy current brake.
 This variable contains the status of the eddy current brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4345,7 +4378,10 @@ This variable contains the status of the eddy current brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_EP_STATUS"
 >
-<Comment>Status of the electro pneumatic brake
+<ReqRef
+ Id="31f32d56-9e3c-4fd0-b226-ea769b746033"
+>
+</ReqRef><Comment>Status of the electro pneumatic brake
 This variable contains the status of the electro pneumatic brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4366,7 +4402,10 @@ This variable contains the status of the electro pneumatic brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_AB_STATUS"
 >
-<Comment>Status of the additional brakes.
+<ReqRef
+ Id="7947c4dd-de78-4fde-b208-f53d2dc562ce"
+>
+</ReqRef><Comment>Status of the additional brakes.
 This variable contains the status of the aditional brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4387,7 +4426,10 @@ This variable contains the status of the aditional brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_CAB_A_STATUS"
 >
-<Comment>Cab A status
+<ReqRef
+ Id="f9a025a0-5d6b-4d68-946b-f3f5c736adc2"
+>
+</ReqRef><Comment>Cab A status
 This variable contains the cab A status. In case the ERTMS/ETCS on board is connected only to one cab, this cab is considered as being cab A</Comment>
 <SpecialValues>
 <EnumValue
@@ -4408,7 +4450,10 @@ This variable contains the cab A status. In case the ERTMS/ETCS on board is conn
  NeedsRequirement="FALSE"
  Name="Q_CAB_B"
 >
-<Comment>Qualifier for Cab B
+<ReqRef
+ Id="ca6de985-daf9-4798-87b8-e36f3b143ed7"
+>
+</ReqRef><Comment>Qualifier for Cab B
 Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on board</Comment>
 <SpecialValues>
 <EnumValue
@@ -4429,7 +4474,10 @@ Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on boar
  NeedsRequirement="FALSE"
  Name="M_CAB_B_STATUS"
 >
-<Comment>Cab B status
+<ReqRef
+ Id="45287456-663d-411a-82b3-093ef23e2fd9"
+>
+</ReqRef><Comment>Cab B status
 This variable contains the cab B status.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4450,7 +4498,10 @@ This variable contains the cab B status.</Comment>
  NeedsRequirement="FALSE"
  Name="Q_SINGLE_DESK"
 >
-<Comment>Qualifier for single desk cab.
+<ReqRef
+ Id="d81dea26-df76-4043-a640-59fb6eaad210"
+>
+</ReqRef><Comment>Qualifier for single desk cab.
 Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fitted with a single desk</Comment>
 <SpecialValues>
 <EnumValue
@@ -4471,7 +4522,10 @@ Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fi
  NeedsRequirement="FALSE"
  Name="M_TRAIN_ORIENTATION"
 >
-<Comment>Train orientation input state
+<ReqRef
+ Id="75a6add1-c50c-4ba3-ae2d-f02732622167"
+>
+</ReqRef><Comment>Train orientation input state
 The variable contains the train orientation input state</Comment>
 <SpecialValues>
 <EnumValue
@@ -4492,7 +4546,10 @@ The variable contains the train orientation input state</Comment>
  NeedsRequirement="FALSE"
  Name="M_DIRECTION_CONTROLLER"
 >
-<Comment>Direction controller state</Comment>
+<ReqRef
+ Id="ade5813e-3f65-4f0b-acdc-d51816305acc"
+>
+</ReqRef><Comment>Direction controller state</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
@@ -4520,7 +4577,10 @@ The variable contains the train orientation input state</Comment>
  NeedsRequirement="FALSE"
  Name="M_TRACTION_STATUS"
 >
-<Comment>Traction status
+<ReqRef
+ Id="2fa2f9ae-31ff-4ea3-af52-c0dffbbdbef1"
+>
+</ReqRef><Comment>Traction status
 This variable contains the traction status</Comment>
 <SpecialValues>
 <EnumValue
@@ -4541,7 +4601,10 @@ This variable contains the traction status</Comment>
  NeedsRequirement="FALSE"
  Name="M_TRAIN_DATA_ENTRY"
 >
-<Comment>Type of the train data entry
+<ReqRef
+ Id="c0493d5f-364b-43e7-b271-75b71b32b33a"
+>
+</ReqRef><Comment>Type of the train data entry
 This variable contains the type of the train data entry</Comment>
 <SpecialValues>
 <EnumValue
@@ -4570,7 +4633,10 @@ This variable contains the type of the train data entry</Comment>
  NeedsRequirement="FALSE"
  Name="M_NATIONAL_SYSTEM_ISOLATION"
 >
-<Comment>Isolation of the National System.
+<ReqRef
+ Id="3dd8bd11-719b-48a0-bdfe-bb3c14032355"
+>
+</ReqRef><Comment>Isolation of the National System.
 The variable contains the indication of isolation of the National System</Comment>
 <SpecialValues>
 <EnumValue
@@ -4591,7 +4657,10 @@ The variable contains the indication of isolation of the National System</Commen
  NeedsRequirement="FALSE"
  Name="M_TCO_COMMAND_STATE"
 >
-<Comment>Traction cut off command state
+<ReqRef
+ Id="3a14cad3-b86a-48ac-9b03-fc152ddaee7b"
+>
+</ReqRef><Comment>Traction cut off command state
 The variable contains the command state of the traction cut off</Comment>
 <SpecialValues>
 <EnumValue

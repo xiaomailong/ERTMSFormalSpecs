@@ -305,6 +305,11 @@ namespace GUI
                 if (ModelChanged)
                 {
                     ModelChanged = false;
+                    Instance.Invoke((MethodInvoker)delegate
+                    {
+                        Instance.SetStatus("Computing coverage...");
+                    });
+
                     List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
                     Model.GetParagraphs(paragraphs);
                     Paragraph p = Model as Paragraph;

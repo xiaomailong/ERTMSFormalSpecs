@@ -12,6 +12,9 @@
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
 >
+</ReqRef><ReqRef
+ Id="d859be5b-236a-48f2-8ded-f5dae33c2380"
+>
 </ReqRef><Comment>This message reflects the code entered by the driver to remove a VBC.</Comment>
 <StructureElement
  TypeName="HEADER.Message"
@@ -29,7 +32,10 @@
  NeedsRequirement="FALSE"
  Name="NID_VBCMK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="752ced46-4ae3-49cd-9476-4e049abe9685"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
@@ -37,5 +43,8 @@
  NeedsRequirement="FALSE"
  Name="NID_C"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="97ccbdac-a9ac-4262-bcac-caa89781d4ed"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

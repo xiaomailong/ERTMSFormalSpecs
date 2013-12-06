@@ -763,12 +763,12 @@ PAGE:53</Paragraph></Sub>
 <Paragraph
  id="4.2.2.1"
  guid="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
- type="REQUIREMENT"
+ type="NOTE"
  scope="OBU"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -2889,9 +2889,9 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Commanded, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = Not commanded, Value = , Comment =</Paragraph></Sub>
+  - BitValue = 0, Value = Not commanded, Comment = 
+  - BitValue = 1, Value = Commanded, Comment = 
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.4"
  guid="a8f59a9b-a318-44ce-8106-9abe073a59bf"
@@ -2900,7 +2900,7 @@ Special values
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -3130,78 +3130,19 @@ Comment:Defined in Chapter 7 of [1]</Paragraph><Paragraph
 >Complementary Variable:NID_RBC
 Length:
 Comment:Defined in Chapter 7 of [1]. ETCS identity (NID_C + NID_RBC) of the RBC to which the following message has been sent.
-Message, as defined in Chapters 7 and 8 of [1], sent to the referenced RBC.
-4.2.4.11 DRIVER.S ACTIONS
-Description
-This message is sent whenever the driver acts on the on board system via the ERTMS/ETCS DMI.
-Content
-Complementary Variable
-Length
-Comment</Paragraph><Paragraph
+</Paragraph><Paragraph
  id="4.2.4.10.3"
- guid="7991bb65-1a1f-4f31-9714-f3d47ba28c09"
+ guid="49c4ee3f-f7b9-4a71-852c-e816da574639"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->Complementary Variable:M_DRIVERACTIONS
-Length:8
-Comment:</Paragraph><Paragraph
- id="4.2.4.10.4"
- guid="0366dcd4-3da0-4b2e-ba53-e45daca5bba6"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->Name              : Driver.s actions.
-Description       : This variable contains the driver.s action.
-Definition        : 
-Length            : 8 bit
-Minimum value     : 
-Maximum value     : 
-Resolution formula: 
-Special values
-  - BitValue = 0000 0000, Value = 0001 1111, Comment = Train integrity confirmation
-  - BitValue = 0000 0001, Value = 0010 0000, Comment = Request to show supervision limits
-  - BitValue = 0000 0010, Value = 0010 0001, Comment = Ack of SN mode
-  - BitValue = 0000 0011, Value = 0010 0010, Comment = Selection of Language
-  - BitValue = 0000 0100, Value = 0010 0011, Comment = Request to show geographical position
-  - BitValue = 0000 0101, Value = Ack of On Sight mode, Comment = Spare
-  - BitValue = 0000 0110, Value = Ack of Shunting mode, Comment = Spare
-  - BitValue = 0000 0111, Value = Ack of Train Trip, Comment = Request to hide geographical position
-  - BitValue = 0000 1000, Value = Ack of Staff Responsible mode, Comment = Level 0 selected
-  - BitValue = 0000 1001, Value = Ack of Unfitted mode, Comment = Level 1 selected
-  - BitValue = 0000 1010, Value = Ack of Reversing mode, Comment = 
-  - BitValue = 0000 1011, Value = Ack level 0, Comment = 
-  - BitValue = 0000 1100, Value = Ack level 1, Comment = 
-  - BitValue = 0000 1101, Value = Ack level 2, Comment = 0010 0100
-  - BitValue = 0000 1110, Value = Ack level 3, Comment = 0010 0101
-  - BitValue = 0000 1111, Value = Ack level NTC, Comment = 0010 0110
-  - BitValue = 0001 0000, Value = Shunting selected, Comment = 0010 0111
-  - BitValue = 0001 0001, Value = Non Leading selected, Comment = 0010 1000
-  - BitValue = 0001 0010, Value = Ack of Limited Supervision mode, Comment = 0010 1001
-  - BitValue = 0001 0011, Value = Override selected, Comment = 0010 1010
-  - BitValue = 0001 0100, Value = Continue Shunting on desk closure selected, Comment = Level 2 selected
-  - BitValue = 0001 0101, Value = Brake release acknowledgement, Comment = Level 3 selected
-  - BitValue = 0001 0110, Value = Exit of Shunting selected, Comment = Level NTC selected
-  - BitValue = 0001 0111, Value = Isolation selected, Comment = Request to show tunnel stopping area information
-  - BitValue = 0001 1000, Value = Start selected, Comment = Request to hide tunnel stopping area information
-  - BitValue = 0001 1001, Value = Train Data Entry requested, Comment = Scroll up button activated
-  - BitValue = 0001 1010, Value = Validation of train data, Comment = Scroll down button activated
-  - BitValue = 0001 1011, Value = Confirmation of Track Ahead Free, Comment = 
-  - BitValue = 0001 1100, Value = Ack of Plain Text information, Comment = 
-  - BitValue = 0001 1101, Value = Ack of Fixed Text information, Comment = 
-  - BitValue = 0001 1110, Value = Request to hide supervision limits, Comment =</Paragraph></Sub>
+>Message, as defined in Chapters 7 and 8 of [1], sent to the referenced RBC.</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.12"
  guid="ccd7ef95-5c65-43d9-b86b-bbca24597cab"
@@ -3280,9 +3221,8 @@ Minimum value     : 0
 Maximum value     : 16382
 Resolution formula: Numbers
 Special values
-  - BitValue = 16383, Value = , Comment = 
-  - BitValue = Unknown, Value = , Comment = 
-  - BitValue = , Value = , Comment =</Paragraph></Sub>
+  - BitValue = 16383, Value = Unknown, Comment = 
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.13"
  guid="42a82eba-bc6b-4d6a-abba-2a6daea941be"
@@ -3355,11 +3295,7 @@ Comment:Defined in Chapter 7 of [1]</Paragraph></Sub>
  Name=""
 >STM INFORMATION
 Description
-This message is sent to the on-board recording device on an STM event, i.e. when certain STM packets are exchanged, certain system status messages in relation to NTCs are displayed or a disconnection of the STM Control Function connection happens.
-1 bit
-Special/reserved value
-1868-8191
-Spare<Sub>
+This message is sent to the on-board recording device on an STM event, i.e. when certain STM packets are exchanged, certain system status messages in relation to NTCs are displayed or a disconnection of the STM Control Function connection happens.<Sub>
 <Paragraph
  id="4.2.4.14.1"
  guid="db0f2ba6-d6b5-4b34-8fc5-d28aea9ac112"
@@ -3474,8 +3410,8 @@ Comment:If NID_STMEVENT = 2</Paragraph><Paragraph
 >Complementary Variable:L_STMPACKET
 Length:13
 Comment:If NID_STMEVENT = 2, length of M_STMPACKETDATA
-If NID_STMEVENT = 2, STM packet variables (without NID_PACKET and L_PACKET) as described in Chapters 7 &amp; 8 of [2]</Paragraph><Paragraph
- id="4.2.4.14.9"
+</Paragraph><Paragraph
+ id="4.2.4.14.10"
  guid="0fae287c-ec3d-45e6-bd37-dd90fc39be24"
  type="REQUIREMENT"
  scope="OBU"
@@ -3495,9 +3431,9 @@ Minimum value     : 0
 Maximum value     : 254
 Resolution formula: 
 Special values
-  - BitValue = 255, Value = , Comment = 
-  - BitValue = For STM-packets or disconnect requests sent to all (connected) STMs, Value = , Comment =</Paragraph><Paragraph
- id="4.2.4.14.10"
+  - BitValue = 255, Value = For STM-packets or disconnect requests sent to all (connected) STMs, Comment = 
+</Paragraph><Paragraph
+ id="4.2.4.14.11"
  guid="1794d8ed-2b89-4280-a497-a5d2126c637f"
  type="REQUIREMENT"
  scope="OBU"
@@ -3516,11 +3452,11 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 2, Comment = 
-  - BitValue = Disconnection, Value = Reception/sending of STM packet, Comment = 
-  - BitValue = 1, Value = 3, Comment = 
-  - BitValue = Display of system status message, Value = Spare, Comment =</Paragraph><Paragraph
- id="4.2.4.14.11"
+  - BitValue = 0, Value = Disconnection, Comment = 
+  - BitValue = 1, Value = Display of system status message, Comment = 
+  - BitValue = 2, Value = Reception/sending of STM packet, Comment = 
+  - BitValue = 3, Value = Spare, Comment =</Paragraph><Paragraph
+ id="4.2.4.14.12"
  guid="19f38286-767b-433a-8bd2-981d51acf46a"
  type="REQUIREMENT"
  scope="OBU"
@@ -3539,9 +3475,9 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 1, Comment = 
-  - BitValue = Disconnect request sent from STM, Value = Disconnect request sent from STM Control Function, Comment =</Paragraph><Paragraph
- id="4.2.4.14.12"
+  - BitValue = 0, Value = Disconnect request sent from STM, Comment = 
+  - BitValue = 1, Value = Disconnect request sent from STM Control Function, Comment =</Paragraph><Paragraph
+ id="4.2.4.14.13"
  guid="a7aa1cdf-ad7a-415c-9d68-aaa4883b1e19"
  type="REQUIREMENT"
  scope="OBU"
@@ -3560,10 +3496,9 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Non final disconnection, Comment = 
-  - BitValue = Final disconnection, Value = , Comment = 
-  - BitValue = 1, Value = , Comment =</Paragraph><Paragraph
- id="4.2.4.14.13"
+  - BitValue = 0, Value = Final disconnection, Comment = 
+  - BitValue = 1, Value = Non final disconnection, Comment = </Paragraph><Paragraph
+ id="4.2.4.14.14"
  guid="e573b5aa-409b-409f-a9e7-65709733913d"
  type="REQUIREMENT"
  scope="OBU"
@@ -3581,13 +3516,12 @@ Definition        : as in chapter 13 of [3]
 Length            : 3 bits
 Minimum value     : 
 Maximum value     : 
-Resolution formula: Bitset
-The least significant bit of the variable corresponds to bit 01.
+Resolution formula: Bitset, The least significant bit of the variable corresponds to bit 01.
 Special values
   - BitValue = Bit 01, Value = NTC brake demand, Comment = 
   - BitValue = Bit 02, Value = NTC needs data, Comment = 
   - BitValue = Bit 03, Value = NTC failed, Comment =</Paragraph><Paragraph
- id="4.2.4.14.14"
+ id="4.2.4.14.15"
  guid="9d7bf318-e590-4a4e-b92e-0aac575c829d"
  type="REQUIREMENT"
  scope="OBU"
@@ -3606,26 +3540,32 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 6, Value = End of Test Procedure, Comment = Speed and distance supervision information
-  - BitValue = Override activation, Value = 31, Comment = 46
-  - BitValue = 14, Value = Active DMI channel, Comment = Sound command
-  - BitValue = State order to STM, Value = 32, Comment = 47
-  - BitValue = 15, Value = Button Request, Comment = ETCS BTM status message to STM
-  - BitValue = State report from STM, Value = 34, Comment = 128
-  - BitValue = 16, Value = Button event report, Comment = STM emergency and service brake command to brake interface
-  - BitValue = Transition variables STM max speed from STM, Value = 35, Comment = 129
-  - BitValue = 17, Value = Indicator request, Comment = STM specific brake control command
-  - BitValue = Transition variables STM system speed and distance from STM, Value = 38, Comment = 130
-  - BitValue = 18, Value = Text message, Comment = STM commands to train interface
-  - BitValue = National Trip Procedure, Value = 39, Comment = 161
-  - BitValue = 20, Value = Delete text message, Comment = NTC juridical data from STM
-  - BitValue = Antenna/BTM ID, Value = 40, Comment = Other values
-  - BitValue = 21, Value = Acknowledgement reply, Comment = Spare
-  - BitValue = Test Procedure Permission Request, Value = , Comment = 
-  - BitValue = 22, Value = , Comment = 
-  - BitValue = Test Procedure Permission, Value = , Comment = 
-  - BitValue = 23, Value = 43, Comment =</Paragraph><Paragraph
- id="4.2.4.14.15"
+  - BitValue = 6, Value = Override activation
+  - BitValue = 14, Value = State order to STM
+  - BitValue = 15, Value = State report from STM
+  - BitValue = 16, Value = Transition variables STM max speed from STM
+  - BitValue = 17, Value = Transition variables STM system speed and distance from STM
+  - BitValue = 18, Value = National Trip Procedure
+  - BitValue = 20, Value = Antenna/BTM ID
+  - BitValue = 21, Value = Test Procedure Permission Request
+  - BitValue = 22, Value = Test Procedure Permission
+  - BitValue = 23, Value = End of Test Procedure
+  - BitValue = 31, Value = Active DMI channel
+  - BitValue = 32, Value = Button Request
+  - BitValue = 34, Value = Button event report
+  - BitValue = 35, Value = Indicator request
+  - BitValue = 38, Value = Text message
+  - BitValue = 39, Value = Delete text message
+  - BitValue = 40, Value = Acknowledgement reply
+  - BitValue = 43, Value = Speed and distance supervision information
+  - BitValue = 46, Value = Sound command
+  - BitValue = 47, Value = ETCS BTM status message to STM
+  - BitValue = 128, Value = STM emergency and service brake command to brake interface
+  - BitValue = 129, Value = STM specific brake control command
+  - BitValue = 130, Value = STM commands to train interface
+  - BitValue = 161, Value = NTC juridical data from STM
+  - BitValue = Other values, Value = Spare</Paragraph><Paragraph
+ id="4.2.4.14.16"
  guid="0e78f9c8-b63a-4899-a5c9-2ad2a29439e8"
  type="REQUIREMENT"
  scope="OBU"
@@ -3641,8 +3581,22 @@ Description       :
 Definition        : 
 Length            : 13 bits
 Minimum value     : 0
-Maximum value     : 1867
-Resolution formula: As allowed by maximum length of application data.</Paragraph></Sub>
+Maximum value     : 1867 As allowed by maximum length of application data.
+Resolution formula: 1 bit
+Special/reserved value
+  - BitValue = 1868-8191, Value = Spare</Paragraph><Paragraph
+ id="4.2.4.14.9"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>If NID_STMEVENT = 2, STM packet variables (without NID_PACKET and L_PACKET) as described in Chapters 7 &amp; 8 of [2]
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.15"
  guid="edea8c3d-fe6f-420e-b769-33cf7a6b53e1"
@@ -4000,29 +3954,13 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Description, Comment = Name
-  - BitValue = 1, Value = Permitted speed displayed to the driver, Comment = First line of intervention speed.
-  - BitValue = 2, Value = Length of variable, Comment = Description
-  - BitValue = 3, Value = Minimum Value, Comment = FLOI speed displayed to the driver
-  - BitValue = 4, Value = Maximum Value, Comment = Length of variable
-  - BitValue = 5...7, Value = Resolution/formula, Comment = Minimum Value
-  - BitValue = Normal Status, Value = 10 bits, Comment = Maximum Value
-  - BitValue = Indication Status, Value = 0 km/h, Comment = Resolution/formula
-  - BitValue = Overspeed Status, Value = 600 km/h, Comment = 10 bits
-  - BitValue = Warning Status, Value = 1 km/h, Comment = 0 km/h
-  - BitValue = Intervention Status, Value = Special/reserved value, Comment = 600 km/h
-  - BitValue = Spare, Value = 601  1022, Comment = 1 km/h
-  - BitValue = , Value = Spare, Comment = Special/reserved value
-  - BitValue = , Value = , Comment = 601  1022
-  - BitValue = , Value = , Comment = Spare
-  - BitValue = , Value = 1023, Comment = 
-  - BitValue = , Value = None, Comment = 
-  - BitValue = , Value = , Comment = 1023
-  - BitValue = , Value = , Comment = None
-  - BitValue = V_PERM, Value = , Comment = 
-  - BitValue = Name, Value = , Comment = 
-  - BitValue = Permitted speed., Value = V_FLOI, Comment =</Paragraph><Paragraph
- id="4.2.4.20.10"
+  - BitValue = 0, Value = Normal Status
+  - BitValue = 1, Value = Indication Status
+  - BitValue = 2, Value = Overspeed Status
+  - BitValue = 3, Value = Warning Status
+  - BitValue = 4, Value = Intervention Status
+  - BitValue = 5...7, Value = Spare</Paragraph><Paragraph
+ id="4.2.4.20.12"
  guid="6b567e14-e137-4612-a782-45e646e87d7c"
  type="REQUIREMENT"
  scope="OBU"
@@ -4041,10 +3979,9 @@ Minimum value     : 0 km/h
 Maximum value     : 600 km/h
 Resolution formula: 1 km/h
 Special values
-  - BitValue = 601  1022, Value = , Comment = 
-  - BitValue = Spare, Value = 1023, Comment = 
-  - BitValue = , Value = None, Comment =</Paragraph><Paragraph
- id="4.2.4.20.11"
+  - BitValue = 601--1022, Value = Spare, Comment = 
+  - BitValue = 1023, Value = None, Comment =</Paragraph><Paragraph
+ id="4.2.4.20.13"
  guid="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
  type="REQUIREMENT"
  scope="OBU"
@@ -4065,7 +4002,7 @@ Resolution formula: 1 m
 Special values
   - BitValue = 32767, Value = , Comment = 
   - BitValue = None, Value = , Comment =</Paragraph><Paragraph
- id="4.2.4.20.12"
+ id="4.2.4.20.14"
  guid="7e5aaa18-69c4-471f-8580-c19a54d18408"
  type="REQUIREMENT"
  scope="OBU"
@@ -4084,9 +4021,50 @@ Minimum value     : 0 km/h
 Maximum value     : 600 km/h
 Resolution formula: 1 km/h
 Special values
-  - BitValue = 601-1022, Value = , Comment = 
-  - BitValue = Spare, Value = 1023, Comment = 
-  - BitValue = , Value = None, Comment =</Paragraph></Sub>
+  - BitValue = 601--1022, Value = Spare, Comment = 
+  - BitValue = 1023, Value = None, Comment =</Paragraph><Paragraph
+ id="4.2.4.20.10"
+ guid="752a7f7c-3b26-4deb-b950-a92c5a32fa72"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : Permitted speed.
+Description       : Permitted speed displayed to the driver
+Definition        : 
+Length            : 10 bits
+Minimum value     : 0 km/h
+Maximum value     : 600 km/h
+Resolution formula: 1 km/h
+Special values
+  - BitValue = 601--1022, Value = Spare, Comment = 
+  - BitValue = 1023, Value = None, Comment =</Paragraph><Paragraph
+ id="4.2.4.20.11"
+ guid="ecba5d6f-0d27-4108-b60c-672a1db4e53c"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : First line of intervention speed.
+Description       : FLOI speed displayed to the driver
+Definition        : 
+Length            : 10 bits
+Minimum value     : 0 km/h
+Maximum value     : 600 km/h
+Resolution formula: 1 km/h
+Special values
+  - BitValue = 601--1022, Value = Spare, Comment = 
+  - BitValue = 1023, Value = None, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.21"
  guid="ab27f58b-6aaf-4a89-addc-8ba7947449d2"
@@ -4138,66 +4116,92 @@ Maximum value     :
 Resolution formula: Bitset
 The bit 01 corresponds to the least significant bit of the variable
 Special values
-  - BitValue = Bit 01, Value = Bit 45, Comment = TC14
-  - BitValue = Bit 02, Value = Bit 46, Comment = TC15
-  - BitValue = Bit 03, Value = Bit 47, Comment = TC16
-  - BitValue = Bit 04, Value = Bit 48, Comment = TC17
-  - BitValue = Bit 05, Value = Bit 49, Comment = TC18
-  - BitValue = Bit 06, Value = Bit 50, Comment = 
-  - BitValue = Bit 07, Value = Bit 51, Comment = 
-  - BitValue = Bit 08, Value = Bit 52, Comment = 
-  - BitValue = Bit 09, Value = Bit 53, Comment = Bit 62
-  - BitValue = Bit 10, Value = Bit 54, Comment = Bit 63
-  - BitValue = Bit 11, Value = Bit 55, Comment = Bit 64
-  - BitValue = Bit 12, Value = Bit 56, Comment = Bit 65
-  - BitValue = Bit 13, Value = Bit 57, Comment = Bit 66
-  - BitValue = LE01, Value = Bit 58, Comment = Bit 67
-  - BitValue = LE02, Value = Bit 59, Comment = Bit 68
-  - BitValue = LE03, Value = Bit 60, Comment = Bit 69
-  - BitValue = LE04, Value = Bit 61, Comment = Bit 70
-  - BitValue = LE05, Value = LE14, Comment = Bit 71
-  - BitValue = LE06, Value = LE15, Comment = Bit 72
-  - BitValue = LE07, Value = MO01, Comment = Bit 73
-  - BitValue = LE08, Value = MO02, Comment = Bit 74
-  - BitValue = LE09, Value = MO03, Comment = Bit 75
-  - BitValue = LE10, Value = MO04, Comment = Bit 76
-  - BitValue = LE11, Value = MO05, Comment = Bit 77
-  - BitValue = LE12, Value = MO06, Comment = Bit 78
-  - BitValue = LE13, Value = MO07, Comment = Bit 79
-  - BitValue = , Value = MO08, Comment = Bit 80
-  - BitValue = , Value = MO09, Comment = Bit 81
-  - BitValue = , Value = MO10, Comment = Bit 82
-  - BitValue = Bit 14, Value = MO11, Comment = Bit 83
-  - BitValue = Bit 15, Value = MO12, Comment = Bit 84
-  - BitValue = Bit 16, Value = MO13, Comment = Bit 85
-  - BitValue = Bit 17, Value = MO14, Comment = Bit 86
-  - BitValue = Bit 18, Value = MO15, Comment = TC19
-  - BitValue = Bit 19, Value = MO16, Comment = TC20
-  - BitValue = Bit 20, Value = MO17, Comment = TC21
-  - BitValue = Bit 21, Value = MO18, Comment = TC22
-  - BitValue = Bit 22, Value = MO19, Comment = TC23
-  - BitValue = Bit 23, Value = MO20, Comment = TC24
-  - BitValue = Bit 24, Value = MO21, Comment = TC25
-  - BitValue = Bit 25, Value = MO22, Comment = TC26
-  - BitValue = Bit 26, Value = ST01, Comment = TC27
-  - BitValue = Bit 27, Value = ST02, Comment = TC28
-  - BitValue = Bit 28, Value = ST03, Comment = TC29
-  - BitValue = Bit 29, Value = ST04, Comment = TC30
-  - BitValue = Bit 30, Value = ST05, Comment = TC31
-  - BitValue = Bit 31, Value = ST06, Comment = TC32
-  - BitValue = Bit 32, Value = TC01, Comment = TC33
-  - BitValue = Bit 33, Value = TC02, Comment = TC34
-  - BitValue = Bit 34, Value = TC03, Comment = TC35
-  - BitValue = Bit 35, Value = TC04, Comment = TC36
-  - BitValue = Bit 36, Value = TC05, Comment = TC37
-  - BitValue = Bit 37, Value = TC06, Comment = DR01
-  - BitValue = Bit 38, Value = TC07, Comment = DR02
-  - BitValue = Bit 39, Value = TC08, Comment = DR03
-  - BitValue = Bit 40, Value = TC09, Comment = DR04
-  - BitValue = Bit 41, Value = TC10, Comment = DR05
-  - BitValue = Bit 42, Value = TC11, Comment = LX01
-  - BitValue = Bit 43, Value = TC12, Comment = 
-  - BitValue = Bit 44, Value = TC13, Comment =</Paragraph></Sub>
+  - Bit = 01, Value = LE01
+  - Bit = 02, Value = LE02
+  - Bit = 03, Value = LE03
+  - Bit = 04, Value = LE04
+  - Bit = 05, Value = LE05
+  - Bit = 06, Value = LE06
+  - Bit = 07, Value = LE07
+  - Bit = 08, Value = LE08
+  - Bit = 09, Value = LE09
+  - Bit = 10, Value = LE10
+  - Bit = 11, Value = LE11
+  - Bit = 12, Value = LE12
+  - Bit = 13, Value = LE13
+  - Bit = 14, Value = LE14 
+  - Bit = 15, Value = LE15 
+  - Bit = 16, Value = MO01 
+  - Bit = 17, Value = MO02 
+  - Bit = 18, Value = MO03 
+  - Bit = 19, Value = MO04 
+  - Bit = 20, Value = MO05 
+  - Bit = 21, Value = MO06 
+  - Bit = 22, Value = MO07 
+  - Bit = 23, Value = MO08 
+  - Bit = 24, Value = MO09 
+  - Bit = 25, Value = MO10 
+  - Bit = 26, Value = MO11 
+  - Bit = 27, Value = MO12 
+  - Bit = 28, Value = MO13 
+  - Bit = 29, Value = MO14 
+  - Bit = 30, Value = MO15 
+  - Bit = 31, Value = MO16 
+  - Bit = 32, Value = MO17 
+  - Bit = 33, Value = MO18 
+  - Bit = 34, Value = MO19 
+  - Bit = 35, Value = MO20 
+  - Bit = 36, Value = MO21 
+  - Bit = 37, Value = MO22 
+  - Bit = 38, Value = ST01 
+  - Bit = 39, Value = ST02 
+  - Bit = 40, Value = ST03 
+  - Bit = 41, Value = ST04 
+  - Bit = 42, Value = ST05 
+  - Bit = 43, Value = ST06 
+  - Bit = 44, Value = TC01 
+  - Bit = 45, Value = TC02 
+  - Bit = 46, Value = TC03 
+  - Bit = 47, Value = TC04 
+  - Bit = 48, Value = TC05 
+  - Bit = 49, Value = TC06 
+  - Bit = 50, Value = TC07 
+  - Bit = 51, Value = TC08 
+  - Bit = 52, Value = TC09 
+  - Bit = 53, Value = TC10 
+  - Bit = 54, Value = TC11 
+  - Bit = 55, Value = TC12 
+  - Bit = 56, Value = TC13 
+  - Bit = 57, Value = TC14 
+  - Bit = 58, Value = TC15 
+  - Bit = 59, Value = TC16 
+  - Bit = 60, Value = TC17 
+  - Bit = 61, Value = TC18 
+  - Bit = 62, Value = TC19  
+  - Bit = 63, Value = TC20  
+  - Bit = 64, Value = TC21  
+  - Bit = 65, Value = TC22  
+  - Bit = 66, Value = TC23  
+  - Bit = 67, Value = TC24  
+  - Bit = 68, Value = TC25  
+  - Bit = 69, Value = TC26  
+  - Bit = 70, Value = TC27  
+  - Bit = 71, Value = TC28  
+  - Bit = 72, Value = TC29  
+  - Bit = 73, Value = TC30  
+  - Bit = 74, Value = TC31  
+  - Bit = 75, Value = TC32  
+  - Bit = 76, Value = TC33  
+  - Bit = 77, Value = TC34  
+  - Bit = 78, Value = TC35  
+  - Bit = 79, Value = TC36  
+  - Bit = 80, Value = TC37  
+  - Bit = 81, Value = DR01  
+  - Bit = 82, Value = DR02  
+  - Bit = 83, Value = DR03  
+  - Bit = 84, Value = DR04  
+  - Bit = 85, Value = DR05  
+  - Bit = 86, Value = LX01</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.22"
  guid="9fe1c0c9-8578-4394-9677-fd7ba21647f4"
@@ -4303,23 +4307,40 @@ Maximum value     :
 Resolution formula: Bitset
 The least significant bit of the variable corresponds to bit 01.
 Special values
-  - BitValue = Bit 01, Value = Entering OS, Comment = Bit 19
-  - BitValue = Bit 02, Value = Runaway movement, Comment = Bit 20
-  - BitValue = Bit 03, Value = SH refused, Comment = Bit 21
-  - BitValue = Bit 04, Value = SH request failed, Comment = Bit 22
-  - BitValue = Bit 05, Value = Trackside not compatible, Comment = Bit 23
-  - BitValue = Bit 06, Value = Train data changed, Comment = SR distance exceeded
-  - BitValue = Bit 07, Value = Train is rejected, Comment = SH stop order
-  - BitValue = Bit 08, Value = Unauthorized passing of EOA / LOA, Comment = SR stop order
-  - BitValue = Bit 09, Value = No MA received at level transition, Comment = Emergency stop
-  - BitValue = Bit 10, Value = , Comment = RV distance exceeded
-  - BitValue = Bit 11, Value = , Comment = No track description
-  - BitValue = Bit 12, Value = , Comment = Route unsuitable  axle load category
-  - BitValue = Bit 13, Value = Bit 14, Comment = Route unsuitable  loading gauge
-  - BitValue = Balise read error, Value = Bit 15, Comment = Route unsuitable  traction system
-  - BitValue = Trackside malfunction, Value = Bit 16, Comment = Radio network registration failed
-  - BitValue = Communication error, Value = Bit 17, Comment = 
-  - BitValue = Entering FS, Value = Bit 18, Comment =</Paragraph></Sub>
+  - Bit = 01, Value = Balise read error                  
+  - Bit = 02, Value = Trackside malfunction              
+  - Bit = 03, Value = Communication error                
+  - Bit = 04, Value = Entering FS                        
+  - Bit = 05, Value = Entering OS                        
+  - Bit = 06, Value = Runaway movement                   
+  - Bit = 07, Value = SH refused                         
+  - Bit = 08, Value = SH request failed                  
+  - Bit = 09, Value = Trackside not compatible           
+  - Bit = 10, Value = Train data changed                 
+  - Bit = 11, Value = Train is rejected                  
+  - Bit = 12, Value = Unauthorized passing of EOA / LOA  
+  - Bit = 13, Value = No MA received at level transition 
+  - Bit = 14, Value = SR distance exceeded                  
+  - Bit = 15, Value = SH stop order                         
+  - Bit = 16, Value = SR stop order                         
+  - Bit = 17, Value = Emergency stop                        
+  - Bit = 18, Value = RV distance exceeded                  
+  - Bit = 19, Value = No track description                  
+  - Bit = 20, Value = Route unsuitable – axle load category 
+  - Bit = 21, Value = Route unsuitable – loading gauge      
+  - Bit = 22, Value = Route unsuitable – traction system    
+  - Bit = 23, Value = Radio network registration failed     
+
+
+
+
+
+
+
+
+
+
+</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.24"
  guid="15ca85fa-d695-4b98-8f58-a5acfc827e9f"
@@ -4467,7 +4488,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4481,49 +4503,68 @@ This message contains the change of the SR Speed or Distance entered by the driv
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:D_SR
 Length:17
-Comment:
-V_SR
-10
-D_SR
-Name
-Staff Responsible distance.
-Description
-Distance allowed running in Staff Responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropriate from operational point of view.
-Length of variable
-Minimum Value
-Maximum Value
-Resolution/formula
-17 bits
-0 m
-100000 m
-1 m
-Special/reserved value
-100001-131071
-Spare
-V_SR
-Name
-Staff Responsible speed
-Description
-Speed allowed running in Staff Responsible, modified by the driver through the DMI.
-Length of variable
-Minimum Value
-Maximum Value
-Resolution/formula
-10 bits
-0 km/h
-600 km/h
-1 km/h
-Special/reserved
-601-1023
-Spare
-value
-</Paragraph></Sub>
+Comment:</Paragraph><Paragraph
+ id="4.2.4.25.2"
+ guid="2774f89b-bcff-4741-ac90-8537e331db11"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:V_SR
+Length:10
+Comment:</Paragraph><Paragraph
+ id="4.2.4.25.3"
+ guid="724fead6-ff94-4cca-ba1c-94ead297e6cb"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : Staff Responsible distance.
+Description       : Distance allowed running in Staff Responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropriate from operational point of view.
+Definition        : 
+Length            : 17 bits
+Minimum value     : 0 m
+Maximum value     : 100000 m
+Resolution formula: 1 m
+Special values
+  - Value = 100001-131071, Comment = Spare</Paragraph><Paragraph
+ id="4.2.4.25.4"
+ guid="20ff7bf0-f074-4e91-a8c6-a8f7a2d48b2e"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : Staff Responsible speed
+Description       : Speed allowed running in Staff Responsible, modified by the driver through the DMI.
+Definition        : 
+Length            : 10 bits
+Minimum value     : 0 km/h
+Maximum value     : 600 km/h
+Resolution formula: 1 km/h
+Special values
+  - Value = 601-1023, Comment = Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.26"
  guid="bb9c8dd1-462d-4fc9-94dc-a4d02d2f1420"
@@ -4531,7 +4572,8 @@ value
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4545,14 +4587,14 @@ This message contains the identity of the NTC when the selected level is NTC.<Su
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_NTC
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph></Sub>
+Comment:Defined in Chapter 7 of [1].</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.27"
  guid="d1d08e8e-a0f9-4277-abf1-0009203165c2"
@@ -4560,7 +4602,8 @@ Comment:Defined in Chapter 7 of [1].
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4574,14 +4617,14 @@ This message records the occurrence of a safety critical fault in mode SL, NL or
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:Null
 Length:
-Comment:
-</Paragraph></Sub>
+Comment:</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.28"
  guid="29bf3662-a0ca-450a-8c70-1d447bcd3e7b"
@@ -4589,7 +4632,8 @@ Comment:
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4603,42 +4647,42 @@ This message reflects the code entered by the driver to set a VBC.<Sub>
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_VBCMK
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph><Paragraph
+Comment:Defined in Chapter 7 of [1].</Paragraph><Paragraph
  id="4.2.4.28.2"
  guid="e79e41c3-47e2-4f33-a829-b64006d3e98b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_C
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph><Paragraph
+Comment:Defined in Chapter 7 of [1].</Paragraph><Paragraph
  id="4.2.4.28.3"
  guid="114edcbc-7d24-41b0-88fe-89c4ceb8ae45"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:T_VBC
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph></Sub>
+Comment:Defined in Chapter 7 of [1].</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.29"
  guid="d859be5b-236a-48f2-8ded-f5dae33c2380"
@@ -4646,7 +4690,8 @@ Comment:Defined in Chapter 7 of [1].
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4660,28 +4705,28 @@ This message reflects the code entered by the driver to remove a VBC.<Sub>
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_C
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph><Paragraph
+Comment:Defined in Chapter 7 of [1].</Paragraph><Paragraph
  id="4.2.4.29.2"
  guid="752ced46-4ae3-49cd-9476-4e049abe9685"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_VBCMK
 Length:
-Comment:Defined in Chapter 7 of [1].
-</Paragraph></Sub>
+Comment:Defined in Chapter 7 of [1].</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.30"
  guid="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
@@ -4689,7 +4734,8 @@ Comment:Defined in Chapter 7 of [1].
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4703,21 +4749,22 @@ This message allows to transmit the state of the sleeping input (see [4] 2.2.1).
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_SLEEPING
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.30.2"
  guid="78be0579-c844-4e19-86b2-33b5020846e4"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4729,9 +4776,8 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 1, Comment = 
-  - BitValue = Sleeping not requested, Value = Sleeping requested, Comment = 
-</Paragraph></Sub>
+  - BitValue = 0, Value = Sleeping not requested, Comment = 
+  - BitValue = 1, Value = Sleeping requested, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.31"
  guid="c300dc73-4bcb-45ee-a1f9-184c2ce7b933"
@@ -4739,7 +4785,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4755,21 +4802,22 @@ This message allows to transmit the state of the passive shunting input (see
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_PASSIVE_SHUNTING
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.31.2"
  guid="25d08e04-94ca-4697-8ad8-7e741b13661f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4781,9 +4829,8 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 1, Comment = 
-  - BitValue = Passive shunting not permitted, Value = Passive shunting permitted, Comment = 
-</Paragraph></Sub>
+  - BitValue = 0, Value = Passive shunting not permitted, Comment = 
+  - BitValue = 1, Value = Passive shunting permitted, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.32"
  guid="0361c793-fdc8-4da1-9229-09357d6117c9"
@@ -4791,7 +4838,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4805,21 +4853,22 @@ This message allows to transmit the state of the non leading input (see [4] 2.2.
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_NON_LEADING
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.32.2"
  guid="ff93b26b-ebdc-4f1e-846d-f4991f753b7e"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4831,9 +4880,8 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 1, Comment = 
-  - BitValue = Non leading not permitted, Value = Non leading permitted, Comment = 
-</Paragraph></Sub>
+  - BitValue = 0, Value = Non leading not permitted, Comment = 
+  - BitValue = 1, Value = Non leading permitted, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.33"
  guid="cc8b6072-8727-4c6b-98d3-e4f416c8efcc"
@@ -4841,7 +4889,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4855,21 +4904,22 @@ This message allows to transmit the regenerative brake status (see [4] 2.3.6).<S
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_RB_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.33.2"
  guid="de020c80-db0c-45db-855e-ae27cffc7437"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4882,8 +4932,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Not active, Comment = 
-  - BitValue = 1, Value = Active, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = Active, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.34"
  guid="a55faf1c-5e2a-4b5a-ad4c-8745c9ca8eb9"
@@ -4891,7 +4940,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4905,21 +4955,22 @@ This message allows to transmit the magnetic shoe brake status (see [4] 2.3.6).<
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_MSB_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.34.2"
  guid="4a9ce77d-31fb-4220-a7ff-e6e79157ca6f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4932,9 +4983,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Active, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = Not active, Value = , Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = Not active, Comment = </Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.35"
  guid="6b6aed3a-e263-4d03-ba9e-ac96c0f5e38a"
@@ -4942,7 +4991,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4956,21 +5006,22 @@ This message allows to transmit the eddy current brake status (see [4] 2.3.6).<S
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_ECB_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.35.2"
  guid="8b09420a-4f06-43d3-aada-ea5751a960ec"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -4983,8 +5034,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Not active, Comment = 
-  - BitValue = 1, Value = Active, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = Active, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.36"
  guid="93254149-6489-4e55-bb64-7f75408d3be8"
@@ -4992,7 +5042,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5006,21 +5057,22 @@ This message allows to transmit the electro pneumatic brake status (see [4] 2.3.
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_EP_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.36.2"
  guid="31f32d56-9e3c-4fd0-b226-ea769b746033"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5033,8 +5085,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Not active, Comment = 
-  - BitValue = 1, Value = Active, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = Active, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.37"
  guid="1376ba80-d0c0-4a52-9124-6468c01c9932"
@@ -5042,7 +5093,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5056,21 +5108,22 @@ This message allows to transmit the additional brake status (see [4] 2.3.6).<Sub
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_AB_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.37.2"
  guid="7947c4dd-de78-4fde-b208-f53d2dc562ce"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5083,8 +5136,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Not active, Comment = 
-  - BitValue = 1, Value = Active, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = Active, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.38"
  guid="7275722c-79c3-4be4-aa59-792d2628c3ac"
@@ -5092,7 +5144,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5106,77 +5159,78 @@ This message allows to transmit the cab status that the ERTMS/ETCS onboard recei
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_CAB_A_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.38.2"
  guid="07639a9d-c6ea-4946-b1c8-3fffb617f1bb"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:Q_CAB_B
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.38.3"
  guid="09df2c37-ada9-4078-a318-636e1ef17601"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_CAB_B_STATUS
 Length:1
-Comment:Only if Q_CAB_B = 1
-</Paragraph><Paragraph
+Comment:Only if Q_CAB_B = 1</Paragraph><Paragraph
  id="4.2.4.38.4"
  guid="0ec2900a-2b2f-49b7-9753-efb0612b31ad"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:Q_SINGLE_DESK
 Length:1
-Comment:Only if Q_CAB_B = 0
-</Paragraph><Paragraph
+Comment:Only if Q_CAB_B = 0</Paragraph><Paragraph
  id="4.2.4.38.5"
  guid="b20dda46-468b-4c2d-a8e0-20027409746b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_TRAIN_ORIENTATION
 Length:1
-Comment:Only if Q_SINGLE_DESK = 1
-</Paragraph><Paragraph
+Comment:Only if Q_SINGLE_DESK = 1</Paragraph><Paragraph
  id="4.2.4.38.6"
  guid="f9a025a0-5d6b-4d68-946b-f3f5c736adc2"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5188,26 +5242,16 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Name, Comment = 
-  - BitValue = 1, Value = Qualifier for cab B, Comment = 
-  - BitValue = Not active, Value = Description, Comment = 
-  - BitValue = Active, Value = Qualifier to indicate whether a second cab is connected to the ERTMS/ETCS onboard., Comment = Special/reserved value
-  - BitValue = , Value = Length of variable, Comment = 0
-  - BitValue = , Value = Minimum Value, Comment = 1
-  - BitValue = , Value = Maximum Value, Comment = No
-  - BitValue = , Value = Resolution/formula, Comment = Yes
-  - BitValue = , Value = 1 bit, Comment = 
-  - BitValue = , Value = , Comment = 
-  - BitValue = , Value = , Comment = 
-  - BitValue = Q_CAB_B, Value = , Comment = 
-</Paragraph><Paragraph
- id="4.2.4.38.7"
+  - BitValue = 0, Value = Not Active, Comment = 
+  - BitValue = 1, Value = Active, Comment =</Paragraph><Paragraph
+ id="4.2.4.38.8"
  guid="45287456-663d-411a-82b3-093ef23e2fd9"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5219,17 +5263,16 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Active, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = Not active, Value = , Comment = 
-</Paragraph><Paragraph
- id="4.2.4.38.8"
+  - BitValue = 0, Value = Not Active, Comment = 
+  - BitValue = 1, Value = Active, Comment =</Paragraph><Paragraph
+ id="4.2.4.38.9"
  guid="d81dea26-df76-4043-a640-59fb6eaad210"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5241,17 +5284,16 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Yes, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = No, Value = , Comment = 
-</Paragraph><Paragraph
- id="4.2.4.38.9"
+  - BitValue = 0, Value = No, Comment = 
+  - BitValue = 1, Value = Yes, Comment =</Paragraph><Paragraph
+ id="4.2.4.38.10"
  guid="75a6add1-c50c-4ba3-ae2d-f02732622167"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5263,10 +5305,29 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Direction A, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = Direction B, Value = , Comment = 
-</Paragraph></Sub>
+  - BitValue = 0, Value = Direction B, Comment = 
+  - BitValue = 1, Value = Direction A, Comment =</Paragraph><Paragraph
+ id="4.2.4.38.11"
+ guid="ca6de985-daf9-4798-87b8-e36f3b143ed7"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : Cab A status
+Description       : Qualifier to indicate whether a second cab is connected to the ERTMS/ETCS onboard.
+Definition        : 
+Length            : 1 bit
+Minimum value     : 
+Maximum value     : 
+Resolution formula: 
+Special values
+  - BitValue = 0, Value = No, Comment = 
+  - BitValue = 1, Value = Yes, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.39"
  guid="d9784eba-d7cd-4aaa-8499-40da415462f9"
@@ -5274,7 +5335,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5288,21 +5350,22 @@ This message allows to transmit the direction controller position (see [4] 2.5.2
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_DIRECTION_CONTROLLER
 Length:2
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.39.2"
  guid="ade5813e-3f65-4f0b-acdc-d51816305acc"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5317,8 +5380,7 @@ Special values
   - BitValue = 00, Value = Neutral, Comment = 
   - BitValue = 01, Value = Backward, Comment = 
   - BitValue = 10, Value = Forward, Comment = 
-  - BitValue = 11, Value = Spare, Comment = 
-</Paragraph></Sub>
+  - BitValue = 11, Value = Spare, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.40"
  guid="8244b69a-230d-41b4-b7bb-0890ff2ccc7b"
@@ -5326,7 +5388,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5340,21 +5403,22 @@ This message allows to transmit the traction status (see [4] 2.5.4).<Sub>
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_TRACTION_STATUS
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.40.2"
  guid="2fa2f9ae-31ff-4ea3-af52-c0dffbbdbef1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5367,8 +5431,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = Off, Comment = 
-  - BitValue = 1, Value = On, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = On, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.41"
  guid="5642b7ac-8532-4e16-a3e9-a766287904d9"
@@ -5376,7 +5439,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5390,21 +5454,22 @@ This message allows to transmit the type of train data entry (see [4] 2.6.1).<Su
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_TRAIN_DATA_ENTRY
 Length:2
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.41.2"
  guid="c0493d5f-364b-43e7-b271-75b71b32b33a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5419,8 +5484,7 @@ Special values
   - BitValue = 0, Value = Fixed, Comment = 
   - BitValue = 1, Value = Flexible, Comment = 
   - BitValue = 2, Value = Switchable, Comment = 
-  - BitValue = 3, Value = Spare, Comment = 
-</Paragraph></Sub>
+  - BitValue = 3, Value = Spare, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.42"
  guid="18e07467-cc7f-49fe-af88-92a28c9906ad"
@@ -5428,7 +5492,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5442,35 +5507,35 @@ This message allows to transmit the indication that a National System, which is 
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:NID_NTC
 Length:
-Comment:Defined in [1]
-</Paragraph><Paragraph
+Comment:Defined in [1]</Paragraph><Paragraph
  id="4.2.4.42.2"
  guid="828c326c-8ed8-45cd-84f9-ebb663801513"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_NATIONAL_SYSTEM_ISOLATION
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.42.3"
  guid="3dd8bd11-719b-48a0-bdfe-bb3c14032355"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5483,8 +5548,7 @@ Maximum value     :
 Resolution formula: 
 Special values
   - BitValue = 0, Value = NTC isolated, Comment = 
-  - BitValue = 1, Value = NTC not isolated, Comment = 
-</Paragraph></Sub>
+  - BitValue = 1, Value = NTC not isolated, Comment =</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.43"
  guid="f5593895-c838-43ca-949d-48a837517e3d"
@@ -5492,7 +5556,8 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5506,21 +5571,22 @@ This message allows to transmit the traction cut off command state (see [4] 2.4.
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:M_TCO_COMMAND_STATE
 Length:1
-Comment:
-</Paragraph><Paragraph
+Comment:</Paragraph><Paragraph
  id="4.2.4.43.2"
  guid="3a14cad3-b86a-48ac-9b03-fc152ddaee7b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5532,9 +5598,8 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = Commanded, Comment = 
-  - BitValue = 1, Value = , Comment = 
-  - BitValue = Not commanded, Value = , Comment = 
+  - BitValue = 0, Value = Not commanded, Comment = 
+  - BitValue = 1, Value = Commanded, Comment = 
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.44"
@@ -5543,13 +5608,106 @@ Special values
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >ETCS ON-BOARD PROPRIETARY JURIDICAL DATA
 Description
-This message allows to record information that is specific to an ETCS on- board equipment1.</Paragraph></Sub>
+This message allows to record information that is specific to an ETCS on- board equipment1.</Paragraph><Paragraph
+ id="4.2.4.11"
+ guid="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>DRIVER.S ACTIONS
+Description
+This message is sent whenever the driver acts on the on board system via the ERTMS/ETCS DMI.<Sub>
+<Paragraph
+ id="4.2.4.11.1"
+ guid="d82c6cc4-21a5-45da-a6c6-68ef205c3623"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_DRIVER_ACTION
+Length:8
+Comment:</Paragraph><Paragraph
+ id="4.2.4.11.2"
+ guid="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Name              : Driver&apos;s action
+Description       : This variable contains the driver&apos;s action
+Definition        : 
+Length            : 8 bits
+Minimum value     : 
+Maximum value     : 
+Resolution formula: 
+Special values
+  - BitValue = 0000 0000, Value = Ack of On Sight mode
+  - BitValue = 0000 0001, Value = Ack of Shunting mode
+  - BitValue = 0000 0010, Value = Ack of Train Trip
+  - BitValue = 0000 0011, Value = Ack of Staff Responsible mode
+  - BitValue = 0000 0100, Value = Ack of Unfitted mode
+  - BitValue = 0000 0101, Value = Ack of Reversing mode
+  - BitValue = 0000 0110, Value = Ack level 0
+  - BitValue = 0000 0111, Value = Ack level 1
+  - BitValue = 0000 1000, Value = Ack level 2
+  - BitValue = 0000 1001, Value = Ack level 3
+  - BitValue = 0000 1010, Value = Ack level NTC
+  - BitValue = 0000 1011, Value = Shunting selected
+  - BitValue = 0000 1100, Value = Non Leading selected
+  - BitValue = 0000 1101, Value = Ack of Limited Supervision mode
+  - BitValue = 0000 1110, Value = Override selected
+  - BitValue = 0000 1111, Value = “Continue Shunting on desk closure” selected
+  - BitValue = 0001 0000, Value = Brake release acknowledgement
+  - BitValue = 0001 0001, Value = Exit of Shunting selected
+  - BitValue = 0001 0010, Value = Isolation selected
+  - BitValue = 0001 0011, Value = Start selected
+  - BitValue = 0001 0100, Value = Train Data Entry requested
+  - BitValue = 0001 0101, Value = Validation of train data
+  - BitValue = 0001 0110, Value = Confirmation of Track Ahead Free
+  - BitValue = 0001 0111, Value = Ack of Plain Text information
+  - BitValue = 0001 1000, Value = Ack of Fixed Text information
+  - BitValue = 0001 1001, Value = Request to hide supervision limits
+  - BitValue = 0001 1010, Value = Train integrity confirmation
+  - BitValue = 0001 1011, Value = Request to show supervision limits
+  - BitValue = 0001 1100, Value = Ack of SN mode
+  - BitValue = 0001 1101, Value = Selection of Language
+  - BitValue = 0001 1110, Value = Request to show geographical position
+  - BitValue = 0001 1111, Value = Spare
+  - BitValue = 0010 0000, Value = Spare
+  - BitValue = 0010 0001, Value = Request to hide geographical position
+  - BitValue = 0010 0010, Value = Level 0 selected
+  - BitValue = 0010 0011, Value = Level 1 selected
+  - BitValue = 0010 0100, Value = Level 2 selected
+  - BitValue = 0010 0101, Value = Level 3 selected
+  - BitValue = 0010 0110, Value = Level NTC selected
+  - BitValue = 0010 0111, Value = Request to show tunnel stopping area information
+  - BitValue = 0010 1000, Value = Request to hide tunnel stopping area information
+  - BitValue = 0010 1001, Value = Scroll up button activated
+  - BitValue = 0010 1010, Value = Scroll down button activated</Paragraph></Sub>
+</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.3.1.1"

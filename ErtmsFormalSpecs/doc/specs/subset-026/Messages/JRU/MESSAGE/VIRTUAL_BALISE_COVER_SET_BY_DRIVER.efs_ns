@@ -12,6 +12,9 @@
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
 >
+</ReqRef><ReqRef
+ Id="29bf3662-a0ca-450a-8c70-1d447bcd3e7b"
+>
 </ReqRef><Comment>This message reflects the code entered by the driver to set a VBC.</Comment>
 <StructureElement
  TypeName="HEADER.Message"
@@ -29,7 +32,10 @@
  NeedsRequirement="FALSE"
  Name="NID_VBCMK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d1c48944-e94f-42f8-aaf8-1410de316e3f"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
@@ -37,7 +43,10 @@
  NeedsRequirement="FALSE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e79e41c3-47e2-4f33-a829-b64006d3e98b"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="T_VBC"
  Default="0"
  Mode="InOut"
@@ -45,5 +54,8 @@
  NeedsRequirement="FALSE"
  Name="T_VBC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="114edcbc-7d24-41b0-88fe-89c4ceb8ae45"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>
