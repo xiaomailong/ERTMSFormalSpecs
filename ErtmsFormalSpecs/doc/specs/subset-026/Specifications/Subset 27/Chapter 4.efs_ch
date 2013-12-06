@@ -2132,7 +2132,6 @@ Comment:Emergency Brake delay time</Paragraph><Paragraph
  scope="OBU"
  bl=""
  name=""
- reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -2199,7 +2198,6 @@ Comment:Service Brake delay time</Paragraph><Paragraph
  scope="OBU"
  bl=""
  name=""
- reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
@@ -3586,7 +3584,7 @@ Resolution formula: 1 bit
 Special/reserved value
   - BitValue = 1868-8191, Value = Spare</Paragraph><Paragraph
  id="4.2.4.14.9"
- guid=""
+ guid="e5d3fc51-61c5-4603-9799-1c09120dc4b5"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
@@ -4477,10 +4475,10 @@ Minimum value     :
 Maximum value     : 
 Resolution formula: 
 Special values
-  - BitValue = 0, Value = 2, Comment = 
-  - BitValue = Contact last known RBC, Value = Enter RBC data, Comment = 
-  - BitValue = 1, Value = 3, Comment = 
-  - BitValue = Use short number, Value = Spare, Comment =</Paragraph></Sub>
+  - BitValue = 0, Value = Contact last known RBC
+  - BitValue = 1, Value = Use short number
+  - BitValue = 2, Value = Enter RBC data
+  - BitValue = 3, Value = Spare</Paragraph></Sub>
 </Paragraph><Paragraph
  id="4.2.4.25"
  guid="de5dad40-0b2a-4819-887a-6652ed89cc50"
@@ -5710,13 +5708,27 @@ Special values
 </Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph><Paragraph
+ id="4.3"
+ guid="afff8a8f-43e0-4227-a33e-7bc28cb8661d"
+ type="TITLE"
+ scope="OBU_AND_TRACK"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Triggering event list<Sub>
+<Paragraph
  id="4.3.1.1"
  guid="1091ba63-481f-4f86-b05d-cb22ba129a44"
- type="REQUIREMENT"
+ type="NOTE"
  scope="OBU"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
@@ -5729,791 +5741,709 @@ Table 2: List of triggering events and related messages<Sub>
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:Every 5 seconds
-NID_MESSAGE:1
-</Paragraph><Paragraph
+NID_MESSAGE:1</Paragraph><Paragraph
  id="4.3.1.1.2"
  guid="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the operated system version changes
-NID_MESSAGE:1
-</Paragraph><Paragraph
+NID_MESSAGE:1</Paragraph><Paragraph
  id="4.3.1.1.3"
  guid="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the level changes
-NID_MESSAGE:1 (and 26 when level changes to NTC)
-</Paragraph><Paragraph
+NID_MESSAGE:1 (and 26 when level changes to NTC)</Paragraph><Paragraph
  id="4.3.1.1.4"
  guid="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the mode changes
-NID_MESSAGE:1
-</Paragraph><Paragraph
+NID_MESSAGE:1</Paragraph><Paragraph
  id="4.3.1.1.5"
  guid="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When train data are validated at SoM
-NID_MESSAGE:2
-</Paragraph><Paragraph
+NID_MESSAGE:2</Paragraph><Paragraph
  id="4.3.1.1.6"
  guid="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When train data are changed
-NID_MESSAGE:2
-</Paragraph><Paragraph
+NID_MESSAGE:2</Paragraph><Paragraph
  id="4.3.1.1.7"
  guid="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the state of the emergency brake command changes
-NID_MESSAGE:3
-</Paragraph><Paragraph
+NID_MESSAGE:3</Paragraph><Paragraph
  id="4.3.1.1.8"
  guid="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the state of the service brake command changes
-NID_MESSAGE:4
-</Paragraph><Paragraph
+NID_MESSAGE:4</Paragraph><Paragraph
  id="4.3.1.1.9"
  guid="2775cdfc-7d3f-4adc-b431-79d473f86272"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a telegram from an Eurobalise is received
-NID_MESSAGE:6
-</Paragraph><Paragraph
+NID_MESSAGE:6</Paragraph><Paragraph
  id="4.3.1.1.10"
  guid="910ead71-1ae6-4bc4-8b03-b137e391b9ee"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a message from an Euroloop is received
-NID_MESSAGE:7
-</Paragraph><Paragraph
+NID_MESSAGE:7</Paragraph><Paragraph
  id="4.3.1.1.11"
  guid="b15c5556-e51a-4e40-830b-335c6ecd0cef"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a message from a RIU is received
-NID_MESSAGE:8
-</Paragraph><Paragraph
+NID_MESSAGE:8</Paragraph><Paragraph
  id="4.3.1.1.12"
  guid="c2e9f65e-0d44-489d-93dc-300d041e01e3"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a message to a RIU is sent
-NID_MESSAGE:5
-</Paragraph><Paragraph
+NID_MESSAGE:5</Paragraph><Paragraph
  id="4.3.1.1.13"
  guid="a71ad63d-ce07-4898-a796-68cabe1767bc"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a message from a RBC is received
-NID_MESSAGE:9
-</Paragraph><Paragraph
+NID_MESSAGE:9</Paragraph><Paragraph
  id="4.3.1.1.14"
  guid="2ffe0674-1645-4793-9d44-f0cc0a540f2e"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a message to a RBC is sent
-NID_MESSAGE:10
-</Paragraph><Paragraph
+NID_MESSAGE:10</Paragraph><Paragraph
  id="4.3.1.1.15"
  guid="21600e54-3c0f-4546-97fb-88261e491c24"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a balise group error is detected
-NID_MESSAGE:12
-</Paragraph><Paragraph
+NID_MESSAGE:12</Paragraph><Paragraph
  id="4.3.1.1.16"
  guid="d7966ac7-f166-4acb-9a49-941f4a0fc119"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a radio message error is detected
-NID_MESSAGE:13
-</Paragraph><Paragraph
+NID_MESSAGE:13</Paragraph><Paragraph
  id="4.3.1.1.17"
  guid="e5cceb3e-c5f4-4a6d-ae97-3c61e3b1c708"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a safety critical fault in mode SL, NL or PS occurs
-NID_MESSAGE:27
-</Paragraph><Paragraph
+NID_MESSAGE:27</Paragraph><Paragraph
  id="4.3.1.1.18"
  guid="b1bd67b2-c57f-4e4b-8387-53060e2e4dca"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:At start up1
-NID_MESSAGE:15
-</Paragraph><Paragraph
+>TRIGGERING EVENT:At start up
+NID_MESSAGE:15</Paragraph><Paragraph
  id="4.3.1.1.19"
  guid="b514977c-b206-4e0e-9ba2-ddc83ccb09fb"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When the driver acts on the on-board system through the DMI
-NID_MESSAGE:11
-</Paragraph><Paragraph
+NID_MESSAGE:11</Paragraph><Paragraph
  id="4.3.1.1.20"
  guid="5e63d042-7bf0-426a-8751-b3793574436c"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:When a fixed text message is shown to the driver
-NID_MESSAGE:16
-</Paragraph><Paragraph
+NID_MESSAGE:16</Paragraph><Paragraph
  id="4.3.1.1.21"
  guid="05ed37dc-66dc-45b9-aef7-c02e10143e9c"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:When a fixed text message is not shown any more to the
-NID_MESSAGE:17
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When a fixed text message is not shown any more to the driver
+NID_MESSAGE:17</Paragraph><Paragraph
  id="4.3.1.1.22"
  guid="3b79b949-811b-4c01-9450-3d4f90cbdd80"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:driver
-NID_MESSAGE:When a plain text message is shown to the driver
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When a plain text message is shown to the driver
+NID_MESSAGE:18</Paragraph><Paragraph
  id="4.3.1.1.23"
  guid="28d68737-0113-4c64-a664-4dd9147ef857"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:18
-NID_MESSAGE:When a plain text message is not shown any more to the driver
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When a plain text message is not shown any more to the driver
+NID_MESSAGE:19</Paragraph><Paragraph
  id="4.3.1.1.24"
  guid="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:19
-NID_MESSAGE:When any of the speed and distance monitoring information changes
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the speed and distance monitoring information changes
+NID_MESSAGE:20</Paragraph><Paragraph
  id="4.3.1.1.25"
  guid="e89b6661-751c-4a92-abcb-bd2ff6a5ea1e"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:20
-NID_MESSAGE:When any of the DMI symbols appears or disappears
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the DMI symbols appears or disappears
+NID_MESSAGE:21</Paragraph><Paragraph
  id="4.3.1.1.26"
  guid="67da4513-b2b5-4d37-8687-531b52df2355"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:21
-NID_MESSAGE:When the playing of any audible information to the driver is started
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When the playing of any audible information to the driver is started
+NID_MESSAGE:22</Paragraph><Paragraph
  id="4.3.1.1.27"
  guid="3f518e1c-d9ad-4bbe-8bb0-a45bfc3a1f81"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:22
-NID_MESSAGE:When any of the system status messages appears or disappears on the DMI
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the system status messages appears or disappears on the DMI
+NID_MESSAGE:23</Paragraph><Paragraph
  id="4.3.1.1.28"
  guid="7f457143-fc98-49b8-9dd8-8b864d55430f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:23
-NID_MESSAGE:When any of the STM related system status messages appears or disappears on the DMI
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the STM related system status messages appears or disappears on the DMI
+NID_MESSAGE:14</Paragraph><Paragraph
  id="4.3.1.1.29"
  guid="49e57c03-ad42-4d56-9434-6dda17872a1e"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:14
-NID_MESSAGE:When any of the additional data is entered/changed by the driver
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the additional data is entered/changed by the driver
+NID_MESSAGE:24</Paragraph><Paragraph
  id="4.3.1.1.30"
  guid="415a2c34-b900-4887-974e-1c6cd4f3c94b"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:24
-NID_MESSAGE:When the driver changes the SR speed/distance
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When the driver changes the SR speed/distance
+NID_MESSAGE:25</Paragraph><Paragraph
  id="4.3.1.1.31"
  guid="9d9290ed-830e-4e22-9056-7b1d9cdd0b86"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:25
-NID_MESSAGE:When the driver sets a Virtual Balise Cover
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When the driver sets a Virtual Balise Cover
+NID_MESSAGE:28</Paragraph><Paragraph
  id="4.3.1.1.32"
  guid="519182f7-fb99-4546-87d8-da7a2edd6c99"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:28
-NID_MESSAGE:When the driver removes a Virtual Balise Cover
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When the driver removes a Virtual Balise Cover
+NID_MESSAGE:29</Paragraph><Paragraph
  id="4.3.1.1.33"
  guid="9a6a7946-fcd0-4097-be45-9a8168506afd"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:29
-NID_MESSAGE:In any of the following events
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events
+  - At start up
+  - When the sleeping input state changes
+NID_MESSAGE:30</Paragraph><Paragraph
  id="4.3.1.1.34"
  guid="f23150cb-df63-4352-837f-3c563876913f"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the sleeping input state changes
-NID_MESSAGE:30
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events
+  - At start up
+  - When the passive shunting input state changes
+NID_MESSAGE:31</Paragraph><Paragraph
  id="4.3.1.1.35"
  guid="d4f186d7-bcb1-4feb-8415-a26d1d8d85f1"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:In any of the following events
-NID_MESSAGE:. At start up1 . When the passive shunting input state changes
-</Paragraph><Paragraph
+>TRIGGERING EVENT:At start up and when the non leading input state changes 	
+NID_MESSAGE:32</Paragraph><Paragraph
  id="4.3.1.1.36"
  guid="5373d260-e440-4af0-a97e-0195115ecf5a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:31
-NID_MESSAGE:At start up1 and when the non leading input state changes
-</Paragraph><Paragraph
+>TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the regenerative brake:
+  - At start up
+  - When the status of the regenerative brake changes  	
+NID_MESSAGE:33</Paragraph><Paragraph
  id="4.3.1.1.37"
  guid="90197942-cb84-4bb5-880d-1ea5d2dc15cf"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:32
-NID_MESSAGE:Only if the ERTMS/ETCS onboard is interfaced with the regenerative brake:
-</Paragraph><Paragraph
+>TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the magnetic shoe brake in any of the following events:
+  - At start up
+  - When the status of the magnetic shoe brake changes  	
+NID_MESSAGE:34</Paragraph><Paragraph
  id="4.3.1.1.38"
  guid="063fd9d9-a68d-4790-8e2a-259966b89827"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the status of the regenerative brake changes
-NID_MESSAGE:33
-</Paragraph><Paragraph
+>TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the eddy current brake in any of the following events:
+  - At start up
+  - When the status of the eddy current brake changes  	
+NID_MESSAGE:35</Paragraph><Paragraph
  id="4.3.1.1.39"
  guid="f21d7322-8da5-41b5-a334-69dd9493e2c7"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the magnetic shoe brake in any of the following events:
-NID_MESSAGE:34
-</Paragraph><Paragraph
+>TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the electro pneumatic brake in any of the following events:
+  - At start up
+  - When the status of the electro pneumatic brake changes  	
+NID_MESSAGE:36</Paragraph><Paragraph
  id="4.3.1.1.40"
  guid="0c351b25-94d2-4d44-86a4-3fe7611f6582"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the status of the magnetic shoe brake changes
-NID_MESSAGE:Only if the ERTMS/ETCS onboard is interfaced with the eddy current brake in any of the following events:
-</Paragraph><Paragraph
+>TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the additional brakes in any of the following events
+  - At start up
+  - When the status of the additional brake changes	
+NID_MESSAGE:37</Paragraph><Paragraph
  id="4.3.1.1.41"
  guid="8c425848-9e3f-47e1-b085-05409ddc4922"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the status of the eddy current brake changes
-NID_MESSAGE:35
-</Paragraph><Paragraph
+>TRIGGERING EVENT:At start up and when the cab status changes 	
+NID_MESSAGE:38</Paragraph><Paragraph
  id="4.3.1.1.42"
  guid="1d66e852-98d7-42e9-ac5a-f63774661b64"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:Only if the ERTMS/ETCS onboard is interfaced with the electro pneumatic brake in any of the following events:
-NID_MESSAGE:. At start up1 . When the status of the electro pneumatic brake changes
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events:
+  - At start up (i.e. once the ERTMS/ETCS on-board is powered up, when the connection with the On-board Recording Device is established) if a cab is already active
+  - When a cab becomes active
+  - When the direction controller input state changes  	
+NID_MESSAGE:39</Paragraph><Paragraph
  id="4.3.1.1.43"
  guid="1d116569-0a84-49db-b43b-fc79a8237b40"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:36
-NID_MESSAGE:Only if the ERTMS/ETCS onboard is interfaced with the additional brakes in any of the following events
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events:
+  - At start up
+  - When the status of the traction changes  	
+NID_MESSAGE:40</Paragraph><Paragraph
  id="4.3.1.1.44"
  guid="1a99e0b8-25e4-40b9-804a-adc887b38588"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the status of the additional brake changes
-NID_MESSAGE:37
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events:
+  - At start up1 if a cab is already active
+  - When a cab becomes active
+  - When the type of the train data changes 		
+NID_MESSAGE:41</Paragraph><Paragraph
  id="4.3.1.1.45"
  guid="06030586-dcc2-49e6-bf66-b0650c069a4d"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:At start up1 and when the cab status changes
-NID_MESSAGE:38
-</Paragraph><Paragraph
+>TRIGGERING EVENT:In any of the following events:
+  - At start up
+  - When the isolation status of any National System changes
+NID_MESSAGE:42</Paragraph><Paragraph
  id="4.3.1.1.46"
  guid="3822ea70-c0cb-4073-966b-5bee1bef3f8a"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:In any of the following events:
-NID_MESSAGE:. At start up2 if a cab is already active . When a cab becomes active . When the direction controller input state changes
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When the traction cut off command state changes
+NID_MESSAGE:43</Paragraph><Paragraph
  id="4.3.1.1.47"
  guid="9ef0cfbc-cbe9-46eb-8259-a19a1b5bc2ea"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:39
-NID_MESSAGE:In any of the following events:
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the following packets is sent to an STM:
+  - STM-14 State order
+  - STM-20 Antenna/BTM ID
+  - STM-22 Test Procedure Permission
+  - STM-31 Active DMI channel
+  - STM-34 Button event report
+  - STM-40 Acknowledgement reply
+  - STM-47 ETCS BTM status message to STM  	
+NID_MESSAGE:14</Paragraph><Paragraph
  id="4.3.1.1.48"
  guid="86bdcf79-d702-492a-8714-4d12bc2ef35d"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:. At start up1 . When the status of the traction changes
-NID_MESSAGE:40
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When any of the following packets is received from an STM:
+  - STM-6 Override activation
+  - STM-16 STM max speed
+  - STM-17 STM system speed and distance
+  - STM-18 National Trip Procedure
+  - STM-21 Test Procedure Permission Request
+  - STM-23 End of Test Procedure
+  - STM-32 Button Request
+  - STM-35 Indicator request
+  - STM-38 Text message
+  - STM-39 Delete text message
+  - STM-46 Sound command
+  - STM-128 Brake command
+  -  STM-129 STM specific brake control command
+  - STM-130 STM commands to train interface
+  - STM-161 NTC juridical data  	
+NID_MESSAGE:14</Paragraph><Paragraph
  id="4.3.1.1.49"
  guid="b39dd970-f6d3-4379-addc-71a7e6852348"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:In any of the following events:
-NID_MESSAGE:. At start up1 if a cab is already active . When a cab becomes active
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When packet STM-15 State report from STM is received from an STM:
+  - after a (re)connection
+  - or with a different value of NID_STMSTATE with regards to previously-received packet STM-15  NID_MESSAGE:14</Paragraph><Paragraph
  id="4.3.1.1.50"
  guid="7123017f-22cd-43d9-87d0-c91adea4c203"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
->TRIGGERING EVENT:41
-NID_MESSAGE:
-</Paragraph><Paragraph
+>TRIGGERING EVENT:When packet STM-43 Speed and distance supervision information is received from an STM with a different value of any variable except D_TARGET with regards to previously-received packet STM-43
+NID_MESSAGE:14</Paragraph><Paragraph
  id="4.3.1.1.51"
  guid="54fb56ce-548c-4501-9446-e78fe76b95f9"
  type="REQUIREMENT"
  scope="OBU"
  bl=""
  name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:2 i.e. once the ERTMS/ETCS on-board is powered up, when the connection with the On-board Recording Device is established.
-NID_MESSAGE:. When the type of the train data changes
-</Paragraph><Paragraph
- id="4.3.1.1.52"
- guid="dbd60ce6-e4ca-4c69-97ab-efafddbab836"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:In any of the following events:
-NID_MESSAGE:. At start up1 . When the isolation status of any National System changes
-</Paragraph><Paragraph
- id="4.3.1.1.53"
- guid="c3b60ac8-0e5d-4c12-8b93-4af1d9d8aa18"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:42
-NID_MESSAGE:When the traction cut off command state changes
-</Paragraph><Paragraph
- id="4.3.1.1.54"
- guid="7184a1d3-6af9-40ec-a520-b9e520690eeb"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:43
-NID_MESSAGE:When any of the following packets is sent to an STM:
-</Paragraph><Paragraph
- id="4.3.1.1.55"
- guid="8d96ff93-5729-44d8-8331-1b2c67fc3c71"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:. STM-14 State order . STM-20 Antenna/BTM ID . STM-22 Test Procedure Permission . STM-31 Active DMI channel . STM-34 Button event report . STM-40 Acknowledgement reply . STM-47 ETCS BTM status message to STM
-NID_MESSAGE:14
-</Paragraph><Paragraph
- id="4.3.1.1.56"
- guid="52940f02-3155-460b-9060-24e6fd80d7d9"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:When any of the following packets is received from an STM:
-NID_MESSAGE:. STM-6 Override activation . STM-16 STM max speed . STM-17 STM system speed and distance . STM-18 National Trip Procedure . STM-21 Test Procedure Permission Request . STM-23 End of Test Procedure . STM-32 Button Request . STM-35 Indicator request . STM-38 Text message . STM-39 Delete text message . STM-46 Sound command . STM-128 Brake command
-</Paragraph><Paragraph
- id="4.3.1.1.57"
- guid="a4ce0228-56d2-45c7-8211-a2a8beb1f8ae"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:14
-NID_MESSAGE:
-</Paragraph><Paragraph
- id="4.3.1.1.58"
- guid="c51dea45-2832-485a-96aa-f02643beb1ad"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:. STM-129 STM specific brake control command . STM-130 STM commands to train interface . STM-161 NTC juridical data
-NID_MESSAGE:When packet STM-15 State report from STM is received from an STM:
-</Paragraph><Paragraph
- id="4.3.1.1.59"
- guid="68814b4a-b18e-42a7-8b12-8638777c4d4c"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:. after a (re)connection . or with a different value of NID_STMSTATE with regards to previously-received packet STM-15
-NID_MESSAGE:14
-</Paragraph><Paragraph
- id="4.3.1.1.60"
- guid="15e833bc-3cff-49a6-bdb0-c9ae22d2e1f4"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- functionalBlockName=""
- Name=""
->TRIGGERING EVENT:When packet STM-43 Speed and distance supervision information is received from an STM with a different value of any variable except D_TARGET with regards to previously-received packet STM-43
-NID_MESSAGE:14
-</Paragraph><Paragraph
- id="4.3.1.1.61"
- guid="58006e7b-c36f-4e44-9194-eca10a981272"
- type="REQUIREMENT"
- scope="OBU"
- bl=""
- name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >TRIGGERING EVENT:At any STM disconnect event
-NID_MESSAGE:14
+NID_MESSAGE:14</Paragraph></Sub>
 </Paragraph></Sub>
 </Paragraph></Chapter>
