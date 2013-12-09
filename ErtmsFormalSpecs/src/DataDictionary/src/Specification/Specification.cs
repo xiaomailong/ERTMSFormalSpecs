@@ -456,7 +456,6 @@ namespace DataDictionary.Specification
         /// </summary>
         public void CheckNewRevision()
         {
-            Dictionary.ClearMessages();
             NiewRevisionVisitor visitor = new NiewRevisionVisitor();
             visitor.visit(this);
         }
@@ -508,21 +507,18 @@ namespace DataDictionary.Specification
 
         public void CheckApplicable()
         {
-            Dictionary.ClearMessages();
             ApplicableParagraphsVisitor visitor = new ApplicableParagraphsVisitor();
             visitor.visit(this);
         }
 
         public void CheckNonApplicable()
         {
-            Dictionary.ClearMessages();
             NonApplicableParagraphsVisitor visitor = new NonApplicableParagraphsVisitor();
             visitor.visit(this);
         }
 
         public void CheckSpecIssues()
         {
-            Dictionary.ClearMessages();
             SpecIssuesParagraphsVisitor visitor = new SpecIssuesParagraphsVisitor();
             visitor.visit(this);
         }

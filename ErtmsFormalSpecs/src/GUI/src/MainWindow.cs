@@ -1178,6 +1178,8 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
+
                 foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
                     specification.CheckApplicable();
@@ -1190,6 +1192,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkUnimplementedTests();
             }
 
@@ -1200,6 +1203,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkNotTranslatedTests();
             }
 
@@ -1210,6 +1214,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkNotImplementedTranslations();
             }
 
@@ -1220,6 +1225,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
                     specification.CheckNonApplicable();
@@ -1232,6 +1238,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
                     specification.CheckSpecIssues();
@@ -1560,6 +1567,8 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
+
                 foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
                     specification.CheckNewRevision();
