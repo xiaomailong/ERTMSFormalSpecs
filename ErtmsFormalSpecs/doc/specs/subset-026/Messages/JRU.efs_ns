@@ -630,7 +630,11 @@ This is the absolute real length of the train.</Comment>
  NeedsRequirement="FALSE"
  Name="T_TRACTION_CUT_OFF"
 >
-<Comment>Time to cut-off traction
+<ReqRef
+ Id="f0428811-caf7-4af4-8ff2-b9401f752e09"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Time to cut-off traction
 It is the time delay from the traction cut-off command by the on-board unit to the moment the acceleration due to traction is guaranteed to be zero</Comment>
 </Range><Range
  MinValue="0"
@@ -641,7 +645,11 @@ It is the time delay from the traction cut-off command by the on-board unit to t
  NeedsRequirement="FALSE"
  Name="M_BRAKE_POSITION"
 >
-<Comment>Brake position
+<ReqRef
+ Id="ad471f0f-fd27-4b9e-8adb-215c85aabdde"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake position
 The brake position defines the behaviour of the brake for specific train types</Comment>
 <SpecialValues>
 <EnumValue
@@ -670,7 +678,11 @@ The brake position defines the behaviour of the brake for specific train types</
  NeedsRequirement="FALSE"
  Name="M_NOM_ROT_MASS"
 >
-<Comment>Nominal rotating mass of the train
+<ReqRef
+ Id="077785a4-136d-415e-ad35-538260ce5ad4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Nominal rotating mass of the train
 It defines the nominal rotating mass as a percentage of the total weight</Comment>
 <SpecialValues>
 <EnumValue
@@ -687,7 +699,11 @@ It defines the nominal rotating mass as a percentage of the total weight</Commen
  NeedsRequirement="FALSE"
  Name="M_REGENERATIVEBRAKE"
 >
-<Comment>Regenrative brake interface
+<ReqRef
+ Id="c0eec423-f803-41b3-88a7-a6033904d934"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Regenrative brake interface
 It describes the interface with the regenerative brake and whether if affects the braking curve calculation</Comment>
 <SpecialValues>
 <EnumValue
@@ -716,7 +732,11 @@ It describes the interface with the regenerative brake and whether if affects th
  NeedsRequirement="FALSE"
  Name="M_EDDYCURRENTBRAKE"
 >
-<Comment>Eddy current brake interface
+<ReqRef
+ Id="72034d91-121e-4f2c-b022-55267bba924b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Eddy current brake interface
 It describes the interface with eddy current brake and whether if affects the braking curve calculation</Comment>
 <SpecialValues>
 <EnumValue
@@ -745,7 +765,11 @@ It describes the interface with eddy current brake and whether if affects the br
  NeedsRequirement="FALSE"
  Name="M_MAGNETICSHOEBRAKE"
 >
-<Comment>Magnetic shoe brake interface
+<ReqRef
+ Id="f7e574d7-ddae-478f-8b38-5aa84197c757"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Magnetic shoe brake interface
 It describes the interface with magnetic shoe brake and whether if affects the braking curve calculation</Comment>
 <SpecialValues>
 <EnumValue
@@ -774,7 +798,11 @@ It describes the interface with magnetic shoe brake and whether if affects the b
  NeedsRequirement="FALSE"
  Name="M_ELECTROPNEUMATICBRAKE"
 >
-<Comment>Electro pneumatic brake interface
+<ReqRef
+ Id="011f3ab5-fe0c-4a15-9831-1cd7e9d19749"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Electro pneumatic brake interface
 It describes the interface with electro pneumatic brake and whether if affects the braking curve calculation</Comment>
 <SpecialValues>
 <EnumValue
@@ -803,7 +831,11 @@ It describes the interface with electro pneumatic brake and whether if affects t
  NeedsRequirement="FALSE"
  Name="Q_TRACTIONCUTOFFINTERFACE"
 >
-<Comment>Quallifier for traction cut off interface
+<ReqRef
+ Id="a44c7e61-5457-48e7-8639-df22379baaf4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for traction cut off interface
 Indicates whether the traction cut off command is implemented or not</Comment>
 <SpecialValues>
 <EnumValue
@@ -824,7 +856,11 @@ Indicates whether the traction cut off command is implemented or not</Comment>
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEINTERFACE"
 >
-<Comment>Quallifier for service brake interface
+<ReqRef
+ Id="ec3ebba0-095a-46dd-b27f-5c3ca4036a12"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for service brake interface
 Indicates whether the service brake command is implemented or not</Comment>
 <SpecialValues>
 <EnumValue
@@ -845,7 +881,11 @@ Indicates whether the service brake command is implemented or not</Comment>
  NeedsRequirement="FALSE"
  Name="Q_SERVICEBRAKEFEEDBACK"
 >
-<Comment>Quallifier for service brake feedback interface
+<ReqRef
+ Id="21839d70-37b9-4b54-a32f-6c027fe0cc2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for service brake feedback interface
 Indicates whether the service brake feedback is implemented or not</Comment>
 <SpecialValues>
 <EnumValue
@@ -866,7 +906,11 @@ Indicates whether the service brake feedback is implemented or not</Comment>
  NeedsRequirement="FALSE"
  Name="Q_BRAKE_CAPT_TYPE"
 >
-<Comment>Quallifier for gamma/lambda discrimination
+<ReqRef
+ Id="33c42d4c-ddb3-4d58-9661-7c6109e3eab5"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for gamma/lambda discrimination
 The variable discriminates the type of the capture of the brake parameters</Comment>
 <SpecialValues>
 <EnumValue
@@ -887,7 +931,11 @@ The variable discriminates the type of the capture of the brake parameters</Comm
  NeedsRequirement="FALSE"
  Name="M_BRAKE_PERCENTAGE"
 >
-<Comment>Brake percentage value
+<ReqRef
+ Id="1bb3c340-c410-40e6-880c-bc30ee78df20"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake percentage value
 The brake percentage is used to derive the brake parameters in conjunction with the conversion model</Comment>
 </Range><Range
  MinValue="0"
@@ -898,7 +946,11 @@ The brake percentage is used to derive the brake parameters in conjunction with 
  NeedsRequirement="FALSE"
  Name="N_BRAKE_CONF"
 >
-<Comment>Special brakes configuration
+<ReqRef
+ Id="34976712-9ffa-472c-8977-ca68e6aff10b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Special brakes configuration
 Number of iterations of special brake configuration(s) applicable to the selection of the appropiate brake parameter(s), following this variable in the message</Comment>
 <SpecialValues>
 <EnumValue
@@ -975,7 +1027,11 @@ Number of iterations of special brake configuration(s) applicable to the selecti
  NeedsRequirement="FALSE"
  Name="M_BRAKE_LAMBDA_CONF"
 >
-<Comment>Specific special brakes configuration for lambda trains
+<ReqRef
+ Id="490edf92-ef65-46ea-a4f9-3b1de4105098"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Specific special brakes configuration for lambda trains
 It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
 <SpecialValues>
 <EnumValue
@@ -1004,7 +1060,11 @@ It describes a specific special brake configuration to which the related brake p
  NeedsRequirement="FALSE"
  Name="T_BRAKE_SERVICE"
 >
-<Comment>Brake number of sections
+<ReqRef
+ Id="b81fba3b-ee5a-4f9d-95b0-1d41197814cd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake number of sections
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
 </Range><Range
  MinValue="0"
@@ -1015,7 +1075,11 @@ Number of iterations of speed sections needed to build a brake model, following 
  NeedsRequirement="FALSE"
  Name="M_BRAKE_GAMMA_CONF"
 >
-<Comment>Specific special brakes configuration for gamma trains
+<ReqRef
+ Id="aaf63f4f-2f5e-4b8b-8dca-5759c9c8121f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Specific special brakes configuration for gamma trains
 It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
 <SpecialValues>
 <EnumValue
@@ -1048,7 +1112,11 @@ It describes a specific special brake configuration to which the related brake p
  NeedsRequirement="FALSE"
  Name="T_BRAKE_EMERGENCY"
 >
-<Comment>Emergency brake delay time
+<ReqRef
+ Id="2351f936-4f0c-41f2-9296-57b91a5f2328"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emergency brake delay time
 This is the build up time for the emergency brake</Comment>
 </Range><Range
  MinValue="0"
@@ -1059,7 +1127,11 @@ This is the build up time for the emergency brake</Comment>
  NeedsRequirement="FALSE"
  Name="N_BRAKE_SECTIONS"
 >
-<Comment>Brake number of sections
+<ReqRef
+ Id="f936e846-2e3d-455c-8cbf-cd0df2f386e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake number of sections
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
 </Range><Range
  MinValue="0"
@@ -1070,7 +1142,11 @@ Number of iterations of speed sections needed to build a brake model, following 
  NeedsRequirement="FALSE"
  Name="V_BRAKE_EMERGENCY_COMP"
 >
-<Comment>Emeregency brake speed component
+<ReqRef
+ Id="bb2c130f-7f70-4649-b205-43d79cc935e4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emeregency brake speed component
 It contains the lowest speed value of the speed section to which the related emeregency brake deceleration component is applicable</Comment>
 </Range><Range
  MinValue="0"
@@ -1081,7 +1157,11 @@ It contains the lowest speed value of the speed section to which the related eme
  NeedsRequirement="FALSE"
  Name="A_BRAKE_EMERGENCY_COMP"
 >
-<Comment>Emeregency brake deceleration component
+<ReqRef
+ Id="0f2dbd96-6593-410e-aae8-fe8482274d06"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emeregency brake deceleration component
 It contains the value of the emeregency brake deceleration coponent which is applicable to the related speed section</Comment>
 </Range><Range
  MinValue="0"
@@ -1092,7 +1172,11 @@ It contains the value of the emeregency brake deceleration coponent which is app
  NeedsRequirement="FALSE"
  Name="M_KDRY_RST"
 >
-<Comment>Rolling stock correction factor on dry rails
+<ReqRef
+ Id="025a1d1f-c481-4f16-8bd5-8b1970e3de5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Rolling stock correction factor on dry rails
 This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVEBCL defined in chapter 7 of subset-26</Comment>
 </Range><Range
  MinValue="0"
@@ -1103,7 +1187,11 @@ This variable is a corrector factor applicable to the emergency brake decelerati
  NeedsRequirement="FALSE"
  Name="M_KWET_RST"
 >
-<Comment>Rolling stock correction factor on wet rails
+<ReqRef
+ Id="91b5dc43-9b11-414a-b9b3-850841e86fed"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Rolling stock correction factor on wet rails
 This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVAVADH defined in chapter 7 of subset-26</Comment>
 </Range><Range
  MinValue="0"
@@ -1114,7 +1202,11 @@ This variable is a corrector factor applicable to the emergency brake decelerati
  NeedsRequirement="FALSE"
  Name="V_BRAKE_SERVICE_COMP"
 >
-<Comment>Service brake speed component
+<ReqRef
+ Id="7e5f5b95-e177-4917-a71a-f40a403e0cb6"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Service brake speed component
 It contains the lowest speed value of the speed section to which the related service brake deceleration component is applicable</Comment>
 </Range><Range
  MinValue="0"
@@ -1125,7 +1217,11 @@ It contains the lowest speed value of the speed section to which the related ser
  NeedsRequirement="FALSE"
  Name="A_BRAKE_SERVICE_COMP"
 >
-<Comment>Service brake deceleration component
+<ReqRef
+ Id="4e167f10-ee4e-4ae4-a5ae-4e875f46c1d7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Service brake deceleration component
 It contains the calue of the service brake deceleration coponent which is applicable to the related speed section</Comment>
 </Range><Range
  MinValue="0"
