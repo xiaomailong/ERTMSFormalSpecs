@@ -133,7 +133,10 @@
  Kind="Instantaneous"
 >Kernel.TSR.SpeedRestrictions ( 5500.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TSR.SpeedRestrictions ( 5499.0 ) == 25.0</Expectation></Expectations>
+>Kernel.TSR.SpeedRestrictions ( 5499.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -206,7 +209,10 @@
  Kind="Instantaneous"
 >Kernel.TSR.SpeedRestrictions ( 5500.0 ) == 50.0</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>( COUNT Kernel.TSR.TSRs ) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -287,7 +293,10 @@
  Kind="Instantaneous"
 >Kernel.TSR.SpeedRestrictions ( 6000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TSR.SpeedRestrictions ( 3000.0 ) == 50.0</Expectation></Expectations>
+>Kernel.TSR.SpeedRestrictions ( 3000.0 ) == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -297,9 +306,11 @@
 >
 <ReqRef
  Id="2c3a1b3f-8686-4dc8-b3cb-bf0f5c7a0f03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="ae963d74-ee48-4c49-819e-a34cf532f1f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Steps>
 <Step
@@ -308,14 +319,25 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step1 - Train passed the TSR"
+ Name="Step1 - Train has almost passed the TSR"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="SubStep1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- (FIRST_IN Kernel.TSR.TSRs).Location + BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs)) + BTM.LRBG.Position.Position</Action></Actions>
+<Action>Odometry.NominalDistance &lt;-
+(FIRST_IN Kernel.TSR.TSRs).Location
+  +
+BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs))
+  +
+BTM.LRBG.Position.Position
+  +
+Kernel.DistanceToKeepInfoInTheRear
+  +
+Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Nom )
+  -
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) - 1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -323,7 +345,51 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Check TSR is revoked"
+ Name="Step2 - The TSR is not revoked"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Train passed the TSR"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;-
+(FIRST_IN Kernel.TSR.TSRs).Location
+  +
+BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs))
+  +
+BTM.LRBG.Position.Position
+  +
+Kernel.DistanceToKeepInfoInTheRear
+  +
+Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Nom )
+  -
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min )</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Check TSR is revoked"
 >
 <SubSteps>
 <SubStep
@@ -338,7 +404,10 @@
  Kind="Instantaneous"
 >Kernel.TSR.SpeedRestrictions ( 4000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
->Kernel.TSR.SpeedRestrictions ( 5000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TSR.SpeedRestrictions ( 5000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>( COUNT Kernel.TSR.TSRs ) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
