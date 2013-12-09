@@ -36,6 +36,22 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
+        /// Provides the Guid of the paragraph and creates one if it is not yet set
+        /// </summary>
+        public string Guid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(getGuid()))
+                {
+                    setGuid(System.Guid.NewGuid().ToString());
+                }
+
+                return getGuid();
+            }
+        }
+
+        /// <summary>
         /// The version of the specification
         /// </summary>
         public string Version

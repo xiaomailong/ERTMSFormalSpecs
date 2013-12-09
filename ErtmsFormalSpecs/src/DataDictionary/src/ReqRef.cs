@@ -99,16 +99,19 @@ namespace DataDictionary
                 {
                     foreach (Specification.Specification specification in dictionary.Specifications)
                     {
-                        retVal = specification.FindParagraphByGuid(getId());
-
-                        if (retVal == null)
+                        if (string.IsNullOrEmpty(getSpecId()) || getSpecId() == specification.Guid)
                         {
-                            retVal = specification.FindParagraphByNumber(getId());
-                        }
+                            retVal = specification.FindParagraphByGuid(getId());
 
-                        if (retVal != null)
-                        {
-                            break;
+                            if (retVal == null)
+                            {
+                                retVal = specification.FindParagraphByNumber(getId());
+                            }
+
+                            if (retVal != null)
+                            {
+                                break;
+                            }
                         }
                     }
 

@@ -15,12 +15,15 @@
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -31,6 +34,7 @@
 >
 <ReqRef
  Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.LevelData"
@@ -41,9 +45,11 @@
 >
 <ReqRef
  Id="a59e0f85-7d70-426a-a85c-75592258286f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="957132d4-ee44-447a-8bae-75d858cd1963"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
@@ -52,12 +58,15 @@
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -69,6 +78,7 @@
 >
 <ReqRef
  Id="48cd2e35-67c2-46a5-9f39-4d543c9361d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="LTs"
@@ -79,6 +89,7 @@
 >
 <ReqRef
  Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 </StructureElement><StructureElement
@@ -100,6 +111,7 @@
 >
 <ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -110,6 +122,7 @@
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -156,6 +169,7 @@
 >
 <ReqRef
  Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
 <Parameters>
@@ -196,15 +210,19 @@
 >
 <ReqRef
  Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="a59e0f85-7d70-426a-a85c-75592258286f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -273,16 +291,20 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="b14e5210-48d3-4eed-89e3-4d03324dd8f6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
 <Parameters>
@@ -299,9 +321,11 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 >
 <ReqRef
  Id="154fb773-8860-4dc7-85c1-7aff2b6bd741"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -375,6 +399,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -447,12 +472,15 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="d8cf2f6a-d8be-41d9-948a-ae97df851041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e959ba39-6b20-4678-ab9e-59be9ce585a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="dcd5e982-e0cd-4f3e-be0c-2d1ab066cfa7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>If this precondition is met, dont carry out a level transition #morido, 13/10/15</Comment>
 <PreConditions>
@@ -467,6 +495,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="76f0efaa-cd9d-4928-933c-029497eac8ea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Wrapper to call the individual procedures in order to execute specific level transitions #morido, 13/10/15</Comment>
 <Rules>
@@ -483,6 +512,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="a568a86a-ecc1-4a37-9e71-fe905d72be9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>The handling of the other preconditions as required by 5.10.3.4.1 is done by Kernel.ModeTransitions.Condition39, #morido, 13/10/17</Comment>
 <PreConditions>
@@ -497,6 +527,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="5000ea5a-8c25-4e82-b64e-1651fe1cea12"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>This does all general stuff required for a level transition independent from the source and target level It is therefore a preliminary step for ProcessLTOSpecific. #morido, 13/10/15</Comment>
 <Rules>
@@ -507,9 +538,11 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="a7b92d29-b0ce-4de8-8642-497eddf906d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="19d133b1-bf49-4450-93e0-905a1a42b1e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
@@ -531,6 +564,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="eba5be0d-c9b6-41cf-8df3-0cf45aa32159"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
@@ -552,12 +586,15 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="91f853db-5446-42e9-bd20-c7df2c617fdd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="54debebc-e391-4fd2-a3d7-8e0abf2a1c27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="a0fffb6f-52dd-4294-b705-ac27dc95a180"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>
@@ -598,13 +635,16 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="6b26f38c-d98d-4eee-a314-ae6b48256d36"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="51ddbc44-360a-4339-9b7c-fc91347a5da2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
@@ -616,6 +656,7 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="a7b92d29-b0ce-4de8-8642-497eddf906d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
 </Variable></Variables>
@@ -627,10 +668,12 @@ Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="d20e6c3b-b738-4e4a-9046-a9bc93ed6bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <SubRules></SubRules>

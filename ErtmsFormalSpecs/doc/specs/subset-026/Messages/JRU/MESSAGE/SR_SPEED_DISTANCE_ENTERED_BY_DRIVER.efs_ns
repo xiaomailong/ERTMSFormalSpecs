@@ -11,6 +11,11 @@
 >
 <ReqRef
  Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="de5dad40-0b2a-4819-887a-6652ed89cc50"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>This message contains the change of the SR Speed or Distance entered by the driver</Comment>
 <StructureElement
@@ -29,7 +34,11 @@
  NeedsRequirement="FALSE"
  Name="D_SR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f768919e-797b-4f8f-8c25-ff5b96befa74"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="V_SR"
  Default="0"
  Mode="InOut"
@@ -37,5 +46,9 @@
  NeedsRequirement="FALSE"
  Name="V_SR"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="2774f89b-bcff-4741-ac90-8537e331db11"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -15,6 +15,7 @@
 >
 <ReqRef
  Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the location of the FLOI supervision limit.</Comment>
 <Parameters>
@@ -42,6 +43,7 @@
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
@@ -69,12 +71,15 @@ STOP_CONDITION
 >
 <ReqRef
  Id="7d29645c-18cf-4661-9edb-e3fcb091bc29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="0e91b525-553f-4f68-8970-8bed83e88948"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
@@ -100,9 +105,11 @@ STOP_CONDITION
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -124,9 +131,11 @@ STOP_CONDITION
 >
 <ReqRef
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
 <Parameters>
@@ -154,6 +163,7 @@ STOP_CONDITION
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Computes the trip location related to the EOA.</Comment>
 <Cases>
@@ -176,6 +186,7 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the location of the SBI2 supervision limit.</Comment>
 <Parameters>
@@ -197,6 +208,7 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Used to compute the release speed on-board.</Comment>
 <Parameters>
@@ -228,6 +240,7 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="88ab50b9-74b8-45a8-b956-3f0754ac2824"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
 <Parameters>
@@ -255,6 +268,7 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="a387bd06-4306-436c-ae73-a3faa509f059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the start location of the release speed monitoring for the release speed received as parameter.</Comment>
 <Parameters>
@@ -276,6 +290,7 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Gives the distance between the estimated front end of the train and the location of EOA.</Comment>
 <Cases>
@@ -297,9 +312,11 @@ BaseTypes.MaxDistance
 >
 <ReqRef
  Id="84fba645-57ac-4105-828a-2d06de564e67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e5364c1f-ad1b-41da-a26e-1153431ce5b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -341,9 +358,11 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="d2f07368-a40f-4418-bf3c-74e928e6bbcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Computes the value of the release speed for all the EBI targets situated between d_tripEOA and the SvL.</Comment>
 <Cases>
@@ -365,6 +384,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Represents the alpha value used to compute d_tripEOA.</Comment>
 <Cases>
@@ -405,6 +425,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
@@ -416,6 +437,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="197c8e6f-0fae-4862-be76-b280ffa433d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
 <PreCondition>Available ( MA.MA )</PreCondition><PreCondition>Kernel.MA.MA.EndSection.DangerPoint != EMPTY</PreCondition></PreConditions>
@@ -427,6 +449,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="478a5f6d-b653-4cda-931d-e01ddaac2803"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
 </PreConditions>
@@ -445,6 +468,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>Used for stabilization of release speed computation.</Comment>
@@ -457,6 +481,7 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></Variable></Variables>
 </NameSpace>

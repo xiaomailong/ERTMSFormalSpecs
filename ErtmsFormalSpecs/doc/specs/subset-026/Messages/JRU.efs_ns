@@ -41,9 +41,11 @@ One value of this variable represents the identity of an STM reflecting each com
 >
 <ReqRef
  Id="3c64ae3c-8549-4e30-a019-5eb9b8c965e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="cc3d45f4-d90b-4e96-9049-1701e7aa7cf3"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Message identifier
 Identifier of the message.</Comment>
@@ -58,9 +60,11 @@ Identifier of the message.</Comment>
 >
 <ReqRef
  Id="6f3aac9c-7ea4-4a24-9098-8401aa8b22f9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="e1abd747-9c54-43d2-b647-4633ce3e4e3b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Message length
 L_MESSAGE indicates the length of the message in bytes, 
@@ -199,12 +203,15 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
 >
 <ReqRef
  Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="fbdccb80-301b-4431-a470-97e66ae1ef6c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="2a15b46d-5611-4053-974b-182b0436ce24"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>This field contains the current speed of the train.</Comment>
 <SpecialValues>
@@ -224,9 +231,11 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
 >
 <ReqRef
  Id="498726b7-6f35-4b72-909e-32d4995241ba"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="9e76d22c-dd18-4697-8aaa-2d37c2608b67"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>This field contains the on board ETCS identity
 This field contains the on board ETCS identity.</Comment>
@@ -241,9 +250,11 @@ This field contains the on board ETCS identity.</Comment>
 >
 <ReqRef
  Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="8aa4a2d0-f0af-4e25-b00f-ae42f0a9c0ba"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Version of the ETCS system
 Gives the version of the ETCS system. Each part indicates the first and second number of the version. The first part distinguishes the not compatible version (MSB&apos;s). -	The second number indicates compatibility within a version X. (The four LSB’s)</Comment>
@@ -602,9 +613,11 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
 >
 <ReqRef
  Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="45e25e11-fae5-4e6c-bb31-76de6e847cdb"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Train length
 This is the absolute real length of the train.</Comment>
@@ -1323,9 +1336,11 @@ indicates whether the train is fitted with an airtight system or not.</Comment>
 >
 <ReqRef
  Id="be2c4bda-9cbc-42ba-b3f9-48e0867b8f53"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><ReqRef
  Id="cb3458d8-a8bd-47d7-b410-3cd6789a56cd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Brake command state
 It contains the command state of the brakes</Comment>
@@ -1489,7 +1504,11 @@ Record the events for train safety which take place on board during normal train
  NeedsRequirement="FALSE"
  Name="M_DRIVERACTIONS"
 >
-<Comment>Driver&apos;s actions
+<ReqRef
+ Id="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Driver&apos;s actions
 This variable contains the driver&apos;s action</Comment>
 <SpecialValues>
 <EnumValue
@@ -1748,6 +1767,7 @@ Code used to identify the country or region in which the balise group is situate
 >
 <ReqRef
  Id="85571c61-c62b-4499-ae83-df5dba7d9c7f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Identity number of the balise group which triggered the error.
 It contains the identity number of the balise group to which the error is related. NID_ERRORBG is identical to NID_BG except for the NID_ERRORBG Special value 16383 which has the meaning &quot;unknown&quot; and covers the case that, due to error, the balise group identity is unknown.</Comment>
@@ -1762,6 +1782,7 @@ It contains the identity number of the balise group to which the error is relate
 >
 <ReqRef
  Id="0fae287c-ec3d-45e6-bd37-dd90fc39be24"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>STM identification
 STM relevant for the event. For STM-packets or disconect request sentr from an STM or to a single STM, its value is given by the NID_STM as identified in Subset-58</Comment>
@@ -1782,6 +1803,7 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
 >
 <ReqRef
  Id="1794d8ed-2b89-4280-a497-a5d2126c637f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>STM event type.</Comment>
 <SpecialValues>
@@ -1813,6 +1835,7 @@ STM relevant for the event. For STM-packets or disconect request sentr from an S
 >
 <ReqRef
  Id="19f38286-767b-433a-8bd2-981d51acf46a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Sender of disconnect request
 Sender of disconnect request (STM or STM control Function)</Comment>
@@ -1837,6 +1860,7 @@ Sender of disconnect request (STM or STM control Function)</Comment>
 >
 <ReqRef
  Id="a7aa1cdf-ad7a-415c-9d68-aaa4883b1e19"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Type of disconnection
 Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
@@ -1861,6 +1885,7 @@ Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
 >
 <ReqRef
  Id="e573b5aa-409b-409f-a9e7-65709733913d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>STM system status message
 System status messages displayed to the driver. A bit set to 1 means tgat tge cirresoponding systems status is displayed</Comment>
@@ -1889,6 +1914,7 @@ System status messages displayed to the driver. A bit set to 1 means tgat tge ci
 >
 <ReqRef
  Id="9d7bf318-e590-4a4e-b92e-0aac575c829d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>STM packet identification.
 STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Comment>
@@ -2005,6 +2031,7 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 >
 <ReqRef
  Id="0e78f9c8-b63a-4899-a5c9-2ad2a29439e8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Length of the STM packet.</Comment>
 </Range><Range
@@ -2066,6 +2093,7 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 >
 <ReqRef
  Id="cff4f20a-e083-4240-a1c6-acb8332718a6"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Cold movement detector information.
 Indicates whetehr no cold movement has ocurred or if a cold movement has been detected or if no cold movement is available.</Comment>
@@ -2120,6 +2148,7 @@ L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
 >
 <ReqRef
  Id="d78b5d9b-a778-4992-922f-a1bfa907c33a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Speed and distance monitoring type
 Type of the speed and distance monitoring</Comment>
@@ -2152,6 +2181,7 @@ Type of the speed and distance monitoring</Comment>
 >
 <ReqRef
  Id="e0d596d2-c164-4d5b-bc28-5a2988c7db8e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Speed and distance monitoring supervision status
 Supervision status of the speed and distance monitoring</Comment>
@@ -2188,6 +2218,11 @@ Supervision status of the speed and distance monitoring</Comment>
 >
 <ReqRef
  Id="6b567e14-e137-4612-a782-45e646e87d7c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="752a7f7c-3b26-4deb-b950-a92c5a32fa72"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Permitted speed
 Permited speed displayed to the driver</Comment>
@@ -2208,6 +2243,11 @@ Permited speed displayed to the driver</Comment>
 >
 <ReqRef
  Id="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="ecba5d6f-0d27-4108-b60c-672a1db4e53c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>First line of intervention speed
 FLOI speed displayed to the driver</Comment>
@@ -2262,6 +2302,7 @@ Target speed displayed to the driver</Comment>
 >
 <ReqRef
  Id="7e5aaa18-69c4-471f-8580-c19a54d18408"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Release speed
 Release speed displayed to the driver.</Comment>
@@ -4002,6 +4043,7 @@ Release speed displayed to the driver.</Comment>
 >
 <ReqRef
  Id="fc7394cf-4565-4758-8c81-0e446549e1ef"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Status of the audible information played to the driver. A bit set to 1 means that the corresponding sound is generated.</Comment>
 <SpecialValues>
@@ -4029,6 +4071,7 @@ Release speed displayed to the driver.</Comment>
 >
 <ReqRef
  Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
 <SpecialValues>
@@ -4136,6 +4179,7 @@ Release speed displayed to the driver.</Comment>
 >
 <ReqRef
  Id="eeff373a-c4c9-4758-81b5-3b7ce7bdd2f0"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Qualifier for the RBC contact information.
 This variable indicates the type of the driver&apos;s selection for the RBC data.</Comment>
@@ -4177,7 +4221,11 @@ This is the operational train running number. The NID_OPERATIONAL consists of up
  NeedsRequirement="FALSE"
  Name="V_SR"
 >
-<Comment>Staff responsible speed
+<ReqRef
+ Id="20ff7bf0-f074-4e91-a8c6-a8f7a2d48b2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Staff responsible speed
 Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
 </Range><Range
  MinValue="0"
@@ -4188,7 +4236,11 @@ Speed allowed running in Staff Responsible, modified by the driver through the D
  NeedsRequirement="FALSE"
  Name="D_SR"
 >
-<Comment>Staff Responsible distance
+<ReqRef
+ Id="724fead6-ff94-4cca-ba1c-94ead297e6cb"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Staff Responsible distance
 Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
 </Range><Range
  MinValue="0"
@@ -4219,7 +4271,11 @@ Distance allowed running in Staff responsible, modified by the driver through th
  NeedsRequirement="FALSE"
  Name="M_SLEEPING"
 >
-<Comment>Sleeping input
+<ReqRef
+ Id="78be0579-c844-4e19-86b2-33b5020846e4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Sleeping input
 This variable contains the state if the sleeping input.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4240,7 +4296,11 @@ This variable contains the state if the sleeping input.</Comment>
  NeedsRequirement="FALSE"
  Name="M_PASSIVE_SHUNTTING"
 >
-<Comment>Passive shunting input
+<ReqRef
+ Id="25d08e04-94ca-4697-8ad8-7e741b13661f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Passive shunting input
 This variable contains the state if the passive shunting input.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4261,7 +4321,11 @@ This variable contains the state if the passive shunting input.</Comment>
  NeedsRequirement="FALSE"
  Name="M_NON_LEADING"
 >
-<Comment>Non leading input state
+<ReqRef
+ Id="ff93b26b-ebdc-4f1e-846d-f4991f753b7e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Non leading input state
 This variable contains the state of the non leading input</Comment>
 <SpecialValues>
 <EnumValue
@@ -4282,7 +4346,11 @@ This variable contains the state of the non leading input</Comment>
  NeedsRequirement="FALSE"
  Name="M_RB_STATUS"
 >
-<Comment>Status of regenerative brake.
+<ReqRef
+ Id="de020c80-db0c-45db-855e-ae27cffc7437"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of regenerative brake.
 This variable contains the status of the regenerative brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4303,7 +4371,11 @@ This variable contains the status of the regenerative brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_MSB_STATUS"
 >
-<Comment>Status of magnetic shoe brake.
+<ReqRef
+ Id="4a9ce77d-31fb-4220-a7ff-e6e79157ca6f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of magnetic shoe brake.
 This variable contains the status of the magnetic shoe brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4324,7 +4396,11 @@ This variable contains the status of the magnetic shoe brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_ECB_STATUS"
 >
-<Comment>Status of eddy current brake.
+<ReqRef
+ Id="8b09420a-4f06-43d3-aada-ea5751a960ec"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of eddy current brake.
 This variable contains the status of the eddy current brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4345,7 +4421,11 @@ This variable contains the status of the eddy current brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_EP_STATUS"
 >
-<Comment>Status of the electro pneumatic brake
+<ReqRef
+ Id="31f32d56-9e3c-4fd0-b226-ea769b746033"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of the electro pneumatic brake
 This variable contains the status of the electro pneumatic brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4366,7 +4446,11 @@ This variable contains the status of the electro pneumatic brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_AB_STATUS"
 >
-<Comment>Status of the additional brakes.
+<ReqRef
+ Id="7947c4dd-de78-4fde-b208-f53d2dc562ce"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of the additional brakes.
 This variable contains the status of the aditional brake</Comment>
 <SpecialValues>
 <EnumValue
@@ -4387,7 +4471,11 @@ This variable contains the status of the aditional brake</Comment>
  NeedsRequirement="FALSE"
  Name="M_CAB_A_STATUS"
 >
-<Comment>Cab A status
+<ReqRef
+ Id="f9a025a0-5d6b-4d68-946b-f3f5c736adc2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Cab A status
 This variable contains the cab A status. In case the ERTMS/ETCS on board is connected only to one cab, this cab is considered as being cab A</Comment>
 <SpecialValues>
 <EnumValue
@@ -4408,7 +4496,11 @@ This variable contains the cab A status. In case the ERTMS/ETCS on board is conn
  NeedsRequirement="FALSE"
  Name="Q_CAB_B"
 >
-<Comment>Qualifier for Cab B
+<ReqRef
+ Id="ca6de985-daf9-4798-87b8-e36f3b143ed7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Qualifier for Cab B
 Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on board</Comment>
 <SpecialValues>
 <EnumValue
@@ -4429,7 +4521,11 @@ Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on boar
  NeedsRequirement="FALSE"
  Name="M_CAB_B_STATUS"
 >
-<Comment>Cab B status
+<ReqRef
+ Id="45287456-663d-411a-82b3-093ef23e2fd9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Cab B status
 This variable contains the cab B status.</Comment>
 <SpecialValues>
 <EnumValue
@@ -4450,7 +4546,11 @@ This variable contains the cab B status.</Comment>
  NeedsRequirement="FALSE"
  Name="Q_SINGLE_DESK"
 >
-<Comment>Qualifier for single desk cab.
+<ReqRef
+ Id="d81dea26-df76-4043-a640-59fb6eaad210"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Qualifier for single desk cab.
 Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fitted with a single desk</Comment>
 <SpecialValues>
 <EnumValue
@@ -4471,7 +4571,11 @@ Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fi
  NeedsRequirement="FALSE"
  Name="M_TRAIN_ORIENTATION"
 >
-<Comment>Train orientation input state
+<ReqRef
+ Id="75a6add1-c50c-4ba3-ae2d-f02732622167"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Train orientation input state
 The variable contains the train orientation input state</Comment>
 <SpecialValues>
 <EnumValue
@@ -4492,7 +4596,11 @@ The variable contains the train orientation input state</Comment>
  NeedsRequirement="FALSE"
  Name="M_DIRECTION_CONTROLLER"
 >
-<Comment>Direction controller state</Comment>
+<ReqRef
+ Id="ade5813e-3f65-4f0b-acdc-d51816305acc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Direction controller state</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
@@ -4520,7 +4628,11 @@ The variable contains the train orientation input state</Comment>
  NeedsRequirement="FALSE"
  Name="M_TRACTION_STATUS"
 >
-<Comment>Traction status
+<ReqRef
+ Id="2fa2f9ae-31ff-4ea3-af52-c0dffbbdbef1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Traction status
 This variable contains the traction status</Comment>
 <SpecialValues>
 <EnumValue
@@ -4541,7 +4653,11 @@ This variable contains the traction status</Comment>
  NeedsRequirement="FALSE"
  Name="M_TRAIN_DATA_ENTRY"
 >
-<Comment>Type of the train data entry
+<ReqRef
+ Id="c0493d5f-364b-43e7-b271-75b71b32b33a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Type of the train data entry
 This variable contains the type of the train data entry</Comment>
 <SpecialValues>
 <EnumValue
@@ -4570,7 +4686,11 @@ This variable contains the type of the train data entry</Comment>
  NeedsRequirement="FALSE"
  Name="M_NATIONAL_SYSTEM_ISOLATION"
 >
-<Comment>Isolation of the National System.
+<ReqRef
+ Id="3dd8bd11-719b-48a0-bdfe-bb3c14032355"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Isolation of the National System.
 The variable contains the indication of isolation of the National System</Comment>
 <SpecialValues>
 <EnumValue
@@ -4591,7 +4711,11 @@ The variable contains the indication of isolation of the National System</Commen
  NeedsRequirement="FALSE"
  Name="M_TCO_COMMAND_STATE"
 >
-<Comment>Traction cut off command state
+<ReqRef
+ Id="3a14cad3-b86a-48ac-9b03-fc152ddaee7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Traction cut off command state
 The variable contains the command state of the traction cut off</Comment>
 <SpecialValues>
 <EnumValue
