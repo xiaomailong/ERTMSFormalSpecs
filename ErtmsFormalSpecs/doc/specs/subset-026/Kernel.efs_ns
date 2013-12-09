@@ -7920,7 +7920,17 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Represents the time when the last EoM request was sent</Comment>
-</Variable></Variables>
+</Variable><Variable
+ Type="Default.BaseTypes.Distance"
+ DefaultValue="300.0"
+ VariableMode="Constant"
+ Implemented="TRUE"
+ Name="DistanceToKeepInfoInTheRear"
+>
+<ReqRef
+ Id="2c3a1b3f-8686-4dc8-b3cb-bf0f5c7a0f03"
+>
+</ReqRef></Variable></Variables>
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
