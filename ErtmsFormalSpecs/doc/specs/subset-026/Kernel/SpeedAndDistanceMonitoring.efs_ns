@@ -27,15 +27,19 @@
 >
 <ReqRef
  Id="8f743e52-5860-4a00-b1c3-1a25d8b01bcf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="61609105-e374-4561-8058-cd995e0cac1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="1bd536e2-b2c8-48c3-84b5-53f4fd75ad05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Values>
 <EnumValue
@@ -58,6 +62,7 @@
 >
 <ReqRef
  Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates the current supervision status of the train.</Comment>
 <Values>
@@ -91,34 +96,43 @@
 >
 <ReqRef
  Id="4e10c5a1-f415-44fc-b597-8b1a359c2c25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="0e91b525-553f-4f68-8970-8bed83e88948"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="ae24dcec-0c75-48cd-b842-4d34ef229a22"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="92e9a363-c16c-40c0-9622-49031126869d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="4ba91473-9e38-449c-87e0-203353bc7bcb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="528dbfd7-4b7d-4b1d-a596-153aec151d71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="0a156077-932d-4831-b7d8-8cb0350879e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="14b50fc8-d11d-4f00-a819-56def9d260b0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="dfe813b0-9500-4f66-bdc1-50df0c88f0ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>Computes the compensation of the inaccuracy of the speed measurement. For speed greater than 30km/h, the value is computed using the formula (1/47) * Speed + 7 - (1/47)</Comment>
@@ -153,9 +167,11 @@
 >
 <ReqRef
  Id="00747c30-1c6d-4751-8e5f-6d65f3085d3a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Cases>
 <Case
@@ -170,15 +186,19 @@
 >
 <ReqRef
  Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Parameters>
 <Parameter
@@ -232,6 +252,7 @@
 >
 <ReqRef
  Id="a387bd06-4306-436c-ae73-a3faa509f059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
 <PreCondition>ReleaseSpeedSupervision.StartRSM ( ReleaseSpeedSupervision.ReleaseSpeed ) &lt;= Odometry.NominalDistance
@@ -273,9 +294,11 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Rules>
@@ -319,6 +342,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="0f223275-ff77-4025-a194-a347f5ef0542"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Rules>
 <Rule
@@ -357,6 +381,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="52f69d6f-9efe-46a8-bf28-82cdbaf08617"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
@@ -368,12 +393,15 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
 </Variable><Variable
@@ -385,12 +413,15 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="b19b213b-b887-4ef8-b210-439b95753041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
@@ -402,9 +433,11 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the traction cuf-off command was triggered.</Comment>
 </Variable><Variable
@@ -416,6 +449,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="b8bd12fa-1398-4b7e-82b5-d9fea4894091"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
@@ -427,6 +461,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="8468de24-42eb-4959-a546-99c00cccb22a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the speed and distance monitoring function is active.</Comment>
 </Variable><Variable
@@ -447,6 +482,7 @@ ReleaseSpeedSupervision.ReleaseSpeed &gt; 0.0</PreCondition><PreCondition>Monito
 >
 <ReqRef
  Id="7d9d0edb-ad9a-48db-a67e-e74e1be64d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the SB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable><Variable

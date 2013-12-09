@@ -1283,6 +1283,10 @@ namespace DataDictionary.Compare
                 return;
             }
 
+            if ( !CompareUtil.canonicalStringEquality(obj.getSpecId(), other.getSpecId()) )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SpecId", "Previously was [" + other.getSpecId() + "]") );
+            }
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
@@ -4326,6 +4330,10 @@ namespace DataDictionary.Compare
 
             compareNamable (obj, other, diff);
 
+            if ( !CompareUtil.canonicalStringEquality(obj.getGuid(), other.getGuid()) )
+            {
+                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Guid", "Previously was [" + other.getGuid() + "]") );
+            }
             if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
             {
                 diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
@@ -4960,6 +4968,10 @@ namespace DataDictionary.Compare
         public static void searchReqRef(Generated.ReqRef obj, string searchString, List<ModelElement> occurences)
         {
             if ( obj.getId() != null && obj.getId().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getSpecId() != null && obj.getSpecId().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
@@ -5844,6 +5856,10 @@ namespace DataDictionary.Compare
         {
             searchNamable (obj, searchString, occurences);
 
+            if ( obj.getGuid() != null && obj.getGuid().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
             if ( obj.getVersion() != null && obj.getVersion().Contains (searchString) ) 
             {
                 occurences.Add ( obj );

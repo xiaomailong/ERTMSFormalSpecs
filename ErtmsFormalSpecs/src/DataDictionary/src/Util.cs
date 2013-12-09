@@ -60,6 +60,21 @@ namespace DataDictionary
             }
 
             /// <summary>
+            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Specification obj, bool visitSubNodes)
+            {
+                Specification.Specification specification = (Specification.Specification)obj;
+
+                // Side effect : creates a new Guid if it is empty
+                string guid = specification.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
             /// Update references to paragraphs
             /// </summary>
             /// <param name="obj"></param>
@@ -71,9 +86,17 @@ namespace DataDictionary
                 Paragraph paragraph = reqRef.Paragraph;
                 if (paragraph != null)
                 {
+                    // Updates the paragraph Guid
                     if (paragraph.Guid != reqRef.getId())
                     {
                         reqRef.setId(paragraph.getGuid());
+                    }
+
+                    // Updates the specification Guid
+                    Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(paragraph);
+                    if (specification.Guid != reqRef.getSpecId())
+                    {
+                        reqRef.setSpecId(specification.Guid);
                     }
                 }
 

@@ -2132,52 +2132,199 @@ Comment:Emergency Brake delay time</Paragraph><Paragraph
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:N_BRAKE_SECTIONS(k)
 Length:3
-Comment:Number of sections in order to build the following brake model.
-V_BRAKE_EMERGENCY_COMP(k, m)
-10
-Speed component of the emergency brake nominal deceleration.
-A_BRAKE_EMERGENCY_COMP(k, m)
-8
-Acceleration component of the emergency brake nominal deceleration.
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 0)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 50 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 1)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 90 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 2)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 3)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,9 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 4)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,99 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 5)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,999 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 6)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,9999 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 7)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,99999 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 8)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,999999 %
-M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 9)
-5
-Rolling stock correction factor on dry rail for a confidence level equal to 99,9999999 %
-M_KWET_RST(A_BRAKE_EMERGENCY_COMP(k, m))
-5
-Rolling stock correction factor on wet rail</Paragraph><Paragraph
+Comment:Number of sections in order to build the following brake model.<Sub>
+<Paragraph
+ id="4.2.4.2.23.1"
+ guid="234e648c-50f7-48bc-b922-9664c5e29a63"
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:V_BRAKE_EMERGENCY_COMP(k, m)
+Length:10
+Comment:Speed component of the emergency brake nominal deceleration.</Paragraph><Paragraph
+ id="4.2.4.2.23.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:A_BRAKE_EMERGENCY_COMP(k, m)
+Length:8
+Comment:Acceleration component of the emergency brake nominal deceleration.</Paragraph><Paragraph
+ id="4.2.4.2.23.3"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 0)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 50 %</Paragraph><Paragraph
+ id="4.2.4.2.23.4"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 1)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 90 %</Paragraph><Paragraph
+ id="4.2.4.2.23.5"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 2)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99 %</Paragraph><Paragraph
+ id="4.2.4.2.23.6"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 3)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,9 %</Paragraph><Paragraph
+ id="4.2.4.2.23.7"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 4)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,99 %</Paragraph><Paragraph
+ id="4.2.4.2.23.8"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 5)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,999 %</Paragraph><Paragraph
+ id="4.2.4.2.23.9"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 6)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,9999 %</Paragraph><Paragraph
+ id="4.2.4.2.23.10"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 7)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,99999 %</Paragraph><Paragraph
+ id="4.2.4.2.23.11"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 8)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,999999 %</Paragraph><Paragraph
+ id="4.2.4.2.23.12"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KDRY_RST(A_BRAKE_EMERGENCY_ COMP(k, m), 9)
+Length:5
+Comment:Rolling stock correction factor on dry rail for a confidence level equal to 99,9999999 %
+</Paragraph><Paragraph
+ id="4.2.4.2.23.13"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:M_KWET_RST(A_BRAKE_EMERGENCY_COMP(k, m))
+Length:5
+Comment:Rolling stock correction factor on wet rail</Paragraph></Sub>
+</Paragraph><Paragraph
  id="4.2.4.2.24"
  guid="359b754c-597d-4321-9f37-f39af8241fe0"
  type="REQUIREMENT"
@@ -2198,19 +2345,45 @@ Comment:Service Brake delay time</Paragraph><Paragraph
  scope="OBU"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  functionalBlockName=""
  Name=""
 >Complementary Variable:N_BRAKE_SECTIONS(k)
 Length:3
-Comment:Number of sections in order to build the following brake model.
-V_BRAKE_SERVICE_COMP(k, m)
-10
-Speed component of the service brake nominal deceleration.
-A_BRAKE_SERVICE_COMP(k, m)
-8
-Acceleration component of the service brake nominal deceleration.</Paragraph><Paragraph
+Comment:Number of sections in order to build the following brake model.<Sub>
+<Paragraph
+ id="4.2.4.2.25.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:V_BRAKE_SERVICE_COMP(k, m)
+Length:10
+Comment:Speed component of the service brake nominal deceleration.</Paragraph><Paragraph
+ id="4.2.4.2.25.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="OBU"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+>Complementary Variable:A_BRAKE_SERVICE_COMP(k, m)
+Length:8
+Comment:Acceleration component of the service brake nominal deceleration
+</Paragraph></Sub>
+</Paragraph><Paragraph
  id="4.2.4.2.26"
  guid="11f2dc0e-7509-4c6c-8ca0-1b6323fb41e5"
  type="REQUIREMENT"

@@ -18,6 +18,7 @@
 >
 <ReqRef
  Id="6968018c-94a2-4347-be4e-79b2187f2c5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></Range></Ranges>
 <Structures>
@@ -85,6 +86,7 @@
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <StructureElement
@@ -144,6 +146,7 @@
 >
 <ReqRef
  Id="80268ed0-b391-4741-8200-f28c5bffebf6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></Collection></Collections>
 <Functions>
@@ -184,9 +187,11 @@
 >
 <ReqRef
  Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the end of the current gradient element. If the current element is the last element of the gradient profile, we have two cases:
 1. Gradient value is equal to 255 =&gt; this is the end of gradient information
@@ -221,9 +226,11 @@ INITIAL_VALUE
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
@@ -267,15 +274,19 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="50b6b08d-a88c-4621-8123-19cf47ec3cf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e9675d44-de8d-42cb-806e-6c5e0ac6a326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Creates a gradient based on the gradient orientation( uphill or downhill) and the corresponding gradient value</Comment>
 <Parameters>
@@ -347,18 +358,23 @@ USING
 >
 <ReqRef
  Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="748112e3-d318-4847-94da-e417e95dfa88"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Compensates the gradient with the rotating mass of the train.
 The formulae are easier than in subset 26 since the values of grad and M_rotating_xxx are expressed as % : e.g. 1% = 0.01</Comment>
@@ -401,21 +417,27 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 >
 <ReqRef
  Id="f9c0f0b7-0cba-4cee-ba0c-25c654215c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="adca4bed-139a-44a3-b605-a7e58f68066f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="35a07bde-ebad-4140-ac2a-4fe3c0b6b8e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -437,9 +459,11 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
@@ -464,13 +488,16 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 >
 <ReqRef
  Id="5388dd34-33be-4b31-90c1-ec3bc653ccd4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Takes into account the default values for the gradient </Comment>
 <Parameters>
@@ -499,12 +526,15 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e8393dfe-1151-4444-a62e-bf32f3cef6a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="c8787b49-ee97-4460-b52b-1a690c6b12e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the value of the gradient, for the specific distance according to the gradient info and the train length.
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
@@ -554,6 +584,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="6ed12ec2-277d-4e00-9838-d75deca5efae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients</Comment>
 <Parameters>
@@ -577,21 +608,27 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="7110ff23-b408-45d5-98da-7385e6fbf210"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="18eb1a25-7998-43b3-8e76-63ddccc5baf0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the gradient profile based on the gradient information stored in Gradients. The gradient profile is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
@@ -629,9 +666,11 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="d9d8aa6f-c16b-4873-b6b9-8cb4c566117d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
 <Parameters>
@@ -683,6 +722,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn+(V).</Comment>
 <Parameters>
@@ -704,6 +744,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Provides the value of the on-board correction factor Kn-(V).</Comment>
 <Parameters>
@@ -726,15 +767,19 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="d96e7170-b578-4e28-bb03-82d0b7cc6a6d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e0b809d3-897c-4378-98e7-67a5c3ae9468"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -751,6 +796,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <ReqRef
  Id="d8ccf575-2703-40a1-8aac-bf3fe6714fd5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><SubRules></SubRules>
 <Conditions>
@@ -852,9 +898,11 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="ca53e2c7-6148-4023-8a27-3d8b94de964c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment></Comment>
 <Parameters>
@@ -902,12 +950,15 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="e1e59e57-94a5-48ea-bb40-d183aa229e20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="91c896f9-c3d0-473b-bb99-e2dfb219ae1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="e7979a56-555a-422e-9a04-9210ecca2b25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Holds the gradient information received from trackside</Comment>
 </Variable><Variable
@@ -920,12 +971,15 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="a8139931-9d04-4b5e-8e2f-e681748fc57d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Maximum possible rotating mass as a percentage of the total weight of the train: 15 %</Comment>
 </Variable><Variable
@@ -938,12 +992,15 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="f3ca37d9-b093-479e-92d7-31517627da99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
 </Variable><Variable
@@ -956,6 +1013,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="02d9f252-59e9-4dbb-a7cc-b66f2b96fe25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Represents the default gradient for TSR supervision.</Comment>
 </Variable><Variable
@@ -967,9 +1025,11 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
@@ -982,9 +1042,11 @@ ON Packet.Sequence1</Action></Actions>
 >
 <ReqRef
  Id="f99e95e3-0fb8-475a-bbe1-f9524c4138d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><ReqRef
  Id="6bbb6544-5171-4c26-8b79-18a6edfe7f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable></Variables>
