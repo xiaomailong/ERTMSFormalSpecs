@@ -461,28 +461,35 @@ namespace DataDictionary
                 {
                     // Check whether the expression is valid
                     Interpreter.Expression expression = checkExpression(preCondition, preCondition.Condition);
-                    if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                    if (expression != null)
                     {
-                        preCondition.AddError("Expression type should be Boolean");
-                    }
-
-                    Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
-                    if (element != null)
-                    {
-                        if (element.Type is Types.StateMachine)
+                        if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
                         {
-                            if (preCondition.findOperator() != null)
+                            preCondition.AddError("Expression type should be Boolean");
+                        }
+
+                        Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
+                        if (element != null)
+                        {
+                            if (element.Type is Types.StateMachine)
                             {
-                                if (preCondition.findOperator().CompareTo("==") == 0)
+                                if (preCondition.findOperator() != null)
                                 {
-                                    preCondition.AddWarning("Operator == should not be used for state machines");
-                                }
-                                else if (preCondition.findOperator().CompareTo("!=") == 0)
-                                {
-                                    preCondition.AddWarning("Operator != should not be used for state machines");
+                                    if (preCondition.findOperator().CompareTo("==") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator == should not be used for state machines");
+                                    }
+                                    else if (preCondition.findOperator().CompareTo("!=") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator != should not be used for state machines");
+                                    }
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        preCondition.AddError("Cannot parse pre condition");
                     }
                 }
                 catch (Exception exception)

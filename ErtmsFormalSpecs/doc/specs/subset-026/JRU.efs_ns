@@ -96,9 +96,9 @@
  Name="Send NTC Selected Message when level change to NTC"
 >
 <PreConditions>
-<PreCondition>&lt;empty&gt;</PreCondition><PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition>PreviousKernelLevel != Kernel.Level.Value</PreCondition><PreCondition>Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
+<PreCondition>Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition>PreviousKernelLevel != Kernel.Level.Value</PreCondition><PreCondition>Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
-<Action>Message.NTC_SELECTED &lt;- CreateNtcSelected()</Action></Actions>
+<Action>Message.NTC_SELECTED &lt;- CreateNTCSelectedMessage()</Action><Action>PreviousKernelLevel &lt;- Kernel.Level.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -399,20 +399,21 @@
 <Expression>Messages.JRU.SYSTEM_VERSION.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.JRU.MESSAGE.NTC_SELECTED"
+ Type="Messages.JRU.MESSAGE.NTC_SELECTED.Message"
  Name="CreateNTCSelectedMessage"
 >
 <Cases>
 <Case
  Name="Value"
 >
-<Expression>Messages.JRU.MESSAGE.GENERAL_MESSAGE.Message{
-    HEADER =&gt; CreateHeader(26)
-    THIS.NID_NTC =&gt; ToJruNidNtc()
+<Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message{
+HEADER =&gt; CreateHeader(MessageId=&gt;26),
+NID_NTC =&gt; ToJruNidNtc(KernelNidNtc =&gt; ToJruNidNtc(Kernel.NationalSystemId)
+)
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.NID_NTC"
+ Type="Messages.JRU.NID_NTC"
  Name="ToJruNidNtc"
 >
 <ReqRef
@@ -430,7 +431,7 @@
 >
 <PreConditions>
 <PreCondition>KernelNidNtc != Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
-<Expression>Messages.NID_NTC</Expression>
+<Expression>KernelNidNtc</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
