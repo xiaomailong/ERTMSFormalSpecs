@@ -207,6 +207,34 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="M_BRAKE_PERCENTAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_PERCENTAGE"
+>
+<ReqRef
+ Id="bb7926e1-4192-47aa-b8a8-2f1c20b82b8a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_BRAKE_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_CONF"
+>
+<ReqRef
+ Id="1eaa9674-4bce-4d3e-ae28-70a5e58efee3"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="87775fe5-602e-4587-9e19-69183cf61658"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
@@ -215,164 +243,12 @@
  Name="Sequence1"
 >
 </StructureElement><StructureElement
- TypeName="M_BRAKE_GAMMA_CONF"
+ TypeName="Collection4"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="M_BRAKE_GAMMA_CONF"
->
-</StructureElement><StructureElement
- TypeName="T_BRAKE_EMERGENCY"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="T_BRAKE_EMERGENCY"
->
-<ReqRef
- Id="5626b0f1-9f44-4fed-bba1-8625f5e5bba6"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="N_BRAKE_SECTIONS"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="N_BRAKE_SECTIONS_0"
->
-</StructureElement><StructureElement
- TypeName="V_BRAKE_EMERGENCY_COMP"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_BRAKE_EMERGENCY_COMP"
->
-</StructureElement><StructureElement
- TypeName="A_BRAKE_EMERGENCY_COMP"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="A_BRAKE_EMERGENCY_COMP"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_50"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_90"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_9"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_99"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_999"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_9999"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_99999"
->
-</StructureElement><StructureElement
- TypeName="M_KDRY_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KDRY_RST_99_999999"
->
-</StructureElement><StructureElement
- TypeName="M_KWET_RST"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_KWET_RST"
->
-</StructureElement><StructureElement
- TypeName="T_BRAKE_SERVICE"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="T_BRAKE_SERVICE"
->
-<ReqRef
- Id="abe0f66f-fa68-49a7-8865-94f4697926f3"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="N_BRAKE_SECTIONS"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="N_BRAKE_SECTIONS_1"
->
-</StructureElement><StructureElement
- TypeName="V_BRAKE_SERVICE_COMP"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="V_BRAKE_SERVICE_COMP"
->
-</StructureElement><StructureElement
- TypeName="A_BRAKE_SERVICE_COMP"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="A_BRAKE_SERVICE_COMP"
+ Name="Sequence4"
 >
 </StructureElement><StructureElement
  TypeName="M_LOADINGGAUGE"
@@ -406,7 +282,11 @@
  NeedsRequirement="FALSE"
  Name="N_AXLELOADCAT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8172cda0-e56b-47ad-8ab5-4a3a919262f5"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_ITER"
  Default="0"
  Mode="InOut"
@@ -414,7 +294,360 @@
  NeedsRequirement="FALSE"
  Name="N_ITER_0"
 >
+<ReqRef
+ Id="cdae853e-99ef-4221-afea-a431d90a7062"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection5"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence5"
+>
 </StructureElement><StructureElement
+ TypeName="N_ITER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_ITER_1"
+>
+<ReqRef
+ Id="01afe5d0-5e38-46a6-8884-e10f53aa1253"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection6"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence6"
+>
+</StructureElement><StructureElement
+ TypeName="M_AIRTIGHT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_AIRTIGHT"
+>
+<ReqRef
+ Id="a1bfa3e4-5afd-4845-a414-ec001070d6ed"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure1"
+>
+<StructureElement
+ TypeName="M_BRAKE_LAMBDA_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_LAMBDA_CONF"
+>
+<ReqRef
+ Id="470482d0-3a61-48ea-bca5-edd507f330f1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_BRAKE_SERVICE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_SERVICE"
+>
+<ReqRef
+ Id="abe0f66f-fa68-49a7-8865-94f4697926f3"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure2"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><StructureElement
+ TypeName="M_BRAKE_GAMMA_CONF"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_GAMMA_CONF"
+>
+<ReqRef
+ Id="32617ffc-0e47-494e-a52e-4b8c24f76a70"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_BRAKE_EMERGENCY"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_EMERGENCY"
+>
+<ReqRef
+ Id="5626b0f1-9f44-4fed-bba1-8625f5e5bba6"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_BRAKE_SECTIONS"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_SECTIONS_0"
+>
+<ReqRef
+ Id="6ca2081f-851e-4751-9012-480e458845de"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection2"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence2"
+>
+</StructureElement><StructureElement
+ TypeName="T_BRAKE_SERVICE"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_SERVICE"
+>
+<ReqRef
+ Id="359b754c-597d-4321-9f37-f39af8241fe0"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_BRAKE_SECTIONS"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_SECTIONS_1"
+>
+<ReqRef
+ Id="bbf425ee-35fa-4076-81f6-dafb8bed41fa"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection3"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Sequence3"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure3"
+>
+<StructureElement
+ TypeName="V_BRAKE_EMERGENCY_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_EMERGENCY_COMP"
+>
+<ReqRef
+ Id="234e648c-50f7-48bc-b922-9664c5e29a63"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="A_BRAKE_EMERGENCY_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_EMERGENCY_COMP"
+>
+<ReqRef
+ Id="98a105e9-8988-46ca-b688-5a06f621d178"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_50"
+>
+<ReqRef
+ Id="f8759b8c-ab43-494a-ab3b-fd8ad75afa20"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_90"
+>
+<ReqRef
+ Id="0e1ac6fe-a3e6-4288-be02-6c15c5255661"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99"
+>
+<ReqRef
+ Id="83474f9f-6ba9-401e-a16e-f26a6d47a92f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_9"
+>
+<ReqRef
+ Id="20b9c3fb-d7e0-486b-952e-57067cd9bdbb"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_99"
+>
+<ReqRef
+ Id="9b06cc55-c552-4058-bb4d-8213470858af"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_999"
+>
+<ReqRef
+ Id="9d7c4429-39d5-4553-9c3e-37031ef87f91"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_9999"
+>
+<ReqRef
+ Id="09e11638-da64-4247-8ca4-2fa73f09c5e2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_99999"
+>
+<ReqRef
+ Id="0db14814-3e55-4bcd-b292-77b9db6ee18d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_999999"
+>
+<ReqRef
+ Id="a26a0f01-43c7-4e11-9bbc-8d4f4955a138"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KDRY_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST_99_9999999"
+>
+<ReqRef
+ Id="62ed59f4-bcd1-4025-8f76-76dfc9f72cc7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_KWET_RST"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KWET_RST"
+>
+<ReqRef
+ Id="d2c9b51e-dfb6-4600-b3d0-1826348e4e0a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure4"
+>
+<StructureElement
+ TypeName="V_BRAKE_SERVICE_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_SERVICE_COMP"
+>
+<ReqRef
+ Id="e1bf9b64-ccf9-49ca-a29a-09da0c7e96ff"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="A_BRAKE_SERVICE_COMP"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_SERVICE_COMP"
+>
+<ReqRef
+ Id="53bdd381-2771-4b60-8f15-a77775302e06"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SubStructure5"
+>
+<StructureElement
  TypeName="M_VOLTAGE"
  Default=""
  Mode="InOut"
@@ -438,97 +671,12 @@
  Id="aed3787e-59d5-4500-92f0-674ad7997248"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef></StructureElement><StructureElement
- TypeName="N_ITER"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="N_ITER_1"
->
-</StructureElement><StructureElement
- TypeName="Collection2"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Sequence2"
->
-</StructureElement><StructureElement
- TypeName="M_AIRTIGHT"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_AIRTIGHT"
->
-<ReqRef
- Id="a1bfa3e4-5afd-4845-a414-ec001070d6ed"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
 </ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SubStructure1"
+ Name="SubStructure6"
 >
 <StructureElement
- TypeName="M_BRAKE_PERCENTAGE"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_BRAKE_PERCENTAGE"
->
-</StructureElement><StructureElement
- TypeName="M_BRAKE_PERCENTAGE"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_BRAKE_PERCENTAGE"
->
-</StructureElement><StructureElement
- TypeName="N_BRAKE_CONF"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="N_BRAKE_CONF"
->
-</StructureElement><StructureElement
- TypeName="M_BRAKE_LAMBDA_CONF"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="M_BRAKE_LAMBDA_CONF"
->
-</StructureElement><StructureElement
- TypeName="T_BRAKE_SERVICE"
- Default="0"
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="T_BRAKE_SERVICE"
->
-</StructureElement><StructureElement
- TypeName="N_BRAKE_CONF"
- Default=""
- Mode="InOut"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="N_BRAKE_CONF"
->
-</StructureElement></Structure><Structure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SubStructure2"
->
-<ReqRef
- Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
->
-</ReqRef><StructureElement
  TypeName="NID_NTC"
  Default="0"
  Mode="InOut"
@@ -536,7 +684,11 @@
  NeedsRequirement="FALSE"
  Name="NID_NTC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="b640d1cd-5e2f-4e98-ae46-aa5375410ac2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -546,11 +698,39 @@
  Name="Collection1"
 >
 </Collection><Collection
- TypeName="SubStructure2"
+ TypeName="SubStructure3"
  Default="[]"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection2"
+>
+</Collection><Collection
+ TypeName="SubStructure4"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection3"
+>
+</Collection><Collection
+ TypeName="SubStructure2"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection4"
+>
+</Collection><Collection
+ TypeName="SubStructure5"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection5"
+>
+</Collection><Collection
+ TypeName="SubStructure6"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Collection6"
 >
 </Collection></Collections>
 </NameSpace>

@@ -109,7 +109,7 @@ namespace GUI.Converters
                     form.AutoComplete = false;
                     TextChangeHandler handler = new TextChangeHandler(commentable as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form);
+                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
                 }
             }
 

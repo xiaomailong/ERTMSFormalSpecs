@@ -107,7 +107,6 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.exportFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.generateCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -504,10 +503,9 @@ namespace GUI
             this.markNotImplementedButImplementationExistsToolStripMenuItem,
             this.markImplementedButNoFunctionalTestToolStripMenuItem,
             this.markSpecIssuesToolStripMenuItem,
+            this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator20,
             this.exportFunctionalBlocksToolStripMenuItem,
-            this.toolStripSeparator11,
-            this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator15,
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
@@ -584,11 +582,6 @@ namespace GUI
             this.exportFunctionalBlocksToolStripMenuItem.Text = "Export functional blocks";
             this.exportFunctionalBlocksToolStripMenuItem.Visible = false;
             this.exportFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.exportFunctionalBlocksToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(333, 6);
             // 
             // markParagraphsFromNewRevisionToolStripMenuItem
             // 
@@ -1156,7 +1149,6 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem verifiedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem implementedToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem testsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importFolderToolStripMenuItem;

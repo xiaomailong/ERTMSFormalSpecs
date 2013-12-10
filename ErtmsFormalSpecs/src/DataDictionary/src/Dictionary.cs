@@ -715,7 +715,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkUnimplementedTests()
         {
-            ClearMessages();
             UnimplementedTestVisitor visitor = new UnimplementedTestVisitor();
             visitor.visit(this, true);
         }
@@ -738,7 +737,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkNotTranslatedTests()
         {
-            ClearMessages();
             NotTranslatedTestVisitor visitor = new NotTranslatedTestVisitor();
             visitor.visit(this, true);
         }
@@ -761,7 +759,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkNotImplementedTranslations()
         {
-            ClearMessages();
             NotImplementedTranslationVisitor visitor = new NotImplementedTranslationVisitor();
             visitor.visit(this, true);
         }
