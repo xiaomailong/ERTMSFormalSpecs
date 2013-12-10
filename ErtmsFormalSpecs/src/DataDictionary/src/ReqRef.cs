@@ -125,7 +125,10 @@ namespace DataDictionary
             }
             set
             {
+                // Sets the paragraph and specification guid
+                Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(value);
                 setId(value.Guid);
+                setSpecId(specification.Guid);
             }
         }
 

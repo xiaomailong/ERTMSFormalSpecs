@@ -850,7 +850,17 @@ namespace GUI
                     ThisCollection.Remove(SourceNode.Model);
                     thisIndex = ThisCollection.IndexOf(Model);
                     ThisCollection.Insert(thisIndex, SourceNode.Model);
-                    GUIUtils.MDIWindow.RefreshModel();
+
+                    BaseTreeNode parentNode = Parent as BaseTreeNode;
+                    if (parentNode != null)
+                    {
+                        parentNode.Nodes.Clear();
+                        parentNode.BuildSubNodes();
+                    }
+                    else
+                    {
+                        GUIUtils.MDIWindow.RefreshModel();
+                    }
                 }
             }
         }
