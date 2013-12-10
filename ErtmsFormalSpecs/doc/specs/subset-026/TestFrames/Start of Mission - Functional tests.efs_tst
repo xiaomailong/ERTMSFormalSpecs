@@ -631,7 +631,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -993,7 +993,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1069,7 +1069,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2341,7 +2341,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2709,7 +2709,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7094,7 +7094,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

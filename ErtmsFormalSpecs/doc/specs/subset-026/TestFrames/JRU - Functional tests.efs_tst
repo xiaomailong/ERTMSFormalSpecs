@@ -21,6 +21,7 @@
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Steps>
 <Step
@@ -29,7 +30,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step1 - Initialize train data_1"
+ Name="Step1 - Initialize train data"
 >
 <SubSteps>
 <SubStep
@@ -117,6 +118,7 @@
 >
 <ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Steps>
 <Step
@@ -137,7 +139,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -145,7 +147,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Ensure that there is no JRU messages"
+ Name="Step2 - Ensure that a new JRU message has been created"
 >
 <SubSteps>
 <SubStep
@@ -155,7 +157,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -188,7 +190,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation><Expectation
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
@@ -265,7 +267,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.PreviousKernelMode == Kernel.Mode</Expectation></Expectations>
+>JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -310,6 +312,7 @@
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Steps>
 <Step
@@ -453,7 +456,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step1"
+ Name="Step1 - Initialize train data"
 >
 <SubSteps>
 <SubStep
@@ -476,7 +479,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2"
+ Name="Step2 - Verification there is no JRU Message"
 >
 <SubSteps>
 <SubStep
@@ -1004,7 +1007,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step4"
+ Name="Step4 - Second balise of the BG and verification of Mode changed and there is a new JRU Message"
 >
 <SubSteps>
 <SubStep
