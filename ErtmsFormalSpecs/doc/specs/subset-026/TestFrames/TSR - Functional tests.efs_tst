@@ -321,6 +321,7 @@
  ModeOUT="NA"
  Name="Step1 - Train has almost passed the TSR"
 >
+<Comment>Testing that one meter before the distance where the TSR has to be revoked it is still present on the train.</Comment>
 <SubSteps>
 <SubStep
  Name="SubStep1"
@@ -337,7 +338,9 @@ Kernel.DistanceToKeepInfoInTheRear
   +
 Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Nom )
   -
-Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) - 1</Action></Actions>
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min )
+  -
+1.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
