@@ -1,4 +1,7 @@
 <NameSpace
+ X="110"
+ Width="100"
+ Height="50"
  Name="OUT"
 >
 <NameSpaces>
@@ -9,10 +12,10 @@
  Name="ErtmsEtcsMode"
 >
 <ReqRef
- Id="Entry 4.7.2.2.1"
+ Id="5b029318-c61a-4114-9f05-56c6b9bcc981"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -28,8 +31,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Mode &lt;- Kernel.Mode</Action>
-</Actions>
+<Action>Mode &lt;- Kernel.Mode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -98,9 +100,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -154,9 +154,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -210,9 +208,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -266,9 +262,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -320,13 +314,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -354,13 +344,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -371,10 +357,10 @@
  Name="CurrentErtmsEtcsLevel"
 >
 <ReqRef
- Id="Entry 4.7.2.2.2"
+ Id="188cee00-39ba-43f0-aee9-2e1042e38194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -390,8 +376,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Level &lt;- Kernel.Level.Value</Action>
-</Actions>
+<Action>Level &lt;- Kernel.Level.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -399,23 +384,19 @@
  Name="DisplayValidLevel"
 >
 <ReqRef
- Id="A1.1.13.1"
+ Id="c94b2902-c098-481b-bf05-b0bed5a2c1c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="DisplayValidLevel"
 >
 <PreConditions>
-<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition>
-<PreCondition>NOT OutputInformation.DisplayRequested</PreCondition>
-<PreCondition>ProcedureOut in ProcedureOut.Available</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition>NOT OutputInformation.DisplayRequested</PreCondition><PreCondition>ProcedureOut in ProcedureOut.Available</PreCondition></PreConditions>
 <Actions>
-<Action>OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action>
-</Actions>
+<Action>OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -484,9 +465,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -540,9 +519,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -596,9 +573,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -652,9 +627,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -706,13 +679,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -740,13 +709,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -757,10 +722,10 @@
  Name="DriverId"
 >
 <ReqRef
- Id="Entry 4.7.2.1.3"
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -776,8 +741,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Id &lt;- Kernel.DriverId.Value</Action>
-</Actions>
+<Action>Id &lt;- Kernel.DriverId.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -846,9 +810,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -902,9 +864,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -958,9 +918,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1014,9 +972,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1068,13 +1024,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1102,13 +1054,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1119,10 +1067,10 @@
  Name="RBCContactInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.13"
+ Id="f6cda523-6b70-489d-a6dd-e29b33d2a772"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -1138,8 +1086,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RBCContactInformation.RBCContactInformation &lt;- EURORADIO.CurrentRadioSession.SessionInfo</Action>
-</Actions>
+<Action>RBCContactInformation.RBCContactInformation &lt;- EURORADIO.CurrentRadioSession.SessionInfo</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -1208,9 +1155,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1264,9 +1209,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1320,9 +1263,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1376,9 +1317,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1430,13 +1369,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1464,13 +1399,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1481,10 +1412,10 @@
  Name="TrainRunningNumber"
 >
 <ReqRef
- Id="Entry 4.7.2.2.12"
+ Id="47e76500-ce7e-48be-9414-97b01bbaaf74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -1500,8 +1431,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Number &lt;- Kernel.TrainRunningNumber.Value</Action>
-</Actions>
+<Action>Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -1570,9 +1500,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1626,9 +1554,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1682,9 +1608,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1738,9 +1662,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1792,13 +1714,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1826,13 +1744,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1843,10 +1757,10 @@
  Name="TrainSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.3"
+ Id="0701baa9-e1f2-4338-a299-8fb06d891176"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -1862,8 +1776,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Speed &lt;- Odometry.EstimatedSpeed</Action>
-</Actions>
+<Action>Speed &lt;- Odometry.EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -1932,9 +1845,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1988,9 +1899,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2044,9 +1953,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2100,9 +2007,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2154,13 +2059,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2188,13 +2089,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2205,10 +2102,10 @@
  Name="PermittedSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.4"
+ Id="d71c157f-0723-4ca1-a3ca-bd2eb1e89ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -2216,34 +2113,31 @@
  Name="UpdateValue"
 >
 <ReqRef
- Id="3.13.10.3.1"
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.10.3.2"
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.10.4.3"
+</ReqRef><ReqRef
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.10.4.4"
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="UpdateValue"
 >
 <PreConditions>
-<PreCondition>Kernel.SpeedAndDistanceMonitoring.Monitoring != Kernel.SpeedAndDistanceMonitoring.MonitoringType.ReleaseSpeed</PreCondition>
-<PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.SpeedAndDistanceMonitoring.Monitoring != Kernel.SpeedAndDistanceMonitoring.MonitoringType.ReleaseSpeed</PreCondition><PreCondition>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action>
-</Actions>
+<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -2312,9 +2206,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2368,9 +2260,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2424,9 +2314,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2480,9 +2368,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2534,13 +2420,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2568,13 +2450,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2604,9 +2482,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2617,14 +2493,14 @@
  Name="TargetSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.5"
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.10.4.2"
+</ReqRef><ReqRef
+ Id="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -2640,8 +2516,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_MRDT()</Action>
-</Actions>
+<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_MRDT()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -2710,9 +2585,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2766,9 +2639,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2822,9 +2693,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2878,9 +2747,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2932,13 +2799,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2966,13 +2829,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2983,10 +2842,10 @@
  Name="ReleaseSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.7"
+ Id="76a41522-e0f9-4aab-b8fc-267f771b125b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -2994,10 +2853,10 @@
  Name="UpdateValue"
 >
 <ReqRef
- Id="3.13.10.5.1"
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -3006,8 +2865,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action>
-</Actions>
+<Action>Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.ReleaseSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3076,9 +2934,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3132,9 +2988,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3188,9 +3042,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3244,9 +3096,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3298,13 +3148,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3332,13 +3178,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3349,10 +3191,10 @@
  Name="SpeedAndDistanceMonitoringSupervisionStatus"
 >
 <ReqRef
- Id="Entry 4.7.2.2.8"
+ Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -3368,8 +3210,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>SupervisionStatus &lt;- Kernel.SupervisionStatus</Action>
-</Actions>
+<Action>SupervisionStatus &lt;- Kernel.SupervisionStatus</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3438,9 +3279,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3494,9 +3333,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3550,9 +3387,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3606,9 +3441,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3660,13 +3493,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3694,13 +3523,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3711,10 +3536,10 @@
  Name="TripReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.9"
+ Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -3780,9 +3605,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3836,9 +3659,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3892,9 +3713,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3948,9 +3767,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4002,13 +3819,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4036,13 +3849,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4053,10 +3862,10 @@
  Name="BrakeIndication"
 >
 <ReqRef
- Id="Entry 4.7.2.2.14"
+ Id="af77864f-0a33-496f-a874-1ebab99a0c4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -4115,9 +3924,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4171,9 +3978,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4227,9 +4032,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4283,9 +4086,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4337,13 +4138,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4371,13 +4168,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4387,10 +4180,10 @@
  Name="FixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.15"
+ Id="3dabcead-8429-46f3-a39b-10515ea26748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -4448,9 +4241,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4503,9 +4294,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4558,9 +4347,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4613,9 +4400,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4666,13 +4451,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4699,13 +4480,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4715,10 +4492,10 @@
  Name="PlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.2.16"
+ Id="f0cc2cfd-d829-4944-aa8e-524a7291260d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -4776,9 +4553,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4831,9 +4606,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4886,9 +4659,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4941,9 +4712,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4994,13 +4763,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5027,13 +4792,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5044,10 +4805,10 @@
  Name="ReversingAllowed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.17"
+ Id="484415c8-ad35-4b77-af44-1748cd2e57a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -5106,9 +4867,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5162,9 +4921,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5218,9 +4975,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5274,9 +5029,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5328,13 +5081,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5362,13 +5111,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5378,10 +5123,10 @@
  Name="TrackConditionsWithoutSoundHorn"
 >
 <ReqRef
- Id="Entry 4.7.2.2.18"
+ Id="88a9ba90-6c1e-47f7-bced-85484113e0fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -5439,9 +5184,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5494,9 +5237,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5549,9 +5290,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5604,9 +5343,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5657,13 +5394,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5690,13 +5423,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5706,10 +5435,10 @@
  Name="TrackConditionsWithSoundHorn"
 >
 <ReqRef
- Id="Entry 4.7.2.2.19"
+ Id="72d98796-7871-4e90-85df-298a95950478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -5767,9 +5496,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5822,9 +5549,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5877,9 +5602,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5932,9 +5655,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5985,13 +5706,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6018,13 +5735,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6034,10 +5747,10 @@
  Name="GeographicalPosition"
 >
 <ReqRef
- Id="Entry 4.7.2.2.20"
+ Id="faadbf28-32da-48eb-96d8-48c5eb6c86e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -6095,9 +5808,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6150,9 +5861,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6205,9 +5914,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6260,9 +5967,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6313,13 +6018,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6346,13 +6047,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6363,10 +6060,10 @@
  Name="OverrideStatus"
 >
 <ReqRef
- Id="Entry 4.7.2.2.21"
+ Id="af821537-961a-4150-9dc5-29f506b0d734"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -6425,9 +6122,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6481,9 +6176,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6537,9 +6230,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6593,9 +6284,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6647,13 +6336,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6681,13 +6366,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6698,10 +6379,10 @@
  Name="LXStatusNotProtected"
 >
 <ReqRef
- Id="Entry 4.7.2.2.22"
+ Id="1d72dec1-b4fc-4847-815b-496fc6b78d91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -6760,9 +6441,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6816,9 +6495,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6872,9 +6549,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6928,9 +6603,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6982,13 +6655,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7016,13 +6685,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7033,10 +6698,10 @@
  Name="ShuntingRefusedByRbc"
 >
 <ReqRef
- Id="Entry 4.7.2.2.23"
+ Id="1176c931-9bec-4873-af7b-4bc2a1e73232"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -7095,9 +6760,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7151,9 +6814,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7207,9 +6868,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7263,9 +6922,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7317,13 +6974,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7351,13 +7004,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7368,10 +7017,10 @@
  Name="ShuntingRequestNotAnsweredByRbc"
 >
 <ReqRef
- Id="Entry 4.7.2.2.24"
+ Id="9bdd5161-d03a-424d-9e1d-a77f29b69351"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -7430,9 +7079,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7486,9 +7133,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7542,9 +7187,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7598,9 +7241,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7652,13 +7293,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7686,13 +7323,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7703,10 +7336,10 @@
  Name="AcceptedEmergencyStops"
 >
 <ReqRef
- Id="Entry 4.7.2.2.25"
+ Id="2fe0de25-c551-4115-a76b-4b3c6804a58b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -7722,8 +7355,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EmergencyStops &lt;- Kernel.EmergencyStops</Action>
-</Actions>
+<Action>EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -7791,9 +7423,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7846,9 +7476,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7901,9 +7529,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7956,9 +7582,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8009,13 +7633,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8042,13 +7662,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8059,10 +7675,10 @@
  Name="EntryInFsOs"
 >
 <ReqRef
- Id="Entry 4.7.2.2.26"
+ Id="d3c5c2fa-1d94-436a-9c37-457cf5e63194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -8121,9 +7737,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8177,9 +7791,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8233,9 +7845,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8289,9 +7899,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8343,13 +7951,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8377,13 +7981,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8394,10 +7994,10 @@
  Name="LevelTransitionAnnouncement"
 >
 <ReqRef
- Id="Entry 4.7.2.2.27"
+ Id="5e2ed22b-9e71-4788-8e67-a9aa26c8a51c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -8409,6 +8009,12 @@
  Default=""
  Mode="Internal"
  Name="ProcedureOut"
+>
+</StructureElement><StructureElement
+ TypeName="Default.Level"
+ Default=""
+ Mode="Outgoing"
+ Name="Level"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -8456,9 +8062,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8512,9 +8116,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8568,9 +8170,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8624,9 +8224,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8678,13 +8276,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8712,13 +8306,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8729,10 +8319,10 @@
  Name="TrackAheadFreeRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.2.28"
+ Id="c1520a4d-814d-4bf0-addc-1002d8a5a2a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -8791,9 +8381,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8847,9 +8435,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8903,9 +8489,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8959,9 +8543,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9013,13 +8595,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9047,13 +8625,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9064,10 +8638,10 @@
  Name="AdhesionFactorSlipperyRail"
 >
 <ReqRef
- Id="Entry 4.7.2.2.29"
+ Id="6d776e50-b3e1-4d29-8ead-bfb688e39099"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -9126,9 +8700,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9182,9 +8754,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9238,9 +8808,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9294,9 +8862,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9348,13 +8914,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9382,13 +8944,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9399,22 +8957,22 @@
  Name="ModeProposed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.33"
+ Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.2.30"
+</ReqRef><ReqRef
+ Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.2.32"
+</ReqRef><ReqRef
+ Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.2.34"
+</ReqRef><ReqRef
+ Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -9473,9 +9031,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9529,9 +9085,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9585,9 +9139,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9641,9 +9193,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9695,13 +9245,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9729,13 +9275,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9746,10 +9288,10 @@
  Name="OsLsShModeProposed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.31"
+ Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -9808,9 +9350,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9864,9 +9404,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9920,9 +9458,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9976,9 +9512,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10030,13 +9564,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10064,13 +9594,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10081,10 +9607,10 @@
  Name="TracksideMalfunction"
 >
 <ReqRef
- Id="Entry 4.7.2.2.35"
+ Id="84e5c5a8-0d3b-4bfa-81c7-81966a31f2e5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -10143,9 +9669,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10199,9 +9723,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10255,9 +9777,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10311,9 +9831,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10365,13 +9883,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10399,13 +9913,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10416,10 +9926,10 @@
  Name="NotificationOfTrainDataChangeFromOtherSource"
 >
 <ReqRef
- Id="Entry 4.7.2.2.36"
+ Id="cde58d6c-c5d2-4ee2-8363-fb89efc1fcd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -10478,9 +9988,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10534,9 +10042,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10590,9 +10096,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10646,9 +10150,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10700,13 +10202,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10734,348 +10232,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="JruFailure"
->
-<ReqRef
- Id="Entry 4.7.2.2.37"
->
-</ReqRef>
-<StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -11086,10 +10245,10 @@
  Name="OperatedSystemVersion"
 >
 <ReqRef
- Id="Entry 4.7.2.2.38"
+ Id="24ae3ea6-e8c3-4608-9c0f-f8939770807a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -11155,9 +10314,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11211,9 +10368,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11267,9 +10422,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11323,9 +10476,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11377,13 +10528,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11411,13 +10558,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -11428,10 +10571,10 @@
  Name="RadioNetworkRegistrationFailed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.39"
+ Id="e739c6d0-7c43-4cfb-a67e-f3caf8c8586c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -11490,9 +10633,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11546,9 +10687,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11602,9 +10741,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11658,9 +10795,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11712,13 +10847,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11746,13 +10877,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -11763,14 +10890,14 @@
  Name="SafeRadioConnectionIndication"
 >
 <ReqRef
- Id="Entry 4.7.2.2.40"
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.7.1"
+</ReqRef><ReqRef
+ Id="1ace4af7-4f9a-421e-8b9b-43323ba4a8ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  NeedsRequirement="FALSE"
@@ -11785,8 +10912,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatus</Action>
-</Actions>
+<Action>ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatus</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -11855,9 +10981,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11911,9 +11035,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11967,9 +11089,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12023,9 +11143,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12077,13 +11195,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12111,13 +11225,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -12128,10 +11238,10 @@
  Name="LocalTime"
 >
 <ReqRef
- Id="Entry 4.7.2.2.41"
+ Id="fa81092d-9831-470d-bccf-0aef687cf1de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -12147,8 +11257,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Time &lt;- Odometry.CurrentTime</Action>
-</Actions>
+<Action>Time &lt;- Odometry.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -12217,9 +11326,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12273,9 +11380,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12329,9 +11434,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12385,9 +11488,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12439,13 +11540,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12473,13 +11570,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -12490,10 +11583,10 @@
  Name="Gradient"
 >
 <ReqRef
- Id="Entry 4.7.2.2.42"
+ Id="e3651d57-b080-418d-95b4-1c194b24a9f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  NeedsRequirement="FALSE"
@@ -12508,8 +11601,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>GradientValue &lt;- Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance )</Action>
-</Actions>
+<Action>GradientValue &lt;- Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -12577,9 +11669,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12632,9 +11722,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12687,9 +11775,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12742,9 +11828,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12795,13 +11879,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12828,13 +11908,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -12845,10 +11921,10 @@
  Name="MRSP"
 >
 <ReqRef
- Id="Entry 4.7.2.2.43"
+ Id="ff18547f-9677-4352-91c6-672291b94c64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -12864,8 +11940,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>MRSP.MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action>
-</Actions>
+<Action>MRSP.MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -12934,9 +12009,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -12990,9 +12063,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13046,9 +12117,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13102,9 +12171,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13156,13 +12223,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13190,13 +12253,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -13207,10 +12266,10 @@
  Name="IndicationLocationAtMrspSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.44"
+ Id="abc0e167-3d30-443d-b62a-963a5228be72"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -13226,8 +12285,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Location &lt;- Kernel.IndicationLocationAtMrspSpeed</Action>
-</Actions>
+<Action>Location &lt;- Kernel.IndicationLocationAtMrspSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -13296,9 +12354,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13352,9 +12408,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13408,9 +12462,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13464,9 +12516,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13518,13 +12568,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13552,13 +12598,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -13569,10 +12611,10 @@
  Name="FirstTargetAtZeroSpeed"
 >
 <ReqRef
- Id="Entry 4.7.2.2.45"
+ Id="2cd466ba-aedb-4f3e-8661-ae10ee1737c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -13588,8 +12630,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action>
-</Actions>
+<Action>Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -13658,9 +12699,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13714,9 +12753,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13770,9 +12807,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13826,9 +12861,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13880,13 +12913,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -13914,13 +12943,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -13931,10 +12956,10 @@
  Name="BrakeReason"
 >
 <ReqRef
- Id="Entry 4.7.2.2.46"
+ Id="ce7d1ef1-5c76-4031-a912-dd0416fd0924"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -14000,9 +13025,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14056,9 +13079,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14112,9 +13133,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14168,9 +13187,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14222,13 +13239,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14256,348 +13269,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="NoTrackConditionWillBeReceived"
->
-<ReqRef
- Id="Entry 4.7.2.2.47"
->
-</ReqRef>
-<StructureElement
- TypeName="DMI.OutputInformation"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
->
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Name="ProcedureOut"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureOutSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="Idle"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
->
-<PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -14608,10 +13282,10 @@
  Name="TracksideNotCompatible"
 >
 <ReqRef
- Id="Entry 4.7.2.2.48"
+ Id="e28641fe-d20c-42ee-a1e3-a02d73f37d4a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -14670,9 +13344,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14726,9 +13398,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14782,9 +13452,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14838,9 +13506,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14892,13 +13558,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -14926,13 +13588,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -14943,10 +13601,10 @@
  Name="TrainIsRejected"
 >
 <ReqRef
- Id="Entry 4.7.2.2.49"
+ Id="ab6dbc23-b7e2-4748-96b1-5478c3ca68c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -15005,9 +13663,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15061,9 +13717,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15117,9 +13771,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15173,9 +13825,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15227,13 +13877,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15261,13 +13907,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -15278,10 +13920,10 @@
  Name="RouteUnsuitabilities"
 >
 <ReqRef
- Id="Entry 4.7.2.2.50"
+ Id="3a7bc83f-7d2f-4338-92a7-ee27e856b0a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="DMI.OutputInformation"
  Default=""
  Mode="Outgoing"
@@ -15347,9 +13989,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15403,9 +14043,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15459,9 +14097,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15515,9 +14151,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15569,13 +14203,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15603,13 +14233,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -15620,10 +14246,10 @@
  Name="TargetDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.2.6"
+ Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="UpdateOUT"
  Implemented="TRUE"
@@ -15639,8 +14265,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Distance &lt;- Kernel.TargetDistance</Action>
-</Actions>
+<Action>Distance &lt;- Kernel.TargetDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -15709,9 +14334,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15765,9 +14388,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15821,9 +14442,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15877,9 +14496,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15931,13 +14548,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -15965,13 +14578,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -15982,10 +14591,10 @@
  Name="TrainData"
 >
 <ReqRef
- Id="Entry 4.7.2.2.10"
+ Id="3304c4da-5fe0-433e-b102-e0133ee3c22e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -16001,8 +14610,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Data &lt;- Kernel.TrainData.TrainData</Action>
-</Actions>
+<Action>Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -16070,9 +14678,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -16125,9 +14731,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -16180,9 +14784,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -16235,9 +14837,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -16288,13 +14888,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -16321,13 +14917,9 @@
  Name="DisableRequestActivated"
 >
 <PreConditions>
-<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-<Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action><Action>OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

@@ -5,7 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <Comment>Initiation of a communication session</Comment>
@@ -13,29 +13,45 @@
  TypeName="NID_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="193e4ff3-c085-4881-89f4-4bba951aae20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="f122a1cb-426c-4f27-b1b2-521eeb9d7655"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="974dafe8-70ad-409f-a13c-435c0f1b8be1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="4faba43d-d002-4947-afce-02a4abef7460"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

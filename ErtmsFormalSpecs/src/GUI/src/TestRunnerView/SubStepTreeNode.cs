@@ -53,8 +53,14 @@ namespace GUI.TestRunnerView
         public SubStepTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, null, true)
         {
-            actions = new ActionsTreeNode(item);
-            expectations = new ExpectationsTreeNode(item);
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            actions = new ActionsTreeNode(Item);
+            expectations = new ExpectationsTreeNode(Item);
 
             Nodes.Add(actions);
             Nodes.Add(expectations);
@@ -67,18 +73,6 @@ namespace GUI.TestRunnerView
         protected override Editor createEditor()
         {
             return new ItemEditor();
-        }
-
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            Window window = BaseForm as Window;
-            if (window != null)
-            {
-                window.ExpressionTextBox.Lines = Utils.Utils.toStrings(Item.Name);
-                //window.explainTextBox.Lines = Utils.Utils.toStrings(Item.getExplain());
-            }
         }
 
         /// <summary>

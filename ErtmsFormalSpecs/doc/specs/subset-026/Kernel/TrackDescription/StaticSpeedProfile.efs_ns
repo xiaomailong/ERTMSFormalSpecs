@@ -1,4 +1,8 @@
 <NameSpace
+ X="340"
+ Y="480"
+ Width="100"
+ Height="50"
  Name="StaticSpeedProfile"
 >
 <NameSpaces>
@@ -9,20 +13,19 @@
  Name="StaticSpeedRestriction"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="7.4.2.7"
+</ReqRef><ReqRef
+ Id="9e0c6d45-0f4a-482d-9a28-dbe1f41746ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.4.2.7.1"
+</ReqRef><ReqRef
+ Id="a3ac36c4-3d89-44f1-81b7-c601a5576fc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-<Comment></Comment>
-</ReqRef>
-<Comment>Represents one of the static speed restrictions of the static speed profile.</Comment>
+</ReqRef><Comment>Represents one of the static speed restrictions of the static speed profile.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -31,10 +34,10 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="Default.BaseTypes.Speed.MaxSpeed"
@@ -43,10 +46,10 @@
  Name="BasicSpeed"
 >
 <ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Messages.Q_FRONT"
  Default="Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element"
@@ -55,18 +58,18 @@
  Name="TrainLengthDelay"
 >
 <ReqRef
- Id="7.5.1.109"
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.1.3"
+</ReqRef><ReqRef
+ Id="ac670d16-d189-473e-b200-ded164824365"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.4"
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="SSPCategories"
  Default="[]"
  Mode="Internal"
@@ -79,10 +82,10 @@
  Name="SSPCategory"
 >
 <ReqRef
- Id="3.11.3.2.1"
+ Id="7ba0f65c-e1b5-422f-a1fb-e947e73cd4f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents a speed limitation for a specific train category. The qualifier indicates the type of the current category (Cant Deficiency or Other Specific) and in the case of Other Specific category it indicates if its value replaces that of the Cant Deficiency category.</Comment>
+</ReqRef><Comment>Represents a speed limitation for a specific train category. The qualifier indicates the type of the current category (Cant Deficiency or Other Specific) and in the case of Other Specific category it indicates if its value replaces that of the Cant Deficiency category.</Comment>
 <StructureElement
  TypeName="Messages.NC_CDDIFF"
  Default=""
@@ -91,14 +94,14 @@
  Name="CantDeficiency"
 >
 <ReqRef
- Id="3.11.3.2.1.1.a"
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.82.1"
+</ReqRef><ReqRef
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrainData.TrainCategory"
  Default=""
  Mode="Internal"
@@ -106,14 +109,14 @@
  Name="OtherSpecific"
 >
 <ReqRef
- Id="3.11.3.2.1.1.b"
+ Id="acaf62ba-5b8e-4cf3-82a2-c81ae54cd1ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.83"
+</ReqRef><ReqRef
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_DIFF"
  Default=""
  Mode="Internal"
@@ -122,10 +125,10 @@
  Name="Qualifier"
 >
 <ReqRef
- Id="7.5.1.102.1"
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Internal"
@@ -133,14 +136,14 @@
  Name="Speed"
 >
 <ReqRef
- Id="7.5.1.156"
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.1.1.a"
+</ReqRef><ReqRef
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -160,15 +163,15 @@
  Name="StaticSpeedRestrictions"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="A1.1.11.2"
+</ReqRef><ReqRef
+ Id="70632e82-a390-4696-a790-49fc7e83e650"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>A collection of static speed restrictions of the static speed profile, received from the trackside.</Comment>
+</ReqRef><Comment>A collection of static speed restrictions of the static speed profile, received from the trackside.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -177,14 +180,14 @@
  Name="SSPLength"
 >
 <ReqRef
- Id="3.11.3.1.3"
+ Id="ac670d16-d189-473e-b200-ded164824365"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.4"
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
+</ReqRef><Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -196,8 +199,7 @@
  Name="TrainLengthDelay"
 >
 <PreConditions>
-<PreCondition>aSSP.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition>
-</PreConditions>
+<PreCondition>aSSP.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
 <Expression>SSPEnd(aSSP) - Default.BaseTypes.LengthToDistance(aSSP.Distance) + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
@@ -210,18 +212,18 @@
  Name="SelectCantDeficiencyCategory"
 >
 <ReqRef
- Id="3.11.3.2.1.1.a"
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.3"
+</ReqRef><ReqRef
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.3"
+</ReqRef><ReqRef
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
+</ReqRef><Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -261,22 +263,19 @@ INITIAL_VALUE
  Name="X is empty"
 >
 <PreConditions>
-<PreCondition>X == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>X == EMPTY</PreCondition></PreConditions>
 <Expression>Y</Expression>
 </Case><Case
  Name="Y is empty"
 >
 <PreConditions>
-<PreCondition>Y == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Y == EMPTY</PreCondition></PreConditions>
 <Expression>X</Expression>
 </Case><Case
  Name="X greater than Y"
 >
 <PreConditions>
-<PreCondition>X &gt;= Y</PreCondition>
-</PreConditions>
+<PreCondition>X &gt;= Y</PreCondition></PreConditions>
 <Expression>X</Expression>
 </Case><Case
  Name="Y greater than X"
@@ -289,10 +288,10 @@ INITIAL_VALUE
  Name="CantDeficiencySpeedRestriction"
 >
 <ReqRef
- Id="3.11.3.2.3"
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
+</ReqRef><Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -304,8 +303,7 @@ INITIAL_VALUE
  Name="NoCorrespondingCategory"
 >
 <PreConditions>
-<PreCondition>SelectCantDeficiencyCategory(aSSR) == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>SelectCantDeficiencyCategory(aSSR) == EMPTY</PreCondition></PreConditions>
 <Expression>aSSR.BasicSpeed</Expression>
 </Case><Case
  Name="CorrespondingCategoryFound"
@@ -319,22 +317,22 @@ INITIAL_VALUE
  Name="CreateFirstSSP"
 >
 <ReqRef
- Id="7.5.1.156"
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.102.1"
+</ReqRef><ReqRef
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.82.1"
+</ReqRef><ReqRef
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.83"
+</ReqRef><ReqRef
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Creates an EFS static speed restriction structure from the first ERTMS static speed restriction element provided by the trackside.</Comment>
+</ReqRef><Comment>Creates an EFS static speed restriction structure from the first ERTMS static speed restriction element provided by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -371,7 +369,7 @@ INITIAL_VALUE
  NeedsRequirement="FALSE"
  Name="AbsoluteDistance"
 >
-<Comment>Provides the absolute distance of a certain axle load provided by trackside.</Comment>
+<Comment>Provides the absolute distance of a certain SSP provided by trackside.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Collection3"
@@ -439,18 +437,18 @@ USING
  Name="SpeedRestrictions"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.a"
+</ReqRef><ReqRef
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.2.1"
+</ReqRef><ReqRef
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
+</ReqRef><Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -473,14 +471,14 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="StaticSpeedRestriction"
 >
 <ReqRef
- Id="3.11.2.2.a"
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="A1.1.8.1"
+</ReqRef><ReqRef
+ Id="7b939cca-c775-4101-b7dd-1944169ceeb2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the speed profile due to a static speed restriction.</Comment>
+</ReqRef><Comment>Provides the speed profile due to a static speed restriction.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -496,16 +494,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="EndOfSSP"
 >
 <PreConditions>
-<PreCondition>aSSP.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition>
-</PreConditions>
+<PreCondition>aSSP.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="During SSP"
 >
 <PreConditions>
-<PreCondition>aSSP.Distance &lt;= Distance</PreCondition>
-<PreCondition>Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition>
-</PreConditions>
+<PreCondition>aSSP.Distance &lt;= Distance</PreCondition><PreCondition>Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
 <Expression>SSPSpeed(aSSP)</Expression>
 </Case><Case
  Name="Outside SSP"
@@ -519,10 +514,14 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="SSPEnd"
 >
 <ReqRef
- Id="3.11.12.2"
+ Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the end of the current static speed restriction.</Comment>
+</ReqRef><ReqRef
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -531,6 +530,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="SSP information stops at current location"
+>
+<PreConditions>
+<PreCondition>Current.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+<Expression>Current.Distance</Expression>
+</Case><Case
  Name="Always"
 >
 <Expression>REDUCE
@@ -546,10 +551,10 @@ INITIAL_VALUE
  Name="SSPSpeed"
 >
 <ReqRef
- Id="3.11.3.2.6"
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
+</ReqRef><Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -566,8 +571,7 @@ INITIAL_VALUE
 USING
     FindOSC(X.OtherSpecific) OR RESULT
 INITIAL_VALUE
-    False</PreCondition>
-</PreConditions>
+    False</PreCondition></PreConditions>
 <Expression>OtherSpecificSpeedRestriction(aSSP)</Expression>
 </Case><Case
  Name="Otherwise"
@@ -580,14 +584,14 @@ INITIAL_VALUE
  Name="FindOSC"
 >
 <ReqRef
- Id="3.11.3.2.5"
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.6"
+</ReqRef><ReqRef
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if the train belongs to the other specific category provided as parameter. Used to match the corresponding categories received by the trackside.</Comment>
+</ReqRef><Comment>Indicates if the train belongs to the other specific category provided as parameter. Used to match the corresponding categories received by the trackside.</Comment>
 <Parameters>
 <Parameter
  Type="TrainData.TrainCategory"
@@ -606,14 +610,14 @@ INITIAL_VALUE
  Name="OtherSpecificSpeedRestriction"
 >
 <ReqRef
- Id="3.11.3.2.5"
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.6"
+</ReqRef><ReqRef
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
+</ReqRef><Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
 <Parameters>
 <Parameter
  Type="StaticSpeedRestriction"
@@ -648,15 +652,13 @@ INITIAL_VALUE
  Name="Freight train in P"
 >
 <PreConditions>
-<PreCondition>aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position</PreCondition>
-</PreConditions>
+<PreCondition>aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position</PreCondition></PreConditions>
 <Expression>TrainData.TrainCategory.FreightTrainInP</Expression>
 </Case><Case
  Name="Freight train in G"
 >
 <PreConditions>
-<PreCondition>aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position</PreCondition>
-</PreConditions>
+<PreCondition>aCategory == Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position</PreCondition></PreConditions>
 <Expression>TrainData.TrainCategory.FreightTrainInG</Expression>
 </Case><Case
  Name="Passenger train"
@@ -670,18 +672,18 @@ INITIAL_VALUE
  Name="StaticSpeedProfileReceived"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.c.1"
+</ReqRef><ReqRef
+ Id="beb70c99-c336-489a-a97e-b8236a026061"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.11.2.2.A035"
+</ReqRef><ReqRef
+ Id="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>This procedure is called when a new static speed profile is received. If an other static speed profile has already been received, all the information from the start location of the new information is deleted.</Comment>
+</ReqRef><Comment>This procedure is called when a new static speed profile is received. If an other static speed profile has already been received, all the information from the start location of the new information is deleted.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
@@ -695,14 +697,14 @@ INITIAL_VALUE
  Name="RemoveOldInformation"
 >
 <ReqRef
- Id="3.7.3.1.a"
+ Id="066c1468-0f45-4978-bc8d-a3cec1f01661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.28"
+</ReqRef><ReqRef
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -711,14 +713,12 @@ INITIAL_VALUE
  Name="RemoveOldAxleLoads"
 >
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
 <Action>REMOVE ALL
     X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE)
 IN
-    SSP</Action>
-</Actions>
+    SSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -727,18 +727,18 @@ IN
  Name="InsertFirstSSR"
 >
 <ReqRef
- Id="7.5.1.171"
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.171.0"
+</ReqRef><ReqRef
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.28"
+</ReqRef><ReqRef
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -747,9 +747,7 @@ IN
  Name="LastSSP"
 >
 <PreConditions>
-<PreCondition>Packet.V_STATIC == 127</PreCondition>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Packet.V_STATIC == 127</PreCondition><PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT
     CreateFirstSSP ( Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
@@ -757,26 +755,25 @@ IN
                                TrainLengthDelay =&gt; Packet.Q_FRONT,
                                Categories =&gt; Packet.Sequence1 )
 IN
-    SSP</Action>
-</Actions>
+    SSP</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Otherwise"
 >
 <ReqRef
- Id="7.5.1.28"
+ Id="d15c6258-268a-45c4-838f-e367029786bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.171"
+</ReqRef><ReqRef
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.109"
+</ReqRef><ReqRef
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -785,8 +782,7 @@ IN
                                TrainLengthDelay =&gt; Packet.Q_FRONT,
                                Categories =&gt; Packet.Sequence1 )
 IN
-    SSP</Action>
-</Actions>
+    SSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -802,15 +798,13 @@ IN
  Name="InsertFollowingSSRs"
 >
 <PreConditions>
-<PreCondition>Mode != Mode.TR</PreCondition>
-</PreConditions>
+<PreCondition>Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
 <Action>APPLY
     AddSSP ( aSSP =&gt; X,
                     Distance =&gt; AbsoluteDistance ( SSRs =&gt; Packet.Sequence3, aSSR =&gt; X, Scale =&gt; Packet.Q_SCALE ) + Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ) )
 ON
-    Packet.Sequence3</Action>
-</Actions>
+    Packet.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -819,30 +813,30 @@ ON
  Name="AddSSP"
 >
 <ReqRef
- Id="7.5.1.102.1"
+ Id="d4d1dca3-3feb-42f4-9fb0-78e4de18d3a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.109"
+</ReqRef><ReqRef
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.156"
+</ReqRef><ReqRef
+ Id="ddc9bc3c-f8fd-43a4-b45f-0a7b49ab9c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.171"
+</ReqRef><ReqRef
+ Id="51a2d119-ce1a-4cb1-9eec-ab1079e376a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.82.1"
+</ReqRef><ReqRef
+ Id="968938fa-6a64-41cb-9406-2036110d6747"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.83"
+</ReqRef><ReqRef
+ Id="3dfb6b48-a52e-4097-89f5-65ada9dbcbe5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Adds a new static speed restriction to the axle load profile.</Comment>
+</ReqRef><Comment>Adds a new static speed restriction to the axle load profile.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2"
@@ -869,8 +863,7 @@ ON
  Name="AddSSR"
 >
 <PreConditions>
-<PreCondition>aSSP.V_STATIC != 127</PreCondition>
-</PreConditions>
+<PreCondition>aSSP.V_STATIC != 127</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT
     StaticSpeedRestriction
@@ -881,17 +874,16 @@ ON
         Categories =&gt; MAP aSSP.Sequence2 USING CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
-    SSP</Action>
-</Actions>
+    SSP</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="AddLastSSR"
 >
 <ReqRef
- Id="7.5.1.171.0"
+ Id="e475882b-f9a1-42e9-8001-c3a154f9acf3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action>INSERT
@@ -903,8 +895,7 @@ IN
         Categories =&gt; MAP aSSP.Sequence2 USING CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
-    SSP</Action>
-</Actions>
+    SSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -917,17 +908,21 @@ IN
  Name="SSP"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.2.a"
+</ReqRef><ReqRef
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.c.1"
+</ReqRef><ReqRef
+ Id="beb70c99-c336-489a-a97e-b8236a026061"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represent the set of static speed restrictions.</Comment>
+</ReqRef><ReqRef
+ Id="9570bc20-fe09-49cb-8e1d-d7adbb5fdfbc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Represent the set of static speed restrictions.</Comment>
 </Variable></Variables>
 </NameSpace>

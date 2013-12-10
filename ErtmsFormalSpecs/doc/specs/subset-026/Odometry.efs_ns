@@ -1,4 +1,8 @@
 <NameSpace
+ X="960"
+ Y="80"
+ Width="400"
+ Height="400"
  Name="Odometry"
 >
 <NameSpaces>
@@ -108,11 +112,11 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="OdometerAccuracy"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
+</ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -121,10 +125,10 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="D_ura"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Distance under reading amount.</Comment>
+</ReqRef><Comment>Distance under reading amount.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="0.0"
@@ -133,10 +137,10 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="D_ora"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Distance over reading amount.</Comment>
+</ReqRef><Comment>Distance over reading amount.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="0.0"
@@ -154,21 +158,21 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="V_ura"
 >
 <ReqRef
- Id="3.13.9.3.2.1"
+ Id="45c6ab5d-cd00-4092-b7fb-002e30ca1337"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Speed under reading amount.</Comment>
+</ReqRef><Comment>Speed under reading amount.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="OdometerMulticastMessage"
 >
 <ReqRef
- Id="A1.1.2.1"
+ Id="b774cb9b-3ed7-4270-b69a-b81066add7a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
+</ReqRef><Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.IdentityNumber"
  Default=""
@@ -313,14 +317,14 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="TrainIsAtStandstill"
 >
 <ReqRef
- Id="3.15.4.4"
+ Id="e9db5333-b289-4dc4-a0ff-2523b0f32009"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.15.4.7"
+</ReqRef><ReqRef
+ Id="e5f97755-8416-4822-93e4-2c3e935d4b0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -353,16 +357,8 @@ The confidence level (K) is defined as a level of probability that the true posi
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action>
-<Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action>
-<Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action>
-<Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action>
-<Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action>
-<Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action>
-<Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action>
-<Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action>
-</Actions>
+<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -381,11 +377,11 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="Accuracy"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
+</ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
 OdometerAccuracy.LowerBoundConfidenceInterval is obtained by computing Distance.Nom - Distance.Min.
 OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.Max - Distance.Nom.</Comment>
 </Variable><Variable
@@ -465,13 +461,9 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available ( Odometry.Message )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Odometry.Message )</PreCondition></PreConditions>
 <Actions>
-<Action>Odometry.Message &lt;- EMPTY</Action>
-<Action>PreviousTime &lt;- CurrentTime</Action>
-<Action>PreviousSpeed &lt;- EstimatedSpeed</Action>
-</Actions>
+<Action>Odometry.Message &lt;- EMPTY</Action><Action>PreviousTime &lt;- CurrentTime</Action><Action>PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

@@ -40,7 +40,11 @@ namespace GUI.DataDictionaryView
         public ParametersTreeNode(DataDictionary.Functions.Function item)
             : base(item, "Parameters", true, false)
         {
-            foreach (DataDictionary.Parameter parameter in item.FormalParameters)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            foreach (DataDictionary.Parameter parameter in Item.FormalParameters)
             {
                 Nodes.Add(new ParameterTreeNode(parameter));
             }

@@ -23,14 +23,14 @@
  Name="Beginning/End of ModeProfile relates to Max/Min SafeFrontEnd"
 >
 <ReqRef
- Id="3.12.4.5"
+ Id="3b16e285-2513-4123-a986-2b50cf27f60f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.12.4.6"
+</ReqRef><ReqRef
+ Id="c3a0339b-08aa-4713-aace-4e545d160b65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -42,11 +42,15 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -62,14 +66,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -92,8 +93,7 @@
     Length=&gt;200.0,
     Mode=&gt;Default.Mode.ModeProfile.LS  
 }
-IN Kernel.MA.ModeProfile.Profile</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+IN Kernel.MA.ModeProfile.Profile</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -126,20 +126,19 @@ IN Kernel.MA.ModeProfile.Profile</Action>
     TargetSpeedTimeOut =&gt; 0.0,
     ReferenceBG =&gt; 0,
     ReferenceBGLocation =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Min
 ) == -16.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Max
 ) == 13.0</Expectation></Expectations>
@@ -160,7 +159,7 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode != Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -181,12 +180,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 167.0 </Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 167.0 </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -207,12 +205,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 170.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 170.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -233,12 +230,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 396.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 396.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -259,12 +255,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 397.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 397.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode != Default.Mode.LS
 AND 
 Kernel.TrainPosition.FrontEndPosition(
@@ -293,10 +288,10 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Mode Profile OS defines Entry and Lenght of the Mode"
 >
 <ReqRef
- Id="3.12.4.2"
+ Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -308,11 +303,15 @@ Kernel.TrainPosition.FrontEndPosition(
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -328,14 +327,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -421,8 +417,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                            ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -440,13 +435,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -457,10 +452,10 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Mode Profile LS defines Entry and Lenght of the Mode"
 >
 <ReqRef
- Id="3.12.4.2"
+ Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -475,12 +470,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -566,8 +560,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                            ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -585,13 +578,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -616,10 +609,10 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Mode Profile SH defines only Entry of the Mode"
 >
 <ReqRef
- Id="3.12.4.2"
+ Id="b4a804d0-53f6-49e2-9897-24b3babe34bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -631,11 +624,15 @@ Kernel.TrainPosition.FrontEndPosition(
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -651,14 +648,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -766,9 +760,7 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                 ]
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 250.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 250.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -786,13 +778,13 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SH</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == Kernel.MA.ModeProfile.ModeProfile.Length.NA</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance ==  50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -817,10 +809,10 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="SH Mode Profile received"
 >
 <ReqRef
- Id="3.12.4.1"
+ Id="cbef1165-fc33-4ac1-994e-5f8a83f5e225"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -832,11 +824,15 @@ Kernel.TrainPosition.FrontEndPosition(
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -852,8 +848,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -960,14 +955,11 @@ Kernel.TrainPosition.FrontEndPosition(
             }
          }
                 ]
-}</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -986,10 +978,10 @@ Kernel.TrainPosition.FrontEndPosition(
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1014,10 +1006,10 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="MA without Mode Profile received"
 >
 <ReqRef
- Id="3.12.4.3"
+ Id="74a25803-8c28-4708-b506-55a76bd8bc21"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1029,11 +1021,15 @@ Kernel.TrainPosition.FrontEndPosition(
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1140,15 +1136,14 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != []</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1213,8 +1208,7 @@ Messages.EUROBALISE.SubStructure1
             }
         }             
    ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1232,7 +1226,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1243,10 +1237,10 @@ Messages.EUROBALISE.SubStructure1
  Name="MA  with ModeProfile received"
 >
 <ReqRef
- Id="3.12.4.3"
+ Id="74a25803-8c28-4708-b506-55a76bd8bc21"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1352,15 +1346,14 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1446,8 +1439,7 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1465,10 +1457,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.Profile != [] </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1493,10 +1485,10 @@ Messages.EUROBALISE.SubStructure1
  Name="LS Mode Profile received"
 >
 <ReqRef
- Id="3.12.4.1"
+ Id="cbef1165-fc33-4ac1-994e-5f8a83f5e225"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1508,11 +1500,15 @@ Messages.EUROBALISE.SubStructure1
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1528,8 +1524,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1614,14 +1609,11 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                            ]
-}</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+}</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1640,10 +1632,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1668,10 +1660,14 @@ Messages.EUROBALISE.SubStructure1
  Name="OS Mode Profile received"
 >
 <ReqRef
- Id="3.12.4.1"
+ Id="cbef1165-fc33-4ac1-994e-5f8a83f5e225"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><ReqRef
+ Id="2ef2992f-43ce-4f58-abf6-55560cf910bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1683,11 +1679,15 @@ Messages.EUROBALISE.SubStructure1
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1703,8 +1703,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1789,14 +1788,11 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                            ]
-}</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+}</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.ModeProfileIsApplicable() == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1815,10 +1811,10 @@ Messages.EUROBALISE.SubStructure1
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Mode == Default.Mode.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -1843,10 +1839,10 @@ Messages.EUROBALISE.SubStructure1
  Name="A previous list of balise groups for SH area shall be deleted or replaced by a new list"
 >
 <ReqRef
- Id="3.12.4.4"
+ Id="e543ef61-ec28-453c-9012-2aea6278273d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1858,11 +1854,15 @@ Messages.EUROBALISE.SubStructure1
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1878,10 +1878,7 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.SR</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1989,12 +1986,11 @@ Messages.EUROBALISE.SubStructure1
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Shunting.BaliseGroupsForShArea ==
 [Kernel.BaliseGroup
 {
@@ -2109,12 +2105,11 @@ NID_BG =&gt; 1212
             }
          }
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.Shunting.BaliseGroupsForShArea ==
 [Kernel.BaliseGroup
 {
@@ -2146,10 +2141,10 @@ NID_BG =&gt; 1313
  Name="New MA by INFILL shall delete the current MP after the reference location of the INFILL"
 >
 <ReqRef
- Id="3.12.4.3.1"
+ Id="2a495f6e-680c-4def-a6b5-d8bcd1f41a9d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2161,11 +2156,15 @@ NID_BG =&gt; 1313
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to receive MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2181,10 +2180,7 @@ NID_BG =&gt; 1313
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Default.Mode.OS</Action>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.OS</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2207,8 +2203,7 @@ NID_BG =&gt; 1313
     Orientation =&gt; Orientation.Nominal,
     LocationAccuracy =&gt; 5.0
 }
-IN BTM.Linking.Linkings</Action>
-<Action>BTM.LRBG &lt;- 
+IN BTM.Linking.Linkings</Action><Action>BTM.LRBG &lt;- 
 BTM.BaliseGroup {
     NID=&gt;2124,
     Orientation=&gt;Orientation.Nominal,
@@ -2218,8 +2213,7 @@ BTM.BaliseGroup {
             Position=&gt;1000.0,
             UnderReadingAmountOdo=&gt;2.0
         }
-}</Action>
-<Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+}</Action><Action>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
 {
     DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
 {
@@ -2228,26 +2222,23 @@ BTM.BaliseGroup {
         TrainRunningDirection =&gt; Orientation.Nominal
     },
     DataState =&gt; Default.DataState.Valid
-}</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
-<Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
+}</Action><Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action><Action>INSERT Kernel.MA.ModeProfile.ModeProfile 
 { 
     Distance=&gt;100.0,
     Length=&gt;1000.0,
     Mode=&gt;Default.Mode.ModeProfile.OS
 }
-IN Kernel.MA.ModeProfile.Profile</Action>
-</Actions>
+IN Kernel.MA.ModeProfile.Profile</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -2349,8 +2340,7 @@ IN Kernel.MA.ModeProfile.Profile</Action>
                }
     
                 ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2368,23 +2358,23 @@ IN Kernel.MA.ModeProfile.Profile</Action>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 600.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0
  </Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >THERE_IS_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0
  </Expectation></Expectations>
 </SubStep></SubSteps>

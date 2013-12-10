@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System.Windows.Forms;
 using DataDictionary.Interpreter;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TestRunnerView
 {
-    public partial class ExplainBox : Form
+    public partial class ExplainBox : DockContent
     {
         /// <summary>
         /// A node of the tree
@@ -52,24 +53,13 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Provides the MDI window enclosing this tree node
-            /// </summary>
-            private MainWindow MDIWindow
-            {
-                get
-                {
-                    return GUIUtils.EnclosingFinder<MainWindow>.find(TreeView); ;
-                }
-            }
-
-            /// <summary>
             /// Selects the corresponding model element
             /// </summary>
             public void SelectModel()
             {
                 if (Explanation.Element != null)
                 {
-                    MDIWindow.Select(Explanation.Element, true);
+                    GUIUtils.MDIWindow.Select(Explanation.Element, true);
                     ExplainBox.explainRichTextBox.Text = Explanation.Message;
                 }
             }

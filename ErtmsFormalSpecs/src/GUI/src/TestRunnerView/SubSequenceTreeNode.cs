@@ -44,7 +44,13 @@ namespace GUI.TestRunnerView
         public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Tests.TestCase testCase in item.TestCases)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.TestCase testCase in Item.TestCases)
             {
                 Nodes.Add(new TestCaseTreeNode(testCase));
             }
@@ -112,8 +118,8 @@ namespace GUI.TestRunnerView
         {
             ApplyTranslationRulesHandler applyTranslationRulesHandler = new ApplyTranslationRulesHandler(Item);
             ProgressDialog progress = new ProgressDialog("Applying translation rules", applyTranslationRulesHandler);
-            progress.ShowDialog(MainWindow);
-            MainWindow.RefreshModel();
+            progress.ShowDialog(GUIUtils.MDIWindow);
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         public void AddHandler(object sender, EventArgs args)
@@ -172,9 +178,11 @@ namespace GUI.TestRunnerView
             {
                 if (Window != null)
                 {
+                    SynchronizerList.SuspendSynchronization();
                     Window.setSubSequence(SubSequence);
                     EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, false);
                     EFSSystem.Runner.RunUntilStep(null);
+                    SynchronizerList.ResumeSynchronization();
                 }
             }
         }
@@ -191,7 +199,11 @@ namespace GUI.TestRunnerView
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestHandler);
             dialog.ShowDialog();
 
-            MainWindow.RefreshModel();
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
+            }
         }
         #endregion
 

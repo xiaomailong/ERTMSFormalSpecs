@@ -1,0 +1,66 @@
+<NameSpace
+ Name="VIRTUAL_BALISE_COVER_SET_BY_DRIVER"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="29bf3662-a0ca-450a-8c70-1d447bcd3e7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This message reflects the code entered by the driver to set a VBC.</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="NID_VBCMK"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_VBCMK"
+>
+<ReqRef
+ Id="d1c48944-e94f-42f8-aaf8-1410de316e3f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+<ReqRef
+ Id="e79e41c3-47e2-4f33-a829-b64006d3e98b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_VBC"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_VBC"
+>
+<ReqRef
+ Id="114edcbc-7d24-41b0-88fe-89c4ceb8ae45"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
+</NameSpace>

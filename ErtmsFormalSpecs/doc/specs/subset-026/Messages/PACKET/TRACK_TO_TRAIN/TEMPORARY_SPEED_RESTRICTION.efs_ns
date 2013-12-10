@@ -5,73 +5,116 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Transmission of temporary speed restriction.</Comment>
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="b5f18a88-808f-47eb-8d48-7a9e213ab086"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Transmission of temporary speed restriction.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="65"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_TSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_TSR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_TSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_TSR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_TSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_TSR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_FRONT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_FRONT"
 >
-<Comment></Comment>
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_TSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_TSR"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

@@ -20,21 +20,70 @@ using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
 using DataDictionary.Types;
+using GUI.BoxArrowDiagram;
+using DataDictionary.Rules;
+using DataDictionary.Variables;
+using Utils;
 
 namespace GUI.StateDiagram
 {
-    public partial class StatePanel : Panel
+    public class StatePanel : BoxArrowPanel<State, Transition>
     {
+        private System.Windows.Forms.ToolStripMenuItem addStateMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTransitionMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem deleteMenuItem;
+
+        /// <summary>
+        /// Initializes the start menu
+        /// </summary>
+        public void InitializeStartMenu()
+        {
+            addStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addTransitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            deleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            // 
+            // addStateMenuItem
+            // 
+            addStateMenuItem.Name = "addStateMenuItem";
+            addStateMenuItem.Size = new System.Drawing.Size(161, 22);
+            addStateMenuItem.Text = "Add State";
+            addStateMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
+            // 
+            // addTransitionMenuItem
+            // 
+            addTransitionMenuItem.Name = "addTransitionMenuItem";
+            addTransitionMenuItem.Size = new System.Drawing.Size(161, 22);
+            addTransitionMenuItem.Text = "Add transition";
+            addTransitionMenuItem.Click += new System.EventHandler(addArrowMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator.Name = "toolStripSeparator1";
+            toolStripSeparator.Size = new System.Drawing.Size(158, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            deleteMenuItem.Name = "toolStripMenuItem1";
+            deleteMenuItem.Size = new System.Drawing.Size(153, 22);
+            deleteMenuItem.Text = "Delete selected";
+            deleteMenuItem.Click += new System.EventHandler(deleteMenuItem1_Click);
+
+            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                addStateMenuItem,
+                addTransitionMenuItem,
+                toolStripSeparator,
+                deleteMenuItem});
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
         public StatePanel()
+            : base()
         {
-            InitializeComponent();
-
-            MouseDown += new MouseEventHandler(StatePanel_MouseDown);
-            MouseMove += new MouseEventHandler(StatePanel_MouseMove);
-            MouseUp += new MouseEventHandler(StatePanel_MouseUp);
+            InitializeStartMenu();
         }
 
         /// <summary>
@@ -42,599 +91,161 @@ namespace GUI.StateDiagram
         /// </summary>
         /// <param name="container"></param>
         public StatePanel(IContainer container)
+            : base()
         {
             container.Add(this);
 
-            InitializeComponent();
-            MouseDown += new MouseEventHandler(StatePanel_MouseDown);
-            MouseMove += new MouseEventHandler(StatePanel_MouseMove);
+            InitializeStartMenu();
         }
 
         /// <summary>
-        /// The transition that is currently being changed
+        /// Method used to create a box
         /// </summary>
-        private TransitionControl changingTransition = null;
-
-        /// <summary>
-        /// The action that is applied on the transition
-        /// </summary>
-        private enum ChangeAction { None, InitialState, TargetState };
-        private ChangeAction chaningTransitionAction = ChangeAction.None;
-
-        void StatePanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                Point clickPoint = new Point(e.X, e.Y);
-                foreach (TransitionControl transition in transitions.Values)
-                {
-                    if (around(transition.StartLocation, clickPoint))
-                    {
-                        changingTransition = transition;
-                        changingTransition.Parent = this;   // I do not know why...
-                        chaningTransitionAction = ChangeAction.InitialState;
-                        break;
-                    }
-                    if (around(transition.TargetLocation, clickPoint))
-                    {
-                        changingTransition = transition;
-                        changingTransition.Parent = this;   // I do not know why...
-                        chaningTransitionAction = ChangeAction.TargetState;
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles the move event, which, in case of a transition is selected to be modified, 
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void StatePanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (changingTransition != null && chaningTransitionAction != ChangeAction.None)
-            {
-                foreach (StateControl state in states.Values)
-                {
-                    if ((e.X > state.Location.X && e.X < state.Location.X + state.Width) &&
-                        (e.Y > state.Location.Y && e.Y < state.Location.Y + state.Height))
-                    {
-                        switch (chaningTransitionAction)
-                        {
-                            case ChangeAction.InitialState:
-                                if (changingTransition.Transition.InitialState != state.State)
-                                {
-                                    changingTransition.SetInitialState(state.State);
-                                }
-                                break;
-                            case ChangeAction.TargetState:
-                                if (changingTransition.Transition.TargetState != state.State)
-                                {
-                                    if (changingTransition.Transition.InitialState != null)
-                                    {
-                                        changingTransition.SetTargetState(state.State);
-                                    }
-                                    else
-                                    {
-                                        StateMachine.setInitialState(state.State.Name);
-                                        RefreshControl();
-                                        Refresh();
-                                    }
-                                }
-                                break;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-
-        void StatePanel_MouseUp(object sender, MouseEventArgs e)
-        {
-            changingTransition = null;
-            chaningTransitionAction = ChangeAction.None;
-        }
-
-        /// <summary>
-        /// The maximum delta when considering if two points are near one from the other
-        /// </summary>
-        private const int MAX_DELTA = 5;
-
-        /// <summary>
-        /// Indicates whether two points are near one from the other
-        /// </summary>
-        /// <param name="p1"></param>
-        /// <param name="p2"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        private bool around(Point p1, Point p2)
+        public override BoxControl<State, Transition> createBox(State model)
         {
-            return Math.Abs(p1.X - p2.X) < MAX_DELTA && Math.Abs(p1.Y - p2.Y) < MAX_DELTA;
+            BoxControl<State, Transition> retVal = new StateControl();
+            retVal.Model = model;
+
+            return retVal;
         }
 
         /// <summary>
-        /// Handles the add state event
+        /// Method used to create an arrow
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddStateHandler(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// Handles the add transition event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddTransitionHandler(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// Provides access to the enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get
-            {
-                MainWindow retVal = null;
-
-                Control current = this;
-                while (current != null && retVal == null)
-                {
-                    retVal = current as MainWindow;
-                    current = current.Parent;
-                }
-
-                return retVal;
-            }
-        }
-
-        /// <summary>
-        /// The dictionary used to keep the relation between states and states controls
-        /// </summary>
-        private Dictionary<State, StateControl> states = new Dictionary<State, StateControl>();
-
-        /// <summary>
-        /// Provides the state control which corresponds to the state provided
-        /// </summary>
-        /// <param name="state"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        public StateControl getStateControl(State state)
+        public override ArrowControl<State, Transition> createArrow(Transition model)
         {
-            StateControl retVal = null;
+            ArrowControl<State, Transition> retVal = new TransitionControl();
+            retVal.Model = model;
 
-            if (state != null)
+            return retVal;
+        }
+
+        /// <summary>
+        /// The state machine displayed by this panel
+        /// </summary>
+        public StateMachine StateMachine { get; set; }
+
+        /// <summary>
+        /// The state machine variable (if any) displayed by this panel
+        /// </summary>
+        public IVariable StateMachineVariable { get; set; }
+
+        /// <summary>
+        /// Provides the boxes that need be displayed
+        /// </summary>
+        /// <returns></returns>
+        public override List<State> getBoxes()
+        {
+            List<State> retVal = new List<State>();
+
+            foreach (State state in StateMachine.States)
             {
-                if (states.ContainsKey(state))
-                {
-                    retVal = states[state];
-                }
+                retVal.Add(state);
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// The dictionary used to keep the relation between transitions and transition controls
+        /// Provides the arrows that need be displayed
         /// </summary>
-        private Dictionary<DataDictionary.Rules.Transition, TransitionControl> transitions = new Dictionary<DataDictionary.Rules.Transition, TransitionControl>();
-
-        /// <summary>
-        /// Provides the transition control which corresponds to the transition provided
-        /// </summary>
-        /// <param name="transition"></param>
         /// <returns></returns>
-        public TransitionControl getTransitionControl(DataDictionary.Rules.Transition transition)
+        public override List<Transition> getArrows()
         {
-            TransitionControl retVal = null;
-
-            if (transitions.ContainsKey(transition))
-            {
-                retVal = transitions[transition];
-            }
-
-            return retVal;
+            return StateMachine.Transitions;
         }
 
-        /// <summary>
-        /// Provides the transition control which corresponds to the rule
-        /// </summary>
-        /// <param name="ruleCondition"></param>
-        /// <returns></returns>
-        public TransitionControl getTransitionControl(DataDictionary.Rules.RuleCondition ruleCondition)
+        private void addBoxMenuItem_Click(object sender, EventArgs e)
         {
-            TransitionControl retVal = null;
+            State state = (State)DataDictionary.Generated.acceptor.getFactory().createState();
+            state.Name = "State" + (StateMachine.States.Count + 1);
 
-            foreach (TransitionControl control in transitions.Values)
+            if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
             {
-                if (control.Transition.RuleCondition == ruleCondition)
+                DataDictionaryView.StateMachineTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as DataDictionaryView.StateMachineTreeNode;
+                if (node != null)
                 {
-                    retVal = control;
-                    break;
-                }
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// The state machine currently displayed
-        /// </summary>
-        private StateMachine stateMachine;
-        public StateMachine StateMachine
-        {
-            get { return stateMachine; }
-            set
-            {
-                stateMachine = value;
-                RefreshControl();
-            }
-        }
-
-        /// <summary>
-        /// The state variable for this state machine
-        /// </summary>
-        public DataDictionary.Variables.IVariable StateMachineVariable { get; set; }
-
-        /// <summary>
-        /// Indicates whether the layout should be suspended
-        /// </summary>
-        bool refreshingControl = false;
-
-        /// <summary>
-        /// Refreshes the layout, if it is not suspended
-        /// </summary>
-        public override void Refresh()
-        {
-            if (!refreshingControl)
-            {
-                base.Refresh();
-            }
-        }
-
-        /// <summary>
-        /// Refreshes the control according to the state machine
-        /// </summary>
-        public void RefreshControl()
-        {
-            try
-            {
-                refreshingControl = true;
-                SuspendLayout();
-
-                foreach (StateControl control in states.Values)
-                {
-                    control.Parent = null;
-                }
-                states.Clear();
-
-                foreach (TransitionControl control in transitions.Values)
-                {
-                    control.Parent = null;
-                }
-                transitions.Clear();
-
-                if (stateMachine != null)
-                {
-                    Text = stateMachine.Name;
-                    foreach (State state in stateMachine.States)
-                    {
-                        StateControl stateControl = new StateControl();
-                        states[state] = stateControl;
-                        stateControl.Parent = this;
-                        stateControl.State = state;
-                    }
-                    foreach (DataDictionary.Rules.Transition transition in stateMachine.Transitions)
-                    {
-                        TransitionControl transitionControl = new TransitionControl();
-                        transitions[transition] = transitionControl;
-                        transitionControl.Parent = this;
-                        transitionControl.Transition = transition;
-                    }
-                    UpdateTransitionPosition();
-                }
-            }
-            finally
-            {
-                refreshingControl = false;
-                ResumeLayout(true);
-            }
-
-            Refresh();
-        }
-
-        /// <summary>
-        /// Handles the rectangles that are already allocated in the diagram
-        /// </summary>
-        private class BoxAllocation
-        {
-            /// <summary>
-            /// The allocated rectangles
-            /// </summary>
-            List<Rectangle> AllocatedBoxes = new List<Rectangle>();
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            public BoxAllocation()
-            {
-            }
-
-            /// <summary>
-            /// Finds a rectangle which intersects with the current rectangle
-            /// </summary>
-            /// <param name="rectangle"></param>
-            /// <returns></returns>
-            public Rectangle Intersects(Rectangle rectangle)
-            {
-                Rectangle retVal = Rectangle.Empty;
-
-                foreach (Rectangle current in AllocatedBoxes)
-                {
-                    if (current.IntersectsWith(rectangle))
-                    {
-                        retVal = current;
-                        break;
-                    }
-                }
-
-                return retVal;
-            }
-
-            /// <summary>
-            /// Allocates a new rectangle 
-            /// </summary>
-            /// <param name="rectangle"></param>
-            public void Allocate(Rectangle rectangle)
-            {
-                AllocatedBoxes.Add(rectangle);
-            }
-        }
-
-        /// <summary>
-        /// The allocated boxes
-        /// </summary>
-        private BoxAllocation AllocatedBoxes;
-
-        /// <summary>
-        /// Provides a distance between two points
-        /// </summary>
-        /// <param name="p1"></param>
-        /// <param name="p2"></param>
-        /// <returns></returns>
-        private int distance(Point p1, Point p2)
-        {
-            return Math.Abs(p1.X - p2.X) + Math.Abs(p1.Y - p2.Y);
-        }
-
-        /// <summary>
-        /// Updates the transition position to ensure that no overlap exists
-        ///   - on the arrows
-        ///   - on the transition text
-        /// </summary>
-        public void UpdateTransitionPosition()
-        {
-            ComputeTransitionArrowPosition();
-            ComputeTransitionTextPosition();
-        }
-
-        /// <summary>
-        /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
-        /// </summary>
-        static int HORIZONTAL_SHIFT_SIZE = 40;
-
-        /// <summary>
-        /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
-        /// </summary>
-        static int VERTICAL_SHIFT_SIZE = 20;
-
-        /// <summary>
-        /// Ensures that two transitions do not overlap by computing an offset between the transitions
-        /// </summary>
-        private void ComputeTransitionArrowPosition()
-        {
-            List<TransitionControl> workingSet = new List<TransitionControl>();
-            workingSet.AddRange(transitions.Values);
-
-            while (workingSet.Count > 1)
-            {
-                TransitionControl t1 = workingSet[0];
-                workingSet.Remove(t1);
-
-                // Compute the set of transitions overlapping with t1
-                List<TransitionControl> overlap = new List<TransitionControl>();
-                overlap.Add(t1);
-                foreach (TransitionControl t in workingSet)
-                {
-                    if (t.Transition.InitialState == t1.Transition.InitialState &&
-                        t.Transition.TargetState == t1.Transition.TargetState)
-                    {
-                        overlap.Add(t);
-                    }
-                    else if ((t.Transition.InitialState == t1.Transition.TargetState &&
-                        t.Transition.TargetState == t1.Transition.InitialState))
-                    {
-                        overlap.Add(t);
-                    }
-                }
-
-                // Remove all transitions of this overlap class from the working set
-                foreach (TransitionControl t in overlap)
-                {
-                    workingSet.Remove(t);
-                }
-
-                // Shift transitions of this overlap set if they are overlapping (that is, if the set size > 1)
-                if (overlap.Count > 1)
-                {
-                    Point shift;        // the shift to be applied to the current transition
-                    Point offset;       // the offset to apply on all transitions of this overlap set
-
-                    double angle = overlap[0].Angle;
-                    if ((angle > Math.PI / 4 && angle < 3 * Math.PI / 4) ||
-                        (angle < -Math.PI / 4 && angle > -3 * Math.PI / 4))
-                    {
-                        // Horizontal shift
-                        shift = new Point(-(overlap.Count - 1) * HORIZONTAL_SHIFT_SIZE / 2, 0);
-                        offset = new Point(HORIZONTAL_SHIFT_SIZE, 0);
-                    }
-                    else
-                    {
-                        // Vertical shift
-                        shift = new Point(0, -(overlap.Count - 1) * VERTICAL_SHIFT_SIZE / 2);
-                        offset = new Point(0, VERTICAL_SHIFT_SIZE);
-                    }
-
-                    int i = 0;
-                    foreach (TransitionControl transition in overlap)
-                    {
-                        transition.Offset = shift;
-                        shift.Offset(offset);
-
-                        if (transition.TargetStateControl == null)
-                        {
-                            transition.EndOffset = new Point(0, VERTICAL_SHIFT_SIZE * i / 2);
-                        }
-                        i = i + 1;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Computes the position of the transition texts, following the transition arrow, to avoid text overlap
-        /// </summary>
-        private void ComputeTransitionTextPosition()
-        {
-            AllocatedBoxes = new BoxAllocation();
-            foreach (TransitionControl transition in transitions.Values)
-            {
-                Point center = transition.getCenter();
-                Point upSlide = Slide(transition, center, TransitionControl.SlideDirection.Up);
-                Point downSlide = Slide(transition, center, TransitionControl.SlideDirection.Down);
-
-                Rectangle boundingBox;
-                if (distance(center, upSlide) <= distance(center, downSlide))
-                {
-                    boundingBox = transition.getTextBoundingBox(upSlide);
+                    node.AddState(state);
                 }
                 else
                 {
-                    boundingBox = transition.getTextBoundingBox(downSlide);
+                    StateMachine.appendStates(state);
                 }
-
-                transition.Location = new Point(boundingBox.X, boundingBox.Y);
-                AllocatedBoxes.Allocate(boundingBox);
-            }
-        }
-
-        /// <summary>
-        /// Tries to slide the transition up following the transition arrow to avoid any collision
-        /// with the already allocated bounding boxes
-        /// </summary>
-        /// <param name="transition"></param>
-        /// <param name="center"></param>
-        /// <returns></returns>
-        private Point Slide(TransitionControl transition, Point center, TransitionControl.SlideDirection direction)
-        {
-            Point retVal = center;
-            Rectangle colliding = AllocatedBoxes.Intersects(transition.getTextBoundingBox(retVal));
-
-            while (colliding != Rectangle.Empty)
-            {
-                retVal = transition.Slide(retVal, colliding, direction);
-                colliding = AllocatedBoxes.Intersects(transition.getTextBoundingBox(retVal));
             }
 
-            return retVal;
-        }
-
-        private Point currentPosition = new Point(1, 1);
-        private static int X_OFFSET = StateControl.DEFAULT_SIZE.Width + 10;
-        private static int Y_OFFSET = StateControl.DEFAULT_SIZE.Height + 10;
-
-        /// <summary>
-        /// Provides the next available position in the state diagram
-        /// </summary>
-        /// <returns></returns>
-        public Point GetNextPosition()
-        {
-            Point retVal = new Point(currentPosition.X, currentPosition.Y);
-
-            currentPosition.Offset(X_OFFSET, 0);
-            if (currentPosition.X > Size.Width - StateControl.DEFAULT_SIZE.Width)
-            {
-                currentPosition = new Point(1, currentPosition.Y + Y_OFFSET);
-            }
-
-            return retVal;
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            foreach (StateControl control in states.Values)
-            {
-                control.PaintInStatePanel(e);
-            }
-
-            foreach (TransitionControl control in transitions.Values)
-            {
-                control.PaintInStatePanel(e);
-            }
-        }
-
-        internal void ControlHasMoved()
-        {
             RefreshControl();
         }
 
-        /// <summary>
-        /// Provides the enclosing state diagram window
-        /// </summary>
-        StateDiagramWindow StateDiagramWindow
+        private void addArrowMenuItem_Click(object sender, EventArgs e)
         {
-            get { return GUIUtils.EnclosingFinder<StateDiagramWindow>.find(this); }
+            if (StateMachine.States.Count > 1)
+            {
+                DataDictionary.ObjectFactory factory = (DataDictionary.ObjectFactory)DataDictionary.Generated.acceptor.getFactory();
+                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)factory.createRule();
+                rule.Name = "Rule" + (StateMachine.Rules.Count + 1);
+
+                DataDictionary.Rules.RuleCondition ruleCondition = (DataDictionary.Rules.RuleCondition)factory.createRuleCondition();
+                ruleCondition.Name = "RuleCondition" + (rule.RuleConditions.Count + 1);
+                rule.appendConditions(ruleCondition);
+
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)factory.createAction();
+                action.Expression = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
+                ruleCondition.appendActions(action);
+
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
+                {
+                    DataDictionaryView.StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
+                    DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
+                }
+
+                RefreshControl();
+                Refresh();
+
+                ArrowControl<State, Transition> control = getArrowControl(ruleCondition);
+                Select(control, false);
+            }
         }
 
-        /// <summary>
-        /// Selects a model element
-        /// </summary>
-        /// <param name="model"></param>
-        public void Select(object model)
+        private void deleteMenuItem1_Click(object sender, EventArgs e)
         {
-            if (StateDiagramWindow != null)
+            IModelElement model = null;
+
+            if (Selected is BoxControl<State, Transition>)
             {
-                StateDiagramWindow.Select(model);
+                model = (Selected as BoxControl<State, Transition>).Model;
             }
-            else
+            else if (Selected is ArrowControl<State, Transition>)
             {
-                if (model is StateControl)
+                ArrowControl<State, Transition> control = Selected as ArrowControl<State, Transition>;
+                RuleCondition ruleCondition = control.Model.RuleCondition;
+                Rule rule = ruleCondition.EnclosingRule;
+                if (rule.countConditions() == 1)
                 {
-                    StateControl control = model as StateControl;
-                    MDIWindow.Select(control.State);
+                    model = rule;
                 }
-                else if (model is TransitionControl)
+                else
                 {
-                    TransitionControl control = model as TransitionControl;
-                    MDIWindow.Select(control.Transition.RuleCondition);
+                    model = ruleCondition;
                 }
+
             }
 
+            if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
+            {
+                BaseTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(model);
+                if (node != null)
+                {
+                    node.Delete();
+                }
+            }
+            Select(null, false);
+
+            RefreshControl();
             Refresh();
-        }
-
-        /// <summary>
-        /// Indicates whether the control is selected
-        /// </summary>
-        /// <param name="transitionControl"></param>
-        /// <returns></returns>
-        internal bool isSelected(Control control)
-        {
-            return StateDiagramWindow.isSelected(control);
         }
     }
 }

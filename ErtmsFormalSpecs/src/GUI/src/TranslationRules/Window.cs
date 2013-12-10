@@ -15,29 +15,30 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TranslationRules
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : DockContent, IBaseForm
     {
         public MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return editTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentRichTextBox.TextBox; }
-        }
-
         public RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
+        }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
+        {
+            get { return null; }
         }
 
         public BaseTreeView subTreeView
@@ -63,7 +64,6 @@ namespace GUI.TranslationRules
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messageRichTextBox.AutoComplete = false;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
@@ -80,7 +80,7 @@ namespace GUI.TranslationRules
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
         /// <summary>
         /// Refreshes the display
@@ -93,26 +93,13 @@ namespace GUI.TranslationRules
             base.Refresh();
         }
 
-        private void editTextBox_TextChanged(object sender, EventArgs e)
-        {
-            translationTreeView.HandleExpressionTextChanged(editTextBox.Text);
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
         /// <summary>
         /// Clears messages for the element stored in the tree view in the window
         /// </summary>
         public void Clear()
         {
             translationTreeView.ClearMessages();
-            MDIWindow.Refresh();
+            GUIUtils.MDIWindow.Refresh();
         }
 
         /// <summary>
@@ -121,11 +108,6 @@ namespace GUI.TranslationRules
         public void RefreshModel()
         {
             translationTreeView.RefreshModel();
-        }
-
-        private void editTextBox_TextChanged_1(object sender, EventArgs e)
-        {
-            translationTreeView.HandleExpressionTextChanged(editTextBox.Text);
         }
 
         /// <summary>
@@ -174,11 +156,6 @@ namespace GUI.TranslationRules
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        private void commentRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            TreeView.HandleCommentTextChanged(CommentsTextBox.Text);
         }
     }
 }

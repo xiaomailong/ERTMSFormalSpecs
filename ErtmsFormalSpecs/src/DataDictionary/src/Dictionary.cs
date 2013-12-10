@@ -23,7 +23,7 @@ using Utils;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder
+    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs
     {
         /// <summary>
         /// The file path associated to the dictionary
@@ -321,10 +321,19 @@ namespace DataDictionary
         /// <summary>
         /// The specifications related to this rule set
         /// </summary>
-        public Specification.Specification Specifications
+        public ArrayList Specifications
         {
-            get { return (DataDictionary.Specification.Specification)getSpecification(); }
-            set { setSpecification(value); }
+            get
+            {
+                ArrayList retVal = allSpecifications();
+
+                if (retVal == null)
+                {
+                    retVal = new ArrayList();
+                }
+
+                return retVal;
+            }
         }
 
         /// <summary>
@@ -676,8 +685,7 @@ namespace DataDictionary
             ClearMessages();
 
             // Rebuilds everything
-            Interpreter.Compiler compiler = new Interpreter.Compiler(EFSSystem, EFSSystem.ShouldRebuild);
-            compiler.Compile();
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
 
             // Check rules
@@ -707,7 +715,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkUnimplementedTests()
         {
-            ClearMessages();
             UnimplementedTestVisitor visitor = new UnimplementedTestVisitor();
             visitor.visit(this, true);
         }
@@ -730,7 +737,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkNotTranslatedTests()
         {
-            ClearMessages();
             NotTranslatedTestVisitor visitor = new NotTranslatedTestVisitor();
             visitor.visit(this, true);
         }
@@ -753,7 +759,6 @@ namespace DataDictionary
         /// </summary>
         public void MarkNotImplementedTranslations()
         {
-            ClearMessages();
             NotImplementedTranslationVisitor visitor = new NotImplementedTranslationVisitor();
             visitor.visit(this, true);
         }
@@ -817,17 +822,12 @@ namespace DataDictionary
 
                 if (element != null)
                 {
-                    element.Messages.Clear();
+                    element.ClearMessages();
                 }
+
+                base.visit(obj, visitSubNodes);
             }
         }
-
-
-        public void ExportFunctionalBlocks()
-        {
-
-        }
-
 
         /// <summary>
         /// Creates a dictionary with pairs paragraph - list of its implementations
@@ -1029,6 +1029,89 @@ namespace DataDictionary
                 {
                     appendTests(item);
                 }
+            }
+        }
+
+        public ICollection<Paragraph> AllParagraphs
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.AllParagraphs)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+        /// <summary>
+        /// Gets all paragraphs from a dictionary
+        /// </summary>
+        /// <param name="paragraphs"></param>
+        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        {
+            foreach (Specification.Specification specification in Specifications)
+            {
+                specification.GetParagraphs(paragraphs);
+            }
+        }
+
+        public ICollection<Paragraph> ApplicableParagraphs
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.ApplicableParagraphs)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> SpecIssues
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.SpecIssues)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        public ICollection<Paragraph> DesignChoices
+        {
+            get
+            {
+                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+
+                foreach (Specification.Specification specification in Specifications)
+                {
+                    foreach (Paragraph paragraph in specification.DesignChoices)
+                    {
+                        retVal.Add(paragraph);
+                    }
+                }
+
+                return retVal;
             }
         }
     }

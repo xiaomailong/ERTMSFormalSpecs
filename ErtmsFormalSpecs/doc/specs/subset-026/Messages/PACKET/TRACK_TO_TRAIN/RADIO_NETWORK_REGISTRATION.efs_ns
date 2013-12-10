@@ -5,37 +5,61 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet to give the identity of the Radio Network to which a registration shall be enforced.</Comment>
+<ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="0b59c0f4-e40a-435a-92a4-9c70b6b857dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Packet to give the identity of the Radio Network to which a registration shall be enforced.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="45"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_MN"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MN"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

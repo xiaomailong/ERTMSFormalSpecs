@@ -35,6 +35,14 @@
  Value="2147483648"
  Name="Infinity"
 >
+</EnumValue><EnumValue
+ Value="2147483647"
+ Name="Now"
+>
+</EnumValue><EnumValue
+ Value="2147483646"
+ Name="Unknown"
+>
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
@@ -166,8 +174,7 @@
  Name="Empty"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( speed ) )</PreCondition>
-</PreConditions>
+<PreCondition>NOT ( Available ( speed ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Always"
@@ -194,29 +201,25 @@
  Name="Empty"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( length ) )</PreCondition>
-</PreConditions>
+<PreCondition>NOT ( Available ( length ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="10 cm"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length * 10.0 )</Expression>
 </Case><Case
  Name="1 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length )</Expression>
 </Case><Case
  Name="10 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Length ( length / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -260,22 +263,19 @@
  Name="10 cm"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) / 10.0 )</Expression>
 </Case><Case
  Name="1 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( length ) </Expression>
 </Case><Case
  Name="10 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -298,29 +298,25 @@
  Name="Empty"
 >
 <PreConditions>
-<PreCondition>NOT ( Available ( distance ) )</PreCondition>
-</PreConditions>
+<PreCondition>NOT ( Available ( distance ) )</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="10 cm"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance * 10.0 )</Expression>
 </Case><Case
  Name="1 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance )</Expression>
 </Case><Case
  Name="10 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>MessageTypes.Distance ( distance / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -343,22 +339,19 @@
  Name="10 cm"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_cm_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) / 10.0 )</Expression>
 </Case><Case
  Name="1 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._1_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( distance )</Expression>
 </Case><Case
  Name="10 m"
 >
 <PreConditions>
-<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition>
-</PreConditions>
+<PreCondition>scale == Messages.Q_SCALE._10_m_scaleC</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function

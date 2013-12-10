@@ -1,4 +1,8 @@
 <NameSpace
+ X="600"
+ Y="1600"
+ Width="700"
+ Height="1000"
  Name="EURORADIO"
 >
 <NameSpaces>
@@ -9,17 +13,28 @@
  Name="TrainData"
 >
 </NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="1"
+ MaxValue="2"
+ Precision="IntegerPrecision"
+ Default="1"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalID"
+>
+</Range></Ranges>
 <Enumerations>
 <Enum
- Default="SafeRadioConnection.NoConnection"
+ Default="SafeRadioConnectionStatus.NoConnection"
  Implemented="TRUE"
  Name="SafeRadioConnectionStatus"
 >
 <ReqRef
- Id="3.5.7.1"
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="NoConnection"
@@ -44,26 +59,26 @@
  Name="TrainEnd"
 >
 <ReqRef
- Id="7.5.1.113"
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.b"
+</ReqRef><ReqRef
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.c"
+</ReqRef><ReqRef
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.1"
+</ReqRef><ReqRef
+ Id="d61ea269-686c-486d-9852-1fd7e6f88c24"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.a"
+</ReqRef><ReqRef
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="1"
  Name="MaxSafeFrontEnd"
@@ -203,22 +218,22 @@
  Name="RadioSessionInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.2.13"
+</ReqRef><ReqRef
+ Id="711a8f6b-f758-4405-bb80-f9b331940c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.3.5"
+</ReqRef><ReqRef
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.3.5.3"
+</ReqRef><ReqRef
+ Id="f6cda523-6b70-489d-a6dd-e29b33d2a772"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="EURORADIO.RadioNetworkId"
  Default=""
  Mode="Internal"
@@ -265,41 +280,43 @@
  Name="PositionLocation"
 >
 <ReqRef
- Id="3.6.5.1.5.c"
+ Id="12080437-12c5-47ab-9aec-ceced6bba68f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.11"
+ Id="26b2f0b0-1aee-4778-99cf-b5d01eb56627"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrainEnd"
  Default=""
  Mode="Incoming"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainEnd"
 >
 <ReqRef
- Id="7.5.1.113"
+ Id="e5ec5ab9-bbf7-43ce-aee2-703517236f43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.49"
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Data state and the value of the RBC/RIU system version.</Comment>
+</ReqRef><Comment>Data state and the value of the RBC/RIU system version.</Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default=""
@@ -323,10 +340,10 @@
  Name="RadioSession"
 >
 <ReqRef
- Id="3.5.2.1"
+ Id="becb430f-a4f2-4817-ad08-3672ed05f855"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Procedures>
+</ReqRef><Procedures>
 <Procedure
  NeedsRequirement="FALSE"
  Name="SendTerminationOfCommunicationSessionMessage"
@@ -416,11 +433,11 @@
  NeedsRequirement="FALSE"
 >
 <ReqRef
- Id="3.5.3.4.1"
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -436,13 +453,9 @@
  Name="Connect"
 >
 <PreConditions>
-<PreCondition>Connect</PreCondition>
-</PreConditions>
+<PreCondition>Connect</PreCondition></PreConditions>
 <Actions>
-<Action>EuroradioConnection.Connect()</Action>
-<Action>THIS &lt;- Connecting</Action>
-<Action>Connect &lt;- False</Action>
-</Actions>
+<Action>EuroradioConnection.Connect()</Action><Action>THIS &lt;- Connecting</Action><Action>Connect &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -460,46 +473,42 @@
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="&lt;Rule1&gt;"
+ Name="Handle system version"
 >
 <ReqRef
- Id="3.5.3.8"
+ Id="02f20f26-3445-49b9-95cf-a6948ab029b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SystemVersionMatch"
 >
 <ReqRef
- Id="3.5.3.8.a"
+ Id="790cf49e-a85c-4110-b567-fc5d57052339"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Initialized</Action>
-<Action>SendVersionMessage(SystemVersion.Matching)</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Initialized</Action><Action>SendVersionMessage(SystemVersion.Matching)</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="SystemVersionMismatch"
 >
 <ReqRef
- Id="3.5.3.8.b"
+ Id="25af834a-3a24-459b-b5c8-97b85eddb2e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.5.1.2"
+</ReqRef><ReqRef
+ Id="21b52bea-13d1-437e-9aec-4d66149f68d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-<Action>SendVersionMessage(SystemVersion.NonMatching)</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action><Action>SendVersionMessage(SystemVersion.NonMatching)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -517,7 +526,7 @@
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="&lt;Rule1&gt;"
+ Name="Handle connection state"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -526,32 +535,25 @@
  Name="ConnectionLost"
 >
 <ReqRef
- Id="3.5.4.1"
+ Id="308624ea-ea91-4451-b8c4-1cfbc9094f8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Subset37Connection.ConnectionLost == True</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Subset37Connection.ConnectionLost == True</PreCondition></PreConditions>
 <Actions>
-<Action>ConnectionLostTime &lt;- Kernel.CurrentTime</Action>
-<Action>THIS &lt;- RadioSessionState.ConnectionLost</Action>
-</Actions>
+<Action>ConnectionLostTime &lt;- Kernel.CurrentTime</Action><Action>THIS &lt;- RadioSessionState.ConnectionLost</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Terminate"
 >
 <ReqRef
- Id="3.5.5.2.1"
+ Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Terminate == True</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Terminate == True</PreCondition></PreConditions>
 <Actions>
-<Action>RadioSession.SendTerminationOfCommunicationSessionMessage()</Action>
-<Action>THIS &lt;- RadioSessionState.Terminating</Action>
-<Action>Terminate &lt;- False</Action>
-</Actions>
+<Action>RadioSession.SendTerminationOfCommunicationSessionMessage()</Action><Action>THIS &lt;- RadioSessionState.Terminating</Action><Action>Terminate &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Otherwise"
@@ -559,8 +561,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.ProcessAllMessages()</Action>
-</Actions>
+<Action>RadioSession.ProcessAllMessages()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -581,10 +582,10 @@
  Name="Reconnect"
 >
 <ReqRef
- Id="3.5.3.7"
+ Id="fff58fab-5102-4a71-bbc4-ce7f2e1ea7d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -592,21 +593,17 @@
  Name="ReconnectIfOutOfRadioHole"
 >
 <ReqRef
- Id="3.5.3.4.f"
+ Id="752d0832-7cfa-4424-96f7-d3fbb447a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.4.2"
+</ReqRef><ReqRef
+ Id="529343f5-9881-4318-8dcc-53dade4fe1df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Kernel.TrackDescription.TrackConditions.InsideRadioHole == False</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>NOT  Kernel.TrackDescription.TrackConditions.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
-<Action>RadioSession.Subset37Connection.Connect()</Action>
-<Action>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action>
-<Action>THIS &lt;- RadioSessionState.Connecting</Action>
-</Actions>
+<Action>RadioSession.Subset37Connection.Connect()</Action><Action>ConnectionAttemptsCounter &lt;- (ConnectionAttemptsCounter + 1)</Action><Action>THIS &lt;- RadioSessionState.Connecting</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -627,50 +624,43 @@
  Name="Connecting"
 >
 <ReqRef
- Id="3.5.4.3"
+ Id="5342093f-7355-4153-b42e-b0eb8bb14b89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="EuroradioConnected"
 >
 <PreConditions>
-<PreCondition>Subset37Connection.Connected</PreCondition>
-</PreConditions>
+<PreCondition>Subset37Connection.Connected</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSession.RadioSessionState.Initializing</Action>
-<Action>SendInitiationOfComSessionMessage()</Action>
-</Actions>
+<Action>THIS &lt;- RadioSession.RadioSessionState.Initializing</Action><Action>SendInitiationOfComSessionMessage()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="TerminateRequest"
 >
 <ReqRef
- Id="3.5.5.7"
+ Id="e1848200-b260-492c-a722-3b64311cb97f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.Subset37Connection.Disconnect()</Action>
-<Action>THIS &lt;- RadioSessionState.Inactive</Action>
-</Actions>
+<Action>RadioSession.Subset37Connection.Disconnect()</Action><Action>THIS &lt;- RadioSessionState.Inactive</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="RequestTimeout"
 >
 <ReqRef
- Id="3.5.4.2.1"
+ Id="249d841a-1bca-4d29-8e4c-51ce7db07de4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>((Kernel.CurrentTime - ConnectionLostTime) &gt; AdditionalDelayTimeToDisconnection)</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -699,7 +689,7 @@
 <Rule
  Priority="Processing"
  NeedsRequirement="FALSE"
- Name="&lt;Rule1&gt;"
+ Name="Handle session end"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -708,28 +698,25 @@
  Name="TerminationAckedByTrackside"
 >
 <ReqRef
- Id="3.5.5.2.3"
+ Id="e094e23a-bd94-4440-8632-705782494f35"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>Terminate</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>Terminate</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- RadioSessionState.Terminated</Action>
-</Actions>
+<Action>THIS &lt;- RadioSessionState.Terminated</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="ProcessAcks"
 >
 <ReqRef
- Id="3.5.5.6"
+ Id="e65c9779-618e-4a55-97c9-4038b3410eaf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
-<Action>RadioSession.ProcessAckMessages()</Action>
-</Actions>
+<Action>RadioSession.ProcessAckMessages()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -777,6 +764,15 @@
  NeedsRequirement="FALSE"
  Name="RadioSessions"
 >
+</Collection><Collection
+ TypeName="MobileTerminalID"
+ MaxSize="2"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MobileTerminalIDs"
+>
+<Comment>probably 2 is the maximum number of perceiveable MobileTerminals mounted on a loco. Requirement needed. #morido, 13/10/14</Comment>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -848,8 +844,7 @@
  Name="Establish"
 >
 <PreConditions>
-<PreCondition>Q_RBC == Messages.Q_RBC.Establish_communication_session</PreCondition>
-</PreConditions>
+<PreCondition>Q_RBC == Messages.Q_RBC.Establish_communication_session</PreCondition></PreConditions>
 <Expression>SessionAction.Establish</Expression>
 </Case><Case
  Name="Terminate"
@@ -905,6 +900,27 @@
 >
 <Expression>CurrentRadioSession.RadioSessionState in RadioSession.RadioSessionState.Inactive</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="OneMobileTerminalIsAvailable"
+>
+<ReqRef
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Cases>
+<Case
+ Name="AtLeastOneIsAvailable"
+>
+<PreConditions>
+<PreCondition>EURORADIO.MobileTerminals != []</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -912,18 +928,18 @@
  Name="OpenRBCSession"
 >
 <ReqRef
- Id="3.5.3.1"
+ Id="410ad67d-6b5a-46f5-9694-35e5954fcb65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.3.4.1"
+</ReqRef><ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.5.3.5.2"
+</ReqRef><ReqRef
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -939,44 +955,35 @@
  Name="NoActiveSession"
 >
 <PreConditions>
-<PreCondition>NoSession()</PreCondition>
-</PreConditions>
+<PreCondition>NoSession()</PreCondition></PreConditions>
 <Actions>
-<Action>CurrentRadioSession.Connect &lt;- True</Action>
-</Actions>
+<Action>CurrentRadioSession.Connect &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandingOver"
 >
 <ReqRef
- Id="3.5.3.5.2"
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition>
-<PreCondition>HasActiveSession()</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>EURORADIO.RadioSessionOrder.HandingOverRBC == True</PreCondition><PreCondition>HasActiveSession()</PreCondition></PreConditions>
 <Actions>
-<Action>NewRadioSession.Connect &lt;- True</Action>
-</Actions>
+<Action>NewRadioSession.Connect &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ConnectToAnotherRBC"
 >
 <ReqRef
- Id="3.5.3.5.2"
+ Id="e65aa492-e72e-4bdc-896b-8462bf7b8ea9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>HasActiveSession()</PreCondition>
-<PreCondition>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>HasActiveSession()</PreCondition><PreCondition>RadioSessionOrder.RBCIdOrPhoneNumber.Id != CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id</PreCondition></PreConditions>
 <Actions>
-<Action>NewRadioSession.Connect &lt;- True</Action>
-<Action>CurrentRadioSession.Terminate &lt;- True</Action>
-</Actions>
+<Action>NewRadioSession.Connect &lt;- True</Action><Action>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -992,291 +999,292 @@
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- Implemented="TRUE"
  Name="GeneralMessage"
 >
 <ReqRef
- Id="8.4.4.4.1.5"
+ Id="4dea631e-f3ef-4f67-8232-6d867ebc7c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="GeneralMessage"
 >
 <PreConditions>
-<PreCondition>Available ( Message.GENERAL_MESSAGE )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.GENERAL_MESSAGE )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
 <Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
- Name="ReportParametersReceived"
+ Name="Report parameters received"
 >
 <ReqRef
- Id="3.6.5.1.7"
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="ReportParametersReceived"
->
-<ReqRef
- Id="7.4.2.15.1"
->
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>PositionReport.UpdatePositionReportParameters
-(
-  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
->
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
->
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Name="InfillMA"
->
-<ReqRef
- Id="8.4.4.4.1.8"
->
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.a"
->
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="InfillMA"
->
-<PreConditions>
-<PreCondition>Available (Message.INFILL_MA )</PreCondition>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
->
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
->
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="MAWithShiftedLocationReference"
->
-<ReqRef
- Id="8.4.4.4.1.7"
->
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.a"
->
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.b"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MAWithShiftedLocationReference"
->
-<PreConditions>
-<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="ReportParemetersReceived"
->
-<ReqRef
- Id="3.6.5.1.7"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="ReportParametersReceived"
->
-<ReqRef
- Id="7.4.2.15.1"
->
-</ReqRef>
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-<PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition>
-</PreConditions>
-<Actions>
-<Action>PositionReport.UpdatePositionReportParameters
-(
-   ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="LevelTransitionOrderReceived"
->
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="LevelTransitionOrderReceived"
->
-<PreConditions>
-<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="MovementAuthority"
->
-<ReqRef
- Id="8.4.4.4.1.3"
->
-</ReqRef>
-<ReqRef
- Id="3.8.3.9"
->
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.a"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="MovementAuthority"
->
-<PreConditions>
-<PreCondition>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition>
-</PreConditions>
-<Actions>
-<Action>Kernel.MA.MALvl2or3Received
-(
-    Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; Message.MOVEMENT_AUTHORITY.NID_LRBG
-)</Action>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report Parameters received"
->
-<ReqRef
- Id="3.6.5.1.7"
->
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Report parameters received"
 >
 <ReqRef
- Id="7.4.2.15.1"
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action>PositionReport.UpdatePositionReportParameters
+(
+  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition>
-<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition>
-<PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="InfillMA"
+>
+<ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="eca6c9fc-15bb-4b61-8142-88af3b8e685f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="InfillMA"
+>
+<PreConditions>
+<PreCondition>Available (Message.INFILL_MA )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Name="MAWithShiftedLocationReference"
+>
+<ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="17ca4691-52af-4571-83b8-d4e345bcc557"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MAWithShiftedLocationReference"
+>
+<PreConditions>
+<PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order received"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level transition order received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters received"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters received"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
+<Actions>
+<Action>PositionReport.UpdatePositionReportParameters
+(
+   ( FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="MovementAuthority"
+>
+<ReqRef
+ Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="34124e11-dd20-40b4-8914-44b6b7397ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="MovementAuthority"
+>
+<PreConditions>
+<PreCondition>Available ( Message.MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.MALvl2or3Received
+(
+    Packet =&gt; Message.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
+    NID_BG =&gt; Message.MOVEMENT_AUTHORITY.NID_LRBG
+)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters received"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters received"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><PreConditions>
+<PreCondition>THERE_IS_IN Message.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition>Available ( Message.MA_WITH_SHIFTED_LOCATION_REFERENCE ) == Boolean.False</PreCondition><PreCondition>Available ( Message.GENERAL_MESSAGE ) == Boolean.False</PreCondition></PreConditions>
 <Actions>
 <Action>PositionReport.UpdatePositionReportParameters(
   (FIRST_IN Message.GENERAL_MESSAGE.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
-)</Action>
-</Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1284,27 +1292,57 @@
  Name="List of balises for SH area received"
 >
 <ReqRef
- Id="3.7.1.1.b"
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="List of balises for SH area received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA)</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="LevelTransitionOrderReceived"
+ Name="Level transition order received"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER ) </PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action>
-</Actions>
+<Action>Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1313,46 +1351,69 @@
  Name="RequestToShortenMA"
 >
 <ReqRef
- Id="8.4.4.4.1.4"
+ Id="f4723221-15fd-4636-851f-08a437cc18e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.a"
+</ReqRef><ReqRef
+ Id="4a580e9d-fd64-4951-b7a4-51530d1469e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.7.1.1.b"
+</ReqRef><ReqRef
+ Id="8430bb84-5228-4341-b64b-f578dfc94604"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="RequestToShortenMA"
 >
 <PreConditions>
-<PreCondition>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.REQUEST_TO_SHORTEN_MA )</PreCondition></PreConditions>
 <Actions>
 </Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile received"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Mode profile received"
+>
+<PreConditions>
+<PreCondition>THERE_IS_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN Message.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
  Name="SHAuthorised"
 >
 <ReqRef
- Id="8.4.4.4.1.6"
+ Id="a9c3b99f-ed94-4e53-9926-e303c3898b8a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SHAuthorised"
 >
 <PreConditions>
-<PreCondition>Available ( Message.SH_AUTHORISED )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.SH_AUTHORISED )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 </RuleCondition></Conditions>
@@ -1361,21 +1422,19 @@
  Name="SRAuthorisation"
 >
 <ReqRef
- Id="8.4.4.4.1.2"
+ Id="6dc87cd2-d3b8-4d7f-a8f0-26e60b30a71e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
  Name="SRAuthorisation"
 >
 <PreConditions>
-<PreCondition>Available ( Message.SR_AUTHORISATION )</PreCondition>
-</PreConditions>
+<PreCondition>Available ( Message.SR_AUTHORISATION )</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action>
-</Actions>
+<Action>Kernel.SR.SRAuthorisationReceived ( Packet =&gt; Message.SR_AUTHORISATION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1384,10 +1443,10 @@
  Name="TracksideOrderedSession"
 >
 <ReqRef
- Id="3.5.3.4.b"
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Name="Packet"
@@ -1408,8 +1467,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>StoreSessionInformation(Packet)</Action>
-</Actions>
+<Action>StoreSessionInformation(Packet)</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1424,29 +1482,25 @@
  Name="HandleEstablish"
 >
 <ReqRef
- Id="3.5.3.4.b"
+ Id="af0db000-6b09-4a25-b01b-439fa27cbc6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>RadioSessionOrder.Action == SessionAction.Establish</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>RadioSessionOrder.Action == SessionAction.Establish</PreCondition></PreConditions>
 <Actions>
-<Action>OpenRBCSession()</Action>
-</Actions>
+<Action>OpenRBCSession()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="HandleTerminate"
 >
 <ReqRef
- Id="3.5.5.1.1"
+ Id="e4addba5-4948-4054-b3dc-0e7eeabd6768"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
-<PreCondition>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition>
-</PreConditions>
+</ReqRef><PreConditions>
+<PreCondition>RadioSessionOrder.Action == SessionAction.Terminate</PreCondition></PreConditions>
 <Actions>
-<Action>CloseRBCSession()</Action>
-</Actions>
+<Action>CloseRBCSession()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1457,10 +1511,10 @@
  Name="StoreSessionInformation"
 >
 <ReqRef
- Id="3.5.3.5"
+ Id="951fc6d8-739b-4bd4-9361-5686840e8b5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Name="Packet"
@@ -1492,8 +1546,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
   Id =&gt; Concat(Packet.NID_C, Packet.NID_RBC),
   PhoneNumber =&gt; ToString(Packet.NID_RADIO)
 }
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1529,8 +1582,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>CurrentRadioSession.Terminate &lt;- True</Action>
-</Actions>
+<Action>CurrentRadioSession.Terminate &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1542,10 +1594,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SendMARequest"
 >
 <ReqRef
- Id="3.8.2.1"
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.Q_MARQSTREASON"
  Name="aReason"
@@ -1574,8 +1626,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
     NID_ENGINE =&gt; Kernel.NidEngine,
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1583,10 +1634,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SendRequestForShunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Rules>
+</ReqRef><Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
@@ -1602,15 +1653,50 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>EURORADIO.EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
+<Action>EuroradioMessageOut.REQUEST_FOR_SHUNTING &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message
 {
     NID_MESSAGE =&gt; 130,
     L_MESSAGE =&gt; 0,
     T_TRAIN =&gt; MessageTypes.Time ( Kernel.CurrentTime ),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
-}</Action>
-</Actions>
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendEoMReport"
+>
+<ReqRef
+ Id="3f735818-2dc8-4e4a-a842-9112c3e053a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="7b63a22c-a47e-4e98-87a7-bb6800dbb38e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send EoM report"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send EoM report"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>EuroradioMessageOut.END_OF_MISSION &lt;-Messages.MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message{
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    NID_ENGINE =&gt; 0,
+    POSITION_REPORT =&gt; EURORADIO.PositionReport.CreatePositionReport()
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1667,10 +1753,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="AcquireListOfAvailableNetworks"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
+</ReqRef><Comment>This request is used to gather the list of allowed networks, based on a request to the Mobile Terminals</Comment>
 <SubVariables>
 <Variable
  Type="EURORADIO.NetworkIDs"
@@ -1688,10 +1774,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="SafeRadioConnectionStatus"
 >
 <ReqRef
- Id="3.5.7.1"
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  DefaultValue=""
  VariableMode="Incoming"
@@ -1715,10 +1801,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="RbcRiuSystemVersion"
 >
 <ReqRef
- Id="Entry 3.A3.4.1.3.1.49"
+ Id="fb08360f-0ff1-4327-8bcd-edf3c1e01e8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="EURORADIO.RadioSessionInformation"
  DefaultValue=""
  VariableMode="Internal"
@@ -1754,10 +1840,10 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="TimeBeforeMessageRepetition"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.3"
+ Id="0f9b05dd-7dd5-408f-94d8-e94d2b283f7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the waiting time before radio message repetition.</Comment>
+</ReqRef><Comment>Represents the waiting time before radio message repetition.</Comment>
 </Variable><Variable
  Type="Integer"
  DefaultValue="3"
@@ -1766,14 +1852,21 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
  Name="NumberOfMessageRepetitions"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.2"
+ Id="023bb134-975d-4e3e-9294-8f3644763d4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
+</ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
  Type="EURORADIO.RegisterMobileTerminalSM"
+ DefaultValue=""
  VariableMode="Internal"
  Name="RegisterMobileTerminal"
+>
+</Variable><Variable
+ Type="EURORADIO.MobileTerminalIDs"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="MobileTerminals"
 >
 </Variable></Variables>
 <Rules>
@@ -1791,11 +1884,9 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Available(EuroradioMessageIn)</PreCondition>
-</PreConditions>
+<PreCondition>Available(EuroradioMessageIn)</PreCondition></PreConditions>
 <Actions>
-<Action>EuroradioMessageIn &lt;- EMPTY</Action>
-</Actions>
+<Action>EuroradioMessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -1832,8 +1923,7 @@ RBCIdOrPhoneNumber =&gt; RBCIdOrPhoneNumber
     TRACK_AHEAD_FREE_GRANTED=&gt;EMPTY,
     TRAIN_POSITION_REPORT=&gt;EMPTY,
     VALIDATED_TRAIN_DATA=&gt;EMPTY
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

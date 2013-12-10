@@ -24,76 +24,115 @@
  Name="VALIDATED_TRAIN_DATA"
 >
 </NameSpaceRef><NameSpaceRef
+ Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
+>
+</NameSpaceRef><NameSpaceRef
  Name="POSITION_REPORTS"
 >
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c777f0b7-86fb-438a-91dc-20b12ceec0b0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="bc9d05af-2451-4f8c-8e90-24b256a572fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.ONBOARD_TELEPHONE_NUMBERS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ONBOARD_TELEPHONE_NUMBERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="a0a1a643-5cf9-4392-b573-9ea14a76a3e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ERROR_REPORTING"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="65c0616d-9c81-42f1-907b-c71e0d73d3ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.TRAIN_RUNNING_NUMBER.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRAIN_RUNNING_NUMBER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="dff427f0-8487-4b4d-992a-860128460d6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.LEVEL_2_3_TRANSITION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="LEVEL_2_3_TRANSITION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="5eb8fd0b-fa1d-4294-8ba2-e2a4359a4e3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="VALIDATED_TRAIN_DATA"
 >
-</StructureElement><StructureElement
- TypeName="PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message"
+<ReqRef
+ Id="314a65fb-2b09-4631-8372-2420970cec84"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRAIN_TO_TRACK.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="79f79f5a-e612-4268-83b6-9a5dfd6139e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.ANY.END_OF_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="END_OF_INFORMATION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="df496927-2909-4fff-ba6f-c4530291fd70"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

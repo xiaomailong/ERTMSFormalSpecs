@@ -16,10 +16,11 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.FunctionsPerformances
 {
-    public partial class FunctionsPerformances : Form
+    public partial class FunctionsPerformances : DockContent
     {
         /// <summary>
         /// The EFS System for which this view is built

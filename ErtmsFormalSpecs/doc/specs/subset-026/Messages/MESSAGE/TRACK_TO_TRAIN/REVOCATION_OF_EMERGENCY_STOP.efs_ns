@@ -5,7 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <Comment>Revocation of Emergency Stop</Comment>
@@ -13,43 +13,67 @@
  TypeName="NID_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="38476b93-c284-4743-b820-5a32db31deeb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="59631027-3100-4b17-8b0f-9b4c25f2280c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9734bf29-4783-41c8-a83d-b5dd1f9e59ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="70b07924-a97c-4387-a658-118ee1e11735"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="3c021d46-d475-455d-89f1-964a18cf302b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_EM"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_EM"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="e4525d99-e97d-4e9a-9e3c-ae8524b5ba6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

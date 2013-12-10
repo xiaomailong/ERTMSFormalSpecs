@@ -101,7 +101,7 @@ namespace DataDictionary.Tests.Translations
         /// The explanation of this translation, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
-        public string getExplain()
+        public override string getExplain()
         {
             string retVal = "";
 
@@ -477,7 +477,7 @@ namespace DataDictionary.Tests.Translations
             if (nidPacket != 44)
             {
                 nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages.PACKET.TRACK_TO_TRAIN");
-                foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.SubNameSpaces)
+                foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces)
                 {
                     Types.Structure structureType = (Types.Structure)EFSSystem.findType(subNameSpace, subNameSpace.FullName + ".Message");
                     Values.StructureValue structureValue = new Values.StructureValue(structureType, nameSpace);

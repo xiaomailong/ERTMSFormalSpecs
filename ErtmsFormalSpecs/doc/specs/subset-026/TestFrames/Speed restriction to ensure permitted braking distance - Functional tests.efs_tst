@@ -23,19 +23,19 @@
  Name="Test case1"
 >
 <ReqRef
- Id="3.11.2.2.k"
+ Id="c0212afe-50dc-4499-9f13-e6a734ef08fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.11.1"
+</ReqRef><ReqRef
+ Id="0c087a57-86f8-4190-81b9-2698efc3cc18"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.11.2"
+</ReqRef><ReqRef
+ Id="7286d7a7-e1e5-4269-ae7b-f3e6ff5a129f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>packets 65 and 141 are relevant? NO
+</ReqRef><Comment>packets 65 and 141 are relevant? NO
 we need packet number 52
 pbd sr</Comment>
 <Steps>
@@ -54,8 +54,7 @@ pbd sr</Comment>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -82,8 +81,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -124,29 +122,28 @@ pbd sr</Comment>
                 L_PACKET =&gt; 0,
                 Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                 Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000.0,
+                D_PBD =&gt; 2000,
                 Q_GDIR =&gt; Messages.Q_GDIR.uphill,
                 G_PBDSR =&gt; 10,
                 Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 1000.0,
-                L_PBDSR =&gt; 5000.0,
+                D_PBDSR =&gt; 1000,
+                L_PBDSR =&gt; 5000,
                 N_ITER =&gt; 1,
                 Sequence1 =&gt; [
                   Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.SubStructure1 {
-                    D_PBD =&gt; 3000.0,
+                    D_PBD =&gt; 3000,
                     Q_GDIR =&gt; Messages.Q_GDIR.downhill,
                     G_PBDSR =&gt; 20,
                     Q_PBDSR =&gt; Messages.Q_PBDSR.EB_intervention_requested,
-                    D_PBDSR =&gt; 2000.0,
-                    L_PBDSR =&gt; 6000.0
+                    D_PBDSR =&gt; 2000,
+                    L_PBDSR =&gt; 6000
                   }
                 ]
                 }
             }
         }
        ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -165,34 +162,34 @@ pbd sr</Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 10.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 5000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.EB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == -20.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 6000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 2000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -217,14 +214,14 @@ pbd sr</Comment>
  Name="Test case1"
 >
 <ReqRef
- Id="3.11.2.2.k"
+ Id="c0212afe-50dc-4499-9f13-e6a734ef08fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.11.7"
+</ReqRef><ReqRef
+ Id="1be737d0-fb4e-4643-926f-c5fcada702d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -241,8 +238,7 @@ pbd sr</Comment>
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -260,10 +256,10 @@ pbd sr</Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions == []</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictions(
     Distance=&gt;0.0
 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
@@ -290,10 +286,10 @@ pbd sr</Comment>
  Name="Test case1 - Complete replacement"
 >
 <ReqRef
- Id="3.7.3.1.d"
+ Id="90d5e9cb-5620-45e8-a0aa-6018093e3100"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -309,8 +305,7 @@ pbd sr</Comment>
 >
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -349,12 +344,11 @@ pbd sr</Comment>
      Length =&gt; 30000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -395,19 +389,18 @@ pbd sr</Comment>
                 L_PACKET =&gt; 0,
                 Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                 Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000.0,
+                D_PBD =&gt; 2000,
                 Q_GDIR =&gt; Messages.Q_GDIR.uphill,
                 G_PBDSR =&gt; 10,
                 Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 1000.0,
-                L_PBDSR =&gt; 5000.0,
+                D_PBDSR =&gt; 1000,
+                L_PBDSR =&gt; 5000,
                 N_ITER =&gt; 0
                 }
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -417,8 +410,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -436,22 +428,22 @@ pbd sr</Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 1</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 10.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 5000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -462,10 +454,10 @@ pbd sr</Comment>
  Name="Test case2 - Partial replacement"
 >
 <ReqRef
- Id="3.7.3.1.d"
+ Id="90d5e9cb-5620-45e8-a0aa-6018093e3100"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -482,8 +474,7 @@ pbd sr</Comment>
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -522,12 +513,11 @@ pbd sr</Comment>
      Length =&gt; 30000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -568,19 +558,18 @@ pbd sr</Comment>
                 L_PACKET =&gt; 0,
                 Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                 Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000.0,
+                D_PBD =&gt; 2000,
                 Q_GDIR =&gt; Messages.Q_GDIR.uphill,
                 G_PBDSR =&gt; 10,
                 Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 19999.0,
-                L_PBDSR =&gt; 2000.0,
+                D_PBDSR =&gt; 19999,
+                L_PBDSR =&gt; 2000,
                 N_ITER =&gt; 0
                 }
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -590,8 +579,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -609,37 +597,37 @@ pbd sr</Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 2</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 0.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 10000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 10.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 19999.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 2000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -650,10 +638,10 @@ pbd sr</Comment>
  Name="Test case3 - No replacement"
 >
 <ReqRef
- Id="3.7.3.1.d"
+ Id="90d5e9cb-5620-45e8-a0aa-6018093e3100"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Since we are pushing preexisting values directly into the kernel (step2) we cannot verify if a balise message with the same N_PIG actually overwrites values of an old message with the same N_PIG. But it can be shown that old values are kept and new ones are simply added.</Comment>
+</ReqRef><Comment>Since we are pushing preexisting values directly into the kernel (step2) we cannot verify if a balise message with the same N_PIG actually overwrites values of an old message with the same N_PIG. But it can be shown that old values are kept and new ones are simply added.</Comment>
 <Steps>
 <Step
  IO="NA"
@@ -671,8 +659,7 @@ pbd sr</Comment>
 <Actions>
 <Action>Kernel.InitializeTestEnvironment(
 
-)</Action>
-</Actions>
+)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -711,12 +698,11 @@ pbd sr</Comment>
      Length =&gt; 3000.0,
      Location =&gt; 30000.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -757,19 +743,18 @@ pbd sr</Comment>
                 L_PACKET =&gt; 0,
                 Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                 Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 400.0,
+                D_PBD =&gt; 400,
                 Q_GDIR =&gt; Messages.Q_GDIR.uphill,
                 G_PBDSR =&gt; 10,
                 Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 30001.0,
-                L_PBDSR =&gt; 2000.0,
+                D_PBDSR =&gt; 30001,
+                L_PBDSR =&gt; 2000,
                 N_ITER =&gt; 0
                 }
             }
         }
        ]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -779,8 +764,7 @@ pbd sr</Comment>
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -798,37 +782,37 @@ pbd sr</Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(COUNT Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions) == 4</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 0.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(FIRST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 10000.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakeType == Messages.Q_PBDSR.SB_intervention_requested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).BrakingDistance == 400.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Gradient == 10.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Location == 30001.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1000"
+ DeadLine="1"
 >(LAST_IN Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions).Length == 2000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

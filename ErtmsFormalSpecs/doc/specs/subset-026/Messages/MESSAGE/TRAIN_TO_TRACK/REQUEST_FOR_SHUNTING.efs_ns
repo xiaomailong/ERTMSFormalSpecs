@@ -5,7 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <Comment>Request for Shunting</Comment>
@@ -13,36 +13,56 @@
  TypeName="NID_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="ec079598-670c-4c4c-9b4b-522eb377eacf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="ae8e9b38-1f8d-4043-9b1a-47e161fb1d55"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d6b2c059-6bf8-4097-bbec-0c06656b3e70"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="381e47f5-126e-425d-82ca-c6bd3f298786"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="f6a07df8-0a38-405a-ac82-e476c6f8f49b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

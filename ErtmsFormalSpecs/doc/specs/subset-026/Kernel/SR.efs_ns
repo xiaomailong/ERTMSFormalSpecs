@@ -1,4 +1,8 @@
 <NameSpace
+ X="280"
+ Y="120"
+ Width="100"
+ Height="50"
  Name="SR"
 >
 <NameSpaces>
@@ -10,10 +14,10 @@
  Name="SR"
 >
 <ReqRef
- Id="8.5.3.2"
+ Id="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="Default.BaseTypes.Distance.Unknown"
  Mode="Internal"
@@ -22,10 +26,10 @@
  Name="Distance"
 >
 <ReqRef
- Id="8.7.1.8"
+ Id="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="BaliseGroups"
  Default="[]"
  Mode="Internal"
@@ -39,14 +43,15 @@
  TypeName="BaliseGroup"
  MaxSize="20"
  Default="[]"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="BaliseGroups"
 >
 <ReqRef
- Id="7.4.2.16"
+ Id="6ebbe822-9518-4f7a-98cd-13c5408e9af3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="BaliseGroups"
@@ -64,8 +69,7 @@
  Name="NoBaliseGroupsSent"
 >
 <PreConditions>
-<PreCondition>BaliseGroups == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>BaliseGroups == []</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="BaliseGroupsSent"
@@ -100,10 +104,10 @@
  Name="SRAuthorised"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.1"
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -118,14 +122,14 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Name="SRAuthorisationReceived"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.1"
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="8.5.3.2"
+</ReqRef><ReqRef
+ Id="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Message"
  Name="Packet"
@@ -148,8 +152,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 )
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -162,9 +165,9 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Name="SRAuthorisation"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21.1"
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Contains information about the SR authorisation.</Comment>
+</ReqRef><Comment>Contains information about the SR authorisation.</Comment>
 </Variable></Variables>
 </NameSpace>

@@ -1,0 +1,102 @@
+<NameSpace
+ Name="TRAIN_POSITION"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="4a22fd87-da9f-42a3-b0a8-859408806178"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This field contains the position of the train when the event recorded has occured.  This position is calculated with the distance to the last LRBG (Identity of Last Relevant Balise Group).</Comment>
+<StructureElement
+ TypeName="Q_SCALE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+<ReqRef
+ Id="2a62a9cd-6e7b-4a40-b527-182fafda63b4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="NID_LRBG"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_LRBG"
+>
+<ReqRef
+ Id="7e9288d3-9c65-4f84-9d67-7dfd155350aa"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_LRBG"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_LRBG"
+>
+<ReqRef
+ Id="ea8128a8-7e46-455f-8339-ecff77dec87b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_DIRLRBG"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+<ReqRef
+ Id="82fe98f5-1bb9-4b41-8fb5-faa0e4045200"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_DLRBG"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+<ReqRef
+ Id="7248c9fd-02cc-47d7-8a7c-fba6f5dac6b2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_DOUBTOVER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTOVER"
+>
+<ReqRef
+ Id="60d8bcde-b154-4df4-96f6-92aa9a207ef8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_DOUBTUNDER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTUNDER"
+>
+<ReqRef
+ Id="c8af4db0-327b-4bb4-baa3-fbf2c80f3dd5"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
+</NameSpace>

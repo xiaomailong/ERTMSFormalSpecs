@@ -103,8 +103,8 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="called">The called function</param>
-        public Call(ModelElement root, Expression called)
-            : base(root)
+        public Call(ModelElement root, ModelElement log, Expression called)
+            : base(root, log)
         {
             Called = called;
             Called.Enclosing = this;
@@ -219,10 +219,15 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Called
                 Called.SemanticAnalysis(instance, Filter.IsCallable);
+                StaticUsage.AddUsages(Called.StaticUsage, Usage.ModeEnum.Call);
+
+                // Actual parameters
                 foreach (Expression actual in AllParameters)
                 {
                     actual.SemanticAnalysis(instance, Filter.IsActualParameter);
+                    StaticUsage.AddUsages(actual.StaticUsage, Usage.ModeEnum.Read);
                 }
 
                 ParameterAssociation = createParameterAssociation(Called.Ref as ICallable);
@@ -338,52 +343,63 @@ namespace DataDictionary.Interpreter
             {
                 long start = System.Environment.TickCount;
 
-                Dictionary<Variables.Actual, Values.IValue> parameterValues = AssignParameterValues(context, function, true);
-                List<Parameter> parameters = GetPlaceHolders(function, parameterValues);
-                if (parameters == null)
+                Dictionary<Variables.Actual, Values.IValue> parameterValues = null;
+                try
                 {
-                    retVal = function.Evaluate(context, parameterValues);
-                    if (retVal == null)
+                    parameterValues = AssignParameterValues(context, function, true);
+                    List<Parameter> parameters = GetPlaceHolders(function, parameterValues);
+                    if (parameters == null)
                     {
-                        AddError("Call " + function.Name + " ( " + ParameterValues(parameterValues) + " ) returned nothing");
+                        retVal = function.Evaluate(context, parameterValues);
+                        if (retVal == null)
+                        {
+                            AddError("Call " + function.Name + " ( " + ParameterValues(parameterValues) + " ) returned nothing");
+                        }
+                    }
+                    else if (parameters.Count == 1) // graph
+                    {
+                        int token = context.LocalScope.PushContext();
+                        context.LocalScope.setGraphParameter(parameters[0]);
+                        Functions.Graph graph = function.createGraphForParameter(context, parameters[0]);
+                        context.LocalScope.PopContext(token);
+                        if (graph != null)
+                        {
+                            retVal = graph.Function;
+                        }
+                        else
+                        {
+                            AddError("Cannot create graph on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                        }
+                    }
+                    else // surface
+                    {
+                        Functions.Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1]);
+                        if (surface != null)
+                        {
+                            retVal = surface.Function;
+                        }
+                        else
+                        {
+                            AddError("Cannot create surface on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                        }
                     }
                 }
-                else if (parameters.Count == 1) // graph
+                catch (Exception e)
                 {
-                    int token = context.LocalScope.PushContext();
-                    context.LocalScope.setGraphParameter(parameters[0]);
-                    Functions.Graph graph = function.createGraphForParameter(context, parameters[0]);
-                    context.LocalScope.PopContext(token);
-                    if (graph != null)
-                    {
-                        retVal = graph.Function;
-                    }
-                    else
-                    {
-                        AddError("Cannot create graph on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
-                    }
+                    AddError("Cannot evaluate function call " + function.Name);
+                    throw new Exception("inner evaluation failure");
                 }
-                else // surface
+                finally
                 {
-                    Functions.Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1]);
-                    if (surface != null)
-                    {
-                        retVal = surface.Function;
-                    }
-                    else
-                    {
-                        AddError("Cannot create surface on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
-                    }
-                }
+                    long stop = System.Environment.TickCount;
+                    long span = (stop - start);
+                    function.ExecutionTimeInMilli += span;
+                    function.ExecutionCount += 1;
 
-                long stop = System.Environment.TickCount;
-                long span = (stop - start);
-                function.ExecutionTimeInMilli += span;
-                function.ExecutionCount += 1;
-
-                if (explain)
-                {
-                    CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
+                    if (explain)
+                    {
+                        CompleteExplanation(previous, function.Name + " ( " + ParameterValues(parameterValues) + " ) returned " + explainNamable(retVal) + "\n");
+                    }
                 }
             }
             else
@@ -431,14 +447,19 @@ namespace DataDictionary.Interpreter
         private static string ParameterValues(Dictionary<Variables.Actual, Values.IValue> parameterValues)
         {
             string parameters = "";
-            foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+
+            if (parameterValues != null)
             {
-                if (!Utils.Utils.isEmpty(parameters))
+                foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
                 {
-                    parameters += ", ";
+                    if (!Utils.Utils.isEmpty(parameters))
+                    {
+                        parameters += ", ";
+                    }
+                    parameters += pair.Key.Name + " => " + pair.Value.FullName;
                 }
-                parameters += pair.Key.Name + " => " + pair.Value.FullName;
             }
+
             return parameters;
         }
 

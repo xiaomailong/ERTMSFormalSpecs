@@ -1,5 +1,8 @@
-.phony:all clean env
+.phony:all clean increase_release_number release
 .default:all
+
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb
+XMLB_CALL=/cygdrive/c/repositories/raincode/xmlb/xmlb2.exe -CFG=../../../tools/xmlb/xmlbcfg.xml
 
 all: 
 	@make -C XmlBooster all 
@@ -19,7 +22,11 @@ clean:
 	@make -C GUI clean 
 	@make -C EFSTester clean 
 
-release: all Installer/EFSW_Installer_Script.iss	
+increase_release_number :
+	@echo === Increase build number
+	@-$(XMLB_CALL) -SCRIPT update_release_number.rcs GUI/Properties/AssemblyInfo.cs > /dev/null
+
+release: all increase_release_number Installer/EFSW_Installer_Script.iss	
 	@echo === Building Installer package	
 	@../depends/InnoInstaller5/ISCC.exe Installer/EFSW_Installer_Script.iss /q
 

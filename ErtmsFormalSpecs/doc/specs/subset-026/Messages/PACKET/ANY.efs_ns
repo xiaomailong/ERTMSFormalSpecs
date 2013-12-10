@@ -8,29 +8,19 @@
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <StructureElement
  TypeName="PACKET.ANY.END_OF_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="END_OF_INFORMATION"
 >
-</StructureElement><StructureElement
- TypeName="PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message"
- Default="EMPTY"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
+<ReqRef
+ Id="df496927-2909-4fff-ba6f-c4530291fd70"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</StructureElement><StructureElement
- TypeName="PACKET.ANY.END_OF_INFORMATION.Message"
- Default="EMPTY"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="END_OF_INFORMATION"
->
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

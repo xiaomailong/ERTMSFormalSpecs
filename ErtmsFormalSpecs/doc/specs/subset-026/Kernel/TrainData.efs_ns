@@ -1,4 +1,9 @@
 <NameSpace
+ X="150"
+ Y="360"
+ Width="100"
+ Height="50"
+ Hidden="TRUE"
  Name="TrainData"
 >
 <NameSpaces>
@@ -17,21 +22,21 @@
  Name="NID_CTRACTION"
 >
 <ReqRef
- Id="7.5.1.86.1"
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Range></Ranges>
+</ReqRef></Range></Ranges>
 <Enumerations>
 <Enum
- Default="TrainCategories.FreightTrainInG"
+ Default="FreightTrainInG"
  Implemented="TRUE"
  Name="TrainCategory"
 >
 <ReqRef
- Id="3.11.3.3.1"
+ Id="4badd9e5-4917-465e-8088-27bd4a0b495e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="0"
  Name="FreightTrainInP"
@@ -53,14 +58,14 @@
  Name="TrainCategories"
 >
 <ReqRef
- Id="3.11.3.3.1"
+ Id="4badd9e5-4917-465e-8088-27bd4a0b495e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.3.2"
+</ReqRef><ReqRef
+ Id="ff10b5b2-d34a-4d71-815e-fe4ec91a618f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Contains information about train categories.</Comment>
+</ReqRef><Comment>Contains information about train categories.</Comment>
 <StructureElement
  TypeName="Messages.NC_CDTRAIN"
  Default="Messages.NC_CDTRAIN.Cant_Deficiency_130_mm"
@@ -69,22 +74,22 @@
  Name="CantDeficiency"
 >
 <ReqRef
- Id="3.11.3.3.2"
+ Id="ff10b5b2-d34a-4d71-815e-fe4ec91a618f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.1.1.a"
+</ReqRef><ReqRef
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.3.1"
+</ReqRef><ReqRef
+ Id="4badd9e5-4917-465e-8088-27bd4a0b495e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.82.2"
+</ReqRef><ReqRef
+ Id="19c6ae96-63bb-4cdb-9405-689f1d7c43fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the &quot;Cant Deficiency&quot; category of the train.</Comment>
+</ReqRef><Comment>Represents the &quot;Cant Deficiency&quot; category of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="OtherInternationalCategories"
  Default="[]"
@@ -94,35 +99,35 @@
  Name="OtherInternational"
 >
 <ReqRef
- Id="3.11.3.3.2"
+ Id="ff10b5b2-d34a-4d71-815e-fe4ec91a618f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.1.1.b"
+</ReqRef><ReqRef
+ Id="acaf62ba-5b8e-4cf3-82a2-c81ae54cd1ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.3.1"
+</ReqRef><ReqRef
+ Id="4badd9e5-4917-465e-8088-27bd4a0b495e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.84"
+</ReqRef><ReqRef
+ Id="d1064b23-7377-4cb2-b7ca-5cec6c1f6c69"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents other specific categories to which possibly belongs the train.</Comment>
+</ReqRef><Comment>Represents other specific categories to which possibly belongs the train.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainDataValues"
 >
 <ReqRef
- Id="3.18.3.2"
+ Id="d3ace8ee-6f07-45c7-8b0e-b0648065249f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
+</ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 <StructureElement
  TypeName="TrainCategories"
  Default=""
@@ -131,18 +136,18 @@
  Name="TrainCategories"
 >
 <ReqRef
- Id="3.11.3.3.3"
+ Id="d3d78ac8-3e48-446b-85fc-8959ae6d210c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.3.1"
+</ReqRef><ReqRef
+ Id="4badd9e5-4917-465e-8088-27bd4a0b495e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.a"
+</ReqRef><ReqRef
+ Id="57408397-a4c9-4ab2-9aba-b69e42f87d4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents categories to which belongs the train.</Comment>
+</ReqRef><Comment>Represents categories to which belongs the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="400.0"
@@ -151,30 +156,30 @@
  Name="TrainLength"
 >
 <ReqRef
- Id="3.18.3.2.b"
+ Id="864d3e87-9534-428b-9441-3a94e713dd85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.11.1"
+</ReqRef><ReqRef
+ Id="d4abd686-74e0-4be7-8850-63b0d76f32da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.i"
+</ReqRef><ReqRef
+ Id="7f46f730-a10c-496b-8e6a-030613887966"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.k"
+</ReqRef><ReqRef
+ Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.4.1.1"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="3dec5ab4-e034-4e35-8225-c22d5267e266"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the length of the train.</Comment>
+</ReqRef><Comment>Represents the length of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="150.0"
@@ -183,30 +188,30 @@
  Name="MaximumSpeed"
 >
 <ReqRef
- Id="3.18.3.2.d"
+ Id="070b725b-6cd9-427a-bce2-3700f5fbde46"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.2.d"
+</ReqRef><ReqRef
+ Id="fb108bb3-a940-4acb-80b8-1cf435c0a0d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.13.1"
+</ReqRef><ReqRef
+ Id="2bead7ec-ab1a-43c8-94ed-46ec4681a9b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.k"
+</ReqRef><ReqRef
+ Id="54275fb7-e302-41ba-bcd3-4052bd1aa835"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.8.1"
+</ReqRef><ReqRef
+ Id="e2f75066-4640-42b4-9b1a-08b23b446486"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Maximum train speed.</Comment>
+</ReqRef><Comment>Maximum train speed.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.M_LOADINGGAUGE"
  Default="Messages.M_LOADINGGAUGE.G1"
@@ -215,10 +220,10 @@
  Name="LoadingGauge"
 >
 <ReqRef
- Id="3.18.3.2.e"
+ Id="d32802ca-c47d-4982-8ec7-4e0a63ff78fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Train loading gauge.</Comment>
+</ReqRef><Comment>Train loading gauge.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.N_AXLE"
  Default="200"
@@ -227,24 +232,24 @@
  Name="AxleNumber"
 >
 <ReqRef
- Id="3.18.3.2.k"
+ Id="ac93c6ea-7159-4abf-a144-01447d1075a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The axle number of the train.</Comment>
+</ReqRef><Comment>The axle number of the train.</Comment>
 </StructureElement><StructureElement
- TypeName="Messages.M_AXLELOAD"
- Default="Messages.M_AXLELOAD.E5"
+ TypeName="Messages.M_AXLELOADCAT"
+ Default="Messages.M_AXLELOADCAT.E5"
  Mode="Internal"
  Implemented="TRUE"
  Name="AxleLoadCategory"
 >
 <ReqRef
- Id="3.18.3.2.f"
+ Id="b4384f6a-e7f9-49e5-8b2f-72b145afa1f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>The axle load category of the train.</Comment>
+</ReqRef><Comment>The axle load category of the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -253,22 +258,10 @@
  Name="TrainFittedWithAirtightSystem"
 >
 <ReqRef
- Id="3.18.3.2.h"
+ Id="0b8d3af6-2b42-4d42-a175-f012b7236658"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
-</StructureElement><StructureElement
- TypeName="Default.NationalSystems"
- Default="[]"
- Mode="Internal"
- Implemented="TRUE"
- Name="NationalSystemsAvailableOnBoard"
->
-<ReqRef
- Id="3.18.3.2.i"
->
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="TractionSystems"
  Default="[]"
@@ -277,10 +270,10 @@
  Name="TractionSystems"
 >
 <ReqRef
- Id="3.18.3.2.g"
+ Id="168e5e53-e99b-43f0-833d-11f47609131b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="TractionModel"
  Default=""
@@ -290,22 +283,22 @@
  Name="TractionModel"
 >
 <ReqRef
- Id="3.13.2.2.2.1"
+ Id="b7b1bc48-6dda-4554-ac07-fd2a7e8ef50a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.a"
+</ReqRef><ReqRef
+ Id="d38a3d22-f5f5-4cb7-abb7-4b5ca5ba94a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
  Default="Default.Percentage.NA"
@@ -315,26 +308,26 @@
  Name="M_rotating_nom"
 >
 <ReqRef
- Id="3.13.4.3.2"
+ Id="58b032f9-8cd2-4fba-9fb7-862f6c37c470"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.h"
+</ReqRef><ReqRef
+ Id="0c393c69-88dd-43f5-8212-8f2772d6ab12"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.10.1"
+</ReqRef><ReqRef
+ Id="c3361900-a238-4bdf-8fde-304d2f5471be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.EBModelSet"
  Default="EMPTY"
@@ -343,38 +336,38 @@
  Name="EBModels"
 >
 <ReqRef
- Id="3.13.2.2.1.1.b"
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.6"
+</ReqRef><ReqRef
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.7"
+</ReqRef><ReqRef
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.a"
+</ReqRef><ReqRef
+ Id="83251c6d-ff70-492c-805f-f119d5b95580"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>The speed dependent deceleration models for the emergency brake.</Comment>
+</ReqRef><Comment>The speed dependent deceleration models for the emergency brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SBModelSet"
  Default="EMPTY"
@@ -383,38 +376,38 @@
  Name="SBModels"
 >
 <ReqRef
- Id="3.13.2.2.1.1.b"
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.6"
+</ReqRef><ReqRef
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.7"
+</ReqRef><ReqRef
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.a"
+</ReqRef><ReqRef
+ Id="39f48aa1-5da9-45a4-8fc8-068260afeef8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.a"
+</ReqRef><ReqRef
+ Id="bf1396d0-a166-4f1d-80d5-c4b57508c553"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>The speed dependent deceleration models for the service brake.</Comment>
+</ReqRef><Comment>The speed dependent deceleration models for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.BNSModelSet"
  Default=""
@@ -423,31 +416,31 @@
  Name="NormalServiceBrakeModels"
 >
 <ReqRef
- Id="3.18.3.2.c"
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.6"
+</ReqRef><ReqRef
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.9"
+</ReqRef><ReqRef
+ Id="cb26208f-53ca-4c71-9e93-04c29f49731b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.b"
+</ReqRef><ReqRef
+ Id="1d964c5e-2d42-4aa9-be71-ac02a1133ca8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the set of normal service brake models when the brake position is in &quot;Freigth train in G&quot;.</Comment>
+</ReqRef><Comment>Represents the set of normal service brake models when the brake position is in &quot;Freigth train in G&quot;.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.T_brake_build_upSet"
  Default=""
@@ -456,38 +449,38 @@
  Name="T_brake_emergency"
 >
 <ReqRef
- Id="3.13.2.2.3.2.1"
+ Id="3d965310-43af-470d-963f-36c7d5f7569d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.3.c"
+</ReqRef><ReqRef
+ Id="ba750721-bd4b-4fb5-86be-a54fff062ec4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.5"
+</ReqRef><ReqRef
+ Id="19fa9290-6acb-4ae8-a84f-bdee455111a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.7"
+</ReqRef><ReqRef
+ Id="7b891aef-60db-4047-901f-e1515ac84ea8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.8"
+</ReqRef><ReqRef
+ Id="2cf137b8-bbbf-498f-b496-0d56ec81fe32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the equivalent brake build up time (T_brake_build_up) for the emergency brake.</Comment>
+</ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the emergency brake.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.T_brake_build_upSet"
  Default=""
@@ -496,38 +489,38 @@
  Name="T_brake_service"
 >
 <ReqRef
- Id="3.13.2.2.3.2.1"
+ Id="3d965310-43af-470d-963f-36c7d5f7569d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.3.c"
+</ReqRef><ReqRef
+ Id="ba750721-bd4b-4fb5-86be-a54fff062ec4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.5"
+</ReqRef><ReqRef
+ Id="19fa9290-6acb-4ae8-a84f-bdee455111a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.7"
+</ReqRef><ReqRef
+ Id="7b891aef-60db-4047-901f-e1515ac84ea8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.8"
+</ReqRef><ReqRef
+ Id="2cf137b8-bbbf-498f-b496-0d56ec81fe32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
+</ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
  Default="Default.Percentage.NA"
@@ -536,22 +529,22 @@
  Name="BrakePercentage"
 >
 <ReqRef
- Id="3.13.2.2.1.1.b"
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.3.1.1"
+</ReqRef><ReqRef
+ Id="342dae78-d6d5-4626-8b5f-5f2f1d85c458"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.2.2"
+</ReqRef><ReqRef
+ Id="09f9f219-2879-4eb9-bf75-c4583a632b4a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="BrakingParameters.BrakePositions"
  Default="Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP"
  Mode="Internal"
@@ -559,38 +552,38 @@
  Name="BrakePosition"
 >
 <ReqRef
- Id="3.13.2.2.1.1.c"
+ Id="2dd66666-9f54-40f5-ad25-da1b726890c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.9"
+</ReqRef><ReqRef
+ Id="cb26208f-53ca-4c71-9e93-04c29f49731b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.4.1"
+</ReqRef><ReqRef
+ Id="7b4dbe47-d9fb-4825-a5b7-0f140354b378"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.4.1.1"
+</ReqRef><ReqRef
+ Id="6daa6231-e601-4f4d-80cc-590024cf24ec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.j"
+</ReqRef><ReqRef
+ Id="ef994480-219f-4e7c-86a9-8d3a3a7fd059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.d"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="8ac52d71-a6bb-4f68-876a-983f24037001"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -599,26 +592,18 @@
  Name="MagneticShoeBrake"
 >
 <ReqRef
- Id="3.13.2.2.1.1.d"
+ Id="acb20337-b915-4076-96d4-7217b7e048b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.1"
+</ReqRef><ReqRef
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.d"
->
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
->
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -627,26 +612,18 @@
  Name="RegenerativeBrake"
 >
 <ReqRef
- Id="3.13.2.2.1.1.d"
+ Id="acb20337-b915-4076-96d4-7217b7e048b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.1"
+</ReqRef><ReqRef
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.d"
->
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
->
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -655,26 +632,18 @@
  Name="EddyCurrentBrake"
 >
 <ReqRef
- Id="3.13.2.2.1.1.d"
+ Id="acb20337-b915-4076-96d4-7217b7e048b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.1"
+</ReqRef><ReqRef
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.d"
->
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
->
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingParameters.SpecialBrake"
  Default=""
@@ -683,18 +652,18 @@
  Name="EpBrake"
 >
 <ReqRef
- Id="3.13.2.2.1.1.d"
+ Id="acb20337-b915-4076-96d4-7217b7e048b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.1"
+</ReqRef><ReqRef
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -703,22 +672,22 @@
  Name="SBCommandIsImplemented"
 >
 <ReqRef
- Id="3.13.2.2.1.1.e"
+ Id="284736cd-c4bc-4eab-b5fa-4e4316d5da3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.7.1"
+</ReqRef><ReqRef
+ Id="d90080dc-7ed5-4d0f-bbc2-e7b38ab679fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2.c"
+</ReqRef><ReqRef
+ Id="f0b7b54c-ede2-4877-9b77-90142c0e8b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -727,18 +696,18 @@
  Name="SBFeedbackIsImplemented"
 >
 <ReqRef
- Id="3.13.2.2.1.1.e"
+ Id="284736cd-c4bc-4eab-b5fa-4e4316d5da3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.7.2"
+</ReqRef><ReqRef
+ Id="eebf25b5-3155-44d9-a720-8d244af09e5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -747,31 +716,64 @@
  Name="TractionCutOffInterfaceIsImplemented"
 >
 <ReqRef
- Id="3.13.2.2.1.1.f"
+ Id="3c5f4d92-3066-4e5a-b6ba-16aeb23f571a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><ReqRef
+ Id="c2b4dded-544b-4b20-9e1f-900e4465a741"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Levels"
+ Default="[
+  Default.LevelData {
+     Value =&gt; Level.L1,
+     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.L2,
+     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 0
+  },
+  Default.LevelData {
+     Value =&gt; Level.LNTC,
+     NTC =&gt; 1
+  }
+]"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LevelsSupportedOnBoard"
+>
 <ReqRef
- Id="3.13.2.2.8.1"
+ Id="74a829a5-7711-4843-841e-450ba6472a22"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment>DefaultValue is set arbitrarily. #morido, 13/10/09</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TrainData"
 >
 <ReqRef
- Id="3.18.3.2"
+ Id="d3ace8ee-6f07-45c7-8b0e-b0648065249f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3"
+</ReqRef><ReqRef
+ Id="04761e59-c16c-4551-ad5d-0039110f0d1e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.DataState"
  Default="Default.DataState.Unknown"
@@ -781,10 +783,10 @@
  Name="DataState"
 >
 <ReqRef
- Id="5.4.2.2"
+ Id="8f27e8d5-aaaf-4ec3-986d-36345986e5f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="TrainData.TrainDataValues"
  Default=""
  Mode="Internal"
@@ -797,10 +799,10 @@
  Name="TractionSystem"
 >
 <ReqRef
- Id="3.18.3.2.g"
+ Id="168e5e53-e99b-43f0-833d-11f47609131b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Messages.M_VOLTAGE"
  Default=""
@@ -810,10 +812,10 @@
  Name="Voltage"
 >
 <ReqRef
- Id="7.5.1.78"
+ Id="3279c818-b689-4685-acc2-1390cd5331ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default=""
  Mode="Internal"
@@ -822,23 +824,23 @@
  Name="Country"
 >
 <ReqRef
- Id="7.5.1.86.1"
+ Id="3e473bc9-3037-4723-8378-f99625c4fc5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="TractionModel"
 >
 <ReqRef
- Id="3.13.2.2.2.1"
+ Id="b7b1bc48-6dda-4554-ac07-fd2a7e8ef50a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.a"
+</ReqRef><ReqRef
+ Id="d38a3d22-f5f5-4cb7-abb7-4b5ca5ba94a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>We assume that the traction model is given as a linear function of the form time = a*A_traction + b, where:
+</ReqRef><Comment>We assume that the traction model is given as a linear function of the form time = a*A_traction + b, where:
 - a: Coefficient
 - b: Constant</Comment>
 <StructureElement
@@ -868,10 +870,10 @@
  Name="OtherInternationalCategories"
 >
 <ReqRef
- Id="3.11.3.3.2"
+ Id="ff10b5b2-d34a-4d71-815e-fe4ec91a618f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents a list of other specific train categories.</Comment>
+</ReqRef><Comment>Represents a list of other specific train categories.</Comment>
 </Collection><Collection
  TypeName="TractionSystem"
  MaxSize="20"
@@ -880,10 +882,10 @@
  Name="TractionSystems"
 >
 <ReqRef
- Id="3.18.3.2.g"
+ Id="168e5e53-e99b-43f0-833d-11f47609131b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Procedures>
 <Procedure
  NeedsRequirement="FALSE"
@@ -1318,8 +1320,7 @@
                     CF6 =&gt; 0.85
                 }
             }
-        }</Action>
-<Action>TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+        }</Action><Action>TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,
@@ -1336,8 +1337,7 @@
     Magnetic =&gt; 2.9,
     Regenerative =&gt; 3.7,
     Ep =&gt; 4.5
-}</Action>
-<Action>TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
         {
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
             {
@@ -1552,8 +1552,7 @@
                     }
                 }
             }
-        }</Action>
-<Action>TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+        }</Action><Action>TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.1,
     EddyCurrent_Magnetic =&gt; 5.6,
@@ -1570,8 +1569,7 @@
     Magnetic =&gt; 12.4,
     Regenerative =&gt; 12.1,
     Ep =&gt; 11.0
-}</Action>
-<Action>TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
+}</Action><Action>TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
             TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel{
                 BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
@@ -1722,28 +1720,23 @@
             },
             A_SB01 =&gt; 0.4,
             A_SB12 =&gt; 0.7
-        }</Action>
-<Action>TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
+        }</Action><Action>TrainData.Value.EddyCurrentBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.MagneticShoeBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.EpBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
+}</Action><Action>TrainData.Value.RegenerativeBrake &lt;- BrakingParameters.SpecialBrake
 {
     IsActive =&gt; Boolean.True,
     InterfaceStatus =&gt; BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-</Actions>
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1765,8 +1758,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InitializeTrainData()</Action>
-</Actions>
+<Action>InitializeTrainData()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1782,8 +1774,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>TrainData.BrakingParameters.Initialize()</Action>
-</Actions>
+<Action>TrainData.BrakingParameters.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1799,8 +1790,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1816,8 +1806,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1830,13 +1819,13 @@
  Name="TrainData"
 >
 <ReqRef
- Id="3.18.3"
+ Id="04761e59-c16c-4551-ad5d-0039110f0d1e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.3.2"
+</ReqRef><ReqRef
+ Id="d3ace8ee-6f07-45c7-8b0e-b0648065249f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
+</ReqRef><Comment>Represents the train data that shall be acquired by the ERTMS/ETCS on-board equipment of a leading machine before starting a mission.</Comment>
 </Variable></Variables>
 </NameSpace>

@@ -5,30 +5,50 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Identity of the level 2/3 transition balise group</Comment>
+<ReqRef
+ Id="aced057f-bb2f-4cbd-a442-1175c8db9a04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="ecc2259f-a855-42b4-a8e9-b76d4b4ae511"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Identity of the level 2/3 transition balise group</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="9"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="aced057f-bb2f-4cbd-a442-1175c8db9a04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="aced057f-bb2f-4cbd-a442-1175c8db9a04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LTRBG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LTRBG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="aced057f-bb2f-4cbd-a442-1175c8db9a04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

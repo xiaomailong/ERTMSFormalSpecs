@@ -52,8 +52,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="condition">The corresponding function call designator</param>
         /// <param name="position">The position in which the element should be removed</param>
         /// <param name="listExpression">The expressions used to compute the parameters</param>
-        public RemoveStatement(ModelElement root, Expression condition, PositionEnum position, Expression listExpression)
-            : base(root)
+        public RemoveStatement(ModelElement root, ModelElement log, Expression condition, PositionEnum position, Expression listExpression)
+            : base(root, log)
         {
             Condition = condition;
             if (condition != null)
@@ -108,16 +108,21 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // Condition
                 if (Condition != null)
                 {
                     Condition.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 
@@ -188,6 +193,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            if (ListExpression.Ref is Parameter)
+            {
+                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+            }
+
             Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
             if (targetListType == null)
             {

@@ -76,7 +76,7 @@ namespace Importers.RtfDeltaImporter
         {
             foreach (Paragraph p in NewDocument.ChangedParagraphs)
             {
-                DataDictionary.Specification.Paragraph par = specifications.FindParagraph(p.Id);
+                DataDictionary.Specification.Paragraph par = specifications.FindParagraphByNumber(p.Id);
 
                 if (par != null)
                 {
@@ -92,7 +92,7 @@ namespace Importers.RtfDeltaImporter
 
             foreach (Paragraph p in NewDocument.NewParagraphs)
             {
-                DataDictionary.Specification.Paragraph par = specifications.FindParagraph(p.Id);
+                DataDictionary.Specification.Paragraph par = specifications.FindParagraphByNumber(p.Id);
 
                 if (par != null)
                 {
@@ -100,7 +100,7 @@ namespace Importers.RtfDeltaImporter
                 }
                 else
                 {
-                    par = specifications.FindParagraph(p.Id, true);
+                    par = specifications.FindParagraphByNumber(p.Id, true);
                     if (par != null)
                     {
                         par.setText(p.Text);
@@ -116,7 +116,7 @@ namespace Importers.RtfDeltaImporter
 
             foreach (Paragraph p in NewDocument.RemovedParagraphs)
             {
-                DataDictionary.Specification.Paragraph par = specifications.FindParagraph(p.Id);
+                DataDictionary.Specification.Paragraph par = specifications.FindParagraphByNumber(p.Id);
 
                 if (par != null)
                 {

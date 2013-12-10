@@ -42,7 +42,13 @@ namespace GUI.TestRunnerView
         public ExpectationsTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, "Expectations", true)
         {
-            foreach (DataDictionary.Tests.Expectation expectation in item.Expectations)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Expectation expectation in Item.Expectations)
             {
                 Nodes.Add(new ExpectationTreeNode(expectation));
             }

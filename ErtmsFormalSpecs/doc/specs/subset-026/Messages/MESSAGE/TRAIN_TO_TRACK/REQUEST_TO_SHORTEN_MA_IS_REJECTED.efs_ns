@@ -5,7 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <Comment>Request to shorten MA is rejected</Comment>
@@ -13,43 +13,67 @@
  TypeName="NID_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="96878f91-b582-496f-91e0-5487c3e4e59a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="198efbaa-a8cc-4791-8049-8a0299b36d63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="eefac400-820c-4a97-8ac7-987e21cf3830"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_ENGINE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_ENGINE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="f671c941-c8dc-478e-9e1f-915872850992"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN_1"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e39baccd-996a-49f1-a03e-644ef897d97b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="2c9b762d-4604-476c-a9af-5f9ed8798635"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

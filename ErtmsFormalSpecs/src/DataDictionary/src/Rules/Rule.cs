@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 
 using DataDictionary.Specification;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Rules
 {
@@ -187,7 +188,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public string getExplain(int indentLevel, bool explainSubRules)
         {
-            string retVal = TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
+            string retVal = TextualExplainUtilities.Header(this, indentLevel);
 
             bool first = true;
             bool condition = false;
@@ -290,7 +291,11 @@ namespace DataDictionary.Rules
 
                 if (EnclosingRequirements.Count == 0)
                 {
-                    retVal = Dictionary.Specifications.AllParagraphs;
+                    retVal = new List<Paragraph>();
+                    foreach (Specification.Specification specification in Dictionary.Specifications)
+                    {
+                        retVal.AddRange(specification.AllParagraphs);
+                    }
                 }
                 else
                 {
@@ -298,7 +303,10 @@ namespace DataDictionary.Rules
 
                     foreach (ReqRef req in EnclosingRequirements)
                     {
-                        Dictionary.Specifications.SubParagraphs(req.Name, retVal);
+                        foreach (Specification.Specification specification in Dictionary.Specifications)
+                        {
+                            specification.SubParagraphs(req.Name, retVal);
+                        }
                     }
                 }
                 return retVal;
@@ -341,8 +349,10 @@ namespace DataDictionary.Rules
         /// <param name="priority">the priority level : a rule can be activated only if its priority level == priority</param>
         /// <param name="instance">The instance on which the rule must be evaluated</param>
         /// <param name="ruleConditions">the rule conditions to be activated</param>
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that a log should be performed</param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions)
+        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation, bool log)
         {
             bool retVal = false;
 
@@ -352,7 +362,7 @@ namespace DataDictionary.Rules
             {
                 foreach (RuleCondition ruleCondition in RuleConditions)
                 {
-                    retVal = ruleCondition.Evaluate(runner, priority, instance, ruleConditions);
+                    retVal = ruleCondition.Evaluate(runner, priority, instance, ruleConditions, explanation, log);
                     if (retVal)
                     {
                         break;

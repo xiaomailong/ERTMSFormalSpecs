@@ -45,6 +45,21 @@ namespace GUI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,14 +83,20 @@ namespace GUI
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.showSpecificationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showModelViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showShortcutsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTranslationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.dockedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showSpecificationViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.markApplicableParagraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markNonApplicableParagraphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markRequirementsWhereMoreInfoIsRequiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,27 +107,21 @@ namespace GUI
             this.markSpecIssuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.exportFunctionalBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markParagraphsFromNewRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.generateCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateSpecIssuesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showModelViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showShortcutsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.implementationRequiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verificationRequiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.generateDataDictionaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateFunctionalAnalysisReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.resetCountersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showRulePerformancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFunctionsPerformancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showTranslationRulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.markImplementationRequiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markNotTranslatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +131,9 @@ namespace GUI
             this.importFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.generateDynamicCoverageReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareWithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareWithGitRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateERTMSAcademyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,6 +164,7 @@ namespace GUI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -351,11 +370,72 @@ namespace GUI
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showSpecificationViewToolStripMenuItem,
+            this.showModelViewToolStripMenuItem,
+            this.showShortcutsViewToolStripMenuItem,
+            this.showTestsToolStripMenuItem,
+            this.showTranslationViewToolStripMenuItem,
+            this.toolStripSeparator22,
+            this.dockedToolStripMenuItem,
+            this.toolStripSeparator12,
             this.toolBarToolStripMenuItem,
             this.statusBarToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(44, 20);
             this.viewMenu.Text = "&View";
+            // 
+            // showSpecificationViewToolStripMenuItem
+            // 
+            this.showSpecificationViewToolStripMenuItem.Name = "showSpecificationViewToolStripMenuItem";
+            this.showSpecificationViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showSpecificationViewToolStripMenuItem.Text = "Show specification view";
+            this.showSpecificationViewToolStripMenuItem.Click += new System.EventHandler(this.showSpecificationViewToolStripMenuItem_Click_1);
+            // 
+            // showModelViewToolStripMenuItem
+            // 
+            this.showModelViewToolStripMenuItem.Name = "showModelViewToolStripMenuItem";
+            this.showModelViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showModelViewToolStripMenuItem.Text = "Show model view";
+            this.showModelViewToolStripMenuItem.Click += new System.EventHandler(this.showModelViewToolStripMenuItem_Click_1);
+            // 
+            // showShortcutsViewToolStripMenuItem
+            // 
+            this.showShortcutsViewToolStripMenuItem.Name = "showShortcutsViewToolStripMenuItem";
+            this.showShortcutsViewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.showShortcutsViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showShortcutsViewToolStripMenuItem.Text = "Show shortcuts view";
+            this.showShortcutsViewToolStripMenuItem.Click += new System.EventHandler(this.showShortcutsViewToolStripMenuItem_Click_1);
+            // 
+            // showTestsToolStripMenuItem
+            // 
+            this.showTestsToolStripMenuItem.Name = "showTestsToolStripMenuItem";
+            this.showTestsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showTestsToolStripMenuItem.Text = "Show tests view";
+            this.showTestsToolStripMenuItem.Click += new System.EventHandler(this.showTestsToolStripMenuItem_Click_1);
+            // 
+            // showTranslationViewToolStripMenuItem
+            // 
+            this.showTranslationViewToolStripMenuItem.Name = "showTranslationViewToolStripMenuItem";
+            this.showTranslationViewToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.showTranslationViewToolStripMenuItem.Text = "Show translation view";
+            this.showTranslationViewToolStripMenuItem.Click += new System.EventHandler(this.showTranslationViewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(219, 6);
+            // 
+            // dockedToolStripMenuItem
+            // 
+            this.dockedToolStripMenuItem.Name = "dockedToolStripMenuItem";
+            this.dockedToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.dockedToolStripMenuItem.Text = "Undock selected";
+            this.dockedToolStripMenuItem.Click += new System.EventHandler(this.dockedToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(219, 6);
             // 
             // toolBarToolStripMenuItem
             // 
@@ -363,7 +443,7 @@ namespace GUI
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.toolBarToolStripMenuItem.Text = "&Toolbar";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -373,7 +453,7 @@ namespace GUI
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.statusBarToolStripMenuItem.Text = "&Status Bar";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -385,6 +465,7 @@ namespace GUI
             this.specificationsToolStripMenuItem,
             this.findToolStripMenuItem,
             this.testsToolStripMenuItem,
+            this.historyToolStripMenuItem,
             this.generateERTMSAcademyReportToolStripMenuItem,
             this.toolStripSeparator9,
             this.searchToolStripMenuItem1,
@@ -414,8 +495,6 @@ namespace GUI
             // specificationsToolStripMenuItem
             // 
             this.specificationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showSpecificationViewToolStripMenuItem,
-            this.toolStripSeparator12,
             this.markApplicableParagraphsToolStripMenuItem,
             this.markNonApplicableParagraphsToolStripMenuItem,
             this.markRequirementsWhereMoreInfoIsRequiredToolStripMenuItem,
@@ -424,29 +503,15 @@ namespace GUI
             this.markNotImplementedButImplementationExistsToolStripMenuItem,
             this.markImplementedButNoFunctionalTestToolStripMenuItem,
             this.markSpecIssuesToolStripMenuItem,
+            this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator20,
             this.exportFunctionalBlocksToolStripMenuItem,
-            this.toolStripSeparator11,
-            this.importToolStripMenuItem,
-            this.markParagraphsFromNewRevisionToolStripMenuItem,
             this.toolStripSeparator15,
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
             this.specificationsToolStripMenuItem.Name = "specificationsToolStripMenuItem";
             this.specificationsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.specificationsToolStripMenuItem.Text = "Specifications";
-            // 
-            // showSpecificationViewToolStripMenuItem
-            // 
-            this.showSpecificationViewToolStripMenuItem.Name = "showSpecificationViewToolStripMenuItem";
-            this.showSpecificationViewToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.showSpecificationViewToolStripMenuItem.Text = "Show specification view";
-            this.showSpecificationViewToolStripMenuItem.Click += new System.EventHandler(this.showSpecificationViewToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(333, 6);
             // 
             // markApplicableParagraphsToolStripMenuItem
             // 
@@ -518,18 +583,6 @@ namespace GUI
             this.exportFunctionalBlocksToolStripMenuItem.Visible = false;
             this.exportFunctionalBlocksToolStripMenuItem.Click += new System.EventHandler(this.exportFunctionalBlocksToolStripMenuItem_Click);
             // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(333, 6);
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.importToolStripMenuItem.Text = "Import new version...";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
             // markParagraphsFromNewRevisionToolStripMenuItem
             // 
             this.markParagraphsFromNewRevisionToolStripMenuItem.Name = "markParagraphsFromNewRevisionToolStripMenuItem";
@@ -559,13 +612,11 @@ namespace GUI
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showModelViewToolStripMenuItem,
-            this.showShortcutsViewToolStripMenuItem,
-            this.toolStripSeparator14,
             this.implementationRequiredToolStripMenuItem,
             this.verificationRequiredToolStripMenuItem,
             this.toolStripSeparator18,
             this.generateDataDictionaryReportToolStripMenuItem,
+            this.generateFunctionalAnalysisReportToolStripMenuItem,
             this.toolStripSeparator21,
             this.resetCountersToolStripMenuItem,
             this.showRulePerformancesToolStripMenuItem,
@@ -574,83 +625,68 @@ namespace GUI
             this.findToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.findToolStripMenuItem.Text = "Model";
             // 
-            // showModelViewToolStripMenuItem
-            // 
-            this.showModelViewToolStripMenuItem.Name = "showModelViewToolStripMenuItem";
-            this.showModelViewToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.showModelViewToolStripMenuItem.Text = "Show model view";
-            this.showModelViewToolStripMenuItem.Click += new System.EventHandler(this.showModelViewToolStripMenuItem_Click);
-            // 
-            // showShortcutsViewToolStripMenuItem
-            // 
-            this.showShortcutsViewToolStripMenuItem.Name = "showShortcutsViewToolStripMenuItem";
-            this.showShortcutsViewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.showShortcutsViewToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.showShortcutsViewToolStripMenuItem.Text = "Show shortcuts view";
-            this.showShortcutsViewToolStripMenuItem.Click += new System.EventHandler(this.showShortcutsViewToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator14
-            // 
-            this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(244, 6);
-            // 
             // implementationRequiredToolStripMenuItem
             // 
             this.implementationRequiredToolStripMenuItem.Name = "implementationRequiredToolStripMenuItem";
-            this.implementationRequiredToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.implementationRequiredToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.implementationRequiredToolStripMenuItem.Text = "Mark implementation required";
             this.implementationRequiredToolStripMenuItem.Click += new System.EventHandler(this.implementationRequiredToolStripMenuItem_Click);
             // 
             // verificationRequiredToolStripMenuItem
             // 
             this.verificationRequiredToolStripMenuItem.Name = "verificationRequiredToolStripMenuItem";
-            this.verificationRequiredToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.verificationRequiredToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.verificationRequiredToolStripMenuItem.Text = "Mark verification required";
             this.verificationRequiredToolStripMenuItem.Click += new System.EventHandler(this.verificationRequiredToolStripMenuItem_Click);
             // 
             // toolStripSeparator18
             // 
             this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator18.Size = new System.Drawing.Size(254, 6);
             // 
             // generateDataDictionaryReportToolStripMenuItem
             // 
             this.generateDataDictionaryReportToolStripMenuItem.Name = "generateDataDictionaryReportToolStripMenuItem";
-            this.generateDataDictionaryReportToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.generateDataDictionaryReportToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.generateDataDictionaryReportToolStripMenuItem.Text = "Generate data dictionary report...";
             this.generateDataDictionaryReportToolStripMenuItem.Click += new System.EventHandler(this.generateDataDictionaryReportToolStripMenuItem_Click);
+            // 
+            // generateFunctionalAnalysisReportToolStripMenuItem
+            // 
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Name = "generateFunctionalAnalysisReportToolStripMenuItem";
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Text = "Generate functional analysis report";
+            this.generateFunctionalAnalysisReportToolStripMenuItem.Click += new System.EventHandler(this.generateFunctionalAnalysisReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator21
             // 
             this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator21.Size = new System.Drawing.Size(254, 6);
             // 
             // resetCountersToolStripMenuItem
             // 
             this.resetCountersToolStripMenuItem.Name = "resetCountersToolStripMenuItem";
-            this.resetCountersToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.resetCountersToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.resetCountersToolStripMenuItem.Text = "Reset counters";
             this.resetCountersToolStripMenuItem.Click += new System.EventHandler(this.resetCountersToolStripMenuItem_Click);
             // 
             // showRulePerformancesToolStripMenuItem
             // 
             this.showRulePerformancesToolStripMenuItem.Name = "showRulePerformancesToolStripMenuItem";
-            this.showRulePerformancesToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showRulePerformancesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showRulePerformancesToolStripMenuItem.Text = "Show rule performances";
             this.showRulePerformancesToolStripMenuItem.Click += new System.EventHandler(this.showRulePerformancesToolStripMenuItem_Click);
             // 
             // showFunctionsPerformancesToolStripMenuItem
             // 
             this.showFunctionsPerformancesToolStripMenuItem.Name = "showFunctionsPerformancesToolStripMenuItem";
-            this.showFunctionsPerformancesToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.showFunctionsPerformancesToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.showFunctionsPerformancesToolStripMenuItem.Text = "Show functions performances";
             this.showFunctionsPerformancesToolStripMenuItem.Click += new System.EventHandler(this.showFunctionsPerformancesToolStripMenuItem_Click);
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showTestsToolStripMenuItem,
-            this.showTranslationRulesToolStripMenuItem,
             this.toolStripSeparator13,
             this.markImplementationRequiredToolStripMenuItem,
             this.markNotTranslatedToolStripMenuItem,
@@ -663,21 +699,6 @@ namespace GUI
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
             this.testsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.testsToolStripMenuItem.Text = "Tests";
-            // 
-            // showTestsToolStripMenuItem
-            // 
-            this.showTestsToolStripMenuItem.Name = "showTestsToolStripMenuItem";
-            this.showTestsToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.showTestsToolStripMenuItem.Text = "Show tests view";
-            this.showTestsToolStripMenuItem.Click += new System.EventHandler(this.showTestsToolStripMenuItem_Click);
-            // 
-            // showTranslationRulesToolStripMenuItem
-            // 
-            this.showTranslationRulesToolStripMenuItem.Name = "showTranslationRulesToolStripMenuItem";
-            this.showTranslationRulesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.showTranslationRulesToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.showTranslationRulesToolStripMenuItem.Text = "Show translation rules";
-            this.showTranslationRulesToolStripMenuItem.Click += new System.EventHandler(this.showTranslationRulesToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -736,6 +757,29 @@ namespace GUI
             this.generateDynamicCoverageReportToolStripMenuItem.Text = "Generate dynamic coverage report...";
             this.generateDynamicCoverageReportToolStripMenuItem.Click += new System.EventHandler(this.generateDynamicCoverageReportToolStripMenuItem_Click);
             // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compareWithToolStripMenuItem,
+            this.compareWithGitRevisionToolStripMenuItem});
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.historyToolStripMenuItem.Text = "History";
+            // 
+            // compareWithToolStripMenuItem
+            // 
+            this.compareWithToolStripMenuItem.Name = "compareWithToolStripMenuItem";
+            this.compareWithToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.compareWithToolStripMenuItem.Text = "Compare with local file...";
+            this.compareWithToolStripMenuItem.Click += new System.EventHandler(this.compareWithToolStripMenuItem_Click);
+            // 
+            // compareWithGitRevisionToolStripMenuItem
+            // 
+            this.compareWithGitRevisionToolStripMenuItem.Name = "compareWithGitRevisionToolStripMenuItem";
+            this.compareWithGitRevisionToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.compareWithGitRevisionToolStripMenuItem.Text = "Compare with git revision...";
+            this.compareWithGitRevisionToolStripMenuItem.Click += new System.EventHandler(this.compareWithGitRevisionToolStripMenuItem_Click);
+            // 
             // generateERTMSAcademyReportToolStripMenuItem
             // 
             this.generateERTMSAcademyReportToolStripMenuItem.Name = "generateERTMSAcademyReportToolStripMenuItem";
@@ -778,6 +822,7 @@ namespace GUI
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -961,11 +1006,71 @@ namespace GUI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // dockPanel
+            // 
+            this.dockPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.DockBottomPortion = 150D;
+            this.dockPanel.DockLeftPortion = 500D;
+            this.dockPanel.DockRightPortion = 200D;
+            this.dockPanel.DockTopPortion = 150D;
+            this.dockPanel.Location = new System.Drawing.Point(0, 49);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Size = new System.Drawing.Size(632, 382);
+            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
+            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin1.TabGradient = tabGradient1;
+            autoHideStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
+            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
+            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
+            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
+            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
+            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
+            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
+            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
+            tabGradient6.EndColor = System.Drawing.SystemColors.InactiveCaption;
+            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient6.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
+            tabGradient7.EndColor = System.Drawing.Color.Transparent;
+            tabGradient7.StartColor = System.Drawing.Color.Transparent;
+            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
+            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
+            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
+            this.dockPanel.Skin = dockPanelSkin1;
+            this.dockPanel.TabIndex = 4;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 453);
+            this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -999,7 +1104,6 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem printSetupToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileHorizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
@@ -1045,18 +1149,10 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem verifiedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem implementedToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripMenuItem testsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
-        private System.Windows.Forms.ToolStripMenuItem showTranslationRulesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showSpecificationViewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showModelViewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
-        private System.Windows.Forms.ToolStripMenuItem showTestsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem generateCoverageReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
@@ -1083,12 +1179,25 @@ namespace GUI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem showFunctionsPerformancesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markSpecIssuesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showShortcutsViewToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripMenuItem generateSpecIssuesReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markParagraphsFromNewRevisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateERTMSAcademyReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compareWithToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compareWithGitRevisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateFunctionalAnalysisReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dockedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        public WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
+        private System.Windows.Forms.ToolStripMenuItem showSpecificationViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showModelViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showShortcutsViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showTestsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showTranslationViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
 

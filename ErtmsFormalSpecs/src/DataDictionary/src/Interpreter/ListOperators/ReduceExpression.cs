@@ -43,8 +43,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="function"></param>
         /// <param name="initialValue"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public ReduceExpression(ModelElement root, Expression listExpression, Expression condition, Expression function, Expression initialValue)
-            : base(root, listExpression, condition, function)
+        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression function, Expression initialValue)
+            : base(root, log, listExpression, condition, function)
         {
             InitialValue = initialValue;
             InitialValue.Enclosing = this;
@@ -68,6 +68,7 @@ namespace DataDictionary.Interpreter.ListOperators
             if (retVal)
             {
                 InitialValue.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(InitialValue.StaticUsage, Usage.ModeEnum.Read);
 
                 AccumulatorVariable.Type = InitialValue.GetExpressionType();
             }

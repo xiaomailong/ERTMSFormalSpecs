@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Values
 {
-    public interface IValue : Utils.INamable, Types.ITypedElement
+    public interface IValue : Utils.INamable, Types.ITypedElement, TextualExplain
     {
         /// <summary>
         /// Provides the EFS system in which this value is created
@@ -39,7 +40,7 @@ namespace DataDictionary.Values
         IValue RightSide(Variables.IVariable variable, bool duplicate);
     }
 
-    public abstract class Value : IValue
+    public abstract class Value : IValue, IEnclosed
     {
         public virtual string Name
         {
@@ -101,7 +102,7 @@ namespace DataDictionary.Values
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } }
+        public string TypeName { get { return Type.FullName; } set { } }
 
         /// <summary>
         /// The type of the element
@@ -159,6 +160,11 @@ namespace DataDictionary.Values
         public List<Utils.ElementLog> Messages { get { return null; } }
 
         /// <summary>
+        /// Nothing to do
+        /// </summary>
+        public void ClearMessages() { }
+
+        /// <summary>
         /// Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
@@ -175,6 +181,35 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="copy"></param>
         public void AddModelElement(Utils.IModelElement element) { }
+
+        /// <summary>
+        /// Provides an RTF explanation of the value
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain()
+        {
+            return LiteralName;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the enumeration
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel)
+        {
+            return TextualExplainUtilities.Pad("{" + LiteralName + "}", indentLevel);
+        }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool subElements)
+        {
+            return getExplain(0);
+        }
 
     }
 

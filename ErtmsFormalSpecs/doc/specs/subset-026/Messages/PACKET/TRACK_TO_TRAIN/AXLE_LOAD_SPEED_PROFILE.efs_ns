@@ -5,200 +5,247 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction</Comment>
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="51"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-<Comment></Comment>
-</StructureElement><StructureElement
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_TRACKINIT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="D_TRACKINIT"
+<ReqRef
+ Id="9e4cc30b-7c23-4202-aa4b-87839eea29a1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_AXLELOAD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_AXLELOAD"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_AXLELOAD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_AXLELOAD"
 >
 </StructureElement><StructureElement
  TypeName="Q_FRONT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_FRONT"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_0"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_1"
 >
 </StructureElement><StructureElement
  TypeName="Collection3"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence3"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
- Name="SubStructure1"
->
-<StructureElement
- TypeName="M_AXLELOAD"
- Default=""
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_AXLELOAD"
->
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="D_TRACKINIT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
+ Name="D_TRACKINIT"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="SubStructure1"
+>
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="M_AXLELOADCAT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="M_AXLELOADCAT"
+>
+</StructureElement><StructureElement
+ TypeName="V_AXLELOAD"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
  Name="V_AXLELOAD"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure2"
 >
-<StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="D_AXLELOAD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_AXLELOAD"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_AXLELOAD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_AXLELOAD"
 >
 </StructureElement><StructureElement
  TypeName="Q_FRONT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_FRONT"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
 </StructureElement><StructureElement
  TypeName="Collection2"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence2"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure3"
 >
-<StructureElement
- TypeName="M_AXLELOAD"
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_AXLELOAD"
+ Implemented="TRUE"
+ Name="M_AXLELOADCAT"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_AXLELOAD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_AXLELOAD"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection><Collection
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure3"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection2"
 >
-</Collection><Collection
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure2"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection3"
 >
-</Collection></Collections>
+<ReqRef
+ Id="8d9d2f5f-0f14-49ba-b810-dc359f12b692"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

@@ -17,7 +17,7 @@ using System;
 
 namespace DataDictionary.Tests
 {
-    public class TestCase : Generated.TestCase
+    public class TestCase : Generated.TestCase, TextualExplain
     {
         public System.Collections.ArrayList Steps
         {
@@ -136,6 +136,38 @@ namespace DataDictionary.Tests
             retVal.Name = name;
 
             retVal.appendSteps(Step.createDefault("Step1"));
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the test case's behaviour
+        /// </summary>
+        /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
+        /// <returns></returns>
+        public string getExplain(int indentLevel, bool explainSubElements)
+        {
+            string retVal = TextualExplainUtilities.Header(this, indentLevel);
+
+            foreach (Step step in Steps)
+            {
+                retVal += step.getExplain(indentLevel + 2, explainSubElements) + "\\par";
+
+            }
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides an explanation of the test case's behaviour
+        /// </summary>
+
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public string getExplain(bool explainSubElements)
+        {
+            string retVal = "";
+
+            retVal = getExplain(0, explainSubElements);
 
             return retVal;
         }

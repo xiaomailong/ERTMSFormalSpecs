@@ -5,30 +5,50 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Train running number</Comment>
+<ReqRef
+ Id="cdca0dec-410f-4a59-89f0-ed75f2bdc5e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="962e7f3c-55dd-4d2b-b99e-8854f18f9566"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Train running number</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="5"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="cdca0dec-410f-4a59-89f0-ed75f2bdc5e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="cdca0dec-410f-4a59-89f0-ed75f2bdc5e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_OPERATIONAL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_OPERATIONAL"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="cdca0dec-410f-4a59-89f0-ed75f2bdc5e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

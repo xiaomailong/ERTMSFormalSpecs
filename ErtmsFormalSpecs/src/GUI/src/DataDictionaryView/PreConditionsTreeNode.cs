@@ -29,7 +29,11 @@ namespace GUI.DataDictionaryView
         public PreConditionsTreeNode(DataDictionary.Functions.Case item)
             : base(item, "Pre condition", true)
         {
-            foreach (DataDictionary.Rules.PreCondition preCondition in item.PreConditions)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            foreach (DataDictionary.Rules.PreCondition preCondition in Item.PreConditions)
             {
                 Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition));
             }

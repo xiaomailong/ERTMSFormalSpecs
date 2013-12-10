@@ -10,10 +10,10 @@
  Name="LinkingReaction"
 >
 <ReqRef
- Id="3.4.4.2.3"
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Values>
+</ReqRef><Values>
 <EnumValue
  Value="1"
  Name="TrainTrip"
@@ -34,10 +34,10 @@
  Name="LinkingData"
 >
 <ReqRef
- Id="3.4.4.2.1"
+ Id="3da69521-ffba-42ec-9ded-f9c719a2f4b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
  Default="Default.BaseTypes.Length.NA"
@@ -46,15 +46,15 @@
  Name="LocationAccuracy"
 >
 <ReqRef
- Id="3.6.4.2.b"
+ Id="9e4c5ab1-4454-4b08-9df1-666cf07b17ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.4.4.2.1.c"
+</ReqRef><ReqRef
+ Id="851ab4c7-24ed-4bb4-bcf0-18ffccc80fb7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the location accuracy of balise groups.</Comment>
+</ReqRef><Comment>Represents the location accuracy of balise groups.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
  Default="Default.Orientation.Unknown"
@@ -63,10 +63,10 @@
  Name="Orientation"
 >
 <ReqRef
- Id="3.4.4.2.1.d"
+ Id="c15a755a-0bef-44a2-b2b4-43d8f1bbf0ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="LinkingReaction"
  Default=""
@@ -75,26 +75,26 @@
  Name="Reaction"
 >
 <ReqRef
- Id="3.4.4.2.1.e"
+ Id="a58464f1-c74b-420f-ad30-03d671b764c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.2.3"
+</ReqRef><ReqRef
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default="Default.BaseTypes.Distance.NA"
+ Default="Default.BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Name="Distance"
 >
 <ReqRef
- Id="3.4.4.2.1.b"
+ Id="54049463-080e-41b3-a9aa-83124d1f6471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_BG"
  Default=""
@@ -103,10 +103,10 @@
  Name="NID_BG"
 >
 <ReqRef
- Id="3.4.4.2.1.a"
+ Id="091b5a23-8a4f-49d0-b23d-9a839b16be15"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -167,31 +167,29 @@
  Name="CurrentBGWithinFrame"
 >
 <ReqRef
- Id="3.4.4.4.3"
+ Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.3.1"
+</ReqRef><ReqRef
+ Id="75b64f27-a0f0-421e-a6c1-37f2dd27860f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.3.2"
+</ReqRef><ReqRef
+ Id="5aa027b1-5c1a-4773-a56d-e795d43847fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Linking information available"
 >
 <PreConditions>
-<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition>
-<PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<PreCondition>((FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked) AND ((FIRST_IN Linkings).NID_BG == (FIRST_IN CurrentBaliseGroup).NID_BG)</PreCondition><PreCondition>(AntennaPosition(Default.DistanceInterval.Max) &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
-(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition>
-</PreConditions>
+(AntennaPosition(Default.DistanceInterval.Min) &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
@@ -204,10 +202,10 @@ AND
  Name="CurrentLinking"
 >
 <ReqRef
- Id="3.4.4.4.5"
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the linking info currently active</Comment>
+</ReqRef><Comment>Provides the linking info currently active</Comment>
 <Cases>
 <Case
  Name="Always"
@@ -220,41 +218,36 @@ AND
  Name="CurrentBGAcceptableUnknown"
 >
 <ReqRef
- Id="3.4.4.4.2.1"
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.2.1.c"
+</ReqRef><ReqRef
+ Id="203ab365-30f2-4d89-bf31-72cc5c007972"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.2.1.a"
+</ReqRef><ReqRef
+ Id="81bbc248-7c0b-473e-a3ec-e9178c2ce88d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.8.5.2.2"
+</ReqRef><ReqRef
+ Id="62aa6f8e-f444-4ed1-90b7-43dc64aa7594"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.2.2"
+</ReqRef><ReqRef
+ Id="15cc1ee9-1be0-4256-a588-5dd0831c0f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.5"
+</ReqRef><ReqRef
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Cases>
 <Case
  Name="Acceptable"
 >
 <PreConditions>
-<PreCondition>Available ( CurrentLinking() )</PreCondition>
-<PreCondition> (FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition>
-<PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition>
-<PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition>
-</PreConditions>
+<PreCondition>Available ( CurrentLinking() )</PreCondition><PreCondition>(FIRST_IN Linkings).NID_BG == Messages.NID_BG.NID_UNKNOWN</PreCondition><PreCondition>(FIRST_IN CurrentBaliseGroup).Q_LINK == Messages.Q_LINK.Linked </PreCondition><PreCondition>(COUNT CurrentBaliseGroup) &gt;= 2</PreCondition><PreCondition>THERE_IS_IN CurrentBaliseGroup | BaliseHasReposPacketValidForDirection(X)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Default"
@@ -271,8 +264,7 @@ AND
  Name="IsNominal"
 >
 <PreConditions>
-<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition>
-</PreConditions>
+<PreCondition>(FIRST_IN CurrentBaliseGroup).N_PIG &lt; (LAST_IN CurrentBaliseGroup).N_PIG</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -281,14 +273,14 @@ AND
  Name="BaliseHasReposPacketValidForDirection"
 >
 <ReqRef
- Id="3.4.4.4.2.1"
+ Id="efb1d7b7-401e-46ab-93ac-645f2bc80a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.2.1.b"
+</ReqRef><ReqRef
+ Id="e5ef2878-8ec2-4b95-9b91-af8274b231b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -300,8 +292,7 @@ AND
  Name="Checks"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR) </PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -320,8 +311,7 @@ AND
  Name="Information available"
 >
 <PreConditions>
-<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition>
-</PreConditions>
+<PreCondition>THERE_IS_IN Linkings | X.NID_BG == NID_BG</PreCondition></PreConditions>
 <Expression>( FIRST_IN Linkings | X.NID_BG == NID_BG ).Distance</Expression>
 </Case><Case
  Name="No information available"
@@ -334,10 +324,10 @@ AND
  Name="ConvertLinkingReaction"
 >
 <ReqRef
- Id="3.4.4.2.3"
+ Id="e301f9da-607b-45f9-a74b-a6d53cbfc408"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.Q_LINKREACTION"
  Name="Reaction"
@@ -348,22 +338,19 @@ AND
  Name="No reaction"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.No_Reaction</PreCondition></PreConditions>
 <Expression>LinkingReaction.NoReaction</Expression>
 </Case><Case
  Name="Train trip"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Train_trip</PreCondition></PreConditions>
 <Expression>LinkingReaction.TrainTrip</Expression>
 </Case><Case
  Name=" Command service brake"
 >
 <PreConditions>
-<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition>
-</PreConditions>
+<PreCondition>Reaction == Messages.Q_LINKREACTION.Apply_service_brake</PreCondition></PreConditions>
 <Expression>LinkingReaction.CommandServiceBrake</Expression>
 </Case></Cases>
 </Function><Function
@@ -372,18 +359,18 @@ AND
  Name="ConsiderBG"
 >
 <ReqRef
- Id="3.4.4.4.1"
+ Id="22b29a34-8fe5-4ccc-9aec-f79479570714"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.2"
+</ReqRef><ReqRef
+ Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.4.4.4.5"
+</ReqRef><ReqRef
+ Id="370bc14e-630a-4f72-87f6-54e50015825c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -423,24 +410,22 @@ AND
  Name="No infill"
 >
 <ReqRef
- Id="3.7.3.1.m"
+ Id="d98529ca-fda7-480c-8c31-33ce08d1b140"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <PreConditions>
-<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
 <Actions>
-<Action>Linkings &lt;- []</Action>
-</Actions>
+<Action>Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Name="Infill"
 >
 <ReqRef
- Id="3.7.3.1.n"
+ Id="f0ea8f90-356c-47de-a7fd-4827ae488f00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 </Actions>
@@ -469,8 +454,7 @@ AND
   Q_LOCACC =&gt; Packet.Q_LOCACC,
   Q_SCALE =&gt; Packet.Q_SCALE
 )
-IN Linkings </Action>
-</Actions>
+IN Linkings </Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -486,8 +470,7 @@ IN Linkings </Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1 </Action>
-</Actions>
+<Action>APPLY StoreLinkingInfo ( Info =&gt; X, Q_SCALE =&gt; Packet.Q_SCALE ) ON Packet.Sequence1 </Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -529,8 +512,7 @@ IN Linkings </Action>
   Q_LOCACC =&gt; Info.Q_LOCACC,
   Q_SCALE =&gt; Q_SCALE
 ) 
-IN Linkings</Action>
-</Actions>
+IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -539,11 +521,11 @@ IN Linkings</Action>
  Name="CleanLinkingInfo"
 >
 <ReqRef
- Id="3.4.4.2.1.1"
+ Id="3ab48b20-0a96-4f02-93ac-64071624c979"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
+</ReqRef><Comment>Clear all Linking information which expectation window has passed safe antenna position</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -560,8 +542,7 @@ IN Linkings</Action>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action>
-</Actions>
+<Action>Linkings &lt;- MAP Linkings | ( AntennaPosition ( Default.DistanceInterval.Min ) &lt;= X.Distance + X.LocationAccuracy ) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -570,9 +551,14 @@ IN Linkings</Action>
  Type="Linkings"
  DefaultValue="[]"
  VariableMode="Internal"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Linkings"
 >
-<Comment>Stores the next linking data as provided by the balises</Comment>
+<ReqRef
+ Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
 </Variable></Variables>
 </NameSpace>

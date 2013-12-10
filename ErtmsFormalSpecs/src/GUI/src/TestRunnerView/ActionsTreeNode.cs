@@ -42,7 +42,13 @@ namespace GUI.TestRunnerView
         public ActionsTreeNode(DataDictionary.Tests.SubStep item)
             : base(item, "Actions", true)
         {
-            foreach (DataDictionary.Rules.Action action in item.Actions)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.Action action in Item.Actions)
             {
                 Nodes.Add(new DataDictionaryView.ActionTreeNode(action));
             }

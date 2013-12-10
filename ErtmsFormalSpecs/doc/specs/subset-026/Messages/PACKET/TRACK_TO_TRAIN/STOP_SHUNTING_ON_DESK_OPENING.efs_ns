@@ -5,30 +5,50 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet to stop Shunting on desk opening.</Comment>
+<ReqRef
+ Id="76c3a195-7916-42df-919d-5bcdaac41d30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="c254fb8a-10ad-4df8-a7a4-a6094488608d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Packet to stop Shunting on desk opening.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="135"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="76c3a195-7916-42df-919d-5bcdaac41d30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="76c3a195-7916-42df-919d-5bcdaac41d30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="76c3a195-7916-42df-919d-5bcdaac41d30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

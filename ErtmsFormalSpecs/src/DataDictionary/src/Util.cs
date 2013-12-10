@@ -23,6 +23,7 @@ using DataDictionary.Tests.Translations;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using XmlBooster;
+using Utils;
 
 namespace DataDictionary
 {
@@ -43,15 +44,59 @@ namespace DataDictionary
         /// </summary>
         private class Updater : Generated.Visitor
         {
-            public override void visit(Generated.Expectation obj, bool visitSubNodes)
+            /// <summary>
+            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                Expectation expectation = obj as Expectation;
+                Paragraph paragraph = (Paragraph)obj;
 
-                if (expectation != null)
+                // Side effect : creates a new Guid if it is empty
+                string guid = paragraph.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Ensures that all paragraphs have a Guid at the end of the load operation
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Specification obj, bool visitSubNodes)
+            {
+                Specification.Specification specification = (Specification.Specification)obj;
+
+                // Side effect : creates a new Guid if it is empty
+                string guid = specification.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Update references to paragraphs
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.ReqRef obj, bool visitSubNodes)
+            {
+                ReqRef reqRef = (ReqRef)obj;
+
+                Paragraph paragraph = reqRef.Paragraph;
+                if (paragraph != null)
                 {
-                    if (expectation.getDeadLine() > 999)
+                    // Updates the paragraph Guid
+                    if (paragraph.Guid != reqRef.getId())
                     {
-                        expectation.setDeadLine(expectation.getDeadLine() / 1000);
+                        reqRef.setId(paragraph.getGuid());
+                    }
+
+                    // Updates the specification Guid
+                    Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(paragraph);
+                    if (specification.Guid != reqRef.getSpecId())
+                    {
+                        reqRef.setSpecId(specification.Guid);
                     }
                 }
 
@@ -70,12 +115,31 @@ namespace DataDictionary
             public string BasePath { get; private set; }
 
             /// <summary>
+            /// Indicates that the files should be locked
+            /// </summary>
+            public bool LockFiles { get; private set; }
+
+            /// <summary>
+            /// Indicates that errors can occur during load, for instance, for comparison purposes
+            /// </summary>
+            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+
+            /// <summary>
+            /// The errors that occured during the load of the file
+            /// </summary>
+            public List<ElementLog> ErrorsDuringLoad { get; private set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="basePath"></param>
-            public LoadDepends(string basePath)
+            /// <param name="lockFiles"></param>
+            /// <param name="allowErrors"></param>
+            public LoadDepends(string basePath, bool lockFiles, List<ElementLog> errors)
             {
                 BasePath = basePath;
+                LockFiles = lockFiles;
+                ErrorsDuringLoad = errors;
             }
 
             public override void visit(Generated.Dictionary obj, bool visitSubNodes)
@@ -86,7 +150,15 @@ namespace DataDictionary
                 {
                     foreach (NameSpaceRef nameSpaceRef in dictionary.allNameSpaceRefs())
                     {
-                        dictionary.appendNameSpaces(nameSpaceRef.LoadNameSpace());
+                        NameSpace nameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
+                        if (nameSpace != null)
+                        {
+                            dictionary.appendNameSpaces(nameSpace);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                        }
                     }
                     dictionary.allNameSpaceRefs().Clear();
                 }
@@ -94,7 +166,15 @@ namespace DataDictionary
                 {
                     foreach (FrameRef testRef in dictionary.allTestRefs())
                     {
-                        dictionary.appendTests(testRef.LoadFrame());
+                        Frame frame = testRef.LoadFrame(LockFiles, AllowErrorsDuringLoad);
+                        if (frame != null)
+                        {
+                            dictionary.appendTests(frame);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + testRef.FileName));
+                        }
                     }
                     dictionary.allTestRefs().Clear();
                 }
@@ -110,7 +190,16 @@ namespace DataDictionary
                 {
                     foreach (NameSpaceRef nameSpaceRef in nameSpace.allNameSpaceRefs())
                     {
-                        nameSpace.appendNameSpaces(nameSpaceRef.LoadNameSpace());
+                        NameSpace subNameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
+                        if (subNameSpace != null)
+                        {
+                            nameSpace.appendNameSpaces(subNameSpace);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                        }
+
                     }
                     nameSpace.allNameSpaceRefs().Clear();
                 }
@@ -126,7 +215,15 @@ namespace DataDictionary
                 {
                     foreach (ChapterRef chapterRef in specification.allChapterRefs())
                     {
-                        specification.appendChapters(chapterRef.LoadChapter());
+                        Chapter chapter = chapterRef.LoadChapter(LockFiles, AllowErrorsDuringLoad);
+                        if (chapter != null)
+                        {
+                            specification.appendChapters(chapter);
+                        }
+                        else
+                        {
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + chapterRef.FileName));
+                        }
                     }
                     specification.allChapterRefs().Clear();
                 }
@@ -237,25 +334,36 @@ namespace DataDictionary
             where T : class, IXmlBBase
         {
             /// <summary>
-            /// Loads a translation dictionary and lock the file
+            /// Loads a file and locks it if required
             /// </summary>
             /// <param name="filePath"></param>
             /// <param name="enclosing"></param>
+            /// <param name="lockFiles"></param>
             /// <returns></returns>
-            public static T loadFile(string filePath, ModelElement enclosing = null)
+            public static T loadFile(string filePath, ModelElement enclosing, bool lockFiles)
             {
                 T retVal = null;
 
-                XmlBFileContext ctxt = new XmlBFileContext();
-                ctxt.readFile(filePath);
+                // Do not rely on XmlBFileContext since it does not care about encoding. 
+                // File encoding is UTF-8
+                XmlBStringContext ctxt;
+                using (StreamReader file = new StreamReader(filePath))
+                {
+                    ctxt = new XmlBStringContext(file.ReadToEnd());
+                    file.Close();
+                }
+
                 try
                 {
-                    Generated.ControllersManager.NamableController.DesactivateNotification();
+                    Generated.ControllersManager.DesactivateAllNotifications();
                     retVal = Generated.acceptor.accept(ctxt) as T;
                     if (retVal != null)
                     {
                         retVal.setFather(enclosing);
-                        LockFile(filePath);
+                        if (lockFiles)
+                        {
+                            LockFile(filePath);
+                        }
                     }
                 }
                 catch (XmlBooster.XmlBException excp)
@@ -268,7 +376,7 @@ namespace DataDictionary
                 }
                 finally
                 {
-                    Generated.ControllersManager.NamableController.ActivateNotification();
+                    Generated.ControllersManager.ActivateAllNotifications();
                 }
 
                 return retVal;
@@ -280,26 +388,60 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filePath">The path of the file which holds the dictionary data</param>
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
+        /// <param name="allowErrors">Provides the list used to hold errors during the load. null indicates that no errors are tolerated during load</param>
         /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem)
+        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors)
         {
-            Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath);
+            Dictionary retVal = DocumentLoader<Dictionary>.loadFile(filePath, null, lockFiles);
 
             if (retVal != null)
             {
                 retVal.FilePath = filePath;
-                efsSystem.AddDictionary(retVal);
+                if (efsSystem != null)
+                {
+                    efsSystem.AddDictionary(retVal);
+                }
 
                 // Loads the dependancies for this .efs file
-                LoadDepends loadDepends = new LoadDepends(retVal.BasePath);
-                loadDepends.visit(retVal);
-
-                // Updates the contents of this .efs file
-                Updater updater = new Updater();
-                updater.visit(retVal);
-                if (retVal.Specifications != null)
+                try
                 {
-                    retVal.Specifications.ManageTypeSpecs();
+                    Generated.ControllersManager.DesactivateAllNotifications();
+                    LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
+                    loadDepends.visit(retVal);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e.Message);
+                    retVal = null;
+                }
+                finally
+                {
+                    Generated.ControllersManager.ActivateAllNotifications();
+                }
+            }
+
+            if (retVal != null)
+            {
+                // Updates the contents of this .efs file
+                try
+                {
+                    Generated.ControllersManager.DesactivateAllNotifications();
+                    Updater updater = new Updater();
+                    updater.visit(retVal);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e.Message);
+                }
+                finally
+                {
+                    Generated.ControllersManager.ActivateAllNotifications();
+                }
+
+                if (retVal != null && efsSystem != null)
+                {
+                    retVal.CheckRules();
                 }
             }
 
@@ -311,10 +453,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filePath">The name of the file which holds the dictionary data</param>
         /// <param name="dictionary">The dictionary for which the specification is loaded</param>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public static Specification.Specification loadSpecification(String filePath, Dictionary dictionary)
+        public static Specification.Specification loadSpecification(String filePath, Dictionary dictionary, bool lockFiles)
         {
-            Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath, dictionary);
+            Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath, dictionary, lockFiles);
+
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
 
             return retVal;
         }
@@ -324,10 +472,16 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="dictionary"></param>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public static TranslationDictionary loadTranslationDictionary(string filePath, DataDictionary.Dictionary dictionary)
+        public static TranslationDictionary loadTranslationDictionary(string filePath, DataDictionary.Dictionary dictionary, bool lockFiles)
         {
-            TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary);
+            TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary, lockFiles);
+
+            if (retVal == null)
+            {
+                throw new System.Exception("Cannot read file " + filePath);
+            }
 
             return retVal;
         }
@@ -336,11 +490,21 @@ namespace DataDictionary
         /// Loads a namespace and locks the file
         /// </summary>
         /// <param name="filePath"></param>
-        /// <param name="dictionary"></param>
+        /// <param name="enclosing"></param>
+        /// <param name="lockFiles"></param>
+        /// <param name="allowErrors"></param>
         /// <returns></returns>
-        public static NameSpace loadNameSpace(string filePath, ModelElement enclosing)
+        public static NameSpace loadNameSpace(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
         {
-            NameSpace retVal = DocumentLoader<NameSpace>.loadFile(filePath, enclosing);
+            NameSpace retVal = DocumentLoader<NameSpace>.loadFile(filePath, enclosing, lockFiles);
+
+            if (retVal == null)
+            {
+                if (!allowErrors)
+                {
+                    throw new System.Exception("Cannot read file " + filePath);
+                }
+            }
 
             return retVal;
         }
@@ -349,11 +513,21 @@ namespace DataDictionary
         /// Loads a frame and locks the file
         /// </summary>
         /// <param name="filePath"></param>
-        /// <param name="dictionary"></param>
+        /// <param name="enclosing"></param>
+        /// <param name="lockFiles"></param>
+        /// <param name="allowErrors"></param>
         /// <returns></returns>
-        public static Frame loadFrame(string filePath, ModelElement enclosing)
+        public static Frame loadFrame(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
         {
-            Frame retVal = DocumentLoader<Frame>.loadFile(filePath, enclosing);
+            Frame retVal = DocumentLoader<Frame>.loadFile(filePath, enclosing, lockFiles);
+
+            if (retVal == null)
+            {
+                if (!allowErrors)
+                {
+                    throw new System.Exception("Cannot read file " + filePath);
+                }
+            }
 
             return retVal;
         }
@@ -363,10 +537,20 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="dictionary"></param>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
+        /// <param name="allowErrors"></param>
         /// <returns></returns>
-        public static Chapter loadChapter(string filePath, ModelElement enclosing)
+        public static Chapter loadChapter(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
         {
-            Chapter retVal = DocumentLoader<Chapter>.loadFile(filePath, enclosing);
+            Chapter retVal = DocumentLoader<Chapter>.loadFile(filePath, enclosing, lockFiles);
+
+            if (retVal == null)
+            {
+                if (!allowErrors)
+                {
+                    throw new System.Exception("Cannot read file " + filePath);
+                }
+            }
 
             return retVal;
         }

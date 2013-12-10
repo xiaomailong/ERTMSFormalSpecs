@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class StateSubStatesTreeNode : DataTreeNode<DataDictionary.Constants.State>
     {
-        private class InternalStateTypeConverter : StateTypeConverter
+        private class InternalStateTypeConverter : Converters.StateTypeConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -50,7 +50,13 @@ namespace GUI.DataDictionaryView
         public StateSubStatesTreeNode(DataDictionary.Constants.State item)
             : base(item, "States", true)
         {
-            foreach (DataDictionary.Constants.State state in item.StateMachine.States)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Constants.State state in Item.StateMachine.States)
             {
                 Nodes.Add(new StateTreeNode(state));
             }

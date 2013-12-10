@@ -39,7 +39,13 @@ namespace GUI.TranslationRules
         public SourceTextsTreeNode(DataDictionary.Tests.Translations.Translation item)
             : base(item, "Source texts", true)
         {
-            foreach (DataDictionary.Tests.Translations.SourceText sourceText in item.SourceTexts)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Translations.SourceText sourceText in Item.SourceTexts)
             {
                 Nodes.Add(new SourceTextTreeNode(sourceText));
             }

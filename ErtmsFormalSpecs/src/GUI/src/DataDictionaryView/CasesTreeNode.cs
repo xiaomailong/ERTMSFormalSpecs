@@ -40,7 +40,11 @@ namespace GUI.DataDictionaryView
         public CasesTreeNode(DataDictionary.Functions.Function item)
             : base(item, "Cases", true, false)
         {
-            foreach (DataDictionary.Functions.Case aCase in item.Cases)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            foreach (DataDictionary.Functions.Case aCase in Item.Cases)
             {
                 Nodes.Add(new CaseTreeNode(aCase));
             }

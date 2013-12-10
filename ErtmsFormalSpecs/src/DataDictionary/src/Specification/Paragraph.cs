@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace DataDictionary.Specification
 {
-    public class Paragraph : Generated.Paragraph, IComparable<Utils.IModelElement>, ICommentable
+    public class Paragraph : Generated.Paragraph, IComparable<Utils.IModelElement>, IHoldsParagraphs
     {
         private static int A = Char.ConvertToUtf32("a", 0);
 
@@ -59,6 +59,39 @@ namespace DataDictionary.Specification
                     }
                 }
                 return id;
+            }
+            set
+            {
+                string tmp = "";
+
+                bool first = true;
+                foreach (int i in value)
+                {
+                    if (!first)
+                    {
+                        tmp += ".";
+                    }
+                    tmp += i;
+                    first = false;
+                }
+
+                setId(tmp);
+            }
+        }
+
+        /// <summary>
+        /// Provides the Guid of the paragraph and creates one if it is not yet set
+        /// </summary>
+        public string Guid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(getGuid()))
+                {
+                    setGuid(System.Guid.NewGuid().ToString());
+                }
+
+                return getGuid();
             }
         }
 
@@ -499,12 +532,12 @@ namespace DataDictionary.Specification
         /// Worker for get sub paragraphs
         /// </summary>
         /// <param name="retVal"></param>
-        private void getSubParagraphs(List<Paragraph> retVal)
+        public void GetParagraphs(List<Paragraph> retVal)
         {
             foreach (Paragraph p in SubParagraphs)
             {
                 retVal.Add(p);
-                p.getSubParagraphs(retVal);
+                p.GetParagraphs(retVal);
             }
         }
 
@@ -516,7 +549,7 @@ namespace DataDictionary.Specification
         {
             List<Paragraph> retVal = new List<Paragraph>();
 
-            getSubParagraphs(retVal);
+            GetParagraphs(retVal);
 
             return retVal;
         }

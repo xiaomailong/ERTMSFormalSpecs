@@ -5,152 +5,238 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Validated train data. For some variables, if the engine does not know a data value, it may use the corresponding default value</Comment>
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9c08d216-8c15-4740-b1f1-4f7def27c4ae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Validated train data. For some variables, if the engine does not know a data value, it may use the corresponding default value</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="11"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NC_CDTRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NC_CDTRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NC_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NC_TRAIN"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_TRAIN"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_TRAIN"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_MAXTRAIN"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_MAXTRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_LOADINGGAUGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_LOADINGGAUGE"
 >
-</StructureElement><StructureElement
- TypeName="M_AXLELOAD"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_AXLELOAD"
+ Implemented="TRUE"
+ Name="M_AXLELOADCAT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_AIRTIGHT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_AIRTIGHT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="N_AXLE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_AXLE"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_0"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_1"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection2"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence2"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="M_VOLTAGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_VOLTAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_CTRACTION"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure2"
 >
-<StructureElement
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="NID_NTC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_NTC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection><Collection
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure2"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection2"
 >
-</Collection></Collections>
+<ReqRef
+ Id="c145e7f4-406f-43e2-9d62-1b55e23be537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

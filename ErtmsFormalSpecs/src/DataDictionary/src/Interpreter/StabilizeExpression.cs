@@ -51,8 +51,8 @@ namespace DataDictionary.Interpreter
         /// <param name="expression">The expression to stabilize</param>
         /// <param name="initialValue">The initial value for this stabilisation computation</param>
         /// <param name="condition">The condition which indicates that the stabilisation is not complete</param>
-        public StabilizeExpression(ModelElement root, Expression expression, Expression initialValue, Expression condition)
-            : base(root)
+        public StabilizeExpression(ModelElement root, ModelElement log, Expression expression, Expression initialValue, Expression condition)
+            : base(root, log)
         {
             Expression = expression;
             Expression.Enclosing = this;
@@ -112,12 +112,21 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // InitialValue
                 InitialValue.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(InitialValue.StaticUsage, Usage.ModeEnum.Read);
+
+                // Expression
                 Expression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
+
+                // Condition
                 Condition.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Condition.StaticUsage, Usage.ModeEnum.Read);
 
                 LastIteration.Type = InitialValue.GetExpressionType();
                 CurrentIteration.Type = InitialValue.GetExpressionType();
+                StaticUsage.AddUsage(InitialValue.GetExpressionType(), Root, Usage.ModeEnum.Type);
             }
 
             return retVal;

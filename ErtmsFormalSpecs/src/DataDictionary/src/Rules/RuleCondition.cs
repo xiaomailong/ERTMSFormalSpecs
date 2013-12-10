@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Rules
 {
@@ -208,24 +209,45 @@ namespace DataDictionary.Rules
         /// <param name="priority">the priority level : a rule can be activated only if its priority level == priority</param>
         /// <param name="instance">The instance on which the rule must be evaluated</param>
         /// <param name="ruleConditions">the rule conditions to be activated</param>
+        /// <param name="explanation">The explanation part to be filled</param>
+        /// <param name="log">Indicates that a log should be performed</param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions)
+        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, List<RuleCondition> ruleConditions, ExplanationPart explanation, bool log)
         {
             bool retVal = false;
 
+            ExplanationPart conditionExplanation = null;
+            if (explanation != null)
+            {
+                conditionExplanation = new ExplanationPart(this);
+                explanation.SubExplanations.Add(conditionExplanation);
+            }
+
             Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
-            retVal = EvaluatePreConditions(context);
+            retVal = EvaluatePreConditions(context, conditionExplanation, log);
 
             if (retVal)
             {
+                if (conditionExplanation != null)
+                {
+                    conditionExplanation.Message = "Condition " + Name + " satisfied";
+                }
+
                 foreach (Rule subRule in SubRules)
                 {
-                    subRule.Evaluate(runner, priority, instance, ruleConditions);
+                    subRule.Evaluate(runner, priority, instance, ruleConditions, conditionExplanation, log);
                 }
 
                 if (EnclosingRule.getPriority() == priority)
                 {
                     ruleConditions.Add(this);
+                }
+            }
+            else
+            {
+                if (conditionExplanation != null)
+                {
+                    conditionExplanation.Message = "Condition " + Name + " not satisfied";
                 }
             }
 
@@ -237,8 +259,10 @@ namespace DataDictionary.Rules
         /// Provides the actual value for the preconditions
         /// </summary>
         /// <param name="context">The context on which the precondition must be evaluated</param>
+        /// <param name="explanation">The explanation part to fill, if any</param>
+        /// <param name="log">indicates that this should be logged</param>
         /// <returns></returns>
-        public bool EvaluatePreConditions(Interpreter.InterpretationContext context)
+        public bool EvaluatePreConditions(Interpreter.InterpretationContext context, ExplanationPart explanation, bool log)
         {
             bool retVal = true;
 
@@ -247,6 +271,13 @@ namespace DataDictionary.Rules
                 try
                 {
                     Interpreter.Expression expression = preCondition.ExpressionTree;
+
+                    ExplanationPart previous = null;
+                    if (explanation != null)
+                    {
+                        previous = expression.SetupNewExplanation();
+                    }
+
                     Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
                     if (value != null)
                     {
@@ -258,6 +289,13 @@ namespace DataDictionary.Rules
                         // TODO : Handle Error
                     }
 
+                    Log.InfoFormat("Precondition {0} value {1}", preCondition.ExpressionText, retVal);
+
+                    if (explanation != null)
+                    {
+                        explanation.SubExplanations.Add(expression.CompleteNewExplanation(previous));
+                    }
+
                     if (!retVal)
                     {
                         break;
@@ -265,7 +303,7 @@ namespace DataDictionary.Rules
                 }
                 catch (Exception e)
                 {
-                    preCondition.AddException(e);
+                    preCondition.AddError(e.Message);
                     retVal = false;
                     break;
                 }
@@ -369,6 +407,13 @@ namespace DataDictionary.Rules
                 if (item != null)
                 {
                     appendActions(item);
+                }
+            }
+            {
+                Rule item = element as Rule;
+                if (item != null)
+                {
+                    appendSubRules(item);
                 }
             }
 

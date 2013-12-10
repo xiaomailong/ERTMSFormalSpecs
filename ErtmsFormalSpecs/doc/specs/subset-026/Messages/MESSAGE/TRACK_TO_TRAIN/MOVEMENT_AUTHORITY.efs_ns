@@ -5,7 +5,7 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <Comment>Movement Authority</Comment>
@@ -13,238 +13,373 @@
  TypeName="NID_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="52cc612c-a6d6-4c5a-9def-5688e665d963"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_MESSAGE"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_MESSAGE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="4369669d-b85a-4789-aa03-c76dd2a0b3c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_TRAIN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_TRAIN"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="60e404c2-dacc-4710-a28b-1c60922c2b37"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_ACK"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_ACK"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="28502483-d264-4a9d-9ddb-a1bd2df1ce8a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_LRBG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_LRBG"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="8fcff81a-7fac-412d-81f0-35e0add73c2e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="LEVEL_2_3_MOVEMENT_AUTHORITY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9701e3a2-ed1c-4b54-b3d4-25d45a3fe95e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="GRADIENT_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="INTERNATIONAL_STATIC_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="LIST_OF_BALISES_FOR_SH_AREA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="MODE_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NATIONAL_VALUES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LINKING.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="LINKING"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="AXLE_LOAD_SPEED_PROFILE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="LEVEL_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SESSION_MANAGEMENT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="RADIO_NETWORK_REGISTRATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT_PARAMETERS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRACK_CONDITION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ROUTE_SUITABILITY_DATA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ADHESION_FACTOR"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="GEOGRAPHICAL_POSITION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="RBC_TRANSITION_ORDER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="REVERSING_AREA_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="REVERSING_SUPERVISION_INFORMATION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRAIN_RUNNING_NUMBER_FROM_RBC"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="0f523029-412d-47d0-a85e-1a32fb383f3c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

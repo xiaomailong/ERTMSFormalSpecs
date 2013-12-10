@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public NameSpacesTreeNode(DataDictionary.Dictionary item)
             : base(item, "Name spaces", true)
         {
-            foreach (DataDictionary.Types.NameSpace nameSpace in item.NameSpaces)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace));
             }
@@ -78,6 +84,19 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        /// Shows the functional view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected void ShowFunctionalViewHandler(object sender, EventArgs args)
+        {
+            FunctionalView.FunctionalAnalysisWindow window = new FunctionalView.FunctionalAnalysisWindow();
+            GUIUtils.MDIWindow.AddChildWindow(window);
+            window.SetNameSpaceContainer(Item);
+            window.Text = Item.Name + " functional view";
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -86,6 +105,8 @@ namespace GUI.DataDictionaryView
             List<MenuItem> retVal = base.GetMenuItems();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Functional view", new EventHandler(ShowFunctionalViewHandler)));
 
             return retVal;
         }
@@ -111,16 +132,18 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
+
             List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
             foreach (DataDictionary.Types.NameSpace aNamespace in Item.NameSpaces)
             {
                 namespaces.Add(aNamespace);
             }
 
-            (BaseForm as Window).toolStripStatusLabel.Text = NameSpaceTreeNode.CreateStatMessage(namespaces, true);
+            GUIUtils.MDIWindow.SetStatus(NameSpaceTreeNode.CreateStatMessage(namespaces, true));
         }
     }
 }

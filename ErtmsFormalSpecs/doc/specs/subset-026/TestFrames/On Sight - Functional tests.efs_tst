@@ -1,0 +1,958 @@
+<Frame
+ CycleDuration="0.1"
+ Name="On Sight - Functional tests"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="On Sight Mode Profile"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="OS Mode Profile received"
+>
+<ReqRef
+ Id="2ef2992f-43ce-4f58-abf6-55560cf910bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="b9d9261f-b143-4904-a8d5-14e3c58d7737"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Mode SR + Level 1"
+>
+<Comment>Actions needed for enter OS mode</Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - BTM.Message ModeProfile OS + Train far from OS Mode area"
+>
+<Comment>Odometry.Nominalposition == 180 to be before the OS area. In this case the OS area is at 200 ( Default Odometry.NominalPosition == 150 + 50 of ModeProfile ) </Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [ 
+       
+ Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         },
+Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;50,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+           }
+               }
+                           ]
+}</Action><Action>Odometry.NominalDistance &lt;- 180.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - BTM.Message ModeProfile OS + train near OS Mode area"
+>
+<Comment>Odometry.NominalPosition == 190 to be near the OS area. In this case the OS area is at 200 ( Default Odometry.NominalPosition == 150 + 50 of ModeProfile ) </Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 190.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - BTM.Message ModeProfile OS + OS mode area"
+>
+<Comment>Odomety.NominalPosition == 200 to be in OS area. OS area is at 200. ( Default Odometry.NominalPosition == 150 + 50 of ModeProfile ) </Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - EURORADIO Message in L2 and L3 + MP OS"
+>
+<Comment>In Level 2 and 3, when receiving an OS MP, the OBU shall change to OS mode. The steps test that there is Level 2 and 3 and a mode different from OS. Then it tests that the MP changes the OBU to OS mode. </Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; 
+        [
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+               ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt;[
+                Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1
+          {
+    MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+}
+]
+}
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step3"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action><Action>Kernel.Level.Value &lt;- Default.Level.L3</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step4"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; 
+        [
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+               ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt;[
+                Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1
+          {
+    MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+}
+]
+}
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="AckLevel2"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Ack Level2"
+>
+<ReqRef
+ Id="531deda3-99b6-4777-9b59-5e2178833486"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="33b54e77-9cb2-4190-92cd-1cfeb3a94b5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Mode OS + Level 2"
+>
+<Comment>Actions needed for enter OS mode</Comment>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L2</Action><Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - EURORADIO Message + Mode OS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; 
+        [
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+               ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt;[
+                Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1
+          {
+    MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+}
+]
+}
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 EURORADIO Message + Mode SR"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>Odometry.EstimatedSpeed &lt;- 60.0</Action><Action>EURORADIO.EuroradioMessageIn  &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+
+{
+    MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
+    {
+
+    NID_MESSAGE =&gt; 0,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 0,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; 9627,
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message
+
+      {
+        NID_PACKET =&gt; 15,
+        Q_DIR =&gt; Messages.Q_DIR.Nominal,
+        L_PACKET =&gt; 0,
+        Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
+        V_LOA =&gt; 0,
+        T_LOA =&gt; 0,
+        N_ITER =&gt; 1,
+        Sequence1 =&gt; 
+        [
+                 Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.SubStructure1
+                 {
+                   L_SECTION =&gt; 100,
+                   Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                   T_SECTIONTIMER =&gt; 0,
+                   D_SECTIONTIMERSTOPLOC =&gt; 0
+                 }
+               ],
+        L_ENDSECTION =&gt; 1000,
+        Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+        T_SECTIONTIMER =&gt; 0,
+        D_SECTIONTIMERSTOPLOC =&gt; 0,
+        Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+        T_ENDTIMER =&gt; 0,
+        D_ENDTIMERSTARTLOC =&gt; 0,
+        Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.No_danger_point_information,
+        D_DP =&gt; 0,
+        V_RELEASEDP =&gt; 0,
+        Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+        D_STARTOL =&gt; 0,
+        T_OL =&gt; 0,
+        D_OL =&gt; 0,
+        V_RELEASEOL =&gt; 0
+       },
+    Sequence1 =&gt;[
+                Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1
+          {
+    MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;1,
+                   Sequence1=&gt;[] 
+                }
+}
+]
+}
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="AckLevel1"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Ack Level1"
+>
+<ReqRef
+ Id="531deda3-99b6-4777-9b59-5e2178833486"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="33b54e77-9cb2-4190-92cd-1cfeb3a94b5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements to accept MA"
+>
+<Actions>
+<Action>Kernel.InitializeElementsForMA()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 Level 1 + Mode OS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 BTM.Message + Mode OS"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [ 
+       
+ Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         },
+Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;10,
+                   Sequence1=&gt;[] 
+                }
+           }
+               }
+                           ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 BTM.Message + Mode SR + Speed limit surpassed"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [ 
+       
+ Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                {
+                    NID_PACKET=&gt;12,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN=&gt;16,
+                    V_LOA=&gt;8,
+                    T_LOA=&gt;200,
+                    N_ITER=&gt;0,
+                    Sequence1=&gt;[],
+                    L_ENDSECTION=&gt;1000,
+                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER=&gt;0,
+                    D_SECTIONTIMERSTOPLOC=&gt;0,
+                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER=&gt;0,
+                    D_ENDTIMERSTARTLOC=&gt;0,
+                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP=&gt;12000,
+                    V_RELEASEDP=&gt;5,
+                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL=&gt;0,
+                    T_OL=&gt;0,
+                    D_OL=&gt;0,
+                    V_RELEASEOL=&gt;0
+                }
+            }
+         },
+Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                {
+                   D_MAMODE=&gt;0,
+                   L_ACKMAMODE=&gt;500,
+                   L_MAMODE=&gt;100,
+                   L_PACKET=&gt;0,
+                   M_MAMODE=&gt;Messages.M_MAMODE.On_Sight,               
+                   N_ITER=&gt;0,
+                   NID_PACKET=&gt;80,
+                   Q_DIR=&gt; Messages.Q_DIR.Nominal,
+                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                   V_MAMODE=&gt;10,
+                   Sequence1=&gt;[] 
+                }
+           }
+               }
+                           ]
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 60.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step3"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>(FIRST_IN Kernel.MA.ModeProfile.Profile).Speed == 50.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

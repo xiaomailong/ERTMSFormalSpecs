@@ -15,42 +15,53 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.DataDictionaryView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return dataDictPropertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
+        public override RichTextBox MessagesTextBox
         {
-            get { return expressionTextBox.TextBox; }
+            get
+            {
+                if (messagesRichTextBox != null)
+                {
+                    return messagesRichTextBox.TextBox;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
-        public RichTextBox CommentsTextBox
+        public override EditorTextBox RequirementsTextBox
         {
-            get { return commentRichTextBox.TextBox; }
+            get { return requirementsTextBox; }
         }
 
-        public RichTextBox MessagesTextBox
+        public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return messagesRichTextBox.TextBox; }
+            get { return expressionEditorTextBox; }
         }
 
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return dataDictTree; }
         }
 
-        public BaseTreeView subTreeView
+        public override BaseTreeView subTreeView
         {
             get { return usageTreeView; }
         }
 
-        public ExplainTextBox ExplainTextBox
+        public override ExplainTextBox ExplainTextBox
         {
             get { return ruleExplainTextBox; }
         }
@@ -78,15 +89,30 @@ namespace GUI.DataDictionaryView
         {
             InitializeComponent();
 
-            commentRichTextBox.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
             requirementsTextBox.AutoComplete = false;
             ruleExplainTextBox.AutoComplete = false;
 
+            ruleExplainTextBox.ReadOnly = true;
+            requirementsTextBox.ReadOnly = true;
+
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             Dictionary = dictionary;
+
+            // TODO : Does not work yet
+            // GUIUtils.ResizePropertyGridSplitter(Properties, 25);
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.Text;
+            }
         }
 
         /// <summary>
@@ -96,7 +122,7 @@ namespace GUI.DataDictionaryView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         public override void Refresh()
@@ -108,27 +134,9 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             dataDictTree.RefreshModel();
-        }
-
-        private void expressionTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleExpressionTextChanged(expressionTextBox.Text);
-        }
-
-        private void commentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            dataDictTree.HandleCommentTextChanged(commentRichTextBox.Text);
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
         }
 
         /// <summary>
@@ -172,21 +180,11 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
+        /// Refreshes the window after a step (=> variable changes) has been performed
         /// </summary>
-        public Utils.IModelElement Selected
+        public void RefreshAfterStep()
         {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
+            dataDictTree.RefreshAfterStep();
         }
     }
 }

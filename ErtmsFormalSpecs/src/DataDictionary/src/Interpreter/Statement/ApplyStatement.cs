@@ -46,8 +46,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
         /// <param name="parameters">The expressions used to compute the parameters</param>
-        public ApplyStatement(ModelElement root, ProcedureCallStatement call, Expression listExpression, Expression conditionExpression)
-            : base(root)
+        public ApplyStatement(ModelElement root, ModelElement log, ProcedureCallStatement call, Expression listExpression, Expression conditionExpression)
+            : base(root, log)
         {
             DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
 
@@ -103,19 +103,25 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
                 }
 
+                // ConditionExpression
                 if (ConditionExpression != null)
                 {
                     ConditionExpression.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(ConditionExpression.StaticUsage, Usage.ModeEnum.Read);
                 }
 
                 Call.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Call.StaticUsage, Usage.ModeEnum.Call);
             }
 
             return retVal;

@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -59,8 +58,7 @@
     D_ora =&gt; 8.0,
     V_ora =&gt; 2.0,
     V_ura =&gt; 4.0
-}</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues{
+}</Action><Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues{
     DataState =&gt; Default.DataState.Invalid,
     Value =&gt; Kernel.NationalValues.NationalDefaultData{
         ModificationOfAdhesionFactorByDriver =&gt; Messages.Q_NVDRIVER_ADHES.Not_allowed,
@@ -170,11 +168,7 @@
     },
     ApplicableDistance =&gt; 0.0,
     NID_C =&gt; 214
-}</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 3.0</Action>
-<Action>Odometry.NominalDistance &lt;- 10.0</Action>
-<Action>BTM.LRBG.Position.Position &lt;- 0.0</Action>
-</Actions>
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 3.0</Action><Action>Odometry.NominalDistance &lt;- 10.0</Action><Action>BTM.LRBG.Position.Position &lt;- 0.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -185,14 +179,14 @@
  Name="Vdelta0"
 >
 <ReqRef
- Id="3.13.9.3.2.1"
+ Id="45c6ab5d-cd00-4092-b7fb-002e30ca1337"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.10"
+</ReqRef><ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -223,8 +217,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.No</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.No</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -239,18 +232,18 @@
  Name="T_traction"
 >
 <ReqRef
- Id="3.13.9.3.2.3"
+ Id="096ce475-1a17-4f39-a9ff-e1838d27439c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.3.a"
+</ReqRef><ReqRef
+ Id="51a4071c-6949-4a0d-8483-6299d2128b0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.3.b"
+</ReqRef><ReqRef
+ Id="162a1af4-0262-4370-9baf-76c6abf7cc8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -264,11 +257,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 &lt;- 2.4</Action>
-<Action>Odometry.EstimatedAcceleration &lt;- 0.7</Action>
-<Action>Odometry.NominalDistance &lt;- 4000.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_bs2 &lt;- 2.4</Action><Action>Odometry.EstimatedAcceleration &lt;- 0.7</Action><Action>Odometry.NominalDistance &lt;- 4000.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.0,
     EddyCurrent_Magnetic =&gt; 14.0,
@@ -285,8 +274,7 @@
     Magnetic =&gt; 2.9,
     Regenerative =&gt; 3.7,
     Ep =&gt; 4.5
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 12.1,
     EddyCurrent_Magnetic =&gt; 5.6,
@@ -303,14 +291,11 @@
     Magnetic =&gt; 12.4,
     Regenerative =&gt; 12.1,
     Ep =&gt; 11.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+}</Action><Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
 {
     Coefficient =&gt; 14.0,
     Constant =&gt; 2.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.False</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.False</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -344,8 +329,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -360,10 +344,10 @@
  Name="T_berem"
 >
 <ReqRef
- Id="3.13.9.3.2.6"
+ Id="9ebfc8da-a239-4e8c-a8a6-d80253fe7838"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -381,18 +365,15 @@
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 0.4,
     EddyCurrent_Magnetic =&gt; 0.78,
@@ -409,13 +390,11 @@
     Magnetic =&gt; 1.82,
     Regenerative =&gt; 0.96,
     Ep =&gt; 0.85
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -468,8 +447,7 @@
     Magnetic =&gt; 1.82,
     Regenerative =&gt; 0.96,
     Ep =&gt; 0.85
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -488,14 +466,14 @@
  Name="Vdelta1"
 >
 <ReqRef
- Id="3.13.9.3.2.8"
+ Id="80f69d28-8302-44ad-9dfd-d98c75cda9d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.10"
+</ReqRef><ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -526,14 +504,14 @@
  Name="Vdelta2"
 >
 <ReqRef
- Id="3.13.9.3.2.9"
+ Id="26a7d347-fac4-479e-a5fd-a9644eed93c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.10"
+</ReqRef><ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -568,8 +546,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedAcceleration &lt;- -0.2</Action>
-</Actions>
+<Action>Odometry.EstimatedAcceleration &lt;- -0.2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -600,8 +577,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedAcceleration &lt;- 0.2</Action>
-</Actions>
+<Action>Odometry.EstimatedAcceleration &lt;- 0.2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -620,14 +596,14 @@
  Name="T_warning"
 >
 <ReqRef
- Id="3.13.9.3.4.2"
+ Id="a61536b0-4469-4cd7-9f95-560c3bd85f7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.1.1.16"
+</ReqRef><ReqRef
+ Id="6867c1d9-cb85-4cc7-9083-5b893166fce7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -654,18 +630,18 @@
  Name="T_bs1 and T_bs2"
 >
 <ReqRef
- Id="3.13.9.3.3.3"
+ Id="64f293f1-473e-4a19-b92d-2240f67c616e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.3.4"
+</ReqRef><ReqRef
+ Id="0da7d42d-a7f1-4b5e-bfb4-d43908e0ab43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.3.5"
+</ReqRef><ReqRef
+ Id="e6c96237-f200-4c17-a939-03f51fb70c39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -696,29 +672,23 @@
     Magnetic =&gt; 0.55,
     Regenerative =&gt; 1.15,
     Ep =&gt; 0.46
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+}</Action><Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -737,9 +707,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- False</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- False</Action><Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -754,8 +722,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -776,9 +743,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- True</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action><Action>Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -793,8 +758,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -815,8 +779,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- False</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- False</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -831,8 +794,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -849,10 +811,10 @@
  Name="Vbec"
 >
 <ReqRef
- Id="3.13.9.3.2.10"
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -866,8 +828,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -882,8 +843,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action>
-</Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -910,22 +870,22 @@
  Name="Dbec"
 >
 <ReqRef
- Id="3.13.9.3.2.2.a"
+ Id="10fe2e3f-8542-4568-b3a4-e79100a4daa6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.2.b"
+</ReqRef><ReqRef
+ Id="65b04918-43f6-4fba-8062-128c5f2766d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.2"
+</ReqRef><ReqRef
+ Id="afcddd77-8cf6-4e60-8d18-2663f4121206"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.2.10"
+</ReqRef><ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -954,18 +914,18 @@
  Name="d_EBI"
 >
 <ReqRef
- Id="3.13.9.3.2.12"
+ Id="4edb2d35-ece8-4f2a-b28e-83eec4565ce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.2"
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1012,9 +972,7 @@
     TargetSpeedTimeOut =&gt; 0.0,
     ReferenceBG =&gt; 4120,
     ReferenceBGLocation =&gt; 0.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 150.0</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+}</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 150.0</Action><Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
@@ -1027,8 +985,7 @@
         MaxDecelValueUnderReducedAdhesionCond3 =&gt; 2.7,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.99
     }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
+}</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
                 EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
@@ -1307,13 +1264,11 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     CF6 =&gt; 0.085
                 }
             }
-        }</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+        }</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
         {
             ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
             {
@@ -1438,8 +1393,7 @@ Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     }
                 }
             }
-        }</Action>
-</Actions>
+        }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1522,8 +1476,7 @@ DistanceForSpeed (
         Speed =&gt; 10.0,
         TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1580,8 +1533,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TSR.TSRs &lt;- []</Action>
-</Actions>
+<Action>Kernel.TSR.TSRs &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1592,18 +1544,18 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
  Name="d_SBI1"
 >
 <ReqRef
- Id="3.13.9.3.3.1"
+ Id="977790a8-3eb7-4baf-a99c-78291edbfcd3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.3"
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1636,18 +1588,18 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI (
  Name="d_SBI2"
 >
 <ReqRef
- Id="3.13.9.3.3.2"
+ Id="88d50002-b123-41cd-8621-3ac7ae0408ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.2"
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1686,10 +1638,10 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
  Name="Vsbi1"
 >
 <ReqRef
- Id="3.13.9.3.3.7"
+ Id="678f7208-b36d-410b-8e62-028a110b3c70"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1703,9 +1655,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 74.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Odometry.EstimatedSpeed &lt;- 74.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1728,10 +1678,10 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
  Name="Vsbi2"
 >
 <ReqRef
- Id="3.13.9.3.3.8"
+ Id="5222ef04-36ae-4dc3-a10f-a31139e5b7ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1751,15 +1701,13 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2 (
     D_ora =&gt; 12.0,
     V_ora =&gt; 2.0,
     V_ura =&gt; 3.0
-}</Action>
-<Action>INSERT 
+}</Action><Action>INSERT 
 BTM.Linking.LinkingData
 {
     LocationAccuracy =&gt; 1.0
 }
 IN
-    BTM.Linking.Linkings</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+    BTM.Linking.Linkings</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     Position =&gt; BTM.Position
     {
@@ -1769,9 +1717,7 @@ IN
     },
     NID =&gt; 1515,
     Orientation =&gt; Orientation.Nominal
-}</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 88.0</Action>
-</Actions>
+}</Action><Action>Odometry.EstimatedSpeed &lt;- 88.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1809,10 +1755,10 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.Vsbi2 ( Dmaxsafefrontend =&g
  Name="d_FLOI"
 >
 <ReqRef
- Id="3.13.9.3.3.9"
+ Id="d542f99e-9462-4bb6-9087-35da9a233e06"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1848,22 +1794,22 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI ( 25.0 ) &lt; 6631.14
  Name="d_W"
 >
 <ReqRef
- Id="3.13.9.3.4.1"
+ Id="489ea7da-1016-4fd4-8a89-0ce129ff23a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.2"
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.3"
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1890,22 +1836,22 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W  ( 25.0 ) &lt; 6617.258<
  Name="d_P"
 >
 <ReqRef
- Id="3.13.9.3.5.1"
+ Id="10386bb3-4703-4007-bc8f-0d0904eb986f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.2"
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.3"
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1919,8 +1865,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W  ( 25.0 ) &lt; 6617.258<
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1944,14 +1889,14 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
  Name="T_driver"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.17"
+ Id="edd3e5bf-072e-4f5c-a2d2-0852b0d7d409"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.5.2"
+</ReqRef><ReqRef
+ Id="c7311fc7-ae05-436b-89b3-0573bdb52921"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1978,10 +1923,10 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
  Name="V_P_EOA"
 >
 <ReqRef
- Id="3.13.9.3.5.5"
+ Id="fdddd187-528c-44e6-9583-2900e0e2afca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1995,8 +1940,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves &lt;- Messages.Q_NVGUIPERM.No</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2017,8 +1961,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 11000.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 11000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2033,10 +1976,10 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
  Name="V_P_EBD"
 >
 <ReqRef
- Id="3.13.9.3.5.7"
+ Id="07eb8e7a-b28f-4fcc-96e6-2042d5ca7980"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2061,9 +2004,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P  ( 25.0 ) &lt; 6603.3684
         TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element
     }
 IN
-    Kernel.TSR.TSRs</Action>
-<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
-</Actions>
+    Kernel.TSR.TSRs</Action><Action>Odometry.NominalDistance &lt;- 1000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2103,8 +2044,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefr
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 8000.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 8000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2119,14 +2059,14 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefr
  Name="T_indication"
 >
 <ReqRef
- Id="3.13.9.3.6.4"
+ Id="4ee7ede5-dbce-484e-b14b-72b516c33ba5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.6.2"
+</ReqRef><ReqRef
+ Id="5bf06f42-4784-4fb0-b8fe-19280822dd54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2140,9 +2080,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefr
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.Yes</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_service.EddyCurrent_Regenerative_Ep &lt;- 7.0</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.Yes</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service.EddyCurrent_Regenerative_Ep &lt;- 7.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2161,8 +2099,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefr
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.No</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback &lt;- Messages.Q_NVSBFBPERM.No</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2177,22 +2114,22 @@ Kernel.SpeedAndDistanceMonitoring.TargetSupervision.V_P_EBD_Target ( d_maxsafefr
  Name="d_I"
 >
 <ReqRef
- Id="3.13.9.3.6.1"
+ Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.2"
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.3"
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.1.1"
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

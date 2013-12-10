@@ -17,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary;
+using System.Threading;
 
 namespace GUI.SpecificationView
 {
@@ -25,7 +27,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : ReferencesParagraphEditor
+        private class ItemEditor : UnnamedReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor
@@ -33,20 +35,6 @@ namespace GUI.SpecificationView
             public ItemEditor()
                 : base()
             {
-            }
-
-            /// <summary>
-            /// The item name
-            /// </summary>
-            [Category("Description")]
-            public override string Name
-            {
-                get { return base.Name; }
-                set
-                {
-                    base.Name = value;
-                    RefreshNode();
-                }
             }
 
             /// <summary>
@@ -64,9 +52,23 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
+            /// The item name
+            /// </summary>
+            [Category("Description")]
+            public string Text
+            {
+                get { return Item.Text; }
+                set
+                {
+                    Item.setText(value);
+                    RefreshNode();
+                }
+            }
+
+            /// <summary>
             /// Provides the type of the paragraph
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(SpecTypeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.SpecTypeConverter))]
             public virtual DataDictionary.Generated.acceptor.Paragraph_type Type
             {
                 get { return Item.getType(); }
@@ -81,11 +83,19 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Provides the scope of the paragraph
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(ScopeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.ScopeConverter))]
             public virtual DataDictionary.Generated.acceptor.Paragraph_scope Scope
             {
                 get { return Item.getScope(); }
-                set { Item.SetScope(value); }
+                set
+                {
+                    if (value == DataDictionary.Generated.acceptor.Paragraph_scope.defaultParagraph_scope)
+                    {
+                        value = DataDictionary.Generated.acceptor.Paragraph_scope.aOBU;
+                    }
+
+                    Item.SetScope(value);
+                }
             }
 
             /// <summary>
@@ -121,7 +131,7 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Indicates if the paragraph can be implemented by the EFS
             /// </summary>
-            [Category("Meta data"), TypeConverter(typeof(ImplementationStatusConverter))]
+            [Category("Meta data"), TypeConverter(typeof(Converters.ImplementationStatusConverter))]
             public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
             {
                 get { return Item.getImplementationStatus(); }
@@ -147,7 +157,7 @@ namespace GUI.SpecificationView
                 get
                 {
                     if (Item.getFunctionalBlock() && Item.getFunctionalBlockName().Equals(""))
-                        Item.setFunctionalBlockName(this.Name);
+                        Item.setFunctionalBlockName(Text);
                     return Item.getFunctionalBlockName();
                 }
                 set
@@ -180,13 +190,19 @@ namespace GUI.SpecificationView
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
+        /// <summary>
+        /// Update counts according to the selected chapter
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
 
             Window window = BaseForm as Window;
             if (window != null)
             {
+                window.specBrowserTextView.Text = Item.Text;
+                window.specBrowserTextView.Enabled = true;
                 window.specBrowserRuleView.Nodes.Clear();
                 foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
                 {
@@ -194,9 +210,7 @@ namespace GUI.SpecificationView
                 }
             }
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = Item.getSubParagraphs();
-            paragraphs.Add(Item);
-            (BaseForm as Window).toolStripStatusLabel.Text = CreateStatMessage(paragraphs);
+            GUIUtils.MDIWindow.SetCoverageStatus(Item);
         }
 
         public void ImplementedHandler(object sender, EventArgs args)
@@ -275,8 +289,10 @@ namespace GUI.SpecificationView
                     AddParagraph(paragraph);
                 }
             }
-
-            base.AcceptDrop(SourceNode);
+            else
+            {
+                base.AcceptDrop(SourceNode);
+            }
         }
 
         public override void AcceptCopy(BaseTreeNode SourceNode)
@@ -293,7 +309,7 @@ namespace GUI.SpecificationView
                 if (ReqReferences != null)
                 {
                     SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
-                    ReqReferences.CreateReqRef(paragraphTreeNode.Item.FullId);
+                    ReqReferences.CreateReqRef(paragraphTreeNode.Item);
                 }
             }
         }
@@ -346,23 +362,59 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Creates the stat message according to the list of paragraphs provided
         /// </summary>
+        /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
+        /// <param name="indicateSelected">Indicates that there are selected requirements</param>
         /// <returns></returns>
-        public static string CreateStatMessage(List<DataDictionary.Specification.Paragraph> paragraphs)
+        public static string CreateStatMessage(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs, bool indicateSelected)
         {
             int subParagraphCount = paragraphs.Count;
             int implementableCount = 0;
             int implementedCount = 0;
             int unImplementedCount = 0;
             int notImplementable = 0;
+            int newRevisionAvailable = 0;
+            int testedCount = 0;
 
+            Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
             foreach (DataDictionary.Specification.Paragraph p in paragraphs)
             {
+                if (paragraphsReqRefDictionary == null)
+                {
+                    paragraphsReqRefDictionary = p.Dictionary.ParagraphsReqRefs;
+                }
+
                 switch (p.getImplementationStatus())
                 {
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
                         implementableCount += 1;
-                        implementedCount += 1;
+
+                        bool implemented = true;
+                        if (paragraphsReqRefDictionary.ContainsKey(p))
+                        {
+                            List<ReqRef> implementations = paragraphsReqRefDictionary[p];
+                            for (int i = 0; i < implementations.Count; i++)
+                            {
+                                // the implementation may be also a ReqRef
+                                if (implementations[i].Enclosing is ReqRelated)
+                                {
+                                    ReqRelated reqRelated = implementations[i].Enclosing as ReqRelated;
+                                    // Do not consider tests
+                                    if (Utils.EnclosingFinder<DataDictionary.Tests.Frame>.find(reqRelated) == null)
+                                    {
+                                        implemented = implemented && reqRelated.ImplementationCompleted;
+                                    }
+                                }
+                            }
+                        }
+                        if (implemented)
+                        {
+                            implementedCount += 1;
+                        }
+                        else
+                        {
+                            unImplementedCount += 1;
+                        }
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
@@ -374,12 +426,49 @@ namespace GUI.SpecificationView
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
                         notImplementable += 1;
                         break;
+
+                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable:
+                        implementableCount += 1;
+                        newRevisionAvailable += 1;
+                        break;
                 }
             }
-            return subParagraphCount + " selected, "
-                + implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), "
-                + implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), "
-                + unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%) ";
+
+            // Count the tested paragraphs
+            HashSet<DataDictionary.Specification.Paragraph> testedParagraphs = new HashSet<DataDictionary.Specification.Paragraph>();
+            foreach (DataDictionary.Dictionary dictionary in efsSystem.Dictionaries)
+            {
+                foreach (DataDictionary.Specification.Paragraph p in Reports.Tests.TestsCoverageReport.CoveredRequirements(dictionary))
+                {
+                    testedParagraphs.Add(p);
+                }
+            }
+
+            foreach (DataDictionary.Specification.Paragraph p in paragraphs)
+            {
+                if (testedParagraphs.Contains(p))
+                {
+                    testedCount += 1;
+                }
+            }
+
+            string retVal = "Statistics : ";
+
+            if (subParagraphCount > 0 && implementableCount > 0)
+            {
+                retVal += subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
+                retVal += +implementableCount + " implementable (" + Math.Round(((float)implementableCount / subParagraphCount * 100), 2) + "%), ";
+                retVal += implementedCount + " implemented (" + Math.Round(((float)implementedCount / implementableCount * 100), 2) + "%), ";
+                retVal += +unImplementedCount + " not implemented (" + Math.Round(((float)unImplementedCount / implementableCount * 100), 2) + "%), ";
+                retVal += newRevisionAvailable + " with new revision (" + Math.Round(((float)newRevisionAvailable / implementableCount * 100), 2) + "%), ";
+                retVal += testedCount + " tested (" + Math.Round(((float)testedCount / implementableCount * 100), 2) + "%)";
+            }
+            else
+            {
+                retVal += "No implementable requirement selected";
+            }
+
+            return retVal;
         }
     }
 }

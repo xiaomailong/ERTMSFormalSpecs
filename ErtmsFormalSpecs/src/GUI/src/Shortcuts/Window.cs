@@ -14,10 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Windows.Forms;
+using System.Collections.Generic;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.Shortcuts
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : DockContent, IBaseForm
     {
         /// <summary>
         /// Constructor
@@ -28,10 +30,37 @@ namespace GUI.Shortcuts
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            historyDataGridView.DoubleClick += new System.EventHandler(historyDataGridView_DoubleClick);
+
             Visible = false;
             shortcutTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " shortcuts view";
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
             Refresh();
+        }
+
+        void historyDataGridView_DoubleClick(object sender, System.EventArgs e)
+        {
+            DataDictionary.ModelElement selected = null;
+
+            if (historyDataGridView.SelectedCells.Count == 1)
+            {
+                selected = ((List<HistoryObject>)historyDataGridView.DataSource)[historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
+            }
+
+            if (selected != null)
+            {
+                int i = GUIUtils.MDIWindow.SelectionHistory.IndexOf(selected);
+                while (i > 0)
+                {
+                    GUIUtils.MDIWindow.SelectionHistory.RemoveAt(0);
+                    i -= 1;
+                }
+
+                GUIUtils.MDIWindow.Select(selected, true);
+                RefreshModel();
+            }
         }
 
         /// <summary>
@@ -41,15 +70,7 @@ namespace GUI.Shortcuts
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -58,6 +79,19 @@ namespace GUI.Shortcuts
         public void RefreshModel()
         {
             shortcutTreeView.RefreshModel();
+
+            if (GUIUtils.MDIWindow != null)
+            {
+                List<HistoryObject> history = new List<HistoryObject>();
+
+                foreach (DataDictionary.ModelElement element in GUIUtils.MDIWindow.SelectionHistory)
+                {
+                    history.Add(new HistoryObject(element));
+                }
+
+                historyDataGridView.DataSource = history;
+            }
+
             Refresh();
         }
 
@@ -77,6 +111,16 @@ namespace GUI.Shortcuts
         }
 
         public RichTextBox MessagesTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
+
+        public EditorTextBox ExpressionEditorTextBox
         {
             get { return null; }
         }
@@ -111,6 +155,45 @@ namespace GUI.Shortcuts
                 }
 
                 return retVal;
+            }
+        }
+
+        private class HistoryObject
+        {
+            /// <summary>
+            /// The object that is referenced for history
+            /// </summary>
+            [System.ComponentModel.Browsable(false)]
+            public DataDictionary.ModelElement Reference { get; private set; }
+
+            /// <summary>
+            /// The identification of the history element
+            /// </summary>
+            public string Model
+            {
+                get
+                {
+                    return Reference.Name;
+                }
+            }
+
+            /// <summary>
+            /// The type of the referenced object
+            /// </summary>
+            public string Type
+            {
+                get
+                {
+                    return Reference.GetType().Name;
+                }
+            }
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="reference"></param>
+            public HistoryObject(DataDictionary.ModelElement reference)
+            {
+                Reference = reference;
             }
         }
     }

@@ -36,7 +36,15 @@ namespace DataDictionary.Functions
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                returnType = null;
+                setTypeName(value);
+            }
         }
 
         /// <summary>
@@ -737,12 +745,6 @@ namespace DataDictionary.Functions
                 }
                 else if (Yparameter != null)
                 {
-                    // TODO : Remove check code
-                    if ((Yparameter.Enclosing != this))
-                    {
-                        System.Diagnostics.Debugger.Break();
-                    }
-
                     // Function with 1 parameter that ranges over the Yaxis
                     retVal = new Surface(Xparameter, Yparameter);
                     Graph graph = createGraphForParameter(context, Yparameter);
@@ -1099,29 +1101,28 @@ namespace DataDictionary.Functions
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal =
-                  TextualExplainUtilities.Comment(Comment, indentLevel)
-                + TextualExplainUtilities.Comment(TextualExplainUtilities.Iterate('-', 6 + Name.Length), indentLevel)
-                + TextualExplainUtilities.Pad("{FUNCTION " + Name + "(", indentLevel);
-
-            foreach (Parameter parameter in FormalParameters)
-            {
-                retVal = retVal + "\\par" + TextualExplainUtilities.Pad(parameter.Name + " : " + parameter.TypeName, indentLevel + 2);
-            }
-
+            // Creates the function header
+            retVal += TextualExplainUtilities.Pad("{{\\b FUNCTION} " + Name + "(", indentLevel);
             if (FormalParameters.Count > 0)
             {
+                foreach (Parameter parameter in FormalParameters)
+                {
+                    retVal = retVal + "\\par" + TextualExplainUtilities.Pad(parameter.Name + " : " + parameter.TypeName, indentLevel + 2);
+                }
                 retVal += "\\par";
+                retVal += TextualExplainUtilities.Pad(") {\\b RETURNS } { \\cf2" + TypeName + "}}\\par", indentLevel);
             }
-            retVal = retVal + ") {\\b RETURNS} { \\cf2" + TypeName + "}}\\par";
+            else
+            {
+                retVal += ")";
+                retVal += TextualExplainUtilities.Pad("{\\b RETURNS } { \\cf2" + TypeName + "}}\\par", indentLevel);
+            }
 
             foreach (Case cas in Cases)
             {
-                retVal = retVal + "\\par"
-                    + TextualExplainUtilities.Pad("{\\cf11 // " + cas.Name + "}\\cf1\\par", indentLevel + 2)
-                    + cas.getExplain(indentLevel + 2);
+                retVal += cas.getExplain(indentLevel + 2) + "\\par";
             }
 
             return retVal;

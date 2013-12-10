@@ -36,7 +36,7 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(RulePriorityConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.RulePriorityConverter))]
             public DataDictionary.Generated.acceptor.RulePriority Priority
             {
                 get { return Item.getPriority(); }
@@ -75,17 +75,6 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
-            if (window != null)
-            {
-                window.requirementsTextBox.Lines = Utils.Utils.toStrings(Item.getRequirements());
-            }
-        }
-
         /// <summary>
         /// Handles a drop event
         /// </summary>
@@ -100,12 +89,12 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public void DisableHandler(object sender, EventArgs args)
         {
-            DataDictionary.Dictionary dictionary = MainWindow.GetActiveDictionary();
+            DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
 
             if (dictionary != null)
             {
                 dictionary.AppendRuleDisabling(Item);
-                MainWindow.RefreshModel();
+                GUIUtils.MDIWindow.RefreshModel();
             }
         }
 

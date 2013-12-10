@@ -37,8 +37,8 @@ namespace DataDictionary.Interpreter
         /// <param name="expression">the functional expression</param>
         /// <param name="parameters">the function parameters</param>
         /// <param name="root"></param>
-        public FunctionExpression(ModelElement root, List<Parameter> parameters, Expression expression)
-            : base(root)
+        public FunctionExpression(ModelElement root, ModelElement log, List<Parameter> parameters, Expression expression)
+            : base(root, log)
         {
             Parameters = parameters;
 
@@ -90,6 +90,7 @@ namespace DataDictionary.Interpreter
             if (retVal)
             {
                 Expression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(Expression.StaticUsage, null);
             }
 
             return retVal;
@@ -146,6 +147,7 @@ namespace DataDictionary.Interpreter
         {
             Values.IValue retVal = null;
 
+            ExplanationPart previous = SetupExplanation();
             try
             {
                 if (Parameters.Count == 1)
@@ -176,6 +178,13 @@ namespace DataDictionary.Interpreter
                 /// TODO Ugly hack, because functions & function types are merged.
                 /// This provides an empty function as the type of this
                 retVal = GetExpressionType() as Values.IValue;
+            }
+            finally
+            {
+                if (explain)
+                {
+                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                }
             }
 
             return retVal;

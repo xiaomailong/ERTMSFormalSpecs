@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public StructuresTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Structures", true)
         {
-            foreach (DataDictionary.Types.Structure structure in item.Structures)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Structure structure in Item.Structures)
             {
                 Nodes.Add(new StructureTreeNode(structure));
             }
@@ -193,10 +199,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Structures.Count + (Item.Structures.Count > 1 ? " structures " : " structure ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Structures.Count + (Item.Structures.Count > 1 ? " structures " : " structure ") + "selected.");
         }
     }
 }

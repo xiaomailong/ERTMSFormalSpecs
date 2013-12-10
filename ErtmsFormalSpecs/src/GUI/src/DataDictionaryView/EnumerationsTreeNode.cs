@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public EnumerationsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Enumerations", true)
         {
-            foreach (DataDictionary.Types.Enum enumeration in item.Enumerations)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Enum enumeration in Item.Enumerations)
             {
                 Nodes.Add(new EnumerationTreeNode(enumeration));
             }
@@ -125,10 +131,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Enumerations.Count + (Item.Enumerations.Count > 1 ? " enumerations " : " enumeration ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Enumerations.Count + (Item.Enumerations.Count > 1 ? " enumerations " : " enumeration ") + "selected.");
         }
     }
 }

@@ -5,162 +5,197 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention</Comment>
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="39016576-7686-4e14-9c1a-13bd7dd28045"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="52"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_TRACKINIT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
- Default="0"
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="D_TRACKINIT"
+<ReqRef
+ Id="faca2edb-7220-4d55-bebe-f367d8f8d94a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_PBD"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_PBD"
 >
 </StructureElement><StructureElement
  TypeName="Q_GDIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_GDIR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Gradient"
+ TypeName="G_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="G_PBDSR"
 >
 </StructureElement><StructureElement
  TypeName="Q_PBDSR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_PBDSR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_PBDSR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PBDSR"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
- Name="SubStructure1"
->
-<StructureElement
- TypeName="MessageTypes.Distance"
+</StructureElement><StructureElement
+ TypeName="D_TRACKINIT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
+ Name="D_TRACKINIT"
+>
+</StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="SubStructure1"
+>
+<ReqRef
+ Id="39016576-7686-4e14-9c1a-13bd7dd28045"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="D_PBD"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
  Name="D_PBD"
 >
 </StructureElement><StructureElement
  TypeName="Q_GDIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_GDIR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Gradient"
+ TypeName="G_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="G_PBDSR"
 >
 </StructureElement><StructureElement
  TypeName="Q_PBDSR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_PBDSR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_PBDSR"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_PBDSR"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PBDSR"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="39016576-7686-4e14-9c1a-13bd7dd28045"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

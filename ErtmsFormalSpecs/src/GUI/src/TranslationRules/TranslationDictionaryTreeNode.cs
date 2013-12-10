@@ -39,11 +39,17 @@ namespace GUI.TranslationRules
         public TranslationDictionaryTreeNode(DataDictionary.Tests.Translations.TranslationDictionary item)
             : base(item, "Dictionary", true)
         {
-            foreach (DataDictionary.Tests.Translations.Folder folder in item.Folders)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Translations.Folder folder in Item.Folders)
             {
                 Nodes.Add(new FolderTreeNode(folder));
             }
-            foreach (DataDictionary.Tests.Translations.Translation translation in item.Translations)
+            foreach (DataDictionary.Tests.Translations.Translation translation in Item.Translations)
             {
                 Nodes.Add(new TranslationTreeNode(translation));
             }

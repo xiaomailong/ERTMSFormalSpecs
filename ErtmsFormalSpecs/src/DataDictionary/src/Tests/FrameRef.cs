@@ -62,10 +62,12 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Loads the frame which corresponds to this frame ref
         /// </summary>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
+        /// <param name="allowErrors">Indicates that errors are tolerated during load</param>
         /// <returns></returns>
-        public Frame LoadFrame()
+        public Frame LoadFrame(bool lockFiles, bool allowErrors)
         {
-            return Util.loadFrame(FileName, Enclosing as ModelElement);
+            return Util.loadFrame(FileName, Enclosing as ModelElement, lockFiles, allowErrors);
         }
 
         /// <summary>

@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Windows.Forms;
+using System.Threading;
+using System;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI
 {
@@ -25,24 +28,19 @@ namespace GUI
         MyPropertyGrid Properties { get; }
 
         /// <summary>
-        /// The text editor for expressions
-        /// </summary>
-        RichTextBox ExpressionTextBox { get; }
-
-        /// <summary>
-        /// The text editor for comments
-        /// </summary>
-        RichTextBox CommentsTextBox { get; }
-
-        /// <summary>
         /// The text editor for messages
         /// </summary>
         RichTextBox MessagesTextBox { get; }
 
         /// <summary>
-        /// The enclosing MDI Window
+        /// The requirements text box used to display the associated requirements
         /// </summary>
-        MainWindow MDIWindow { get; }
+        EditorTextBox RequirementsTextBox { get; }
+
+        /// <summary>
+        /// The text box used to edit expression
+        /// </summary>
+        EditorTextBox ExpressionEditorTextBox { get; }
 
         /// <summary>
         /// The main tree view of the form
@@ -75,6 +73,174 @@ namespace GUI
         Utils.IModelElement Selected { get; }
     }
 
+    public class BaseForm : WeifenLuo.WinFormsUI.Docking.DockContent, IBaseForm
+    {
+        /// <summary>
+        /// The property grid used to edit elements properties
+        /// </summary>
+        public virtual MyPropertyGrid Properties { get { return null; } }
+
+        /// <summary>
+        /// The text editor for messages
+        /// </summary>
+        public virtual RichTextBox MessagesTextBox { get { return null; } }
+
+        /// <summary>
+        /// The requirements text box used to display the associated requirements
+        /// </summary>
+        public virtual EditorTextBox RequirementsTextBox { get { return null; } }
+
+        /// <summary>
+        /// The text box used to edit expression
+        /// </summary>
+        public virtual EditorTextBox ExpressionEditorTextBox { get { return null; } }
+
+        /// <summary>
+        /// The main tree view of the form
+        /// </summary>
+        public virtual BaseTreeView TreeView { get { return null; } }
+
+        /// <summary>
+        /// The sub tree view of the form
+        /// </summary>
+        public virtual BaseTreeView subTreeView { get { return null; } }
+
+        /// <summary>
+        /// The explain text box
+        /// </summary>
+        public virtual ExplainTextBox ExplainTextBox { get { return null; } }
+
+        /// <summary>
+        /// Allows to refresh the view, according to the fact that the structure for the model could change
+        /// </summary>
+        public virtual void RefreshModel()
+        {
+        }
+
+        /// <summary>
+        /// Provides the model element currently selected in this IBaseForm
+        /// </summary>
+        public virtual Utils.IModelElement Selected
+        {
+            get
+            {
+                Utils.IModelElement retVal = null;
+
+                if (TreeView != null && TreeView.Selected != null)
+                {
+                    retVal = TreeView.Selected.Model;
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// The thread used to synchronize node names with their model
+        /// </summary>
+        private class Synchronizer : GenericSynchronizationHandler<BaseForm>
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="instance"></param>
+            public Synchronizer(BaseForm instance, int cycleTime)
+                : base(instance, cycleTime)
+            {
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(BaseForm instance)
+            {
+                instance.Invoke((MethodInvoker)delegate
+                {
+                    instance.SynchronizeForm();
+                });
+            }
+        }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private Synchronizer FormSynchronizer { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public BaseForm()
+            : base()
+        {
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
+            FormSynchronizer = new Synchronizer(this, 300);
+            ParentChanged += new EventHandler(BaseForm_ParentChanged);
+        }
+
+        void BaseForm_ParentChanged(object sender, EventArgs e)
+        {
+            FloatWindow window = ParentForm as FloatWindow;
+            if (window != null)
+            {
+                ParentForm.Move += new EventHandler(ParentForm_Move);
+            }
+        }
+
+        void ParentForm_Move(object sender, EventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                Hide();
+                DockAreas = DockAreas.Document;
+                DockState = DockState.Document;
+                Show(GUIUtils.MDIWindow.dockPanel, DockState.Document);
+
+            }
+        }
+
+        /// <summary>
+        /// Stop the synchronizer when the form is closed
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosed(EventArgs e)
+        {
+            FormSynchronizer.Synchronize = false;
+        }
+
+        /// <summary>
+        /// Synchronizes the form with its model
+        /// </summary>
+        public virtual void SynchronizeForm()
+        {
+            if (Properties != null)
+            {
+                if (!Properties.ContainsFocus && !(Properties.ActiveControl is System.Windows.Forms.Button))
+                {
+                    Properties.Refresh();
+                }
+            }
+
+            if (TreeView != null && TreeView.SelectedNode != null)
+            {
+                ((BaseTreeNode)TreeView.SelectedNode).RefreshViewAccordingToModel(this, true);
+            }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "BaseForm";
+            this.ResumeLayout(false);
+
+        }
+    }
+
     public class FormsUtils
     {
         public static Form EnclosingForm(Control control)
@@ -94,6 +260,5 @@ namespace GUI
             }
             return control as IBaseForm;
         }
-
     }
 }

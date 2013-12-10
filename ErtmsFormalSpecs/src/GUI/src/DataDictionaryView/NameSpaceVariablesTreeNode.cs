@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceVariablesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Variables", true)
         {
-            foreach (DataDictionary.Variables.Variable variable in item.Variables)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Variables.Variable variable in Item.Variables)
             {
                 Nodes.Add(new VariableTreeNode(variable, new HashSet<DataDictionary.Types.Type>()));
             }
@@ -133,10 +139,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Variables.Count + (Item.Variables.Count > 1 ? " variables " : " variable ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Variables.Count + (Item.Variables.Count > 1 ? " variables " : " variable ") + "selected.");
         }
     }
 }

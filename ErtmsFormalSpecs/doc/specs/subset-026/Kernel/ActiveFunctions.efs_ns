@@ -1,0 +1,54 @@
+<NameSpace
+ Name="ActiveFunctions"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="ProvideJuridicalData"
+>
+<ReqRef
+ Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Cases>
+<Case
+ Name="Inactive"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in  [
+  Default.Mode.NP]</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Active"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in  [
+  Default.Mode.SB, 
+  Default.Mode.PS, 
+  Default.Mode.SH, 
+  Default.Mode.FS, 
+  Default.Mode. LS, 
+  Default.Mode.SR, 
+  Default.Mode.OS, 
+  Default.Mode.SL, 
+  Default.Mode.NL, 
+  Default.Mode.UN, 
+  Default.Mode.TR, 
+  Default.Mode.PT, 
+  Default.Mode.SN, 
+  Default.Mode.RV]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in  [
+  Default.Mode.SF, 
+  Default.Mode.IS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

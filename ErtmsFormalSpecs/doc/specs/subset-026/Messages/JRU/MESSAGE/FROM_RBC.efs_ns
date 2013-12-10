@@ -1,0 +1,62 @@
+<NameSpace
+ Name="FROM_RBC"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="b2e509d5-17fa-4916-bf5b-0ac33d558433"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This message is sent after receiving a message from the RBC</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="NID_C"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+<ReqRef
+ Id="9d5d8171-a5e8-4367-a51c-37ccac733f89"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="NID_RIU"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_RBC"
+>
+<ReqRef
+ Id="a238c5c4-f952-4a85-9211-55e2b0927ab3"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="MESSAGE.Message"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TELEGRAM"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

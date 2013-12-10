@@ -19,12 +19,13 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Functions;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
     public class FunctionTreeNode : ReqRelatedTreeNode<Function>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -52,16 +53,18 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The function type
+            /// The variable type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Functions.Function Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.ReturnType = null;
-                    Item.setTypeName(value);
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
@@ -104,10 +107,16 @@ namespace GUI.DataDictionaryView
         public FunctionTreeNode(Function item)
             : base(item)
         {
-            Cases = new CasesTreeNode(item);
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            Cases = new CasesTreeNode(Item);
             Nodes.Add(Cases);
 
-            Parameters = new ParametersTreeNode(item);
+            Parameters = new ParametersTreeNode(Item);
             Nodes.Add(Parameters);
         }
 
@@ -155,7 +164,7 @@ namespace GUI.DataDictionaryView
         public void DisplayHandler(object sender, EventArgs args)
         {
             GraphView.GraphView view = new GraphView.GraphView();
-            MainWindow.AddChildWindow(view);
+            GUIUtils.MDIWindow.AddChildWindow(view);
             view.Functions.Add(Item);
             view.Refresh();
         }

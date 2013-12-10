@@ -15,6 +15,7 @@
 // --
 // ------------------------------------------------------------------------------
 using Utils;
+using System;
 namespace DataDictionary.Specification
 {
     public class ChapterRef : Generated.ChapterRef
@@ -36,13 +37,36 @@ namespace DataDictionary.Specification
             {
                 string retVal = Name + ".efs_ch";
                 IModelElement current = Enclosing as IModelElement;
+                while (current != null && !(current is Dictionary))
+                {
+                    retVal = current.Name + Path.DirectorySeparatorChar + retVal;
+                    current = current.Enclosing as IModelElement;
+                }
+
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// The file name which corresponds to this chapter ref
+        /// </summary>
+        public string PreviousFileName
+        {
+            get
+            {
+                string retVal = Name + ".efs_ch";
+                IModelElement current = Enclosing as IModelElement;
                 while (current != null && !(current is Specification))
                 {
                     retVal = current.Name + Path.DirectorySeparatorChar + retVal;
                     current = current.Enclosing as IModelElement;
                 }
 
-                return Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+
+                return retVal;
             }
         }
 
@@ -62,10 +86,24 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Loads the frame which corresponds to this frame ref
         /// </summary>
+        /// <param name="lockFiles">Indicates that the files should be locked</param>
+        /// <param name="allowErrors">Indicates that errors are tolerated during load</param>
         /// <returns></returns>
-        public Chapter LoadChapter()
+        public Chapter LoadChapter(bool lockFiles, bool allowErrors)
         {
-            return Util.loadChapter(FileName, Enclosing as ModelElement);
+            Chapter retVal;
+
+            try
+            {
+                retVal = Util.loadChapter(FileName, Enclosing as ModelElement, lockFiles, allowErrors);
+            }
+            catch (Exception)
+            {
+                // Maybe the other naming  ?
+                retVal = Util.loadChapter(PreviousFileName, Enclosing as ModelElement, lockFiles, allowErrors);
+            }
+
+            return retVal;
         }
 
         /// <summary>

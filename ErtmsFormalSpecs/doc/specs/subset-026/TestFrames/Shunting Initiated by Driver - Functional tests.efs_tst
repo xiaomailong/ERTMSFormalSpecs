@@ -38,8 +38,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -49,14 +48,14 @@
  Name="Standstill, mode FS, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -71,12 +70,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -97,14 +91,14 @@
  Name="Standstill, mode LS, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -119,11 +113,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -144,14 +134,14 @@
  Name="Standstill, mode OS, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -166,11 +156,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.OS</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -191,14 +177,14 @@
  Name="Standstill, mode SR, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -213,11 +199,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SR</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -238,14 +220,14 @@
  Name="Standstill, mode SN, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -260,12 +242,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SN</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SN</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -286,14 +263,14 @@
  Name="Standstill, mode UN, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -308,11 +285,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.UN</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -333,14 +306,14 @@
  Name="Standstill, mode PT, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -355,11 +328,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.PT</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -380,14 +349,14 @@
  Name="Standstill, mode SB, driver selects Shunting"
 >
 <ReqRef
- Id="Entry 5.6.2.2.E015"
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.E015.1"
+</ReqRef><ReqRef
+ Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -402,11 +371,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 0.0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -456,8 +421,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -467,10 +431,10 @@
  Name="Level 0"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.1"
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -485,10 +449,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -502,10 +463,10 @@
  Name="Level 1"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.1"
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -520,10 +481,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -537,10 +495,10 @@
  Name="Level 2"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.2"
+ Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -555,10 +513,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -572,10 +527,10 @@
  Name="Level 3"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.2"
+ Id="42a7e2ab-4f12-4436-8a10-d922ea35b779"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -590,10 +545,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -607,10 +559,10 @@
  Name="Level NTC"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D020.1"
+ Id="e890e98d-15ce-46e7-ba5f-e5a0c704d832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -625,10 +577,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -671,8 +620,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -682,14 +630,14 @@
  Name="Send Request for Shunting, position is known"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A045.1"
+</ReqRef><ReqRef
+ Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -704,8 +652,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1040.0</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+<Action>Odometry.NominalDistance &lt;- 1040.0</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     Position =&gt; BTM.Position
     {
@@ -715,9 +662,7 @@
     },
     NID =&gt; 7896,
     Orientation =&gt; Orientation.Nominal
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -738,14 +683,14 @@
  Name="Send Request for Shunting, position is uknown"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A045"
+ Id="457bd04c-8b77-4ecc-b5ec-c4dbce5c1e53"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A045.1"
+</ReqRef><ReqRef
+ Id="3e2e1297-75d8-4cb1-86a6-44e815a1d9cf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -760,10 +705,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1060.0</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 1060.0</Action><Action>BTM.LRBG &lt;- EMPTY</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A045</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -775,7 +717,7 @@
  Kind="Instantaneous"
 >Available ( EURORADIO.EuroradioMessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT )</Expectation><Expectation
  Kind="Instantaneous"
->EURORADIO.EuroradioMessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.DistanceUnknown</Expectation></Expectations>
+>EURORADIO.EuroradioMessageOut.REQUEST_FOR_SHUNTING.POSITION_REPORT.POSITION_REPORT.D_LRBG == MessageTypes.Distance.Unknown</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -814,16 +756,12 @@
  Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize communication session"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -837,22 +775,22 @@
  Name="SH authorized, no balise groups for SH area"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.1"
+ Id="61faae76-f226-4744-a4a6-06512a75b891"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A050"
+</ReqRef><ReqRef
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A050.1"
+</ReqRef><ReqRef
+ Id="122422ab-96f8-41c0-9965-09ccffc8b79f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.S050"
+</ReqRef><ReqRef
+ Id="431525e9-6114-43ef-a6c4-f75462a54f16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -867,8 +805,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_AUTHORISED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.Message
     {
@@ -880,8 +817,7 @@
         T_TRAIN_1 =&gt; 18,
         Sequence1 =&gt; []
     }
-}</Action>
-<Action>Kernel.Shunting.BaliseGroupsForShArea &lt;-
+}</Action><Action>Kernel.Shunting.BaliseGroupsForShArea &lt;-
 [
     Kernel.BaliseGroup
     {
@@ -901,8 +837,7 @@
         NID_C =&gt; 7,
         NewCountry =&gt; False
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -920,22 +855,22 @@
  Name="SH authorized, balise groups for SH area received"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.1"
+ Id="61faae76-f226-4744-a4a6-06512a75b891"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A050"
+</ReqRef><ReqRef
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A050.1"
+</ReqRef><ReqRef
+ Id="122422ab-96f8-41c0-9965-09ccffc8b79f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.S050"
+</ReqRef><ReqRef
+ Id="431525e9-6114-43ef-a6c4-f75462a54f16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -950,8 +885,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action>
-<Action>Kernel.Shunting.BaliseGroupsForShArea &lt;-
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action>Kernel.Shunting.BaliseGroupsForShArea &lt;-
 [
     Kernel.BaliseGroup
     {
@@ -971,8 +905,7 @@
         NID_C =&gt; 7,
         NewCountry =&gt; False
     }
-]</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+]</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_AUTHORISED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.Message
     {
@@ -1011,8 +944,7 @@
             }
         ]
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1044,14 +976,14 @@
  Name="SH refused received"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S050.2"
+ Id="f966dba5-db59-4c31-b423-6ec37205dcf2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.S050"
+</ReqRef><ReqRef
+ Id="431525e9-6114-43ef-a6c4-f75462a54f16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1066,8 +998,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_REFUSED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_REFUSED.Message
     {
@@ -1078,8 +1009,7 @@
         NID_LRBG =&gt; 3090,
         T_TRAIN_1 =&gt; 18
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1122,8 +1052,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1133,10 +1062,10 @@
  Name="Mission is on-going"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D040.1"
+ Id="5aeb9959-1698-4ea4-a60e-da2bb3797ccf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1151,9 +1080,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- True</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action>Kernel.MissionIsOnGoing &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1167,10 +1094,10 @@
  Name="No on-going mission"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D040.2"
+ Id="68435f48-b3c4-4b8d-ae9d-1d5a4a33dd0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1185,9 +1112,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D040</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1230,8 +1155,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1241,10 +1165,10 @@
  Name="Go to EndOfMission"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A100"
+ Id="7ca0878c-f3b5-45ba-ad1f-001f5cf3180d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1259,8 +1183,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A100</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1303,8 +1226,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1314,10 +1236,10 @@
  Name="Level 0"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.2"
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1332,10 +1254,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1349,10 +1268,10 @@
  Name="Level 1"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.2"
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1367,10 +1286,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1384,10 +1300,10 @@
  Name="Level 2"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.1"
+ Id="0cd426d1-35bd-4be9-be23-a5f473998d40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1402,10 +1318,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1419,10 +1332,10 @@
  Name="Level 3"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.2"
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1437,10 +1350,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1454,10 +1364,10 @@
  Name="Level NTC"
 >
 <ReqRef
- Id="Entry 5.6.2.2.D080.2"
+ Id="465fdc06-3913-4ca5-89e8-36b2eec18509"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1472,10 +1382,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1518,16 +1425,12 @@
  Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize communication session"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1541,14 +1444,14 @@
  Name="Change the mode and verify it is reported"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A095"
+ Id="cd15246a-5c87-478b-bc9e-36ed9f2f9127"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A095.1"
+</ReqRef><ReqRef
+ Id="6f5b08a4-6fc6-431d-926a-e1b6bfaa34e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1563,9 +1466,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SH</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1612,16 +1513,12 @@
  Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize communication session"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1635,14 +1532,14 @@
  Name="Receive order to terminate the communication session"
 >
 <ReqRef
- Id="Entry 5.6.2.2.S100"
+ Id="8a2197b0-8bfc-49a1-a13f-20909b2be98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.S100.1"
+</ReqRef><ReqRef
+ Id="dd7c262e-fb20-4039-bbc5-e87aeac2d131"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1667,9 +1564,7 @@
         M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
         NID_LRBG =&gt; 3090
     }
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S100</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S100</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1712,16 +1607,12 @@
  Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize communication session"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1735,14 +1626,14 @@
  Name="Terminate communication session and end the process"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A115"
+ Id="27f88b30-f620-4d1c-aae4-860de3b3a7df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A115.1"
+</ReqRef><ReqRef
+ Id="29c239c8-dea5-47f0-9916-581993980f9f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1757,8 +1648,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1804,9 +1694,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1816,14 +1704,14 @@
  Name="Mode FS"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A220.1"
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1838,11 +1726,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.FS</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1859,14 +1743,14 @@
  Name="Mode LS"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A220.1"
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1881,10 +1765,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1901,14 +1782,14 @@
  Name="Mode OS"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A220.1"
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1923,10 +1804,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.OS</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.OS</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1943,14 +1821,14 @@
  Name="Mode SR"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.6.2.2.A220.1"
+</ReqRef><ReqRef
+ Id="209690fa-85f2-4338-98b6-c636b00a1007"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1965,10 +1843,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.SR</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.SR</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1985,14 +1860,14 @@
  Name="Mode PT (E165)"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.11.2.2.S140.4"
+</ReqRef><ReqRef
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2007,10 +1882,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.PT</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.PT</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2027,14 +1899,14 @@
  Name="Mode SB (E13)"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A220"
+ Id="ff9286d9-70ab-48f9-8f38-21024af06e76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S10.1.1"
+</ReqRef><ReqRef
+ Id="2e9f9917-e8f9-49b1-89ca-a25dc8ef2e05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2049,10 +1921,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

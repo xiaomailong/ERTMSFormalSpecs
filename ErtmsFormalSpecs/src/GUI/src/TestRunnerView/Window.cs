@@ -16,44 +16,41 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
 
-        public RichTextBox ExpressionTextBox
-        {
-            get { return editTextBox.TextBox; }
-        }
-
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentsRichTextBox.TextBox; }
-        }
-
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get { return messageRichTextBox.TextBox; }
         }
 
-        public BaseTreeView TreeView
+        public override EditorTextBox RequirementsTextBox
+        {
+            get { return requirementsTextBox; }
+        }
+
+        public override EditorTextBox ExpressionEditorTextBox
+        {
+            get { return expressionEditorTextBox; }
+        }
+
+
+        public override BaseTreeView TreeView
         {
             get { return testBrowserTreeView; }
         }
 
-        public BaseTreeView subTreeView
+        public override ExplainTextBox ExplainTextBox
         {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
+            get { return explainTextBox; }
         }
 
         /// <summary>
@@ -98,14 +95,28 @@ namespace GUI.TestRunnerView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
             messageRichTextBox.AutoComplete = false;
+            requirementsTextBox.AutoComplete = false;
+            explainTextBox.AutoComplete = false;
+
+            requirementsTextBox.ReadOnly = true;
+            explainTextBox.ReadOnly = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Text = "System test view";
             Visible = false;
             EFSSystem = efsSystem;
             Refresh();
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            IExpressionable expressionable = Selected as IExpressionable;
+            if (expressionable != null)
+            {
+                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
+            }
         }
 
         /// <summary>
@@ -115,7 +126,7 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -150,10 +161,17 @@ namespace GUI.TestRunnerView
             });
         }
 
+        public override void SynchronizeForm()
+        {
+            base.SynchronizeForm();
+
+            evcTimeLineControl.Refresh();
+        }
+
         /// <summary>
         /// Refreshes the display
         /// </summary>
-        override public void Refresh()
+        public override void Refresh()
         {
             if (!DoingRefresh)
             {
@@ -242,7 +260,6 @@ namespace GUI.TestRunnerView
                     }
 
                     subSequenceSelectorComboBox.ToolTipText = subSequenceSelectorComboBox.Text;
-                    testBrowserStatusLabel.Text = frames.Count + " frame(s) loaded";
                 }
                 finally
                 {
@@ -251,24 +268,6 @@ namespace GUI.TestRunnerView
             }
 
             base.Refresh();
-        }
-
-        private void editTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleExpressionTextChanged(editTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            testBrowserTreeView.HandleCommentTextChanged(commentsRichTextBox.Text);
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
         }
 
         /// <summary>
@@ -280,12 +279,13 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
-                MDIWindow.Refresh();
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
         }
 
         private void stepOnce_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = timeLineTabPage;
             StepOnce();
         }
 
@@ -295,7 +295,9 @@ namespace GUI.TestRunnerView
             {
                 EFSSystem.Runner.EndExecution();
                 EFSSystem.Runner = null;
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
+            tabControl1.SelectedTab = timeLineTabPage;
             Clear();
         }
 
@@ -307,7 +309,6 @@ namespace GUI.TestRunnerView
             {
                 dictionary.ClearMessages();
             }
-            MDIWindow.Refresh();
         }
 
         /// <summary>
@@ -330,6 +331,7 @@ namespace GUI.TestRunnerView
 
         private void rewindButton_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = timeLineTabPage;
             StepBack();
         }
 
@@ -339,7 +341,7 @@ namespace GUI.TestRunnerView
             if (EFSSystem.Runner != null)
             {
                 EFSSystem.Runner.StepBack();
-                MDIWindow.Refresh();
+                GUIUtils.MDIWindow.RefreshAfterStep();
             }
         }
 
@@ -355,10 +357,9 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             testBrowserTreeView.RefreshModel();
-            Refresh();
         }
 
         /// <summary>
@@ -373,7 +374,7 @@ namespace GUI.TestRunnerView
                 DataDictionary.Tests.Step step = EFSSystem.Runner.CurrentStep();
                 if (step != null)
                 {
-                    MDIWindow.Select(step);
+                    GUIUtils.MDIWindow.Select(step);
                 }
             }
         }
@@ -390,7 +391,7 @@ namespace GUI.TestRunnerView
                 DataDictionary.Tests.SubSequence subSequence = EFSSystem.Runner.SubSequence;
                 if (subSequence != null)
                 {
-                    MDIWindow.Select(subSequence);
+                    GUIUtils.MDIWindow.Select(subSequence);
                 }
             }
         }

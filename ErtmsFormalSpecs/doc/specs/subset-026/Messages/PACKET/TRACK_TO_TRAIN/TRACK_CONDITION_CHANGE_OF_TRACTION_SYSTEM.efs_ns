@@ -5,57 +5,89 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>The packet gives information about change of the traction system.</Comment>
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="99893b62-5a1a-4fcc-b32f-8571ea0320d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>The packet gives information about change of the traction system.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="38"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_TRACTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_TRACTION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_VOLTAGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_VOLTAGE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9221690b-b0bc-4a5c-9307-9de49243cfef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_CTRACTION"
 >
 </StructureElement></Structure></Structures>

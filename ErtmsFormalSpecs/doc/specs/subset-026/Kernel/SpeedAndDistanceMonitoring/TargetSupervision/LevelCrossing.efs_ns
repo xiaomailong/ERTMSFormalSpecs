@@ -10,18 +10,18 @@
  Name="d_EBI"
 >
 <ReqRef
- Id="3.13.9.3.5.12"
+ Id="6d961621-89b1-4280-8bd7-11d37e4b3f6c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.5.11.a"
+</ReqRef><ReqRef
+ Id="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.5.11.b"
+</ReqRef><ReqRef
+ Id="4ba91473-9e38-449c-87e0-203353bc7bcb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -40,10 +40,10 @@
  Name="d_SBI2"
 >
 <ReqRef
- Id="3.13.9.3.5.12"
+ Id="6d961621-89b1-4280-8bd7-11d37e4b3f6c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI2.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -62,10 +62,10 @@
  Name="d_FLOI"
 >
 <ReqRef
- Id="3.13.9.3.5.12"
+ Id="6d961621-89b1-4280-8bd7-11d37e4b3f6c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -77,8 +77,7 @@
  Name="First case"
 >
 <PreConditions>
-<PreCondition>LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition>
-</PreConditions>
+<PreCondition>LevelCrossing.d_SBI2 ( Vlx ) - d_SBI1 ( Vlx ) &gt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</PreCondition></PreConditions>
 <Expression>d_SBI1 ( Vlx )</Expression>
 </Case><Case
  Name="Second case"
@@ -91,14 +90,14 @@
  Name="d_P"
 >
 <ReqRef
- Id="3.13.2.3.7.3"
+ Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.3.5.12"
+</ReqRef><ReqRef
+ Id="6d961621-89b1-4280-8bd7-11d37e4b3f6c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -110,8 +109,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>LevelCrossing.d_FLOI ( Vlx ) - Vlx * T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"

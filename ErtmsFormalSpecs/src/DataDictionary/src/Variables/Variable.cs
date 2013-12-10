@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Variables
 {
-    public class Variable : Generated.Variable, IVariable, Utils.ISubDeclarator, TextualExplain
+    public class Variable : Generated.Variable, IVariable, Utils.ISubDeclarator, TextualExplain, Types.IDefaultValueElement
     {
         /// <summary>
         /// Indicates that the DeclaredElement dictionary is currently being built
@@ -180,7 +181,15 @@ namespace DataDictionary.Variables
         /// </summary>
         public string TypeName
         {
-            get { return getTypeName(); }
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                type = null;
+                setTypeName(value);
+            }
         }
 
         /// <summary>
@@ -218,15 +227,15 @@ namespace DataDictionary.Variables
         {
             get
             {
+                Dictionary<string, IVariable> retVal = retVal = new Dictionary<string, IVariable>();
+
                 Values.StructureValue structureValue = Value as Values.StructureValue;
                 if (structureValue != null)
                 {
-                    return structureValue.SubVariables;
+                    retVal = structureValue.SubVariables;
                 }
-                else
-                {
-                    return new Dictionary<string, IVariable>();
-                }
+
+                return retVal;
             }
         }
 
@@ -243,30 +252,27 @@ namespace DataDictionary.Variables
                 {
                     if (Utils.Utils.isEmpty(getDefaultValue()))
                     {
+                        // The variable does not define a default value, get the one from the type
                         retVal = Type.DefaultValue;
                     }
                     else
                     {
-                        retVal = Type.getValue(getDefaultValue());
-
-                        if (retVal == null)
+                        // The variable defines a default value, try to interpret it
+                        Interpreter.Expression expression = EFSSystem.Parser.Expression(Type, getDefaultValue(), null, true, this);
+                        if (expression != null)
                         {
-                            Interpreter.Expression expression = EFSSystem.Parser.Expression(this, getDefaultValue());
-                            if (expression != null)
+                            retVal = expression.GetValue(new Interpreter.InterpretationContext(Type));
+                            if (retVal != null && !Type.Match(retVal.Type))
                             {
-                                retVal = expression.GetValue(new Interpreter.InterpretationContext(this));
-                                if (retVal != null && !Type.Match(retVal.Type))
-                                {
-                                    AddError("Default value type does not match variable type");
-                                    retVal = null;
-                                }
+                                AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
+                                retVal = null;
                             }
                         }
                     }
                 }
                 else
                 {
-                    AddError("Cannot find type of variable");
+                    AddError("Cannot find type of variable (" + getTypeName() + ")");
                 }
 
                 if (retVal == null)
@@ -279,6 +285,31 @@ namespace DataDictionary.Variables
                 }
 
                 return retVal;
+            }
+        }
+
+        public override void AddElementLog(Utils.ElementLog log)
+        {
+            if (Enclosing is DataDictionary.Types.NameSpace)
+            {
+                base.AddElementLog(log);
+            }
+            else
+            {
+                IEnclosed current = Enclosing as IEnclosed;
+                while (current != null)
+                {
+                    ModelElement element = current as ModelElement;
+                    if (element != null)
+                    {
+                        element.AddElementLog(log);
+                        current = null;
+                    }
+                    else
+                    {
+                        current = current.Enclosing as IEnclosed;
+                    }
+                }
             }
         }
 
@@ -321,13 +352,18 @@ namespace DataDictionary.Variables
             {
                 if (!Utils.Utils.isEmpty(Type.Comment))
                 {
-                    retVal = retVal + Type.Comment + "\n";
+                    retVal = retVal + TextualExplainUtilities.Comment(Type.Comment, 0) + "\n";
                 }
             }
 
             if (!Utils.Utils.isEmpty(Comment))
             {
-                retVal = retVal + Comment;
+                retVal = retVal + TextualExplainUtilities.Comment(Comment, 0) + "\n";
+            }
+
+            if (Value != null)
+            {
+                retVal = retVal + Name + " = " + Value.LiteralName;
             }
 
             return TextualExplainUtilities.Encapsule(retVal);

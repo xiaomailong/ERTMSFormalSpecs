@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -45,6 +45,12 @@ namespace GUI.SpecificationView
                     RefreshNode();
                 }
             }
+
+            [Category("Description")]
+            public string Name
+            {
+                get { return Item.Name; }
+            }
         }
 
         /// <summary>
@@ -54,7 +60,13 @@ namespace GUI.SpecificationView
         public ChapterTreeNode(DataDictionary.Specification.Chapter item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Specification.Paragraph paragraph in item.Paragraphs)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
             {
                 Nodes.Add(new ParagraphTreeNode(paragraph));
             }
@@ -135,16 +147,19 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Update counts according to the selected chapter
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-            foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
+            Window window = BaseForm as Window;
+            if (window != null)
             {
-                paragraphs.AddRange(paragraph.getSubParagraphs());
+                window.specBrowserTextView.Text = Item.Name;
+                window.specBrowserTextView.Enabled = false;
+
+                GUIUtils.MDIWindow.SetCoverageStatus(Item);
             }
-            (BaseForm as Window).toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
         }
     }
 }

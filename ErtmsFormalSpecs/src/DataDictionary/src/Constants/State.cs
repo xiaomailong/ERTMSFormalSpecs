@@ -15,10 +15,11 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Constants
 {
-    public class State : Generated.State, Values.IValue, Utils.ISubDeclarator, TextualExplain
+    public class State : Generated.State, Values.IValue, Utils.ISubDeclarator, TextualExplain, IGraphicalDisplay
     {
         public string LiteralName
         {
@@ -36,6 +37,56 @@ namespace DataDictionary.Constants
                 return retVal;
             }
         }
+
+        /// <summary>
+        /// Adds a new element log attached to this model element
+        /// </summary>
+        /// <param name="log"></param>
+        public override void AddElementLog(ElementLog log)
+        {
+            bool add = true;
+
+            foreach (ElementLog other in base.Messages)
+            {
+                if (other.CompareTo(log) == 0)
+                {
+                    add = false;
+                }
+            }
+
+            if (add)
+            {
+                base.Messages.Add(log);
+            }
+        }
+
+        /// <summary>
+        /// State machines are not displayed in the tree view. 
+        /// </summary>
+        public override List<ElementLog> Messages
+        {
+            get
+            {
+                List<ElementLog> retVal = new List<ElementLog>();
+
+                retVal.AddRange(base.Messages);
+                if (StateMachine != null)
+                {
+                    retVal.AddRange(StateMachine.Messages);
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Clears the messages associated to this model element
+        /// </summary>
+        public override void ClearMessages()
+        {
+            base.Messages.Clear();
+        }
+
 
         /// <summary>
         /// Provides the full name path to this element in the model structure
@@ -180,6 +231,28 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
+        /// The name to be displayed on the graphical view
+        /// </summary>
+        public string GraphicalName
+        {
+            get
+            {
+                string retVal = Name;
+
+                if (StateMachine.States.Count > 0)
+                {
+                    retVal += "*";
+                }
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether the state is hidden
+        /// </summary>
+        public bool Hidden { get { return false; } set { } }
+
+        /// <summary>
         /// The enclosing state machine
         /// </summary>
         public Types.StateMachine EnclosingStateMachine
@@ -266,7 +339,7 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } }
+        public string TypeName { get { return Type.FullName; } set { } }
 
         /// <summary>
         /// Provides the mode of the typed element

@@ -1,0 +1,33 @@
+MODULE UpdateReleaseNumber;
+
+VAR 
+  VERSION := '[assembly: AssemblyVersion("',
+  FILEVERSION := '[assembly: AssemblyFileVersion("';
+
+PROCEDURE TERMINATE;
+VAR
+  lines, tmp, numbers;
+BEGIN
+  lines := SYS.ReadFile(SYS.Args[1]);
+
+  FILE1.Redirect (SYS.Args[1]);
+  FOR line IN lines DO
+    IF STR.StartsWith (line, VERSION) THEN
+      tmp := line[#VERSION+1..];
+      tmp := tmp[.. STR.Pos('"', tmp)];
+      numbers := STR.Words(tmp, '.');
+      FILE1.WriteLn(VERSION & numbers[1] & '.' & numbers[2] & '.' & STR.Atoi(numbers[3])+1 & '.*")]');
+
+    ELSIF STR.StartsWith (line, FILEVERSION) THEN
+      tmp := line[#FILEVERSION+1..];
+      tmp := tmp[.. STR.Pos('"', tmp)];
+      numbers := STR.Words(tmp, '.');
+      FILE1.WriteLn(FILEVERSION & numbers[1] & '.' & numbers[2] & '.' & STR.Atoi(numbers[3])+1 & '")]');
+
+    ELSE
+      FILE1.WriteLn(line);
+    END;
+  END;
+
+  FILE1.Flush;
+END TERMINATE;

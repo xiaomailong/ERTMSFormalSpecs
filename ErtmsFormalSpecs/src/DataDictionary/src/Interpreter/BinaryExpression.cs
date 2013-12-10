@@ -80,8 +80,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public BinaryExpression(ModelElement root, Expression left, OPERATOR op, Expression right)
-            : base(root)
+        public BinaryExpression(ModelElement root, ModelElement log, Expression left, OPERATOR op, Expression right)
+            : base(root, log)
         {
             Left = left;
             Left.Enclosing = this;
@@ -103,8 +103,13 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Left
                 Left.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Left.StaticUsage, Usage.ModeEnum.Read);
+
+                // Right
                 Right.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;
@@ -321,6 +326,15 @@ namespace DataDictionary.Interpreter
             try
             {
                 leftValue = Left.GetValue(context);
+            }
+            catch (Exception e)
+            {
+                AddError("Cannot evaluate " + Left + ". Reason is " + e.Message);
+                throw new Exception("inner evaluation failed");
+            }
+
+            try
+            {
                 if (leftValue != null)
                 {
                     switch (Operation)
@@ -537,12 +551,15 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddError(e.Message);
+                AddError("Cannot evaluate " + Right + ". Reason is " + e.Message);
+                throw new Exception("inner evaluation failed");
             }
-
-            if (explain)
+            finally
             {
-                CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                if (explain)
+                {
+                    CompleteExplanation(previous, Name + " = " + explainNamable(retVal));
+                }
             }
 
             return retVal;
@@ -1036,6 +1053,20 @@ namespace DataDictionary.Interpreter
                 if (leftType is Types.StateMachine && rightType is Types.StateMachine)
                 {
                     AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
+                }
+
+                if (Right.Ref == EFSSystem.EmptyValue)
+                {
+                    if (leftType is Types.Collection)
+                    {
+                        AddError("Cannot collections with " + Right.Ref.Name + ". Use [] instead");
+                    }
+                }
+
+                if (!leftType.ValidBinaryOperation(Operation, rightType)
+                    && !rightType.ValidBinaryOperation(Operation, leftType))
+                {
+                    AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
                 }
             }
 

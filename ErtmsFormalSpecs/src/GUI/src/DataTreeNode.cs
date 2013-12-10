@@ -19,6 +19,9 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
 using Utils;
+using DataDictionary;
+using DataDictionary.Specification;
+using GUI.SpecificationView;
 
 namespace GUI
 {
@@ -27,6 +30,26 @@ namespace GUI
     /// </summary>
     public class BaseTreeNode : TreeNode, IComparable<BaseTreeNode>
     {
+        /// <summary>
+        /// The editor for this tree node
+        /// </summary>
+        public class BaseEditor
+        {
+            /// <summary>
+            /// The model element currently edited
+            /// </summary>
+            [Browsable(false)]
+            public IModelElement Model { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="model"></param>
+            protected BaseEditor()
+            {
+            }
+        }
+
         /// <summary>
         /// The fixed node name
         /// </summary>
@@ -40,12 +63,7 @@ namespace GUI
         /// <summary>
         /// The model represented by this node
         /// </summary>
-        private Utils.IModelElement model;
-        public Utils.IModelElement Model
-        {
-            get { return model; }
-            private set { model = value; }
-        }
+        public DataDictionary.ModelElement Model { get; set; }
 
         /// <summary>
         /// Provides the base tree view which holds this node
@@ -82,7 +100,7 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public BaseTreeNode(Utils.IModelElement value, string name = null, bool isFolder = false)
+        public BaseTreeNode(DataDictionary.ModelElement value, string name = null, bool isFolder = false)
             : base(name)
         {
             Model = value;
@@ -96,20 +114,34 @@ namespace GUI
             RefreshNode();
         }
 
+        protected virtual void BuildSubNodes()
+        {
+        }
+
+        /// <summary>
+        /// Changes the image index
+        /// </summary>
+        /// <param name="value"></param>
+        protected void ChangeImageIndex(int value)
+        {
+            ImageIndex = value;
+            SelectedImageIndex = value;
+        }
+
         /// <summary>
         /// Sets the image index for this node
         /// </summary>
         /// <param name="isFolder">Indicates whether this item represents a folder</param>
-        protected virtual void setImageIndex(bool isFolder)
+        public virtual void setImageIndex(bool isFolder)
         {
             if (ImageIndex == -1)
             {
                 // Image index not yet selected
-                ImageIndex = BaseTreeView.ModelImageIndex;
+                ChangeImageIndex(BaseTreeView.ModelImageIndex);
 
                 if (isFolder)
                 {
-                    ImageIndex = BaseTreeView.ClosedFolderImageIndex;
+                    ChangeImageIndex(BaseTreeView.ClosedFolderImageIndex);
                 }
                 else
                 {
@@ -122,20 +154,18 @@ namespace GUI
                             || element is DataDictionary.Tests.TestCase
                             || element is DataDictionary.Tests.Step)
                         {
-                            ImageIndex = BaseTreeView.TestImageIndex;
+                            ChangeImageIndex(BaseTreeView.TestImageIndex);
                         }
 
                         if (element is DataDictionary.Specification.Specification
                             || element is DataDictionary.Specification.Chapter
                             || element is DataDictionary.Specification.Paragraph)
                         {
-                            ImageIndex = BaseTreeView.RequirementImageIndex;
+                            ChangeImageIndex(BaseTreeView.RequirementImageIndex);
                         }
                     }
                 }
             }
-
-            SelectedImageIndex = ImageIndex;
         }
 
         /// <summary>
@@ -148,61 +178,145 @@ namespace GUI
         /// <summary>
         /// Handles a selection change event
         /// </summary>
-        public virtual void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public virtual void SelectionChanged(bool displayStatistics)
         {
-            if (BaseTreeView.RefreshNodeContent)
+            if (Model != null && BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
                 {
-                    if (baseForm.ExpressionTextBox != null)
+                    RefreshViewAccordingToModel(baseForm, false);
+                }
+            }
+
+            if (displayStatistics)
+            {
+                GUIUtils.MDIWindow.SetCoverageStatus(EFSSystem.INSTANCE);
+            }
+        }
+
+        /// <summary>
+        /// Refreshes the view according to the model
+        /// </summary>
+        /// <param name="baseForm"></param>
+        /// <param name="ignoreFocused"></param>
+        public void RefreshViewAccordingToModel(IBaseForm baseForm, bool ignoreFocused)
+        {
+            if (baseForm.MessagesTextBox != null)
+            {
+                if (!(baseForm.MessagesTextBox.ContainsFocus && ignoreFocused))
+                {
+                    IModelElement current = Model;
+                    List<ElementLog> messages = new List<ElementLog>();
+                    while (current != null)
                     {
-                        if (Model.ExpressionText != null)
+                        if (current.Messages != null)
                         {
-                            baseForm.ExpressionTextBox.Lines = Utils.Utils.toStrings(Model.ExpressionText);
-                            baseForm.ExpressionTextBox.Enabled = true;
+                            messages.AddRange(current.Messages);
+                        }
+
+                        if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
+                        {
+                            current = current.Enclosing as IModelElement;
                         }
                         else
                         {
-                            baseForm.ExpressionTextBox.Text = "";
-                            baseForm.ExpressionTextBox.Enabled = false;
+                            current = null;
                         }
+                    }
+                    baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(messages);
+                    baseForm.MessagesTextBox.ReadOnly = true;
+                }
+            }
 
-                        RefreshNode();
+            if (baseForm.subTreeView != null)
+            {
+                baseForm.subTreeView.SetRoot(Model);
+            }
+
+            // By default, the explain text box is visible
+            if (baseForm.ExplainTextBox != null && !(Model is IExpressionable))
+            {
+                if (!(baseForm.ExplainTextBox.ContainsFocus && ignoreFocused))
+                {
+                    baseForm.ExplainTextBox.SetModel(Model);
+                    if (!baseForm.ExplainTextBox.Visible)
+                    {
+                        baseForm.ExplainTextBox.Visible = true;
+                        if (baseForm.ExpressionEditorTextBox != null)
+                        {
+                            baseForm.ExpressionEditorTextBox.Visible = false;
+                        }
+                    }
+                }
+            }
+
+            if (baseForm.RequirementsTextBox != null && !ignoreFocused)
+            {
+                string requirements = "";
+
+                ReqRef reqRef = Model as ReqRef;
+                if (reqRef != null && reqRef.Paragraph != null)
+                {
+                    if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
+                    {
+                        requirements = reqRef.Paragraph.FullId + ", ";
+                    }
+                    else
+                    {
+                        if (reqRef.Paragraph != null)
+                        {
+                            requirements = reqRef.Paragraph.FullId + ":" + reqRef.Paragraph.getText();
+                        }
+                    }
+                }
+                else
+                {
+                    List<Paragraph> relatedParagraphs = new List<Paragraph>();
+                    IModelElement current = Model;
+                    while (current != null)
+                    {
+                        ReqRelated reqRelated = current as ReqRelated;
+                        if (reqRelated != null)
+                        {
+                            reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
+                        }
+                        current = current.Enclosing as IModelElement;
                     }
 
-                    if (baseForm.CommentsTextBox != null)
+                    relatedParagraphs.Sort();
+                    foreach (Paragraph paragraph in relatedParagraphs)
                     {
-                        if (Model is DataDictionary.ICommentable)
+                        if (EFSSystem.INSTANCE.DisplayRequirementsAsList)
                         {
-                            DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                            baseForm.CommentsTextBox.Lines = Utils.Utils.toStrings(commentable.Comment);
-                            baseForm.CommentsTextBox.Enabled = true;
+                            requirements += paragraph.FullId + ", ";
                         }
                         else
                         {
-                            baseForm.CommentsTextBox.Text = "";
-                            baseForm.CommentsTextBox.Enabled = false;
+                            requirements += paragraph.FullId + ":" + paragraph.getText() + "\n\n";
                         }
-
-                        RefreshNode();
                     }
+                }
 
-                    if (baseForm.MessagesTextBox != null)
-                    {
-                        baseForm.MessagesTextBox.Lines = Utils.Utils.toStrings(Model.Messages);
-                        baseForm.MessagesTextBox.ReadOnly = true;
-                    }
+                baseForm.RequirementsTextBox.Text = requirements;
+            }
 
-                    if (baseForm.subTreeView != null)
+            // Display the expression editor instead of the explain text box when the element can hold an expression
+            if (baseForm.ExpressionEditorTextBox != null)
+            {
+                if (!(baseForm.ExpressionEditorTextBox.ContainsFocus && ignoreFocused))
+                {
+                    IExpressionable expressionable = Model as IExpressionable;
+                    if (expressionable != null)
                     {
-                        baseForm.subTreeView.SetRoot(Model);
-                    }
-
-                    if (baseForm.ExplainTextBox != null)
-                    {
-                        baseForm.ExplainTextBox.SetModel(Model);
+                        baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
+                        baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
+                        if (!baseForm.ExpressionEditorTextBox.Visible)
+                        {
+                            baseForm.ExpressionEditorTextBox.Visible = true;
+                            baseForm.ExplainTextBox.Visible = false;
+                        }
                     }
                 }
             }
@@ -214,37 +328,6 @@ namespace GUI
         public virtual void DoubleClickHandler()
         {
             // By default, nothing to do
-        }
-
-        /// <summary>
-        /// Handles a expression text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void ExpressionTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                Model.ExpressionText = baseForm.ExpressionTextBox.Text;
-            }
-        }
-
-        /// <summary>
-        /// Handles a comment text change event
-        /// </summary>
-        /// <param name="text">the new text</param>
-        public virtual void CommentTextChanged(string text)
-        {
-            IBaseForm baseForm = BaseForm;
-            if (baseForm != null && baseForm.ExpressionTextBox != null)
-            {
-                if (Model is DataDictionary.ICommentable)
-                {
-                    DataDictionary.ICommentable commentable = (DataDictionary.ICommentable)Model;
-
-                    commentable.Comment = baseForm.CommentsTextBox.Text;
-                }
-            }
         }
 
         /// <summary>
@@ -317,42 +400,73 @@ namespace GUI
             return retVal;
         }
 
-
         /// <summary>
         /// Updates the node color according to the associated messages
         /// </summary>
-        protected virtual void UpdateColor()
+        public virtual void UpdateColor()
         {
-            System.Drawing.Color color = System.Drawing.Color.Black;
+            System.Drawing.Color color = ComputedColor;
+
+            if (color != ForeColor)
+            {
+                ForeColor = color;
+            }
+
+            foreach (BaseTreeNode node in Nodes)
+            {
+                node.UpdateColor();
+            }
+        }
+
+        /// <summary>
+        /// Provides the computed color
+        /// </summary>
+        private System.Drawing.Color ComputedColor { get; set; }
+
+        /// <summary>
+        /// Computes the color for this node
+        /// </summary>
+        /// <returns></returns>
+        public System.Drawing.Color ComputeColor()
+        {
+            ComputedColor = System.Drawing.Color.Black;
 
             if (Model != null)
             {
                 // Compute the color associated to sub elements
                 foreach (BaseTreeNode node in Nodes)
                 {
-                    color = max(color, node.ForeColor);
+                    if (node != null)
+                    {
+                        ComputedColor = max(ComputedColor, node.ComputeColor());
+                    }
                 }
 
-                if (color == ERROR_COLOR)
+                if (ComputedColor == ERROR_COLOR)
                 {
-                    color = ERROR_COLOR_PATH;
+                    ComputedColor = ERROR_COLOR_PATH;
                 }
-                else if (color == WARNING_COLOR)
+                else if (ComputedColor == WARNING_COLOR)
                 {
-                    color = WARNING_COLOR_PATH;
+                    ComputedColor = WARNING_COLOR_PATH;
                 }
-                else if (color == INFO_COLOR)
+                else if (ComputedColor == INFO_COLOR)
                 {
-                    color = INFO_COLOR_PATH;
+                    ComputedColor = INFO_COLOR_PATH;
                 }
 
-                color = max(color, ColorByErrorLevel());
+                BaseTreeNode parent = Parent as BaseTreeNode;
+                if (parent != null && parent.Model != Model)
+                {
+                    // If the parent node is the same as the current node, the color does not count
+                    // since it has already been reported in the enclosing node. Just consider subnodes 
+                    // for this node's color
+
+                    ComputedColor = max(ComputedColor, ColorByErrorLevel());
+                }
             }
 
-            if (color != ForeColor)
-            {
-                ForeColor = color;
-            }
+            return ComputedColor;
         }
 
         /// <summary>
@@ -386,7 +500,7 @@ namespace GUI
         /// <summary>
         /// Updates the node name text according to the modelized item
         /// </summary>
-        protected virtual void UpdateText()
+        public virtual void UpdateText()
         {
             string name = "";
             if (DefaultName != null)
@@ -417,13 +531,13 @@ namespace GUI
                 parent.Nodes.Remove(this);
                 Model.Delete();
 
-                if (model is DataDictionary.ReqRelated)
+                if (Model is DataDictionary.ReqRelated)
                 {
-                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)model;
+                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)Model;
                     reqRelated.setVerified(false);
                 }
 
-                DataDictionary.Generated.ControllersManager.NamableController.alertChange(null, null);
+                DataDictionary.Generated.ControllersManager.BaseModelElementController.alertChange(null, null);
             }
         }
 
@@ -463,6 +577,19 @@ namespace GUI
 
                 base.visit(obj, visitSubNodes);
             }
+        }
+
+        /// <summary>
+        /// Recursively marks all model elements as implemented
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Check(object sender, EventArgs e)
+        {
+            GUIUtils.MDIWindow.ClearMarks();
+            RuleCheckerVisitor visitor = new RuleCheckerVisitor(Model.Dictionary);
+
+            visitor.visit(Model, true);
         }
 
         /// <summary>
@@ -543,6 +670,8 @@ namespace GUI
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            retVal.Add(new MenuItem("Check", new EventHandler(Check)));
+            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Recursively mark as implemented", new EventHandler(MarkAsImplemented)));
             retVal.Add(new MenuItem("Recursively mark as verified", new EventHandler(MarkAsVerified)));
             retVal.Add(new MenuItem("-"));
@@ -590,7 +719,7 @@ namespace GUI
         public virtual void RefreshNode()
         {
             UpdateText();
-            UpdateColor();
+
             if (BaseForm != null && BaseForm.MessagesTextBox != null)
             {
                 if (BaseForm.Selected == Model)
@@ -655,8 +784,45 @@ namespace GUI
                 try
                 {
                     DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    Utils.INamable namable = copy as Utils.INamable;
+                    if (namable != null && SourceNode.Model.EnclosingCollection != null)
+                    {
+                        int previousIndex = -1;
+                        int index = 0;
+                        while (previousIndex != index)
+                        {
+                            previousIndex = index;
+                            foreach (Utils.INamable other in SourceNode.Model.EnclosingCollection)
+                            {
+                                if (index > 0)
+                                {
+                                    if (other.Name.Equals(namable.Name + "_" + index))
+                                    {
+                                        index += 1;
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (other.Name.Equals(namable.Name))
+                                    {
+                                        index += 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Renaming is mandatory
+                        if (index > 0)
+                        {
+                            namable.Name = namable.Name + "_" + index;
+                        }
+                    }
+
                     Model.AddModelElement(copy);
-                    MainWindow.RefreshModel();
+                    Nodes.Clear();
+                    BuildSubNodes();
                 }
                 catch (Exception)
                 {
@@ -684,18 +850,18 @@ namespace GUI
                     ThisCollection.Remove(SourceNode.Model);
                     thisIndex = ThisCollection.IndexOf(Model);
                     ThisCollection.Insert(thisIndex, SourceNode.Model);
-                    MainWindow.RefreshModel();
+
+                    BaseTreeNode parentNode = Parent as BaseTreeNode;
+                    if (parentNode != null)
+                    {
+                        parentNode.Nodes.Clear();
+                        parentNode.BuildSubNodes();
+                    }
+                    else
+                    {
+                        GUIUtils.MDIWindow.RefreshModel();
+                    }
                 }
-            }
-        }
-        /// <summary>
-        /// Provides the main window wich holds this tree node
-        /// </summary>
-        public MainWindow MainWindow
-        {
-            get
-            {
-                return (TreeView as BaseTreeView).ParentForm.MDIWindow;
             }
         }
 
@@ -706,8 +872,7 @@ namespace GUI
         {
             if (ImageIndex == BaseTreeView.ClosedFolderImageIndex)
             {
-                ImageIndex = BaseTreeView.ExpandedFolderImageIndex;
-                SelectedImageIndex = BaseTreeView.ExpandedFolderImageIndex;
+                ChangeImageIndex(BaseTreeView.ExpandedFolderImageIndex);
             }
         }
 
@@ -718,8 +883,7 @@ namespace GUI
         {
             if (ImageIndex == BaseTreeView.ExpandedFolderImageIndex)
             {
-                ImageIndex = BaseTreeView.ClosedFolderImageIndex;
-                SelectedImageIndex = BaseTreeView.ClosedFolderImageIndex;
+                ChangeImageIndex(BaseTreeView.ClosedFolderImageIndex);
             }
         }
 
@@ -742,25 +906,28 @@ namespace GUI
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class DataTreeNode<T> : BaseTreeNode
-        where T : class, Utils.IModelElement
+        where T : DataDictionary.ModelElement
     {
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class Editor
+        public abstract class Editor : BaseTreeNode.BaseEditor
         {
             /// <summary>
             /// The item that is edited. 
             /// </summary>
             private T item;
+
+            [Browsable(false)]
             public T Item
             {
                 get { return item; }
                 set
                 {
                     item = value;
+                    Model = (IModelElement)value;
                     UpdateActivation();
                 }
             }
@@ -789,6 +956,7 @@ namespace GUI
             /// Constructor
             /// </summary>
             protected Editor()
+                : base()
             {
             }
 
@@ -891,18 +1059,8 @@ namespace GUI
             : base(item, name, isFolder)
         {
             Item = item;
+            BuildSubNodes();
             RefreshNode();
-        }
-
-        /// <summary>
-        /// refreshes the node text
-        /// </summary>
-        public override void RefreshNode()
-        {
-            base.RefreshNode();
-
-            UpdateText();
-            UpdateColor();
         }
 
         /// <summary>
@@ -915,11 +1073,12 @@ namespace GUI
         /// <summary>
         /// Handles a selection change event
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(displayStatistics);
 
-            if (BaseTreeView.RefreshNodeContent)
+            if (BaseTreeView != null && BaseTreeView.RefreshNodeContent)
             {
                 IBaseForm baseForm = BaseForm;
                 if (baseForm != null)
@@ -932,10 +1091,6 @@ namespace GUI
                         baseForm.Properties.SelectedObject = editor;
                     }
                 }
-            }
-            if (BaseForm is GUI.DataDictionaryView.Window)
-            {
-                (BaseForm as GUI.DataDictionaryView.Window).toolStripStatusLabel.Text = "";
             }
         }
     }

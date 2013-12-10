@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public RuleDisablingsTreeNode(DataDictionary.Dictionary item)
             : base(item, "Disabled rules", true)
         {
-            foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in item.RuleDisablings)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in Item.RuleDisablings)
             {
                 Nodes.Add(new RuleDisablingTreeNode(ruleDisabling));
             }
@@ -81,10 +87,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.RuleDisablings.Count + (Item.RuleDisablings.Count > 1 ? " rule disablings " : " rule disabling ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.RuleDisablings.Count + (Item.RuleDisablings.Count > 1 ? " rule disablings " : " rule disabling ") + "selected.");
         }
     }
 }

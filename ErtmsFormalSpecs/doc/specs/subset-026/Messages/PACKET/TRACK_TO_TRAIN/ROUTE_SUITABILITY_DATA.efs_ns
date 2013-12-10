@@ -5,162 +5,197 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>The packet gives the characteristics needed to enter a route.</Comment>
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>The packet gives the characteristics needed to enter a route.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="70"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_TRACKINIT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_TRACKINIT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="21443e68-000d-4c84-b4f4-17c5373d0a4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_TRACKINIT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_TRACKINIT"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_SUITABILITY"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SUITABILITY"
 >
 </StructureElement><StructureElement
  TypeName="Q_SUITABILITY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SUITABILITY"
 >
 </StructureElement><StructureElement
  TypeName="M_LINEGAUGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_LINEGAUGE"
 >
 </StructureElement><StructureElement
- TypeName="M_AXLELOAD"
+ TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_AXLELOAD"
+ Implemented="TRUE"
+ Name="M_AXLELOADCAT"
 >
 </StructureElement><StructureElement
  TypeName="M_VOLTAGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_VOLTAGE"
 >
 </StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_CTRACTION"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
 </StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="D_SUITABILITY"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_SUITABILITY"
 >
 </StructureElement><StructureElement
  TypeName="Q_SUITABILITY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SUITABILITY"
 >
 </StructureElement><StructureElement
  TypeName="M_LINEGAUGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_LINEGAUGE"
 >
 </StructureElement><StructureElement
- TypeName="M_AXLELOAD"
+ TypeName="M_AXLELOADCAT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
- Name="M_AXLELOAD"
+ Implemented="TRUE"
+ Name="M_AXLELOADCAT"
 >
 </StructureElement><StructureElement
  TypeName="M_VOLTAGE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_VOLTAGE"
 >
 </StructureElement><StructureElement
  TypeName="NID_CTRACTION"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_CTRACTION"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="80557bc0-c47d-4cda-9a7b-6ee9a84c939e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

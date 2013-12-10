@@ -5,38 +5,61 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Transmission of the aspect of a shunting signal</Comment>
+<ReqRef
+ Id="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="e8915ec1-4704-4464-b3d6-896e14e3005e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Transmission of the aspect of a shunting signal</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="132"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-<Comment></Comment>
-</StructureElement><StructureElement
+<ReqRef
+ Id="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_ASPECT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_ASPECT"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7fc85086-374e-4ffb-8cf2-1b9f49820e19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

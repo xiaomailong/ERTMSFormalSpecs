@@ -5,38 +5,70 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<StructureElement
+<ReqRef
+ Id="7c52a141-a336-45c4-8933-e8521c8b7522"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="f6a07df8-0a38-405a-ac82-e476c6f8f49b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="60fb8ae5-aecd-4fcf-aa69-ec41649b9c2f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="2cede8a1-5372-48a2-b195-db43cc0d3c3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="0889b917-7df0-4f96-a8ea-95d3dd0f861a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="2c9b762d-4604-476c-a9af-5f9ed8798635"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="944df599-e5d3-4360-9b07-6e36bc0025f4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="81e40582-8c1f-4854-b6a4-c389c5b3ff6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="6b12d15c-87f2-48ff-849a-2279b0777014"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9690488f-2920-478c-b49d-6223a8bba390"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="bbaed3c1-8068-4694-b20d-a574f61aff20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="c431d34d-e06e-4a5a-b181-1d1dcc4aca3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT"
 >
 </StructureElement><StructureElement
  TypeName="PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS"
 >
 </StructureElement></Structure></Structures>
-<Variables>
-<Variable
- Type="Default.MessageTypes.Distance"
- DefaultValue="32767"
- VariableMode="Constant"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DistanceUnknown"
->
-<ReqRef
- Id="7.5.1.13.0"
->
-<Comment></Comment>
-</ReqRef>
-<Comment>Predefined value representing an unknown distance.</Comment>
-</Variable></Variables>
 </NameSpace>

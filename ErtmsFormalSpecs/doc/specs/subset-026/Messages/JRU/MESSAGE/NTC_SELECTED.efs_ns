@@ -1,0 +1,42 @@
+<NameSpace
+ Name="NTC_SELECTED"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="bb9c8dd1-462d-4fc9-94dc-a4d02d2f1420"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This message contains the identify of the NTC when the selected level is NTC</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="NID_NTC"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+<ReqRef
+ Id="1eb3f175-3ec2-4f52-97e8-d179c6d714de"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
+</NameSpace>

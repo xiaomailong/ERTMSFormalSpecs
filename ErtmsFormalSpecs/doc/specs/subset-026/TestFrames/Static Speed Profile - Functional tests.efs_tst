@@ -24,38 +24,38 @@
  Name="Receive static speed profile"
 >
 <ReqRef
- Id="3.11.3.1.1"
+ Id="6a081658-e5b2-4c8a-a8ba-45dadd7e9e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.1.3"
+</ReqRef><ReqRef
+ Id="ac670d16-d189-473e-b200-ded164824365"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.1.1.a"
+</ReqRef><ReqRef
+ Id="e4e5b993-7f8a-4d6b-9e5f-fde455c8e6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.1.1.b"
+</ReqRef><ReqRef
+ Id="acaf62ba-5b8e-4cf3-82a2-c81ae54cd1ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.2"
+</ReqRef><ReqRef
+ Id="44377cd4-3f79-4bb9-9c41-9a4af0e4b969"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.3"
+</ReqRef><ReqRef
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.5"
+</ReqRef><ReqRef
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.6"
+</ReqRef><ReqRef
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -69,8 +69,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -85,13 +84,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_150_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
-}</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -101,10 +98,7 @@
         Position=&gt;11000.0,
         UnderReadingAmountOdo=&gt;11.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 12000.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 12000.0</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -262,8 +256,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -323,22 +316,22 @@
  Name="Receive new static speed profile"
 >
 <ReqRef
- Id="3.11.3.2.3"
+ Id="583de37e-19f0-4cf2-8ecd-dcb4f78f645d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.5"
+</ReqRef><ReqRef
+ Id="64f509d0-a576-4ed1-a3e8-19a41d794900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.3.2.6"
+</ReqRef><ReqRef
+ Id="627aeec8-b2b3-4c29-bc48-4f8796e011b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.7.3.1.a"
+</ReqRef><ReqRef
+ Id="066c1468-0f45-4978-bc8d-a3cec1f01661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -434,8 +427,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -499,14 +491,14 @@
  Name="SSP depending on train length"
 >
 <ReqRef
- Id="3.11.3.1.3"
+ Id="ac670d16-d189-473e-b200-ded164824365"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.4"
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -520,8 +512,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -650,9 +641,7 @@ Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-<Action>BTM.LRBG&lt;- BTM.BaliseGroup
+}</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action><Action>BTM.LRBG&lt;- BTM.BaliseGroup
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -662,20 +651,17 @@ Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
         Position=&gt;4000.0,
         UnderReadingAmountOdo=&gt;26.0
     }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+}</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_150_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
-}</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 52.0,
     D_ora =&gt; 44.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

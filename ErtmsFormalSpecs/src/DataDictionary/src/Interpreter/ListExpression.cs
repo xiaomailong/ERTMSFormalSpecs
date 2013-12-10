@@ -31,8 +31,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public ListExpression(ModelElement root, List<Expression> elements)
-            : base(root)
+        public ListExpression(ModelElement root, ModelElement log, List<Expression> elements)
+            : base(root, log)
         {
             ListElements = elements;
 
@@ -64,6 +64,8 @@ namespace DataDictionary.Interpreter
                 foreach (Expression expr in ListElements)
                 {
                     expr.SemanticAnalysis(instance, expectation);
+                    StaticUsage.AddUsages(expr.StaticUsage, null);
+
                     Types.Type current = expr.GetExpressionType();
                     if (elementType == null)
                     {
@@ -84,6 +86,8 @@ namespace DataDictionary.Interpreter
                     ExpressionType.Type = elementType;
                     ExpressionType.Name = "ListOf_" + elementType.FullName;
                     ExpressionType.Enclosing = Root.EFSSystem;
+
+                    StaticUsage.AddUsage(elementType, Root, Usage.ModeEnum.Type);
                 }
                 else
                 {
@@ -92,6 +96,17 @@ namespace DataDictionary.Interpreter
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Checks the expression
+        /// </summary>
+        public override void checkExpression()
+        {
+            foreach (Expression expr in ListElements)
+            {
+                expr.checkExpression();
+            }
         }
 
         /// <summary>

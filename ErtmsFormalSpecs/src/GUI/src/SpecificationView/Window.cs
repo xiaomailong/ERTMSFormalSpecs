@@ -18,12 +18,14 @@ using System.Windows.Forms;
 
 using Reports.Specs;
 using Reports.Tests;
+using DataDictionary.Specification;
+using System.Collections;
 
 namespace GUI.SpecificationView
 {
-    public partial class Window : Form, IBaseForm
+    public partial class Window : BaseForm
     {
-        public MyPropertyGrid Properties
+        public override MyPropertyGrid Properties
         {
             get { return propertyGrid; }
         }
@@ -33,44 +35,14 @@ namespace GUI.SpecificationView
             get { return specBrowserTextView.TextBox; }
         }
 
-        public RichTextBox CommentsTextBox
-        {
-            get { return commentsRichTextBox.TextBox; }
-        }
-
-        public RichTextBox MessagesTextBox
+        public override RichTextBox MessagesTextBox
         {
             get { return messagesRichTextBox.TextBox; }
         }
 
-        public BaseTreeView TreeView
+        public override BaseTreeView TreeView
         {
             get { return specBrowserTreeView; }
-        }
-
-        public BaseTreeView subTreeView
-        {
-            get { return null; }
-        }
-
-        public ExplainTextBox ExplainTextBox
-        {
-            get { return null; }
-        }
-
-        /// <summary>
-        /// The specifications handled by this window
-        /// </summary>
-        public DataDictionary.Specification.Specification Specification
-        {
-            get
-            {
-                if (Dictionary != null)
-                {
-                    return Dictionary.Specifications;
-                }
-                return null;
-            }
         }
 
         /// <summary>
@@ -96,13 +68,28 @@ namespace GUI.SpecificationView
         {
             InitializeComponent();
 
-            commentsRichTextBox.AutoComplete = false;
+            specBrowserTextView.AutoComplete = false;
             messagesRichTextBox.AutoComplete = false;
 
+            specBrowserTextView.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
             Refresh();
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
+        }
+
+        void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Paragraph paragraph = Selected as Paragraph;
+            if (paragraph != null)
+            {
+                if (paragraph.Text.CompareTo(specBrowserTextView.Text) != 0)
+                {
+                    paragraph.Text = specBrowserTextView.Text;
+                }
+            }
         }
 
         /// <summary>
@@ -112,47 +99,22 @@ namespace GUI.SpecificationView
         /// <param name="e"></param>
         void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         public override void Refresh()
         {
             specBrowserTreeView.Refresh();
-            int applicableCounter = Specification.ApplicableParagraphs.Count;
-            int implementedCounter = SpecCoverageReport.CoveredRequirements(Dictionary, true).Count;
-            int testedCounter = TestsCoverageReport.CoveredRequirements(Dictionary).Count;
-
-            double percentageImplemented = (double)implementedCounter / (double)applicableCounter;
-            double percentageTested = (double)testedCounter / (double)applicableCounter;
-            specBrowserStatusLabel.Text = string.Format("{0} applicable paragraphs loaded. {1} ({2:P2}) implemented, {3} ({4:P2}) tested.", new object[] { applicableCounter, implementedCounter, percentageImplemented, testedCounter, percentageTested });
+            int applicableCounter = Dictionary.ApplicableParagraphs.Count;
             base.Refresh();
         }
 
         /// <summary>
         /// Refreshes the model of the window
         /// </summary>
-        public void RefreshModel()
+        public override void RefreshModel()
         {
             specBrowserTreeView.RefreshModel();
-        }
-
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
-
-        private void specBrowserTextView_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTextView.Enabled = true;
-            specBrowserTreeView.HandleExpressionTextChanged(ExpressionTextBox.Text);
-        }
-
-        private void commentsRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            specBrowserTreeView.HandleCommentTextChanged(CommentsTextBox.Text);
         }
 
         /// <summary>
@@ -183,24 +145,6 @@ namespace GUI.SpecificationView
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
-        }
-
-        /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
-        /// </summary>
-        public Utils.IModelElement Selected
-        {
-            get
-            {
-                Utils.IModelElement retVal = null;
-
-                if (TreeView != null && TreeView.Selected != null)
-                {
-                    retVal = TreeView.Selected.Model;
-                }
-
-                return retVal;
-            }
         }
     }
 }

@@ -37,9 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Odometry.EstimatedSpeed &lt;- 10.0</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Odometry.EstimatedSpeed &lt;- 10.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -49,10 +47,10 @@
  Name="No axle load profile defined"
 >
 <ReqRef
- Id="3.11.4.5"
+ Id="fd20f88d-92bb-420d-b66e-a56c331b36a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -66,8 +64,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 200.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -89,22 +86,22 @@
  Name="Axle load profile received"
 >
 <ReqRef
- Id="3.11.4.1"
+ Id="0bc77f7e-62ac-42cc-bf02-051522a4d11a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.4.2"
+</ReqRef><ReqRef
+ Id="13798cd3-156c-4ae1-a925-b41dfda2af88"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.4.3"
+</ReqRef><ReqRef
+ Id="0aceff75-cd35-48b0-8d5a-4bc8277d35c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.4.6"
+</ReqRef><ReqRef
+ Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -151,22 +148,22 @@
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                             V_AXLELOAD =&gt; 14
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 12
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 10
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 8
                         }
                     ],
@@ -181,27 +178,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 8
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 6
                                 }
                             ]
@@ -215,27 +212,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 18
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 10
                                 }
                             ]
@@ -245,10 +242,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.B2</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -309,10 +303,10 @@
  Name="New axle load profile received"
 >
 <ReqRef
- Id="3.7.3.1.c"
+ Id="d12121cf-b42b-4840-8d4d-20d47f70a1aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -359,22 +353,22 @@
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                             V_AXLELOAD =&gt; 10
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 8
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 6
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 4
                         }
                     ],
@@ -389,27 +383,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 18
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 10
                                 }
                             ]
@@ -419,8 +413,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -472,10 +465,10 @@
  Name="Axle load with resuming of initial states received"
 >
 <ReqRef
- Id="7.5.1.32"
+ Id="35ef498a-1c12-4203-b283-26436d281f11"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -524,8 +517,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -563,8 +555,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 550.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 550.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -595,10 +586,10 @@
  Name="Axle load profile received with categories lower than the train&apos;s category"
 >
 <ReqRef
- Id="3.11.4.4"
+ Id="9682d65d-131e-40e8-9f59-eee5815bf874"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -645,22 +636,22 @@
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B1,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B1,
                             V_AXLELOAD =&gt; 14
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 12
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 10
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 8
                         }
                     ],
@@ -675,27 +666,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B1,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B1,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 8
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 6
                                 }
                             ]
@@ -709,27 +700,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B1,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B1,
                                     V_AXLELOAD =&gt; 18
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 10
                                 }
                             ]
@@ -739,9 +730,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.A</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.A</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -805,14 +794,14 @@
  Name="Axle load depending on train length"
 >
 <ReqRef
- Id="3.11.4.6"
+ Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.4"
+</ReqRef><ReqRef
+ Id="49595724-3359-4536-a90e-542bc90ffc8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -826,9 +815,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -876,22 +863,22 @@
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                             V_AXLELOAD =&gt; 14
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 12
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 10
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 8
                         }
                     ],
@@ -906,27 +893,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 8
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 6
                                 }
                             ]
@@ -940,27 +927,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 18
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 10
                                 }
                             ]
@@ -970,9 +957,7 @@
             }
         }
     ]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOAD.B2</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.B2</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

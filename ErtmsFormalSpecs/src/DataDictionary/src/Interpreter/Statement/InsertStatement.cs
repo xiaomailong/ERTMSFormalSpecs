@@ -41,8 +41,8 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
         /// <param name="parameters">The expressions used to compute the parameters</param>
-        public InsertStatement(ModelElement root, Expression value, Expression listExpression, Expression replaceElement)
-            : base(root)
+        public InsertStatement(ModelElement root, ModelElement log, Expression value, Expression listExpression, Expression replaceElement)
+            : base(root, log)
         {
             Value = value;
             Value.Enclosing = this;
@@ -68,11 +68,19 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // Value
                 Value.SemanticAnalysis(instance);
+                StaticUsage.AddUsages(Value.StaticUsage, Usage.ModeEnum.Read);
+
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance, Filter.IsLeftSide);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
+
+                // ReplaceElement
                 if (ReplaceElement != null)
                 {
                     ReplaceElement.SemanticAnalysis(instance);
+                    StaticUsage.AddUsages(ReplaceElement.StaticUsage, Usage.ModeEnum.Read);
                 }
             }
 
@@ -114,6 +122,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            if (ListExpression.Ref is Parameter)
+            {
+                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+            }
+
             Value.checkExpression();
 
             Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;

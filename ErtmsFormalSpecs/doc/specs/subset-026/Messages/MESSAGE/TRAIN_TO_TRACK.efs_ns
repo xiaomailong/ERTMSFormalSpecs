@@ -56,127 +56,195 @@
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
 <StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.VALIDATED_TRAIN_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="VALIDATED_TRAIN_DATA"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d00ed482-4e7b-4dc9-a857-b5fb171adf5b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_FOR_SHUNTING.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="REQUEST_FOR_SHUNTING"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="4538d3bf-abc5-49c0-b3df-d7179bd3fe54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="MA_REQUEST"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="09bd805d-47dc-47e1-9489-e5fb2e24f885"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRAIN_POSITION_REPORT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1bf8b9b6-79f5-474e-b31e-1e946b2adaf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_GRANTED.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="REQUEST_TO_SHORTEN_MA_IS_GRANTED"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6dfcd9dd-db04-495f-96eb-7eb953e4b3c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_REJECTED.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="REQUEST_TO_SHORTEN_MA_IS_REJECTED"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="6d1732ea-861d-4c65-954c-3c26b0a99c1b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ACKNOWLEDGEMENT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="3f4bddf9-98d3-42ec-9139-6a3d3913523d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT_OF_EMERGENCY_STOP.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="ACKNOWLEDGEMENT_OF_EMERGENCY_STOP"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="1d5d1613-e3b5-4dc3-ac17-1785740b57a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.TRACK_AHEAD_FREE_GRANTED.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TRACK_AHEAD_FREE_GRANTED"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="2255259b-9293-4048-ad34-6b1e307f7472"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.END_OF_MISSION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="END_OF_MISSION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="d3955e28-f016-43ba-aa05-ed187deb9195"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.RADIO_INFILL_REQUEST.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="RADIO_INFILL_REQUEST"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="cdb98225-48c8-4f17-90bd-9983218915d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.NO_COMPATIBLE_VERSION_SUPPORTED.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NO_COMPATIBLE_VERSION_SUPPORTED"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="29ac8b57-887f-4420-8b7b-91bb1e505d65"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.INITIATION_OF_A_COMMUNICATION_SESSION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="INITIATION_OF_A_COMMUNICATION_SESSION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="9934dc4b-5b76-4e42-9f4c-b7efb6c87c30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TERMINATION_OF_A_COMMUNICATION_SESSION"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="19c4b8ef-f85a-4b84-8eff-203e8b462604"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SOM_POSITION_REPORT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="f3ff7f4d-3f24-4101-8ad4-d2902c011869"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="4c2b803e-1b6e-406f-b450-45c71272cd6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="MESSAGE.TRAIN_TO_TRACK.SESSION_ESTABLISHED.Message"
  Default="EMPTY"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SESSION_ESTABLISHED"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="6db08158-68d4-49a4-9b0c-24890ae05196"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

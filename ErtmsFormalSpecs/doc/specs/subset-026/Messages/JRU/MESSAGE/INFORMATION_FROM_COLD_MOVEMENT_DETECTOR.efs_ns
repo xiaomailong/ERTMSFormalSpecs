@@ -1,0 +1,41 @@
+<NameSpace
+ Name="INFORMATION_FROM_COLD_MOVEMENT_DETECTOR"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="edea8c3d-fe6f-420e-b769-33cf7a6b53e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement><StructureElement
+ TypeName="M_COLD_MVT"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_COLD_MVT"
+>
+<ReqRef
+ Id="36640d80-7546-409b-be51-23d6f5c40821"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef></StructureElement></Structure></Structures>
+</NameSpace>

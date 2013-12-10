@@ -125,7 +125,7 @@ namespace GUI.TestRunnerView
         {
             Utils.FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
-            MainWindow.RefreshModel();
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         #region Execute tests
@@ -165,12 +165,14 @@ namespace GUI.TestRunnerView
             {
                 if (Window != null)
                 {
+                    SynchronizerList.SuspendSynchronization();
                     DataDictionary.Tests.SubSequence subSequence = TestCase.Enclosing as DataDictionary.Tests.SubSequence;
                     if (subSequence != null)
                     {
                         DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false);
                         runner.RunUntilStep(null);
                     }
+                    SynchronizerList.ResumeSynchronization();
                 }
             }
         }
@@ -189,7 +191,11 @@ namespace GUI.TestRunnerView
             ProgressDialog dialog = new ProgressDialog("Executing test steps", executeTestsHandler);
             dialog.ShowDialog();
 
-            MainWindow.RefreshModel();
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
+            }
         }
         #endregion
 
@@ -225,7 +231,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void Extract(object sender, EventArgs args)
         {
-            MainWindow mainWindow = MainWindow;
+            MainWindow mainWindow = GUIUtils.MDIWindow;
             mainWindow.AllowRefresh = false;
 
             try

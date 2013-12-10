@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI.TestRunnerView
 {
@@ -55,26 +56,6 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step order number
-            /// </summary>
-            [Category("Description")]
-            public int Order
-            {
-                get { return Item.getTCS_Order(); }
-                set { Item.setTCS_Order(value); }
-            }
-
-            /// <summary>
-            /// The step distance
-            /// </summary>
-            [Category("Description")]
-            public int Distance
-            {
-                get { return Item.getDistance(); }
-                set { Item.setDistance(value); }
-            }
-
-            /// <summary>
             /// The step description
             /// </summary>
             [Category("Description")]
@@ -84,20 +65,43 @@ namespace GUI.TestRunnerView
                 set { Item.setDescription(value); }
             }
 
-            /// <summary>
-            /// The step comment
-            /// </summary>
             [Category("Description")]
-            public string Comment
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public DataDictionary.Tests.Step Comment
             {
-                get { return Item.getComment(); }
-                set { Item.setComment(value); }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
+            }
+
+            /// <summary>
+            /// The step order number
+            /// </summary>
+            [Category("Subset76")]
+            public int Order
+            {
+                get { return Item.getTCS_Order(); }
+                set { Item.setTCS_Order(value); }
+            }
+
+            /// <summary>
+            /// The step distance
+            /// </summary>
+            [Category("Subset76")]
+            public int Distance
+            {
+                get { return Item.getDistance(); }
+                set { Item.setDistance(value); }
             }
 
             /// <summary>
             /// The step I/O mode
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_IO InputOutput
             {
                 get { return Item.getIO(); }
@@ -107,7 +111,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step Interface
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_INTERFACE Interface
             {
                 get { return Item.getInterface(); }
@@ -117,7 +121,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step level in
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_LEVEL TestLevelIn
             {
                 get { return Item.getLevelIN(); }
@@ -127,7 +131,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step level out
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_LEVEL TestLevelOut
             {
                 get { return Item.getLevelOUT(); }
@@ -137,7 +141,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step mode in
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_MODE TestModeIn
             {
                 get { return Item.getModeIN(); }
@@ -147,7 +151,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step mode out
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public DataDictionary.Generated.acceptor.ST_MODE TestModeOut
             {
                 get { return Item.getModeOUT(); }
@@ -157,7 +161,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step is translated or not
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public bool TranslationRequired
             {
                 get { return Item.getTranslationRequired(); }
@@ -167,7 +171,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The step is translated or not
             /// </summary>
-            [Category("Description")]
+            [Category("Subset76")]
             public bool Translated
             {
                 get { return Item.getTranslated(); }
@@ -177,7 +181,7 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The item user comment
             /// </summary>
-            [Category("Meta Data")]
+            [Category("Meta data")]
             public string UserComment
             {
                 get { return Item.getUserComment(); }
@@ -192,7 +196,13 @@ namespace GUI.TestRunnerView
         public StepTreeNode(DataDictionary.Tests.Step item)
             : base(item)
         {
-            foreach (DataDictionary.Tests.SubStep subStep in item.SubSteps)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
             {
                 Nodes.Add(new SubStepTreeNode(subStep));
             }
@@ -216,19 +226,7 @@ namespace GUI.TestRunnerView
         {
             Utils.FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
-            MainWindow.RefreshModel();
-        }
-
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            Window window = BaseForm as Window;
-            if (window != null)
-            {
-                window.ExpressionTextBox.Lines = Utils.Utils.toStrings(Item.Name);
-                window.explainTextBox.Lines = Utils.Utils.toStrings(Item.getExplain());
-            }
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         /// <summary>
@@ -295,7 +293,9 @@ namespace GUI.TestRunnerView
                         runner.Cycle();
                     }
                 }
-                window.MDIWindow.Refresh();
+
+                window.tabControl1.SelectedTab = window.timeLineTabPage;
+                GUIUtils.MDIWindow.Refresh();
             }
         }
 
@@ -313,6 +313,7 @@ namespace GUI.TestRunnerView
             {
                 DataDictionary.Tests.Runner.Runner runner = window.getRunner(Item.TestCase.SubSequence);
 
+                SynchronizerList.SuspendSynchronization();
                 runner.RunUntilStep(Item);
                 foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
                 {
@@ -322,7 +323,7 @@ namespace GUI.TestRunnerView
                         runner.RunForBlockingExpectations(true);
                     }
                 }
-                window.MDIWindow.Refresh();
+                SynchronizerList.ResumeSynchronization();
             }
         }
 

@@ -1,0 +1,4835 @@
+<NameSpace
+ Name="JRU"
+>
+<NameSpaces>
+<NameSpaceRef
+ Name="DATE"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TIME"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="TRAIN_POSITION"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="HEADER"
+>
+</NameSpaceRef><NameSpaceRef
+ Name="MESSAGE"
+>
+</NameSpaceRef></NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_NTC"
+>
+<Comment>NTC identity
+One value of this variable represents the identity of an STM reflecting each composition of national infrastructure.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_MESSAGE"
+>
+<ReqRef
+ Id="3c64ae3c-8549-4e30-a019-5eb9b8c965e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="cc3d45f4-d90b-4e96-9049-1701e7aa7cf3"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Message identifier
+Identifier of the message.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="2047"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_MESSAGE"
+>
+<ReqRef
+ Id="6f3aac9c-7ea4-4a24-9098-8401aa8b22f9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="e1abd747-9c54-43d2-b647-4633ce3e4e3b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Message length
+L_MESSAGE indicates the length of the message in bytes, 
+         including all variables in the message header (L_MESSAGE also).</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DAY"
+>
+<Comment>Official day
+It&apos;s used to label data recorded</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MONTH"
+>
+<Comment>Official month
+It&apos;s used to label data recorded</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_used"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="YEAR"
+>
+<Comment>Official year
+It&apos;s used to label data recorded.  Only the last two figures of the year are recorded (unit and ten).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="127"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HOUR"
+>
+<Comment>Official hour
+It&apos;s used to label data recorded</Comment>
+<SpecialValues>
+<EnumValue
+ Value="31"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="63"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MINUTES"
+>
+<Comment>Official minutes
+It&apos;s used to label data recorded</Comment>
+<SpecialValues>
+<EnumValue
+ Value="63"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="63"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SECONDS"
+>
+<Comment>Official seconds
+It&apos;s used to label data recorded</Comment>
+<SpecialValues>
+<EnumValue
+ Value="63"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TTS"
+>
+<Comment>Official hundredth of second
+Used update label data recorded.  Used only in conjunction with HOUR, MINUTES and SECONDS.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="31"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_TRAIN"
+>
+<ReqRef
+ Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="fbdccb80-301b-4431-a470-97e66ae1ef6c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="2a15b46d-5611-4053-974b-182b0436ce24"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This field contains the current speed of the train.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="standstill"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_ENGINE"
+>
+<ReqRef
+ Id="498726b7-6f35-4b72-909e-32d4995241ba"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="9e76d22c-dd18-4697-8aaa-2d37c2608b67"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This field contains the on board ETCS identity
+This field contains the on board ETCS identity.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SYSTEM_VERSION"
+>
+<ReqRef
+ Id="23f87f8c-2500-4f0c-87d6-f92f4df40390"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="8aa4a2d0-f0af-4e25-b00f-ae42f0a9c0ba"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Version of the ETCS system
+Gives the version of the ETCS system. Each part indicates the first and second number of the version. The first part distinguishes the not compatible version (MSB&apos;s). -	The second number indicates compatibility within a version X. (The four LSB’s)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="17"
+ Name="Class_1__version_1_1__introduced_in_SRS_3_0_0"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Class_1__version_2_0__introduced_in_SRS_3_0_0"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LEVEL"
+>
+<Comment>Current Operating Level
+This field contains the current level.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Level_0"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Level_STM_specified_by_NID_NTC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Level_1"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Level_2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Level_3"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SCALE"
+>
+<Comment>Qualifier for the distance scale.
+Qualifier to indicate the same scale used for describing all distances inside the packet that contains Q_SCALE.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="_10_cm_scaleC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="_1_m_scaleC"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="_10_m_scaleC"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_LRBG"
+>
+<Comment>Identity of last relevant balise group
+Country/region identity (NID_C) + balise identity number of last relevant balise group (NID_BG).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16777215"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_LRBG"
+>
+<Comment>Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DIRLRBG"
+>
+<Comment>Orientation of the train in relation to the direction of the LRBG</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Uknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_DLRBG"
+>
+<Comment>Qualifier telling on which side of the LRBG the estimated front end is</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Reverse"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Nominal"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTOVER"
+>
+<Comment>Over-reading error
+L_DOUBTOVER is the difference between the lower bound of the confidence interval and the estimated value of D_LRBG</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTUNDER"
+>
+<Comment>Under-reading error
+L_DOUBTUNDER is the difference between the upper bound of the confidence interval and the estimated value of D_LRBG</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_MAXTRAIN"
+>
+<Comment>Maximum permitted train speed.
+Maximum permitted speed for the train, taking into account the maximum speed of every vehicle contained in the train set.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NC_CDTRAIN"
+>
+<Comment>Cant Deficiency Train Category.
+Thanks to NC_CDTRAIN, the train knows the “Cant Deficiency” SSP it must obey. By receiving a list of static speed profile, thanks to NC_CDDIFF, the train can select the “Cant Deficiency” SSP best suiting its NC_CDTRAIN..</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Cant_Deficiency_80_mm"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Cant_Deficiency_100_mm"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Cant_Deficiency_130_mm"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Cant_Deficiency_150_mm_train"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Cant_Deficiency_165_mm"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Cant_Deficiency_180_mm"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Cant_Deficiency_210_mm"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Cant_Deficiency_225_mm"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Cant_Deficiency_245_mm"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Cant_Deficiency_275_mm"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Cant_Deficiency_300_mm"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NC_TRAIN"
+>
+<Comment>International Category to which belongs the train.
+Train category used for the static speed profile calculation. Thanks to NC_TRAIN, the train knows the SSP it must obey. by receiving a list of static speed profile, thanks to NC_TRAIN, the train can select the SSP it must obey. Each bit represents one category. A train can belong to various categories.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Train_does_not_belong_to_any_of_the__Other_International__Train_Category"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Freight_train_braked_in__P__position"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Freight_train_braked_in__G__position"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Passengers_train"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="64"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="128"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="256"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="512"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="1024"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="2048"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="4096"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="8192"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="16384"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="4095"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_TRAIN"
+>
+<ReqRef
+ Id="4c5f3c51-19fa-414b-bac9-a02f2705838a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="45e25e11-fae5-4e6c-bb31-76de6e847cdb"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Train length
+This is the absolute real length of the train.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="4095"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_TRACTION_CUT_OFF"
+>
+<ReqRef
+ Id="f0428811-caf7-4af4-8ff2-b9401f752e09"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Time to cut-off traction
+It is the time delay from the traction cut-off command by the on-board unit to the moment the acceleration due to traction is guaranteed to be zero</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_POSITION"
+>
+<ReqRef
+ Id="ad471f0f-fd27-4b9e-8adb-215c85aabdde"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake position
+The brake position defines the behaviour of the brake for specific train types</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Passenger_train_in_P"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Freight_train_in_P"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Freight_train_in_G"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_NOM_ROT_MASS"
+>
+<ReqRef
+ Id="077785a4-136d-415e-ad35-538260ce5ad4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Nominal rotating mass of the train
+It defines the nominal rotating mass as a percentage of the total weight</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16"
+ Name="unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_REGENERATIVEBRAKE"
+>
+<ReqRef
+ Id="c0eec423-f803-41b3-88a7-a6033904d934"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Regenrative brake interface
+It describes the interface with the regenerative brake and whether if affects the braking curve calculation</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Interface_existis_and_affects_only_EB"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Interface_existis_and_affects_only_SB"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Interface_existis_and_affects_EB_and_SB"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_EDDYCURRENTBRAKE"
+>
+<ReqRef
+ Id="72034d91-121e-4f2c-b022-55267bba924b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Eddy current brake interface
+It describes the interface with eddy current brake and whether if affects the braking curve calculation</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Interface_existis_and_affects_only_EB"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Interface_existis_and_affects_only_SB"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Interface_existis_and_affects_EB_and_SB"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_MAGNETICSHOEBRAKE"
+>
+<ReqRef
+ Id="f7e574d7-ddae-478f-8b38-5aa84197c757"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Magnetic shoe brake interface
+It describes the interface with magnetic shoe brake and whether if affects the braking curve calculation</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Interface_existis_and_affects_only_EB"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_ELECTROPNEUMATICBRAKE"
+>
+<ReqRef
+ Id="011f3ab5-fe0c-4a15-9831-1cd7e9d19749"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Electro pneumatic brake interface
+It describes the interface with electro pneumatic brake and whether if affects the braking curve calculation</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Interface_existis_and_affects_only_SB"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Interface_existis_and_affects_EB_and_SB"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_TRACTIONCUTOFFINTERFACE"
+>
+<ReqRef
+ Id="a44c7e61-5457-48e7-8639-df22379baaf4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for traction cut off interface
+Indicates whether the traction cut off command is implemented or not</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_implemented"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Implemented"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SERVICEBRAKEINTERFACE"
+>
+<ReqRef
+ Id="ec3ebba0-095a-46dd-b27f-5c3ca4036a12"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for service brake interface
+Indicates whether the service brake command is implemented or not</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_implemented"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Implemented"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SERVICEBRAKEFEEDBACK"
+>
+<ReqRef
+ Id="21839d70-37b9-4b54-a32f-6c027fe0cc2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for service brake feedback interface
+Indicates whether the service brake feedback is implemented or not</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_implemented"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Implemented"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_BRAKE_CAPT_TYPE"
+>
+<ReqRef
+ Id="33c42d4c-ddb3-4d58-9661-7c6109e3eab5"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Quallifier for gamma/lambda discrimination
+The variable discriminates the type of the capture of the brake parameters</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_modil_is_applicable"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="gamma_type__all_other_captures"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_PERCENTAGE"
+>
+<ReqRef
+ Id="1bb3c340-c410-40e6-880c-bc30ee78df20"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake percentage value
+The brake percentage is used to derive the brake parameters in conjunction with the conversion model</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_CONF"
+>
+<ReqRef
+ Id="34976712-9ffa-472c-8977-ca68e6aff10b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Special brakes configuration
+Number of iterations of special brake configuration(s) applicable to the selection of the appropiate brake parameter(s), following this variable in the message</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="_1C"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="_2C"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="_3C"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="_4C"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="_5C"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="_6C"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="_7C"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="_8C"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="_9C"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="_10C"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="_11C"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="_12C"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="_13C"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="_14C"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="_15C"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="_16C"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_LAMBDA_CONF"
+>
+<ReqRef
+ Id="490edf92-ef65-46ea-a4f9-3b1de4105098"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Specific special brakes configuration for lambda trains
+It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface_to_special_brakes_exists_or_all_status_are_inactive"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Regenerative_brake_interface_exists_and_status_is_active"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Eddy_current_brake_interface_exists_and_status_is_active"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Ep_brake_interface_exists_and_status_is_active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="4095"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_SERVICE"
+>
+<ReqRef
+ Id="b81fba3b-ee5a-4f9d-95b0-1d41197814cd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake number of sections
+Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_GAMMA_CONF"
+>
+<ReqRef
+ Id="aaf63f4f-2f5e-4b8b-8dca-5759c9c8121f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Specific special brakes configuration for gamma trains
+It describes a specific special brake configuration to which the related brake parameters are applicable</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_interface_to_special_brakes_exists_or_all_status_are_inactive"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Regenerative_brake_interface_exists_and_status_is_active"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Eddy_current_brake_interface_exists_and_status_is_active"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Magnetic_shoe_brake_interface_exists_and_status_is_active"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Ep_brake_interface_exists_and_status_is_active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="4095"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_BRAKE_EMERGENCY"
+>
+<ReqRef
+ Id="2351f936-4f0c-41f2-9296-57b91a5f2328"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emergency brake delay time
+This is the build up time for the emergency brake</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_BRAKE_SECTIONS"
+>
+<ReqRef
+ Id="f936e846-2e3d-455c-8cbf-cd0df2f386e7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake number of sections
+Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_EMERGENCY_COMP"
+>
+<ReqRef
+ Id="bb2c130f-7f70-4649-b205-43d79cc935e4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emeregency brake speed component
+It contains the lowest speed value of the speed section to which the related emeregency brake deceleration component is applicable</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_EMERGENCY_COMP"
+>
+<ReqRef
+ Id="0f2dbd96-6593-410e-aae8-fe8482274d06"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Emeregency brake deceleration component
+It contains the value of the emeregency brake deceleration coponent which is applicable to the related speed section</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KDRY_RST"
+>
+<ReqRef
+ Id="025a1d1f-c481-4f16-8bd5-8b1970e3de5a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Rolling stock correction factor on dry rails
+This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVEBCL defined in chapter 7 of subset-26</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_KWET_RST"
+>
+<ReqRef
+ Id="91b5dc43-9b11-414a-b9b3-850841e86fed"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Rolling stock correction factor on wet rails
+This variable is a corrector factor applicable to the emergency brake deceleration according to the variable M_NVAVADH defined in chapter 7 of subset-26</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_SERVICE_COMP"
+>
+<ReqRef
+ Id="7e5f5b95-e177-4917-a71a-f40a403e0cb6"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Service brake speed component
+It contains the lowest speed value of the speed section to which the related service brake deceleration component is applicable</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="A_BRAKE_SERVICE_COMP"
+>
+<ReqRef
+ Id="4e167f10-ee4e-4ae4-a5ae-4e875f46c1d7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Service brake deceleration component
+It contains the calue of the service brake deceleration coponent which is applicable to the related speed section</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_LOADINGGAUGE"
+>
+<Comment>Load profile
+Defining the loading gauge profile</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="The_train_does_not_fit_to_any_of_the_interoperable_loading_gauge_profiles"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="G1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="GA"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="GB"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="GC"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_AXLE"
+>
+<Comment>Axle number of the engine
+This gives the number of axles of the single unit (fixed train set or locomotive) in which the onboard equipment is fitted</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_AXLELOADCAT"
+>
+<Comment>Axle load</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="A"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="B1"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="B2"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="C2"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="C3"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="C4"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="D2"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="D3"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="D4"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="D4XL"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="E4"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="E5"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="31"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="N_ITER"
+>
+<Comment>Number of iterations of a data set following this variable in a packet
+If N_ITER is 0 then no data set is following. Two nested levels of iterations can exist.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="15"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_VOLTAGE"
+>
+<Comment>Traction System voltage
+It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE ≠ 0, by the country identifier of the traction system (NID_CTRACTION)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Line_not_fitted_with_any_traction_system"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="AC_25_kV_50_Hz"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="AC_15_kV_16_7_Hz"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="DC_3_kV"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="DC_1_5_kV"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="DC_600_750_V"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_CTRACTION"
+>
+<Comment>Country identifier of the traction system
+It identifies the information, additional to M_VOLTAGE, required to fully define the traction system.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_AIRTIGHT"
+>
+<Comment>airtight system presence
+indicates whether the train is fitted with an airtight system or not.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_fitted"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Fitted"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Unknown"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_BRAKE_COMMAND_STATE"
+>
+<ReqRef
+ Id="be2c4bda-9cbc-42ba-b3f9-48e0867b8f53"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="cb3458d8-a8bd-47d7-b410-3cd6789a56cd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Brake command state
+It contains the command state of the brakes</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_commanded"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Commanded"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_ADHESION"
+>
+<Comment>Adhesion factor</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Slippery_rail"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Non_slippery_rail"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_RIU"
+>
+<Comment>Identity of radio infill unit 
+This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16777215"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_MN"
+>
+<Comment>Identity of Radio Network
+The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character &quot;F&quot;. For further information about NID_MN refer to Subset-54.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_RBC"
+>
+<Comment>RBC ETCS identity number
+This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16383"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="18446744073709551615"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_RADIO"
+>
+<Comment>Radio subscriber number.
+Quoted as a 16 digit decimal number.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_EVENTS"
+>
+<Comment>Events on board
+Record the events for train safety which take place on board during normal train operational</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_used"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Service_brake_failure"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Standstill_supervision_intervention"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Roll_away_supervision_intervention"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Reverse_movement_intervention"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Override_EOA"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Loop_transmission_error"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Odometer_failure"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Passenger_brake_application"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Version_incompatibility_with_RBC"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Override_EOA_deactivated"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="Stop_due_to_route_unsuitability"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BIT"
+>
+<Comment>One bit</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_DRIVERACTIONS"
+>
+<ReqRef
+ Id="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Driver&apos;s actions
+This variable contains the driver&apos;s action</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Ack_of_on_sight"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Ack_of_shunting"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Ack_of_trip"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Ack_of_staff_responsible"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Ack_of_unfitted"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Ack_of_reversing"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="Ack_level_0"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Ack_level_1"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Ack_level_2"
+>
+</EnumValue><EnumValue
+ Value="9"
+ Name="Ack_level_3"
+>
+</EnumValue><EnumValue
+ Value="10"
+ Name="Ack_level_NTC"
+>
+</EnumValue><EnumValue
+ Value="11"
+ Name="Shunting_selected"
+>
+</EnumValue><EnumValue
+ Value="12"
+ Name="Non_leading_selected"
+>
+</EnumValue><EnumValue
+ Value="13"
+ Name="Ack_limited_supervision"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="Override_EOA_selected"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="__Continue_shuntting_on_desk_closure__selectedC"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Brake_release_acknowledgment"
+>
+</EnumValue><EnumValue
+ Value="17"
+ Name="Exit_of_shunting_selected"
+>
+</EnumValue><EnumValue
+ Value="18"
+ Name="Isolation_selected"
+>
+</EnumValue><EnumValue
+ Value="19"
+ Name="Start_selected"
+>
+</EnumValue><EnumValue
+ Value="20"
+ Name="Train_data_Entry_requested"
+>
+</EnumValue><EnumValue
+ Value="21"
+ Name="Validation_of_the_train_data"
+>
+</EnumValue><EnumValue
+ Value="22"
+ Name="Confirm_track_ahead_free"
+>
+</EnumValue><EnumValue
+ Value="23"
+ Name="Ack_of_Plain_Text_Messages"
+>
+</EnumValue><EnumValue
+ Value="24"
+ Name="Ack_of_Fixed_Text_Messages"
+>
+</EnumValue><EnumValue
+ Value="25"
+ Name="Request_to_hide_supervision_limits"
+>
+</EnumValue><EnumValue
+ Value="26"
+ Name="Train_integrity_confirmation"
+>
+</EnumValue><EnumValue
+ Value="27"
+ Name="Request_to_show__permitted___target__speed___target_distance"
+>
+</EnumValue><EnumValue
+ Value="28"
+ Name="Ack_SN_mode"
+>
+</EnumValue><EnumValue
+ Value="29"
+ Name="Change_of_language"
+>
+</EnumValue><EnumValue
+ Value="30"
+ Name="Request_to_show_geographical_position"
+>
+</EnumValue><EnumValue
+ Value="31"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="33"
+ Name="Request_to_hide_geographical_information"
+>
+</EnumValue><EnumValue
+ Value="34"
+ Name="Level_0_selected"
+>
+</EnumValue><EnumValue
+ Value="35"
+ Name="Level_1_selected"
+>
+</EnumValue><EnumValue
+ Value="36"
+ Name="Level_2_selected"
+>
+</EnumValue><EnumValue
+ Value="37"
+ Name="Level_3_selected"
+>
+</EnumValue><EnumValue
+ Value="38"
+ Name="Level_NTC_selected"
+>
+</EnumValue><EnumValue
+ Value="39"
+ Name="Request_to_show_tunnel_stopping_area_information"
+>
+</EnumValue><EnumValue
+ Value="40"
+ Name="Request_to_hide_tunnel_stopping_area_information"
+>
+</EnumValue><EnumValue
+ Value="41"
+ Name="Scroll_up_button_activated"
+>
+</EnumValue><EnumValue
+ Value="42"
+ Name="Scroll_down_button_activated"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_BG"
+>
+<Comment>Identity number of the balise group
+Identity number of a balise group or loop within the country or region defined by NID_C.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="16383"
+ Name="only_accept_balise_groups_containing_repositioning_information_for_the_running_direction__only_to_be_used_in_linking"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_C"
+>
+<Comment>Identity number of the country or region
+Code used to identify the country or region in which the balise group is situated. These need not necessarily follow administrative or political boundaries.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_ERROR"
+>
+<Comment>Identifier of the type of error</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Balise_consistency__linking"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Balise_consistency__message_error"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Balise_consistency__unlinked_group"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Radio_consistency__message_error"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Radio_consistency__sequence"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Radio_consistency__radio_link"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="No_fatal_error"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Fatal_error__equipment_in_SL_or_NL_mode"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="16383"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_ERRORBG"
+>
+<ReqRef
+ Id="85571c61-c62b-4499-ae83-df5dba7d9c7f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Identity number of the balise group which triggered the error.
+It contains the identity number of the balise group to which the error is related. NID_ERRORBG is identical to NID_BG except for the NID_ERRORBG Special value 16383 which has the meaning &quot;unknown&quot; and covers the case that, due to error, the balise group identity is unknown.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_STMX"
+>
+<ReqRef
+ Id="0fae287c-ec3d-45e6-bd37-dd90fc39be24"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>STM identification
+STM relevant for the event. For STM-packets or disconect request sentr from an STM or to a single STM, its value is given by the NID_STM as identified in Subset-58</Comment>
+<SpecialValues>
+<EnumValue
+ Value="255"
+ Name="For_STM_packets_or_disconect_reauest_sent_to_all__connectd__STMs"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_STMEVENT"
+>
+<ReqRef
+ Id="1794d8ed-2b89-4280-a497-a5d2126c637f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>STM event type.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Disconnection"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Display_of_system_status_message"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Reception_sending_of_STM_packet"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_DISCSENDER"
+>
+<ReqRef
+ Id="19f38286-767b-433a-8bd2-981d51acf46a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Sender of disconnect request
+Sender of disconnect request (STM or STM control Function)</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Disconnect_request_sent_from_STM"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Disctonect_request_sent_from_STM_Control_Function"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_DISCTYPE"
+>
+<ReqRef
+ Id="a7aa1cdf-ad7a-415c-9d68-aaa4883b1e19"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Type of disconnection
+Type of the disconnection, see subset-57 section 5.2.5.9</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Final_disconnection"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Non_final_disconnection"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="STM_SYSTEM_STATUS_MESSAGE"
+>
+<ReqRef
+ Id="e573b5aa-409b-409f-a9e7-65709733913d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>STM system status message
+System status messages displayed to the driver. A bit set to 1 means tgat tge cirresoponding systems status is displayed</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1"
+ Name="NTC_brake_demand"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="NTC_needs_data"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="NTC_failed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_STMPACKET"
+>
+<ReqRef
+ Id="9d7bf318-e590-4a4e-b92e-0aac575c829d"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>STM packet identification.
+STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="6"
+ Name="Override_activation"
+>
+</EnumValue><EnumValue
+ Value="14"
+ Name="State_order_to_STM"
+>
+</EnumValue><EnumValue
+ Value="15"
+ Name="State_report_from_STM"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Transition_variables_STM_max_speed_from_STM"
+>
+</EnumValue><EnumValue
+ Value="17"
+ Name="Transition_variables_STM_system_speed_and_distance_from_STM"
+>
+</EnumValue><EnumValue
+ Value="18"
+ Name="National_trip_procedure"
+>
+</EnumValue><EnumValue
+ Value="19"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="20"
+ Name="Antenna_BTM_ID"
+>
+</EnumValue><EnumValue
+ Value="21"
+ Name="Test_procedure_permission_request"
+>
+</EnumValue><EnumValue
+ Value="22"
+ Name="Test_procedure_permisison"
+>
+</EnumValue><EnumValue
+ Value="31"
+ Name="Active_DMI_channel"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Button_request"
+>
+</EnumValue><EnumValue
+ Value="33"
+ Name="Spare"
+>
+</EnumValue><EnumValue
+ Value="34"
+ Name="Button_event_report"
+>
+</EnumValue><EnumValue
+ Value="35"
+ Name="Indicator_request"
+>
+</EnumValue><EnumValue
+ Value="38"
+ Name="Text_message"
+>
+</EnumValue><EnumValue
+ Value="39"
+ Name="Delete_text_message"
+>
+</EnumValue><EnumValue
+ Value="40"
+ Name="Acknowledgement_reply"
+>
+</EnumValue><EnumValue
+ Value="43"
+ Name="Speed_and_distance_supervision_information"
+>
+</EnumValue><EnumValue
+ Value="46"
+ Name="Sound_command"
+>
+</EnumValue><EnumValue
+ Value="47"
+ Name="ETCS_BTM_status_message_to_STM"
+>
+</EnumValue><EnumValue
+ Value="128"
+ Name="STM_emergency_and_service_brake_command_to_brake_interface"
+>
+</EnumValue><EnumValue
+ Value="129"
+ Name="STM_specific_brake_control_command"
+>
+</EnumValue><EnumValue
+ Value="130"
+ Name="STM_commands_to_train_interface"
+>
+</EnumValue><EnumValue
+ Value="161"
+ Name="NTC_juridical_data_from_STM"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="8191"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_STMPACKET"
+>
+<ReqRef
+ Id="0e78f9c8-b63a-4899-a5c9-2ad2a29439e8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Length of the STM packet.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_DISCREASON"
+>
+<Comment>Disconnect reason.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Disconnect_request_from_application"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Bad_version_error"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Error_during_connection_set_up"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Authentication_error"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Connection_set_up_for_existing_connection"
+>
+</EnumValue><EnumValue
+ Value="5"
+ Name="Idle_cycle_timeout"
+>
+</EnumValue><EnumValue
+ Value="6"
+ Name="First_incorrect_receive"
+>
+</EnumValue><EnumValue
+ Value="7"
+ Name="Second_incorrect_receive"
+>
+</EnumValue><EnumValue
+ Value="31"
+ Name="Other_reason_for_disconnec_issued_by_safe_link_layer"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_COLD_MVT"
+>
+<ReqRef
+ Id="cff4f20a-e083-4240-a1c6-acb8332718a6"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Cold movement detector information.
+Indicates whetehr no cold movement has ocurred or if a cold movement has been detected or if no cold movement is available.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No_cold_movement_ocurred"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Cold_movement_detected"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="No_cold_movement_information_available"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_TEXT"
+>
+<Comment>Fixed message to be displayed.
+Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the MMI shall be used additionally as a qualifier to choose the appropriate language table.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_TEXT"
+>
+<Comment>Length of text string
+L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_SDMTYPE"
+>
+<ReqRef
+ Id="d78b5d9b-a778-4992-922f-a1bfa907c33a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Speed and distance monitoring type
+Type of the speed and distance monitoring</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Ceiling_speed_monitoring__CSM"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Pre_indication_monitoring__PIM"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Target_speed_monitoring__TSM"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Release_speed_monitoring_RSM"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_SDMSUPSTAT"
+>
+<ReqRef
+ Id="e0d596d2-c164-4d5b-bc28-5a2988c7db8e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Speed and distance monitoring supervision status
+Supervision status of the speed and distance monitoring</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Normal_status"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Indication_status"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Overspeed_status"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Warning_status"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Intervention_status"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_PERM"
+>
+<ReqRef
+ Id="6b567e14-e137-4612-a782-45e646e87d7c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="752a7f7c-3b26-4deb-b950-a92c5a32fa72"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Permitted speed
+Permited speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_FLOI"
+>
+<ReqRef
+ Id="177494e0-d2f0-4448-8b06-b8d4b9d4c16c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="ecba5d6f-0d27-4108-b60c-672a1db4e53c"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>First line of intervention speed
+FLOI speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_TARGET"
+>
+<Comment>Target speed
+Target speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_TARGET"
+>
+<Comment>Target distance
+Target speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_RELEASE"
+>
+<ReqRef
+ Id="7e5aaa18-69c4-471f-8580-c19a54d18408"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Release speed
+Release speed displayed to the driver.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="None"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE02"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE03"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE04"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE05"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE06"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE07"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE08"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE09"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE10"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE11"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE12"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE13"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE14"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LE15"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO02"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO03"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO04"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO05"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO06"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO07"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO08"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO09"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO10"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO11"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO12"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO13"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO14"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO15"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO16"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO17"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO18"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO19"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO20"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO21"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_MO22"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST02"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST03"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST04"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST05"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_ST06"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC02"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC03"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC04"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC05"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC06"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC07"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC08"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC09"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC10"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC11"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC12"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC13"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC14"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC15"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC16"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC17"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC18"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC19"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC20"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC21"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC22"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC23"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC24"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC25"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC26"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC27"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC28"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC29"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC30"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC31"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC32"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC33"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC34"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC35"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC36"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_TC37"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_DR01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_DR02"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_DR03"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_DR04"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_DR05"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SYMB_STATUS_LX01"
+>
+<Comment>Status of the symbols displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="not_displayed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="displayed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="7"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DMI_SOUND_STATUS"
+>
+<ReqRef
+ Id="fc7394cf-4565-4758-8c81-0e446549e1ef"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of the audible information played to the driver. A bit set to 1 means that the corresponding sound is generated.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1"
+ Name="Sound_SInfo___information_on_DMI"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Sound_S1___Overspeed"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Sound_S2___Warning"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="8388607"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SYSTEM_STATUS_MESSAGE"
+>
+<ReqRef
+ Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1"
+ Name="Balise_read_error"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Trackside_malfunction"
+>
+</EnumValue><EnumValue
+ Value="4"
+ Name="Communication_error"
+>
+</EnumValue><EnumValue
+ Value="8"
+ Name="Entering_FS"
+>
+</EnumValue><EnumValue
+ Value="16"
+ Name="Entering_OS"
+>
+</EnumValue><EnumValue
+ Value="32"
+ Name="Runaway_movement"
+>
+</EnumValue><EnumValue
+ Value="64"
+ Name="SH_refused"
+>
+</EnumValue><EnumValue
+ Value="128"
+ Name="SH_request_failed"
+>
+</EnumValue><EnumValue
+ Value="256"
+ Name="Trackside_not_compatible"
+>
+</EnumValue><EnumValue
+ Value="512"
+ Name="Train_data_changed"
+>
+</EnumValue><EnumValue
+ Value="1024"
+ Name="Train_rejected"
+>
+</EnumValue><EnumValue
+ Value="2048"
+ Name="Unauthorized_passing_of_EOA_LOA"
+>
+</EnumValue><EnumValue
+ Value="4096"
+ Name="No_MA_received_at_level_transition"
+>
+</EnumValue><EnumValue
+ Value="8192"
+ Name="SR_distance_exceeded"
+>
+</EnumValue><EnumValue
+ Value="16384"
+ Name="SR_stop_order"
+>
+</EnumValue><EnumValue
+ Value="32768"
+ Name="SR_stop_order"
+>
+</EnumValue><EnumValue
+ Value="65536"
+ Name="Emergency_stop"
+>
+</EnumValue><EnumValue
+ Value="131072"
+ Name="RV_distance_exceeded"
+>
+</EnumValue><EnumValue
+ Value="262144"
+ Name="No_track_description"
+>
+</EnumValue><EnumValue
+ Value="524288"
+ Name="Route_unsuitable___axleload_category"
+>
+</EnumValue><EnumValue
+ Value="1048576"
+ Name="Route_unsuitable___loading_gauge"
+>
+</EnumValue><EnumValue
+ Value="2097152"
+ Name="Route_unsuitable___traction_system"
+>
+</EnumValue><EnumValue
+ Value="4194304"
+ Name="Radio_network_registration_failed"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_RBCENTRY"
+>
+<ReqRef
+ Id="eeff373a-c4c9-4758-81b5-3b7ce7bdd2f0"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Qualifier for the RBC contact information.
+This variable indicates the type of the driver&apos;s selection for the RBC data.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Contact_last_unknown_RBC"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Use_short_number"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Enter_RBC_data"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="4294967295"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_OPERATIONAL"
+>
+<Comment>Train Running Number
+This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character “F”.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_SR"
+>
+<ReqRef
+ Id="20ff7bf0-f074-4e91-a8c6-a8f7a2d48b2e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Staff responsible speed
+Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="131071"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_SR"
+>
+<ReqRef
+ Id="724fead6-ff94-4cca-ba1c-94ead297e6cb"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Staff Responsible distance
+Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="63"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NID_VBCMK"
+>
+<Comment>Marker for virtual balise cover</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T_VBC"
+>
+<Comment>VBC validity period (meassured in days)</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_SLEEPING"
+>
+<ReqRef
+ Id="78be0579-c844-4e19-86b2-33b5020846e4"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Sleeping input
+This variable contains the state if the sleeping input.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Sleeping_not_requested"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Sleeping_requested"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_PASSIVE_SHUNTTING"
+>
+<ReqRef
+ Id="25d08e04-94ca-4697-8ad8-7e741b13661f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Passive shunting input
+This variable contains the state if the passive shunting input.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Passive_shuntting_not_permitted"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Passive_shuntting_permitted"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_NON_LEADING"
+>
+<ReqRef
+ Id="ff93b26b-ebdc-4f1e-846d-f4991f753b7e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Non leading input state
+This variable contains the state of the non leading input</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Non_leading_not_permitted"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Non_leading_permitted"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_RB_STATUS"
+>
+<ReqRef
+ Id="de020c80-db0c-45db-855e-ae27cffc7437"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of regenerative brake.
+This variable contains the status of the regenerative brake</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_MSB_STATUS"
+>
+<ReqRef
+ Id="4a9ce77d-31fb-4220-a7ff-e6e79157ca6f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of magnetic shoe brake.
+This variable contains the status of the magnetic shoe brake</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_ECB_STATUS"
+>
+<ReqRef
+ Id="8b09420a-4f06-43d3-aada-ea5751a960ec"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of eddy current brake.
+This variable contains the status of the eddy current brake</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_EP_STATUS"
+>
+<ReqRef
+ Id="31f32d56-9e3c-4fd0-b226-ea769b746033"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of the electro pneumatic brake
+This variable contains the status of the electro pneumatic brake</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_AB_STATUS"
+>
+<ReqRef
+ Id="7947c4dd-de78-4fde-b208-f53d2dc562ce"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Status of the additional brakes.
+This variable contains the status of the aditional brake</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_CAB_A_STATUS"
+>
+<ReqRef
+ Id="f9a025a0-5d6b-4d68-946b-f3f5c736adc2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Cab A status
+This variable contains the cab A status. In case the ERTMS/ETCS on board is connected only to one cab, this cab is considered as being cab A</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_CAB_B"
+>
+<ReqRef
+ Id="ca6de985-daf9-4798-87b8-e36f3b143ed7"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Qualifier for Cab B
+Qualifier to indicate whether a secon cab is connected to the ERTMS/ETCS on board</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_CAB_B_STATUS"
+>
+<ReqRef
+ Id="45287456-663d-411a-82b3-093ef23e2fd9"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Cab B status
+This variable contains the cab B status.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_active"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Active"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Q_SINGLE_DESK"
+>
+<ReqRef
+ Id="d81dea26-df76-4043-a640-59fb6eaad210"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Qualifier for single desk cab.
+Qualifier to indicate whether the cab connected to the ERTMS/ETCS on board is fitted with a single desk</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="No"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Yes"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TRAIN_ORIENTATION"
+>
+<ReqRef
+ Id="75a6add1-c50c-4ba3-ae2d-f02732622167"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Train orientation input state
+The variable contains the train orientation input state</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Direction_B"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Direction_A"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_DIRECTION_CONTROLLER"
+>
+<ReqRef
+ Id="ade5813e-3f65-4f0b-acdc-d51816305acc"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Direction controller state</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Neutral"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Backward"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Forward"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TRACTION_STATUS"
+>
+<ReqRef
+ Id="2fa2f9ae-31ff-4ea3-af52-c0dffbbdbef1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Traction status
+This variable contains the traction status</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Off"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="On"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="3"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TRAIN_DATA_ENTRY"
+>
+<ReqRef
+ Id="c0493d5f-364b-43e7-b271-75b71b32b33a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Type of the train data entry
+This variable contains the type of the train data entry</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Fixed"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Flexible"
+>
+</EnumValue><EnumValue
+ Value="2"
+ Name="Switchable"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_NATIONAL_SYSTEM_ISOLATION"
+>
+<ReqRef
+ Id="3dd8bd11-719b-48a0-bdfe-bb3c14032355"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Isolation of the National System.
+The variable contains the indication of isolation of the National System</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="NTC_isolated"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="NTC_not_isolated"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="M_TCO_COMMAND_STATE"
+>
+<ReqRef
+ Id="3a14cad3-b86a-48ac-9b03-fc152ddaee7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>Traction cut off command state
+The variable contains the command state of the traction cut off</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Not_commanded"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Commanded"
+>
+</EnumValue></SpecialValues>
+</Range></Ranges>
+<Variables>
+<Variable
+ Type="Messages.JRU.MESSAGE.Message"
+ VariableMode="InOut"
+ Implemented="TRUE"
+ Name="JRU"
+>
+</Variable></Variables>
+</NameSpace>

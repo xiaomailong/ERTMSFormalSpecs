@@ -1,4 +1,6 @@
 <NameSpace
+ Width="100"
+ Height="50"
  Name="IN"
 >
 <NameSpaces>
@@ -9,9 +11,33 @@
  Name="ErtmsEtcsLevel"
 >
 <ReqRef
- Id="Entry 4.7.2.1.5"
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -48,7 +74,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -86,10 +112,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -106,7 +129,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -144,10 +167,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -164,7 +184,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -202,10 +222,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -222,7 +239,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -260,10 +277,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -292,23 +306,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -338,12 +350,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -372,12 +381,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -406,45 +412,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -455,9 +425,33 @@
  Name="SelectionOfLanguage"
 >
 <ReqRef
- Id="Entry 4.7.2.1.2"
+ Id="dfcc8430-5256-4624-9c6a-7c5884b42bdb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -487,7 +481,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -525,10 +519,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -545,7 +536,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -583,10 +574,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -603,7 +591,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -641,10 +629,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -661,7 +646,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -699,10 +684,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -731,23 +713,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -777,12 +757,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -811,12 +788,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -845,57 +819,46 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State></States>
 </StateMachine></StateMachines>
 </Structure><Structure
+ Implemented="TRUE"
  Name="TrackAdhesionFactor"
 >
 <ReqRef
- Id="Entry 4.7.2.1.6"
+ Id="dc327dea-a3eb-4081-ac8b-06d8c12f1ea7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -918,7 +881,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -954,9 +917,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -973,7 +934,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -1009,9 +970,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1028,7 +987,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -1064,9 +1023,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1083,7 +1040,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -1119,9 +1076,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1138,7 +1093,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
@@ -1172,12 +1127,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1204,12 +1156,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1236,457 +1185,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
- Implemented="TRUE"
- Name="LevelInhibition"
->
-<ReqRef
- Id="Entry 4.7.2.1.7"
->
-</ReqRef>
-<StructureElement
- TypeName="DMI.InputInformation"
- Default=""
- Mode="InOut"
- NeedsRequirement="FALSE"
- Name="InputInformation"
->
-</StructureElement><StructureElement
- TypeName="Default.Levels"
- Default=""
- Mode="Incoming"
- NeedsRequirement="FALSE"
- Name="InhibitedLevels"
->
-</StructureElement><StructureElement
- TypeName="DMI.InhibitionAction"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="InhibitionAction"
->
-</StructureElement><StructureElement
- TypeName="ProcedureInSM"
- Default=""
- Mode="Internal"
- Name="ProcedureIn"
->
-</StructureElement><StateMachines>
-<StateMachine
- InitialState="NotAvailable"
- Default="NotAvailable"
- Name="ProcedureInSM"
->
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Name="NotAvailable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Name="NationalSystemAvailability"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Name="NotApplicable"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Name="Active"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Name="Available"
->
-<StateMachine
- InitialState="InitialState"
- NeedsRequirement="FALSE"
->
-<States>
-<State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Name="Idle"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
->
-<PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="560"
- Y="50"
- Width="100"
- Height="50"
- Name="Send"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ResponseReceived"
->
-<PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="430"
- Y="170"
- Width="100"
- Height="50"
- Name="Response"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="CleanUp"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestDisabled"
->
-<PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
-<Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -1697,9 +1198,32 @@
  Name="TrainIntegrity"
 >
 <ReqRef
- Id="Entry 4.7.2.1.9"
+ Id="b097af96-5a86-448c-a47a-c1f0866d272b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -1729,7 +1253,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -1767,10 +1291,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1787,7 +1308,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -1825,10 +1346,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1845,7 +1363,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -1883,10 +1401,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1903,7 +1418,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -1941,10 +1456,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1973,23 +1485,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -2019,12 +1529,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2053,12 +1560,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2087,45 +1591,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2136,9 +1604,33 @@
  Name="Start"
 >
 <ReqRef
- Id="Entry 4.7.2.1.10"
+ Id="57ceb9c6-48ae-4809-8630-70941e264ded"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -2161,7 +1653,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -2199,10 +1691,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2219,7 +1708,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -2257,10 +1746,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2277,7 +1763,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -2315,10 +1801,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2335,7 +1818,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -2373,10 +1856,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2405,23 +1885,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -2451,12 +1929,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2485,12 +1960,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2519,45 +1991,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -2568,9 +2004,33 @@
  Name="OverrideRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.11"
+ Id="2799a8e9-fa29-467e-8323-c5845b7416dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -2593,7 +2053,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -2631,10 +2091,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2651,7 +2108,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -2689,10 +2146,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2709,7 +2163,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -2747,10 +2201,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2767,7 +2218,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -2805,10 +2256,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2837,23 +2285,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -2883,12 +2329,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2917,12 +2360,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2951,45 +2391,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3000,9 +2404,33 @@
  Name="ShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.12"
+ Id="c49c8e4d-2c96-4314-a79e-904b090becb1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -3025,7 +2453,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -3063,10 +2491,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3083,7 +2508,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -3121,10 +2546,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3141,7 +2563,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -3179,10 +2601,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3199,7 +2618,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -3237,10 +2656,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3269,23 +2685,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -3315,12 +2729,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3349,12 +2760,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3383,45 +2791,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3432,9 +2804,33 @@
  Name="ContinueShuntingOnDeskClosureRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.13"
+ Id="2dd0cb88-9abd-4a28-9cf2-6cb53656287f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -3464,7 +2860,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -3502,10 +2898,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3522,7 +2915,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -3560,10 +2953,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3580,7 +2970,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -3618,10 +3008,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3638,7 +3025,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -3676,10 +3063,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3708,23 +3092,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -3754,12 +3136,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3788,12 +3167,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3822,45 +3198,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -3871,9 +3211,33 @@
  Name="ExitOfShuntingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.14"
+ Id="c5fa7369-35e6-43ac-a64b-f7a48afc50da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -3896,7 +3260,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -3934,10 +3298,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3954,7 +3315,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -3992,10 +3353,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4012,7 +3370,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -4050,10 +3408,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4070,7 +3425,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -4108,10 +3463,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4140,23 +3492,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -4186,12 +3536,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4220,12 +3567,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4254,45 +3598,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4303,9 +3611,33 @@
  Name="NonLeadingRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.15"
+ Id="7625fa65-c451-4b57-83e0-fa8f4ebf7336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -4328,7 +3660,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -4366,10 +3698,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4386,7 +3715,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -4424,10 +3753,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4444,7 +3770,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -4482,10 +3808,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4502,7 +3825,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -4540,10 +3863,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4572,23 +3892,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -4618,12 +3936,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4652,12 +3967,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4686,45 +3998,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4735,57 +4011,77 @@
  Name="Acknowledgement"
 >
 <ReqRef
- Id="Entry 4.7.2.1.33"
+ Id="2ed9a3a8-ad0b-4699-b42d-1c5e17be22af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.30"
+</ReqRef><ReqRef
+ Id="e6a8a09c-e6ba-4a3c-b777-6acb88ac835b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.28"
+</ReqRef><ReqRef
+ Id="b6b52185-52d6-42da-9273-5c484d092e08"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.32"
+</ReqRef><ReqRef
+ Id="bb550af5-d30a-44f7-a6d0-e396e895d87c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.27"
+</ReqRef><ReqRef
+ Id="bca41785-82f0-407d-9873-a1feaf619619"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.29"
+</ReqRef><ReqRef
+ Id="b3e1c3fa-135d-4573-9b99-1ce66b471a4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.19"
+</ReqRef><ReqRef
+ Id="a8974387-814c-4e26-a7a4-5001e32c4554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.20"
+</ReqRef><ReqRef
+ Id="b6c67586-24a9-45f1-8716-2ebbbf63edc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.24"
+</ReqRef><ReqRef
+ Id="2c5e9152-5512-4523-8116-03489439ff69"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.21"
+</ReqRef><ReqRef
+ Id="5dc7196e-3533-4c27-99ef-6bb45c62aaaf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.22"
+</ReqRef><ReqRef
+ Id="421ee868-5461-4591-b27c-3e641637cc98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.26"
+</ReqRef><ReqRef
+ Id="16331b43-cfa0-4f60-88dd-55bf3bd6e93e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.23"
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
 >
-</ReqRef>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -4809,7 +4105,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -4847,10 +4143,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4867,7 +4160,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -4905,10 +4198,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4925,7 +4215,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -4963,10 +4253,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4983,7 +4270,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -5021,10 +4308,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5053,23 +4337,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -5099,12 +4381,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5133,12 +4412,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5167,45 +4443,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5216,9 +4456,33 @@
  Name="AcknOfFixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.16"
+ Id="0f95b99b-d98f-4189-b6f9-d0a3699f36a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -5241,7 +4505,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -5279,10 +4543,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5299,7 +4560,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -5337,10 +4598,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5357,7 +4615,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -5395,10 +4653,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5415,7 +4670,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -5453,10 +4708,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5485,23 +4737,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -5531,12 +4781,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5565,12 +4812,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5599,45 +4843,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5648,9 +4856,33 @@
  Name="AcknOfLevelTransition"
 >
 <ReqRef
- Id="Entry 4.7.2.1.18"
+ Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -5673,7 +4905,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -5711,10 +4943,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5731,7 +4960,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -5769,10 +4998,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5789,7 +5015,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -5827,10 +5053,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5847,7 +5070,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -5885,10 +5108,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5917,23 +5137,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -5963,12 +5181,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -5997,12 +5212,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6031,45 +5243,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6080,9 +5256,33 @@
  Name="AcknOfPlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.17"
+ Id="641a1733-782b-41d1-8db8-443710ef091a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -6105,7 +5305,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -6143,10 +5343,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6163,7 +5360,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -6201,10 +5398,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6221,7 +5415,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -6259,10 +5453,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6279,7 +5470,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -6317,10 +5508,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6349,23 +5537,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -6395,12 +5581,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6429,12 +5612,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6463,45 +5643,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6512,9 +5656,33 @@
  Name="AcknOfTrainDataChangeFromOtherSource"
 >
 <ReqRef
- Id="Entry 4.7.2.1.31"
+ Id="d76d9d7e-5ca9-42ac-9562-effe483642f8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -6537,7 +5705,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -6575,10 +5743,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6595,7 +5760,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -6633,10 +5798,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6653,7 +5815,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -6691,10 +5853,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6711,7 +5870,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -6749,10 +5908,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6781,23 +5937,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -6827,12 +5981,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6861,12 +6012,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6895,45 +6043,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -6944,9 +6056,33 @@
  Name="TrackAheadFree"
 >
 <ReqRef
- Id="Entry 4.7.2.1.34"
+ Id="25a833cc-7385-4baf-a092-22c94d1cafe5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -6976,7 +6112,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -7014,10 +6150,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7034,7 +6167,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -7072,10 +6205,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7092,7 +6222,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -7130,10 +6260,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7150,7 +6277,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -7188,10 +6315,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7220,23 +6344,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -7266,12 +6388,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7300,12 +6419,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7334,45 +6450,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7383,9 +6463,33 @@
  Name="SRModeSpeedLimitAndDistance"
 >
 <ReqRef
- Id="Entry 4.7.2.1.35"
+ Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -7422,7 +6526,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -7460,10 +6564,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7480,7 +6581,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -7518,10 +6619,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7538,7 +6636,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -7576,10 +6674,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7596,7 +6691,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -7634,10 +6729,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7666,23 +6758,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -7712,12 +6802,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7746,12 +6833,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7780,45 +6864,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7829,9 +6877,33 @@
  Name="Isolation"
 >
 <ReqRef
- Id="Entry 4.7.2.1.36"
+ Id="0cf0e5ee-5c2a-42b6-8389-ca77ab74368b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -7854,7 +6926,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -7892,10 +6964,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7912,7 +6981,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -7950,10 +7019,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7970,7 +7036,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -8008,10 +7074,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8028,7 +7091,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -8066,10 +7129,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8098,23 +7158,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -8144,12 +7202,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8178,12 +7233,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8212,45 +7264,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8261,10 +7277,34 @@
  Name="RBCContactInformationRBCIdOrPhoneNumber"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="b097af96-5a86-448c-a47a-c1f0866d272b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>This structure can be used to confirm the Network id OR the RBC id or phone number, depending on the value of the field InformationToConfirm. In the case where InformationToConfirm == RBCIdOrPhoneNumber, the field RBCIdNumberChoice precises the possible actions to perform (enter a new value, re-enter a value, use eirene of use last stored value).</Comment>
+</ReqRef><Comment>This structure can be used to confirm the Network id OR the RBC id or phone number, depending on the value of the field InformationToConfirm. In the case where InformationToConfirm == RBCIdOrPhoneNumber, the field RBCIdNumberChoice precises the possible actions to perform (enter a new value, re-enter a value, use eirene of use last stored value).</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -8309,7 +7349,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -8347,10 +7387,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8367,7 +7404,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -8405,10 +7442,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8425,7 +7459,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -8463,10 +7497,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8483,7 +7514,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -8521,10 +7552,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8553,23 +7581,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -8599,12 +7625,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8633,12 +7656,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8667,45 +7687,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -8716,17 +7700,41 @@
  Name="TrainDataEntryRequest"
 >
 <ReqRef
- Id="Entry 4.7.2.1.1"
+ Id="63c4543b-5430-4f3e-a524-ce48d640aead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S10"
+</ReqRef><ReqRef
+ Id="50de839c-3618-4979-b91c-f620d58a32ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.5.3.4"
+</ReqRef><ReqRef
+ Id="5aca3d45-a3d1-4286-a5a4-f451779e43d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -8749,7 +7757,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -8787,10 +7795,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8807,7 +7812,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -8845,10 +7850,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8865,7 +7867,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -8903,10 +7905,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8923,7 +7922,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -8961,10 +7960,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8993,23 +7989,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -9039,12 +8033,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9073,12 +8064,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9107,45 +8095,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9156,9 +8108,33 @@
  Name="TrainRunningNumber"
 >
 <ReqRef
- Id="Entry 4.7.2.1.4"
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -9196,7 +8172,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -9234,10 +8210,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9254,7 +8227,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -9292,10 +8265,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9312,7 +8282,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -9350,10 +8320,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9370,7 +8337,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -9408,10 +8375,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9440,23 +8404,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -9486,12 +8448,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9520,12 +8479,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -9554,45 +8510,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -9603,9 +8523,33 @@
  Name="AcknOfSNMode"
 >
 <ReqRef
- Id="Entry 4.7.2.1.25"
+ Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -9635,8 +8579,8 @@
 >
 <States>
 <State
- X="220"
- Y="180"
+ X="50"
+ Y="300"
  Width="100"
  Height="50"
  Name="Active"
@@ -9647,7 +8591,8 @@
 >
 <States>
 <State
- X="440"
+ X="40"
+ Y="50"
  Width="100"
  Height="50"
  Name="InitialState"
@@ -9673,14 +8618,12 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-<Action>THIS &lt;- Active.Send</Action>
-</Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action><Action>THIS &lt;- Active.Send</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- Y="60"
+ X="300"
+ Y="50"
  Width="100"
  Height="50"
  Name="Send"
@@ -9704,29 +8647,27 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="330"
- Y="180"
+ X="410"
+ Y="300"
  Width="100"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
 <State
- X="110"
- Y="60"
+ X="300"
+ Y="50"
  Width="100"
  Height="50"
  Name="Idle"
@@ -9750,51 +8691,14 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>THIS &lt;- Available.Send</Action>
-</Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>THIS &lt;- Available.Send</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="220"
- Y="60"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="330"
- Y="60"
+ X="430"
+ Y="170"
  Width="100"
  Height="50"
  Name="Response"
@@ -9818,16 +8722,14 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="440"
- Y="60"
+ X="560"
+ Y="50"
  Width="100"
  Height="50"
  Name="Send"
@@ -9851,17 +8753,14 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>THIS &lt;- Available.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action><Action>THIS &lt;- Available.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="440"
+ X="50"
  Y="180"
  Width="100"
  Height="50"
@@ -9873,8 +8772,8 @@
 >
 <States>
 <State
- X="220"
- Y="120"
+ X="300"
+ Y="50"
  Width="100"
  Height="50"
  Name="Idle"
@@ -9884,8 +8783,8 @@
  NeedsRequirement="FALSE"
 >
 </StateMachine></State><State
- X="110"
- Y="120"
+ X="40"
+ Y="50"
  Width="100"
  Height="50"
  Name="InitialState"
@@ -9911,16 +8810,13 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-</Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>THIS &lt;- NationalSystemAvailability.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="220"
- Y="240"
+ X="230"
+ Y="60"
  Width="100"
  Height="50"
  Name="NotApplicable"
@@ -9932,8 +8828,8 @@
 >
 <States>
 <State
- X="330"
- Y="120"
+ X="300"
+ Y="50"
  Width="100"
  Height="50"
  Name="Idle"
@@ -9943,8 +8839,8 @@
  NeedsRequirement="FALSE"
 >
 </StateMachine></State><State
- X="440"
- Y="120"
+ X="40"
+ Y="50"
  Width="100"
  Height="50"
  Name="InitialState"
@@ -9970,16 +8866,13 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-</Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>THIS &lt;- NotApplicable.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
- X="110"
- Y="240"
+ X="410"
+ Y="180"
  Width="100"
  Height="50"
  Name="NotAvailable"
@@ -9990,7 +8883,8 @@
 >
 <States>
 <State
- Y="180"
+ X="300"
+ Y="50"
  Width="100"
  Height="50"
  Name="Idle"
@@ -10000,8 +8894,8 @@
  NeedsRequirement="FALSE"
 >
 </StateMachine></State><State
- X="110"
- Y="180"
+ X="40"
+ Y="50"
  Width="100"
  Height="50"
  Name="InitialState"
@@ -10027,10 +8921,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-</Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>THIS &lt;- NotAvailable.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10041,10 +8932,34 @@
  Name="RBCContactInformationRadioNetworkId"
 >
 <ReqRef
- Id="Entry 4.7.2.1.8"
+ Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>This structure can be used to confirm the Network id OR the RBC id or phone number, depending on the value of the field InformationToConfirm. In the case where InformationToConfirm == RBCIdOrPhoneNumber, the field RBCIdNumberChoice precises the possible actions to perform (enter a new value, re-enter a value, use eirene of use last stored value).</Comment>
+</ReqRef><Comment>This structure can be used to confirm the Network id OR the RBC id or phone number, depending on the value of the field InformationToConfirm. In the case where InformationToConfirm == RBCIdOrPhoneNumber, the field RBCIdNumberChoice precises the possible actions to perform (enter a new value, re-enter a value, use eirene of use last stored value).</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -10116,7 +9031,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -10154,10 +9069,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10174,7 +9086,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -10212,10 +9124,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10232,7 +9141,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -10270,10 +9179,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10290,7 +9196,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -10328,10 +9234,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10360,23 +9263,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -10406,12 +9307,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10440,12 +9338,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10474,45 +9369,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10523,9 +9382,33 @@
  Name="TrainData"
 >
 <ReqRef
- Id="Entry 4.7.2.1.1"
+ Id="63c4543b-5430-4f3e-a524-ce48d640aead"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -10555,7 +9438,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -10593,10 +9476,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10613,7 +9493,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -10651,10 +9531,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10671,7 +9548,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -10709,10 +9586,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10729,7 +9603,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -10767,10 +9641,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10799,23 +9670,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -10845,12 +9714,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10879,12 +9745,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10913,45 +9776,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10962,13 +9789,37 @@
  Name="ErtmsEtcsLevelEntryRequest"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.7.2.1.5"
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -10991,7 +9842,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -11029,10 +9880,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11049,7 +9897,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -11087,10 +9935,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11107,7 +9952,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -11145,10 +9990,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11165,7 +10007,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -11203,10 +10045,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11235,23 +10074,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -11281,12 +10118,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11315,12 +10149,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11349,45 +10180,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -11398,9 +10193,33 @@
  Name="DriverId"
 >
 <ReqRef
- Id="Entry 4.7.2.2.11"
+ Id="3304c4da-5fe0-433e-b102-e0133ee3c22e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GoToAvailable"
+>
+<Comment>Puts the state machine in Available state and updates the variables</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="GoToAvailable"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="GoToAvailable"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>ProcedureIn &lt;- ProcedureInSM.Available</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="DMI.InputInformation"
  Default=""
@@ -11438,7 +10257,7 @@
 <States>
 <State
  X="230"
- Y="20"
+ Y="60"
  Width="140"
  Height="50"
  Name="NotAvailable"
@@ -11476,10 +10295,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotAvailable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotAvailable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11496,7 +10312,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NationalSystemAvailability"
@@ -11534,10 +10350,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NationalSystemAvailability.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NationalSystemAvailability.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11554,7 +10367,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="120"
+ Y="180"
  Width="140"
  Height="50"
  Name="NotApplicable"
@@ -11592,10 +10405,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- NotApplicable.Idle</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>THIS &lt;- NotApplicable.Idle</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action><Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11612,7 +10422,7 @@
 </StateMachine></State></States>
 </StateMachine></State><State
  X="50"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Active"
@@ -11650,10 +10460,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>THIS &lt;- Active.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Request</Action>
-</Actions>
+<Action>THIS &lt;- Active.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action><Action>InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11682,23 +10489,21 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
 </StateMachine></State><State
  X="410"
- Y="230"
+ Y="300"
  Width="140"
  Height="50"
  Name="Available"
 >
 <StateMachine
- InitialState="InitialState"
+ InitialState="Idle"
  NeedsRequirement="FALSE"
 >
 <States>
@@ -11728,12 +10533,9 @@
  Name="RequestActivated"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Send</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action>
-</Actions>
+<Action>THIS &lt;- Available.Send</Action><Action>InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11762,12 +10564,9 @@
  Name="ResponseReceived"
 >
 <PreConditions>
-<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.DriverAnswered == Boolean.True</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Response</Action>
-<Action>InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>THIS &lt;- Available.Response</Action><Action>InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -11796,45 +10595,9 @@
  Name="RequestDisabled"
 >
 <PreConditions>
-<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition>
-</PreConditions>
+<PreCondition>InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Name="InitialState"
->
-<StateMachine
- InitialState=""
- NeedsRequirement="FALSE"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>InputInformation.DisplayRequested &lt;- Boolean.False</Action>
-<Action>THIS &lt;- Available.Idle</Action>
-</Actions>
+<Action>THIS &lt;- Available.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>

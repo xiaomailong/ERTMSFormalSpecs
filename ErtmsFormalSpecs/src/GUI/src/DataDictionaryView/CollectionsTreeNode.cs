@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public CollectionsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Collections", true)
         {
-            foreach (DataDictionary.Types.Collection collection in item.Collections)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Collection collection in Item.Collections)
             {
                 Nodes.Add(new CollectionTreeNode(collection));
             }
@@ -126,10 +132,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Collections.Count + (Item.Collections.Count > 1 ? " collections " : " collection ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Collections.Count + (Item.Collections.Count > 1 ? " collections " : " collection ") + "selected.");
         }
     }
 }

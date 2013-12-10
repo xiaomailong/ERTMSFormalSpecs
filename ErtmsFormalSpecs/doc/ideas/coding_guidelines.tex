@@ -1,0 +1,383 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% USAGE:
+%%
+%% 1. add your name with \addauthor{<initials>}{<full name>} below
+%% 2. make your changes
+%% 3. for every rule add a \ruleauthor{<initials>}{<date}> at the end
+%% 4. put remarks with \<initials>note{<sometext>},
+%%    \<initials>warning{<sometext>} or
+%%    \<initials>fatal{<sometext>} (in order of significance}
+%% 5. for longer texts use a combination of 4. plus
+%%    \<initials>explain{<sometext>}
+%% 6. add \vhEntry{<versionnumber>}{<date>}{<initials>}{<sometext>} to the
+%%    respective section in the header
+%%
+%%
+%%
+%% NOTE 1
+%% Adding of glossary entries:
+%%
+%% Make sure to run
+%% "makeindex -s coding_guidelines.ist -t coding_guidelines.glg -o
+%% coding_guidelines.gls coding_guidelines.glo"
+%% after editing the glossaries list
+%%
+%%
+%% NOTE 2
+%% Adding of bibliography entries:
+%%
+%% Edit efsbibliography.bib, cite the new entry, run latex, run bibtex and run
+%% latex twice again.
+%%
+%%
+%% NOTE 3
+%% Release version:
+%%
+%% Remove the draft option from the \documentclass-line of this file. This will
+%% cause the ruleauthors, the draftwatermarkmark and all the fixme notes to
+%% dissappear. Make sure to resolve all fatal-fixmes beforehand.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\documentclass[draft, a4paper, oneside]{scrreprt}
+\usepackage[american]{babel}
+\usepackage{hyperref}
+\usepackage{pdfcomment}
+\usepackage{enumitem}
+\usepackage[nohyphen]{underscore} %allow for simple _ instead of \_
+\usepackage[usenames, dvipsnames]{xcolor}
+\usepackage{xspace}
+\usepackage[tablegrid]{vhistory}
+\usepackage[nonumberlist]{glossaries}
+\usepackage{fixme}
+\usepackage{ifdraft}
+\usepackage[lighttt]{lmodern} %add better ttfont including a bold variant
+\usepackage{listings}
+\ifdraft{\usepackage[firstpage]{draftwatermark}}{}
+\usepackage{scrpage2}
+
+
+%%
+%% BEGIN title + general-stuff
+%%
+
+\newcommand{\docTitle}{ERTMS Formal Specs Workbench}
+\newcommand{\docSubTitle}{Coding Guidelines}
+
+\hypersetup{%
+draft = false,  %link in draft mode as well
+pdftitle = {\docTitle, \docSubTitle},
+pdfkeywords = {\docTitle, Version \vhCurrentVersion from \vhCurrentDate},
+pdfauthor = {\vhAllAuthorsSet},
+colorlinks = true,
+linkcolor = black,
+citecolor = black,
+filecolor = black,
+urlcolor = black
+}
+
+\pagestyle{scrheadings}
+\chead[]{}
+\ifoot[\docTitle, \docSubTitle\ -- Version \vhCurrentVersion]{\docTitle, \docSubTitle\ -- Version \vhCurrentVersion}
+\cfoot[]{}
+\ofoot[\thepage]{\thepage}
+
+%%
+%% END title + general stuff
+%%
+
+
+%%
+%%% BEGIN specific commands for this file
+%%
+
+\makeatletter
+% makes the enumeration item label start with the number
+% of the current section/subsection/etc.
+\newcommand{\thecurrentlevel}{%
+  \ifnum\c@section=0\thechapter\else
+  \ifnum\c@subsection=0\thesection\else
+  \ifnum\c@subsubsection=0\thesubsection\else
+  \thesubsubsection\fi\fi\fi}
+\makeatother
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parindent}{0em}
+
+\setenumerate[1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
+\setenumerate[2]{label*=\arabic*.}
+\setenumerate[3]{label*=\arabic*.}
+\let\emph\textsl
+
+
+
+\newcommand{\literally}[1]{\textsf{\emph{#1}}}
+\newcommand{\indraftmode}[1]{\ifdraft{#1}{}}
+
+\fxsetup{mode=multiuser, theme=color, layout=inline}
+\colorlet{fxnote}{Green} 
+\colorlet{fxnotefg}{black}
+\colorlet{fxnotebg}{LimeGreen} %is not the same as fxnote to keep it readable
+\colorlet{fxfatal}{red}
+\colorlet{fxfatalbg}{red}
+\colorlet{fxfatalfg}{white}
+\colorlet{fxwarning}{Plum}
+\colorlet{fxwarningbg}{Plum}
+\colorlet{fxwarningfg}{White}
+% redefine the layout macro:
+\makeatletter
+\renewcommand*\FXLayoutInline[3]{%
+  \@fxdocolon {#3}{%
+    \@fxuseface {inline}%
+    \colorbox{fx#1bg}{\color {fx#1fg}\ignorespaces \sffamily #2\textsubscript{\emph{#3}}}}   
+    }
+\makeatother
+
+\setliststyle{AuthorComment} %alter the appearance of the pdfcomments list
+
+\lstdefinelanguage{EFSDSL}
+{%
+keywords={SUM, AND, APPLY, COUNT, EMPTY, FIRST_IN, FORALL_IN, IN, INITIAL_VALUE, LAST_IN, MAP, NOT, ON, OR, REDUCE, RESULT, THERE_IS_IN, USING, X},
+morekeywords=[2]{AddIncrement, Allocate, Available, Before, DecelerationProfile, IntersectAt, Max, Min, MinSurface, Override, RoundToMultiple,  Targets},
+morekeywords=[3]{Boolean, Collection, Condition, double, Expression, f, List, ListExpression, ListValue, Statement, StatementList},
+morestring=[b]',
+sensitive=true}
+\lstset{%
+language=EFSDSL,
+basicstyle=\ttfamily,
+keywordstyle=\bfseries,
+keywordstyle=[2]\underline,
+keywordstyle=[3]\emph,
+stringstyle=\sffamily,
+showstringspaces=true,
+breakatwhitespace=true,
+breaklines=true}
+\newcommand{\code}[1]{\lstinline$#1$}
+
+\ifdraft{%
+\newcommand{\ruleauthor}[2]{\mbox{}\newline\mbox{}\hfill{\footnotesize\textcolor{gray}{\emph{#1, #2}}}\xspace}}
+{%
+\newcommand{\ruleauthor}[2]{}
+}
+
+
+\newcommand{\addauthor}[2]{%
+%setup vhistory
+\expandafter\newcommand\csname #1\endcsname{#2}
+%setup fixme
+\FXRegisterAuthor{#1}{a#1}{#1}
+%setup personal PDF Comment
+\ifdraft{%
+\expandafter\newcommand\csname #1explain\endcsname[1]{\pdfcomment[author=#2, color=yellow, icon=Comment, subject=Comment, open=true]{##1}}}
+{%
+\expandafter\newcommand\csname #1explain\endcsname[1]{}
+}
+}
+
+%%
+%% END specific commands for this file
+%%
+
+
+%%
+%% BEGIN abbreviations for author names
+%%
+
+\addauthor{MD}{Moritz Dorka}
+
+% @ALL:
+% extend as needed
+
+%%
+%% END abbreviations for author names
+%%
+
+
+%%
+%% BEGIN GLOSSARY
+%%
+
+\makeglossaries
+
+\newacronym{efs}{EFS}{ERTMS Formal Specs Workbench}
+\newacronym{dsl}{DSL}{Domain Specific Language}
+
+% @ALL: add your entries as necessary
+% Then follow the instructions from Note 1 above.
+
+%%
+%% END GLOSSARY
+%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% BEGIN OF THE ACTUAL DOCUMENT
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{\docTitle}
+\subtitle{\docSubTitle, Version: \vhCurrentVersion}
+\date{\vhCurrentDate}
+\author{\vhListAllAuthorsLongWithAbbrev}
+\maketitle
+
+
+%%
+%% BEGIN VERSIONING
+%%
+
+\begin{versionhistory}
+\vhEntry{0.1}{31/10/2013}{MD}{initial draft}
+\vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
+% @ALL:
+% add your revision information here
+
+\end{versionhistory}
+
+%%
+%% END VERSIONING
+%%
+
+
+\newpage
+\tableofcontents
+\newpage
+
+\addchap{How to read this file}
+
+
+This document lists rules to be followed when coding in the \gls{dsl} of the \gls{efs} tool. It is targeted at both model developers and test-case designers. \ldots\\
+It will not cover the technical implementation of the underlying \gls{dsl} or give general instructions on how to use the \gls{efs}-tool. For this refer to the Technical design \cite{efstechdesign} and the user guide \cite{efsuserguide}, respectively.\\
+
+\MDfatal{TODO}
+
+
+\addsec{Typographical conventions}
+
+\subsection*{Rule texts}
+Each rule has a unique identifier composed of the current section and a running number. Words to be used verbatim within the rule texts are printed in \literally{emphasized} letters. \indraftmode{Rule texts conclude with the initials of the rule author and the date of the last change of the rule.}
+
+\subsection*{Code examples}
+Code of the \gls{dsl} used for examples within the rules is printed in \texttt{typewriter} font with 
+\begin{itemize}
+\item language keywords in \texttt{\textbf{bold}},
+\item pre-defined functions \texttt{\underline{underlined}},
+\item placeholders \texttt{\emph{emphasized}} and
+\item string literals in a \texttt{\textsf{sans-serif font}}.
+\end{itemize}
+
+For a documentation of the keywords and the pre-defined functions see \cite{efstechdesign}.
+
+
+
+\chapter{Domain specific language}
+
+\section{General}
+\begin{enumerate}
+\item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
+\item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
+\item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+\chapter{Model}
+
+\section{General}
+
+\begin{enumerate}
+\item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a Function instead of a Procedure), but have an influence on the actual behavior of the model shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code. \ruleauthor{MD}{12/11/2013}
+
+\end{enumerate}
+
+
+\section{Functions}
+\subsection{Cases}
+
+\subsubsection{General}
+\begin{enumerate}
+\item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
+\item \MDwarning{TBD} Complex expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\subsubsection{Pre-conditions}
+\begin{enumerate}
+\item Cases with no pre-condition assigned shall always come as the very last case. \ruleauthor{MD}{31/10/2013}
+\item Cases with no pre-condition assigned shall always be named \literally{Otherwise}. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\chapter{Tests}
+
+\section{Structure}
+\begin{enumerate}
+\item \MDwarning{TBD}\MDexplain{Unfortunately this is not possible in all cases. Require justification if rule cannot be obeyed?} A Sub-step shall either contain Actions or Expectations but not both. \ruleauthor{MD}{12/11/2013}
+\item The first Sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
+\begin{enumerate}
+\item There shall be no Expectation associated with this Sub-step. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+\end{enumerate}
+
+
+\section{Naming conventions}
+\begin{enumerate}
+\item Individual test steps shall be named \literally{Step n - explanation}.\\ \literally{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+\chapter{Comments}
+
+\section{General}
+\begin{enumerate}
+\item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
+\item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
+\item Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
+\end{enumerate}
+
+
+\chapter{Git}
+\section{General}
+\begin{enumerate}
+\item Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\section{Commits}
+\subsection{General}
+\begin{enumerate}
+\item numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+\subsection{commit description texts}
+\begin{enumerate}
+\item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the modeling part of the tool shall begin with \literally{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\item Commits dealing with the testing part of the tool shall begin with \literally{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\end{enumerate}
+
+
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary[style=listdotted]
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{efsbibliography}
+\bibliographystyle{plain}
+
+\indraftmode{
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Corrections}
+\listoffixmes\newpage
+\listofpdfcomments[heading=List of PDF comments]
+}
+
+\end{document}

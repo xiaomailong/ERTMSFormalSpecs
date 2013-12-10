@@ -11,6 +11,9 @@ DEPENDANCIES+=$(DIR_EXEC)/MigraDoc.Rendering.dll
 DEPENDANCIES+=$(DIR_EXEC)/MigraDoc.DocumentObjectModel.dll 
 DEPENDANCIES+=$(DIR_EXEC)/log4net.dll
 DEPENDANCIES+=$(DIR_EXEC)/Microsoft.Office.Interop.Excel.dll
+DEPENDANCIES+=$(DIR_EXEC)/LibGit2Sharp.dll
+DEPENDANCIES+=$(DIR_EXEC)/ICSharpCode.SharpZipLib.dll
+DEPENDANCIES+=$(DIR_EXEC)/WeifenLuo.WinFormsUI.Docking.dll
 DEPENDANCIES+=InnoInstaller5
 
 all: $(DIR_EXEC) $(DEPENDANCIES)
@@ -55,6 +58,22 @@ $(DIR_EXEC)/log4net.dll: log4net-1.2.11-bin-newkey.zip
 $(DIR_EXEC)/Microsoft.Office.Interop.Excel.dll: Microsoft.Office.Interop.Excel.dll
 	@echo "---- Copying $< "
 	@cp $< ../bin
+
+$(DIR_EXEC)/LibGit2Sharp.dll: LibGit2Sharp/LibGit2Sharp.dll
+	@echo "---- Copying $< "
+	@cp $< ../bin
+	@-mkdir ../bin/NativeBinaries
+	@cp -r LibGit2Sharp/NativeBinaries/* ../bin/NativeBinaries
+
+$(DIR_EXEC)/ICSharpCode.SharpZipLib.dll: ICSharpCode.SharpZipLib.dll
+	@echo "---- Copying $< "
+	@cp $< ../bin
+
+$(DIR_EXEC)/WeifenLuo.WinFormsUI.Docking.dll: DockPanel_2_9_0.zip
+	@echo "---- Unzipping $< "
+	@unzip -u -o -q -d DockPanel_2_9_0 $<
+	@echo "---- Copying WeifenLuo.WinFormsUI.Docking.dll "
+	@cp DockPanel_2_9_0/WeifenLuo.WinFormsUI.Docking.dll ../bin
 
 InnoInstaller5: InnoInstaller5.zip
 	@echo "---- Unzipping $< "

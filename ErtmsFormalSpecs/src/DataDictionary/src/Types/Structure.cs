@@ -234,18 +234,17 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{STRUCTURE " + Name + "}", indentLevel);
-
+            retVal += TextualExplainUtilities.Pad("{STRUCTURE " + Name + "} \\par", indentLevel);
             foreach (StructureElement element in Elements)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + element.Name + " : " + element.TypeName + "}", indentLevel + 2);
+                retVal += element.getExplain(indentLevel + 2) + "\\par";
             }
 
             foreach (Procedure procedure in Procedures)
             {
-                retVal += "\\par" + procedure.getExplain(indentLevel + 2, false);
+                retVal += procedure.getExplain(indentLevel + 2, false) + "\\par";
             }
 
             return retVal;
@@ -261,6 +260,16 @@ namespace DataDictionary.Types
             string retVal = getExplain(0);
 
             return TextualExplainUtilities.Encapsule(retVal);
+        }
+
+        /// <summary>
+        /// The explanation of the element
+        /// </summary>
+        /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
+        /// <returns></returns>
+        public override string getExplain()
+        {
+            return getExplain(0);
         }
     }
 }

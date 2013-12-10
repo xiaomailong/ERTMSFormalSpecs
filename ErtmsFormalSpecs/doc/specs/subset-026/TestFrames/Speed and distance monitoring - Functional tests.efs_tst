@@ -34,11 +34,10 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Initialize test environment"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61,24 +60,42 @@
     Position=&gt;0.0,
     UnderReadingAmountOdo=&gt;2.0
   }
-}</Action>
-<Action>Kernel.TSR.TSRs &lt;- []</Action>
-<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
+}</Action><Action>Kernel.TSR.TSRs &lt;- []</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.LS</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action>Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategories
 {
     CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_210_mm,
     OtherInternational =&gt; [Kernel.TrainData.TrainCategory.FreightTrainInP]
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid
- </Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid
+ </Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.05</Action><Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 180.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategory.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 180.0
+            }
+        ]
+    }
+]</Action><Action>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -94,10 +111,10 @@
  Name="Receive MA"
 >
 <ReqRef
- Id="3.11.2.2.e"
+ Id="d949102e-f89b-489f-8acc-cf60824bd0e5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -189,8 +206,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -212,10 +228,10 @@
  Name="Receive National values"
 >
 <ReqRef
- Id="3.11.2.2.f"
+ Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -363,8 +379,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -386,10 +401,10 @@
  Name="Receive TSR"
 >
 <ReqRef
- Id="3.11.2.2.c"
+ Id="d925afa7-0975-42ee-8f81-820493dda041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -436,8 +451,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -457,10 +471,10 @@
  Name="Receive LX"
 >
 <ReqRef
- Id="3.11.2.2.i"
+ Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -509,8 +523,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -532,14 +545,14 @@
  Name="Override function is activated"
 >
 <ReqRef
- Id="3.11.2.2.j"
+ Id="740a2050-4496-4fb8-9389-3250365d206a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.10.1"
+</ReqRef><ReqRef
+ Id="4ffc9c73-6c94-446a-8dc8-d6d9277102e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -553,8 +566,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -570,14 +582,14 @@
  Name="Receive MTS max speed"
 >
 <ReqRef
- Id="3.11.2.2.g"
+ Id="8321661d-73c4-49fe-acb7-74e4bc41bd37"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.2.g"
+</ReqRef><ReqRef
+ Id="8321661d-73c4-49fe-acb7-74e4bc41bd37"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -591,9 +603,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>STM.MaxSpeed.Speed &lt;- 50.0</Action>
-<Action>STM.MaxSpeed.HasToBeSupervised &lt;- True</Action>
-</Actions>
+<Action>STM.MaxSpeed.Speed &lt;- 50.0</Action><Action>STM.MaxSpeed.HasToBeSupervised &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -609,14 +619,14 @@
  Name="Receive MTS system speed"
 >
 <ReqRef
- Id="3.11.2.2.h"
+ Id="5b427521-61cb-409a-8485-a942fda2760a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.2.2.h"
+</ReqRef><ReqRef
+ Id="5b427521-61cb-409a-8485-a942fda2760a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -630,9 +640,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>STM.SystemSpeed.Speed &lt;- 45.0</Action>
-<Action>STM.SystemSpeed.HasToBeSupervised &lt;- True</Action>
-</Actions>
+<Action>STM.SystemSpeed.Speed &lt;- 45.0</Action><Action>STM.SystemSpeed.HasToBeSupervised &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -648,10 +656,10 @@
  Name="Receive axle load profile"
 >
 <ReqRef
- Id="3.11.2.2.b"
+ Id="38267eb5-348a-4d09-b4c6-4907aea348f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -698,22 +706,22 @@
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                             V_AXLELOAD =&gt; 14
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 12
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 8
                         },
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
-                            M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 4
                         }
                     ],
@@ -728,27 +736,27 @@
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.A,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 16
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.B2,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 14
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.C4,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 12
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.D4XL,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 10
                                 },
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
-                                    M_AXLELOAD =&gt; Messages.M_AXLELOAD.E5,
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                                     V_AXLELOAD =&gt; 6
                                 }
                             ]
@@ -758,8 +766,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -837,8 +844,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -973,8 +979,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1443,8 +1448,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
             }
         }
     }
-}</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
+}</Action><Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;-
 [
     Kernel.TrackDescription.AdhesionFactors.AdhesionFactor
     {
@@ -1458,8 +1462,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         Length =&gt; 50.0,
         Value =&gt; Messages.M_ADHESION.Slippery_rail
     }
-]</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+]</Action><Action>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
@@ -1472,21 +1475,19 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
         MaxDecelValueUnderReducedAdhesionCond3 =&gt; 0.7,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.2
     }
-}</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+}</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
         Gradient =&gt; 0.004,
-        Location =&gt; 1400.0
+        Distance =&gt; 1400.0
     },
     Kernel.TrackDescription.Gradient.GradientInfo
     {
         Gradient =&gt; 0.0,
-        Location =&gt; 1600.0
+        Distance =&gt; 1600.0
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1523,8 +1524,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1539,31 +1539,23 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.EstimatedAcceleration &lt;- 1.2</Action>
-<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+<Action>Odometry.EstimatedAcceleration &lt;- 1.2</Action><Action>Kernel.TrackDescription.Gradient.Gradients &lt;- 
 [
     Kernel.TrackDescription.Gradient.GradientInfo
     {
         Gradient =&gt; 4.0,
-        Location =&gt; 1400.0
+        Distance =&gt; 1400.0
     },
     Kernel.TrackDescription.Gradient.GradientInfo
     {
         Gradient =&gt; 0.0,
-        Location =&gt; 1600.0
+        Distance =&gt; 1600.0
     }
-]</Action>
-<Action>Odometry.NominalDistance &lt;- 1000.0</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+]</Action><Action>Odometry.NominalDistance &lt;- 1000.0</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
 {
     Coefficient =&gt; 14.0,
     Constant =&gt; 2.0
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action>
-<Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.0</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+}</Action><Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- Boolean.True</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.0</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection{
@@ -1590,8 +1582,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     TargetSpeedTimeOut =&gt; 0.0,
     ReferenceBG =&gt; 0,
     ReferenceBGLocation =&gt; 0.0
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1602,14 +1593,14 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Traction model"
 >
 <ReqRef
- Id="3.13.2.2.2.1"
+ Id="b7b1bc48-6dda-4554-ac07-fd2a7e8ef50a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.2.2"
+</ReqRef><ReqRef
+ Id="af82297e-0cd0-4080-912c-c8c8ff4a8ab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1642,8 +1633,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1500.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 1500.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1657,63 +1647,62 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 </TestCase><TestCase
  Feature="0"
  Case="0"
- Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Brake build up time, T_be and T_bs"
 >
 <ReqRef
- Id="3.13.2.2.3.2.8"
+ Id="2cf137b8-bbbf-498f-b496-0d56ec81fe32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.7"
+</ReqRef><ReqRef
+ Id="7b891aef-60db-4047-901f-e1515ac84ea8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.5"
+</ReqRef><ReqRef
+ Id="19fa9290-6acb-4ae8-a84f-bdee455111a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.3.c"
+</ReqRef><ReqRef
+ Id="ba750721-bd4b-4fb5-86be-a54fff062ec4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.2"
+</ReqRef><ReqRef
+ Id="43ac0583-bb58-4b32-b3ea-a0891744ee41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.1"
+</ReqRef><ReqRef
+ Id="3d965310-43af-470d-963f-36c7d5f7569d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.a"
+</ReqRef><ReqRef
+ Id="2dff7e7c-9af3-49bc-82ac-19616e3e91e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.b"
+</ReqRef><ReqRef
+ Id="cdb611eb-1ce9-4aba-a1fb-e64ca06b3669"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.c"
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.3"
+</ReqRef><ReqRef
+ Id="92da629d-5f50-4600-b877-db00a98ecf43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.a"
+</ReqRef><ReqRef
+ Id="286c2abb-01dd-45cf-bdd9-4b508938c872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.b"
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.4"
+</ReqRef><ReqRef
+ Id="22233109-3b8f-4e3c-83b3-eb1332cd30ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1744,8 +1733,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     Magnetic =&gt; 1.82,
     Regenerative =&gt; 0.96,
     Ep =&gt; 0.85
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+}</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
     EddyCurrent =&gt; 1.16,
     EddyCurrent_Magnetic =&gt; 0.48,
@@ -1762,29 +1750,23 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
     Magnetic =&gt; 0.55,
     Regenerative =&gt; 1.15,
     Ep =&gt; 0.46
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EpBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-</Actions>
+}</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1813,8 +1795,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1843,8 +1824,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1870,12 +1850,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- EMPTY</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 160.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action>
-<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- EMPTY</Action>
-<Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 160.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 147.0</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1890,8 +1865,7 @@ EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.BrakingParameters.ConversionModel.Initialize()</Action>
-</Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.Initialize()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

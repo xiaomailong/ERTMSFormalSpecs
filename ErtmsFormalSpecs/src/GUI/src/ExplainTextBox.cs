@@ -26,42 +26,29 @@ namespace GUI
         {
         }
 
-        private Utils.IModelElement model;
-        protected Utils.IModelElement Model
-        {
-            get { return model; }
-            private set { model = value; }
-        }
-
         /// <summary>
         /// Sets the model for this explain text box
         /// </summary>
         /// <param name="model"></param>
-        public void SetModel(Utils.IModelElement model)
+        public void SetModel(DataDictionary.ModelElement model)
         {
-            Model = model;
+            Instance = model;
             RefreshData();
         }
+
+        /// <summary>
+        /// The explanation last time
+        /// </summary>
+        private string LastExplanation = "";
 
         /// <summary>
         /// Refreshes the data
         /// </summary>
         public virtual void RefreshData()
         {
-            Text = "";
-        }
-    }
+            SuspendLayout();
 
-    /// <summary>
-    /// Explains a rule
-    /// </summary>
-    public class RuleExplainTextBox : ExplainTextBox
-    {
-        public override void RefreshData()
-        {
-            base.RefreshData();
-
-            DataDictionary.TextualExplain explainable = Model as DataDictionary.TextualExplain;
+            DataDictionary.TextualExplain explainable = Instance as DataDictionary.TextualExplain;
 
             if (explainable != null)
             {
@@ -69,18 +56,25 @@ namespace GUI
 
                 if (explanation != null)
                 {
-                    Rtf = explanation;
-                    Visible = true;
+                    if (explanation != LastExplanation)
+                    {
+                        LastExplanation = explanation;
+                        Rtf = explanation;
+                    }
                 }
                 else
                 {
-                    Visible = false;
+                    LastExplanation = "";
+                    Rtf = "";
                 }
             }
             else
             {
-                Visible = false;
+                LastExplanation = "";
+                Rtf = "";
             }
+
+            ResumeLayout();
         }
     }
 }

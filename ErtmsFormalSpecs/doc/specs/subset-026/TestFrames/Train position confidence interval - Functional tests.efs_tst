@@ -37,8 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61,17 +60,13 @@
     Position=&gt;1080.0,
     UnderReadingAmountOdo=&gt;1.0
   }
-}</Action>
-<Action>BTM.BGLocationDetectionError &lt;- 4.0</Action>
-<Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+}</Action><Action>BTM.BGLocationDetectionError &lt;- 4.0</Action><Action>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
     D_ura =&gt; 10.0,
     D_ora =&gt; 12.0,
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 2000.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 2000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -82,10 +77,10 @@
  Name="BG location accuracy value"
 >
 <ReqRef
- Id="3.6.4.2.3"
+ Id="a2fa811d-bd40-4622-98d9-2f0c4c579f2b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -105,8 +100,7 @@
   {
     LocationAccuracy =&gt; 14.0
   }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -125,14 +119,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 13</Action>
-<Action>BTM.Linking.Linkings &lt;- []</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup &lt;- 3</Action><Action>BTM.Linking.Linkings &lt;- []</Action><Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
->BTM.BGLocationAccuracy() == 13.0</Expectation></Expectations>
+>BTM.BGLocationAccuracy() == 3.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -147,9 +138,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.Linking.Linkings &lt;- EMPTY</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action>
-</Actions>
+<Action>BTM.Linking.Linkings &lt;- []</Action><Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -166,10 +155,10 @@
  Name="Over-reading amount"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -183,9 +172,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Position.OverReadingAmountOdo &lt;- 1.0</Action>
-<Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action>
-</Actions>
+<Action>BTM.LRBG.Position.OverReadingAmountOdo &lt;- 1.0</Action><Action>Odometry.Accuracy.D_ora &lt;- 4.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -200,10 +187,10 @@
  Name="Under-reading amount"
 >
 <ReqRef
- Id="3.6.4.2.a"
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -217,9 +204,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.LRBG.Position.UnderReadingAmountOdo &lt;- 1.0</Action>
-<Action>Odometry.Accuracy.D_ura &lt;- 5.0</Action>
-</Actions>
+<Action>BTM.LRBG.Position.UnderReadingAmountOdo &lt;- 1.0</Action><Action>Odometry.Accuracy.D_ura &lt;- 5.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -234,18 +219,18 @@
  Name="Confidence interval"
 >
 <ReqRef
- Id="3.6.4.2"
+ Id="d7a377d0-4389-4441-8bda-036db6e7805a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.2.a"
+</ReqRef><ReqRef
+ Id="8a1fe4ea-dcfd-4748-bc1e-b8b0be8aa8e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.2.b"
+</ReqRef><ReqRef
+ Id="9e4c5ab1-4454-4b08-9df1-666cf07b17ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -310,9 +295,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 200.0</Action>
-<Action>BTM.LRBG.Position.Position &lt;- 40.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 200.0</Action><Action>BTM.LRBG.Position.Position &lt;- 40.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -327,18 +310,18 @@
  Name="Train front end position"
 >
 <ReqRef
- Id="3.6.4.4.a"
+ Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.b"
+</ReqRef><ReqRef
+ Id="2ecb1ec4-fc6b-4879-a45a-e1b1c55b41fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.6.4.4.c"
+</ReqRef><ReqRef
+ Id="4a9c97b2-dfca-4175-b297-9da9fc3d16fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -352,8 +335,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Odometry.NominalDistance &lt;- 1800.0</Action>
-</Actions>
+<Action>Odometry.NominalDistance &lt;- 1800.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -406,10 +388,10 @@
  Name="Additional over-reading amount"
 >
 <ReqRef
- Id="3.6.4.7.1"
+ Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -423,8 +405,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.UnlinkedBGPosition.OverReadingAmountOdo &lt;- 2.0</Action>
-</Actions>
+<Action>BTM.UnlinkedBGPosition.OverReadingAmountOdo &lt;- 2.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -439,10 +420,10 @@
  Name="Additional under-reading amount"
 >
 <ReqRef
- Id="3.6.4.7.1"
+ Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -456,8 +437,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.UnlinkedBGPosition.UnderReadingAmountOdo &lt;- 2.0</Action>
-</Actions>
+<Action>BTM.UnlinkedBGPosition.UnderReadingAmountOdo &lt;- 2.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -472,10 +452,10 @@
  Name="Additional confidence interval"
 >
 <ReqRef
- Id="3.6.4.7.1"
+ Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

@@ -38,8 +38,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -176,8 +175,7 @@
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -187,9 +185,7 @@
         Position =&gt; 3000.0,
         UnderReadingAmountOdo =&gt; 7.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 5000.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 5000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -200,10 +196,10 @@
  Name="Modification of adhesion factor by driver"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.1"
+ Id="5e746ce1-3ef0-4f84-8d48-0e1e88904204"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -230,10 +226,10 @@
  Name="Shunting mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.2"
+ Id="cf121ea5-16c6-4ee1-8543-aee4ed3e60ee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -260,10 +256,10 @@
  Name="Staff Responsible mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.3"
+ Id="68883fc3-c6a5-47b4-bc4d-75ef7328646c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -290,10 +286,10 @@
  Name="On Sight mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.4"
+ Id="b8e14a8d-e04d-4cec-ac0b-5d81c7c442aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -320,10 +316,10 @@
  Name="Limited Supervision mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.5"
+ Id="dcb4c590-15d1-437f-a21f-2bb72c135087"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -350,10 +346,10 @@
  Name="Unfitted mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.6"
+ Id="c6ce3eac-dbf6-4ac8-9e8b-769f4f794527"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -380,10 +376,10 @@
  Name="Release Speed"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.7"
+ Id="419b54e3-c0d5-4436-96e7-6b557414c8b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -410,10 +406,10 @@
  Name="Distance to be used in roll away protection, ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.8"
+ Id="86484324-f5d8-46c9-afec-7de29e7d0b2d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -440,10 +436,10 @@
  Name="Use service brake in target speed monitoring"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.9"
+ Id="d4577a2e-04bc-4d08-bb25-856e75975567"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -470,10 +466,10 @@
  Name="Permission to release emergency brake"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.10"
+ Id="f0514754-78f9-44cc-aa63-24a37276ca93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -500,10 +496,10 @@
  Name="Permission to use guidance curves"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.11"
+ Id="3a44059a-2f71-401f-9364-677c23b51750"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -530,10 +526,10 @@
  Name="Permission to use the service brake feedback"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.12"
+ Id="23092785-c209-44ef-a5f5-2db7d9d0f65b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -560,10 +556,10 @@
  Name="Permission to inhibit the compensation of the speed ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.13"
+ Id="075bcce7-569f-4935-b08c-c8d743da733b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -590,10 +586,10 @@
  Name="Speed limit for triggering the override function"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.14"
+ Id="1812b2b8-e2e8-4575-8d53-68f83a984593"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -620,10 +616,10 @@
  Name="Override speed limit to be supervised when override is active"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.15"
+ Id="6c694ff5-5ebf-40f6-86ea-d7d66de576cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -650,10 +646,10 @@
  Name="Distance to train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.16"
+ Id="0d778c1c-3670-40c3-ad58-48b71867e056"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -680,10 +676,10 @@
  Name="Max time for train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.17"
+ Id="7ca74073-9f1d-48d5-830a-bf7a2b0ba8cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -710,10 +706,10 @@
  Name="Change of driver ID permitted while running"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.18"
+ Id="ead174d5-0da6-4970-aeca-47d81ad0968b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -740,10 +736,10 @@
  Name="System reaction if radio channel monitoring time limit expires"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.19"
+ Id="55b6aecf-dac0-4374-8142-63150d4492d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -770,10 +766,10 @@
  Name="Maximum time since creation in the RBC of last received telegram"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.20"
+ Id="56736501-c0fe-4e20-a3ab-b24a8c64423d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -800,10 +796,10 @@
  Name="Distance to be allowed for reversing in Post Trip mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.21"
+ Id="c73407b1-d957-40a8-b7a0-3f88757d1b9a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -830,10 +826,10 @@
  Name="Max permitted distance to run in Staff Responsible mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.22"
+ Id="b258d7fb-75e8-43fb-bc4c-fdc3974f2a68"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -860,10 +856,10 @@
  Name="Default location accuracy of a balise group"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.23"
+ Id="7e712341-8fcf-474b-a20b-d3dc889cf08a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -890,10 +886,10 @@
  Name="Weighting factor for available wheel rail adhesion"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.24"
+ Id="0b52f25f-041c-43c7-96d8-cbe52bdb5426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -920,10 +916,10 @@
  Name="Confidence level for emergency brake safe deceleration on dry rails"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.25"
+ Id="0baa8d9f-c0f0-4278-9075-88b483b08359"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -950,14 +946,14 @@
  Name="Integrated correction factor Kr_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.26"
+ Id="e6844f24-1a39-4a99-a4bd-ee1d57741bee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.27"
+</ReqRef><ReqRef
+ Id="25f7c7cb-d1ef-4503-82f7-346e03536773"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -994,26 +990,26 @@
  Name="Integrated correction factor Kv_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.28"
+ Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.29"
+</ReqRef><ReqRef
+ Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.34"
+</ReqRef><ReqRef
+ Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.35"
+</ReqRef><ReqRef
+ Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.11.3"
+</ReqRef><ReqRef
+ Id="479916ae-45c8-472d-9390-572251963c4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1095,14 +1091,14 @@
  Name="Integrated correction factor for brake build up time"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.30"
+ Id="b84c39d8-6718-43f5-8a15-c15fecc7e1e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.14"
+</ReqRef><ReqRef
+ Id="f4734217-febd-4c83-b03b-95421ce86be2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1129,18 +1125,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (1)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.31"
+ Id="4bdf713f-a04b-4492-92ac-08b864e26449"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.a"
+</ReqRef><ReqRef
+ Id="1ea1fcd0-0483-4f31-9e4e-972784b19f91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1167,18 +1163,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (2)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.32"
+ Id="afa7ef49-e01b-49da-851e-e4a4e62f5e1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.b"
+</ReqRef><ReqRef
+ Id="6f5803a9-c056-47a1-9fd1-1c160eb10885"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1205,18 +1201,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (3)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.33"
+ Id="2fe949f8-b640-443c-afa7-6dee7bf83063"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.c"
+</ReqRef><ReqRef
+ Id="66b1a76d-7680-41c7-a08d-7daf6f301b1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1269,10 +1265,10 @@
  Name="Country"
 >
 <ReqRef
- Id="3.18.2.4"
+ Id="766f0274-5b6e-4050-a48d-226dccf68782"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1299,10 +1295,10 @@
  Name="Applicable distance"
 >
 <ReqRef
- Id="3.18.2.3"
+ Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1355,8 +1351,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1367,10 +1362,10 @@
  Name="Modification of adhesion factor by driver"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.1"
+ Id="5e746ce1-3ef0-4f84-8d48-0e1e88904204"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1397,10 +1392,10 @@
  Name="Shunting mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.2"
+ Id="cf121ea5-16c6-4ee1-8543-aee4ed3e60ee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1427,10 +1422,10 @@
  Name="Staff Responsible mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.3"
+ Id="68883fc3-c6a5-47b4-bc4d-75ef7328646c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1457,10 +1452,10 @@
  Name="On Sight mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.4"
+ Id="b8e14a8d-e04d-4cec-ac0b-5d81c7c442aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1487,10 +1482,10 @@
  Name="Limited Supervision mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.5"
+ Id="dcb4c590-15d1-437f-a21f-2bb72c135087"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1517,10 +1512,10 @@
  Name="Unfitted mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.6"
+ Id="c6ce3eac-dbf6-4ac8-9e8b-769f4f794527"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1547,10 +1542,10 @@
  Name="Release Speed"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.7"
+ Id="419b54e3-c0d5-4436-96e7-6b557414c8b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1577,10 +1572,10 @@
  Name="Distance to be used in roll away protection, ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.8"
+ Id="86484324-f5d8-46c9-afec-7de29e7d0b2d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1607,10 +1602,10 @@
  Name="Use service brake in target speed monitoring"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.9"
+ Id="d4577a2e-04bc-4d08-bb25-856e75975567"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1637,10 +1632,10 @@
  Name="Permission to release emergency brake"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.10"
+ Id="f0514754-78f9-44cc-aa63-24a37276ca93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1667,10 +1662,10 @@
  Name="Permission to use guidance curves"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.11"
+ Id="3a44059a-2f71-401f-9364-677c23b51750"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1697,10 +1692,10 @@
  Name="Permission to use the service brake feedback"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.12"
+ Id="23092785-c209-44ef-a5f5-2db7d9d0f65b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1727,10 +1722,10 @@
  Name="Permission to inhibit the compensation of the speed ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.13"
+ Id="075bcce7-569f-4935-b08c-c8d743da733b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1757,10 +1752,10 @@
  Name="Speed limit for triggering the override function"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.14"
+ Id="1812b2b8-e2e8-4575-8d53-68f83a984593"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1787,10 +1782,10 @@
  Name="Override speed limit to be supervised when override is active"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.15"
+ Id="6c694ff5-5ebf-40f6-86ea-d7d66de576cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1817,10 +1812,10 @@
  Name="Distance to train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.16"
+ Id="0d778c1c-3670-40c3-ad58-48b71867e056"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1847,10 +1842,10 @@
  Name="Max time for train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.17"
+ Id="7ca74073-9f1d-48d5-830a-bf7a2b0ba8cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1877,10 +1872,10 @@
  Name="Change of driver ID permitted while running"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.18"
+ Id="ead174d5-0da6-4970-aeca-47d81ad0968b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1907,10 +1902,10 @@
  Name="System reaction if radio channel monitoring time limit expires"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.19"
+ Id="55b6aecf-dac0-4374-8142-63150d4492d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1937,10 +1932,10 @@
  Name="Maximum time since creation in the RBC of last received telegram"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.20"
+ Id="56736501-c0fe-4e20-a3ab-b24a8c64423d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1967,10 +1962,10 @@
  Name="Distance to be allowed for reversing in Post Trip mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.21"
+ Id="c73407b1-d957-40a8-b7a0-3f88757d1b9a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1997,10 +1992,10 @@
  Name="Max permitted distance to run in Staff Responsible mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.22"
+ Id="b258d7fb-75e8-43fb-bc4c-fdc3974f2a68"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2027,10 +2022,10 @@
  Name="Default location accuracy of a balise group"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.23"
+ Id="7e712341-8fcf-474b-a20b-d3dc889cf08a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2057,10 +2052,10 @@
  Name="Weighting factor for available wheel rail adhesion"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.24"
+ Id="0b52f25f-041c-43c7-96d8-cbe52bdb5426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2087,10 +2082,10 @@
  Name="Confidence level for emergency brake safe deceleration on dry rails"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.25"
+ Id="0baa8d9f-c0f0-4278-9075-88b483b08359"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2117,14 +2112,14 @@
  Name="Integrated correction factor Kr_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.26"
+ Id="e6844f24-1a39-4a99-a4bd-ee1d57741bee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.27"
+</ReqRef><ReqRef
+ Id="25f7c7cb-d1ef-4503-82f7-346e03536773"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2155,22 +2150,22 @@
  Name="Integrated correction factor Kv_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.28"
+ Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.29"
+</ReqRef><ReqRef
+ Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.34"
+</ReqRef><ReqRef
+ Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.35"
+</ReqRef><ReqRef
+ Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2217,10 +2212,10 @@
  Name="Integrated correction factor for brake build up time"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.30"
+ Id="b84c39d8-6718-43f5-8a15-c15fecc7e1e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2247,10 +2242,10 @@
  Name="Maximum deceleration value under reduced adhesion conditions (1)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.31"
+ Id="4bdf713f-a04b-4492-92ac-08b864e26449"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2277,10 +2272,10 @@
  Name="Maximum deceleration value under reduced adhesion conditions (2)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.32"
+ Id="afa7ef49-e01b-49da-851e-e4a4e62f5e1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2307,10 +2302,10 @@
  Name="Maximum deceleration value under reduced adhesion conditions (3)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.33"
+ Id="2fe949f8-b640-443c-afa7-6dee7bf83063"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2365,8 +2360,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2525,8 +2519,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2537,10 +2530,10 @@
  Name="Modification of adhesion factor by driver"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.1"
+ Id="5e746ce1-3ef0-4f84-8d48-0e1e88904204"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2567,10 +2560,10 @@
  Name="Shunting mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.2"
+ Id="cf121ea5-16c6-4ee1-8543-aee4ed3e60ee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2597,10 +2590,10 @@
  Name="Staff Responsible mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.3"
+ Id="68883fc3-c6a5-47b4-bc4d-75ef7328646c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2627,10 +2620,10 @@
  Name="On Sight mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.4"
+ Id="b8e14a8d-e04d-4cec-ac0b-5d81c7c442aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2657,10 +2650,10 @@
  Name="Limited Supervision mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.5"
+ Id="dcb4c590-15d1-437f-a21f-2bb72c135087"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2687,10 +2680,10 @@
  Name="Unfitted mode speed limit"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.6"
+ Id="c6ce3eac-dbf6-4ac8-9e8b-769f4f794527"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2717,10 +2710,10 @@
  Name="Release Speed"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.7"
+ Id="419b54e3-c0d5-4436-96e7-6b557414c8b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2747,10 +2740,10 @@
  Name="Distance to be used in roll away protection, ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.8"
+ Id="86484324-f5d8-46c9-afec-7de29e7d0b2d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2777,10 +2770,10 @@
  Name="Use service brake in target speed monitoring"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.9"
+ Id="d4577a2e-04bc-4d08-bb25-856e75975567"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2807,10 +2800,10 @@
  Name="Permission to release emergency brake"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.10"
+ Id="f0514754-78f9-44cc-aa63-24a37276ca93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2837,10 +2830,10 @@
  Name="Permission to use guidance curves"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.11"
+ Id="3a44059a-2f71-401f-9364-677c23b51750"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2867,10 +2860,10 @@
  Name="Permission to use the service brake feedback"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.12"
+ Id="23092785-c209-44ef-a5f5-2db7d9d0f65b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2897,10 +2890,10 @@
  Name="Permission to inhibit the compensation of the speed ..."
 >
 <ReqRef
- Id="Entry 3.A3.2.1.13"
+ Id="075bcce7-569f-4935-b08c-c8d743da733b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2927,10 +2920,10 @@
  Name="Speed limit for triggering the override function"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.14"
+ Id="1812b2b8-e2e8-4575-8d53-68f83a984593"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2957,10 +2950,10 @@
  Name="Override speed limit to be supervised when override is active"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.15"
+ Id="6c694ff5-5ebf-40f6-86ea-d7d66de576cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2987,10 +2980,10 @@
  Name="Distance to train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.16"
+ Id="0d778c1c-3670-40c3-ad58-48b71867e056"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3017,10 +3010,10 @@
  Name="Max time for train trip suppression when override is triggered"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.17"
+ Id="7ca74073-9f1d-48d5-830a-bf7a2b0ba8cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3047,10 +3040,10 @@
  Name="Change of driver ID permitted while running"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.18"
+ Id="ead174d5-0da6-4970-aeca-47d81ad0968b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3077,10 +3070,10 @@
  Name="System reaction if radio channel monitoring time limit expires"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.19"
+ Id="55b6aecf-dac0-4374-8142-63150d4492d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3107,10 +3100,10 @@
  Name="Maximum time since creation in the RBC of last received telegram"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.20"
+ Id="56736501-c0fe-4e20-a3ab-b24a8c64423d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3137,10 +3130,10 @@
  Name="Distance to be allowed for reversing in Post Trip mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.21"
+ Id="c73407b1-d957-40a8-b7a0-3f88757d1b9a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3167,10 +3160,10 @@
  Name="Max permitted distance to run in Staff Responsible mode"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.22"
+ Id="b258d7fb-75e8-43fb-bc4c-fdc3974f2a68"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3197,10 +3190,10 @@
  Name="Default location accuracy of a balise group"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.23"
+ Id="7e712341-8fcf-474b-a20b-d3dc889cf08a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3227,10 +3220,10 @@
  Name="Weighting factor for available wheel rail adhesion"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.24"
+ Id="0b52f25f-041c-43c7-96d8-cbe52bdb5426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3257,10 +3250,10 @@
  Name="Confidence level for emergency brake safe deceleration on dry rails"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.25"
+ Id="0baa8d9f-c0f0-4278-9075-88b483b08359"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3287,30 +3280,30 @@
  Name="Integrated correction factor Kr_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.26"
+ Id="e6844f24-1a39-4a99-a4bd-ee1d57741bee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.27"
+</ReqRef><ReqRef
+ Id="25f7c7cb-d1ef-4503-82f7-346e03536773"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.12.1"
+</ReqRef><ReqRef
+ Id="fb41c5b9-b4fa-4a64-bfb1-6a3d6b819885"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.12"
+</ReqRef><ReqRef
+ Id="80a66105-c23f-482c-b740-9e83ccd82aa5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.13"
+</ReqRef><ReqRef
+ Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.10"
+</ReqRef><ReqRef
+ Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3367,50 +3360,50 @@
  Name="Integrated correction factor Kv_int"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.28"
+ Id="c50b4a75-1478-431a-9fc7-a709e78aec0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.29"
+</ReqRef><ReqRef
+ Id="2200ce2a-cb53-4489-8469-546d7e953ce4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.34"
+</ReqRef><ReqRef
+ Id="4e43c303-7c49-45b5-baa7-e7d052b88d04"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.A3.2.1.35"
+</ReqRef><ReqRef
+ Id="b57ecdfb-662d-4696-9c28-868f1cdb7deb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.11.1"
+</ReqRef><ReqRef
+ Id="73cf0b53-78ae-4ea4-8a36-3217d4acf417"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.11.3"
+</ReqRef><ReqRef
+ Id="479916ae-45c8-472d-9390-572251963c4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.11.4"
+</ReqRef><ReqRef
+ Id="13908a17-3c3e-4130-9376-d19b1e00066d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.13"
+</ReqRef><ReqRef
+ Id="2abf254f-b4a4-4636-8c8e-99996cd4851e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.11"
+</ReqRef><ReqRef
+ Id="5ee1dd50-3153-404e-a1f7-2980262f157e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.10"
+</ReqRef><ReqRef
+ Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.8"
+</ReqRef><ReqRef
+ Id="eeb1f154-0934-483a-bd4e-d32bc969bbc3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3424,8 +3417,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action>
-<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
 {
     ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
         EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
@@ -3549,23 +3541,19 @@
             }
         }
     }
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.EddyCurrentBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.MagneticShoeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-<Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
+}</Action><Action>Kernel.TrainData.TrainData.Value.RegenerativeBrake &lt;- Kernel.TrainData.BrakingParameters.SpecialBrake
 {
     IsActive =&gt; True,
     InterfaceStatus =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3616,8 +3604,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action>
-</Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3648,18 +3635,18 @@
  Name="Integrated correction factor for brake build up time"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.30"
+ Id="b84c39d8-6718-43f5-8a15-c15fecc7e1e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.14"
+</ReqRef><ReqRef
+ Id="f4734217-febd-4c83-b03b-95421ce86be2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.10"
+</ReqRef><ReqRef
+ Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3686,18 +3673,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (1)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.31"
+ Id="4bdf713f-a04b-4492-92ac-08b864e26449"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.a"
+</ReqRef><ReqRef
+ Id="1ea1fcd0-0483-4f31-9e4e-972784b19f91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3724,18 +3711,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (2)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.32"
+ Id="afa7ef49-e01b-49da-851e-e4a4e62f5e1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.b"
+</ReqRef><ReqRef
+ Id="6f5803a9-c056-47a1-9fd1-1c160eb10885"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3762,18 +3749,18 @@
  Name="Maximum deceleration value under reduced adhesion conditions (3)"
 >
 <ReqRef
- Id="Entry 3.A3.2.1.33"
+ Id="2fe949f8-b640-443c-afa7-6dee7bf83063"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7.c"
+</ReqRef><ReqRef
+ Id="66b1a76d-7680-41c7-a08d-7daf6f301b1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3826,10 +3813,10 @@
  Name="Country"
 >
 <ReqRef
- Id="3.18.2.4"
+ Id="766f0274-5b6e-4050-a48d-226dccf68782"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3856,10 +3843,10 @@
  Name="Remaining distance"
 >
 <ReqRef
- Id="3.18.2.3"
+ Id="bb94d1fa-9b3e-4389-bf7a-f04d1654005b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3912,8 +3899,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3923,10 +3909,10 @@
  Name="Default values"
 >
 <ReqRef
- Id="3.11.2.2.f"
+ Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3940,8 +3926,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3960,8 +3945,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.OS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3980,8 +3964,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.RV</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4000,8 +3983,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SH</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4020,8 +4002,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4040,8 +4021,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.UN</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4055,10 +4035,10 @@
  Name="National values"
 >
 <ReqRef
- Id="3.11.2.2.f"
+ Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4194,8 +4174,7 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4210,8 +4189,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4230,8 +4208,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.OS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4250,8 +4227,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.RV</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4270,8 +4246,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SH</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4290,8 +4265,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4310,8 +4284,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.UN</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4321,26 +4294,25 @@
 </TestCase><TestCase
  Feature="0"
  Case="0"
- Implemented="TRUE"
  Name="Speed limits given by the trackside or by the driver"
 >
 <ReqRef
- Id="3.11.2.2.f"
+ Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.7.1.1"
+</ReqRef><ReqRef
+ Id="4650224e-986e-4212-b1a4-704ebe9317a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.7.1.2"
+</ReqRef><ReqRef
+ Id="3518255f-a436-4201-afb9-867bb586c371"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.11.7.1.3"
+</ReqRef><ReqRef
+ Id="98959354-04de-4b43-8a9c-c23b7263bdfb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4365,8 +4337,7 @@ Kernel.MA.ModeProfile.ModeProfile
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
 }
 IN
-Kernel.MA.ModeProfile.Profile</Action>
-<Action>INSERT
+Kernel.MA.ModeProfile.Profile</Action><Action>INSERT
 Kernel.MA.ModeProfile.ModeProfile
 {
     AcknLength =&gt; 0.0,
@@ -4377,9 +4348,7 @@ Kernel.MA.ModeProfile.ModeProfile
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
 }
 IN
-Kernel.MA.ModeProfile.Profile</Action>
-<Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.RV &lt;- 70.0</Action>
-<Action>INSERT
+Kernel.MA.ModeProfile.Profile</Action><Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.RV &lt;- 70.0</Action><Action>INSERT
 Kernel.MA.ModeProfile.ModeProfile
 {
     AcknLength =&gt; 0.0,
@@ -4390,9 +4359,7 @@ Kernel.MA.ModeProfile.ModeProfile
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
 }
 IN
-Kernel.MA.ModeProfile.Profile</Action>
-<Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.SR &lt;- 100.0</Action>
-</Actions>
+Kernel.MA.ModeProfile.Profile</Action><Action>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.SR &lt;- 100.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4407,8 +4374,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.LS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.LS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4427,8 +4393,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.OS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4447,8 +4412,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.RV</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.RV</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4467,8 +4431,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SH</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SH</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4487,8 +4450,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SR</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4507,8 +4469,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.UN</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.UN</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4550,8 +4511,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4561,10 +4521,10 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Default value"
 >
 <ReqRef
- Id="3.11.2.2.j"
+ Id="740a2050-4496-4fb8-9389-3250365d206a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4578,8 +4538,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4593,10 +4552,10 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="National values received"
 >
 <ReqRef
- Id="3.11.2.2.j"
+ Id="740a2050-4496-4fb8-9389-3250365d206a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4732,8 +4691,7 @@ Kernel.MA.ModeProfile.Profile</Action>
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4761,8 +4719,7 @@ Kernel.MA.ModeProfile.Profile</Action>
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

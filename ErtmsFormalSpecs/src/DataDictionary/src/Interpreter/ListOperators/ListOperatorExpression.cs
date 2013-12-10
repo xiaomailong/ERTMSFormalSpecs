@@ -56,8 +56,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="listExpression"></param>
         /// <param name="function"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
-        public ListOperatorExpression(ModelElement root, Expression listExpression)
-            : base(root)
+        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression)
+            : base(root, log)
         {
             ListExpression = listExpression;
             ListExpression.Enclosing = this;
@@ -111,11 +111,14 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (retVal)
             {
+                // ListExpression
                 ListExpression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.Read);
 
                 Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
                 if (collectionType != null)
                 {
+                    StaticUsage.AddUsage(collectionType, Root, Usage.ModeEnum.Type);
                     IteratorVariable.Type = collectionType.Type;
                     PreviousIteratorVariable.Type = collectionType.Type;
                 }

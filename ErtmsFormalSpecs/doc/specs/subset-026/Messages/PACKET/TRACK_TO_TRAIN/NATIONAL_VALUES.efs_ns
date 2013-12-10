@@ -5,550 +5,744 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Downloads a set of National Values to the train</Comment>
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Downloads a set of National Values to the train</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="3"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SCALE"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SCALE"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_VALIDNV"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_VALIDNV"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVSHUNT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVSHUNT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVSTFF"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVSTFF"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVONSIGHT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVONSIGHT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVLIMSUPERV"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVLIMSUPERV"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVUNFIT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVUNFIT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVREL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVREL"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_NVROLL"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_NVROLL"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVSBTSMPERM"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVSBTSMPERM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVEMRRLS"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVEMRRLS"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVGUIPERM"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVGUIPERM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVSBFBPERM"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVSBFBPERM"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVINHSMICPERM"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVINHSMICPERM"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVALLOWOVTRP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVALLOWOVTRP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="V_NVSUPOVTRP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVSUPOVTRP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_NVOVTRP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_NVOVTRP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_NVOVTRP"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_NVOVTRP"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_NVPOTRP"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_NVPOTRP"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_NVCONTACT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVCONTACT"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="T_NVCONTACT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="T_NVCONTACT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_NVDERUN"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVDERUN"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="D_NVSTFF"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="D_NVSTFF"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVDRIVER_ADHES"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVDRIVER_ADHES"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="A_NVMAXREDADH1"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVMAXREDADH1"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="A_NVMAXREDADH2"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVMAXREDADH2"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="A_NVMAXREDADH3"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVMAXREDADH3"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVLOCACC"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVLOCACC"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_NVAVADH"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVAVADH"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="M_NVEBCL"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVEBCL"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVKINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVKINT"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NVKVINTSET"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVKVINTSET"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP12"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVP12"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP23"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVP23"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVKVINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_0"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_1"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_0"
 >
 </StructureElement><StructureElement
  TypeName="Collection2"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence2"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_1"
 >
 </StructureElement><StructureElement
  TypeName="Collection4"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence4"
 >
 </StructureElement><StructureElement
  TypeName="L_NVKRINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_NVKRINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKRINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKRINT"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER_2"
 >
 </StructureElement><StructureElement
  TypeName="Collection5"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence5"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKTINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKTINT"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<Comment></Comment>
-<StructureElement
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure2"
 >
-<StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVKVINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_0"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_1"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure3"
 >
-<StructureElement
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="Q_NVKVINTSET"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NVKVINTSET"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP12"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVP12"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP23"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="A_NVP23"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVKVINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_0"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_1"
 >
 </StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
 </StructureElement><StructureElement
  TypeName="Collection3"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence3"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure4"
 >
-<StructureElement
- TypeName="MessageTypes.Speed"
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="V_NVKVINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_0"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKVINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKVINT_1"
 >
 </StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="SubStructure5"
 >
-<StructureElement
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="L_NVKRINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_NVKRINT"
 >
 </StructureElement><StructureElement
  TypeName="M_NVKRINT"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="M_NVKRINT"
 >
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection><Collection
+<ReqRef
+ Id="da594ef9-d8e9-4553-af3e-77f9102ec171"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure2"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection2"
 >
-</Collection><Collection
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure4"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection3"
 >
-</Collection><Collection
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure3"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection4"
 >
-</Collection><Collection
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection><Collection
  TypeName="SubStructure5"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection5"
 >
-</Collection></Collections>
+<ReqRef
+ Id="86613569-b418-4761-a265-6f41ee455350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

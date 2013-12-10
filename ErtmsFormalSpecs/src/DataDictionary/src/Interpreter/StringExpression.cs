@@ -35,8 +35,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public StringExpression(ModelElement root, string value)
-            : base(root)
+        public StringExpression(ModelElement root, ModelElement log, string value)
+            : base(root, log)
         {
             Image = value;
         }
@@ -53,6 +53,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Value
                 Value = new Values.StringValue(EFSSystem.StringType, Image);
             }
 

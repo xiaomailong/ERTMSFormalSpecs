@@ -32,8 +32,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().DeskOpen &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -96,8 +95,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Driver_ID&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -167,8 +165,7 @@ There is NO initial Driver ID value displayed"
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -255,8 +252,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -284,8 +280,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Name="Sub-step2"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.Level &lt;- Level.L1</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -301,9 +296,7 @@ The driver is allowed to modify/validate the train data. Those data includes the
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.Data.TrainLength &lt;- 640.0</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -371,8 +364,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -405,8 +397,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode .InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -463,8 +454,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -541,8 +531,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step2"
 >
 <Actions>
-<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action>
-</Actions>
+<Action>JRU.jru1.ReportModeChange.Request &lt;- Request.Disabled</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
@@ -587,9 +576,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- %Level</Action>
-<Action>Kernel.Mode &lt;- %Mode</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- %Level</Action><Action>Kernel.Mode &lt;- %Mode</Action></Actions>
 </SubStep></SubSteps>
 </Translation><Translation
  Implemented="TRUE"
@@ -604,16 +591,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.RBCContactInformation.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.RBCContactInformation.RBCIdOrPhoneNumber.Id &lt;- &apos;%RBC_ID&apos;</Action>
-<Action>EURORADIO.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;%RBCPhone&apos;</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action>
-<Action>DMI.DMI1.IsMaster &lt;- True</Action>
-<Action>Kernel.TrainPosition.TrainPosition.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.TrainPosition.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;TR007&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Valid</Action><Action>DMI.DMI1.IsMaster &lt;- True</Action><Action>Kernel.TrainPosition.TrainPosition.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 <Comment></Comment>
 </Translation><Translation
@@ -630,8 +608,7 @@ ERTMS Level 1 and SB or PT mode are displayed on the DMI"
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainData.Initialize()</Action>
-</Actions>
+<Action>Kernel.TrainData.Initialize()</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
@@ -652,8 +629,7 @@ Packet 12: Level 1 Movement Authority"
  Name="Sub-step1"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_0</Action>
-</Actions>
+<Action>BTM.Message &lt;- %Step_Messages_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -663,8 +639,7 @@ Packet 12: Level 1 Movement Authority"
  Name="Sub-step2"
 >
 <Actions>
-<Action>BTM.Message &lt;- %Step_Messages_1</Action>
-</Actions>
+<Action>BTM.Message &lt;- %Step_Messages_1</Action></Actions>
 </SubStep></SubSteps>
 </Translation></Translations>
 </Folder><Folder
@@ -713,8 +688,7 @@ The on-board equipment changes to SB mode."
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.PowerOn &lt;- Boolean.True</Action>
-</Actions>
+<Action>Kernel.PowerOn &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

@@ -337,6 +337,24 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Derefs enumerate values
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        private Values.IValue derefEnum(Values.IValue val)
+        {
+            Values.IValue retVal = val;
+
+            Constants.EnumValue enumValue = retVal as Constants.EnumValue;
+            if (enumValue != null)
+            {
+                retVal = enumValue.Value;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>
@@ -348,17 +366,8 @@ namespace DataDictionary.Types
         {
             Values.IValue retVal = null;
 
-            Constants.EnumValue enumValue = left as Constants.EnumValue;
-            if (enumValue != null)
-            {
-                left = enumValue.Value;
-            }
-
-            enumValue = right as Constants.EnumValue;
-            if (enumValue != null)
-            {
-                right = enumValue.Value;
-            }
+            left = derefEnum(left);
+            right = derefEnum(right);
 
             Values.IntValue int1 = left as Values.IntValue;
             Values.IntValue int2 = right as Values.IntValue;
@@ -384,6 +393,9 @@ namespace DataDictionary.Types
         public override bool CompareForEquality(Values.IValue left, Values.IValue right)
         {
             bool retVal = false;
+
+            left = derefEnum(left);
+            right = derefEnum(right);
 
             Values.IntValue int1 = left as Values.IntValue;
             Values.IntValue int2 = right as Values.IntValue;
@@ -414,6 +426,9 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
+            left = derefEnum(left);
+            right = derefEnum(right);
+
             Values.IntValue int1 = left as Values.IntValue;
             Values.IntValue int2 = right as Values.IntValue;
 
@@ -432,6 +447,9 @@ namespace DataDictionary.Types
         public override bool Greater(Values.IValue left, Values.IValue right)  // left > right
         {
             bool retVal = false;
+
+            left = derefEnum(left);
+            right = derefEnum(right);
 
             Values.IntValue int1 = left as Values.IntValue;
             Values.IntValue int2 = right as Values.IntValue;
@@ -589,15 +607,13 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{" + Name + " : RANGE FROM " + MinValue + " TO " + MaxValue + "}", indentLevel);
-
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : RANGE FROM " + MinValue + " TO " + MaxValue + "}", indentLevel);
             foreach (Constants.EnumValue enumValue in SpecialValues)
             {
-                retVal += "\\par" + TextualExplainUtilities.Pad("{" + enumValue.Name + " : " + enumValue.getValue() + "}", indentLevel + 2);
+                retVal += enumValue.getExplain(indentLevel + 2);
             }
-
 
             return retVal;
         }
@@ -650,6 +666,5 @@ namespace DataDictionary.Types
 
             return retVal;
         }
-
     }
 }

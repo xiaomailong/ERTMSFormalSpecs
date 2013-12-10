@@ -41,8 +41,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public NumberExpression(ModelElement root, string value, Types.Type type)
-            : base(root)
+        public NumberExpression(ModelElement root, ModelElement log, string value, Types.Type type)
+            : base(root, log)
         {
             Image = value;
             Type = type;
@@ -60,7 +60,10 @@ namespace DataDictionary.Interpreter
 
             if (retVal)
             {
+                // Value
                 Value = Type.getValue(Image);
+                StaticUsage.AddUsage(Type, Root, Usage.ModeEnum.Type);
+
                 if (Value == null)
                 {
                     AddError("Cannot evaluate " + ToString() + " as a number");

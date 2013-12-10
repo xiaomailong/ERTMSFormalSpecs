@@ -1,0 +1,34 @@
+<NameSpace
+ Name="GENERAL_MESSAGE"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+>
+<ReqRef
+ Id="89ec2e04-6815-41ca-8877-a3ff8d0b3b3a"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="8ba554ab-a23c-4af3-9bb9-f5e8aca2f2a1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="5f971e6a-5934-4114-8fda-716cd45d86d8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>This message contains the common header only.</Comment>
+<StructureElement
+ TypeName="HEADER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HEADER"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

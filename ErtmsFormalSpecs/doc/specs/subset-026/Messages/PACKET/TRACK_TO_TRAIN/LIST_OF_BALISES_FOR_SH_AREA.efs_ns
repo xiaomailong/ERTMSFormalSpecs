@@ -5,78 +5,121 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Used to list balise group(s) which the train can pass over in SH mode</Comment>
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="7cd019db-a6fa-4bee-8ca3-7956499ca123"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Used to list balise group(s) which the train can pass over in SH mode</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="49"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
- TypeName="BaseTypes.Number"
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="N_ITER"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="N_ITER"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Sequence1"
 >
-</StructureElement></Structure><Structure
- NeedsRequirement="FALSE"
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
  Name="SubStructure1"
 >
-<StructureElement
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
- MaxSize="0"
  Default="[]"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Collection1"
 >
-</Collection></Collections>
+<ReqRef
+ Id="e915fc9d-2b27-4f90-b3bb-ca784a55e1ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
 </NameSpace>

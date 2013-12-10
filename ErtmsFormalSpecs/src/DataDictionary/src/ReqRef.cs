@@ -13,7 +13,6 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-
 namespace DataDictionary
 {
     public class ReqRef : Generated.ReqRef, ICommentable
@@ -23,8 +22,19 @@ namespace DataDictionary
         /// </summary>
         public override string Name
         {
-            get { return getId(); }
-            set { setId(value); }
+            get
+            {
+                string retVal = "<Cannot find paragraph>";
+
+                if (Paragraph != null)
+                {
+                    Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(Paragraph);
+                    retVal = specification.Name + " § " + Paragraph.getId();
+                }
+
+                return retVal;
+            }
+            set { }
         }
 
         /// <summary>
@@ -42,23 +52,6 @@ namespace DataDictionary
                 return retVal;
             }
             set { setComment(value); }
-        }
-
-        /// <summary>
-        /// The specification document
-        /// </summary>
-        public Specification.Specification Specifications
-        {
-            get
-            {
-                Specification.Specification retVal = null;
-                if (Dictionary != null)
-                {
-                    retVal = Dictionary.Specifications;
-                }
-
-                return retVal;
-            }
         }
 
         /// <summary>
@@ -102,12 +95,40 @@ namespace DataDictionary
             {
                 Specification.Paragraph retVal = null;
 
-                if (Specifications != null)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
-                    retVal = Specifications.FindParagraph(getId());
+                    foreach (Specification.Specification specification in dictionary.Specifications)
+                    {
+                        if (string.IsNullOrEmpty(getSpecId()) || getSpecId() == specification.Guid)
+                        {
+                            retVal = specification.FindParagraphByGuid(getId());
+
+                            if (retVal == null)
+                            {
+                                retVal = specification.FindParagraphByNumber(getId());
+                            }
+
+                            if (retVal != null)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    if (retVal != null)
+                    {
+                        break;
+                    }
                 }
 
                 return retVal;
+            }
+            set
+            {
+                // Sets the paragraph and specification guid
+                Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(value);
+                setId(value.Guid);
+                setSpecId(specification.Guid);
             }
         }
 

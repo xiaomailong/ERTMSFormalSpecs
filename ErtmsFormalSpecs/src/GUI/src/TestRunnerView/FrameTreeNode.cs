@@ -54,7 +54,13 @@ namespace GUI.TestRunnerView
         public FrameTreeNode(DataDictionary.Tests.Frame item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Tests.SubSequence subSequence in item.SubSequences)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.SubSequence subSequence in Item.SubSequences)
             {
                 Nodes.Add(new SubSequenceTreeNode(subSequence));
             }
@@ -98,8 +104,8 @@ namespace GUI.TestRunnerView
         {
             ApplyRulesOperation applyRulesOperation = new ApplyRulesOperation(Item);
             ProgressDialog progress = new ProgressDialog("Applying translation rules", applyRulesOperation);
-            progress.ShowDialog(MainWindow);
-            MainWindow.RefreshModel();
+            progress.ShowDialog(GUIUtils.MDIWindow);
+            GUIUtils.MDIWindow.RefreshModel();
         }
 
         #region Apply rules
@@ -187,11 +193,13 @@ namespace GUI.TestRunnerView
             {
                 DateTime start = DateTime.Now;
 
+                SynchronizerList.SuspendSynchronization();
                 if (Window != null)
                 {
                     Window.setFrame(Frame);
                     Failed = Frame.ExecuteAllTests();
                 }
+                SynchronizerList.ResumeSynchronization();
 
                 Span = DateTime.Now.Subtract(start);
             }
@@ -211,9 +219,8 @@ namespace GUI.TestRunnerView
             ProgressDialog dialog = new ProgressDialog("Executing test sequences", executeTestsOperation);
             dialog.ShowDialog();
 
-            MainWindow.RefreshModel();
             string runtimeErrors = "";
-            if (Utils.ModelElement.ErrorCount > 0)
+            if (Utils.ModelElement.Errors.Values.Count > 0)
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }

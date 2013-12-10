@@ -36,14 +36,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// The enclosing MDI window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return Enclosing.Window.MDIWindow; }
-        }
-
-        /// <summary>
         /// The corresponding runner
         /// </summary>
         protected DataDictionary.Tests.Runner.Runner Runner

@@ -30,8 +30,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="condition">the condition to apply to list elements</param>
         /// <param name="iteratorExpression">the expression to be evaluated on each element of the list</param>
         /// <param name="enclosing">the root element for which this expression should be parsed</param>
-        public ExpressionBasedListExpression(ModelElement root, Expression listExpression, Expression condition, Expression iteratorExpression)
-            : base(root, listExpression, condition)
+        public ExpressionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression iteratorExpression)
+            : base(root, log, listExpression, condition)
         {
             IteratorExpression = iteratorExpression;
             IteratorExpression.Enclosing = this;
@@ -49,7 +49,9 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (retVal)
             {
+                // Iterator expression
                 IteratorExpression.SemanticAnalysis(instance, Filter.AllMatches);
+                StaticUsage.AddUsages(IteratorExpression.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Functions;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
@@ -34,12 +35,14 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            public string Expression
+            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
+            public DataDictionary.Functions.Case Expression
             {
-                get { return Item.getExpression(); }
+                get { return Item; }
                 set
                 {
-                    Item.ExpressionText = value;
+                    Item = value;
                     RefreshNode();
                 }
             }
@@ -55,15 +58,26 @@ namespace GUI.DataDictionaryView
         public CaseTreeNode(Case aCase)
             : base(aCase)
         {
-            PreConditions = new PreConditionsTreeNode(aCase);
+        }
+
+        /// <summary>
+        /// Builds the sub nodes of this node
+        /// </summary>
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            PreConditions = new PreConditionsTreeNode(Item);
             Nodes.Add(PreConditions);
         }
 
         /// <summary>
-        /// Constructor
+        /// Protected contstructor for Precondition folder
         /// </summary>
-        /// <param name="item"></param>
-        public CaseTreeNode(Case aCase, string name, bool isFolder)
+        /// <param name="aCase"></param>
+        /// <param name="name"></param>
+        /// <param name="isFolder"></param>
+        protected CaseTreeNode(Case aCase, string name, bool isFolder)
             : base(aCase, name, isFolder)
         {
         }

@@ -1,4 +1,9 @@
 <NameSpace
+ X="150"
+ Y="230"
+ Width="100"
+ Height="50"
+ Hidden="TRUE"
  Name="LevelTransition"
 >
 <NameSpaces>
@@ -9,29 +14,18 @@
  Name="LevelTransition"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.4.2.9.1"
+</ReqRef><ReqRef
+ Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.10.1.2"
+</ReqRef><ReqRef
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<StructureElement
- TypeName="Default.Level"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="TRLevel"
->
-<ReqRef
- Id="7.5.1.67"
->
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -39,21 +33,42 @@
  Name="AcknLength"
 >
 <ReqRef
- Id="7.5.1.39"
+ Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Default.LevelData"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="TRLevel"
+>
+<ReqRef
+ Id="a59e0f85-7d70-426a-a85c-75592258286f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="957132d4-ee44-447a-8bae-75d858cd1963"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="LevelTransitionOrder"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.4.2.9.1"
+</ReqRef><ReqRef
+ Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><ReqRef
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -62,10 +77,10 @@
  Name="Distance"
 >
 <ReqRef
- Id="7.5.1.9"
+ Id="48cd2e35-67c2-46a5-9f39-4d543c9361d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="LTs"
  Default=""
  Mode="Internal"
@@ -73,9 +88,17 @@
  Name="LevelandLength"
 >
 <ReqRef
- Id="7.5.1.39"
+ Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IsLTO"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -87,10 +110,10 @@
  Name="LTs"
 >
 <ReqRef
- Id="7.4.2.9.1"
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.Level"
@@ -98,10 +121,10 @@
  Name="ERTMS_to_EFS_Level"
 >
 <ReqRef
- Id="5.10.1.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.M_LEVELTR"
  Name="LevelT"
@@ -112,140 +135,96 @@
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>LevelT== Messages.M_LEVELTR.Level_0</PreCondition>
-</PreConditions>
+<PreCondition>LevelT== Messages.M_LEVELTR.Level_0</PreCondition></PreConditions>
 <Expression>Default.Level.L0</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_1</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_1</PreCondition></PreConditions>
 <Expression> Default.Level.L1</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_2</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_2</PreCondition></PreConditions>
 <Expression> Default.Level.L2</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_3</PreCondition>
-</PreConditions>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_3</PreCondition></PreConditions>
 <Expression> Default.Level.L3</Expression>
 </Case><Case
  Name="Level STM"
 >
 <PreConditions>
-<PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition>
-</PreConditions>
-<Expression> Default.Level.LNTC</Expression>
+<PreCondition>LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition></PreConditions>
+<Expression>Default.Level.LNTC</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Implemented="TRUE"
+ Name="AvailableForUse"
+>
+<ReqRef
+ Id="d88669ab-b014-4a92-b565-0f1e46f40945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Level NTC remains a non-implemented case because we have no information here which NTC/STM is relevant (and how this is modelled).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.LevelData"
+ Name="Level"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Level 0,1"
+>
+<PreConditions>
+<PreCondition>Level.Value in [Default.Level.L0, Default.Level.L1]</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Level NTC"
+>
+<PreConditions>
+<PreCondition>Level.Value == Default.Level.LNTC</PreCondition><PreCondition>THERE_IS_IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Level 2,3"
+>
+<PreConditions>
+<PreCondition>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition>EURORADIO.OneMobileTerminalIsAvailable()</PreCondition></PreConditions>
+<Expression>Boolean.True</Expression>
+</Case><Case
+ Name="Otherwise"
+>
+<Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
  Implemented="TRUE"
- Name="LTOReceived"
->
-<ReqRef
- Id="5.10.1.1"
->
-</ReqRef>
-<ReqRef
- Id="7.4.2.9.1"
->
-</ReqRef>
-<ReqRef
- Id="5.10.1.2"
->
-<Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="5.10.2.2"
->
-</ReqRef>
-<ReqRef
- Id="5.10.2.1"
->
-</ReqRef>
-<Parameters>
-<Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
- Name="Packet"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="NewLevelTransition"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="NewLevelTransition"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
-{
-  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
-  LevelandLength =&gt; [ LevelTransition { Length =&gt;Packet.L_ACKLEVELTR, Level =&gt; Packet.M_LEVELTR } ]
-}</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="NextLevelTransition"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="NextLevelTransition"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action>APPLY
-    AddNewLTO
-    (
-        L_ACKLEVELTR =&gt; X.L_ACKLEVELTR,
-        M_LEVELTR =&gt; X.M_LEVELTR,
-        Q_SCALE =&gt; Packet.Q_SCALE
-    )
-ON
-    Packet.Sequence1</Action>
-</Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
  Name="AddNewLTO"
 >
 <ReqRef
- Id="7.4.2.9.1"
+ Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.39"
+</ReqRef><ReqRef
+ Id="a59e0f85-7d70-426a-a85c-75592258286f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.67"
+</ReqRef><ReqRef
+ Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.10.1.2"
+</ReqRef><ReqRef
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.MessageTypes.Length"
  Name="L_ACKLEVELTR"
@@ -258,6 +237,10 @@ ON
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
 >
+</Parameter><Parameter
+ Type="Messages.NID_NTC"
+ Name="NID_NTC"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -268,47 +251,377 @@ ON
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="NewLevelTransition"
+ Name="NewLevelTransitionToNTC"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition>ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT
 LevelTransition
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel=&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) 
+    TRLevel =&gt; Default.LevelData {
+       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+       NTC =&gt; Default.NID_NTC(NID_NTC)
+    }
 }
-IN  LevelTransitionOrder.LevelandLength</Action>
-</Actions>
+IN  LevelTransitionOrder.LevelandLength</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="NewLevelTransition"
+>
+<PreConditions>
+<PreCondition>ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ) != Default.Level.LNTC</PreCondition></PreConditions>
+<Actions>
+<Action>INSERT
+LevelTransition
+{
+    AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
+    TRLevel =&gt; Default.LevelData {
+       Value =&gt; ERTMS_to_EFS_Level ( LevelT =&gt; M_LEVELTR ),
+       NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+    }
+}
+IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
- Name="LevelTransitionAnnouncement"
+ Name="LTOReceived"
 >
 <ReqRef
- Id="5.10.1.3"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+</ReqRef><ReqRef
+ Id="8015eb3f-9570-4532-95e5-d755311dfa7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="b14e5210-48d3-4eed-89e3-4d03324dd8f6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming transition is received. It will take care about the first (highest priority) LTO and forward the others to AddNewLTO.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LevelTransitionAnnouncement"
+ Name="ReceiveData_Part1"
+>
+<ReqRef
+ Id="154fb773-8860-4dc7-85c1-7aff2b6bd741"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="375f3135-e004-4d28-9eff-dc2eb0a8bc7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="NewLevelTransition"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
+{
+  IsLTO=&gt; True,
+  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
+  LevelandLength =&gt; 
+  [ 
+      LevelTransition { 
+          AcknLength =&gt; MessageTypes.QScaleLength( length=&gt;Packet.L_ACKLEVELTR,  scale=&gt;Packet.Q_SCALE ),
+          TRLevel =&gt; Default.LevelData {
+             Value =&gt; ERTMS_to_EFS_Level ( Packet.M_LEVELTR ) ,
+             NTC =&gt; Packet.NID_NTC
+         }
+      }
+  ]
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ReceiveData_Part2"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="LevelTransitionAnnouncement"
+ Name="NextLevelTransition"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>APPLY 
+AddNewLTO 
+( 
+   L_ACKLEVELTR =&gt; X.L_ACKLEVELTR,
+   M_LEVELTR =&gt; X.M_LEVELTR,
+   NID_NTC =&gt; Packet.NID_NTC,
+   Q_SCALE=&gt; Packet.Q_SCALE
+)
+ON 
+Packet.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ProcessLTO"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ProcessLTO"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement()</Action>
-</Actions>
+<Action>ProcessLTOGeneric()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="CLTOReceived"
+>
+<ReqRef
+ Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Message"
+ Name="Packet"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="ReceiveData_Part1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="NewConditionalLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>LevelTransitionOrder &lt;- LevelTransitionOrder
+{
+   IsLTO=&gt; False,
+   Distance =&gt; EMPTY,
+   LevelandLength =&gt; [ 
+      LevelTransition { 
+         AcknLength =&gt;EMPTY, 
+         TRLevel =&gt; Default.LevelData {
+             Value =&gt; ERTMS_to_EFS_Level( LevelT =&gt;Packet.M_LEVELTR ),
+             NTC =&gt; Packet.NID_NTC
+         }
+      }
+   ]
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ReceiveData_Part2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="NextConditionalLevelTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>APPLY 
+AddNewLTO 
+(  
+   M_LEVELTR =&gt; X.M_LEVELTR,
+   NID_NTC =&gt; Packet.NID_NTC,
+   Q_SCALE =&gt; EMPTY,
+   L_ACKLEVELTR =&gt; EMPTY 
+)
+ON 
+Packet.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="CurrentLevelNotInList"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="CurrentLevelNotInList"
+>
+<ReqRef
+ Id="d8cf2f6a-d8be-41d9-948a-ae97df851041"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="e959ba39-6b20-4678-ab9e-59be9ce585a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="dcd5e982-e0cd-4f3e-be0c-2d1ab066cfa7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>If this precondition is met, dont carry out a level transition #morido, 13/10/15</Comment>
+<PreConditions>
+<PreCondition>NOT (THERE_IS_IN LevelTransitionOrder.LevelandLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition></PreConditions>
+<Actions>
+<Action>ProcessLTOGeneric()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="ProcessLTOSpecific"
+>
+<ReqRef
+ Id="76f0efaa-cd9d-4928-933c-029497eac8ea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Wrapper to call the individual procedures in order to execute specific level transitions #morido, 13/10/15</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="L0ToL1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="L0ToL1"
+>
+<ReqRef
+ Id="a568a86a-ecc1-4a37-9e71-fe905d72be9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>The handling of the other preconditions as required by 5.10.3.4.1 is done by Kernel.ModeTransitions.Condition39, #morido, 13/10/17</Comment>
+<PreConditions>
+<PreCondition>Kernel.Level.Value == Default.Level.L0</PreCondition><PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="ProcessLTOGeneric"
+>
+<ReqRef
+ Id="5000ea5a-8c25-4e82-b64e-1651fe1cea12"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>This does all general stuff required for a level transition independent from the source and target level It is therefore a preliminary step for ProcessLTOSpecific. #morido, 13/10/15</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ReduceLTOtoOne"
+>
+<ReqRef
+ Id="a7b92d29-b0ce-4de8-8642-497eddf906d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="19d133b1-bf49-4450-93e0-905a1a42b1e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+<Comment></Comment>
+</ReqRef><Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ReduceLTOtoOne"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>LTOtoProcess &lt;- FIRST_IN LevelTransitionOrder.LevelandLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="FallbackIfNothingAvailable"
+>
+<ReqRef
+ Id="eba5be0d-c9b6-41cf-8df3-0cf45aa32159"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+<Comment></Comment>
+</ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="FallbackIfNothingAvailable"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.Unknown</PreCondition><PreCondition>LTOtoProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+<Actions>
+<Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="InformDriver"
+>
+<ReqRef
+ Id="91f853db-5446-42e9-bd20-c7df2c617fdd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="54debebc-e391-4fd2-a3d7-8e0abf2a1c27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="a0fffb6f-52dd-4294-b705-ac27dc95a180"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="InformDriver"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel.Value)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="ExecuteActualTransition"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="ExecuteActualTransition"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action>ProcessLTOSpecific()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -321,17 +634,59 @@ IN  LevelTransitionOrder.LevelandLength</Action>
  Name="LevelTransitionOrder"
 >
 <ReqRef
- Id="7.4.2.9.1"
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="6b26f38c-d98d-4eee-a314-ae6b48256d36"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="51ddbc44-360a-4339-9b7c-fc91347a5da2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Level transition order  received from the track side</Comment>
+</Variable><Variable
+ Type="Kernel.LevelTransition.LevelTransition"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="LTOtoProcess"
+>
 <ReqRef
- Id="5.10.1.1"
+ Id="a7b92d29-b0ce-4de8-8642-497eddf906d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.10.2.2.1"
->
-</ReqRef>
-<Comment>Level transition order  received from the track side</Comment>
+</ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="ExecuteLevelTransitionOrder"
+>
+<ReqRef
+ Id="d20e6c3b-b738-4e4a-9046-a9bc93ed6bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="ExecuteLevelTransitionOrder"
+>
+<Comment>NTC-part not functional for now (Kernel.NationalSystemId). Requirement for this is missing. Is it needed? #morido, 13/10/14</Comment>
+<PreConditions>
+<PreCondition>LevelTransition.LevelTransitionOrder.Distance == BTM.DistanceFromLRBG() </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True </PreCondition><PreCondition>Kernel.LevelTransition.LevelTransitionOrder.IsLTO== True</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

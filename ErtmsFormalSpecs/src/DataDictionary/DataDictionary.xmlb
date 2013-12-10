@@ -12,6 +12,12 @@
   </CSHARPCONFIG>
 
   <!-- ------------------------- -->
+  <!-- Model Elements            -->
+  <!-- ------------------------- -->
+  <ELEMENT NAME="BaseModelElement" ABSTRACT="TRUE" BASECLASS="Utils.ModelElement">
+  </ELEMENT>
+
+  <!-- ------------------------- -->
   <!-- Elements that have a name -->
   <!-- ------------------------- -->
   <ELEMENT NAME="Namable" ABSTRACT="TRUE" MAIN="TRUE" BASECLASS="ModelElement">
@@ -58,8 +64,8 @@
       <FIELD NAME="NeedsRequirement" 		TYPE="BOOLEAN" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Implemented" TARGET="Implemented" OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="Verified" TARGET="Verified" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="Implemented"      TARGET="Implemented"      OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="Verified"         TARGET="Verified"         OPTIONAL="TRUE" DEFAULT="FALSE" />
       <ATTR NAME="NeedsRequirement" TARGET="NeedsRequirement" OPTIONAL="TRUE" DEFAULT="TRUE" />
     </ATTRIBUTES>
   </ELEMENT>
@@ -67,9 +73,9 @@
   <!-- --------------- -->
   <!-- Data dictionary -->
   <!-- --------------- -->
-  <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="Dictionary" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
-      <FIELD NAME="Specification"         REFTYPE="Specification" />
+      <FIELD NAME="Specifications"        REFTYPE="Specification" />
       <FIELD NAME="RuleDisablings"        REFTYPE="RuleDisabling" />
       <FIELD NAME="NameSpaces"            REFTYPE="NameSpace" >
         <META NAME="TargetName">Namespaces</META>
@@ -96,7 +102,10 @@
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
-        <ELEMENTREF NAME="Specification" TARGET="Specification" OPTIONAL="TRUE" />
+        <!-- No enclosing element for backward compatibility -->
+        <REPEAT TARGET="Specifications">
+          <ELEMENTREF NAME="Specification"/>
+        </REPEAT>
         <ENCLOSED NAME="RuleDisabling" OPTIONAL="TRUE">
           <REPEAT TARGET="RuleDisablings">
             <ELEMENTREF NAME="RuleDisabling"/>
@@ -181,7 +190,19 @@
       <FIELD NAME="Variables"           REFTYPE="Variable"      MODE="DEFAULT">
       </FIELD>
       <FIELD NAME="Rules"               REFTYPE="Rule"          MODE="DEFAULT"/>
+      <FIELD NAME="Width"               TYPE="INTEGER" />
+      <FIELD NAME="Height"              TYPE="INTEGER" />
+      <FIELD NAME="X"                   TYPE="INTEGER" />
+      <FIELD NAME="Y"                   TYPE="INTEGER" />
+      <FIELD NAME="Hidden"              TYPE="BOOLEAN" />
     </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Y"      TARGET="Y"      OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Width"  TARGET="Width"  OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Height" TARGET="Height" OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Hidden" TARGET="Hidden" OPTIONAL="TRUE" DEFAULT="FALSE" />
+    </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="NameSpaces" OPTIONAL="TRUE">
@@ -246,15 +267,18 @@
   <!-- -------------------------- -->
   <!-- Reference to a requirement -->
   <!-- -------------------------- -->
-  <ELEMENT NAME="ReqRef" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="ReqRef" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <FIELDS>
       <FIELD NAME="Id"       TYPE="PCHAR">
         <META NAME="DoNotTranslate"/>
+        <META NAME="DoNotCompare"/>
       </FIELD>
+      <FIELD NAME="SpecId"   TYPE="PCHAR" />
       <FIELD NAME="Comment"  TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Id" TARGET="Id"/>
+      <ATTR NAME="Id"     TARGET="Id"/>
+      <ATTR NAME="SpecId" TARGET="SpecId" OPTIONAL="TRUE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
@@ -314,6 +338,7 @@
   <!-- ---------- -->
   <ELEMENT NAME="EnumValue" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">types</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Value"      TYPE="PCHAR"/>
     </FIELDS>
@@ -474,6 +499,7 @@
   <!-- ----- -->
   <ELEMENT NAME="Case" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">types</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="PreConditions" REFTYPE="PreCondition" />
       <FIELD NAME="Expression"    TYPE="PCHAR" />
@@ -662,8 +688,9 @@
   <!-- ------------- -->
   <!-- Pre-Condition -->
   <!-- ------------- -->
-  <ELEMENT NAME="PreCondition" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="PreCondition" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Condition" TYPE="PCHAR"/>
     </FIELDS>
@@ -675,8 +702,9 @@
   <!-- ------ -->
   <!-- Action -->
   <!-- ------ -->
-  <ELEMENT NAME="Action" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="Action" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="Package">behaviour</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Expression" TYPE="PCHAR"/>
     </FIELDS>
@@ -897,6 +925,7 @@
   <!-- ----------- -->
   <ELEMENT NAME="Expectation" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">test</META>
+    <META NAME="Ordered"/>
     <FIELDS>
       <FIELD NAME="Value"      TYPE="PCHAR">
         <META NAME="TargetName">Expression</META>
@@ -1173,6 +1202,7 @@
   <ELEMENT NAME="Specification" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
+      <FIELD NAME="Guid"    TYPE="PCHAR" />
       <FIELD NAME="Version" TYPE="PCHAR">
 	<META NAME="DoNotTranslate"/>
       </FIELD>
@@ -1182,6 +1212,7 @@
       <FIELD NAME="ChapterRefs" REFTYPE="ChapterRef" MODE="DEFAULT" />
     </FIELDS>
     <ATTRIBUTES>
+      <ATTR NAME="Guid"    TARGET="Guid"    OPTIONAL="TRUE"/>
       <ATTR NAME="version" TARGET="Version" OPTIONAL="TRUE"/>
     </ATTRIBUTES>
     <FORMULA>
@@ -1209,7 +1240,9 @@
     <META NAME="Package">requirements</META>
     <META NAME="Class">Paragraph</META>
     <FIELDS>
-      <FIELD NAME="Id" TYPE="PCHAR"/>
+      <FIELD NAME="Id" TYPE="PCHAR">
+        <META NAME="Key"/> 
+      </FIELD>
       <FIELD NAME="Paragraphs" REFTYPE="Paragraph" MODE="DEFAULT">
         <META NAME="TargetName">SubParagraphs</META>
       </FIELD>
@@ -1237,7 +1270,9 @@
   <ELEMENT NAME="Paragraph" BASEELEMENT="ReferencesParagraph" BASECLASS="DataDictionary.ReferencesParagraph" MAIN="TRUE">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Id"                   TYPE="PCHAR" />
+      <FIELD NAME="Id"                   TYPE="PCHAR">
+        <META NAME="Key"/> 
+      </FIELD>
       <FIELD NAME="Type"                 ENUMTYPE="Paragraph_type" />
       <FIELD NAME="Scope"                ENUMTYPE="Paragraph_scope" >
         <META NAME="DoNotTranslate" />
@@ -1279,9 +1314,14 @@
       <FIELD NAME="FunctionalBlockName"  TYPE="PCHAR" >
         <META NAME="DoNotTranslate" />
       </FIELD>
+      <FIELD NAME="Guid"                 TYPE="PCHAR">
+        <META NAME="Key"/> 
+        <META NAME="DoNotCompare"/> 
+      </FIELD>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="id"                  TARGET="Id"/>
+      <ATTR NAME="guid"                TARGET="Guid" OPTIONAL="TRUE" DEFAULT=""/>
       <ATTR NAME="type"                TARGET="Type" OPTIONAL="TRUE" DEFAULT="REQUIREMENT" />
       <ATTR NAME="scope"               TARGET="Scope" OPTIONAL="TRUE" DEFAULT="OBU_AND_TRACK" />
       <ATTR NAME="bl"                  TARGET="Bl" OPTIONAL="TRUE" DEFAULT=""/>
@@ -1640,7 +1680,7 @@
   <!-- ------------------ -->
   <!-- Paragraph Revision -->
   <!-- ------------------ -->
-  <ELEMENT NAME="ParagraphRevision" BASECLASS="ModelElement" MAIN="TRUE">
+  <ELEMENT NAME="ParagraphRevision" BASECLASS="ModelElement" BASEELEMENT="BaseModelElement" MAIN="TRUE">
     <META NAME="DoNotTranslate" />
     <FIELDS>
       <FIELD NAME="Text" TYPE="PCHAR"/>

@@ -20,16 +20,16 @@
 </Range></Ranges>
 <Enumerations>
 <Enum
- Default="BrakePosition.PassengerTrainInP"
+ Default="PassengerTrainInP"
  Implemented="TRUE"
  Verified="TRUE"
  Name="BrakePositions"
 >
 <ReqRef
- Id="3.13.2.2.4.1"
+ Id="7b4dbe47-d9fb-4825-a5b7-0f140354b378"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Describes the possible values of brake position.</Comment>
+</ReqRef><Comment>Describes the possible values of brake position.</Comment>
 <Values>
 <EnumValue
  Value="0"
@@ -45,20 +45,20 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="SpecialBrake.Regenerative"
+ Default="Regenerative"
  Implemented="TRUE"
  Verified="TRUE"
  Name="SpecialBrakeName"
 >
 <ReqRef
- Id="3.13.2.2.6.1"
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.2"
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Describes the names of all special brakes.</Comment>
+</ReqRef><Comment>Describes the names of all special brakes.</Comment>
 <Values>
 <EnumValue
  Value="0"
@@ -83,11 +83,11 @@
  Name="BrakeInterfaceStatus"
 >
 <ReqRef
- Id="3.13.2.2.6.1"
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the possible state of brake interface status:
+</ReqRef><Comment>Represents the possible state of brake interface status:
 - NoInterface: no interface exists
 - EB: interface exists and status affects the emergency brake model only
 - SB: interface exists and status affects the service brake model only
@@ -118,11 +118,11 @@
  Name="BrakingModel"
 >
 <ReqRef
- Id="3.13.2.2.3.1.2"
+ Id="7c5c2739-3bad-4287-a954-4cc4b88b12aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents the 7 possible speed steps and their corresponding values of a braking model.</Comment>
+</ReqRef><Comment>Represents the 7 possible speed steps and their corresponding values of a braking model.</Comment>
 <StructureElement
  TypeName="BrakingModelValue"
  Default=""
@@ -134,7 +134,7 @@
 <Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BrakingModelValue"
- Default="Kernel.TrainData.BrakingParameters.BrakingModelValue{SpeedStep=&gt;0, Acceleration=&gt;0}"
+ Default="Kernel.TrainData.BrakingParameters.BrakingModelValue{SpeedStep=&gt;0.0, Acceleration=&gt;0.0}"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -188,15 +188,15 @@
  Name="BrakingModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.7"
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the braking models associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Represents the braking models associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <StructureElement
  TypeName="BrakingModel"
  Default=""
@@ -270,16 +270,16 @@
  Name="BNSModel"
 >
 <ReqRef
- Id="3.13.2.2.3.1.6"
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.9"
+</ReqRef><ReqRef
+ Id="cb26208f-53ca-4c71-9e93-04c29f49731b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Represents a set of three braking models associated to A_brake_normal_service.</Comment>
+</ReqRef><Comment>Represents a set of three braking models associated to A_brake_normal_service.</Comment>
 <StructureElement
  TypeName="BrakingModel"
  Default=""
@@ -312,10 +312,10 @@
  Name="SpecialBrake"
 >
 <ReqRef
- Id="3.13.2.2.1.1.d"
+ Id="acb20337-b915-4076-96d4-7217b7e048b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Describes the status of a special brake.</Comment>
+</ReqRef><Comment>Describes the status of a special brake.</Comment>
 <StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -324,18 +324,10 @@
  Name="IsActive"
 >
 <ReqRef
- Id="3.13.2.2.6.2"
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.d"
->
-</ReqRef>
-<Comment>Indicates if this special brake is active.</Comment>
+</ReqRef><Comment>Indicates if this special brake is active.</Comment>
 </StructureElement><StructureElement
  TypeName="BrakeInterfaceStatus"
  Default="BrakeInterfaceStatus.NoInterface"
@@ -345,34 +337,34 @@
  Name="InterfaceStatus"
 >
 <ReqRef
- Id="3.13.2.2.6.1"
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.c"
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.b"
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates the status of the interface of this special brake.</Comment>
+</ReqRef><Comment>Indicates the status of the interface of this special brake.</Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Verified="TRUE"
  Name="T_brake_build_upSet"
 >
 <ReqRef
- Id="3.13.2.2.3.2.8"
+ Id="2cf137b8-bbbf-498f-b496-0d56ec81fe32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the T_brake_build_up values associated to each combination of regenerative brake, eddy current brake, magnetic shoe brake and electro-pneumatic brake.</Comment>
+</ReqRef><Comment>Represents the T_brake_build_up values associated to each combination of regenerative brake, eddy current brake, magnetic shoe brake and electro-pneumatic brake.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Time"
  Default=""
@@ -499,18 +491,18 @@
  Name="CorrectFactorValue"
 >
 <ReqRef
- Id="3.13.2.2.9.1.3"
+ Id="6bd12137-ee9e-4411-b28d-4794e694b24f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.5"
+</ReqRef><ReqRef
+ Id="3575fb11-2edb-4bd3-b002-3889272e0639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the 7 possible correction factor values for Kdry_rst(V) and Kwet_rst(V).</Comment>
+</ReqRef><Comment>Represents the 7 possible correction factor values for Kdry_rst(V) and Kwet_rst(V).</Comment>
 <StructureElement
  TypeName="CorrectionFactor"
  Default=""
@@ -575,14 +567,14 @@
  Name="Kdry_rstValues"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the values of Kdry_rst(V) for each confidence level on merergency brake safe deceleration.</Comment>
+</ReqRef><Comment>Represents the values of Kdry_rst(V) for each confidence level on merergency brake safe deceleration.</Comment>
 <StructureElement
  TypeName="CorrectFactorValue"
  Default=""
@@ -670,18 +662,18 @@
  Name="EBModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.6"
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.2"
+</ReqRef><ReqRef
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the set of Emergency Brake models together with their associated correction factors Kdry_rst and Kwet_rst.</Comment>
+</ReqRef><Comment>Represents the set of Emergency Brake models together with their associated correction factors Kdry_rst and Kwet_rst.</Comment>
 <StructureElement
  TypeName="BrakingModelSet"
  Default=""
@@ -691,15 +683,15 @@
  Name="ModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.7"
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment>This is the specific model set for Emergency Brake</Comment>
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Kdry_rstValuesSet"
  Default=""
@@ -708,18 +700,18 @@
  Name="Kdry_rstValuesSet"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Kwet_rstValuesSet"
  Default=""
  Mode="Constant"
@@ -727,31 +719,31 @@
  Name="Kwet_rstValuesSet"
 >
 <ReqRef
- Id="3.13.2.2.9.1.5"
+ Id="3575fb11-2edb-4bd3-b002-3889272e0639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.2"
+</ReqRef><ReqRef
+ Id="237cff95-71a3-436f-ae8c-0ad9e4b65651"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="SBModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.6"
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the set of Service Brake models.</Comment>
+</ReqRef><Comment>Represents the set of Service Brake models.</Comment>
 <StructureElement
  TypeName="BrakingModelSet"
  Default=""
@@ -761,27 +753,27 @@
  Name="ModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.7"
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment>This is the specific model set for service brake</Comment>
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Implemented="TRUE"
  Name="Kwet_rstValuesSet"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the Kwet_rst values associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Represents the Kwet_rst values associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <StructureElement
  TypeName="CorrectFactorValue"
  Default=""
@@ -854,14 +846,14 @@
  Name="Kdry_rstValuesSet"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the Kdry_rst values associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Represents the Kdry_rst values associated to each combination of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <StructureElement
  TypeName="Kdry_rstValues"
  Default=""
@@ -958,18 +950,18 @@
  Name="BNSModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.6"
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.9"
+</ReqRef><ReqRef
+ Id="cb26208f-53ca-4c71-9e93-04c29f49731b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.b"
+</ReqRef><ReqRef
+ Id="a6f45153-8ad8-444c-8853-f6edb9e480d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Represents the two sets of three models of A_brake_normal_service with two pivot values used to select the appropriate A_brake_normal_service model.</Comment>
+</ReqRef><Comment>Represents the two sets of three models of A_brake_normal_service with two pivot values used to select the appropriate A_brake_normal_service model.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Acceleration"
  Default="Default.BaseTypes.Acceleration.NA"
@@ -978,11 +970,11 @@
  Name="A_SB01"
 >
 <ReqRef
- Id="3.13.2.2.3.1.11"
+ Id="27688fd9-705a-4ceb-83cd-4b4a90d2b2b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>A pivot value used for determination of the particular A_brake_normal_service model from a particular model set.</Comment>
+</ReqRef><Comment>A pivot value used for determination of the particular A_brake_normal_service model from a particular model set.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
  Default="Default.BaseTypes.Acceleration.NA"
@@ -991,10 +983,10 @@
  Name="A_SB12"
 >
 <ReqRef
- Id="3.13.2.2.3.1.11"
+ Id="27688fd9-705a-4ceb-83cd-4b4a90d2b2b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>A pivot value used for determination of the particular A_brake_normal_service model from a particular model set.</Comment>
+</ReqRef><Comment>A pivot value used for determination of the particular A_brake_normal_service model from a particular model set.</Comment>
 </StructureElement><StructureElement
  TypeName="BNSModel"
  Default=""
@@ -1003,10 +995,10 @@
  Name="TrainInP"
 >
 <ReqRef
- Id="3.13.2.2.3.1.9.b"
+ Id="5f312e36-8e31-4b4e-8577-873cef647e4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement><StructureElement
  TypeName="BNSModel"
  Default=""
@@ -1015,10 +1007,10 @@
  Name="TrainInG"
 >
 <ReqRef
- Id="3.13.2.2.3.1.9.a"
+ Id="86057b84-b0ad-4024-91ff-7b18484a6c95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -1027,16 +1019,16 @@
  Name="BrakingModelFunction"
 >
 <ReqRef
- Id="3.13.2.2.3.1.1"
+ Id="fe4eb49d-9fa5-43a2-94ce-72ecf5388e4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.4"
+</ReqRef><ReqRef
+ Id="8bd8a194-41fe-44ef-badc-f16bb96769ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Gives the deceleration due to braking according to a given breaking model depending on the current speed value.</Comment>
+</ReqRef><Comment>Gives the deceleration due to braking according to a given breaking model depending on the current speed value.</Comment>
 <Parameters>
 <Parameter
  Type="BrakingModel"
@@ -1052,76 +1044,62 @@
  Name="AD_0"
 >
 <PreConditions>
-<PreCondition>Speed &lt; BrakingModel.Val1.SpeedStep</PreCondition>
-<PreCondition>BrakingModel.Val0.SpeedStep &lt;= Speed</PreCondition>
-</PreConditions>
+<PreCondition>Speed &lt; BrakingModel.Val1.SpeedStep</PreCondition><PreCondition>BrakingModel.Val0.SpeedStep &lt;= Speed</PreCondition></PreConditions>
 <Expression>BrakingModel.Val0.Acceleration</Expression>
 </Case><Case
  Name="AD_1"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val1.SpeedStep &lt;= Speed</PreCondition>
-<PreCondition>Speed &lt; BrakingModel.Val2.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val1.SpeedStep &lt;= Speed</PreCondition><PreCondition>Speed &lt; BrakingModel.Val2.SpeedStep</PreCondition></PreConditions>
 <Expression>BrakingModel.Val1.Acceleration</Expression>
 </Case><Case
  Name="AD_2"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val2.SpeedStep &lt;= Speed</PreCondition>
-<PreCondition>Speed &lt; BrakingModel.Val3.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val2.SpeedStep &lt;= Speed</PreCondition><PreCondition>Speed &lt; BrakingModel.Val3.SpeedStep</PreCondition></PreConditions>
 <Expression>BrakingModel.Val2.Acceleration</Expression>
 </Case><Case
  Name="AD_3"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val3.SpeedStep &lt;= Speed</PreCondition>
-<PreCondition>Speed &lt; BrakingModel.Val4.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val3.SpeedStep &lt;= Speed</PreCondition><PreCondition>Speed &lt; BrakingModel.Val4.SpeedStep</PreCondition></PreConditions>
 <Expression>BrakingModel.Val3.Acceleration</Expression>
 </Case><Case
  Name="AD_4"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val4.SpeedStep &lt;= Speed</PreCondition>
-<PreCondition>Speed &lt; BrakingModel.Val5.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val4.SpeedStep &lt;= Speed</PreCondition><PreCondition>Speed &lt; BrakingModel.Val5.SpeedStep</PreCondition></PreConditions>
 <Expression>BrakingModel.Val4.Acceleration</Expression>
 </Case><Case
  Name="AD_5"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val5.SpeedStep &lt;= Speed</PreCondition>
-<PreCondition>Speed &lt; BrakingModel.Val6.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val5.SpeedStep &lt;= Speed</PreCondition><PreCondition>Speed &lt; BrakingModel.Val6.SpeedStep</PreCondition></PreConditions>
 <Expression>BrakingModel.Val5.Acceleration</Expression>
 </Case><Case
  Name="AD_6"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val6.SpeedStep &lt;= Speed</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val6.SpeedStep &lt;= Speed</PreCondition></PreConditions>
 <Expression>BrakingModel.Val6.Acceleration</Expression>
 </Case></Cases>
 </Function><Function
  Type="BrakingModel"
- Implemented="TRUE"
  Name="SelectBNSBrakingModel_TrackCondition"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.f"
+</ReqRef><ReqRef
+ Id="c9386a51-4e30-4b1e-915c-aad5f1f5488f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.a"
+</ReqRef><ReqRef
+ Id="bf1396d0-a166-4f1d-80d5-c4b57508c553"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate brake normal service model, according to the values of A_SB12 and A_SB01 and to the value of A_brk_service for zero speed and depending on a particular combination of special brakes depending on the track condition received as a parameter..</Comment>
+</ReqRef><Comment>Selects the appropriate brake normal service model, according to the values of A_SB12 and A_SB01 and to the value of A_brk_service for zero speed and depending on a particular combination of special brakes depending on the track condition received as a parameter..</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.TrackConditions.TrackConditionInformation"
@@ -1133,59 +1111,51 @@
  Name="BNS_0"
 >
 <PreConditions>
-<PreCondition>A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB01</PreCondition>
-</PreConditions>
+<PreCondition>A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB01</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_0</Expression>
 </Case><Case
  Name="BNS_1"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt; A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition )</PreCondition>
-<PreCondition>A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB12</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt; A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition )</PreCondition><PreCondition>A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB12</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_1</Expression>
 </Case><Case
  Name="BNS_2"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition )</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; A_brk_service_TrackCondition ( aTrackCondition =&gt; aTrackCondition )</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_2</Expression>
 </Case></Cases>
 </Function><Function
  Type="BNSModel"
- Implemented="TRUE"
- Verified="TRUE"
  Name="SelectBNSModelSet"
 >
 <ReqRef
- Id="3.13.2.2.3.1.9"
+ Id="cb26208f-53ca-4c71-9e93-04c29f49731b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.4"
+</ReqRef><ReqRef
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.d"
+</ReqRef><ReqRef
+ Id="ef994480-219f-4e7c-86a9-8d3a3a7fd059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate brake normal service model set, according to the value of BrakePosition.</Comment>
+</ReqRef><Comment>Selects the appropriate brake normal service model set, according to the value of BrakePosition.</Comment>
 <Cases>
 <Case
  Name="TrainInP"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.BrakePosition in [BrakePositions.FreightTrainInP, BrakePositions.PassengerTrainInP]</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.BrakePosition in [BrakePositions.FreightTrainInP, BrakePositions.PassengerTrainInP]</PreCondition></PreConditions>
 <Expression>TrainData.Value.NormalServiceBrakeModels.TrainInP</Expression>
 </Case><Case
  Name="TrainInG"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.BrakePosition== BrakePositions.FreightTrainInG</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.BrakePosition== BrakePositions.FreightTrainInG</PreCondition></PreConditions>
 <Expression>TrainData.Value.NormalServiceBrakeModels.TrainInG</Expression>
 </Case></Cases>
 </Function><Function
@@ -1194,14 +1164,18 @@
  Name="UseBrakeFor_A_brake_service"
 >
 <ReqRef
- Id="Entry 3.13.2.2.6.2.1.3"
+ Id="5e32f8d5-5dfc-415f-8c44-e5e0759b049e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.2"
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_service_emergency(V).</Comment>
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_service_emergency(V).</Comment>
 <Parameters>
 <Parameter
  Type="SpecialBrakeName"
@@ -1213,16 +1187,14 @@
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>TrainData.Value.RegenerativeBrake.IsActive AND
 TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>TrainData.Value.EddyCurrentBrake.IsActive AND
 TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
@@ -1236,14 +1208,14 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
  Name="UseBrakeFor_T_brake_service"
 >
 <ReqRef
- Id="Entry 3.13.2.2.6.2.1.4"
+ Id="236a0129-081a-4aad-8c0e-5993c98b5637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.2"
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_service.</Comment>
+</ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_service.</Comment>
 <Parameters>
 <Parameter
  Type="SpecialBrakeName"
@@ -1255,22 +1227,19 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>TrainData.Value.RegenerativeBrake.IsActive AND TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>TrainData.Value.EddyCurrentBrake.IsActive AND TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="ElectroPneumatic"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition></PreConditions>
 <Expression>TrainData.Value.EpBrake.IsActive AND TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1283,14 +1252,18 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
  Name="UseBrakeFor_A_brake_emergency"
 >
 <ReqRef
- Id="Entry 3.13.2.2.6.2.1.1"
+ Id="da7bd744-b8e1-4c91-9c63-7bd8f44647ae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.2"
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_brake_emergency(V).</Comment>
+</ReqRef><ReqRef
+ Id="107c9d4f-c68d-461d-a4c0-841e5a1a53dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of A_brake_emergency(V).</Comment>
 <Parameters>
 <Parameter
  Type="SpecialBrakeName"
@@ -1302,24 +1275,21 @@ TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, Br
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>TrainData.Value.RegenerativeBrake.IsActive AND
 TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>TrainData.Value.EddyCurrentBrake.IsActive AND
 TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
 <Expression>TrainData.Value.MagneticShoeBrake.IsActive AND
 TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
@@ -1333,14 +1303,14 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="UseBrakeFor_T_brake_emergency"
 >
 <ReqRef
- Id="Entry 3.13.2.2.6.2.1.2"
+ Id="7d2e100f-6ebe-49a4-9039-fbd9b865e6f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.2"
+</ReqRef><ReqRef
+ Id="edd2f820-f51b-4a91-b0f0-5370326b8df6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_emergency.</Comment>
+</ReqRef><Comment>Indicates if the special brake passed as parameter has to be taken into account for computation of T_brake_emergency.</Comment>
 <Parameters>
 <Parameter
  Type="SpecialBrakeName"
@@ -1352,29 +1322,25 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.Regenerative</PreCondition></PreConditions>
 <Expression>TrainData.Value.RegenerativeBrake.IsActive AND TrainData.Value.RegenerativeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.EddyCurrent</PreCondition></PreConditions>
 <Expression>TrainData.Value.EddyCurrentBrake.IsActive AND TrainData.Value.EddyCurrentBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.MagneticShoe</PreCondition></PreConditions>
 <Expression>TrainData.Value.MagneticShoeBrake.IsActive AND TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="ElectroPneumatic"
 >
 <PreConditions>
-<PreCondition>aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition>
-</PreConditions>
+<PreCondition>aSpecialBrake == SpecialBrakeName.ElectroPneumatic</PreCondition></PreConditions>
 <Expression>TrainData.Value.EpBrake.IsActive AND TrainData.Value.EpBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, BrakeInterfaceStatus.Both]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1388,16 +1354,16 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="T_brake_build_upValue"
 >
 <ReqRef
- Id="3.13.2.2.3.2.8"
+ Id="2cf137b8-bbbf-498f-b496-0d56ec81fe32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.2.2"
+</ReqRef><ReqRef
+ Id="43ac0583-bb58-4b32-b3ea-a0891744ee41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment>This function provides the time t3 of the step, in the step function</Comment>
-</ReqRef>
-<Comment>Selects the appropriate value of T_brake_build_up according to the current combination of use of regenerative brake, eddy current brake, magnetic shoe brake and electro-pneumatic brake.</Comment>
+</ReqRef><Comment>Selects the appropriate value of T_brake_build_up according to the current combination of use of regenerative brake, eddy current brake, magnetic shoe brake and electro-pneumatic brake.</Comment>
 <Parameters>
 <Parameter
  Type="T_brake_build_upSet"
@@ -1425,151 +1391,91 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent</Expression>
 </Case><Case
  Name="EddyCurrent_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Ep</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Magnetic</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Magnetic_Ep</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic_Regenerative_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Magnetic_Regenerative_Ep</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Magnetic_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Regenerative"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Regenerative_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.EddyCurrent_Regenerative_Ep</Expression>
 </Case><Case
  Name="Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Ep</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Magnetic</Expression>
 </Case><Case
  Name="Magnetic_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Magnetic_Ep</Expression>
 </Case><Case
  Name="Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Magnetic_Regenerative</Expression>
 </Case><Case
  Name="Magnetic_Regenerative_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Magnetic_Regenerative_Ep</Expression>
 </Case><Case
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == False</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == False</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Regenerative</Expression>
 </Case><Case
  Name="Regenerative_Ep"
 >
 <PreConditions>
-<PreCondition>EpBrakeUsed == True</PreCondition>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>EpBrakeUsed == True</PreCondition><PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Regenerative_Ep</Expression>
 </Case></Cases>
 </Function><Function
@@ -1578,11 +1484,11 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="T_traction_cut_off"
 >
 <ReqRef
- Id="3.13.2.2.2.1"
+ Id="b7b1bc48-6dda-4554-ac07-fd2a7e8ef50a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Computes the time delay T_traction_cut_off from the traction cut-off command by the on-board to the moment the acceleration due to traction (A_traction) is guaranteed to be zero.</Comment>
+</ReqRef><Comment>Computes the time delay T_traction_cut_off from the traction cut-off command by the on-board to the moment the acceleration due to traction (A_traction) is guaranteed to be zero.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1595,27 +1501,23 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Kdry_rst"
 >
 <ReqRef
- Id="3.13.6.2.1.7"
+ Id="c77caa8b-559a-4e94-aa56-a213a8944db3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.3"
+</ReqRef><ReqRef
+ Id="6bd12137-ee9e-4411-b28d-4794e694b24f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
+</ReqRef><ReqRef
+ Id="e4cb58c4-7c41-470c-a4a5-43eb3968b258"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.g"
+</ReqRef><ReqRef
+ Id="c688042e-0d6a-4705-82a5-db7cfe7b6840"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="7.5.1.75.1"
->
-</ReqRef>
-<Comment>Selects the appropriate Kdry_rst value according to the given value of confidence level of emergency brake safe deceleration (provided by the trackside in National Values.ConfLevelForEmergBrakeSafeDecelerationOnDryRails) and a speed value.</Comment>
+</ReqRef><Comment>Selects the appropriate Kdry_rst value according to the given value of confidence level of emergency brake safe deceleration (provided by the trackside in National Values.ConfLevelForEmergBrakeSafeDecelerationOnDryRails) and a speed value.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -1631,8 +1533,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__50"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___50</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___50</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1655,8 +1556,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__90"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___90</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___90</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1679,8 +1579,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1703,8 +1602,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_9"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1727,8 +1625,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_99"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_99</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_99</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1751,8 +1648,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_999"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_999</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_999</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1775,8 +1671,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_9999"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9999</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9999</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1799,8 +1694,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_99999"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_99999</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_99999</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1823,8 +1717,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_999999"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_999999</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_999999</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1847,8 +1740,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Cl__99_9999999"
 >
 <PreConditions>
-<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9999999</PreCondition>
-</PreConditions>
+<PreCondition>M_NVEBCL == Messages.M_NVEBCL.Confidence_level___99_9999999</PreCondition></PreConditions>
 <Expression>CorrectionFactorFunction
 (
     CorrectionFactorValues =&gt; SelectKdryValue
@@ -1874,10 +1766,10 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="SelectKwetValue"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
  Type="Kwet_rstValuesSet"
@@ -1901,64 +1793,43 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="EddyCurrent_Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKwetSet.EddyCurrent_Magnetic_Regenerative</Expression>
 </Case><Case
  Name="Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKwetSet.Magnetic_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKwetSet.EddyCurrent_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKwetSet.EddyCurrent_Magnetic</Expression>
 </Case><Case
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKwetSet.Regenerative</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKwetSet.Magnetic</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKwetSet.EddyCurrent</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1972,14 +1843,14 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="A_traction"
 >
 <ReqRef
- Id="3.13.2.2.2.2"
+ Id="af82297e-0cd0-4080-912c-c8c8ff4a8ab7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.2.1"
+</ReqRef><ReqRef
+ Id="b7b1bc48-6dda-4554-ac07-fd2a7e8ef50a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>In the general case, this formula should require sin(arctg(gradient)), but for small values, this is nearly equal to the gradient itself.</Comment>
+</ReqRef><Comment>In the general case, this formula should require sin(arctg(gradient)), but for small values, this is nearly equal to the gradient itself.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Acceleration"
@@ -1995,8 +1866,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Positive or null"
 >
 <PreConditions>
-<PreCondition>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition>
-</PreConditions>
+<PreCondition>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
 <Expression>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient)</Expression>
 </Case><Case
  Name="Negative"
@@ -2009,22 +1879,22 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="T_brake_service"
 >
 <ReqRef
- Id="3.13.2.2.3.2.5"
+ Id="19fa9290-6acb-4ae8-a84f-bdee455111a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.4"
+</ReqRef><ReqRef
+ Id="22233109-3b8f-4e3c-83b3-eb1332cd30ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.b"
+</ReqRef><ReqRef
+ Id="78767d0a-b1d1-4311-b158-adede38b9077"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.a"
+</ReqRef><ReqRef
+ Id="286c2abb-01dd-45cf-bdd9-4b508938c872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of T_brake_service according to the status of special brakes.</Comment>
+</ReqRef><Comment>Provides the value of T_brake_service according to the status of special brakes.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -2044,23 +1914,23 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="T_brake_emergency"
 >
 <ReqRef
- Id="3.13.2.2.3.2.5"
+ Id="19fa9290-6acb-4ae8-a84f-bdee455111a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.3"
+</ReqRef><ReqRef
+ Id="92da629d-5f50-4600-b877-db00a98ecf43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.a"
+</ReqRef><ReqRef
+ Id="2dff7e7c-9af3-49bc-82ac-19616e3e91e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.c"
+</ReqRef><ReqRef
+ Id="83b8df3d-39ba-47e5-b2df-236a14f1441a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of T_brake_emergency according to the status of special brakes.</Comment>
+</ReqRef><Comment>Provides the value of T_brake_emergency according to the status of special brakes.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -2080,10 +1950,10 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="A_ebmax"
 >
 <ReqRef
- Id="3.13.6.2.1.8.2"
+ Id="05b26663-30b6-44d4-8063-71e9774b2488"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the maximum emergency brake deceleration between 0 km/h and the maximum speed of the train.</Comment>
+</ReqRef><Comment>Provides the maximum emergency brake deceleration between 0 km/h and the maximum speed of the train.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -2108,15 +1978,15 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="ContributionOfSpecialBrakeIsTakenIntoAccount"
 >
 <ReqRef
- Id="3.13.2.2.6.6"
+ Id="bdd6feb2-e9fc-4e01-90fb-c2dd7dc7a246"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.6"
+</ReqRef><ReqRef
+ Id="efbd6139-0aa7-45a3-b746-fbb16fead767"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, for the selection of the maximum emergency brake deceleration under reduced adhesion conditions and, if it is allowed, indicates if the status of the special/additional brake is active.</Comment>
+</ReqRef><Comment>Indicates if it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, for the selection of the maximum emergency brake deceleration under reduced adhesion conditions and, if it is allowed, indicates if the status of the special/additional brake is active.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -2133,14 +2003,14 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="SelectBrakingModel"
 >
 <ReqRef
- Id="3.13.2.2.3.1.7"
+ Id="cfb19111-dae7-4ecc-a8c0-b50e4e59d5a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="A1.1.7.1"
+</ReqRef><ReqRef
+ Id="d4425f99-d283-4faf-ba1a-eef44feb9002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate braking model according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Selects the appropriate braking model according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
  Type="BrakingModelSet"
@@ -2164,64 +2034,43 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="EddyCurrent_Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aModelSet.EddyCurrent_Magnetic_Regenerative</Expression>
 </Case><Case
  Name="Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aModelSet.Magnetic_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aModelSet.EddyCurrent_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aModelSet.EddyCurrent_Magnetic</Expression>
 </Case><Case
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aModelSet.Regenerative</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aModelSet.Magnetic</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aModelSet.EddyCurrent</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2234,27 +2083,27 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="CorrectionFactorFunction"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.7"
+</ReqRef><ReqRef
+ Id="c77caa8b-559a-4e94-aa56-a213a8944db3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.g"
+</ReqRef><ReqRef
+ Id="c8955d05-3be1-401b-a678-f5d31bf3206c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.3"
+</ReqRef><ReqRef
+ Id="6bd12137-ee9e-4411-b28d-4794e694b24f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.5"
+</ReqRef><ReqRef
+ Id="3575fb11-2edb-4bd3-b002-3889272e0639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate Kdry_rst (or Kwet_rst) value according to the given speed value. To select this value, the function uses the speed steps of the parameter BrakingModel (A_brake_emergency(V)).</Comment>
+</ReqRef><Comment>Selects the appropriate Kdry_rst (or Kwet_rst) value according to the given speed value. To select this value, the function uses the speed steps of the parameter BrakingModel (A_brake_emergency(V)).</Comment>
 <Parameters>
 <Parameter
  Type="CorrectFactorValue"
@@ -2274,72 +2123,58 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="CF0"
 >
 <PreConditions>
-<PreCondition>V &lt;= BrakingModel.Val1.SpeedStep</PreCondition>
-<PreCondition>BrakingModel.Val0.SpeedStep &lt;= V</PreCondition>
-</PreConditions>
+<PreCondition>V &lt;= BrakingModel.Val1.SpeedStep</PreCondition><PreCondition>BrakingModel.Val0.SpeedStep &lt;= V</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF0</Expression>
 </Case><Case
  Name="CF1"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val1.SpeedStep &lt; V</PreCondition>
-<PreCondition>V &lt;= BrakingModel.Val2.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val1.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= BrakingModel.Val2.SpeedStep</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF1</Expression>
 </Case><Case
  Name="CF2"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val2.SpeedStep &lt; V</PreCondition>
-<PreCondition>V &lt;= BrakingModel.Val3.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val2.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= BrakingModel.Val3.SpeedStep</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF2</Expression>
 </Case><Case
  Name="CF3"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val3.SpeedStep &lt; V</PreCondition>
-<PreCondition>V &lt;= BrakingModel.Val4.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val3.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= BrakingModel.Val4.SpeedStep</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF3</Expression>
 </Case><Case
  Name="CF4"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val4.SpeedStep &lt; V</PreCondition>
-<PreCondition>V &lt;= BrakingModel.Val5.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val4.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= BrakingModel.Val5.SpeedStep</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF4</Expression>
 </Case><Case
  Name="CF5"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val5.SpeedStep &lt; V</PreCondition>
-<PreCondition>V &lt;= BrakingModel.Val6.SpeedStep</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val5.SpeedStep &lt; V</PreCondition><PreCondition>V &lt;= BrakingModel.Val6.SpeedStep</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF5</Expression>
 </Case><Case
  Name="CF6"
 >
 <PreConditions>
-<PreCondition>BrakingModel.Val6.SpeedStep &lt; V</PreCondition>
-</PreConditions>
+<PreCondition>BrakingModel.Val6.SpeedStep &lt; V</PreCondition></PreConditions>
 <Expression>CorrectionFactorValues.CF6</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="Default_brk_normal_service"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.b"
+</ReqRef><ReqRef
+ Id="1d964c5e-2d42-4aa9-be71-ac02a1133ca8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the default value for A_brake__normal_service (when the use of special brakes was not inhibited by track conditions).</Comment>
+</ReqRef><Comment>Provides the default value for A_brake__normal_service (when the use of special brakes was not inhibited by track conditions).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -2351,8 +2186,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBNSBrakingModel ( ),
@@ -2365,58 +2199,58 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="A_brake_safe"
 >
 <ReqRef
- Id="3.13.6.2.1.4"
+ Id="597cfdc2-80f1-4a68-807f-b6173d958e91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.g"
+</ReqRef><ReqRef
+ Id="2a47f8ca-cb24-457f-98df-f582d87fc9f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.h"
+</ReqRef><ReqRef
+ Id="59212bdc-e7a1-4127-aa56-123c9f178c3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.k"
+</ReqRef><ReqRef
+ Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.6"
+</ReqRef><ReqRef
+ Id="09f9f219-2879-4eb9-bf75-c4583a632b4a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.5"
+</ReqRef><ReqRef
+ Id="63f52c67-800b-450c-9dbc-7020eaf5e657"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.10"
+</ReqRef><ReqRef
+ Id="1b7c34b0-8ee1-4615-9579-b4f183c85f6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.i"
+</ReqRef><ReqRef
+ Id="d4abd686-74e0-4be7-8850-63b0d76f32da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.2.2"
+</ReqRef><ReqRef
+ Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.3"
+</ReqRef><ReqRef
+ Id="c688042e-0d6a-4705-82a5-db7cfe7b6840"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.9.1.1"
+</ReqRef><ReqRef
+ Id="7cdec823-92bb-41e1-9c42-c852a448f5e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.11.1"
+</ReqRef><ReqRef
+ Id="e6efd599-0613-4f01-8315-f611bcebacb5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.g"
+</ReqRef><ReqRef
+ Id="3dec5ab4-e034-4e35-8225-c22d5267e266"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Computes the safe emergency brake deceleration. Its value can be computed from the information provided by the Train Data or from the Conversion Model.</Comment>
+</ReqRef><Comment>Computes the safe emergency brake deceleration. Its value can be computed from the information provided by the Train Data or from the Conversion Model.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -2432,8 +2266,7 @@ TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.EB, B
  Name="From train data"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>Kdry_rst ( V =&gt; V, M_NVEBCL =&gt; NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails ) * 
 (Kwet_rst ( V ) + NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion *
 ( 1.0 - Kwet_rst ( V ) ) )  *
@@ -2442,8 +2275,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="From conversion model"
 >
 <PreConditions>
-<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition>
-</PreConditions>
+<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Expression>BaseTypes.Acceleration ( NationalValues.Kv_int ( V ) * NationalValues.Kr_int ( TrainData.Value.TrainLength ) ) * ConversionModel.A_brake_emergency ( V )</Expression>
 </Case></Cases>
 </Function><Function
@@ -2452,10 +2284,10 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="SelectKdryValue"
 >
 <ReqRef
- Id="3.13.2.2.9.1.2"
+ Id="31dabd31-ac05-4189-8f1e-423ec7608a99"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
+</ReqRef><Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
  Type="Kdry_rstValuesSet"
@@ -2479,64 +2311,43 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="EddyCurrent_Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKdrySet.EddyCurrent_Magnetic_Regenerative</Expression>
 </Case><Case
  Name="Magnetic_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKdrySet.Magnetic_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKdrySet.EddyCurrent_Regenerative</Expression>
 </Case><Case
  Name="EddyCurrent_Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKdrySet.EddyCurrent_Magnetic</Expression>
 </Case><Case
  Name="Regenerative"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == True</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == True</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKdrySet.Regenerative</Expression>
 </Case><Case
  Name="Magnetic"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == True</PreCondition>
-<PreCondition>EddyCurBrakeUsed == False</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == True</PreCondition><PreCondition>EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aKdrySet.Magnetic</Expression>
 </Case><Case
  Name="EddyCurrent"
 >
 <PreConditions>
-<PreCondition>RegBrakeUsed == False</PreCondition>
-<PreCondition>MagnBrakeUsed == False</PreCondition>
-<PreCondition>EddyCurBrakeUsed == True</PreCondition>
-</PreConditions>
+<PreCondition>RegBrakeUsed == False</PreCondition><PreCondition>MagnBrakeUsed == False</PreCondition><PreCondition>EddyCurBrakeUsed == True</PreCondition></PreConditions>
 <Expression>aKdrySet.EddyCurrent</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2549,30 +2360,30 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_safe"
 >
 <ReqRef
- Id="3.13.6.2.1.3"
+ Id="c05a1b7d-e40a-429a-a666-9fb637623918"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.1"
+</ReqRef><ReqRef
+ Id="6dae0a46-987c-4993-aa8d-ea721518ec6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.5.1"
+</ReqRef><ReqRef
+ Id="7398172b-264c-4ff9-8f60-3b1e043f2033"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.e"
+</ReqRef><ReqRef
+ Id="9321d0a2-9ea3-4834-adc7-1f1fb0ec70db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.2"
+</ReqRef><ReqRef
+ Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.3"
+</ReqRef><ReqRef
+ Id="00117c31-ed13-4768-8e1a-ea0cc12ad9c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Computes the safe deceleration of the train.</Comment>
+</ReqRef><Comment>Computes the safe deceleration of the train.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -2607,18 +2418,14 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Kwet_rst"
 >
 <ReqRef
- Id="3.13.2.2.9.1.5"
+ Id="3575fb11-2edb-4bd3-b002-3889272e0639"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
+</ReqRef><ReqRef
+ Id="c688042e-0d6a-4705-82a5-db7cfe7b6840"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.g"
->
-</ReqRef>
-<Comment>Selects the appropriate Kwet_rst value according to a given speed.</Comment>
+</ReqRef><Comment>Selects the appropriate Kwet_rst value according to a given speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -2650,23 +2457,22 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brk_emergency"
 >
 <ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.a"
+ Id="83251c6d-ff70-492c-805f-f119d5b95580"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.5"
+</ReqRef><ReqRef
+ Id="e9f3c524-003a-46d9-9da3-3f615e1b5c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of A_brake_emergency by taking into account one particular Track Condition.</Comment>
+</ReqRef><ReqRef
+ Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Provides the value of A_brake_emergency by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.TrackConditions.TrackConditionInformation"
@@ -2686,9 +2492,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition>
-<PreCondition>aTrackCondition.Distance &lt;= d</PreCondition>
-</PreConditions>
+<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition><PreCondition>aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel
@@ -2703,34 +2507,29 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brake_service"
 >
 <ReqRef
- Id="3.13.6.3.1.4"
+ Id="3a9da096-1d10-4e79-b034-4e42c821929e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.a"
+</ReqRef><ReqRef
+ Id="39f48aa1-5da9-45a4-8fc8-068260afeef8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.c"
+</ReqRef><ReqRef
+ Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
+</ReqRef><ReqRef
+ Id="444d11ee-84f0-4837-8c17-f111d045857d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.4.1"
+</ReqRef><ReqRef
+ Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
->
-</ReqRef>
-<Comment>Computes the service brake full deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
+</ReqRef><Comment>Computes the service brake full deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -2746,8 +2545,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.TCProfile.Conditions
@@ -2767,22 +2565,22 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Default_A_safe"
 >
 <ReqRef
- Id="3.13.6.2.1.3"
+ Id="c05a1b7d-e40a-429a-a666-9fb637623918"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.b"
+</ReqRef><ReqRef
+ Id="f9c0f0b7-0cba-4cee-ba0c-25c654215c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.3.1"
+</ReqRef><ReqRef
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.b"
+</ReqRef><ReqRef
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Computes the value of A_safe for normal adhesion conditions.</Comment>
+</ReqRef><Comment>Computes the value of A_safe for normal adhesion conditions.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -2805,42 +2603,42 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_safe_forAdhesionFactor"
 >
 <ReqRef
- Id="3.13.5.3"
+ Id="3a290d20-7245-41fa-a2ae-84a3585ce63b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.5.4"
+</ReqRef><ReqRef
+ Id="9479529b-7ed6-4961-b08a-7bcb18714d1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.c"
+</ReqRef><ReqRef
+ Id="c05a1b7d-e40a-429a-a666-9fb637623918"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.3"
+</ReqRef><ReqRef
+ Id="f3bcff62-12ff-4959-a7b5-1a7089516acb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.7.7"
+</ReqRef><ReqRef
+ Id="f9c0f0b7-0cba-4cee-ba0c-25c654215c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.b"
+</ReqRef><ReqRef
+ Id="c99601f4-d6ed-4f84-988c-9fbc856fdb87"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.d"
+</ReqRef><ReqRef
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.3.1"
+</ReqRef><ReqRef
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.b"
+</ReqRef><ReqRef
+ Id="055c5fba-df70-4327-b944-0ef3656ee194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides value of A_safe for adhesion factor slippery rail.</Comment>
+</ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail.</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.AdhesionFactors.AdhesionFactor"
@@ -2860,54 +2658,45 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Slippery Rail (driver selected)"
 >
 <PreConditions>
-<PreCondition>TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition>
-</PreConditions>
+<PreCondition>TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Expression>( MINSURFACE ( A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + TrackDescription.Gradient.A_gradient ( d ) ) (d, V)</Expression>
 </Case><Case
  Name="Adhesion factor available (trackside)"
 >
 <PreConditions>
-<PreCondition>d &lt; anAdhFactor.Distance + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition>
-<PreCondition>anAdhFactor.Distance &lt;= d</PreCondition>
-<PreCondition>anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition>
-</PreConditions>
+<PreCondition>d &lt; anAdhFactor.Distance + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition><PreCondition>anAdhFactor.Distance &lt;= d</PreCondition><PreCondition>anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Expression>( MINSURFACE ( A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + TrackDescription.Gradient.A_gradient ( d ) ) (d, V)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brake_emergency"
 >
 <ReqRef
- Id="3.13.6.2.1.5"
+ Id="e9f3c524-003a-46d9-9da3-3f615e1b5c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.6"
+</ReqRef><ReqRef
+ Id="1e561985-3cbf-4745-861a-5731a1c096d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.e"
+</ReqRef><ReqRef
+ Id="8306ee07-3124-4992-96a3-0cf3c84e47b7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.4"
+</ReqRef><ReqRef
+ Id="597cfdc2-80f1-4a68-807f-b6173d958e91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
+</ReqRef><ReqRef
+ Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.4.1"
+</ReqRef><ReqRef
+ Id="444d11ee-84f0-4837-8c17-f111d045857d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
->
-</ReqRef>
-<Comment>Computes the emergency brake deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
+</ReqRef><Comment>Computes the emergency brake deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -2923,8 +2712,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.TCProfile.Conditions
@@ -2941,23 +2729,22 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brk_normal_service"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.f"
+</ReqRef><ReqRef
+ Id="c9386a51-4e30-4b1e-915c-aad5f1f5488f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.b"
+</ReqRef><ReqRef
+ Id="1d964c5e-2d42-4aa9-be71-ac02a1133ca8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of A_brake__normal_service by taking into account one particular Track Condition.</Comment>
+</ReqRef><Comment>Provides the value of A_brake__normal_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.TrackConditions.TrackConditionInformation"
@@ -2977,9 +2764,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition>
-<PreCondition>aTrackCondition.Distance &lt;= d</PreCondition>
-</PreConditions>
+<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition><PreCondition>aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBNSBrakingModel_TrackCondition ( aTrackCondition =&gt; aTrackCondition ),
@@ -2988,23 +2773,18 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="Default_brk_emergency"
 >
 <ReqRef
- Id="3.13.6.2.1.5"
+ Id="e9f3c524-003a-46d9-9da3-3f615e1b5c74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.a"
+</ReqRef><ReqRef
+ Id="83251c6d-ff70-492c-805f-f119d5b95580"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.2.f"
->
-</ReqRef>
-<Comment>Provides the default value for A_brake_emergency (when the use of special brakes was not inhibited by track conditions).</Comment>
+</ReqRef><Comment>Provides the default value for A_brake_emergency (when the use of special brakes was not inhibited by track conditions).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -3016,8 +2796,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel
@@ -3036,42 +2815,42 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_expected"
 >
 <ReqRef
- Id="3.13.6.3.1.3"
+ Id="97a3e106-8336-4a99-8d77-cb4074e6882f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.b"
+</ReqRef><ReqRef
+ Id="adca4bed-139a-44a3-b605-a7e58f68066f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.2.a"
+</ReqRef><ReqRef
+ Id="39f48aa1-5da9-45a4-8fc8-068260afeef8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="A1.1.9.1"
+</ReqRef><ReqRef
+ Id="60ba4e77-5948-4505-83fc-e13ee0244e31"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.3"
+</ReqRef><ReqRef
+ Id="63f52c67-800b-450c-9dbc-7020eaf5e657"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.3.1"
+</ReqRef><ReqRef
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.b"
+</ReqRef><ReqRef
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.2"
+</ReqRef><ReqRef
+ Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.3"
+</ReqRef><ReqRef
+ Id="00117c31-ed13-4768-8e1a-ea0cc12ad9c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of the expected deceleration of the train.</Comment>
+</ReqRef><Comment>Provides the value of the expected deceleration of the train.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -3087,15 +2866,13 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="From train data"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
 <Expression>A_brake_service ( d =&gt; d, V =&gt; V ) + TrackDescription.Gradient.A_gradient ( d )</Expression>
 </Case><Case
  Name="From conversion model"
 >
 <PreConditions>
-<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition>
-</PreConditions>
+<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Expression>ConversionModel.A_brake_service ( V ) + TrackDescription.Gradient.A_gradient ( d )</Expression>
 </Case></Cases>
 </Function><Function
@@ -3104,45 +2881,43 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="T_be"
 >
 <ReqRef
- Id="3.13.6.2.2.3"
+ Id="92da629d-5f50-4600-b877-db00a98ecf43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.a"
+</ReqRef><ReqRef
+ Id="2dff7e7c-9af3-49bc-82ac-19616e3e91e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.2.b"
+</ReqRef><ReqRef
+ Id="cdb611eb-1ce9-4aba-a1fb-e64ca06b3669"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.3.2.2"
+</ReqRef><ReqRef
+ Id="09f9f219-2879-4eb9-bf75-c4583a632b4a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.2.1"
+</ReqRef><ReqRef
+ Id="ae01ac2f-c3ab-403f-9383-5cf208a69b72"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.g"
+</ReqRef><ReqRef
+ Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Computes the value of the safe brake build up time.</Comment>
+</ReqRef><Comment>Computes the value of the safe brake build up time.</Comment>
 <Cases>
 <Case
  Name="From train data"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.T_brake_emergency != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.T_brake_emergency != EMPTY</PreCondition></PreConditions>
 <Expression>T_brake_emergency ()</Expression>
 </Case><Case
  Name="From conversion model"
 >
 <PreConditions>
-<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition>
-</PreConditions>
+<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Expression>ConversionModel.T_brake_emergency () * Default.BaseTypes.Time ( NationalValues.IntegratedCorrectionFactorForBrakeBuildUpTime() )</Expression>
 </Case></Cases>
 </Function><Function
@@ -3151,52 +2926,45 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="T_bs"
 >
 <ReqRef
- Id="3.13.6.3.2.4"
+ Id="22233109-3b8f-4e3c-83b3-eb1332cd30ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.2.3.a"
+</ReqRef><ReqRef
+ Id="286c2abb-01dd-45cf-bdd9-4b508938c872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Computes the value of the expected brake build up time.</Comment>
+</ReqRef><Comment>Computes the value of the expected brake build up time.</Comment>
 <Cases>
 <Case
  Name="From train data"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.T_brake_service != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.T_brake_service != EMPTY</PreCondition></PreConditions>
 <Expression>T_brake_service()</Expression>
 </Case><Case
  Name="From conversion model"
 >
 <PreConditions>
-<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition>
-</PreConditions>
+<PreCondition>ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Expression>ConversionModel.T_brake_service()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brake_normal_service"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.4.1"
+</ReqRef><ReqRef
+ Id="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
+</ReqRef><ReqRef
+ Id="444d11ee-84f0-4837-8c17-f111d045857d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.c"
->
-</ReqRef>
-<Comment>Computes the service brake normal deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
+</ReqRef><Comment>Computes the service brake normal deceleration for given speed and distance, taking into account the track conditions having influence on the status of special brakes.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -3212,8 +2980,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels != EMPTY</PreCondition></PreConditions>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.TCProfile.Conditions
@@ -3229,18 +2996,17 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="Default_brk_service"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.g"
+</ReqRef><ReqRef
+ Id="796e6fe1-4289-4d96-9c69-466f0cbd2a1f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the default value for A_brake_service (when the use of special brakes was not inhibited by track conditions).</Comment>
+</ReqRef><Comment>Provides the default value for A_brake_service (when the use of special brakes was not inhibited by track conditions).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -3252,8 +3018,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel
@@ -3268,18 +3033,17 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brk_service_TrackCondition"
 >
 <ReqRef
- Id="3.13.6.4.4"
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.3.1.10"
+</ReqRef><ReqRef
+ Id="b647a3db-8587-4fd1-ae37-54bd4a741ef4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of A_brake_service for zero speed by taking into account one particular Track Condition. Used to select the appropriate A_brake_normal_service. The condition on the distance of the track condition is verified earlier (by A_brk_normal_service(V)).</Comment>
+</ReqRef><Comment>Provides the value of A_brake_service for zero speed by taking into account one particular Track Condition. Used to select the appropriate A_brake_normal_service. The condition on the distance of the track condition is verified earlier (by A_brk_normal_service(V)).</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.TrackConditions.TrackConditionInformation"
@@ -3308,38 +3072,38 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="A_normal_service"
 >
 <ReqRef
- Id="3.13.6.4.3"
+ Id="3ea3e199-c76e-4d60-bc33-f4db3e609900"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.c"
+</ReqRef><ReqRef
+ Id="35a07bde-ebad-4140-ac2a-4fe3c0b6b8e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.3.1"
+</ReqRef><ReqRef
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.b"
+</ReqRef><ReqRef
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.1.1.b"
+</ReqRef><ReqRef
+ Id="51ee044c-b79a-4329-b477-4569763b65d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.3.3.1"
+</ReqRef><ReqRef
+ Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.2"
+</ReqRef><ReqRef
+ Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.8.1.3"
+</ReqRef><ReqRef
+ Id="00117c31-ed13-4768-8e1a-ea0cc12ad9c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of the normal service brake deceleration. The choice of the appropriate speed dependent correction factor for gradient (KnPlus or KnMin) is done by the function Gradient.GradientProfile_NonCompensated(d, V).</Comment>
+</ReqRef><Comment>Provides the value of the normal service brake deceleration. The choice of the appropriate speed dependent correction factor for gradient (KnPlus or KnMin) is done by the function Gradient.GradientProfile_NonCompensated(d, V).</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -3358,61 +3122,54 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BrakingModel"
- Implemented="TRUE"
- Verified="TRUE"
  Name="SelectBNSBrakingModel"
 >
 <ReqRef
- Id="3.13.2.2.3.1.10"
+ Id="b647a3db-8587-4fd1-ae37-54bd4a741ef4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.4"
+</ReqRef><ReqRef
+ Id="9c6039b0-e498-43dd-9e86-2a60e656b98c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.4.2.a"
+</ReqRef><ReqRef
+ Id="bf1396d0-a166-4f1d-80d5-c4b57508c553"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Selects the appropriate brake normal service model, according to the values of the two pivot values (A_SB12 and A_SB01).</Comment>
+</ReqRef><Comment>Selects the appropriate brake normal service model, according to the values of the two pivot values (A_SB12 and A_SB01).</Comment>
 <Cases>
 <Case
  Name="BNS_0"
 >
 <PreConditions>
-<PreCondition>Default_brk_service ( V=&gt;0.0 ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB01</PreCondition>
-</PreConditions>
+<PreCondition>Default_brk_service ( V=&gt;0.0 ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB01</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_0</Expression>
 </Case><Case
  Name="BNS_1"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt; Default_brk_service ( V =&gt; 0.0 )</PreCondition>
-<PreCondition>Default_brk_service ( V =&gt; 0.0 ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB12</PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB01 &lt; Default_brk_service ( V =&gt; 0.0 )</PreCondition><PreCondition>Default_brk_service ( V =&gt; 0.0 ) &lt;= TrainData.Value.NormalServiceBrakeModels.A_SB12</PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_1</Expression>
 </Case><Case
  Name="BNS_2"
 >
 <PreConditions>
-<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; Default_brk_service  ( V =&gt; 0.0 ) </PreCondition>
-</PreConditions>
+<PreCondition>TrainData.Value.NormalServiceBrakeModels.A_SB12 &lt; Default_brk_service  ( V =&gt; 0.0 ) </PreCondition></PreConditions>
 <Expression>SelectBNSModelSet().BNS_2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
- Implemented="TRUE"
  Name="A_brk_service"
 >
 <ReqRef
- Id="3.13.6.3.1.2.d"
+ Id="3a9da096-1d10-4e79-b034-4e42c821929e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.6.3.1.4"
+</ReqRef><ReqRef
+ Id="dfc71e5b-2d0d-4dce-9a5c-f6e69ea53363"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the value of A_brake_service by taking into account one particular Track Condition.</Comment>
+</ReqRef><Comment>Provides the value of A_brake_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
  Type="TrackDescription.TrackConditions.TrackConditionInformation"
@@ -3432,9 +3189,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="Value"
 >
 <PreConditions>
-<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition>
-<PreCondition>aTrackCondition.Distance &lt;= d</PreCondition>
-</PreConditions>
+<PreCondition>d &lt; aTrackCondition.Distance + TrackDescription.TrackConditions.ConditionLength ( aTrackCondition )</PreCondition><PreCondition>aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel
@@ -3468,8 +3223,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>ConversionModel.Initialize()</Action>
-</Actions>
+<Action>ConversionModel.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3482,16 +3236,16 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="ContributionOfSpecialBrakeIsAllowed"
 >
 <ReqRef
- Id="3.13.2.2.6.4"
+ Id="deeff557-7e04-4594-a919-230d58c6cd00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.6.2.1.6"
+</ReqRef><ReqRef
+ Id="efbd6139-0aa7-45a3-b746-fbb16fead767"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment></Comment>
-</ReqRef>
-<Comment>Indicates if it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, for the selection of the maximum emergency brake deceleration under reduced adhesion conditions.</Comment>
+</ReqRef><Comment>Indicates if it is allowed to take into account the contribution of a special/additional brake, which is independent from wheel/rail adhesion, for the selection of the maximum emergency brake deceleration under reduced adhesion conditions.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -3500,26 +3254,26 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Name="CheckSpecialBrakesInterfaceConsistency"
 >
 <ReqRef
- Id="Entry 3.13.2.2.6.1.1.1"
+ Id="79b931cc-2f34-4e70-9fbc-b136d5f3cdbd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.13.2.2.6.1.1.2"
+</ReqRef><ReqRef
+ Id="f8926fbf-e64d-4aee-adb2-f564912518c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.13.2.2.6.1.1.3"
+</ReqRef><ReqRef
+ Id="48f235ba-8224-4442-8bea-7441a884f0fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 3.13.2.2.6.1.1.4"
+</ReqRef><ReqRef
+ Id="8c357abe-c39b-4bf8-9e69-c38b076216ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.6.1"
+</ReqRef><ReqRef
+ Id="551d18be-1f64-4f38-b253-f6f52b3fbfe7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Checks that the special brake&apos;s interface status is consistent with the Table 3.13.2.2.6.1.1.</Comment>
+</ReqRef><Comment>Checks that the special brake&apos;s interface status is consistent with the Table 3.13.2.2.6.1.1.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3528,12 +3282,9 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 >
 <Comment></Comment>
 <PreConditions>
-<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure OR Kernel.HandleModeChange in Kernel.HandleModeChange.StandBy</PreCondition>
-<PreCondition>TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both] OR TrainData.Value.EpBrake.InterfaceStatus == BrakeInterfaceStatus.EB</PreCondition>
-</PreConditions>
+<PreCondition>Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure OR Kernel.HandleModeChange in Kernel.HandleModeChange.StandBy</PreCondition><PreCondition>TrainData.Value.MagneticShoeBrake.InterfaceStatus in [BrakeInterfaceStatus.SB, BrakeInterfaceStatus.Both] OR TrainData.Value.EpBrake.InterfaceStatus == BrakeInterfaceStatus.EB</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.SystemFailure</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.SystemFailure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

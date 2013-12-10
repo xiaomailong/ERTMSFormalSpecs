@@ -29,7 +29,11 @@ namespace GUI.DataDictionaryView
         public NameSpaceSubNameSpacesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Namespaces", true)
         {
-            foreach (DataDictionary.Types.NameSpace nameSpace in item.SubNameSpaces)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace));
             }
@@ -73,16 +77,18 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
+
             List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace aNamespace in Item.SubNameSpaces)
+            foreach (DataDictionary.Types.NameSpace aNamespace in Item.NameSpaces)
             {
                 namespaces.Add(aNamespace);
             }
 
-            (BaseForm as Window).toolStripStatusLabel.Text = NameSpaceTreeNode.CreateStatMessage(namespaces, true);
+            GUIUtils.MDIWindow.SetStatus(NameSpaceTreeNode.CreateStatMessage(namespaces, true));
         }
     }
 }

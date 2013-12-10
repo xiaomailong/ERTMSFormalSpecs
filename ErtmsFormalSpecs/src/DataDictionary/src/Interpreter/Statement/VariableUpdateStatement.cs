@@ -34,8 +34,8 @@ namespace DataDictionary.Interpreter.Statement
         /// Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
-        public VariableUpdateStatement(ModelElement root, Expression variableIdentification, Expression expression)
-            : base(root)
+        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification, Expression expression)
+            : base(root, log)
         {
             VariableIdentification = variableIdentification;
             VariableIdentification.Enclosing = this;
@@ -55,8 +55,13 @@ namespace DataDictionary.Interpreter.Statement
 
             if (retVal)
             {
+                // VariableIdentification
                 VariableIdentification.SemanticAnalysis(instance, Filter.IsLeftSide);
+                StaticUsage.AddUsages(VariableIdentification.StaticUsage, Usage.ModeEnum.Write);
+
+                // Expression
                 Expression.SemanticAnalysis(instance, Filter.IsRightSide);
+                StaticUsage.AddUsages(Expression.StaticUsage, Usage.ModeEnum.Read);
             }
 
             return retVal;
@@ -137,6 +142,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
+            if (VariableIdentification.Ref is Parameter)
+            {
+                Root.AddError("Cannot assign a value to a parameter (" + VariableIdentification.ToString() + ")");
+            }
+
             Types.Type targetType = VariableIdentification.GetExpressionType();
             if (targetType == null)
             {
@@ -156,14 +166,34 @@ namespace DataDictionary.Interpreter.Statement
                             UnaryExpression unaryExpression = Expression as UnaryExpression;
                             if (unaryExpression != null && unaryExpression.Term.LiteralValue != null)
                             {
-                                if (targetType.getValue(unaryExpression.ToString()) == null)
-                                {
-                                    Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
-                                }
+                                Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
                             }
                             else
                             {
                                 Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName + ") does not match variable [" + VariableIdentification.ToString() + "] type (" + targetType.FullName + ")");
+                            }
+                        }
+                        else
+                        {
+                            Types.Range rangeType = targetType as Types.Range;
+                            if (rangeType != null)
+                            {
+                                Values.IValue value = Expression.Ref as Values.IValue;
+                                if (value != null)
+                                {
+                                    if (rangeType.convert(value) == null)
+                                    {
+                                        Root.AddError("Cannot set " + value.LiteralName + " in variable of type " + rangeType.Name);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (Expression.Ref == EFSSystem.EmptyValue)
+                        {
+                            if (targetType is Types.Collection)
+                            {
+                                Root.AddError("Assignation of " + Expression.Ref.Name + " cannot be performed on variables of type collection. Use [] instead.");
                             }
                         }
                     }
@@ -203,7 +233,9 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
                 changes.Add(change, apply, log);
-                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                ExplanationPart part = new ExplanationPart(Root, change);
+                part.SubExplanations.Add(Expression.Explain(context));
+                explanation.SubExplanations.Add(part);
             }
             else
             {

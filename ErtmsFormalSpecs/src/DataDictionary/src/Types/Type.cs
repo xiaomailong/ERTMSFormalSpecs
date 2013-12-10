@@ -20,6 +20,14 @@ using DataDictionary.Interpreter;
 namespace DataDictionary.Types
 {
     /// <summary>
+    /// This is an element which has a default value
+    /// </summary>
+    public interface IDefaultValueElement
+    {
+        string Default { get; set; }
+    }
+
+    /// <summary>
     /// This is an element which has a type
     /// </summary>
     public interface ITypedElement : Utils.INamable, Utils.IEnclosed, Utils.IModelElement
@@ -32,7 +40,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        string TypeName { get; }
+        string TypeName { get; set; }
 
         /// <summary>
         /// The type of the element
@@ -73,7 +81,7 @@ namespace DataDictionary.Types
     /// <summary>
     /// A type. All types must inherit from this class
     /// </summary>
-    public class Type : Generated.Type
+    public class Type : Generated.Type, IDefaultValueElement
     {
         /// <summary>
         /// Provides the enclosing namespace
@@ -233,66 +241,69 @@ namespace DataDictionary.Types
             Functions.Function leftFunction = left as Functions.Function;
             Functions.Function rigthFunction = right as Functions.Function;
 
-            if (rigthFunction == null)
+            if (leftFunction != null)
             {
+                if (rigthFunction == null)
+                {
+                    if (leftFunction.Graph != null)
+                    {
+                        Functions.Graph graph = Functions.Graph.createGraph(Functions.Function.getDoubleValue(right));
+                        rigthFunction = graph.Function;
+                    }
+                    else
+                    {
+                        Functions.Surface surface = Functions.Surface.createSurface(Functions.Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                        rigthFunction = surface.Function;
+                    }
+                }
+
                 if (leftFunction.Graph != null)
                 {
-                    Functions.Graph graph = Functions.Graph.createGraph(Functions.Function.getDoubleValue(right));
-                    rigthFunction = graph.Function;
+                    Functions.Graph tmp = null;
+                    switch (Operation)
+                    {
+                        case BinaryExpression.OPERATOR.ADD:
+                            tmp = leftFunction.Graph.AddGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.SUB:
+                            tmp = leftFunction.Graph.SubstractGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.MULT:
+                            tmp = leftFunction.Graph.MultGraph(rigthFunction.Graph);
+                            break;
+
+                        case BinaryExpression.OPERATOR.DIV:
+                            tmp = leftFunction.Graph.DivGraph(rigthFunction.Graph);
+                            break;
+                    }
+                    retVal = tmp.Function;
                 }
                 else
                 {
-                    Functions.Surface surface = Functions.Surface.createSurface(Functions.Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
-                    rigthFunction = surface.Function;
+                    Functions.Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                    Functions.Surface tmp = null;
+                    switch (Operation)
+                    {
+                        case BinaryExpression.OPERATOR.ADD:
+                            tmp = leftFunction.Surface.AddSurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.SUB:
+                            tmp = leftFunction.Surface.SubstractSurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.MULT:
+                            tmp = leftFunction.Surface.MultiplySurface(rightSurface);
+                            break;
+
+                        case BinaryExpression.OPERATOR.DIV:
+                            tmp = leftFunction.Surface.DivideSurface(rightSurface);
+                            break;
+                    }
+                    retVal = tmp.Function;
                 }
-            }
-
-            if (leftFunction.Graph != null)
-            {
-                Functions.Graph tmp = null;
-                switch (Operation)
-                {
-                    case BinaryExpression.OPERATOR.ADD:
-                        tmp = leftFunction.Graph.AddGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.SUB:
-                        tmp = leftFunction.Graph.SubstractGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.MULT:
-                        tmp = leftFunction.Graph.MultGraph(rigthFunction.Graph);
-                        break;
-
-                    case BinaryExpression.OPERATOR.DIV:
-                        tmp = leftFunction.Graph.DivGraph(rigthFunction.Graph);
-                        break;
-                }
-                retVal = tmp.Function;
-            }
-            else
-            {
-                Functions.Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
-                Functions.Surface tmp = null;
-                switch (Operation)
-                {
-                    case BinaryExpression.OPERATOR.ADD:
-                        tmp = leftFunction.Surface.AddSurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.SUB:
-                        tmp = leftFunction.Surface.SubstractSurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.MULT:
-                        tmp = leftFunction.Surface.MultiplySurface(rightSurface);
-                        break;
-
-                    case BinaryExpression.OPERATOR.DIV:
-                        tmp = leftFunction.Surface.DivideSurface(rightSurface);
-                        break;
-                }
-                retVal = tmp.Function;
             }
 
             return retVal;
@@ -333,6 +344,16 @@ namespace DataDictionary.Types
             {
                 return this == otherType;
             }
+        }
+
+        /// <summary>
+        /// Indicates that binary operation is valid for this type and the other type 
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public virtual bool ValidBinaryOperation(BinaryExpression.OPERATOR operation, Type otherType)
+        {
+            return Match(otherType);
         }
 
         /// <summary>
@@ -383,12 +404,28 @@ namespace DataDictionary.Types
     /// </summary>
     public class AnyType : Type
     {
+        public override string Name
+        {
+            get { return "AnyType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
         public AnyType(EFSSystem efsSystem)
         {
             Enclosing = efsSystem;
+        }
+
+        public override Values.IValue PerformArithmericOperation(InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)
+        {
+            throw new Exception("Cannot perform arithmetic operation between " + left.LiteralName + " and " + right.LiteralName);
         }
 
         /// <summary>
@@ -411,12 +448,28 @@ namespace DataDictionary.Types
     /// </summary>
     public class NoType : Type
     {
+        public override string Name
+        {
+            get { return "NoType"; }
+            set { }
+        }
+
+        public override string FullName
+        {
+            get { return Name; }
+        }
+
         /// <summary>
         /// Constrcutor
         /// </summary>
         public NoType(EFSSystem efsSystem)
         {
             Enclosing = efsSystem;
+        }
+
+        public override Values.IValue PerformArithmericOperation(InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)
+        {
+            throw new Exception("Cannot perform arithmetic operation between " + left.LiteralName + " and " + right.LiteralName);
         }
 
         /// <summary>

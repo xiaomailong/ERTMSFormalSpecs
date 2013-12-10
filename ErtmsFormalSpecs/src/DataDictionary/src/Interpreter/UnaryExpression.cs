@@ -30,8 +30,8 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="root">The root for which this expression should be evaluated</param>
         /// <param name="term"></parparam>
-        public UnaryExpression(ModelElement root, Term term)
-            : base(root)
+        public UnaryExpression(ModelElement root, ModelElement log, Term term)
+            : base(root, log)
         {
             Term = term;
             Term.Enclosing = this;
@@ -61,8 +61,8 @@ namespace DataDictionary.Interpreter
         /// <param name="root">The root for which this expression should be evaluated</param>
         /// <param name="expression">The enclosed expression</param>
         /// <param name="unaryOp">the unary operator for this unary expression</parparam>
-        public UnaryExpression(ModelElement root, Expression expression, string unaryOp = null)
-            : base(root)
+        public UnaryExpression(ModelElement root, ModelElement log, Expression expression, string unaryOp = null)
+            : base(root, log)
         {
             Expression = expression;
             Expression.Enclosing = this;
@@ -137,10 +137,12 @@ namespace DataDictionary.Interpreter
                 if (Term != null)
                 {
                     Term.SemanticAnalysis(instance, expectation, true);
+                    StaticUsage = Term.StaticUsage;
                 }
                 else if (Expression != null)
                 {
                     Expression.SemanticAnalysis(instance, expectation);
+                    StaticUsage = Expression.StaticUsage;
                 }
             }
 

@@ -24,10 +24,10 @@
  Name="Setup &amp; Receive adhesion factors"
 >
 <ReqRef
- Id="3.18.4.6.2.2"
+ Id="f83a7563-dcc4-4041-8201-a5d79f86a5c0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -41,8 +41,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -67,11 +66,7 @@
         Position =&gt; 500.0,
         UnderReadingAmountOdo =&gt; 2.0
     }
-}</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action>
-<Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action>
-<Action>Odometry.NominalDistance &lt;- 600.0</Action>
-</Actions>
+}</Action><Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action><Action>Odometry.NominalDistance &lt;- 600.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -149,26 +144,24 @@
             }
         }
     ]
-}</Action>
-</Actions>
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="0"
  Case="0"
- Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Check adhesion factor info"
 >
 <ReqRef
- Id="3.13.5.2"
+ Id="edb711e6-2b8c-4c00-88b8-563ee23ec94b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.4.6.1"
+</ReqRef><ReqRef
+ Id="d3e2813d-25b4-419a-8bc7-765e8794c652"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -211,22 +204,22 @@
  Name="Receive new adhesion factors"
 >
 <ReqRef
- Id="3.7.3.1.l"
+ Id="7d335a9b-a371-42e5-aaba-0565884b8283"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.4.6.2"
+</ReqRef><ReqRef
+ Id="24260651-d1c0-4755-bba9-09153737ca10"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.4.6.2.2"
+</ReqRef><ReqRef
+ Id="f83a7563-dcc4-4041-8201-a5d79f86a5c0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.4.6.1"
+</ReqRef><ReqRef
+ Id="edb711e6-2b8c-4c00-88b8-563ee23ec94b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -271,8 +264,7 @@
             }
         }
     ]
-}</Action>
-<Action>BTM.LRBG &lt;- BTM.BaliseGroup
+}</Action><Action>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     NID =&gt; 2100,
     Orientation =&gt; Orientation.Nominal,
@@ -282,9 +274,7 @@
         Position =&gt; 1000.0,
         UnderReadingAmountOdo =&gt; 7.0
     }
-}</Action>
-<Action>Odometry.NominalDistance &lt;- 1100.0</Action>
-</Actions>
+}</Action><Action>Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -322,14 +312,14 @@
  Name="Check selection of slippery rail by the driver"
 >
 <ReqRef
- Id="3.18.4.6.4"
+ Id="8c94001e-944c-4e4c-9425-db637f743011"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.18.4.6.2.1"
+</ReqRef><ReqRef
+ Id="115b09d2-66f8-4553-9085-6484d37ec385"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -360,10 +350,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action>
-<Action>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Slippery_rail</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Allowed</Action><Action>Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver &lt;- Messages.M_ADHESION.Slippery_rail</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -378,8 +365,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Not_allowed</Action>
-</Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.ModificationOfAdhesionFactorByDriver &lt;- Messages.Q_NVDRIVER_ADHES.Not_allowed</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

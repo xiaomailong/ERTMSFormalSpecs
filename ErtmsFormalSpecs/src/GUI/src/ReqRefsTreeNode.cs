@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Specification;
 
 namespace GUI
 {
@@ -42,7 +43,13 @@ namespace GUI
         public ReqRefsTreeNode(DataDictionary.ReferencesParagraph item)
             : base(item, "Requirements", true)
         {
-            foreach (DataDictionary.ReqRef req in item.Requirements)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.ReqRef req in Item.Requirements)
             {
                 Nodes.Add(new ReqRefTreeNode(req));
             }
@@ -61,20 +68,15 @@ namespace GUI
         /// <summary>
         /// Creates are reference to a requirement
         /// </summary>
-        /// <param name="refId"></param>
-        public void CreateReqRef(string refId)
+        /// <param name="paragraph"></param>
+        public void CreateReqRef(Paragraph paragraph)
         {
             DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
-            req.Name = refId;
+            req.Paragraph = paragraph;
             Item.appendRequirements(req);
             Nodes.Add(new ReqRefTreeNode(req));
             SortSubNodes();
             RefreshNode();
-        }
-
-        public void AddHandler(object sender, EventArgs args)
-        {
-            CreateReqRef("<Requirement" + (GetNodeCount(false) + 1) + ">");
         }
 
         /// <summary>
@@ -86,16 +88,14 @@ namespace GUI
             if (SourceNode is SpecificationView.ParagraphTreeNode)
             {
                 SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
-                CreateReqRef(paragraphTreeNode.Item.FullId);
+                CreateReqRef(paragraphTreeNode.Item);
             }
             else if (SourceNode is ReqRefTreeNode)
             {
                 ReqRefTreeNode reqRefTreeNode = (ReqRefTreeNode)SourceNode;
-                CreateReqRef(reqRefTreeNode.Item.Paragraph.FullId);
+                CreateReqRef(reqRefTreeNode.Item.Paragraph);
             }
         }
-
-
 
         /// <summary>
         /// The menu items for this tree node
@@ -104,8 +104,6 @@ namespace GUI
         protected override List<MenuItem> GetMenuItems()
         {
             List<MenuItem> retVal = new List<MenuItem>();
-
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }

@@ -20,21 +20,63 @@ using System.Linq;
 using System.Windows.Forms;
 using DataDictionary;
 using Utils;
+using System.Threading;
+using LibGit2Sharp;
+using System.Diagnostics;
+using System.Reflection;
+using WeifenLuo.WinFormsUI.Docking;
+using System.Drawing;
+using DataDictionary.Specification;
+using GUI.SpecificationView;
 
 namespace GUI
 {
     public partial class MainWindow : Form
     {
         /// <summary>
+        /// The sub forms for this window
+        /// </summary>
+        public HashSet<Form> SubForms { get; set; }
+
+        /// <summary>
         /// The sub IBaseForms handled in this MDI
         /// </summary>
-        private HashSet<IBaseForm> subWindows = new HashSet<IBaseForm>();
-
         public HashSet<IBaseForm> SubWindows
         {
             get
             {
-                return subWindows;
+                HashSet<IBaseForm> retVal = new HashSet<IBaseForm>();
+
+                foreach (Form form in SubForms)
+                {
+                    if (form is IBaseForm)
+                    {
+                        retVal.Add((IBaseForm)form);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+        /// <summary>
+        /// The editors opened in the MDI
+        /// </summary>
+        public HashSet<EditorForm> Editors
+        {
+            get
+            {
+                HashSet<EditorForm> retVal = new HashSet<EditorForm>();
+
+                foreach (Form form in SubForms)
+                {
+                    if (form is EditorForm)
+                    {
+                        retVal.Add((EditorForm)form);
+                    }
+                }
+
+                return retVal;
             }
         }
 
@@ -47,12 +89,20 @@ namespace GUI
         {
             if (model != null)
             {
-                foreach (IBaseForm form in SubWindows)
+                foreach (IBaseForm iBaseForm in SubWindows)
                 {
-                    BaseTreeView treeView = form.TreeView;
+                    BaseTreeView treeView = iBaseForm.TreeView;
                     if (treeView != null)
                     {
-                        treeView.Select(model, getFocus);
+                        BaseTreeNode node = treeView.Select(model, getFocus);
+                        if (node != null)
+                        {
+                            Form form = iBaseForm as Form;
+                            if (form != null)
+                            {
+                                form.Focus();
+                            }
+                        }
                     }
                 }
             }
@@ -60,10 +110,7 @@ namespace GUI
 
         public void HandleSubWindowClosed(Form form)
         {
-            if (form is IBaseForm)
-            {
-                SubWindows.Remove((IBaseForm)form);
-            }
+            SubForms.Remove(form);
         }
 
         /// <summary>
@@ -135,7 +182,7 @@ namespace GUI
                 if (dictionary != null)
                 {
                     retVal = new TranslationRules.Window(dictionary.TranslationDictionary);
-                    AddChildWindow(retVal);
+                    AddChildWindow(retVal, DockAreas.Document);
                 }
                 return retVal;
             }
@@ -156,80 +203,196 @@ namespace GUI
                     }
                 }
 
+                DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                if (dictionary != null)
+                {
+                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
+                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
+                    AddChildWindow(newWindow, DockAreas.DockRight);
+                    return newWindow;
+                }
+
                 return null;
             }
         }
 
         /// <summary>
-        /// The application version number
+        /// The thread used to synchronize node names with their model
         /// </summary>
-        private string versionNumber = "0.9.8";
+        private class Synchronizer : GenericSynchronizationHandler<MainWindow>
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="instance"></param>
+            public Synchronizer(MainWindow instance, int cycleTime)
+                : base(instance, cycleTime)
+            {
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
+            {
+                instance.Invoke((MethodInvoker)delegate
+                {
+                    instance.UpdateTitle();
+                    foreach (EditorForm editor in instance.Editors)
+                    {
+                        if (!editor.EditorTextBoxHasFocus())
+                        {
+                            editor.RefreshText();
+                        }
+                    }
+                });
+            }
+        }
+
+        /// <summary>
+        /// Indicates that synchronization is required
+        /// </summary>
+        private Synchronizer WindowSynchronizerTask { get; set; }
 
 
         /// <summary>
-        /// Listener to model changes
+        /// The class that is used to update the status
         /// </summary>
-        public class NamableChangeListener : XmlBooster.IListener<DataDictionary.Generated.Namable>
+        private class StatusSynchronizer : GenericSynchronizationHandler<MainWindow>
         {
             /// <summary>
-            /// The main window for which this listener listens
+            /// The model element used to update the status bar
             /// </summary>
-            private MainWindow MainWindow { get; set; }
+            private IHoldsParagraphs Model { get; set; }
 
             /// <summary>
-            /// Last time refresh was done
+            /// Indicates that the model has changed
             /// </summary>
-            private DateTime LastRefresh { get; set; }
+            private bool ModelChanged { get; set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="system"></param>
-            public NamableChangeListener(MainWindow window)
+            /// <param name="window"></param>
+            public StatusSynchronizer(MainWindow window)
+                : base(window, 100)
             {
-                MainWindow = window;
-                LastRefresh = DateTime.MinValue;
+                Model = null;
+                ModelChanged = false;
             }
 
-            #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.Namable sender)
+            /// <summary>
+            /// Sets the instance to display
+            /// </summary>
+            /// <param name="model"></param>
+            public void SetModel(IHoldsParagraphs model)
             {
-                RefreshMainWindow();
-            }
-
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.Namable sender)
-            {
-                RefreshMainWindow();
-            }
-
-            private void RefreshMainWindow()
-            {
-                DateTime now = DateTime.Now;
-                TimeSpan span = now - LastRefresh;
-
-                if (span > TimeSpan.FromSeconds(1))
+                Model = model;
+                ModelChanged = true;
+                Instance.Invoke((MethodInvoker)delegate
                 {
-                    MainWindow.Invoke((MethodInvoker)delegate
+                    Instance.SetStatus("Computing coverage...");
+                });
+            }
+
+            /// <summary>
+            /// Synchronization
+            /// </summary>
+            /// <param name="instance"></param>
+            public override void HandleSynchronization(MainWindow instance)
+            {
+                if (ModelChanged)
+                {
+                    ModelChanged = false;
+                    Instance.Invoke((MethodInvoker)delegate
                     {
-                        MainWindow.UpdateTitle();
+                        Instance.SetStatus("Computing coverage...");
                     });
-                    LastRefresh = now;
+
+                    List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
+                    Model.GetParagraphs(paragraphs);
+                    Paragraph p = Model as Paragraph;
+                    if (p != null)
+                    {
+                        paragraphs.Add(p);
+                    }
+
+                    string message = ParagraphTreeNode.CreateStatMessage(EFSSystem.INSTANCE, paragraphs, false);
+                    instance.Invoke((MethodInvoker)delegate
+                    {
+                        instance.SetStatus(message);
+                    });
                 }
             }
-            #endregion
         }
 
         /// <summary>
-        /// Create the main window
+        /// Indicates that synchronization is required
+        /// </summary>
+        private StatusSynchronizer StatusSynchronizerTask { get; set; }
+
+        /// <summary>
+        /// The maximum size of the history
+        /// </summary>
+        private const int MAX_SELECTION_HISTORY = 100;
+
+        /// <summary>
+        /// The selection history
+        /// </summary>
+        public List<DataDictionary.ModelElement> SelectionHistory { get; private set; }
+
+        /// <summary>
+        /// Constructor
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+            SubForms = new HashSet<Form>();
             AllowRefresh = true;
+            GUIUtils.MDIWindow = this;
+            GUIUtils.Graphics = CreateGraphics();
+            SelectionHistory = new List<DataDictionary.ModelElement>();
 
-            DataDictionary.Generated.ControllersManager.NamableController.Listeners.Add(new NamableChangeListener(this));
-
+            WindowSynchronizerTask = new Synchronizer(this, 300);
+            StatusSynchronizerTask = new StatusSynchronizer(this);
+            KeyUp += new KeyEventHandler(MainWindow_KeyUp);
             Refresh();
+        }
+
+        /// <summary>
+        /// Handles specific key actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W:
+                        CheckSaveThenClose();
+                        e.Handled = true;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~MainWindow()
+        {
+            try
+            {
+                GUIUtils.Graphics.Dispose();
+                GUIUtils.Graphics = null;
+            }
+            catch (Exception)
+            {
+            }
+            GUIUtils.MDIWindow = null;
         }
 
         /// <summary>
@@ -237,6 +400,10 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string versionNumber = fvi.FileVersion;
+
             String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
 
             if (EFSSystem != null && EFSSystem.ShouldSave)
@@ -247,25 +414,52 @@ namespace GUI
             Text = windowTitle;
         }
 
+        Dictionary<Form, Rectangle> InitialRectangle = new Dictionary<Form, Rectangle>();
+
         /// <summary>
         /// Adds a child window to this parent MDI
         /// </summary>
         /// <param name="window"></param>
+        /// <param name="dockArea">where to place the window</param>
         /// <returns></returns>
-        public void AddChildWindow(Form window)
+        public void AddChildWindow(Form window, DockAreas dockArea = DockAreas.Document)
         {
-            if (window != null)
+            InitialRectangle[window] = new Rectangle(new Point(50, 50), window.Size);
+
+            DockContent docContent = window as DockContent;
+            if (docContent != null)
             {
-                window.MdiParent = this;
-                window.Show();
-                window.Activate();
+                SubForms.Add(docContent);
 
-                if (window is IBaseForm)
+
+                if (dockArea == DockAreas.DockLeft)
                 {
-                    SubWindows.Add((IBaseForm)window);
+                    docContent.Show(dockPanel, DockState.DockLeftAutoHide);
                 }
+                else if (dockArea == DockAreas.DockRight)
+                {
+                    docContent.Show(dockPanel, DockState.DockRightAutoHide);
+                }
+                else if (dockArea == DockAreas.Float)
+                {
+                    docContent.Show(dockPanel, DockState.Float);
+                }
+                else
+                {
+                    docContent.Show(dockPanel);
+                }
+            }
+            else
+            {
+                if (window != null)
+                {
+                    SubForms.Add(window);
+                    window.MdiParent = this;
+                    window.Show();
 
-                ActivateMdiChild(window);
+                    window.Activate();
+                    ActivateMdiChild(window);
+                }
             }
         }
 
@@ -282,12 +476,7 @@ namespace GUI
                 {
                     window.Close();
                     window.MdiParent = null;
-
-                    if (window is IBaseForm)
-                    {
-                        SubWindows.Remove((IBaseForm)window);
-                    }
-
+                    SubForms.Remove(window);
                     RemoveOwnedForm(window);
                 }
                 catch (Exception)
@@ -335,11 +524,19 @@ namespace GUI
         /// </summary>
         public override void Refresh()
         {
-            foreach (IBaseForm form in SubWindows)
+            try
             {
-                form.Refresh();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                foreach (IBaseForm form in SubWindows)
+                {
+                    form.Refresh();
+                }
+                UpdateTitle();
             }
-            UpdateTitle();
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+            }
 
             base.Refresh();
         }
@@ -375,13 +572,42 @@ namespace GUI
             public DataDictionary.Dictionary Dictionary { get; private set; }
 
             /// <summary>
+            /// Indicates that errors can occur during load, for instance, for comparison purposes
+            /// </summary>
+            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+
+            /// <summary>
+            /// The errors encountered during load of the file. 
+            /// null indicates that no errors are tolerated
+            /// </summary>
+            public List<ElementLog> ErrorsDuringLoad { get; private set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="fileName"></param>
-            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system)
+            public OpenFileOperation(string fileName, DataDictionary.EFSSystem system, bool allowErrors)
             {
                 FileName = fileName;
                 System = system;
+                if (allowErrors)
+                {
+                    ErrorsDuringLoad = new List<ElementLog>();
+                }
+                else
+                {
+                    ErrorsDuringLoad = null;
+                }
+            }
+
+            /// <summary>
+            /// Executes the operation in a background thread
+            /// </summary>
+            public void ExecuteInBackgroundThread()
+            {
+                ProgressDialog dialog = new ProgressDialog("Opening file", this);
+                dialog.ShowDialog();
+                DisplayErrors();
             }
 
             /// <summary>
@@ -390,7 +616,62 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Dictionary = DataDictionary.Util.load(FileName, System);
+                Dictionary = DataDictionary.Util.load(FileName, System, false, ErrorsDuringLoad);
+            }
+
+            /// <summary>
+            /// Gather errors during load
+            /// </summary>
+            private class ErrorGathered : DataDictionary.Generated.Visitor
+            {
+                /// <summary>
+                /// The logs during load
+                /// </summary>
+                public List<ElementLog> Logs { get; private set; }
+
+                /// <summary>
+                /// Constructor
+                /// </summary>
+                public ErrorGathered()
+                {
+                    Logs = new List<ElementLog>();
+                }
+
+                public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+                {
+                    DataDictionary.ModelElement element = (DataDictionary.ModelElement)obj;
+
+                    Logs.AddRange(element.Messages);
+
+                    base.visit(obj, visitSubNodes);
+                }
+            }
+
+            /// <summary>
+            /// Displays errors during load, when the flag AllowErrorDuringLoad is active
+            /// </summary>
+            public void DisplayErrors()
+            {
+                if (AllowErrorsDuringLoad)
+                {
+                    if (Dictionary != null)
+                    {
+                        if (ErrorsDuringLoad.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (ElementLog log in ErrorsDuringLoad)
+                            {
+                                errors += log.Level + ": " + log.Log + "\n";
+                            }
+
+                            MessageBox.Show("Errors while opening file " + FileName + "\n\n" + errors, "Errors where encountered while opening file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file " + FileName, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -403,26 +684,27 @@ namespace GUI
             {
                 try
                 {
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem);
-                    ProgressDialog dialog = new ProgressDialog("Opening file", openFileOperation);
-                    dialog.ShowDialog();
+                    HandlingSelection = true;
+                    bool allowErrors = false;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors);
+                    openFileOperation.ExecuteInBackgroundThread();
 
                     // Open the windows
                     if (openFileOperation.Dictionary != null)
                     {
                         DataDictionary.Dictionary dictionary = openFileOperation.Dictionary;
-                        DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
 
                         // Only open the specification window if specifications are available in the opened file
-                        if (dictionary.Specifications != null && dictionary.Specifications.AllParagraphs.Count > 0)
+                        if (dictionary.Specifications != null && dictionary.AllParagraphs.Count > 0)
                         {
-                            AddChildWindow(new SpecificationView.Window(dictionary));
+                            AddChildWindow(new SpecificationView.Window(dictionary), DockAreas.DockLeft);
                         }
 
                         // Only open the model view window if model elements are available in the opened file
                         if (dictionary.NameSpaces.Count > 0)
                         {
-                            AddChildWindow(new DataDictionaryView.Window(dictionary));
+                            AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
                         }
 
                         // Only shold the tests window if tests are defined in the opened file
@@ -431,7 +713,7 @@ namespace GUI
                             IBaseForm testWindow = TestWindow;
                             if (testWindow == null)
                             {
-                                AddChildWindow(new TestRunnerView.Window(EFSSystem));
+                                AddChildWindow(new TestRunnerView.Window(EFSSystem), DockAreas.Document);
                             }
                             else
                             {
@@ -443,20 +725,13 @@ namespace GUI
                         if (dictionary.ShortcutsDictionary != null)
                         {
                             IBaseForm shortcutsWindow = ShortcutsWindow;
-                            if (shortcutsWindow == null)
-                            {
-                                if (dictionary != null)
-                                {
-                                    Shortcuts.Window newWindow = new Shortcuts.Window(dictionary.ShortcutsDictionary);
-                                    newWindow.Location = new System.Drawing.Point(Width - newWindow.Width - 20, 0);
-                                    AddChildWindow(newWindow);
-                                }
-                            }
-                            else
+                            if (shortcutsWindow != null)
                             {
                                 shortcutsWindow.RefreshModel();
                             }
                         }
+
+                        SetCoverageStatus(EFSSystem);
                     }
                     else
                     {
@@ -465,12 +740,14 @@ namespace GUI
                 }
                 finally
                 {
-                    DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                    HandlingSelection = false;
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
 
                 Refresh();
             }
         }
+
         #endregion
 
         #region SaveFile
@@ -586,6 +863,12 @@ namespace GUI
             return retVal;
         }
 
+        /// <summary>
+        /// The tooltip associated to this form
+        /// </summary>
+        public ToolTip ToolTip { get { return toolTip; } }
+
+
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataDictionary.Dictionary activeDictionary = GetActiveDictionary();
@@ -599,7 +882,7 @@ namespace GUI
                 {
                     activeDictionary.FilePath = saveFileDialog.FileName;
                     SaveOperation saveOperation = new SaveOperation(this, activeDictionary);
-                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation);
+                    ProgressDialog dialog = new ProgressDialog("Saving file " + activeDictionary.FilePath, saveOperation, false);
                     dialog.ShowDialog();
                 }
             }
@@ -610,7 +893,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -620,7 +903,7 @@ namespace GUI
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 SaveOperation saveOperation = new SaveOperation(this, dictionary);
-                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation);
+                ProgressDialog dialog = new ProgressDialog("Saving file " + dictionary.Name, saveOperation, false);
                 dialog.ShowDialog();
             }
         }
@@ -628,13 +911,21 @@ namespace GUI
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
+            CheckSaveThenClose();
+        }
+
+        /// <summary>
+        /// Checks that save oeprations should be performed, if not, close the window
+        /// </summary>
+        private void CheckSaveThenClose()
+        {
             if (EFSSystem.ShouldSave)
             {
                 DialogResult result = MessageBox.Show("Model has been changed, do you want to save it", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
                     case System.Windows.Forms.DialogResult.Yes:
-                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem));
+                        ProgressDialog dialog = new ProgressDialog("Saving files", new SaveOperation(this, EFSSystem), false);
                         dialog.ShowDialog();
                         break;
 
@@ -755,7 +1046,7 @@ namespace GUI
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                 try
                 {
                     foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
@@ -765,7 +1056,7 @@ namespace GUI
                 }
                 finally
                 {
-                    DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
                 }
             }
         }
@@ -775,7 +1066,9 @@ namespace GUI
             CheckModelHandler checkModelHandler = new CheckModelHandler(EFSSystem);
             ProgressDialog dialog = new ProgressDialog("Check model", checkModelHandler);
             dialog.ShowDialog();
-            Refresh();
+
+            MessageCounter counter = new MessageCounter(EFSSystem);
+            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
@@ -783,7 +1076,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckImplementation();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckImplementation();
+                }
             }
             Refresh();
         }
@@ -810,7 +1106,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckReview();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckReview();
+                }
                 Refresh();
             }
         }
@@ -820,6 +1119,14 @@ namespace GUI
         /// ------------------------------------------------------
 
         private void clearMarksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearMarks();
+        }
+
+        /// <summary>
+        /// Clears all marks from the model/spec/tests/...
+        /// </summary>
+        public void ClearMarks()
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
@@ -834,7 +1141,10 @@ namespace GUI
             {
                 if (dictionary.Specifications != null)
                 {
-                    dictionary.Specifications.CheckMoreInfo();
+                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    {
+                        specification.CheckMoreInfo();
+                    }
                 }
             }
             Refresh();
@@ -844,9 +1154,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckImplementedWithNoFunctionalTest();
+                    specification.CheckImplementedWithNoFunctionalTest();
                 }
             }
             Refresh();
@@ -856,9 +1166,9 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckNotImplementedButImplementationExists();
+                    specification.CheckNotImplementedButImplementationExists();
                 }
             }
             Refresh();
@@ -868,9 +1178,11 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                dictionary.ClearMessages();
+
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckApplicable();
+                    specification.CheckApplicable();
                 }
             }
             Refresh();
@@ -880,6 +1192,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkUnimplementedTests();
             }
 
@@ -890,6 +1203,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkNotTranslatedTests();
             }
 
@@ -900,6 +1214,7 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
+                dictionary.ClearMessages();
                 dictionary.MarkNotImplementedTranslations();
             }
 
@@ -910,9 +1225,10 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                dictionary.ClearMessages();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckNonApplicable();
+                    specification.CheckNonApplicable();
                 }
             }
             Refresh();
@@ -922,84 +1238,13 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                if (dictionary.Specifications != null)
+                dictionary.ClearMessages();
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
                 {
-                    dictionary.Specifications.CheckSpecIssues();
+                    specification.CheckSpecIssues();
                 }
             }
             Refresh();
-        }
-
-        /// ------------------------------------------------------
-        ///    IMPORT SPEC OPERATIONS
-        /// ------------------------------------------------------
-
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Title = "Open original specification file";
-                openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-                if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    string OriginalFileName = openFileDialog.FileName;
-                    openFileDialog.Title = "Open new specification file";
-                    openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
-                    if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-                    {
-                        string NewFileName = openFileDialog.FileName;
-
-                        string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
-
-                        /// Perform the importation
-                        Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, dictionary.Specifications);
-                        ProgressDialog dialog = new ProgressDialog("Opening file", importer);
-                        dialog.ShowDialog();
-
-                        /// Creates the report based on the importation result
-                        Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(dictionary, importer.NewDocument, baseFileName);
-                        dialog = new ProgressDialog("Opening file", reportHandler);
-                        dialog.ShowDialog();
-
-                        RefreshModel();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates the base file name for the report
-        /// </summary>
-        /// <param name="OriginalFileName"></param>
-        /// <param name="NewFileName"></param>
-        /// <returns></returns>
-        private string createBaseFileName(string OriginalFileName, string NewFileName)
-        {
-            string baseFileName = "";
-            for (int i = 0; i < OriginalFileName.Length && i < NewFileName.Length; i++)
-            {
-                if (OriginalFileName[i] == NewFileName[i])
-                {
-                    baseFileName += OriginalFileName[i];
-                }
-                else
-                {
-                    break;
-                }
-            }
-            if (baseFileName.IndexOf("\\") > 0)
-            {
-                baseFileName = baseFileName.Substring(baseFileName.LastIndexOf("\\") + 1);
-            }
-
-            if (baseFileName.IndexOf("v") > 0)
-            {
-                baseFileName = baseFileName.Substring(0, baseFileName.LastIndexOf("v"));
-            }
-
-            return baseFileName;
         }
 
         #region Import test database
@@ -1127,51 +1372,6 @@ namespace GUI
         }
         #endregion
 
-        private void showTranslationRulesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddChildWindow(TranslationWindow);
-        }
-
-
-        private void showShortcutsViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddChildWindow(ShortcutsWindow);
-        }
-
-        private void showTestsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (EFSSystem != null)
-            {
-                Form testWindow = TestWindow;
-                if (testWindow == null)
-                {
-                    AddChildWindow(new TestRunnerView.Window(EFSSystem));
-                }
-                else
-                {
-                    testWindow.Select();
-                }
-            }
-        }
-
-        private void showModelViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                AddChildWindow(new DataDictionaryView.Window(dictionary));
-            }
-        }
-
-        private void showSpecificationViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DataDictionary.Dictionary dictionary = GetActiveDictionary();
-            if (dictionary != null)
-            {
-                AddChildWindow(new SpecificationView.Window(dictionary));
-            }
-        }
-
         /// ------------------------------------------------------
         ///    CREATE REPORT OPERATIONS
         /// ------------------------------------------------------
@@ -1245,6 +1445,11 @@ namespace GUI
 
         private void refreshWindowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Ensure the system has been compiled
+            EFSSystem efsSystem = EFSSystem.INSTANCE;
+            efsSystem.Compiler.Compile_Synchronous(efsSystem.ShouldRebuild);
+            efsSystem.ShouldRebuild = false;
+
             RefreshModel();
         }
 
@@ -1252,15 +1457,18 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(dictionary.Specifications);
-                fbExporter.Export("../FunctionalBlocks.csv");
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    DataDictionary.Specification.FunctionalBlockExporter fbExporter = new DataDictionary.Specification.FunctionalBlockExporter(specification);
+                    fbExporter.Export("../" + specification.Name + "FunctionalBlocks.csv");
+                }
             }
         }
 
         private void showRulePerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RulePerformances.RulesPerformances rulePerformances = new RulePerformances.RulesPerformances(EFSSystem);
-            AddChildWindow(rulePerformances);
+            AddChildWindow(rulePerformances, DockAreas.Document);
         }
 
         /// <summary>
@@ -1317,7 +1525,7 @@ namespace GUI
         private void showFunctionsPerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FunctionsPerformances.FunctionsPerformances functionsPerformances = new FunctionsPerformances.FunctionsPerformances(EFSSystem);
-            AddChildWindow(functionsPerformances);
+            AddChildWindow(functionsPerformances, DockAreas.Document);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1350,7 +1558,7 @@ namespace GUI
 
                 if (!found)
                 {
-                    AddChildWindow(new DataDictionaryView.Window(dictionary));
+                    AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
                 }
             }
         }
@@ -1359,7 +1567,12 @@ namespace GUI
         {
             foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                dictionary.Specifications.CheckNewRevision();
+                dictionary.ClearMessages();
+
+                foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                {
+                    specification.CheckNewRevision();
+                }
                 Refresh();
             }
         }
@@ -1372,6 +1585,294 @@ namespace GUI
                 Report.ERTMSAcademyReport aReport = new Report.ERTMSAcademyReport(dictionary);
                 aReport.ShowDialog(this);
             }
+        }
+
+        private void compareWithToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open ERTMS Formal Spec file";
+            openFileDialog.Filter = "EFS Files (*.efs)|*.efs|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // Open the dictionary but do not store it in the EFS System
+                bool allowErrors = true;
+                OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, null, allowErrors);
+                openFileOperation.ExecuteInBackgroundThread();
+
+                // Compare the files
+                if (openFileOperation.Dictionary != null)
+                {
+                    DataDictionary.Dictionary dictionary = GetActiveDictionary();
+                    DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                    DataDictionary.Compare.Comparer.compareDictionary(dictionary, openFileOperation.Dictionary, versionDiff);
+                    versionDiff.markVersionChanges(dictionary);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                Refresh();
+            }
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Options.Options optionForm = new Options.Options();
+            optionForm.Setup(EFSSystem);
+            optionForm.ShowDialog(this);
+            optionForm.UpdateSystem(EFSSystem);
+        }
+
+        private void compareWithGitRevisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Compares with the active dictionary
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            string workingDir = Path.GetDirectoryName(dictionary.FilePath);
+
+            // Retrieve the hash tag
+            VersionSelector.VersionSelector selector = new VersionSelector.VersionSelector(dictionary);
+            selector.ShowDialog();
+            Commit selected = selector.Selected;
+            if (selected != null)
+            {
+                // Create the temp directory to store alternate version of the subset file
+                string tempDirectory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                Directory.CreateDirectory(tempDirectory);
+                try
+                {
+                    // Retrieve the archive of the selected version
+                    {
+                        ProcessStartInfo _processStartInfo = new ProcessStartInfo();
+                        // _processStartInfo.WorkingDirectory = "c:\\ertms-repositories\\ERTMSFormalSpecs";
+                        _processStartInfo.WorkingDirectory = workingDir;
+                        _processStartInfo.FileName = "git";
+                        _processStartInfo.Arguments = "archive -o " + tempDirectory + "\\specs.zip " + selected.Id.Sha + " .";
+                        _processStartInfo.CreateNoWindow = true;
+                        _processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        Process myProcess = Process.Start(_processStartInfo);
+                        myProcess.WaitForExit();
+                    }
+
+                    // Unzip the archive
+                    {
+                        ICSharpCode.SharpZipLib.Zip.FastZip zip = new ICSharpCode.SharpZipLib.Zip.FastZip();
+                        zip.ExtractZip(tempDirectory + "\\specs.zip", tempDirectory, null);
+                    }
+
+                    // Open the dictionary but do not store it in the EFS System
+                    bool allowErrors = true;
+                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + "\\subset-026.efs", null, allowErrors);
+                    openFileOperation.ExecuteInBackgroundThread();
+
+                    // Compare the files
+                    if (openFileOperation.Dictionary != null)
+                    {
+                        DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                        DataDictionary.Compare.Comparer.compareDictionary(dictionary, openFileOperation.Dictionary, versionDiff);
+                        versionDiff.markVersionChanges(dictionary);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    try
+                    {
+                        Directory.Delete(tempDirectory, true);
+                    }
+                    catch (Exception exception2)
+                    {
+                        MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Refreshes all graph views
+        /// </summary>
+        public void RefreshAfterStep()
+        {
+            foreach (Form form in SubForms)
+            {
+                if (form is GraphView.GraphView)
+                {
+                    ((GraphView.GraphView)form).RefreshAfterStep();
+                }
+
+                if (form is DataDictionaryView.Window)
+                {
+                    ((DataDictionaryView.Window)form).RefreshAfterStep();
+                }
+
+                if (form is StateDiagram.StateDiagramWindow)
+                {
+                    ((StateDiagram.StateDiagramWindow)form).RefreshAfterStep();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the MDI window is currently handling a selection change
+        /// </summary>
+        public bool HandlingSelection { get; set; }
+
+        /// <summary>
+        /// Keeps track of a new selection
+        /// </summary>
+        /// <param name="selected"></param>
+        public void HandleSelection(DataDictionary.ModelElement selected)
+        {
+            if (selected != null)
+            {
+                if (!HandlingSelection)
+                {
+                    try
+                    {
+                        HandlingSelection = true;
+
+                        if (SelectionHistory.Count > MAX_SELECTION_HISTORY)
+                        {
+                            SelectionHistory.RemoveAt(SelectionHistory.Count - 1);
+                        }
+
+                        if (SelectionHistory.Count == 0 || SelectionHistory[0] != selected)
+                        {
+                            SelectionHistory.Insert(0, selected);
+
+                            foreach (Form form in SubForms)
+                            {
+                                Shortcuts.Window shortcutWindow = form as Shortcuts.Window;
+                                if (shortcutWindow != null)
+                                {
+                                    shortcutWindow.RefreshModel();
+                                }
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        HandlingSelection = false;
+                    }
+                }
+            }
+        }
+
+        private void generateFunctionalAnalysisReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                Report.FunctionalAnalysisReport aReport = new Report.FunctionalAnalysisReport(dictionary);
+                aReport.ShowDialog(this);
+            }
+        }
+
+        private void dockedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DockContent dockContent = SelectedForm() as DockContent;
+            if (dockContent != null)
+            {
+                if (dockContent.DockAreas == DockAreas.Document)
+                {
+                    dockContent.Hide();
+                    Rectangle rectangle = InitialRectangle[dockContent];
+                    dockContent.DockAreas = DockAreas.Float;
+                    dockContent.DockState = DockState.Float;
+                    dockContent.Show(dockPanel, rectangle);
+                    dockContent.ParentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Provides the selected form
+        /// </summary>
+        /// <returns></returns>
+        private Form SelectedForm()
+        {
+            Form retVal = null;
+
+            foreach (DockContent dockContent in dockPanel.Contents)
+            {
+                if (dockContent.IsActivated)
+                {
+                    retVal = dockContent;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        private void showSpecificationViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                AddChildWindow(new SpecificationView.Window(dictionary), DockAreas.DockLeft);
+            }
+        }
+
+        private void showModelViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
+            }
+        }
+
+        private void showShortcutsViewToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            AddChildWindow(ShortcutsWindow, DockAreas.DockRight);
+        }
+
+        private void showTestsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (EFSSystem != null)
+            {
+                Form testWindow = TestWindow;
+                if (testWindow == null)
+                {
+                    AddChildWindow(new TestRunnerView.Window(EFSSystem), DockAreas.Document);
+                }
+                else
+                {
+                    testWindow.Select();
+                }
+            }
+        }
+
+        private void showTranslationViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChildWindow(TranslationWindow, DockAreas.Document);
+        }
+
+        /// <summary>
+        /// Sets the status of the window
+        /// </summary>
+        /// <param name="statusText"></param>
+        public void SetStatus(string statusText)
+        {
+            toolStripStatusLabel.Text = statusText;
+        }
+
+        /// <summary>
+        /// Sets the default status
+        /// </summary>
+        public void SetCoverageStatus(IHoldsParagraphs model)
+        {
+            StatusSynchronizerTask.SetModel(model);
         }
     }
 }

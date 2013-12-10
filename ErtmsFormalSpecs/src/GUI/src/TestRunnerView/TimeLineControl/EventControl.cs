@@ -62,7 +62,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             DataDictionary.Tests.Expectation retVal = null;
 
-
             ExpectationStateChange expectationChange = ModelEvent as ExpectationStateChange;
             if (expectationChange != null)
             {
@@ -95,14 +94,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Provides the main window
-        /// </summary>
-        MainWindow MDIWindow
-        {
-            get { return EnclosingWindow.MDIWindow; }
-        }
-
-        /// <summary>
         /// Double click does not work, implement it.
         /// </summary>
         /// <returns></returns>
@@ -120,10 +111,10 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             if (ModelEvent is RuleFired)
             {
-                if (TimeLine.Window.MDIWindow.DataDictionaryWindow != null)
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
                     RuleFired ruleFired = ModelEvent as RuleFired;
-                    TimeLine.Window.MDIWindow.DataDictionaryWindow.TreeView.Select(ruleFired.RuleCondition);
+                    GUIUtils.MDIWindow.DataDictionaryWindow.TreeView.Select(ruleFired.RuleCondition);
                 }
             }
             else if (ModelEvent is VariableUpdate)
@@ -137,21 +128,21 @@ namespace GUI.TestRunnerView.TimeLineControl
                         DataDictionary.Interpreter.ExplanationPart explain = variableUpdate.Explanation;
                         ExplainBox explainTextBox = new ExplainBox();
                         explainTextBox.setExplanation(explain);
-                        MDIWindow.AddChildWindow(explainTextBox);
+                        GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
                     }
                 }
 
                 BaseTreeNode treeNode = null;
 
-                if (TimeLine.Window.MDIWindow.DataDictionaryWindow != null)
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
-                    treeNode = TimeLine.Window.MDIWindow.DataDictionaryWindow.TreeView.Select(variableUpdate.Action);
+                    treeNode = GUIUtils.MDIWindow.DataDictionaryWindow.TreeView.Select(variableUpdate.Action);
                 }
                 if (treeNode == null)
                 {
-                    if (TimeLine.Window.MDIWindow.TestWindow != null)
+                    if (GUIUtils.MDIWindow.TestWindow != null)
                     {
-                        TimeLine.Window.MDIWindow.TestWindow.TreeView.Select(variableUpdate.Action);
+                        GUIUtils.MDIWindow.TestWindow.TreeView.Select(variableUpdate.Action);
                     }
                 }
             }
@@ -166,13 +157,22 @@ namespace GUI.TestRunnerView.TimeLineControl
                         DataDictionary.Interpreter.ExplanationPart explain = expectation.ExpressionTree.Explain();
                         ExplainBox explainTextBox = new ExplainBox();
                         explainTextBox.setExplanation(explain);
-                        MDIWindow.AddChildWindow(explainTextBox);
+                        GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
                     }
                 }
 
-                if (TimeLine.Window.MDIWindow.TestWindow != null)
+                if (GUIUtils.MDIWindow.TestWindow != null)
                 {
-                    TimeLine.Window.MDIWindow.TestWindow.TreeView.Select((ModelEvent as Expect).Expectation);
+                    GUIUtils.MDIWindow.TestWindow.TreeView.Select((ModelEvent as Expect).Expectation);
+                }
+            }
+
+            else if (ModelEvent is ModelInterpretationFailure)
+            {
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
+                {
+                    ModelInterpretationFailure failure = ModelEvent as ModelInterpretationFailure;
+                    GUIUtils.MDIWindow.DataDictionaryWindow.TreeView.Select(failure.Instance as Utils.IModelElement);
                 }
             }
 
@@ -239,6 +239,10 @@ namespace GUI.TestRunnerView.TimeLineControl
                         color = Color.Red;
                         break;
                 }
+            }
+            else if (ModelEvent is ModelInterpretationFailure)
+            {
+                color = Color.Red;
             }
 
             BackColor = color;

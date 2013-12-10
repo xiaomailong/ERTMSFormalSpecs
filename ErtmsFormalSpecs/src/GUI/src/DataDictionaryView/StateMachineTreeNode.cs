@@ -22,7 +22,7 @@ namespace GUI.DataDictionaryView
 {
     public class StateMachineTreeNode : ReqRelatedTreeNode<DataDictionary.Types.StateMachine>
     {
-        private class InternalStateTypeConverter : StateTypeConverter
+        private class InternalStateTypeConverter : Converters.StateTypeConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -110,7 +110,7 @@ namespace GUI.DataDictionaryView
         public void ViewDiagram()
         {
             StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
-            BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+            GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetStateMachine(Item);
             window.Text = Item.Name + " state diagram";
         }
@@ -171,40 +171,6 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
 
             return retVal;
-        }
-
-        /// <summary>
-        /// Called before the selection changes
-        /// </summary>
-        public override void BeforeSelectionChange()
-        {
-            Window window = BaseTreeView.ParentForm as Window;
-            if (window != null)
-            {
-                window.ruleExplainTextBox.Visible = true;
-                // window.stateDiagramPanel.Visible = false;
-            }
-
-            base.BeforeSelectionChange();
-        }
-
-        /// <summary>
-        /// Handles a selection change event
-        /// </summary>
-        public override void SelectionChanged()
-        {
-            if (BaseTreeView.RefreshNodeContent)
-            {
-                Window window = BaseTreeView.ParentForm as Window;
-                if (window != null)
-                {
-                    // window.stateDiagramPanel.StateMachine = Item;
-                    // window.ruleExplainTextBox.Visible = false;
-                    // window.stateDiagramPanel.Visible = true;
-                }
-            }
-
-            base.SelectionChanged();
         }
     }
 }

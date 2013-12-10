@@ -23,10 +23,11 @@ using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.GraphView
 {
-    public partial class GraphView : Form, IBaseForm
+    public partial class GraphView : DockContent, IBaseForm
     {
         /// <summary>
         /// The functions to be displayed in this graph view
@@ -57,6 +58,8 @@ namespace GUI.GraphView
             DragDrop += new DragEventHandler(GraphView_DragDrop);
 
             Functions = new List<DataDictionary.Functions.Function>();
+
+            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
         }
 
         void GraphView_DragEnter(object sender, DragEventArgs e)
@@ -148,7 +151,7 @@ namespace GUI.GraphView
         void GraphView_FormClosed(object sender, FormClosedEventArgs e)
         {
             CleanUp();
-            MDIWindow.HandleSubWindowClosed(this);
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -171,13 +174,9 @@ namespace GUI.GraphView
         /// </summary>
         public RichTextBox MessagesTextBox { get { return null; } }
 
-        /// <summary>
-        /// The enclosing MDI Window
-        /// </summary>
-        public MainWindow MDIWindow
-        {
-            get { return GUI.FormsUtils.EnclosingForm(this.Parent) as MainWindow; }
-        }
+        public EditorTextBox RequirementsTextBox { get { return null; } }
+
+        public EditorTextBox ExpressionEditorTextBox { get { return null; } }
 
         /// <summary>
         /// The main tree view of the form
@@ -507,6 +506,11 @@ namespace GUI.GraphView
             {
                 Refresh();
             }
+        }
+
+        public void RefreshAfterStep()
+        {
+            Refresh();
         }
     }
 }

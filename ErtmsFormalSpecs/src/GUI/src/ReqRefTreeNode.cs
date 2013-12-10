@@ -17,12 +17,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace GUI
 {
     public class ReqRefTreeNode : DataTreeNode<DataDictionary.ReqRef>
     {
-        public class InternalTracesConverter : TracesConverter
+        public class InternalTracesConverter : Converters.TracesConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
@@ -30,7 +31,7 @@ namespace GUI
             }
         }
 
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -41,18 +42,26 @@ namespace GUI
             }
 
             [Category("Description"), TypeConverter(typeof(InternalTracesConverter))]
-            public override string Name
+            public string Name
             {
                 get
                 {
-                    return base.Name;
-                }
-                set
-                {
-                    base.Name = value;
+                    return Item.Name;
                 }
             }
 
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public DataDictionary.ReqRef Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
+            }
         }
 
         /// <summary>
@@ -78,7 +87,7 @@ namespace GUI
         {
             base.DoubleClickHandler();
 
-            MainWindow mainWindow = BaseForm.MDIWindow;
+            MainWindow mainWindow = GUIUtils.MDIWindow;
 
             if (mainWindow.DataDictionaryWindow != null)
             {

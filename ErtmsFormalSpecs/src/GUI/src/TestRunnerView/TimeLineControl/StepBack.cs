@@ -64,7 +64,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                         Runner.StepBack();
                     }
                 }
-                MDIWindow.Refresh();
+                GUIUtils.MDIWindow.Refresh();
             }
         }
     }

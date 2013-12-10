@@ -24,10 +24,10 @@
  Name="Initiating start of mission"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S0"
+ Id="abbd517e-8b49-43b4-8dfa-117c8988fa86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -41,19 +41,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>DMI.DMI1.DeskOpen &lt;- Boolean.False</Action>
-</Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>DMI.DMI1.DeskOpen &lt;- Boolean.False</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>Kernel.PowerOn &lt;- True</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>DMI.DMI2.DeskOpen &lt;- Boolean.False</Action>
-<Action>DMI.DMI1.IsMaster &lt;- Boolean.True</Action>
-</Actions>
+<Action>Kernel.PowerOn &lt;- True</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.DMI2.DeskOpen &lt;- Boolean.False</Action><Action>DMI.DMI1.IsMaster &lt;- Boolean.True</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -68,8 +61,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- Boolean.True</Action>
-</Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- Boolean.True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -128,10 +120,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -142,10 +131,10 @@
  Name="Inform failure of the Radio Network registration"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A29"
+ Id="251b9c82-1dc9-4d99-8648-7a96b0526d5b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -159,8 +148,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A29</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A29</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -204,10 +192,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -218,14 +203,14 @@
  Name="Update unknown driver ID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.1"
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.2"
+</ReqRef><ReqRef
+ Id="fdd34be2-081f-4fd2-81c7-d31750a434b6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -239,10 +224,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Unknown</Action><Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -267,9 +249,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -286,14 +266,14 @@
  Name="Update invalid driver ID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.1"
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.3"
+</ReqRef><ReqRef
+ Id="4498594e-f543-4aac-a645-51b5961b91b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -307,10 +287,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Invalid</Action><Action>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -335,9 +312,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Fred&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -354,14 +329,14 @@
  Name="Update unknown train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.2"
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.4"
+</ReqRef><ReqRef
+ Id="ab1d5732-e882-44e5-82c4-b3366adc105e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -375,10 +350,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -403,9 +375,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -422,14 +392,14 @@
  Name="Update invalid train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.2"
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.5"
+</ReqRef><ReqRef
+ Id="b603ef8b-509e-4363-8527-cab39ee0f193"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -443,10 +413,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -471,9 +438,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;4567&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -490,10 +455,10 @@
  Name="Valid data available"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S1.3"
+ Id="7ef55f6e-2855-44c2-9bf0-ba1f05c5574c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -507,12 +472,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.DriverId.Value &lt;- &apos;Johan&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;4321&apos;</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action>
-</Actions>
+<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action>Kernel.DriverId.Value &lt;- &apos;Johan&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;4321&apos;</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -554,10 +514,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -568,10 +525,10 @@
  Name="Level2 or 3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D3.1"
+ Id="3d01119c-9a06-4fe4-8e31-dcced163ddc9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -585,10 +542,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -607,10 +561,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -625,10 +576,10 @@
  Name="Level0, 1 or NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D3.2"
+ Id="b3c23b39-6eae-4cf8-b2b1-8c9ee868368c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -642,10 +593,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -664,10 +612,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -686,10 +631,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -731,10 +673,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -745,14 +684,14 @@
  Name="Mobile terminal registered"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D7.1"
+ Id="65314800-5286-475e-b755-60e19e8cb01d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.D7.2"
+</ReqRef><ReqRef
+ Id="25c7ba02-1985-488d-b506-b24eef2b11b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -766,9 +705,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action>
-</Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -787,9 +724,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- False</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action>
-</Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- False</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D7</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -807,7 +742,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="S2 : Level inhibition"
+ Name="S2 : Level selection"
 >
 <TestCases>
 <TestCase
@@ -831,117 +766,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Offer possibility to inhibit level"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2"
->
-</ReqRef>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Mobile terminal registered"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>Kernel.InhibitedLevels.Levels &lt;- [Level.L2, Level.L3]</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2</Action>
-</Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.InhibitedLevels == [Level.L2, Level.L3]</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.InhibitionAction.InhibitLevel == True</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().In_LevelInhibition.InhibitionAction.RemoveExistingInhibition == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Take care of inhibition response"
->
-<ReqRef
- Id="Entry 5.4.3.2.S2.1"
->
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.8"
->
-</ReqRef>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Set the state of the inhibited level to unknown"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;- [Level.L2, Level.L3]</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
-</Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.Level.DataState == DataState.Unknown</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - Do not set the state of the non-inhibited level to unknown"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
->
-<Actions>
-<Action>DMI.MasterDMI().In_LevelInhibition.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_LevelInhibition.InhibitedLevels &lt;- [Level.L2, Level.L3]</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.InhibitionPossibilityAndLevelSelectionOffered</Action>
-</Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
->Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
- Kind="Instantaneous"
->Kernel.Level.Value == Level.L1</Expectation></Expectations>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -952,14 +777,14 @@
  Name="Request level if unknown or invalid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.2"
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S2.3"
+</ReqRef><ReqRef
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -973,9 +798,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1000,10 +823,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1028,11 +848,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.SelectLevel</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1047,18 +863,18 @@
  Name="Selected level is L2 or L3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.4"
+ Id="35f74cc7-ac90-49d9-bf55-8c7c4445ca05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.9"
+</ReqRef><ReqRef
+ Id="523a3c43-b684-4928-848b-d441b5baa961"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.10"
+</ReqRef><ReqRef
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1072,9 +888,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1095,9 +909,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1114,18 +926,18 @@
  Name="Selected level is L0, L1 or NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S2.5"
+ Id="35f74cc7-ac90-49d9-bf55-8c7c4445ca05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.9"
+</ReqRef><ReqRef
+ Id="523a3c43-b684-4928-848b-d441b5baa961"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.10"
+</ReqRef><ReqRef
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1139,9 +951,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1162,9 +972,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1185,9 +993,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action>
-</Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1231,11 +1037,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1246,14 +1048,14 @@
  Name="Offer the possibility to select Start, level is NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S20.1"
+</ReqRef><ReqRef
+ Id="eae06a67-b3dd-4f7a-9192-5393b3e88155"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1267,9 +1069,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1288,8 +1088,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1304,14 +1103,14 @@
  Name="Offer the possibility to select Start, level is Level 0"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S20.2"
+</ReqRef><ReqRef
+ Id="77e79e6f-9bfd-4470-b548-0d714c901a83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1325,9 +1124,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1346,8 +1143,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1362,14 +1158,14 @@
  Name="Offer the possibility to select Start, level is Level 1"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S20.3"
+</ReqRef><ReqRef
+ Id="f83b0295-446e-4191-b73b-dc8da983ead7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1383,9 +1179,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1404,8 +1198,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1420,14 +1213,14 @@
  Name="Offer the possibility to select Start, level is Level 2"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S20.4"
+</ReqRef><ReqRef
+ Id="f8b0528a-9c12-4ef5-9509-bcb0bff33a6e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1441,9 +1234,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1462,8 +1253,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1478,14 +1268,14 @@
  Name="Offer the possibility to select Start, level is Level 3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S20"
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S20.4"
+</ReqRef><ReqRef
+ Id="f8b0528a-9c12-4ef5-9509-bcb0bff33a6e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1499,9 +1289,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1520,8 +1308,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1563,10 +1350,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1577,10 +1361,10 @@
  Name="Offer possibility to ReEnter the Radio Network ID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1594,8 +1378,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1614,22 +1397,22 @@
  Name="Driver Elects to Re-Enter Radio Network ID"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.1"
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S3.1.1"
+</ReqRef><ReqRef
+ Id="aaf6ac64-c5bf-4e56-9ed9-2cc794042907"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S3.1.2"
+</ReqRef><ReqRef
+ Id="5cc3aa7d-2f29-448d-ba8a-4b26df4678b0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.11"
+</ReqRef><ReqRef
+ Id="5e931954-f188-4190-90e1-fde9d2d2ee5b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1643,10 +1426,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.DriverResponse1</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId &lt;- True</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.DriverResponse1</Action><Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverElectsToChangeNetworkId &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1665,10 +1445,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [&apos;1234&apos;, &apos;4562&apos;] </Action>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action><Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [&apos;1234&apos;, &apos;4562&apos;] </Action><Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1695,10 +1472,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId &lt;- True</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID &lt;- &apos;4562&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.DriverChangedNetworkId &lt;- True</Action><Action>DMI.MasterDMI().In_RBCContactInformationRadioNetworkId.SelectedID &lt;- &apos;4562&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1721,8 +1495,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
-</Actions>
+<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1741,10 +1514,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [] </Action>
-<Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ReceiveNetworkIDs</Action><Action>EURORADIO.AcquireListOfAvailableNetworks.NetworkIDs &lt;- [] </Action><Action>EURORADIO.AcquireListOfAvailableNetworks.RequestState &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1759,22 +1529,22 @@
  Name="One mobile terminal registerd on network"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.2"
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S3.2.1"
+</ReqRef><ReqRef
+ Id="1ab51773-764d-4fc1-b533-351222363321"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S3.2.2"
+</ReqRef><ReqRef
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S3.2.3"
+</ReqRef><ReqRef
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1788,12 +1558,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6543&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5742&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6543&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5742&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1824,12 +1589,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;7654&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;6574&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;7654&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;6574&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1860,12 +1620,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action>
-<Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6541&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5741&apos;</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCID </Action><Action>EURORADIO.MobileTerminalRegisteredToNetwork &lt;- True</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.Id &lt;- &apos;6541&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;5741&apos;</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1892,18 +1647,18 @@
  Name="At the end, go to A31"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S3.3"
+ Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.12"
+</ReqRef><ReqRef
+ Id="65c1baf8-73ca-4e1d-a95b-6371966bfa95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.13"
+</ReqRef><ReqRef
+ Id="baf46c00-1b42-48ab-a162-fd77d8b20107"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1917,9 +1672,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1941,12 +1694,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId &lt;- True</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id &lt;- &apos;6656&apos;</Action>
-<Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;2398&apos;</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ChangeRBCIDOffered </Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.DriverChangedId &lt;- True</Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.Id &lt;- &apos;6656&apos;</Action><Action>DMI.MasterDMI().In_RBCContactInformationRBCIdOrPhoneNumber.RBCContactInformation.RBCIdOrPhoneNumber.PhoneNumber &lt;- &apos;2398&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1992,10 +1740,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2006,22 +1751,22 @@
  Name="Request train data"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S12"
+ Id="92ebef6e-9acb-432c-8a1c-932271343aec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S12.1"
+</ReqRef><ReqRef
+ Id="47f6b9b0-cb96-4c74-a411-82cd5d418626"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.21"
+</ReqRef><ReqRef
+ Id="3fe59c76-6a3c-4709-8caa-9700dc06cd90"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.22"
+</ReqRef><ReqRef
+ Id="57063dee-6c81-4684-9575-1957646474ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2035,8 +1780,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S12</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S12</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2055,8 +1799,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response </Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2100,10 +1843,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2114,10 +1854,10 @@
  Name="Valid train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D12.1"
+ Id="eb92da4b-0617-4b51-a599-d01aebed2eb2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2131,9 +1871,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2148,10 +1886,10 @@
  Name="Invalid train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D12.2"
+ Id="885747bc-9ec2-456a-8a96-9c54af37246b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2165,9 +1903,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2186,9 +1922,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D12</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2230,10 +1964,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2244,18 +1975,18 @@
  Name="Unknown train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S13"
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S13.1"
+</ReqRef><ReqRef
+ Id="f4b839b3-d1ea-4c3b-8a2b-8bda94f934c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.23"
+</ReqRef><ReqRef
+ Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2269,9 +2000,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2290,8 +2019,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2311,18 +2039,18 @@
  Name="Invalid train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S13"
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S13.1"
+</ReqRef><ReqRef
+ Id="f4b839b3-d1ea-4c3b-8a2b-8bda94f934c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.24"
+</ReqRef><ReqRef
+ Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2336,9 +2064,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2357,8 +2083,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response </Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2378,14 +2103,14 @@
  Name="Valid train running number"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S13"
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S13.1"
+</ReqRef><ReqRef
+ Id="f4b839b3-d1ea-4c3b-8a2b-8bda94f934c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2399,9 +2124,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2462,10 +2185,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2476,10 +2196,10 @@
  Name="Level 2"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.1"
+ Id="9e3ba5d0-8241-4037-a570-8b0cedd629f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2493,10 +2213,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2511,10 +2228,10 @@
  Name="Level 3"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.1"
+ Id="9e3ba5d0-8241-4037-a570-8b0cedd629f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2528,10 +2245,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2546,10 +2260,10 @@
  Name="Level 0"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.2"
+ Id="4f058292-dd24-489c-bbc9-498c1d9a0e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2563,10 +2277,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2581,10 +2292,10 @@
  Name="Level 1"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.2"
+ Id="4f058292-dd24-489c-bbc9-498c1d9a0e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2598,10 +2309,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2616,10 +2324,10 @@
  Name="Level NTC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D10.2"
+ Id="4f058292-dd24-489c-bbc9-498c1d9a0e38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2633,10 +2341,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2678,10 +2383,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2692,14 +2394,14 @@
  Name="Send train data"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S11"
+ Id="8b735562-2ede-429c-940c-7f53b0f6f675"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S11.1"
+</ReqRef><ReqRef
+ Id="ae08f54c-5656-462e-9c38-46eec850f45a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2713,9 +2415,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2734,8 +2434,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11.TrainDataSent</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11.TrainDataSent</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     ACKNOWLEDGEMENT_OF_TRAIN_DATA =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.Message
     {
@@ -2746,8 +2445,7 @@
         T_TRAIN_0 =&gt; 0,
         T_TRAIN_1 =&gt; 0
     }
-}</Action>
-</Actions>
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2789,10 +2487,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2803,10 +2498,10 @@
  Name="Session is open"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D11"
+ Id="a2f8c5d0-9029-4c1f-b5bf-fee1dca550f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2820,9 +2515,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2837,10 +2530,10 @@
  Name="Session is not open"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D11"
+ Id="a2f8c5d0-9029-4c1f-b5bf-fee1dca550f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2854,9 +2547,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D11</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2898,10 +2589,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2912,10 +2600,10 @@
  Name="Offer selection of SH, NL or Data Entry"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10"
+ Id="50de839c-3618-4979-b91c-f620d58a32ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2929,8 +2617,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2951,14 +2638,14 @@
  Name="Driver selects SH"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.1"
+ Id="84e4bf85-c73c-4fd2-a440-bc180869ec08"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.19"
+</ReqRef><ReqRef
+ Id="ebe785eb-406c-4459-b678-43e24f9ace82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2972,13 +2659,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3003,12 +2684,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3033,12 +2709,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3059,26 +2730,22 @@
  Name="Driver selects NL"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.2"
+ Id="2df20d0d-1f50-4e04-aa20-f8d1ab4e0945"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S10.2.1"
+</ReqRef><ReqRef
+ Id="edf4ce85-46d4-4827-9f52-c859b33c7c8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S10.2.2"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.18"
+</ReqRef><ReqRef
+ Id="aba36681-0247-4508-92d9-1560c959b360"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
->
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3092,13 +2759,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.NLSignalReceived &lt;- True</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.NLSignalReceived &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3127,13 +2788,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3162,13 +2817,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3197,14 +2846,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action><Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3215,8 +2857,6 @@
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.Mode == Mode.NL</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
  Kind="Instantaneous"
@@ -3235,14 +2875,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action><Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3253,8 +2886,6 @@
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.Mode == Mode.NL</Expectation><Expectation
- Kind="Instantaneous"
->DMI.MasterDMI().Out_NoTrackConditionWillBeReceived.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation><Expectation
  Kind="Instantaneous"
@@ -3269,10 +2900,10 @@
  Name="Driver selects Train Data Entry"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S10.3"
+ Id="6fd0322c-1f7c-44ab-9b8d-3964217e243e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3286,10 +2917,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action>
-<Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3335,11 +2963,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3350,14 +2974,14 @@
  Name="Send MA request and receive SR"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S21.1"
+</ReqRef><ReqRef
+ Id="ab41f6d7-19db-4d3e-95a6-8e15abbd4088"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3371,8 +2995,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3397,9 +3020,7 @@
 {
     Distance =&gt; 0.0,
     BGs =&gt; []
-}</Action>
-<Action>Kernel.MA.MA &lt;- EMPTY</Action>
-</Actions>
+}</Action><Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3414,14 +3035,14 @@
  Name="Send MA request and receive MA allowing OS"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S21.2"
+</ReqRef><ReqRef
+ Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3435,8 +3056,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3457,9 +3077,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -3470,9 +3088,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-</Actions>
+]</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3487,14 +3103,14 @@
  Name="Send MA request and receive MA allowing LS"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S21.2"
+</ReqRef><ReqRef
+ Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3508,8 +3124,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3530,9 +3145,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -3543,8 +3156,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3559,14 +3171,14 @@
  Name="Send MA request and receive MA allowing SH"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S21.2"
+</ReqRef><ReqRef
+ Id="d7eddae1-a7bf-4be3-8180-19f2e70ac2fd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3580,8 +3192,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3602,9 +3213,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -3615,8 +3224,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-</Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3631,18 +3239,18 @@
  Name="Send MA request and receive MA allowing FS"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S21"
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S21.3"
+</ReqRef><ReqRef
+ Id="9055a6b1-6135-49e8-a779-622b3270c280"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3656,8 +3264,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3680,10 +3287,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action>
-<Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action>
-</Actions>
+<Action>Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3729,11 +3333,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3744,18 +3344,18 @@
  Name="Request acknowledgement for SN mode, valid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S22"
+ Id="195e2b98-7877-4e7a-850f-134fe5fac373"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S22.1"
+</ReqRef><ReqRef
+ Id="9a711b7c-ff6b-448c-a9cd-2aa9669899ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3769,10 +3369,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3793,8 +3390,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3817,26 +3413,26 @@
  Name="Request acknowledgement for SN mode, invalid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S22"
+ Id="195e2b98-7877-4e7a-850f-134fe5fac373"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S22.2"
+</ReqRef><ReqRef
+ Id="e2eaea17-d87b-4c36-9589-0db802e46f40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S22.1"
+</ReqRef><ReqRef
+ Id="9a711b7c-ff6b-448c-a9cd-2aa9669899ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.19"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="ebe785eb-406c-4459-b678-43e24f9ace82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3850,15 +3446,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S22</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -3874,8 +3466,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3925,11 +3516,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3940,18 +3527,18 @@
  Name="Request acknowledgement for UN mode, valid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S23"
+ Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S23.1"
+</ReqRef><ReqRef
+ Id="64b644e8-aaed-41c9-ab84-f81ea4041d54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3965,10 +3552,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3989,9 +3573,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4014,26 +3596,26 @@
  Name="Request acknowledgement for UN mode, invalid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S23"
+ Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S23.2"
+</ReqRef><ReqRef
+ Id="919e7d02-2e67-418e-a8b8-64d02e57674c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S23.1"
+</ReqRef><ReqRef
+ Id="64b644e8-aaed-41c9-ab84-f81ea4041d54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.19"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="ebe785eb-406c-4459-b678-43e24f9ace82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4047,15 +3629,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S23</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4071,8 +3649,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4122,11 +3699,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4137,18 +3710,18 @@
  Name="Request acknowledgement for SR mode, valid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S24"
+ Id="b993b468-098e-45b6-9120-8f3a2608780a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S24.1"
+</ReqRef><ReqRef
+ Id="588364b4-1c15-454c-a0f1-3235f2130fc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4162,10 +3735,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4186,8 +3756,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4210,26 +3779,26 @@
  Name="Request acknowledgement for SR mode, invalid train position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S24"
+ Id="b993b468-098e-45b6-9120-8f3a2608780a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S24.1"
+</ReqRef><ReqRef
+ Id="588364b4-1c15-454c-a0f1-3235f2130fc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S24.2"
+</ReqRef><ReqRef
+ Id="711ed0e3-0274-4299-ae1d-ce0df2fbb94d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.19"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="ebe785eb-406c-4459-b678-43e24f9ace82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4243,15 +3812,11 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S24</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4267,8 +3832,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4318,11 +3882,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4333,18 +3893,18 @@
  Name="Request acknowledgement for OS mode"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25.1"
+ Id="66ed413a-6b6e-4b23-b847-4b1870c4d831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S25"
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4358,8 +3918,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -4370,9 +3929,7 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+]</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4393,8 +3950,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4415,18 +3971,18 @@
  Name="Request acknowledgement for LS mode"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25.1"
+ Id="66ed413a-6b6e-4b23-b847-4b1870c4d831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S25"
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.1"
+</ReqRef><ReqRef
+ Id="84c57300-1791-4e2f-9eba-ad6f95834b74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4440,8 +3996,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -4452,13 +4007,11 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+]</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4474,8 +4027,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4496,18 +4048,18 @@
  Name="Request acknowledgement for SH mode"
 >
 <ReqRef
- Id="Entry 5.4.3.2.S25.1"
+ Id="66ed413a-6b6e-4b23-b847-4b1870c4d831"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.S25"
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.6.2"
+</ReqRef><ReqRef
+ Id="31c44e96-e029-418d-b715-af8b375bf89b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4521,8 +4073,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action>
-<Action>Kernel.MA.ModeProfile.Profile &lt;- 
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action>Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfile
     {
@@ -4533,13 +4084,11 @@
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.MissionIsOnGoing &lt;- False</Action>
-</Actions>
+]</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -4555,8 +4104,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4591,10 +4139,10 @@
  Name="Setup"
 >
 <ReqRef
- Id="3.5.3.4.a"
+ Id="c5b2c3fe-0dae-4997-bf3e-be2b4e554072"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4608,11 +4156,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Inactive</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4627,10 +4171,10 @@
  Name="Open communication session with RBC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A31"
+ Id="0d5816be-e0d4-4b39-8132-11cda5f264fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4644,8 +4188,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A31</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A31</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4688,10 +4231,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4702,18 +4242,18 @@
  Name="Check open communication status"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D31"
+ Id="5f727ae2-223d-4876-bd7a-f73476ce38ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.14"
+</ReqRef><ReqRef
+ Id="c961b910-b446-49da-a71a-a1e8b2a4719d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.15"
+</ReqRef><ReqRef
+ Id="bd791945-c05a-4d4d-932c-75ef1341b032"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4727,11 +4267,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
-<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
-<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action><Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action><Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4754,11 +4290,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
-<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
-<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action><Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action><Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Established</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4781,10 +4313,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action>
-<Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action>
-<Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Failed</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D31</Action><Action>EURORADIO.RequestOpenRbcSession.RequestState &lt;- Request.Response</Action><Action>EURORADIO.RequestOpenRbcSession.SessionState &lt;- SessionState.Failed</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4828,10 +4357,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4842,10 +4368,10 @@
  Name="Alert driver"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A32.1"
+ Id="56576e5f-6491-43ac-bb6d-439d660b8baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4859,13 +4385,13 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.ShowRequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.ConnectionStatus == EURORADIO.SafeRadioConnectionStatus.ConnectionLostOrSetUpFailed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -4877,10 +4403,10 @@
  Name="Exit to S10"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A32.3"
+ Id="c304ce24-e48e-45dd-b7a6-264940ebbb40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4894,8 +4420,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A32</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4937,14 +4462,10 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>EURORADIO.CurrentRadioSession &lt;-
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>EURORADIO.CurrentRadioSession &lt;-
 EURORADIO.RadioSession{
 SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4955,10 +4476,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Both level and position are valid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.1"
+ Id="6fdea10b-a5c0-4096-87cd-95798603eed3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4972,11 +4493,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
-</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4991,10 +4509,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid level"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.2"
+ Id="07046c6a-c307-4f22-82f0-ebe5cfc912d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5008,11 +4526,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
-</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5027,10 +4542,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.2"
+ Id="07046c6a-c307-4f22-82f0-ebe5cfc912d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5044,11 +4559,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5063,10 +4574,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid level and position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D2.2"
+ Id="07046c6a-c307-4f22-82f0-ebe5cfc912d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5080,11 +4591,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
-</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2
+</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5099,10 +4607,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid position, check Level &amp; RBC Id or Phone number state change"
 >
 <ReqRef
- Id="Entry 5.4.3.3.6"
+ Id="5ffd63ff-4c11-496d-9401-99006c03df8c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5116,10 +4624,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5138,10 +4643,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5160,10 +4662,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5182,10 +4681,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5204,10 +4700,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5226,10 +4719,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5244,10 +4734,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid level, RBC Id or Phone number state change"
 >
 <ReqRef
- Id="Entry 5.4.3.3.7"
+ Id="72d0b26b-453c-43da-811b-bb300e22a117"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5261,10 +4751,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action><Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5283,10 +4770,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action><Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5305,10 +4789,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Invalid</Action><Action>Kernel.Level.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5350,10 +4831,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5364,10 +4842,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="RBC informs that the train is accepted"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A23"
+ Id="1494c427-572b-4bfa-bfea-2aa68994f26e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5381,8 +4859,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A23</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A23</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5424,10 +4901,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5438,14 +4912,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Valid position data"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A33.1"
+ Id="aa43ddb6-13a5-4b3e-bbcc-bf985bea4175"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.A33.2"
+</ReqRef><ReqRef
+ Id="ca2f6d51-ace7-440e-8348-3cf6fa973ffe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5459,9 +4933,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A33</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A33</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5505,10 +4977,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5519,10 +4988,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Position is valid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D32"
+ Id="c1fbe808-07a9-45cc-aca9-3ad7ce44ca51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5536,9 +5005,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5553,10 +5020,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Invalid position"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D32"
+ Id="c1fbe808-07a9-45cc-aca9-3ad7ce44ca51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5570,10 +5037,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.D32</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5615,10 +5079,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5629,14 +5090,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Send SoM position report"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A34.1"
+ Id="6375b0de-0293-4d16-abdf-cb5f39a35143"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.A34.2"
+</ReqRef><ReqRef
+ Id="55fef314-9384-40f6-ab17-5880cc15474b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5650,10 +5111,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5676,9 +5134,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5697,14 +5153,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Receive response from RBC"
 >
 <ReqRef
- Id="Entry 5.4.3.2.D22.2"
+ Id="605de9cc-4900-46af-9c8f-c8b14126696e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.2.D33.2"
+</ReqRef><ReqRef
+ Id="14a1f1dd-6b8c-4693-bfb6-d34586f029de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5724,9 +5180,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
     SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
     {
     }
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5751,9 +5205,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
     TRAIN_ACCEPTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message
     {
     }
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5778,9 +5230,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
     TRAIN_REJECTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message
     {
     }
-}</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action>
-</Actions>
+}</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5822,10 +5272,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5836,14 +5283,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="RBC informs that the position is valid"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A35"
+ Id="4db9aa98-3d77-411b-8528-257702a16967"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.16"
+</ReqRef><ReqRef
+ Id="5dd50945-7a4b-4544-bd25-9fbf213a2be3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5857,16 +5304,13 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A35</Action>
-<Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A35</Action><Action>EURORADIO.EuroradioMessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
     {
     
     }
-}</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+}</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5898,10 +5342,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Setup"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A24"
+ Id="b0a496b8-7273-4f49-8da4-0d91a260e5ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5915,10 +5359,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5929,14 +5370,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Delete train position data"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A24"
+ Id="b0a496b8-7273-4f49-8da4-0d91a260e5ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.17"
+</ReqRef><ReqRef
+ Id="36c2465e-e5e2-46dd-b60a-a01ee7032c51"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5950,9 +5391,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A24</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A24</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5983,10 +5422,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Setup"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A24"
+ Id="b0a496b8-7273-4f49-8da4-0d91a260e5ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6000,10 +5439,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6014,10 +5450,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="RBC informs that the train is rejected"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A38"
+ Id="28f4ed40-a3e4-43f7-b9c4-0bdb249e27bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6031,8 +5467,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A38</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A38</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6074,17 +5509,12 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
 >
 <Actions>
-<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action>
-<Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action>
-</Actions>
+<Action>EURORADIO.CurrentRadioSession.RadioSessionState &lt;- EURORADIO.RadioSession.RadioSessionState.Initialized</Action><Action>EURORADIO.CurrentRadioSession.Subset37Connection.ConnectionLost &lt;- False</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6095,14 +5525,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Delete train position data and terminate RBC session"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A39"
+ Id="78724a43-92f8-4ff3-9e8d-7ebf03afa832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.18"
+</ReqRef><ReqRef
+ Id="aba36681-0247-4508-92d9-1560c959b360"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6116,9 +5546,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A39</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A39</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6165,10 +5593,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6179,10 +5604,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Inform driver that the train is rejected"
 >
 <ReqRef
- Id="Entry 5.4.3.2.A40"
+ Id="eb19f005-dc60-4a70-82ac-33c7a4d74922"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6196,8 +5621,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A40</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A40</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6256,10 +5680,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6270,10 +5691,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Transition to any mode other than SB"
 >
 <ReqRef
- Id="5.4.3.2.1"
+ Id="4a239d79-5277-403e-b678-13601d0dec4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6287,9 +5708,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6308,8 +5727,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.FS</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6324,10 +5742,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Close the desk"
 >
 <ReqRef
- Id="5.4.3.2.1"
+ Id="4a239d79-5277-403e-b678-13601d0dec4e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6341,10 +5759,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>DMI.DMI1.DeskOpen &lt;- True</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>DMI.DMI1.DeskOpen &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6363,8 +5778,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.DMI1.DeskOpen &lt;- False</Action>
-</Actions>
+<Action>DMI.DMI1.DeskOpen &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6406,10 +5820,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6419,14 +5830,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter level in S10"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="0e06c751-a7a2-4c82-9441-dfc783509c2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.25"
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6440,12 +5851,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6464,11 +5870,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6508,11 +5910,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6535,11 +5933,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action>
-<Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action>EURORADIO.CurrentRadioSession.SessionInfo.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6557,10 +5951,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter level in S20"
 >
 <ReqRef
- Id="5.4.5.3.5"
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6574,13 +5968,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-<Action>Kernel.Level.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6599,9 +5987,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6645,11 +6031,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6659,10 +6041,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Loss of connection after D11"
 >
 <ReqRef
- Id="5.4.5.1"
+ Id="0e26286f-b4f4-4ca9-82ab-e0db75aadf0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6676,10 +6058,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S21</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6698,8 +6077,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action>
-</Actions>
+<Action>EURORADIO.SessionState &lt;- SessionState.Closed</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6741,10 +6119,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6754,14 +6129,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose Override in S10"
 >
 <ReqRef
- Id="5.4.5.3.1"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.20"
+</ReqRef><ReqRef
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6775,10 +6150,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6797,11 +6169,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-</Actions>
+<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6822,12 +6190,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6843,10 +6206,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose Override in S20"
 >
 <ReqRef
- Id="5.4.5.3.1"
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6860,14 +6223,11 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
 >DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -6883,11 +6243,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6908,11 +6264,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6956,10 +6308,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -6969,10 +6318,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter driver ID in S10"
 >
 <ReqRef
- Id="5.4.5.3.2"
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6986,12 +6335,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7016,10 +6360,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7053,10 +6394,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter driver ID in S20"
 >
 <ReqRef
- Id="5.4.5.3.2"
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7070,13 +6411,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action>
-<Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.DriverId.Value &lt;- &apos;Paul&apos;</Action><Action>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action><Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7101,10 +6436,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>DMI.MasterDMI().In_DriverId.Id &lt;- &apos;Jacques&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7166,10 +6498,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7179,10 +6508,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter train running number in S10"
 >
 <ReqRef
- Id="5.4.5.3.3"
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7196,13 +6525,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
-</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7227,10 +6551,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7263,10 +6584,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter train running number in S20"
 >
 <ReqRef
- Id="5.4.5.3.3"
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7280,14 +6601,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action>
-<Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
-</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action><Action>Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7312,10 +6627,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7376,10 +6688,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7389,10 +6698,10 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose to re-enter train data in S20"
 >
 <ReqRef
- Id="5.4.5.3.4"
+ Id="5aca3d45-a3d1-4286-a5a4-f451779e43d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7406,14 +6715,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
-</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-<Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 0.0</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled
+</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7432,10 +6735,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>DMI.MasterDMI().In_TrainData.Data &lt;- Kernel.TrainData.TrainDataValues{MaximumSpeed=&gt;30.0}</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>DMI.MasterDMI().In_TrainData.Data &lt;- Kernel.TrainData.TrainDataValues{MaximumSpeed=&gt;30.0}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7481,10 +6781,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7494,14 +6791,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose Non Leading in S20"
 >
 <ReqRef
- Id="5.4.5.3.6"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.20"
+</ReqRef><ReqRef
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7515,11 +6812,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7538,12 +6831,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.NLSignalReceived &lt;- True</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.NLSignalReceived &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7566,12 +6854,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7617,10 +6900,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7630,18 +6910,18 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose Shunting in S20"
 >
 <ReqRef
- Id="5.4.5.3.7"
+ Id="4691efdb-b90a-4120-a11d-7598ae98c8c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.4.5.3.7.1"
+</ReqRef><ReqRef
+ Id="60a884ee-664d-4031-988d-f9da13132152"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.20"
+</ReqRef><ReqRef
+ Id="306aeada-d0ba-4101-bb87-96fc5db2a745"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7655,11 +6935,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-<Action>EURORADIO.SessionState &lt;- SessionState.Established</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>EURORADIO.SessionState &lt;- SessionState.Established</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7678,11 +6954,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7705,12 +6977,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>BTM.LRBG &lt;- EMPTY</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>BTM.LRBG &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7756,10 +7023,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.InitializeTestEnvironment()</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action>
-</Actions>
+<Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -7769,14 +7033,14 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Propose Start in S10"
 >
 <ReqRef
- Id="5.4.5.3.8"
+ Id="0e06c751-a7a2-4c82-9441-dfc783509c2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 5.4.3.3.25"
+</ReqRef><ReqRef
+ Id="28015708-3b6f-4bfb-87a2-4901cf481c50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -7790,10 +7054,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action>
-</Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7812,11 +7073,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.L0</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7837,11 +7094,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7862,11 +7115,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.L1</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7887,11 +7136,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.L2</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7912,11 +7157,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action>
-<Action>Kernel.Mode &lt;- Mode.SB</Action>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action>
-<Action>Kernel.Level.Value &lt;- Level.L3</Action>
-</Actions>
+<Action>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action>Kernel.Level.Value &lt;- Level.L3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

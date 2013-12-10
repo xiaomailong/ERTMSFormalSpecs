@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public FunctionsTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Functions", true)
         {
-            foreach (DataDictionary.Functions.Function function in item.Functions)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Functions.Function function in Item.Functions)
             {
                 Nodes.Add(new FunctionTreeNode(function));
             }
@@ -153,10 +159,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Functions.Count + (Item.Functions.Count > 1 ? " functions " : " function ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Functions.Count + (Item.Functions.Count > 1 ? " functions " : " function ") + "selected.");
         }
     }
 }

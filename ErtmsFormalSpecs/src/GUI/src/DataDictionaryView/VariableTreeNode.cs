@@ -19,12 +19,13 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Types;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
     public class VariableTreeNode : ReqRelatedTreeNode<DataDictionary.Variables.Variable>
     {
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -34,7 +35,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class InternalValuesConverter : ValuesConverter
+        private class InternalValuesConverter : Converters.ValuesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -70,40 +71,39 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Variables.Variable Type
             {
-                get { return Item.getTypeName(); }
+                get { return Item; }
                 set
                 {
-                    Item.Type = null;
-                    Item.setTypeName(value);
-                    Item.Value = null;
-
-                    VariableTreeNode node = Node as VariableTreeNode;
-                    if (node != null)
-                    {
-                        node.Nodes.Remove(node.subVariables);
-                        node.subVariables = new SubVariablesTreeNode(Item, new HashSet<DataDictionary.Types.Type>());
-                        node.Nodes.Add(node.subVariables);
-                    }
+                    Item = value;
+                    RefreshNode();
                 }
             }
 
             /// <summary>
-            /// The default value for this variable
+            /// The variable default value
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalValuesConverter))]
-            public string DefaultValue
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
+            public DataDictionary.Variables.Variable DefaultValue
             {
-                get { return Item.getDefaultValue(); }
-                set { Item.setDefaultValue(value); }
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>
             /// The variable mode
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(VariableModeConverter))]
+            [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
             public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
             {
                 get { return Item.getVariableMode(); }
@@ -114,25 +114,21 @@ namespace GUI.DataDictionaryView
             /// The variable value
             /// </summary>
             [Category("Description")]
-            public string Value
+            [System.ComponentModel.Editor(typeof(Converters.VariableValueUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.VariableValueUITypeConverter))]
+            public DataDictionary.Variables.Variable Value
             {
-                get
+                get { return Item; }
+                set
                 {
-                    if (Item.Value != null)
-                    {
-                        return Item.Value.Name;
-                    }
-                    else
-                    {
-                        return "<unknown>";
-                    }
+                    Item = value;
+                    RefreshNode();
                 }
-                set { Item.Value = Item.Type.getValue(value); }
             }
         }
 
-        private bool IsASubVariable;
-        private SubVariablesTreeNode subVariables;
+        public bool IsASubVariable;
+        public SubVariablesTreeNode subVariables;
 
         /// <summary>
         /// Constructor
@@ -183,7 +179,7 @@ namespace GUI.DataDictionaryView
             if (Item.Type is StateMachine)
             {
                 StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
-                BaseTreeView.ParentForm.MDIWindow.AddChildWindow(window);
+                GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(Item);
                 window.Text = Item.Name + " state diagram";
             }
@@ -254,10 +250,21 @@ namespace GUI.DataDictionaryView
             if (function != null)
             {
                 GraphView.GraphView view = new GraphView.GraphView();
-                MainWindow.AddChildWindow(view);
+                GUIUtils.MDIWindow.AddChildWindow(view);
                 view.Functions.Add(function);
                 view.Refresh();
             }
+        }
+
+        public override void RefreshNode()
+        {
+            if (Nodes != null && subVariables != null)
+            {
+                Nodes.Remove(subVariables);
+                subVariables = new SubVariablesTreeNode(Item, new HashSet<DataDictionary.Types.Type>());
+                Nodes.Add(subVariables);
+            }
+            base.RefreshNode();
         }
     }
 }

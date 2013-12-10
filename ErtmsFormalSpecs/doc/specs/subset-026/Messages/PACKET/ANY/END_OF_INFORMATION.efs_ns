@@ -5,17 +5,28 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>This packet consists only of NID_PACKET containing 8 bit 1s It acts as a finish flag ; the receiver will stop reading the remaining part of the message/telegram when receiving eight bits set to one in the NID_PACKET field.</Comment>
+<ReqRef
+ Id="117f3df9-02c0-4205-bab3-6ed6b524e368"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="d565892a-adaf-4bc2-a9b2-8210b62ae6c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>This packet consists only of NID_PACKET containing 8 bit 1s It acts as a finish flag; the receiver will stop reading the remaining part of the message/telegram when receiving eight bits set to one in the NID_PACKET field.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="255"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-<Comment></Comment>
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="117f3df9-02c0-4205-bab3-6ed6b524e368"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

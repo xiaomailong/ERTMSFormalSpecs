@@ -42,7 +42,13 @@ namespace GUI.TestRunnerView
         public StepsTreeNode(DataDictionary.Tests.TestCase item)
             : base(item, "Steps", true)
         {
-            foreach (DataDictionary.Tests.Step step in item.Steps)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Step step in Item.Steps)
             {
                 Nodes.Add(new StepTreeNode(step));
             }

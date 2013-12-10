@@ -1,0 +1,359 @@
+<NameSpace
+ Name="ModeRules"
+>
+<NameSpaces>
+</NameSpaces>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="HandleGradientProfile"
+>
+<ReqRef
+ Id="2f2df53c-e717-4abf-bcd7-995bdf07a8bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleGradientProfile"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleGradientProfile"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleSSP"
+>
+<ReqRef
+ Id="f5d2b12f-7119-4063-9f34-c47c3f83ccdf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleSSP"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleSSP"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleAxleLoadSpeed"
+>
+<ReqRef
+ Id="29c38dc0-760e-489c-b451-a83537cb9e44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="HandleAxleLoadSpeed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleAxleLoadSpeed"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.AxleLoad.ASP &lt;- Kernel.TrackDescription.AxleLoad.AxleLoadProfile{
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+    EmptyProfileDistance =&gt; 0.0,
+    ALs =&gt; []
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleRouteSuitability"
+>
+<ReqRef
+ Id="ed33eb7f-8b9e-4485-9e25-62147cd368ff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleRouteSuitability"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleRouteSuitability"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode AND Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation{
+    EmptyProfileDistance =&gt; 0.0,
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+    Items =&gt; []
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleAdhesionFactors"
+>
+<ReqRef
+ Id="941b0b9c-8d1a-40e9-9fdb-b2f562a6ab57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="2cc71448-b090-4455-95e4-1d187ca9debe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleAdhesionFactors"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleAdhesionFactor"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SL, Mode.NL, Mode.SN]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTrackConditions1"
+>
+<ReqRef
+ Id="c1c2e72d-abfa-40cc-ab4e-10dd67d304e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrackConditions1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrackConditions1"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.UN, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile.Conditions &lt;- MAP Kernel.TrackDescription.TrackConditions.TCProfile.Conditions  USING Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode1 ( X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleReversingArea"
+>
+<ReqRef
+ Id="c73c1fbd-5f6c-419c-a6c2-1a8c81cca57b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleReversingArea"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleReversingArea"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandlePermittedBrakingDistance"
+>
+<ReqRef
+ Id="038f5c97-bc09-46ad-b0e4-501cc3a9893a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandlePermittedBrakingDistance"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandlePermittedBrakingDistance"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleTrackConditions2"
+>
+<ReqRef
+ Id="81e057d0-016b-449f-8994-c2a6d7b34729"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrackConditions2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrackConditions2"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile.Conditions &lt;- MAP Kernel.TrackDescription.TrackConditions.TCProfile.Conditions  USING Kernel.TrackDescription.TrackConditions.HandleTCPwhenEnteringGivenMode2 ( X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="HandleMA"
+>
+<ReqRef
+ Id="9d4797ea-78a8-430b-95ff-ab8ccf427197"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleMA"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleMA"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP, Mode.SB, Mode.PS, Mode.SH, Mode.SR, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.SN, Mode.RV ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="HandleTrainData"
+>
+<ReqRef
+ Id="d73b7418-d053-4ed9-a4a8-f4d09322825b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="HandleTrainData"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="HandleTrainData"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.NP ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="HandleTrainData2"
+>
+<PreConditions>
+<PreCondition>Kernel.Mode in [ Mode.SB, Mode.SH ]</PreCondition></PreConditions>
+<Actions>
+<Action>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="ModeHasChanged"
+>
+<ReqRef
+ Id="f1a72111-334b-4c63-9709-ceaeefe93df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="9a9d1994-65cc-4ce3-8805-06dbf30f991b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ModeHasChanged"
+>
+<PreConditions>
+<PreCondition>Kernel.ModeTransitions.PrevMode != Kernel.Mode</PreCondition></PreConditions>
+<Actions>
+<Action>HandleGradientProfile()</Action><Action>HandleAxleLoadSpeed()</Action><Action>HandleSSP()</Action><Action>HandleAdhesionFactors()</Action><Action>HandleMA()</Action><Action>HandlePermittedBrakingDistance()</Action><Action>HandleReversingArea()</Action><Action>HandleRouteSuitability()</Action><Action>HandleTrackConditions1()</Action><Action>HandleTrackConditions2()</Action><Action>Kernel.Mode &lt;- Kernel.ModeTransitions.PrevMode</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

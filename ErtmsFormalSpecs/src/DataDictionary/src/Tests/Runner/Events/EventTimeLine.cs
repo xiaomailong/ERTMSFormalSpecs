@@ -110,9 +110,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// Provides the failed expectations
         /// </summary>
         /// <returns></returns>
-        public HashSet<Expect> FailedExpectations()
+        public HashSet<ModelEvent> FailedExpectations()
         {
-            HashSet<Expect> retVal = new HashSet<Expect>();
+            HashSet<ModelEvent> retVal = new HashSet<ModelEvent>();
 
             foreach (ModelEvent modelEvent in Events)
             {
@@ -120,6 +120,11 @@ namespace DataDictionary.Tests.Runner.Events
                 if ((expect != null) && expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.TimeOut)
                 {
                     retVal.Add(expect);
+                }
+                ModelInterpretationFailure failure = modelEvent as ModelInterpretationFailure;
+                if (failure != null)
+                {
+                    retVal.Add(failure);
                 }
             }
 
@@ -375,7 +380,7 @@ namespace DataDictionary.Tests.Runner.Events
 
                 foreach (ModelEvent modelEvent in Events)
                 {
-                    if (modelEvent is Expect)
+                    if (modelEvent is Expect || modelEvent is ModelInterpretationFailure)
                     {
                         // We keep expectations in the event list
                         newEvents.Add(modelEvent);

@@ -25,7 +25,7 @@ namespace GUI.SpecificationView
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : Editor
         {
             /// <summary>
             /// Constructor
@@ -33,6 +33,20 @@ namespace GUI.SpecificationView
             public ItemEditor()
                 : base()
             {
+            }
+
+            /// <summary>
+            /// The specification document name
+            /// </summary>
+            [Category("Description")]
+            public string Document
+            {
+                get { return Item.Name; }
+                set
+                {
+                    Item.Name = value;
+                    RefreshNode();
+                }
             }
 
             /// <summary>
@@ -57,10 +71,18 @@ namespace GUI.SpecificationView
         public SpecificationTreeNode(DataDictionary.Specification.Specification item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Specification.Chapter chapter in item.Chapters)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
             {
                 Nodes.Add(new ChapterTreeNode(chapter));
             }
+
+            SortSubNodes();
         }
 
         /// <summary>
@@ -100,6 +122,8 @@ namespace GUI.SpecificationView
             List<MenuItem> retVal = base.GetMenuItems();
 
             retVal.Add(new MenuItem("Add chapter", new EventHandler(AddChapterHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Import new specification release", new EventHandler(ImportNewSpecificationReleaseHandler)));
 
             return retVal;
         }
@@ -107,19 +131,89 @@ namespace GUI.SpecificationView
         /// <summary>
         /// Update counts according to the selected chapter
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
+            base.SelectionChanged(false);
 
-            List<DataDictionary.Specification.Paragraph> paragraphs = new List<DataDictionary.Specification.Paragraph>();
-            foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
+            Window window = BaseForm as Window;
+            if (window != null)
             {
-                foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                window.specBrowserTextView.Text = Item.Name;
+                window.specBrowserTextView.Enabled = false;
+
+                GUIUtils.MDIWindow.SetCoverageStatus(Item);
+            }
+        }
+
+
+        /// ------------------------------------------------------
+        ///    IMPORT SPEC OPERATIONS
+        /// ------------------------------------------------------
+
+        private void ImportNewSpecificationReleaseHandler(object sender, EventArgs args)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open original specification file";
+            openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(GUIUtils.MDIWindow) == DialogResult.OK)
+            {
+                string OriginalFileName = openFileDialog.FileName;
+                openFileDialog.Title = "Open new specification file";
+                openFileDialog.Filter = "RTF Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
+                if (openFileDialog.ShowDialog(GUIUtils.MDIWindow) == DialogResult.OK)
                 {
-                    paragraphs.AddRange(paragraph.getSubParagraphs());
+                    string NewFileName = openFileDialog.FileName;
+
+                    string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
+
+                    /// Perform the importation
+                    Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, Item);
+                    ProgressDialog dialog = new ProgressDialog("Opening file", importer);
+                    dialog.ShowDialog();
+
+                    /// Creates the report based on the importation result
+                    Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(Item.Dictionary, importer.NewDocument, baseFileName);
+                    dialog = new ProgressDialog("Opening file", reportHandler);
+                    dialog.ShowDialog();
+
+                    GUIUtils.MDIWindow.RefreshModel();
                 }
             }
-            (BaseForm as Window).toolStripStatusLabel.Text = ParagraphTreeNode.CreateStatMessage(paragraphs);
         }
+
+        /// <summary>
+        /// Creates the base file name for the report
+        /// </summary>
+        /// <param name="OriginalFileName"></param>
+        /// <param name="NewFileName"></param>
+        /// <returns></returns>
+        private string createBaseFileName(string OriginalFileName, string NewFileName)
+        {
+            string baseFileName = "";
+            for (int i = 0; i < OriginalFileName.Length && i < NewFileName.Length; i++)
+            {
+                if (OriginalFileName[i] == NewFileName[i])
+                {
+                    baseFileName += OriginalFileName[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (baseFileName.IndexOf("\\") > 0)
+            {
+                baseFileName = baseFileName.Substring(baseFileName.LastIndexOf("\\") + 1);
+            }
+
+            if (baseFileName.IndexOf("v") > 0)
+            {
+                baseFileName = baseFileName.Substring(0, baseFileName.LastIndexOf("v"));
+            }
+
+            return baseFileName;
+        }
+
     }
 }

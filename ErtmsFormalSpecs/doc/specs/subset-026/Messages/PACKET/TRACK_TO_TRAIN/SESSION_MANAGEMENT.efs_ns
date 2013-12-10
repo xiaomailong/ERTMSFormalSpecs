@@ -5,65 +5,105 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated.</Comment>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="490ff9a0-7846-47b5-8013-612c14283239"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated.</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="42"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_RBC"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_RBC"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RBC"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RBC"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_RADIO"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_RADIO"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_SLEEPSESSION"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_SLEEPSESSION"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

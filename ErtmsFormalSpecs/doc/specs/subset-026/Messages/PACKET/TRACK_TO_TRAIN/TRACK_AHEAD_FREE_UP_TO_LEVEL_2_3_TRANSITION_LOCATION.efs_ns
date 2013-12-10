@@ -5,51 +5,79 @@
 </NameSpaces>
 <Structures>
 <Structure
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Message"
 >
-<Comment>Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location</Comment>
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="097a4da5-66e3-4f77-8027-d50c94554d2c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location</Comment>
 <StructureElement
  TypeName="NID_PACKET"
  Default="90"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_DIR"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_DIR"
 >
-</StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="L_PACKET"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="Q_NEWCOUNTRY"
  Default=""
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Q_NEWCOUNTRY"
 >
-</StructureElement><StructureElement
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
  TypeName="NID_C"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_C"
 >
 </StructureElement><StructureElement
  TypeName="NID_BG"
  Default="0"
  Mode="InOut"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="NID_BG"
 >
-</StructureElement></Structure></Structures>
+<ReqRef
+ Id="7ae2241b-9a89-4829-8cca-c5d8339cd425"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
 </NameSpace>

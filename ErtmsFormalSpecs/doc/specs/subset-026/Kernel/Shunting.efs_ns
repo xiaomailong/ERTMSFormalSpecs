@@ -1,4 +1,9 @@
 <NameSpace
+ X="1070"
+ Y="510"
+ Width="100"
+ Height="50"
+ Hidden="TRUE"
  Name="Shunting"
 >
 <NameSpaces>
@@ -10,10 +15,10 @@
  Name="CreateBaliseGroup"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050"
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.SubStructure1"
  Name="aPacket"
@@ -37,17 +42,17 @@
  Name="HandleNewListOfBaliseGroups"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050"
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="5.7.1.3"
+</ReqRef><ReqRef
+ Id="e6b9b34b-5183-45ec-96a2-8eef4909b34c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
- Name="aPacket"
+ Name="Packet"
 >
 </Parameter></Parameters>
 <Rules>
@@ -63,8 +68,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>BaliseGroupsForShArea &lt;- MAP aPacket.Sequence1 USING CreateBaliseGroup ( X )</Action>
-</Actions>
+<Action>BaliseGroupsForShArea &lt;- MAP Packet.Sequence1 USING CreateBaliseGroup ( X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -77,14 +81,14 @@
  Name="ContinueShuntingOnDeskClosure"
 >
 <ReqRef
- Id="Entry 4.6.3.27"
+ Id="b630705b-2851-4efe-b023-a26113425740"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.6.3.28"
+</ReqRef><ReqRef
+ Id="2695652b-30cd-4582-8306-64d14e50dc79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if shunting has to be continued after the closure of the desk of the master DMI.</Comment>
+</ReqRef><Comment>Indicates if shunting has to be continued after the closure of the desk of the master DMI.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
@@ -93,14 +97,14 @@
  Name="StopShuntingOnDeskOpening"
 >
 <ReqRef
- Id="Entry 4.6.3.23"
+ Id="3f7c6fc5-c683-4475-a2bf-06caf18f87ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="Entry 4.6.3.24"
+</ReqRef><ReqRef
+ Id="854de651-e288-44ca-ac32-2092b1ef5c86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates if shunting has to be stopped after the opening of the desk of the master DMI.</Comment>
+</ReqRef><Comment>Indicates if shunting has to be stopped after the opening of the desk of the master DMI.</Comment>
 </Variable><Variable
  Type="BaliseGroups"
  DefaultValue="[]"
@@ -109,10 +113,14 @@
  Name="BaliseGroupsForShArea"
 >
 <ReqRef
- Id="Entry 5.6.2.2.A050"
+ Id="21984b69-0068-4a67-b99c-ffceb9070f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Contains the list of balise groups for Shunting area.</Comment>
+</ReqRef><ReqRef
+ Id="d52b6935-7a67-4676-ae5b-0c905452c8d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Contains the list of balise groups for Shunting area.</Comment>
 </Variable><Variable
  Type="Integer"
  DefaultValue="0"
@@ -121,10 +129,10 @@
  Name="NumberOfSentRequestRepetitions"
 >
 <ReqRef
- Id="5.6.4.1.2"
+ Id="1b8d900f-c280-48ab-867c-7a40ffdaaea3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates the number of Shunting request repetitions that have already be sent.</Comment>
+</ReqRef><Comment>Indicates the number of Shunting request repetitions that have already be sent.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="0.0"
@@ -133,9 +141,9 @@
  Name="TimeOfTheLastSentRequest"
 >
 <ReqRef
- Id="5.6.4.1.1"
+ Id="58b99381-a184-4b10-8c25-d125705b5194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Indicates the time when the last Shunting request has been sent.</Comment>
+</ReqRef><Comment>Indicates the time when the last Shunting request has been sent.</Comment>
 </Variable></Variables>
 </NameSpace>

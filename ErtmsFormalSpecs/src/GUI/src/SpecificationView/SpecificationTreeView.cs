@@ -20,8 +20,7 @@ namespace GUI.SpecificationView
         protected override void BuildModel()
         {
             Nodes.Clear();
-            Nodes.Add(new SpecificationTreeNode(Root.Specifications));
-            LabelEdit = false;
+            Nodes.Add(new SpecificationsTreeNode(Root));
         }
     }
 }

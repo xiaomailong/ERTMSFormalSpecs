@@ -1,0 +1,384 @@
+MODULE GenerateComparer;
+
+-- Create a valid C# name
+PROCEDURE ValidName ( name )
+BEGIN
+  RESULT := name;
+  RESULT := STR.Replace ( RESULT, "-", "_" );
+  RESULT := STR.Replace ( RESULT, "/", "_" );
+  RESULT := STR.Replace ( RESULT, ".", "_" );
+  RESULT := STR.Replace ( RESULT, " ", "_" );
+END ValidName;
+
+-- Generates the class for the corresponding element
+PROCEDURE GenerateImporterClass ( doc )
+BEGIN
+  FILE1.Redirect ("src/Compare/Comparer.cs");
+  FILE1.WriteList ({
+`// ------------------------------------------------------------------------------
+`// -- Copyright ERTMS Solutions
+`// -- Licensed under the EUPL V.1.1
+`// -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+`// --
+`// -- This file is part of ERTMSFormalSpec software and documentation
+`// --
+`// --  ERTMSFormalSpec is free software: you can redistribute it and/or modify
+`// --  it under the terms of the EUPL General Public License, v.1.1
+`// --
+`// -- ERTMSFormalSpec is distributed in the hope that it will be useful,
+`// -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+`// -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+`// --
+`// ------------------------------------------------------------------------------
+`
+`namespace DataDictionary.Compare
+`{
+`    using System.Collections.Generic;
+
+`    public static class Comparer 
+`    {
+  });
+
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Compares two `element.NAME` and annotates the differences on the first one
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="other"></param>
+`        public static void compare`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, Generated.`ValidName (element.NAME)` other, VersionDiff diff)
+`        {
+`            if ( other == null )
+`            { 
+`                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+`                return;
+`            }
+`
+      });
+
+      IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
+      FILE1.WriteList ({
+`            compare`ValidName (element.BaseElement.NAME)` (obj, other, diff);
+`
+      });
+      END;
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
+          IF NOT IgnoreFromComparison (field) THEN
+            IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+              FILE1.WriteList ({
+   `            if ( !CompareUtil.canonicalStringEquality(obj.get`ValidName(field.NAME)`(), other.get`ValidName(field.NAME)`()) )
+   `            {
+   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `            }
+              });
+            ELSE
+              FILE1.WriteList ({
+   `            if ( obj.get`ValidName(field.NAME)`() != other.get`ValidName(field.NAME)`() )
+   `            {
+   `                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "Previously was [" + other.get`field.NAME`() + "]") );
+   `            }
+              });
+            END;
+          END;
+        ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
+          IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+            IF Ordered ( field.REFTYPE ) THEN 
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    int i = 0;
+`                    while ( i < obj.count`field.NAME`() && i < other.count`field.NAME`() )
+`                    {
+`                        Generated.`field.REFTYPE` element = obj.get`field.NAME`( i );
+`                        Generated.`field.REFTYPE` otherElement = other.get`field.NAME`( i );
+`                        compare`field.REFTYPE` ( element, otherElement, diff );
+`                        i += 1;
+`                    }
+`                    while ( i < obj.count`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(obj.get`field.NAME`(i), Diff.ActionEnum.Add) );
+`                        i += 1;
+`                    }
+`                    while ( i < other.count`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.get`field.NAME`( i ).Name) );
+`                        i += 1;
+`                    }
+`                }
+`                else 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                    }
+`                }
+`            }
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                    }
+`                }
+`            }
+              }); 
+            ELSE
+              FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        bool compared = false;
+`                        foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                        {
+`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
+`                            {
+`                                compare`ValidName (field.REFTYPE)` ( subElement, otherElement, diff );
+`                                compared = true;
+    `                            break;
+`                            }
+`                        }
+`
+`                        if ( !compared ) 
+`                        {
+`                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                        }
+`                    }
+`
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        bool found = false;
+`                        foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                        {
+`                            if ( CompareUtil.canonicalStringEquality(subElement.`Identifier(field.REFTYPE)`, otherElement.`Identifier(field.REFTYPE)`) )
+`                            {
+`                                found = true;
+`                                break;
+`                            }
+`                        }
+`
+`                        if ( !found )
+`                        {
+`                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                        }
+`                    }
+`                }
+`                else 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+`                    }
+`                }
+`            }
+`            else 
+`            {
+`                if ( other.all`field.NAME`() != null ) 
+`                {
+`                    foreach ( Generated.`field.REFTYPE` otherElement in other.all`field.NAME`() )
+`                    {
+`                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+`                    }
+`                }
+`            }
+              });
+            END;
+          ELSE
+            FILE1.WriteList({
+`            if ( obj.get`field.NAME`() == null )
+`            {
+`                if ( other.get`field.NAME`() != null )
+`                {
+`                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "`field.NAME`", "" ) );
+`                }
+`            }
+`            else
+`            {
+`                compare`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), other.get`field.NAME`(), diff );
+`            }
+            });
+          END; -- IF
+        END; -- IF
+      END; -- FOR field
+      FILE1.WriteList ({
+`        }
+`
+      });
+    END; -- IF
+  END; -- FOR element
+
+  FOR element IN doc.RecursiveGetElementChildNodes("ELEMENT") DO  
+
+    IF InheritsFrom(element, "ModelElement") THEN
+      FILE1.WriteList ({
+`        /// <summary>
+`        /// Searches a specific string in `element.NAME` and updates the list 
+`        /// of model element with all the elements in which that string is found
+`        /// </summary>
+`        /// <param name="obj"></param>
+`        /// <param name="obj">The string to search for</param>
+`        /// <param name="occurences">The list of model elements which hold the searched string</param>
+`        public static void search`ValidName (element.NAME)`(Generated.`ValidName (element.NAME)` obj, string searchString, List<ModelElement> occurences)
+`        {
+      });
+
+      IF ( element CAN BaseElement ) AND InheritsFrom(element.BaseElement,"ModelElement") THEN
+      FILE1.WriteList ({
+`            search`ValidName (element.BaseElement.NAME)` (obj, searchString, occurences);
+`
+      });
+      END;
+
+      FOR field IN element.RecursiveGetElementChildNodes ("FIELD") DO
+        IF ( field CAN TYPE ) OR ( field CAN ENUMTYPE ) THEN
+          IF ( field!TYPE = "STRING" OR field!TYPE = "PCHAR" ) THEN
+            FILE1.WriteList ({
+`            if ( obj.get`ValidName(field.NAME)`() != null && obj.get`ValidName(field.NAME)`().Contains (searchString) ) 
+`            {
+`                occurences.Add ( obj );
+`            }
+            });
+          END;
+        ELSIF ( field CAN REFTYPE ) AND (InheritsFrom(Elements[field.REFTYPE],"ModelElement"))THEN          
+          IF ( THERE_IS IN element.RecursiveGetElementChildNodes ("REPEAT") :- X.TARGET == field.NAME ) THEN
+            FILE1.WriteList({
+`            if ( obj.all`field.NAME`() != null )
+`            {
+`                foreach ( Generated.`field.REFTYPE` subElement in obj.all`field.NAME`() )
+`                {
+`                    search`ValidName (field.REFTYPE)` ( subElement, searchString, occurences );
+`                }
+`            }
+            }); 
+          ELSE
+            FILE1.WriteList({
+`            if ( obj.get`field.NAME`() != null )
+`            {
+`                search`ValidName (field.REFTYPE)` ( obj.get`field.NAME`(), searchString, occurences );
+`            }
+            });
+          END; -- IF
+        END; -- IF
+      END; -- FOR field
+      FILE1.WriteList ({
+`        }
+`
+      });
+    END; -- IF
+  END; -- FOR element
+
+  FILE1.WriteList ({
+`    }
+`}
+  });
+  FILE1.Flush;
+END GenerateImporterClass;
+
+VAR
+  Elements;
+
+-- Provides the identifier method or property
+PROCEDURE Identifier ( TypeName )
+BEGIN
+  FOR field IN Elements[TypeName].RecursiveGetElementChildNodes("FIELD") WHILE RESULT == VOID DO
+    FOR meta IN field.RecursiveGetElementChildNodes("META") WHILE RESULT == VOID DO
+      IF meta.NAME = "Key" THEN
+        RESULT := "get" & field.NAME & "()";
+      END;
+    END;
+  END;
+
+  IF RESULT = VOID THEN 
+    RESULT := "Name";
+  END;
+END;
+
+-- Indicates that elements of this type are ordered in their enclosing list
+PROCEDURE Ordered ( TypeName )
+BEGIN
+  RESULT := FALSE;
+  FOR meta IN Elements[TypeName].RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
+    IF meta.NAME = "Ordered" THEN
+      RESULT := TRUE;
+    END;
+  END;
+END;
+
+-- Indicates that elements of this type are ordered in their enclosing list
+PROCEDURE IgnoreFromComparison( Field )
+BEGIN
+  RESULT := FALSE;
+  FOR meta IN Field.RecursiveGetElementChildNodes("META") WHILE NOT RESULT DO
+    IF meta.NAME = "DoNotCompare" THEN
+      RESULT := TRUE;
+    END;
+  END;
+END;
+
+-- Creates the symbol table for the elements of the system
+PROCEDURE PopulateSymbols( doc )
+BEGIN
+  Elements := ASSOC.New;
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    Elements[X.NAME] := X;
+  END;
+END PopulateSymbols;
+
+PROCEDURE CreateClassHierarchy ( doc )
+BEGIN
+  FOR IN doc.RecursiveGetElementChildNodes("ELEMENT") DO
+    IF X CAN BASEELEMENT THEN
+      X.BaseElement := Elements[X.BASEELEMENT];
+    END;
+  END;
+END;
+
+PROCEDURE InheritsFrom(Element, BaseElement)
+VAR 
+  current;
+BEGIN
+  RESULT := FALSE;
+  current := Element;
+  WHILE ( current <> VOID ) AND NOT RESULT DO
+--    OUT.WriteLn (' -- ' & current.NAME &' '& current!BASECLASS &' =?= '& BaseElement &' -> '& RESULT);
+    RESULT := current!BASECLASS == BaseElement;
+    current := current!BaseElement;
+  END;
+END;
+
+PROCEDURE TERMINATE;
+VAR 
+  doc;
+BEGIN
+  OUT.WriteLn ("Starting process");
+  doc := XML.LoadFile ( SYS.Args[1] );
+  OUT.WriteLn ("XML document read");
+  IF doc <> VOID THEN
+    doc := doc.GetDocumentElement;
+
+    OUT.WriteLn ("Populate symbols");
+    PopulateSymbols( doc );
+
+    OUT.WriteLn ("Create class hierarchy");
+    CreateClassHierarchy ( doc );
+
+    OUT.WriteLn ("Generate comparer class");
+    GenerateImporterClass ( doc );
+    
+  ELSE
+    ERR.WriteLn ( "Cannot read file " & SYS.Args[1] );
+  END;
+
+  OUT.WriteLn ("Done");
+END TERMINATE;
+

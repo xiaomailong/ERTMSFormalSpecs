@@ -1,0 +1,2824 @@
+<Frame
+ CycleDuration="Kernel.CycleDuration"
+ Name="Lambda FrInG 100%"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Lambda FrInG 100%"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+>
+<SubSteps>
+<SubStep
+ SkipEngine="TRUE"
+ Name="SubStep1 - Setup"
+>
+<Actions>
+<Action>Kernel.Level &lt;- Kernel.LevelData
+{
+    Value =&gt; Level.L1,
+    DataState =&gt; DataState.Valid
+}</Action><Action>Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Initialize input"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Initialize input"
+>
+<SubSteps>
+<SubStep
+ SkipEngine="TRUE"
+ Name="SubStep1 - Train data"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.EBModels &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.SBModels &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.T_brake_service &lt;- EMPTY</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 180.0</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
+{
+    Coefficient =&gt; 0.0,
+    Constant    =&gt; 0.0
+}</Action><Action>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- False</Action><Action>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- False</Action><Action>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsAllowed &lt;- True</Action><Action>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 700.0</Action><Action>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- Default.Percentage.NA</Action><Action>BTM.ActiveAntennaPosition &lt;- 5.0</Action></Actions>
+</SubStep><SubStep
+ SkipEngine="TRUE"
+ Name="SubStep2 - Track data"
+>
+<Actions>
+<Action>Kernel.TrackDescription.TrackConditions.TCProfile &lt;- EMPTY</Action><Action>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; EMPTY,
+        Length =&gt; 7000.0,
+        DangerPoint =&gt; Kernel.MA.DangerPoint
+        {
+            Distance =&gt; 0.0,
+            ReleaseSpeed =&gt; 30.0
+        },
+        Overlap =&gt; EMPTY
+    },
+    TargetSpeedTimeOut =&gt; 0.0
+}</Action><Action>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action><Action>INSERT
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 0.0
+    }
+IN
+    Kernel.TrackDescription.Gradient.Gradients</Action></Actions>
+</SubStep><SubStep
+ SkipEngine="TRUE"
+ Name="SubStep3 - National values"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring &lt;- Messages.Q_NVSBTSMPERM.Yes</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.Yes</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 &lt;- 1.0</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 &lt;- 0.7</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails &lt;- Messages.M_NVEBCL.Confidence_level___99_9999999</Action></Actions>
+</SubStep><SubStep
+ SkipEngine="TRUE"
+ Name="SubStep4 - Fixed values"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi_min &lt;- 7.5</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_ebi_max &lt;- 15.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_ebi_min &lt;- 110.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_ebi_max &lt;- 210.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_sbi_min &lt;- 5.5</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_sbi_max &lt;- 10.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_sbi_min &lt;- 110.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_sbi_max &lt;- 210.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_warning_min &lt;- 4.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.dV_warning_max &lt;- 5.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_warning_min &lt;- 110.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.V_warning_max &lt;- 140.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_warning &lt;- 2.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.T_driver &lt;- 4.0</Action><Action>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action><Action>Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action><Action>Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action></Actions>
+</SubStep><SubStep
+ SkipEngine="TRUE"
+ Name="SubStep5 - Brake parameters"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 100.0</Action></Actions>
+</SubStep><SubStep
+ SkipEngine="TRUE"
+ Name="SubStep6 - Integrated correction factors"
+>
+<Actions>
+<Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0 &lt;- Kernel.NationalValues.KrIntValue
+{
+    LengthStep =&gt; 0.0,
+    Value =&gt; 1.0
+}</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1 &lt;- Kernel.NationalValues.KrIntValue
+{
+    LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+    Value =&gt; 1.0
+}</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0 &lt;- Kernel.NationalValues.KvIntValue_FreightTrain
+{
+    SpeedStep =&gt; 0.0,
+    Value =&gt; 0.97
+}</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1 &lt;- Kernel.NationalValues.KvIntValue_FreightTrain
+{
+    SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+    Value =&gt; 0.97
+}</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- 1.0</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- 1.3</Action><Action>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime &lt;- 1.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Verify input"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Verify input"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Train data"
+>
+<Actions>
+<Action>Kernel.TrainData.BrakingParameters.ConversionModel.Initialize()</Action><Action>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedSupervision.UpdateReleaseSpeed()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep2 - Brake parameters"
+>
+<Actions>
+<Action>Kernel.SpeedAndDistanceMonitoring.TargetSupervision.InitializeTimeIntervals()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 14.45</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 22.39</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_be() == 14.45</Expectation><Expectation
+ Kind="Instantaneous"
+>Kernel.TrainData.BrakingParameters.T_bs() == 22.39</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep3 - Brake parameters (A_brake_emergency)"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 0.0),
+    Val2 =&gt; 0.826
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 120.948338078),
+    Val2 =&gt; 0.826
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 120.94833808),
+    Val2 =&gt; 0.6171
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 149.999999999),
+    Val2 =&gt; 0.6171
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 150.0),
+    Val2 =&gt; 0.5915
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 179.999999999),
+    Val2 =&gt; 0.5915
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 180.0),
+    Val2 =&gt; 0.58173
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val1.SpeedStep,
+    Val2 =&gt; 120.948338079
+)</Expectation></Expectations>
+</SubStep><SubStep
+ Name="SubStep4 - Brake parameters (A_brake_service)"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 0.0),
+    Val2 =&gt; 0.826
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 120.948338078),
+    Val2 =&gt; 0.826
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 120.94833808),
+    Val2 =&gt; 0.6171
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 149.999999999),
+    Val2 =&gt; 0.6171
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 150.0),
+    Val2 =&gt; 0.5915
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 179.999999999),
+    Val2 =&gt; 0.5915
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 180.0),
+    Val2 =&gt; 0.58173
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val1.SpeedStep,
+    Val2 =&gt; 120.948338079
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ NeedsRequirement="FALSE"
+ Name="Verify output"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - EBD"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify EBD values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 0.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.0 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 5.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1.2 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 10.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 4.82 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 15.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 10.83 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 20.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 19.26 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 25.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 30.09 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 30.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 43.34 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 35.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 58.99 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 40.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 77.04 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 45.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 97.51 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 50.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 120.38 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 55.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 145.66 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 60.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 173.35 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 65.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 203.44 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 70.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 235.94 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 75.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 270.85 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 80.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 308.17 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 85.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 347.9 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 90.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 390.03 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 95.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 434.57 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 100.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 481.52 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 105.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 530.87 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 110.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 582.64 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 115.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 636.81 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 120.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 693.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 125.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 768.41 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 130.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 850.59 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 135.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 935.99 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 140.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1024.61 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 145.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1116.45 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 150.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1211.52 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 155.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1314.06 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 160.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1419.97 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 165.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1529.24 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 170.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1641.87 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 175.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1757.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 180.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1877.21 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 185.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2001.99 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        Speed =&gt; 190.0 ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2130.19 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - SBD"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify SBD values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.0 )
+    ),
+    Val2 =&gt; 0.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1.17 )
+    ),
+    Val2 =&gt; 5.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 4.67 )
+    ),
+    Val2 =&gt; 10.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 10.51 )
+    ),
+    Val2 =&gt; 15.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 18.68 )
+    ),
+    Val2 =&gt; 20.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 29.19 )
+    ),
+    Val2 =&gt; 25.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 42.04 )
+    ),
+    Val2 =&gt; 30.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 57.22 )
+    ),
+    Val2 =&gt; 35.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 74.73 )
+    ),
+    Val2 =&gt; 40.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 94.58 )
+    ),
+    Val2 =&gt; 45.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 116.77 )
+    ),
+    Val2 =&gt; 50.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 141.29 )
+    ),
+    Val2 =&gt; 55.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 168.15 )
+    ),
+    Val2 =&gt; 60.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 197.34 )
+    ),
+    Val2 =&gt; 65.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 228.87 )
+    ),
+    Val2 =&gt; 70.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 262.73 )
+    ),
+    Val2 =&gt; 75.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 298.93 )
+    ),
+    Val2 =&gt; 80.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 337.46 )
+    ),
+    Val2 =&gt; 85.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 378.33 )
+    ),
+    Val2 =&gt; 90.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 421.53 )
+    ),
+    Val2 =&gt; 95.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 467.07 )
+    ),
+    Val2 =&gt; 100.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 514.95 )
+    ),
+    Val2 =&gt; 105.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 565.16 )
+    ),
+    Val2 =&gt; 110.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 617.7 )
+    ),
+    Val2 =&gt; 115.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 672.59 )
+    ),
+    Val2 =&gt; 120.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 745.36 )
+    ),
+    Val2 =&gt; 125.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 825.07 )
+    ),
+    Val2 =&gt; 130.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 907.91 )
+    ),
+    Val2 =&gt; 135.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 993.87 )
+    ),
+    Val2 =&gt; 140.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1082.96 )
+    ),
+    Val2 =&gt; 145.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1175.18 )
+    ),
+    Val2 =&gt; 150.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1274.64 )
+    ),
+    Val2 =&gt; 155.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1377.37 )
+    ),
+    Val2 =&gt; 160.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1483.36 )
+    ),
+    Val2 =&gt; 165.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1592.61 )
+    ),
+    Val2 =&gt; 170.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1705.12 )
+    ),
+    Val2 =&gt; 175.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1820.9 )
+    ),
+    Val2 =&gt; 180.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1941.93 )
+    ),
+    Val2 =&gt; 185.0
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.SBD
+    (
+        Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2066.28 )
+    ),
+    Val2 =&gt; 190.0
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - EBI"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify EBI values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 30.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 163.75 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 35.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 40.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 237.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 45.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 278.13 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 50.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 321.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 55.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 366.42 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 60.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 414.18 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 65.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 464.34 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 70.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 516.92 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 75.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 571.9 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 80.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 629.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 85.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 689.08 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 90.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 751.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 95.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 815.89 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 100.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 882.91 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 105.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 952.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 110.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1024.17 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 115.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1098.41 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 120.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1175.05 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 125.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1270.15 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 130.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1372.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 135.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1477.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 140.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1586.55 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 145.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1698.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 150.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1813.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 155.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1936.22 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 160.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2062.19 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 165.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2191.53 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_EBI
+    (
+        Vest  =&gt; 170.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2324.23 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - SBI1"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify SBI1 values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 60.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 168.15 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 65.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 197.34 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 70.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 228.87 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 75.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 262.73 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 80.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 298.93 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 85.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 337.46 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 90.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 378.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 95.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 421.53 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 100.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 467.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 105.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 514.95 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 110.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 565.16 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 115.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 617.7 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 120.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 672.59 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 125.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 745.36 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 130.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 825.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 135.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 907.91 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 140.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 993.87 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 145.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1082.96 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 150.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1175.18 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 155.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1274.64 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 160.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1377.37 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI1    (
+        Vest  =&gt; 165.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1483.36 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - SBI2"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify SBI2 values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 30.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 163.75 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 35.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 40.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 237.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 45.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 278.13 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 50.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 321.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 55.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 366.42 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 60.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 414.18 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 65.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 464.34 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 70.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 516.92 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 75.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 571.9 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 80.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 629.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 85.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 689.08 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 90.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 751.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 95.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 815.89 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 100.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 882.91 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 105.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 952.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 110.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1024.17 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 115.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1098.41 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 120.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1175.05 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 125.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1270.15 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 130.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1372.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 135.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1477.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 140.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1586.55 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 145.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1698.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 150.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1813.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 155.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1936.22 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 160.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2062.19 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_SBI2    (
+        Vest  =&gt; 165.0,
+        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2191.53 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - FLOI"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify FLOI values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 30.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 163.75 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 35.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 40.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 237.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 45.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 278.13 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 50.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 321.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 55.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 366.42 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 60.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 414.18 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 65.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 464.34 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 70.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 516.92 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 75.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 571.9 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 80.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 629.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 85.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 689.08 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 90.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 751.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 95.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 815.89 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 100.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 882.91 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 105.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 952.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 110.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1024.17 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 115.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1098.41 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 120.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1175.05 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 125.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1270.15 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 130.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1372.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 135.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1477.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 140.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1586.55 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 145.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1698.47 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 150.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1813.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 155.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1936.22 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 160.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2062.19 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_FLOI    (
+        Vest  =&gt; 165.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2191.53 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step7 - Warning"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify Warning values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 30.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 180.42 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 35.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 218.92 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 40.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 259.82 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 45.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 303.13 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 50.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 348.85 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 55.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 396.98 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 60.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 447.51 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 65.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 500.46 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 70.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 555.81 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 75.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 613.56 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 80.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 673.73 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 85.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 736.3 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 90.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 801.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 95.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 868.67 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 100.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 938.46 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 105.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1010.67 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 110.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1085.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 115.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1162.29 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 120.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1241.72 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 125.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1339.59 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 130.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1444.62 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 135.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1552.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 140.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1664.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 145.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1779.02 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 150.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1896.94 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 155.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2022.33 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 160.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2151.08 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_W
+    (
+        Vest  =&gt; 165.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2283.2 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - Permitted"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify Permitted values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 30.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 197.09 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 35.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 238.36 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 40.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 282.04 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 45.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 328.13 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 50.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 376.63 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 55.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 427.53 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 60.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 480.85 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 65.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 536.57 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 70.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 594.69 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 75.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 655.23 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 80.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 718.17 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 85.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 783.52 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 90.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 851.28 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 95.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 921.45 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 100.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 994.02 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 105.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1069.0 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 110.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1146.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 115.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1226.18 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 120.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1308.39 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 125.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1409.04 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 130.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1516.84 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 135.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1627.86 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 140.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1742.11 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 145.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1859.58 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 150.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1980.27 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 155.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2108.44 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_P    (
+        Vest  =&gt; 160.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2239.97 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step9 - Indication"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1 - Verify Indication values"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 30.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 346.35 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 35.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 412.51 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 40.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 481.07 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 45.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 552.03 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 50.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 625.41 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 55.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 701.19 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 60.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 779.38 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 65.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 859.98 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 70.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 942.98 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 75.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1028.4 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 80.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1116.22 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 85.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1206.44 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 90.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1299.08 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 95.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1394.12 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 100.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1491.57 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 105.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1591.43 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 110.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1693.7 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 115.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1798.37 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 120.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1905.45 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 125.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2030.98 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 130.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2163.66 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 135.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2299.56 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 140.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2438.69 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 145.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2581.04 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 150.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2726.6 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 155.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2879.65 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 160.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 3036.06 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 165.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 3036.06 )
+)</Expectation><Expectation
+ Kind="Instantaneous"
+>ERA_BrakingCurvesVerification.Compare
+(
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSupervision.d_I
+    (
+        Vest  =&gt; 170.0
+    ),
+    Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 3036.06 )
+)</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>

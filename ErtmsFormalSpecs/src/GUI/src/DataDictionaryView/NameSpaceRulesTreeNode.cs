@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceRulesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Rules", true)
         {
-            foreach (DataDictionary.Rules.Rule rule in item.Rules)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
             {
                 Nodes.Add(new RuleTreeNode(rule));
             }
@@ -127,10 +133,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Rules.Count + (Item.Rules.Count > 1 ? " rules " : " rule ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Rules.Count + (Item.Rules.Count > 1 ? " rules " : " rule ") + "selected.");
         }
     }
 }

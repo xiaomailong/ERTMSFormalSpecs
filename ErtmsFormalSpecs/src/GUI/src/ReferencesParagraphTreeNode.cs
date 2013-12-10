@@ -15,6 +15,8 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Drawing.Design;
 
 
 namespace GUI
@@ -33,6 +35,46 @@ namespace GUI
             protected ReferencesParagraphEditor()
                 : base()
             {
+            }
+
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public T Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
+            }
+        }
+
+        /// <summary>
+        /// The editor for message variables
+        /// </summary>
+        protected class UnnamedReferencesParagraphEditor : Editor
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            protected UnnamedReferencesParagraphEditor()
+                : base()
+            {
+            }
+
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            public T Comment
+            {
+                get { return Item; }
+                set
+                {
+                    Item = value;
+                    RefreshNode();
+                }
             }
         }
 
@@ -80,19 +122,8 @@ namespace GUI
                 if (ReqReferences != null)
                 {
                     SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
-                    ReqReferences.CreateReqRef(paragraphTreeNode.Item.FullId);
+                    ReqReferences.CreateReqRef(paragraphTreeNode.Item);
                 }
-            }
-        }
-
-        public override void SelectionChanged()
-        {
-            base.SelectionChanged();
-
-            DataDictionaryView.Window window = BaseForm as DataDictionaryView.Window;
-            if (window != null)
-            {
-                window.requirementsTextBox.Lines = Utils.Utils.toStrings(Item.getRequirements());
             }
         }
 

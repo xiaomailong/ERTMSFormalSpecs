@@ -20,7 +20,7 @@ using DataDictionary.Rules;
 
 namespace DataDictionary.Functions
 {
-    public class Case : Generated.Case, TextualExplain
+    public class Case : Generated.Case, TextualExplain, IExpressionable
     {
         private Expression expression;
 
@@ -61,7 +61,11 @@ namespace DataDictionary.Functions
                 }
                 return getExpression();
             }
-            set { setExpression(value); expression = null; }
+            set
+            {
+                setExpression(value);
+                expression = null;
+            }
         }
 
         /// <summary>
@@ -126,7 +130,7 @@ namespace DataDictionary.Functions
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Header(this, indentLevel); ;
 
             if (PreConditions.Count > 0)
             {
@@ -148,25 +152,12 @@ namespace DataDictionary.Functions
                     retVal = retVal + " {\\b => }\\par";
                 }
 
-                if (Expression != null)
-                {
-                    retVal = retVal + TextualExplainUtilities.Pad((ExpressionText != "" ? Expression.ToString() : "UndefinedExpression") + "\\par", indentLevel + 2);
-                }
-
+                retVal = retVal + TextualExplainUtilities.Expression(this, indentLevel + 2);
             }
             else
             {
                 retVal = retVal + TextualExplainUtilities.Pad("{\\b => }", indentLevel);
-                try
-                {
-                    if (Expression != null)
-                    {
-                        retVal = retVal + (ExpressionText != "" ? Expression.ToString() : "UndefinedExpression") + "\\par";
-                    }
-                }
-                catch (Exception)
-                {
-                }
+                retVal = retVal + TextualExplainUtilities.Expression(this, indentLevel + 2);
             }
 
             return retVal;

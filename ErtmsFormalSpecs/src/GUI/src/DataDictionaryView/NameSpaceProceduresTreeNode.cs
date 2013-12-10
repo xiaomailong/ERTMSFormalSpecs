@@ -43,7 +43,13 @@ namespace GUI.DataDictionaryView
         public NameSpaceProceduresTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Procedures", true)
         {
-            foreach (DataDictionary.Functions.Procedure procedure in item.Procedures)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Functions.Procedure procedure in Item.Procedures)
             {
                 Nodes.Add(new ProcedureTreeNode(procedure));
             }
@@ -127,10 +133,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Procedures.Count + (Item.Procedures.Count > 1 ? " procedures " : " procedure ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Procedures.Count + (Item.Procedures.Count > 1 ? " procedures " : " procedure ") + "selected.");
         }
     }
 }

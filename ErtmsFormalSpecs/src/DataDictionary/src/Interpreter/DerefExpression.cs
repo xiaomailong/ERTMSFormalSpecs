@@ -32,8 +32,8 @@ namespace DataDictionary.Interpreter
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
-        public DerefExpression(ModelElement root, List<Expression> arguments)
-            : base(root)
+        public DerefExpression(ModelElement root, ModelElement log, List<Expression> arguments)
+            : base(root, log)
         {
             Arguments = arguments;
 
@@ -119,14 +119,18 @@ namespace DataDictionary.Interpreter
                     // Unique element has been found. Reference it and perform the semantic analysis 
                     // on all dereferenced expression, now that the context is known for each expression
                     Ref = tmp.Values[0].Value;
+                    StaticUsage.AddUsage(Ref, Root, null);
 
                     ReturnValueElement current = tmp.Values[0];
                     for (int i = Arguments.Count - 1; i > 0; i--)
                     {
                         current = current.PreviousElement;
                         Arguments[i].SemanticAnalysis(current.Value);
+                        StaticUsage.AddUsages(Arguments[i].StaticUsage, null);
+                        StaticUsage.AddUsage(Arguments[i].Ref, Root, null);
                     }
                     Arguments[0].SemanticAnalysis();
+                    StaticUsage.AddUsage(Arguments[0].Ref, Root, null);
                 }
                 else if (tmp.IsAmbiguous)
                 {
@@ -137,7 +141,6 @@ namespace DataDictionary.Interpreter
                 {
                     // No possible interpretation for this deref expression, not allowed
                     AddError("Expression " + ToString() + " has no interpretation");
-
                 }
             }
 

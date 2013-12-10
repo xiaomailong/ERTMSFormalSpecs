@@ -40,7 +40,13 @@ namespace GUI.DataDictionaryView
         public RangesTreeNode(DataDictionary.Types.NameSpace item)
             : base(item, "Ranges", true)
         {
-            foreach (DataDictionary.Types.Range range in item.Ranges)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Types.Range range in Item.Ranges)
             {
                 Nodes.Add(new RangeTreeNode(range));
             }
@@ -123,10 +129,12 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Update counts according to the selected folder
         /// </summary>
-        public override void SelectionChanged()
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
         {
-            base.SelectionChanged();
-            (BaseForm as Window).toolStripStatusLabel.Text = Item.Ranges.Count + (Item.Ranges.Count > 1 ? " ranges " : " range ") + "selected.";
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Ranges.Count + (Item.Ranges.Count > 1 ? " ranges " : " range ") + "selected.");
         }
     }
 }

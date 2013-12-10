@@ -40,7 +40,13 @@ namespace GUI.TestRunnerView
         public TestsTreeNode(DataDictionary.Dictionary item)
             : base(item, null, true)
         {
-            foreach (DataDictionary.Tests.Frame frame in item.Tests)
+        }
+
+        protected override void BuildSubNodes()
+        {
+            base.BuildSubNodes();
+
+            foreach (DataDictionary.Tests.Frame frame in Item.Tests)
             {
                 Nodes.Add(new FrameTreeNode(frame));
             }
@@ -137,8 +143,10 @@ namespace GUI.TestRunnerView
             {
                 DateTime start = DateTime.Now;
 
+                SynchronizerList.SuspendSynchronization();
                 Failed = Dictionary.ExecuteAllTests();
                 Dictionary.EFSSystem.Runner = null;
+                SynchronizerList.ResumeSynchronization();
 
                 Span = DateTime.Now.Subtract(start);
             }
@@ -157,7 +165,7 @@ namespace GUI.TestRunnerView
             ExecuteTestsHandler executeTestsHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             ProgressDialog dialog = new ProgressDialog("Executing test frames", executeTestsHandler);
             dialog.ShowDialog();
-            MainWindow.RefreshModel();
+
             System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
         }
         #endregion
@@ -206,8 +214,19 @@ namespace GUI.TestRunnerView
             {
                 ExcelImport.Frm_ExcelImport excelImport = new ExcelImport.Frm_ExcelImport(this.Item);
                 excelImport.ShowDialog();
-                MainWindow.RefreshModel();
+                GUIUtils.MDIWindow.RefreshModel();
             }
+        }
+
+        /// <summary>
+        /// Display the number of frames
+        /// </summary>
+        /// <param name="displayStatistics"></param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Tests.Count + " test frames");
         }
     }
 }

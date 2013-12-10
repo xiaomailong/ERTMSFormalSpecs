@@ -16,7 +16,7 @@
 
 namespace DataDictionary
 {
-    public abstract class ModelElement : Utils.ModelElement
+    public abstract class ModelElement : Generated.BaseModelElement
     {
         /// <summary>
         /// Provides the EFS System in which this element belongs
@@ -44,21 +44,28 @@ namespace DataDictionary
         /// Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
-        protected override void AddElementLog(Utils.ElementLog log)
+        public override void AddElementLog(Utils.ElementLog log)
         {
-            Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
-            if (enclosingParameter != null)
+            if (!BeSilent)
             {
-                log.Log = "In " + FullName + ":" + log.Log;
-                enclosingParameter.AddElementLog(log);
-            }
-            else
-            {
-                base.AddElementLog(log);
+                Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
+                if (enclosingParameter != null)
+                {
+                    log.Log = "In " + FullName + ":" + log.Log;
+                    enclosingParameter.AddElementLog(log);
+                }
+                else
+                {
+                    base.AddElementLog(log);
+                }
             }
         }
-    }
 
+        /// <summary>
+        /// Indicates that no logging should occur
+        /// </summary>
+        public static bool BeSilent { get; set; }
+    }
 
     public interface TextualExplain
     {
@@ -87,6 +94,32 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Provides the expression
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="padlen"></param>
+        /// <returns></returns>
+        public static string Expression(ModelElement element, int padlen)
+        {
+            string retVal = "";
+
+            IExpressionable expressionable = element as IExpressionable;
+            if (expressionable != null)
+            {
+                if (string.IsNullOrEmpty(expressionable.ExpressionText))
+                {
+                    retVal = TextualExplainUtilities.Pad("<Undefined expression or statement>", padlen);
+                }
+                else
+                {
+                    retVal = TextualExplainUtilities.Pad(expressionable.ExpressionText, padlen);
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         /// Comments a section of text
         /// </summary>
         /// <param name="data">the data to pad</param>
@@ -100,6 +133,60 @@ namespace DataDictionary
             {
                 retVal = retVal + Pad("{\\cf11//" + line + "}\\cf1\\par", padlen);
             }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Comments an Icommentable
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="padlen"></param>
+        /// <returns></returns>
+        public static string Comment(ModelElement element, int padlen)
+        {
+            string retVal = "";
+
+            ICommentable commentable = element as ICommentable;
+            if (commentable != null && !string.IsNullOrEmpty(commentable.Comment))
+            {
+                retVal = Comment(commentable.Comment, padlen);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// The name of the element
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="padlen"></param>
+        /// <returns></returns>
+        public static string Name(ModelElement element, int padlen)
+        {
+            string retVal = "";
+
+            Namable namable = element as Namable;
+            if (namable != null)
+            {
+                retVal = TextualExplainUtilities.Pad("{\\cf11 // " + namable.Name + "}\\cf1\\par", padlen);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the header of the element 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="padlen"></param>
+        /// <returns></returns>
+        public static string Header(ModelElement element, int padlen)
+        {
+            string retVal = "";
+
+            retVal += Comment(element, padlen);
+            retVal += Name(element, padlen);
 
             return retVal;
         }
@@ -127,12 +214,19 @@ namespace DataDictionary
         /// <returns></returns>
         public static string Encapsule(string data)
         {
-            data = data.Replace("\n", "\\par ") + "}";
-            // data = data.Replace("{", "\\{");
+            string retVal = data;
 
-            string retVal = "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}";
+            if (!retVal.StartsWith("\\rtf"))
+            {
+                // Replaces all end of lines with \par
+                retVal = retVal.Replace("\n", "\\par ");
 
-            retVal = retVal + data;
+                // This is used to ensure that the right style is used for the text
+                retVal = "{\\cf11}\\cf1" + retVal;
+
+                // Common prefix to handle the colors
+                retVal = "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}" + retVal + "}";
+            }
 
             return retVal;
         }

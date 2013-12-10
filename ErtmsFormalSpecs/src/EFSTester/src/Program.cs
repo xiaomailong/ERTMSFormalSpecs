@@ -30,18 +30,19 @@ namespace EFSTester
         {
             int retVal = 0;
 
+            EFSSystem efsSystem = EFSSystem.INSTANCE;
             try
             {
 
                 Console.Out.WriteLine("EFS Tester");
 
                 // Load the dictionaries provided as parameters
-                EFSSystem efsSystem = EFSSystem.INSTANCE;
                 DataDictionary.Util.PleaseLockFiles = false;
                 foreach (string arg in args)
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
-                    Dictionary dictionary = Util.load(arg, efsSystem);
+                    bool lockFiles = false;
+                    Dictionary dictionary = Util.load(arg, efsSystem, lockFiles, null);
                     if (dictionary == null)
                     {
                         Console.Out.WriteLine("Cannot load dictionary " + arg);
@@ -63,20 +64,32 @@ namespace EFSTester
                             runner.RunUntilStep(null);
 
                             bool failed = false;
-                            foreach (DataDictionary.Tests.Runner.Events.Expect expect in runner.FailedExpectations())
+                            foreach (DataDictionary.Tests.Runner.Events.ModelEvent evt in runner.FailedExpectations())
                             {
-                                Console.Out.WriteLine(" failed : " + expect.Message);
-                                DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
-                                if (testCase.ImplementationCompleted)
+                                DataDictionary.Tests.Runner.Events.Expect expect = evt as DataDictionary.Tests.Runner.Events.Expect;
+                                if (expect != null)
                                 {
-                                    Console.Out.WriteLine(" !Unexpected failed expectation: " + expect.Message);
-                                    failed = true;
+                                    Console.Out.WriteLine(" failed : " + expect.Message);
+                                    DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
+                                    if (testCase.ImplementationCompleted)
+                                    {
+                                        Console.Out.WriteLine(" !Unexpected failed expectation: " + expect.Message);
+                                        failed = true;
+                                    }
+                                    else
+                                    {
+                                        Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
+                                    }
                                 }
                                 else
                                 {
-                                    Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
-                                }
+                                    DataDictionary.Tests.Runner.Events.ModelInterpretationFailure modelInterpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
+                                    if (modelInterpretationFailure != null)
+                                    {
+                                        Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);
 
+                                    }
+                                }
                             }
                             if (failed)
                             {
@@ -94,6 +107,7 @@ namespace EFSTester
             finally
             {
                 DataDictionary.Util.UnlockAllFiles();
+                efsSystem.Stop();
             }
 
             return retVal;

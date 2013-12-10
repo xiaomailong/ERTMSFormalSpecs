@@ -16,7 +16,7 @@
 
 namespace DataDictionary.Types
 {
-    public class Collection : Generated.Collection, TextualExplain
+    public class Collection : Generated.Collection, TextualExplain, ITypedElement
     {
         public override string ExpressionText
         {
@@ -32,6 +32,29 @@ namespace DataDictionary.Types
             set
             {
                 Default = value;
+            }
+        }
+
+        /// <summary>
+        /// Provides the mode of the typed element
+        /// </summary>
+        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+        {
+            get { return Generated.acceptor.VariableModeEnumType.defaultVariableModeEnumType; }
+        }
+
+        /// <summary>
+        /// Provides the type name of the element
+        /// </summary>
+        public string TypeName
+        {
+            get
+            {
+                return getTypeName();
+            }
+            set
+            {
+                setTypeName(value);
             }
         }
 
@@ -214,9 +237,9 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public string getExplain(int indentLevel)
         {
-            string retVal = "";
+            string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal = TextualExplainUtilities.Pad("{" + Name + " : COLLECTION OF " + getTypeName() + "}", indentLevel);
+            retVal += TextualExplainUtilities.Pad("{" + Name + " : COLLECTION OF " + getTypeName() + "}", indentLevel);
 
             return retVal;
         }

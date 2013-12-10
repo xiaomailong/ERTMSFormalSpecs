@@ -10,44 +10,39 @@
  Name="AcceptLevelCrossingInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.122"
+ Id="ea9cb238-fa10-432d-98fa-7444cd377ee5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -56,44 +51,39 @@
  Name="AcceptEOLMInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.65"
+ Id="31ad05ab-2f11-4e80-9c5e-ddf00ae71987"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -102,44 +92,39 @@
  Name="AcceptSessionManagementWithNeighbouringRIU"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.63"
+ Id="43c0c315-adfb-4bf7-a4a5-a7f8fc05bfd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -148,44 +133,39 @@
  Name="AcceptInfillLocationReference"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.69"
+ Id="534c6d31-c6ec-4d6b-b554-4e26d4578d9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -194,44 +174,39 @@
  Name="AcceptLocationIdentity"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.75"
+ Id="77210ea5-212b-45e5-be18-e538e6498db0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -240,44 +215,39 @@
  Name="AcceptTrackConditionsBigMetalMasses"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.73"
+ Id="66e08452-abbc-420d-9a70-72e11fa0b5d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -286,44 +256,39 @@
  Name="AcceptTrackConditionsExcludingBigMetalMasses"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.71"
+ Id="3fa8a506-3ea9-4d64-a87b-730b4ee4bcf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -332,44 +297,39 @@
  Name="AcceptReversingSupervisionInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.113"
+ Id="750cfd80-2406-4aa0-b1cc-c55a029ae1a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -378,44 +338,39 @@
  Name="AcceptReversingAreaInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.111"
+ Id="52272e9b-6955-459d-babd-f4bc7b526fb3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -424,44 +379,39 @@
  Name="AcceptDefaultBaliseLoopRIUInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.115"
+ Id="ae952ffb-7f6a-4784-93db-9d636e39df89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -470,44 +420,39 @@
  Name="AcceptLevelCrossingInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.121"
+ Id="5b5ed845-4d23-4acc-a7ad-eb7473a3e3fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -516,44 +461,39 @@
  Name="AcceptPermittedBrakingDistanceInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.119"
+ Id="6b017bae-a717-40af-bdf5-37c5f86dd8df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -562,44 +502,39 @@
  Name="AcceptTrackAheadFreeUpToLevel2_3TransitionLocation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.117"
+ Id="90b02532-aab7-4fdf-890a-1663384ea547"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException9()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException9()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException9()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -608,44 +543,39 @@
  Name="AcceptSystemVersionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.95"
+ Id="26bef53e-e677-4fda-ab99-beed596198eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -654,44 +584,39 @@
  Name="AcceptTracksideConstituentSystemVersion"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.93"
+ Id="d75d8947-a3b9-4c92-8f4a-86938fd12e9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -700,90 +625,39 @@
  Name="AcceptAcknowledgementOfSessionTermination"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.103"
+ Id="cf2a17cb-d040-4799-965d-cff6914ede17"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="AcceptLevelInhibitionOrder"
->
-<ReqRef
- Id="Entry 4.8.3.1.1.2.21"
->
-</ReqRef>
-<Cases>
-<Case
- Name="Level 0"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level NTC"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 1"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 2"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 3"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -792,44 +666,39 @@
  Name="AcceptConditionalLevelTransitionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.19"
+ Id="f5817bb9-b506-4f0c-924c-3a71028ad249"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException11()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException11()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException11()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException11()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException11()</Expression>
 </Case></Cases>
 </Function><Function
@@ -838,44 +707,39 @@
  Name="AcceptLevelTransitionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.17"
+ Id="9a11e02c-5661-4f2d-8b88-c2dfd737f3a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -884,44 +748,39 @@
  Name="AcceptSessionManagement"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.23"
+ Id="4f703c81-2115-4798-ad11-3f6b08de24ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -930,44 +789,39 @@
  Name="AcceptRadioNetworkRegistration"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.25"
+ Id="cc277823-dc92-4e35-8524-bebd0ee6b1ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -976,44 +830,39 @@
  Name="AcceptAxleLoadSpeedProfile"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.15"
+ Id="2919a42e-fd8d-4ac4-8559-6d73935c619d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1022,44 +871,39 @@
  Name="AcceptSignallingRelatedSpeedRestriction"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.5"
+ Id="8b210155-3495-482f-b049-c6ef34eabe75"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1068,44 +912,39 @@
  Name="AcceptLinking"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.3"
+ Id="ac878c44-5d03-4ded-98bd-1c2f9c14946c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1114,44 +953,39 @@
  Name="AcceptNationalValues"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.1"
+ Id="c3000e08-13c3-456e-b58a-bf06e7c230a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1160,44 +994,39 @@
  Name="AcceptMovementAuthority"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.7"
+ Id="b5a1c34b-a86b-4f58-a14e-72bdcaf37e34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException4()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1206,44 +1035,39 @@
  Name="AcceptInternationalSSP"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.13"
+ Id="0fe6086f-bf77-4c6a-bd46-c921c26b97da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1252,44 +1076,39 @@
  Name="AcceptGradientProfile"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.11"
+ Id="cf0ba12c-7a61-4637-9180-54af2526964b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1298,44 +1117,39 @@
  Name="AcceptRepositioningInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.9"
+ Id="e171155e-e609-46d8-96ff-c7c5bc955d56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1344,44 +1158,39 @@
  Name="AcceptGeographicalPosition"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.53"
+ Id="78d274e3-ba52-4888-8199-3bfabfb2c0ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1390,44 +1199,39 @@
  Name="AcceptFixedTextInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.51"
+ Id="965380a2-d85f-4377-955f-127e651a7924"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1436,44 +1240,39 @@
  Name="AcceptPlainTextInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.49"
+ Id="2f979843-1a3a-413c-b4f5-8df9cacb7205"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1482,44 +1281,39 @@
  Name="AcceptRBCTransitionOrder"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.55"
+ Id="b555ed51-36c0-4f25-b0e9-ffd76f6bf48e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1528,44 +1322,39 @@
  Name="AcceptRadioInfillAreaInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.61"
+ Id="2667ad53-d4e0-4569-a6de-ae4f199f25ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1574,44 +1363,39 @@
  Name="AcceptStopShuntingOnDeskOpening"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.59"
+ Id="f0e37c8f-bdf9-4dd3-8476-71d622e93dd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1620,44 +1404,39 @@
  Name="AcceptDangerForSHInformation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.57"
+ Id="b2f26e8a-472a-4734-bfd9-b4b1fc06e892"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
-<Expression>False</Expression>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
+<Expression>Exceptions.LevelException13()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
-<Expression>False</Expression>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
+<Expression>Exceptions.LevelException13()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1666,44 +1445,39 @@
  Name="AcceptAdhesionFactor"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.47"
+ Id="dc9341cd-9d4c-442d-943d-d2ee3632f6e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1712,44 +1486,39 @@
  Name="AcceptTemporarySpeedRestriction"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.37"
+ Id="3b4f3cbc-f160-4d6c-a231-62e94ee907c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException8()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException8()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1758,44 +1527,39 @@
  Name="AcceptSRDistanceInformationFromLoop"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.35"
+ Id="adff06f6-78cd-4172-9778-bd19e49d3c10"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1804,44 +1568,39 @@
  Name="AcceptStopIfInSRMode"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.33"
+ Id="842866ad-0e84-4e72-8787-b3615f13980c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1850,44 +1609,39 @@
  Name="AcceptTemporarySpeedRestrictionRevocation"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.39"
+ Id="f622cba0-9e87-4600-b630-89bcdbf6dbe2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1896,44 +1650,39 @@
  Name="AcceptRouteSuitabilityData"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.45"
+ Id="69baea53-8dc0-40a4-b802-ddd8403f7e5d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1()</Expression>
 </Case></Cases>
 </Function><Function
@@ -1942,44 +1691,39 @@
  Name="AcceptDefaultGradientForTSR"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.43"
+ Id="e1ea7173-49d3-4e8b-b646-3827df50d35e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException1() AND Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -1988,44 +1732,39 @@
  Name="AcceptTrainRejectedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.106"
+ Id="d9a059d0-5336-4f7c-9d11-ffa7c1b7a772"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2034,44 +1773,39 @@
  Name="AcceptInitiationOfSessionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.102"
+ Id="18d9982c-30de-42e5-bd5c-071bb7967c1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2080,44 +1814,39 @@
  Name="AcceptTrackAheadFreeRequestFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.98"
+ Id="d8499ae8-7f1b-478b-98bc-f06350447db7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2126,44 +1855,39 @@
  Name="AcceptTrainRunningNumberFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.100"
+ Id="06c6e474-b887-47bf-926e-7679a6d0eb57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2172,44 +1896,39 @@
  Name="AcceptPermittedBrakingDistanceInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.120"
+ Id="1757ce1e-13d5-436a-829d-5ad8a9d5146c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2218,44 +1937,39 @@
  Name="AcceptReversingSupervisionInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.114"
+ Id="9f6a9117-f292-47a0-8054-19d7e0143d67"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2264,44 +1978,39 @@
  Name="AcceptTrainAcceptedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.108"
+ Id="b08f0f66-3a74-4795-afc8-fad837540bd5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2310,44 +2019,39 @@
  Name="AcceptSoMPositionReportConfirmedByRBCFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.110"
+ Id="05f2ef1a-9ea1-4448-9520-935781396799"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2356,44 +2060,39 @@
  Name="AcceptReversingAreaInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.112"
+ Id="da73b9b9-ca1a-4f2d-a1c3-881d1af88284"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2402,44 +2101,39 @@
  Name="AcceptPositionReportParametersFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.30"
+ Id="66c297db-e0ec-43f6-8886-db2ff38cab8a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2448,44 +2142,39 @@
  Name="AcceptSRAuthorisationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.32"
+ Id="a76f1307-6dff-4573-b58d-a11be47a6094"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2494,44 +2183,39 @@
  Name="AcceptSessionManagementFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.24"
+ Id="4ad48ab5-75e3-4493-9af7-fd1dc19b74f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2540,44 +2224,39 @@
  Name="AcceptRadioNetworkRegistrationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.26"
+ Id="9ebdcaf4-4b18-46fe-9885-5abf212cca75"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2586,44 +2265,39 @@
  Name="AcceptMARequestParametersFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.28"
+ Id="d36444d0-79d7-4221-90c2-424e4a4dcd10"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2632,44 +2306,39 @@
  Name="AcceptInhibitionOfRevocableTSRsFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.42"
+ Id="92a8effd-a2cc-4e8d-9e78-3619d8b9ad17"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2678,44 +2347,39 @@
  Name="AcceptRouteSuitabilityDataFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.46"
+ Id="ec03c4bc-2ec3-45a8-8d8a-3347cf730dfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2724,44 +2388,39 @@
  Name="AcceptTemporarySpeedRestrictionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.38"
+ Id="89e43656-0ea0-46b5-a43e-7bda3ed37bd5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2770,44 +2429,39 @@
  Name="AcceptTemporarySpeedRestrictionRevocationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.40"
+ Id="e1d60bb5-1ff8-4e1d-966e-1c12938a426d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2816,44 +2470,39 @@
  Name="AcceptLinkingFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.4"
+ Id="03350710-ee05-4c71-ac9b-fed770bdfe6d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2862,44 +2511,39 @@
  Name="AcceptMovementAuthorityFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.8"
+ Id="1accea5f-62c2-4325-9f35-9effee81ee8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3() AND Exceptions.LevelException4() AND Exceptions.LevelException5()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3() AND Exceptions.LevelException4() AND Exceptions.LevelException5()</Expression>
 </Case></Cases>
 </Function><Function
@@ -2908,44 +2552,39 @@
  Name="AcceptNationalValuesFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.2"
+ Id="8e2418c3-925c-4279-86a2-b3e7382da737"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -2954,44 +2593,39 @@
  Name="AcceptAxleLoadSpeedProfileFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.16"
+ Id="437193f7-3fe9-430b-9b01-518f5bd0e5e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3000,44 +2634,39 @@
  Name="AcceptLevelTransitionOrderFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.18"
+ Id="aade7c0e-4bd7-4599-88fd-f61f5cc4d479"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3046,44 +2675,39 @@
  Name="AcceptGradientProfileFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.12"
+ Id="00dee930-7971-4602-a983-f2fb89fb82b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3092,44 +2716,39 @@
  Name="AcceptInternationalSSPFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.14"
+ Id="42e63be8-561f-4a0c-af99-61e0fb942ef9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3138,44 +2757,39 @@
  Name="AcceptAdhesionFactorFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.48"
+ Id="a5fa5ebb-5bbb-436e-bb64-214d7f363011"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3184,44 +2798,39 @@
  Name="AcceptAcknowledgementOfTrainDataFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.80"
+ Id="2a6efa84-6142-4025-8e32-9c42decd9ee2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3230,44 +2839,39 @@
  Name="AcceptSHRefusedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.90"
+ Id="662f99ef-76a4-4018-850a-fb85a704df24"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3276,44 +2880,39 @@
  Name="AcceptRevocationOfEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.88"
+ Id="9a44e905-b3ab-4712-aab4-cb179d4973f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3322,44 +2921,39 @@
  Name="AcceptRBCTransitionOrderFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.56"
+ Id="bce3ba1a-aad1-4f42-8bee-fa39dc7ed87d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3368,44 +2962,39 @@
  Name="AcceptAssignmentOfCoOrdinateSystemFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.68"
+ Id="1cce96a5-baff-415e-a0e8-8f899e9907e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException10()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException10()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException10()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException10()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException10()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3414,44 +3003,39 @@
  Name="AcceptFixedTextInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.52"
+ Id="da0a1e9d-244f-4d0c-aff8-53e5342fc213"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException12()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException12()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3460,44 +3044,39 @@
  Name="AcceptPlainTextInformationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.50"
+ Id="9e7c5d78-d122-474e-a973-50b6d5ca650c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException12()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException12()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3506,44 +3085,39 @@
  Name="AcceptGeographicalPositionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.54"
+ Id="b8ab7849-fda2-4fdc-b5b8-8f09e65c57fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3552,44 +3126,39 @@
  Name="AcceptTrackConditionsExcludingBigMetalMassesFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.72"
+ Id="8f0be598-b43f-481e-89ce-a0d0899f208d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3598,44 +3167,39 @@
  Name="AcceptConditionalEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.86"
+ Id="60ac7223-a277-4aad-bed1-3e841a92b64a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3644,44 +3208,39 @@
  Name="AcceptTracksideConstituentSystemVersionFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.94"
+ Id="986b5095-0500-48d2-9088-9b313a0ee7c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3690,44 +3249,39 @@
  Name="AcceptSHAuthorisedFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.92"
+ Id="aa70bf0d-eaf2-4416-aed3-c38a8d06c623"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3()</Expression>
 </Case></Cases>
 </Function><Function
@@ -3736,44 +3290,39 @@
  Name="AcceptUnconditionalEmergencyStopFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.84"
+ Id="c18bd90f-a67a-4638-8e11-a96a07a6582c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException2()</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3782,44 +3331,39 @@
  Name="AcceptRecognitionOfExitFromTRIPModeFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.78"
+ Id="23c39e3c-74c3-49d9-901d-c7b83ea4d7ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
@@ -3828,91 +3372,40 @@
  Name="AcceptCoOperativeShorteningOfMAFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.82"
+ Id="291d8440-fb04-4f8f-82b6-9e76400193bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3() AND Exceptions.LevelException4() AND Exceptions.LevelException5()</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Exceptions.LevelException3() AND Exceptions.LevelException4() AND Exceptions.LevelException5()</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Implemented="TRUE"
- Name="AcceptLevelInhibitionOrderFromRBC"
->
-<ReqRef
- Id="Entry 4.8.3.1.1.2.22"
->
-</ReqRef>
-<Cases>
-<Case
- Name="Level 0"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level NTC"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 1"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 2"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Level 3"
->
-<PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
-<Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -3920,44 +3413,39 @@
  Name="AcceptAcknowledgementOfSessionTerminationFromRBC"
 >
 <ReqRef
- Id="Entry 4.8.3.1.1.2.104"
+ Id="f264b390-0e6d-40e0-a26f-1e5b687c94ae"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Level 0"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L0</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level NTC"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.LNTC</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.LNTC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 1"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L1</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L1</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 2"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L2</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Level 3"
 >
 <PreConditions>
-<PreCondition>Level.Value == Level.L3</PreCondition>
-</PreConditions>
+<PreCondition>Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case></Cases>
 </Function></Functions>

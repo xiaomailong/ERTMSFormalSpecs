@@ -15,14 +15,18 @@
 // ------------------------------------------------------------------------------
 namespace DataDictionary
 {
-    using System;
     using System.Collections.Generic;
     using DataDictionary.Types;
+    using DataDictionary.Interpreter;
+    using DataDictionary.Rules;
+    using System;
+    using DataDictionary.Interpreter.Statement;
+    using DataDictionary.Specification;
 
     /// <summary>
     /// A complete system, along with all dictionaries
     /// </summary>
-    public class EFSSystem : Utils.IModelElement, Utils.ISubDeclarator
+    public class EFSSystem : Utils.IModelElement, Utils.ISubDeclarator, IHoldsParagraphs
     {
         /// <summary>
         /// The dictionaries used in the system
@@ -47,7 +51,7 @@ namespace DataDictionary
         /// <summary>
         /// Listener to model changes
         /// </summary>
-        public class NamableChangeListener : XmlBooster.IListener<DataDictionary.Generated.Namable>
+        public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
         {
             /// <summary>
             /// The system for which this listener listens
@@ -58,19 +62,19 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="system"></param>
-            public NamableChangeListener(EFSSystem system)
+            public BaseModelElementChangeListener(EFSSystem system)
             {
                 System = system;
             }
 
             #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
             {
                 System.ShouldRebuild = true;
                 System.ShouldSave = true;
             }
 
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.Namable sender)
+            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
             {
                 HandleChangeEvent(sender);
             }
@@ -78,16 +82,21 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The compiler used to compile the system
+        /// </summary>
+        public Compiler Compiler { get; private set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
-        public EFSSystem()
+        private EFSSystem()
         {
             Dictionaries = new List<Dictionary>();
 
             DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
+            Compiler = new Interpreter.Compiler(this);
 
-            Generated.ControllersManager.NamableController.ActivateNotification();
-            Generated.ControllersManager.NamableController.Listeners.Insert(0, new NamableChangeListener(this));
+            Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
         /// <summary>
@@ -168,6 +177,13 @@ namespace DataDictionary
         public List<Utils.ElementLog> Messages
         {
             get { return new List<Utils.ElementLog>(); }
+        }
+
+        /// <summary>
+        /// Clears the messages associated to the system
+        /// </summary>
+        public void ClearMessages()
+        {
         }
 
         /// <summary>
@@ -338,14 +354,14 @@ namespace DataDictionary
         /// <summary>
         /// The predefined types
         /// </summary>
-        private Dictionary<String, Types.Type> predefinedTypes;
-        public Dictionary<String, Types.Type> PredefinedTypes
+        private Dictionary<string, Types.Type> predefinedTypes;
+        public Dictionary<string, Types.Type> PredefinedTypes
         {
             get
             {
                 if (predefinedTypes == null)
                 {
-                    PredefinedTypes = new Dictionary<String, Types.Type>();
+                    PredefinedTypes = new Dictionary<string, Types.Type>();
                     PredefinedTypes[BoolType.Name] = BoolType;
                     PredefinedTypes[IntegerType.Name] = IntegerType;
                     PredefinedTypes[DoubleType.Name] = DoubleType;
@@ -602,14 +618,14 @@ namespace DataDictionary
         /// <summary>
         /// The predefined functions
         /// </summary>
-        private Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
-        public Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction> PredefinedFunctions
+        private Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
+        public Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> PredefinedFunctions
         {
             get
             {
                 if (predefinedFunctions == null)
                 {
-                    predefinedFunctions = new Dictionary<String, Functions.PredefinedFunctions.PredefinedFunction>();
+                    predefinedFunctions = new Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction>();
                     predefinedFunctions[AvailablePredefinedFunction.Name] = AvailablePredefinedFunction;
                     predefinedFunctions[AllocatePredefinedFunction.Name] = AllocatePredefinedFunction;
                     predefinedFunctions[NotPredefinedFunction.Name] = NotPredefinedFunction;
@@ -643,11 +659,11 @@ namespace DataDictionary
                 {
                     predefinedItems = new Dictionary<string, Utils.INamable>();
 
-                    foreach (KeyValuePair<String, Functions.PredefinedFunctions.PredefinedFunction> pair in PredefinedFunctions)
+                    foreach (KeyValuePair<string, Functions.PredefinedFunctions.PredefinedFunction> pair in PredefinedFunctions)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
                     }
-                    foreach (KeyValuePair<String, Types.Type> pair in PredefinedTypes)
+                    foreach (KeyValuePair<string, Types.Type> pair in PredefinedTypes)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
                         Types.IEnumerateValues enumerator = pair.Value as Types.IEnumerateValues;
@@ -655,7 +671,7 @@ namespace DataDictionary
                         {
                             Dictionary<string, object> constants = new Dictionary<string, object>();
                             enumerator.Constants("", constants);
-                            foreach (KeyValuePair<String, object> pair2 in constants)
+                            foreach (KeyValuePair<string, object> pair2 in constants)
                             {
                                 if (pair2.Value is Utils.INamable)
                                 {
@@ -890,15 +906,7 @@ namespace DataDictionary
         /// <returns></returns>
         public Interpreter.Statement.Statement ParseStatement(ModelElement root, string expression)
         {
-            try
-            {
-                return Parser.Statement(root, expression);
-            }
-            catch (Interpreter.ParseErrorException exception)
-            {
-                root.AddException(exception);
-                return null;
-            }
+            return Parser.Statement(root, expression);
         }
 
         /// <summary>
@@ -917,5 +925,359 @@ namespace DataDictionary
             }
         }
 
+        /// <summary>
+        /// Provides an RTF explanation of the system
+        /// </summary>
+        /// <returns></returns>
+        public string getExplain()
+        {
+            return "";
+        }
+
+        /// <summary>
+        /// The visitor who shall find all references
+        /// </summary>
+        private class ReferenceVisitor : Generated.Visitor
+        {
+            /// <summary>
+            /// The references found
+            /// </summary>
+            public List<Usage> Usages { get; private set; }
+
+            /// <summary>
+            /// The element to be found
+            /// </summary>
+            private ModelElement Model { get; set; }
+
+            /// <summary>
+            /// The filter to apply to the selection
+            /// </summary>
+            private Filter.AcceptableChoice Filter { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="model">The model element to be found</param>
+            public ReferenceVisitor(ModelElement model)
+            {
+                Usages = new List<Usage>();
+                Model = model;
+                Filter = null;
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="filter">The filter to apply to the search</param>
+            public ReferenceVisitor(Filter.AcceptableChoice filter)
+            {
+                Usages = new List<Usage>();
+                Model = null;
+                Filter = filter;
+            }
+
+            /// <summary>
+            /// Takes the statement into consideration
+            /// </summary>
+            /// <param name="statement"></param>
+            private void ConsiderStatement(Statement statement)
+            {
+                if (statement != null && statement.StaticUsage != null)
+                {
+                    if (Model != null)
+                    {
+                        List<Usage> usages = statement.StaticUsage.Find(Model);
+                        foreach (Usage usage in usages)
+                        {
+                            Usages.Add(usage);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Usage usage in statement.StaticUsage.AllUsages)
+                        {
+                            if (Filter(usage.Referenced))
+                            {
+                                Usages.Add(usage);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Takes the expression into consideration
+            /// </summary>
+            /// <param name="expression"></param>
+            private void ConsiderExpression(Expression expression)
+            {
+                if (expression != null && expression.StaticUsage != null)
+                {
+                    if (Model != null)
+                    {
+                        List<Usage> usages = expression.StaticUsage.Find(Model);
+                        foreach (Usage usage in usages)
+                        {
+                            Usages.Add(usage);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Usage usage in expression.StaticUsage.AllUsages)
+                        {
+                            if (Filter(usage.Referenced))
+                            {
+                                Usages.Add(usage);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Considers the type of the element provided as parameter
+            /// </summary>
+            /// <param name="element">The element which uses this type</param>
+            private void ConsiderTypeOfElement(ITypedElement element)
+            {
+                ModelElement modelElement = element as ModelElement;
+                if (modelElement != null)
+                {
+                    if (Model != null)
+                    {
+                        if ((element.Type == Model) && (element != Model))
+                        {
+                            Usages.Add(new Usage(Model, modelElement, Usage.ModeEnum.Type));
+                        }
+                    }
+                    else
+                    {
+                        if (Filter(element.Type))
+                        {
+                            Usages.Add(new Usage(element.Type, modelElement, Usage.ModeEnum.Type));
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Walk through actions
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Action obj, bool visitSubNodes)
+            {
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)obj;
+
+                ConsiderStatement(action.Statement);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Preconditions
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.PreCondition obj, bool visitSubNodes)
+            {
+                PreCondition preCondition = (PreCondition)obj;
+
+                ConsiderExpression(preCondition.ExpressionTree);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Expectations
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Expectation obj, bool visitSubNodes)
+            {
+                Tests.Expectation expectation = (Tests.Expectation)obj;
+
+                ConsiderExpression(expectation.ExpressionTree);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Cases
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Case obj, bool visitSubNodes)
+            {
+                Functions.Case cas = (Functions.Case)obj;
+
+                ConsiderExpression(cas.Expression);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Collections declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Collection obj, bool visitSubNodes)
+            {
+                Types.Collection collection = (Types.Collection)obj;
+
+                ConsiderTypeOfElement(collection);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Variables declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Variable obj, bool visitSubNodes)
+            {
+                Variables.Variable variable = (Variables.Variable)obj;
+
+                ConsiderTypeOfElement(variable);
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Functions declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Function obj, bool visitSubNodes)
+            {
+                Functions.Function function = (Functions.Function)obj;
+
+                ConsiderTypeOfElement(function);
+
+                foreach (Parameter parameter in function.FormalParameters)
+                {
+                    ConsiderTypeOfElement(parameter);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through Procedure declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Procedure obj, bool visitSubNodes)
+            {
+                Functions.Procedure procedure = (Functions.Procedure)obj;
+
+                foreach (Parameter parameter in procedure.FormalParameters)
+                {
+                    ConsiderTypeOfElement(parameter);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Walk through a structure declaration
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Structure obj, bool visitSubNodes)
+            {
+                Types.Structure structure = (Types.Structure)obj;
+
+                foreach (StructureElement element in structure.Elements)
+                {
+                    ConsiderTypeOfElement(element);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        ///  Provides the list of references of a given model element
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public List<Usage> FindReferences(ModelElement model)
+        {
+            // Find references
+            ReferenceVisitor visitor = new ReferenceVisitor(model);
+            bool prev = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    visitor.visit(dictionary, true);
+                }
+                visitor.Usages.Sort();
+            }
+            finally
+            {
+                ModelElement.BeSilent = prev;
+            }
+
+            return visitor.Usages;
+        }
+
+
+        /// <summary>
+        ///  Provides the list of references for a given filter
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public List<Usage> FindReferences(Filter.AcceptableChoice filter)
+        {
+            // Find references
+            ReferenceVisitor visitor = new ReferenceVisitor(filter);
+            bool prev = ModelElement.BeSilent;
+            try
+            {
+                ModelElement.BeSilent = true;
+                foreach (Dictionary dictionary in Dictionaries)
+                {
+                    visitor.visit(dictionary, true);
+                }
+                visitor.Usages.Sort();
+            }
+            finally
+            {
+                ModelElement.BeSilent = prev;
+            }
+
+            return visitor.Usages;
+        }
+
+        /// <summary>
+        /// Indicates whether enclosing messages should be displayed
+        /// </summary>
+        public bool DisplayEnclosingMessages { get; set; }
+
+        public bool DisplayRequirementsAsList { get; set; }
+
+        /// <summary>
+        /// Stops the system
+        /// </summary>
+        public void Stop()
+        {
+            Compiler.DoCompile = false;
+        }
+
+        /// <summary>
+        /// Gets all paragraphs from EFS System
+        /// </summary>
+        /// <returns></returns>
+        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        {
+            foreach (Dictionary dictionary in Dictionaries)
+            {
+                dictionary.GetParagraphs(paragraphs);
+            }
+        }
     }
 }

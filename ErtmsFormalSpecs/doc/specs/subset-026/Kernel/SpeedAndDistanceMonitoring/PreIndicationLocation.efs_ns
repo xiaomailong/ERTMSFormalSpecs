@@ -1,4 +1,8 @@
 <NameSpace
+ X="1040"
+ Y="180"
+ Width="200"
+ Height="400"
  Name="PreIndicationLocation"
 >
 <NameSpaces>
@@ -10,18 +14,18 @@
  Name="d_EBI"
 >
 <ReqRef
- Id="3.13.9.5.3.a"
+ Id="f9c8f255-fec3-4713-857e-21091c0091c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.3.b"
+</ReqRef><ReqRef
+ Id="528dbfd7-4b7d-4b1d-a596-153aec151d71"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.4"
+</ReqRef><ReqRef
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the location of the EBI supervision limit.</Comment>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -40,10 +44,10 @@
  Name="d_SBI2"
 >
 <ReqRef
- Id="3.13.9.5.4"
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Provides the distance d_SBI2.</Comment>
+</ReqRef><Comment>Provides the distance d_SBI2.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -62,18 +66,18 @@
  Name="d_I"
 >
 <ReqRef
- Id="3.13.9.5.4"
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.2"
+</ReqRef><ReqRef
+ Id="7436b38b-cdb4-4fc5-9d24-f45da79f42f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.3"
+</ReqRef><ReqRef
+ Id="1c3a3e00-d5be-4e94-b8f4-d89e2b2970a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
@@ -91,10 +95,10 @@
  Name="d_P_EOA"
 >
 <ReqRef
- Id="3.13.9.5.8"
+ Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -106,8 +110,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>TargetSupervision.d_SBI1 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
@@ -120,22 +123,22 @@
  Name="Compute_d_preindication"
 >
 <ReqRef
- Id="3.13.9.5.5"
+ Id="2a213dcf-f704-443d-a6e1-d343329af276"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.6"
+</ReqRef><ReqRef
+ Id="8ff0bb4b-bc97-415b-93b4-fde4c5154544"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.j"
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.12.1"
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="TargetSupervision.Target"
  Name="MRSPn"
@@ -146,18 +149,13 @@
  Name="EOA, first case"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-<PreCondition>MA.IsEOA ( MRSPn )</PreCondition>
-</PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition><PreCondition>MA.IsEOA ( MRSPn )</PreCondition></PreConditions>
 <Expression>d_I_EOA ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Other target, first case"
 >
 <PreConditions>
-<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-</PreConditions>
+<PreCondition>PreIndicationLocation.d_I ( MRSPn.Speed ) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_I ( MRSPn.Speed ) - MRSPn.Speed * T_preindication</Expression>
 </Case><Case
  Name="Second case"
@@ -171,9 +169,7 @@
         BaseTypes.MinDistance ( X.Location, RESULT )
     INITIAL_VALUE
         BaseTypes.Distance.Infinity
-) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition>
-<PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition>
-</PreConditions>
+) &lt;= MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length )</PreCondition><PreCondition>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) &lt; PreIndicationLocation.d_I ( MRSPn.Speed )</PreCondition></PreConditions>
 <Expression>MRSPn.Location + BaseTypes.LengthToDistance ( MRSPn.Length ) - MRSPn.Speed * T_preindication</Expression>
 </Case></Cases>
 </Function><Function
@@ -182,10 +178,10 @@
  Name="d_I_EOA"
 >
 <ReqRef
- Id="3.13.9.5.8"
+ Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
@@ -203,10 +199,10 @@
  Name="d_P"
 >
 <ReqRef
- Id="3.13.9.5.4"
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment></Comment>
+</ReqRef><Comment></Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -218,8 +214,7 @@
  Name="GUI is inhibited"
 >
 <PreConditions>
-<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition>
-</PreConditions>
+<PreCondition>NOT Kernel.NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_SBI2 ( Vmrsp ) - Vmrsp * TargetSupervision.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
@@ -232,22 +227,22 @@
  Name="d_preindication"
 >
 <ReqRef
- Id="3.13.9.5.5"
+ Id="2a213dcf-f704-443d-a6e1-d343329af276"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.6"
+</ReqRef><ReqRef
+ Id="8ff0bb4b-bc97-415b-93b4-fde4c5154544"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.3"
+</ReqRef><ReqRef
+ Id="1c3a3e00-d5be-4e94-b8f4-d89e2b2970a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.8"
+</ReqRef><ReqRef
+ Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Cases>
+</ReqRef><Cases>
 <Case
  Name="Value"
 >
@@ -263,22 +258,22 @@
  Name="T_preindication"
 >
 <ReqRef
- Id="Entry 3.A3.1.1.18"
+ Id="74d937dc-e17d-4627-b243-5abf98b6b980"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 <Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
-</ReqRef>
-<ReqRef
- Id="3.13.9.5.7"
+</ReqRef><ReqRef
+ Id="4bd7be0f-7449-41a7-9dba-2c0897a8c933"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.1.1.j"
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<ReqRef
- Id="3.13.2.2.12.1"
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef>
-<Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
+</ReqRef><Comment>Time between the pre-indication location and the indication supervision limit valid for MRSP speed.</Comment>
 </Variable></Variables>
 </NameSpace>

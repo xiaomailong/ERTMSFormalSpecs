@@ -18,12 +18,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
+using System.Drawing.Design;
 
 namespace GUI.DataDictionaryView
 {
     public class ParameterTreeNode : DataTreeNode<Parameter>
     {
-        private class InternalNameSpaceConverter : NameSpaceConverter
+        private class InternalNameSpaceConverter : Converters.NameSpaceConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
@@ -33,7 +34,7 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private class InternalTypesConverter : TypesConverter
+        private class InternalTypesConverter : Converters.TypesConverter
         {
             public override StandardValuesCollection
             GetStandardValues(ITypeDescriptorContext context)
@@ -93,16 +94,16 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The parameter type
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(InternalTypesConverter))]
-            public string Type
+            [Category("Description")]
+            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
+            public DataDictionary.Parameter Type
             {
-                get
-                {
-                    return base.Item.TypeName;
-                }
+                get { return Item; }
                 set
                 {
-                    base.Item.TypeName = value;
+                    Item = value;
+                    RefreshNode();
                 }
             }
         }

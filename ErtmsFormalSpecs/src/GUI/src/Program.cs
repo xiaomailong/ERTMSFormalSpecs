@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace ERTMSFormalSpecs
 {
-    static class ErtmsFormalSpecGui
+    public static class ErtmsFormalSpecGui
     {
         /// <summary>
         /// The main entry point for the application.
@@ -55,6 +55,10 @@ namespace ERTMSFormalSpecs
             {
                 DataDictionary.Util.UnlockAllFiles();
             }
+
+
+            DataDictionary.EFSSystem.INSTANCE.Stop();
+            GUI.SynchronizerList.Stop();
         }
     }
 }

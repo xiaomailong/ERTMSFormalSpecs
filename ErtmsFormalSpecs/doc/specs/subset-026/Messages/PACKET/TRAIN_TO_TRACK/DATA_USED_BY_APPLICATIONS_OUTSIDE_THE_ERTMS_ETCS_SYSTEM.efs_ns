@@ -1,0 +1,96 @@
+<NameSpace
+ Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Implemented="TRUE"
+ Name="Message"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="2b759953-6b7f-4d95-b8ec-e22a8e420be0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="44"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NID_PACKET"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="L_PACKET"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="L_PACKET"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="NID_XUSER"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NID_XUSER"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Collection1"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Sequence1"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure><Structure
+ Implemented="TRUE"
+ Name="SubStructure1"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><StructureElement
+ TypeName="bit"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NID_XUSER"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="SubStructure1"
+ Default="[]"
+ Implemented="TRUE"
+ Name="Collection1"
+>
+<ReqRef
+ Id="48a0d518-f25f-4e4a-ba44-20606eb6e3f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef></Collection></Collections>
+</NameSpace>
