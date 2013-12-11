@@ -21,7 +21,7 @@ using System.ComponentModel;
 
 namespace GUI.DataDictionaryView
 {
-    public class ActionTreeNode : DataTreeNode<DataDictionary.Rules.Action>
+    public class ActionTreeNode : ModelElementTreeNode<DataDictionary.Rules.Action>
     {
         private class ItemEditor : Editor
         {

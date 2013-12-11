@@ -46,6 +46,8 @@
     <Compile Include="src\Compare\Comparer.cs" />
     <Compile Include="src\Compare\Diff.cs" />
     <Compile Include="src\Compare\CompareUtil.cs" />
+    <Compile Include="src\Compare\Factory.cs" />
+    <Compile Include="src\Compare\History.cs" />
     <Compile Include="src\Functions\Graph.cs" />
     <Compile Include="src\Functions\PredefinedFunctions\Allocate.cs" />
     <Compile Include="src\Functions\PredefinedFunctions\Available.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="src\Functions\PredefinedFunctions\RoundToMultiple.cs" />
     <Compile Include="src\Functions\PredefinedFunctions\Targets.cs" />
     <Compile Include="src\Functions\Surface.cs" />
+    <Compile Include="src\GuidCache.cs" />
     <Compile Include="src\IEnclosesNameSpaces.cs" />
     <Compile Include="src\IExpressionable.cs" />
     <Compile Include="src\IGraphicalDisplay.cs" />
@@ -226,6 +229,10 @@
       <Project>{7A9B0694-8FCE-4F94-B380-219893B31DB9}</Project>
       <Name>ErtmsSolutions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HistoricalData\HistoricalData.csproj">
+      <Project>{3206C50F-D6E7-44B9-9D8A-CE412A8A6310}</Project>
+      <Name>HistoricalData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{508CA32D-6CC9-4528-9A30-567CD9E1B4CB}</Project>
       <Name>Utils</Name>
@@ -235,6 +242,7 @@
       <Name>XmlBooster</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

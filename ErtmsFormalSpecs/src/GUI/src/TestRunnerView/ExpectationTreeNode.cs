@@ -22,7 +22,7 @@ using System.Windows.Forms;
 
 namespace GUI.TestRunnerView
 {
-    public class ExpectationTreeNode : DataTreeNode<DataDictionary.Tests.Expectation>
+    public class ExpectationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Expectation>
     {
         /// <summary>
         /// The value editor

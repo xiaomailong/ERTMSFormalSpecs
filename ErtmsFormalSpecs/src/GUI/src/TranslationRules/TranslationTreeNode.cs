@@ -24,7 +24,7 @@ using System.Drawing.Design;
 
 namespace GUI.TranslationRules
 {
-    public class TranslationTreeNode : DataTreeNode<DataDictionary.Tests.Translations.Translation>
+    public class TranslationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Translation>
     {
         private class ItemEditor : NamedEditor
         {

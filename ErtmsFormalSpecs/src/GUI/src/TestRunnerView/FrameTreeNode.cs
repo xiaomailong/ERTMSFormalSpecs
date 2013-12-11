@@ -21,7 +21,7 @@ using Utils;
 
 namespace GUI.TestRunnerView
 {
-    public class FrameTreeNode : DataTreeNode<DataDictionary.Tests.Frame>
+    public class FrameTreeNode : ModelElementTreeNode<DataDictionary.Tests.Frame>
     {
         /// <summary>
         /// The value editor

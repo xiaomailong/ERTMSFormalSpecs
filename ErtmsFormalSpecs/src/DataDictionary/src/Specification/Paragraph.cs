@@ -82,16 +82,18 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the Guid of the paragraph and creates one if it is not yet set
         /// </summary>
-        public string Guid
+        public override string Guid
         {
             get
             {
-                if (string.IsNullOrEmpty(getGuid()))
+                // Remove the obsolete guid
+                if (!string.IsNullOrEmpty(getObsoleteGuid()))
                 {
-                    setGuid(System.Guid.NewGuid().ToString());
+                    setGuid(getObsoleteGuid());
+                    setObsoleteGuid(null);
                 }
 
-                return getGuid();
+                return base.Guid;
             }
         }
 

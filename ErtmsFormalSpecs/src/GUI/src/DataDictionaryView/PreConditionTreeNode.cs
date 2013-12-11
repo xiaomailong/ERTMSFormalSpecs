@@ -21,7 +21,7 @@ using System.ComponentModel;
 
 namespace GUI.DataDictionaryView
 {
-    public class PreConditionTreeNode : DataTreeNode<DataDictionary.Rules.PreCondition>
+    public class PreConditionTreeNode : ModelElementTreeNode<DataDictionary.Rules.PreCondition>
     {
         private class ItemEditor : Editor
         {

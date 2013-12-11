@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpaceTreeNode : DataTreeNode<DataDictionary.Types.NameSpace>
+    public class NameSpaceTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
     {
         private class ItemEditor : NamedEditor
         {

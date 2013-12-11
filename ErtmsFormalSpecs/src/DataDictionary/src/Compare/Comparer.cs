@@ -28,13 +28,13 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
             if ( !CompareUtil.canonicalStringEquality(obj.getName(), other.getName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Name", "Previously was [" + other.getName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Name", other.getName(), obj.getName()) );
             }
         }
 
@@ -47,7 +47,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -62,7 +62,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.ReqRef otherElement in other.allRequirements() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareReqRef ( subElement, otherElement, diff );
                                 compared = true;
@@ -72,7 +72,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements" ) );
                         }
                     }
 
@@ -81,7 +81,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.ReqRef subElement in obj.allRequirements() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -90,7 +90,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Requirements", otherElement.Name) );
                         }
                     }
                 }
@@ -98,7 +98,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ReqRef subElement in obj.allRequirements() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Requirements" ) );
                     }
                 }
             }
@@ -108,13 +108,13 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ReqRef otherElement in other.allRequirements() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Requirements", otherElement.Name) );
                     }
                 }
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -127,7 +127,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -135,15 +135,15 @@ namespace DataDictionary.Compare
 
             if ( obj.getImplemented() != other.getImplemented() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Implemented", "Previously was [" + other.getImplemented() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Implemented", other.getImplemented().ToString(), obj.getImplemented().ToString()) );
             }
             if ( obj.getVerified() != other.getVerified() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Verified", "Previously was [" + other.getVerified() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Verified", other.getVerified().ToString(), obj.getVerified().ToString()) );
             }
             if ( obj.getNeedsRequirement() != other.getNeedsRequirement() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "NeedsRequirement", "Previously was [" + other.getNeedsRequirement() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "NeedsRequirement", other.getNeedsRequirement().ToString(), obj.getNeedsRequirement().ToString()) );
             }
         }
 
@@ -156,7 +156,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -169,7 +169,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Specification otherElement in other.allSpecifications() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareSpecification ( subElement, otherElement, diff );
                                 compared = true;
@@ -179,7 +179,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications" ) );
                         }
                     }
 
@@ -188,7 +188,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Specification subElement in obj.allSpecifications() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -197,7 +197,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Specifications", otherElement.Name) );
                         }
                     }
                 }
@@ -205,7 +205,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Specification subElement in obj.allSpecifications() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Specifications" ) );
                     }
                 }
             }
@@ -215,7 +215,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Specification otherElement in other.allSpecifications() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Specifications", otherElement.Name) );
                     }
                 }
             }
@@ -228,7 +228,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRuleDisabling ( subElement, otherElement, diff );
                                 compared = true;
@@ -238,7 +238,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings" ) );
                         }
                     }
 
@@ -247,7 +247,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -256,7 +256,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RuleDisablings", otherElement.Name) );
                         }
                     }
                 }
@@ -264,7 +264,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "RuleDisablings" ) );
                     }
                 }
             }
@@ -274,7 +274,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "RuleDisablings", otherElement.Name) );
                     }
                 }
             }
@@ -287,7 +287,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareNameSpace ( subElement, otherElement, diff );
                                 compared = true;
@@ -297,7 +297,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
                         }
                     }
 
@@ -306,7 +306,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -315,7 +315,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaces", otherElement.Name) );
                         }
                     }
                 }
@@ -323,7 +323,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
                     }
                 }
             }
@@ -333,7 +333,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaces", otherElement.Name) );
                     }
                 }
             }
@@ -346,7 +346,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareNameSpaceRef ( subElement, otherElement, diff );
                                 compared = true;
@@ -356,7 +356,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
                         }
                     }
 
@@ -365,7 +365,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -374,7 +374,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaceRefs", otherElement.Name) );
                         }
                     }
                 }
@@ -382,7 +382,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
                     }
                 }
             }
@@ -392,7 +392,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaceRefs", otherElement.Name) );
                     }
                 }
             }
@@ -405,7 +405,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Frame otherElement in other.allTests() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareFrame ( subElement, otherElement, diff );
                                 compared = true;
@@ -415,7 +415,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests" ) );
                         }
                     }
 
@@ -424,7 +424,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Frame subElement in obj.allTests() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -433,7 +433,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Tests", otherElement.Name) );
                         }
                     }
                 }
@@ -441,7 +441,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Frame subElement in obj.allTests() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Tests" ) );
                     }
                 }
             }
@@ -451,7 +451,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Frame otherElement in other.allTests() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Tests", otherElement.Name) );
                     }
                 }
             }
@@ -464,7 +464,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareFrameRef ( subElement, otherElement, diff );
                                 compared = true;
@@ -474,7 +474,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs" ) );
                         }
                     }
 
@@ -483,7 +483,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -492,7 +492,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "TestRefs", otherElement.Name) );
                         }
                     }
                 }
@@ -500,7 +500,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestRefs" ) );
                     }
                 }
             }
@@ -510,7 +510,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "TestRefs", otherElement.Name) );
                     }
                 }
             }
@@ -518,7 +518,7 @@ namespace DataDictionary.Compare
             {
                 if ( other.getTranslationDictionary() != null )
                 {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TranslationDictionary", "" ) );
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TranslationDictionary", "" ) );
                 }
             }
             else
@@ -529,7 +529,7 @@ namespace DataDictionary.Compare
             {
                 if ( other.getShortcutDictionary() != null )
                 {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ShortcutDictionary", "" ) );
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ShortcutDictionary", "" ) );
                 }
             }
             else
@@ -538,11 +538,11 @@ namespace DataDictionary.Compare
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getXsi(), other.getXsi()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Xsi", "Previously was [" + other.getXsi() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Xsi", other.getXsi(), obj.getXsi()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getXsiLocation(), other.getXsiLocation()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "XsiLocation", "Previously was [" + other.getXsiLocation() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "XsiLocation", other.getXsiLocation(), obj.getXsiLocation()) );
             }
         }
 
@@ -555,7 +555,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -563,7 +563,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getRule(), other.getRule()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Rule", "Previously was [" + other.getRule() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Rule", other.getRule(), obj.getRule()) );
             }
         }
 
@@ -576,7 +576,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -593,7 +593,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -608,7 +608,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareNameSpace ( subElement, otherElement, diff );
                                 compared = true;
@@ -618,7 +618,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
                         }
                     }
 
@@ -627,7 +627,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -636,7 +636,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaces", otherElement.Name) );
                         }
                     }
                 }
@@ -644,7 +644,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaces" ) );
                     }
                 }
             }
@@ -654,7 +654,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaces", otherElement.Name) );
                     }
                 }
             }
@@ -667,7 +667,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareNameSpaceRef ( subElement, otherElement, diff );
                                 compared = true;
@@ -677,7 +677,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
                         }
                     }
 
@@ -686,7 +686,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -695,7 +695,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaceRefs", otherElement.Name) );
                         }
                     }
                 }
@@ -703,7 +703,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "NameSpaceRefs" ) );
                     }
                 }
             }
@@ -713,7 +713,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "NameSpaceRefs", otherElement.Name) );
                     }
                 }
             }
@@ -726,7 +726,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Range otherElement in other.allRanges() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRange ( subElement, otherElement, diff );
                                 compared = true;
@@ -736,7 +736,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges" ) );
                         }
                     }
 
@@ -745,7 +745,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Range subElement in obj.allRanges() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -754,7 +754,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Ranges", otherElement.Name) );
                         }
                     }
                 }
@@ -762,7 +762,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Range subElement in obj.allRanges() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Ranges" ) );
                     }
                 }
             }
@@ -772,7 +772,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Range otherElement in other.allRanges() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Ranges", otherElement.Name) );
                     }
                 }
             }
@@ -785,7 +785,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Enum otherElement in other.allEnumerations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareEnum ( subElement, otherElement, diff );
                                 compared = true;
@@ -795,7 +795,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations" ) );
                         }
                     }
 
@@ -804,7 +804,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Enum subElement in obj.allEnumerations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -813,7 +813,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Enumerations", otherElement.Name) );
                         }
                     }
                 }
@@ -821,7 +821,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum subElement in obj.allEnumerations() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Enumerations" ) );
                     }
                 }
             }
@@ -831,7 +831,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum otherElement in other.allEnumerations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Enumerations", otherElement.Name) );
                     }
                 }
             }
@@ -844,7 +844,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Structure otherElement in other.allStructures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareStructure ( subElement, otherElement, diff );
                                 compared = true;
@@ -854,7 +854,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures" ) );
                         }
                     }
 
@@ -863,7 +863,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Structure subElement in obj.allStructures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -872,7 +872,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Structures", otherElement.Name) );
                         }
                     }
                 }
@@ -880,7 +880,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Structure subElement in obj.allStructures() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Structures" ) );
                     }
                 }
             }
@@ -890,7 +890,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Structure otherElement in other.allStructures() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Structures", otherElement.Name) );
                     }
                 }
             }
@@ -903,7 +903,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Collection otherElement in other.allCollections() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareCollection ( subElement, otherElement, diff );
                                 compared = true;
@@ -913,7 +913,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections" ) );
                         }
                     }
 
@@ -922,7 +922,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Collection subElement in obj.allCollections() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -931,7 +931,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Collections", otherElement.Name) );
                         }
                     }
                 }
@@ -939,7 +939,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Collection subElement in obj.allCollections() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Collections" ) );
                     }
                 }
             }
@@ -949,7 +949,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Collection otherElement in other.allCollections() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Collections", otherElement.Name) );
                     }
                 }
             }
@@ -962,7 +962,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareStateMachine ( subElement, otherElement, diff );
                                 compared = true;
@@ -972,7 +972,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
                         }
                     }
 
@@ -981,7 +981,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -990,7 +990,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "StateMachines", otherElement.Name) );
                         }
                     }
                 }
@@ -998,7 +998,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
                     }
                 }
             }
@@ -1008,7 +1008,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "StateMachines", otherElement.Name) );
                     }
                 }
             }
@@ -1021,7 +1021,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Function otherElement in other.allFunctions() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareFunction ( subElement, otherElement, diff );
                                 compared = true;
@@ -1031,7 +1031,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions" ) );
                         }
                     }
 
@@ -1040,7 +1040,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Function subElement in obj.allFunctions() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1049,7 +1049,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Functions", otherElement.Name) );
                         }
                     }
                 }
@@ -1057,7 +1057,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Function subElement in obj.allFunctions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Functions" ) );
                     }
                 }
             }
@@ -1067,7 +1067,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Function otherElement in other.allFunctions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Functions", otherElement.Name) );
                     }
                 }
             }
@@ -1080,7 +1080,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Procedure otherElement in other.allProcedures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareProcedure ( subElement, otherElement, diff );
                                 compared = true;
@@ -1090,7 +1090,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
                         }
                     }
 
@@ -1099,7 +1099,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Procedure subElement in obj.allProcedures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1108,7 +1108,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Procedures", otherElement.Name) );
                         }
                     }
                 }
@@ -1116,7 +1116,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
                     }
                 }
             }
@@ -1126,7 +1126,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure otherElement in other.allProcedures() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Procedures", otherElement.Name) );
                     }
                 }
             }
@@ -1139,7 +1139,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Variable otherElement in other.allVariables() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareVariable ( subElement, otherElement, diff );
                                 compared = true;
@@ -1149,7 +1149,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables" ) );
                         }
                     }
 
@@ -1158,7 +1158,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Variable subElement in obj.allVariables() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1167,7 +1167,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Variables", otherElement.Name) );
                         }
                     }
                 }
@@ -1175,7 +1175,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable subElement in obj.allVariables() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Variables" ) );
                     }
                 }
             }
@@ -1185,7 +1185,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable otherElement in other.allVariables() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Variables", otherElement.Name) );
                     }
                 }
             }
@@ -1198,7 +1198,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRule ( subElement, otherElement, diff );
                                 compared = true;
@@ -1208,7 +1208,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                         }
                     }
 
@@ -1217,7 +1217,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1226,7 +1226,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                         }
                     }
                 }
@@ -1234,7 +1234,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                     }
                 }
             }
@@ -1244,29 +1244,29 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                     }
                 }
             }
             if ( obj.getWidth() != other.getWidth() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Width", "Previously was [" + other.getWidth() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Width", other.getWidth().ToString(), obj.getWidth().ToString()) );
             }
             if ( obj.getHeight() != other.getHeight() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Height", "Previously was [" + other.getHeight() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Height", other.getHeight().ToString(), obj.getHeight().ToString()) );
             }
             if ( obj.getX() != other.getX() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "X", "Previously was [" + other.getX() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "X", other.getX().ToString(), obj.getX().ToString()) );
             }
             if ( obj.getY() != other.getY() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Y", "Previously was [" + other.getY() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Y", other.getY().ToString(), obj.getY().ToString()) );
             }
             if ( obj.getHidden() != other.getHidden() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Hidden", "Previously was [" + other.getHidden() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Hidden", other.getHidden().ToString(), obj.getHidden().ToString()) );
             }
         }
 
@@ -1279,17 +1279,13 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
-            if ( !CompareUtil.canonicalStringEquality(obj.getSpecId(), other.getSpecId()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SpecId", "Previously was [" + other.getSpecId() + "]") );
-            }
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -1302,7 +1298,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1310,7 +1306,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getDefault(), other.getDefault()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Default", "Previously was [" + other.getDefault() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Default", other.getDefault(), obj.getDefault()) );
             }
         }
 
@@ -1323,7 +1319,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1343,12 +1339,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getValues(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values" ) );
                         i += 1;
                     }
                     while ( i < other.countValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getValues( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Values", other.getValues( i ).Name) );
                         i += 1;
                     }
                 }
@@ -1356,7 +1352,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue subElement in obj.allValues() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Values" ) );
                     }
                 }
             }
@@ -1366,7 +1362,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue otherElement in other.allValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Values", otherElement.Name) );
                     }
                 }
             }
@@ -1379,7 +1375,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Enum otherElement in other.allSubEnums() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareEnum ( subElement, otherElement, diff );
                                 compared = true;
@@ -1389,7 +1385,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums" ) );
                         }
                     }
 
@@ -1398,7 +1394,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Enum subElement in obj.allSubEnums() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1407,7 +1403,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubEnums", otherElement.Name) );
                         }
                     }
                 }
@@ -1415,7 +1411,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum subElement in obj.allSubEnums() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubEnums" ) );
                     }
                 }
             }
@@ -1425,7 +1421,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Enum otherElement in other.allSubEnums() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubEnums", otherElement.Name) );
                     }
                 }
             }
@@ -1440,7 +1436,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1448,7 +1444,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue(), obj.getValue()) );
             }
         }
 
@@ -1461,7 +1457,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1469,11 +1465,11 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getMinValue(), other.getMinValue()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MinValue", "Previously was [" + other.getMinValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MinValue", other.getMinValue(), obj.getMinValue()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getMaxValue(), other.getMaxValue()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MaxValue", "Previously was [" + other.getMaxValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MaxValue", other.getMaxValue(), obj.getMaxValue()) );
             }
             if ( obj.allSpecialValues() != null )
             {
@@ -1489,12 +1485,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countSpecialValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getSpecialValues(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getSpecialValues(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues" ) );
                         i += 1;
                     }
                     while ( i < other.countSpecialValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getSpecialValues( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "SpecialValues", other.getSpecialValues( i ).Name) );
                         i += 1;
                     }
                 }
@@ -1502,7 +1498,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SpecialValues" ) );
                     }
                 }
             }
@@ -1512,13 +1508,13 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SpecialValues", otherElement.Name) );
                     }
                 }
             }
             if ( obj.getPrecision() != other.getPrecision() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Precision", "Previously was [" + other.getPrecision() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Precision", other.getPrecision().ToString(), obj.getPrecision().ToString()) );
             }
         }
 
@@ -1531,7 +1527,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1546,7 +1542,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.StructureElement otherElement in other.allElements() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareStructureElement ( subElement, otherElement, diff );
                                 compared = true;
@@ -1556,7 +1552,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements" ) );
                         }
                     }
 
@@ -1565,7 +1561,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.StructureElement subElement in obj.allElements() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1574,7 +1570,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Elements", otherElement.Name) );
                         }
                     }
                 }
@@ -1582,7 +1578,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StructureElement subElement in obj.allElements() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Elements" ) );
                     }
                 }
             }
@@ -1592,7 +1588,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StructureElement otherElement in other.allElements() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Elements", otherElement.Name) );
                     }
                 }
             }
@@ -1605,7 +1601,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Procedure otherElement in other.allProcedures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareProcedure ( subElement, otherElement, diff );
                                 compared = true;
@@ -1615,7 +1611,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
                         }
                     }
 
@@ -1624,7 +1620,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Procedure subElement in obj.allProcedures() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1633,7 +1629,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Procedures", otherElement.Name) );
                         }
                     }
                 }
@@ -1641,7 +1637,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure subElement in obj.allProcedures() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Procedures" ) );
                     }
                 }
             }
@@ -1651,7 +1647,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Procedure otherElement in other.allProcedures() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Procedures", otherElement.Name) );
                     }
                 }
             }
@@ -1664,7 +1660,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareStateMachine ( subElement, otherElement, diff );
                                 compared = true;
@@ -1674,7 +1670,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
                         }
                     }
 
@@ -1683,7 +1679,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1692,7 +1688,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "StateMachines", otherElement.Name) );
                         }
                     }
                 }
@@ -1700,7 +1696,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "StateMachines" ) );
                     }
                 }
             }
@@ -1710,7 +1706,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "StateMachines", otherElement.Name) );
                     }
                 }
             }
@@ -1723,7 +1719,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRule ( subElement, otherElement, diff );
                                 compared = true;
@@ -1733,7 +1729,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                         }
                     }
 
@@ -1742,7 +1738,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1751,7 +1747,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                         }
                     }
                 }
@@ -1759,7 +1755,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                     }
                 }
             }
@@ -1769,7 +1765,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                     }
                 }
             }
@@ -1784,7 +1780,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1792,15 +1788,15 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TypeName", other.getTypeName(), obj.getTypeName()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getDefault(), other.getDefault()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Default", "Previously was [" + other.getDefault() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Default", other.getDefault(), obj.getDefault()) );
             }
             if ( obj.getMode() != other.getMode() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Mode", "Previously was [" + other.getMode() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Mode", other.getMode().ToString(), obj.getMode().ToString()) );
             }
         }
 
@@ -1813,7 +1809,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1821,11 +1817,11 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TypeName", other.getTypeName(), obj.getTypeName()) );
             }
             if ( obj.getMaxSize() != other.getMaxSize() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MaxSize", "Previously was [" + other.getMaxSize() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MaxSize", other.getMaxSize().ToString(), obj.getMaxSize().ToString()) );
             }
         }
 
@@ -1838,7 +1834,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1853,7 +1849,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Parameter otherElement in other.allParameters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareParameter ( subElement, otherElement, diff );
                                 compared = true;
@@ -1863,7 +1859,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
                         }
                     }
 
@@ -1872,7 +1868,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Parameter subElement in obj.allParameters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -1881,7 +1877,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Parameters", otherElement.Name) );
                         }
                     }
                 }
@@ -1889,7 +1885,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
                     }
                 }
             }
@@ -1899,7 +1895,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter otherElement in other.allParameters() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Parameters", otherElement.Name) );
                     }
                 }
             }
@@ -1917,12 +1913,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countCases() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getCases(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getCases(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases" ) );
                         i += 1;
                     }
                     while ( i < other.countCases() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getCases( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Cases", other.getCases( i ).Name) );
                         i += 1;
                     }
                 }
@@ -1930,7 +1926,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Case subElement in obj.allCases() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Cases" ) );
                     }
                 }
             }
@@ -1940,17 +1936,17 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Case otherElement in other.allCases() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Cases", otherElement.Name) );
                     }
                 }
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TypeName", other.getTypeName(), obj.getTypeName()) );
             }
             if ( obj.getCacheable() != other.getCacheable() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Cacheable", "Previously was [" + other.getCacheable() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Cacheable", other.getCacheable().ToString(), obj.getCacheable().ToString()) );
             }
         }
 
@@ -1963,7 +1959,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -1971,7 +1967,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TypeName", other.getTypeName(), obj.getTypeName()) );
             }
         }
 
@@ -1984,7 +1980,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2004,12 +2000,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getPreConditions(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getPreConditions( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "PreConditions", other.getPreConditions( i ).Name) );
                         i += 1;
                     }
                 }
@@ -2017,7 +2013,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
                     }
                 }
             }
@@ -2027,13 +2023,13 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "PreConditions", otherElement.Name) );
                     }
                 }
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getExpression(), other.getExpression()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Expression", "Previously was [" + other.getExpression() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Expression", other.getExpression(), obj.getExpression()) );
             }
         }
 
@@ -2046,7 +2042,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2056,7 +2052,7 @@ namespace DataDictionary.Compare
             {
                 if ( other.getStateMachine() != null )
                 {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "StateMachine", "" ) );
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "StateMachine", "" ) );
                 }
             }
             else
@@ -2072,7 +2068,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRule ( subElement, otherElement, diff );
                                 compared = true;
@@ -2082,7 +2078,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                         }
                     }
 
@@ -2091,7 +2087,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2100,7 +2096,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                         }
                     }
                 }
@@ -2108,7 +2104,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                     }
                 }
             }
@@ -2118,7 +2114,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                     }
                 }
             }
@@ -2131,7 +2127,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Parameter otherElement in other.allParameters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareParameter ( subElement, otherElement, diff );
                                 compared = true;
@@ -2141,7 +2137,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
                         }
                     }
 
@@ -2150,7 +2146,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Parameter subElement in obj.allParameters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2159,7 +2155,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Parameters", otherElement.Name) );
                         }
                     }
                 }
@@ -2167,7 +2163,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter subElement in obj.allParameters() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Parameters" ) );
                     }
                 }
             }
@@ -2177,7 +2173,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Parameter otherElement in other.allParameters() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Parameters", otherElement.Name) );
                     }
                 }
             }
@@ -2192,7 +2188,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2200,7 +2196,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getInitialState(), other.getInitialState()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "InitialState", "Previously was [" + other.getInitialState() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "InitialState", other.getInitialState(), obj.getInitialState()) );
             }
             if ( obj.allStates() != null )
             {
@@ -2211,7 +2207,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.State otherElement in other.allStates() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareState ( subElement, otherElement, diff );
                                 compared = true;
@@ -2221,7 +2217,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States" ) );
                         }
                     }
 
@@ -2230,7 +2226,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.State subElement in obj.allStates() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2239,7 +2235,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "States", otherElement.Name) );
                         }
                     }
                 }
@@ -2247,7 +2243,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.State subElement in obj.allStates() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "States" ) );
                     }
                 }
             }
@@ -2257,7 +2253,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.State otherElement in other.allStates() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "States", otherElement.Name) );
                     }
                 }
             }
@@ -2270,7 +2266,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRule ( subElement, otherElement, diff );
                                 compared = true;
@@ -2280,7 +2276,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                         }
                     }
 
@@ -2289,7 +2285,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2298,7 +2294,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                         }
                     }
                 }
@@ -2306,7 +2302,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Rules" ) );
                     }
                 }
             }
@@ -2316,7 +2312,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule otherElement in other.allRules() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Rules", otherElement.Name) );
                     }
                 }
             }
@@ -2331,7 +2327,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2341,7 +2337,7 @@ namespace DataDictionary.Compare
             {
                 if ( other.getStateMachine() != null )
                 {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "StateMachine", "" ) );
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "StateMachine", "" ) );
                 }
             }
             else
@@ -2350,19 +2346,19 @@ namespace DataDictionary.Compare
             }
             if ( obj.getWidth() != other.getWidth() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Width", "Previously was [" + other.getWidth() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Width", other.getWidth().ToString(), obj.getWidth().ToString()) );
             }
             if ( obj.getHeight() != other.getHeight() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Height", "Previously was [" + other.getHeight() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Height", other.getHeight().ToString(), obj.getHeight().ToString()) );
             }
             if ( obj.getX() != other.getX() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "X", "Previously was [" + other.getX() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "X", other.getX().ToString(), obj.getX().ToString()) );
             }
             if ( obj.getY() != other.getY() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Y", "Previously was [" + other.getY() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Y", other.getY().ToString(), obj.getY().ToString()) );
             }
         }
 
@@ -2375,7 +2371,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2383,15 +2379,15 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getTypeName(), other.getTypeName()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TypeName", "Previously was [" + other.getTypeName() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TypeName", other.getTypeName(), obj.getTypeName()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getDefaultValue(), other.getDefaultValue()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "DefaultValue", "Previously was [" + other.getDefaultValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "DefaultValue", other.getDefaultValue(), obj.getDefaultValue()) );
             }
             if ( obj.getVariableMode() != other.getVariableMode() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "VariableMode", "Previously was [" + other.getVariableMode() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "VariableMode", other.getVariableMode().ToString(), obj.getVariableMode().ToString()) );
             }
             if ( obj.allSubVariables() != null )
             {
@@ -2402,7 +2398,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Variable otherElement in other.allSubVariables() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareVariable ( subElement, otherElement, diff );
                                 compared = true;
@@ -2412,7 +2408,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables" ) );
                         }
                     }
 
@@ -2421,7 +2417,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Variable subElement in obj.allSubVariables() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2430,7 +2426,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubVariables", otherElement.Name) );
                         }
                     }
                 }
@@ -2438,7 +2434,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable subElement in obj.allSubVariables() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubVariables" ) );
                     }
                 }
             }
@@ -2448,7 +2444,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Variable otherElement in other.allSubVariables() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubVariables", otherElement.Name) );
                     }
                 }
             }
@@ -2463,7 +2459,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2471,7 +2467,7 @@ namespace DataDictionary.Compare
 
             if ( obj.getPriority() != other.getPriority() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Priority", "Previously was [" + other.getPriority() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Priority", other.getPriority().ToString(), obj.getPriority().ToString()) );
             }
             if ( obj.allConditions() != null )
             {
@@ -2482,7 +2478,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.RuleCondition otherElement in other.allConditions() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRuleCondition ( subElement, otherElement, diff );
                                 compared = true;
@@ -2492,7 +2488,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions" ) );
                         }
                     }
 
@@ -2501,7 +2497,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.RuleCondition subElement in obj.allConditions() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2510,7 +2506,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Conditions", otherElement.Name) );
                         }
                     }
                 }
@@ -2518,7 +2514,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleCondition subElement in obj.allConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Conditions" ) );
                     }
                 }
             }
@@ -2528,7 +2524,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.RuleCondition otherElement in other.allConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Conditions", otherElement.Name) );
                     }
                 }
             }
@@ -2543,7 +2539,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2563,12 +2559,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getPreConditions(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getPreConditions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
                         i += 1;
                     }
                     while ( i < other.countPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getPreConditions( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "PreConditions", other.getPreConditions( i ).Name) );
                         i += 1;
                     }
                 }
@@ -2576,7 +2572,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "PreConditions" ) );
                     }
                 }
             }
@@ -2586,7 +2582,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "PreConditions", otherElement.Name) );
                     }
                 }
             }
@@ -2604,12 +2600,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getActions(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getActions( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Actions", other.getActions( i ).Name) );
                         i += 1;
                     }
                 }
@@ -2617,7 +2613,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
                     }
                 }
             }
@@ -2627,7 +2623,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action otherElement in other.allActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Actions", otherElement.Name) );
                     }
                 }
             }
@@ -2640,7 +2636,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Rule otherElement in other.allSubRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareRule ( subElement, otherElement, diff );
                                 compared = true;
@@ -2650,7 +2646,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules" ) );
                         }
                     }
 
@@ -2659,7 +2655,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Rule subElement in obj.allSubRules() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2668,7 +2664,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubRules", otherElement.Name) );
                         }
                     }
                 }
@@ -2676,7 +2672,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule subElement in obj.allSubRules() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubRules" ) );
                     }
                 }
             }
@@ -2686,7 +2682,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Rule otherElement in other.allSubRules() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubRules", otherElement.Name) );
                     }
                 }
             }
@@ -2701,13 +2697,13 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
             if ( !CompareUtil.canonicalStringEquality(obj.getCondition(), other.getCondition()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Condition", "Previously was [" + other.getCondition() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Condition", other.getCondition(), obj.getCondition()) );
             }
         }
 
@@ -2720,13 +2716,13 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
             if ( !CompareUtil.canonicalStringEquality(obj.getExpression(), other.getExpression()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Expression", "Previously was [" + other.getExpression() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Expression", other.getExpression(), obj.getExpression()) );
             }
         }
 
@@ -2739,7 +2735,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2756,7 +2752,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2764,7 +2760,7 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getCycleDuration(), other.getCycleDuration()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "CycleDuration", "Previously was [" + other.getCycleDuration() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "CycleDuration", other.getCycleDuration(), obj.getCycleDuration()) );
             }
             if ( obj.allSubSequences() != null )
             {
@@ -2775,7 +2771,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareSubSequence ( subElement, otherElement, diff );
                                 compared = true;
@@ -2785,7 +2781,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences" ) );
                         }
                     }
 
@@ -2794,7 +2790,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2803,7 +2799,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSequences", otherElement.Name) );
                         }
                     }
                 }
@@ -2811,7 +2807,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSequences" ) );
                     }
                 }
             }
@@ -2821,7 +2817,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSequences", otherElement.Name) );
                     }
                 }
             }
@@ -2836,7 +2832,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2844,39 +2840,39 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getD_LRBG(), other.getD_LRBG()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "D_LRBG", "Previously was [" + other.getD_LRBG() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "D_LRBG", other.getD_LRBG(), obj.getD_LRBG()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getLevel(), other.getLevel()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Level", "Previously was [" + other.getLevel() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Level", other.getLevel(), obj.getLevel()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getMode(), other.getMode()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Mode", "Previously was [" + other.getMode() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Mode", other.getMode(), obj.getMode()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getNID_LRBG(), other.getNID_LRBG()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "NID_LRBG", "Previously was [" + other.getNID_LRBG() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "NID_LRBG", other.getNID_LRBG(), obj.getNID_LRBG()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getQ_DIRLRBG(), other.getQ_DIRLRBG()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DIRLRBG", "Previously was [" + other.getQ_DIRLRBG() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Q_DIRLRBG", other.getQ_DIRLRBG(), obj.getQ_DIRLRBG()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getQ_DIRTRAIN(), other.getQ_DIRTRAIN()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DIRTRAIN", "Previously was [" + other.getQ_DIRTRAIN() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Q_DIRTRAIN", other.getQ_DIRTRAIN(), obj.getQ_DIRTRAIN()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getQ_DLRBG(), other.getQ_DLRBG()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Q_DLRBG", "Previously was [" + other.getQ_DLRBG() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Q_DLRBG", other.getQ_DLRBG(), obj.getQ_DLRBG()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getRBC_ID(), other.getRBC_ID()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "RBC_ID", "Previously was [" + other.getRBC_ID() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RBC_ID", other.getRBC_ID(), obj.getRBC_ID()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getRBCPhone(), other.getRBCPhone()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "RBCPhone", "Previously was [" + other.getRBCPhone() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RBCPhone", other.getRBCPhone(), obj.getRBCPhone()) );
             }
             if ( obj.allTestCases() != null )
             {
@@ -2887,7 +2883,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.TestCase otherElement in other.allTestCases() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareTestCase ( subElement, otherElement, diff );
                                 compared = true;
@@ -2897,7 +2893,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases" ) );
                         }
                     }
 
@@ -2906,7 +2902,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.TestCase subElement in obj.allTestCases() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2915,7 +2911,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "TestCases", otherElement.Name) );
                         }
                     }
                 }
@@ -2923,7 +2919,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.TestCase subElement in obj.allTestCases() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "TestCases" ) );
                     }
                 }
             }
@@ -2933,7 +2929,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.TestCase otherElement in other.allTestCases() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "TestCases", otherElement.Name) );
                     }
                 }
             }
@@ -2948,7 +2944,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -2956,11 +2952,11 @@ namespace DataDictionary.Compare
 
             if ( obj.getFeature() != other.getFeature() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Feature", "Previously was [" + other.getFeature() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Feature", other.getFeature().ToString(), obj.getFeature().ToString()) );
             }
             if ( obj.getCase() != other.getCase() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Case", "Previously was [" + other.getCase() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Case", other.getCase().ToString(), obj.getCase().ToString()) );
             }
             if ( obj.allSteps() != null )
             {
@@ -2971,7 +2967,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Step otherElement in other.allSteps() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareStep ( subElement, otherElement, diff );
                                 compared = true;
@@ -2981,7 +2977,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps" ) );
                         }
                     }
 
@@ -2990,7 +2986,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Step subElement in obj.allSteps() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -2999,7 +2995,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Steps", otherElement.Name) );
                         }
                     }
                 }
@@ -3007,7 +3003,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Step subElement in obj.allSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Steps" ) );
                     }
                 }
             }
@@ -3017,7 +3013,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Step otherElement in other.allSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Steps", otherElement.Name) );
                     }
                 }
             }
@@ -3032,7 +3028,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3040,55 +3036,55 @@ namespace DataDictionary.Compare
 
             if ( obj.getTCS_Order() != other.getTCS_Order() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TCS_Order", "Previously was [" + other.getTCS_Order() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TCS_Order", other.getTCS_Order().ToString(), obj.getTCS_Order().ToString()) );
             }
             if ( obj.getDistance() != other.getDistance() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Distance", "Previously was [" + other.getDistance() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Distance", other.getDistance().ToString(), obj.getDistance().ToString()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getDescription(), other.getDescription()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Description", "Previously was [" + other.getDescription() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Description", other.getDescription(), obj.getDescription()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getUserComment(), other.getUserComment()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "UserComment", "Previously was [" + other.getUserComment() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "UserComment", other.getUserComment(), obj.getUserComment()) );
             }
             if ( obj.getIO() != other.getIO() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "IO", "Previously was [" + other.getIO() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "IO", other.getIO().ToString(), obj.getIO().ToString()) );
             }
             if ( obj.getInterface() != other.getInterface() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Interface", "Previously was [" + other.getInterface() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Interface", other.getInterface().ToString(), obj.getInterface().ToString()) );
             }
             if ( obj.getLevelIN() != other.getLevelIN() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "LevelIN", "Previously was [" + other.getLevelIN() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "LevelIN", other.getLevelIN().ToString(), obj.getLevelIN().ToString()) );
             }
             if ( obj.getLevelOUT() != other.getLevelOUT() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "LevelOUT", "Previously was [" + other.getLevelOUT() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "LevelOUT", other.getLevelOUT().ToString(), obj.getLevelOUT().ToString()) );
             }
             if ( obj.getModeIN() != other.getModeIN() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ModeIN", "Previously was [" + other.getModeIN() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ModeIN", other.getModeIN().ToString(), obj.getModeIN().ToString()) );
             }
             if ( obj.getModeOUT() != other.getModeOUT() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ModeOUT", "Previously was [" + other.getModeOUT() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ModeOUT", other.getModeOUT().ToString(), obj.getModeOUT().ToString()) );
             }
             if ( obj.getTranslationRequired() != other.getTranslationRequired() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "TranslationRequired", "Previously was [" + other.getTranslationRequired() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "TranslationRequired", other.getTranslationRequired().ToString(), obj.getTranslationRequired().ToString()) );
             }
             if ( obj.getTranslated() != other.getTranslated() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Translated", "Previously was [" + other.getTranslated() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Translated", other.getTranslated().ToString(), obj.getTranslated().ToString()) );
             }
             if ( obj.allSubSteps() != null )
             {
@@ -3099,7 +3095,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareSubStep ( subElement, otherElement, diff );
                                 compared = true;
@@ -3109,7 +3105,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
                         }
                     }
 
@@ -3118,7 +3114,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3127,7 +3123,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSteps", otherElement.Name) );
                         }
                     }
                 }
@@ -3135,7 +3131,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
                     }
                 }
             }
@@ -3145,7 +3141,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSteps", otherElement.Name) );
                     }
                 }
             }
@@ -3158,7 +3154,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.DBMessage otherElement in other.allMessages() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareDBMessage ( subElement, otherElement, diff );
                                 compared = true;
@@ -3168,7 +3164,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages" ) );
                         }
                     }
 
@@ -3177,7 +3173,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.DBMessage subElement in obj.allMessages() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3186,7 +3182,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Messages", otherElement.Name) );
                         }
                     }
                 }
@@ -3194,7 +3190,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBMessage subElement in obj.allMessages() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Messages" ) );
                     }
                 }
             }
@@ -3204,7 +3200,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBMessage otherElement in other.allMessages() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Messages", otherElement.Name) );
                     }
                 }
             }
@@ -3219,7 +3215,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3239,12 +3235,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getActions(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getActions(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
                         i += 1;
                     }
                     while ( i < other.countActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getActions( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Actions", other.getActions( i ).Name) );
                         i += 1;
                     }
                 }
@@ -3252,7 +3248,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action subElement in obj.allActions() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Actions" ) );
                     }
                 }
             }
@@ -3262,7 +3258,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Action otherElement in other.allActions() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Actions", otherElement.Name) );
                     }
                 }
             }
@@ -3280,12 +3276,12 @@ namespace DataDictionary.Compare
                     }
                     while ( i < obj.countExpectations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj.getExpectations(i), Diff.ActionEnum.Add) );
+                        diff.appendChanges ( new Diff(obj.getExpectations(i), HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations" ) );
                         i += 1;
                     }
                     while ( i < other.countExpectations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", other.getExpectations( i ).Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove, "Expectations", other.getExpectations( i ).Name) );
                         i += 1;
                     }
                 }
@@ -3293,7 +3289,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Expectation subElement in obj.allExpectations() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Expectations" ) );
                     }
                 }
             }
@@ -3303,13 +3299,13 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Expectation otherElement in other.allExpectations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Expectations", otherElement.Name) );
                     }
                 }
             }
             if ( obj.getSkipEngine() != other.getSkipEngine() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SkipEngine", "Previously was [" + other.getSkipEngine() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "SkipEngine", other.getSkipEngine().ToString(), obj.getSkipEngine().ToString()) );
             }
         }
 
@@ -3322,7 +3318,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3330,23 +3326,23 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue(), obj.getValue()) );
             }
             if ( obj.getBlocking() != other.getBlocking() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Blocking", "Previously was [" + other.getBlocking() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Blocking", other.getBlocking().ToString(), obj.getBlocking().ToString()) );
             }
             if ( obj.getKind() != other.getKind() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Kind", "Previously was [" + other.getKind() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Kind", other.getKind().ToString(), obj.getKind().ToString()) );
             }
             if ( obj.getDeadLine() != other.getDeadLine() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "DeadLine", "Previously was [" + other.getDeadLine() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "DeadLine", other.getDeadLine().ToString(), obj.getDeadLine().ToString()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getCondition(), other.getCondition()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Condition", "Previously was [" + other.getCondition() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Condition", other.getCondition(), obj.getCondition()) );
             }
         }
 
@@ -3359,7 +3355,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3367,11 +3363,11 @@ namespace DataDictionary.Compare
 
             if ( obj.getMessageOrder() != other.getMessageOrder() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MessageOrder", "Previously was [" + other.getMessageOrder() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MessageOrder", other.getMessageOrder().ToString(), obj.getMessageOrder().ToString()) );
             }
             if ( obj.getMessageType() != other.getMessageType() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MessageType", "Previously was [" + other.getMessageType() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MessageType", other.getMessageType().ToString(), obj.getMessageType().ToString()) );
             }
             if ( obj.allFields() != null )
             {
@@ -3382,7 +3378,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.DBField otherElement in other.allFields() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareDBField ( subElement, otherElement, diff );
                                 compared = true;
@@ -3392,7 +3388,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
                         }
                     }
 
@@ -3401,7 +3397,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.DBField subElement in obj.allFields() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3410,7 +3406,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Fields", otherElement.Name) );
                         }
                     }
                 }
@@ -3418,7 +3414,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
                     }
                 }
             }
@@ -3428,7 +3424,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField otherElement in other.allFields() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Fields", otherElement.Name) );
                     }
                 }
             }
@@ -3441,7 +3437,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.DBPacket otherElement in other.allPackets() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareDBPacket ( subElement, otherElement, diff );
                                 compared = true;
@@ -3451,7 +3447,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets" ) );
                         }
                     }
 
@@ -3460,7 +3456,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.DBPacket subElement in obj.allPackets() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3469,7 +3465,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Packets", otherElement.Name) );
                         }
                     }
                 }
@@ -3477,7 +3473,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBPacket subElement in obj.allPackets() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Packets" ) );
                     }
                 }
             }
@@ -3487,7 +3483,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBPacket otherElement in other.allPackets() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Packets", otherElement.Name) );
                     }
                 }
             }
@@ -3502,7 +3498,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3517,7 +3513,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.DBField otherElement in other.allFields() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareDBField ( subElement, otherElement, diff );
                                 compared = true;
@@ -3527,7 +3523,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
                         }
                     }
 
@@ -3536,7 +3532,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.DBField subElement in obj.allFields() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3545,7 +3541,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Fields", otherElement.Name) );
                         }
                     }
                 }
@@ -3553,7 +3549,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField subElement in obj.allFields() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Fields" ) );
                     }
                 }
             }
@@ -3563,7 +3559,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.DBField otherElement in other.allFields() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Fields", otherElement.Name) );
                     }
                 }
             }
@@ -3578,7 +3574,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3586,11 +3582,11 @@ namespace DataDictionary.Compare
 
             if ( !CompareUtil.canonicalStringEquality(obj.getVariable(), other.getVariable()) )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Variable", "Previously was [" + other.getVariable() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Variable", other.getVariable(), obj.getVariable()) );
             }
             if ( obj.getValue() != other.getValue() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Value", "Previously was [" + other.getValue() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue().ToString(), obj.getValue().ToString()) );
             }
         }
 
@@ -3603,7 +3599,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3618,7 +3614,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Folder otherElement in other.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareFolder ( subElement, otherElement, diff );
                                 compared = true;
@@ -3628,7 +3624,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
                         }
                     }
 
@@ -3637,7 +3633,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Folder subElement in obj.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3646,7 +3642,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
                         }
                     }
                 }
@@ -3654,7 +3650,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
                     }
                 }
             }
@@ -3664,7 +3660,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder otherElement in other.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
                     }
                 }
             }
@@ -3677,7 +3673,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Translation otherElement in other.allTranslations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareTranslation ( subElement, otherElement, diff );
                                 compared = true;
@@ -3687,7 +3683,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
                         }
                     }
 
@@ -3696,7 +3692,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Translation subElement in obj.allTranslations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3705,7 +3701,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Translations", otherElement.Name) );
                         }
                     }
                 }
@@ -3713,7 +3709,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
                     }
                 }
             }
@@ -3723,7 +3719,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation otherElement in other.allTranslations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Translations", otherElement.Name) );
                     }
                 }
             }
@@ -3738,7 +3734,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3753,7 +3749,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Folder otherElement in other.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareFolder ( subElement, otherElement, diff );
                                 compared = true;
@@ -3763,7 +3759,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
                         }
                     }
 
@@ -3772,7 +3768,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Folder subElement in obj.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3781,7 +3777,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
                         }
                     }
                 }
@@ -3789,7 +3785,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder subElement in obj.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
                     }
                 }
             }
@@ -3799,7 +3795,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Folder otherElement in other.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
                     }
                 }
             }
@@ -3812,7 +3808,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.Translation otherElement in other.allTranslations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareTranslation ( subElement, otherElement, diff );
                                 compared = true;
@@ -3822,7 +3818,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
                         }
                     }
 
@@ -3831,7 +3827,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.Translation subElement in obj.allTranslations() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3840,7 +3836,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Translations", otherElement.Name) );
                         }
                     }
                 }
@@ -3848,7 +3844,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation subElement in obj.allTranslations() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Translations" ) );
                     }
                 }
             }
@@ -3858,7 +3854,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Translation otherElement in other.allTranslations() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Translations", otherElement.Name) );
                     }
                 }
             }
@@ -3873,7 +3869,7 @@ namespace DataDictionary.Compare
         {
             if ( other == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
                 return;
             }
 
@@ -3888,7 +3884,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareSourceText ( subElement, otherElement, diff );
                                 compared = true;
@@ -3898,7 +3894,7 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts" ) );
                         }
                     }
 
@@ -3907,7 +3903,7 @@ namespace DataDictionary.Compare
                         bool found = false;
                         foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 found = true;
                                 break;
@@ -3916,7 +3912,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SourceTexts", otherElement.Name) );
                         }
                     }
                 }
@@ -3924,7 +3920,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SourceTexts" ) );
                     }
                 }
             }
@@ -3934,13 +3930,13 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SourceTexts", otherElement.Name) );
                     }
                 }
             }
             if ( obj.getImplemented() != other.getImplemented() )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Implemented", "Previously was [" + other.getImplemented() + "]") );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Implemented", other.getImplemented().ToString(), obj.getImplemented().ToString()) );
             }
             if ( obj.allSubSteps() != null )
             {
@@ -3951,7 +3947,7 @@ namespace DataDictionary.Compare
                         bool compared = false;
                         foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( subElement.Guid == otherElement.Guid )
                             {
                                 compareSubStep ( subElement, otherElement, diff );
                                 compared = true;
@@ -3961,7 +3957,5082 @@ namespace DataDictionary.Compare
 
                         if ( !compared ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                        }
+                    }
+
+                    foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSteps", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "SubSteps" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubSteps() != null ) 
+                {
+                    foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSteps", otherElement.Name) );
+                    }
+                }
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+            }
+        }
+
+        /// <summary>
+        /// Compares two SourceText and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareSourceText(Generated.SourceText obj, Generated.SourceText other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+        }
+
+        /// <summary>
+        /// Compares two ShortcutDictionary and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareShortcutDictionary(Generated.ShortcutDictionary obj, Generated.ShortcutDictionary other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( obj.allFolders() != null )
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareShortcutFolder ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        }
+                    }
+
+                    foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.allShortcuts() != null )
+            {
+                if ( other.allShortcuts() != null ) 
+                {
+                    foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareShortcut ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                        }
+                    }
+
+                    foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Shortcuts", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allShortcuts() != null ) 
+                {
+                    foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Shortcuts", otherElement.Name) );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compares two ShortcutFolder and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareShortcutFolder(Generated.ShortcutFolder obj, Generated.ShortcutFolder other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( obj.allFolders() != null )
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareShortcutFolder ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                        }
+                    }
+
+                    foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Folders" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Folders", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.allShortcuts() != null )
+            {
+                if ( other.allShortcuts() != null ) 
+                {
+                    foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareShortcut ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                        }
+                    }
+
+                    foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Shortcuts", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Shortcuts" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allShortcuts() != null ) 
+                {
+                    foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Shortcuts", otherElement.Name) );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compares two Shortcut and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareShortcut(Generated.Shortcut obj, Generated.Shortcut other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getShortcutName(), other.getShortcutName()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ShortcutName", other.getShortcutName(), obj.getShortcutName()) );
+            }
+        }
+
+        /// <summary>
+        /// Compares two Specification and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareSpecification(Generated.Specification obj, Generated.Specification other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Version", other.getVersion(), obj.getVersion()) );
+            }
+            if ( obj.allChapters() != null )
+            {
+                if ( other.allChapters() != null ) 
+                {
+                    foreach ( Generated.Chapter subElement in obj.allChapters() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Chapter otherElement in other.allChapters() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareChapter ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters" ) );
+                        }
+                    }
+
+                    foreach ( Generated.Chapter otherElement in other.allChapters() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Chapter subElement in obj.allChapters() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Chapters", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Chapter subElement in obj.allChapters() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Chapters" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allChapters() != null ) 
+                {
+                    foreach ( Generated.Chapter otherElement in other.allChapters() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Chapters", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.allChapterRefs() != null )
+            {
+                if ( other.allChapterRefs() != null ) 
+                {
+                    foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareChapterRef ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs" ) );
+                        }
+                    }
+
+                    foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "ChapterRefs", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "ChapterRefs" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allChapterRefs() != null ) 
+                {
+                    foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "ChapterRefs", otherElement.Name) );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compares two ChapterRef and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareChapterRef(Generated.ChapterRef obj, Generated.ChapterRef other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+        }
+
+        /// <summary>
+        /// Compares two Chapter and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareChapter(Generated.Chapter obj, Generated.Chapter other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Id", other.getId(), obj.getId()) );
+            }
+            if ( obj.allParagraphs() != null )
+            {
+                if ( other.allParagraphs() != null ) 
+                {
+                    foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareParagraph ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                        }
+                    }
+
+                    foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Paragraphs", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allParagraphs() != null ) 
+                {
+                    foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Paragraphs", otherElement.Name) );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compares two Paragraph and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareParagraph(Generated.Paragraph obj, Generated.Paragraph other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            compareReferencesParagraph (obj, other, diff);
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Id", other.getId(), obj.getId()) );
+            }
+            if ( obj.getType() != other.getType() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Type", other.getType().ToString(), obj.getType().ToString()) );
+            }
+            if ( obj.getScope() != other.getScope() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Scope", other.getScope().ToString(), obj.getScope().ToString()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Bl", other.getBl(), obj.getBl()) );
+            }
+            if ( obj.getOptional() != other.getOptional() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Optional", other.getOptional().ToString(), obj.getOptional().ToString()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Text", other.getText(), obj.getText()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Version", other.getVersion(), obj.getVersion()) );
+            }
+            if ( obj.getReviewed() != other.getReviewed() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Reviewed", other.getReviewed().ToString(), obj.getReviewed().ToString()) );
+            }
+            if ( obj.getImplementationStatus() != other.getImplementationStatus() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ImplementationStatus", other.getImplementationStatus().ToString(), obj.getImplementationStatus().ToString()) );
+            }
+            if ( obj.allParagraphs() != null )
+            {
+                if ( other.allParagraphs() != null ) 
+                {
+                    foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareParagraph ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                        }
+                    }
+
+                    foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Paragraphs", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Paragraphs" ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allParagraphs() != null ) 
+                {
+                    foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Paragraphs", otherElement.Name) );
+                    }
+                }
+            }
+            if ( obj.getRevision() == null )
+            {
+                if ( other.getRevision() != null )
+                {
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Revision", "" ) );
+                }
+            }
+            else
+            {
+                compareParagraphRevision ( obj.getRevision(), other.getRevision(), diff );
+            }
+            if ( obj.getMoreInfoRequired() != other.getMoreInfoRequired() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "MoreInfoRequired", other.getMoreInfoRequired().ToString(), obj.getMoreInfoRequired().ToString()) );
+            }
+            if ( obj.getSpecIssue() != other.getSpecIssue() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "SpecIssue", other.getSpecIssue().ToString(), obj.getSpecIssue().ToString()) );
+            }
+            if ( obj.getFunctionalBlock() != other.getFunctionalBlock() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlock", other.getFunctionalBlock().ToString(), obj.getFunctionalBlock().ToString()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "FunctionalBlockName", other.getFunctionalBlockName(), obj.getFunctionalBlockName()) );
+            }
+        }
+
+        /// <summary>
+        /// Compares two ParagraphRevision and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareParagraphRevision(Generated.ParagraphRevision obj, Generated.ParagraphRevision other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd ) );
+                return;
+            }
+
+            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Text", other.getText(), obj.getText()) );
+            }
+            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Version", other.getVersion(), obj.getVersion()) );
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Namable have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidNamable(Generated.Namable obj, Generated.Namable other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Ensures that two ReferencesParagraph have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidReferencesParagraph(Generated.ReferencesParagraph obj, Generated.ReferencesParagraph other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allRequirements() != null )
+            {
+                if ( other.allRequirements() != null ) 
+                {
+                    foreach ( Generated.ReqRef subElement in obj.allRequirements() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.ReqRef otherElement in other.allRequirements() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidReqRef ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.ReqRef otherElement in other.allRequirements() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidReqRef ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidReqRef ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.ReqRef otherElement in other.allRequirements() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.ReqRef subElement in obj.allRequirements() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidReqRef ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.ReqRef subElement in obj.allRequirements() )
+                    {
+                        ensureGuidReqRef ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRequirements() != null ) 
+                {
+                    foreach ( Generated.ReqRef otherElement in other.allRequirements() )
+                    {
+                        ensureGuidReqRef ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two ReqRelated have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidReqRelated(Generated.ReqRelated obj, Generated.ReqRelated other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReferencesParagraph (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Dictionary have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidDictionary(Generated.Dictionary obj, Generated.Dictionary other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            if ( obj.allSpecifications() != null )
+            {
+                if ( other.allSpecifications() != null ) 
+                {
+                    foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSpecification ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSpecification ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSpecification ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidSpecification ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Specification subElement in obj.allSpecifications() )
+                    {
+                        ensureGuidSpecification ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSpecifications() != null ) 
+                {
+                    foreach ( Generated.Specification otherElement in other.allSpecifications() )
+                    {
+                        ensureGuidSpecification ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allRuleDisablings() != null )
+            {
+                if ( other.allRuleDisablings() != null ) 
+                {
+                    foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRuleDisabling ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRuleDisabling ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRuleDisabling ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRuleDisabling ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.RuleDisabling subElement in obj.allRuleDisablings() )
+                    {
+                        ensureGuidRuleDisabling ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRuleDisablings() != null ) 
+                {
+                    foreach ( Generated.RuleDisabling otherElement in other.allRuleDisablings() )
+                    {
+                        ensureGuidRuleDisabling ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allNameSpaces() != null )
+            {
+                if ( other.allNameSpaces() != null ) 
+                {
+                    foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidNameSpace ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidNameSpace ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidNameSpace ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidNameSpace ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                    {
+                        ensureGuidNameSpace ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allNameSpaces() != null ) 
+                {
+                    foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                    {
+                        ensureGuidNameSpace ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allNameSpaceRefs() != null )
+            {
+                if ( other.allNameSpaceRefs() != null ) 
+                {
+                    foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidNameSpaceRef ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidNameSpaceRef ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidNameSpaceRef ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidNameSpaceRef ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                    {
+                        ensureGuidNameSpaceRef ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allNameSpaceRefs() != null ) 
+                {
+                    foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                    {
+                        ensureGuidNameSpaceRef ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allTests() != null )
+            {
+                if ( other.allTests() != null ) 
+                {
+                    foreach ( Generated.Frame subElement in obj.allTests() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Frame otherElement in other.allTests() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFrame ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Frame otherElement in other.allTests() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFrame ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFrame ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Frame otherElement in other.allTests() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Frame subElement in obj.allTests() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFrame ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Frame subElement in obj.allTests() )
+                    {
+                        ensureGuidFrame ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allTests() != null ) 
+                {
+                    foreach ( Generated.Frame otherElement in other.allTests() )
+                    {
+                        ensureGuidFrame ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allTestRefs() != null )
+            {
+                if ( other.allTestRefs() != null ) 
+                {
+                    foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFrameRef ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFrameRef ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFrameRef ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFrameRef ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.FrameRef subElement in obj.allTestRefs() )
+                    {
+                        ensureGuidFrameRef ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allTestRefs() != null ) 
+                {
+                    foreach ( Generated.FrameRef otherElement in other.allTestRefs() )
+                    {
+                        ensureGuidFrameRef ( null, otherElement );
+                    }
+                }
+            }
+            ensureGuidTranslationDictionary ( obj.getTranslationDictionary(), other.getTranslationDictionary() );
+            ensureGuidShortcutDictionary ( obj.getShortcutDictionary(), other.getShortcutDictionary() );
+        }
+
+        /// <summary>
+        /// Ensures that two RuleDisabling have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidRuleDisabling(Generated.RuleDisabling obj, Generated.RuleDisabling other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two NameSpaceRef have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidNameSpaceRef(Generated.NameSpaceRef obj, Generated.NameSpaceRef other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two NameSpace have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidNameSpace(Generated.NameSpace obj, Generated.NameSpace other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allNameSpaces() != null )
+            {
+                if ( other.allNameSpaces() != null ) 
+                {
+                    foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidNameSpace ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidNameSpace ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidNameSpace ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidNameSpace ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.NameSpace subElement in obj.allNameSpaces() )
+                    {
+                        ensureGuidNameSpace ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allNameSpaces() != null ) 
+                {
+                    foreach ( Generated.NameSpace otherElement in other.allNameSpaces() )
+                    {
+                        ensureGuidNameSpace ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allNameSpaceRefs() != null )
+            {
+                if ( other.allNameSpaceRefs() != null ) 
+                {
+                    foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidNameSpaceRef ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidNameSpaceRef ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidNameSpaceRef ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidNameSpaceRef ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.NameSpaceRef subElement in obj.allNameSpaceRefs() )
+                    {
+                        ensureGuidNameSpaceRef ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allNameSpaceRefs() != null ) 
+                {
+                    foreach ( Generated.NameSpaceRef otherElement in other.allNameSpaceRefs() )
+                    {
+                        ensureGuidNameSpaceRef ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allRanges() != null )
+            {
+                if ( other.allRanges() != null ) 
+                {
+                    foreach ( Generated.Range subElement in obj.allRanges() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Range otherElement in other.allRanges() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRange ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Range otherElement in other.allRanges() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRange ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRange ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Range otherElement in other.allRanges() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Range subElement in obj.allRanges() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRange ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Range subElement in obj.allRanges() )
+                    {
+                        ensureGuidRange ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRanges() != null ) 
+                {
+                    foreach ( Generated.Range otherElement in other.allRanges() )
+                    {
+                        ensureGuidRange ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allEnumerations() != null )
+            {
+                if ( other.allEnumerations() != null ) 
+                {
+                    foreach ( Generated.Enum subElement in obj.allEnumerations() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Enum otherElement in other.allEnumerations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidEnum ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Enum otherElement in other.allEnumerations() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidEnum ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidEnum ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Enum otherElement in other.allEnumerations() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Enum subElement in obj.allEnumerations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidEnum ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Enum subElement in obj.allEnumerations() )
+                    {
+                        ensureGuidEnum ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allEnumerations() != null ) 
+                {
+                    foreach ( Generated.Enum otherElement in other.allEnumerations() )
+                    {
+                        ensureGuidEnum ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allStructures() != null )
+            {
+                if ( other.allStructures() != null ) 
+                {
+                    foreach ( Generated.Structure subElement in obj.allStructures() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Structure otherElement in other.allStructures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidStructure ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Structure otherElement in other.allStructures() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidStructure ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidStructure ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Structure otherElement in other.allStructures() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Structure subElement in obj.allStructures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidStructure ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Structure subElement in obj.allStructures() )
+                    {
+                        ensureGuidStructure ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allStructures() != null ) 
+                {
+                    foreach ( Generated.Structure otherElement in other.allStructures() )
+                    {
+                        ensureGuidStructure ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allCollections() != null )
+            {
+                if ( other.allCollections() != null ) 
+                {
+                    foreach ( Generated.Collection subElement in obj.allCollections() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Collection otherElement in other.allCollections() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidCollection ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Collection otherElement in other.allCollections() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidCollection ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidCollection ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Collection otherElement in other.allCollections() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Collection subElement in obj.allCollections() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidCollection ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Collection subElement in obj.allCollections() )
+                    {
+                        ensureGuidCollection ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allCollections() != null ) 
+                {
+                    foreach ( Generated.Collection otherElement in other.allCollections() )
+                    {
+                        ensureGuidCollection ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allStateMachines() != null )
+            {
+                if ( other.allStateMachines() != null ) 
+                {
+                    foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidStateMachine ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidStateMachine ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidStateMachine ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidStateMachine ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                    {
+                        ensureGuidStateMachine ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allStateMachines() != null ) 
+                {
+                    foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                    {
+                        ensureGuidStateMachine ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allFunctions() != null )
+            {
+                if ( other.allFunctions() != null ) 
+                {
+                    foreach ( Generated.Function subElement in obj.allFunctions() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Function otherElement in other.allFunctions() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFunction ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Function otherElement in other.allFunctions() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFunction ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFunction ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Function otherElement in other.allFunctions() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Function subElement in obj.allFunctions() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFunction ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Function subElement in obj.allFunctions() )
+                    {
+                        ensureGuidFunction ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFunctions() != null ) 
+                {
+                    foreach ( Generated.Function otherElement in other.allFunctions() )
+                    {
+                        ensureGuidFunction ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allProcedures() != null )
+            {
+                if ( other.allProcedures() != null ) 
+                {
+                    foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidProcedure ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidProcedure ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidProcedure ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidProcedure ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                    {
+                        ensureGuidProcedure ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allProcedures() != null ) 
+                {
+                    foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                    {
+                        ensureGuidProcedure ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allVariables() != null )
+            {
+                if ( other.allVariables() != null ) 
+                {
+                    foreach ( Generated.Variable subElement in obj.allVariables() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Variable otherElement in other.allVariables() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidVariable ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Variable otherElement in other.allVariables() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidVariable ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidVariable ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Variable otherElement in other.allVariables() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Variable subElement in obj.allVariables() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidVariable ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Variable subElement in obj.allVariables() )
+                    {
+                        ensureGuidVariable ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allVariables() != null ) 
+                {
+                    foreach ( Generated.Variable otherElement in other.allVariables() )
+                    {
+                        ensureGuidVariable ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Rule otherElement in other.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRule ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Rule otherElement in other.allRules() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRule ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRule ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Rule subElement in obj.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRule ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        ensureGuidRule ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        ensureGuidRule ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two ReqRef have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidReqRef(Generated.ReqRef obj, Generated.ReqRef other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Ensures that two Type have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidType(Generated.Type obj, Generated.Type other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Enum have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidEnum(Generated.Enum obj, Generated.Enum other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+            if ( obj.allValues() != null )
+            {
+                if ( other.allValues() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countValues() && i < other.countValues() )
+                    {
+                        Generated.EnumValue element = obj.getValues( i );
+                        Generated.EnumValue otherElement = other.getValues( i );
+                        ensureGuidEnumValue ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countValues() )
+                    {
+                        Generated.EnumValue element = obj.getValues( i );
+                        ensureGuidEnumValue ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countValues() )
+                    {
+                        Generated.EnumValue otherElement = other.getValues( i );
+                        ensureGuidEnumValue ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.EnumValue subElement in obj.allValues() )
+                    {
+                        ensureGuidEnumValue ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allValues() != null ) 
+                {
+                    foreach ( Generated.EnumValue otherElement in other.allValues() )
+                    {
+                        ensureGuidEnumValue ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allSubEnums() != null )
+            {
+                if ( other.allSubEnums() != null ) 
+                {
+                    foreach ( Generated.Enum subElement in obj.allSubEnums() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Enum otherElement in other.allSubEnums() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidEnum ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Enum otherElement in other.allSubEnums() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidEnum ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidEnum ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Enum otherElement in other.allSubEnums() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Enum subElement in obj.allSubEnums() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidEnum ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Enum subElement in obj.allSubEnums() )
+                    {
+                        ensureGuidEnum ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubEnums() != null ) 
+                {
+                    foreach ( Generated.Enum otherElement in other.allSubEnums() )
+                    {
+                        ensureGuidEnum ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two EnumValue have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidEnumValue(Generated.EnumValue obj, Generated.EnumValue other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Range have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidRange(Generated.Range obj, Generated.Range other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+            if ( obj.allSpecialValues() != null )
+            {
+                if ( other.allSpecialValues() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countSpecialValues() && i < other.countSpecialValues() )
+                    {
+                        Generated.EnumValue element = obj.getSpecialValues( i );
+                        Generated.EnumValue otherElement = other.getSpecialValues( i );
+                        ensureGuidEnumValue ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countSpecialValues() )
+                    {
+                        Generated.EnumValue element = obj.getSpecialValues( i );
+                        ensureGuidEnumValue ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countSpecialValues() )
+                    {
+                        Generated.EnumValue otherElement = other.getSpecialValues( i );
+                        ensureGuidEnumValue ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.EnumValue subElement in obj.allSpecialValues() )
+                    {
+                        ensureGuidEnumValue ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSpecialValues() != null ) 
+                {
+                    foreach ( Generated.EnumValue otherElement in other.allSpecialValues() )
+                    {
+                        ensureGuidEnumValue ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Structure have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidStructure(Generated.Structure obj, Generated.Structure other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+            if ( obj.allElements() != null )
+            {
+                if ( other.allElements() != null ) 
+                {
+                    foreach ( Generated.StructureElement subElement in obj.allElements() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.StructureElement otherElement in other.allElements() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidStructureElement ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.StructureElement otherElement in other.allElements() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidStructureElement ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidStructureElement ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.StructureElement otherElement in other.allElements() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.StructureElement subElement in obj.allElements() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidStructureElement ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.StructureElement subElement in obj.allElements() )
+                    {
+                        ensureGuidStructureElement ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allElements() != null ) 
+                {
+                    foreach ( Generated.StructureElement otherElement in other.allElements() )
+                    {
+                        ensureGuidStructureElement ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allProcedures() != null )
+            {
+                if ( other.allProcedures() != null ) 
+                {
+                    foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidProcedure ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidProcedure ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidProcedure ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidProcedure ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Procedure subElement in obj.allProcedures() )
+                    {
+                        ensureGuidProcedure ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allProcedures() != null ) 
+                {
+                    foreach ( Generated.Procedure otherElement in other.allProcedures() )
+                    {
+                        ensureGuidProcedure ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allStateMachines() != null )
+            {
+                if ( other.allStateMachines() != null ) 
+                {
+                    foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidStateMachine ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidStateMachine ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidStateMachine ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidStateMachine ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.StateMachine subElement in obj.allStateMachines() )
+                    {
+                        ensureGuidStateMachine ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allStateMachines() != null ) 
+                {
+                    foreach ( Generated.StateMachine otherElement in other.allStateMachines() )
+                    {
+                        ensureGuidStateMachine ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Rule otherElement in other.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRule ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Rule otherElement in other.allRules() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRule ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRule ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Rule subElement in obj.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRule ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        ensureGuidRule ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        ensureGuidRule ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two StructureElement have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidStructureElement(Generated.StructureElement obj, Generated.StructureElement other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Collection have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidCollection(Generated.Collection obj, Generated.Collection other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Function have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFunction(Generated.Function obj, Generated.Function other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+            if ( obj.allParameters() != null )
+            {
+                if ( other.allParameters() != null ) 
+                {
+                    foreach ( Generated.Parameter subElement in obj.allParameters() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Parameter otherElement in other.allParameters() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidParameter ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Parameter otherElement in other.allParameters() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidParameter ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidParameter ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Parameter otherElement in other.allParameters() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Parameter subElement in obj.allParameters() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidParameter ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Parameter subElement in obj.allParameters() )
+                    {
+                        ensureGuidParameter ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allParameters() != null ) 
+                {
+                    foreach ( Generated.Parameter otherElement in other.allParameters() )
+                    {
+                        ensureGuidParameter ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allCases() != null )
+            {
+                if ( other.allCases() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countCases() && i < other.countCases() )
+                    {
+                        Generated.Case element = obj.getCases( i );
+                        Generated.Case otherElement = other.getCases( i );
+                        ensureGuidCase ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countCases() )
+                    {
+                        Generated.Case element = obj.getCases( i );
+                        ensureGuidCase ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countCases() )
+                    {
+                        Generated.Case otherElement = other.getCases( i );
+                        ensureGuidCase ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Case subElement in obj.allCases() )
+                    {
+                        ensureGuidCase ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allCases() != null ) 
+                {
+                    foreach ( Generated.Case otherElement in other.allCases() )
+                    {
+                        ensureGuidCase ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Parameter have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidParameter(Generated.Parameter obj, Generated.Parameter other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Case have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidCase(Generated.Case obj, Generated.Case other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allPreConditions() != null )
+            {
+                if ( other.allPreConditions() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countPreConditions() && i < other.countPreConditions() )
+                    {
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        ensureGuidPreCondition ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countPreConditions() )
+                    {
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        ensureGuidPreCondition ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countPreConditions() )
+                    {
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        ensureGuidPreCondition ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
+                    {
+                        ensureGuidPreCondition ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allPreConditions() != null ) 
+                {
+                    foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
+                    {
+                        ensureGuidPreCondition ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Procedure have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidProcedure(Generated.Procedure obj, Generated.Procedure other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            ensureGuidStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+            if ( obj.allRules() != null )
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Rule otherElement in other.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRule ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Rule otherElement in other.allRules() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRule ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRule ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Rule subElement in obj.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRule ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        ensureGuidRule ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        ensureGuidRule ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allParameters() != null )
+            {
+                if ( other.allParameters() != null ) 
+                {
+                    foreach ( Generated.Parameter subElement in obj.allParameters() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Parameter otherElement in other.allParameters() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidParameter ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Parameter otherElement in other.allParameters() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidParameter ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidParameter ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Parameter otherElement in other.allParameters() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Parameter subElement in obj.allParameters() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidParameter ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Parameter subElement in obj.allParameters() )
+                    {
+                        ensureGuidParameter ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allParameters() != null ) 
+                {
+                    foreach ( Generated.Parameter otherElement in other.allParameters() )
+                    {
+                        ensureGuidParameter ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two StateMachine have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidStateMachine(Generated.StateMachine obj, Generated.StateMachine other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidType (obj, other);
+
+            if ( obj.allStates() != null )
+            {
+                if ( other.allStates() != null ) 
+                {
+                    foreach ( Generated.State subElement in obj.allStates() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.State otherElement in other.allStates() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidState ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.State otherElement in other.allStates() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidState ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidState ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.State otherElement in other.allStates() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.State subElement in obj.allStates() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidState ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.State subElement in obj.allStates() )
+                    {
+                        ensureGuidState ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allStates() != null ) 
+                {
+                    foreach ( Generated.State otherElement in other.allStates() )
+                    {
+                        ensureGuidState ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allRules() != null )
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Rule otherElement in other.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRule ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Rule otherElement in other.allRules() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRule ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRule ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Rule subElement in obj.allRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRule ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Rule subElement in obj.allRules() )
+                    {
+                        ensureGuidRule ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allRules() != null ) 
+                {
+                    foreach ( Generated.Rule otherElement in other.allRules() )
+                    {
+                        ensureGuidRule ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two State have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidState(Generated.State obj, Generated.State other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            ensureGuidStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+        }
+
+        /// <summary>
+        /// Ensures that two Variable have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidVariable(Generated.Variable obj, Generated.Variable other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            if ( obj.allSubVariables() != null )
+            {
+                if ( other.allSubVariables() != null ) 
+                {
+                    foreach ( Generated.Variable subElement in obj.allSubVariables() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Variable otherElement in other.allSubVariables() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidVariable ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Variable otherElement in other.allSubVariables() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidVariable ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidVariable ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Variable otherElement in other.allSubVariables() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Variable subElement in obj.allSubVariables() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidVariable ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Variable subElement in obj.allSubVariables() )
+                    {
+                        ensureGuidVariable ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubVariables() != null ) 
+                {
+                    foreach ( Generated.Variable otherElement in other.allSubVariables() )
+                    {
+                        ensureGuidVariable ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Rule have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidRule(Generated.Rule obj, Generated.Rule other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            if ( obj.allConditions() != null )
+            {
+                if ( other.allConditions() != null ) 
+                {
+                    foreach ( Generated.RuleCondition subElement in obj.allConditions() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.RuleCondition otherElement in other.allConditions() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRuleCondition ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.RuleCondition otherElement in other.allConditions() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRuleCondition ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRuleCondition ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.RuleCondition otherElement in other.allConditions() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.RuleCondition subElement in obj.allConditions() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRuleCondition ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.RuleCondition subElement in obj.allConditions() )
+                    {
+                        ensureGuidRuleCondition ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allConditions() != null ) 
+                {
+                    foreach ( Generated.RuleCondition otherElement in other.allConditions() )
+                    {
+                        ensureGuidRuleCondition ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two RuleCondition have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidRuleCondition(Generated.RuleCondition obj, Generated.RuleCondition other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            if ( obj.allPreConditions() != null )
+            {
+                if ( other.allPreConditions() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countPreConditions() && i < other.countPreConditions() )
+                    {
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        ensureGuidPreCondition ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countPreConditions() )
+                    {
+                        Generated.PreCondition element = obj.getPreConditions( i );
+                        ensureGuidPreCondition ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countPreConditions() )
+                    {
+                        Generated.PreCondition otherElement = other.getPreConditions( i );
+                        ensureGuidPreCondition ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.PreCondition subElement in obj.allPreConditions() )
+                    {
+                        ensureGuidPreCondition ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allPreConditions() != null ) 
+                {
+                    foreach ( Generated.PreCondition otherElement in other.allPreConditions() )
+                    {
+                        ensureGuidPreCondition ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allActions() != null )
+            {
+                if ( other.allActions() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countActions() && i < other.countActions() )
+                    {
+                        Generated.Action element = obj.getActions( i );
+                        Generated.Action otherElement = other.getActions( i );
+                        ensureGuidAction ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countActions() )
+                    {
+                        Generated.Action element = obj.getActions( i );
+                        ensureGuidAction ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countActions() )
+                    {
+                        Generated.Action otherElement = other.getActions( i );
+                        ensureGuidAction ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Action subElement in obj.allActions() )
+                    {
+                        ensureGuidAction ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allActions() != null ) 
+                {
+                    foreach ( Generated.Action otherElement in other.allActions() )
+                    {
+                        ensureGuidAction ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allSubRules() != null )
+            {
+                if ( other.allSubRules() != null ) 
+                {
+                    foreach ( Generated.Rule subElement in obj.allSubRules() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Rule otherElement in other.allSubRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidRule ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Rule otherElement in other.allSubRules() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidRule ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidRule ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Rule otherElement in other.allSubRules() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Rule subElement in obj.allSubRules() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidRule ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Rule subElement in obj.allSubRules() )
+                    {
+                        ensureGuidRule ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubRules() != null ) 
+                {
+                    foreach ( Generated.Rule otherElement in other.allSubRules() )
+                    {
+                        ensureGuidRule ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two PreCondition have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidPreCondition(Generated.PreCondition obj, Generated.PreCondition other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Ensures that two Action have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidAction(Generated.Action obj, Generated.Action other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Ensures that two FrameRef have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFrameRef(Generated.FrameRef obj, Generated.FrameRef other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two Frame have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFrame(Generated.Frame obj, Generated.Frame other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allSubSequences() != null )
+            {
+                if ( other.allSubSequences() != null ) 
+                {
+                    foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSubSequence ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSubSequence ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSubSequence ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidSubSequence ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SubSequence subElement in obj.allSubSequences() )
+                    {
+                        ensureGuidSubSequence ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubSequences() != null ) 
+                {
+                    foreach ( Generated.SubSequence otherElement in other.allSubSequences() )
+                    {
+                        ensureGuidSubSequence ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two SubSequence have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidSubSequence(Generated.SubSequence obj, Generated.SubSequence other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allTestCases() != null )
+            {
+                if ( other.allTestCases() != null ) 
+                {
+                    foreach ( Generated.TestCase subElement in obj.allTestCases() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.TestCase otherElement in other.allTestCases() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidTestCase ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.TestCase otherElement in other.allTestCases() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidTestCase ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidTestCase ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.TestCase otherElement in other.allTestCases() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.TestCase subElement in obj.allTestCases() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidTestCase ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.TestCase subElement in obj.allTestCases() )
+                    {
+                        ensureGuidTestCase ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allTestCases() != null ) 
+                {
+                    foreach ( Generated.TestCase otherElement in other.allTestCases() )
+                    {
+                        ensureGuidTestCase ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two TestCase have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidTestCase(Generated.TestCase obj, Generated.TestCase other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidReqRelated (obj, other);
+
+            if ( obj.allSteps() != null )
+            {
+                if ( other.allSteps() != null ) 
+                {
+                    foreach ( Generated.Step subElement in obj.allSteps() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Step otherElement in other.allSteps() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidStep ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Step otherElement in other.allSteps() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidStep ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidStep ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Step otherElement in other.allSteps() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Step subElement in obj.allSteps() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidStep ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Step subElement in obj.allSteps() )
+                    {
+                        ensureGuidStep ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSteps() != null ) 
+                {
+                    foreach ( Generated.Step otherElement in other.allSteps() )
+                    {
+                        ensureGuidStep ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Step have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidStep(Generated.Step obj, Generated.Step other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allSubSteps() != null )
+            {
+                if ( other.allSubSteps() != null ) 
+                {
+                    foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSubStep ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSubStep ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSubStep ( subElement, null );
                         }
                     }
 
@@ -3979,7 +9050,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidSubStep ( null, otherElement );
                         }
                     }
                 }
@@ -3987,7 +9058,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidSubStep ( subElement, null );
                     }
                 }
             }
@@ -3997,47 +9068,1325 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.SubStep otherElement in other.allSubSteps() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidSubStep ( null, otherElement );
                     }
                 }
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( obj.allMessages() != null )
             {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Comment", "Previously was [" + other.getComment() + "]") );
+                if ( other.allMessages() != null ) 
+                {
+                    foreach ( Generated.DBMessage subElement in obj.allMessages() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.DBMessage otherElement in other.allMessages() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidDBMessage ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.DBMessage otherElement in other.allMessages() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidDBMessage ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidDBMessage ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.DBMessage otherElement in other.allMessages() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.DBMessage subElement in obj.allMessages() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidDBMessage ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.DBMessage subElement in obj.allMessages() )
+                    {
+                        ensureGuidDBMessage ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allMessages() != null ) 
+                {
+                    foreach ( Generated.DBMessage otherElement in other.allMessages() )
+                    {
+                        ensureGuidDBMessage ( null, otherElement );
+                    }
+                }
             }
         }
 
         /// <summary>
-        /// Compares two SourceText and annotates the differences on the first one
+        /// Ensures that two SubStep have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSourceText(Generated.SourceText obj, Generated.SourceText other, VersionDiff diff)
+        public static void ensureGuidSubStep(Generated.SubStep obj, Generated.SubStep other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allActions() != null )
+            {
+                if ( other.allActions() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countActions() && i < other.countActions() )
+                    {
+                        Generated.Action element = obj.getActions( i );
+                        Generated.Action otherElement = other.getActions( i );
+                        ensureGuidAction ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countActions() )
+                    {
+                        Generated.Action element = obj.getActions( i );
+                        ensureGuidAction ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countActions() )
+                    {
+                        Generated.Action otherElement = other.getActions( i );
+                        ensureGuidAction ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Action subElement in obj.allActions() )
+                    {
+                        ensureGuidAction ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allActions() != null ) 
+                {
+                    foreach ( Generated.Action otherElement in other.allActions() )
+                    {
+                        ensureGuidAction ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allExpectations() != null )
+            {
+                if ( other.allExpectations() != null ) 
+                {
+                    int i = 0;
+                    while ( i < obj.countExpectations() && i < other.countExpectations() )
+                    {
+                        Generated.Expectation element = obj.getExpectations( i );
+                        Generated.Expectation otherElement = other.getExpectations( i );
+                        ensureGuidExpectation ( element, otherElement );
+                        i += 1;
+                    }
+                    while ( i < obj.countExpectations() )
+                    {
+                        Generated.Expectation element = obj.getExpectations( i );
+                        ensureGuidExpectation ( element, null );
+                        i += 1;
+                    }
+                    while ( i < other.countExpectations() )
+                    {
+                        Generated.Expectation otherElement = other.getExpectations( i );
+                        ensureGuidExpectation ( null, otherElement );
+                        i += 1;
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Expectation subElement in obj.allExpectations() )
+                    {
+                        ensureGuidExpectation ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allExpectations() != null ) 
+                {
+                    foreach ( Generated.Expectation otherElement in other.allExpectations() )
+                    {
+                        ensureGuidExpectation ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Expectation have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidExpectation(Generated.Expectation obj, Generated.Expectation other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
 
         }
 
         /// <summary>
-        /// Compares two ShortcutDictionary and annotates the differences on the first one
+        /// Ensures that two DBMessage have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcutDictionary(Generated.ShortcutDictionary obj, Generated.ShortcutDictionary other, VersionDiff diff)
+        public static void ensureGuidDBMessage(Generated.DBMessage obj, Generated.DBMessage other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allFields() != null )
+            {
+                if ( other.allFields() != null ) 
+                {
+                    foreach ( Generated.DBField subElement in obj.allFields() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.DBField otherElement in other.allFields() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidDBField ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.DBField otherElement in other.allFields() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidDBField ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidDBField ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.DBField otherElement in other.allFields() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.DBField subElement in obj.allFields() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidDBField ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.DBField subElement in obj.allFields() )
+                    {
+                        ensureGuidDBField ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFields() != null ) 
+                {
+                    foreach ( Generated.DBField otherElement in other.allFields() )
+                    {
+                        ensureGuidDBField ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allPackets() != null )
+            {
+                if ( other.allPackets() != null ) 
+                {
+                    foreach ( Generated.DBPacket subElement in obj.allPackets() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.DBPacket otherElement in other.allPackets() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidDBPacket ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.DBPacket otherElement in other.allPackets() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidDBPacket ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidDBPacket ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.DBPacket otherElement in other.allPackets() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.DBPacket subElement in obj.allPackets() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidDBPacket ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.DBPacket subElement in obj.allPackets() )
+                    {
+                        ensureGuidDBPacket ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allPackets() != null ) 
+                {
+                    foreach ( Generated.DBPacket otherElement in other.allPackets() )
+                    {
+                        ensureGuidDBPacket ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two DBPacket have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidDBPacket(Generated.DBPacket obj, Generated.DBPacket other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allFields() != null )
+            {
+                if ( other.allFields() != null ) 
+                {
+                    foreach ( Generated.DBField subElement in obj.allFields() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.DBField otherElement in other.allFields() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidDBField ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.DBField otherElement in other.allFields() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidDBField ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidDBField ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.DBField otherElement in other.allFields() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.DBField subElement in obj.allFields() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidDBField ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.DBField subElement in obj.allFields() )
+                    {
+                        ensureGuidDBField ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFields() != null ) 
+                {
+                    foreach ( Generated.DBField otherElement in other.allFields() )
+                    {
+                        ensureGuidDBField ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two DBField have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidDBField(Generated.DBField obj, Generated.DBField other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two TranslationDictionary have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidTranslationDictionary(Generated.TranslationDictionary obj, Generated.TranslationDictionary other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allFolders() != null )
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.Folder subElement in obj.allFolders() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Folder otherElement in other.allFolders() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFolder ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Folder otherElement in other.allFolders() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFolder ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFolder ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Folder otherElement in other.allFolders() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Folder subElement in obj.allFolders() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFolder ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Folder subElement in obj.allFolders() )
+                    {
+                        ensureGuidFolder ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.Folder otherElement in other.allFolders() )
+                    {
+                        ensureGuidFolder ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allTranslations() != null )
+            {
+                if ( other.allTranslations() != null ) 
+                {
+                    foreach ( Generated.Translation subElement in obj.allTranslations() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Translation otherElement in other.allTranslations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidTranslation ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Translation otherElement in other.allTranslations() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidTranslation ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidTranslation ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Translation otherElement in other.allTranslations() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Translation subElement in obj.allTranslations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidTranslation ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Translation subElement in obj.allTranslations() )
+                    {
+                        ensureGuidTranslation ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allTranslations() != null ) 
+                {
+                    foreach ( Generated.Translation otherElement in other.allTranslations() )
+                    {
+                        ensureGuidTranslation ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Folder have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidFolder(Generated.Folder obj, Generated.Folder other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allFolders() != null )
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.Folder subElement in obj.allFolders() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Folder otherElement in other.allFolders() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidFolder ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Folder otherElement in other.allFolders() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidFolder ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidFolder ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Folder otherElement in other.allFolders() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Folder subElement in obj.allFolders() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidFolder ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Folder subElement in obj.allFolders() )
+                    {
+                        ensureGuidFolder ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allFolders() != null ) 
+                {
+                    foreach ( Generated.Folder otherElement in other.allFolders() )
+                    {
+                        ensureGuidFolder ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allTranslations() != null )
+            {
+                if ( other.allTranslations() != null ) 
+                {
+                    foreach ( Generated.Translation subElement in obj.allTranslations() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.Translation otherElement in other.allTranslations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidTranslation ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.Translation otherElement in other.allTranslations() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidTranslation ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidTranslation ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.Translation otherElement in other.allTranslations() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.Translation subElement in obj.allTranslations() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidTranslation ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.Translation subElement in obj.allTranslations() )
+                    {
+                        ensureGuidTranslation ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allTranslations() != null ) 
+                {
+                    foreach ( Generated.Translation otherElement in other.allTranslations() )
+                    {
+                        ensureGuidTranslation ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two Translation have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidTranslation(Generated.Translation obj, Generated.Translation other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allSourceTexts() != null )
+            {
+                if ( other.allSourceTexts() != null ) 
+                {
+                    foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSourceText ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSourceText ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSourceText ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidSourceText ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SourceText subElement in obj.allSourceTexts() )
+                    {
+                        ensureGuidSourceText ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSourceTexts() != null ) 
+                {
+                    foreach ( Generated.SourceText otherElement in other.allSourceTexts() )
+                    {
+                        ensureGuidSourceText ( null, otherElement );
+                    }
+                }
+            }
+            if ( obj.allSubSteps() != null )
+            {
+                if ( other.allSubSteps() != null ) 
+                {
+                    foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSubStep ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSubStep ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSubStep ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidSubStep ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SubStep subElement in obj.allSubSteps() )
+                    {
+                        ensureGuidSubStep ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allSubSteps() != null ) 
+                {
+                    foreach ( Generated.SubStep otherElement in other.allSubSteps() )
+                    {
+                        ensureGuidSubStep ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two SourceText have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidSourceText(Generated.SourceText obj, Generated.SourceText other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+        }
+
+        /// <summary>
+        /// Ensures that two ShortcutDictionary have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidShortcutDictionary(Generated.ShortcutDictionary obj, Generated.ShortcutDictionary other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
 
             if ( obj.allFolders() != null )
             {
@@ -4045,20 +10394,36 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                compareShortcutFolder ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidShortcutFolder ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidShortcutFolder ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidShortcutFolder ( subElement, null );
                         }
                     }
 
@@ -4076,7 +10441,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidShortcutFolder ( null, otherElement );
                         }
                     }
                 }
@@ -4084,7 +10449,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidShortcutFolder ( subElement, null );
                     }
                 }
             }
@@ -4094,7 +10459,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidShortcutFolder ( null, otherElement );
                     }
                 }
             }
@@ -4104,20 +10469,36 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                compareShortcut ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidShortcut ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidShortcut ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidShortcut ( subElement, null );
                         }
                     }
 
@@ -4135,7 +10516,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidShortcut ( null, otherElement );
                         }
                     }
                 }
@@ -4143,7 +10524,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidShortcut ( subElement, null );
                     }
                 }
             }
@@ -4153,26 +10534,57 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidShortcut ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Compares two ShortcutFolder and annotates the differences on the first one
+        /// Ensures that two ShortcutFolder have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcutFolder(Generated.ShortcutFolder obj, Generated.ShortcutFolder other, VersionDiff diff)
+        public static void ensureGuidShortcutFolder(Generated.ShortcutFolder obj, Generated.ShortcutFolder other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
 
             if ( obj.allFolders() != null )
             {
@@ -4180,20 +10592,36 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                compareShortcutFolder ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidShortcutFolder ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidShortcutFolder ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidShortcutFolder ( subElement, null );
                         }
                     }
 
@@ -4211,7 +10639,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidShortcutFolder ( null, otherElement );
                         }
                     }
                 }
@@ -4219,7 +10647,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder subElement in obj.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidShortcutFolder ( subElement, null );
                     }
                 }
             }
@@ -4229,7 +10657,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ShortcutFolder otherElement in other.allFolders() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidShortcutFolder ( null, otherElement );
                     }
                 }
             }
@@ -4239,20 +10667,36 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                compareShortcut ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidShortcut ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidShortcut ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidShortcut ( subElement, null );
                         }
                     }
 
@@ -4270,7 +10714,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidShortcut ( null, otherElement );
                         }
                     }
                 }
@@ -4278,7 +10722,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut subElement in obj.allShortcuts() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidShortcut ( subElement, null );
                     }
                 }
             }
@@ -4288,76 +10732,142 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Shortcut otherElement in other.allShortcuts() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidShortcut ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Compares two Shortcut and annotates the differences on the first one
+        /// Ensures that two Shortcut have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareShortcut(Generated.Shortcut obj, Generated.Shortcut other, VersionDiff diff)
+        public static void ensureGuidShortcut(Generated.Shortcut obj, Generated.Shortcut other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
-
-            if ( !CompareUtil.canonicalStringEquality(obj.getShortcutName(), other.getShortcutName()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ShortcutName", "Previously was [" + other.getShortcutName() + "]") );
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
             }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
         }
 
         /// <summary>
-        /// Compares two Specification and annotates the differences on the first one
+        /// Ensures that two Specification have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareSpecification(Generated.Specification obj, Generated.Specification other, VersionDiff diff)
+        public static void ensureGuidSpecification(Generated.Specification obj, Generated.Specification other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
 
-            if ( !CompareUtil.canonicalStringEquality(obj.getGuid(), other.getGuid()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Guid", "Previously was [" + other.getGuid() + "]") );
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
-            }
+
+            ensureGuidNamable (obj, other);
+
             if ( obj.allChapters() != null )
             {
                 if ( other.allChapters() != null ) 
                 {
                     foreach ( Generated.Chapter subElement in obj.allChapters() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.Chapter otherElement in other.allChapters() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) && otherElement.getGuid() == null )
                             {
-                                compareChapter ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidChapter ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.Chapter otherElement in other.allChapters() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                                {
+                                    ensureGuidChapter ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidChapter ( subElement, null );
                         }
                     }
 
@@ -4375,7 +10885,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidChapter ( null, otherElement );
                         }
                     }
                 }
@@ -4383,7 +10893,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Chapter subElement in obj.allChapters() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidChapter ( subElement, null );
                     }
                 }
             }
@@ -4393,7 +10903,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Chapter otherElement in other.allChapters() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidChapter ( null, otherElement );
                     }
                 }
             }
@@ -4403,20 +10913,36 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
                             {
-                                compareChapterRef ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidChapterRef ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidChapterRef ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidChapterRef ( subElement, null );
                         }
                     }
 
@@ -4434,7 +10960,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidChapterRef ( null, otherElement );
                         }
                     }
                 }
@@ -4442,7 +10968,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ChapterRef subElement in obj.allChapterRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidChapterRef ( subElement, null );
                     }
                 }
             }
@@ -4452,68 +10978,142 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.ChapterRef otherElement in other.allChapterRefs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidChapterRef ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Compares two ChapterRef and annotates the differences on the first one
+        /// Ensures that two ChapterRef have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareChapterRef(Generated.ChapterRef obj, Generated.ChapterRef other, VersionDiff diff)
+        public static void ensureGuidChapterRef(Generated.ChapterRef obj, Generated.ChapterRef other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
 
         }
 
         /// <summary>
-        /// Compares two Chapter and annotates the differences on the first one
+        /// Ensures that two Chapter have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareChapter(Generated.Chapter obj, Generated.Chapter other, VersionDiff diff)
+        public static void ensureGuidChapter(Generated.Chapter obj, Generated.Chapter other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareNamable (obj, other, diff);
-
-            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
             }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
             if ( obj.allParagraphs() != null )
             {
                 if ( other.allParagraphs() != null ) 
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) && otherElement.getGuid() == null )
                             {
-                                compareParagraph ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidParagraph ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                                {
+                                    ensureGuidParagraph ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidParagraph ( subElement, null );
                         }
                     }
 
@@ -4531,7 +11131,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidParagraph ( null, otherElement );
                         }
                     }
                 }
@@ -4539,7 +11139,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidParagraph ( subElement, null );
                     }
                 }
             }
@@ -4549,83 +11149,94 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidParagraph ( null, otherElement );
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Compares two Paragraph and annotates the differences on the first one
+        /// Ensures that two Paragraph have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareParagraph(Generated.Paragraph obj, Generated.Paragraph other, VersionDiff diff)
+        public static void ensureGuidParagraph(Generated.Paragraph obj, Generated.Paragraph other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            compareReferencesParagraph (obj, other, diff);
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
 
-            if ( !CompareUtil.canonicalStringEquality(obj.getId(), other.getId()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Id", "Previously was [" + other.getId() + "]") );
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
             }
-            if ( obj.getType() != other.getType() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Type", "Previously was [" + other.getType() + "]") );
-            }
-            if ( obj.getScope() != other.getScope() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Scope", "Previously was [" + other.getScope() + "]") );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getBl(), other.getBl()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Bl", "Previously was [" + other.getBl() + "]") );
-            }
-            if ( obj.getOptional() != other.getOptional() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Optional", "Previously was [" + other.getOptional() + "]") );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Text", "Previously was [" + other.getText() + "]") );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
-            }
-            if ( obj.getReviewed() != other.getReviewed() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Reviewed", "Previously was [" + other.getReviewed() + "]") );
-            }
-            if ( obj.getImplementationStatus() != other.getImplementationStatus() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "ImplementationStatus", "Previously was [" + other.getImplementationStatus() + "]") );
-            }
+
+            ensureGuidReferencesParagraph (obj, other);
+
             if ( obj.allParagraphs() != null )
             {
                 if ( other.allParagraphs() != null ) 
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        bool compared = false;
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
                         foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                         {
-                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                            if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) && otherElement.getGuid() == null )
                             {
-                                compareParagraph ( subElement, otherElement, diff );
-                                compared = true;
-                            break;
+                                ensureGuidParagraph ( subElement, otherElement );
+                                found = true;
+                                break;
                             }
                         }
 
-                        if ( !compared ) 
+                        if ( !found ) 
                         {
-                            diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                            foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.getId(), otherElement.getId()) )
+                                {
+                                    ensureGuidParagraph ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidParagraph ( subElement, null );
                         }
                     }
 
@@ -4643,7 +11254,7 @@ namespace DataDictionary.Compare
 
                         if ( !found )
                         {
-                            diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                            ensureGuidParagraph ( null, otherElement );
                         }
                     }
                 }
@@ -4651,7 +11262,7 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph subElement in obj.allParagraphs() )
                     {
-                        diff.Diffs.Add ( new Diff(subElement, Diff.ActionEnum.Add ) );
+                        ensureGuidParagraph ( subElement, null );
                     }
                 }
             }
@@ -4661,60 +11272,57 @@ namespace DataDictionary.Compare
                 {
                     foreach ( Generated.Paragraph otherElement in other.allParagraphs() )
                     {
-                        diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Remove, "", otherElement.Name) );
+                        ensureGuidParagraph ( null, otherElement );
                     }
                 }
             }
-            if ( obj.getRevision() == null )
-            {
-                if ( other.getRevision() != null )
-                {
-                    diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Revision", "" ) );
-                }
-            }
-            else
-            {
-                compareParagraphRevision ( obj.getRevision(), other.getRevision(), diff );
-            }
-            if ( obj.getMoreInfoRequired() != other.getMoreInfoRequired() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "MoreInfoRequired", "Previously was [" + other.getMoreInfoRequired() + "]") );
-            }
-            if ( obj.getSpecIssue() != other.getSpecIssue() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "SpecIssue", "Previously was [" + other.getSpecIssue() + "]") );
-            }
-            if ( obj.getFunctionalBlock() != other.getFunctionalBlock() )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlock", "Previously was [" + other.getFunctionalBlock() + "]") );
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getFunctionalBlockName(), other.getFunctionalBlockName()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "FunctionalBlockName", "Previously was [" + other.getFunctionalBlockName() + "]") );
-            }
+            ensureGuidParagraphRevision ( obj.getRevision(), other.getRevision() );
         }
 
         /// <summary>
-        /// Compares two ParagraphRevision and annotates the differences on the first one
+        /// Ensures that two ParagraphRevision have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="other"></param>
-        public static void compareParagraphRevision(Generated.ParagraphRevision obj, Generated.ParagraphRevision other, VersionDiff diff)
+        public static void ensureGuidParagraphRevision(Generated.ParagraphRevision obj, Generated.ParagraphRevision other)
         {
-            if ( other == null )
+            if ( obj == null )
             { 
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Add) );
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
                 return;
             }
 
-            if ( !CompareUtil.canonicalStringEquality(obj.getText(), other.getText()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Text", "Previously was [" + other.getText() + "]") );
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getVersion(), other.getVersion()) )
-            {
-                diff.Diffs.Add ( new Diff(obj, Diff.ActionEnum.Change, "Version", "Previously was [" + other.getVersion() + "]") );
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
             }
+
         }
 
         /// <summary>
@@ -5856,10 +12464,6 @@ namespace DataDictionary.Compare
         {
             searchNamable (obj, searchString, occurences);
 
-            if ( obj.getGuid() != null && obj.getGuid().Contains (searchString) ) 
-            {
-                occurences.Add ( obj );
-            }
             if ( obj.getVersion() != null && obj.getVersion().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
@@ -5959,7 +12563,7 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
-            if ( obj.getGuid() != null && obj.getGuid().Contains (searchString) ) 
+            if ( obj.getObsoleteGuid() != null && obj.getObsoleteGuid().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }

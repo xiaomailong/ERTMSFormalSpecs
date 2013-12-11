@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Interpreter;
-using Utils;
 using DataDictionary.Types;
 using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Interpreter.Filter;
@@ -46,18 +45,18 @@ namespace GUI
             }
         }
 
-        private DataDictionary.ModelElement __instance = null;
+        private Utils.IModelElement __instance = null;
 
         /// <summary>
         /// Provides the instance on which this editor is based
         /// </summary>
-        public DataDictionary.ModelElement Instance
+        public Utils.IModelElement Instance
         {
             get
             {
                 if (__instance == null && EnclosingForm != null)
                 {
-                    __instance = (DataDictionary.ModelElement)EnclosingForm.Selected;
+                    __instance = (Utils.IModelElement)EnclosingForm.Selected;
                 }
                 return __instance;
             }
@@ -74,7 +73,15 @@ namespace GUI
         {
             get
             {
-                return Instance.EFSSystem;
+                EFSSystem retVal = null;
+
+                DataDictionary.ModelElement modelElement = Instance as DataDictionary.ModelElement;
+                if (modelElement != null)
+                {
+                    retVal = modelElement.EFSSystem;
+                }
+
+                return retVal;
             }
         }
 
@@ -133,7 +140,7 @@ namespace GUI
         /// <param name="location"></param>
         private void DisplayHelp(Point location)
         {
-            List<INamable> instances = GetInstances(location);
+            List<Utils.INamable> instances = GetInstances(location);
 
             if (instances.Count > 0)
             {
@@ -148,9 +155,9 @@ namespace GUI
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        private List<INamable> GetInstances(Point location)
+        private List<Utils.INamable> GetInstances(Point location)
         {
-            List<INamable> retVal = new List<INamable>();
+            List<Utils.INamable> retVal = new List<Utils.INamable>();
 
             if (Instance != null)
             {
@@ -179,7 +186,7 @@ namespace GUI
                 if (start < end)
                 {
                     string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                    Expression expression = EFSSystem.Parser.Expression(Instance, identifier, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE);
                     if (expression != null)
                     {
                         if (expression.Ref != null)
@@ -245,7 +252,7 @@ namespace GUI
 
             if (Control.ModifierKeys == Keys.Control)
             {
-                List<INamable> instances = GetInstances(e.Location);
+                List<Utils.INamable> instances = GetInstances(e.Location);
                 if (instances.Count == 1)
                 {
                     MainWindow mdiWindow = GUIUtils.MDIWindow;
@@ -292,13 +299,13 @@ namespace GUI
         /// <param name="namable">The namable to explain</param>
         /// <param name="location">The location where the explain box should be displayed. If empty is displayed, the location is computed based on the combo box location</param>
         /// <param name="sensibleToMouseMove">Indicates that the explain box should be closed when the mouse moves</param>
-        private void ExplainAndShow(List<INamable> namables, Point location, bool sensibleToMouseMove)
+        private void ExplainAndShow(List<Utils.INamable> namables, Point location, bool sensibleToMouseMove)
         {
             explainRichTextBox.Rtf = CleanText;
             if (namables != null)
             {
                 string data = "";
-                foreach (INamable namable in namables)
+                foreach (Utils.INamable namable in namables)
                 {
                     data += "{\\b " + namable.GetType().Name + "} " + namable.Name + "\\par ";
                     ICommentable commentable = namable as ICommentable;
@@ -406,7 +413,7 @@ namespace GUI
         /// <param name="prefix">The prefix of the element to find</param>
         /// <param name="enclosingName">The name of the enclosing structure</param>
         /// <returns></returns>
-        private HashSet<ObjectReference> getPossibilities(IModelElement element, string prefix, string enclosingName)
+        private HashSet<ObjectReference> getPossibilities(Utils.IModelElement element, string prefix, string enclosingName)
         {
             HashSet<ObjectReference> retVal = new HashSet<ObjectReference>();
 
@@ -414,20 +421,20 @@ namespace GUI
             {
                 bool type = false;
 
-                ISubDeclarator subDeclarator = element as ISubDeclarator;
+                Utils.ISubDeclarator subDeclarator = element as Utils.ISubDeclarator;
                 if (subDeclarator == null)
                 {
                     DataDictionary.Types.ITypedElement typedElement = element as DataDictionary.Types.ITypedElement;
                     if (typedElement != null)
                     {
                         type = true;
-                        subDeclarator = typedElement.Type as ISubDeclarator;
+                        subDeclarator = typedElement.Type as Utils.ISubDeclarator;
                     }
                 }
                 if (subDeclarator != null)
                 {
                     subDeclarator.InitDeclaredElements();
-                    foreach (KeyValuePair<string, List<INamable>> pair in subDeclarator.DeclaredElements)
+                    foreach (KeyValuePair<string, List<Utils.INamable>> pair in subDeclarator.DeclaredElements)
                     {
                         string subElem = pair.Key;
                         if (subElem.StartsWith(prefix))
@@ -464,7 +471,7 @@ namespace GUI
                     }
                 }
 
-                element = element.Enclosing as IModelElement;
+                element = element.Enclosing as Utils.IModelElement;
             }
 
             return retVal;
@@ -506,14 +513,14 @@ namespace GUI
             /// <summary>
             /// The model elements referenced by this object reference
             /// </summary>
-            public List<INamable> Models { get; private set; }
+            public List<Utils.INamable> Models { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="models"></param>
             /// <param name="name"></param>
-            public ObjectReference(string name, List<INamable> models)
+            public ObjectReference(string name, List<Utils.INamable> models)
             {
                 DisplayName = name;
                 Models = models;
@@ -580,7 +587,7 @@ namespace GUI
                 // Handles references to model elements
                 foreach (Utils.INamable namable in possibleInstances)
                 {
-                    retVal.AddRange(getPossibilities((IModelElement)namable, prefix, enclosingName));
+                    retVal.AddRange(getPossibilities((Utils.IModelElement)namable, prefix, enclosingName));
                 }
 
                 // Handles code templates
@@ -590,7 +597,7 @@ namespace GUI
                     {
                         if (template.StartsWith(prefix))
                         {
-                            retVal.Add(new ObjectReference(template, new List<INamable>()));
+                            retVal.Add(new ObjectReference(template, new List<Utils.INamable>()));
                         }
                     }
                 }
@@ -647,19 +654,23 @@ namespace GUI
 
 
                         // Create a fake foreach expression to hold the list expression and the current expression
-                        Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
-                        Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, AllMatches.INSTANCE, false);
-                        Expression foreachExpression = new ForAllExpression(Instance, Instance, listExpression, currentExpression);
-                        foreachExpression.SemanticAnalysis();
-                        if (currentExpression.Ref != null)
+                        ModelElement modelElement = Instance as ModelElement;
+                        if (modelElement != null)
                         {
-                            retVal.Add(currentExpression.Ref);
+                            Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
+                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, enclosingName, AllMatches.INSTANCE, false);
+                            Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, currentExpression);
+                            foreachExpression.SemanticAnalysis();
+                            if (currentExpression.Ref != null)
+                            {
+                                retVal.Add(currentExpression.Ref);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, enclosingName, AllMatches.INSTANCE);
 
                     if (expression != null)
                     {
@@ -818,7 +829,7 @@ namespace GUI
                             break;
 
                         case '{':
-                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), IsStructure.INSTANCE);
+                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsStructure.INSTANCE);
                             if (structureTypeExpression != null)
                             {
                                 DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
@@ -833,7 +844,7 @@ namespace GUI
                             break;
 
                         case '(':
-                            Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), IsCallable.INSTANCE);
+                            Expression callableExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsCallable.INSTANCE);
                             if (callableExpression != null)
                             {
                                 DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;

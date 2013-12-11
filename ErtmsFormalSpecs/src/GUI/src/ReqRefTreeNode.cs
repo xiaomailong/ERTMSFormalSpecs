@@ -21,7 +21,7 @@ using System.Drawing.Design;
 
 namespace GUI
 {
-    public class ReqRefTreeNode : DataTreeNode<DataDictionary.ReqRef>
+    public class ReqRefTreeNode : ModelElementTreeNode<DataDictionary.ReqRef>
     {
         public class InternalTracesConverter : Converters.TracesConverter
         {

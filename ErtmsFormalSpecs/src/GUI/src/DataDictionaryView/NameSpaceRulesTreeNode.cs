@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpaceRulesTreeNode : DataTreeNode<DataDictionary.Types.NameSpace>
+    public class NameSpaceRulesTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
     {
         /// <summary>
         /// The editor for message variables

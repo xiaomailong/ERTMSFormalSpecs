@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class StateMachineStatesTreeNode : DataTreeNode<DataDictionary.Types.StateMachine>
+    public class StateMachineStatesTreeNode : ModelElementTreeNode<DataDictionary.Types.StateMachine>
     {
         private class InternalStateTypeConverter : Converters.StateTypeConverter
         {

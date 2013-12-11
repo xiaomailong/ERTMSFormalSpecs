@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace GUI.SpecificationView
 {
-    public class ChapterTreeNode : DataTreeNode<DataDictionary.Specification.Chapter>
+    public class ChapterTreeNode : ModelElementTreeNode<DataDictionary.Specification.Chapter>
     {
         /// <summary>
         /// The value editor

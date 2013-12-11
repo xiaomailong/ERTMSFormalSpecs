@@ -93,31 +93,29 @@ namespace DataDictionary
         {
             get
             {
-                Specification.Paragraph retVal = null;
+                Specification.Paragraph retVal = GuidCache.INSTANCE.GetModel(getId()) as Specification.Paragraph;
 
-                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+                if (retVal == null)
                 {
-                    foreach (Specification.Specification specification in dictionary.Specifications)
+                    foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                     {
-                        if (string.IsNullOrEmpty(getSpecId()) || getSpecId() == specification.Guid)
+                        foreach (Specification.Specification specification in dictionary.Specifications)
                         {
-                            retVal = specification.FindParagraphByGuid(getId());
-
-                            if (retVal == null)
+                            if (string.IsNullOrEmpty(getSpecId()) || getSpecId() == specification.Guid)
                             {
                                 retVal = specification.FindParagraphByNumber(getId());
-                            }
 
-                            if (retVal != null)
-                            {
-                                break;
+                                if (retVal != null)
+                                {
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    if (retVal != null)
-                    {
-                        break;
+                        if (retVal != null)
+                        {
+                            break;
+                        }
                     }
                 }
 

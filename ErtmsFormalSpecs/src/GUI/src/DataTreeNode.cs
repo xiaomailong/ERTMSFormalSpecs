@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
-using Utils;
 using DataDictionary;
 using DataDictionary.Specification;
 using GUI.SpecificationView;
@@ -39,7 +38,7 @@ namespace GUI
             /// The model element currently edited
             /// </summary>
             [Browsable(false)]
-            public IModelElement Model { get; set; }
+            public Utils.IModelElement Model { get; set; }
 
             /// <summary>
             /// Constructor
@@ -63,7 +62,7 @@ namespace GUI
         /// <summary>
         /// The model represented by this node
         /// </summary>
-        public DataDictionary.ModelElement Model { get; set; }
+        public Utils.IModelElement Model { get; set; }
 
         /// <summary>
         /// Provides the base tree view which holds this node
@@ -100,7 +99,7 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public BaseTreeNode(DataDictionary.ModelElement value, string name = null, bool isFolder = false)
+        public BaseTreeNode(Utils.IModelElement value, string name = null, bool isFolder = false)
             : base(name)
         {
             Model = value;
@@ -148,7 +147,7 @@ namespace GUI
                     Utils.IModelElement element = Model;
                     while (element != null && ImageIndex == BaseTreeView.ModelImageIndex)
                     {
-                        element = element.Enclosing as IModelElement;
+                        element = element.Enclosing as Utils.IModelElement;
                         if (element is DataDictionary.Tests.Frame
                             || element is DataDictionary.Tests.SubSequence
                             || element is DataDictionary.Tests.TestCase
@@ -194,6 +193,25 @@ namespace GUI
             {
                 GUIUtils.MDIWindow.SetCoverageStatus(EFSSystem.INSTANCE);
             }
+
+            ModelElement modelElement = Model as ModelElement;
+            if (modelElement != null && GUIUtils.MDIWindow.HistoryWindow != null)
+            {
+                if (!isShortCut())
+                {
+                    GUIUtils.MDIWindow.HistoryWindow.Model = modelElement;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the model is related to a shortcut
+        /// </summary>
+        /// <returns></returns>
+        private bool isShortCut()
+        {
+            return Utils.EnclosingFinder<DataDictionary.Shortcuts.ShortcutDictionary>.find(Model) != null
+                || (Model is DataDictionary.Shortcuts.ShortcutDictionary);
         }
 
         /// <summary>
@@ -207,8 +225,8 @@ namespace GUI
             {
                 if (!(baseForm.MessagesTextBox.ContainsFocus && ignoreFocused))
                 {
-                    IModelElement current = Model;
-                    List<ElementLog> messages = new List<ElementLog>();
+                    Utils.IModelElement current = Model;
+                    List<Utils.ElementLog> messages = new List<Utils.ElementLog>();
                     while (current != null)
                     {
                         if (current.Messages != null)
@@ -218,7 +236,7 @@ namespace GUI
 
                         if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
                         {
-                            current = current.Enclosing as IModelElement;
+                            current = current.Enclosing as Utils.IModelElement;
                         }
                         else
                         {
@@ -274,7 +292,7 @@ namespace GUI
                 else
                 {
                     List<Paragraph> relatedParagraphs = new List<Paragraph>();
-                    IModelElement current = Model;
+                    Utils.IModelElement current = Model;
                     while (current != null)
                     {
                         ReqRelated reqRelated = current as ReqRelated;
@@ -282,7 +300,7 @@ namespace GUI
                         {
                             reqRelated.findRelatedParagraphsRecursively(relatedParagraphs);
                         }
-                        current = current.Enclosing as IModelElement;
+                        current = current.Enclosing as Utils.IModelElement;
                     }
 
                     relatedParagraphs.Sort();
@@ -587,9 +605,13 @@ namespace GUI
         protected void Check(object sender, EventArgs e)
         {
             GUIUtils.MDIWindow.ClearMarks();
-            RuleCheckerVisitor visitor = new RuleCheckerVisitor(Model.Dictionary);
+            DataDictionary.ModelElement modelElement = Model as DataDictionary.ModelElement;
+            if (modelElement != null)
+            {
+                RuleCheckerVisitor visitor = new RuleCheckerVisitor(modelElement.Dictionary);
 
-            visitor.visit(Model, true);
+                visitor.visit(modelElement, true);
+            }
         }
 
         /// <summary>
@@ -663,6 +685,16 @@ namespace GUI
         }
 
         /// <summary>
+        /// Selects this element to display its history in the history view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ShowHistoryHandler(object sender, EventArgs args)
+        {
+            GUIUtils.MDIWindow.HistoryWindow.Model = Model;
+        }
+
+        /// <summary>
         /// Provides the menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -677,6 +709,8 @@ namespace GUI
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Refresh", new EventHandler(RefreshNodeHandler)));
             retVal.Add(new MenuItem("Rename", new EventHandler(LabelEditHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Show history", new EventHandler(ShowHistoryHandler)));
 
             return retVal;
         }
@@ -905,8 +939,8 @@ namespace GUI
     /// This item can be edited by a PropertyGrid
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class DataTreeNode<T> : BaseTreeNode
-        where T : DataDictionary.ModelElement
+    public abstract class ModelElementTreeNode<T> : BaseTreeNode
+        where T : Utils.IModelElement
     {
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
@@ -927,7 +961,7 @@ namespace GUI
                 set
                 {
                     item = value;
-                    Model = (IModelElement)value;
+                    Model = value;
                     UpdateActivation();
                 }
             }
@@ -935,8 +969,8 @@ namespace GUI
             /// <summary>
             /// The node that holds the item. 
             /// </summary>
-            private DataTreeNode<T> node;
-            internal DataTreeNode<T> Node
+            private ModelElementTreeNode<T> node;
+            internal ModelElementTreeNode<T> Node
             {
                 get { return node; }
                 set { node = value; }
@@ -982,11 +1016,30 @@ namespace GUI
         }
 
         /// <summary>
+        /// The element that is represented by this tree node
+        /// </summary>
+        public T Item { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="item">The element to be represented by this tree node</param>
+        /// <param name="name">The display name of the node</param>
+        /// <param name="isFolder">Indicates whether this node is a folder</param>
+        protected ModelElementTreeNode(T item, string name = null, bool isFolder = false)
+            : base(item, name, isFolder)
+        {
+            Item = item;
+            BuildSubNodes();
+            RefreshNode();
+        }
+
+        /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class NamedEditor : Editor
+        public abstract class NamedEditor : ModelElementTreeNode<T>.Editor
         {
             /// <summary>
             /// The item name
@@ -1002,8 +1055,9 @@ namespace GUI
                         bool unique = true;
                         foreach (Utils.IModelElement model in Item.EnclosingCollection)
                         {
-                            INamable namable = model as INamable;
-                            if (namable != Item && namable != null && namable.Name.CompareTo(value) == 0)
+                            Utils.INamable namable = model as Utils.INamable;
+                            Utils.INamable namableItem = Item as Utils.INamable;
+                            if (namable != namableItem && namable != null && namable.Name.CompareTo(value) == 0)
                             {
                                 unique = false;
                                 break;
@@ -1042,25 +1096,6 @@ namespace GUI
             protected NamedEditor()
             {
             }
-        }
-
-        /// <summary>
-        /// The element that is represented by this tree node
-        /// </summary>
-        public T Item { get; set; }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="item">The element to be represented by this tree node</param>
-        /// <param name="name">The display name of the node</param>
-        /// <param name="isFolder">Indicates whether this node is a folder</param>
-        protected DataTreeNode(T item, string name = null, bool isFolder = false)
-            : base(item, name, isFolder)
-        {
-            Item = item;
-            BuildSubNodes();
-            RefreshNode();
         }
 
         /// <summary>

@@ -52,6 +52,7 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(694, 537);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // splitContainer1
             // 
@@ -72,6 +73,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(694, 581);
             this.splitContainer1.SplitterDistance = 40;
             this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // filterTextBox
             // 
@@ -79,7 +81,6 @@
             this.filterTextBox.Name = "filterTextBox";
             this.filterTextBox.Size = new System.Drawing.Size(633, 20);
             this.filterTextBox.TabIndex = 1;
-            this.filterTextBox.Text = "EA_*";
             this.filterTextBox.TextChanged += new System.EventHandler(this.filterTextBox_TextChanged);
             // 
             // label1
@@ -90,6 +91,7 @@
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Filter";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // VersionSelector
             // 

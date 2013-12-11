@@ -21,6 +21,24 @@ namespace DataDictionary
     /// </summary>
     public class DefaultValueSetter : Generated.Visitor
     {
+        /// <summary>
+        /// Indicates that the Guid should be automatically set when creating a new object
+        /// </summary>
+        public bool AutomaticallyGenerateGuid { get; set; }
+
+        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+        {
+            ModelElement element = (ModelElement)obj;
+
+            if (AutomaticallyGenerateGuid)
+            {
+                // Side effect : creates the guid of the element
+                string guid = element.Guid;
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.ReqRelated obj, bool visitSubNodes)
         {
             obj.setImplemented(false);
@@ -209,8 +227,21 @@ namespace DataDictionary
     /// </summary>
     public class ObjectFactory : Generated.Factory
     {
+        /// <summary>
         /// The class used to set the default values
+        /// </summary>
         private DefaultValueSetter DefaultValueSetter = new DefaultValueSetter();
+
+        /// <summary>
+        /// Indicates that the Guid should be automatically set when creating a new object
+        /// </summary>
+        public bool AutomaticallyGenerateGuid
+        {
+            set
+            {
+                DefaultValueSetter.AutomaticallyGenerateGuid = value;
+            }
+        }
 
         public override Generated.Dictionary createDictionary()
         {

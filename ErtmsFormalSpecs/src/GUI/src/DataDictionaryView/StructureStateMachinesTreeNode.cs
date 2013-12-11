@@ -19,7 +19,7 @@ namespace GUI.DataDictionaryView
     using System.Collections.Generic;
     using System.Windows.Forms;
 
-    public class StructureStateMachinesTreeNode : DataTreeNode<DataDictionary.Types.Structure>
+    public class StructureStateMachinesTreeNode : ModelElementTreeNode<DataDictionary.Types.Structure>
     {
         private class ItemEditor : NamedEditor
         {

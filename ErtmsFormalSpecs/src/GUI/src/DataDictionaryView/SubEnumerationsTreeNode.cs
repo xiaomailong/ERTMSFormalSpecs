@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace GUI.DataDictionaryView
 {
-    public class SubEnumerationsTreeNode : DataTreeNode<DataDictionary.Types.Enum>
+    public class SubEnumerationsTreeNode : ModelElementTreeNode<DataDictionary.Types.Enum>
     {
         private class ItemEditor : NamedEditor
         {

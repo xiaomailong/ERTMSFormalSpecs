@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary;
 namespace GUI
 {
     public class ExplainTextBox : EditorTextBox
@@ -30,7 +31,7 @@ namespace GUI
         /// Sets the model for this explain text box
         /// </summary>
         /// <param name="model"></param>
-        public void SetModel(DataDictionary.ModelElement model)
+        public void SetModel(Utils.IModelElement model)
         {
             Instance = model;
             RefreshData();

@@ -19,44 +19,44 @@ namespace DataDictionary.Compare
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Collections;
 
     /// <summary>
     /// Stores a difference between two versions of a dictionary
     /// </summary>
-    public class Diff
+    public class Diff : HistoricalData.Change
     {
-        public enum ActionEnum { Add, Remove, Change };
-
-        /// <summary>
-        /// The action performed during the change
-        /// </summary>
-        public ActionEnum Action { get; private set; }
-
-        /// <summary>
-        /// The message associated to this change
-        /// </summary>
-        public string Message { get; private set; }
-
         /// <summary>
         /// The element affected by that change
         /// </summary>
-        public ModelElement Model { get; private set; }
-
-        /// <summary>
-        /// The field that is affected, if any
-        /// </summary>
-        public string Field { get; private set; }
+        public ModelElement Model
+        {
+            get
+            {
+                return GuidCache.INSTANCE.GetModel(Guid);
+            }
+            private set
+            {
+                Guid = value.Guid;
+            }
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="action"></param>
-        public Diff(ModelElement model, ActionEnum action, string field = "", string message = "")
+        public Diff(ModelElement model, HistoricalData.Generated.acceptor.ChangeOperationEnum action, string field = "", string before = "", string after = "") :
+            base(model.Guid, action, field, before, after)
         {
             Model = model;
-            Action = action;
-            Field = field;
-            Message = message;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Diff()
+            : base()
+        {
         }
 
         /// <summary>
@@ -66,33 +66,29 @@ namespace DataDictionary.Compare
         {
             switch (Action)
             {
-                case ActionEnum.Add:
+                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd:
                     Model.AddInfo("ADDED");
                     break;
 
-                case ActionEnum.Remove:
-                    Model.AddInfo("REMOVED " + Field + " : " + Message);
+                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove:
+                    Model.AddInfo("REMOVED " + Field + ", previously was : " + Before);
                     break;
-                case ActionEnum.Change:
-                    Model.AddInfo("CHANGED " + Field + " : " + Message);
+
+                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange:
+                    Model.AddInfo("CHANGED " + Field + " from : " + Before + " to : " + After);
                     break;
             }
         }
     }
 
-    public class VersionDiff
+    public class VersionDiff : HistoricalData.Commit
     {
-        /// <summary>
-        /// The differences
-        /// </summary>
-        public List<Diff> Diffs { get; private set; }
-
         /// <summary>
         /// Constructor
         /// </summary>
         public VersionDiff()
+            : base()
         {
-            Diffs = new List<Diff>();
         }
 
         /// <summary>
@@ -101,7 +97,7 @@ namespace DataDictionary.Compare
         public void markVersionChanges(Dictionary dictionary)
         {
             dictionary.ClearMessages();
-            foreach (Diff diff in Diffs)
+            foreach (Diff diff in Changes)
             {
                 diff.markModel();
             }
