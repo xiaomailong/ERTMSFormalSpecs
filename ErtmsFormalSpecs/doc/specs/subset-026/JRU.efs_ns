@@ -120,6 +120,7 @@ AND
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Comment>Will contain the TrainData information in the JRU</Comment>
 <SubRules></SubRules>
@@ -397,21 +398,25 @@ AND
 <Expression>Messages.M_MODE.Trip</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.V_TRAIN"
+ Type="MessageTypes.Speed"
  Name="ToJruVtrain"
 >
-<Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
+<ReqRef
+ Id="3c0233a7-b01e-40fb-a5f0-652063fdf644"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Comment>this function will be used in order to translate from a Default.BaseTypes.Speed to the V_TRAIN type of the JRU.HEADER</Comment>
 <Cases>
 <Case
- Name="StandStill"
->
-<PreConditions>
-<PreCondition>Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
-<Expression>Messages.JRU.V_TRAIN.standstill</Expression>
-</Case><Case
  Name="NotStandStill"
 >
+<PreConditions>
+<PreCondition>Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
 <Expression>Default.MessageTypes.UnResolveSpeed( Odometry.EstimatedSpeed, 5.0)</Expression>
+</Case><Case
+ Name="StandStill"
+>
+<Expression>1023</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.SYSTEM_VERSION"
@@ -624,7 +629,18 @@ HEADER =&gt; CreateHeader(2),
  NC_CDTRAIN =&gt;  Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,
  M_LOADINGGAUGE =&gt;  Kernel.TrainData.TrainData.Value.LoadingGauge,
  N_AXLE =&gt;  Kernel.TrainData.TrainData.Value.AxleNumber,
- N_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory
+ N_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory, 
+L_TRAIN =&gt; 400,
+ T_TRACTION_CUT_OFF=&gt; 401,
+ M_BRAKE_POSITION =&gt; ToJruMbrakePosition( Kernel.TrainData.TrainDataValues.BrakePosition ),
+ M_NOM_ROT_MASS =&gt; ToJruNomRotMass( Kernel.TrainData.TrainData.Value.M_rotating_nom ),
+ M_REGENERATIVEBRAKE =&gt; ToJruMRegenerativeBrake( Kernel.TrainData.TrainDataValues.RegenerativeBrake.InterfaceStatus ),
+ M_EDDYCURRENTBRAKE =&gt; ToJruMEddyCurrentBrake(Kernel.TrainData.TrainDataValues.EddyCurrentBrake.InterfaceStatus),
+ M_MAGNETICSHOEBRAKE =&gt; ToJruMMagneticShoeBrake(Kernel.TrainData.TrainDataValues.MagneticShoeBrake.InterfaceStatus ),
+ M_ELECTROPNEUMATICBRAKE =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both,
+ Q_TRACTIONCUTOFFINTERFACE =&gt; Kernel.TrainData.TrainDataValues.TractionCutOffInterfaceIsImplemented,
+ Q_SERVICEBRAKEINTERFACE =&gt; Kernel.TrainData.TrainDataValues.SBCommandIsImplemented,
+ Q_SERVICEBRAKEFEEDBACK =&gt; Kernel.TrainData.TrainDataValues.SBFeedbackIsImplemented
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -645,7 +661,7 @@ HEADER =&gt; CreateHeader(2),
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Messages.JRU.V_MAXTRAIN"
+ Type="MessageTypes.Speed"
  Name="ToJruVMaxTrain"
 >
 <Parameters>
@@ -659,6 +675,160 @@ HEADER =&gt; CreateHeader(2),
  Name="NotStandStill"
 >
 <Expression>Default.MessageTypes.UnResolveSpeed( MaxTrainSpeed, 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_BRAKE_POSITION"
+ Name="ToJruMbrakePosition"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.BrakingParameters.BrakePositions"
+ Name="BrakePositionInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Freight_train_in_G"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG == BrakePositionInKernel</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_BRAKE_POSITION.Freight_train_in_G</Expression>
+</Case><Case
+ Name="Freight_train_in_P"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_BRAKE_POSITION.Freight_train_in_P</Expression>
+</Case><Case
+ Name="Passenger_train_in_P"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP == BrakePositionInKernel</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_BRAKE_POSITION.Passenger_train_in_P</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_NOM_ROT_MASS"
+ Name="ToJruNomRotMass"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.TrainData.Value.M_rotating_nom"
+ Name="M_nom_rot_mass_in_kernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="General"
+>
+<Expression>DoubleToInteger(M_nom_rot_mass_in_kernel)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_REGENERATIVEBRAKE"
+ Name="ToJruMRegenerativeBrake"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
+ Name="MRegenerativeBrakeInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Both"
+>
+<PreConditions>
+<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
+</Case><Case
+ Name="EB"
+>
+<PreConditions>
+<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
+</Case><Case
+ Name="NoInterface"
+>
+<PreConditions>
+<PreCondition>MRegenerativeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_EDDYCURRENTBRAKE"
+ Name="ToJruMEddyCurrentBrake"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
+ Name="MEddyCurrentBrakeInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Both"
+>
+<PreConditions>
+<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
+</Case><Case
+ Name="EB"
+>
+<PreConditions>
+<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
+</Case><Case
+ Name="NoInterface"
+>
+<PreConditions>
+<PreCondition>MEddyCurrentBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_MAGNETICSHOEBRAKE"
+ Name="ToJruMMagneticShoeBrake"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
+ Name="MMagneticShoeBrakeInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Both"
+>
+<PreConditions>
+<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
+</Case><Case
+ Name="EB"
+>
+<PreConditions>
+<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
+</Case><Case
+ Name="NoInterface"
+>
+<PreConditions>
+<PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
