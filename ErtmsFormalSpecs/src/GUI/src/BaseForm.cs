@@ -239,6 +239,24 @@ namespace GUI
             this.ResumeLayout(false);
 
         }
+
+
+
+        protected static void ResizeDescriptionArea(PropertyGrid grid, int height)
+        {
+            if (grid == null) throw new ArgumentNullException("grid");
+
+            foreach (Control control in grid.Controls)
+                if (control.GetType().Name == "DocComment")
+                {
+                    System.Reflection.FieldInfo fieldInfo = control.GetType().BaseType.GetField("userSized",
+                      System.Reflection.BindingFlags.Instance |
+                      System.Reflection.BindingFlags.NonPublic);
+                    fieldInfo.SetValue(control, true);
+                    control.Height = height;
+                    return;
+                }
+        }
     }
 
     public class FormsUtils
