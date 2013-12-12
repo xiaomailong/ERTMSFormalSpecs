@@ -632,15 +632,15 @@ HEADER =&gt; CreateHeader(2),
  N_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory, 
 L_TRAIN =&gt; 400,
  T_TRACTION_CUT_OFF=&gt; 401,
- M_BRAKE_POSITION =&gt; ToJruMbrakePosition( Kernel.TrainData.TrainDataValues.BrakePosition ),
+ M_BRAKE_POSITION =&gt; JRU.ToJruMbrakePosition(Kernel.TrainData.TrainData.Value.BrakePosition),
  M_NOM_ROT_MASS =&gt; ToJruNomRotMass( Kernel.TrainData.TrainData.Value.M_rotating_nom ),
- M_REGENERATIVEBRAKE =&gt; ToJruMRegenerativeBrake( Kernel.TrainData.TrainDataValues.RegenerativeBrake.InterfaceStatus ),
- M_EDDYCURRENTBRAKE =&gt; ToJruMEddyCurrentBrake(Kernel.TrainData.TrainDataValues.EddyCurrentBrake.InterfaceStatus),
- M_MAGNETICSHOEBRAKE =&gt; ToJruMMagneticShoeBrake(Kernel.TrainData.TrainDataValues.MagneticShoeBrake.InterfaceStatus ),
- M_ELECTROPNEUMATICBRAKE =&gt; Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both,
- Q_TRACTIONCUTOFFINTERFACE =&gt; Kernel.TrainData.TrainDataValues.TractionCutOffInterfaceIsImplemented,
- Q_SERVICEBRAKEINTERFACE =&gt; Kernel.TrainData.TrainDataValues.SBCommandIsImplemented,
- Q_SERVICEBRAKEFEEDBACK =&gt; Kernel.TrainData.TrainDataValues.SBFeedbackIsImplemented
+ M_REGENERATIVEBRAKE =&gt; ToJruMRegenerativeBrake( Kernel.TrainData.TrainData.Value.RegenerativeBrake.InterfaceStatus ),
+ M_EDDYCURRENTBRAKE =&gt; ToJruMEddyCurrentBrake(Kernel.TrainData.TrainData.Value.EddyCurrentBrake.InterfaceStatus),
+ M_MAGNETICSHOEBRAKE =&gt; ToJruMMagneticShoeBrake(Kernel.TrainData.TrainData.Value.MagneticShoeBrake.InterfaceStatus ),
+ M_ELECTROPNEUMATICBRAKE =&gt; ToJruEpBrake( Kernel.TrainData.TrainData.Value.EpBrake.InterfaceStatus  ),
+ Q_TRACTIONCUTOFFINTERFACE =&gt; ToJruQ_TractionCutOffFunction(Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented),
+ Q_SERVICEBRAKEINTERFACE =&gt;ToJruQ_ServiceBrakeInterface( Kernel.TrainData.TrainData.Value.SBCommandIsImplemented ),
+ Q_SERVICEBRAKEFEEDBACK =&gt; ToJruQ_ServiceBrakeFeedback(Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented)
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -691,7 +691,7 @@ L_TRAIN =&gt; 400,
  Name="Freight_train_in_G"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG == BrakePositionInKernel</PreCondition></PreConditions>
+<PreCondition>BrakePositionInKernel == Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_POSITION.Freight_train_in_G</Expression>
 </Case><Case
  Name="Freight_train_in_P"
@@ -712,7 +712,7 @@ L_TRAIN =&gt; 400,
 >
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.TrainData.Value.M_rotating_nom"
+ Type="Default.Percentage"
  Name="M_nom_rot_mass_in_kernel"
 >
 </Parameter></Parameters>
@@ -720,7 +720,13 @@ L_TRAIN =&gt; 400,
 <Case
  Name="General"
 >
+<PreConditions>
+<PreCondition>M_nom_rot_mass_in_kernel != Default.Percentage.NA</PreCondition></PreConditions>
 <Expression>DoubleToInteger(M_nom_rot_mass_in_kernel)</Expression>
+</Case><Case
+ Name="NA"
+>
+<Expression>16</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_REGENERATIVEBRAKE"
@@ -829,6 +835,114 @@ L_TRAIN =&gt; 400,
 <PreConditions>
 <PreCondition>MMagneticShoeBrakeInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.M_REGENERATIVEBRAKE"
+ Name="ToJruEpBrake"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus"
+ Name="MEpInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Both"
+>
+<PreConditions>
+<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_EB_and_SB</Expression>
+</Case><Case
+ Name="EB"
+>
+<PreConditions>
+<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.EB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_EB</Expression>
+</Case><Case
+ Name="SB"
+>
+<PreConditions>
+<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.SB</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.Interface_existis_and_affects_only_SB</Expression>
+</Case><Case
+ Name="NoInterface"
+>
+<PreConditions>
+<PreCondition>MEpInKernel == Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.NoInterface</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_REGENERATIVEBRAKE.No_interface</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_TRACTIONCUTOFFINTERFACE"
+ Name="ToJruQ_TractionCutOffFunction"
+>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="TractionCutOffInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="IsImplemented"
+>
+<PreConditions>
+<PreCondition>TractionCutOffInKernel == True</PreCondition></PreConditions>
+<Expression>1</Expression>
+</Case><Case
+ Name="NotImplemented"
+>
+<PreConditions>
+<PreCondition>TractionCutOffInKernel == False</PreCondition></PreConditions>
+<Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_SERVICEBRAKEINTERFACE"
+ Name="ToJruQ_ServiceBrakeInterface"
+>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="ServiceBrakeInterfaceInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="IsImplemented"
+>
+<PreConditions>
+<PreCondition>ServiceBrakeInterfaceInKernel == True</PreCondition></PreConditions>
+<Expression>1</Expression>
+</Case><Case
+ Name="NotImplemented"
+>
+<PreConditions>
+<PreCondition>ServiceBrakeInterfaceInKernel == False</PreCondition></PreConditions>
+<Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_SERVICEBRAKEFEEDBACK"
+ Name="ToJruQ_ServiceBrakeFeedback"
+>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="ServiceBrakeFeedBackInKernel"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="IsImplemented"
+>
+<PreConditions>
+<PreCondition>ServiceBrakeFeedBackInKernel == True</PreCondition></PreConditions>
+<Expression>1</Expression>
+</Case><Case
+ Name="NotImplemented"
+>
+<PreConditions>
+<PreCondition>ServiceBrakeFeedBackInKernel == False</PreCondition></PreConditions>
+<Expression>0</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

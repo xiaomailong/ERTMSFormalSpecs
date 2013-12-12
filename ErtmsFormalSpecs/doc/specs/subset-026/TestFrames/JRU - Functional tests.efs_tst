@@ -2062,7 +2062,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
