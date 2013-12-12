@@ -9,6 +9,7 @@ using DataDictionary.Interpreter;
 using Utils;
 using DataDictionary.Types;
 using DataDictionary.Interpreter.ListOperators;
+using DataDictionary.Interpreter.Filter;
 namespace GUI
 {
     public partial class EditorTextBox : UserControl
@@ -178,7 +179,7 @@ namespace GUI
                 if (start < end)
                 {
                     string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                    Expression expression = EFSSystem.Parser.Expression(Instance, identifier, Filter.AllMatches);
+                    Expression expression = EFSSystem.Parser.Expression(Instance, identifier, AllMatches.INSTANCE);
                     if (expression != null)
                     {
                         if (expression.Ref != null)
@@ -188,7 +189,7 @@ namespace GUI
                         else
                         {
                             bool last = end == EditionTextBox.Text.Length || EditionTextBox.Text[end] != '.';
-                            ReturnValue returnValue = expression.getReferences(Instance, Filter.AllMatches, last);
+                            ReturnValue returnValue = expression.getReferences(Instance, AllMatches.INSTANCE, last);
                             foreach (ReturnValueElement element in returnValue.Values)
                             {
                                 retVal.Add(element.Value);
@@ -646,8 +647,8 @@ namespace GUI
 
 
                         // Create a fake foreach expression to hold the list expression and the current expression
-                        Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), Filter.IsVariableOrValue, false);
-                        Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches, false);
+                        Expression listExpression = EFSSystem.Parser.Expression(Instance, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
+                        Expression currentExpression = EFSSystem.Parser.Expression(Instance, enclosingName, AllMatches.INSTANCE, false);
                         Expression foreachExpression = new ForAllExpression(Instance, Instance, listExpression, currentExpression);
                         foreachExpression.SemanticAnalysis();
                         if (currentExpression.Ref != null)
@@ -658,7 +659,7 @@ namespace GUI
                 }
                 else
                 {
-                    Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, Filter.AllMatches);
+                    Expression expression = EFSSystem.Parser.Expression(Instance, enclosingName, AllMatches.INSTANCE);
 
                     if (expression != null)
                     {
@@ -668,7 +669,7 @@ namespace GUI
                         }
                         else
                         {
-                            foreach (ReturnValueElement element in expression.getReferences(null, Filter.AllMatches, false).Values)
+                            foreach (ReturnValueElement element in expression.getReferences(null, AllMatches.INSTANCE, false).Values)
                             {
                                 retVal.Add(element.Value);
                             }
@@ -817,7 +818,7 @@ namespace GUI
                             break;
 
                         case '{':
-                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsStructure);
+                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), IsStructure.INSTANCE);
                             if (structureTypeExpression != null)
                             {
                                 DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
@@ -832,7 +833,7 @@ namespace GUI
                             break;
 
                         case '(':
-                            Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), Filter.IsCallable);
+                            Expression callableExpression = EFSSystem.Parser.Expression(Instance, CurrentPrefix().Trim(), IsCallable.INSTANCE);
                             if (callableExpression != null)
                             {
                                 DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;

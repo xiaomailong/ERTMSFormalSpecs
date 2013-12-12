@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using DataDictionary.Functions;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -213,20 +214,20 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
                 // Called
-                Called.SemanticAnalysis(instance, Filter.IsCallable);
+                Called.SemanticAnalysis(instance, IsCallable.INSTANCE);
                 StaticUsage.AddUsages(Called.StaticUsage, Usage.ModeEnum.Call);
 
                 // Actual parameters
                 foreach (Expression actual in AllParameters)
                 {
-                    actual.SemanticAnalysis(instance, Filter.IsActualParameter);
+                    actual.SemanticAnalysis(instance, IsActualParameter.INSTANCE);
                     StaticUsage.AddUsages(actual.StaticUsage, Usage.ModeEnum.Read);
                 }
 
@@ -523,7 +524,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             foreach (Expression expression in NamedActualParameters.Values)
             {

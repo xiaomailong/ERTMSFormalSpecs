@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using Utils;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -76,7 +77,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -84,10 +85,34 @@ namespace DataDictionary.Interpreter
             {
                 Ref = null;
 
-                ReturnValue tmp = Arguments[0].getReferences(instance, Filter.AllMatches, false);
+                ReturnValue tmp = Arguments[0].getReferences(instance, AllMatches.INSTANCE, false);
                 if (tmp.IsEmpty)
                 {
-                    tmp = Arguments[0].getReferenceTypes(instance, Filter.AllMatches, false);
+                    tmp = Arguments[0].getReferenceTypes(instance, AllMatches.INSTANCE, false);
+                }
+
+                // When variables & parameters are found, only consider the first one
+                // which is the one that is closer in the tree
+                {
+                    ReturnValue tmp2 = tmp;
+                    tmp = new ReturnValue();
+
+                    ReturnValueElement variable = null;
+                    foreach (ReturnValueElement elem in tmp2.Values)
+                    {
+                        if (elem.Value is Parameter || elem.Value is Variables.IVariable)
+                        {
+                            if (variable == null)
+                            {
+                                variable = elem;
+                                tmp.Values.Add(elem);
+                            }
+                        }
+                        else
+                        {
+                            tmp.Values.Add(elem);
+                        }
+                    }
                 }
 
                 if (!tmp.IsEmpty)
@@ -99,7 +124,8 @@ namespace DataDictionary.Interpreter
 
                         foreach (ReturnValueElement elem in tmp2.Values)
                         {
-                            tmp.Merge(elem, Arguments[i].getReferences(elem.Value, Filter.AllMatches, i == (Arguments.Count - 1)));
+                            bool last = i == (Arguments.Count - 1);
+                            tmp.Merge(elem, Arguments[i].getReferences(elem.Value, AllMatches.INSTANCE, last));
                         }
 
                         if (tmp.IsEmpty)
@@ -290,9 +316,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
-            if (filter(Ref))
+            if (filter.AcceptableChoice(Ref))
             {
                 retVal.Add(Ref);
             }

@@ -16,6 +16,7 @@
 namespace DataDictionary.Interpreter
 {
     using System.Collections.Generic;
+    using DataDictionary.Interpreter.Filter;
 
     public class Term : InterpreterTreeNode, IReference
     {
@@ -59,7 +60,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">the expectation on the element found</param>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public ReturnValue getReferences(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public ReturnValue getReferences(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = null;
 
@@ -82,7 +83,7 @@ namespace DataDictionary.Interpreter
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public ReturnValue getReferenceTypes(Utils.INamable instance, Filter.AcceptableChoice expectation, bool last)
+        public ReturnValue getReferenceTypes(Utils.INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = null;
 
@@ -94,7 +95,8 @@ namespace DataDictionary.Interpreter
                 {
                     if (element.Value is Types.Type)
                     {
-                        retVal.Add(element.Value);
+                        bool asType = true;
+                        retVal.Add(element.Value, null, asType);
                     }
                 }
             }
@@ -113,7 +115,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public void SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation, bool lastElement)
+        public void SemanticAnalysis(Utils.INamable instance, BaseFilter expectation, bool lastElement)
         {
             if (Designator != null)
             {
@@ -234,7 +236,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             if (Designator != null)
             {

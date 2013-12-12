@@ -15,6 +15,7 @@ using System;
 // --
 // ------------------------------------------------------------------------------
 using Utils;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter.ListOperators
 {
@@ -61,13 +62,13 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
-                InitialValue.SemanticAnalysis(instance, Filter.AllMatches);
+                InitialValue.SemanticAnalysis(instance, AllMatches.INSTANCE);
                 StaticUsage.AddUsages(InitialValue.StaticUsage, Usage.ModeEnum.Read);
 
                 AccumulatorVariable.Type = InitialValue.GetExpressionType();

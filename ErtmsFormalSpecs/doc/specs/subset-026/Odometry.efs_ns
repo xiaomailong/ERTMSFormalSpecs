@@ -357,8 +357,8 @@ The confidence level (K) is defined as a level of probability that the true posi
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action>Odometry.OdometerAccuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action>Odometry.OdometerAccuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action>Odometry.OdometerAccuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action>Odometry.OdometerAccuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
+<Action>Odometry.CurrentTime &lt;- Message.T_ODO</Action><Action>Odometry.NominalDistance &lt;- Message.D_NOM</Action><Action>Odometry.Accuracy.D_ura &lt;- Default.BaseTypes.DistanceToLength(Message.D_MAX - Message.D_NOM)</Action><Action>Odometry.Accuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action>Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+-  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration ( Odometry.CurrentTime - Message.T_ODO )</Action><Action>Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action>Odometry.Accuracy.V_ura &lt;- Message.V_MAX - Message.V_NOM</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
