@@ -640,7 +640,9 @@ L_TRAIN =&gt; 400,
  M_ELECTROPNEUMATICBRAKE =&gt; ToJruEpBrake( Kernel.TrainData.TrainData.Value.EpBrake.InterfaceStatus  ),
  Q_TRACTIONCUTOFFINTERFACE =&gt; ToJruQ_TractionCutOffFunction(Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented),
  Q_SERVICEBRAKEINTERFACE =&gt;ToJruQ_ServiceBrakeInterface( Kernel.TrainData.TrainData.Value.SBCommandIsImplemented ),
- Q_SERVICEBRAKEFEEDBACK =&gt; ToJruQ_ServiceBrakeFeedback(Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented)
+ Q_SERVICEBRAKEFEEDBACK =&gt; ToJruQ_ServiceBrakeFeedback(Kernel.TrainData.TrainData.Value.SBFeedbackIsImplemented),
+Q_BRAKE_CAPT_TYPE =&gt; ToJruQ_BrakeCaptType(),
+M_BRAKE_PERCENTAGE =&gt; 0
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -943,6 +945,24 @@ L_TRAIN =&gt; 400,
 <PreConditions>
 <PreCondition>ServiceBrakeFeedBackInKernel == False</PreCondition></PreConditions>
 <Expression>0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_BRAKE_CAPT_TYPE"
+ Name="ToJruQ_BrakeCaptType"
+>
+<Cases>
+<Case
+ Name="Lambda"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_BRAKE_CAPT_TYPE.Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_modil_is_applicable</Expression>
+</Case><Case
+ Name="Gamma"
+>
+<PreConditions>
+<PreCondition>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_BRAKE_CAPT_TYPE.gamma_type__all_other_captures</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
