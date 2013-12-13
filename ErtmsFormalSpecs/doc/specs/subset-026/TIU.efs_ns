@@ -24,5 +24,29 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="PassiveShuntingPermitted"
+>
+<ReqRef
+ Id="b630705b-2851-4efe-b023-a26113425740"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>&amp;</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Incoming"
+ Implemented="TRUE"
+ Name="NonLeadingPermitted"
+>
+<ReqRef
+ Id="d0507ada-5b0f-4754-b198-46988a339561"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Indicates if the &quot;non leading&quot; input signal is received.</Comment>
 </Variable></Variables>
 </NameSpace>
