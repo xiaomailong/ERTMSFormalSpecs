@@ -7,6 +7,16 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Ranges>
+<Range
+ MinValue="0"
+ MaxValue="6"
+ Precision="DoublePrecision"
+ Default="0.0"
+ Implemented="TRUE"
+ Name="Pressure"
+>
+</Range></Ranges>
 <Variables>
 <Variable
  Type="Boolean"
@@ -76,5 +86,12 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
+</Variable><Variable
+ Type="Pressure"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="BrakePressure"
+>
+<Comment>Indicates the brake pressure used in the service brake feedback model</Comment>
 </Variable></Variables>
 </NameSpace>
