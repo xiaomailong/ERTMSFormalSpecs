@@ -146,7 +146,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 <Case
  Name="Value"
 >
-<Expression>SleepingSignalIsReceived
+<Expression>TIU.SleepingRequested
   AND
 Odometry.TrainIsAtStandstill()
   AND
@@ -1235,7 +1235,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</Expression>
 <Case
  Name="Value"
 >
-<Expression>NOT SleepingSignalIsReceived
+<Expression>NOT TIU.SleepingRequested
   AND
 Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
