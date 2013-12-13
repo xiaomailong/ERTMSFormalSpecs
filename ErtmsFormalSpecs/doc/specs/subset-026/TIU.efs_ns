@@ -60,5 +60,21 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Indicates if the ERTMS/ETCS on-board equipment is isolated.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="Boolean.False"
+ VariableMode="Outgoing"
+ Implemented="TRUE"
+ Name="EmergencyBrakeCommanded"
+>
+<ReqRef
+ Id="2b2cca84-5637-4f57-be10-029b36aa0f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><ReqRef
+ Id="458c52b6-b128-424e-b29e-05cf4a057a91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+>
+</ReqRef><Comment>Indicates the status of emergency brake of the train.</Comment>
 </Variable></Variables>
 </NameSpace>
