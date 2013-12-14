@@ -58,7 +58,7 @@
 \usepackage{listings}
 \ifdraft{\usepackage[firstpage]{draftwatermark}}{}
 \usepackage{scrpage2}
-
+\usepackage[titletoc]{appendix} %for the word "Appendix" in the TOC
 
 %%
 %% BEGIN title + general-stuff
@@ -108,9 +108,10 @@ urlcolor = black
 \setcounter{tocdepth}{3}
 \setlength{\parindent}{0em}
 
-\setenumerate[1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
-\setenumerate[2]{label*=\arabic*.}
-\setenumerate[3]{label*=\arabic*.}
+\newlist{rules}{enumerate}{3}
+\setlist[rules, 1]{leftmargin=*, label=\thecurrentlevel.\arabic*.}
+\setlist[rules, 2]{label*=\arabic*.}
+\setlist[rules, 3]{label*=\arabic*.}
 \let\emph\textsl
 
 
@@ -236,6 +237,7 @@ breaklines=true}
 \begin{versionhistory}
 \vhEntry{0.1}{31/10/2013}{MD}{initial draft}
 \vhEntry{0.2}{12/11/2013}{MD}{add "How to use this file", "Comments", "Glossary", "Bibliography"}
+\vhEntry{0.3}{14/12/2013}{MD}{add "Committer checklist"}
 % @ALL:
 % add your revision information here
 
@@ -255,6 +257,8 @@ breaklines=true}
 
 This document lists rules to be followed when coding in the \gls{dsl} of the \gls{efs} tool. It is targeted at both model developers and test-case designers. \ldots\\
 It will not cover the technical implementation of the underlying \gls{dsl} or give general instructions on how to use the \gls{efs}-tool. For this refer to the Technical design \cite{efstechdesign} and the user guide \cite{efsuserguide}, respectively.\\
+
+In the appendix \ref{appendix:committer_checklist} a short checklist may be found which describes how to correctly prepare a commit for the \href{https://github.com/openETCS/ERTMSFormalSpecs/}{ERTMSFormalSpecs repository on GitHub}.\\
 
 \MDfatal{TODO}
 
@@ -280,85 +284,113 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \chapter{Domain specific language}
 
 \section{General}
-\begin{enumerate}
+\begin{rules}
 \item \MDfatal{TODO} \code{EMPTY} vs. \code{NOT Available()} vs. \code{[]} \ruleauthor{MD}{31/10/2013}
 \item \code{SUM List USING X} shall be preferred over \code{REDUCE List USING X + RESULT}. \ruleauthor{MD}{31/10/2013}
 \item \code{THERE_IS_IN List | Condition} shall be preferred over \code{MAP List | Condition USING X}. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\end{rules}
 
 
 \chapter{Model}
 
 \section{General}
 
-\begin{enumerate}
+\begin{rules}
 \item \label{rule:model_general_design_choices} All decisions made by the modeler which are not purely cosmetic (i.e. using a Function instead of a Procedure), but have an influence on the actual behavior of the model shall be documented in the section \literally{Design Choices} of the Specification View and linked to the respective code. \ruleauthor{MD}{12/11/2013}
 
-\end{enumerate}
+\end{rules}
 
 
 \section{Functions}
 \subsection{Cases}
 
 \subsubsection{General}
-\begin{enumerate}
+\begin{rules}
 \item \label{rule:functions_cases_general_trivialexpressions}\MDwarning{TBD} Cases shall only contain trivial expressions (i.e. all logic shall be defined inside pre-conditions). \ruleauthor{MD}{31/10/2013}
 \item \MDwarning{TBD} Complex expressions and pre-conditions shall not be used together. \MDnote{this rule is mutually exclusive to \ref{rule:functions_cases_general_trivialexpressions}} \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\end{rules}
 
 \subsubsection{Pre-conditions}
-\begin{enumerate}
+\begin{rules}
 \item Cases with no pre-condition assigned shall always come as the very last case. \ruleauthor{MD}{31/10/2013}
 \item Cases with no pre-condition assigned shall always be named \literally{Otherwise}. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\end{rules}
 
 \chapter{Tests}
 
 \section{Structure}
-\begin{enumerate}
+\begin{rules}
 \item \MDwarning{TBD}\MDexplain{Unfortunately this is not possible in all cases. Require justification if rule cannot be obeyed?} A Sub-step shall either contain Actions or Expectations but not both. \ruleauthor{MD}{12/11/2013}
 \item The first Sub-step of the first step of a test frame shall only contain the expression \code{Kernel.InitializeTestEnvironment()}. \ruleauthor{MD}{31/10/2013}
-\begin{enumerate}
+\begin{rules}
 \item There shall be no Expectation associated with this Sub-step. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
-\end{enumerate}
+\end{rules}
+\end{rules}
 
 
 \section{Naming conventions}
-\begin{enumerate}
+\label{rules:tests_naming}
+\begin{rules}
 \item Individual test steps shall be named \literally{Step n - explanation}.\\ \literally{Explanation} is a user-defined text to summarize the actions and expectations of the current step. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\end{rules}
 
 
 \chapter{Comments}
 
 \section{General}
-\begin{enumerate}
+\begin{rules}
 \item Comments shall be used wherever the inner workings of a code are not directly obvious from the documentation provided by the linked requirements or design choices. \ruleauthor{MD}{12/11/2013}
 \item Comments shall always be assigned to the narrowest possible scope to which they apply (i.e. to an individual test-step rather than to the entire test). \ruleauthor{MD}{12/11/2013}
 \item Comments shall not be used to justify Design Choices. See rule \ref{rule:model_general_design_choices} instead. \ruleauthor{MD}{12/11/2013}
 \item Comments shall always end with \literally{\#$<$github_username$>$, yy/mm/dd}. Where \literally{$<$github_username$>$} is to be replaced with the actual username of the comment-author and \literally{yy/mm/dd} with the current date. \ruleauthor{MD}{12/11/2013}
-\end{enumerate}
+\end{rules}
 
 
 \chapter{Git}
 \section{General}
-\begin{enumerate}
-\item Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\begin{rules}
+\item \label{rule:pullrequest} Own edits shall always be committed into a personal fork of the \gls{efs} repository and then transferred by issuing a pull-request. \ruleauthor{MD}{31/10/2013}
+\end{rules}
 
 \section{Commits}
 \subsection{General}
-\begin{enumerate}
-\item numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
-\end{enumerate}
+\begin{rules}
+\item \label{rule:smallcommits} numerous small commits dealing with a single issue are preferable over few huge commits possibly dealing with many different issues. \ruleauthor{MD}{31/10/2013}
+\end{rules}
 
 \subsection{commit description texts}
-\begin{enumerate}
+\label{rules:committexts}
+\begin{rules}
 \item The text shall not contain line-breaks (i.e. consist of a single line only). \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the modeling part of the tool shall begin with \literally{EA_MODEL} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
 \item Commits dealing with the testing part of the tool shall begin with \literally{EA_TEST} followed by a reference to the sections of the subset the commit is related to and a descriptive text. \ruleauthor{MD}{31/10/2013}
+\end{rules}
+
+\begin{appendices}
+
+\chapter{Committer checklist}
+\label{appendix:committer_checklist}
+This is a short checklist that everyone willing to push code onto the ERTMSFormalSpec repository should go through before every commit.
+
+\begin{enumerate}
+
+\item \textbf{make small commits}\\
+Each commit should only change one logical thing (i.e. one test-case at a time). See \ref{rule:smallcommits} \ruleauthor{MD}{14/12/2013}
+\item \textbf{use meaningful titles for new nodes}\\
+For tests see \ref{rules:tests_naming}. For the model: be creative! \ruleauthor{MD}{14/12/2013}
+\item \textbf{link to requirements}\\
+Always link your tests and model-code with the respective requirements. \ruleauthor{MD}{14/12/2013}
+\item \textbf{set implementation-flag}\\
+If you implemented any requirements make sure to mark their respective nodes in the specification view with \literally{Implementation Status: Implemented}.\\ \literally{Reviewed: True} should also has to be set if you verified the requirement text matches with that of the original word document of subset-026 \cite{subset26}. \ruleauthor{MD}{14/12/2013}
+\item \textbf{check model}\\
+Please hit \literally{CTRL+R} in \gls{efs} and see if there are any errors introduced by your work. If so, fix them. \ruleauthor{MD}{14/12/2013}
+\item \textbf{commit to your own fork}\\
+Commit your changes to your own fork of the ERTMSFormalSpec repository and then create a pull request. See \ref{rule:pullrequest} \ruleauthor{MD}{14/12/2013}
+\item \textbf{use meaningful commit messages}\\
+It is merely impossible to change them afterwards so please obey \ref{rules:committexts}. \ruleauthor{MD}{14/12/2013}	
 \end{enumerate}
+
+\end{appendices}
 
 
 
@@ -379,5 +411,6 @@ For a documentation of the keywords and the pre-defined functions see \cite{efst
 \listoffixmes\newpage
 \listofpdfcomments[heading=List of PDF comments]
 }
+
 
 \end{document}
