@@ -667,7 +667,7 @@ Messages.EUROBALISE.SubStructure1
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
+>TIU.EmergencyBrakeCommanded == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -942,7 +942,7 @@ Messages.EUROBALISE.SubStructure1
 >DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Kernel.EmergencyBrakeApplied == True</Expectation></Expectations>
+>TIU.EmergencyBrakeCommanded == True</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step3"
 >

@@ -27,7 +27,7 @@
  Name="HEADER"
 >
 </StructureElement><StructureElement
- TypeName="V_MAXTRAIN"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -63,7 +63,7 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="L_TRAIN"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -76,7 +76,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_TRACTION_CUT_OFF"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -357,7 +357,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -390,7 +390,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="T_BRAKE_EMERGENCY"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -422,7 +422,7 @@
 >
 </StructureElement><StructureElement
  TypeName="T_BRAKE_SERVICE"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -458,7 +458,7 @@
  Name="SubStructure3"
 >
 <StructureElement
- TypeName="V_BRAKE_EMERGENCY_COMP"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -471,7 +471,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_EMERGENCY_COMP"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -620,7 +620,7 @@
 >
 <StructureElement
  TypeName="V_BRAKE_SERVICE_COMP"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -632,7 +632,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="A_BRAKE_SERVICE_COMP"
- Default="0"
+ Default=""
  Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"

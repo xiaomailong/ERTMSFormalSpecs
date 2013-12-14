@@ -1019,9 +1019,9 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
-<PreCondition>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>Kernel.Mode == Mode.OS</PreCondition></PreConditions>
+<PreCondition>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition><PreCondition>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition>Kernel.Mode == Mode.OS</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action><Action>INSERT
+<Action>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action>INSERT
     Kernel.EmergencyStop
     {
         Id =&gt; BrakeReason.DriverAckTimeOut,
@@ -1043,7 +1043,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Mode == Mode.LS</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode == Mode.LS</PreCondition><PreCondition>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DisplayRequested</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action>INSERT
     Kernel.EmergencyStop
@@ -1053,7 +1053,7 @@ IN
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
 IN
-    Kernel.EmergencyStops</Action><Action>Kernel.EmergencyBrakeApplied &lt;- True</Action></Actions>
+    Kernel.EmergencyStops</Action><Action>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for SH"
@@ -1067,9 +1067,9 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><PreConditions>
-<PreCondition>Kernel.Mode == Mode.SH</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition><PreCondition>NOT EmergencyBrakeApplied</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
+<PreCondition>Kernel.Mode == Mode.SH</PreCondition><PreCondition>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DisplayRequested</PreCondition><PreCondition>NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition>DriverAckTimer + Tack &gt;= CurrentTime</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action><Action>INSERT
+<Action>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action>INSERT
     Kernel.EmergencyStop
     {
         Id =&gt; BrakeReason.DriverAckTimeOut,
@@ -1115,9 +1115,9 @@ IN
  Name="Release emergency brake"
 >
 <PreConditions>
-<PreCondition>EmergencyBrakeApplied</PreCondition><PreCondition>THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition>( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
+<PreCondition>TIU.EmergencyBrakeCommanded</PreCondition><PreCondition>THERE_IS_IN EmergencyStops | X.Id == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition>( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
 <Actions>
-<Action>EmergencyBrakeApplied &lt;- False</Action><Action>EmergencyStops &lt;- []</Action></Actions>
+<Action>TIU.EmergencyBrakeCommanded &lt;- False</Action><Action>EmergencyStops &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

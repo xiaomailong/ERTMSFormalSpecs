@@ -718,6 +718,7 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
+ Implemented="TRUE"
  Name="EBD"
 >
 <ReqRef
@@ -732,7 +733,8 @@ INITIAL_VALUE
  Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>We don&apos;t explicitely compute the location of EBD foot since we don&apos;t need it (our curves are computed entirely, going until the speed 0 even for MRPS or LOA targets).</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -749,6 +751,7 @@ INITIAL_VALUE
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
+ Implemented="TRUE"
  Name="EBD_Target"
 >
 <ReqRef
@@ -763,7 +766,8 @@ INITIAL_VALUE
  Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>We don&apos;t explicitely compute the location of EBD foot since we don&apos;t need it (our curves are computed entirely, going until the speed 0 even for MRPS or LOA targets).</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"

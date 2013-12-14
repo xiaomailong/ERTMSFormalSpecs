@@ -107,6 +107,9 @@ namespace GUI.TestRunnerView
             Text = "System test view";
             Visible = false;
             EFSSystem = efsSystem;
+
+            ResizeDescriptionArea(propertyGrid, 20);
+
             Refresh();
         }
 

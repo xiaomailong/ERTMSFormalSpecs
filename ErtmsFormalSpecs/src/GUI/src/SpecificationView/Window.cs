@@ -75,6 +75,9 @@ namespace GUI.SpecificationView
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             Visible = false;
             Dictionary = dictionary;
+
+            ResizeDescriptionArea(propertyGrid, 20);
+            
             Refresh();
 
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;

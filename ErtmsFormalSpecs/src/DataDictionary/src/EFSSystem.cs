@@ -318,22 +318,6 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined function double to double type
-        /// </summary>
-        private Types.FunctionDoubleToDouble functionDoubleToDoubleType;
-        public Types.FunctionDoubleToDouble FunctionDoubleToDoubleType
-        {
-            get
-            {
-                if (functionDoubleToDoubleType == null)
-                {
-                    functionDoubleToDoubleType = new Types.FunctionDoubleToDouble(this);
-                }
-                return functionDoubleToDoubleType;
-            }
-        }
-
-        /// <summary>
         /// The generic collection type
         /// </summary>
         /// <returns></returns>
@@ -366,7 +350,6 @@ namespace DataDictionary
                     PredefinedTypes[IntegerType.Name] = IntegerType;
                     PredefinedTypes[DoubleType.Name] = DoubleType;
                     PredefinedTypes[StringType.Name] = StringType;
-                    PredefinedTypes[FunctionDoubleToDoubleType.Name] = FunctionDoubleToDoubleType;
                 }
                 return predefinedTypes;
             }
@@ -520,6 +503,22 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined DoubleToInteger function
+        /// </summary>
+        private Functions.PredefinedFunctions.DoubleToInteger doubleToIntegerPredefinedFunction;
+        public Functions.PredefinedFunctions.DoubleToInteger DoubleToIntegerPredefinedFunction
+        {
+            get
+            {
+                if (doubleToIntegerPredefinedFunction == null)
+                {
+                    doubleToIntegerPredefinedFunction = new Functions.PredefinedFunctions.DoubleToInteger(this);
+                }
+                return doubleToIntegerPredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined deceleration profile function
         /// </summary>
         private Functions.PredefinedFunctions.DecelerationProfile decelerationProfilePredefinedFunction;
@@ -634,6 +633,7 @@ namespace DataDictionary
                     predefinedFunctions[MaxPredefinedFunction.Name] = MaxPredefinedFunction;
                     predefinedFunctions[TargetsPredefinedFunction.Name] = TargetsPredefinedFunction;
                     predefinedFunctions[RoundToMultiplePredefinedFunction.Name] = RoundToMultiplePredefinedFunction;
+                    predefinedFunctions[DoubleToIntegerPredefinedFunction.Name] = DoubleToIntegerPredefinedFunction;
                     predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;
                     predefinedFunctions[BeforePredefinedFunction.Name] = BeforePredefinedFunction;
                     predefinedFunctions[AddIncrementPredefinedFunction.Name] = AddIncrementPredefinedFunction;
