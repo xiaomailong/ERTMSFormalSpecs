@@ -29,7 +29,7 @@
  Name="SendMessage"
 >
 <PreConditions>
-<PreCondition>JRU.SendJruNewMessage() == True</PreCondition></PreConditions>
+<PreCondition>SendJruNewMessage(THIS) == True</PreCondition></PreConditions>
 <Actions>
 <Action>JRU.SendJruMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -48,7 +48,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>Message &lt;- EMPTY</Action><Action>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action>PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action>PreviousKernelMode &lt;- Kernel.Mode</Action><Action>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action>PreviousEBStatus &lt;- Kernel.EmergencyBrakeApplied</Action><Action>PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action></Actions>
+<Action>Message &lt;- EMPTY</Action><Action>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action>PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action>PreviousKernelMode &lt;- Kernel.Mode</Action><Action>PreviousKernelLevel &lt;- Kernel.Level.Value</Action><Action>PreviousEBStatus &lt;- TIU.EmergencyBrakeCommanded</Action><Action>PreviousSBStatus &lt;- TIU.ServiceBrakeCommanded</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -163,7 +163,7 @@
 >
 <Comment>When the function that examines the changes of the TrainDataVerified variable returns true</Comment>
 <PreConditions>
-<PreCondition>JRU.SendTrainDataJruMessage()</PreCondition></PreConditions>
+<PreCondition>SendTrainDataJruMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action>Kernel.TrainDataVerified &lt;- False</Action><Action>Message.TRAIN_DATA &lt;- CreateTrainDataMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -183,7 +183,7 @@
  Name="SendEmergencyBrakeCommandStateJruMessage"
 >
 <PreConditions>
-<PreCondition>JRU.EmergencyBrakeStatusChanged()</PreCondition></PreConditions>
+<PreCondition>EmergencyBrakeStatusChanged(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action>Message.EMERGENCY_BRAKE_COMMAND_STATE &lt;- CreateEBCommandStateMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -207,7 +207,7 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><PreConditions>
-<PreCondition>JRU.ServiceBrakeStatusChanged()</PreCondition></PreConditions>
+<PreCondition>ServiceBrakeStatusChanged(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action>Message.SERVICE_BRAKE_COMMAND_STATE &lt;- CreateSBCommandStateMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -651,7 +651,13 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Id="1091ba63-481f-4f86-b05d-cb22ba129a44"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="SendGeneralMessage"
 >
@@ -666,9 +672,9 @@ OR
 OR
 ( JRU.JRU1.PreviousTrainData != Kernel.TrainData.TrainData.Value) OR (TrainDataVerified() == True )
 OR
-(JRU.EmergencyBrakeStatusChanged() )
+(JRU.EmergencyBrakeStatusChanged(jru) )
 OR
-(JRU.ServiceBrakeStatusChanged() )
+(JRU.ServiceBrakeStatusChanged(jru) )
 OR
 ( TelegramFromBaliseRecieved() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -810,7 +816,7 @@ OR
 <PreConditions>
 <PreCondition>( LevelChanged()  )
 OR
-( ModeChanged() )
+( ModeChanged() AND (Kernel.Mode != Default.Mode.NP) )
 OR
 ( SystemVersionChanged() )
 OR
@@ -1257,12 +1263,18 @@ M_AIRTIGHT =&gt; ToJruM_AirTight(Kernel.TrainData.TrainData.Value.TrainFittedWit
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="EmergencyBrakeHasChanged"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyBrakeApplied != JRU.PreviousEBStatus</PreCondition></PreConditions>
+<PreCondition>TIU.EmergencyBrakeCommanded != jru.PreviousEBStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1297,13 +1309,13 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
  Name="Applied"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyBrakeApplied == True</PreCondition></PreConditions>
+<PreCondition>TIU.EmergencyBrakeCommanded == True</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expression>
 </Case><Case
  Name="NotApplied"
 >
 <PreConditions>
-<PreCondition>Kernel.EmergencyBrakeApplied == False</PreCondition></PreConditions>
+<PreCondition>TIU.EmergencyBrakeCommanded == False</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expression>
 </Case></Cases>
 </Function><Function
@@ -1315,18 +1327,24 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="TrainDataHaveChanged"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value != JRU.PreviousTrainData</PreCondition></PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value != jru.PreviousTrainData</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
 >
 <PreConditions>
-<PreCondition>Kernel.TrainData.TrainData.Value == JRU.PreviousTrainData</PreCondition></PreConditions>
+<PreCondition>Kernel.TrainData.TrainData.Value == jru.PreviousTrainData</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1342,18 +1360,24 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruEBCommanded()
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="Send"
 >
 <PreConditions>
-<PreCondition>(TrainDataHaveChanged() == True) OR (TrainDataVerified() == True)</PreCondition></PreConditions>
+<PreCondition>(TrainDataHaveChanged(jru) == True) OR (TrainDataVerified() == True)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
 >
 <PreConditions>
-<PreCondition>(TrainDataHaveChanged() != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
+<PreCondition>(TrainDataHaveChanged(jru) != True) OR (TrainDataVerified() != True)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -1383,12 +1407,18 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="ServiceBrakeHasBeenApplied"
 >
 <PreConditions>
-<PreCondition>TIU.ServiceBrakeCommanded != JRU.PreviousSBStatus</PreCondition></PreConditions>
+<PreCondition>TIU.ServiceBrakeCommanded != jru.PreviousSBStatus</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

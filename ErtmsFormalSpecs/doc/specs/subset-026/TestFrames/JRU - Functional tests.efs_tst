@@ -163,7 +163,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -183,7 +183,12 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</Expectation></Expectations>
+>JRU.JRU1.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
+    SystemVersion=&gt; Kernel.OperatedSystemVersion
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -201,12 +206,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
-    SystemVersion=&gt; Kernel.OperatedSystemVersion
-)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -244,7 +244,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -282,7 +282,17 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation></Expectations>
+>JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE== JRU.ToJruMode(
+    ModeInkernel=&gt;Kernel.Mode
+)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+    ModeInkernel=&gt;Default.Mode.FS
+)</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -300,12 +310,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.MODE== JRU.ToJruMode(
-    ModeInkernel=&gt;Kernel.Mode
-)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -429,6 +434,14 @@
 >
 <Actions>
 <Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.NTC_SELECTED != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1123,6 +1136,27 @@
  DeadLine="1"
 >JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation></Expectations>
 </SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Verifying the PreviousKernelMode value and that there is no longer a JRU Message"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousKernelMode == Kernel.Mode</Expectation></Expectations>
+</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -1163,7 +1197,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Mode &lt;- Default.Mode.UN</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2061,6 +2095,30 @@
  DeadLine="1"
 >JRU.JRU1.PreviousKernelMode != Kernel.Mode</Expectation></Expectations>
 </SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Verification"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousKernelLevel == Kernel.Level.Value</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousKernelMode == Kernel.Mode</Expectation></Expectations>
+</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -2097,7 +2155,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2196,7 +2254,7 @@
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action></Actions>
+<Action>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2234,12 +2292,12 @@
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.EmergencyBrakeApplied &lt;- False</Action></Actions>
+<Action>TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2277,7 +2335,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 300</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 300</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2402,7 +2465,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2440,7 +2506,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE.M_BRAKE_COMMAND_STATE == Messages.JRU.M_BRAKE_COMMAND_STATE.Not_commanded</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2509,7 +2578,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step3 - Send Balise"
+ Name="Step3 - Send Balise with NID_BG 9806"
 >
 <SubSteps>
 <SubStep
@@ -2832,7 +2901,10 @@
 >JRU.JRU1.Message.TELEGRAM_FROM_BALISE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
->BTM.Message != EMPTY</Expectation></Expectations>
+>BTM.Message != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TELEGRAM_FROM_BALISE.TELEGRAM.NID_BG == 9806</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2880,7 +2952,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step1 - Initialize test_1"
+ Name="Step1 - Initialize test"
 >
 <SubSteps>
 <SubStep
