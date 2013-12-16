@@ -119,10 +119,13 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         private void explainTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            ExplainTreeNode node = explainTreeView.SelectedNode as ExplainTreeNode;
-            if (node != null)
+            if (Control.ModifierKeys == Keys.Control)
             {
-                node.SelectModel();
+                ExplainTreeNode node = explainTreeView.SelectedNode as ExplainTreeNode;
+                if (node != null)
+                {
+                    node.SelectModel();
+                }
             }
         }
     }
