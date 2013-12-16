@@ -1086,7 +1086,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>RBCContactInformation.RBCContactInformation &lt;- EURORADIO.CurrentRadioSession.SessionInfo</Action></Actions>
+<Action>RBCContactInformation &lt;- EURORADIO.CurrentRadioSession.SessionInfo</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -11940,7 +11940,7 @@
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>MRSP.MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></Actions>
+<Action>MRSP &lt;- Kernel.MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement

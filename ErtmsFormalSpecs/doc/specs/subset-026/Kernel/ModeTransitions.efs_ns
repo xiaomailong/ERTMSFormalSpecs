@@ -146,7 +146,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 <Case
  Name="Value"
 >
-<Expression>SleepingSignalIsReceived
+<Expression>TIU.SleepingRequested
   AND
 Odometry.TrainIsAtStandstill()
   AND
@@ -268,7 +268,7 @@ NOT
 <Case
  Name="Value"
 >
-<Expression>EquipmentIsolated</Expression>
+<Expression>TIU.ETCSIsolated</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -499,7 +499,7 @@ Available ( EURORADIO.EuroradioMessageIn.SH_AUTHORISED )</Expression>
   AND
 DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Response
   AND
-NLSignalReceived</Expression>
+TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -819,6 +819,7 @@ NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="Condition26"
 >
 <ReqRef
@@ -829,7 +830,13 @@ NOT Kernel.Shunting.ContinueShuntingOnDeskClosure</Expression>
 <Case
  Name="Value"
 >
-<Expression>False</Expression>
+<Expression>NOT DMI.MasterDMI().DeskOpen
+  AND
+NOT DMI.SlaveDMI().DeskOpen
+  AND
+NOT Kernel.Shunting.ContinueShuntingOnDeskClosure
+  AND
+TIU.PassiveShuntingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1235,7 +1242,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</Expression>
 <Case
  Name="Value"
 >
-<Expression>NOT SleepingSignalIsReceived
+<Expression>NOT TIU.SleepingRequested
   AND
 Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
@@ -1754,7 +1761,7 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
   AND
 Odometry.EstimatedSpeed == 0.0
   AND
-NLSignalReceived</Expression>
+TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -4246,7 +4253,7 @@ NLSignalReceived</Expression>
 </ReqRef><PreConditions>
 <PreCondition>Condition7()</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.PT</Action><Action>HandleModeChange &lt;- HandleModeChange.TrainTrip.D110</Action><Action>Kernel.EmergencyBrakeApplied &lt;- Boolean.False</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.PT</Action><Action>HandleModeChange &lt;- HandleModeChange.TrainTrip.D110</Action><Action>TIU.EmergencyBrakeCommanded &lt;- Boolean.False</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="TR -&gt; SN"

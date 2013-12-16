@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using Utils;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -83,13 +84,13 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation)
+        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
-                Expression.SemanticAnalysis(instance, Filter.AllMatches);
+                Expression.SemanticAnalysis(instance, AllMatches.INSTANCE);
                 StaticUsage.AddUsages(Expression.StaticUsage, null);
             }
 
@@ -195,13 +196,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
             if (Parameters != null)
             {
                 foreach (Parameter parameter in Parameters)
                 {
-                    if (filter(parameter))
+                    if (filter.AcceptableChoice(parameter))
                     {
                         retVal.Add(parameter);
                     }

@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 
 using DataDictionary.Values;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -1026,7 +1027,7 @@ namespace DataDictionary.Interpreter
         /// <param name="doSemanticalAnalysis">true indicates that the semantical analysis should be performed</param>
         /// <param name="log">the element on which errors should be raised. By default, this is root</param>
         /// <returns></returns>
-        public Expression Expression(ModelElement root, string expression, Filter.AcceptableChoice filter = null, bool doSemanticalAnalysis = true, ModelElement log = null)
+        public Expression Expression(ModelElement root, string expression, BaseFilter filter = null, bool doSemanticalAnalysis = true, ModelElement log = null)
         {
             Expression retVal = null;
 
@@ -1062,7 +1063,7 @@ namespace DataDictionary.Interpreter
                 {
                     if (filter == null)
                     {
-                        retVal.SemanticAnalysis(Filter.IsVariableOrValue);
+                        retVal.SemanticAnalysis(IsVariableOrValue.INSTANCE);
                     }
                     else
                     {

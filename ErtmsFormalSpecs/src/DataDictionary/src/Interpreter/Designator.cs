@@ -16,6 +16,7 @@ using System.Collections.Generic;
 // --
 // ------------------------------------------------------------------------------
 using Utils;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
@@ -112,7 +113,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">the expectation on the element found</param>
         /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
         /// <returns></returns>
-        public ReturnValue getReferences(INamable instance, Filter.AcceptableChoice expectation, bool lastElement)
+        public ReturnValue getReferences(INamable instance, BaseFilter expectation, bool lastElement)
         {
             ReturnValue retVal = new ReturnValue(this);
 
@@ -148,7 +149,7 @@ namespace DataDictionary.Interpreter
                 while (current != null)
                 {
                     ISubDeclarator subDeclarator = current as ISubDeclarator;
-                    if (FillBySubdeclarator(subDeclarator, expectation, retVal) > 0)
+                    if (FillBySubdeclarator(subDeclarator, expectation, false, retVal) > 0)
                     {
                         // If this is the last element in the dereference chain, stop at first match
                         if (lastElement)
@@ -164,7 +165,7 @@ namespace DataDictionary.Interpreter
                 }
 
                 // . In the predefined elements
-                addReference(EFSSystem.getPredefinedItem(Image), expectation, retVal);
+                addReference(EFSSystem.getPredefinedItem(Image), expectation, false, retVal);
                 if (lastElement && !retVal.IsEmpty)
                 {
                     return retVal;
@@ -177,7 +178,7 @@ namespace DataDictionary.Interpreter
                     Utils.ISubDeclarator subDeclarator = currentNamable as Utils.ISubDeclarator;
                     if (subDeclarator != null && !(subDeclarator is Dictionary))
                     {
-                        if (FillBySubdeclarator(subDeclarator, expectation, retVal) > 0 && lastElement)
+                        if (FillBySubdeclarator(subDeclarator, expectation, false, retVal) > 0 && lastElement)
                         {
                             return retVal;
                         }
@@ -189,7 +190,7 @@ namespace DataDictionary.Interpreter
                 // . In the dictionaries declared in the system
                 foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
-                    if (FillBySubdeclarator(dictionary, expectation, retVal) > 0 && lastElement)
+                    if (FillBySubdeclarator(dictionary, expectation, false, retVal) > 0 && lastElement)
                     {
                         return retVal;
                     }
@@ -197,7 +198,7 @@ namespace DataDictionary.Interpreter
                     Types.NameSpace defaultNameSpace = dictionary.findNameSpace("Default");
                     if (defaultNameSpace != null)
                     {
-                        if (FillBySubdeclarator(defaultNameSpace, expectation, retVal) > 0 && lastElement)
+                        if (FillBySubdeclarator(defaultNameSpace, expectation, false, retVal) > 0 && lastElement)
                         {
                             return retVal;
                         }
@@ -207,6 +208,7 @@ namespace DataDictionary.Interpreter
             else
             {
                 // The instance is provided, hence, this is not the first designator in the . separated list of designators
+                bool asType = false;
                 if (instance is Types.ITypedElement && !(instance is Constants.State))
                 {
                     // If the instance is a typed element, dereference it to its corresponding type
@@ -214,6 +216,7 @@ namespace DataDictionary.Interpreter
                     if (element.Type != EFSSystem.NoType)
                     {
                         instance = element.Type;
+                        asType = true;
                     }
                 }
 
@@ -221,7 +224,7 @@ namespace DataDictionary.Interpreter
                 while (instance != null)
                 {
                     Utils.ISubDeclarator subDeclarator = instance as Utils.ISubDeclarator;
-                    if (FillBySubdeclarator(subDeclarator, expectation, retVal) > 0)
+                    if (FillBySubdeclarator(subDeclarator, expectation, asType, retVal) > 0)
                     {
                         instance = null;
                     }
@@ -247,16 +250,39 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="namable"></param>
         /// <param name="expectation"></param>
+        /// <param name="asType">Indicates that we had to move from instance to type to perform the deferencing</param>
         /// <param name="resultSet"></param>
-        private void addReference(INamable namable, Filter.AcceptableChoice expectation, ReturnValue resultSet)
+        private int addReference(INamable namable, BaseFilter expectation, bool asType, ReturnValue resultSet)
         {
+            int retVal = 0;
+
             if (namable != null)
             {
-                if (expectation(namable))
+                if (expectation.AcceptableChoice(namable))
                 {
-                    resultSet.Add(namable);
+                    if (asType)
+                    {
+                        if (!(namable is Values.IValue) && !(namable is Types.Type))
+                        {
+                            resultSet.Add(namable);
+                            retVal += 1;
+                        }
+                        else if (namable is Constants.State)
+                        {
+                            // TODO : Refactor model to avoid this
+                            resultSet.Add(namable);
+                            retVal += 1;
+                        }
+                    }
+                    else
+                    {
+                        resultSet.Add(namable);
+                        retVal += 1;
+                    }
                 }
             }
+
+            return retVal;
         }
 
         /// <summary>
@@ -265,9 +291,10 @@ namespace DataDictionary.Interpreter
         /// <param name="subDeclarator">The subdeclarator used to get the image</param>
         /// <param name="expectation">The expectatino of the desired element</param>
         /// <param name="location">The location of the element found</param>
+        /// <param name="asType">Indicates that we had to go from the values to the types to perform dereferencing</param>
         /// <param name="values">The return value to update</param>
         /// <return>the number of elements added</return>
-        private int FillBySubdeclarator(Utils.ISubDeclarator subDeclarator, Filter.AcceptableChoice expectation, ReturnValue values)
+        private int FillBySubdeclarator(Utils.ISubDeclarator subDeclarator, BaseFilter expectation, bool asType, ReturnValue values)
         {
             int retVal = 0;
 
@@ -277,8 +304,7 @@ namespace DataDictionary.Interpreter
                 subDeclarator.Find(Image, tmp);
                 foreach (Utils.INamable namable in tmp)
                 {
-                    addReference(namable, expectation, values);
-                    retVal += 1;
+                    retVal += addReference(namable, expectation, asType, values);
                 }
             }
 
@@ -298,7 +324,7 @@ namespace DataDictionary.Interpreter
         /// <para name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public void SemanticAnalysis(Utils.INamable instance, Filter.AcceptableChoice expectation, bool lastElement)
+        public void SemanticAnalysis(Utils.INamable instance, BaseFilter expectation, bool lastElement)
         {
             ReturnValue tmp = getReferences(instance, expectation, lastElement);
             if (Image.CompareTo("THIS") != 0)
@@ -515,9 +541,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public void fill(List<Utils.INamable> retVal, Filter.AcceptableChoice filter)
+        public void fill(List<Utils.INamable> retVal, BaseFilter filter)
         {
-            if (filter(Ref))
+            if (filter.AcceptableChoice(Ref))
             {
                 retVal.Add(Ref);
             }

@@ -2759,7 +2759,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>Kernel.NLSignalReceived &lt;- True</Action></Actions>
+<Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.L0</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action><Action>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6831,7 +6831,7 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  Name="Sub-step1"
 >
 <Actions>
-<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>Kernel.NLSignalReceived &lt;- True</Action></Actions>
+<Action>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action>Kernel.Mode &lt;- Mode.SB</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

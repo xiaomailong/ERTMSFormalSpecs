@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
 using DataDictionary.Rules;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter.Statement
 {
@@ -73,7 +74,7 @@ namespace DataDictionary.Interpreter.Statement
                 StaticUsage.AddUsages(Value.StaticUsage, Usage.ModeEnum.Read);
 
                 // ListExpression
-                ListExpression.SemanticAnalysis(instance, Filter.IsLeftSide);
+                ListExpression.SemanticAnalysis(instance, IsLeftSide.INSTANCE);
                 StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
 
                 // ReplaceElement

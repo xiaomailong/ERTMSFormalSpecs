@@ -22,6 +22,7 @@ namespace DataDictionary
     using System;
     using DataDictionary.Interpreter.Statement;
     using DataDictionary.Specification;
+    using DataDictionary.Interpreter.Filter;
 
     /// <summary>
     /// A complete system, along with all dictionaries
@@ -952,7 +953,7 @@ namespace DataDictionary
             /// <summary>
             /// The filter to apply to the selection
             /// </summary>
-            private Filter.AcceptableChoice Filter { get; set; }
+            private BaseFilter Filter { get; set; }
 
             /// <summary>
             /// Constructor
@@ -969,7 +970,7 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="filter">The filter to apply to the search</param>
-            public ReferenceVisitor(Filter.AcceptableChoice filter)
+            public ReferenceVisitor(BaseFilter filter)
             {
                 Usages = new List<Usage>();
                 Model = null;
@@ -996,7 +997,7 @@ namespace DataDictionary
                     {
                         foreach (Usage usage in statement.StaticUsage.AllUsages)
                         {
-                            if (Filter(usage.Referenced))
+                            if (Filter.AcceptableChoice(usage.Referenced))
                             {
                                 Usages.Add(usage);
                             }
@@ -1025,7 +1026,7 @@ namespace DataDictionary
                     {
                         foreach (Usage usage in expression.StaticUsage.AllUsages)
                         {
-                            if (Filter(usage.Referenced))
+                            if (Filter.AcceptableChoice(usage.Referenced))
                             {
                                 Usages.Add(usage);
                             }
@@ -1052,7 +1053,7 @@ namespace DataDictionary
                     }
                     else
                     {
-                        if (Filter(element.Type))
+                        if (Filter.AcceptableChoice(element.Type))
                         {
                             Usages.Add(new Usage(element.Type, modelElement, Usage.ModeEnum.Type));
                         }
@@ -1231,7 +1232,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<Usage> FindReferences(Filter.AcceptableChoice filter)
+        public List<Usage> FindReferences(BaseFilter filter)
         {
             // Find references
             ReferenceVisitor visitor = new ReferenceVisitor(filter);
