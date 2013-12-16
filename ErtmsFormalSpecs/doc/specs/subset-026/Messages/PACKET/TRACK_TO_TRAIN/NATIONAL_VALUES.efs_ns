@@ -40,7 +40,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -62,7 +62,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_VALIDNV"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -106,7 +106,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVSHUNT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -117,7 +117,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVSTFF"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -128,7 +128,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVONSIGHT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,7 +139,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVLIMSUPERV"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -150,7 +150,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVUNFIT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -161,7 +161,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVREL"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -172,7 +172,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_NVROLL"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -238,7 +238,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVALLOWOVTRP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -249,7 +249,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVSUPOVTRP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -260,7 +260,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_NVOVTRP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -271,7 +271,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_NVOVTRP"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -282,7 +282,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_NVPOTRP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -304,7 +304,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_NVCONTACT"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -326,7 +326,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_NVSTFF"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -348,7 +348,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVMAXREDADH1"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -359,7 +359,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVMAXREDADH2"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -370,7 +370,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVMAXREDADH3"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -432,21 +432,21 @@
  Name="Q_NVKVINTSET"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP12"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="A_NVP12"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP23"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="A_NVP23"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -557,7 +557,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -593,21 +593,21 @@
  Name="Q_NVKVINTSET"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP12"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="A_NVP12"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Acceleration"
+ TypeName="A_NVP23"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="A_NVP23"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -650,7 +650,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_NVKVINT"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"

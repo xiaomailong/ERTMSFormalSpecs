@@ -13,11 +13,11 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Send a JRU General Message every 5 seconds"
+ Name="Send a JRU General Message periodically"
 >
 <TestCases>
 <TestCase
- Name="Send a message every 5 seconds"
+ Name="Send a message periodically"
 >
 <ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
@@ -37,12 +37,12 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -60,7 +60,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousTime + 5.0 &gt; Kernel.CurrentTime</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -78,7 +81,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->NOT Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -96,7 +99,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousTime + 5.0 &gt; Kernel.CurrentTime</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -134,7 +140,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -173,6 +179,11 @@
 >
 <Actions>
 <Action>Kernel.OperatedSystemVersion.Value &lt;- &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -190,7 +201,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
@@ -213,9 +224,13 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send General Message When Mode changes"
 >
-<Steps>
+<ReqRef
+ Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -247,7 +262,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->Available(Element=&gt; JRU.JRU1.Message.GENERAL_MESSAGE)</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -365,6 +380,11 @@
 >
 <Actions>
 <Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -382,7 +402,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
 >JRU.JRU1.Message.NTC_SELECTED == EMPTY</Expectation></Expectations>
@@ -426,7 +446,7 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.NTC_SELECTED != EMPTY</Expectation><Expectation
+>JRU.JRU1.Message.NTC_SELECTED == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
@@ -447,9 +467,13 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send General JRU Message When Mode changes"
 >
-<Steps>
+<ReqRef
+ Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -463,7 +487,7 @@
  Name="SubStep1"
 >
 <Actions>
-<Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -489,7 +513,10 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1108,13 +1135,21 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence6 - Changing Mode and Level via Balise Group"
+ Name="Changing Mode and Level via Balise Group"
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send General Message When Level Changes and Mode Changes. Using BTM Message"
 >
-<Steps>
+<ReqRef
+ Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2038,7 +2073,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence7 - Send Train Data Message"
+ Name="Send Train Data Message after validation in SoM"
 >
 <TestCases>
 <TestCase
@@ -2070,7 +2105,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2"
+ Name="Step2 - Train Data Validated Variable becomes true"
 >
 <SubSteps>
 <SubStep
@@ -2086,6 +2121,807 @@
  Kind="Instantaneous"
  DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Emergency brake command"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<ReqRef
+ Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Verification there is no Emergency Brake Command on the JRU"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Emergency brake is applied"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.EmergencyBrakeApplied &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Verification the JRU Emergency Brake Command is Empty"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Emergency Brake Changes again"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.EmergencyBrakeApplied &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.EMERGENCY_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="TrainData Changed"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<ReqRef
+ Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize train data"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>Kernel.CurrentTime &lt;- 0.0</Action><Action>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 500.0</Action><Action>Kernel.TrainData.InitializeTrainData()</Action><Action>Kernel.TrainData.Initialize()</Action><Action>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG</Action><Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 300</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - TrainData Changed"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.TrainData.TrainData.Value.AxleNumber &lt;- 150</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TRAIN_DATA != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Check there is a new JRU message"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TRAIN_DATA == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Service brake command"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<ReqRef
+ Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Verification there is no Service Brake Command on the JRU"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Service brake is applied"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Verification the JRU Emergency Brake Command is Empty"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Emergency Brake Changes again"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>TIU.ServiceBrakeCommanded &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.SERVICE_BRAKE_COMMAND_STATE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="JRU Telegram From Balise when a Telegram From Balise has been recieved"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<ReqRef
+ Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Verification there is no Telegram From euroBalise Message on the JRU"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TELEGRAM_FROM_BALISE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Send Balise"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
+    M_VERSION =&gt; 0, 
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
+    N_PIG =&gt; 1, 
+    N_TOTAL =&gt; 1, 
+    M_DUP =&gt; Messages.M_DUP.No_duplicates, 
+    M_MCOUNT =&gt; 12, 
+    NID_C =&gt; 255, 
+    NID_BG =&gt; 9806, 
+    Q_LINK =&gt; Messages.Q_LINK.Linked, 
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+{
+    SYSTEM_VERSION_ORDER =&gt; EMPTY, 
+    NATIONAL_VALUES =&gt; EMPTY, 
+    LINKING =&gt; EMPTY, 
+    LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    REPOSITIONING_INFORMATION =&gt; EMPTY, 
+    GRADIENT_PROFILE =&gt; EMPTY, 
+    INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION =&gt; EMPTY, 
+    LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    SESSION_MANAGEMENT =&gt; EMPTY, 
+    RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
+    CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
+    AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
+    PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
+    MOVEMENT_AUTHORITY_REQUEST_PARAMETERS =&gt; EMPTY, 
+    POSITION_REPORT_PARAMETERS =&gt; EMPTY, 
+    LIST_OF_BALISES_IN_SR_AUTHORITY =&gt; EMPTY, 
+    INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3 =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION_REVOCATION =&gt; EMPTY, 
+    TRACK_CONDITION_BIG_METAL_MASSES =&gt; EMPTY, 
+    TRACK_CONDITION =&gt; EMPTY, 
+    TRACK_CONDITION_STATION_PLATFORMS =&gt; EMPTY, 
+    ROUTE_SUITABILITY_DATA =&gt; EMPTY, 
+    ADHESION_FACTOR =&gt; EMPTY, 
+    PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES =&gt; EMPTY, 
+    PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES =&gt; EMPTY, 
+    GEOGRAPHICAL_POSITION_INFORMATION =&gt; EMPTY, 
+    MODE_PROFILE =&gt; EMPTY, 
+    LEVEL_CROSSING_INFORMATION =&gt; EMPTY, 
+    TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION =&gt; EMPTY, 
+    RBC_TRANSITION_ORDER =&gt; EMPTY, 
+    DANGER_FOR_SHUNTING_INFORMATION =&gt; EMPTY, 
+    RADIO_INFILL_AREA_INFORMATION =&gt; EMPTY, 
+    SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT =&gt; EMPTY, 
+    EOLM_PACKET =&gt; EMPTY, 
+    STOP_SHUNTING_ON_DESK_OPENING =&gt; EMPTY, 
+    INFILL_LOCATION_REFERENCE =&gt; EMPTY, 
+    STOP_IF_IN_STAFF_RESPONSIBLE =&gt; EMPTY, 
+    REVERSING_AREA_INFORMATION =&gt; EMPTY, 
+    REVERSING_SUPERVISION_INFORMATION =&gt; EMPTY, 
+    TRAIN_RUNNING_NUMBER_FROM_RBC =&gt; EMPTY, 
+    DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION =&gt; EMPTY, 
+    DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION =&gt; EMPTY, 
+    DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
+    END_OF_INFORMATION =&gt; Messages.PACKET.ANY.END_OF_INFORMATION.Message
+{
+    NID_PACKET =&gt; 255
+}
+}
+}, Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+{
+    SYSTEM_VERSION_ORDER =&gt; EMPTY, 
+    NATIONAL_VALUES =&gt; EMPTY, 
+    LINKING =&gt; EMPTY, 
+    LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    REPOSITIONING_INFORMATION =&gt; EMPTY, 
+    GRADIENT_PROFILE =&gt; EMPTY, 
+    INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
+{
+    NID_PACKET =&gt; 27, 
+    Q_DIR =&gt; 1, 
+    L_PACKET =&gt; 86, 
+    Q_SCALE =&gt; 1, 
+    D_STATIC =&gt; 0, 
+    V_STATIC =&gt; 32, 
+    Q_FRONT =&gt; 0, 
+    N_ITER_0 =&gt; 0, 
+    Sequence1 =&gt; [], 
+    N_ITER_1 =&gt; 1, 
+    Sequence3 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 1652, 
+    V_STATIC =&gt; 40, 
+    Q_FRONT =&gt; 0, 
+    N_ITER =&gt; 0, 
+    Sequence2 =&gt; [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
+}]
+}, 
+    TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION =&gt; EMPTY, 
+    LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    SESSION_MANAGEMENT =&gt; EMPTY, 
+    RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
+    CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
+    AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
+    PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
+    MOVEMENT_AUTHORITY_REQUEST_PARAMETERS =&gt; EMPTY, 
+    POSITION_REPORT_PARAMETERS =&gt; EMPTY, 
+    LIST_OF_BALISES_IN_SR_AUTHORITY =&gt; EMPTY, 
+    INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3 =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION_REVOCATION =&gt; EMPTY, 
+    TRACK_CONDITION_BIG_METAL_MASSES =&gt; EMPTY, 
+    TRACK_CONDITION =&gt; EMPTY, 
+    TRACK_CONDITION_STATION_PLATFORMS =&gt; EMPTY, 
+    ROUTE_SUITABILITY_DATA =&gt; EMPTY, 
+    ADHESION_FACTOR =&gt; EMPTY, 
+    PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES =&gt; EMPTY, 
+    PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES =&gt; EMPTY, 
+    GEOGRAPHICAL_POSITION_INFORMATION =&gt; EMPTY, 
+    MODE_PROFILE =&gt; EMPTY, 
+    LEVEL_CROSSING_INFORMATION =&gt; EMPTY, 
+    TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION =&gt; EMPTY, 
+    RBC_TRANSITION_ORDER =&gt; EMPTY, 
+    DANGER_FOR_SHUNTING_INFORMATION =&gt; EMPTY, 
+    RADIO_INFILL_AREA_INFORMATION =&gt; EMPTY, 
+    SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT =&gt; EMPTY, 
+    EOLM_PACKET =&gt; EMPTY, 
+    STOP_SHUNTING_ON_DESK_OPENING =&gt; EMPTY, 
+    INFILL_LOCATION_REFERENCE =&gt; EMPTY, 
+    STOP_IF_IN_STAFF_RESPONSIBLE =&gt; EMPTY, 
+    REVERSING_AREA_INFORMATION =&gt; EMPTY, 
+    REVERSING_SUPERVISION_INFORMATION =&gt; EMPTY, 
+    TRAIN_RUNNING_NUMBER_FROM_RBC =&gt; EMPTY, 
+    DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION =&gt; EMPTY, 
+    DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION =&gt; EMPTY, 
+    DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
+    END_OF_INFORMATION =&gt; EMPTY
+}
+}, Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+{
+    SYSTEM_VERSION_ORDER =&gt; EMPTY, 
+    NATIONAL_VALUES =&gt; EMPTY, 
+    LINKING =&gt; EMPTY, 
+    LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    REPOSITIONING_INFORMATION =&gt; EMPTY, 
+    GRADIENT_PROFILE =&gt; EMPTY, 
+    INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION =&gt; EMPTY, 
+    LEVEL_TRANSITION_ORDER =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message
+{
+    NID_PACKET =&gt; 41, 
+    Q_DIR =&gt; 1, 
+    L_PACKET =&gt; 211, 
+    Q_SCALE =&gt; 1, 
+    D_LEVELTR =&gt; 32767, 
+    M_LEVELTR =&gt; 2, 
+    NID_NTC =&gt; 0, 
+    L_ACKLEVELTR =&gt; 0, 
+    N_ITER =&gt; 6, 
+    Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 1, 
+    NID_NTC =&gt; 28, 
+    L_ACKLEVELTR =&gt; 0
+}, Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 1, 
+    NID_NTC =&gt; 7, 
+    L_ACKLEVELTR =&gt; 0
+}, Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 1, 
+    NID_NTC =&gt; 5, 
+    L_ACKLEVELTR =&gt; 0
+}, Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 1, 
+    NID_NTC =&gt; 18, 
+    L_ACKLEVELTR =&gt; 0
+}, Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 1, 
+    NID_NTC =&gt; 8, 
+    L_ACKLEVELTR =&gt; 0
+}, Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1
+{
+    M_LEVELTR =&gt; 0, 
+    NID_NTC =&gt; 0, 
+    L_ACKLEVELTR =&gt; 0
+}]
+}, 
+    SESSION_MANAGEMENT =&gt; EMPTY, 
+    RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
+    CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
+    AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
+    PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
+    MOVEMENT_AUTHORITY_REQUEST_PARAMETERS =&gt; EMPTY, 
+    POSITION_REPORT_PARAMETERS =&gt; EMPTY, 
+    LIST_OF_BALISES_IN_SR_AUTHORITY =&gt; EMPTY, 
+    INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3 =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION_REVOCATION =&gt; EMPTY, 
+    TRACK_CONDITION_BIG_METAL_MASSES =&gt; EMPTY, 
+    TRACK_CONDITION =&gt; EMPTY, 
+    TRACK_CONDITION_STATION_PLATFORMS =&gt; EMPTY, 
+    ROUTE_SUITABILITY_DATA =&gt; EMPTY, 
+    ADHESION_FACTOR =&gt; EMPTY, 
+    PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES =&gt; EMPTY, 
+    PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES =&gt; EMPTY, 
+    GEOGRAPHICAL_POSITION_INFORMATION =&gt; EMPTY, 
+    MODE_PROFILE =&gt; EMPTY, 
+    LEVEL_CROSSING_INFORMATION =&gt; EMPTY, 
+    TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION =&gt; EMPTY, 
+    RBC_TRANSITION_ORDER =&gt; EMPTY, 
+    DANGER_FOR_SHUNTING_INFORMATION =&gt; EMPTY, 
+    RADIO_INFILL_AREA_INFORMATION =&gt; EMPTY, 
+    SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT =&gt; EMPTY, 
+    EOLM_PACKET =&gt; EMPTY, 
+    STOP_SHUNTING_ON_DESK_OPENING =&gt; EMPTY, 
+    INFILL_LOCATION_REFERENCE =&gt; EMPTY, 
+    STOP_IF_IN_STAFF_RESPONSIBLE =&gt; EMPTY, 
+    REVERSING_AREA_INFORMATION =&gt; EMPTY, 
+    REVERSING_SUPERVISION_INFORMATION =&gt; EMPTY, 
+    TRAIN_RUNNING_NUMBER_FROM_RBC =&gt; EMPTY, 
+    DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION =&gt; EMPTY, 
+    DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION =&gt; EMPTY, 
+    DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
+    END_OF_INFORMATION =&gt; EMPTY
+}
+}, Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+{
+    SYSTEM_VERSION_ORDER =&gt; EMPTY, 
+    NATIONAL_VALUES =&gt; EMPTY, 
+    LINKING =&gt; EMPTY, 
+    LEVEL_1_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP =&gt; EMPTY, 
+    LEVEL_2_3_MOVEMENT_AUTHORITY =&gt; EMPTY, 
+    REPOSITIONING_INFORMATION =&gt; EMPTY, 
+    GRADIENT_PROFILE =&gt; EMPTY, 
+    INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM =&gt; EMPTY, 
+    TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION =&gt; EMPTY, 
+    LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    SESSION_MANAGEMENT =&gt; EMPTY, 
+    RADIO_NETWORK_REGISTRATION =&gt; EMPTY, 
+    CONDITIONAL_LEVEL_TRANSITION_ORDER =&gt; EMPTY, 
+    LIST_OF_BALISES_FOR_SH_AREA =&gt; EMPTY, 
+    AXLE_LOAD_SPEED_PROFILE =&gt; EMPTY, 
+    PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; EMPTY, 
+    MOVEMENT_AUTHORITY_REQUEST_PARAMETERS =&gt; EMPTY, 
+    POSITION_REPORT_PARAMETERS =&gt; EMPTY, 
+    LIST_OF_BALISES_IN_SR_AUTHORITY =&gt; EMPTY, 
+    INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3 =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    TEMPORARY_SPEED_RESTRICTION_REVOCATION =&gt; EMPTY, 
+    TRACK_CONDITION_BIG_METAL_MASSES =&gt; EMPTY, 
+    TRACK_CONDITION =&gt; EMPTY, 
+    TRACK_CONDITION_STATION_PLATFORMS =&gt; EMPTY, 
+    ROUTE_SUITABILITY_DATA =&gt; EMPTY, 
+    ADHESION_FACTOR =&gt; EMPTY, 
+    PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES =&gt; EMPTY, 
+    PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES =&gt; EMPTY, 
+    GEOGRAPHICAL_POSITION_INFORMATION =&gt; EMPTY, 
+    MODE_PROFILE =&gt; EMPTY, 
+    LEVEL_CROSSING_INFORMATION =&gt; EMPTY, 
+    TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION =&gt; EMPTY, 
+    RBC_TRANSITION_ORDER =&gt; EMPTY, 
+    DANGER_FOR_SHUNTING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.DANGER_FOR_SHUNTING_INFORMATION.Message
+{
+    NID_PACKET =&gt; 132, 
+    Q_DIR =&gt; 1, 
+    L_PACKET =&gt; 24, 
+    Q_ASPECT =&gt; 0
+}, 
+    RADIO_INFILL_AREA_INFORMATION =&gt; EMPTY, 
+    SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT =&gt; EMPTY, 
+    EOLM_PACKET =&gt; EMPTY, 
+    STOP_SHUNTING_ON_DESK_OPENING =&gt; EMPTY, 
+    INFILL_LOCATION_REFERENCE =&gt; EMPTY, 
+    STOP_IF_IN_STAFF_RESPONSIBLE =&gt; EMPTY, 
+    REVERSING_AREA_INFORMATION =&gt; EMPTY, 
+    REVERSING_SUPERVISION_INFORMATION =&gt; EMPTY, 
+    TRAIN_RUNNING_NUMBER_FROM_RBC =&gt; EMPTY, 
+    DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION =&gt; EMPTY, 
+    INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION =&gt; EMPTY, 
+    DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION =&gt; EMPTY, 
+    DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM =&gt; EMPTY, 
+    END_OF_INFORMATION =&gt; EMPTY
+}
+}]
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TELEGRAM_FROM_BALISE != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>BTM.Message != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Verification Telegram From euroBalise Message on the JRU is no longer present"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.TELEGRAM_FROM_BALISE == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>BTM.Message == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Level changes to NTC"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Initialize test_1"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - Level changes"
+>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Actions>
+<Action>Kernel.Level.Value &lt;- Default.Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.NTC_SELECTED.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.NTC_SELECTED != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+>JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.LEVEL == Messages.JRU.LEVEL.Level_STM_specified_by_NID_NTC</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

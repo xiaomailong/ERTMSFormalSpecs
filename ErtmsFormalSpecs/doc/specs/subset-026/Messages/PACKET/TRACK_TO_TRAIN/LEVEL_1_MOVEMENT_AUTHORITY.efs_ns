@@ -40,7 +40,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_PACKET"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -62,7 +62,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_MAIN"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -73,7 +73,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_LOA"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -84,7 +84,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_LOA"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -117,7 +117,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_ENDSECTION"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,14 +139,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_SECTIONTIMER"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_SECTIONTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_SECTIONTIMERSTOPLOC"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -164,14 +164,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_ENDTIMER"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_ENDTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_ENDTIMERSTARTLOC"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -189,14 +189,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_DP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_DP"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_RELEASEDP"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -214,28 +214,28 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_STARTOL"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_STARTOL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_OL"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_OL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_OL"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
  Name="D_OL"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Speed"
+ TypeName="V_RELEASEOL"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -250,7 +250,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_SECTION"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -272,14 +272,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Time"
+ TypeName="T_SECTIONTIMER"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
  Name="T_SECTIONTIMER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="D_SECTIONTIMERSTOPLOC"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"

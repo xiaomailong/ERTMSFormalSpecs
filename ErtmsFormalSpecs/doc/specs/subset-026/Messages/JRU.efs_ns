@@ -51,6 +51,18 @@ One value of this variable represents the identity of an STM reflecting each com
 Identifier of the message.</Comment>
 </Range><Range
  MinValue="0"
+ MaxValue="2047"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_MESSAGE"
+>
+<Comment>Message length
+L_MESSAGE indicates the length of the message in bytes, 
+         including all variables in the message header (L_MESSAGE also).</Comment>
+</Range><Range
+ MinValue="0"
  MaxValue="31"
  Precision="IntegerPrecision"
  Default="0"
@@ -170,6 +182,22 @@ Used update label data recorded.  Used only in conjunction with HOUR, MINUTES an
 <EnumValue
  Value="31"
  Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_TRAIN"
+>
+<Comment>This field contains the current speed of the train.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="standstill"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -305,6 +333,22 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_LRBG"
+>
+<Comment>Distance between the last relevant balise group and the estimated front end of the train (the side of the active cab).</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Spare"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
  MaxValue="3"
  Precision="IntegerPrecision"
  Default="0"
@@ -359,6 +403,51 @@ Country/region identity (NID_C) + balise identity number of last relevant balise
  Name="Spare"
 >
 </EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTOVER"
+>
+<Comment>Over-reading error
+L_DOUBTOVER is the difference between the lower bound of the confidence interval and the estimated value of D_LRBG</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_DOUBTUNDER"
+>
+<Comment>Under-reading error
+L_DOUBTUNDER is the difference between the upper bound of the confidence interval and the estimated value of D_LRBG</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="Unknown"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="127"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_MAXTRAIN"
+>
+<Comment>Maximum permitted train speed.
+Maximum permitted speed for the train, taking into account the maximum speed of every vehicle contained in the train set.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="15"
@@ -493,6 +582,17 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
  Name="Spare"
 >
 </EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="4095"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_TRAIN"
+>
+<Comment>Train length
+This is the absolute real length of the train.</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="4095"
@@ -787,7 +887,7 @@ The variable discriminates the type of the capture of the brake parameters</Comm
 <SpecialValues>
 <EnumValue
  Value="0"
- Name="Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_modil_is_applicable"
+ Name="Lambda_type__the_brake_percentages_is_acquired_as_Train_Data_and_the_conversion_model_is_applicable"
 >
 </EnumValue><EnumValue
  Value="1"
@@ -1005,6 +1105,17 @@ This is the build up time for the emergency brake</Comment>
 >
 </ReqRef><Comment>Brake number of sections
 Number of iterations of speed sections needed to build a brake model, following this variable in the message</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_BRAKE_EMERGENCY_COMP"
+>
+<Comment>Emeregency brake speed component
+It contains the lowest speed value of the speed section to which the related emeregency brake deceleration component is applicable</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="255"
@@ -1975,6 +2086,16 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
+ MaxValue="8191"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_STMPACKET"
+>
+<Comment>Length of the STM packet.</Comment>
+</Range><Range
+ MinValue="0"
  MaxValue="255"
  Precision="IntegerPrecision"
  Default="0"
@@ -2067,6 +2188,17 @@ Indicates whetehr no cold movement has ocurred or if a cold movement has been de
 Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the MMI shall be used additionally as a qualifier to choose the appropriate language table.</Comment>
 </Range><Range
  MinValue="0"
+ MaxValue="255"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="L_TEXT"
+>
+<Comment>Length of text string
+L_TEXT defines the length of a text string (L_TEXT * X_TEXT)</Comment>
+</Range><Range
+ MinValue="0"
  MaxValue="3"
  Precision="IntegerPrecision"
  Default="0"
@@ -2133,6 +2265,91 @@ Supervision status of the speed and distance monitoring</Comment>
 </EnumValue><EnumValue
  Value="4"
  Name="Intervention_status"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_PERM"
+>
+<Comment>Permitted speed
+Permited speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_FLOI"
+>
+<Comment>First line of intervention speed
+FLOI speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_TARGET"
+>
+<Comment>Target speed
+Target speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="32767"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_TARGET"
+>
+<Comment>Target distance
+Target speed displayed to the driver</Comment>
+<SpecialValues>
+<EnumValue
+ Value="32767"
+ Name="none"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_RELEASE"
+>
+<Comment>Release speed
+Release speed displayed to the driver.</Comment>
+<SpecialValues>
+<EnumValue
+ Value="1023"
+ Name="None"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -4035,6 +4252,28 @@ This variable indicates the type of the driver&apos;s selection for the RBC data
 >
 <Comment>Train Running Number
 This is the operational train running number. The NID_OPERATIONAL consists of up to 8 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be entered first. In case the NID_OPERATIONAL is shorter than 8 digits, the remaining space is to be filled with special character “F”.</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="1023"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="V_SR"
+>
+<Comment>Staff responsible speed
+Speed allowed running in Staff Responsible, modified by the driver through the DMI</Comment>
+</Range><Range
+ MinValue="0"
+ MaxValue="131071"
+ Precision="IntegerPrecision"
+ Default="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="D_SR"
+>
+<Comment>Staff Responsible distance
+Distance allowed running in Staff responsible, modified by the driver through the DMI. The maximum value corresponds to the one that is considered appropiate from operational point of view</Comment>
 </Range><Range
  MinValue="0"
  MaxValue="63"
