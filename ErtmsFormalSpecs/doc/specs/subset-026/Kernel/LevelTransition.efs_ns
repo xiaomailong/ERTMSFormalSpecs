@@ -85,7 +85,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="LevelandLength"
+ Name="LevelAndLength"
 >
 <ReqRef
  Id="8dc3adec-c4e6-489e-849a-d05eac8ee50b"
@@ -265,7 +265,7 @@ LevelTransition
        NTC =&gt; Default.NID_NTC(NID_NTC)
     }
 }
-IN  LevelTransitionOrder.LevelandLength</Action></Actions>
+IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelTransition"
@@ -282,7 +282,7 @@ LevelTransition
        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
     }
 }
-IN  LevelTransitionOrder.LevelandLength</Action></Actions>
+IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -341,7 +341,7 @@ IN  LevelTransitionOrder.LevelandLength</Action></Actions>
 {
   IsLTO=&gt; True,
   Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
-  LevelandLength =&gt; 
+  LevelAndLength =&gt; 
   [ 
       LevelTransition { 
           AcknLength =&gt; MessageTypes.QScaleLength( length=&gt;Packet.L_ACKLEVELTR,  scale=&gt;Packet.Q_SCALE ),
@@ -425,7 +425,7 @@ Packet.Sequence1</Action></Actions>
 {
    IsLTO=&gt; False,
    Distance =&gt; EMPTY,
-   LevelandLength =&gt; [ 
+   LevelAndLength =&gt; [ 
       LevelTransition { 
          AcknLength =&gt;EMPTY, 
          TRLevel =&gt; Default.LevelData {
@@ -484,7 +484,7 @@ Packet.Sequence1</Action></Actions>
 >
 </ReqRef><Comment>If this precondition is met, dont carry out a level transition #morido, 13/10/15</Comment>
 <PreConditions>
-<PreCondition>NOT (THERE_IS_IN LevelTransitionOrder.LevelandLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition></PreConditions>
+<PreCondition>NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition></PreConditions>
 <Actions>
 <Action>ProcessLTOGeneric()</Action></Actions>
 </RuleCondition></Conditions>
@@ -555,7 +555,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action>LTOtoProcess &lt;- FIRST_IN LevelTransitionOrder.LevelandLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
+<Action>LTOtoProcess &lt;- FIRST_IN LevelTransitionOrder.LevelAndLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -577,7 +577,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition>LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition>LTOtoProcess.TRLevel.Value == Default.Level.Unknown</PreCondition><PreCondition>LTOtoProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
 <Actions>
-<Action>LTOtoProcess &lt;- LAST_IN (LevelTransitionOrder.LevelandLength)</Action></Actions>
+<Action>LTOtoProcess &lt;- LAST_IN ( LevelTransitionOrder.LevelAndLength )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -686,7 +686,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition>LevelTransitionOrder.Distance == BTM.DistanceFromLRBG()</PreCondition><PreCondition>LevelTransitionOrder.IsLTO== True</PreCondition></PreConditions>
 <Actions>
-<Action>Kernel.Level.Value &lt;- LevelTransition.TRLevel.Value</Action></Actions>
+<Action>Kernel.Level.Value &lt;- LTOtoProcess.TRLevel.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
