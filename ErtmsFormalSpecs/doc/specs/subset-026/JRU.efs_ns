@@ -52,6 +52,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="UpdateJRUTime"
 >
 <SubRules></SubRules>
@@ -1650,6 +1651,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Case></Cases>
 </Function><Function
  Type="Boolean"
+ Implemented="TRUE"
  Name="TelegramFromBaliseRecieved"
 >
 <ReqRef
@@ -1672,6 +1674,7 @@ M_BRAKE_COMMAND_STATE=&gt;ToJruSBCommanded()
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.TELEGRAM_FROM_BALISE.Message"
+ Implemented="TRUE"
  Name="CreateJruTelegramFromBaliseMessage"
 >
 <ReqRef
