@@ -131,6 +131,7 @@ namespace GUI.Converters
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU, "On Board Unit"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK, "On Board Unit and Track"));
             converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aTRACK, "Track"));
+            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aROLLING_STOCK, "Rolling stock"));
         }
     }
 

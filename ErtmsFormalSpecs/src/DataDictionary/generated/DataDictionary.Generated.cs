@@ -33631,7 +33631,8 @@ public enum Paragraph_scope {
      defaultParagraph_scope,
      aOBU_AND_TRACK,
      aTRACK,
-     aOBU
+     aOBU,
+     aROLLING_STOCK
 };
 
 public enum Message_media {
@@ -34025,6 +34026,17 @@ res = Paragraph_scope.aOBU_AND_TRACK;
 } // If
 break;
 } // Case
+case 'R':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("OLLING_STOCK")){
+res = Paragraph_scope.aROLLING_STOCK;
+} else {
+ctxt.moveBack(1);
+res = Paragraph_scope.aOBU_AND_TRACK;
+} // If
+break;
+} // Case
 case 'O':
 {
 ctxt.advance();
@@ -34064,6 +34076,7 @@ switch (v) {
  case Paragraph_scope.aOBU_AND_TRACK: return "OBU_AND_TRACK";
  case Paragraph_scope.aTRACK: return "TRACK";
  case Paragraph_scope.aOBU: return "OBU";
+ case Paragraph_scope.aROLLING_STOCK: return "ROLLING_STOCK";
 } return "";
 }
 
@@ -34077,6 +34090,9 @@ if (str.Equals("TRACK")){
 } // If
 if (str.Equals("OBU")){
   return Paragraph_scope.aOBU;
+} // If
+if (str.Equals("ROLLING_STOCK")){
+  return Paragraph_scope.aROLLING_STOCK;
 } // If
 return Paragraph_scope.defaultParagraph_scope;
 }
@@ -34128,7 +34144,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1576)");
+ctxt.recoverableFail ("Other character expected (1577)");
 break;
 } // Switch
 break;
@@ -34191,7 +34207,7 @@ res = Message_media.aBalise_loop;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1584)");
+ctxt.recoverableFail ("Other character expected (1585)");
 break;
 } // Switch
 } else {
@@ -34325,7 +34341,7 @@ res = TypeSpec_ertms_type.atext;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1590)");
+ctxt.recoverableFail ("Other character expected (1591)");
 break;
 } // Switch
 break;
@@ -34520,7 +34536,7 @@ res = meaning_type.ainfinite;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1603)");
+ctxt.recoverableFail ("Other character expected (1604)");
 break;
 } // Switch
 } else {
@@ -34617,7 +34633,7 @@ res = maximum_Value.a254;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1610)");
+ctxt.recoverableFail ("Other character expected (1611)");
 break;
 } // Switch
 } else {
@@ -34659,7 +34675,7 @@ res = maximum_Value.a125;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1617)");
+ctxt.recoverableFail ("Other character expected (1618)");
 break;
 } // Switch
 break;
@@ -34685,7 +34701,7 @@ res = maximum_Value.a1_55;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1621)");
+ctxt.recoverableFail ("Other character expected (1622)");
 break;
 } // Switch
 break;
@@ -34850,7 +34866,7 @@ res = resolution_formula_units.abit;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1632)");
+ctxt.recoverableFail ("Other character expected (1633)");
 break;
 } // Switch
 break;
@@ -34994,7 +35010,7 @@ res = resolution_formula_Value.aBinary_Coded_Decimal;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1641)");
+ctxt.recoverableFail ("Other character expected (1642)");
 break;
 } // Switch
 } else {
@@ -35043,7 +35059,7 @@ res = resolution_formula_Value.a0_02;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1648)");
+ctxt.recoverableFail ("Other character expected (1649)");
 break;
 } // Switch
 } else {
@@ -35161,7 +35177,7 @@ res = VariableModeEnumType.aInOut;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1654)");
+ctxt.recoverableFail ("Other character expected (1655)");
 break;
 } // Switch
 } else {
@@ -35297,7 +35313,7 @@ res = MessageEnumType.aTrain_InitiationOfACommunicationSession;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1665)");
+ctxt.recoverableFail ("Other character expected (1666)");
 break;
 } // Switch
 break;
@@ -35324,7 +35340,7 @@ res = MessageEnumType.aTrainAccepted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1669)");
+ctxt.recoverableFail ("Other character expected (1670)");
 break;
 } // Switch
 break;
@@ -35361,12 +35377,6 @@ res = MessageEnumType.aTrackAheadFreeGranted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1675)");
-break;
-} // Switch
-break;
-} // Case
-default:
 ctxt.recoverableFail ("Other character expected (1676)");
 break;
 } // Switch
@@ -35374,6 +35384,12 @@ break;
 } // Case
 default:
 ctxt.recoverableFail ("Other character expected (1677)");
+break;
+} // Switch
+break;
+} // Case
+default:
+ctxt.recoverableFail ("Other character expected (1678)");
 break;
 } // Switch
 } else {
@@ -35405,7 +35421,7 @@ res = MessageEnumType.aSoMPositionReport;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1682)");
+ctxt.recoverableFail ("Other character expected (1683)");
 break;
 } // Switch
 break;
@@ -35436,13 +35452,13 @@ res = MessageEnumType.aSHAuthorized;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1687)");
+ctxt.recoverableFail ("Other character expected (1688)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1688)");
+ctxt.recoverableFail ("Other character expected (1689)");
 break;
 } // Switch
 break;
@@ -35492,7 +35508,7 @@ res = MessageEnumType.aRequestToShortenMAIsGranted;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1697)");
+ctxt.recoverableFail ("Other character expected (1698)");
 break;
 } // Switch
 } else {
@@ -35515,7 +35531,7 @@ res = MessageEnumType.aRequestForShunting;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1699)");
+ctxt.recoverableFail ("Other character expected (1700)");
 break;
 } // Switch
 break;
@@ -35528,7 +35544,7 @@ res = MessageEnumType.aRecognitionOfExitFromTripMode;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1701)");
+ctxt.recoverableFail ("Other character expected (1702)");
 break;
 } // Switch
 break;
@@ -35548,7 +35564,7 @@ res = MessageEnumType.aRBCRIUSystemVersion;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1704)");
+ctxt.recoverableFail ("Other character expected (1705)");
 break;
 } // Switch
 break;
@@ -35583,13 +35599,13 @@ res = MessageEnumType.aMARequest;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1710)");
+ctxt.recoverableFail ("Other character expected (1711)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1711)");
+ctxt.recoverableFail ("Other character expected (1712)");
 break;
 } // Switch
 break;
@@ -35640,7 +35656,7 @@ res = MessageEnumType.aEurobalise;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1718)");
+ctxt.recoverableFail ("Other character expected (1719)");
 break;
 } // Switch
 break;
@@ -35653,7 +35669,7 @@ res = MessageEnumType.aEndOfMission;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1720)");
+ctxt.recoverableFail ("Other character expected (1721)");
 break;
 } // Switch
 break;
@@ -35709,7 +35725,7 @@ res = MessageEnumType.aAcknowledgementOfTerminationOfACommunicationSession;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1729)");
+ctxt.recoverableFail ("Other character expected (1730)");
 break;
 } // Switch
 break;
@@ -35722,7 +35738,7 @@ res = MessageEnumType.aAcknowledgementOfEmergencyStop;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1731)");
+ctxt.recoverableFail ("Other character expected (1732)");
 break;
 } // Switch
 } else {
@@ -35738,7 +35754,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1732)");
+ctxt.recoverableFail ("Other character expected (1733)");
 break;
 } // Switch
 break;
@@ -35950,7 +35966,7 @@ res = MessageDirectionEnumType.aTrackToTrain;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1736)");
+ctxt.recoverableFail ("Other character expected (1737)");
 break;
 } // Switch
 } else {
@@ -36023,7 +36039,7 @@ res = SPEC_IMPLEMENTED_ENUM.Impl_NA;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1741)");
+ctxt.recoverableFail ("Other character expected (1742)");
 break;
 } // Switch
 break;
@@ -36315,7 +36331,7 @@ res = ST_LEVEL.StLevel_L0;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1758)");
+ctxt.recoverableFail ("Other character expected (1759)");
 break;
 } // Switch
 break;
@@ -36438,7 +36454,7 @@ res = ST_MODE.Mode_SB;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1768)");
+ctxt.recoverableFail ("Other character expected (1769)");
 break;
 } // Switch
 break;
@@ -36472,7 +36488,7 @@ res = ST_MODE.Mode_PSH;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1773)");
+ctxt.recoverableFail ("Other character expected (1774)");
 break;
 } // Switch
 break;
@@ -36511,7 +36527,7 @@ res = ST_MODE.Mode_NA;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1779)");
+ctxt.recoverableFail ("Other character expected (1780)");
 break;
 } // Switch
 break;
@@ -36683,7 +36699,7 @@ res = RulePriority.aUpdateINTERNAL;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1787)");
+ctxt.recoverableFail ("Other character expected (1788)");
 break;
 } // Switch
 } else {
@@ -36853,7 +36869,7 @@ res = DBMessageType.aEUROBALISE;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1796)");
+ctxt.recoverableFail ("Other character expected (1797)");
 break;
 } // Switch
 } else {
@@ -37011,7 +37027,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1805)");
+ctxt.recoverableFail ("Other character expected (1806)");
 break;
 } // Switch
 break;
@@ -37078,7 +37094,7 @@ res = true;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1814)");
+ctxt.recoverableFail ("Other character expected (1815)");
 break;
 } // Switch
 break;
@@ -37114,7 +37130,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1820)");
+ctxt.recoverableFail ("Other character expected (1821)");
 break;
 } // Switch
 break;
@@ -37154,7 +37170,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1826)");
+ctxt.recoverableFail ("Other character expected (1827)");
 break;
 } // Switch
 break;
@@ -37172,7 +37188,7 @@ res = false;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1829)");
+ctxt.recoverableFail ("Other character expected (1830)");
 break;
 } // Switch
 return res;
@@ -39232,28 +39248,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 1931;
+indicator = 1932;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 1930;
+indicator = 1931;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1928;
+indicator = 1929;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 1929;
+indicator = 1930;
 break;
 } // Case
 case 'a':
@@ -39264,18 +39280,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 1932;
+indicator = 1933;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 1927;
+indicator = 1928;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1940)");
+ctxt.recoverableFail ("Other character expected (1941)");
 break;
 } // Switch
 break;
@@ -39284,39 +39300,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 1933;
+indicator = 1934;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1942)");
+ctxt.recoverableFail ("Other character expected (1943)");
 break;
 } // Switch
 switch (indicator) {
-case 1927: {
+case 1928: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 1928: {
+case 1929: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 1929: {
+case 1930: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 1930: {
+case 1931: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 1931: {
+case 1932: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 1932: {
+case 1933: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 1933: {
+case 1934: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -40840,7 +40856,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1950)");
+ctxt.recoverableFail ("Other character expected (1951)");
 break;
 } // Switch
 break;
@@ -40869,7 +40885,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1955)");
+ctxt.recoverableFail ("Other character expected (1956)");
 break;
 } // Switch
 break;
@@ -40928,7 +40944,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1962)");
+ctxt.recoverableFail ("Other character expected (1963)");
 break;
 } // Switch
 break;
@@ -40979,7 +40995,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1968)");
+ctxt.recoverableFail ("Other character expected (1969)");
 break;
 } // Switch
 break;
@@ -41034,7 +41050,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1975)");
+ctxt.recoverableFail ("Other character expected (1976)");
 break;
 } // Switch
 break;
@@ -41062,7 +41078,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1980)");
+ctxt.recoverableFail ("Other character expected (1981)");
 break;
 } // Switch
 break;
@@ -41101,13 +41117,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1985)");
+ctxt.recoverableFail ("Other character expected (1986)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1986)");
+ctxt.recoverableFail ("Other character expected (1987)");
 break;
 } // Switch
 break;
@@ -41173,7 +41189,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1994)");
+ctxt.recoverableFail ("Other character expected (1995)");
 break;
 } // Switch
 break;
@@ -41211,7 +41227,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (1999)");
+ctxt.recoverableFail ("Other character expected (2000)");
 break;
 } // Switch
 break;
@@ -41253,13 +41269,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2006)");
+ctxt.recoverableFail ("Other character expected (2007)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2007)");
+ctxt.recoverableFail ("Other character expected (2008)");
 break;
 } // Switch
 break;
@@ -41304,7 +41320,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2013)");
+ctxt.recoverableFail ("Other character expected (2014)");
 break;
 } // Switch
 break;
@@ -41317,13 +41333,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2015)");
+ctxt.recoverableFail ("Other character expected (2016)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2016)");
+ctxt.recoverableFail ("Other character expected (2017)");
 break;
 } // Switch
 return res;
