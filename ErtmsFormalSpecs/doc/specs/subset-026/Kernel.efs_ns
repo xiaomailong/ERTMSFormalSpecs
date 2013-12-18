@@ -61,6 +61,9 @@
  Name="LevelTransition"
 >
 </NameSpaceRef><NameSpaceRef
+ Name="DateAndTime"
+>
+</NameSpaceRef><NameSpaceRef
  Name="ActiveFunctions"
 >
 </NameSpaceRef></NameSpaces>
@@ -3531,7 +3534,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef><PreConditions>
 <PreCondition>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
-<Action>THIS &lt;- HandleModeChange.StartOfMission.D12</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action></Actions>
+<Action>THIS &lt;- HandleModeChange.StartOfMission.D12</Action><Action>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action>Kernel.TrainData.TrainData.Value &lt;- DMI.MasterDMI().In_TrainData.Data</Action><Action>Kernel.TrainDataVerified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7724,8 +7727,8 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
 >
 </ReqRef><Comment></Comment>
 </Variable><Variable
- Type="String"
- DefaultValue=""
+ Type="Default.NID_NTC"
+ DefaultValue="NID_NTC.NOT_APPLICABLE"
  VariableMode="Internal"
  Implemented="TRUE"
  Name="NationalSystemId"
@@ -7863,6 +7866,12 @@ SessionInfo =&gt; EURORADIO.RadioSessionInformation{}
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
 >
 </ReqRef><Comment>Represents the time when the last EoM request was sent</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Name="TrainDataVerified"
+>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="300.0"

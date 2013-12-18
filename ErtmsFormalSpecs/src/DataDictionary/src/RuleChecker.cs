@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Functions;
 
 namespace DataDictionary
 {
@@ -460,28 +461,35 @@ namespace DataDictionary
                 {
                     // Check whether the expression is valid
                     Interpreter.Expression expression = checkExpression(preCondition, preCondition.Condition);
-                    if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
+                    if (expression != null)
                     {
-                        preCondition.AddError("Expression type should be Boolean");
-                    }
-
-                    Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
-                    if (element != null)
-                    {
-                        if (element.Type is Types.StateMachine)
+                        if (!preCondition.Dictionary.EFSSystem.BoolType.Match(expression.GetExpressionType()))
                         {
-                            if (preCondition.findOperator() != null)
+                            preCondition.AddError("Expression type should be Boolean");
+                        }
+
+                        Types.ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
+                        if (element != null)
+                        {
+                            if (element.Type is Types.StateMachine)
                             {
-                                if (preCondition.findOperator().CompareTo("==") == 0)
+                                if (preCondition.findOperator() != null)
                                 {
-                                    preCondition.AddWarning("Operator == should not be used for state machines");
-                                }
-                                else if (preCondition.findOperator().CompareTo("!=") == 0)
-                                {
-                                    preCondition.AddWarning("Operator != should not be used for state machines");
+                                    if (preCondition.findOperator().CompareTo("==") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator == should not be used for state machines");
+                                    }
+                                    else if (preCondition.findOperator().CompareTo("!=") == 0)
+                                    {
+                                        preCondition.AddWarning("Operator != should not be used for state machines");
+                                    }
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        preCondition.AddError("Cannot parse pre condition");
                     }
                 }
                 catch (Exception exception)
@@ -741,6 +749,18 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
+        public override void visit(Generated.Function obj, bool visitSubNodes)
+        {
+            Function function = (Function)obj;
+
+            if (function.ReturnType == null)
+            {
+                function.AddError("Cannot determine function return type");
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
         public override void visit(Generated.Case obj, bool visitSubNodes)
         {
             Functions.Case cas = obj as Functions.Case;
@@ -752,7 +772,7 @@ namespace DataDictionary
                 {
                     expression.checkExpression();
                     Types.Type expressionType = cas.Expression.GetExpressionType();
-                    if (expressionType != null)
+                    if (expressionType != null && cas.EnclosingFunction != null && cas.EnclosingFunction.ReturnType != null)
                     {
                         if (!cas.EnclosingFunction.ReturnType.Match(expressionType))
                         {

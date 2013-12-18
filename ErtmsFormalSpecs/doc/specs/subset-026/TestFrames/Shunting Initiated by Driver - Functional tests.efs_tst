@@ -242,7 +242,7 @@
  Name="Sub-step1 - Launch ShuntingInitiatedByDriver"
 >
 <Actions>
-<Action>Kernel.Mode &lt;- Mode.SN</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action></Actions>
+<Action>Kernel.Mode &lt;- Mode.SN</Action><Action>Odometry.EstimatedSpeed &lt;- 0.0</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -577,7 +577,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action></Actions>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D020</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1382,7 +1382,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action></Actions>
+<Action>Kernel.Level.Value &lt;- Level.LNTC</Action><Action>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D080</Action><Action>Kernel.NationalSystemId &lt;- 254</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

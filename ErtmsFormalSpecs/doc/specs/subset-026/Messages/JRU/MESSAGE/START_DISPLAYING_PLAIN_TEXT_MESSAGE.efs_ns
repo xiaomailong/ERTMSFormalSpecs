@@ -21,15 +21,15 @@
 <StructureElement
  TypeName="HEADER.Message"
  Default="EMPTY"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HEADER"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="L_TEXT"
  Default="0"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="L_TEXT"
@@ -41,7 +41,7 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Collection1"
  Default=""
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Sequence1"
@@ -62,7 +62,7 @@
 </ReqRef><StructureElement
  TypeName="String"
  Default="&apos;&apos;"
- Mode="InOut"
+ Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="X_TEXT"
