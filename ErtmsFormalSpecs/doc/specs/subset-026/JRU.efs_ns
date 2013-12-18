@@ -52,7 +52,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="UpdateTime"
+ Name="UpdateJRUTime"
 >
 <SubRules></SubRules>
 <Conditions>
@@ -60,9 +60,9 @@
  Name="UpdateTime"
 >
 <PreConditions>
-<PreCondition>SendMessagePeriodically()</PreCondition></PreConditions>
+<PreCondition>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 <Actions>
-<Action>PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
+<Action>JRU.SendJruMessage()</Action><Action>JRU.JRU1.PreviousTime &lt;- Kernel.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -105,7 +105,7 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><PreConditions>
-<PreCondition>( LevelChangedToNtc() )</PreCondition></PreConditions>
+<PreCondition>( LevelChangedToNtc(THIS) )</PreCondition></PreConditions>
 <Actions>
 <Action>Message.NTC_SELECTED &lt;- CreateNtcSelectedMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -137,7 +137,7 @@
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><PreConditions>
-<PreCondition>( SendNewGeneralMessage() )</PreCondition></PreConditions>
+<PreCondition>( SendNewGeneralMessage(THIS) )</PreCondition></PreConditions>
 <Actions>
 <Action>Message.GENERAL_MESSAGE &lt;- CreateGeneralMessage()</Action></Actions>
 </RuleCondition></Conditions>
@@ -213,6 +213,7 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="TelegramFromEuroBaliseRecieved"
 >
 <ReqRef
@@ -247,7 +248,7 @@
 </StructureElement><StructureElement
  TypeName="Messages.JRU.MESSAGE.Message"
  Default="EMPTY"
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  Name="Message"
 >
@@ -662,15 +663,15 @@ NID_NTC =&gt; ToJruNidNtc((Kernel.NationalSystemId))
  Name="SendGeneralMessage"
 >
 <PreConditions>
-<PreCondition>( LevelChanged() )
+<PreCondition>( LevelChanged(jru) )
   OR
-( SendMessagePeriodically() )
+( SendMessagePeriodically(jru) )
 OR
-( ModeChanged() )
+( ModeChanged(jru) )
 OR
-( SystemVersionChanged() )
+( SystemVersionChanged(jru) )
 OR
-( JRU.JRU1.PreviousTrainData != Kernel.TrainData.TrainData.Value) OR (TrainDataVerified() == True )
+( JRU.TrainDataHaveChanged(jru) ) OR (TrainDataVerified() == True )
 OR
 (JRU.EmergencyBrakeStatusChanged(jru) )
 OR
@@ -692,12 +693,18 @@ OR
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="Different Level"
 >
 <PreConditions>
-<PreCondition>JRU.JRU1.PreviousKernelLevel != Kernel.Level.Value</PreCondition></PreConditions>
+<PreCondition>jru.PreviousKernelLevel != Kernel.Level.Value</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Same Level"
@@ -713,12 +720,18 @@ OR
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="Five Seconds Have Passed"
 >
 <PreConditions>
-<PreCondition>JRU.JRU1.PreviousTime + 5.0 &lt; Kernel.CurrentTime</PreCondition></PreConditions>
+<PreCondition>jru.PreviousTime + 5.0 &lt;= Kernel.CurrentTime</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Five Seconds Has not Passed"
@@ -734,12 +747,18 @@ OR
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="ModeChanged"
 >
 <PreConditions>
-<PreCondition>JRU.JRU1.PreviousKernelMode != Kernel.Mode</PreCondition></PreConditions>
+<PreCondition>jru.PreviousKernelMode != Kernel.Mode</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="SameMode"
@@ -755,12 +774,18 @@ OR
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="System Version Changed"
 >
 <PreConditions>
-<PreCondition>JRU.JRU1.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</PreCondition></PreConditions>
+<PreCondition>jru.PreviousSystemVersion != Kernel.OperatedSystemVersion.Value</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Same System Version"
@@ -776,12 +801,18 @@ OR
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="LevelChangedToNTC"
 >
 <PreConditions>
-<PreCondition>( LevelChanged() ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+<PreCondition>( LevelChanged(jru) ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="LevelNotChangedToNtc"
@@ -809,18 +840,24 @@ OR
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
-</ReqRef><Cases>
+</ReqRef><Parameters>
+<Parameter
+ Type="JRU"
+ Name="jru"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="SendGeneralJruMessage"
 >
 <PreConditions>
-<PreCondition>( LevelChanged()  )
+<PreCondition>( LevelChanged(jru)  )
 OR
-( ModeChanged() AND (Kernel.Mode != Default.Mode.NP) )
+( ModeChanged(jru) AND (Kernel.Mode != Default.Mode.NP) )
 OR
-( SystemVersionChanged() )
+( SystemVersionChanged(jru) )
 OR
-( SendMessagePeriodically() )</PreCondition></PreConditions>
+( SendMessagePeriodically(jru) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="NotSenGeneralJruMessage"
@@ -1654,7 +1691,7 @@ TELEGRAM=&gt; BTM.Message
 <Variables>
 <Variable
  Type="JRU.JRU"
- VariableMode="Outgoing"
+ VariableMode="InOut"
  Implemented="TRUE"
  Name="JRU1"
 >

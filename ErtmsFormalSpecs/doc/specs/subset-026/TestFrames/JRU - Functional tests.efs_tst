@@ -37,7 +37,7 @@
  Name="Sub-step1"
 >
 <Actions>
-<Action>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Action>Kernel.InitializeTestEnvironment()</Action><Action>JRU.JRU1.PreviousTime &lt;- 0.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50,7 +50,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Ensure that the first JRU GENERAL message is sent after 5 secs"
+ Name="Step2 - Ensure that the perdiod has passed"
 >
 <SubSteps>
 <SubStep
@@ -60,27 +60,6 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
->JRU.JRU1.PreviousTime + 5.0 &gt; Kernel.CurrentTime</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - Ensure that the first JRU GENERAL message is no more present after it has been sent"
->
-<SubSteps>
-<SubStep
- Name="SubStep1"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -89,7 +68,26 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step4 - Ensure that the first JRU GENERAL message is sent after 5 secs"
+ Name="Step3 - Ensure that the first JRU GENERAL message is sent after 5 secs"
+>
+<Comment>The expectation of this step will be satisfied after a certain number of cycles, the amount of cycles it is related with the period</Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - Ensure the period has passed again"
 >
 <SubSteps>
 <SubStep
@@ -99,10 +97,26 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="5,5"
->JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
+>JRU.JRU1.Message.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Ensure that the JRU GENERAL message is sent after the second period"
+>
+<Comment>The expectation of this step will be satisfied after a certain number of cycles, the amount of cycles it is related with the period</Comment>
+<SubSteps>
+<SubStep
+ Name="SubStep1"
+>
+<Expectations>
+<Expectation
  Kind="Instantaneous"
- DeadLine="1"
->JRU.JRU1.PreviousTime + 5.0 &gt; Kernel.CurrentTime</Expectation></Expectations>
+ DeadLine="5,5"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -153,7 +167,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- Name="Step2 - Ensure that a new JRU message has been created"
+ Name="Step2 - Ensure that there is no JRU message"
 >
 <SubSteps>
 <SubStep
@@ -188,7 +202,10 @@
  DeadLine="1"
 >JRU.JRU1.Message.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
     SystemVersion=&gt; Kernel.OperatedSystemVersion
-)</Expectation></Expectations>
+)</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="5,5"
+>JRU.JRU1.Message.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -328,7 +345,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send General JRU Messages when level changes"
 >
 <ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
@@ -2135,7 +2152,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send Train Data JRU Message after validation in SoM"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
@@ -2196,10 +2213,10 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send JRU EMERGENCY BRAKE COMMAND when the status of the EB changes"
 >
 <ReqRef
- Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
 >
 </ReqRef><Steps>
@@ -2315,7 +2332,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send Train Data JRU Message When the train data changes"
 >
 <ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
@@ -2402,7 +2419,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Service brake command JRU Message when the status of the SB changes"
 >
 <ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
@@ -2527,7 +2544,7 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send JRU BALISE TELEGRAM Message when a Balise Telegram is recieved"
 >
 <ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
@@ -2943,9 +2960,13 @@
 >
 <TestCases>
 <TestCase
- Name="Test case1"
+ Name="Send NTC SELECTED Messages when the level changes to LNTC"
 >
-<Steps>
+<ReqRef
+ Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
