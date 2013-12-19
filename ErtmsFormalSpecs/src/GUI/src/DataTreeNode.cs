@@ -189,7 +189,7 @@ namespace GUI
                 }
             }
 
-            if (displayStatistics)
+            if (displayStatistics && !isShortCut())
             {
                 GUIUtils.MDIWindow.SetCoverageStatus(EFSSystem.INSTANCE);
             }
@@ -805,6 +805,29 @@ namespace GUI
         }
 
         /// <summary>
+        /// Generates new GUID for the element
+        /// </summary>
+        private class RegererateGuidVisitor : DataDictionary.Generated.Visitor
+        {
+            /// <summary>
+            /// Ensures that all elements have a new Guid
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                ModelElement element = (ModelElement)obj;
+
+                // Side effect : creates a new Guid if it is empty
+                element.setGuid(null);
+                string guid = element.Guid;
+
+                base.visit(obj, visitSubNodes);
+            }
+
+        }
+
+        /// <summary>
         /// Accepts the drop of a base tree node on this node
         /// </summary>
         /// <param name="SourceNode"></param>
@@ -818,6 +841,9 @@ namespace GUI
                 try
                 {
                     DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    RegererateGuidVisitor visitor = new RegererateGuidVisitor();
+                    visitor.visit(copy, true);
+
                     Utils.INamable namable = copy as Utils.INamable;
                     if (namable != null && SourceNode.Model.EnclosingCollection != null)
                     {
