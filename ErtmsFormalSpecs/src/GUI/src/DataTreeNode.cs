@@ -189,7 +189,7 @@ namespace GUI
                 }
             }
 
-            if (displayStatistics)
+            if (displayStatistics && !isShortCut())
             {
                 GUIUtils.MDIWindow.SetCoverageStatus(EFSSystem.INSTANCE);
             }
