@@ -233,7 +233,7 @@ namespace GUI.SpecificationView
             paragraph.FullId = Item.GetNewSubParagraphId();
             paragraph.Text = "";
             paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            paragraph.setScope(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU);
+            paragraph.setScopeOnBoard(true);
             AddParagraph(paragraph);
         }
 
